@@ -1,11 +1,11 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zugferdminimum;
+namespace horstoeko\invoicesuite\providers\zffxminimum;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdMinimumProvider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXMinimumProvider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
@@ -86,7 +86,7 @@ class InvoiceSuiteZugferdMinimumProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdMinimumProviderReader::class;
+        return InvoiceSuiteZugferdFacturXMinimumProviderReader::class;
     }
 
     /**
@@ -94,6 +94,6 @@ class InvoiceSuiteZugferdMinimumProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdMinimumProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXMinimumProviderBuilder::class;
     }
 }

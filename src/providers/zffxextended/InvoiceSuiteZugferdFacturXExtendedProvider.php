@@ -1,18 +1,18 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zugferdbasicwl;
+namespace horstoeko\invoicesuite\providers\zffxextended;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdBasicWlProvider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXExtendedProvider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
      */
     public function getUniqueId(): string
     {
-        return 'zffxbasicwl';
+        return 'zffxextended';
     }
 
     /**
@@ -20,9 +20,9 @@ class InvoiceSuiteZugferdBasicWlProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getDescription(): string
     {
-        return 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant ' .
-            'invoices. However, it contains all the information at document level that is required to post the invoice. ' .
-            'It is therefore a booking aid.';
+        return 'The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices ' .
+            'in which several deliveries / delivery locations are billed, structured payment conditions, further information at ' .
+            'item level to support warehousing, etc.)';
     }
 
     /**
@@ -62,7 +62,7 @@ class InvoiceSuiteZugferdBasicWlProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getGroups(): array
     {
-        return ["zffxbasicwl"];
+        return ["zffxextended"];
     }
 
     /**
@@ -86,7 +86,7 @@ class InvoiceSuiteZugferdBasicWlProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdBasicWlProviderReader::class;
+        return InvoiceSuiteZugferdFacturXExtendedProviderReader::class;
     }
 
     /**
@@ -94,6 +94,6 @@ class InvoiceSuiteZugferdBasicWlProvider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdBasicWlProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXExtendedProviderBuilder::class;
     }
 }

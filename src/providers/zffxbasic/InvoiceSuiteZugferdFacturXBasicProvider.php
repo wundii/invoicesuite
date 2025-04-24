@@ -1,18 +1,18 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zugferdextended;
+namespace horstoeko\invoicesuite\providers\zffxbasic;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdExtendedProvider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXBasicProvider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
      */
     public function getUniqueId(): string
     {
-        return 'zffxextended';
+        return 'zffxbasic';
     }
 
     /**
@@ -20,9 +20,7 @@ class InvoiceSuiteZugferdExtendedProvider extends InvoiceSuiteAbstractFormatProv
      */
     public function getDescription(): string
     {
-        return 'The EXTENDED profile is an extension of EN 16931-1 to support more complex business processes (invoices ' .
-            'in which several deliveries / delivery locations are billed, structured payment conditions, further information at ' .
-            'item level to support warehousing, etc.)';
+        return 'The BASIC profile is a subset of EN 16931-1 and can be used for simple VAT-compliant invoices.';
     }
 
     /**
@@ -62,7 +60,7 @@ class InvoiceSuiteZugferdExtendedProvider extends InvoiceSuiteAbstractFormatProv
      */
     public function getGroups(): array
     {
-        return ["zffxextended"];
+        return ["zffxbasic"];
     }
 
     /**
@@ -86,7 +84,7 @@ class InvoiceSuiteZugferdExtendedProvider extends InvoiceSuiteAbstractFormatProv
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdExtendedProviderReader::class;
+        return InvoiceSuiteZugferdFacturXBasicProviderReader::class;
     }
 
     /**
@@ -94,6 +92,6 @@ class InvoiceSuiteZugferdExtendedProvider extends InvoiceSuiteAbstractFormatProv
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdExtendedProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXBasicProviderBuilder::class;
     }
 }

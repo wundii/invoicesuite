@@ -1,18 +1,18 @@
 <?php
 
-namespace horstoeko\invoicesuite\providers\zugferden16931;
+namespace horstoeko\invoicesuite\providers\zffxbasicwl;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zugferd\rsm\CrossIndustryInvoice;
 
-class InvoiceSuiteZugferdEn16931Provider extends InvoiceSuiteAbstractFormatProvider
+class InvoiceSuiteZugferdFacturXBasicWlProvider extends InvoiceSuiteAbstractFormatProvider
 {
     /**
      * @inheritDoc
      */
     public function getUniqueId(): string
     {
-        return 'zffxen16931';
+        return 'zffxbasicwl';
     }
 
     /**
@@ -20,8 +20,9 @@ class InvoiceSuiteZugferdEn16931Provider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getDescription(): string
     {
-        return 'The EN 16931 (COMFORT) profile completely maps the EN 16931-1 and focuses on the core elements ' .
-            'of an electronic invoice.';
+        return 'The BASIC WL profile does not contain any invoice items and therefore cannot display any VAT-compliant ' .
+            'invoices. However, it contains all the information at document level that is required to post the invoice. ' .
+            'It is therefore a booking aid.';
     }
 
     /**
@@ -61,7 +62,7 @@ class InvoiceSuiteZugferdEn16931Provider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getGroups(): array
     {
-        return ["zffxen16931"];
+        return ["zffxbasicwl"];
     }
 
     /**
@@ -85,7 +86,7 @@ class InvoiceSuiteZugferdEn16931Provider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteZugferdEn16931ProviderReader::class;
+        return InvoiceSuiteZugferdFacturXBasicWlProviderReader::class;
     }
 
     /**
@@ -93,6 +94,6 @@ class InvoiceSuiteZugferdEn16931Provider extends InvoiceSuiteAbstractFormatProvi
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteZugferdEn16931ProviderBuilder::class;
+        return InvoiceSuiteZugferdFacturXBasicWlProviderBuilder::class;
     }
 }
