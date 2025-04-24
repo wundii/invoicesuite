@@ -21,16 +21,16 @@ class FormattedDateTimeType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType|null
      */
-    public function getDateTimeString(
-    ): ?\horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType {
+    public function getDateTimeString(): ?DateTimeStringAType
+    {
         return $this->dateTimeStringAType;
     }
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType
      */
-    public function getDateTimeStringWithCreate(
-    ): \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType {
+    public function getDateTimeStringWithCreate(): DateTimeStringAType
+    {
         $this->dateTimeStringAType = is_null($this->dateTimeStringAType) ? new DateTimeStringAType() : $this->dateTimeStringAType;
 
         return $this->dateTimeStringAType;
@@ -40,9 +40,8 @@ class FormattedDateTimeType
      * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType
      * @return self
      */
-    public function setDateTimeString(
-        \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeStringAType,
-    ): self {
+    public function setDateTimeString(DateTimeStringAType $dateTimeStringAType): self
+    {
         $this->dateTimeStringAType = $dateTimeStringAType;
 
         return $this;
