@@ -21,7 +21,7 @@ class DateType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType|null
      */
-    public function getDateString(): ?\horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
+    public function getDateString(): ?DateStringAType
     {
         return $this->dateStringAType;
     }
@@ -29,7 +29,7 @@ class DateType
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
      */
-    public function getDateStringWithCreate(): \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
+    public function getDateStringWithCreate(): DateStringAType
     {
         $this->dateStringAType = is_null($this->dateStringAType) ? new DateStringAType() : $this->dateStringAType;
 
@@ -40,7 +40,7 @@ class DateType
      * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType
      * @return self
      */
-    public function setDateString(\horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType $dateStringAType): self
+    public function setDateString(DateStringAType $dateStringAType): self
     {
         $this->dateStringAType = $dateStringAType;
 
