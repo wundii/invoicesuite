@@ -31,7 +31,7 @@ class ExchangedDocumentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getName", setter="setName")
      */
-    private $name;
+    private $textType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType
@@ -42,7 +42,7 @@ class ExchangedDocumentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $typeCode;
+    private $documentCodeType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
@@ -53,7 +53,7 @@ class ExchangedDocumentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getIssueDateTime", setter="setIssueDateTime")
      */
-    private $issueDateTime;
+    private $dateTimeType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType
@@ -64,7 +64,7 @@ class ExchangedDocumentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCopyIndicator", setter="setCopyIndicator")
      */
-    private $copyIndicator;
+    private $indicatorType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
@@ -98,7 +98,7 @@ class ExchangedDocumentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getEffectiveSpecifiedPeriod", setter="setEffectiveSpecifiedPeriod")
      */
-    private $effectiveSpecifiedPeriod;
+    private $specifiedPeriodType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
@@ -119,12 +119,12 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->iD = $idType;
 
         return $this;
     }
@@ -134,7 +134,7 @@ class ExchangedDocumentType
      */
     public function getName(): ?TextType
     {
-        return $this->name;
+        return $this->textType;
     }
 
     /**
@@ -142,18 +142,18 @@ class ExchangedDocumentType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->name;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(TextType $textType): self
     {
-        $this->name = $name;
+        $this->textType = $textType;
 
         return $this;
     }
@@ -163,7 +163,7 @@ class ExchangedDocumentType
      */
     public function getTypeCode(): ?DocumentCodeType
     {
-        return $this->typeCode;
+        return $this->documentCodeType;
     }
 
     /**
@@ -171,18 +171,18 @@ class ExchangedDocumentType
      */
     public function getTypeCodeWithCreate(): DocumentCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new DocumentCodeType() : $this->typeCode;
+        $this->documentCodeType = is_null($this->documentCodeType) ? new DocumentCodeType() : $this->documentCodeType;
 
-        return $this->typeCode;
+        return $this->documentCodeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DocumentCodeType $documentCodeType
      * @return self
      */
-    public function setTypeCode(DocumentCodeType $typeCode): self
+    public function setTypeCode(DocumentCodeType $documentCodeType): self
     {
-        $this->typeCode = $typeCode;
+        $this->documentCodeType = $documentCodeType;
 
         return $this;
     }
@@ -192,7 +192,7 @@ class ExchangedDocumentType
      */
     public function getIssueDateTime(): ?DateTimeType
     {
-        return $this->issueDateTime;
+        return $this->dateTimeType;
     }
 
     /**
@@ -200,18 +200,18 @@ class ExchangedDocumentType
      */
     public function getIssueDateTimeWithCreate(): DateTimeType
     {
-        $this->issueDateTime = is_null($this->issueDateTime) ? new DateTimeType() : $this->issueDateTime;
+        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
 
-        return $this->issueDateTime;
+        return $this->dateTimeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $issueDateTime
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType
      * @return self
      */
-    public function setIssueDateTime(DateTimeType $issueDateTime): self
+    public function setIssueDateTime(DateTimeType $dateTimeType): self
     {
-        $this->issueDateTime = $issueDateTime;
+        $this->dateTimeType = $dateTimeType;
 
         return $this;
     }
@@ -221,7 +221,7 @@ class ExchangedDocumentType
      */
     public function getCopyIndicator(): ?IndicatorType
     {
-        return $this->copyIndicator;
+        return $this->indicatorType;
     }
 
     /**
@@ -229,18 +229,18 @@ class ExchangedDocumentType
      */
     public function getCopyIndicatorWithCreate(): IndicatorType
     {
-        $this->copyIndicator = is_null($this->copyIndicator) ? new IndicatorType() : $this->copyIndicator;
+        $this->indicatorType = is_null($this->indicatorType) ? new IndicatorType() : $this->indicatorType;
 
-        return $this->copyIndicator;
+        return $this->indicatorType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $copyIndicator
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $indicatorType
      * @return self
      */
-    public function setCopyIndicator(IndicatorType $copyIndicator): self
+    public function setCopyIndicator(IndicatorType $indicatorType): self
     {
-        $this->copyIndicator = $copyIndicator;
+        $this->indicatorType = $indicatorType;
 
         return $this;
     }
@@ -264,12 +264,12 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $languageID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setLanguageID(IDType $languageID): self
+    public function setLanguageID(IDType $idType): self
     {
-        $this->languageID = $languageID;
+        $this->languageID = $idType;
 
         return $this;
     }
@@ -304,12 +304,12 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\NoteType $includedNote
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\NoteType $noteType
      * @return self
      */
-    public function addToIncludedNote(NoteType $includedNote): self
+    public function addToIncludedNote(NoteType $noteType): self
     {
-        $this->includedNote[] = $includedNote;
+        $this->includedNote[] = $noteType;
 
         return $this;
     }
@@ -319,9 +319,9 @@ class ExchangedDocumentType
      */
     public function addToIncludedNoteWithCreate(): NoteType
     {
-        $this->addToincludedNote($includedNote = new NoteType());
+        $this->addToincludedNote($noteType = new NoteType());
 
-        return $includedNote;
+        return $noteType;
     }
 
     /**
@@ -329,7 +329,7 @@ class ExchangedDocumentType
      */
     public function getEffectiveSpecifiedPeriod(): ?SpecifiedPeriodType
     {
-        return $this->effectiveSpecifiedPeriod;
+        return $this->specifiedPeriodType;
     }
 
     /**
@@ -337,18 +337,18 @@ class ExchangedDocumentType
      */
     public function getEffectiveSpecifiedPeriodWithCreate(): SpecifiedPeriodType
     {
-        $this->effectiveSpecifiedPeriod = is_null($this->effectiveSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->effectiveSpecifiedPeriod;
+        $this->specifiedPeriodType = is_null($this->specifiedPeriodType) ? new SpecifiedPeriodType() : $this->specifiedPeriodType;
 
-        return $this->effectiveSpecifiedPeriod;
+        return $this->specifiedPeriodType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $specifiedPeriodType
      * @return self
      */
-    public function setEffectiveSpecifiedPeriod(SpecifiedPeriodType $effectiveSpecifiedPeriod): self
+    public function setEffectiveSpecifiedPeriod(SpecifiedPeriodType $specifiedPeriodType): self
     {
-        $this->effectiveSpecifiedPeriod = $effectiveSpecifiedPeriod;
+        $this->specifiedPeriodType = $specifiedPeriodType;
 
         return $this;
     }

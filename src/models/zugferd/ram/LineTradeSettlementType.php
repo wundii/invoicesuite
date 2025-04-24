@@ -27,7 +27,7 @@ class LineTradeSettlementType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBillingSpecifiedPeriod", setter="setBillingSpecifiedPeriod")
      */
-    private $billingSpecifiedPeriod;
+    private $specifiedPeriodType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>
@@ -50,7 +50,7 @@ class LineTradeSettlementType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedTradeSettlementLineMonetarySummation", setter="setSpecifiedTradeSettlementLineMonetarySummation")
      */
-    private $specifiedTradeSettlementLineMonetarySummation;
+    private $tradeSettlementLineMonetarySummationType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
@@ -61,7 +61,7 @@ class LineTradeSettlementType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getInvoiceReferencedDocument", setter="setInvoiceReferencedDocument")
      */
-    private $invoiceReferencedDocument;
+    private $referencedDocumentType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType>
@@ -84,7 +84,7 @@ class LineTradeSettlementType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getReceivableSpecifiedTradeAccountingAccount", setter="setReceivableSpecifiedTradeAccountingAccount")
      */
-    private $receivableSpecifiedTradeAccountingAccount;
+    private $tradeAccountingAccountType;
 
     /**
      * @return array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>|null
@@ -116,12 +116,12 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $applicableTradeTax
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
      * @return self
      */
-    public function addToApplicableTradeTax(TradeTaxType $applicableTradeTax): self
+    public function addToApplicableTradeTax(TradeTaxType $tradeTaxType): self
     {
-        $this->applicableTradeTax[] = $applicableTradeTax;
+        $this->applicableTradeTax[] = $tradeTaxType;
 
         return $this;
     }
@@ -131,9 +131,9 @@ class LineTradeSettlementType
      */
     public function addToApplicableTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToapplicableTradeTax($applicableTradeTax = new TradeTaxType());
+        $this->addToapplicableTradeTax($tradeTaxType = new TradeTaxType());
 
-        return $applicableTradeTax;
+        return $tradeTaxType;
     }
 
     /**
@@ -141,7 +141,7 @@ class LineTradeSettlementType
      */
     public function getBillingSpecifiedPeriod(): ?SpecifiedPeriodType
     {
-        return $this->billingSpecifiedPeriod;
+        return $this->specifiedPeriodType;
     }
 
     /**
@@ -149,18 +149,18 @@ class LineTradeSettlementType
      */
     public function getBillingSpecifiedPeriodWithCreate(): SpecifiedPeriodType
     {
-        $this->billingSpecifiedPeriod = is_null($this->billingSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->billingSpecifiedPeriod;
+        $this->specifiedPeriodType = is_null($this->specifiedPeriodType) ? new SpecifiedPeriodType() : $this->specifiedPeriodType;
 
-        return $this->billingSpecifiedPeriod;
+        return $this->specifiedPeriodType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SpecifiedPeriodType $specifiedPeriodType
      * @return self
      */
-    public function setBillingSpecifiedPeriod(SpecifiedPeriodType $billingSpecifiedPeriod): self
+    public function setBillingSpecifiedPeriod(SpecifiedPeriodType $specifiedPeriodType): self
     {
-        $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
+        $this->specifiedPeriodType = $specifiedPeriodType;
 
         return $this;
     }
@@ -195,12 +195,12 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $specifiedTradeAllowanceCharge
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $tradeAllowanceChargeType
      * @return self
      */
-    public function addToSpecifiedTradeAllowanceCharge(TradeAllowanceChargeType $specifiedTradeAllowanceCharge): self
+    public function addToSpecifiedTradeAllowanceCharge(TradeAllowanceChargeType $tradeAllowanceChargeType): self
     {
-        $this->specifiedTradeAllowanceCharge[] = $specifiedTradeAllowanceCharge;
+        $this->specifiedTradeAllowanceCharge[] = $tradeAllowanceChargeType;
 
         return $this;
     }
@@ -210,9 +210,9 @@ class LineTradeSettlementType
      */
     public function addToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        $this->addTospecifiedTradeAllowanceCharge($specifiedTradeAllowanceCharge = new TradeAllowanceChargeType());
+        $this->addTospecifiedTradeAllowanceCharge($tradeAllowanceChargeType = new TradeAllowanceChargeType());
 
-        return $specifiedTradeAllowanceCharge;
+        return $tradeAllowanceChargeType;
     }
 
     /**
@@ -220,7 +220,7 @@ class LineTradeSettlementType
      */
     public function getSpecifiedTradeSettlementLineMonetarySummation(): ?TradeSettlementLineMonetarySummationType
     {
-        return $this->specifiedTradeSettlementLineMonetarySummation;
+        return $this->tradeSettlementLineMonetarySummationType;
     }
 
     /**
@@ -228,19 +228,19 @@ class LineTradeSettlementType
      */
     public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
     {
-        $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
+        $this->tradeSettlementLineMonetarySummationType = is_null($this->tradeSettlementLineMonetarySummationType) ? new TradeSettlementLineMonetarySummationType() : $this->tradeSettlementLineMonetarySummationType;
 
-        return $this->specifiedTradeSettlementLineMonetarySummation;
+        return $this->tradeSettlementLineMonetarySummationType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeSettlementLineMonetarySummationType $tradeSettlementLineMonetarySummationType
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(
-        TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation,
+        TradeSettlementLineMonetarySummationType $tradeSettlementLineMonetarySummationType,
     ): self {
-        $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
+        $this->tradeSettlementLineMonetarySummationType = $tradeSettlementLineMonetarySummationType;
 
         return $this;
     }
@@ -250,7 +250,7 @@ class LineTradeSettlementType
      */
     public function getInvoiceReferencedDocument(): ?ReferencedDocumentType
     {
-        return $this->invoiceReferencedDocument;
+        return $this->referencedDocumentType;
     }
 
     /**
@@ -258,18 +258,18 @@ class LineTradeSettlementType
      */
     public function getInvoiceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->invoiceReferencedDocument = is_null($this->invoiceReferencedDocument) ? new ReferencedDocumentType() : $this->invoiceReferencedDocument;
+        $this->referencedDocumentType = is_null($this->referencedDocumentType) ? new ReferencedDocumentType() : $this->referencedDocumentType;
 
-        return $this->invoiceReferencedDocument;
+        return $this->referencedDocumentType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $invoiceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setInvoiceReferencedDocument(ReferencedDocumentType $invoiceReferencedDocument): self
+    public function setInvoiceReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->invoiceReferencedDocument = $invoiceReferencedDocument;
+        $this->referencedDocumentType = $referencedDocumentType;
 
         return $this;
     }
@@ -304,12 +304,12 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function addToAdditionalReferencedDocument(ReferencedDocumentType $additionalReferencedDocument): self
+    public function addToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->additionalReferencedDocument[] = $additionalReferencedDocument;
+        $this->additionalReferencedDocument[] = $referencedDocumentType;
 
         return $this;
     }
@@ -319,9 +319,9 @@ class LineTradeSettlementType
      */
     public function addToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->addToadditionalReferencedDocument($additionalReferencedDocument = new ReferencedDocumentType());
+        $this->addToadditionalReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
 
-        return $additionalReferencedDocument;
+        return $referencedDocumentType;
     }
 
     /**
@@ -329,7 +329,7 @@ class LineTradeSettlementType
      */
     public function getReceivableSpecifiedTradeAccountingAccount(): ?TradeAccountingAccountType
     {
-        return $this->receivableSpecifiedTradeAccountingAccount;
+        return $this->tradeAccountingAccountType;
     }
 
     /**
@@ -337,19 +337,19 @@ class LineTradeSettlementType
      */
     public function getReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
     {
-        $this->receivableSpecifiedTradeAccountingAccount = is_null($this->receivableSpecifiedTradeAccountingAccount) ? new TradeAccountingAccountType() : $this->receivableSpecifiedTradeAccountingAccount;
+        $this->tradeAccountingAccountType = is_null($this->tradeAccountingAccountType) ? new TradeAccountingAccountType() : $this->tradeAccountingAccountType;
 
-        return $this->receivableSpecifiedTradeAccountingAccount;
+        return $this->tradeAccountingAccountType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAccountingAccountType $tradeAccountingAccountType
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(
-        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
+        TradeAccountingAccountType $tradeAccountingAccountType,
     ): self {
-        $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
+        $this->tradeAccountingAccountType = $tradeAccountingAccountType;
 
         return $this;
     }

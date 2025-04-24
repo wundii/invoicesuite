@@ -92,12 +92,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $lineTotalAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setLineTotalAmount(AmountType $lineTotalAmount): self
+    public function setLineTotalAmount(AmountType $amountType): self
     {
-        $this->lineTotalAmount = $lineTotalAmount;
+        $this->lineTotalAmount = $amountType;
 
         return $this;
     }
@@ -121,12 +121,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $chargeTotalAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setChargeTotalAmount(AmountType $chargeTotalAmount): self
+    public function setChargeTotalAmount(AmountType $amountType): self
     {
-        $this->chargeTotalAmount = $chargeTotalAmount;
+        $this->chargeTotalAmount = $amountType;
 
         return $this;
     }
@@ -150,12 +150,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $allowanceTotalAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setAllowanceTotalAmount(AmountType $allowanceTotalAmount): self
+    public function setAllowanceTotalAmount(AmountType $amountType): self
     {
-        $this->allowanceTotalAmount = $allowanceTotalAmount;
+        $this->allowanceTotalAmount = $amountType;
 
         return $this;
     }
@@ -179,12 +179,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $taxTotalAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setTaxTotalAmount(AmountType $taxTotalAmount): self
+    public function setTaxTotalAmount(AmountType $amountType): self
     {
-        $this->taxTotalAmount = $taxTotalAmount;
+        $this->taxTotalAmount = $amountType;
 
         return $this;
     }
@@ -208,12 +208,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $grandTotalAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setGrandTotalAmount(AmountType $grandTotalAmount): self
+    public function setGrandTotalAmount(AmountType $amountType): self
     {
-        $this->grandTotalAmount = $grandTotalAmount;
+        $this->grandTotalAmount = $amountType;
 
         return $this;
     }
@@ -237,12 +237,12 @@ class TradeSettlementLineMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $totalAllowanceChargeAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setTotalAllowanceChargeAmount(AmountType $totalAllowanceChargeAmount): self
+    public function setTotalAllowanceChargeAmount(AmountType $amountType): self
     {
-        $this->totalAllowanceChargeAmount = $totalAllowanceChargeAmount;
+        $this->totalAllowanceChargeAmount = $amountType;
 
         return $this;
     }

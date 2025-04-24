@@ -18,7 +18,7 @@ class ProductCharacteristicType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $typeCode;
+    private $codeType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -40,7 +40,7 @@ class ProductCharacteristicType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getValueMeasure", setter="setValueMeasure")
      */
-    private $valueMeasure;
+    private $measureType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -58,7 +58,7 @@ class ProductCharacteristicType
      */
     public function getTypeCode(): ?CodeType
     {
-        return $this->typeCode;
+        return $this->codeType;
     }
 
     /**
@@ -66,18 +66,18 @@ class ProductCharacteristicType
      */
     public function getTypeCodeWithCreate(): CodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new CodeType() : $this->typeCode;
+        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
 
-        return $this->typeCode;
+        return $this->codeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType
      * @return self
      */
-    public function setTypeCode(CodeType $typeCode): self
+    public function setTypeCode(CodeType $codeType): self
     {
-        $this->typeCode = $typeCode;
+        $this->codeType = $codeType;
 
         return $this;
     }
@@ -101,12 +101,12 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(TextType $textType): self
     {
-        $this->description = $description;
+        $this->description = $textType;
 
         return $this;
     }
@@ -116,7 +116,7 @@ class ProductCharacteristicType
      */
     public function getValueMeasure(): ?MeasureType
     {
-        return $this->valueMeasure;
+        return $this->measureType;
     }
 
     /**
@@ -124,18 +124,18 @@ class ProductCharacteristicType
      */
     public function getValueMeasureWithCreate(): MeasureType
     {
-        $this->valueMeasure = is_null($this->valueMeasure) ? new MeasureType() : $this->valueMeasure;
+        $this->measureType = is_null($this->measureType) ? new MeasureType() : $this->measureType;
 
-        return $this->valueMeasure;
+        return $this->measureType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType $valueMeasure
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\MeasureType $measureType
      * @return self
      */
-    public function setValueMeasure(MeasureType $valueMeasure): self
+    public function setValueMeasure(MeasureType $measureType): self
     {
-        $this->valueMeasure = $valueMeasure;
+        $this->measureType = $measureType;
 
         return $this;
     }
@@ -159,12 +159,12 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $value
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setValue(TextType $value): self
+    public function setValue(TextType $textType): self
     {
-        $this->value = $value;
+        $this->value = $textType;
 
         return $this;
     }

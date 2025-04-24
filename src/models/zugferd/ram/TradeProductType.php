@@ -175,7 +175,7 @@ class TradeProductType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getOriginTradeCountry", setter="setOriginTradeCountry")
      */
-    private $originTradeCountry;
+    private $tradeCountryType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\ReferencedProductType>
@@ -208,12 +208,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->iD = $idType;
 
         return $this;
     }
@@ -237,12 +237,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $globalID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setGlobalID(IDType $globalID): self
+    public function setGlobalID(IDType $idType): self
     {
-        $this->globalID = $globalID;
+        $this->globalID = $idType;
 
         return $this;
     }
@@ -266,12 +266,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $sellerAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setSellerAssignedID(IDType $sellerAssignedID): self
+    public function setSellerAssignedID(IDType $idType): self
     {
-        $this->sellerAssignedID = $sellerAssignedID;
+        $this->sellerAssignedID = $idType;
 
         return $this;
     }
@@ -295,12 +295,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $buyerAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setBuyerAssignedID(IDType $buyerAssignedID): self
+    public function setBuyerAssignedID(IDType $idType): self
     {
-        $this->buyerAssignedID = $buyerAssignedID;
+        $this->buyerAssignedID = $idType;
 
         return $this;
     }
@@ -324,12 +324,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $industryAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setIndustryAssignedID(IDType $industryAssignedID): self
+    public function setIndustryAssignedID(IDType $idType): self
     {
-        $this->industryAssignedID = $industryAssignedID;
+        $this->industryAssignedID = $idType;
 
         return $this;
     }
@@ -353,12 +353,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $modelID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setModelID(IDType $modelID): self
+    public function setModelID(IDType $idType): self
     {
-        $this->modelID = $modelID;
+        $this->modelID = $idType;
 
         return $this;
     }
@@ -382,12 +382,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(TextType $textType): self
     {
-        $this->name = $name;
+        $this->name = $textType;
 
         return $this;
     }
@@ -411,12 +411,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(TextType $textType): self
     {
-        $this->description = $description;
+        $this->description = $textType;
 
         return $this;
     }
@@ -451,12 +451,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $batchID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function addToBatchID(IDType $batchID): self
+    public function addToBatchID(IDType $idType): self
     {
-        $this->batchID[] = $batchID;
+        $this->batchID[] = $idType;
 
         return $this;
     }
@@ -466,9 +466,9 @@ class TradeProductType
      */
     public function addToBatchIDWithCreate(): IDType
     {
-        $this->addTobatchID($batchID = new IDType());
+        $this->addTobatchID($idType = new IDType());
 
-        return $batchID;
+        return $idType;
     }
 
     /**
@@ -490,12 +490,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $brandName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setBrandName(TextType $brandName): self
+    public function setBrandName(TextType $textType): self
     {
-        $this->brandName = $brandName;
+        $this->brandName = $textType;
 
         return $this;
     }
@@ -519,12 +519,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $modelName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setModelName(TextType $modelName): self
+    public function setModelName(TextType $textType): self
     {
-        $this->modelName = $modelName;
+        $this->modelName = $textType;
 
         return $this;
     }
@@ -559,13 +559,13 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ProductCharacteristicType $applicableProductCharacteristic
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ProductCharacteristicType $productCharacteristicType
      * @return self
      */
     public function addToApplicableProductCharacteristic(
-        ProductCharacteristicType $applicableProductCharacteristic,
+        ProductCharacteristicType $productCharacteristicType,
     ): self {
-        $this->applicableProductCharacteristic[] = $applicableProductCharacteristic;
+        $this->applicableProductCharacteristic[] = $productCharacteristicType;
 
         return $this;
     }
@@ -575,9 +575,9 @@ class TradeProductType
      */
     public function addToApplicableProductCharacteristicWithCreate(): ProductCharacteristicType
     {
-        $this->addToapplicableProductCharacteristic($applicableProductCharacteristic = new ProductCharacteristicType());
+        $this->addToapplicableProductCharacteristic($productCharacteristicType = new ProductCharacteristicType());
 
-        return $applicableProductCharacteristic;
+        return $productCharacteristicType;
     }
 
     /**
@@ -610,13 +610,13 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ProductClassificationType $designatedProductClassification
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ProductClassificationType $productClassificationType
      * @return self
      */
     public function addToDesignatedProductClassification(
-        ProductClassificationType $designatedProductClassification,
+        ProductClassificationType $productClassificationType,
     ): self {
-        $this->designatedProductClassification[] = $designatedProductClassification;
+        $this->designatedProductClassification[] = $productClassificationType;
 
         return $this;
     }
@@ -626,9 +626,9 @@ class TradeProductType
      */
     public function addToDesignatedProductClassificationWithCreate(): ProductClassificationType
     {
-        $this->addTodesignatedProductClassification($designatedProductClassification = new ProductClassificationType());
+        $this->addTodesignatedProductClassification($productClassificationType = new ProductClassificationType());
 
-        return $designatedProductClassification;
+        return $productClassificationType;
     }
 
     /**
@@ -661,13 +661,13 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeProductInstanceType $individualTradeProductInstance
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeProductInstanceType $tradeProductInstanceType
      * @return self
      */
     public function addToIndividualTradeProductInstance(
-        TradeProductInstanceType $individualTradeProductInstance,
+        TradeProductInstanceType $tradeProductInstanceType,
     ): self {
-        $this->individualTradeProductInstance[] = $individualTradeProductInstance;
+        $this->individualTradeProductInstance[] = $tradeProductInstanceType;
 
         return $this;
     }
@@ -677,9 +677,9 @@ class TradeProductType
      */
     public function addToIndividualTradeProductInstanceWithCreate(): TradeProductInstanceType
     {
-        $this->addToindividualTradeProductInstance($individualTradeProductInstance = new TradeProductInstanceType());
+        $this->addToindividualTradeProductInstance($tradeProductInstanceType = new TradeProductInstanceType());
 
-        return $individualTradeProductInstance;
+        return $tradeProductInstanceType;
     }
 
     /**
@@ -687,7 +687,7 @@ class TradeProductType
      */
     public function getOriginTradeCountry(): ?TradeCountryType
     {
-        return $this->originTradeCountry;
+        return $this->tradeCountryType;
     }
 
     /**
@@ -695,18 +695,18 @@ class TradeProductType
      */
     public function getOriginTradeCountryWithCreate(): TradeCountryType
     {
-        $this->originTradeCountry = is_null($this->originTradeCountry) ? new TradeCountryType() : $this->originTradeCountry;
+        $this->tradeCountryType = is_null($this->tradeCountryType) ? new TradeCountryType() : $this->tradeCountryType;
 
-        return $this->originTradeCountry;
+        return $this->tradeCountryType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeCountryType $originTradeCountry
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeCountryType $tradeCountryType
      * @return self
      */
-    public function setOriginTradeCountry(TradeCountryType $originTradeCountry): self
+    public function setOriginTradeCountry(TradeCountryType $tradeCountryType): self
     {
-        $this->originTradeCountry = $originTradeCountry;
+        $this->tradeCountryType = $tradeCountryType;
 
         return $this;
     }
@@ -741,12 +741,12 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedProductType $includedReferencedProduct
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedProductType $referencedProductType
      * @return self
      */
-    public function addToIncludedReferencedProduct(ReferencedProductType $includedReferencedProduct): self
+    public function addToIncludedReferencedProduct(ReferencedProductType $referencedProductType): self
     {
-        $this->includedReferencedProduct[] = $includedReferencedProduct;
+        $this->includedReferencedProduct[] = $referencedProductType;
 
         return $this;
     }
@@ -756,8 +756,8 @@ class TradeProductType
      */
     public function addToIncludedReferencedProductWithCreate(): ReferencedProductType
     {
-        $this->addToincludedReferencedProduct($includedReferencedProduct = new ReferencedProductType());
+        $this->addToincludedReferencedProduct($referencedProductType = new ReferencedProductType());
 
-        return $includedReferencedProduct;
+        return $referencedProductType;
     }
 }

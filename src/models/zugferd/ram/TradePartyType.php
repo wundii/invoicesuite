@@ -74,7 +74,7 @@ class TradePartyType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getSpecifiedLegalOrganization", setter="setSpecifiedLegalOrganization")
      */
-    private $specifiedLegalOrganization;
+    private $legalOrganizationType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeContactType>
@@ -97,7 +97,7 @@ class TradePartyType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPostalTradeAddress", setter="setPostalTradeAddress")
      */
-    private $postalTradeAddress;
+    private $tradeAddressType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
@@ -108,7 +108,7 @@ class TradePartyType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getURIUniversalCommunication", setter="setURIUniversalCommunication")
      */
-    private $uRIUniversalCommunication;
+    private $universalCommunicationType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TaxRegistrationType>
@@ -152,12 +152,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function addToID(IDType $iD): self
+    public function addToID(IDType $idType): self
     {
-        $this->iD[] = $iD;
+        $this->iD[] = $idType;
 
         return $this;
     }
@@ -167,9 +167,9 @@ class TradePartyType
      */
     public function addToIDWithCreate(): IDType
     {
-        $this->addToiD($iD = new IDType());
+        $this->addToiD($idType = new IDType());
 
-        return $iD;
+        return $idType;
     }
 
     /**
@@ -202,12 +202,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $globalID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function addToGlobalID(IDType $globalID): self
+    public function addToGlobalID(IDType $idType): self
     {
-        $this->globalID[] = $globalID;
+        $this->globalID[] = $idType;
 
         return $this;
     }
@@ -217,9 +217,9 @@ class TradePartyType
      */
     public function addToGlobalIDWithCreate(): IDType
     {
-        $this->addToglobalID($globalID = new IDType());
+        $this->addToglobalID($idType = new IDType());
 
-        return $globalID;
+        return $idType;
     }
 
     /**
@@ -241,12 +241,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(TextType $textType): self
     {
-        $this->name = $name;
+        $this->name = $textType;
 
         return $this;
     }
@@ -289,12 +289,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(TextType $textType): self
     {
-        $this->description = $description;
+        $this->description = $textType;
 
         return $this;
     }
@@ -304,7 +304,7 @@ class TradePartyType
      */
     public function getSpecifiedLegalOrganization(): ?LegalOrganizationType
     {
-        return $this->specifiedLegalOrganization;
+        return $this->legalOrganizationType;
     }
 
     /**
@@ -312,18 +312,18 @@ class TradePartyType
      */
     public function getSpecifiedLegalOrganizationWithCreate(): LegalOrganizationType
     {
-        $this->specifiedLegalOrganization = is_null($this->specifiedLegalOrganization) ? new LegalOrganizationType() : $this->specifiedLegalOrganization;
+        $this->legalOrganizationType = is_null($this->legalOrganizationType) ? new LegalOrganizationType() : $this->legalOrganizationType;
 
-        return $this->specifiedLegalOrganization;
+        return $this->legalOrganizationType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LegalOrganizationType $legalOrganizationType
      * @return self
      */
-    public function setSpecifiedLegalOrganization(LegalOrganizationType $specifiedLegalOrganization): self
+    public function setSpecifiedLegalOrganization(LegalOrganizationType $legalOrganizationType): self
     {
-        $this->specifiedLegalOrganization = $specifiedLegalOrganization;
+        $this->legalOrganizationType = $legalOrganizationType;
 
         return $this;
     }
@@ -358,12 +358,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeContactType $definedTradeContact
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeContactType $tradeContactType
      * @return self
      */
-    public function addToDefinedTradeContact(TradeContactType $definedTradeContact): self
+    public function addToDefinedTradeContact(TradeContactType $tradeContactType): self
     {
-        $this->definedTradeContact[] = $definedTradeContact;
+        $this->definedTradeContact[] = $tradeContactType;
 
         return $this;
     }
@@ -373,9 +373,9 @@ class TradePartyType
      */
     public function addToDefinedTradeContactWithCreate(): TradeContactType
     {
-        $this->addTodefinedTradeContact($definedTradeContact = new TradeContactType());
+        $this->addTodefinedTradeContact($tradeContactType = new TradeContactType());
 
-        return $definedTradeContact;
+        return $tradeContactType;
     }
 
     /**
@@ -383,7 +383,7 @@ class TradePartyType
      */
     public function getPostalTradeAddress(): ?TradeAddressType
     {
-        return $this->postalTradeAddress;
+        return $this->tradeAddressType;
     }
 
     /**
@@ -391,18 +391,18 @@ class TradePartyType
      */
     public function getPostalTradeAddressWithCreate(): TradeAddressType
     {
-        $this->postalTradeAddress = is_null($this->postalTradeAddress) ? new TradeAddressType() : $this->postalTradeAddress;
+        $this->tradeAddressType = is_null($this->tradeAddressType) ? new TradeAddressType() : $this->tradeAddressType;
 
-        return $this->postalTradeAddress;
+        return $this->tradeAddressType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $postalTradeAddress
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $tradeAddressType
      * @return self
      */
-    public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
+    public function setPostalTradeAddress(TradeAddressType $tradeAddressType): self
     {
-        $this->postalTradeAddress = $postalTradeAddress;
+        $this->tradeAddressType = $tradeAddressType;
 
         return $this;
     }
@@ -412,7 +412,7 @@ class TradePartyType
      */
     public function getURIUniversalCommunication(): ?UniversalCommunicationType
     {
-        return $this->uRIUniversalCommunication;
+        return $this->universalCommunicationType;
     }
 
     /**
@@ -420,18 +420,18 @@ class TradePartyType
      */
     public function getURIUniversalCommunicationWithCreate(): UniversalCommunicationType
     {
-        $this->uRIUniversalCommunication = is_null($this->uRIUniversalCommunication) ? new UniversalCommunicationType() : $this->uRIUniversalCommunication;
+        $this->universalCommunicationType = is_null($this->universalCommunicationType) ? new UniversalCommunicationType() : $this->universalCommunicationType;
 
-        return $this->uRIUniversalCommunication;
+        return $this->universalCommunicationType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $universalCommunicationType
      * @return self
      */
-    public function setURIUniversalCommunication(UniversalCommunicationType $uRIUniversalCommunication): self
+    public function setURIUniversalCommunication(UniversalCommunicationType $universalCommunicationType): self
     {
-        $this->uRIUniversalCommunication = $uRIUniversalCommunication;
+        $this->universalCommunicationType = $universalCommunicationType;
 
         return $this;
     }
@@ -466,12 +466,12 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TaxRegistrationType $specifiedTaxRegistration
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TaxRegistrationType $taxRegistrationType
      * @return self
      */
-    public function addToSpecifiedTaxRegistration(TaxRegistrationType $specifiedTaxRegistration): self
+    public function addToSpecifiedTaxRegistration(TaxRegistrationType $taxRegistrationType): self
     {
-        $this->specifiedTaxRegistration[] = $specifiedTaxRegistration;
+        $this->specifiedTaxRegistration[] = $taxRegistrationType;
 
         return $this;
     }
@@ -481,8 +481,8 @@ class TradePartyType
      */
     public function addToSpecifiedTaxRegistrationWithCreate(): TaxRegistrationType
     {
-        $this->addTospecifiedTaxRegistration($specifiedTaxRegistration = new TaxRegistrationType());
+        $this->addTospecifiedTaxRegistration($taxRegistrationType = new TaxRegistrationType());
 
-        return $specifiedTaxRegistration;
+        return $taxRegistrationType;
     }
 }

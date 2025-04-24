@@ -16,14 +16,14 @@ class DebtorFinancialAccountType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getIBANID", setter="setIBANID")
      */
-    private $iBANID;
+    private $idType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getIBANID(): ?IDType
     {
-        return $this->iBANID;
+        return $this->idType;
     }
 
     /**
@@ -31,18 +31,18 @@ class DebtorFinancialAccountType
      */
     public function getIBANIDWithCreate(): IDType
     {
-        $this->iBANID = is_null($this->iBANID) ? new IDType() : $this->iBANID;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iBANID;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iBANID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setIBANID(IDType $iBANID): self
+    public function setIBANID(IDType $idType): self
     {
-        $this->iBANID = $iBANID;
+        $this->idType = $idType;
 
         return $this;
     }

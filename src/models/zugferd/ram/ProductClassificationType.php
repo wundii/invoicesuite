@@ -17,7 +17,7 @@ class ProductClassificationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getClassCode", setter="setClassCode")
      */
-    private $classCode;
+    private $codeType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -28,14 +28,14 @@ class ProductClassificationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getClassName", setter="setClassName")
      */
-    private $className;
+    private $textType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\CodeType|null
      */
     public function getClassCode(): ?CodeType
     {
-        return $this->classCode;
+        return $this->codeType;
     }
 
     /**
@@ -43,18 +43,18 @@ class ProductClassificationType
      */
     public function getClassCodeWithCreate(): CodeType
     {
-        $this->classCode = is_null($this->classCode) ? new CodeType() : $this->classCode;
+        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
 
-        return $this->classCode;
+        return $this->codeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $classCode
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType
      * @return self
      */
-    public function setClassCode(CodeType $classCode): self
+    public function setClassCode(CodeType $codeType): self
     {
-        $this->classCode = $classCode;
+        $this->codeType = $codeType;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class ProductClassificationType
      */
     public function getClassName(): ?TextType
     {
-        return $this->className;
+        return $this->textType;
     }
 
     /**
@@ -72,18 +72,18 @@ class ProductClassificationType
      */
     public function getClassNameWithCreate(): TextType
     {
-        $this->className = is_null($this->className) ? new TextType() : $this->className;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->className;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $className
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setClassName(TextType $className): self
+    public function setClassName(TextType $textType): self
     {
-        $this->className = $className;
+        $this->textType = $textType;
 
         return $this;
     }

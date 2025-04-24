@@ -17,7 +17,7 @@ class TradeSettlementFinancialCardType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $idType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -28,14 +28,14 @@ class TradeSettlementFinancialCardType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCardholderName", setter="setCardholderName")
      */
-    private $cardholderName;
+    private $textType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getID(): ?IDType
     {
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
@@ -43,18 +43,18 @@ class TradeSettlementFinancialCardType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->idType = $idType;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class TradeSettlementFinancialCardType
      */
     public function getCardholderName(): ?TextType
     {
-        return $this->cardholderName;
+        return $this->textType;
     }
 
     /**
@@ -72,18 +72,18 @@ class TradeSettlementFinancialCardType
      */
     public function getCardholderNameWithCreate(): TextType
     {
-        $this->cardholderName = is_null($this->cardholderName) ? new TextType() : $this->cardholderName;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->cardholderName;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $cardholderName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setCardholderName(TextType $cardholderName): self
+    public function setCardholderName(TextType $textType): self
     {
-        $this->cardholderName = $cardholderName;
+        $this->textType = $textType;
 
         return $this;
     }

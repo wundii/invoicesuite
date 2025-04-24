@@ -17,7 +17,7 @@ class AdvancePaymentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPaidAmount", setter="setPaidAmount")
      */
-    private $paidAmount;
+    private $amountType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType
@@ -28,7 +28,7 @@ class AdvancePaymentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getFormattedReceivedDateTime", setter="setFormattedReceivedDateTime")
      */
-    private $formattedReceivedDateTime;
+    private $formattedDateTimeType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
@@ -51,14 +51,14 @@ class AdvancePaymentType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getInvoiceSpecifiedReferencedDocument", setter="setInvoiceSpecifiedReferencedDocument")
      */
-    private $invoiceSpecifiedReferencedDocument;
+    private $referencedDocumentType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
     public function getPaidAmount(): ?AmountType
     {
-        return $this->paidAmount;
+        return $this->amountType;
     }
 
     /**
@@ -66,18 +66,18 @@ class AdvancePaymentType
      */
     public function getPaidAmountWithCreate(): AmountType
     {
-        $this->paidAmount = is_null($this->paidAmount) ? new AmountType() : $this->paidAmount;
+        $this->amountType = is_null($this->amountType) ? new AmountType() : $this->amountType;
 
-        return $this->paidAmount;
+        return $this->amountType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $paidAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setPaidAmount(AmountType $paidAmount): self
+    public function setPaidAmount(AmountType $amountType): self
     {
-        $this->paidAmount = $paidAmount;
+        $this->amountType = $amountType;
 
         return $this;
     }
@@ -87,7 +87,7 @@ class AdvancePaymentType
      */
     public function getFormattedReceivedDateTime(): ?FormattedDateTimeType
     {
-        return $this->formattedReceivedDateTime;
+        return $this->formattedDateTimeType;
     }
 
     /**
@@ -95,18 +95,18 @@ class AdvancePaymentType
      */
     public function getFormattedReceivedDateTimeWithCreate(): FormattedDateTimeType
     {
-        $this->formattedReceivedDateTime = is_null($this->formattedReceivedDateTime) ? new FormattedDateTimeType() : $this->formattedReceivedDateTime;
+        $this->formattedDateTimeType = is_null($this->formattedDateTimeType) ? new FormattedDateTimeType() : $this->formattedDateTimeType;
 
-        return $this->formattedReceivedDateTime;
+        return $this->formattedDateTimeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType $formattedReceivedDateTime
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType $formattedDateTimeType
      * @return self
      */
-    public function setFormattedReceivedDateTime(FormattedDateTimeType $formattedReceivedDateTime): self
+    public function setFormattedReceivedDateTime(FormattedDateTimeType $formattedDateTimeType): self
     {
-        $this->formattedReceivedDateTime = $formattedReceivedDateTime;
+        $this->formattedDateTimeType = $formattedDateTimeType;
 
         return $this;
     }
@@ -141,12 +141,12 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $includedTradeTax
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
      * @return self
      */
-    public function addToIncludedTradeTax(TradeTaxType $includedTradeTax): self
+    public function addToIncludedTradeTax(TradeTaxType $tradeTaxType): self
     {
-        $this->includedTradeTax[] = $includedTradeTax;
+        $this->includedTradeTax[] = $tradeTaxType;
 
         return $this;
     }
@@ -156,9 +156,9 @@ class AdvancePaymentType
      */
     public function addToIncludedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToincludedTradeTax($includedTradeTax = new TradeTaxType());
+        $this->addToincludedTradeTax($tradeTaxType = new TradeTaxType());
 
-        return $includedTradeTax;
+        return $tradeTaxType;
     }
 
     /**
@@ -166,7 +166,7 @@ class AdvancePaymentType
      */
     public function getInvoiceSpecifiedReferencedDocument(): ?ReferencedDocumentType
     {
-        return $this->invoiceSpecifiedReferencedDocument;
+        return $this->referencedDocumentType;
     }
 
     /**
@@ -174,19 +174,19 @@ class AdvancePaymentType
      */
     public function getInvoiceSpecifiedReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->invoiceSpecifiedReferencedDocument = is_null($this->invoiceSpecifiedReferencedDocument) ? new ReferencedDocumentType() : $this->invoiceSpecifiedReferencedDocument;
+        $this->referencedDocumentType = is_null($this->referencedDocumentType) ? new ReferencedDocumentType() : $this->referencedDocumentType;
 
-        return $this->invoiceSpecifiedReferencedDocument;
+        return $this->referencedDocumentType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
     public function setInvoiceSpecifiedReferencedDocument(
-        ReferencedDocumentType $invoiceSpecifiedReferencedDocument,
+        ReferencedDocumentType $referencedDocumentType,
     ): self {
-        $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
+        $this->referencedDocumentType = $referencedDocumentType;
 
         return $this;
     }

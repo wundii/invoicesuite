@@ -115,12 +115,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $sellerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setSellerOrderReferencedDocument(ReferencedDocumentType $sellerOrderReferencedDocument): self
+    public function setSellerOrderReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->sellerOrderReferencedDocument = $sellerOrderReferencedDocument;
+        $this->sellerOrderReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -144,12 +144,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
+    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
+        $this->buyerOrderReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -173,12 +173,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $quotationReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setQuotationReferencedDocument(ReferencedDocumentType $quotationReferencedDocument): self
+    public function setQuotationReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->quotationReferencedDocument = $quotationReferencedDocument;
+        $this->quotationReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -202,12 +202,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $contractReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setContractReferencedDocument(ReferencedDocumentType $contractReferencedDocument): self
+    public function setContractReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->contractReferencedDocument = $contractReferencedDocument;
+        $this->contractReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -242,12 +242,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function addToAdditionalReferencedDocument(ReferencedDocumentType $additionalReferencedDocument): self
+    public function addToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->additionalReferencedDocument[] = $additionalReferencedDocument;
+        $this->additionalReferencedDocument[] = $referencedDocumentType;
 
         return $this;
     }
@@ -257,9 +257,9 @@ class LineTradeAgreementType
      */
     public function addToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->addToadditionalReferencedDocument($additionalReferencedDocument = new ReferencedDocumentType());
+        $this->addToadditionalReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
 
-        return $additionalReferencedDocument;
+        return $referencedDocumentType;
     }
 
     /**
@@ -281,12 +281,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $grossPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $tradePriceType
      * @return self
      */
-    public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
+    public function setGrossPriceProductTradePrice(TradePriceType $tradePriceType): self
     {
-        $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
+        $this->grossPriceProductTradePrice = $tradePriceType;
 
         return $this;
     }
@@ -310,12 +310,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $netPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePriceType $tradePriceType
      * @return self
      */
-    public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
+    public function setNetPriceProductTradePrice(TradePriceType $tradePriceType): self
     {
-        $this->netPriceProductTradePrice = $netPriceProductTradePrice;
+        $this->netPriceProductTradePrice = $tradePriceType;
 
         return $this;
     }
@@ -350,13 +350,13 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $ultimateCustomerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
     public function addToUltimateCustomerOrderReferencedDocument(
-        ReferencedDocumentType $ultimateCustomerOrderReferencedDocument,
+        ReferencedDocumentType $referencedDocumentType,
     ): self {
-        $this->ultimateCustomerOrderReferencedDocument[] = $ultimateCustomerOrderReferencedDocument;
+        $this->ultimateCustomerOrderReferencedDocument[] = $referencedDocumentType;
 
         return $this;
     }
@@ -366,8 +366,8 @@ class LineTradeAgreementType
      */
     public function addToUltimateCustomerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->addToultimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocument = new ReferencedDocumentType());
+        $this->addToultimateCustomerOrderReferencedDocument($referencedDocumentType = new ReferencedDocumentType());
 
-        return $ultimateCustomerOrderReferencedDocument;
+        return $referencedDocumentType;
     }
 }

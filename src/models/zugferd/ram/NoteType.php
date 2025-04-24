@@ -28,7 +28,7 @@ class NoteType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getContent", setter="setContent")
      */
-    private $content;
+    private $textType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\CodeType
@@ -60,12 +60,12 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $contentCode
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType
      * @return self
      */
-    public function setContentCode(CodeType $contentCode): self
+    public function setContentCode(CodeType $codeType): self
     {
-        $this->contentCode = $contentCode;
+        $this->contentCode = $codeType;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class NoteType
      */
     public function getContent(): ?TextType
     {
-        return $this->content;
+        return $this->textType;
     }
 
     /**
@@ -83,18 +83,18 @@ class NoteType
      */
     public function getContentWithCreate(): TextType
     {
-        $this->content = is_null($this->content) ? new TextType() : $this->content;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->content;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $content
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setContent(TextType $content): self
+    public function setContent(TextType $textType): self
     {
-        $this->content = $content;
+        $this->textType = $textType;
 
         return $this;
     }
@@ -118,12 +118,12 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $subjectCode
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType
      * @return self
      */
-    public function setSubjectCode(CodeType $subjectCode): self
+    public function setSubjectCode(CodeType $codeType): self
     {
-        $this->subjectCode = $subjectCode;
+        $this->subjectCode = $codeType;
 
         return $this;
     }

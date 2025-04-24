@@ -16,14 +16,14 @@ class DocumentContextParameterType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $idType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getID(): ?IDType
     {
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
@@ -31,18 +31,18 @@ class DocumentContextParameterType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->idType = $idType;
 
         return $this;
     }

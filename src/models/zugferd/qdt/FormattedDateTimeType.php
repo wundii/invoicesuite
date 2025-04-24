@@ -16,14 +16,14 @@ class FormattedDateTimeType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:QualifiedDataType:100", cdata=false)
      * @JMS\Accessor(getter="getDateTimeString", setter="setDateTimeString")
      */
-    private $dateTimeString;
+    private $dateTimeStringAType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType|null
      */
     public function getDateTimeString(): ?DateTimeStringAType
     {
-        return $this->dateTimeString;
+        return $this->dateTimeStringAType;
     }
 
     /**
@@ -31,18 +31,18 @@ class FormattedDateTimeType
      */
     public function getDateTimeStringWithCreate(): DateTimeStringAType
     {
-        $this->dateTimeString = is_null($this->dateTimeString) ? new DateTimeStringAType() : $this->dateTimeString;
+        $this->dateTimeStringAType = is_null($this->dateTimeStringAType) ? new DateTimeStringAType() : $this->dateTimeStringAType;
 
-        return $this->dateTimeString;
+        return $this->dateTimeStringAType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeString
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\FormattedDateTimeType\DateTimeStringAType $dateTimeStringAType
      * @return self
      */
-    public function setDateTimeString(DateTimeStringAType $dateTimeString): self
+    public function setDateTimeString(DateTimeStringAType $dateTimeStringAType): self
     {
-        $this->dateTimeString = $dateTimeString;
+        $this->dateTimeStringAType = $dateTimeStringAType;
 
         return $this;
     }

@@ -17,7 +17,7 @@ class LogisticsServiceChargeType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDescription", setter="setDescription")
      */
-    private $description;
+    private $textType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\AmountType
@@ -28,7 +28,7 @@ class LogisticsServiceChargeType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAppliedAmount", setter="setAppliedAmount")
      */
-    private $appliedAmount;
+    private $amountType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType>
@@ -47,7 +47,7 @@ class LogisticsServiceChargeType
      */
     public function getDescription(): ?TextType
     {
-        return $this->description;
+        return $this->textType;
     }
 
     /**
@@ -55,18 +55,18 @@ class LogisticsServiceChargeType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->description;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(TextType $textType): self
     {
-        $this->description = $description;
+        $this->textType = $textType;
 
         return $this;
     }
@@ -76,7 +76,7 @@ class LogisticsServiceChargeType
      */
     public function getAppliedAmount(): ?AmountType
     {
-        return $this->appliedAmount;
+        return $this->amountType;
     }
 
     /**
@@ -84,18 +84,18 @@ class LogisticsServiceChargeType
      */
     public function getAppliedAmountWithCreate(): AmountType
     {
-        $this->appliedAmount = is_null($this->appliedAmount) ? new AmountType() : $this->appliedAmount;
+        $this->amountType = is_null($this->amountType) ? new AmountType() : $this->amountType;
 
-        return $this->appliedAmount;
+        return $this->amountType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $appliedAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setAppliedAmount(AmountType $appliedAmount): self
+    public function setAppliedAmount(AmountType $amountType): self
     {
-        $this->appliedAmount = $appliedAmount;
+        $this->amountType = $amountType;
 
         return $this;
     }
@@ -130,12 +130,12 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $appliedTradeTax
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
      * @return self
      */
-    public function addToAppliedTradeTax(TradeTaxType $appliedTradeTax): self
+    public function addToAppliedTradeTax(TradeTaxType $tradeTaxType): self
     {
-        $this->appliedTradeTax[] = $appliedTradeTax;
+        $this->appliedTradeTax[] = $tradeTaxType;
 
         return $this;
     }
@@ -145,8 +145,8 @@ class LogisticsServiceChargeType
      */
     public function addToAppliedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->addToappliedTradeTax($appliedTradeTax = new TradeTaxType());
+        $this->addToappliedTradeTax($tradeTaxType = new TradeTaxType());
 
-        return $appliedTradeTax;
+        return $tradeTaxType;
     }
 }

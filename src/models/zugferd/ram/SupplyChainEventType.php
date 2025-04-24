@@ -16,14 +16,14 @@ class SupplyChainEventType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getOccurrenceDateTime", setter="setOccurrenceDateTime")
      */
-    private $occurrenceDateTime;
+    private $dateTimeType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType|null
      */
     public function getOccurrenceDateTime(): ?DateTimeType
     {
-        return $this->occurrenceDateTime;
+        return $this->dateTimeType;
     }
 
     /**
@@ -31,18 +31,18 @@ class SupplyChainEventType
      */
     public function getOccurrenceDateTimeWithCreate(): DateTimeType
     {
-        $this->occurrenceDateTime = is_null($this->occurrenceDateTime) ? new DateTimeType() : $this->occurrenceDateTime;
+        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
 
-        return $this->occurrenceDateTime;
+        return $this->dateTimeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $occurrenceDateTime
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType
      * @return self
      */
-    public function setOccurrenceDateTime(DateTimeType $occurrenceDateTime): self
+    public function setOccurrenceDateTime(DateTimeType $dateTimeType): self
     {
-        $this->occurrenceDateTime = $occurrenceDateTime;
+        $this->dateTimeType = $dateTimeType;
 
         return $this;
     }

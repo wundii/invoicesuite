@@ -39,7 +39,7 @@ class TradeContactType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $typeCode;
+    private $codeType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType
@@ -93,12 +93,12 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $personName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setPersonName(TextType $personName): self
+    public function setPersonName(TextType $textType): self
     {
-        $this->personName = $personName;
+        $this->personName = $textType;
 
         return $this;
     }
@@ -122,12 +122,12 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $departmentName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDepartmentName(TextType $departmentName): self
+    public function setDepartmentName(TextType $textType): self
     {
-        $this->departmentName = $departmentName;
+        $this->departmentName = $textType;
 
         return $this;
     }
@@ -137,7 +137,7 @@ class TradeContactType
      */
     public function getTypeCode(): ?CodeType
     {
-        return $this->typeCode;
+        return $this->codeType;
     }
 
     /**
@@ -145,18 +145,18 @@ class TradeContactType
      */
     public function getTypeCodeWithCreate(): CodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new CodeType() : $this->typeCode;
+        $this->codeType = is_null($this->codeType) ? new CodeType() : $this->codeType;
 
-        return $this->typeCode;
+        return $this->codeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\CodeType $codeType
      * @return self
      */
-    public function setTypeCode(CodeType $typeCode): self
+    public function setTypeCode(CodeType $codeType): self
     {
-        $this->typeCode = $typeCode;
+        $this->codeType = $codeType;
 
         return $this;
     }
@@ -180,13 +180,13 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $telephoneUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $universalCommunicationType
      * @return self
      */
     public function setTelephoneUniversalCommunication(
-        UniversalCommunicationType $telephoneUniversalCommunication,
+        UniversalCommunicationType $universalCommunicationType,
     ): self {
-        $this->telephoneUniversalCommunication = $telephoneUniversalCommunication;
+        $this->telephoneUniversalCommunication = $universalCommunicationType;
 
         return $this;
     }
@@ -210,12 +210,12 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $faxUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $universalCommunicationType
      * @return self
      */
-    public function setFaxUniversalCommunication(UniversalCommunicationType $faxUniversalCommunication): self
+    public function setFaxUniversalCommunication(UniversalCommunicationType $universalCommunicationType): self
     {
-        $this->faxUniversalCommunication = $faxUniversalCommunication;
+        $this->faxUniversalCommunication = $universalCommunicationType;
 
         return $this;
     }
@@ -239,13 +239,13 @@ class TradeContactType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $emailURIUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\UniversalCommunicationType $universalCommunicationType
      * @return self
      */
     public function setEmailURIUniversalCommunication(
-        UniversalCommunicationType $emailURIUniversalCommunication,
+        UniversalCommunicationType $universalCommunicationType,
     ): self {
-        $this->emailURIUniversalCommunication = $emailURIUniversalCommunication;
+        $this->emailURIUniversalCommunication = $universalCommunicationType;
 
         return $this;
     }

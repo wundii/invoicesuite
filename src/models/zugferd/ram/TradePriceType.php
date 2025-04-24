@@ -17,7 +17,7 @@ class TradePriceType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getChargeAmount", setter="setChargeAmount")
      */
-    private $chargeAmount;
+    private $amountType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\QuantityType
@@ -28,7 +28,7 @@ class TradePriceType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBasisQuantity", setter="setBasisQuantity")
      */
-    private $basisQuantity;
+    private $quantityType;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType>
@@ -51,14 +51,14 @@ class TradePriceType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getIncludedTradeTax", setter="setIncludedTradeTax")
      */
-    private $includedTradeTax;
+    private $tradeTaxType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\AmountType|null
      */
     public function getChargeAmount(): ?AmountType
     {
-        return $this->chargeAmount;
+        return $this->amountType;
     }
 
     /**
@@ -66,18 +66,18 @@ class TradePriceType
      */
     public function getChargeAmountWithCreate(): AmountType
     {
-        $this->chargeAmount = is_null($this->chargeAmount) ? new AmountType() : $this->chargeAmount;
+        $this->amountType = is_null($this->amountType) ? new AmountType() : $this->amountType;
 
-        return $this->chargeAmount;
+        return $this->amountType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $chargeAmount
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\AmountType $amountType
      * @return self
      */
-    public function setChargeAmount(AmountType $chargeAmount): self
+    public function setChargeAmount(AmountType $amountType): self
     {
-        $this->chargeAmount = $chargeAmount;
+        $this->amountType = $amountType;
 
         return $this;
     }
@@ -87,7 +87,7 @@ class TradePriceType
      */
     public function getBasisQuantity(): ?QuantityType
     {
-        return $this->basisQuantity;
+        return $this->quantityType;
     }
 
     /**
@@ -95,18 +95,18 @@ class TradePriceType
      */
     public function getBasisQuantityWithCreate(): QuantityType
     {
-        $this->basisQuantity = is_null($this->basisQuantity) ? new QuantityType() : $this->basisQuantity;
+        $this->quantityType = is_null($this->quantityType) ? new QuantityType() : $this->quantityType;
 
-        return $this->basisQuantity;
+        return $this->quantityType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $basisQuantity
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $quantityType
      * @return self
      */
-    public function setBasisQuantity(QuantityType $basisQuantity): self
+    public function setBasisQuantity(QuantityType $quantityType): self
     {
-        $this->basisQuantity = $basisQuantity;
+        $this->quantityType = $quantityType;
 
         return $this;
     }
@@ -141,12 +141,12 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $appliedTradeAllowanceCharge
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAllowanceChargeType $tradeAllowanceChargeType
      * @return self
      */
-    public function addToAppliedTradeAllowanceCharge(TradeAllowanceChargeType $appliedTradeAllowanceCharge): self
+    public function addToAppliedTradeAllowanceCharge(TradeAllowanceChargeType $tradeAllowanceChargeType): self
     {
-        $this->appliedTradeAllowanceCharge[] = $appliedTradeAllowanceCharge;
+        $this->appliedTradeAllowanceCharge[] = $tradeAllowanceChargeType;
 
         return $this;
     }
@@ -156,9 +156,9 @@ class TradePriceType
      */
     public function addToAppliedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
-        $this->addToappliedTradeAllowanceCharge($appliedTradeAllowanceCharge = new TradeAllowanceChargeType());
+        $this->addToappliedTradeAllowanceCharge($tradeAllowanceChargeType = new TradeAllowanceChargeType());
 
-        return $appliedTradeAllowanceCharge;
+        return $tradeAllowanceChargeType;
     }
 
     /**
@@ -166,7 +166,7 @@ class TradePriceType
      */
     public function getIncludedTradeTax(): ?TradeTaxType
     {
-        return $this->includedTradeTax;
+        return $this->tradeTaxType;
     }
 
     /**
@@ -174,18 +174,18 @@ class TradePriceType
      */
     public function getIncludedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->includedTradeTax = is_null($this->includedTradeTax) ? new TradeTaxType() : $this->includedTradeTax;
+        $this->tradeTaxType = is_null($this->tradeTaxType) ? new TradeTaxType() : $this->tradeTaxType;
 
-        return $this->includedTradeTax;
+        return $this->tradeTaxType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $includedTradeTax
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeTaxType $tradeTaxType
      * @return self
      */
-    public function setIncludedTradeTax(TradeTaxType $includedTradeTax): self
+    public function setIncludedTradeTax(TradeTaxType $tradeTaxType): self
     {
-        $this->includedTradeTax = $includedTradeTax;
+        $this->tradeTaxType = $tradeTaxType;
 
         return $this;
     }

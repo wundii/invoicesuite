@@ -96,7 +96,7 @@ class ReferencedProductType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getUnitQuantity", setter="setUnitQuantity")
      */
-    private $unitQuantity;
+    private $quantityType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
@@ -117,12 +117,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->iD = $idType;
 
         return $this;
     }
@@ -157,12 +157,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $globalID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function addToGlobalID(IDType $globalID): self
+    public function addToGlobalID(IDType $idType): self
     {
-        $this->globalID[] = $globalID;
+        $this->globalID[] = $idType;
 
         return $this;
     }
@@ -172,9 +172,9 @@ class ReferencedProductType
      */
     public function addToGlobalIDWithCreate(): IDType
     {
-        $this->addToglobalID($globalID = new IDType());
+        $this->addToglobalID($idType = new IDType());
 
-        return $globalID;
+        return $idType;
     }
 
     /**
@@ -196,12 +196,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $sellerAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setSellerAssignedID(IDType $sellerAssignedID): self
+    public function setSellerAssignedID(IDType $idType): self
     {
-        $this->sellerAssignedID = $sellerAssignedID;
+        $this->sellerAssignedID = $idType;
 
         return $this;
     }
@@ -225,12 +225,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $buyerAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setBuyerAssignedID(IDType $buyerAssignedID): self
+    public function setBuyerAssignedID(IDType $idType): self
     {
-        $this->buyerAssignedID = $buyerAssignedID;
+        $this->buyerAssignedID = $idType;
 
         return $this;
     }
@@ -254,12 +254,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $industryAssignedID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setIndustryAssignedID(IDType $industryAssignedID): self
+    public function setIndustryAssignedID(IDType $idType): self
     {
-        $this->industryAssignedID = $industryAssignedID;
+        $this->industryAssignedID = $idType;
 
         return $this;
     }
@@ -283,12 +283,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(TextType $textType): self
     {
-        $this->name = $name;
+        $this->name = $textType;
 
         return $this;
     }
@@ -312,12 +312,12 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(TextType $textType): self
     {
-        $this->description = $description;
+        $this->description = $textType;
 
         return $this;
     }
@@ -327,7 +327,7 @@ class ReferencedProductType
      */
     public function getUnitQuantity(): ?QuantityType
     {
-        return $this->unitQuantity;
+        return $this->quantityType;
     }
 
     /**
@@ -335,18 +335,18 @@ class ReferencedProductType
      */
     public function getUnitQuantityWithCreate(): QuantityType
     {
-        $this->unitQuantity = is_null($this->unitQuantity) ? new QuantityType() : $this->unitQuantity;
+        $this->quantityType = is_null($this->quantityType) ? new QuantityType() : $this->quantityType;
 
-        return $this->unitQuantity;
+        return $this->quantityType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $unitQuantity
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $quantityType
      * @return self
      */
-    public function setUnitQuantity(QuantityType $unitQuantity): self
+    public function setUnitQuantity(QuantityType $quantityType): self
     {
-        $this->unitQuantity = $unitQuantity;
+        $this->quantityType = $quantityType;
 
         return $this;
     }

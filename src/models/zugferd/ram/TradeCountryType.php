@@ -16,14 +16,14 @@ class TradeCountryType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $countryIDType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType|null
      */
     public function getID(): ?CountryIDType
     {
-        return $this->iD;
+        return $this->countryIDType;
     }
 
     /**
@@ -31,18 +31,18 @@ class TradeCountryType
      */
     public function getIDWithCreate(): CountryIDType
     {
-        $this->iD = is_null($this->iD) ? new CountryIDType() : $this->iD;
+        $this->countryIDType = is_null($this->countryIDType) ? new CountryIDType() : $this->countryIDType;
 
-        return $this->iD;
+        return $this->countryIDType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CountryIDType $countryIDType
      * @return self
      */
-    public function setID(CountryIDType $iD): self
+    public function setID(CountryIDType $countryIDType): self
     {
-        $this->iD = $iD;
+        $this->countryIDType = $countryIDType;
 
         return $this;
     }

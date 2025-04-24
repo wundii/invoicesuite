@@ -16,14 +16,14 @@ class CreditorFinancialInstitutionType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getBICID", setter="setBICID")
      */
-    private $bICID;
+    private $idType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getBICID(): ?IDType
     {
-        return $this->bICID;
+        return $this->idType;
     }
 
     /**
@@ -31,18 +31,18 @@ class CreditorFinancialInstitutionType
      */
     public function getBICIDWithCreate(): IDType
     {
-        $this->bICID = is_null($this->bICID) ? new IDType() : $this->bICID;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->bICID;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $bICID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setBICID(IDType $bICID): self
+    public function setBICID(IDType $idType): self
     {
-        $this->bICID = $bICID;
+        $this->idType = $idType;
 
         return $this;
     }

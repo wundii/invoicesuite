@@ -16,14 +16,14 @@ class LogisticsTransportMovementType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getModeCode", setter="setModeCode")
      */
-    private $modeCode;
+    private $transportModeCodeType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType|null
      */
     public function getModeCode(): ?TransportModeCodeType
     {
-        return $this->modeCode;
+        return $this->transportModeCodeType;
     }
 
     /**
@@ -31,18 +31,18 @@ class LogisticsTransportMovementType
      */
     public function getModeCodeWithCreate(): TransportModeCodeType
     {
-        $this->modeCode = is_null($this->modeCode) ? new TransportModeCodeType() : $this->modeCode;
+        $this->transportModeCodeType = is_null($this->transportModeCodeType) ? new TransportModeCodeType() : $this->transportModeCodeType;
 
-        return $this->modeCode;
+        return $this->transportModeCodeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType $modeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\TransportModeCodeType $transportModeCodeType
      * @return self
      */
-    public function setModeCode(TransportModeCodeType $modeCode): self
+    public function setModeCode(TransportModeCodeType $transportModeCodeType): self
     {
-        $this->modeCode = $modeCode;
+        $this->transportModeCodeType = $transportModeCodeType;
 
         return $this;
     }

@@ -17,7 +17,7 @@ class TradeAccountingAccountType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $idType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\qdt\AccountingAccountTypeCodeType
@@ -28,14 +28,14 @@ class TradeAccountingAccountType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTypeCode", setter="setTypeCode")
      */
-    private $typeCode;
+    private $accountingAccountTypeCodeType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getID(): ?IDType
     {
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
@@ -43,18 +43,18 @@ class TradeAccountingAccountType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->idType = $idType;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class TradeAccountingAccountType
      */
     public function getTypeCode(): ?AccountingAccountTypeCodeType
     {
-        return $this->typeCode;
+        return $this->accountingAccountTypeCodeType;
     }
 
     /**
@@ -72,18 +72,18 @@ class TradeAccountingAccountType
      */
     public function getTypeCodeWithCreate(): AccountingAccountTypeCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new AccountingAccountTypeCodeType() : $this->typeCode;
+        $this->accountingAccountTypeCodeType = is_null($this->accountingAccountTypeCodeType) ? new AccountingAccountTypeCodeType() : $this->accountingAccountTypeCodeType;
 
-        return $this->typeCode;
+        return $this->accountingAccountTypeCodeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AccountingAccountTypeCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\AccountingAccountTypeCodeType $accountingAccountTypeCodeType
      * @return self
      */
-    public function setTypeCode(AccountingAccountTypeCodeType $typeCode): self
+    public function setTypeCode(AccountingAccountTypeCodeType $accountingAccountTypeCodeType): self
     {
-        $this->typeCode = $typeCode;
+        $this->accountingAccountTypeCodeType = $accountingAccountTypeCodeType;
 
         return $this;
     }

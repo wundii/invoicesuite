@@ -17,7 +17,7 @@ class UniversalCommunicationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getURIID", setter="setURIID")
      */
-    private $uRIID;
+    private $idType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -28,14 +28,14 @@ class UniversalCommunicationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getCompleteNumber", setter="setCompleteNumber")
      */
-    private $completeNumber;
+    private $textType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getURIID(): ?IDType
     {
-        return $this->uRIID;
+        return $this->idType;
     }
 
     /**
@@ -43,18 +43,18 @@ class UniversalCommunicationType
      */
     public function getURIIDWithCreate(): IDType
     {
-        $this->uRIID = is_null($this->uRIID) ? new IDType() : $this->uRIID;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->uRIID;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $uRIID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setURIID(IDType $uRIID): self
+    public function setURIID(IDType $idType): self
     {
-        $this->uRIID = $uRIID;
+        $this->idType = $idType;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class UniversalCommunicationType
      */
     public function getCompleteNumber(): ?TextType
     {
-        return $this->completeNumber;
+        return $this->textType;
     }
 
     /**
@@ -72,18 +72,18 @@ class UniversalCommunicationType
      */
     public function getCompleteNumberWithCreate(): TextType
     {
-        $this->completeNumber = is_null($this->completeNumber) ? new TextType() : $this->completeNumber;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->completeNumber;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $completeNumber
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setCompleteNumber(TextType $completeNumber): self
+    public function setCompleteNumber(TextType $textType): self
     {
-        $this->completeNumber = $completeNumber;
+        $this->textType = $textType;
 
         return $this;
     }

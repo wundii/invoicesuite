@@ -16,7 +16,7 @@ class ExchangedDocumentContextType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTestIndicator", setter="setTestIndicator")
      */
-    private $testIndicator;
+    private $indicatorType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType
@@ -45,7 +45,7 @@ class ExchangedDocumentContextType
      */
     public function getTestIndicator(): ?IndicatorType
     {
-        return $this->testIndicator;
+        return $this->indicatorType;
     }
 
     /**
@@ -53,18 +53,18 @@ class ExchangedDocumentContextType
      */
     public function getTestIndicatorWithCreate(): IndicatorType
     {
-        $this->testIndicator = is_null($this->testIndicator) ? new IndicatorType() : $this->testIndicator;
+        $this->indicatorType = is_null($this->indicatorType) ? new IndicatorType() : $this->indicatorType;
 
-        return $this->testIndicator;
+        return $this->indicatorType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $testIndicator
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IndicatorType $indicatorType
      * @return self
      */
-    public function setTestIndicator(IndicatorType $testIndicator): self
+    public function setTestIndicator(IndicatorType $indicatorType): self
     {
-        $this->testIndicator = $testIndicator;
+        $this->indicatorType = $indicatorType;
 
         return $this;
     }
@@ -88,13 +88,13 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $documentContextParameterType
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter,
+        DocumentContextParameterType $documentContextParameterType,
     ): self {
-        $this->businessProcessSpecifiedDocumentContextParameter = $businessProcessSpecifiedDocumentContextParameter;
+        $this->businessProcessSpecifiedDocumentContextParameter = $documentContextParameterType;
 
         return $this;
     }
@@ -118,13 +118,13 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\DocumentContextParameterType $documentContextParameterType
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter,
+        DocumentContextParameterType $documentContextParameterType,
     ): self {
-        $this->guidelineSpecifiedDocumentContextParameter = $guidelineSpecifiedDocumentContextParameter;
+        $this->guidelineSpecifiedDocumentContextParameter = $documentContextParameterType;
 
         return $this;
     }

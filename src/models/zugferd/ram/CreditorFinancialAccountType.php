@@ -28,7 +28,7 @@ class CreditorFinancialAccountType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getAccountName", setter="setAccountName")
      */
-    private $accountName;
+    private $textType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\IDType
@@ -60,12 +60,12 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iBANID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setIBANID(IDType $iBANID): self
+    public function setIBANID(IDType $idType): self
     {
-        $this->iBANID = $iBANID;
+        $this->iBANID = $idType;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class CreditorFinancialAccountType
      */
     public function getAccountName(): ?TextType
     {
-        return $this->accountName;
+        return $this->textType;
     }
 
     /**
@@ -83,18 +83,18 @@ class CreditorFinancialAccountType
      */
     public function getAccountNameWithCreate(): TextType
     {
-        $this->accountName = is_null($this->accountName) ? new TextType() : $this->accountName;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->accountName;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $accountName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setAccountName(TextType $accountName): self
+    public function setAccountName(TextType $textType): self
     {
-        $this->accountName = $accountName;
+        $this->textType = $textType;
 
         return $this;
     }
@@ -118,12 +118,12 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $proprietaryID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setProprietaryID(IDType $proprietaryID): self
+    public function setProprietaryID(IDType $idType): self
     {
-        $this->proprietaryID = $proprietaryID;
+        $this->proprietaryID = $idType;
 
         return $this;
     }

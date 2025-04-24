@@ -40,7 +40,7 @@ class TradeCurrencyExchangeType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getConversionRate", setter="setConversionRate")
      */
-    private $conversionRate;
+    private $rateType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType
@@ -51,7 +51,7 @@ class TradeCurrencyExchangeType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getConversionRateDateTime", setter="setConversionRateDateTime")
      */
-    private $conversionRateDateTime;
+    private $dateTimeType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType|null
@@ -72,12 +72,12 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $sourceCurrencyCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType
      * @return self
      */
-    public function setSourceCurrencyCode(CurrencyCodeType $sourceCurrencyCode): self
+    public function setSourceCurrencyCode(CurrencyCodeType $currencyCodeType): self
     {
-        $this->sourceCurrencyCode = $sourceCurrencyCode;
+        $this->sourceCurrencyCode = $currencyCodeType;
 
         return $this;
     }
@@ -101,12 +101,12 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $targetCurrencyCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\CurrencyCodeType $currencyCodeType
      * @return self
      */
-    public function setTargetCurrencyCode(CurrencyCodeType $targetCurrencyCode): self
+    public function setTargetCurrencyCode(CurrencyCodeType $currencyCodeType): self
     {
-        $this->targetCurrencyCode = $targetCurrencyCode;
+        $this->targetCurrencyCode = $currencyCodeType;
 
         return $this;
     }
@@ -116,7 +116,7 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRate(): ?RateType
     {
-        return $this->conversionRate;
+        return $this->rateType;
     }
 
     /**
@@ -124,18 +124,18 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRateWithCreate(): RateType
     {
-        $this->conversionRate = is_null($this->conversionRate) ? new RateType() : $this->conversionRate;
+        $this->rateType = is_null($this->rateType) ? new RateType() : $this->rateType;
 
-        return $this->conversionRate;
+        return $this->rateType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\RateType $conversionRate
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\RateType $rateType
      * @return self
      */
-    public function setConversionRate(RateType $conversionRate): self
+    public function setConversionRate(RateType $rateType): self
     {
-        $this->conversionRate = $conversionRate;
+        $this->rateType = $rateType;
 
         return $this;
     }
@@ -145,7 +145,7 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRateDateTime(): ?DateTimeType
     {
-        return $this->conversionRateDateTime;
+        return $this->dateTimeType;
     }
 
     /**
@@ -153,18 +153,18 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRateDateTimeWithCreate(): DateTimeType
     {
-        $this->conversionRateDateTime = is_null($this->conversionRateDateTime) ? new DateTimeType() : $this->conversionRateDateTime;
+        $this->dateTimeType = is_null($this->dateTimeType) ? new DateTimeType() : $this->dateTimeType;
 
-        return $this->conversionRateDateTime;
+        return $this->dateTimeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $conversionRateDateTime
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateTimeType $dateTimeType
      * @return self
      */
-    public function setConversionRateDateTime(DateTimeType $conversionRateDateTime): self
+    public function setConversionRateDateTime(DateTimeType $dateTimeType): self
     {
-        $this->conversionRateDateTime = $conversionRateDateTime;
+        $this->dateTimeType = $dateTimeType;
 
         return $this;
     }

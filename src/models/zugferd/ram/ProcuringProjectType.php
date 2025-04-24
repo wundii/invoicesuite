@@ -17,7 +17,7 @@ class ProcuringProjectType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $idType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -28,14 +28,14 @@ class ProcuringProjectType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getName", setter="setName")
      */
-    private $name;
+    private $textType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getID(): ?IDType
     {
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
@@ -43,18 +43,18 @@ class ProcuringProjectType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->idType = $idType;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class ProcuringProjectType
      */
     public function getName(): ?TextType
     {
-        return $this->name;
+        return $this->textType;
     }
 
     /**
@@ -72,18 +72,18 @@ class ProcuringProjectType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->name;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(TextType $textType): self
     {
-        $this->name = $name;
+        $this->textType = $textType;
 
         return $this;
     }

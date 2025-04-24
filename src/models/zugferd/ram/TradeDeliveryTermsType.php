@@ -16,14 +16,14 @@ class TradeDeliveryTermsType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getDeliveryTypeCode", setter="setDeliveryTypeCode")
      */
-    private $deliveryTypeCode;
+    private $deliveryTermsCodeType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\qdt\DeliveryTermsCodeType|null
      */
     public function getDeliveryTypeCode(): ?DeliveryTermsCodeType
     {
-        return $this->deliveryTypeCode;
+        return $this->deliveryTermsCodeType;
     }
 
     /**
@@ -31,18 +31,18 @@ class TradeDeliveryTermsType
      */
     public function getDeliveryTypeCodeWithCreate(): DeliveryTermsCodeType
     {
-        $this->deliveryTypeCode = is_null($this->deliveryTypeCode) ? new DeliveryTermsCodeType() : $this->deliveryTypeCode;
+        $this->deliveryTermsCodeType = is_null($this->deliveryTermsCodeType) ? new DeliveryTermsCodeType() : $this->deliveryTermsCodeType;
 
-        return $this->deliveryTypeCode;
+        return $this->deliveryTermsCodeType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DeliveryTermsCodeType $deliveryTypeCode
+     * @param \horstoeko\invoicesuite\models\zugferd\qdt\DeliveryTermsCodeType $deliveryTermsCodeType
      * @return self
      */
-    public function setDeliveryTypeCode(DeliveryTermsCodeType $deliveryTypeCode): self
+    public function setDeliveryTypeCode(DeliveryTermsCodeType $deliveryTermsCodeType): self
     {
-        $this->deliveryTypeCode = $deliveryTypeCode;
+        $this->deliveryTermsCodeType = $deliveryTermsCodeType;
 
         return $this;
     }

@@ -17,7 +17,7 @@ class LegalOrganizationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getID", setter="setID")
      */
-    private $iD;
+    private $idType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\udt\TextType
@@ -28,7 +28,7 @@ class LegalOrganizationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getTradingBusinessName", setter="setTradingBusinessName")
      */
-    private $tradingBusinessName;
+    private $textType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType
@@ -39,14 +39,14 @@ class LegalOrganizationType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getPostalTradeAddress", setter="setPostalTradeAddress")
      */
-    private $postalTradeAddress;
+    private $tradeAddressType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\IDType|null
      */
     public function getID(): ?IDType
     {
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
@@ -54,18 +54,18 @@ class LegalOrganizationType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->idType = is_null($this->idType) ? new IDType() : $this->idType;
 
-        return $this->iD;
+        return $this->idType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(IDType $idType): self
     {
-        $this->iD = $iD;
+        $this->idType = $idType;
 
         return $this;
     }
@@ -75,7 +75,7 @@ class LegalOrganizationType
      */
     public function getTradingBusinessName(): ?TextType
     {
-        return $this->tradingBusinessName;
+        return $this->textType;
     }
 
     /**
@@ -83,18 +83,18 @@ class LegalOrganizationType
      */
     public function getTradingBusinessNameWithCreate(): TextType
     {
-        $this->tradingBusinessName = is_null($this->tradingBusinessName) ? new TextType() : $this->tradingBusinessName;
+        $this->textType = is_null($this->textType) ? new TextType() : $this->textType;
 
-        return $this->tradingBusinessName;
+        return $this->textType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $tradingBusinessName
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\TextType $textType
      * @return self
      */
-    public function setTradingBusinessName(TextType $tradingBusinessName): self
+    public function setTradingBusinessName(TextType $textType): self
     {
-        $this->tradingBusinessName = $tradingBusinessName;
+        $this->textType = $textType;
 
         return $this;
     }
@@ -104,7 +104,7 @@ class LegalOrganizationType
      */
     public function getPostalTradeAddress(): ?TradeAddressType
     {
-        return $this->postalTradeAddress;
+        return $this->tradeAddressType;
     }
 
     /**
@@ -112,18 +112,18 @@ class LegalOrganizationType
      */
     public function getPostalTradeAddressWithCreate(): TradeAddressType
     {
-        $this->postalTradeAddress = is_null($this->postalTradeAddress) ? new TradeAddressType() : $this->postalTradeAddress;
+        $this->tradeAddressType = is_null($this->tradeAddressType) ? new TradeAddressType() : $this->tradeAddressType;
 
-        return $this->postalTradeAddress;
+        return $this->tradeAddressType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $postalTradeAddress
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradeAddressType $tradeAddressType
      * @return self
      */
-    public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
+    public function setPostalTradeAddress(TradeAddressType $tradeAddressType): self
     {
-        $this->postalTradeAddress = $postalTradeAddress;
+        $this->tradeAddressType = $tradeAddressType;
 
         return $this;
     }

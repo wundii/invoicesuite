@@ -71,7 +71,7 @@ class LineTradeDeliveryType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100", cdata=false)
      * @JMS\Accessor(getter="getActualDeliverySupplyChainEvent", setter="setActualDeliverySupplyChainEvent")
      */
-    private $actualDeliverySupplyChainEvent;
+    private $supplyChainEventType;
 
     /**
      * @var \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType
@@ -125,12 +125,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $billedQuantity
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $quantityType
      * @return self
      */
-    public function setBilledQuantity(QuantityType $billedQuantity): self
+    public function setBilledQuantity(QuantityType $quantityType): self
     {
-        $this->billedQuantity = $billedQuantity;
+        $this->billedQuantity = $quantityType;
 
         return $this;
     }
@@ -154,12 +154,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $chargeFreeQuantity
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $quantityType
      * @return self
      */
-    public function setChargeFreeQuantity(QuantityType $chargeFreeQuantity): self
+    public function setChargeFreeQuantity(QuantityType $quantityType): self
     {
-        $this->chargeFreeQuantity = $chargeFreeQuantity;
+        $this->chargeFreeQuantity = $quantityType;
 
         return $this;
     }
@@ -183,12 +183,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $packageQuantity
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\QuantityType $quantityType
      * @return self
      */
-    public function setPackageQuantity(QuantityType $packageQuantity): self
+    public function setPackageQuantity(QuantityType $quantityType): self
     {
-        $this->packageQuantity = $packageQuantity;
+        $this->packageQuantity = $quantityType;
 
         return $this;
     }
@@ -212,12 +212,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $shipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType
      * @return self
      */
-    public function setShipToTradeParty(TradePartyType $shipToTradeParty): self
+    public function setShipToTradeParty(TradePartyType $tradePartyType): self
     {
-        $this->shipToTradeParty = $shipToTradeParty;
+        $this->shipToTradeParty = $tradePartyType;
 
         return $this;
     }
@@ -241,12 +241,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $ultimateShipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\TradePartyType $tradePartyType
      * @return self
      */
-    public function setUltimateShipToTradeParty(TradePartyType $ultimateShipToTradeParty): self
+    public function setUltimateShipToTradeParty(TradePartyType $tradePartyType): self
     {
-        $this->ultimateShipToTradeParty = $ultimateShipToTradeParty;
+        $this->ultimateShipToTradeParty = $tradePartyType;
 
         return $this;
     }
@@ -256,7 +256,7 @@ class LineTradeDeliveryType
      */
     public function getActualDeliverySupplyChainEvent(): ?SupplyChainEventType
     {
-        return $this->actualDeliverySupplyChainEvent;
+        return $this->supplyChainEventType;
     }
 
     /**
@@ -264,18 +264,18 @@ class LineTradeDeliveryType
      */
     public function getActualDeliverySupplyChainEventWithCreate(): SupplyChainEventType
     {
-        $this->actualDeliverySupplyChainEvent = is_null($this->actualDeliverySupplyChainEvent) ? new SupplyChainEventType() : $this->actualDeliverySupplyChainEvent;
+        $this->supplyChainEventType = is_null($this->supplyChainEventType) ? new SupplyChainEventType() : $this->supplyChainEventType;
 
-        return $this->actualDeliverySupplyChainEvent;
+        return $this->supplyChainEventType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\SupplyChainEventType $supplyChainEventType
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(SupplyChainEventType $actualDeliverySupplyChainEvent): self
+    public function setActualDeliverySupplyChainEvent(SupplyChainEventType $supplyChainEventType): self
     {
-        $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
+        $this->supplyChainEventType = $supplyChainEventType;
 
         return $this;
     }
@@ -299,13 +299,13 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(
-        ReferencedDocumentType $despatchAdviceReferencedDocument,
+        ReferencedDocumentType $referencedDocumentType,
     ): self {
-        $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
+        $this->despatchAdviceReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -329,13 +329,13 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(
-        ReferencedDocumentType $receivingAdviceReferencedDocument,
+        ReferencedDocumentType $referencedDocumentType,
     ): self {
-        $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
+        $this->receivingAdviceReferencedDocument = $referencedDocumentType;
 
         return $this;
     }
@@ -359,12 +359,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\ReferencedDocumentType $referencedDocumentType
      * @return self
      */
-    public function setDeliveryNoteReferencedDocument(ReferencedDocumentType $deliveryNoteReferencedDocument): self
+    public function setDeliveryNoteReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
-        $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
+        $this->deliveryNoteReferencedDocument = $referencedDocumentType;
 
         return $this;
     }

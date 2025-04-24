@@ -16,14 +16,14 @@ class DateType
      * @JMS\XmlElement(namespace="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100", cdata=false)
      * @JMS\Accessor(getter="getDateString", setter="setDateString")
      */
-    private $dateString;
+    private $dateStringAType;
 
     /**
      * @return \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType|null
      */
     public function getDateString(): ?DateStringAType
     {
-        return $this->dateString;
+        return $this->dateStringAType;
     }
 
     /**
@@ -31,18 +31,18 @@ class DateType
      */
     public function getDateStringWithCreate(): DateStringAType
     {
-        $this->dateString = is_null($this->dateString) ? new DateStringAType() : $this->dateString;
+        $this->dateStringAType = is_null($this->dateStringAType) ? new DateStringAType() : $this->dateStringAType;
 
-        return $this->dateString;
+        return $this->dateStringAType;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType $dateString
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\DateType\DateStringAType $dateStringAType
      * @return self
      */
-    public function setDateString(DateStringAType $dateString): self
+    public function setDateString(DateStringAType $dateStringAType): self
     {
-        $this->dateString = $dateString;
+        $this->dateStringAType = $dateStringAType;
 
         return $this;
     }

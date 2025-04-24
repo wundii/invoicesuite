@@ -48,13 +48,13 @@ class SupplyChainConsignmentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType $specifiedLogisticsTransportMovement
+     * @param \horstoeko\invoicesuite\models\zugferd\ram\LogisticsTransportMovementType $logisticsTransportMovementType
      * @return self
      */
     public function addToSpecifiedLogisticsTransportMovement(
-        LogisticsTransportMovementType $specifiedLogisticsTransportMovement,
+        LogisticsTransportMovementType $logisticsTransportMovementType,
     ): self {
-        $this->specifiedLogisticsTransportMovement[] = $specifiedLogisticsTransportMovement;
+        $this->specifiedLogisticsTransportMovement[] = $logisticsTransportMovementType;
 
         return $this;
     }
@@ -64,8 +64,8 @@ class SupplyChainConsignmentType
      */
     public function addToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
     {
-        $this->addTospecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovement = new LogisticsTransportMovementType());
+        $this->addTospecifiedLogisticsTransportMovement($logisticsTransportMovementType = new LogisticsTransportMovementType());
 
-        return $specifiedLogisticsTransportMovement;
+        return $logisticsTransportMovementType;
     }
 }

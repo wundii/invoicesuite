@@ -48,12 +48,12 @@ class TradeProductInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $batchID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setBatchID(IDType $batchID): self
+    public function setBatchID(IDType $idType): self
     {
-        $this->batchID = $batchID;
+        $this->batchID = $idType;
 
         return $this;
     }
@@ -77,12 +77,12 @@ class TradeProductInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $supplierAssignedSerialID
+     * @param \horstoeko\invoicesuite\models\zugferd\udt\IDType $idType
      * @return self
      */
-    public function setSupplierAssignedSerialID(IDType $supplierAssignedSerialID): self
+    public function setSupplierAssignedSerialID(IDType $idType): self
     {
-        $this->supplierAssignedSerialID = $supplierAssignedSerialID;
+        $this->supplierAssignedSerialID = $idType;
 
         return $this;
     }
