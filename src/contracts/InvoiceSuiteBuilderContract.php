@@ -99,7 +99,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new status of the test indicator
      *
-     * @param boolean $newDocumentIsCopy
+     * @param boolean $newDocumentIsTest
      * @return self
      */
     public function setDocumentIsTest(bool $newDocumentIsTest): self;

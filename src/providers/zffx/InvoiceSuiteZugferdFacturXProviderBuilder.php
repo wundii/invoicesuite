@@ -97,7 +97,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     /**
      * @inheritDoc
      *
-     * @param string $newDocumentDescription__BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
+     * @param string $newDocumentDescription __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
      */
     public function setDocumentDescription(string $newDocumentDescription): self
     {
@@ -219,7 +219,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     /**
      * @inheritDoc
      *
-     * @param bool $newDocumentIsCopy __BT-X-3-00, From EXTENDED__ With newDocumentIsTest = true, the document is a copy
+     * @param bool $newDocumentIsTest __BT-X-3-00, From EXTENDED__ With newDocumentIsTest = true, the document is a copy
      */
     public function setDocumentIsTest(bool $newDocumentIsTest): self
     {
