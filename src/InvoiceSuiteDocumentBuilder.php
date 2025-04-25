@@ -344,4 +344,128 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Buyer/Customer
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addBuyerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addBuyerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerCommunication(string $newType, string $newUri): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
 }

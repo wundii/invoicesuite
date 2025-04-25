@@ -236,4 +236,125 @@ interface InvoiceSuiteBuilderContract
     public function setSellerCommunication(string $newType, string $newUri): self;
 
     #endregion
+
+    #region Document Buyer/Customer
+
+    /**
+     * Set the name of the buyer/customer party
+     *
+     * @param string $newName
+     * @return self
+     */
+    public function setBuyerName(string $newName): self;
+
+    /**
+     * Set the ID of the buyer/customer party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function setBuyerId(string $newId): self;
+
+    /**
+     * Add an ID to the buyer/customer party
+     *
+     * @param string $newId
+     * @return self
+     */
+    public function addBuyerId(string $newId): self;
+
+    /**
+     * Set the Global ID of the buyer/customer party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the buyer/customer party
+     *
+     * @param string $newGlobalId
+     * @param string $newGlobalIdType
+     * @return self
+     */
+    public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the buyer/customer party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the buyer/customer party
+     *
+     * @param string $newTaxRegistrationTyüe
+     * @param string $newTaxRegistrationId
+     * @return self
+     */
+    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the buyer/customer party
+     *
+     * @param string $newAddressLine1
+     * @param string $newAddressLine2
+     * @param string $newAddressLine3
+     * @param string $newPostcode
+     * @param string $newCity
+     * @param string $newCountryId
+     * @param string $newSubDivision
+     * @return self
+     */
+    public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the buyer/customer party
+     *
+     * @param string $newType
+     * @param string $newId
+     * @param string $newName
+     * @return self
+     */
+    public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the buyer/customer party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the buyer/customer party
+     *
+     * @param string $newPersonName
+     * @param string $newDepartmentName
+     * @param string $newPhoneNumber
+     * @param string $newFaxNumber
+     * @param string $newEmailAddress
+     * @return self
+     */
+    public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the buyer/customer party
+     *
+     * @param string $newType
+     * @param string $newUri
+     * @return self
+     */
+    public function setBuyerCommunication(string $newType, string $newUri): self;
+
+    #endregion
 }

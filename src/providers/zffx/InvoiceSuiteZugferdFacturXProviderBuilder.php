@@ -372,7 +372,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     public function setSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId,$newGlobalIdType])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
         ) {
             return $this;
         }
@@ -399,7 +399,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     public function addSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId,$newGlobalIdType])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
         ) {
             return $this;
         }
@@ -426,7 +426,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     public function setSellerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe,$newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -491,7 +491,8 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
                 $newPostcode,
                 $newCity,
                 $newCountryId,
-                $newSubDivision])
+                $newSubDivision
+            ])
         ) {
             return $this;
         }
@@ -581,7 +582,8 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress])
+                $newEmailAddress
+            ])
         ) {
             return $this;
         }
@@ -613,7 +615,8 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
                 $newDepartmentName,
                 $newPhoneNumber,
                 $newFaxNumber,
-                $newEmailAddress])
+                $newEmailAddress
+            ])
         ) {
             return $this;
         }
@@ -670,6 +673,396 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $sellerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Buyer/Customer
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newName __BT-44, From MINIMUM__ The full name of the buyer
+     * @return self
+     */
+    public function setBuyerName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @return self
+     */
+    public function setBuyerId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->clearID();
+
+        $this->addBuyerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
+     * @return self
+     */
+    public function addBuyerId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
+     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->clearGlobalID();
+
+        $this->addBuyerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
+     * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->clearSpecifiedTaxRegistration();
+
+        $this->addBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationTyüe);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
+     * @param string $newCity         __BT-52, From BASIC WL__ Usual name of the city or municipality in which the buyers address is located
+     * @param string $newCountryId    __BT-55, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  __BT-54, From BASIC WL__ The buyers state
+     * @return self
+     */
+    public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $buyerTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $buyerTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @param string $newType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param string $newId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
+     * @param string $newName __BT-45, From BASIC WL__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @return self
+     */
+    public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $buyerTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            $buyerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+                $buyerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $buyerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-57, From EN 16931__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @return self
+     */
+    public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->clearDefinedTradeContact();
+
+        $this->addBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-56, From EN 16931__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-56-0, From EN 16931__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-57, From EN 16931__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-115, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-58, From EN 16931__ An e-mail address of the contact point
+     * @return self
+     */
+    public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $buyerTradeContact = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPersonName])) {
+            $buyerTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
+            $buyerTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
+            $buyerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $buyerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
+            $buyerTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType __BT-49-1, From BASIC WL__ The identifier for the identification scheme of the buyer's electronic address
+     * @param string $newUri  __BT-49, From BASIC WL__ Specifies the buyer's electronic address to which the invoice is sent
+     * @return self
+     */
+    public function setBuyerCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $buyerUniversalCommunication = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->getBuyerTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $buyerUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $buyerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
 
         return $this;
