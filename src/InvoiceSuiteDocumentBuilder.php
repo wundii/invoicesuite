@@ -91,4 +91,14 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     {
         $this->getCurrentFormatProvider()->getBuilder()->saveAsJsonFile($tofile);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentNo(string $newDocumentNo): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentNo($newDocumentNo);
+
+        return $this;
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
-use horstoeko\invoicesuite\InvoiceDocumentBuilder;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceDocumentBuilder::createByProviderUniqueId('zffxminimum');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnung');
+$builder->setDocumentNo('2025-04-000001');
 echo $builder->getContentAsXml();

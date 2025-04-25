@@ -20,4 +20,11 @@ namespace horstoeko\invoicesuite\contracts;
  */
 interface InvoiceSuiteBuilderContract
 {
+    /**
+     * Sets the new document number (e.g. invoice number)
+     *
+     * @param string $newDocumentNo
+     * @return static
+     */
+    public function setDocumentNo(string $newDocumentNo): self;
 }
