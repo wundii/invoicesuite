@@ -3,12 +3,12 @@
 namespace horstoeko\invoicesuite\providers\zffx;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\stringmanagement\StringUtils;
 
 class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -70,6 +70,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentNo(string $newDocumentNo): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentNo])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -86,6 +90,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentType(string $newDocumentType): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentType])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -102,6 +110,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentDescription(string $newDocumentDescription): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentDescription])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -118,6 +130,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentLanguage(string $newDocumentLanguage): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentLanguage])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -171,6 +187,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentCurrency(string $newDocumentCurrency): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentCurrency])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -191,6 +211,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentTaxCurrency])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -236,20 +260,30 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     /**
      * @inheritDoc
      *
-     * @param string      $newContent     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
-     * @param string|null $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
-     * @param string|null $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
+     * @param string $newContent     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
+     * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
      */
-    public function addDocumentNote(string $newContent, ?string $newContentCode = null, ?string $newSubjectCode = null): self
+    public function addDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
         $note = $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
             ->addToIncludedNoteWithCreate();
 
         $note->getContentWithCreate()->setValue($newContent);
-        $note->getContentCodeWithCreate()->setValue($newContentCode);
-        $note->getSubjectCodeWithCreate()->setValue($newSubjectCode);
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContentCode])) {
+            $note->getContentCodeWithCreate()->setValue($newContentCode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubjectCode])) {
+            $note->getSubjectCodeWithCreate()->setValue($newSubjectCode);
+        }
 
         return $this;
     }
@@ -266,6 +300,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerName(string $newName): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -285,6 +323,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerId(string $newId): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -305,6 +347,10 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function addSellerId(string $newId): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -325,6 +371,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId,$newGlobalIdType])
+        ) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -346,6 +398,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function addSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId,$newGlobalIdType])
+        ) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -367,6 +425,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
     {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe,$newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -388,6 +452,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function addSellerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
     {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
@@ -413,36 +483,49 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision])
+        ) {
+            return $this;
+        }
+
         $sellerTradeParty = $this->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
 
-        if (!StringUtils::stringIsNullOrEmpty($newAddressLine1)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newAddressLine2)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newAddressLine3)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newPostcode)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newCity)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newCountryId)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newSubDivision)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
             $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
         }
 
@@ -459,19 +542,23 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self
     {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
         $sellerTradeParty = $this->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
 
-        if (!StringUtils::stringIsNullOrEmpty($newId)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             $sellerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
-            if (!StringUtils::stringIsNullOrEmpty($newType)) {
+            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
                 $sellerTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
             }
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newName)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             $sellerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
 
@@ -489,11 +576,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
-            StringUtils::stringIsNullOrEmpty($newPersonName) &&
-            StringUtils::stringIsNullOrEmpty($newDepartmentName) &&
-            StringUtils::stringIsNullOrEmpty($newPhoneNumber) &&
-            StringUtils::stringIsNullOrEmpty($newFaxNumber) &&
-            StringUtils::stringIsNullOrEmpty($newEmailAddress)
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress])
         ) {
             return $this;
         }
@@ -520,11 +608,12 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
     public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
-            StringUtils::stringIsNullOrEmpty($newPersonName) &&
-            StringUtils::stringIsNullOrEmpty($newDepartmentName) &&
-            StringUtils::stringIsNullOrEmpty($newPhoneNumber) &&
-            StringUtils::stringIsNullOrEmpty($newFaxNumber) &&
-            StringUtils::stringIsNullOrEmpty($newEmailAddress)
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress])
         ) {
             return $this;
         }
@@ -535,23 +624,23 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
             ->getSellerTradePartyWithCreate()
             ->addToDefinedTradeContactWithCreate();
 
-        if (!StringUtils::stringIsNullOrEmpty($newPersonName)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPersonName])) {
             $sellerTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
             $sellerTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
-            $sellerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate($newPhoneNumber);
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
+            $sellerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newFaxNumber)) {
-            $sellerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate($newFaxNumber);
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $sellerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
             $sellerTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
         }
 
@@ -565,10 +654,7 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
      */
     public function setSellerCommunication(string $newType, string $newUri): self
     {
-        if (
-            StringUtils::stringIsNullOrEmpty($newType) &&
-            StringUtils::stringIsNullOrEmpty($newUri)
-        ) {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -578,11 +664,11 @@ class InvoiceSuiteZugferdFacturXProviderBuilder extends InvoiceSuiteAbstractForm
             ->getSellerTradePartyWithCreate()
             ->getURIUniversalCommunicationWithCreate();
 
-        if (!StringUtils::stringIsNullOrEmpty($newType)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
             $sellerUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
         }
 
-        if (!StringUtils::stringIsNullOrEmpty($newUri)) {
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $sellerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
 

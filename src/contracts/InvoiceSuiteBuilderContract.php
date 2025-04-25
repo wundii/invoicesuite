@@ -108,8 +108,8 @@ interface InvoiceSuiteBuilderContract
      * Add a note to the document
      *
      * @param string $newContent
-     * @param string|null $newContentCode
-     * @param string|null $newSubjectCode
+     * @param string $newContentCode
+     * @param string $newSubjectCode
      * @return self
      */
     public function addDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self;
