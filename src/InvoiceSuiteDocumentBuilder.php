@@ -2,12 +2,13 @@
 
 namespace horstoeko\invoicesuite;
 
-use JMS\Serializer\Exception\RuntimeException;
-use JMS\Serializer\Exception\InvalidArgumentException;
-use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
+use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use JMS\Serializer\Exception\InvalidArgumentException;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the document builder
@@ -20,8 +21,9 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
  */
 class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 {
-    use HandlesFormatProviders;
+    use HandlesCallForwarding;
     use HandlesCurrentFormatProvider;
+    use HandlesFormatProviders;
 
     /**
      * Create a new InvoiceDocumentBuilder instance for the given format provider
@@ -48,6 +50,18 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         $this->resolveAvailableFormatProviders();
         $this->setCurrentFormatProvider($this->findFormatProviderByUniqueIdOrFail($formatProviderUniqueId));
         $this->getCurrentFormatProvider()->initBuilder();
+    }
+
+    /**
+     * Dynamically pass missing methods to the builder provided by format provider
+     *
+     * @param  string $method
+     * @param  array  $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return $this->forwardCallWithCheckTo($this->getCurrentFormatProvider()->getBuilder(), $method, $parameters);
     }
 
     /**

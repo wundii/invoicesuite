@@ -2,6 +2,7 @@
 
 namespace horstoeko\invoicesuite;
 
+use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
@@ -21,8 +22,9 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
  */
 class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 {
-    use HandlesFormatProviders;
+    use HandlesCallForwarding;
     use HandlesCurrentFormatProvider;
+    use HandlesFormatProviders;
 
     /**
      * Create reader by file
@@ -83,5 +85,17 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         $this->setCurrentFormatProvider($formatProvider);
         $this->getCurrentFormatProvider()->initReader();
         $this->getCurrentFormatProvider()->getReader()->deserializeFromContent($fromContent);
+    }
+
+    /**
+     * Dynamically pass missing methods to the reader provided by format provider
+     *
+     * @param  string $method
+     * @param  array  $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        return $this->forwardCallWithCheckTo($this->getCurrentFormatProvider()->getReader(), $method, $parameters);
     }
 }
