@@ -18,7 +18,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceDocumentBuilder implements InvoiceSuiteBuilderContract
+class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 {
     use HandlesFormatProviders;
     use HandlesCurrentFormatProvider;
@@ -27,7 +27,7 @@ class InvoiceDocumentBuilder implements InvoiceSuiteBuilderContract
      * Create a new InvoiceDocumentBuilder instance for the given format provider
      *
      * @param string $formatProviderUniqueId
-     * @return InvoiceDocumentBuilder
+     * @return InvoiceSuiteDocumentBuilder
      */
     public static function createByProviderUniqueId(string $formatProviderUniqueId): self
     {
@@ -38,7 +38,7 @@ class InvoiceDocumentBuilder implements InvoiceSuiteBuilderContract
      * Constructor (hidden)
      *
      * @param string $formatProviderUniqueId
-     * @return InvoiceDocumentBuilder
+     * @return InvoiceSuiteDocumentBuilder
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvalidArgumentException
      * @throws RuntimeException

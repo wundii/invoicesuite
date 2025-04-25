@@ -19,7 +19,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceDocumentReader implements InvoiceSuiteReaderContract
+class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 {
     use HandlesFormatProviders;
     use HandlesCurrentFormatProvider;
@@ -28,7 +28,7 @@ class InvoiceDocumentReader implements InvoiceSuiteReaderContract
      * Create reader by file
      *
      * @param string $fromFile
-     * @return InvoiceDocumentReader
+     * @return InvoiceSuiteDocumentReader
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      */
@@ -51,7 +51,7 @@ class InvoiceDocumentReader implements InvoiceSuiteReaderContract
      * Create reader by content
      *
      * @param string $fromContent
-     * @return InvoiceDocumentReader
+     * @return InvoiceSuiteDocumentReader
      */
     public static function createFromContent(string $fromContent): self
     {
