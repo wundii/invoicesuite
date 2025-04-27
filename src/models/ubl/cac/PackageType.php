@@ -368,6 +368,29 @@ class PackageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial $packingMaterial
+     * @return self
+     */
+    public function addOnceToPackingMaterial(PackingMaterial $packingMaterial): self
+    {
+        $this->packingMaterial[0] = $packingMaterial;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PackingMaterial
+     */
+    public function addOnceToPackingMaterialWithCreate(): PackingMaterial
+    {
+        if ($this->packingMaterial === []) {
+            $this->addOnceTopackingMaterial(new PackingMaterial());
+        }
+
+        return $this->packingMaterial[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TraceID|null
      */
     public function getTraceID(): ?TraceID
@@ -444,6 +467,29 @@ class PackageType
         $this->addTocontainedPackage($containedPackage = new ContainedPackage());
 
         return $containedPackage;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainedPackage $containedPackage
+     * @return self
+     */
+    public function addOnceToContainedPackage(ContainedPackage $containedPackage): self
+    {
+        $this->containedPackage[0] = $containedPackage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContainedPackage
+     */
+    public function addOnceToContainedPackageWithCreate(): ContainedPackage
+    {
+        if ($this->containedPackage === []) {
+            $this->addOnceTocontainedPackage(new ContainedPackage());
+        }
+
+        return $this->containedPackage[0];
     }
 
     /**
@@ -526,6 +572,29 @@ class PackageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\GoodsItem $goodsItem
+     * @return self
+     */
+    public function addOnceToGoodsItem(GoodsItem $goodsItem): self
+    {
+        $this->goodsItem[0] = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\GoodsItem
+     */
+    public function addOnceToGoodsItemWithCreate(): GoodsItem
+    {
+        if ($this->goodsItem === []) {
+            $this->addOnceTogoodsItem(new GoodsItem());
+        }
+
+        return $this->goodsItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -576,6 +645,29 @@ class PackageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit>|null
      */
     public function getDeliveryUnit(): ?array
@@ -623,6 +715,29 @@ class PackageType
         $this->addTodeliveryUnit($deliveryUnit = new DeliveryUnit());
 
         return $deliveryUnit;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit $deliveryUnit
+     * @return self
+     */
+    public function addOnceToDeliveryUnit(DeliveryUnit $deliveryUnit): self
+    {
+        $this->deliveryUnit[0] = $deliveryUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit
+     */
+    public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
+    {
+        if ($this->deliveryUnit === []) {
+            $this->addOnceTodeliveryUnit(new DeliveryUnit());
+        }
+
+        return $this->deliveryUnit[0];
     }
 
     /**

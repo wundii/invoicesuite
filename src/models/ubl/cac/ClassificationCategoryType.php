@@ -164,6 +164,29 @@ class ClassificationCategoryType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory>|null
      */
     public function getCategorizesClassificationCategory(): ?array
@@ -212,5 +235,29 @@ class ClassificationCategoryType
         $this->addTocategorizesClassificationCategory($categorizesClassificationCategory = new CategorizesClassificationCategory());
 
         return $categorizesClassificationCategory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory $categorizesClassificationCategory
+     * @return self
+     */
+    public function addOnceToCategorizesClassificationCategory(
+        CategorizesClassificationCategory $categorizesClassificationCategory,
+    ): self {
+        $this->categorizesClassificationCategory[0] = $categorizesClassificationCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CategorizesClassificationCategory
+     */
+    public function addOnceToCategorizesClassificationCategoryWithCreate(): CategorizesClassificationCategory
+    {
+        if ($this->categorizesClassificationCategory === []) {
+            $this->addOnceTocategorizesClassificationCategory(new CategorizesClassificationCategory());
+        }
+
+        return $this->categorizesClassificationCategory[0];
     }
 }

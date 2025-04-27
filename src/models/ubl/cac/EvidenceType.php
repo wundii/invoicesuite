@@ -198,6 +198,29 @@ class EvidenceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement>|null
      */
     public function getCandidateStatement(): ?array
@@ -245,6 +268,29 @@ class EvidenceType
         $this->addTocandidateStatement($candidateStatement = new CandidateStatement());
 
         return $candidateStatement;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement $candidateStatement
+     * @return self
+     */
+    public function addOnceToCandidateStatement(CandidateStatement $candidateStatement): self
+    {
+        $this->candidateStatement[0] = $candidateStatement;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\CandidateStatement
+     */
+    public function addOnceToCandidateStatementWithCreate(): CandidateStatement
+    {
+        if ($this->candidateStatement === []) {
+            $this->addOnceTocandidateStatement(new CandidateStatement());
+        }
+
+        return $this->candidateStatement[0];
     }
 
     /**

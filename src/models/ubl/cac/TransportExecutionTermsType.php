@@ -188,6 +188,29 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms $transportUserSpecialTerms
+     * @return self
+     */
+    public function addOnceToTransportUserSpecialTerms(TransportUserSpecialTerms $transportUserSpecialTerms): self
+    {
+        $this->transportUserSpecialTerms[0] = $transportUserSpecialTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms
+     */
+    public function addOnceToTransportUserSpecialTermsWithCreate(): TransportUserSpecialTerms
+    {
+        if ($this->transportUserSpecialTerms === []) {
+            $this->addOnceTotransportUserSpecialTerms(new TransportUserSpecialTerms());
+        }
+
+        return $this->transportUserSpecialTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms>|null
      */
     public function getTransportServiceProviderSpecialTerms(): ?array
@@ -236,6 +259,30 @@ class TransportExecutionTermsType
         $this->addTotransportServiceProviderSpecialTerms($transportServiceProviderSpecialTerms = new TransportServiceProviderSpecialTerms());
 
         return $transportServiceProviderSpecialTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms $transportServiceProviderSpecialTerms
+     * @return self
+     */
+    public function addOnceToTransportServiceProviderSpecialTerms(
+        TransportServiceProviderSpecialTerms $transportServiceProviderSpecialTerms,
+    ): self {
+        $this->transportServiceProviderSpecialTerms[0] = $transportServiceProviderSpecialTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms
+     */
+    public function addOnceToTransportServiceProviderSpecialTermsWithCreate(): TransportServiceProviderSpecialTerms
+    {
+        if ($this->transportServiceProviderSpecialTerms === []) {
+            $this->addOnceTotransportServiceProviderSpecialTerms(new TransportServiceProviderSpecialTerms());
+        }
+
+        return $this->transportServiceProviderSpecialTerms[0];
     }
 
     /**
@@ -289,6 +336,29 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions $changeConditions
+     * @return self
+     */
+    public function addOnceToChangeConditions(ChangeConditions $changeConditions): self
+    {
+        $this->changeConditions[0] = $changeConditions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions
+     */
+    public function addOnceToChangeConditionsWithCreate(): ChangeConditions
+    {
+        if ($this->changeConditions === []) {
+            $this->addOnceTochangeConditions(new ChangeConditions());
+        }
+
+        return $this->changeConditions[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      */
     public function getPaymentTerms(): ?array
@@ -339,6 +409,29 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms $paymentTerms
+     * @return self
+     */
+    public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
+    {
+        $this->paymentTerms[0] = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms
+     */
+    public function addOnceToPaymentTermsWithCreate(): PaymentTerms
+    {
+        if ($this->paymentTerms === []) {
+            $this->addOnceTopaymentTerms(new PaymentTerms());
+        }
+
+        return $this->paymentTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      */
     public function getDeliveryTerms(): ?array
@@ -386,6 +479,29 @@ class TransportExecutionTermsType
         $this->addTodeliveryTerms($deliveryTerms = new DeliveryTerms());
 
         return $deliveryTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms $deliveryTerms
+     * @return self
+     */
+    public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
+    {
+        $this->deliveryTerms[0] = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms
+     */
+    public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
+    {
+        if ($this->deliveryTerms === []) {
+            $this->addOnceTodeliveryTerms(new DeliveryTerms());
+        }
+
+        return $this->deliveryTerms[0];
     }
 
     /**
@@ -526,6 +642,29 @@ class TransportExecutionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission $environmentalEmission
+     * @return self
+     */
+    public function addOnceToEnvironmentalEmission(EnvironmentalEmission $environmentalEmission): self
+    {
+        $this->environmentalEmission[0] = $environmentalEmission;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission
+     */
+    public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
+    {
+        if ($this->environmentalEmission === []) {
+            $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
+        }
+
+        return $this->environmentalEmission[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement>|null
      */
     public function getNotificationRequirement(): ?array
@@ -573,6 +712,29 @@ class TransportExecutionTermsType
         $this->addTonotificationRequirement($notificationRequirement = new NotificationRequirement());
 
         return $notificationRequirement;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement $notificationRequirement
+     * @return self
+     */
+    public function addOnceToNotificationRequirement(NotificationRequirement $notificationRequirement): self
+    {
+        $this->notificationRequirement[0] = $notificationRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotificationRequirement
+     */
+    public function addOnceToNotificationRequirementWithCreate(): NotificationRequirement
+    {
+        if ($this->notificationRequirement === []) {
+            $this->addOnceTonotificationRequirement(new NotificationRequirement());
+        }
+
+        return $this->notificationRequirement[0];
     }
 
     /**

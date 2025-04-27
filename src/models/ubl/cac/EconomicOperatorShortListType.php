@@ -118,6 +118,29 @@ class EconomicOperatorShortListType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription $limitationDescription
+     * @return self
+     */
+    public function addOnceToLimitationDescription(LimitationDescription $limitationDescription): self
+    {
+        $this->limitationDescription[0] = $limitationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription
+     */
+    public function addOnceToLimitationDescriptionWithCreate(): LimitationDescription
+    {
+        if ($this->limitationDescription === []) {
+            $this->addOnceTolimitationDescription(new LimitationDescription());
+        }
+
+        return $this->limitationDescription[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity|null
      */
     public function getExpectedQuantity(): ?ExpectedQuantity
@@ -252,5 +275,28 @@ class EconomicOperatorShortListType
         $this->addTopreSelectedParty($preSelectedParty = new PreSelectedParty());
 
         return $preSelectedParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty $preSelectedParty
+     * @return self
+     */
+    public function addOnceToPreSelectedParty(PreSelectedParty $preSelectedParty): self
+    {
+        $this->preSelectedParty[0] = $preSelectedParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PreSelectedParty
+     */
+    public function addOnceToPreSelectedPartyWithCreate(): PreSelectedParty
+    {
+        if ($this->preSelectedParty === []) {
+            $this->addOnceTopreSelectedParty(new PreSelectedParty());
+        }
+
+        return $this->preSelectedParty[0];
     }
 }

@@ -811,6 +811,29 @@ class DeliveryType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotifyParty $notifyParty
+     * @return self
+     */
+    public function addOnceToNotifyParty(NotifyParty $notifyParty): self
+    {
+        $this->notifyParty[0] = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotifyParty
+     */
+    public function addOnceToNotifyPartyWithCreate(): NotifyParty
+    {
+        if ($this->notifyParty === []) {
+            $this->addOnceTonotifyParty(new NotifyParty());
+        }
+
+        return $this->notifyParty[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Despatch|null
      */
     public function getDespatch(): ?Despatch
@@ -887,6 +910,29 @@ class DeliveryType
         $this->addTodeliveryTerms($deliveryTerms = new DeliveryTerms());
 
         return $deliveryTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms $deliveryTerms
+     * @return self
+     */
+    public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
+    {
+        $this->deliveryTerms[0] = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms
+     */
+    public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
+    {
+        if ($this->deliveryTerms === []) {
+            $this->addOnceTodeliveryTerms(new DeliveryTerms());
+        }
+
+        return $this->deliveryTerms[0];
     }
 
     /**

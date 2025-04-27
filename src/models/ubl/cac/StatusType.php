@@ -268,6 +268,29 @@ class StatusType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\StatusReasonCode|null
      */
     public function getStatusReasonCode(): ?StatusReasonCode
@@ -347,6 +370,29 @@ class StatusType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\StatusReason $statusReason
+     * @return self
+     */
+    public function addOnceToStatusReason(StatusReason $statusReason): self
+    {
+        $this->statusReason[0] = $statusReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\StatusReason
+     */
+    public function addOnceToStatusReasonWithCreate(): StatusReason
+    {
+        if ($this->statusReason === []) {
+            $this->addOnceTostatusReason(new StatusReason());
+        }
+
+        return $this->statusReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\SequenceID|null
      */
     public function getSequenceID(): ?SequenceID
@@ -423,6 +469,29 @@ class StatusType
         $this->addTotext($text = new Text());
 
         return $text;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Text $text
+     * @return self
+     */
+    public function addOnceToText(Text $text): self
+    {
+        $this->text[0] = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Text
+     */
+    public function addOnceToTextWithCreate(): Text
+    {
+        if ($this->text === []) {
+            $this->addOnceTotext(new Text());
+        }
+
+        return $this->text[0];
     }
 
     /**
@@ -550,5 +619,28 @@ class StatusType
         $this->addTocondition($condition = new Condition());
 
         return $condition;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Condition $condition
+     * @return self
+     */
+    public function addOnceToCondition(Condition $condition): self
+    {
+        $this->condition[0] = $condition;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Condition
+     */
+    public function addOnceToConditionWithCreate(): Condition
+    {
+        if ($this->condition === []) {
+            $this->addOnceTocondition(new Condition());
+        }
+
+        return $this->condition[0];
     }
 }

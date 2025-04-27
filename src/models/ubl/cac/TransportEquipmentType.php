@@ -801,6 +801,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReferencedConsignmentID $referencedConsignmentID
+     * @return self
+     */
+    public function addOnceToReferencedConsignmentID(ReferencedConsignmentID $referencedConsignmentID): self
+    {
+        $this->referencedConsignmentID[0] = $referencedConsignmentID;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ReferencedConsignmentID
+     */
+    public function addOnceToReferencedConsignmentIDWithCreate(): ReferencedConsignmentID
+    {
+        if ($this->referencedConsignmentID === []) {
+            $this->addOnceToreferencedConsignmentID(new ReferencedConsignmentID());
+        }
+
+        return $this->referencedConsignmentID[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportEquipmentTypeCode|null
      */
     public function getTransportEquipmentTypeCode(): ?TransportEquipmentTypeCode
@@ -1041,6 +1064,29 @@ class TransportEquipmentType
         $this->addToinformation($information = new Information());
 
         return $information;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Information $information
+     * @return self
+     */
+    public function addOnceToInformation(Information $information): self
+    {
+        $this->information[0] = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Information
+     */
+    public function addOnceToInformationWithCreate(): Information
+    {
+        if ($this->information === []) {
+            $this->addOnceToinformation(new Information());
+        }
+
+        return $this->information[0];
     }
 
     /**
@@ -1295,6 +1341,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks $damageRemarks
+     * @return self
+     */
+    public function addOnceToDamageRemarks(DamageRemarks $damageRemarks): self
+    {
+        $this->damageRemarks[0] = $damageRemarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks
+     */
+    public function addOnceToDamageRemarksWithCreate(): DamageRemarks
+    {
+        if ($this->damageRemarks === []) {
+            $this->addOnceTodamageRemarks(new DamageRemarks());
+        }
+
+        return $this->damageRemarks[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -1342,6 +1411,29 @@ class TransportEquipmentType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 
     /**
@@ -1393,6 +1485,30 @@ class TransportEquipmentType
         $this->addTospecialTransportRequirements($specialTransportRequirements = new SpecialTransportRequirements());
 
         return $specialTransportRequirements;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecialTransportRequirements $specialTransportRequirements
+     * @return self
+     */
+    public function addOnceToSpecialTransportRequirements(
+        SpecialTransportRequirements $specialTransportRequirements,
+    ): self {
+        $this->specialTransportRequirements[0] = $specialTransportRequirements;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\SpecialTransportRequirements
+     */
+    public function addOnceToSpecialTransportRequirementsWithCreate(): SpecialTransportRequirements
+    {
+        if ($this->specialTransportRequirements === []) {
+            $this->addOnceTospecialTransportRequirements(new SpecialTransportRequirements());
+        }
+
+        return $this->specialTransportRequirements[0];
     }
 
     /**
@@ -1610,6 +1726,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipmentSeal>|null
      */
     public function getTransportEquipmentSeal(): ?array
@@ -1657,6 +1796,29 @@ class TransportEquipmentType
         $this->addTotransportEquipmentSeal($transportEquipmentSeal = new TransportEquipmentSeal());
 
         return $transportEquipmentSeal;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEquipmentSeal $transportEquipmentSeal
+     * @return self
+     */
+    public function addOnceToTransportEquipmentSeal(TransportEquipmentSeal $transportEquipmentSeal): self
+    {
+        $this->transportEquipmentSeal[0] = $transportEquipmentSeal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEquipmentSeal
+     */
+    public function addOnceToTransportEquipmentSealWithCreate(): TransportEquipmentSeal
+    {
+        if ($this->transportEquipmentSeal === []) {
+            $this->addOnceTotransportEquipmentSeal(new TransportEquipmentSeal());
+        }
+
+        return $this->transportEquipmentSeal[0];
     }
 
     /**
@@ -2000,6 +2162,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PositioningTransportEvent $positioningTransportEvent
+     * @return self
+     */
+    public function addOnceToPositioningTransportEvent(PositioningTransportEvent $positioningTransportEvent): self
+    {
+        $this->positioningTransportEvent[0] = $positioningTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PositioningTransportEvent
+     */
+    public function addOnceToPositioningTransportEventWithCreate(): PositioningTransportEvent
+    {
+        if ($this->positioningTransportEvent === []) {
+            $this->addOnceTopositioningTransportEvent(new PositioningTransportEvent());
+        }
+
+        return $this->positioningTransportEvent[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\QuarantineTransportEvent>|null
      */
     public function getQuarantineTransportEvent(): ?array
@@ -2047,6 +2232,29 @@ class TransportEquipmentType
         $this->addToquarantineTransportEvent($quarantineTransportEvent = new QuarantineTransportEvent());
 
         return $quarantineTransportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\QuarantineTransportEvent $quarantineTransportEvent
+     * @return self
+     */
+    public function addOnceToQuarantineTransportEvent(QuarantineTransportEvent $quarantineTransportEvent): self
+    {
+        $this->quarantineTransportEvent[0] = $quarantineTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\QuarantineTransportEvent
+     */
+    public function addOnceToQuarantineTransportEventWithCreate(): QuarantineTransportEvent
+    {
+        if ($this->quarantineTransportEvent === []) {
+            $this->addOnceToquarantineTransportEvent(new QuarantineTransportEvent());
+        }
+
+        return $this->quarantineTransportEvent[0];
     }
 
     /**
@@ -2100,6 +2308,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent $deliveryTransportEvent
+     * @return self
+     */
+    public function addOnceToDeliveryTransportEvent(DeliveryTransportEvent $deliveryTransportEvent): self
+    {
+        $this->deliveryTransportEvent[0] = $deliveryTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryTransportEvent
+     */
+    public function addOnceToDeliveryTransportEventWithCreate(): DeliveryTransportEvent
+    {
+        if ($this->deliveryTransportEvent === []) {
+            $this->addOnceTodeliveryTransportEvent(new DeliveryTransportEvent());
+        }
+
+        return $this->deliveryTransportEvent[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PickupTransportEvent>|null
      */
     public function getPickupTransportEvent(): ?array
@@ -2147,6 +2378,29 @@ class TransportEquipmentType
         $this->addTopickupTransportEvent($pickupTransportEvent = new PickupTransportEvent());
 
         return $pickupTransportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PickupTransportEvent $pickupTransportEvent
+     * @return self
+     */
+    public function addOnceToPickupTransportEvent(PickupTransportEvent $pickupTransportEvent): self
+    {
+        $this->pickupTransportEvent[0] = $pickupTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PickupTransportEvent
+     */
+    public function addOnceToPickupTransportEventWithCreate(): PickupTransportEvent
+    {
+        if ($this->pickupTransportEvent === []) {
+            $this->addOnceTopickupTransportEvent(new PickupTransportEvent());
+        }
+
+        return $this->pickupTransportEvent[0];
     }
 
     /**
@@ -2200,6 +2454,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HandlingTransportEvent $handlingTransportEvent
+     * @return self
+     */
+    public function addOnceToHandlingTransportEvent(HandlingTransportEvent $handlingTransportEvent): self
+    {
+        $this->handlingTransportEvent[0] = $handlingTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HandlingTransportEvent
+     */
+    public function addOnceToHandlingTransportEventWithCreate(): HandlingTransportEvent
+    {
+        if ($this->handlingTransportEvent === []) {
+            $this->addOnceTohandlingTransportEvent(new HandlingTransportEvent());
+        }
+
+        return $this->handlingTransportEvent[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent>|null
      */
     public function getLoadingTransportEvent(): ?array
@@ -2250,6 +2527,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent $loadingTransportEvent
+     * @return self
+     */
+    public function addOnceToLoadingTransportEvent(LoadingTransportEvent $loadingTransportEvent): self
+    {
+        $this->loadingTransportEvent[0] = $loadingTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\LoadingTransportEvent
+     */
+    public function addOnceToLoadingTransportEventWithCreate(): LoadingTransportEvent
+    {
+        if ($this->loadingTransportEvent === []) {
+            $this->addOnceToloadingTransportEvent(new LoadingTransportEvent());
+        }
+
+        return $this->loadingTransportEvent[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      */
     public function getTransportEvent(): ?array
@@ -2297,6 +2597,29 @@ class TransportEquipmentType
         $this->addTotransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEvent $transportEvent
+     * @return self
+     */
+    public function addOnceToTransportEvent(TransportEvent $transportEvent): self
+    {
+        $this->transportEvent[0] = $transportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEvent
+     */
+    public function addOnceToTransportEventWithCreate(): TransportEvent
+    {
+        if ($this->transportEvent === []) {
+            $this->addOnceTotransportEvent(new TransportEvent());
+        }
+
+        return $this->transportEvent[0];
     }
 
     /**
@@ -2379,6 +2702,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HaulageTradingTerms $haulageTradingTerms
+     * @return self
+     */
+    public function addOnceToHaulageTradingTerms(HaulageTradingTerms $haulageTradingTerms): self
+    {
+        $this->haulageTradingTerms[0] = $haulageTradingTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HaulageTradingTerms
+     */
+    public function addOnceToHaulageTradingTermsWithCreate(): HaulageTradingTerms
+    {
+        if ($this->haulageTradingTerms === []) {
+            $this->addOnceTohaulageTradingTerms(new HaulageTradingTerms());
+        }
+
+        return $this->haulageTradingTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null
      */
     public function getHazardousGoodsTransit(): ?array
@@ -2426,6 +2772,29 @@ class TransportEquipmentType
         $this->addTohazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
 
         return $hazardousGoodsTransit;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit $hazardousGoodsTransit
+     * @return self
+     */
+    public function addOnceToHazardousGoodsTransit(HazardousGoodsTransit $hazardousGoodsTransit): self
+    {
+        $this->hazardousGoodsTransit[0] = $hazardousGoodsTransit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit
+     */
+    public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
+    {
+        if ($this->hazardousGoodsTransit === []) {
+            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+        }
+
+        return $this->hazardousGoodsTransit[0];
     }
 
     /**
@@ -2480,6 +2849,30 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PackagedTransportHandlingUnit $packagedTransportHandlingUnit
+     * @return self
+     */
+    public function addOnceToPackagedTransportHandlingUnit(
+        PackagedTransportHandlingUnit $packagedTransportHandlingUnit,
+    ): self {
+        $this->packagedTransportHandlingUnit[0] = $packagedTransportHandlingUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PackagedTransportHandlingUnit
+     */
+    public function addOnceToPackagedTransportHandlingUnitWithCreate(): PackagedTransportHandlingUnit
+    {
+        if ($this->packagedTransportHandlingUnit === []) {
+            $this->addOnceTopackagedTransportHandlingUnit(new PackagedTransportHandlingUnit());
+        }
+
+        return $this->packagedTransportHandlingUnit[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ServiceAllowanceCharge>|null
      */
     public function getServiceAllowanceCharge(): ?array
@@ -2527,6 +2920,29 @@ class TransportEquipmentType
         $this->addToserviceAllowanceCharge($serviceAllowanceCharge = new ServiceAllowanceCharge());
 
         return $serviceAllowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ServiceAllowanceCharge $serviceAllowanceCharge
+     * @return self
+     */
+    public function addOnceToServiceAllowanceCharge(ServiceAllowanceCharge $serviceAllowanceCharge): self
+    {
+        $this->serviceAllowanceCharge[0] = $serviceAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ServiceAllowanceCharge
+     */
+    public function addOnceToServiceAllowanceChargeWithCreate(): ServiceAllowanceCharge
+    {
+        if ($this->serviceAllowanceCharge === []) {
+            $this->addOnceToserviceAllowanceCharge(new ServiceAllowanceCharge());
+        }
+
+        return $this->serviceAllowanceCharge[0];
     }
 
     /**
@@ -2580,6 +2996,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge $freightAllowanceCharge
+     * @return self
+     */
+    public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
+    {
+        $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge
+     */
+    public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
+    {
+        if ($this->freightAllowanceCharge === []) {
+            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+        }
+
+        return $this->freightAllowanceCharge[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AttachedTransportEquipment>|null
      */
     public function getAttachedTransportEquipment(): ?array
@@ -2627,6 +3066,29 @@ class TransportEquipmentType
         $this->addToattachedTransportEquipment($attachedTransportEquipment = new AttachedTransportEquipment());
 
         return $attachedTransportEquipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AttachedTransportEquipment $attachedTransportEquipment
+     * @return self
+     */
+    public function addOnceToAttachedTransportEquipment(AttachedTransportEquipment $attachedTransportEquipment): self
+    {
+        $this->attachedTransportEquipment[0] = $attachedTransportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AttachedTransportEquipment
+     */
+    public function addOnceToAttachedTransportEquipmentWithCreate(): AttachedTransportEquipment
+    {
+        if ($this->attachedTransportEquipment === []) {
+            $this->addOnceToattachedTransportEquipment(new AttachedTransportEquipment());
+        }
+
+        return $this->attachedTransportEquipment[0];
     }
 
     /**
@@ -2767,6 +3229,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference $shipmentDocumentReference
+     * @return self
+     */
+    public function addOnceToShipmentDocumentReference(ShipmentDocumentReference $shipmentDocumentReference): self
+    {
+        $this->shipmentDocumentReference[0] = $shipmentDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference
+     */
+    public function addOnceToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
+    {
+        if ($this->shipmentDocumentReference === []) {
+            $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
+        }
+
+        return $this->shipmentDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContainedInTransportEquipment>|null
      */
     public function getContainedInTransportEquipment(): ?array
@@ -2815,6 +3300,30 @@ class TransportEquipmentType
         $this->addTocontainedInTransportEquipment($containedInTransportEquipment = new ContainedInTransportEquipment());
 
         return $containedInTransportEquipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainedInTransportEquipment $containedInTransportEquipment
+     * @return self
+     */
+    public function addOnceToContainedInTransportEquipment(
+        ContainedInTransportEquipment $containedInTransportEquipment,
+    ): self {
+        $this->containedInTransportEquipment[0] = $containedInTransportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContainedInTransportEquipment
+     */
+    public function addOnceToContainedInTransportEquipmentWithCreate(): ContainedInTransportEquipment
+    {
+        if ($this->containedInTransportEquipment === []) {
+            $this->addOnceTocontainedInTransportEquipment(new ContainedInTransportEquipment());
+        }
+
+        return $this->containedInTransportEquipment[0];
     }
 
     /**
@@ -2868,6 +3377,29 @@ class TransportEquipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Package $package
+     * @return self
+     */
+    public function addOnceToPackage(Package $package): self
+    {
+        $this->package[0] = $package;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Package
+     */
+    public function addOnceToPackageWithCreate(): Package
+    {
+        if ($this->package === []) {
+            $this->addOnceTopackage(new Package());
+        }
+
+        return $this->package[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      */
     public function getGoodsItem(): ?array
@@ -2915,5 +3447,28 @@ class TransportEquipmentType
         $this->addTogoodsItem($goodsItem = new GoodsItem());
 
         return $goodsItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\GoodsItem $goodsItem
+     * @return self
+     */
+    public function addOnceToGoodsItem(GoodsItem $goodsItem): self
+    {
+        $this->goodsItem[0] = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\GoodsItem
+     */
+    public function addOnceToGoodsItemWithCreate(): GoodsItem
+    {
+        if ($this->goodsItem === []) {
+            $this->addOnceTogoodsItem(new GoodsItem());
+        }
+
+        return $this->goodsItem[0];
     }
 }

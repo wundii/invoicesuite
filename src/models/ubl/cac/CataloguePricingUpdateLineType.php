@@ -189,4 +189,28 @@ class CataloguePricingUpdateLineType
 
         return $requiredItemLocationQuantity;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity $requiredItemLocationQuantity
+     * @return self
+     */
+    public function addOnceToRequiredItemLocationQuantity(
+        RequiredItemLocationQuantity $requiredItemLocationQuantity,
+    ): self {
+        $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity
+     */
+    public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
+    {
+        if ($this->requiredItemLocationQuantity === []) {
+            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+        }
+
+        return $this->requiredItemLocationQuantity[0];
+    }
 }

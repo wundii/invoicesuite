@@ -429,6 +429,29 @@ class DocumentReferenceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\XPath $xPath
+     * @return self
+     */
+    public function addOnceToXPath(XPath $xPath): self
+    {
+        $this->xPath[0] = $xPath;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\XPath
+     */
+    public function addOnceToXPathWithCreate(): XPath
+    {
+        if ($this->xPath === []) {
+            $this->addOnceToxPath(new XPath());
+        }
+
+        return $this->xPath[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LanguageID|null
      */
     public function getLanguageID(): ?LanguageID
@@ -592,6 +615,29 @@ class DocumentReferenceType
         $this->addTodocumentDescription($documentDescription = new DocumentDescription());
 
         return $documentDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DocumentDescription $documentDescription
+     * @return self
+     */
+    public function addOnceToDocumentDescription(DocumentDescription $documentDescription): self
+    {
+        $this->documentDescription[0] = $documentDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentDescription
+     */
+    public function addOnceToDocumentDescriptionWithCreate(): DocumentDescription
+    {
+        if ($this->documentDescription === []) {
+            $this->addOnceTodocumentDescription(new DocumentDescription());
+        }
+
+        return $this->documentDescription[0];
     }
 
     /**

@@ -149,4 +149,27 @@ class BudgetAccountLineType
 
         return $budgetAccount;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BudgetAccount $budgetAccount
+     * @return self
+     */
+    public function addOnceToBudgetAccount(BudgetAccount $budgetAccount): self
+    {
+        $this->budgetAccount[0] = $budgetAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BudgetAccount
+     */
+    public function addOnceToBudgetAccountWithCreate(): BudgetAccount
+    {
+        if ($this->budgetAccount === []) {
+            $this->addOnceTobudgetAccount(new BudgetAccount());
+        }
+
+        return $this->budgetAccount[0];
+    }
 }

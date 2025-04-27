@@ -271,4 +271,27 @@ class TransportationSegmentType
 
         return $shipmentStage;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage $shipmentStage
+     * @return self
+     */
+    public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
+    {
+        $this->shipmentStage[0] = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage
+     */
+    public function addOnceToShipmentStageWithCreate(): ShipmentStage
+    {
+        if ($this->shipmentStage === []) {
+            $this->addOnceToshipmentStage(new ShipmentStage());
+        }
+
+        return $this->shipmentStage[0];
+    }
 }

@@ -220,6 +220,29 @@ class AwardingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription>|null
      */
     public function getTechnicalCommitteeDescription(): ?array
@@ -271,6 +294,30 @@ class AwardingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription $technicalCommitteeDescription
+     * @return self
+     */
+    public function addOnceToTechnicalCommitteeDescription(
+        TechnicalCommitteeDescription $technicalCommitteeDescription,
+    ): self {
+        $this->technicalCommitteeDescription[0] = $technicalCommitteeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TechnicalCommitteeDescription
+     */
+    public function addOnceToTechnicalCommitteeDescriptionWithCreate(): TechnicalCommitteeDescription
+    {
+        if ($this->technicalCommitteeDescription === []) {
+            $this->addOnceTotechnicalCommitteeDescription(new TechnicalCommitteeDescription());
+        }
+
+        return $this->technicalCommitteeDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription>|null
      */
     public function getLowTendersDescription(): ?array
@@ -318,6 +365,29 @@ class AwardingTermsType
         $this->addTolowTendersDescription($lowTendersDescription = new LowTendersDescription());
 
         return $lowTendersDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription $lowTendersDescription
+     * @return self
+     */
+    public function addOnceToLowTendersDescription(LowTendersDescription $lowTendersDescription): self
+    {
+        $this->lowTendersDescription[0] = $lowTendersDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription
+     */
+    public function addOnceToLowTendersDescriptionWithCreate(): LowTendersDescription
+    {
+        if ($this->lowTendersDescription === []) {
+            $this->addOnceTolowTendersDescription(new LowTendersDescription());
+        }
+
+        return $this->lowTendersDescription[0];
     }
 
     /**
@@ -390,6 +460,29 @@ class AwardingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription $prizeDescription
+     * @return self
+     */
+    public function addOnceToPrizeDescription(PrizeDescription $prizeDescription): self
+    {
+        $this->prizeDescription[0] = $prizeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PrizeDescription
+     */
+    public function addOnceToPrizeDescriptionWithCreate(): PrizeDescription
+    {
+        if ($this->prizeDescription === []) {
+            $this->addOnceToprizeDescription(new PrizeDescription());
+        }
+
+        return $this->prizeDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription>|null
      */
     public function getPaymentDescription(): ?array
@@ -437,6 +530,29 @@ class AwardingTermsType
         $this->addTopaymentDescription($paymentDescription = new PaymentDescription());
 
         return $paymentDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription $paymentDescription
+     * @return self
+     */
+    public function addOnceToPaymentDescription(PaymentDescription $paymentDescription): self
+    {
+        $this->paymentDescription[0] = $paymentDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription
+     */
+    public function addOnceToPaymentDescriptionWithCreate(): PaymentDescription
+    {
+        if ($this->paymentDescription === []) {
+            $this->addOnceTopaymentDescription(new PaymentDescription());
+        }
+
+        return $this->paymentDescription[0];
     }
 
     /**
@@ -528,6 +644,29 @@ class AwardingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion $awardingCriterion
+     * @return self
+     */
+    public function addOnceToAwardingCriterion(AwardingCriterion $awardingCriterion): self
+    {
+        $this->awardingCriterion[0] = $awardingCriterion;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AwardingCriterion
+     */
+    public function addOnceToAwardingCriterionWithCreate(): AwardingCriterion
+    {
+        if ($this->awardingCriterion === []) {
+            $this->addOnceToawardingCriterion(new AwardingCriterion());
+        }
+
+        return $this->awardingCriterion[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson>|null
      */
     public function getTechnicalCommitteePerson(): ?array
@@ -575,5 +714,28 @@ class AwardingTermsType
         $this->addTotechnicalCommitteePerson($technicalCommitteePerson = new TechnicalCommitteePerson());
 
         return $technicalCommitteePerson;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson $technicalCommitteePerson
+     * @return self
+     */
+    public function addOnceToTechnicalCommitteePerson(TechnicalCommitteePerson $technicalCommitteePerson): self
+    {
+        $this->technicalCommitteePerson[0] = $technicalCommitteePerson;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TechnicalCommitteePerson
+     */
+    public function addOnceToTechnicalCommitteePersonWithCreate(): TechnicalCommitteePerson
+    {
+        if ($this->technicalCommitteePerson === []) {
+            $this->addOnceTotechnicalCommitteePerson(new TechnicalCommitteePerson());
+        }
+
+        return $this->technicalCommitteePerson[0];
     }
 }

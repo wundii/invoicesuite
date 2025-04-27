@@ -338,6 +338,29 @@ class FinancialAccountType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentNote $paymentNote
+     * @return self
+     */
+    public function addOnceToPaymentNote(PaymentNote $paymentNote): self
+    {
+        $this->paymentNote[0] = $paymentNote;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentNote
+     */
+    public function addOnceToPaymentNoteWithCreate(): PaymentNote
+    {
+        if ($this->paymentNote === []) {
+            $this->addOnceTopaymentNote(new PaymentNote());
+        }
+
+        return $this->paymentNote[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FinancialInstitutionBranch|null
      */
     public function getFinancialInstitutionBranch(): ?FinancialInstitutionBranch

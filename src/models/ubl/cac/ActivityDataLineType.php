@@ -349,4 +349,27 @@ class ActivityDataLineType
 
         return $salesItem;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem $salesItem
+     * @return self
+     */
+    public function addOnceToSalesItem(SalesItem $salesItem): self
+    {
+        $this->salesItem[0] = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SalesItem
+     */
+    public function addOnceToSalesItemWithCreate(): SalesItem
+    {
+        if ($this->salesItem === []) {
+            $this->addOnceTosalesItem(new SalesItem());
+        }
+
+        return $this->salesItem[0];
+    }
 }

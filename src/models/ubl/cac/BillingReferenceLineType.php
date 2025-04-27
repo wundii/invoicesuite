@@ -149,4 +149,27 @@ class BillingReferenceLineType
 
         return $allowanceCharge;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
+    }
 }

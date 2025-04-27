@@ -413,6 +413,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackQuantity|null
      */
     public function getPackQuantity(): ?PackQuantity
@@ -588,6 +611,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation $additionalInformation
+     * @return self
+     */
+    public function addOnceToAdditionalInformation(AdditionalInformation $additionalInformation): self
+    {
+        $this->additionalInformation[0] = $additionalInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation
+     */
+    public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
+    {
+        if ($this->additionalInformation === []) {
+            $this->addOnceToadditionalInformation(new AdditionalInformation());
+        }
+
+        return $this->additionalInformation[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Keyword>|null
      */
     public function getKeyword(): ?array
@@ -635,6 +681,29 @@ class ItemType
         $this->addTokeyword($keyword = new Keyword());
 
         return $keyword;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Keyword $keyword
+     * @return self
+     */
+    public function addOnceToKeyword(Keyword $keyword): self
+    {
+        $this->keyword[0] = $keyword;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Keyword
+     */
+    public function addOnceToKeywordWithCreate(): Keyword
+    {
+        if ($this->keyword === []) {
+            $this->addOnceTokeyword(new Keyword());
+        }
+
+        return $this->keyword[0];
     }
 
     /**
@@ -688,6 +757,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BrandName $brandName
+     * @return self
+     */
+    public function addOnceToBrandName(BrandName $brandName): self
+    {
+        $this->brandName[0] = $brandName;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\BrandName
+     */
+    public function addOnceToBrandNameWithCreate(): BrandName
+    {
+        if ($this->brandName === []) {
+            $this->addOnceTobrandName(new BrandName());
+        }
+
+        return $this->brandName[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ModelName>|null
      */
     public function getModelName(): ?array
@@ -735,6 +827,29 @@ class ItemType
         $this->addTomodelName($modelName = new ModelName());
 
         return $modelName;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ModelName $modelName
+     * @return self
+     */
+    public function addOnceToModelName(ModelName $modelName): self
+    {
+        $this->modelName[0] = $modelName;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ModelName
+     */
+    public function addOnceToModelNameWithCreate(): ModelName
+    {
+        if ($this->modelName === []) {
+            $this->addOnceTomodelName(new ModelName());
+        }
+
+        return $this->modelName[0];
     }
 
     /**
@@ -847,6 +962,30 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification $manufacturersItemIdentification
+     * @return self
+     */
+    public function addOnceToManufacturersItemIdentification(
+        ManufacturersItemIdentification $manufacturersItemIdentification,
+    ): self {
+        $this->manufacturersItemIdentification[0] = $manufacturersItemIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ManufacturersItemIdentification
+     */
+    public function addOnceToManufacturersItemIdentificationWithCreate(): ManufacturersItemIdentification
+    {
+        if ($this->manufacturersItemIdentification === []) {
+            $this->addOnceTomanufacturersItemIdentification(new ManufacturersItemIdentification());
+        }
+
+        return $this->manufacturersItemIdentification[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\StandardItemIdentification|null
      */
     public function getStandardItemIdentification(): ?StandardItemIdentification
@@ -956,6 +1095,30 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification $additionalItemIdentification
+     * @return self
+     */
+    public function addOnceToAdditionalItemIdentification(
+        AdditionalItemIdentification $additionalItemIdentification,
+    ): self {
+        $this->additionalItemIdentification[0] = $additionalItemIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemIdentification
+     */
+    public function addOnceToAdditionalItemIdentificationWithCreate(): AdditionalItemIdentification
+    {
+        if ($this->additionalItemIdentification === []) {
+            $this->addOnceToadditionalItemIdentification(new AdditionalItemIdentification());
+        }
+
+        return $this->additionalItemIdentification[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CatalogueDocumentReference|null
      */
     public function getCatalogueDocumentReference(): ?CatalogueDocumentReference
@@ -1033,6 +1196,30 @@ class ItemType
         $this->addToitemSpecificationDocumentReference($itemSpecificationDocumentReference = new ItemSpecificationDocumentReference());
 
         return $itemSpecificationDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference $itemSpecificationDocumentReference
+     * @return self
+     */
+    public function addOnceToItemSpecificationDocumentReference(
+        ItemSpecificationDocumentReference $itemSpecificationDocumentReference,
+    ): self {
+        $this->itemSpecificationDocumentReference[0] = $itemSpecificationDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ItemSpecificationDocumentReference
+     */
+    public function addOnceToItemSpecificationDocumentReferenceWithCreate(): ItemSpecificationDocumentReference
+    {
+        if ($this->itemSpecificationDocumentReference === []) {
+            $this->addOnceToitemSpecificationDocumentReference(new ItemSpecificationDocumentReference());
+        }
+
+        return $this->itemSpecificationDocumentReference[0];
     }
 
     /**
@@ -1115,6 +1302,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification $commodityClassification
+     * @return self
+     */
+    public function addOnceToCommodityClassification(CommodityClassification $commodityClassification): self
+    {
+        $this->commodityClassification[0] = $commodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification
+     */
+    public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
+    {
+        if ($this->commodityClassification === []) {
+            $this->addOnceTocommodityClassification(new CommodityClassification());
+        }
+
+        return $this->commodityClassification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransactionConditions>|null
      */
     public function getTransactionConditions(): ?array
@@ -1162,6 +1372,29 @@ class ItemType
         $this->addTotransactionConditions($transactionConditions = new TransactionConditions());
 
         return $transactionConditions;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransactionConditions $transactionConditions
+     * @return self
+     */
+    public function addOnceToTransactionConditions(TransactionConditions $transactionConditions): self
+    {
+        $this->transactionConditions[0] = $transactionConditions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransactionConditions
+     */
+    public function addOnceToTransactionConditionsWithCreate(): TransactionConditions
+    {
+        if ($this->transactionConditions === []) {
+            $this->addOnceTotransactionConditions(new TransactionConditions());
+        }
+
+        return $this->transactionConditions[0];
     }
 
     /**
@@ -1215,6 +1448,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousItem $hazardousItem
+     * @return self
+     */
+    public function addOnceToHazardousItem(HazardousItem $hazardousItem): self
+    {
+        $this->hazardousItem[0] = $hazardousItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HazardousItem
+     */
+    public function addOnceToHazardousItemWithCreate(): HazardousItem
+    {
+        if ($this->hazardousItem === []) {
+            $this->addOnceTohazardousItem(new HazardousItem());
+        }
+
+        return $this->hazardousItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>|null
      */
     public function getClassifiedTaxCategory(): ?array
@@ -1262,6 +1518,29 @@ class ItemType
         $this->addToclassifiedTaxCategory($classifiedTaxCategory = new ClassifiedTaxCategory());
 
         return $classifiedTaxCategory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory $classifiedTaxCategory
+     * @return self
+     */
+    public function addOnceToClassifiedTaxCategory(ClassifiedTaxCategory $classifiedTaxCategory): self
+    {
+        $this->classifiedTaxCategory[0] = $classifiedTaxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory
+     */
+    public function addOnceToClassifiedTaxCategoryWithCreate(): ClassifiedTaxCategory
+    {
+        if ($this->classifiedTaxCategory === []) {
+            $this->addOnceToclassifiedTaxCategory(new ClassifiedTaxCategory());
+        }
+
+        return $this->classifiedTaxCategory[0];
     }
 
     /**
@@ -1315,6 +1594,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty $additionalItemProperty
+     * @return self
+     */
+    public function addOnceToAdditionalItemProperty(AdditionalItemProperty $additionalItemProperty): self
+    {
+        $this->additionalItemProperty[0] = $additionalItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty
+     */
+    public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
+    {
+        if ($this->additionalItemProperty === []) {
+            $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
+        }
+
+        return $this->additionalItemProperty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty>|null
      */
     public function getManufacturerParty(): ?array
@@ -1362,6 +1664,29 @@ class ItemType
         $this->addTomanufacturerParty($manufacturerParty = new ManufacturerParty());
 
         return $manufacturerParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty $manufacturerParty
+     * @return self
+     */
+    public function addOnceToManufacturerParty(ManufacturerParty $manufacturerParty): self
+    {
+        $this->manufacturerParty[0] = $manufacturerParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ManufacturerParty
+     */
+    public function addOnceToManufacturerPartyWithCreate(): ManufacturerParty
+    {
+        if ($this->manufacturerParty === []) {
+            $this->addOnceTomanufacturerParty(new ManufacturerParty());
+        }
+
+        return $this->manufacturerParty[0];
     }
 
     /**
@@ -1445,6 +1770,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginAddress $originAddress
+     * @return self
+     */
+    public function addOnceToOriginAddress(OriginAddress $originAddress): self
+    {
+        $this->originAddress[0] = $originAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OriginAddress
+     */
+    public function addOnceToOriginAddressWithCreate(): OriginAddress
+    {
+        if ($this->originAddress === []) {
+            $this->addOnceTooriginAddress(new OriginAddress());
+        }
+
+        return $this->originAddress[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ItemInstance>|null
      */
     public function getItemInstance(): ?array
@@ -1492,6 +1840,29 @@ class ItemType
         $this->addToitemInstance($itemInstance = new ItemInstance());
 
         return $itemInstance;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemInstance $itemInstance
+     * @return self
+     */
+    public function addOnceToItemInstance(ItemInstance $itemInstance): self
+    {
+        $this->itemInstance[0] = $itemInstance;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ItemInstance
+     */
+    public function addOnceToItemInstanceWithCreate(): ItemInstance
+    {
+        if ($this->itemInstance === []) {
+            $this->addOnceToitemInstance(new ItemInstance());
+        }
+
+        return $this->itemInstance[0];
     }
 
     /**
@@ -1545,6 +1916,29 @@ class ItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Certificate $certificate
+     * @return self
+     */
+    public function addOnceToCertificate(Certificate $certificate): self
+    {
+        $this->certificate[0] = $certificate;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Certificate
+     */
+    public function addOnceToCertificateWithCreate(): Certificate
+    {
+        if ($this->certificate === []) {
+            $this->addOnceTocertificate(new Certificate());
+        }
+
+        return $this->certificate[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Dimension>|null
      */
     public function getDimension(): ?array
@@ -1592,5 +1986,28 @@ class ItemType
         $this->addTodimension($dimension = new Dimension());
 
         return $dimension;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Dimension $dimension
+     * @return self
+     */
+    public function addOnceToDimension(Dimension $dimension): self
+    {
+        $this->dimension[0] = $dimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Dimension
+     */
+    public function addOnceToDimensionWithCreate(): Dimension
+    {
+        if ($this->dimension === []) {
+            $this->addOnceTodimension(new Dimension());
+        }
+
+        return $this->dimension[0];
     }
 }

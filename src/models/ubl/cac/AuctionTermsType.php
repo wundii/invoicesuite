@@ -164,6 +164,29 @@ class AuctionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription $justificationDescription
+     * @return self
+     */
+    public function addOnceToJustificationDescription(JustificationDescription $justificationDescription): self
+    {
+        $this->justificationDescription[0] = $justificationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\JustificationDescription
+     */
+    public function addOnceToJustificationDescriptionWithCreate(): JustificationDescription
+    {
+        if ($this->justificationDescription === []) {
+            $this->addOnceTojustificationDescription(new JustificationDescription());
+        }
+
+        return $this->justificationDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -211,6 +234,29 @@ class AuctionTermsType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 
     /**
@@ -264,6 +310,29 @@ class AuctionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription $processDescription
+     * @return self
+     */
+    public function addOnceToProcessDescription(ProcessDescription $processDescription): self
+    {
+        $this->processDescription[0] = $processDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ProcessDescription
+     */
+    public function addOnceToProcessDescriptionWithCreate(): ProcessDescription
+    {
+        if ($this->processDescription === []) {
+            $this->addOnceToprocessDescription(new ProcessDescription());
+        }
+
+        return $this->processDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription>|null
      */
     public function getConditionsDescription(): ?array
@@ -314,6 +383,29 @@ class AuctionTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription $conditionsDescription
+     * @return self
+     */
+    public function addOnceToConditionsDescription(ConditionsDescription $conditionsDescription): self
+    {
+        $this->conditionsDescription[0] = $conditionsDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ConditionsDescription
+     */
+    public function addOnceToConditionsDescriptionWithCreate(): ConditionsDescription
+    {
+        if ($this->conditionsDescription === []) {
+            $this->addOnceToconditionsDescription(new ConditionsDescription());
+        }
+
+        return $this->conditionsDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription>|null
      */
     public function getElectronicDeviceDescription(): ?array
@@ -361,6 +453,30 @@ class AuctionTermsType
         $this->addToelectronicDeviceDescription($electronicDeviceDescription = new ElectronicDeviceDescription());
 
         return $electronicDeviceDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription $electronicDeviceDescription
+     * @return self
+     */
+    public function addOnceToElectronicDeviceDescription(
+        ElectronicDeviceDescription $electronicDeviceDescription,
+    ): self {
+        $this->electronicDeviceDescription[0] = $electronicDeviceDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ElectronicDeviceDescription
+     */
+    public function addOnceToElectronicDeviceDescriptionWithCreate(): ElectronicDeviceDescription
+    {
+        if ($this->electronicDeviceDescription === []) {
+            $this->addOnceToelectronicDeviceDescription(new ElectronicDeviceDescription());
+        }
+
+        return $this->electronicDeviceDescription[0];
     }
 
     /**

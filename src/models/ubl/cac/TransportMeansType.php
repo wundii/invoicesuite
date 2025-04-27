@@ -266,6 +266,29 @@ class TransportMeansType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality $registrationNationality
+     * @return self
+     */
+    public function addOnceToRegistrationNationality(RegistrationNationality $registrationNationality): self
+    {
+        $this->registrationNationality[0] = $registrationNationality;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality
+     */
+    public function addOnceToRegistrationNationalityWithCreate(): RegistrationNationality
+    {
+        if ($this->registrationNationality === []) {
+            $this->addOnceToregistrationNationality(new RegistrationNationality());
+        }
+
+        return $this->registrationNationality[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DirectionCode|null
      */
     public function getDirectionCode(): ?DirectionCode
@@ -574,5 +597,28 @@ class TransportMeansType
         $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
     }
 }

@@ -145,6 +145,29 @@ class SalesItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActivityProperty $activityProperty
+     * @return self
+     */
+    public function addOnceToActivityProperty(ActivityProperty $activityProperty): self
+    {
+        $this->activityProperty[0] = $activityProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ActivityProperty
+     */
+    public function addOnceToActivityPropertyWithCreate(): ActivityProperty
+    {
+        if ($this->activityProperty === []) {
+            $this->addOnceToactivityProperty(new ActivityProperty());
+        }
+
+        return $this->activityProperty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice>|null
      */
     public function getTaxExclusivePrice(): ?array
@@ -195,6 +218,29 @@ class SalesItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice $taxExclusivePrice
+     * @return self
+     */
+    public function addOnceToTaxExclusivePrice(TaxExclusivePrice $taxExclusivePrice): self
+    {
+        $this->taxExclusivePrice[0] = $taxExclusivePrice;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxExclusivePrice
+     */
+    public function addOnceToTaxExclusivePriceWithCreate(): TaxExclusivePrice
+    {
+        if ($this->taxExclusivePrice === []) {
+            $this->addOnceTotaxExclusivePrice(new TaxExclusivePrice());
+        }
+
+        return $this->taxExclusivePrice[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice>|null
      */
     public function getTaxInclusivePrice(): ?array
@@ -242,6 +288,29 @@ class SalesItemType
         $this->addTotaxInclusivePrice($taxInclusivePrice = new TaxInclusivePrice());
 
         return $taxInclusivePrice;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice $taxInclusivePrice
+     * @return self
+     */
+    public function addOnceToTaxInclusivePrice(TaxInclusivePrice $taxInclusivePrice): self
+    {
+        $this->taxInclusivePrice[0] = $taxInclusivePrice;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxInclusivePrice
+     */
+    public function addOnceToTaxInclusivePriceWithCreate(): TaxInclusivePrice
+    {
+        if ($this->taxInclusivePrice === []) {
+            $this->addOnceTotaxInclusivePrice(new TaxInclusivePrice());
+        }
+
+        return $this->taxInclusivePrice[0];
     }
 
     /**

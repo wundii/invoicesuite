@@ -343,6 +343,29 @@ class PaymentMeansType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\InstructionNote $instructionNote
+     * @return self
+     */
+    public function addOnceToInstructionNote(InstructionNote $instructionNote): self
+    {
+        $this->instructionNote[0] = $instructionNote;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\InstructionNote
+     */
+    public function addOnceToInstructionNoteWithCreate(): InstructionNote
+    {
+        if ($this->instructionNote === []) {
+            $this->addOnceToinstructionNote(new InstructionNote());
+        }
+
+        return $this->instructionNote[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PaymentID>|null
      */
     public function getPaymentID(): ?array
@@ -390,6 +413,29 @@ class PaymentMeansType
         $this->addTopaymentID($paymentID = new PaymentID());
 
         return $paymentID;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentID $paymentID
+     * @return self
+     */
+    public function addOnceToPaymentID(PaymentID $paymentID): self
+    {
+        $this->paymentID[0] = $paymentID;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentID
+     */
+    public function addOnceToPaymentIDWithCreate(): PaymentID
+    {
+        if ($this->paymentID === []) {
+            $this->addOnceTopaymentID(new PaymentID());
+        }
+
+        return $this->paymentID[0];
     }
 
     /**

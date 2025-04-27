@@ -383,6 +383,29 @@ class ContractType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\VersionID|null
      */
     public function getVersionID(): ?VersionID
@@ -462,6 +485,29 @@ class ContractType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod|null
      */
     public function getValidityPeriod(): ?ValidityPeriod
@@ -538,6 +584,29 @@ class ContractType
         $this->addTocontractDocumentReference($contractDocumentReference = new ContractDocumentReference());
 
         return $contractDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference $contractDocumentReference
+     * @return self
+     */
+    public function addOnceToContractDocumentReference(ContractDocumentReference $contractDocumentReference): self
+    {
+        $this->contractDocumentReference[0] = $contractDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference
+     */
+    public function addOnceToContractDocumentReferenceWithCreate(): ContractDocumentReference
+    {
+        if ($this->contractDocumentReference === []) {
+            $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
+        }
+
+        return $this->contractDocumentReference[0];
     }
 
     /**

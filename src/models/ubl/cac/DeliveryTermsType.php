@@ -170,6 +170,29 @@ class DeliveryTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms $specialTerms
+     * @return self
+     */
+    public function addOnceToSpecialTerms(SpecialTerms $specialTerms): self
+    {
+        $this->specialTerms[0] = $specialTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms
+     */
+    public function addOnceToSpecialTermsWithCreate(): SpecialTerms
+    {
+        if ($this->specialTerms === []) {
+            $this->addOnceTospecialTerms(new SpecialTerms());
+        }
+
+        return $this->specialTerms[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LossRiskResponsibilityCode|null
      */
     public function getLossRiskResponsibilityCode(): ?LossRiskResponsibilityCode
@@ -246,6 +269,29 @@ class DeliveryTermsType
         $this->addTolossRisk($lossRisk = new LossRisk());
 
         return $lossRisk;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\LossRisk $lossRisk
+     * @return self
+     */
+    public function addOnceToLossRisk(LossRisk $lossRisk): self
+    {
+        $this->lossRisk[0] = $lossRisk;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\LossRisk
+     */
+    public function addOnceToLossRiskWithCreate(): LossRisk
+    {
+        if ($this->lossRisk === []) {
+            $this->addOnceTolossRisk(new LossRisk());
+        }
+
+        return $this->lossRisk[0];
     }
 
     /**

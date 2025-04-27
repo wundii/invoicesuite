@@ -275,6 +275,29 @@ class AwardingCriterionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\WeightNumeric|null
      */
     public function getWeightNumeric(): ?WeightNumeric
@@ -354,6 +377,29 @@ class AwardingCriterionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Weight $weight
+     * @return self
+     */
+    public function addOnceToWeight(Weight $weight): self
+    {
+        $this->weight[0] = $weight;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Weight
+     */
+    public function addOnceToWeightWithCreate(): Weight
+    {
+        if ($this->weight === []) {
+            $this->addOnceToweight(new Weight());
+        }
+
+        return $this->weight[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\CalculationExpression>|null
      */
     public function getCalculationExpression(): ?array
@@ -401,6 +447,29 @@ class AwardingCriterionType
         $this->addTocalculationExpression($calculationExpression = new CalculationExpression());
 
         return $calculationExpression;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\CalculationExpression $calculationExpression
+     * @return self
+     */
+    public function addOnceToCalculationExpression(CalculationExpression $calculationExpression): self
+    {
+        $this->calculationExpression[0] = $calculationExpression;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\CalculationExpression
+     */
+    public function addOnceToCalculationExpressionWithCreate(): CalculationExpression
+    {
+        if ($this->calculationExpression === []) {
+            $this->addOnceTocalculationExpression(new CalculationExpression());
+        }
+
+        return $this->calculationExpression[0];
     }
 
     /**
@@ -599,6 +668,29 @@ class AwardingCriterionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MinimumImprovementBid $minimumImprovementBid
+     * @return self
+     */
+    public function addOnceToMinimumImprovementBid(MinimumImprovementBid $minimumImprovementBid): self
+    {
+        $this->minimumImprovementBid[0] = $minimumImprovementBid;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumImprovementBid
+     */
+    public function addOnceToMinimumImprovementBidWithCreate(): MinimumImprovementBid
+    {
+        if ($this->minimumImprovementBid === []) {
+            $this->addOnceTominimumImprovementBid(new MinimumImprovementBid());
+        }
+
+        return $this->minimumImprovementBid[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterion>|null
      */
     public function getSubordinateAwardingCriterion(): ?array
@@ -647,5 +739,29 @@ class AwardingCriterionType
         $this->addTosubordinateAwardingCriterion($subordinateAwardingCriterion = new SubordinateAwardingCriterion());
 
         return $subordinateAwardingCriterion;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterion $subordinateAwardingCriterion
+     * @return self
+     */
+    public function addOnceToSubordinateAwardingCriterion(
+        SubordinateAwardingCriterion $subordinateAwardingCriterion,
+    ): self {
+        $this->subordinateAwardingCriterion[0] = $subordinateAwardingCriterion;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterion
+     */
+    public function addOnceToSubordinateAwardingCriterionWithCreate(): SubordinateAwardingCriterion
+    {
+        if ($this->subordinateAwardingCriterion === []) {
+            $this->addOnceTosubordinateAwardingCriterion(new SubordinateAwardingCriterion());
+        }
+
+        return $this->subordinateAwardingCriterion[0];
     }
 }

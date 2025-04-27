@@ -252,6 +252,29 @@ class QualifyingPartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation $personalSituation
+     * @return self
+     */
+    public function addOnceToPersonalSituation(PersonalSituation $personalSituation): self
+    {
+        $this->personalSituation[0] = $personalSituation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation
+     */
+    public function addOnceToPersonalSituationWithCreate(): PersonalSituation
+    {
+        if ($this->personalSituation === []) {
+            $this->addOnceTopersonalSituation(new PersonalSituation());
+        }
+
+        return $this->personalSituation[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OperatingYearsQuantity|null
      */
     public function getOperatingYearsQuantity(): ?OperatingYearsQuantity
@@ -477,6 +500,29 @@ class QualifyingPartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability $technicalCapability
+     * @return self
+     */
+    public function addOnceToTechnicalCapability(TechnicalCapability $technicalCapability): self
+    {
+        $this->technicalCapability[0] = $technicalCapability;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TechnicalCapability
+     */
+    public function addOnceToTechnicalCapabilityWithCreate(): TechnicalCapability
+    {
+        if ($this->technicalCapability === []) {
+            $this->addOnceTotechnicalCapability(new TechnicalCapability());
+        }
+
+        return $this->technicalCapability[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\FinancialCapability>|null
      */
     public function getFinancialCapability(): ?array
@@ -524,6 +570,29 @@ class QualifyingPartyType
         $this->addTofinancialCapability($financialCapability = new FinancialCapability());
 
         return $financialCapability;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FinancialCapability $financialCapability
+     * @return self
+     */
+    public function addOnceToFinancialCapability(FinancialCapability $financialCapability): self
+    {
+        $this->financialCapability[0] = $financialCapability;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\FinancialCapability
+     */
+    public function addOnceToFinancialCapabilityWithCreate(): FinancialCapability
+    {
+        if ($this->financialCapability === []) {
+            $this->addOnceTofinancialCapability(new FinancialCapability());
+        }
+
+        return $this->financialCapability[0];
     }
 
     /**
@@ -577,6 +646,29 @@ class QualifyingPartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CompletedTask $completedTask
+     * @return self
+     */
+    public function addOnceToCompletedTask(CompletedTask $completedTask): self
+    {
+        $this->completedTask[0] = $completedTask;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CompletedTask
+     */
+    public function addOnceToCompletedTaskWithCreate(): CompletedTask
+    {
+        if ($this->completedTask === []) {
+            $this->addOnceTocompletedTask(new CompletedTask());
+        }
+
+        return $this->completedTask[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Declaration>|null
      */
     public function getDeclaration(): ?array
@@ -624,6 +716,29 @@ class QualifyingPartyType
         $this->addTodeclaration($declaration = new Declaration());
 
         return $declaration;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Declaration $declaration
+     * @return self
+     */
+    public function addOnceToDeclaration(Declaration $declaration): self
+    {
+        $this->declaration[0] = $declaration;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Declaration
+     */
+    public function addOnceToDeclarationWithCreate(): Declaration
+    {
+        if ($this->declaration === []) {
+            $this->addOnceTodeclaration(new Declaration());
+        }
+
+        return $this->declaration[0];
     }
 
     /**

@@ -183,6 +183,29 @@ class EvaluationCriterionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ThresholdAmount|null
      */
     public function getThresholdAmount(): ?ThresholdAmount
@@ -320,6 +343,29 @@ class EvaluationCriterionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Expression $expression
+     * @return self
+     */
+    public function addOnceToExpression(Expression $expression): self
+    {
+        $this->expression[0] = $expression;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Expression
+     */
+    public function addOnceToExpressionWithCreate(): Expression
+    {
+        if ($this->expression === []) {
+            $this->addOnceToexpression(new Expression());
+        }
+
+        return $this->expression[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DurationPeriod|null
      */
     public function getDurationPeriod(): ?DurationPeriod
@@ -396,5 +442,28 @@ class EvaluationCriterionType
         $this->addTosuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
 
         return $suggestedEvidence;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence $suggestedEvidence
+     * @return self
+     */
+    public function addOnceToSuggestedEvidence(SuggestedEvidence $suggestedEvidence): self
+    {
+        $this->suggestedEvidence[0] = $suggestedEvidence;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence
+     */
+    public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
+    {
+        if ($this->suggestedEvidence === []) {
+            $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
+        }
+
+        return $this->suggestedEvidence[0];
     }
 }

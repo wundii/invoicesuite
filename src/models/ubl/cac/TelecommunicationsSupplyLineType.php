@@ -212,6 +212,29 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount|null
      */
     public function getLineExtensionAmount(): ?LineExtensionAmount
@@ -291,6 +314,29 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate $exchangeRate
+     * @return self
+     */
+    public function addOnceToExchangeRate(ExchangeRate $exchangeRate): self
+    {
+        $this->exchangeRate[0] = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate
+     */
+    public function addOnceToExchangeRateWithCreate(): ExchangeRate
+    {
+        if ($this->exchangeRate === []) {
+            $this->addOnceToexchangeRate(new ExchangeRate());
+        }
+
+        return $this->exchangeRate[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -338,6 +384,29 @@ class TelecommunicationsSupplyLineType
         $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
     }
 
     /**
@@ -391,6 +460,29 @@ class TelecommunicationsSupplyLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService>|null
      */
     public function getTelecommunicationsService(): ?array
@@ -438,5 +530,28 @@ class TelecommunicationsSupplyLineType
         $this->addTotelecommunicationsService($telecommunicationsService = new TelecommunicationsService());
 
         return $telecommunicationsService;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService $telecommunicationsService
+     * @return self
+     */
+    public function addOnceToTelecommunicationsService(TelecommunicationsService $telecommunicationsService): self
+    {
+        $this->telecommunicationsService[0] = $telecommunicationsService;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsService
+     */
+    public function addOnceToTelecommunicationsServiceWithCreate(): TelecommunicationsService
+    {
+        if ($this->telecommunicationsService === []) {
+            $this->addOnceTotelecommunicationsService(new TelecommunicationsService());
+        }
+
+        return $this->telecommunicationsService[0];
     }
 }

@@ -198,6 +198,29 @@ class WorkPhaseReferenceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WorkPhase $workPhase
+     * @return self
+     */
+    public function addOnceToWorkPhase(WorkPhase $workPhase): self
+    {
+        $this->workPhase[0] = $workPhase;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\WorkPhase
+     */
+    public function addOnceToWorkPhaseWithCreate(): WorkPhase
+    {
+        if ($this->workPhase === []) {
+            $this->addOnceToworkPhase(new WorkPhase());
+        }
+
+        return $this->workPhase[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ProgressPercent|null
      */
     public function getProgressPercent(): ?ProgressPercent
@@ -312,5 +335,28 @@ class WorkPhaseReferenceType
         $this->addToworkOrderDocumentReference($workOrderDocumentReference = new WorkOrderDocumentReference());
 
         return $workOrderDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WorkOrderDocumentReference $workOrderDocumentReference
+     * @return self
+     */
+    public function addOnceToWorkOrderDocumentReference(WorkOrderDocumentReference $workOrderDocumentReference): self
+    {
+        $this->workOrderDocumentReference[0] = $workOrderDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\WorkOrderDocumentReference
+     */
+    public function addOnceToWorkOrderDocumentReferenceWithCreate(): WorkOrderDocumentReference
+    {
+        if ($this->workOrderDocumentReference === []) {
+            $this->addOnceToworkOrderDocumentReference(new WorkOrderDocumentReference());
+        }
+
+        return $this->workOrderDocumentReference[0];
     }
 }

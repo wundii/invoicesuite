@@ -119,6 +119,29 @@ class TendererRequirementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @return self
+     */
+    public function addOnceToName(Name $name): self
+    {
+        $this->name[0] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Name
+     */
+    public function addOnceToNameWithCreate(): Name
+    {
+        if ($this->name === []) {
+            $this->addOnceToname(new Name());
+        }
+
+        return $this->name[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode|null
      */
     public function getTendererRequirementTypeCode(): ?TendererRequirementTypeCode
@@ -198,6 +221,29 @@ class TendererRequirementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LegalReference|null
      */
     public function getLegalReference(): ?LegalReference
@@ -274,5 +320,28 @@ class TendererRequirementType
         $this->addTosuggestedEvidence($suggestedEvidence = new SuggestedEvidence());
 
         return $suggestedEvidence;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence $suggestedEvidence
+     * @return self
+     */
+    public function addOnceToSuggestedEvidence(SuggestedEvidence $suggestedEvidence): self
+    {
+        $this->suggestedEvidence[0] = $suggestedEvidence;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SuggestedEvidence
+     */
+    public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
+    {
+        if ($this->suggestedEvidence === []) {
+            $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
+        }
+
+        return $this->suggestedEvidence[0];
     }
 }

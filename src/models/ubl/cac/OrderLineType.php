@@ -204,6 +204,29 @@ class OrderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LineItem|null
      */
     public function getLineItem(): ?LineItem
@@ -284,6 +307,30 @@ class OrderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem
+     * @return self
+     */
+    public function addOnceToSellerProposedSubstituteLineItem(
+        SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
+    ): self {
+        $this->sellerProposedSubstituteLineItem[0] = $sellerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem
+     */
+    public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
+    {
+        if ($this->sellerProposedSubstituteLineItem === []) {
+            $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
+        }
+
+        return $this->sellerProposedSubstituteLineItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem>|null
      */
     public function getSellerSubstitutedLineItem(): ?array
@@ -331,6 +378,29 @@ class OrderLineType
         $this->addTosellerSubstitutedLineItem($sellerSubstitutedLineItem = new SellerSubstitutedLineItem());
 
         return $sellerSubstitutedLineItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem $sellerSubstitutedLineItem
+     * @return self
+     */
+    public function addOnceToSellerSubstitutedLineItem(SellerSubstitutedLineItem $sellerSubstitutedLineItem): self
+    {
+        $this->sellerSubstitutedLineItem[0] = $sellerSubstitutedLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SellerSubstitutedLineItem
+     */
+    public function addOnceToSellerSubstitutedLineItemWithCreate(): SellerSubstitutedLineItem
+    {
+        if ($this->sellerSubstitutedLineItem === []) {
+            $this->addOnceTosellerSubstitutedLineItem(new SellerSubstitutedLineItem());
+        }
+
+        return $this->sellerSubstitutedLineItem[0];
     }
 
     /**
@@ -382,6 +452,30 @@ class OrderLineType
         $this->addTobuyerProposedSubstituteLineItem($buyerProposedSubstituteLineItem = new BuyerProposedSubstituteLineItem());
 
         return $buyerProposedSubstituteLineItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem $buyerProposedSubstituteLineItem
+     * @return self
+     */
+    public function addOnceToBuyerProposedSubstituteLineItem(
+        BuyerProposedSubstituteLineItem $buyerProposedSubstituteLineItem,
+    ): self {
+        $this->buyerProposedSubstituteLineItem[0] = $buyerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BuyerProposedSubstituteLineItem
+     */
+    public function addOnceToBuyerProposedSubstituteLineItemWithCreate(): BuyerProposedSubstituteLineItem
+    {
+        if ($this->buyerProposedSubstituteLineItem === []) {
+            $this->addOnceTobuyerProposedSubstituteLineItem(new BuyerProposedSubstituteLineItem());
+        }
+
+        return $this->buyerProposedSubstituteLineItem[0];
     }
 
     /**
@@ -493,6 +587,29 @@ class OrderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference $orderLineReference
+     * @return self
+     */
+    public function addOnceToOrderLineReference(OrderLineReference $orderLineReference): self
+    {
+        $this->orderLineReference[0] = $orderLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference
+     */
+    public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
+    {
+        if ($this->orderLineReference === []) {
+            $this->addOnceToorderLineReference(new OrderLineReference());
+        }
+
+        return $this->orderLineReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -540,5 +657,28 @@ class OrderLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 }

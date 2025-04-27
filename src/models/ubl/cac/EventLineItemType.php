@@ -162,6 +162,29 @@ class EventLineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact $retailPlannedImpact
+     * @return self
+     */
+    public function addOnceToRetailPlannedImpact(RetailPlannedImpact $retailPlannedImpact): self
+    {
+        $this->retailPlannedImpact[0] = $retailPlannedImpact;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RetailPlannedImpact
+     */
+    public function addOnceToRetailPlannedImpactWithCreate(): RetailPlannedImpact
+    {
+        if ($this->retailPlannedImpact === []) {
+            $this->addOnceToretailPlannedImpact(new RetailPlannedImpact());
+        }
+
+        return $this->retailPlannedImpact[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\SupplyItem|null
      */
     public function getSupplyItem(): ?SupplyItem

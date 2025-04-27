@@ -1037,6 +1037,29 @@ class ShipmentStageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Instructions $instructions
+     * @return self
+     */
+    public function addOnceToInstructions(Instructions $instructions): self
+    {
+        $this->instructions[0] = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Instructions
+     */
+    public function addOnceToInstructionsWithCreate(): Instructions
+    {
+        if ($this->instructions === []) {
+            $this->addOnceToinstructions(new Instructions());
+        }
+
+        return $this->instructions[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions>|null
      */
     public function getDemurrageInstructions(): ?array
@@ -1084,6 +1107,29 @@ class ShipmentStageType
         $this->addTodemurrageInstructions($demurrageInstructions = new DemurrageInstructions());
 
         return $demurrageInstructions;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions $demurrageInstructions
+     * @return self
+     */
+    public function addOnceToDemurrageInstructions(DemurrageInstructions $demurrageInstructions): self
+    {
+        $this->demurrageInstructions[0] = $demurrageInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DemurrageInstructions
+     */
+    public function addOnceToDemurrageInstructionsWithCreate(): DemurrageInstructions
+    {
+        if ($this->demurrageInstructions === []) {
+            $this->addOnceTodemurrageInstructions(new DemurrageInstructions());
+        }
+
+        return $this->demurrageInstructions[0];
     }
 
     /**
@@ -1221,6 +1267,29 @@ class ShipmentStageType
         $this->addTocarrierParty($carrierParty = new CarrierParty());
 
         return $carrierParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CarrierParty $carrierParty
+     * @return self
+     */
+    public function addOnceToCarrierParty(CarrierParty $carrierParty): self
+    {
+        $this->carrierParty[0] = $carrierParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CarrierParty
+     */
+    public function addOnceToCarrierPartyWithCreate(): CarrierParty
+    {
+        if ($this->carrierParty === []) {
+            $this->addOnceTocarrierParty(new CarrierParty());
+        }
+
+        return $this->carrierParty[0];
     }
 
     /**
@@ -1884,6 +1953,29 @@ class ShipmentStageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge $freightAllowanceCharge
+     * @return self
+     */
+    public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
+    {
+        $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge
+     */
+    public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
+    {
+        if ($this->freightAllowanceCharge === []) {
+            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+        }
+
+        return $this->freightAllowanceCharge[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FreightChargeLocation|null
      */
     public function getFreightChargeLocation(): ?FreightChargeLocation
@@ -1960,6 +2052,29 @@ class ShipmentStageType
         $this->addTodetentionTransportEvent($detentionTransportEvent = new DetentionTransportEvent());
 
         return $detentionTransportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent $detentionTransportEvent
+     * @return self
+     */
+    public function addOnceToDetentionTransportEvent(DetentionTransportEvent $detentionTransportEvent): self
+    {
+        $this->detentionTransportEvent[0] = $detentionTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DetentionTransportEvent
+     */
+    public function addOnceToDetentionTransportEventWithCreate(): DetentionTransportEvent
+    {
+        if ($this->detentionTransportEvent === []) {
+            $this->addOnceTodetentionTransportEvent(new DetentionTransportEvent());
+        }
+
+        return $this->detentionTransportEvent[0];
     }
 
     /**
@@ -2074,6 +2189,30 @@ class ShipmentStageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent $requestedWaypointTransportEvent
+     * @return self
+     */
+    public function addOnceToRequestedWaypointTransportEvent(
+        RequestedWaypointTransportEvent $requestedWaypointTransportEvent,
+    ): self {
+        $this->requestedWaypointTransportEvent[0] = $requestedWaypointTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequestedWaypointTransportEvent
+     */
+    public function addOnceToRequestedWaypointTransportEventWithCreate(): RequestedWaypointTransportEvent
+    {
+        if ($this->requestedWaypointTransportEvent === []) {
+            $this->addOnceTorequestedWaypointTransportEvent(new RequestedWaypointTransportEvent());
+        }
+
+        return $this->requestedWaypointTransportEvent[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PlannedDepartureTransportEvent|null
      */
     public function getPlannedDepartureTransportEvent(): ?PlannedDepartureTransportEvent
@@ -2181,6 +2320,30 @@ class ShipmentStageType
         $this->addToplannedWaypointTransportEvent($plannedWaypointTransportEvent = new PlannedWaypointTransportEvent());
 
         return $plannedWaypointTransportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent $plannedWaypointTransportEvent
+     * @return self
+     */
+    public function addOnceToPlannedWaypointTransportEvent(
+        PlannedWaypointTransportEvent $plannedWaypointTransportEvent,
+    ): self {
+        $this->plannedWaypointTransportEvent[0] = $plannedWaypointTransportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PlannedWaypointTransportEvent
+     */
+    public function addOnceToPlannedWaypointTransportEventWithCreate(): PlannedWaypointTransportEvent
+    {
+        if ($this->plannedWaypointTransportEvent === []) {
+            $this->addOnceToplannedWaypointTransportEvent(new PlannedWaypointTransportEvent());
+        }
+
+        return $this->plannedWaypointTransportEvent[0];
     }
 
     /**
@@ -2322,6 +2485,29 @@ class ShipmentStageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEvent $transportEvent
+     * @return self
+     */
+    public function addOnceToTransportEvent(TransportEvent $transportEvent): self
+    {
+        $this->transportEvent[0] = $transportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEvent
+     */
+    public function addOnceToTransportEventWithCreate(): TransportEvent
+    {
+        if ($this->transportEvent === []) {
+            $this->addOnceTotransportEvent(new TransportEvent());
+        }
+
+        return $this->transportEvent[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedDepartureTransportEvent|null
      */
     public function getEstimatedDepartureTransportEvent(): ?EstimatedDepartureTransportEvent
@@ -2432,6 +2618,29 @@ class ShipmentStageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PassengerPerson $passengerPerson
+     * @return self
+     */
+    public function addOnceToPassengerPerson(PassengerPerson $passengerPerson): self
+    {
+        $this->passengerPerson[0] = $passengerPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PassengerPerson
+     */
+    public function addOnceToPassengerPersonWithCreate(): PassengerPerson
+    {
+        if ($this->passengerPerson === []) {
+            $this->addOnceTopassengerPerson(new PassengerPerson());
+        }
+
+        return $this->passengerPerson[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DriverPerson>|null
      */
     public function getDriverPerson(): ?array
@@ -2479,6 +2688,29 @@ class ShipmentStageType
         $this->addTodriverPerson($driverPerson = new DriverPerson());
 
         return $driverPerson;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DriverPerson $driverPerson
+     * @return self
+     */
+    public function addOnceToDriverPerson(DriverPerson $driverPerson): self
+    {
+        $this->driverPerson[0] = $driverPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DriverPerson
+     */
+    public function addOnceToDriverPersonWithCreate(): DriverPerson
+    {
+        if ($this->driverPerson === []) {
+            $this->addOnceTodriverPerson(new DriverPerson());
+        }
+
+        return $this->driverPerson[0];
     }
 
     /**
@@ -2558,6 +2790,29 @@ class ShipmentStageType
         $this->addTocrewMemberPerson($crewMemberPerson = new CrewMemberPerson());
 
         return $crewMemberPerson;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson $crewMemberPerson
+     * @return self
+     */
+    public function addOnceToCrewMemberPerson(CrewMemberPerson $crewMemberPerson): self
+    {
+        $this->crewMemberPerson[0] = $crewMemberPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CrewMemberPerson
+     */
+    public function addOnceToCrewMemberPersonWithCreate(): CrewMemberPerson
+    {
+        if ($this->crewMemberPerson === []) {
+            $this->addOnceTocrewMemberPerson(new CrewMemberPerson());
+        }
+
+        return $this->crewMemberPerson[0];
     }
 
     /**

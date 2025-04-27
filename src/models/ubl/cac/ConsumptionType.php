@@ -195,6 +195,29 @@ class ConsumptionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      */
     public function getTaxTotal(): ?array
@@ -242,6 +265,29 @@ class ConsumptionType
         $this->addTotaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
     }
 
     /**

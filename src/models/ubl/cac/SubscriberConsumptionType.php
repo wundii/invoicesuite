@@ -221,6 +221,29 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity|null
      */
     public function getTotalMeteredQuantity(): ?TotalMeteredQuantity
@@ -358,6 +381,29 @@ class SubscriberConsumptionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment $onAccountPayment
+     * @return self
+     */
+    public function addOnceToOnAccountPayment(OnAccountPayment $onAccountPayment): self
+    {
+        $this->onAccountPayment[0] = $onAccountPayment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OnAccountPayment
+     */
+    public function addOnceToOnAccountPaymentWithCreate(): OnAccountPayment
+    {
+        if ($this->onAccountPayment === []) {
+            $this->addOnceToonAccountPayment(new OnAccountPayment());
+        }
+
+        return $this->onAccountPayment[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Consumption|null
      */
     public function getConsumption(): ?Consumption
@@ -434,5 +480,28 @@ class SubscriberConsumptionType
         $this->addTosupplierConsumption($supplierConsumption = new SupplierConsumption());
 
         return $supplierConsumption;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption $supplierConsumption
+     * @return self
+     */
+    public function addOnceToSupplierConsumption(SupplierConsumption $supplierConsumption): self
+    {
+        $this->supplierConsumption[0] = $supplierConsumption;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SupplierConsumption
+     */
+    public function addOnceToSupplierConsumptionWithCreate(): SupplierConsumption
+    {
+        if ($this->supplierConsumption === []) {
+            $this->addOnceTosupplierConsumption(new SupplierConsumption());
+        }
+
+        return $this->supplierConsumption[0];
     }
 }

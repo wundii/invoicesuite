@@ -225,6 +225,29 @@ class TradeFinancingType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\FinancingParty|null
      */
     public function getFinancingParty(): ?FinancingParty
@@ -330,5 +353,28 @@ class TradeFinancingType
         $this->addToclause($clause = new Clause());
 
         return $clause;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Clause $clause
+     * @return self
+     */
+    public function addOnceToClause(Clause $clause): self
+    {
+        $this->clause[0] = $clause;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Clause
+     */
+    public function addOnceToClauseWithCreate(): Clause
+    {
+        if ($this->clause === []) {
+            $this->addOnceToclause(new Clause());
+        }
+
+        return $this->clause[0];
     }
 }

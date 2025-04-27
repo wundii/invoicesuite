@@ -289,6 +289,29 @@ class RequestedTenderTotalType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope $monetaryScope
+     * @return self
+     */
+    public function addOnceToMonetaryScope(MonetaryScope $monetaryScope): self
+    {
+        $this->monetaryScope[0] = $monetaryScope;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\MonetaryScope
+     */
+    public function addOnceToMonetaryScopeWithCreate(): MonetaryScope
+    {
+        if ($this->monetaryScope === []) {
+            $this->addOnceTomonetaryScope(new MonetaryScope());
+        }
+
+        return $this->monetaryScope[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AverageSubsequentContractAmount|null
      */
     public function getAverageSubsequentContractAmount(): ?AverageSubsequentContractAmount
@@ -366,5 +389,28 @@ class RequestedTenderTotalType
         $this->addToapplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
 
         return $applicableTaxCategory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory $applicableTaxCategory
+     * @return self
+     */
+    public function addOnceToApplicableTaxCategory(ApplicableTaxCategory $applicableTaxCategory): self
+    {
+        $this->applicableTaxCategory[0] = $applicableTaxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory
+     */
+    public function addOnceToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
+    {
+        if ($this->applicableTaxCategory === []) {
+            $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
+        }
+
+        return $this->applicableTaxCategory[0];
     }
 }

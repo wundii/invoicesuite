@@ -689,6 +689,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\ext\UBLExtension $uBLExtensions
+     * @return self
+     */
+    public function addOnceToUBLExtensions(UBLExtension $uBLExtensions): self
+    {
+        $this->uBLExtensions[0] = $uBLExtensions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\ext\UBLExtension
+     */
+    public function addOnceToUBLExtensionsWithCreate(): UBLExtension
+    {
+        if ($this->uBLExtensions === []) {
+            $this->addOnceTouBLExtensions(new UBLExtension());
+        }
+
+        return $this->uBLExtensions[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UBLVersionID|null
      */
     public function getUBLVersionID(): ?UBLVersionID
@@ -1018,6 +1041,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DocumentCurrencyCode|null
      */
     public function getDocumentCurrencyCode(): ?DocumentCurrencyCode
@@ -1330,6 +1376,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod $invoicePeriod
+     * @return self
+     */
+    public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
+    {
+        $this->invoicePeriod[0] = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod
+     */
+    public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
+    {
+        if ($this->invoicePeriod === []) {
+            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+        }
+
+        return $this->invoicePeriod[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse>|null
      */
     public function getDiscrepancyResponse(): ?array
@@ -1377,6 +1446,29 @@ class CreditNoteType
         $this->addTodiscrepancyResponse($discrepancyResponse = new DiscrepancyResponse());
 
         return $discrepancyResponse;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse $discrepancyResponse
+     * @return self
+     */
+    public function addOnceToDiscrepancyResponse(DiscrepancyResponse $discrepancyResponse): self
+    {
+        $this->discrepancyResponse[0] = $discrepancyResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DiscrepancyResponse
+     */
+    public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
+    {
+        if ($this->discrepancyResponse === []) {
+            $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
+        }
+
+        return $this->discrepancyResponse[0];
     }
 
     /**
@@ -1459,6 +1551,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BillingReference $billingReference
+     * @return self
+     */
+    public function addOnceToBillingReference(BillingReference $billingReference): self
+    {
+        $this->billingReference[0] = $billingReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BillingReference
+     */
+    public function addOnceToBillingReferenceWithCreate(): BillingReference
+    {
+        if ($this->billingReference === []) {
+            $this->addOnceTobillingReference(new BillingReference());
+        }
+
+        return $this->billingReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference>|null
      */
     public function getDespatchDocumentReference(): ?array
@@ -1506,6 +1621,29 @@ class CreditNoteType
         $this->addTodespatchDocumentReference($despatchDocumentReference = new DespatchDocumentReference());
 
         return $despatchDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference $despatchDocumentReference
+     * @return self
+     */
+    public function addOnceToDespatchDocumentReference(DespatchDocumentReference $despatchDocumentReference): self
+    {
+        $this->despatchDocumentReference[0] = $despatchDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DespatchDocumentReference
+     */
+    public function addOnceToDespatchDocumentReferenceWithCreate(): DespatchDocumentReference
+    {
+        if ($this->despatchDocumentReference === []) {
+            $this->addOnceTodespatchDocumentReference(new DespatchDocumentReference());
+        }
+
+        return $this->despatchDocumentReference[0];
     }
 
     /**
@@ -1559,6 +1697,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference $receiptDocumentReference
+     * @return self
+     */
+    public function addOnceToReceiptDocumentReference(ReceiptDocumentReference $receiptDocumentReference): self
+    {
+        $this->receiptDocumentReference[0] = $receiptDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReceiptDocumentReference
+     */
+    public function addOnceToReceiptDocumentReferenceWithCreate(): ReceiptDocumentReference
+    {
+        if ($this->receiptDocumentReference === []) {
+            $this->addOnceToreceiptDocumentReference(new ReceiptDocumentReference());
+        }
+
+        return $this->receiptDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference>|null
      */
     public function getContractDocumentReference(): ?array
@@ -1606,6 +1767,29 @@ class CreditNoteType
         $this->addTocontractDocumentReference($contractDocumentReference = new ContractDocumentReference());
 
         return $contractDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference $contractDocumentReference
+     * @return self
+     */
+    public function addOnceToContractDocumentReference(ContractDocumentReference $contractDocumentReference): self
+    {
+        $this->contractDocumentReference[0] = $contractDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractDocumentReference
+     */
+    public function addOnceToContractDocumentReferenceWithCreate(): ContractDocumentReference
+    {
+        if ($this->contractDocumentReference === []) {
+            $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
+        }
+
+        return $this->contractDocumentReference[0];
     }
 
     /**
@@ -1659,6 +1843,30 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference $additionalDocumentReference
+     * @return self
+     */
+    public function addOnceToAdditionalDocumentReference(
+        AdditionalDocumentReference $additionalDocumentReference,
+    ): self {
+        $this->additionalDocumentReference[0] = $additionalDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
+     */
+    public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
+    {
+        if ($this->additionalDocumentReference === []) {
+            $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
+        }
+
+        return $this->additionalDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference>|null
      */
     public function getStatementDocumentReference(): ?array
@@ -1706,6 +1914,29 @@ class CreditNoteType
         $this->addTostatementDocumentReference($statementDocumentReference = new StatementDocumentReference());
 
         return $statementDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference $statementDocumentReference
+     * @return self
+     */
+    public function addOnceToStatementDocumentReference(StatementDocumentReference $statementDocumentReference): self
+    {
+        $this->statementDocumentReference[0] = $statementDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\StatementDocumentReference
+     */
+    public function addOnceToStatementDocumentReferenceWithCreate(): StatementDocumentReference
+    {
+        if ($this->statementDocumentReference === []) {
+            $this->addOnceTostatementDocumentReference(new StatementDocumentReference());
+        }
+
+        return $this->statementDocumentReference[0];
     }
 
     /**
@@ -1759,6 +1990,30 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference $originatorDocumentReference
+     * @return self
+     */
+    public function addOnceToOriginatorDocumentReference(
+        OriginatorDocumentReference $originatorDocumentReference,
+    ): self {
+        $this->originatorDocumentReference[0] = $originatorDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OriginatorDocumentReference
+     */
+    public function addOnceToOriginatorDocumentReferenceWithCreate(): OriginatorDocumentReference
+    {
+        if ($this->originatorDocumentReference === []) {
+            $this->addOnceTooriginatorDocumentReference(new OriginatorDocumentReference());
+        }
+
+        return $this->originatorDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null
      */
     public function getSignature(): ?array
@@ -1806,6 +2061,29 @@ class CreditNoteType
         $this->addTosignature($signature = new Signature());
 
         return $signature;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Signature $signature
+     * @return self
+     */
+    public function addOnceToSignature(Signature $signature): self
+    {
+        $this->signature[0] = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Signature
+     */
+    public function addOnceToSignatureWithCreate(): Signature
+    {
+        if ($this->signature === []) {
+            $this->addOnceTosignature(new Signature());
+        }
+
+        return $this->signature[0];
     }
 
     /**
@@ -2033,6 +2311,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Delivery $delivery
+     * @return self
+     */
+    public function addOnceToDelivery(Delivery $delivery): self
+    {
+        $this->delivery[0] = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Delivery
+     */
+    public function addOnceToDeliveryWithCreate(): Delivery
+    {
+        if ($this->delivery === []) {
+            $this->addOnceTodelivery(new Delivery());
+        }
+
+        return $this->delivery[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms>|null
      */
     public function getDeliveryTerms(): ?array
@@ -2080,6 +2381,29 @@ class CreditNoteType
         $this->addTodeliveryTerms($deliveryTerms = new DeliveryTerms());
 
         return $deliveryTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms $deliveryTerms
+     * @return self
+     */
+    public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
+    {
+        $this->deliveryTerms[0] = $deliveryTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryTerms
+     */
+    public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
+    {
+        if ($this->deliveryTerms === []) {
+            $this->addOnceTodeliveryTerms(new DeliveryTerms());
+        }
+
+        return $this->deliveryTerms[0];
     }
 
     /**
@@ -2133,6 +2457,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans $paymentMeans
+     * @return self
+     */
+    public function addOnceToPaymentMeans(PaymentMeans $paymentMeans): self
+    {
+        $this->paymentMeans[0] = $paymentMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans
+     */
+    public function addOnceToPaymentMeansWithCreate(): PaymentMeans
+    {
+        if ($this->paymentMeans === []) {
+            $this->addOnceTopaymentMeans(new PaymentMeans());
+        }
+
+        return $this->paymentMeans[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      */
     public function getPaymentTerms(): ?array
@@ -2180,6 +2527,29 @@ class CreditNoteType
         $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms $paymentTerms
+     * @return self
+     */
+    public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
+    {
+        $this->paymentTerms[0] = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms
+     */
+    public function addOnceToPaymentTermsWithCreate(): PaymentTerms
+    {
+        if ($this->paymentTerms === []) {
+            $this->addOnceTopaymentTerms(new PaymentTerms());
+        }
+
+        return $this->paymentTerms[0];
     }
 
     /**
@@ -2350,6 +2720,29 @@ class CreditNoteType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      */
     public function getTaxTotal(): ?array
@@ -2397,6 +2790,29 @@ class CreditNoteType
         $this->addTotaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
     }
 
     /**
@@ -2476,5 +2892,28 @@ class CreditNoteType
         $this->addTocreditNoteLine($creditNoteLine = new CreditNoteLine());
 
         return $creditNoteLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine $creditNoteLine
+     * @return self
+     */
+    public function addOnceToCreditNoteLine(CreditNoteLine $creditNoteLine): self
+    {
+        $this->creditNoteLine[0] = $creditNoteLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CreditNoteLine
+     */
+    public function addOnceToCreditNoteLineWithCreate(): CreditNoteLine
+    {
+        if ($this->creditNoteLine === []) {
+            $this->addOnceTocreditNoteLine(new CreditNoteLine());
+        }
+
+        return $this->creditNoteLine[0];
     }
 }

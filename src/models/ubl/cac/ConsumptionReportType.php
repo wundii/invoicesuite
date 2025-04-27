@@ -358,6 +358,29 @@ class ConsumptionReportType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalConsumedQuantity|null
      */
     public function getTotalConsumedQuantity(): ?TotalConsumedQuantity
@@ -756,6 +779,29 @@ class ConsumptionReportType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsumptionReportReference $consumptionReportReference
+     * @return self
+     */
+    public function addOnceToConsumptionReportReference(ConsumptionReportReference $consumptionReportReference): self
+    {
+        $this->consumptionReportReference[0] = $consumptionReportReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ConsumptionReportReference
+     */
+    public function addOnceToConsumptionReportReferenceWithCreate(): ConsumptionReportReference
+    {
+        if ($this->consumptionReportReference === []) {
+            $this->addOnceToconsumptionReportReference(new ConsumptionReportReference());
+        }
+
+        return $this->consumptionReportReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionHistory>|null
      */
     public function getConsumptionHistory(): ?array
@@ -803,5 +849,28 @@ class ConsumptionReportType
         $this->addToconsumptionHistory($consumptionHistory = new ConsumptionHistory());
 
         return $consumptionHistory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsumptionHistory $consumptionHistory
+     * @return self
+     */
+    public function addOnceToConsumptionHistory(ConsumptionHistory $consumptionHistory): self
+    {
+        $this->consumptionHistory[0] = $consumptionHistory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ConsumptionHistory
+     */
+    public function addOnceToConsumptionHistoryWithCreate(): ConsumptionHistory
+    {
+        if ($this->consumptionHistory === []) {
+            $this->addOnceToconsumptionHistory(new ConsumptionHistory());
+        }
+
+        return $this->consumptionHistory[0];
     }
 }

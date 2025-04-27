@@ -165,6 +165,29 @@ class EnvironmentalEmissionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod>|null
      */
     public function getEmissionCalculationMethod(): ?array
@@ -212,5 +235,28 @@ class EnvironmentalEmissionType
         $this->addToemissionCalculationMethod($emissionCalculationMethod = new EmissionCalculationMethod());
 
         return $emissionCalculationMethod;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod $emissionCalculationMethod
+     * @return self
+     */
+    public function addOnceToEmissionCalculationMethod(EmissionCalculationMethod $emissionCalculationMethod): self
+    {
+        $this->emissionCalculationMethod[0] = $emissionCalculationMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EmissionCalculationMethod
+     */
+    public function addOnceToEmissionCalculationMethodWithCreate(): EmissionCalculationMethod
+    {
+        if ($this->emissionCalculationMethod === []) {
+            $this->addOnceToemissionCalculationMethod(new EmissionCalculationMethod());
+        }
+
+        return $this->emissionCalculationMethod[0];
     }
 }

@@ -1076,6 +1076,29 @@ class AddressType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AddressLine $addressLine
+     * @return self
+     */
+    public function addOnceToAddressLine(AddressLine $addressLine): self
+    {
+        $this->addressLine[0] = $addressLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AddressLine
+     */
+    public function addOnceToAddressLineWithCreate(): AddressLine
+    {
+        if ($this->addressLine === []) {
+            $this->addOnceToaddressLine(new AddressLine());
+        }
+
+        return $this->addressLine[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Country|null
      */
     public function getCountry(): ?Country
@@ -1152,5 +1175,28 @@ class AddressType
         $this->addTolocationCoordinate($locationCoordinate = new LocationCoordinate());
 
         return $locationCoordinate;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate $locationCoordinate
+     * @return self
+     */
+    public function addOnceToLocationCoordinate(LocationCoordinate $locationCoordinate): self
+    {
+        $this->locationCoordinate[0] = $locationCoordinate;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate
+     */
+    public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
+    {
+        if ($this->locationCoordinate === []) {
+            $this->addOnceTolocationCoordinate(new LocationCoordinate());
+        }
+
+        return $this->locationCoordinate[0];
     }
 }

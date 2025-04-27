@@ -93,6 +93,30 @@ class TendererPartyQualificationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot $interestedProcurementProjectLot
+     * @return self
+     */
+    public function addOnceToInterestedProcurementProjectLot(
+        InterestedProcurementProjectLot $interestedProcurementProjectLot,
+    ): self {
+        $this->interestedProcurementProjectLot[0] = $interestedProcurementProjectLot;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\InterestedProcurementProjectLot
+     */
+    public function addOnceToInterestedProcurementProjectLotWithCreate(): InterestedProcurementProjectLot
+    {
+        if ($this->interestedProcurementProjectLot === []) {
+            $this->addOnceTointerestedProcurementProjectLot(new InterestedProcurementProjectLot());
+        }
+
+        return $this->interestedProcurementProjectLot[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\MainQualifyingParty|null
      */
     public function getMainQualifyingParty(): ?MainQualifyingParty
@@ -169,5 +193,28 @@ class TendererPartyQualificationType
         $this->addToadditionalQualifyingParty($additionalQualifyingParty = new AdditionalQualifyingParty());
 
         return $additionalQualifyingParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty $additionalQualifyingParty
+     * @return self
+     */
+    public function addOnceToAdditionalQualifyingParty(AdditionalQualifyingParty $additionalQualifyingParty): self
+    {
+        $this->additionalQualifyingParty[0] = $additionalQualifyingParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalQualifyingParty
+     */
+    public function addOnceToAdditionalQualifyingPartyWithCreate(): AdditionalQualifyingParty
+    {
+        if ($this->additionalQualifyingParty === []) {
+            $this->addOnceToadditionalQualifyingParty(new AdditionalQualifyingParty());
+        }
+
+        return $this->additionalQualifyingParty[0];
     }
 }

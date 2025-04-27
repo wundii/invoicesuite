@@ -520,6 +520,29 @@ class LineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -927,6 +950,29 @@ class LineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation $warrantyInformation
+     * @return self
+     */
+    public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
+    {
+        $this->warrantyInformation[0] = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation
+     */
+    public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
+    {
+        if ($this->warrantyInformation === []) {
+            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+        }
+
+        return $this->warrantyInformation[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Delivery>|null
      */
     public function getDelivery(): ?array
@@ -974,6 +1020,29 @@ class LineItemType
         $this->addTodelivery($delivery = new Delivery());
 
         return $delivery;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Delivery $delivery
+     * @return self
+     */
+    public function addOnceToDelivery(Delivery $delivery): self
+    {
+        $this->delivery[0] = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Delivery
+     */
+    public function addOnceToDeliveryWithCreate(): Delivery
+    {
+        if ($this->delivery === []) {
+            $this->addOnceTodelivery(new Delivery());
+        }
+
+        return $this->delivery[0];
     }
 
     /**
@@ -1085,6 +1154,29 @@ class LineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderedShipment $orderedShipment
+     * @return self
+     */
+    public function addOnceToOrderedShipment(OrderedShipment $orderedShipment): self
+    {
+        $this->orderedShipment[0] = $orderedShipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OrderedShipment
+     */
+    public function addOnceToOrderedShipmentWithCreate(): OrderedShipment
+    {
+        if ($this->orderedShipment === []) {
+            $this->addOnceToorderedShipment(new OrderedShipment());
+        }
+
+        return $this->orderedShipment[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PricingReference|null
      */
     public function getPricingReference(): ?PricingReference
@@ -1161,6 +1253,29 @@ class LineItemType
         $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
     }
 
     /**
@@ -1272,6 +1387,29 @@ class LineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubLineItem $subLineItem
+     * @return self
+     */
+    public function addOnceToSubLineItem(SubLineItem $subLineItem): self
+    {
+        $this->subLineItem[0] = $subLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubLineItem
+     */
+    public function addOnceToSubLineItemWithCreate(): SubLineItem
+    {
+        if ($this->subLineItem === []) {
+            $this->addOnceTosubLineItem(new SubLineItem());
+        }
+
+        return $this->subLineItem[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\WarrantyValidityPeriod|null
      */
     public function getWarrantyValidityPeriod(): ?WarrantyValidityPeriod
@@ -1380,6 +1518,29 @@ class LineItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ItemPriceExtension|null
      */
     public function getItemPriceExtension(): ?ItemPriceExtension
@@ -1456,5 +1617,28 @@ class LineItemType
         $this->addTolineReference($lineReference = new LineReference());
 
         return $lineReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineReference $lineReference
+     * @return self
+     */
+    public function addOnceToLineReference(LineReference $lineReference): self
+    {
+        $this->lineReference[0] = $lineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\LineReference
+     */
+    public function addOnceToLineReferenceWithCreate(): LineReference
+    {
+        if ($this->lineReference === []) {
+            $this->addOnceTolineReference(new LineReference());
+        }
+
+        return $this->lineReference[0];
     }
 }

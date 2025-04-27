@@ -188,6 +188,29 @@ class FrameworkAgreementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Justification $justification
+     * @return self
+     */
+    public function addOnceToJustification(Justification $justification): self
+    {
+        $this->justification[0] = $justification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Justification
+     */
+    public function addOnceToJustificationWithCreate(): Justification
+    {
+        if ($this->justification === []) {
+            $this->addOnceTojustification(new Justification());
+        }
+
+        return $this->justification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Frequency>|null
      */
     public function getFrequency(): ?array
@@ -235,6 +258,29 @@ class FrameworkAgreementType
         $this->addTofrequency($frequency = new Frequency());
 
         return $frequency;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Frequency $frequency
+     * @return self
+     */
+    public function addOnceToFrequency(Frequency $frequency): self
+    {
+        $this->frequency[0] = $frequency;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Frequency
+     */
+    public function addOnceToFrequencyWithCreate(): Frequency
+    {
+        if ($this->frequency === []) {
+            $this->addOnceTofrequency(new Frequency());
+        }
+
+        return $this->frequency[0];
     }
 
     /**
@@ -315,5 +361,29 @@ class FrameworkAgreementType
         $this->addTosubsequentProcessTenderRequirement($subsequentProcessTenderRequirement = new SubsequentProcessTenderRequirement());
 
         return $subsequentProcessTenderRequirement;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement $subsequentProcessTenderRequirement
+     * @return self
+     */
+    public function addOnceToSubsequentProcessTenderRequirement(
+        SubsequentProcessTenderRequirement $subsequentProcessTenderRequirement,
+    ): self {
+        $this->subsequentProcessTenderRequirement[0] = $subsequentProcessTenderRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubsequentProcessTenderRequirement
+     */
+    public function addOnceToSubsequentProcessTenderRequirementWithCreate(): SubsequentProcessTenderRequirement
+    {
+        if ($this->subsequentProcessTenderRequirement === []) {
+            $this->addOnceTosubsequentProcessTenderRequirement(new SubsequentProcessTenderRequirement());
+        }
+
+        return $this->subsequentProcessTenderRequirement[0];
     }
 }

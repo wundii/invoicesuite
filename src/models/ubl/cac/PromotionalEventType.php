@@ -198,4 +198,27 @@ class PromotionalEventType
 
         return $promotionalSpecification;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification $promotionalSpecification
+     * @return self
+     */
+    public function addOnceToPromotionalSpecification(PromotionalSpecification $promotionalSpecification): self
+    {
+        $this->promotionalSpecification[0] = $promotionalSpecification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PromotionalSpecification
+     */
+    public function addOnceToPromotionalSpecificationWithCreate(): PromotionalSpecification
+    {
+        if ($this->promotionalSpecification === []) {
+            $this->addOnceTopromotionalSpecification(new PromotionalSpecification());
+        }
+
+        return $this->promotionalSpecification[0];
+    }
 }

@@ -349,4 +349,27 @@ class BillingReferenceType
 
         return $billingReferenceLine;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BillingReferenceLine $billingReferenceLine
+     * @return self
+     */
+    public function addOnceToBillingReferenceLine(BillingReferenceLine $billingReferenceLine): self
+    {
+        $this->billingReferenceLine[0] = $billingReferenceLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BillingReferenceLine
+     */
+    public function addOnceToBillingReferenceLineWithCreate(): BillingReferenceLine
+    {
+        if ($this->billingReferenceLine === []) {
+            $this->addOnceTobillingReferenceLine(new BillingReferenceLine());
+        }
+
+        return $this->billingReferenceLine[0];
+    }
 }

@@ -665,6 +665,30 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription $acceptedVariantsDescription
+     * @return self
+     */
+    public function addOnceToAcceptedVariantsDescription(
+        AcceptedVariantsDescription $acceptedVariantsDescription,
+    ): self {
+        $this->acceptedVariantsDescription[0] = $acceptedVariantsDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription
+     */
+    public function addOnceToAcceptedVariantsDescriptionWithCreate(): AcceptedVariantsDescription
+    {
+        if ($this->acceptedVariantsDescription === []) {
+            $this->addOnceToacceptedVariantsDescription(new AcceptedVariantsDescription());
+        }
+
+        return $this->acceptedVariantsDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription>|null
      */
     public function getPriceRevisionFormulaDescription(): ?array
@@ -713,6 +737,30 @@ class TenderingTermsType
         $this->addTopriceRevisionFormulaDescription($priceRevisionFormulaDescription = new PriceRevisionFormulaDescription());
 
         return $priceRevisionFormulaDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription $priceRevisionFormulaDescription
+     * @return self
+     */
+    public function addOnceToPriceRevisionFormulaDescription(
+        PriceRevisionFormulaDescription $priceRevisionFormulaDescription,
+    ): self {
+        $this->priceRevisionFormulaDescription[0] = $priceRevisionFormulaDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription
+     */
+    public function addOnceToPriceRevisionFormulaDescriptionWithCreate(): PriceRevisionFormulaDescription
+    {
+        if ($this->priceRevisionFormulaDescription === []) {
+            $this->addOnceTopriceRevisionFormulaDescription(new PriceRevisionFormulaDescription());
+        }
+
+        return $this->priceRevisionFormulaDescription[0];
     }
 
     /**
@@ -795,6 +843,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FundingProgram $fundingProgram
+     * @return self
+     */
+    public function addOnceToFundingProgram(FundingProgram $fundingProgram): self
+    {
+        $this->fundingProgram[0] = $fundingProgram;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\FundingProgram
+     */
+    public function addOnceToFundingProgramWithCreate(): FundingProgram
+    {
+        if ($this->fundingProgram === []) {
+            $this->addOnceTofundingProgram(new FundingProgram());
+        }
+
+        return $this->fundingProgram[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MaximumAdvertisementAmount|null
      */
     public function getMaximumAdvertisementAmount(): ?MaximumAdvertisementAmount
@@ -871,6 +942,29 @@ class TenderingTermsType
         $this->addTonote($note = new Note());
 
         return $note;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
     }
 
     /**
@@ -1020,6 +1114,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions $additionalConditions
+     * @return self
+     */
+    public function addOnceToAdditionalConditions(AdditionalConditions $additionalConditions): self
+    {
+        $this->additionalConditions[0] = $additionalConditions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions
+     */
+    public function addOnceToAdditionalConditionsWithCreate(): AdditionalConditions
+    {
+        if ($this->additionalConditions === []) {
+            $this->addOnceToadditionalConditions(new AdditionalConditions());
+        }
+
+        return $this->additionalConditions[0];
+    }
+
+    /**
      * @return \DateTime|null
      */
     public function getLatestSecurityClearanceDate(): ?\DateTime
@@ -1118,6 +1235,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PenaltyClause $penaltyClause
+     * @return self
+     */
+    public function addOnceToPenaltyClause(PenaltyClause $penaltyClause): self
+    {
+        $this->penaltyClause[0] = $penaltyClause;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PenaltyClause
+     */
+    public function addOnceToPenaltyClauseWithCreate(): PenaltyClause
+    {
+        if ($this->penaltyClause === []) {
+            $this->addOnceTopenaltyClause(new PenaltyClause());
+        }
+
+        return $this->penaltyClause[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee>|null
      */
     public function getRequiredFinancialGuarantee(): ?array
@@ -1165,6 +1305,29 @@ class TenderingTermsType
         $this->addTorequiredFinancialGuarantee($requiredFinancialGuarantee = new RequiredFinancialGuarantee());
 
         return $requiredFinancialGuarantee;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee $requiredFinancialGuarantee
+     * @return self
+     */
+    public function addOnceToRequiredFinancialGuarantee(RequiredFinancialGuarantee $requiredFinancialGuarantee): self
+    {
+        $this->requiredFinancialGuarantee[0] = $requiredFinancialGuarantee;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredFinancialGuarantee
+     */
+    public function addOnceToRequiredFinancialGuaranteeWithCreate(): RequiredFinancialGuarantee
+    {
+        if ($this->requiredFinancialGuarantee === []) {
+            $this->addOnceTorequiredFinancialGuarantee(new RequiredFinancialGuarantee());
+        }
+
+        return $this->requiredFinancialGuarantee[0];
     }
 
     /**
@@ -1339,6 +1502,30 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference $contractualDocumentReference
+     * @return self
+     */
+    public function addOnceToContractualDocumentReference(
+        ContractualDocumentReference $contractualDocumentReference,
+    ): self {
+        $this->contractualDocumentReference[0] = $contractualDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractualDocumentReference
+     */
+    public function addOnceToContractualDocumentReferenceWithCreate(): ContractualDocumentReference
+    {
+        if ($this->contractualDocumentReference === []) {
+            $this->addOnceTocontractualDocumentReference(new ContractualDocumentReference());
+        }
+
+        return $this->contractualDocumentReference[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\CallForTendersDocumentReference|null
      */
     public function getCallForTendersDocumentReference(): ?CallForTendersDocumentReference
@@ -1448,6 +1635,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms $paymentTerms
+     * @return self
+     */
+    public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
+    {
+        $this->paymentTerms[0] = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms
+     */
+    public function addOnceToPaymentTermsWithCreate(): PaymentTerms
+    {
+        if ($this->paymentTerms === []) {
+            $this->addOnceTopaymentTerms(new PaymentTerms());
+        }
+
+        return $this->paymentTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest>|null
      */
     public function getTendererQualificationRequest(): ?array
@@ -1496,6 +1706,30 @@ class TenderingTermsType
         $this->addTotendererQualificationRequest($tendererQualificationRequest = new TendererQualificationRequest());
 
         return $tendererQualificationRequest;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest $tendererQualificationRequest
+     * @return self
+     */
+    public function addOnceToTendererQualificationRequest(
+        TendererQualificationRequest $tendererQualificationRequest,
+    ): self {
+        $this->tendererQualificationRequest[0] = $tendererQualificationRequest;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TendererQualificationRequest
+     */
+    public function addOnceToTendererQualificationRequestWithCreate(): TendererQualificationRequest
+    {
+        if ($this->tendererQualificationRequest === []) {
+            $this->addOnceTotendererQualificationRequest(new TendererQualificationRequest());
+        }
+
+        return $this->tendererQualificationRequest[0];
     }
 
     /**
@@ -1549,6 +1783,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms $allowedSubcontractTerms
+     * @return self
+     */
+    public function addOnceToAllowedSubcontractTerms(AllowedSubcontractTerms $allowedSubcontractTerms): self
+    {
+        $this->allowedSubcontractTerms[0] = $allowedSubcontractTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowedSubcontractTerms
+     */
+    public function addOnceToAllowedSubcontractTermsWithCreate(): AllowedSubcontractTerms
+    {
+        if ($this->allowedSubcontractTerms === []) {
+            $this->addOnceToallowedSubcontractTerms(new AllowedSubcontractTerms());
+        }
+
+        return $this->allowedSubcontractTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TenderPreparation>|null
      */
     public function getTenderPreparation(): ?array
@@ -1596,6 +1853,29 @@ class TenderingTermsType
         $this->addTotenderPreparation($tenderPreparation = new TenderPreparation());
 
         return $tenderPreparation;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderPreparation $tenderPreparation
+     * @return self
+     */
+    public function addOnceToTenderPreparation(TenderPreparation $tenderPreparation): self
+    {
+        $this->tenderPreparation[0] = $tenderPreparation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TenderPreparation
+     */
+    public function addOnceToTenderPreparationWithCreate(): TenderPreparation
+    {
+        if ($this->tenderPreparation === []) {
+            $this->addOnceTotenderPreparation(new TenderPreparation());
+        }
+
+        return $this->tenderPreparation[0];
     }
 
     /**
@@ -1647,6 +1927,30 @@ class TenderingTermsType
         $this->addTocontractExecutionRequirement($contractExecutionRequirement = new ContractExecutionRequirement());
 
         return $contractExecutionRequirement;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement $contractExecutionRequirement
+     * @return self
+     */
+    public function addOnceToContractExecutionRequirement(
+        ContractExecutionRequirement $contractExecutionRequirement,
+    ): self {
+        $this->contractExecutionRequirement[0] = $contractExecutionRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractExecutionRequirement
+     */
+    public function addOnceToContractExecutionRequirementWithCreate(): ContractExecutionRequirement
+    {
+        if ($this->contractExecutionRequirement === []) {
+            $this->addOnceTocontractExecutionRequirement(new ContractExecutionRequirement());
+        }
+
+        return $this->contractExecutionRequirement[0];
     }
 
     /**
@@ -1845,6 +2149,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty $tenderEvaluationParty
+     * @return self
+     */
+    public function addOnceToTenderEvaluationParty(TenderEvaluationParty $tenderEvaluationParty): self
+    {
+        $this->tenderEvaluationParty[0] = $tenderEvaluationParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TenderEvaluationParty
+     */
+    public function addOnceToTenderEvaluationPartyWithCreate(): TenderEvaluationParty
+    {
+        if ($this->tenderEvaluationParty === []) {
+            $this->addOnceTotenderEvaluationParty(new TenderEvaluationParty());
+        }
+
+        return $this->tenderEvaluationParty[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TenderValidityPeriod|null
      */
     public function getTenderValidityPeriod(): ?TenderValidityPeriod
@@ -1982,6 +2309,29 @@ class TenderingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Language $language
+     * @return self
+     */
+    public function addOnceToLanguage(Language $language): self
+    {
+        $this->language[0] = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Language
+     */
+    public function addOnceToLanguageWithCreate(): Language
+    {
+        if ($this->language === []) {
+            $this->addOnceTolanguage(new Language());
+        }
+
+        return $this->language[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine>|null
      */
     public function getBudgetAccountLine(): ?array
@@ -2029,6 +2379,29 @@ class TenderingTermsType
         $this->addTobudgetAccountLine($budgetAccountLine = new BudgetAccountLine());
 
         return $budgetAccountLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine $budgetAccountLine
+     * @return self
+     */
+    public function addOnceToBudgetAccountLine(BudgetAccountLine $budgetAccountLine): self
+    {
+        $this->budgetAccountLine[0] = $budgetAccountLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BudgetAccountLine
+     */
+    public function addOnceToBudgetAccountLineWithCreate(): BudgetAccountLine
+    {
+        if ($this->budgetAccountLine === []) {
+            $this->addOnceTobudgetAccountLine(new BudgetAccountLine());
+        }
+
+        return $this->budgetAccountLine[0];
     }
 
     /**

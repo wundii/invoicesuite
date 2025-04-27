@@ -232,4 +232,27 @@ class MeterPropertyType
 
         return $valueQualifier;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier $valueQualifier
+     * @return self
+     */
+    public function addOnceToValueQualifier(ValueQualifier $valueQualifier): self
+    {
+        $this->valueQualifier[0] = $valueQualifier;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier
+     */
+    public function addOnceToValueQualifierWithCreate(): ValueQualifier
+    {
+        if ($this->valueQualifier === []) {
+            $this->addOnceTovalueQualifier(new ValueQualifier());
+        }
+
+        return $this->valueQualifier[0];
+    }
 }

@@ -186,6 +186,29 @@ class ResponseType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \DateTime|null
      */
     public function getEffectiveDate(): ?\DateTime
@@ -271,5 +294,28 @@ class ResponseType
         $this->addTostatus($status = new Status());
 
         return $status;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Status $status
+     * @return self
+     */
+    public function addOnceToStatus(Status $status): self
+    {
+        $this->status[0] = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Status
+     */
+    public function addOnceToStatusWithCreate(): Status
+    {
+        if ($this->status === []) {
+            $this->addOnceTostatus(new Status());
+        }
+
+        return $this->status[0];
     }
 }

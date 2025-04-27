@@ -209,4 +209,27 @@ class TaxTotalType
 
         return $taxSubtotal;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal $taxSubtotal
+     * @return self
+     */
+    public function addOnceToTaxSubtotal(TaxSubtotal $taxSubtotal): self
+    {
+        $this->taxSubtotal[0] = $taxSubtotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxSubtotal
+     */
+    public function addOnceToTaxSubtotalWithCreate(): TaxSubtotal
+    {
+        if ($this->taxSubtotal === []) {
+            $this->addOnceTotaxSubtotal(new TaxSubtotal());
+        }
+
+        return $this->taxSubtotal[0];
+    }
 }

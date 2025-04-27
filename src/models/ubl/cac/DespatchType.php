@@ -481,6 +481,29 @@ class DespatchType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Instructions $instructions
+     * @return self
+     */
+    public function addOnceToInstructions(Instructions $instructions): self
+    {
+        $this->instructions[0] = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Instructions
+     */
+    public function addOnceToInstructionsWithCreate(): Instructions
+    {
+        if ($this->instructions === []) {
+            $this->addOnceToinstructions(new Instructions());
+        }
+
+        return $this->instructions[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\DespatchAddress|null
      */
     public function getDespatchAddress(): ?DespatchAddress
@@ -644,6 +667,29 @@ class DespatchType
         $this->addTonotifyParty($notifyParty = new NotifyParty());
 
         return $notifyParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotifyParty $notifyParty
+     * @return self
+     */
+    public function addOnceToNotifyParty(NotifyParty $notifyParty): self
+    {
+        $this->notifyParty[0] = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotifyParty
+     */
+    public function addOnceToNotifyPartyWithCreate(): NotifyParty
+    {
+        if ($this->notifyParty === []) {
+            $this->addOnceTonotifyParty(new NotifyParty());
+        }
+
+        return $this->notifyParty[0];
     }
 
     /**

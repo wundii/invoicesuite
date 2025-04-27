@@ -217,6 +217,29 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\NotaryParty|null
      */
     public function getNotaryParty(): ?NotaryParty
@@ -325,6 +348,29 @@ class PowerOfAttorneyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WitnessParty $witnessParty
+     * @return self
+     */
+    public function addOnceToWitnessParty(WitnessParty $witnessParty): self
+    {
+        $this->witnessParty[0] = $witnessParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\WitnessParty
+     */
+    public function addOnceToWitnessPartyWithCreate(): WitnessParty
+    {
+        if ($this->witnessParty === []) {
+            $this->addOnceTowitnessParty(new WitnessParty());
+        }
+
+        return $this->witnessParty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference>|null
      */
     public function getMandateDocumentReference(): ?array
@@ -372,5 +418,28 @@ class PowerOfAttorneyType
         $this->addTomandateDocumentReference($mandateDocumentReference = new MandateDocumentReference());
 
         return $mandateDocumentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference $mandateDocumentReference
+     * @return self
+     */
+    public function addOnceToMandateDocumentReference(MandateDocumentReference $mandateDocumentReference): self
+    {
+        $this->mandateDocumentReference[0] = $mandateDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MandateDocumentReference
+     */
+    public function addOnceToMandateDocumentReferenceWithCreate(): MandateDocumentReference
+    {
+        if ($this->mandateDocumentReference === []) {
+            $this->addOnceTomandateDocumentReference(new MandateDocumentReference());
+        }
+
+        return $this->mandateDocumentReference[0];
     }
 }

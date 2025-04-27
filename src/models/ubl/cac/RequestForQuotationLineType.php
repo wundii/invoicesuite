@@ -210,6 +210,29 @@ class RequestForQuotationLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return bool|null
      */
     public function getOptionalLineItemIndicator(): ?bool
@@ -334,6 +357,29 @@ class RequestForQuotationLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**

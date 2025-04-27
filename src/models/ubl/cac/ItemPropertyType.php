@@ -386,6 +386,29 @@ class ItemPropertyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier $valueQualifier
+     * @return self
+     */
+    public function addOnceToValueQualifier(ValueQualifier $valueQualifier): self
+    {
+        $this->valueQualifier[0] = $valueQualifier;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ValueQualifier
+     */
+    public function addOnceToValueQualifierWithCreate(): ValueQualifier
+    {
+        if ($this->valueQualifier === []) {
+            $this->addOnceTovalueQualifier(new ValueQualifier());
+        }
+
+        return $this->valueQualifier[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ImportanceCode|null
      */
     public function getImportanceCode(): ?ImportanceCode
@@ -465,6 +488,29 @@ class ItemPropertyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ListValue $listValue
+     * @return self
+     */
+    public function addOnceToListValue(ListValue $listValue): self
+    {
+        $this->listValue[0] = $listValue;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ListValue
+     */
+    public function addOnceToListValueWithCreate(): ListValue
+    {
+        if ($this->listValue === []) {
+            $this->addOnceTolistValue(new ListValue());
+        }
+
+        return $this->listValue[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\UsabilityPeriod|null
      */
     public function getUsabilityPeriod(): ?UsabilityPeriod
@@ -541,6 +587,29 @@ class ItemPropertyType
         $this->addToitemPropertyGroup($itemPropertyGroup = new ItemPropertyGroup());
 
         return $itemPropertyGroup;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemPropertyGroup $itemPropertyGroup
+     * @return self
+     */
+    public function addOnceToItemPropertyGroup(ItemPropertyGroup $itemPropertyGroup): self
+    {
+        $this->itemPropertyGroup[0] = $itemPropertyGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ItemPropertyGroup
+     */
+    public function addOnceToItemPropertyGroupWithCreate(): ItemPropertyGroup
+    {
+        if ($this->itemPropertyGroup === []) {
+            $this->addOnceToitemPropertyGroup(new ItemPropertyGroup());
+        }
+
+        return $this->itemPropertyGroup[0];
     }
 
     /**

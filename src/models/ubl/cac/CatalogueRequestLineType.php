@@ -186,6 +186,29 @@ class CatalogueRequestLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LineValidityPeriod|null
      */
     public function getLineValidityPeriod(): ?LineValidityPeriod
@@ -263,6 +286,30 @@ class CatalogueRequestLineType
         $this->addTorequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
 
         return $requiredItemLocationQuantity;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity $requiredItemLocationQuantity
+     * @return self
+     */
+    public function addOnceToRequiredItemLocationQuantity(
+        RequiredItemLocationQuantity $requiredItemLocationQuantity,
+    ): self {
+        $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity
+     */
+    public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
+    {
+        if ($this->requiredItemLocationQuantity === []) {
+            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+        }
+
+        return $this->requiredItemLocationQuantity[0];
     }
 
     /**

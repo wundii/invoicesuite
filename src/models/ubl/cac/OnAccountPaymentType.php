@@ -123,6 +123,29 @@ class OnAccountPaymentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PaymentTerms>|null
      */
     public function getPaymentTerms(): ?array
@@ -170,5 +193,28 @@ class OnAccountPaymentType
         $this->addTopaymentTerms($paymentTerms = new PaymentTerms());
 
         return $paymentTerms;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms $paymentTerms
+     * @return self
+     */
+    public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
+    {
+        $this->paymentTerms[0] = $paymentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentTerms
+     */
+    public function addOnceToPaymentTermsWithCreate(): PaymentTerms
+    {
+        if ($this->paymentTerms === []) {
+            $this->addOnceTopaymentTerms(new PaymentTerms());
+        }
+
+        return $this->paymentTerms[0];
     }
 }

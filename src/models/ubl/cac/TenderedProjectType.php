@@ -246,6 +246,29 @@ class TenderedProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FeeDescription $feeDescription
+     * @return self
+     */
+    public function addOnceToFeeDescription(FeeDescription $feeDescription): self
+    {
+        $this->feeDescription[0] = $feeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\FeeDescription
+     */
+    public function addOnceToFeeDescriptionWithCreate(): FeeDescription
+    {
+        if ($this->feeDescription === []) {
+            $this->addOnceTofeeDescription(new FeeDescription());
+        }
+
+        return $this->feeDescription[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID|null
      */
     public function getTenderEnvelopeID(): ?TenderEnvelopeID
@@ -383,6 +406,29 @@ class TenderedProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EvidenceDocumentReference $evidenceDocumentReference
+     * @return self
+     */
+    public function addOnceToEvidenceDocumentReference(EvidenceDocumentReference $evidenceDocumentReference): self
+    {
+        $this->evidenceDocumentReference[0] = $evidenceDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EvidenceDocumentReference
+     */
+    public function addOnceToEvidenceDocumentReferenceWithCreate(): EvidenceDocumentReference
+    {
+        if ($this->evidenceDocumentReference === []) {
+            $this->addOnceToevidenceDocumentReference(new EvidenceDocumentReference());
+        }
+
+        return $this->evidenceDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TaxTotal>|null
      */
     public function getTaxTotal(): ?array
@@ -430,6 +476,29 @@ class TenderedProjectType
         $this->addTotaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
     }
 
     /**
@@ -512,6 +581,29 @@ class TenderedProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TenderLine $tenderLine
+     * @return self
+     */
+    public function addOnceToTenderLine(TenderLine $tenderLine): self
+    {
+        $this->tenderLine[0] = $tenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TenderLine
+     */
+    public function addOnceToTenderLineWithCreate(): TenderLine
+    {
+        if ($this->tenderLine === []) {
+            $this->addOnceTotenderLine(new TenderLine());
+        }
+
+        return $this->tenderLine[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AwardingCriterionResponse>|null
      */
     public function getAwardingCriterionResponse(): ?array
@@ -559,5 +651,28 @@ class TenderedProjectType
         $this->addToawardingCriterionResponse($awardingCriterionResponse = new AwardingCriterionResponse());
 
         return $awardingCriterionResponse;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AwardingCriterionResponse $awardingCriterionResponse
+     * @return self
+     */
+    public function addOnceToAwardingCriterionResponse(AwardingCriterionResponse $awardingCriterionResponse): self
+    {
+        $this->awardingCriterionResponse[0] = $awardingCriterionResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AwardingCriterionResponse
+     */
+    public function addOnceToAwardingCriterionResponseWithCreate(): AwardingCriterionResponse
+    {
+        if ($this->awardingCriterionResponse === []) {
+            $this->addOnceToawardingCriterionResponse(new AwardingCriterionResponse());
+        }
+
+        return $this->awardingCriterionResponse[0];
     }
 }

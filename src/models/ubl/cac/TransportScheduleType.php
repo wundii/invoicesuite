@@ -289,6 +289,29 @@ class TransportScheduleType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Remarks $remarks
+     * @return self
+     */
+    public function addOnceToRemarks(Remarks $remarks): self
+    {
+        $this->remarks[0] = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Remarks
+     */
+    public function addOnceToRemarksWithCreate(): Remarks
+    {
+        if ($this->remarks === []) {
+            $this->addOnceToremarks(new Remarks());
+        }
+
+        return $this->remarks[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\StatusLocation|null
      */
     public function getStatusLocation(): ?StatusLocation

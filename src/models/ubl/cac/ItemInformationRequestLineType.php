@@ -245,6 +245,29 @@ class ItemInformationRequestLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Period $period
+     * @return self
+     */
+    public function addOnceToPeriod(Period $period): self
+    {
+        $this->period[0] = $period;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Period
+     */
+    public function addOnceToPeriodWithCreate(): Period
+    {
+        if ($this->period === []) {
+            $this->addOnceToperiod(new Period());
+        }
+
+        return $this->period[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SalesItem>|null
      */
     public function getSalesItem(): ?array
@@ -292,5 +315,28 @@ class ItemInformationRequestLineType
         $this->addTosalesItem($salesItem = new SalesItem());
 
         return $salesItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SalesItem $salesItem
+     * @return self
+     */
+    public function addOnceToSalesItem(SalesItem $salesItem): self
+    {
+        $this->salesItem[0] = $salesItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SalesItem
+     */
+    public function addOnceToSalesItemWithCreate(): SalesItem
+    {
+        if ($this->salesItem === []) {
+            $this->addOnceTosalesItem(new SalesItem());
+        }
+
+        return $this->salesItem[0];
     }
 }

@@ -95,6 +95,29 @@ class ContractExecutionRequirementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @return self
+     */
+    public function addOnceToName(Name $name): self
+    {
+        $this->name[0] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Name
+     */
+    public function addOnceToNameWithCreate(): Name
+    {
+        if ($this->name === []) {
+            $this->addOnceToname(new Name());
+        }
+
+        return $this->name[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ExecutionRequirementCode|null
      */
     public function getExecutionRequirementCode(): ?ExecutionRequirementCode
@@ -171,5 +194,28 @@ class ContractExecutionRequirementType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 }

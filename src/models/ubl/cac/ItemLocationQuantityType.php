@@ -304,6 +304,29 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions $tradingRestrictions
+     * @return self
+     */
+    public function addOnceToTradingRestrictions(TradingRestrictions $tradingRestrictions): self
+    {
+        $this->tradingRestrictions[0] = $tradingRestrictions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions
+     */
+    public function addOnceToTradingRestrictionsWithCreate(): TradingRestrictions
+    {
+        if ($this->tradingRestrictions === []) {
+            $this->addOnceTotradingRestrictions(new TradingRestrictions());
+        }
+
+        return $this->tradingRestrictions[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress>|null
      */
     public function getApplicableTerritoryAddress(): ?array
@@ -351,6 +374,29 @@ class ItemLocationQuantityType
         $this->addToapplicableTerritoryAddress($applicableTerritoryAddress = new ApplicableTerritoryAddress());
 
         return $applicableTerritoryAddress;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress $applicableTerritoryAddress
+     * @return self
+     */
+    public function addOnceToApplicableTerritoryAddress(ApplicableTerritoryAddress $applicableTerritoryAddress): self
+    {
+        $this->applicableTerritoryAddress[0] = $applicableTerritoryAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ApplicableTerritoryAddress
+     */
+    public function addOnceToApplicableTerritoryAddressWithCreate(): ApplicableTerritoryAddress
+    {
+        if ($this->applicableTerritoryAddress === []) {
+            $this->addOnceToapplicableTerritoryAddress(new ApplicableTerritoryAddress());
+        }
+
+        return $this->applicableTerritoryAddress[0];
     }
 
     /**
@@ -433,6 +479,29 @@ class ItemLocationQuantityType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit $deliveryUnit
+     * @return self
+     */
+    public function addOnceToDeliveryUnit(DeliveryUnit $deliveryUnit): self
+    {
+        $this->deliveryUnit[0] = $deliveryUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryUnit
+     */
+    public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
+    {
+        if ($this->deliveryUnit === []) {
+            $this->addOnceTodeliveryUnit(new DeliveryUnit());
+        }
+
+        return $this->deliveryUnit[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory>|null
      */
     public function getApplicableTaxCategory(): ?array
@@ -480,6 +549,29 @@ class ItemLocationQuantityType
         $this->addToapplicableTaxCategory($applicableTaxCategory = new ApplicableTaxCategory());
 
         return $applicableTaxCategory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory $applicableTaxCategory
+     * @return self
+     */
+    public function addOnceToApplicableTaxCategory(ApplicableTaxCategory $applicableTaxCategory): self
+    {
+        $this->applicableTaxCategory[0] = $applicableTaxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ApplicableTaxCategory
+     */
+    public function addOnceToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
+    {
+        if ($this->applicableTaxCategory === []) {
+            $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
+        }
+
+        return $this->applicableTaxCategory[0];
     }
 
     /**
@@ -559,6 +651,29 @@ class ItemLocationQuantityType
         $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
     }
 
     /**

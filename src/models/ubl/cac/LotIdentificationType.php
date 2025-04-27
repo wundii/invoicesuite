@@ -138,4 +138,27 @@ class LotIdentificationType
 
         return $additionalItemProperty;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty $additionalItemProperty
+     * @return self
+     */
+    public function addOnceToAdditionalItemProperty(AdditionalItemProperty $additionalItemProperty): self
+    {
+        $this->additionalItemProperty[0] = $additionalItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty
+     */
+    public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
+    {
+        if ($this->additionalItemProperty === []) {
+            $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
+        }
+
+        return $this->additionalItemProperty[0];
+    }
 }

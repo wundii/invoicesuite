@@ -231,6 +231,29 @@ class LocationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Conditions>|null
      */
     public function getConditions(): ?array
@@ -278,6 +301,29 @@ class LocationType
         $this->addToconditions($conditions = new Conditions());
 
         return $conditions;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Conditions $conditions
+     * @return self
+     */
+    public function addOnceToConditions(Conditions $conditions): self
+    {
+        $this->conditions[0] = $conditions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Conditions
+     */
+    public function addOnceToConditionsWithCreate(): Conditions
+    {
+        if ($this->conditions === []) {
+            $this->addOnceToconditions(new Conditions());
+        }
+
+        return $this->conditions[0];
     }
 
     /**
@@ -476,6 +522,29 @@ class LocationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod $validityPeriod
+     * @return self
+     */
+    public function addOnceToValidityPeriod(ValidityPeriod $validityPeriod): self
+    {
+        $this->validityPeriod[0] = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod
+     */
+    public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
+    {
+        if ($this->validityPeriod === []) {
+            $this->addOnceTovalidityPeriod(new ValidityPeriod());
+        }
+
+        return $this->validityPeriod[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Address|null
      */
     public function getAddress(): ?Address
@@ -555,6 +624,29 @@ class LocationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation $subsidiaryLocation
+     * @return self
+     */
+    public function addOnceToSubsidiaryLocation(SubsidiaryLocation $subsidiaryLocation): self
+    {
+        $this->subsidiaryLocation[0] = $subsidiaryLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubsidiaryLocation
+     */
+    public function addOnceToSubsidiaryLocationWithCreate(): SubsidiaryLocation
+    {
+        if ($this->subsidiaryLocation === []) {
+            $this->addOnceTosubsidiaryLocation(new SubsidiaryLocation());
+        }
+
+        return $this->subsidiaryLocation[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate>|null
      */
     public function getLocationCoordinate(): ?array
@@ -602,5 +694,28 @@ class LocationType
         $this->addTolocationCoordinate($locationCoordinate = new LocationCoordinate());
 
         return $locationCoordinate;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate $locationCoordinate
+     * @return self
+     */
+    public function addOnceToLocationCoordinate(LocationCoordinate $locationCoordinate): self
+    {
+        $this->locationCoordinate[0] = $locationCoordinate;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\LocationCoordinate
+     */
+    public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
+    {
+        if ($this->locationCoordinate === []) {
+            $this->addOnceTolocationCoordinate(new LocationCoordinate());
+        }
+
+        return $this->locationCoordinate[0];
     }
 }

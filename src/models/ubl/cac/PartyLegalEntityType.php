@@ -553,4 +553,27 @@ class PartyLegalEntityType
 
         return $shareholderParty;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShareholderParty $shareholderParty
+     * @return self
+     */
+    public function addOnceToShareholderParty(ShareholderParty $shareholderParty): self
+    {
+        $this->shareholderParty[0] = $shareholderParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShareholderParty
+     */
+    public function addOnceToShareholderPartyWithCreate(): ShareholderParty
+    {
+        if ($this->shareholderParty === []) {
+            $this->addOnceToshareholderParty(new ShareholderParty());
+        }
+
+        return $this->shareholderParty[0];
+    }
 }

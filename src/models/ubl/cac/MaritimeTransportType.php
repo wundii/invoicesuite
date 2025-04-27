@@ -239,6 +239,29 @@ class MaritimeTransportType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShipsRequirements $shipsRequirements
+     * @return self
+     */
+    public function addOnceToShipsRequirements(ShipsRequirements $shipsRequirements): self
+    {
+        $this->shipsRequirements[0] = $shipsRequirements;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ShipsRequirements
+     */
+    public function addOnceToShipsRequirementsWithCreate(): ShipsRequirements
+    {
+        if ($this->shipsRequirements === []) {
+            $this->addOnceToshipsRequirements(new ShipsRequirements());
+        }
+
+        return $this->shipsRequirements[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\GrossTonnageMeasure|null
      */
     public function getGrossTonnageMeasure(): ?GrossTonnageMeasure

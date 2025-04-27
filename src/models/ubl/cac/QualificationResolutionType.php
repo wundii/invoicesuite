@@ -157,6 +157,29 @@ class QualificationResolutionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason $exclusionReason
+     * @return self
+     */
+    public function addOnceToExclusionReason(ExclusionReason $exclusionReason): self
+    {
+        $this->exclusionReason[0] = $exclusionReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason
+     */
+    public function addOnceToExclusionReasonWithCreate(): ExclusionReason
+    {
+        if ($this->exclusionReason === []) {
+            $this->addOnceToexclusionReason(new ExclusionReason());
+        }
+
+        return $this->exclusionReason[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Resolution>|null
      */
     public function getResolution(): ?array
@@ -204,6 +227,29 @@ class QualificationResolutionType
         $this->addToresolution($resolution = new Resolution());
 
         return $resolution;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Resolution $resolution
+     * @return self
+     */
+    public function addOnceToResolution(Resolution $resolution): self
+    {
+        $this->resolution[0] = $resolution;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Resolution
+     */
+    public function addOnceToResolutionWithCreate(): Resolution
+    {
+        if ($this->resolution === []) {
+            $this->addOnceToresolution(new Resolution());
+        }
+
+        return $this->resolution[0];
     }
 
     /**

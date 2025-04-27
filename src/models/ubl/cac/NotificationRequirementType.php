@@ -218,6 +218,29 @@ class NotificationRequirementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotifyParty $notifyParty
+     * @return self
+     */
+    public function addOnceToNotifyParty(NotifyParty $notifyParty): self
+    {
+        $this->notifyParty[0] = $notifyParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotifyParty
+     */
+    public function addOnceToNotifyPartyWithCreate(): NotifyParty
+    {
+        if ($this->notifyParty === []) {
+            $this->addOnceTonotifyParty(new NotifyParty());
+        }
+
+        return $this->notifyParty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod>|null
      */
     public function getNotificationPeriod(): ?array
@@ -268,6 +291,29 @@ class NotificationRequirementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod $notificationPeriod
+     * @return self
+     */
+    public function addOnceToNotificationPeriod(NotificationPeriod $notificationPeriod): self
+    {
+        $this->notificationPeriod[0] = $notificationPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotificationPeriod
+     */
+    public function addOnceToNotificationPeriodWithCreate(): NotificationPeriod
+    {
+        if ($this->notificationPeriod === []) {
+            $this->addOnceTonotificationPeriod(new NotificationPeriod());
+        }
+
+        return $this->notificationPeriod[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\NotificationLocation>|null
      */
     public function getNotificationLocation(): ?array
@@ -315,5 +361,28 @@ class NotificationRequirementType
         $this->addTonotificationLocation($notificationLocation = new NotificationLocation());
 
         return $notificationLocation;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NotificationLocation $notificationLocation
+     * @return self
+     */
+    public function addOnceToNotificationLocation(NotificationLocation $notificationLocation): self
+    {
+        $this->notificationLocation[0] = $notificationLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NotificationLocation
+     */
+    public function addOnceToNotificationLocationWithCreate(): NotificationLocation
+    {
+        if ($this->notificationLocation === []) {
+            $this->addOnceTonotificationLocation(new NotificationLocation());
+        }
+
+        return $this->notificationLocation[0];
     }
 }

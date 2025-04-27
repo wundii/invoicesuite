@@ -218,6 +218,29 @@ class TelecommunicationsSupplyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TotalAmount|null
      */
     public function getTotalAmount(): ?TotalAmount
@@ -295,5 +318,29 @@ class TelecommunicationsSupplyType
         $this->addTotelecommunicationsSupplyLine($telecommunicationsSupplyLine = new TelecommunicationsSupplyLine());
 
         return $telecommunicationsSupplyLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine $telecommunicationsSupplyLine
+     * @return self
+     */
+    public function addOnceToTelecommunicationsSupplyLine(
+        TelecommunicationsSupplyLine $telecommunicationsSupplyLine,
+    ): self {
+        $this->telecommunicationsSupplyLine[0] = $telecommunicationsSupplyLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TelecommunicationsSupplyLine
+     */
+    public function addOnceToTelecommunicationsSupplyLineWithCreate(): TelecommunicationsSupplyLine
+    {
+        if ($this->telecommunicationsSupplyLine === []) {
+            $this->addOnceTotelecommunicationsSupplyLine(new TelecommunicationsSupplyLine());
+        }
+
+        return $this->telecommunicationsSupplyLine[0];
     }
 }

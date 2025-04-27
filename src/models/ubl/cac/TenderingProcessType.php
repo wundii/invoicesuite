@@ -384,6 +384,29 @@ class TenderingProcessType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\NegotiationDescription>|null
      */
     public function getNegotiationDescription(): ?array
@@ -431,6 +454,29 @@ class TenderingProcessType
         $this->addTonegotiationDescription($negotiationDescription = new NegotiationDescription());
 
         return $negotiationDescription;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\NegotiationDescription $negotiationDescription
+     * @return self
+     */
+    public function addOnceToNegotiationDescription(NegotiationDescription $negotiationDescription): self
+    {
+        $this->negotiationDescription[0] = $negotiationDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\NegotiationDescription
+     */
+    public function addOnceToNegotiationDescriptionWithCreate(): NegotiationDescription
+    {
+        if ($this->negotiationDescription === []) {
+            $this->addOnceTonegotiationDescription(new NegotiationDescription());
+        }
+
+        return $this->negotiationDescription[0];
     }
 
     /**
@@ -814,6 +860,29 @@ class TenderingProcessType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\NoticeDocumentReference $noticeDocumentReference
+     * @return self
+     */
+    public function addOnceToNoticeDocumentReference(NoticeDocumentReference $noticeDocumentReference): self
+    {
+        $this->noticeDocumentReference[0] = $noticeDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\NoticeDocumentReference
+     */
+    public function addOnceToNoticeDocumentReferenceWithCreate(): NoticeDocumentReference
+    {
+        if ($this->noticeDocumentReference === []) {
+            $this->addOnceTonoticeDocumentReference(new NoticeDocumentReference());
+        }
+
+        return $this->noticeDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>|null
      */
     public function getAdditionalDocumentReference(): ?array
@@ -864,6 +933,30 @@ class TenderingProcessType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference $additionalDocumentReference
+     * @return self
+     */
+    public function addOnceToAdditionalDocumentReference(
+        AdditionalDocumentReference $additionalDocumentReference,
+    ): self {
+        $this->additionalDocumentReference[0] = $additionalDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
+     */
+    public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
+    {
+        if ($this->additionalDocumentReference === []) {
+            $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
+        }
+
+        return $this->additionalDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ProcessJustification>|null
      */
     public function getProcessJustification(): ?array
@@ -911,6 +1004,29 @@ class TenderingProcessType
         $this->addToprocessJustification($processJustification = new ProcessJustification());
 
         return $processJustification;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcessJustification $processJustification
+     * @return self
+     */
+    public function addOnceToProcessJustification(ProcessJustification $processJustification): self
+    {
+        $this->processJustification[0] = $processJustification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ProcessJustification
+     */
+    public function addOnceToProcessJustificationWithCreate(): ProcessJustification
+    {
+        if ($this->processJustification === []) {
+            $this->addOnceToprocessJustification(new ProcessJustification());
+        }
+
+        return $this->processJustification[0];
     }
 
     /**
@@ -990,6 +1106,29 @@ class TenderingProcessType
         $this->addToopenTenderEvent($openTenderEvent = new OpenTenderEvent());
 
         return $openTenderEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OpenTenderEvent $openTenderEvent
+     * @return self
+     */
+    public function addOnceToOpenTenderEvent(OpenTenderEvent $openTenderEvent): self
+    {
+        $this->openTenderEvent[0] = $openTenderEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OpenTenderEvent
+     */
+    public function addOnceToOpenTenderEventWithCreate(): OpenTenderEvent
+    {
+        if ($this->openTenderEvent === []) {
+            $this->addOnceToopenTenderEvent(new OpenTenderEvent());
+        }
+
+        return $this->openTenderEvent[0];
     }
 
     /**

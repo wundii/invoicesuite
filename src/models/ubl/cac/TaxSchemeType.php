@@ -231,4 +231,27 @@ class TaxSchemeType
 
         return $jurisdictionRegionAddress;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress $jurisdictionRegionAddress
+     * @return self
+     */
+    public function addOnceToJurisdictionRegionAddress(JurisdictionRegionAddress $jurisdictionRegionAddress): self
+    {
+        $this->jurisdictionRegionAddress[0] = $jurisdictionRegionAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\JurisdictionRegionAddress
+     */
+    public function addOnceToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
+    {
+        if ($this->jurisdictionRegionAddress === []) {
+            $this->addOnceTojurisdictionRegionAddress(new JurisdictionRegionAddress());
+        }
+
+        return $this->jurisdictionRegionAddress[0];
+    }
 }

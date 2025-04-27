@@ -105,6 +105,29 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsumptionReport $consumptionReport
+     * @return self
+     */
+    public function addOnceToConsumptionReport(ConsumptionReport $consumptionReport): self
+    {
+        $this->consumptionReport[0] = $consumptionReport;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ConsumptionReport
+     */
+    public function addOnceToConsumptionReportWithCreate(): ConsumptionReport
+    {
+        if ($this->consumptionReport === []) {
+            $this->addOnceToconsumptionReport(new ConsumptionReport());
+        }
+
+        return $this->consumptionReport[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EnergyTaxReport>|null
      */
     public function getEnergyTaxReport(): ?array
@@ -152,6 +175,29 @@ class EnergyWaterSupplyType
         $this->addToenergyTaxReport($energyTaxReport = new EnergyTaxReport());
 
         return $energyTaxReport;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnergyTaxReport $energyTaxReport
+     * @return self
+     */
+    public function addOnceToEnergyTaxReport(EnergyTaxReport $energyTaxReport): self
+    {
+        $this->energyTaxReport[0] = $energyTaxReport;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EnergyTaxReport
+     */
+    public function addOnceToEnergyTaxReportWithCreate(): EnergyTaxReport
+    {
+        if ($this->energyTaxReport === []) {
+            $this->addOnceToenergyTaxReport(new EnergyTaxReport());
+        }
+
+        return $this->energyTaxReport[0];
     }
 
     /**
@@ -205,6 +251,29 @@ class EnergyWaterSupplyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsumptionAverage $consumptionAverage
+     * @return self
+     */
+    public function addOnceToConsumptionAverage(ConsumptionAverage $consumptionAverage): self
+    {
+        $this->consumptionAverage[0] = $consumptionAverage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ConsumptionAverage
+     */
+    public function addOnceToConsumptionAverageWithCreate(): ConsumptionAverage
+    {
+        if ($this->consumptionAverage === []) {
+            $this->addOnceToconsumptionAverage(new ConsumptionAverage());
+        }
+
+        return $this->consumptionAverage[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EnergyWaterConsumptionCorrection>|null
      */
     public function getEnergyWaterConsumptionCorrection(): ?array
@@ -253,5 +322,29 @@ class EnergyWaterSupplyType
         $this->addToenergyWaterConsumptionCorrection($energyWaterConsumptionCorrection = new EnergyWaterConsumptionCorrection());
 
         return $energyWaterConsumptionCorrection;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterConsumptionCorrection $energyWaterConsumptionCorrection
+     * @return self
+     */
+    public function addOnceToEnergyWaterConsumptionCorrection(
+        EnergyWaterConsumptionCorrection $energyWaterConsumptionCorrection,
+    ): self {
+        $this->energyWaterConsumptionCorrection[0] = $energyWaterConsumptionCorrection;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EnergyWaterConsumptionCorrection
+     */
+    public function addOnceToEnergyWaterConsumptionCorrectionWithCreate(): EnergyWaterConsumptionCorrection
+    {
+        if ($this->energyWaterConsumptionCorrection === []) {
+            $this->addOnceToenergyWaterConsumptionCorrection(new EnergyWaterConsumptionCorrection());
+        }
+
+        return $this->energyWaterConsumptionCorrection[0];
     }
 }

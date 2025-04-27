@@ -175,6 +175,29 @@ class EndorsementType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Remarks $remarks
+     * @return self
+     */
+    public function addOnceToRemarks(Remarks $remarks): self
+    {
+        $this->remarks[0] = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Remarks
+     */
+    public function addOnceToRemarksWithCreate(): Remarks
+    {
+        if ($this->remarks === []) {
+            $this->addOnceToremarks(new Remarks());
+        }
+
+        return $this->remarks[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EndorserParty|null
      */
     public function getEndorserParty(): ?EndorserParty
@@ -251,5 +274,28 @@ class EndorsementType
         $this->addTosignature($signature = new Signature());
 
         return $signature;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Signature $signature
+     * @return self
+     */
+    public function addOnceToSignature(Signature $signature): self
+    {
+        $this->signature[0] = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Signature
+     */
+    public function addOnceToSignatureWithCreate(): Signature
+    {
+        if ($this->signature === []) {
+            $this->addOnceTosignature(new Signature());
+        }
+
+        return $this->signature[0];
     }
 }

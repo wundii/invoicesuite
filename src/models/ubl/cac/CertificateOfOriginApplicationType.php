@@ -389,6 +389,29 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Remarks $remarks
+     * @return self
+     */
+    public function addOnceToRemarks(Remarks $remarks): self
+    {
+        $this->remarks[0] = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Remarks
+     */
+    public function addOnceToRemarksWithCreate(): Remarks
+    {
+        if ($this->remarks === []) {
+            $this->addOnceToremarks(new Remarks());
+        }
+
+        return $this->remarks[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Shipment|null
      */
     public function getShipment(): ?Shipment
@@ -465,6 +488,29 @@ class CertificateOfOriginApplicationType
         $this->addToendorserParty($endorserParty = new EndorserParty());
 
         return $endorserParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EndorserParty $endorserParty
+     * @return self
+     */
+    public function addOnceToEndorserParty(EndorserParty $endorserParty): self
+    {
+        $this->endorserParty[0] = $endorserParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EndorserParty
+     */
+    public function addOnceToEndorserPartyWithCreate(): EndorserParty
+    {
+        if ($this->endorserParty === []) {
+            $this->addOnceToendorserParty(new EndorserParty());
+        }
+
+        return $this->endorserParty[0];
     }
 
     /**
@@ -663,6 +709,29 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentDistribution $documentDistribution
+     * @return self
+     */
+    public function addOnceToDocumentDistribution(DocumentDistribution $documentDistribution): self
+    {
+        $this->documentDistribution[0] = $documentDistribution;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentDistribution
+     */
+    public function addOnceToDocumentDistributionWithCreate(): DocumentDistribution
+    {
+        if ($this->documentDistribution === []) {
+            $this->addOnceTodocumentDistribution(new DocumentDistribution());
+        }
+
+        return $this->documentDistribution[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SupportingDocumentReference>|null
      */
     public function getSupportingDocumentReference(): ?array
@@ -713,6 +782,30 @@ class CertificateOfOriginApplicationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupportingDocumentReference $supportingDocumentReference
+     * @return self
+     */
+    public function addOnceToSupportingDocumentReference(
+        SupportingDocumentReference $supportingDocumentReference,
+    ): self {
+        $this->supportingDocumentReference[0] = $supportingDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SupportingDocumentReference
+     */
+    public function addOnceToSupportingDocumentReferenceWithCreate(): SupportingDocumentReference
+    {
+        if ($this->supportingDocumentReference === []) {
+            $this->addOnceTosupportingDocumentReference(new SupportingDocumentReference());
+        }
+
+        return $this->supportingDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Signature>|null
      */
     public function getSignature(): ?array
@@ -760,5 +853,28 @@ class CertificateOfOriginApplicationType
         $this->addTosignature($signature = new Signature());
 
         return $signature;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Signature $signature
+     * @return self
+     */
+    public function addOnceToSignature(Signature $signature): self
+    {
+        $this->signature[0] = $signature;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Signature
+     */
+    public function addOnceToSignatureWithCreate(): Signature
+    {
+        if ($this->signature === []) {
+            $this->addOnceTosignature(new Signature());
+        }
+
+        return $this->signature[0];
     }
 }

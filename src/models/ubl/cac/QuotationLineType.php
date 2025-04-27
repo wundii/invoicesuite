@@ -217,6 +217,29 @@ class QuotationLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -383,6 +406,29 @@ class QuotationLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\LineItem|null
      */
     public function getLineItem(): ?LineItem
@@ -463,6 +509,30 @@ class QuotationLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem
+     * @return self
+     */
+    public function addOnceToSellerProposedSubstituteLineItem(
+        SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
+    ): self {
+        $this->sellerProposedSubstituteLineItem[0] = $sellerProposedSubstituteLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SellerProposedSubstituteLineItem
+     */
+    public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
+    {
+        if ($this->sellerProposedSubstituteLineItem === []) {
+            $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
+        }
+
+        return $this->sellerProposedSubstituteLineItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AlternativeLineItem>|null
      */
     public function getAlternativeLineItem(): ?array
@@ -510,6 +580,29 @@ class QuotationLineType
         $this->addToalternativeLineItem($alternativeLineItem = new AlternativeLineItem());
 
         return $alternativeLineItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AlternativeLineItem $alternativeLineItem
+     * @return self
+     */
+    public function addOnceToAlternativeLineItem(AlternativeLineItem $alternativeLineItem): self
+    {
+        $this->alternativeLineItem[0] = $alternativeLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AlternativeLineItem
+     */
+    public function addOnceToAlternativeLineItemWithCreate(): AlternativeLineItem
+    {
+        if ($this->alternativeLineItem === []) {
+            $this->addOnceToalternativeLineItem(new AlternativeLineItem());
+        }
+
+        return $this->alternativeLineItem[0];
     }
 
     /**

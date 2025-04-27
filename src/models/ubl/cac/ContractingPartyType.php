@@ -134,6 +134,29 @@ class ContractingPartyType extends ContractingPartyTypeType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractingPartyType $contractingPartyType
+     * @return self
+     */
+    public function addOnceToContractingPartyType(ContractingPartyType $contractingPartyType): self
+    {
+        $this->contractingPartyType[0] = $contractingPartyType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractingPartyType
+     */
+    public function addOnceToContractingPartyTypeWithCreate(): ContractingPartyType
+    {
+        if ($this->contractingPartyType === []) {
+            $this->addOnceTocontractingPartyType(new ContractingPartyType());
+        }
+
+        return $this->contractingPartyType[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContractingActivity>|null
      */
     public function getContractingActivity(): ?array
@@ -181,6 +204,29 @@ class ContractingPartyType extends ContractingPartyTypeType
         $this->addTocontractingActivity($contractingActivity = new ContractingActivity());
 
         return $contractingActivity;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContractingActivity $contractingActivity
+     * @return self
+     */
+    public function addOnceToContractingActivity(ContractingActivity $contractingActivity): self
+    {
+        $this->contractingActivity[0] = $contractingActivity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContractingActivity
+     */
+    public function addOnceToContractingActivityWithCreate(): ContractingActivity
+    {
+        if ($this->contractingActivity === []) {
+            $this->addOnceTocontractingActivity(new ContractingActivity());
+        }
+
+        return $this->contractingActivity[0];
     }
 
     /**

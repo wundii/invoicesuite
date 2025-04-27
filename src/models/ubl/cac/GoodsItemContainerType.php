@@ -149,4 +149,27 @@ class GoodsItemContainerType
 
         return $transportEquipment;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment $transportEquipment
+     * @return self
+     */
+    public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
+    {
+        $this->transportEquipment[0] = $transportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment
+     */
+    public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
+    {
+        if ($this->transportEquipment === []) {
+            $this->addOnceTotransportEquipment(new TransportEquipment());
+        }
+
+        return $this->transportEquipment[0];
+    }
 }

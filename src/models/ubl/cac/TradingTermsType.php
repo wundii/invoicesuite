@@ -93,6 +93,29 @@ class TradingTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Information $information
+     * @return self
+     */
+    public function addOnceToInformation(Information $information): self
+    {
+        $this->information[0] = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Information
+     */
+    public function addOnceToInformationWithCreate(): Information
+    {
+        if ($this->information === []) {
+            $this->addOnceToinformation(new Information());
+        }
+
+        return $this->information[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Reference|null
      */
     public function getReference(): ?Reference

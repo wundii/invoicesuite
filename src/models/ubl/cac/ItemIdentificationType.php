@@ -215,6 +215,29 @@ class ItemIdentificationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute $physicalAttribute
+     * @return self
+     */
+    public function addOnceToPhysicalAttribute(PhysicalAttribute $physicalAttribute): self
+    {
+        $this->physicalAttribute[0] = $physicalAttribute;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PhysicalAttribute
+     */
+    public function addOnceToPhysicalAttributeWithCreate(): PhysicalAttribute
+    {
+        if ($this->physicalAttribute === []) {
+            $this->addOnceTophysicalAttribute(new PhysicalAttribute());
+        }
+
+        return $this->physicalAttribute[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -262,6 +285,29 @@ class ItemIdentificationType
         $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
     }
 
     /**

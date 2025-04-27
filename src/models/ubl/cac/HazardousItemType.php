@@ -418,6 +418,29 @@ class HazardousItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation $additionalInformation
+     * @return self
+     */
+    public function addOnceToAdditionalInformation(AdditionalInformation $additionalInformation): self
+    {
+        $this->additionalInformation[0] = $additionalInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation
+     */
+    public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
+    {
+        if ($this->additionalInformation === []) {
+            $this->addOnceToadditionalInformation(new AdditionalInformation());
+        }
+
+        return $this->additionalInformation[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UNDGCode|null
      */
     public function getUNDGCode(): ?UNDGCode
@@ -874,6 +897,29 @@ class HazardousItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard $secondaryHazard
+     * @return self
+     */
+    public function addOnceToSecondaryHazard(SecondaryHazard $secondaryHazard): self
+    {
+        $this->secondaryHazard[0] = $secondaryHazard;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SecondaryHazard
+     */
+    public function addOnceToSecondaryHazardWithCreate(): SecondaryHazard
+    {
+        if ($this->secondaryHazard === []) {
+            $this->addOnceTosecondaryHazard(new SecondaryHazard());
+        }
+
+        return $this->secondaryHazard[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null
      */
     public function getHazardousGoodsTransit(): ?array
@@ -921,6 +967,29 @@ class HazardousItemType
         $this->addTohazardousGoodsTransit($hazardousGoodsTransit = new HazardousGoodsTransit());
 
         return $hazardousGoodsTransit;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit $hazardousGoodsTransit
+     * @return self
+     */
+    public function addOnceToHazardousGoodsTransit(HazardousGoodsTransit $hazardousGoodsTransit): self
+    {
+        $this->hazardousGoodsTransit[0] = $hazardousGoodsTransit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit
+     */
+    public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
+    {
+        if ($this->hazardousGoodsTransit === []) {
+            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+        }
+
+        return $this->hazardousGoodsTransit[0];
     }
 
     /**
@@ -1029,5 +1098,28 @@ class HazardousItemType
         $this->addToadditionalTemperature($additionalTemperature = new AdditionalTemperature());
 
         return $additionalTemperature;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature $additionalTemperature
+     * @return self
+     */
+    public function addOnceToAdditionalTemperature(AdditionalTemperature $additionalTemperature): self
+    {
+        $this->additionalTemperature[0] = $additionalTemperature;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalTemperature
+     */
+    public function addOnceToAdditionalTemperatureWithCreate(): AdditionalTemperature
+    {
+        if ($this->additionalTemperature === []) {
+            $this->addOnceToadditionalTemperature(new AdditionalTemperature());
+        }
+
+        return $this->additionalTemperature[0];
     }
 }

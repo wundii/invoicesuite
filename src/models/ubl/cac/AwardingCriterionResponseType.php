@@ -202,6 +202,30 @@ class AwardingCriterionResponseType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription $awardingCriterionDescription
+     * @return self
+     */
+    public function addOnceToAwardingCriterionDescription(
+        AwardingCriterionDescription $awardingCriterionDescription,
+    ): self {
+        $this->awardingCriterionDescription[0] = $awardingCriterionDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AwardingCriterionDescription
+     */
+    public function addOnceToAwardingCriterionDescriptionWithCreate(): AwardingCriterionDescription
+    {
+        if ($this->awardingCriterionDescription === []) {
+            $this->addOnceToawardingCriterionDescription(new AwardingCriterionDescription());
+        }
+
+        return $this->awardingCriterionDescription[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -249,6 +273,29 @@ class AwardingCriterionResponseType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 
     /**
@@ -358,5 +405,29 @@ class AwardingCriterionResponseType
         $this->addTosubordinateAwardingCriterionResponse($subordinateAwardingCriterionResponse = new SubordinateAwardingCriterionResponse());
 
         return $subordinateAwardingCriterionResponse;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse $subordinateAwardingCriterionResponse
+     * @return self
+     */
+    public function addOnceToSubordinateAwardingCriterionResponse(
+        SubordinateAwardingCriterionResponse $subordinateAwardingCriterionResponse,
+    ): self {
+        $this->subordinateAwardingCriterionResponse[0] = $subordinateAwardingCriterionResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubordinateAwardingCriterionResponse
+     */
+    public function addOnceToSubordinateAwardingCriterionResponseWithCreate(): SubordinateAwardingCriterionResponse
+    {
+        if ($this->subordinateAwardingCriterionResponse === []) {
+            $this->addOnceTosubordinateAwardingCriterionResponse(new SubordinateAwardingCriterionResponse());
+        }
+
+        return $this->subordinateAwardingCriterionResponse[0];
     }
 }

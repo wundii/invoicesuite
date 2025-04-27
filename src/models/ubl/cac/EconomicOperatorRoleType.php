@@ -109,4 +109,27 @@ class EconomicOperatorRoleType
 
         return $roleDescription;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RoleDescription $roleDescription
+     * @return self
+     */
+    public function addOnceToRoleDescription(RoleDescription $roleDescription): self
+    {
+        $this->roleDescription[0] = $roleDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\RoleDescription
+     */
+    public function addOnceToRoleDescriptionWithCreate(): RoleDescription
+    {
+        if ($this->roleDescription === []) {
+            $this->addOnceToroleDescription(new RoleDescription());
+        }
+
+        return $this->roleDescription[0];
+    }
 }

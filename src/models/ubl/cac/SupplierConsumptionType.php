@@ -126,6 +126,29 @@ class SupplierConsumptionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\UtilitySupplierParty|null
      */
     public function getUtilitySupplierParty(): ?UtilitySupplierParty
@@ -289,5 +312,28 @@ class SupplierConsumptionType
         $this->addToconsumptionLine($consumptionLine = new ConsumptionLine());
 
         return $consumptionLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine $consumptionLine
+     * @return self
+     */
+    public function addOnceToConsumptionLine(ConsumptionLine $consumptionLine): self
+    {
+        $this->consumptionLine[0] = $consumptionLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ConsumptionLine
+     */
+    public function addOnceToConsumptionLineWithCreate(): ConsumptionLine
+    {
+        if ($this->consumptionLine === []) {
+            $this->addOnceToconsumptionLine(new ConsumptionLine());
+        }
+
+        return $this->consumptionLine[0];
     }
 }

@@ -296,6 +296,29 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -694,6 +717,29 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod $invoicePeriod
+     * @return self
+     */
+    public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
+    {
+        $this->invoicePeriod[0] = $invoicePeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod
+     */
+    public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
+    {
+        if ($this->invoicePeriod === []) {
+            $this->addOnceToinvoicePeriod(new InvoicePeriod());
+        }
+
+        return $this->invoicePeriod[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null
      */
     public function getBillingReference(): ?array
@@ -744,6 +790,29 @@ class RemittanceAdviceLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BillingReference $billingReference
+     * @return self
+     */
+    public function addOnceToBillingReference(BillingReference $billingReference): self
+    {
+        $this->billingReference[0] = $billingReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BillingReference
+     */
+    public function addOnceToBillingReferenceWithCreate(): BillingReference
+    {
+        if ($this->billingReference === []) {
+            $this->addOnceTobillingReference(new BillingReference());
+        }
+
+        return $this->billingReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -791,6 +860,29 @@ class RemittanceAdviceLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**

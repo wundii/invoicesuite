@@ -512,6 +512,29 @@ class MeterReadingType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments $meterReadingComments
+     * @return self
+     */
+    public function addOnceToMeterReadingComments(MeterReadingComments $meterReadingComments): self
+    {
+        $this->meterReadingComments[0] = $meterReadingComments;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\MeterReadingComments
+     */
+    public function addOnceToMeterReadingCommentsWithCreate(): MeterReadingComments
+    {
+        if ($this->meterReadingComments === []) {
+            $this->addOnceTometerReadingComments(new MeterReadingComments());
+        }
+
+        return $this->meterReadingComments[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeliveredQuantity|null
      */
     public function getDeliveredQuantity(): ?DeliveredQuantity

@@ -753,6 +753,29 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate $exchangeRate
+     * @return self
+     */
+    public function addOnceToExchangeRate(ExchangeRate $exchangeRate): self
+    {
+        $this->exchangeRate[0] = $exchangeRate;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ExchangeRate
+     */
+    public function addOnceToExchangeRateWithCreate(): ExchangeRate
+    {
+        if ($this->exchangeRate === []) {
+            $this->addOnceToexchangeRate(new ExchangeRate());
+        }
+
+        return $this->exchangeRate[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>|null
      */
     public function getAllowanceCharge(): ?array
@@ -800,6 +823,29 @@ class TelecommunicationsServiceType
         $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
     }
 
     /**
@@ -853,6 +899,29 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxTotal $taxTotal
+     * @return self
+     */
+    public function addOnceToTaxTotal(TaxTotal $taxTotal): self
+    {
+        $this->taxTotal[0] = $taxTotal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal
+     */
+    public function addOnceToTaxTotalWithCreate(): TaxTotal
+    {
+        if ($this->taxTotal === []) {
+            $this->addOnceTotaxTotal(new TaxTotal());
+        }
+
+        return $this->taxTotal[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CallDuty>|null
      */
     public function getCallDuty(): ?array
@@ -903,6 +972,29 @@ class TelecommunicationsServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CallDuty $callDuty
+     * @return self
+     */
+    public function addOnceToCallDuty(CallDuty $callDuty): self
+    {
+        $this->callDuty[0] = $callDuty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CallDuty
+     */
+    public function addOnceToCallDutyWithCreate(): CallDuty
+    {
+        if ($this->callDuty === []) {
+            $this->addOnceTocallDuty(new CallDuty());
+        }
+
+        return $this->callDuty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TimeDuty>|null
      */
     public function getTimeDuty(): ?array
@@ -950,5 +1042,28 @@ class TelecommunicationsServiceType
         $this->addTotimeDuty($timeDuty = new TimeDuty());
 
         return $timeDuty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TimeDuty $timeDuty
+     * @return self
+     */
+    public function addOnceToTimeDuty(TimeDuty $timeDuty): self
+    {
+        $this->timeDuty[0] = $timeDuty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TimeDuty
+     */
+    public function addOnceToTimeDutyWithCreate(): TimeDuty
+    {
+        if ($this->timeDuty === []) {
+            $this->addOnceTotimeDuty(new TimeDuty());
+        }
+
+        return $this->timeDuty[0];
     }
 }

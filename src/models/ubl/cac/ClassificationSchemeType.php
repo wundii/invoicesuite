@@ -321,6 +321,29 @@ class ClassificationSchemeType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Name|null
      */
     public function getName(): ?Name
@@ -397,6 +420,29 @@ class ClassificationSchemeType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 
     /**
@@ -621,5 +667,28 @@ class ClassificationSchemeType
         $this->addToclassificationCategory($classificationCategory = new ClassificationCategory());
 
         return $classificationCategory;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory $classificationCategory
+     * @return self
+     */
+    public function addOnceToClassificationCategory(ClassificationCategory $classificationCategory): self
+    {
+        $this->classificationCategory[0] = $classificationCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ClassificationCategory
+     */
+    public function addOnceToClassificationCategoryWithCreate(): ClassificationCategory
+    {
+        if ($this->classificationCategory === []) {
+            $this->addOnceToclassificationCategory(new ClassificationCategory());
+        }
+
+        return $this->classificationCategory[0];
     }
 }

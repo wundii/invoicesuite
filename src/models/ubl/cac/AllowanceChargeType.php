@@ -312,6 +312,29 @@ class AllowanceChargeType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason $allowanceChargeReason
+     * @return self
+     */
+    public function addOnceToAllowanceChargeReason(AllowanceChargeReason $allowanceChargeReason): self
+    {
+        $this->allowanceChargeReason[0] = $allowanceChargeReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason
+     */
+    public function addOnceToAllowanceChargeReasonWithCreate(): AllowanceChargeReason
+    {
+        if ($this->allowanceChargeReason === []) {
+            $this->addOnceToallowanceChargeReason(new AllowanceChargeReason());
+        }
+
+        return $this->allowanceChargeReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MultiplierFactorNumeric|null
      */
     public function getMultiplierFactorNumeric(): ?MultiplierFactorNumeric
@@ -584,6 +607,29 @@ class AllowanceChargeType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TaxCategory $taxCategory
+     * @return self
+     */
+    public function addOnceToTaxCategory(TaxCategory $taxCategory): self
+    {
+        $this->taxCategory[0] = $taxCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TaxCategory
+     */
+    public function addOnceToTaxCategoryWithCreate(): TaxCategory
+    {
+        if ($this->taxCategory === []) {
+            $this->addOnceTotaxCategory(new TaxCategory());
+        }
+
+        return $this->taxCategory[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\TaxTotal|null
      */
     public function getTaxTotal(): ?TaxTotal
@@ -660,5 +706,28 @@ class AllowanceChargeType
         $this->addTopaymentMeans($paymentMeans = new PaymentMeans());
 
         return $paymentMeans;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans $paymentMeans
+     * @return self
+     */
+    public function addOnceToPaymentMeans(PaymentMeans $paymentMeans): self
+    {
+        $this->paymentMeans[0] = $paymentMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PaymentMeans
+     */
+    public function addOnceToPaymentMeansWithCreate(): PaymentMeans
+    {
+        if ($this->paymentMeans === []) {
+            $this->addOnceTopaymentMeans(new PaymentMeans());
+        }
+
+        return $this->paymentMeans[0];
     }
 }

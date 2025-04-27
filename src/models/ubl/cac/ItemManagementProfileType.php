@@ -292,6 +292,30 @@ class ItemManagementProfileType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription $replenishmentOwnerDescription
+     * @return self
+     */
+    public function addOnceToReplenishmentOwnerDescription(
+        ReplenishmentOwnerDescription $replenishmentOwnerDescription,
+    ): self {
+        $this->replenishmentOwnerDescription[0] = $replenishmentOwnerDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ReplenishmentOwnerDescription
+     */
+    public function addOnceToReplenishmentOwnerDescriptionWithCreate(): ReplenishmentOwnerDescription
+    {
+        if ($this->replenishmentOwnerDescription === []) {
+            $this->addOnceToreplenishmentOwnerDescription(new ReplenishmentOwnerDescription());
+        }
+
+        return $this->replenishmentOwnerDescription[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TargetServicePercent|null
      */
     public function getTargetServicePercent(): ?TargetServicePercent

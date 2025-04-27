@@ -467,6 +467,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions $handlingInstructions
+     * @return self
+     */
+    public function addOnceToHandlingInstructions(HandlingInstructions $handlingInstructions): self
+    {
+        $this->handlingInstructions[0] = $handlingInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions
+     */
+    public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
+    {
+        if ($this->handlingInstructions === []) {
+            $this->addOnceTohandlingInstructions(new HandlingInstructions());
+        }
+
+        return $this->handlingInstructions[0];
+    }
+
+    /**
      * @return bool|null
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -594,6 +617,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks $damageRemarks
+     * @return self
+     */
+    public function addOnceToDamageRemarks(DamageRemarks $damageRemarks): self
+    {
+        $this->damageRemarks[0] = $damageRemarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks
+     */
+    public function addOnceToDamageRemarksWithCreate(): DamageRemarks
+    {
+        if ($this->damageRemarks === []) {
+            $this->addOnceTodamageRemarks(new DamageRemarks());
+        }
+
+        return $this->damageRemarks[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks>|null
      */
     public function getShippingMarks(): ?array
@@ -641,6 +687,29 @@ class TransportHandlingUnitType
         $this->addToshippingMarks($shippingMarks = new ShippingMarks());
 
         return $shippingMarks;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks $shippingMarks
+     * @return self
+     */
+    public function addOnceToShippingMarks(ShippingMarks $shippingMarks): self
+    {
+        $this->shippingMarks[0] = $shippingMarks;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ShippingMarks
+     */
+    public function addOnceToShippingMarksWithCreate(): ShippingMarks
+    {
+        if ($this->shippingMarks === []) {
+            $this->addOnceToshippingMarks(new ShippingMarks());
+        }
+
+        return $this->shippingMarks[0];
     }
 
     /**
@@ -723,6 +792,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine $handlingUnitDespatchLine
+     * @return self
+     */
+    public function addOnceToHandlingUnitDespatchLine(HandlingUnitDespatchLine $handlingUnitDespatchLine): self
+    {
+        $this->handlingUnitDespatchLine[0] = $handlingUnitDespatchLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HandlingUnitDespatchLine
+     */
+    public function addOnceToHandlingUnitDespatchLineWithCreate(): HandlingUnitDespatchLine
+    {
+        if ($this->handlingUnitDespatchLine === []) {
+            $this->addOnceTohandlingUnitDespatchLine(new HandlingUnitDespatchLine());
+        }
+
+        return $this->handlingUnitDespatchLine[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ActualPackage>|null
      */
     public function getActualPackage(): ?array
@@ -770,6 +862,29 @@ class TransportHandlingUnitType
         $this->addToactualPackage($actualPackage = new ActualPackage());
 
         return $actualPackage;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ActualPackage $actualPackage
+     * @return self
+     */
+    public function addOnceToActualPackage(ActualPackage $actualPackage): self
+    {
+        $this->actualPackage[0] = $actualPackage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ActualPackage
+     */
+    public function addOnceToActualPackageWithCreate(): ActualPackage
+    {
+        if ($this->actualPackage === []) {
+            $this->addOnceToactualPackage(new ActualPackage());
+        }
+
+        return $this->actualPackage[0];
     }
 
     /**
@@ -824,6 +939,30 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine $receivedHandlingUnitReceiptLine
+     * @return self
+     */
+    public function addOnceToReceivedHandlingUnitReceiptLine(
+        ReceivedHandlingUnitReceiptLine $receivedHandlingUnitReceiptLine,
+    ): self {
+        $this->receivedHandlingUnitReceiptLine[0] = $receivedHandlingUnitReceiptLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReceivedHandlingUnitReceiptLine
+     */
+    public function addOnceToReceivedHandlingUnitReceiptLineWithCreate(): ReceivedHandlingUnitReceiptLine
+    {
+        if ($this->receivedHandlingUnitReceiptLine === []) {
+            $this->addOnceToreceivedHandlingUnitReceiptLine(new ReceivedHandlingUnitReceiptLine());
+        }
+
+        return $this->receivedHandlingUnitReceiptLine[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEquipment>|null
      */
     public function getTransportEquipment(): ?array
@@ -871,6 +1010,29 @@ class TransportHandlingUnitType
         $this->addTotransportEquipment($transportEquipment = new TransportEquipment());
 
         return $transportEquipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment $transportEquipment
+     * @return self
+     */
+    public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
+    {
+        $this->transportEquipment[0] = $transportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment
+     */
+    public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
+    {
+        if ($this->transportEquipment === []) {
+            $this->addOnceTotransportEquipment(new TransportEquipment());
+        }
+
+        return $this->transportEquipment[0];
     }
 
     /**
@@ -924,6 +1086,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportMeans $transportMeans
+     * @return self
+     */
+    public function addOnceToTransportMeans(TransportMeans $transportMeans): self
+    {
+        $this->transportMeans[0] = $transportMeans;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportMeans
+     */
+    public function addOnceToTransportMeansWithCreate(): TransportMeans
+    {
+        if ($this->transportMeans === []) {
+            $this->addOnceTotransportMeans(new TransportMeans());
+        }
+
+        return $this->transportMeans[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit>|null
      */
     public function getHazardousGoodsTransit(): ?array
@@ -974,6 +1159,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit $hazardousGoodsTransit
+     * @return self
+     */
+    public function addOnceToHazardousGoodsTransit(HazardousGoodsTransit $hazardousGoodsTransit): self
+    {
+        $this->hazardousGoodsTransit[0] = $hazardousGoodsTransit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\HazardousGoodsTransit
+     */
+    public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
+    {
+        if ($this->hazardousGoodsTransit === []) {
+            $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
+        }
+
+        return $this->hazardousGoodsTransit[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -1021,6 +1229,29 @@ class TransportHandlingUnitType
         $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
     }
 
     /**
@@ -1129,6 +1360,29 @@ class TransportHandlingUnitType
         $this->addTogoodsItem($goodsItem = new GoodsItem());
 
         return $goodsItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\GoodsItem $goodsItem
+     * @return self
+     */
+    public function addOnceToGoodsItem(GoodsItem $goodsItem): self
+    {
+        $this->goodsItem[0] = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\GoodsItem
+     */
+    public function addOnceToGoodsItemWithCreate(): GoodsItem
+    {
+        if ($this->goodsItem === []) {
+            $this->addOnceTogoodsItem(new GoodsItem());
+        }
+
+        return $this->goodsItem[0];
     }
 
     /**
@@ -1242,6 +1496,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference $shipmentDocumentReference
+     * @return self
+     */
+    public function addOnceToShipmentDocumentReference(ShipmentDocumentReference $shipmentDocumentReference): self
+    {
+        $this->shipmentDocumentReference[0] = $shipmentDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShipmentDocumentReference
+     */
+    public function addOnceToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
+    {
+        if ($this->shipmentDocumentReference === []) {
+            $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
+        }
+
+        return $this->shipmentDocumentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Status>|null
      */
     public function getStatus(): ?array
@@ -1289,6 +1566,29 @@ class TransportHandlingUnitType
         $this->addTostatus($status = new Status());
 
         return $status;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Status $status
+     * @return self
+     */
+    public function addOnceToStatus(Status $status): self
+    {
+        $this->status[0] = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Status
+     */
+    public function addOnceToStatusWithCreate(): Status
+    {
+        if ($this->status === []) {
+            $this->addOnceTostatus(new Status());
+        }
+
+        return $this->status[0];
     }
 
     /**
@@ -1342,6 +1642,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration $customsDeclaration
+     * @return self
+     */
+    public function addOnceToCustomsDeclaration(CustomsDeclaration $customsDeclaration): self
+    {
+        $this->customsDeclaration[0] = $customsDeclaration;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CustomsDeclaration
+     */
+    public function addOnceToCustomsDeclarationWithCreate(): CustomsDeclaration
+    {
+        if ($this->customsDeclaration === []) {
+            $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
+        }
+
+        return $this->customsDeclaration[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment>|null
      */
     public function getReferencedShipment(): ?array
@@ -1392,6 +1715,29 @@ class TransportHandlingUnitType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment $referencedShipment
+     * @return self
+     */
+    public function addOnceToReferencedShipment(ReferencedShipment $referencedShipment): self
+    {
+        $this->referencedShipment[0] = $referencedShipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReferencedShipment
+     */
+    public function addOnceToReferencedShipmentWithCreate(): ReferencedShipment
+    {
+        if ($this->referencedShipment === []) {
+            $this->addOnceToreferencedShipment(new ReferencedShipment());
+        }
+
+        return $this->referencedShipment[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Package>|null
      */
     public function getPackage(): ?array
@@ -1439,5 +1785,28 @@ class TransportHandlingUnitType
         $this->addTopackage($package = new Package());
 
         return $package;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Package $package
+     * @return self
+     */
+    public function addOnceToPackage(Package $package): self
+    {
+        $this->package[0] = $package;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Package
+     */
+    public function addOnceToPackageWithCreate(): Package
+    {
+        if ($this->package === []) {
+            $this->addOnceTopackage(new Package());
+        }
+
+        return $this->package[0];
     }
 }

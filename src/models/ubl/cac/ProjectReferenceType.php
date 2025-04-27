@@ -179,4 +179,27 @@ class ProjectReferenceType
 
         return $workPhaseReference;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference $workPhaseReference
+     * @return self
+     */
+    public function addOnceToWorkPhaseReference(WorkPhaseReference $workPhaseReference): self
+    {
+        $this->workPhaseReference[0] = $workPhaseReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\WorkPhaseReference
+     */
+    public function addOnceToWorkPhaseReferenceWithCreate(): WorkPhaseReference
+    {
+        if ($this->workPhaseReference === []) {
+            $this->addOnceToworkPhaseReference(new WorkPhaseReference());
+        }
+
+        return $this->workPhaseReference[0];
+    }
 }

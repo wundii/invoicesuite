@@ -285,6 +285,29 @@ class DespatchLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode|null
      */
     public function getLineStatusCode(): ?LineStatusCode
@@ -422,6 +445,29 @@ class DespatchLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\BackorderReason $backorderReason
+     * @return self
+     */
+    public function addOnceToBackorderReason(BackorderReason $backorderReason): self
+    {
+        $this->backorderReason[0] = $backorderReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\BackorderReason
+     */
+    public function addOnceToBackorderReasonWithCreate(): BackorderReason
+    {
+        if ($this->backorderReason === []) {
+            $this->addOnceTobackorderReason(new BackorderReason());
+        }
+
+        return $this->backorderReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OutstandingQuantity|null
      */
     public function getOutstandingQuantity(): ?OutstandingQuantity
@@ -498,6 +544,29 @@ class DespatchLineType
         $this->addTooutstandingReason($outstandingReason = new OutstandingReason());
 
         return $outstandingReason;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason $outstandingReason
+     * @return self
+     */
+    public function addOnceToOutstandingReason(OutstandingReason $outstandingReason): self
+    {
+        $this->outstandingReason[0] = $outstandingReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\OutstandingReason
+     */
+    public function addOnceToOutstandingReasonWithCreate(): OutstandingReason
+    {
+        if ($this->outstandingReason === []) {
+            $this->addOnceTooutstandingReason(new OutstandingReason());
+        }
+
+        return $this->outstandingReason[0];
     }
 
     /**
@@ -580,6 +649,29 @@ class DespatchLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference $orderLineReference
+     * @return self
+     */
+    public function addOnceToOrderLineReference(OrderLineReference $orderLineReference): self
+    {
+        $this->orderLineReference[0] = $orderLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OrderLineReference
+     */
+    public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
+    {
+        if ($this->orderLineReference === []) {
+            $this->addOnceToorderLineReference(new OrderLineReference());
+        }
+
+        return $this->orderLineReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -627,6 +719,29 @@ class DespatchLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**
@@ -706,5 +821,28 @@ class DespatchLineType
         $this->addToshipment($shipment = new Shipment());
 
         return $shipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Shipment $shipment
+     * @return self
+     */
+    public function addOnceToShipment(Shipment $shipment): self
+    {
+        $this->shipment[0] = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Shipment
+     */
+    public function addOnceToShipmentWithCreate(): Shipment
+    {
+        if ($this->shipment === []) {
+            $this->addOnceToshipment(new Shipment());
+        }
+
+        return $this->shipment[0];
     }
 }

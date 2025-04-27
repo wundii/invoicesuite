@@ -253,6 +253,29 @@ class ReminderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\UUID|null
      */
     public function getUUID(): ?UUID
@@ -554,6 +577,29 @@ class ReminderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReminderPeriod $reminderPeriod
+     * @return self
+     */
+    public function addOnceToReminderPeriod(ReminderPeriod $reminderPeriod): self
+    {
+        $this->reminderPeriod[0] = $reminderPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReminderPeriod
+     */
+    public function addOnceToReminderPeriodWithCreate(): ReminderPeriod
+    {
+        if ($this->reminderPeriod === []) {
+            $this->addOnceToreminderPeriod(new ReminderPeriod());
+        }
+
+        return $this->reminderPeriod[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\BillingReference>|null
      */
     public function getBillingReference(): ?array
@@ -601,6 +647,29 @@ class ReminderLineType
         $this->addTobillingReference($billingReference = new BillingReference());
 
         return $billingReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\BillingReference $billingReference
+     * @return self
+     */
+    public function addOnceToBillingReference(BillingReference $billingReference): self
+    {
+        $this->billingReference[0] = $billingReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\BillingReference
+     */
+    public function addOnceToBillingReferenceWithCreate(): BillingReference
+    {
+        if ($this->billingReference === []) {
+            $this->addOnceTobillingReference(new BillingReference());
+        }
+
+        return $this->billingReference[0];
     }
 
     /**

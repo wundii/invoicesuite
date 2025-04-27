@@ -525,6 +525,29 @@ class ShipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions $handlingInstructions
+     * @return self
+     */
+    public function addOnceToHandlingInstructions(HandlingInstructions $handlingInstructions): self
+    {
+        $this->handlingInstructions[0] = $handlingInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\HandlingInstructions
+     */
+    public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
+    {
+        if ($this->handlingInstructions === []) {
+            $this->addOnceTohandlingInstructions(new HandlingInstructions());
+        }
+
+        return $this->handlingInstructions[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Information>|null
      */
     public function getInformation(): ?array
@@ -572,6 +595,29 @@ class ShipmentType
         $this->addToinformation($information = new Information());
 
         return $information;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Information $information
+     * @return self
+     */
+    public function addOnceToInformation(Information $information): self
+    {
+        $this->information[0] = $information;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Information
+     */
+    public function addOnceToInformationWithCreate(): Information
+    {
+        if ($this->information === []) {
+            $this->addOnceToinformation(new Information());
+        }
+
+        return $this->information[0];
     }
 
     /**
@@ -976,6 +1022,29 @@ class ShipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions $specialInstructions
+     * @return self
+     */
+    public function addOnceToSpecialInstructions(SpecialInstructions $specialInstructions): self
+    {
+        $this->specialInstructions[0] = $specialInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\SpecialInstructions
+     */
+    public function addOnceToSpecialInstructionsWithCreate(): SpecialInstructions
+    {
+        if ($this->specialInstructions === []) {
+            $this->addOnceTospecialInstructions(new SpecialInstructions());
+        }
+
+        return $this->specialInstructions[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions>|null
      */
     public function getDeliveryInstructions(): ?array
@@ -1023,6 +1092,29 @@ class ShipmentType
         $this->addTodeliveryInstructions($deliveryInstructions = new DeliveryInstructions());
 
         return $deliveryInstructions;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions $deliveryInstructions
+     * @return self
+     */
+    public function addOnceToDeliveryInstructions(DeliveryInstructions $deliveryInstructions): self
+    {
+        $this->deliveryInstructions[0] = $deliveryInstructions;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DeliveryInstructions
+     */
+    public function addOnceToDeliveryInstructionsWithCreate(): DeliveryInstructions
+    {
+        if ($this->deliveryInstructions === []) {
+            $this->addOnceTodeliveryInstructions(new DeliveryInstructions());
+        }
+
+        return $this->deliveryInstructions[0];
     }
 
     /**
@@ -1124,6 +1216,29 @@ class ShipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Consignment $consignment
+     * @return self
+     */
+    public function addOnceToConsignment(Consignment $consignment): self
+    {
+        $this->consignment[0] = $consignment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Consignment
+     */
+    public function addOnceToConsignmentWithCreate(): Consignment
+    {
+        if ($this->consignment === []) {
+            $this->addOnceToconsignment(new Consignment());
+        }
+
+        return $this->consignment[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItem>|null
      */
     public function getGoodsItem(): ?array
@@ -1174,6 +1289,29 @@ class ShipmentType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\GoodsItem $goodsItem
+     * @return self
+     */
+    public function addOnceToGoodsItem(GoodsItem $goodsItem): self
+    {
+        $this->goodsItem[0] = $goodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\GoodsItem
+     */
+    public function addOnceToGoodsItemWithCreate(): GoodsItem
+    {
+        if ($this->goodsItem === []) {
+            $this->addOnceTogoodsItem(new GoodsItem());
+        }
+
+        return $this->goodsItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ShipmentStage>|null
      */
     public function getShipmentStage(): ?array
@@ -1221,6 +1359,29 @@ class ShipmentType
         $this->addToshipmentStage($shipmentStage = new ShipmentStage());
 
         return $shipmentStage;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage $shipmentStage
+     * @return self
+     */
+    public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
+    {
+        $this->shipmentStage[0] = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage
+     */
+    public function addOnceToShipmentStageWithCreate(): ShipmentStage
+    {
+        if ($this->shipmentStage === []) {
+            $this->addOnceToshipmentStage(new ShipmentStage());
+        }
+
+        return $this->shipmentStage[0];
     }
 
     /**
@@ -1300,6 +1461,29 @@ class ShipmentType
         $this->addTotransportHandlingUnit($transportHandlingUnit = new TransportHandlingUnit());
 
         return $transportHandlingUnit;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit $transportHandlingUnit
+     * @return self
+     */
+    public function addOnceToTransportHandlingUnit(TransportHandlingUnit $transportHandlingUnit): self
+    {
+        $this->transportHandlingUnit[0] = $transportHandlingUnit;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportHandlingUnit
+     */
+    public function addOnceToTransportHandlingUnitWithCreate(): TransportHandlingUnit
+    {
+        if ($this->transportHandlingUnit === []) {
+            $this->addOnceTotransportHandlingUnit(new TransportHandlingUnit());
+        }
+
+        return $this->transportHandlingUnit[0];
     }
 
     /**
@@ -1495,5 +1679,28 @@ class ShipmentType
         $this->addTofreightAllowanceCharge($freightAllowanceCharge = new FreightAllowanceCharge());
 
         return $freightAllowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge $freightAllowanceCharge
+     * @return self
+     */
+    public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
+    {
+        $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge
+     */
+    public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
+    {
+        if ($this->freightAllowanceCharge === []) {
+            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+        }
+
+        return $this->freightAllowanceCharge[0];
     }
 }

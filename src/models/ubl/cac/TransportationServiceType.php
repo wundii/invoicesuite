@@ -446,6 +446,30 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription $transportationServiceDescription
+     * @return self
+     */
+    public function addOnceToTransportationServiceDescription(
+        TransportationServiceDescription $transportationServiceDescription,
+    ): self {
+        $this->transportationServiceDescription[0] = $transportationServiceDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDescription
+     */
+    public function addOnceToTransportationServiceDescriptionWithCreate(): TransportationServiceDescription
+    {
+        if ($this->transportationServiceDescription === []) {
+            $this->addOnceTotransportationServiceDescription(new TransportationServiceDescription());
+        }
+
+        return $this->transportationServiceDescription[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI|null
      */
     public function getTransportationServiceDetailsURI(): ?TransportationServiceDetailsURI
@@ -622,6 +646,29 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment $transportEquipment
+     * @return self
+     */
+    public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
+    {
+        $this->transportEquipment[0] = $transportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEquipment
+     */
+    public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
+    {
+        if ($this->transportEquipment === []) {
+            $this->addOnceTotransportEquipment(new TransportEquipment());
+        }
+
+        return $this->transportEquipment[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment>|null
      */
     public function getSupportedTransportEquipment(): ?array
@@ -669,6 +716,30 @@ class TransportationServiceType
         $this->addTosupportedTransportEquipment($supportedTransportEquipment = new SupportedTransportEquipment());
 
         return $supportedTransportEquipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment $supportedTransportEquipment
+     * @return self
+     */
+    public function addOnceToSupportedTransportEquipment(
+        SupportedTransportEquipment $supportedTransportEquipment,
+    ): self {
+        $this->supportedTransportEquipment[0] = $supportedTransportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SupportedTransportEquipment
+     */
+    public function addOnceToSupportedTransportEquipmentWithCreate(): SupportedTransportEquipment
+    {
+        if ($this->supportedTransportEquipment === []) {
+            $this->addOnceTosupportedTransportEquipment(new SupportedTransportEquipment());
+        }
+
+        return $this->supportedTransportEquipment[0];
     }
 
     /**
@@ -723,6 +794,30 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment $unsupportedTransportEquipment
+     * @return self
+     */
+    public function addOnceToUnsupportedTransportEquipment(
+        UnsupportedTransportEquipment $unsupportedTransportEquipment,
+    ): self {
+        $this->unsupportedTransportEquipment[0] = $unsupportedTransportEquipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\UnsupportedTransportEquipment
+     */
+    public function addOnceToUnsupportedTransportEquipmentWithCreate(): UnsupportedTransportEquipment
+    {
+        if ($this->unsupportedTransportEquipment === []) {
+            $this->addOnceTounsupportedTransportEquipment(new UnsupportedTransportEquipment());
+        }
+
+        return $this->unsupportedTransportEquipment[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\CommodityClassification>|null
      */
     public function getCommodityClassification(): ?array
@@ -770,6 +865,29 @@ class TransportationServiceType
         $this->addTocommodityClassification($commodityClassification = new CommodityClassification());
 
         return $commodityClassification;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification $commodityClassification
+     * @return self
+     */
+    public function addOnceToCommodityClassification(CommodityClassification $commodityClassification): self
+    {
+        $this->commodityClassification[0] = $commodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification
+     */
+    public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
+    {
+        if ($this->commodityClassification === []) {
+            $this->addOnceTocommodityClassification(new CommodityClassification());
+        }
+
+        return $this->commodityClassification[0];
     }
 
     /**
@@ -824,6 +942,30 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification $supportedCommodityClassification
+     * @return self
+     */
+    public function addOnceToSupportedCommodityClassification(
+        SupportedCommodityClassification $supportedCommodityClassification,
+    ): self {
+        $this->supportedCommodityClassification[0] = $supportedCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SupportedCommodityClassification
+     */
+    public function addOnceToSupportedCommodityClassificationWithCreate(): SupportedCommodityClassification
+    {
+        if ($this->supportedCommodityClassification === []) {
+            $this->addOnceTosupportedCommodityClassification(new SupportedCommodityClassification());
+        }
+
+        return $this->supportedCommodityClassification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification>|null
      */
     public function getUnsupportedCommodityClassification(): ?array
@@ -872,6 +1014,30 @@ class TransportationServiceType
         $this->addTounsupportedCommodityClassification($unsupportedCommodityClassification = new UnsupportedCommodityClassification());
 
         return $unsupportedCommodityClassification;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification $unsupportedCommodityClassification
+     * @return self
+     */
+    public function addOnceToUnsupportedCommodityClassification(
+        UnsupportedCommodityClassification $unsupportedCommodityClassification,
+    ): self {
+        $this->unsupportedCommodityClassification[0] = $unsupportedCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\UnsupportedCommodityClassification
+     */
+    public function addOnceToUnsupportedCommodityClassificationWithCreate(): UnsupportedCommodityClassification
+    {
+        if ($this->unsupportedCommodityClassification === []) {
+            $this->addOnceTounsupportedCommodityClassification(new UnsupportedCommodityClassification());
+        }
+
+        return $this->unsupportedCommodityClassification[0];
     }
 
     /**
@@ -954,6 +1120,29 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage $shipmentStage
+     * @return self
+     */
+    public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
+    {
+        $this->shipmentStage[0] = $shipmentStage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ShipmentStage
+     */
+    public function addOnceToShipmentStageWithCreate(): ShipmentStage
+    {
+        if ($this->shipmentStage === []) {
+            $this->addOnceToshipmentStage(new ShipmentStage());
+        }
+
+        return $this->shipmentStage[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\TransportEvent>|null
      */
     public function getTransportEvent(): ?array
@@ -1001,6 +1190,29 @@ class TransportationServiceType
         $this->addTotransportEvent($transportEvent = new TransportEvent());
 
         return $transportEvent;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\TransportEvent $transportEvent
+     * @return self
+     */
+    public function addOnceToTransportEvent(TransportEvent $transportEvent): self
+    {
+        $this->transportEvent[0] = $transportEvent;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\TransportEvent
+     */
+    public function addOnceToTransportEventWithCreate(): TransportEvent
+    {
+        if ($this->transportEvent === []) {
+            $this->addOnceTotransportEvent(new TransportEvent());
+        }
+
+        return $this->transportEvent[0];
     }
 
     /**
@@ -1084,6 +1296,29 @@ class TransportationServiceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission $environmentalEmission
+     * @return self
+     */
+    public function addOnceToEnvironmentalEmission(EnvironmentalEmission $environmentalEmission): self
+    {
+        $this->environmentalEmission[0] = $environmentalEmission;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalEmission
+     */
+    public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
+    {
+        if ($this->environmentalEmission === []) {
+            $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
+        }
+
+        return $this->environmentalEmission[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EstimatedDurationPeriod|null
      */
     public function getEstimatedDurationPeriod(): ?EstimatedDurationPeriod
@@ -1160,5 +1395,28 @@ class TransportationServiceType
         $this->addToscheduledServiceFrequency($scheduledServiceFrequency = new ScheduledServiceFrequency());
 
         return $scheduledServiceFrequency;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency $scheduledServiceFrequency
+     * @return self
+     */
+    public function addOnceToScheduledServiceFrequency(ScheduledServiceFrequency $scheduledServiceFrequency): self
+    {
+        $this->scheduledServiceFrequency[0] = $scheduledServiceFrequency;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ScheduledServiceFrequency
+     */
+    public function addOnceToScheduledServiceFrequencyWithCreate(): ScheduledServiceFrequency
+    {
+        if ($this->scheduledServiceFrequency === []) {
+            $this->addOnceToscheduledServiceFrequency(new ScheduledServiceFrequency());
+        }
+
+        return $this->scheduledServiceFrequency[0];
     }
 }

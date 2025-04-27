@@ -587,6 +587,29 @@ class GoodsItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return bool|null
      */
     public function getHazardousRiskIndicator(): ?bool
@@ -1257,6 +1280,29 @@ class GoodsItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @return self
+     */
+    public function addOnceToItem(Item $item): self
+    {
+        $this->item[0] = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Item
+     */
+    public function addOnceToItemWithCreate(): Item
+    {
+        if ($this->item === []) {
+            $this->addOnceToitem(new Item());
+        }
+
+        return $this->item[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\GoodsItemContainer>|null
      */
     public function getGoodsItemContainer(): ?array
@@ -1304,6 +1350,29 @@ class GoodsItemType
         $this->addTogoodsItemContainer($goodsItemContainer = new GoodsItemContainer());
 
         return $goodsItemContainer;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\GoodsItemContainer $goodsItemContainer
+     * @return self
+     */
+    public function addOnceToGoodsItemContainer(GoodsItemContainer $goodsItemContainer): self
+    {
+        $this->goodsItemContainer[0] = $goodsItemContainer;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\GoodsItemContainer
+     */
+    public function addOnceToGoodsItemContainerWithCreate(): GoodsItemContainer
+    {
+        if ($this->goodsItemContainer === []) {
+            $this->addOnceTogoodsItemContainer(new GoodsItemContainer());
+        }
+
+        return $this->goodsItemContainer[0];
     }
 
     /**
@@ -1357,6 +1426,29 @@ class GoodsItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge $freightAllowanceCharge
+     * @return self
+     */
+    public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
+    {
+        $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\FreightAllowanceCharge
+     */
+    public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
+    {
+        if ($this->freightAllowanceCharge === []) {
+            $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
+        }
+
+        return $this->freightAllowanceCharge[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\InvoiceLine>|null
      */
     public function getInvoiceLine(): ?array
@@ -1404,6 +1496,29 @@ class GoodsItemType
         $this->addToinvoiceLine($invoiceLine = new InvoiceLine());
 
         return $invoiceLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\InvoiceLine $invoiceLine
+     * @return self
+     */
+    public function addOnceToInvoiceLine(InvoiceLine $invoiceLine): self
+    {
+        $this->invoiceLine[0] = $invoiceLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\InvoiceLine
+     */
+    public function addOnceToInvoiceLineWithCreate(): InvoiceLine
+    {
+        if ($this->invoiceLine === []) {
+            $this->addOnceToinvoiceLine(new InvoiceLine());
+        }
+
+        return $this->invoiceLine[0];
     }
 
     /**
@@ -1457,6 +1572,29 @@ class GoodsItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Temperature $temperature
+     * @return self
+     */
+    public function addOnceToTemperature(Temperature $temperature): self
+    {
+        $this->temperature[0] = $temperature;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Temperature
+     */
+    public function addOnceToTemperatureWithCreate(): Temperature
+    {
+        if ($this->temperature === []) {
+            $this->addOnceTotemperature(new Temperature());
+        }
+
+        return $this->temperature[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContainedGoodsItem>|null
      */
     public function getContainedGoodsItem(): ?array
@@ -1504,6 +1642,29 @@ class GoodsItemType
         $this->addTocontainedGoodsItem($containedGoodsItem = new ContainedGoodsItem());
 
         return $containedGoodsItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainedGoodsItem $containedGoodsItem
+     * @return self
+     */
+    public function addOnceToContainedGoodsItem(ContainedGoodsItem $containedGoodsItem): self
+    {
+        $this->containedGoodsItem[0] = $containedGoodsItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContainedGoodsItem
+     */
+    public function addOnceToContainedGoodsItemWithCreate(): ContainedGoodsItem
+    {
+        if ($this->containedGoodsItem === []) {
+            $this->addOnceTocontainedGoodsItem(new ContainedGoodsItem());
+        }
+
+        return $this->containedGoodsItem[0];
     }
 
     /**
@@ -1673,6 +1834,29 @@ class GoodsItemType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ContainingPackage>|null
      */
     public function getContainingPackage(): ?array
@@ -1720,6 +1904,29 @@ class GoodsItemType
         $this->addTocontainingPackage($containingPackage = new ContainingPackage());
 
         return $containingPackage;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ContainingPackage $containingPackage
+     * @return self
+     */
+    public function addOnceToContainingPackage(ContainingPackage $containingPackage): self
+    {
+        $this->containingPackage[0] = $containingPackage;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ContainingPackage
+     */
+    public function addOnceToContainingPackageWithCreate(): ContainingPackage
+    {
+        if ($this->containingPackage === []) {
+            $this->addOnceTocontainingPackage(new ContainingPackage());
+        }
+
+        return $this->containingPackage[0];
     }
 
     /**

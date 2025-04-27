@@ -234,6 +234,29 @@ class PriceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason $priceChangeReason
+     * @return self
+     */
+    public function addOnceToPriceChangeReason(PriceChangeReason $priceChangeReason): self
+    {
+        $this->priceChangeReason[0] = $priceChangeReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PriceChangeReason
+     */
+    public function addOnceToPriceChangeReasonWithCreate(): PriceChangeReason
+    {
+        if ($this->priceChangeReason === []) {
+            $this->addOnceTopriceChangeReason(new PriceChangeReason());
+        }
+
+        return $this->priceChangeReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode|null
      */
     public function getPriceTypeCode(): ?PriceTypeCode
@@ -371,6 +394,29 @@ class PriceType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod $validityPeriod
+     * @return self
+     */
+    public function addOnceToValidityPeriod(ValidityPeriod $validityPeriod): self
+    {
+        $this->validityPeriod[0] = $validityPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ValidityPeriod
+     */
+    public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
+    {
+        if ($this->validityPeriod === []) {
+            $this->addOnceTovalidityPeriod(new ValidityPeriod());
+        }
+
+        return $this->validityPeriod[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\PriceList|null
      */
     public function getPriceList(): ?PriceList
@@ -447,6 +493,29 @@ class PriceType
         $this->addToallowanceCharge($allowanceCharge = new AllowanceCharge());
 
         return $allowanceCharge;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge $allowanceCharge
+     * @return self
+     */
+    public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
+    {
+        $this->allowanceCharge[0] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+     */
+    public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
+    {
+        if ($this->allowanceCharge === []) {
+            $this->addOnceToallowanceCharge(new AllowanceCharge());
+        }
+
+        return $this->allowanceCharge[0];
     }
 
     /**

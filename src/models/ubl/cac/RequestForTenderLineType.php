@@ -305,6 +305,29 @@ class RequestForTenderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -548,6 +571,29 @@ class RequestForTenderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DeliveryPeriod>|null
      */
     public function getDeliveryPeriod(): ?array
@@ -595,6 +641,29 @@ class RequestForTenderLineType
         $this->addTodeliveryPeriod($deliveryPeriod = new DeliveryPeriod());
 
         return $deliveryPeriod;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DeliveryPeriod $deliveryPeriod
+     * @return self
+     */
+    public function addOnceToDeliveryPeriod(DeliveryPeriod $deliveryPeriod): self
+    {
+        $this->deliveryPeriod[0] = $deliveryPeriod;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DeliveryPeriod
+     */
+    public function addOnceToDeliveryPeriodWithCreate(): DeliveryPeriod
+    {
+        if ($this->deliveryPeriod === []) {
+            $this->addOnceTodeliveryPeriod(new DeliveryPeriod());
+        }
+
+        return $this->deliveryPeriod[0];
     }
 
     /**
@@ -646,6 +715,30 @@ class RequestForTenderLineType
         $this->addTorequiredItemLocationQuantity($requiredItemLocationQuantity = new RequiredItemLocationQuantity());
 
         return $requiredItemLocationQuantity;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity $requiredItemLocationQuantity
+     * @return self
+     */
+    public function addOnceToRequiredItemLocationQuantity(
+        RequiredItemLocationQuantity $requiredItemLocationQuantity,
+    ): self {
+        $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity
+     */
+    public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
+    {
+        if ($this->requiredItemLocationQuantity === []) {
+            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+        }
+
+        return $this->requiredItemLocationQuantity[0];
     }
 
     /**
@@ -754,5 +847,28 @@ class RequestForTenderLineType
         $this->addTosubRequestForTenderLine($subRequestForTenderLine = new SubRequestForTenderLine());
 
         return $subRequestForTenderLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubRequestForTenderLine $subRequestForTenderLine
+     * @return self
+     */
+    public function addOnceToSubRequestForTenderLine(SubRequestForTenderLine $subRequestForTenderLine): self
+    {
+        $this->subRequestForTenderLine[0] = $subRequestForTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubRequestForTenderLine
+     */
+    public function addOnceToSubRequestForTenderLineWithCreate(): SubRequestForTenderLine
+    {
+        if ($this->subRequestForTenderLine === []) {
+            $this->addOnceTosubRequestForTenderLine(new SubRequestForTenderLine());
+        }
+
+        return $this->subRequestForTenderLine[0];
     }
 }

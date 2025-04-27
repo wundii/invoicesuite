@@ -232,4 +232,27 @@ class SecondaryHazardType
 
         return $extension;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Extension $extension
+     * @return self
+     */
+    public function addOnceToExtension(Extension $extension): self
+    {
+        $this->extension[0] = $extension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Extension
+     */
+    public function addOnceToExtensionWithCreate(): Extension
+    {
+        if ($this->extension === []) {
+            $this->addOnceToextension(new Extension());
+        }
+
+        return $this->extension[0];
+    }
 }

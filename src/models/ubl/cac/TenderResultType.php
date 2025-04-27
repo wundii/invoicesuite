@@ -273,6 +273,29 @@ class TenderResultType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount|null
      */
     public function getAdvertisementAmount(): ?AdvertisementAmount
@@ -643,6 +666,29 @@ class TenderResultType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms $subcontractTerms
+     * @return self
+     */
+    public function addOnceToSubcontractTerms(SubcontractTerms $subcontractTerms): self
+    {
+        $this->subcontractTerms[0] = $subcontractTerms;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubcontractTerms
+     */
+    public function addOnceToSubcontractTermsWithCreate(): SubcontractTerms
+    {
+        if ($this->subcontractTerms === []) {
+            $this->addOnceTosubcontractTerms(new SubcontractTerms());
+        }
+
+        return $this->subcontractTerms[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\WinningParty>|null
      */
     public function getWinningParty(): ?array
@@ -690,5 +736,28 @@ class TenderResultType
         $this->addTowinningParty($winningParty = new WinningParty());
 
         return $winningParty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\WinningParty $winningParty
+     * @return self
+     */
+    public function addOnceToWinningParty(WinningParty $winningParty): self
+    {
+        $this->winningParty[0] = $winningParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\WinningParty
+     */
+    public function addOnceToWinningPartyWithCreate(): WinningParty
+    {
+        if ($this->winningParty === []) {
+            $this->addOnceTowinningParty(new WinningParty());
+        }
+
+        return $this->winningParty[0];
     }
 }

@@ -335,6 +335,29 @@ class TenderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\Quantity|null
      */
     public function getQuantity(): ?Quantity
@@ -618,6 +641,29 @@ class TenderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation $warrantyInformation
+     * @return self
+     */
+    public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
+    {
+        $this->warrantyInformation[0] = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation
+     */
+    public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
+    {
+        if ($this->warrantyInformation === []) {
+            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+        }
+
+        return $this->warrantyInformation[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PackLevelCode|null
      */
     public function getPackLevelCode(): ?PackLevelCode
@@ -694,6 +740,29 @@ class TenderLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**
@@ -776,6 +845,30 @@ class TenderLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OfferedItemLocationQuantity $offeredItemLocationQuantity
+     * @return self
+     */
+    public function addOnceToOfferedItemLocationQuantity(
+        OfferedItemLocationQuantity $offeredItemLocationQuantity,
+    ): self {
+        $this->offeredItemLocationQuantity[0] = $offeredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OfferedItemLocationQuantity
+     */
+    public function addOnceToOfferedItemLocationQuantityWithCreate(): OfferedItemLocationQuantity
+    {
+        if ($this->offeredItemLocationQuantity === []) {
+            $this->addOnceToofferedItemLocationQuantity(new OfferedItemLocationQuantity());
+        }
+
+        return $this->offeredItemLocationQuantity[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem>|null
      */
     public function getReplacementRelatedItem(): ?array
@@ -823,6 +916,29 @@ class TenderLineType
         $this->addToreplacementRelatedItem($replacementRelatedItem = new ReplacementRelatedItem());
 
         return $replacementRelatedItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem $replacementRelatedItem
+     * @return self
+     */
+    public function addOnceToReplacementRelatedItem(ReplacementRelatedItem $replacementRelatedItem): self
+    {
+        $this->replacementRelatedItem[0] = $replacementRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem
+     */
+    public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
+    {
+        if ($this->replacementRelatedItem === []) {
+            $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
+        }
+
+        return $this->replacementRelatedItem[0];
     }
 
     /**
@@ -931,6 +1047,29 @@ class TenderLineType
         $this->addTosubTenderLine($subTenderLine = new SubTenderLine());
 
         return $subTenderLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SubTenderLine $subTenderLine
+     * @return self
+     */
+    public function addOnceToSubTenderLine(SubTenderLine $subTenderLine): self
+    {
+        $this->subTenderLine[0] = $subTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SubTenderLine
+     */
+    public function addOnceToSubTenderLineWithCreate(): SubTenderLine
+    {
+        if ($this->subTenderLine === []) {
+            $this->addOnceTosubTenderLine(new SubTenderLine());
+        }
+
+        return $this->subTenderLine[0];
     }
 
     /**

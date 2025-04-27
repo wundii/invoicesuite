@@ -117,6 +117,29 @@ class ContractExtensionType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\OptionsDescription $optionsDescription
+     * @return self
+     */
+    public function addOnceToOptionsDescription(OptionsDescription $optionsDescription): self
+    {
+        $this->optionsDescription[0] = $optionsDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\OptionsDescription
+     */
+    public function addOnceToOptionsDescriptionWithCreate(): OptionsDescription
+    {
+        if ($this->optionsDescription === []) {
+            $this->addOnceTooptionsDescription(new OptionsDescription());
+        }
+
+        return $this->optionsDescription[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\MinimumNumberNumeric|null
      */
     public function getMinimumNumberNumeric(): ?MinimumNumberNumeric
@@ -251,5 +274,28 @@ class ContractExtensionType
         $this->addTorenewal($renewal = new Renewal());
 
         return $renewal;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Renewal $renewal
+     * @return self
+     */
+    public function addOnceToRenewal(Renewal $renewal): self
+    {
+        $this->renewal[0] = $renewal;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Renewal
+     */
+    public function addOnceToRenewalWithCreate(): Renewal
+    {
+        if ($this->renewal === []) {
+            $this->addOnceTorenewal(new Renewal());
+        }
+
+        return $this->renewal[0];
     }
 }

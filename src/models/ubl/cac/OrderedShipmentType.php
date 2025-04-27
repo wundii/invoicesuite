@@ -107,4 +107,27 @@ class OrderedShipmentType
 
         return $package;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Package $package
+     * @return self
+     */
+    public function addOnceToPackage(Package $package): self
+    {
+        $this->package[0] = $package;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Package
+     */
+    public function addOnceToPackageWithCreate(): Package
+    {
+        if ($this->package === []) {
+            $this->addOnceTopackage(new Package());
+        }
+
+        return $this->package[0];
+    }
 }

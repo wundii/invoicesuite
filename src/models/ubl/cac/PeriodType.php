@@ -244,6 +244,29 @@ class PeriodType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode $descriptionCode
+     * @return self
+     */
+    public function addOnceToDescriptionCode(DescriptionCode $descriptionCode): self
+    {
+        $this->descriptionCode[0] = $descriptionCode;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode
+     */
+    public function addOnceToDescriptionCodeWithCreate(): DescriptionCode
+    {
+        if ($this->descriptionCode === []) {
+            $this->addOnceTodescriptionCode(new DescriptionCode());
+        }
+
+        return $this->descriptionCode[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -291,5 +314,28 @@ class PeriodType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 }

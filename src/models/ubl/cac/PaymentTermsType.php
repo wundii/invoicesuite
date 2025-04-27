@@ -310,6 +310,29 @@ class PaymentTermsType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansID $paymentMeansID
+     * @return self
+     */
+    public function addOnceToPaymentMeansID(PaymentMeansID $paymentMeansID): self
+    {
+        $this->paymentMeansID[0] = $paymentMeansID;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\PaymentMeansID
+     */
+    public function addOnceToPaymentMeansIDWithCreate(): PaymentMeansID
+    {
+        if ($this->paymentMeansID === []) {
+            $this->addOnceTopaymentMeansID(new PaymentMeansID());
+        }
+
+        return $this->paymentMeansID[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\PrepaidPaymentReferenceID|null
      */
     public function getPrepaidPaymentReferenceID(): ?PrepaidPaymentReferenceID
@@ -386,6 +409,29 @@ class PaymentTermsType
         $this->addTonote($note = new Note());
 
         return $note;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
     }
 
     /**

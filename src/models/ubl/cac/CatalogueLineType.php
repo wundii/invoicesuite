@@ -538,6 +538,29 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return bool|null
      */
     public function getOrderableIndicator(): ?bool
@@ -750,6 +773,29 @@ class CatalogueLineType
         $this->addTowarrantyInformation($warrantyInformation = new WarrantyInformation());
 
         return $warrantyInformation;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation $warrantyInformation
+     * @return self
+     */
+    public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
+    {
+        $this->warrantyInformation[0] = $warrantyInformation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation
+     */
+    public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
+    {
+        if ($this->warrantyInformation === []) {
+            $this->addOnceTowarrantyInformation(new WarrantyInformation());
+        }
+
+        return $this->warrantyInformation[0];
     }
 
     /**
@@ -977,6 +1023,29 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ItemComparison $itemComparison
+     * @return self
+     */
+    public function addOnceToItemComparison(ItemComparison $itemComparison): self
+    {
+        $this->itemComparison[0] = $itemComparison;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ItemComparison
+     */
+    public function addOnceToItemComparisonWithCreate(): ItemComparison
+    {
+        if ($this->itemComparison === []) {
+            $this->addOnceToitemComparison(new ItemComparison());
+        }
+
+        return $this->itemComparison[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem>|null
      */
     public function getComponentRelatedItem(): ?array
@@ -1024,6 +1093,29 @@ class CatalogueLineType
         $this->addTocomponentRelatedItem($componentRelatedItem = new ComponentRelatedItem());
 
         return $componentRelatedItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem $componentRelatedItem
+     * @return self
+     */
+    public function addOnceToComponentRelatedItem(ComponentRelatedItem $componentRelatedItem): self
+    {
+        $this->componentRelatedItem[0] = $componentRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ComponentRelatedItem
+     */
+    public function addOnceToComponentRelatedItemWithCreate(): ComponentRelatedItem
+    {
+        if ($this->componentRelatedItem === []) {
+            $this->addOnceTocomponentRelatedItem(new ComponentRelatedItem());
+        }
+
+        return $this->componentRelatedItem[0];
     }
 
     /**
@@ -1077,6 +1169,29 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem $accessoryRelatedItem
+     * @return self
+     */
+    public function addOnceToAccessoryRelatedItem(AccessoryRelatedItem $accessoryRelatedItem): self
+    {
+        $this->accessoryRelatedItem[0] = $accessoryRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AccessoryRelatedItem
+     */
+    public function addOnceToAccessoryRelatedItemWithCreate(): AccessoryRelatedItem
+    {
+        if ($this->accessoryRelatedItem === []) {
+            $this->addOnceToaccessoryRelatedItem(new AccessoryRelatedItem());
+        }
+
+        return $this->accessoryRelatedItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem>|null
      */
     public function getRequiredRelatedItem(): ?array
@@ -1124,6 +1239,29 @@ class CatalogueLineType
         $this->addTorequiredRelatedItem($requiredRelatedItem = new RequiredRelatedItem());
 
         return $requiredRelatedItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem $requiredRelatedItem
+     * @return self
+     */
+    public function addOnceToRequiredRelatedItem(RequiredRelatedItem $requiredRelatedItem): self
+    {
+        $this->requiredRelatedItem[0] = $requiredRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredRelatedItem
+     */
+    public function addOnceToRequiredRelatedItemWithCreate(): RequiredRelatedItem
+    {
+        if ($this->requiredRelatedItem === []) {
+            $this->addOnceTorequiredRelatedItem(new RequiredRelatedItem());
+        }
+
+        return $this->requiredRelatedItem[0];
     }
 
     /**
@@ -1177,6 +1315,29 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem $replacementRelatedItem
+     * @return self
+     */
+    public function addOnceToReplacementRelatedItem(ReplacementRelatedItem $replacementRelatedItem): self
+    {
+        $this->replacementRelatedItem[0] = $replacementRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReplacementRelatedItem
+     */
+    public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
+    {
+        if ($this->replacementRelatedItem === []) {
+            $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
+        }
+
+        return $this->replacementRelatedItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem>|null
      */
     public function getComplementaryRelatedItem(): ?array
@@ -1227,6 +1388,29 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem $complementaryRelatedItem
+     * @return self
+     */
+    public function addOnceToComplementaryRelatedItem(ComplementaryRelatedItem $complementaryRelatedItem): self
+    {
+        $this->complementaryRelatedItem[0] = $complementaryRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ComplementaryRelatedItem
+     */
+    public function addOnceToComplementaryRelatedItemWithCreate(): ComplementaryRelatedItem
+    {
+        if ($this->complementaryRelatedItem === []) {
+            $this->addOnceTocomplementaryRelatedItem(new ComplementaryRelatedItem());
+        }
+
+        return $this->complementaryRelatedItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem>|null
      */
     public function getReplacedRelatedItem(): ?array
@@ -1274,6 +1458,29 @@ class CatalogueLineType
         $this->addToreplacedRelatedItem($replacedRelatedItem = new ReplacedRelatedItem());
 
         return $replacedRelatedItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem $replacedRelatedItem
+     * @return self
+     */
+    public function addOnceToReplacedRelatedItem(ReplacedRelatedItem $replacedRelatedItem): self
+    {
+        $this->replacedRelatedItem[0] = $replacedRelatedItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ReplacedRelatedItem
+     */
+    public function addOnceToReplacedRelatedItemWithCreate(): ReplacedRelatedItem
+    {
+        if ($this->replacedRelatedItem === []) {
+            $this->addOnceToreplacedRelatedItem(new ReplacedRelatedItem());
+        }
+
+        return $this->replacedRelatedItem[0];
     }
 
     /**
@@ -1328,6 +1535,30 @@ class CatalogueLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity $requiredItemLocationQuantity
+     * @return self
+     */
+    public function addOnceToRequiredItemLocationQuantity(
+        RequiredItemLocationQuantity $requiredItemLocationQuantity,
+    ): self {
+        $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequiredItemLocationQuantity
+     */
+    public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
+    {
+        if ($this->requiredItemLocationQuantity === []) {
+            $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
+        }
+
+        return $this->requiredItemLocationQuantity[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -1375,6 +1606,29 @@ class CatalogueLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**
@@ -1454,6 +1708,29 @@ class CatalogueLineType
         $this->addTokeywordItemProperty($keywordItemProperty = new KeywordItemProperty());
 
         return $keywordItemProperty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty $keywordItemProperty
+     * @return self
+     */
+    public function addOnceToKeywordItemProperty(KeywordItemProperty $keywordItemProperty): self
+    {
+        $this->keywordItemProperty[0] = $keywordItemProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\KeywordItemProperty
+     */
+    public function addOnceToKeywordItemPropertyWithCreate(): KeywordItemProperty
+    {
+        if ($this->keywordItemProperty === []) {
+            $this->addOnceTokeywordItemProperty(new KeywordItemProperty());
+        }
+
+        return $this->keywordItemProperty[0];
     }
 
     /**

@@ -107,6 +107,29 @@ class DeclarationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @return self
+     */
+    public function addOnceToName(Name $name): self
+    {
+        $this->name[0] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Name
+     */
+    public function addOnceToNameWithCreate(): Name
+    {
+        if ($this->name === []) {
+            $this->addOnceToname(new Name());
+        }
+
+        return $this->name[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\DeclarationTypeCode|null
      */
     public function getDeclarationTypeCode(): ?DeclarationTypeCode
@@ -186,6 +209,29 @@ class DeclarationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      */
     public function getEvidenceSupplied(): ?array
@@ -233,5 +279,28 @@ class DeclarationType
         $this->addToevidenceSupplied($evidenceSupplied = new EvidenceSupplied());
 
         return $evidenceSupplied;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied $evidenceSupplied
+     * @return self
+     */
+    public function addOnceToEvidenceSupplied(EvidenceSupplied $evidenceSupplied): self
+    {
+        $this->evidenceSupplied[0] = $evidenceSupplied;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied
+     */
+    public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
+    {
+        if ($this->evidenceSupplied === []) {
+            $this->addOnceToevidenceSupplied(new EvidenceSupplied());
+        }
+
+        return $this->evidenceSupplied[0];
     }
 }

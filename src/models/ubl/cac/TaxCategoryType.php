@@ -351,6 +351,29 @@ class TaxCategoryType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason $taxExemptionReason
+     * @return self
+     */
+    public function addOnceToTaxExemptionReason(TaxExemptionReason $taxExemptionReason): self
+    {
+        $this->taxExemptionReason[0] = $taxExemptionReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\TaxExemptionReason
+     */
+    public function addOnceToTaxExemptionReasonWithCreate(): TaxExemptionReason
+    {
+        if ($this->taxExemptionReason === []) {
+            $this->addOnceTotaxExemptionReason(new TaxExemptionReason());
+        }
+
+        return $this->taxExemptionReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\TierRange|null
      */
     public function getTierRange(): ?TierRange

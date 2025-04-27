@@ -227,6 +227,29 @@ class CompletedTaskType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied>|null
      */
     public function getEvidenceSupplied(): ?array
@@ -274,6 +297,29 @@ class CompletedTaskType
         $this->addToevidenceSupplied($evidenceSupplied = new EvidenceSupplied());
 
         return $evidenceSupplied;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied $evidenceSupplied
+     * @return self
+     */
+    public function addOnceToEvidenceSupplied(EvidenceSupplied $evidenceSupplied): self
+    {
+        $this->evidenceSupplied[0] = $evidenceSupplied;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EvidenceSupplied
+     */
+    public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
+    {
+        if ($this->evidenceSupplied === []) {
+            $this->addOnceToevidenceSupplied(new EvidenceSupplied());
+        }
+
+        return $this->evidenceSupplied[0];
     }
 
     /**

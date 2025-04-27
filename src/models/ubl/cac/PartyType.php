@@ -431,6 +431,29 @@ class PartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification $partyIdentification
+     * @return self
+     */
+    public function addOnceToPartyIdentification(PartyIdentification $partyIdentification): self
+    {
+        $this->partyIdentification[0] = $partyIdentification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification
+     */
+    public function addOnceToPartyIdentificationWithCreate(): PartyIdentification
+    {
+        if ($this->partyIdentification === []) {
+            $this->addOnceTopartyIdentification(new PartyIdentification());
+        }
+
+        return $this->partyIdentification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyName>|null
      */
     public function getPartyName(): ?array
@@ -478,6 +501,29 @@ class PartyType
         $this->addTopartyName($partyName = new PartyName());
 
         return $partyName;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PartyName $partyName
+     * @return self
+     */
+    public function addOnceToPartyName(PartyName $partyName): self
+    {
+        $this->partyName[0] = $partyName;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PartyName
+     */
+    public function addOnceToPartyNameWithCreate(): PartyName
+    {
+        if ($this->partyName === []) {
+            $this->addOnceTopartyName(new PartyName());
+        }
+
+        return $this->partyName[0];
     }
 
     /**
@@ -618,6 +664,29 @@ class PartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme $partyTaxScheme
+     * @return self
+     */
+    public function addOnceToPartyTaxScheme(PartyTaxScheme $partyTaxScheme): self
+    {
+        $this->partyTaxScheme[0] = $partyTaxScheme;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme
+     */
+    public function addOnceToPartyTaxSchemeWithCreate(): PartyTaxScheme
+    {
+        if ($this->partyTaxScheme === []) {
+            $this->addOnceTopartyTaxScheme(new PartyTaxScheme());
+        }
+
+        return $this->partyTaxScheme[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>|null
      */
     public function getPartyLegalEntity(): ?array
@@ -665,6 +734,29 @@ class PartyType
         $this->addTopartyLegalEntity($partyLegalEntity = new PartyLegalEntity());
 
         return $partyLegalEntity;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity $partyLegalEntity
+     * @return self
+     */
+    public function addOnceToPartyLegalEntity(PartyLegalEntity $partyLegalEntity): self
+    {
+        $this->partyLegalEntity[0] = $partyLegalEntity;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity
+     */
+    public function addOnceToPartyLegalEntityWithCreate(): PartyLegalEntity
+    {
+        if ($this->partyLegalEntity === []) {
+            $this->addOnceTopartyLegalEntity(new PartyLegalEntity());
+        }
+
+        return $this->partyLegalEntity[0];
     }
 
     /**
@@ -747,6 +839,29 @@ class PartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Person $person
+     * @return self
+     */
+    public function addOnceToPerson(Person $person): self
+    {
+        $this->person[0] = $person;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Person
+     */
+    public function addOnceToPersonWithCreate(): Person
+    {
+        if ($this->person === []) {
+            $this->addOnceToperson(new Person());
+        }
+
+        return $this->person[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\AgentParty|null
      */
     public function getAgentParty(): ?AgentParty
@@ -826,6 +941,29 @@ class PartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty $serviceProviderParty
+     * @return self
+     */
+    public function addOnceToServiceProviderParty(ServiceProviderParty $serviceProviderParty): self
+    {
+        $this->serviceProviderParty[0] = $serviceProviderParty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ServiceProviderParty
+     */
+    public function addOnceToServiceProviderPartyWithCreate(): ServiceProviderParty
+    {
+        if ($this->serviceProviderParty === []) {
+            $this->addOnceToserviceProviderParty(new ServiceProviderParty());
+        }
+
+        return $this->serviceProviderParty[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney>|null
      */
     public function getPowerOfAttorney(): ?array
@@ -873,6 +1011,29 @@ class PartyType
         $this->addTopowerOfAttorney($powerOfAttorney = new PowerOfAttorney());
 
         return $powerOfAttorney;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney $powerOfAttorney
+     * @return self
+     */
+    public function addOnceToPowerOfAttorney(PowerOfAttorney $powerOfAttorney): self
+    {
+        $this->powerOfAttorney[0] = $powerOfAttorney;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PowerOfAttorney
+     */
+    public function addOnceToPowerOfAttorneyWithCreate(): PowerOfAttorney
+    {
+        if ($this->powerOfAttorney === []) {
+            $this->addOnceTopowerOfAttorney(new PowerOfAttorney());
+        }
+
+        return $this->powerOfAttorney[0];
     }
 
     /**

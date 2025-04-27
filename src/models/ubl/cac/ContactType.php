@@ -287,6 +287,29 @@ class ContactType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\OtherCommunication>|null
      */
     public function getOtherCommunication(): ?array
@@ -334,5 +357,28 @@ class ContactType
         $this->addTootherCommunication($otherCommunication = new OtherCommunication());
 
         return $otherCommunication;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\OtherCommunication $otherCommunication
+     * @return self
+     */
+    public function addOnceToOtherCommunication(OtherCommunication $otherCommunication): self
+    {
+        $this->otherCommunication[0] = $otherCommunication;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\OtherCommunication
+     */
+    public function addOnceToOtherCommunicationWithCreate(): OtherCommunication
+    {
+        if ($this->otherCommunication === []) {
+            $this->addOnceTootherCommunication(new OtherCommunication());
+        }
+
+        return $this->otherCommunication[0];
     }
 }

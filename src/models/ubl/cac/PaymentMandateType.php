@@ -433,4 +433,27 @@ class PaymentMandateType
 
         return $clause;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Clause $clause
+     * @return self
+     */
+    public function addOnceToClause(Clause $clause): self
+    {
+        $this->clause[0] = $clause;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Clause
+     */
+    public function addOnceToClauseWithCreate(): Clause
+    {
+        if ($this->clause === []) {
+            $this->addOnceToclause(new Clause());
+        }
+
+        return $this->clause[0];
+    }
 }

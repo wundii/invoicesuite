@@ -122,6 +122,29 @@ class PromotionalSpecificationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem $promotionalEventLineItem
+     * @return self
+     */
+    public function addOnceToPromotionalEventLineItem(PromotionalEventLineItem $promotionalEventLineItem): self
+    {
+        $this->promotionalEventLineItem[0] = $promotionalEventLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\PromotionalEventLineItem
+     */
+    public function addOnceToPromotionalEventLineItemWithCreate(): PromotionalEventLineItem
+    {
+        if ($this->promotionalEventLineItem === []) {
+            $this->addOnceTopromotionalEventLineItem(new PromotionalEventLineItem());
+        }
+
+        return $this->promotionalEventLineItem[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\EventTactic>|null
      */
     public function getEventTactic(): ?array
@@ -169,5 +192,28 @@ class PromotionalSpecificationType
         $this->addToeventTactic($eventTactic = new EventTactic());
 
         return $eventTactic;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EventTactic $eventTactic
+     * @return self
+     */
+    public function addOnceToEventTactic(EventTactic $eventTactic): self
+    {
+        $this->eventTactic[0] = $eventTactic;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EventTactic
+     */
+    public function addOnceToEventTacticWithCreate(): EventTactic
+    {
+        if ($this->eventTactic === []) {
+            $this->addOnceToeventTactic(new EventTactic());
+        }
+
+        return $this->eventTactic[0];
     }
 }

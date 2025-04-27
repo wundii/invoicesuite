@@ -301,6 +301,29 @@ class ProcurementProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Name $name
+     * @return self
+     */
+    public function addOnceToName(Name $name): self
+    {
+        $this->name[0] = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Name
+     */
+    public function addOnceToNameWithCreate(): Name
+    {
+        if ($this->name === []) {
+            $this->addOnceToname(new Name());
+        }
+
+        return $this->name[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cbc\Description>|null
      */
     public function getDescription(): ?array
@@ -348,6 +371,29 @@ class ProcurementProjectType
         $this->addTodescription($description = new Description());
 
         return $description;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
     }
 
     /**
@@ -517,6 +563,29 @@ class ProcurementProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\FeeDescription $feeDescription
+     * @return self
+     */
+    public function addOnceToFeeDescription(FeeDescription $feeDescription): self
+    {
+        $this->feeDescription[0] = $feeDescription;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\FeeDescription
+     */
+    public function addOnceToFeeDescriptionWithCreate(): FeeDescription
+    {
+        if ($this->feeDescription === []) {
+            $this->addOnceTofeeDescription(new FeeDescription());
+        }
+
+        return $this->feeDescription[0];
+    }
+
+    /**
      * @return \DateTime|null
      */
     public function getRequestedDeliveryDate(): ?\DateTime
@@ -613,6 +682,29 @@ class ProcurementProjectType
         $this->addTonote($note = new Note());
 
         return $note;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
     }
 
     /**
@@ -725,6 +817,30 @@ class ProcurementProjectType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AdditionalCommodityClassification $additionalCommodityClassification
+     * @return self
+     */
+    public function addOnceToAdditionalCommodityClassification(
+        AdditionalCommodityClassification $additionalCommodityClassification,
+    ): self {
+        $this->additionalCommodityClassification[0] = $additionalCommodityClassification;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AdditionalCommodityClassification
+     */
+    public function addOnceToAdditionalCommodityClassificationWithCreate(): AdditionalCommodityClassification
+    {
+        if ($this->additionalCommodityClassification === []) {
+            $this->addOnceToadditionalCommodityClassification(new AdditionalCommodityClassification());
+        }
+
+        return $this->additionalCommodityClassification[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\RealizedLocation>|null
      */
     public function getRealizedLocation(): ?array
@@ -772,6 +888,29 @@ class ProcurementProjectType
         $this->addTorealizedLocation($realizedLocation = new RealizedLocation());
 
         return $realizedLocation;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RealizedLocation $realizedLocation
+     * @return self
+     */
+    public function addOnceToRealizedLocation(RealizedLocation $realizedLocation): self
+    {
+        $this->realizedLocation[0] = $realizedLocation;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RealizedLocation
+     */
+    public function addOnceToRealizedLocationWithCreate(): RealizedLocation
+    {
+        if ($this->realizedLocation === []) {
+            $this->addOnceTorealizedLocation(new RealizedLocation());
+        }
+
+        return $this->realizedLocation[0];
     }
 
     /**
@@ -880,5 +1019,28 @@ class ProcurementProjectType
         $this->addTorequestForTenderLine($requestForTenderLine = new RequestForTenderLine());
 
         return $requestForTenderLine;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\RequestForTenderLine $requestForTenderLine
+     * @return self
+     */
+    public function addOnceToRequestForTenderLine(RequestForTenderLine $requestForTenderLine): self
+    {
+        $this->requestForTenderLine[0] = $requestForTenderLine;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\RequestForTenderLine
+     */
+    public function addOnceToRequestForTenderLineWithCreate(): RequestForTenderLine
+    {
+        if ($this->requestForTenderLine === []) {
+            $this->addOnceTorequestForTenderLine(new RequestForTenderLine());
+        }
+
+        return $this->requestForTenderLine[0];
     }
 }

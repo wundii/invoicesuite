@@ -107,4 +107,27 @@ class LineResponseType
 
         return $response;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Response $response
+     * @return self
+     */
+    public function addOnceToResponse(Response $response): self
+    {
+        $this->response[0] = $response;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Response
+     */
+    public function addOnceToResponseWithCreate(): Response
+    {
+        if ($this->response === []) {
+            $this->addOnceToresponse(new Response());
+        }
+
+        return $this->response[0];
+    }
 }

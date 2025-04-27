@@ -286,6 +286,29 @@ class MeterType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeterReading $meterReading
+     * @return self
+     */
+    public function addOnceToMeterReading(MeterReading $meterReading): self
+    {
+        $this->meterReading[0] = $meterReading;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeterReading
+     */
+    public function addOnceToMeterReadingWithCreate(): MeterReading
+    {
+        if ($this->meterReading === []) {
+            $this->addOnceTometerReading(new MeterReading());
+        }
+
+        return $this->meterReading[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeterProperty>|null
      */
     public function getMeterProperty(): ?array
@@ -333,5 +356,28 @@ class MeterType
         $this->addTometerProperty($meterProperty = new MeterProperty());
 
         return $meterProperty;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeterProperty $meterProperty
+     * @return self
+     */
+    public function addOnceToMeterProperty(MeterProperty $meterProperty): self
+    {
+        $this->meterProperty[0] = $meterProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeterProperty
+     */
+    public function addOnceToMeterPropertyWithCreate(): MeterProperty
+    {
+        if ($this->meterProperty === []) {
+            $this->addOnceTometerProperty(new MeterProperty());
+        }
+
+        return $this->meterProperty[0];
     }
 }

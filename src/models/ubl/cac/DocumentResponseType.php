@@ -143,6 +143,29 @@ class DocumentResponseType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\IssuerParty|null
      */
     public function getIssuerParty(): ?IssuerParty
@@ -248,5 +271,28 @@ class DocumentResponseType
         $this->addTolineResponse($lineResponse = new LineResponse());
 
         return $lineResponse;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\LineResponse $lineResponse
+     * @return self
+     */
+    public function addOnceToLineResponse(LineResponse $lineResponse): self
+    {
+        $this->lineResponse[0] = $lineResponse;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\LineResponse
+     */
+    public function addOnceToLineResponseWithCreate(): LineResponse
+    {
+        if ($this->lineResponse === []) {
+            $this->addOnceTolineResponse(new LineResponse());
+        }
+
+        return $this->lineResponse[0];
     }
 }

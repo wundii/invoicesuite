@@ -108,4 +108,27 @@ class MiscellaneousEventType
 
         return $eventLineItem;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\EventLineItem $eventLineItem
+     * @return self
+     */
+    public function addOnceToEventLineItem(EventLineItem $eventLineItem): self
+    {
+        $this->eventLineItem[0] = $eventLineItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\EventLineItem
+     */
+    public function addOnceToEventLineItemWithCreate(): EventLineItem
+    {
+        if ($this->eventLineItem === []) {
+            $this->addOnceToeventLineItem(new EventLineItem());
+        }
+
+        return $this->eventLineItem[0];
+    }
 }

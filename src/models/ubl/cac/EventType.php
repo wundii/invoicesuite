@@ -258,6 +258,29 @@ class EventType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return bool|null
      */
     public function getCompletionIndicator(): ?bool
@@ -327,6 +350,29 @@ class EventType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\CurrentStatus $currentStatus
+     * @return self
+     */
+    public function addOnceToCurrentStatus(CurrentStatus $currentStatus): self
+    {
+        $this->currentStatus[0] = $currentStatus;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\CurrentStatus
+     */
+    public function addOnceToCurrentStatusWithCreate(): CurrentStatus
+    {
+        if ($this->currentStatus === []) {
+            $this->addOnceTocurrentStatus(new CurrentStatus());
+        }
+
+        return $this->currentStatus[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Contact>|null
      */
     public function getContact(): ?array
@@ -374,6 +420,29 @@ class EventType
         $this->addTocontact($contact = new Contact());
 
         return $contact;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Contact $contact
+     * @return self
+     */
+    public function addOnceToContact(Contact $contact): self
+    {
+        $this->contact[0] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Contact
+     */
+    public function addOnceToContactWithCreate(): Contact
+    {
+        if ($this->contact === []) {
+            $this->addOnceTocontact(new Contact());
+        }
+
+        return $this->contact[0];
     }
 
     /**

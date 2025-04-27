@@ -174,6 +174,29 @@ class ServiceProviderPartyType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ServiceType $serviceType
+     * @return self
+     */
+    public function addOnceToServiceType(ServiceType $serviceType): self
+    {
+        $this->serviceType[0] = $serviceType;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ServiceType
+     */
+    public function addOnceToServiceTypeWithCreate(): ServiceType
+    {
+        if ($this->serviceType === []) {
+            $this->addOnceToserviceType(new ServiceType());
+        }
+
+        return $this->serviceType[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\Party|null
      */
     public function getParty(): ?Party

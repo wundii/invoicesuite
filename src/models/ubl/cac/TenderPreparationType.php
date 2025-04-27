@@ -188,6 +188,29 @@ class TenderPreparationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Description $description
+     * @return self
+     */
+    public function addOnceToDescription(Description $description): self
+    {
+        $this->description[0] = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Description
+     */
+    public function addOnceToDescriptionWithCreate(): Description
+    {
+        if ($this->description === []) {
+            $this->addOnceTodescription(new Description());
+        }
+
+        return $this->description[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID|null
      */
     public function getOpenTenderID(): ?OpenTenderID
@@ -267,6 +290,29 @@ class TenderPreparationType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot $procurementProjectLot
+     * @return self
+     */
+    public function addOnceToProcurementProjectLot(ProcurementProjectLot $procurementProjectLot): self
+    {
+        $this->procurementProjectLot[0] = $procurementProjectLot;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\ProcurementProjectLot
+     */
+    public function addOnceToProcurementProjectLotWithCreate(): ProcurementProjectLot
+    {
+        if ($this->procurementProjectLot === []) {
+            $this->addOnceToprocurementProjectLot(new ProcurementProjectLot());
+        }
+
+        return $this->procurementProjectLot[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement>|null
      */
     public function getDocumentTenderRequirement(): ?array
@@ -314,5 +360,28 @@ class TenderPreparationType
         $this->addTodocumentTenderRequirement($documentTenderRequirement = new DocumentTenderRequirement());
 
         return $documentTenderRequirement;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement $documentTenderRequirement
+     * @return self
+     */
+    public function addOnceToDocumentTenderRequirement(DocumentTenderRequirement $documentTenderRequirement): self
+    {
+        $this->documentTenderRequirement[0] = $documentTenderRequirement;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentTenderRequirement
+     */
+    public function addOnceToDocumentTenderRequirementWithCreate(): DocumentTenderRequirement
+    {
+        if ($this->documentTenderRequirement === []) {
+            $this->addOnceTodocumentTenderRequirement(new DocumentTenderRequirement());
+        }
+
+        return $this->documentTenderRequirement[0];
     }
 }

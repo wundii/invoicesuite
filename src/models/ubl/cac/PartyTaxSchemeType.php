@@ -256,6 +256,29 @@ class PartyTaxSchemeType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason $exemptionReason
+     * @return self
+     */
+    public function addOnceToExemptionReason(ExemptionReason $exemptionReason): self
+    {
+        $this->exemptionReason[0] = $exemptionReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\ExemptionReason
+     */
+    public function addOnceToExemptionReasonWithCreate(): ExemptionReason
+    {
+        if ($this->exemptionReason === []) {
+            $this->addOnceToexemptionReason(new ExemptionReason());
+        }
+
+        return $this->exemptionReason[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\RegistrationAddress|null
      */
     public function getRegistrationAddress(): ?RegistrationAddress

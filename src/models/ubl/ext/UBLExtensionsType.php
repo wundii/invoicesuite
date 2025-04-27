@@ -67,4 +67,27 @@ class UBLExtensionsType
 
         return $uBLExtension;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\ext\UBLExtension $uBLExtension
+     * @return self
+     */
+    public function addOnceToUBLExtension(UBLExtension $uBLExtension): self
+    {
+        $this->uBLExtension[0] = $uBLExtension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\ext\UBLExtension
+     */
+    public function addOnceToUBLExtensionWithCreate(): UBLExtension
+    {
+        if ($this->uBLExtension === []) {
+            $this->addOnceTouBLExtension(new UBLExtension());
+        }
+
+        return $this->uBLExtension[0];
+    }
 }

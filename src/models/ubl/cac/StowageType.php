@@ -123,6 +123,29 @@ class StowageType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Location $location
+     * @return self
+     */
+    public function addOnceToLocation(Location $location): self
+    {
+        $this->location[0] = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Location
+     */
+    public function addOnceToLocationWithCreate(): Location
+    {
+        if ($this->location === []) {
+            $this->addOnceTolocation(new Location());
+        }
+
+        return $this->location[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension>|null
      */
     public function getMeasurementDimension(): ?array
@@ -170,5 +193,28 @@ class StowageType
         $this->addTomeasurementDimension($measurementDimension = new MeasurementDimension());
 
         return $measurementDimension;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension $measurementDimension
+     * @return self
+     */
+    public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
+    {
+        $this->measurementDimension[0] = $measurementDimension;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\MeasurementDimension
+     */
+    public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
+    {
+        if ($this->measurementDimension === []) {
+            $this->addOnceTomeasurementDimension(new MeasurementDimension());
+        }
+
+        return $this->measurementDimension[0];
     }
 }

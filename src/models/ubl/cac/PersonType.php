@@ -682,6 +682,29 @@ class PersonType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference $identityDocumentReference
+     * @return self
+     */
+    public function addOnceToIdentityDocumentReference(IdentityDocumentReference $identityDocumentReference): self
+    {
+        $this->identityDocumentReference[0] = $identityDocumentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\IdentityDocumentReference
+     */
+    public function addOnceToIdentityDocumentReferenceWithCreate(): IdentityDocumentReference
+    {
+        if ($this->identityDocumentReference === []) {
+            $this->addOnceToidentityDocumentReference(new IdentityDocumentReference());
+        }
+
+        return $this->identityDocumentReference[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\ResidenceAddress|null
      */
     public function getResidenceAddress(): ?ResidenceAddress

@@ -109,4 +109,27 @@ class ClauseType
 
         return $content;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Content $content
+     * @return self
+     */
+    public function addOnceToContent(Content $content): self
+    {
+        $this->content[0] = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Content
+     */
+    public function addOnceToContentWithCreate(): Content
+    {
+        if ($this->content === []) {
+            $this->addOnceTocontent(new Content());
+        }
+
+        return $this->content[0];
+    }
 }

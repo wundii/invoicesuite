@@ -107,4 +107,27 @@ class PricingReferenceType
 
         return $alternativeConditionPrice;
     }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice $alternativeConditionPrice
+     * @return self
+     */
+    public function addOnceToAlternativeConditionPrice(AlternativeConditionPrice $alternativeConditionPrice): self
+    {
+        $this->alternativeConditionPrice[0] = $alternativeConditionPrice;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\AlternativeConditionPrice
+     */
+    public function addOnceToAlternativeConditionPriceWithCreate(): AlternativeConditionPrice
+    {
+        if ($this->alternativeConditionPrice === []) {
+            $this->addOnceToalternativeConditionPrice(new AlternativeConditionPrice());
+        }
+
+        return $this->alternativeConditionPrice[0];
+    }
 }

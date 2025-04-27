@@ -355,6 +355,29 @@ class ReceiptLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ReceivedQuantity|null
      */
     public function getReceivedQuantity(): ?ReceivedQuantity
@@ -547,6 +570,29 @@ class ReceiptLineType
         $this->addTorejectReason($rejectReason = new RejectReason());
 
         return $rejectReason;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\RejectReason $rejectReason
+     * @return self
+     */
+    public function addOnceToRejectReason(RejectReason $rejectReason): self
+    {
+        $this->rejectReason[0] = $rejectReason;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\RejectReason
+     */
+    public function addOnceToRejectReasonWithCreate(): RejectReason
+    {
+        if ($this->rejectReason === []) {
+            $this->addOnceTorejectReason(new RejectReason());
+        }
+
+        return $this->rejectReason[0];
     }
 
     /**
@@ -793,6 +839,29 @@ class ReceiptLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference $despatchLineReference
+     * @return self
+     */
+    public function addOnceToDespatchLineReference(DespatchLineReference $despatchLineReference): self
+    {
+        $this->despatchLineReference[0] = $despatchLineReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DespatchLineReference
+     */
+    public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
+    {
+        if ($this->despatchLineReference === []) {
+            $this->addOnceTodespatchLineReference(new DespatchLineReference());
+        }
+
+        return $this->despatchLineReference[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\DocumentReference>|null
      */
     public function getDocumentReference(): ?array
@@ -840,6 +909,29 @@ class ReceiptLineType
         $this->addTodocumentReference($documentReference = new DocumentReference());
 
         return $documentReference;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\DocumentReference $documentReference
+     * @return self
+     */
+    public function addOnceToDocumentReference(DocumentReference $documentReference): self
+    {
+        $this->documentReference[0] = $documentReference;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\DocumentReference
+     */
+    public function addOnceToDocumentReferenceWithCreate(): DocumentReference
+    {
+        if ($this->documentReference === []) {
+            $this->addOnceTodocumentReference(new DocumentReference());
+        }
+
+        return $this->documentReference[0];
     }
 
     /**
@@ -893,6 +985,29 @@ class ReceiptLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Item $item
+     * @return self
+     */
+    public function addOnceToItem(Item $item): self
+    {
+        $this->item[0] = $item;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Item
+     */
+    public function addOnceToItemWithCreate(): Item
+    {
+        if ($this->item === []) {
+            $this->addOnceToitem(new Item());
+        }
+
+        return $this->item[0];
+    }
+
+    /**
      * @return array<\horstoeko\invoicesuite\models\ubl\cac\Shipment>|null
      */
     public function getShipment(): ?array
@@ -940,5 +1055,28 @@ class ReceiptLineType
         $this->addToshipment($shipment = new Shipment());
 
         return $shipment;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\Shipment $shipment
+     * @return self
+     */
+    public function addOnceToShipment(Shipment $shipment): self
+    {
+        $this->shipment[0] = $shipment;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\Shipment
+     */
+    public function addOnceToShipmentWithCreate(): Shipment
+    {
+        if ($this->shipment === []) {
+            $this->addOnceToshipment(new Shipment());
+        }
+
+        return $this->shipment[0];
     }
 }

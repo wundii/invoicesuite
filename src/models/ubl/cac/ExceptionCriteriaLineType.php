@@ -229,6 +229,29 @@ class ExceptionCriteriaLineType
     }
 
     /**
+     * @param \horstoeko\invoicesuite\models\ubl\cbc\Note $note
+     * @return self
+     */
+    public function addOnceToNote(Note $note): self
+    {
+        $this->note[0] = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cbc\Note
+     */
+    public function addOnceToNoteWithCreate(): Note
+    {
+        if ($this->note === []) {
+            $this->addOnceTonote(new Note());
+        }
+
+        return $this->note[0];
+    }
+
+    /**
      * @return \horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode|null
      */
     public function getThresholdValueComparisonCode(): ?ThresholdValueComparisonCode
@@ -508,6 +531,29 @@ class ExceptionCriteriaLineType
         $this->addTosupplyItem($supplyItem = new SupplyItem());
 
         return $supplyItem;
+    }
+
+    /**
+     * @param \horstoeko\invoicesuite\models\ubl\cac\SupplyItem $supplyItem
+     * @return self
+     */
+    public function addOnceToSupplyItem(SupplyItem $supplyItem): self
+    {
+        $this->supplyItem[0] = $supplyItem;
+
+        return $this;
+    }
+
+    /**
+     * @return \horstoeko\invoicesuite\models\ubl\cac\SupplyItem
+     */
+    public function addOnceToSupplyItemWithCreate(): SupplyItem
+    {
+        if ($this->supplyItem === []) {
+            $this->addOnceTosupplyItem(new SupplyItem());
+        }
+
+        return $this->supplyItem[0];
     }
 
     /**
