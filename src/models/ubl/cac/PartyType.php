@@ -436,6 +436,10 @@ class PartyType
      */
     public function addOnceToPartyIdentification(PartyIdentification $partyIdentification): self
     {
+        if (!is_array($this->partyIdentification)) {
+            $this->partyIdentification = [];
+        }
+
         $this->partyIdentification[0] = $partyIdentification;
 
         return $this;
@@ -446,6 +450,10 @@ class PartyType
      */
     public function addOnceToPartyIdentificationWithCreate(): PartyIdentification
     {
+        if (!is_array($this->partyIdentification)) {
+            $this->partyIdentification = [];
+        }
+
         if ($this->partyIdentification === []) {
             $this->addOnceTopartyIdentification(new PartyIdentification());
         }
@@ -509,6 +517,10 @@ class PartyType
      */
     public function addOnceToPartyName(PartyName $partyName): self
     {
+        if (!is_array($this->partyName)) {
+            $this->partyName = [];
+        }
+
         $this->partyName[0] = $partyName;
 
         return $this;
@@ -519,6 +531,10 @@ class PartyType
      */
     public function addOnceToPartyNameWithCreate(): PartyName
     {
+        if (!is_array($this->partyName)) {
+            $this->partyName = [];
+        }
+
         if ($this->partyName === []) {
             $this->addOnceTopartyName(new PartyName());
         }
@@ -669,6 +685,10 @@ class PartyType
      */
     public function addOnceToPartyTaxScheme(PartyTaxScheme $partyTaxScheme): self
     {
+        if (!is_array($this->partyTaxScheme)) {
+            $this->partyTaxScheme = [];
+        }
+
         $this->partyTaxScheme[0] = $partyTaxScheme;
 
         return $this;
@@ -679,6 +699,10 @@ class PartyType
      */
     public function addOnceToPartyTaxSchemeWithCreate(): PartyTaxScheme
     {
+        if (!is_array($this->partyTaxScheme)) {
+            $this->partyTaxScheme = [];
+        }
+
         if ($this->partyTaxScheme === []) {
             $this->addOnceTopartyTaxScheme(new PartyTaxScheme());
         }
@@ -742,6 +766,10 @@ class PartyType
      */
     public function addOnceToPartyLegalEntity(PartyLegalEntity $partyLegalEntity): self
     {
+        if (!is_array($this->partyLegalEntity)) {
+            $this->partyLegalEntity = [];
+        }
+
         $this->partyLegalEntity[0] = $partyLegalEntity;
 
         return $this;
@@ -752,6 +780,10 @@ class PartyType
      */
     public function addOnceToPartyLegalEntityWithCreate(): PartyLegalEntity
     {
+        if (!is_array($this->partyLegalEntity)) {
+            $this->partyLegalEntity = [];
+        }
+
         if ($this->partyLegalEntity === []) {
             $this->addOnceTopartyLegalEntity(new PartyLegalEntity());
         }
@@ -844,6 +876,10 @@ class PartyType
      */
     public function addOnceToPerson(Person $person): self
     {
+        if (!is_array($this->person)) {
+            $this->person = [];
+        }
+
         $this->person[0] = $person;
 
         return $this;
@@ -854,6 +890,10 @@ class PartyType
      */
     public function addOnceToPersonWithCreate(): Person
     {
+        if (!is_array($this->person)) {
+            $this->person = [];
+        }
+
         if ($this->person === []) {
             $this->addOnceToperson(new Person());
         }
@@ -946,6 +986,10 @@ class PartyType
      */
     public function addOnceToServiceProviderParty(ServiceProviderParty $serviceProviderParty): self
     {
+        if (!is_array($this->serviceProviderParty)) {
+            $this->serviceProviderParty = [];
+        }
+
         $this->serviceProviderParty[0] = $serviceProviderParty;
 
         return $this;
@@ -956,6 +1000,10 @@ class PartyType
      */
     public function addOnceToServiceProviderPartyWithCreate(): ServiceProviderParty
     {
+        if (!is_array($this->serviceProviderParty)) {
+            $this->serviceProviderParty = [];
+        }
+
         if ($this->serviceProviderParty === []) {
             $this->addOnceToserviceProviderParty(new ServiceProviderParty());
         }
@@ -1019,6 +1067,10 @@ class PartyType
      */
     public function addOnceToPowerOfAttorney(PowerOfAttorney $powerOfAttorney): self
     {
+        if (!is_array($this->powerOfAttorney)) {
+            $this->powerOfAttorney = [];
+        }
+
         $this->powerOfAttorney[0] = $powerOfAttorney;
 
         return $this;
@@ -1029,6 +1081,10 @@ class PartyType
      */
     public function addOnceToPowerOfAttorneyWithCreate(): PowerOfAttorney
     {
+        if (!is_array($this->powerOfAttorney)) {
+            $this->powerOfAttorney = [];
+        }
+
         if ($this->powerOfAttorney === []) {
             $this->addOnceTopowerOfAttorney(new PowerOfAttorney());
         }

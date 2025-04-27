@@ -188,6 +188,10 @@ class EvaluationCriterionType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -198,6 +202,10 @@ class EvaluationCriterionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -348,6 +356,10 @@ class EvaluationCriterionType
      */
     public function addOnceToExpression(Expression $expression): self
     {
+        if (!is_array($this->expression)) {
+            $this->expression = [];
+        }
+
         $this->expression[0] = $expression;
 
         return $this;
@@ -358,6 +370,10 @@ class EvaluationCriterionType
      */
     public function addOnceToExpressionWithCreate(): Expression
     {
+        if (!is_array($this->expression)) {
+            $this->expression = [];
+        }
+
         if ($this->expression === []) {
             $this->addOnceToexpression(new Expression());
         }
@@ -450,6 +466,10 @@ class EvaluationCriterionType
      */
     public function addOnceToSuggestedEvidence(SuggestedEvidence $suggestedEvidence): self
     {
+        if (!is_array($this->suggestedEvidence)) {
+            $this->suggestedEvidence = [];
+        }
+
         $this->suggestedEvidence[0] = $suggestedEvidence;
 
         return $this;
@@ -460,6 +480,10 @@ class EvaluationCriterionType
      */
     public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
+        if (!is_array($this->suggestedEvidence)) {
+            $this->suggestedEvidence = [];
+        }
+
         if ($this->suggestedEvidence === []) {
             $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
         }

@@ -356,6 +356,10 @@ class ActivityDataLineType
      */
     public function addOnceToSalesItem(SalesItem $salesItem): self
     {
+        if (!is_array($this->salesItem)) {
+            $this->salesItem = [];
+        }
+
         $this->salesItem[0] = $salesItem;
 
         return $this;
@@ -366,6 +370,10 @@ class ActivityDataLineType
      */
     public function addOnceToSalesItemWithCreate(): SalesItem
     {
+        if (!is_array($this->salesItem)) {
+            $this->salesItem = [];
+        }
+
         if ($this->salesItem === []) {
             $this->addOnceTosalesItem(new SalesItem());
         }

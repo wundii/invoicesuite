@@ -220,6 +220,10 @@ class ItemIdentificationType
      */
     public function addOnceToPhysicalAttribute(PhysicalAttribute $physicalAttribute): self
     {
+        if (!is_array($this->physicalAttribute)) {
+            $this->physicalAttribute = [];
+        }
+
         $this->physicalAttribute[0] = $physicalAttribute;
 
         return $this;
@@ -230,6 +234,10 @@ class ItemIdentificationType
      */
     public function addOnceToPhysicalAttributeWithCreate(): PhysicalAttribute
     {
+        if (!is_array($this->physicalAttribute)) {
+            $this->physicalAttribute = [];
+        }
+
         if ($this->physicalAttribute === []) {
             $this->addOnceTophysicalAttribute(new PhysicalAttribute());
         }
@@ -293,6 +301,10 @@ class ItemIdentificationType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -303,6 +315,10 @@ class ItemIdentificationType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }

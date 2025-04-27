@@ -222,6 +222,10 @@ class QuotationLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -232,6 +236,10 @@ class QuotationLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -411,6 +419,10 @@ class QuotationLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -421,6 +433,10 @@ class QuotationLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -515,6 +531,10 @@ class QuotationLineType
     public function addOnceToSellerProposedSubstituteLineItem(
         SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
     ): self {
+        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+            $this->sellerProposedSubstituteLineItem = [];
+        }
+
         $this->sellerProposedSubstituteLineItem[0] = $sellerProposedSubstituteLineItem;
 
         return $this;
@@ -525,6 +545,10 @@ class QuotationLineType
      */
     public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
+        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+            $this->sellerProposedSubstituteLineItem = [];
+        }
+
         if ($this->sellerProposedSubstituteLineItem === []) {
             $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
         }
@@ -588,6 +612,10 @@ class QuotationLineType
      */
     public function addOnceToAlternativeLineItem(AlternativeLineItem $alternativeLineItem): self
     {
+        if (!is_array($this->alternativeLineItem)) {
+            $this->alternativeLineItem = [];
+        }
+
         $this->alternativeLineItem[0] = $alternativeLineItem;
 
         return $this;
@@ -598,6 +626,10 @@ class QuotationLineType
      */
     public function addOnceToAlternativeLineItemWithCreate(): AlternativeLineItem
     {
+        if (!is_array($this->alternativeLineItem)) {
+            $this->alternativeLineItem = [];
+        }
+
         if ($this->alternativeLineItem === []) {
             $this->addOnceToalternativeLineItem(new AlternativeLineItem());
         }

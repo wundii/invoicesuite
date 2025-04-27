@@ -340,6 +340,10 @@ class TenderLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -350,6 +354,10 @@ class TenderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -646,6 +654,10 @@ class TenderLineType
      */
     public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         $this->warrantyInformation[0] = $warrantyInformation;
 
         return $this;
@@ -656,6 +668,10 @@ class TenderLineType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         if ($this->warrantyInformation === []) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
@@ -748,6 +764,10 @@ class TenderLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -758,6 +778,10 @@ class TenderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -851,6 +875,10 @@ class TenderLineType
     public function addOnceToOfferedItemLocationQuantity(
         OfferedItemLocationQuantity $offeredItemLocationQuantity,
     ): self {
+        if (!is_array($this->offeredItemLocationQuantity)) {
+            $this->offeredItemLocationQuantity = [];
+        }
+
         $this->offeredItemLocationQuantity[0] = $offeredItemLocationQuantity;
 
         return $this;
@@ -861,6 +889,10 @@ class TenderLineType
      */
     public function addOnceToOfferedItemLocationQuantityWithCreate(): OfferedItemLocationQuantity
     {
+        if (!is_array($this->offeredItemLocationQuantity)) {
+            $this->offeredItemLocationQuantity = [];
+        }
+
         if ($this->offeredItemLocationQuantity === []) {
             $this->addOnceToofferedItemLocationQuantity(new OfferedItemLocationQuantity());
         }
@@ -924,6 +956,10 @@ class TenderLineType
      */
     public function addOnceToReplacementRelatedItem(ReplacementRelatedItem $replacementRelatedItem): self
     {
+        if (!is_array($this->replacementRelatedItem)) {
+            $this->replacementRelatedItem = [];
+        }
+
         $this->replacementRelatedItem[0] = $replacementRelatedItem;
 
         return $this;
@@ -934,6 +970,10 @@ class TenderLineType
      */
     public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
+        if (!is_array($this->replacementRelatedItem)) {
+            $this->replacementRelatedItem = [];
+        }
+
         if ($this->replacementRelatedItem === []) {
             $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
         }
@@ -1055,6 +1095,10 @@ class TenderLineType
      */
     public function addOnceToSubTenderLine(SubTenderLine $subTenderLine): self
     {
+        if (!is_array($this->subTenderLine)) {
+            $this->subTenderLine = [];
+        }
+
         $this->subTenderLine[0] = $subTenderLine;
 
         return $this;
@@ -1065,6 +1109,10 @@ class TenderLineType
      */
     public function addOnceToSubTenderLineWithCreate(): SubTenderLine
     {
+        if (!is_array($this->subTenderLine)) {
+            $this->subTenderLine = [];
+        }
+
         if ($this->subTenderLine === []) {
             $this->addOnceTosubTenderLine(new SubTenderLine());
         }

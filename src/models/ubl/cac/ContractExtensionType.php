@@ -122,6 +122,10 @@ class ContractExtensionType
      */
     public function addOnceToOptionsDescription(OptionsDescription $optionsDescription): self
     {
+        if (!is_array($this->optionsDescription)) {
+            $this->optionsDescription = [];
+        }
+
         $this->optionsDescription[0] = $optionsDescription;
 
         return $this;
@@ -132,6 +136,10 @@ class ContractExtensionType
      */
     public function addOnceToOptionsDescriptionWithCreate(): OptionsDescription
     {
+        if (!is_array($this->optionsDescription)) {
+            $this->optionsDescription = [];
+        }
+
         if ($this->optionsDescription === []) {
             $this->addOnceTooptionsDescription(new OptionsDescription());
         }
@@ -282,6 +290,10 @@ class ContractExtensionType
      */
     public function addOnceToRenewal(Renewal $renewal): self
     {
+        if (!is_array($this->renewal)) {
+            $this->renewal = [];
+        }
+
         $this->renewal[0] = $renewal;
 
         return $this;
@@ -292,6 +304,10 @@ class ContractExtensionType
      */
     public function addOnceToRenewalWithCreate(): Renewal
     {
+        if (!is_array($this->renewal)) {
+            $this->renewal = [];
+        }
+
         if ($this->renewal === []) {
             $this->addOnceTorenewal(new Renewal());
         }

@@ -131,6 +131,10 @@ class SupplierConsumptionType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -141,6 +145,10 @@ class SupplierConsumptionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -320,6 +328,10 @@ class SupplierConsumptionType
      */
     public function addOnceToConsumptionLine(ConsumptionLine $consumptionLine): self
     {
+        if (!is_array($this->consumptionLine)) {
+            $this->consumptionLine = [];
+        }
+
         $this->consumptionLine[0] = $consumptionLine;
 
         return $this;
@@ -330,6 +342,10 @@ class SupplierConsumptionType
      */
     public function addOnceToConsumptionLineWithCreate(): ConsumptionLine
     {
+        if (!is_array($this->consumptionLine)) {
+            $this->consumptionLine = [];
+        }
+
         if ($this->consumptionLine === []) {
             $this->addOnceToconsumptionLine(new ConsumptionLine());
         }

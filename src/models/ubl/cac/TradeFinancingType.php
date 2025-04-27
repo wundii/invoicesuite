@@ -230,6 +230,10 @@ class TradeFinancingType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -240,6 +244,10 @@ class TradeFinancingType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -361,6 +369,10 @@ class TradeFinancingType
      */
     public function addOnceToClause(Clause $clause): self
     {
+        if (!is_array($this->clause)) {
+            $this->clause = [];
+        }
+
         $this->clause[0] = $clause;
 
         return $this;
@@ -371,6 +383,10 @@ class TradeFinancingType
      */
     public function addOnceToClauseWithCreate(): Clause
     {
+        if (!is_array($this->clause)) {
+            $this->clause = [];
+        }
+
         if ($this->clause === []) {
             $this->addOnceToclause(new Clause());
         }

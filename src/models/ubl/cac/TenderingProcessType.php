@@ -389,6 +389,10 @@ class TenderingProcessType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -399,6 +403,10 @@ class TenderingProcessType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -462,6 +470,10 @@ class TenderingProcessType
      */
     public function addOnceToNegotiationDescription(NegotiationDescription $negotiationDescription): self
     {
+        if (!is_array($this->negotiationDescription)) {
+            $this->negotiationDescription = [];
+        }
+
         $this->negotiationDescription[0] = $negotiationDescription;
 
         return $this;
@@ -472,6 +484,10 @@ class TenderingProcessType
      */
     public function addOnceToNegotiationDescriptionWithCreate(): NegotiationDescription
     {
+        if (!is_array($this->negotiationDescription)) {
+            $this->negotiationDescription = [];
+        }
+
         if ($this->negotiationDescription === []) {
             $this->addOnceTonegotiationDescription(new NegotiationDescription());
         }
@@ -865,6 +881,10 @@ class TenderingProcessType
      */
     public function addOnceToNoticeDocumentReference(NoticeDocumentReference $noticeDocumentReference): self
     {
+        if (!is_array($this->noticeDocumentReference)) {
+            $this->noticeDocumentReference = [];
+        }
+
         $this->noticeDocumentReference[0] = $noticeDocumentReference;
 
         return $this;
@@ -875,6 +895,10 @@ class TenderingProcessType
      */
     public function addOnceToNoticeDocumentReferenceWithCreate(): NoticeDocumentReference
     {
+        if (!is_array($this->noticeDocumentReference)) {
+            $this->noticeDocumentReference = [];
+        }
+
         if ($this->noticeDocumentReference === []) {
             $this->addOnceTonoticeDocumentReference(new NoticeDocumentReference());
         }
@@ -939,6 +963,10 @@ class TenderingProcessType
     public function addOnceToAdditionalDocumentReference(
         AdditionalDocumentReference $additionalDocumentReference,
     ): self {
+        if (!is_array($this->additionalDocumentReference)) {
+            $this->additionalDocumentReference = [];
+        }
+
         $this->additionalDocumentReference[0] = $additionalDocumentReference;
 
         return $this;
@@ -949,6 +977,10 @@ class TenderingProcessType
      */
     public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
+        if (!is_array($this->additionalDocumentReference)) {
+            $this->additionalDocumentReference = [];
+        }
+
         if ($this->additionalDocumentReference === []) {
             $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
         }
@@ -1012,6 +1044,10 @@ class TenderingProcessType
      */
     public function addOnceToProcessJustification(ProcessJustification $processJustification): self
     {
+        if (!is_array($this->processJustification)) {
+            $this->processJustification = [];
+        }
+
         $this->processJustification[0] = $processJustification;
 
         return $this;
@@ -1022,6 +1058,10 @@ class TenderingProcessType
      */
     public function addOnceToProcessJustificationWithCreate(): ProcessJustification
     {
+        if (!is_array($this->processJustification)) {
+            $this->processJustification = [];
+        }
+
         if ($this->processJustification === []) {
             $this->addOnceToprocessJustification(new ProcessJustification());
         }
@@ -1114,6 +1154,10 @@ class TenderingProcessType
      */
     public function addOnceToOpenTenderEvent(OpenTenderEvent $openTenderEvent): self
     {
+        if (!is_array($this->openTenderEvent)) {
+            $this->openTenderEvent = [];
+        }
+
         $this->openTenderEvent[0] = $openTenderEvent;
 
         return $this;
@@ -1124,6 +1168,10 @@ class TenderingProcessType
      */
     public function addOnceToOpenTenderEventWithCreate(): OpenTenderEvent
     {
+        if (!is_array($this->openTenderEvent)) {
+            $this->openTenderEvent = [];
+        }
+
         if ($this->openTenderEvent === []) {
             $this->addOnceToopenTenderEvent(new OpenTenderEvent());
         }

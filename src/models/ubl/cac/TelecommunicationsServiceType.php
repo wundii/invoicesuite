@@ -758,6 +758,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToExchangeRate(ExchangeRate $exchangeRate): self
     {
+        if (!is_array($this->exchangeRate)) {
+            $this->exchangeRate = [];
+        }
+
         $this->exchangeRate[0] = $exchangeRate;
 
         return $this;
@@ -768,6 +772,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToExchangeRateWithCreate(): ExchangeRate
     {
+        if (!is_array($this->exchangeRate)) {
+            $this->exchangeRate = [];
+        }
+
         if ($this->exchangeRate === []) {
             $this->addOnceToexchangeRate(new ExchangeRate());
         }
@@ -831,6 +839,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -841,6 +853,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -904,6 +920,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -914,6 +934,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -977,6 +1001,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToCallDuty(CallDuty $callDuty): self
     {
+        if (!is_array($this->callDuty)) {
+            $this->callDuty = [];
+        }
+
         $this->callDuty[0] = $callDuty;
 
         return $this;
@@ -987,6 +1015,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToCallDutyWithCreate(): CallDuty
     {
+        if (!is_array($this->callDuty)) {
+            $this->callDuty = [];
+        }
+
         if ($this->callDuty === []) {
             $this->addOnceTocallDuty(new CallDuty());
         }
@@ -1050,6 +1082,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTimeDuty(TimeDuty $timeDuty): self
     {
+        if (!is_array($this->timeDuty)) {
+            $this->timeDuty = [];
+        }
+
         $this->timeDuty[0] = $timeDuty;
 
         return $this;
@@ -1060,6 +1096,10 @@ class TelecommunicationsServiceType
      */
     public function addOnceToTimeDutyWithCreate(): TimeDuty
     {
+        if (!is_array($this->timeDuty)) {
+            $this->timeDuty = [];
+        }
+
         if ($this->timeDuty === []) {
             $this->addOnceTotimeDuty(new TimeDuty());
         }

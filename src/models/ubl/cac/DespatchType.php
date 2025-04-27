@@ -486,6 +486,10 @@ class DespatchType
      */
     public function addOnceToInstructions(Instructions $instructions): self
     {
+        if (!is_array($this->instructions)) {
+            $this->instructions = [];
+        }
+
         $this->instructions[0] = $instructions;
 
         return $this;
@@ -496,6 +500,10 @@ class DespatchType
      */
     public function addOnceToInstructionsWithCreate(): Instructions
     {
+        if (!is_array($this->instructions)) {
+            $this->instructions = [];
+        }
+
         if ($this->instructions === []) {
             $this->addOnceToinstructions(new Instructions());
         }
@@ -675,6 +683,10 @@ class DespatchType
      */
     public function addOnceToNotifyParty(NotifyParty $notifyParty): self
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         $this->notifyParty[0] = $notifyParty;
 
         return $this;
@@ -685,6 +697,10 @@ class DespatchType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         if ($this->notifyParty === []) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }

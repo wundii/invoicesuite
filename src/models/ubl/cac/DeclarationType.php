@@ -112,6 +112,10 @@ class DeclarationType
      */
     public function addOnceToName(Name $name): self
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         $this->name[0] = $name;
 
         return $this;
@@ -122,6 +126,10 @@ class DeclarationType
      */
     public function addOnceToNameWithCreate(): Name
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         if ($this->name === []) {
             $this->addOnceToname(new Name());
         }
@@ -214,6 +222,10 @@ class DeclarationType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -224,6 +236,10 @@ class DeclarationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -287,6 +303,10 @@ class DeclarationType
      */
     public function addOnceToEvidenceSupplied(EvidenceSupplied $evidenceSupplied): self
     {
+        if (!is_array($this->evidenceSupplied)) {
+            $this->evidenceSupplied = [];
+        }
+
         $this->evidenceSupplied[0] = $evidenceSupplied;
 
         return $this;
@@ -297,6 +317,10 @@ class DeclarationType
      */
     public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
+        if (!is_array($this->evidenceSupplied)) {
+            $this->evidenceSupplied = [];
+        }
+
         if ($this->evidenceSupplied === []) {
             $this->addOnceToevidenceSupplied(new EvidenceSupplied());
         }

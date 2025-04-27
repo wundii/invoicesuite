@@ -239,6 +239,10 @@ class SecondaryHazardType
      */
     public function addOnceToExtension(Extension $extension): self
     {
+        if (!is_array($this->extension)) {
+            $this->extension = [];
+        }
+
         $this->extension[0] = $extension;
 
         return $this;
@@ -249,6 +253,10 @@ class SecondaryHazardType
      */
     public function addOnceToExtensionWithCreate(): Extension
     {
+        if (!is_array($this->extension)) {
+            $this->extension = [];
+        }
+
         if ($this->extension === []) {
             $this->addOnceToextension(new Extension());
         }

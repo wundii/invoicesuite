@@ -169,6 +169,10 @@ class TransactionConditionsType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -179,6 +183,10 @@ class TransactionConditionsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -242,6 +250,10 @@ class TransactionConditionsType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -252,6 +264,10 @@ class TransactionConditionsType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }

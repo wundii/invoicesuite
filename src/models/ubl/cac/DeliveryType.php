@@ -816,6 +816,10 @@ class DeliveryType
      */
     public function addOnceToNotifyParty(NotifyParty $notifyParty): self
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         $this->notifyParty[0] = $notifyParty;
 
         return $this;
@@ -826,6 +830,10 @@ class DeliveryType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         if ($this->notifyParty === []) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }
@@ -918,6 +926,10 @@ class DeliveryType
      */
     public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         $this->deliveryTerms[0] = $deliveryTerms;
 
         return $this;
@@ -928,6 +940,10 @@ class DeliveryType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         if ($this->deliveryTerms === []) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }

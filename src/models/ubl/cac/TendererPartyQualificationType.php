@@ -99,6 +99,10 @@ class TendererPartyQualificationType
     public function addOnceToInterestedProcurementProjectLot(
         InterestedProcurementProjectLot $interestedProcurementProjectLot,
     ): self {
+        if (!is_array($this->interestedProcurementProjectLot)) {
+            $this->interestedProcurementProjectLot = [];
+        }
+
         $this->interestedProcurementProjectLot[0] = $interestedProcurementProjectLot;
 
         return $this;
@@ -109,6 +113,10 @@ class TendererPartyQualificationType
      */
     public function addOnceToInterestedProcurementProjectLotWithCreate(): InterestedProcurementProjectLot
     {
+        if (!is_array($this->interestedProcurementProjectLot)) {
+            $this->interestedProcurementProjectLot = [];
+        }
+
         if ($this->interestedProcurementProjectLot === []) {
             $this->addOnceTointerestedProcurementProjectLot(new InterestedProcurementProjectLot());
         }
@@ -201,6 +209,10 @@ class TendererPartyQualificationType
      */
     public function addOnceToAdditionalQualifyingParty(AdditionalQualifyingParty $additionalQualifyingParty): self
     {
+        if (!is_array($this->additionalQualifyingParty)) {
+            $this->additionalQualifyingParty = [];
+        }
+
         $this->additionalQualifyingParty[0] = $additionalQualifyingParty;
 
         return $this;
@@ -211,6 +223,10 @@ class TendererPartyQualificationType
      */
     public function addOnceToAdditionalQualifyingPartyWithCreate(): AdditionalQualifyingParty
     {
+        if (!is_array($this->additionalQualifyingParty)) {
+            $this->additionalQualifyingParty = [];
+        }
+
         if ($this->additionalQualifyingParty === []) {
             $this->addOnceToadditionalQualifyingParty(new AdditionalQualifyingParty());
         }

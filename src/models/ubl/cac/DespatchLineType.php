@@ -290,6 +290,10 @@ class DespatchLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -300,6 +304,10 @@ class DespatchLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -450,6 +458,10 @@ class DespatchLineType
      */
     public function addOnceToBackorderReason(BackorderReason $backorderReason): self
     {
+        if (!is_array($this->backorderReason)) {
+            $this->backorderReason = [];
+        }
+
         $this->backorderReason[0] = $backorderReason;
 
         return $this;
@@ -460,6 +472,10 @@ class DespatchLineType
      */
     public function addOnceToBackorderReasonWithCreate(): BackorderReason
     {
+        if (!is_array($this->backorderReason)) {
+            $this->backorderReason = [];
+        }
+
         if ($this->backorderReason === []) {
             $this->addOnceTobackorderReason(new BackorderReason());
         }
@@ -552,6 +568,10 @@ class DespatchLineType
      */
     public function addOnceToOutstandingReason(OutstandingReason $outstandingReason): self
     {
+        if (!is_array($this->outstandingReason)) {
+            $this->outstandingReason = [];
+        }
+
         $this->outstandingReason[0] = $outstandingReason;
 
         return $this;
@@ -562,6 +582,10 @@ class DespatchLineType
      */
     public function addOnceToOutstandingReasonWithCreate(): OutstandingReason
     {
+        if (!is_array($this->outstandingReason)) {
+            $this->outstandingReason = [];
+        }
+
         if ($this->outstandingReason === []) {
             $this->addOnceTooutstandingReason(new OutstandingReason());
         }
@@ -654,6 +678,10 @@ class DespatchLineType
      */
     public function addOnceToOrderLineReference(OrderLineReference $orderLineReference): self
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         $this->orderLineReference[0] = $orderLineReference;
 
         return $this;
@@ -664,6 +692,10 @@ class DespatchLineType
      */
     public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         if ($this->orderLineReference === []) {
             $this->addOnceToorderLineReference(new OrderLineReference());
         }
@@ -727,6 +759,10 @@ class DespatchLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -737,6 +773,10 @@ class DespatchLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -829,6 +869,10 @@ class DespatchLineType
      */
     public function addOnceToShipment(Shipment $shipment): self
     {
+        if (!is_array($this->shipment)) {
+            $this->shipment = [];
+        }
+
         $this->shipment[0] = $shipment;
 
         return $this;
@@ -839,6 +883,10 @@ class DespatchLineType
      */
     public function addOnceToShipmentWithCreate(): Shipment
     {
+        if (!is_array($this->shipment)) {
+            $this->shipment = [];
+        }
+
         if ($this->shipment === []) {
             $this->addOnceToshipment(new Shipment());
         }

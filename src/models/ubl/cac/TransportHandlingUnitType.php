@@ -472,6 +472,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingInstructions(HandlingInstructions $handlingInstructions): self
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         $this->handlingInstructions[0] = $handlingInstructions;
 
         return $this;
@@ -482,6 +486,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         if ($this->handlingInstructions === []) {
             $this->addOnceTohandlingInstructions(new HandlingInstructions());
         }
@@ -622,6 +630,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToDamageRemarks(DamageRemarks $damageRemarks): self
     {
+        if (!is_array($this->damageRemarks)) {
+            $this->damageRemarks = [];
+        }
+
         $this->damageRemarks[0] = $damageRemarks;
 
         return $this;
@@ -632,6 +644,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToDamageRemarksWithCreate(): DamageRemarks
     {
+        if (!is_array($this->damageRemarks)) {
+            $this->damageRemarks = [];
+        }
+
         if ($this->damageRemarks === []) {
             $this->addOnceTodamageRemarks(new DamageRemarks());
         }
@@ -695,6 +711,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToShippingMarks(ShippingMarks $shippingMarks): self
     {
+        if (!is_array($this->shippingMarks)) {
+            $this->shippingMarks = [];
+        }
+
         $this->shippingMarks[0] = $shippingMarks;
 
         return $this;
@@ -705,6 +725,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToShippingMarksWithCreate(): ShippingMarks
     {
+        if (!is_array($this->shippingMarks)) {
+            $this->shippingMarks = [];
+        }
+
         if ($this->shippingMarks === []) {
             $this->addOnceToshippingMarks(new ShippingMarks());
         }
@@ -797,6 +821,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingUnitDespatchLine(HandlingUnitDespatchLine $handlingUnitDespatchLine): self
     {
+        if (!is_array($this->handlingUnitDespatchLine)) {
+            $this->handlingUnitDespatchLine = [];
+        }
+
         $this->handlingUnitDespatchLine[0] = $handlingUnitDespatchLine;
 
         return $this;
@@ -807,6 +835,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHandlingUnitDespatchLineWithCreate(): HandlingUnitDespatchLine
     {
+        if (!is_array($this->handlingUnitDespatchLine)) {
+            $this->handlingUnitDespatchLine = [];
+        }
+
         if ($this->handlingUnitDespatchLine === []) {
             $this->addOnceTohandlingUnitDespatchLine(new HandlingUnitDespatchLine());
         }
@@ -870,6 +902,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToActualPackage(ActualPackage $actualPackage): self
     {
+        if (!is_array($this->actualPackage)) {
+            $this->actualPackage = [];
+        }
+
         $this->actualPackage[0] = $actualPackage;
 
         return $this;
@@ -880,6 +916,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToActualPackageWithCreate(): ActualPackage
     {
+        if (!is_array($this->actualPackage)) {
+            $this->actualPackage = [];
+        }
+
         if ($this->actualPackage === []) {
             $this->addOnceToactualPackage(new ActualPackage());
         }
@@ -945,6 +985,10 @@ class TransportHandlingUnitType
     public function addOnceToReceivedHandlingUnitReceiptLine(
         ReceivedHandlingUnitReceiptLine $receivedHandlingUnitReceiptLine,
     ): self {
+        if (!is_array($this->receivedHandlingUnitReceiptLine)) {
+            $this->receivedHandlingUnitReceiptLine = [];
+        }
+
         $this->receivedHandlingUnitReceiptLine[0] = $receivedHandlingUnitReceiptLine;
 
         return $this;
@@ -955,6 +999,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToReceivedHandlingUnitReceiptLineWithCreate(): ReceivedHandlingUnitReceiptLine
     {
+        if (!is_array($this->receivedHandlingUnitReceiptLine)) {
+            $this->receivedHandlingUnitReceiptLine = [];
+        }
+
         if ($this->receivedHandlingUnitReceiptLine === []) {
             $this->addOnceToreceivedHandlingUnitReceiptLine(new ReceivedHandlingUnitReceiptLine());
         }
@@ -1018,6 +1066,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         $this->transportEquipment[0] = $transportEquipment;
 
         return $this;
@@ -1028,6 +1080,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         if ($this->transportEquipment === []) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }
@@ -1091,6 +1147,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportMeans(TransportMeans $transportMeans): self
     {
+        if (!is_array($this->transportMeans)) {
+            $this->transportMeans = [];
+        }
+
         $this->transportMeans[0] = $transportMeans;
 
         return $this;
@@ -1101,6 +1161,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToTransportMeansWithCreate(): TransportMeans
     {
+        if (!is_array($this->transportMeans)) {
+            $this->transportMeans = [];
+        }
+
         if ($this->transportMeans === []) {
             $this->addOnceTotransportMeans(new TransportMeans());
         }
@@ -1164,6 +1228,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHazardousGoodsTransit(HazardousGoodsTransit $hazardousGoodsTransit): self
     {
+        if (!is_array($this->hazardousGoodsTransit)) {
+            $this->hazardousGoodsTransit = [];
+        }
+
         $this->hazardousGoodsTransit[0] = $hazardousGoodsTransit;
 
         return $this;
@@ -1174,6 +1242,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
+        if (!is_array($this->hazardousGoodsTransit)) {
+            $this->hazardousGoodsTransit = [];
+        }
+
         if ($this->hazardousGoodsTransit === []) {
             $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
         }
@@ -1237,6 +1309,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -1247,6 +1323,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
@@ -1368,6 +1448,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToGoodsItem(GoodsItem $goodsItem): self
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         $this->goodsItem[0] = $goodsItem;
 
         return $this;
@@ -1378,6 +1462,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         if ($this->goodsItem === []) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
@@ -1501,6 +1589,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToShipmentDocumentReference(ShipmentDocumentReference $shipmentDocumentReference): self
     {
+        if (!is_array($this->shipmentDocumentReference)) {
+            $this->shipmentDocumentReference = [];
+        }
+
         $this->shipmentDocumentReference[0] = $shipmentDocumentReference;
 
         return $this;
@@ -1511,6 +1603,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
     {
+        if (!is_array($this->shipmentDocumentReference)) {
+            $this->shipmentDocumentReference = [];
+        }
+
         if ($this->shipmentDocumentReference === []) {
             $this->addOnceToshipmentDocumentReference(new ShipmentDocumentReference());
         }
@@ -1574,6 +1670,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToStatus(Status $status): self
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         $this->status[0] = $status;
 
         return $this;
@@ -1584,6 +1684,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToStatusWithCreate(): Status
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         if ($this->status === []) {
             $this->addOnceTostatus(new Status());
         }
@@ -1647,6 +1751,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToCustomsDeclaration(CustomsDeclaration $customsDeclaration): self
     {
+        if (!is_array($this->customsDeclaration)) {
+            $this->customsDeclaration = [];
+        }
+
         $this->customsDeclaration[0] = $customsDeclaration;
 
         return $this;
@@ -1657,6 +1765,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
+        if (!is_array($this->customsDeclaration)) {
+            $this->customsDeclaration = [];
+        }
+
         if ($this->customsDeclaration === []) {
             $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
         }
@@ -1720,6 +1832,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToReferencedShipment(ReferencedShipment $referencedShipment): self
     {
+        if (!is_array($this->referencedShipment)) {
+            $this->referencedShipment = [];
+        }
+
         $this->referencedShipment[0] = $referencedShipment;
 
         return $this;
@@ -1730,6 +1846,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToReferencedShipmentWithCreate(): ReferencedShipment
     {
+        if (!is_array($this->referencedShipment)) {
+            $this->referencedShipment = [];
+        }
+
         if ($this->referencedShipment === []) {
             $this->addOnceToreferencedShipment(new ReferencedShipment());
         }
@@ -1793,6 +1913,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToPackage(Package $package): self
     {
+        if (!is_array($this->package)) {
+            $this->package = [];
+        }
+
         $this->package[0] = $package;
 
         return $this;
@@ -1803,6 +1927,10 @@ class TransportHandlingUnitType
      */
     public function addOnceToPackageWithCreate(): Package
     {
+        if (!is_array($this->package)) {
+            $this->package = [];
+        }
+
         if ($this->package === []) {
             $this->addOnceTopackage(new Package());
         }

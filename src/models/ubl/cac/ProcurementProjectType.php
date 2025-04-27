@@ -306,6 +306,10 @@ class ProcurementProjectType
      */
     public function addOnceToName(Name $name): self
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         $this->name[0] = $name;
 
         return $this;
@@ -316,6 +320,10 @@ class ProcurementProjectType
      */
     public function addOnceToNameWithCreate(): Name
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         if ($this->name === []) {
             $this->addOnceToname(new Name());
         }
@@ -379,6 +387,10 @@ class ProcurementProjectType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -389,6 +401,10 @@ class ProcurementProjectType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -568,6 +584,10 @@ class ProcurementProjectType
      */
     public function addOnceToFeeDescription(FeeDescription $feeDescription): self
     {
+        if (!is_array($this->feeDescription)) {
+            $this->feeDescription = [];
+        }
+
         $this->feeDescription[0] = $feeDescription;
 
         return $this;
@@ -578,6 +598,10 @@ class ProcurementProjectType
      */
     public function addOnceToFeeDescriptionWithCreate(): FeeDescription
     {
+        if (!is_array($this->feeDescription)) {
+            $this->feeDescription = [];
+        }
+
         if ($this->feeDescription === []) {
             $this->addOnceTofeeDescription(new FeeDescription());
         }
@@ -690,6 +714,10 @@ class ProcurementProjectType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -700,6 +728,10 @@ class ProcurementProjectType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -823,6 +855,10 @@ class ProcurementProjectType
     public function addOnceToAdditionalCommodityClassification(
         AdditionalCommodityClassification $additionalCommodityClassification,
     ): self {
+        if (!is_array($this->additionalCommodityClassification)) {
+            $this->additionalCommodityClassification = [];
+        }
+
         $this->additionalCommodityClassification[0] = $additionalCommodityClassification;
 
         return $this;
@@ -833,6 +869,10 @@ class ProcurementProjectType
      */
     public function addOnceToAdditionalCommodityClassificationWithCreate(): AdditionalCommodityClassification
     {
+        if (!is_array($this->additionalCommodityClassification)) {
+            $this->additionalCommodityClassification = [];
+        }
+
         if ($this->additionalCommodityClassification === []) {
             $this->addOnceToadditionalCommodityClassification(new AdditionalCommodityClassification());
         }
@@ -896,6 +936,10 @@ class ProcurementProjectType
      */
     public function addOnceToRealizedLocation(RealizedLocation $realizedLocation): self
     {
+        if (!is_array($this->realizedLocation)) {
+            $this->realizedLocation = [];
+        }
+
         $this->realizedLocation[0] = $realizedLocation;
 
         return $this;
@@ -906,6 +950,10 @@ class ProcurementProjectType
      */
     public function addOnceToRealizedLocationWithCreate(): RealizedLocation
     {
+        if (!is_array($this->realizedLocation)) {
+            $this->realizedLocation = [];
+        }
+
         if ($this->realizedLocation === []) {
             $this->addOnceTorealizedLocation(new RealizedLocation());
         }
@@ -1027,6 +1075,10 @@ class ProcurementProjectType
      */
     public function addOnceToRequestForTenderLine(RequestForTenderLine $requestForTenderLine): self
     {
+        if (!is_array($this->requestForTenderLine)) {
+            $this->requestForTenderLine = [];
+        }
+
         $this->requestForTenderLine[0] = $requestForTenderLine;
 
         return $this;
@@ -1037,6 +1089,10 @@ class ProcurementProjectType
      */
     public function addOnceToRequestForTenderLineWithCreate(): RequestForTenderLine
     {
+        if (!is_array($this->requestForTenderLine)) {
+            $this->requestForTenderLine = [];
+        }
+
         if ($this->requestForTenderLine === []) {
             $this->addOnceTorequestForTenderLine(new RequestForTenderLine());
         }

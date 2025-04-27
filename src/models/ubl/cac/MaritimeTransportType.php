@@ -244,6 +244,10 @@ class MaritimeTransportType
      */
     public function addOnceToShipsRequirements(ShipsRequirements $shipsRequirements): self
     {
+        if (!is_array($this->shipsRequirements)) {
+            $this->shipsRequirements = [];
+        }
+
         $this->shipsRequirements[0] = $shipsRequirements;
 
         return $this;
@@ -254,6 +258,10 @@ class MaritimeTransportType
      */
     public function addOnceToShipsRequirementsWithCreate(): ShipsRequirements
     {
+        if (!is_array($this->shipsRequirements)) {
+            $this->shipsRequirements = [];
+        }
+
         if ($this->shipsRequirements === []) {
             $this->addOnceToshipsRequirements(new ShipsRequirements());
         }

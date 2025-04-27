@@ -356,6 +356,10 @@ class TaxCategoryType
      */
     public function addOnceToTaxExemptionReason(TaxExemptionReason $taxExemptionReason): self
     {
+        if (!is_array($this->taxExemptionReason)) {
+            $this->taxExemptionReason = [];
+        }
+
         $this->taxExemptionReason[0] = $taxExemptionReason;
 
         return $this;
@@ -366,6 +370,10 @@ class TaxCategoryType
      */
     public function addOnceToTaxExemptionReasonWithCreate(): TaxExemptionReason
     {
+        if (!is_array($this->taxExemptionReason)) {
+            $this->taxExemptionReason = [];
+        }
+
         if ($this->taxExemptionReason === []) {
             $this->addOnceTotaxExemptionReason(new TaxExemptionReason());
         }

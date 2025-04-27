@@ -236,6 +236,10 @@ class LocationType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -246,6 +250,10 @@ class LocationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -309,6 +317,10 @@ class LocationType
      */
     public function addOnceToConditions(Conditions $conditions): self
     {
+        if (!is_array($this->conditions)) {
+            $this->conditions = [];
+        }
+
         $this->conditions[0] = $conditions;
 
         return $this;
@@ -319,6 +331,10 @@ class LocationType
      */
     public function addOnceToConditionsWithCreate(): Conditions
     {
+        if (!is_array($this->conditions)) {
+            $this->conditions = [];
+        }
+
         if ($this->conditions === []) {
             $this->addOnceToconditions(new Conditions());
         }
@@ -527,6 +543,10 @@ class LocationType
      */
     public function addOnceToValidityPeriod(ValidityPeriod $validityPeriod): self
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         $this->validityPeriod[0] = $validityPeriod;
 
         return $this;
@@ -537,6 +557,10 @@ class LocationType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         if ($this->validityPeriod === []) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }
@@ -629,6 +653,10 @@ class LocationType
      */
     public function addOnceToSubsidiaryLocation(SubsidiaryLocation $subsidiaryLocation): self
     {
+        if (!is_array($this->subsidiaryLocation)) {
+            $this->subsidiaryLocation = [];
+        }
+
         $this->subsidiaryLocation[0] = $subsidiaryLocation;
 
         return $this;
@@ -639,6 +667,10 @@ class LocationType
      */
     public function addOnceToSubsidiaryLocationWithCreate(): SubsidiaryLocation
     {
+        if (!is_array($this->subsidiaryLocation)) {
+            $this->subsidiaryLocation = [];
+        }
+
         if ($this->subsidiaryLocation === []) {
             $this->addOnceTosubsidiaryLocation(new SubsidiaryLocation());
         }
@@ -702,6 +734,10 @@ class LocationType
      */
     public function addOnceToLocationCoordinate(LocationCoordinate $locationCoordinate): self
     {
+        if (!is_array($this->locationCoordinate)) {
+            $this->locationCoordinate = [];
+        }
+
         $this->locationCoordinate[0] = $locationCoordinate;
 
         return $this;
@@ -712,6 +748,10 @@ class LocationType
      */
     public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
     {
+        if (!is_array($this->locationCoordinate)) {
+            $this->locationCoordinate = [];
+        }
+
         if ($this->locationCoordinate === []) {
             $this->addOnceTolocationCoordinate(new LocationCoordinate());
         }

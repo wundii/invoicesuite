@@ -156,6 +156,10 @@ class GoodsItemContainerType
      */
     public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         $this->transportEquipment[0] = $transportEquipment;
 
         return $this;
@@ -166,6 +170,10 @@ class GoodsItemContainerType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         if ($this->transportEquipment === []) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }

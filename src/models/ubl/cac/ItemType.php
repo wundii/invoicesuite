@@ -418,6 +418,10 @@ class ItemType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -428,6 +432,10 @@ class ItemType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -616,6 +624,10 @@ class ItemType
      */
     public function addOnceToAdditionalInformation(AdditionalInformation $additionalInformation): self
     {
+        if (!is_array($this->additionalInformation)) {
+            $this->additionalInformation = [];
+        }
+
         $this->additionalInformation[0] = $additionalInformation;
 
         return $this;
@@ -626,6 +638,10 @@ class ItemType
      */
     public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
     {
+        if (!is_array($this->additionalInformation)) {
+            $this->additionalInformation = [];
+        }
+
         if ($this->additionalInformation === []) {
             $this->addOnceToadditionalInformation(new AdditionalInformation());
         }
@@ -689,6 +705,10 @@ class ItemType
      */
     public function addOnceToKeyword(Keyword $keyword): self
     {
+        if (!is_array($this->keyword)) {
+            $this->keyword = [];
+        }
+
         $this->keyword[0] = $keyword;
 
         return $this;
@@ -699,6 +719,10 @@ class ItemType
      */
     public function addOnceToKeywordWithCreate(): Keyword
     {
+        if (!is_array($this->keyword)) {
+            $this->keyword = [];
+        }
+
         if ($this->keyword === []) {
             $this->addOnceTokeyword(new Keyword());
         }
@@ -762,6 +786,10 @@ class ItemType
      */
     public function addOnceToBrandName(BrandName $brandName): self
     {
+        if (!is_array($this->brandName)) {
+            $this->brandName = [];
+        }
+
         $this->brandName[0] = $brandName;
 
         return $this;
@@ -772,6 +800,10 @@ class ItemType
      */
     public function addOnceToBrandNameWithCreate(): BrandName
     {
+        if (!is_array($this->brandName)) {
+            $this->brandName = [];
+        }
+
         if ($this->brandName === []) {
             $this->addOnceTobrandName(new BrandName());
         }
@@ -835,6 +867,10 @@ class ItemType
      */
     public function addOnceToModelName(ModelName $modelName): self
     {
+        if (!is_array($this->modelName)) {
+            $this->modelName = [];
+        }
+
         $this->modelName[0] = $modelName;
 
         return $this;
@@ -845,6 +881,10 @@ class ItemType
      */
     public function addOnceToModelNameWithCreate(): ModelName
     {
+        if (!is_array($this->modelName)) {
+            $this->modelName = [];
+        }
+
         if ($this->modelName === []) {
             $this->addOnceTomodelName(new ModelName());
         }
@@ -968,6 +1008,10 @@ class ItemType
     public function addOnceToManufacturersItemIdentification(
         ManufacturersItemIdentification $manufacturersItemIdentification,
     ): self {
+        if (!is_array($this->manufacturersItemIdentification)) {
+            $this->manufacturersItemIdentification = [];
+        }
+
         $this->manufacturersItemIdentification[0] = $manufacturersItemIdentification;
 
         return $this;
@@ -978,6 +1022,10 @@ class ItemType
      */
     public function addOnceToManufacturersItemIdentificationWithCreate(): ManufacturersItemIdentification
     {
+        if (!is_array($this->manufacturersItemIdentification)) {
+            $this->manufacturersItemIdentification = [];
+        }
+
         if ($this->manufacturersItemIdentification === []) {
             $this->addOnceTomanufacturersItemIdentification(new ManufacturersItemIdentification());
         }
@@ -1101,6 +1149,10 @@ class ItemType
     public function addOnceToAdditionalItemIdentification(
         AdditionalItemIdentification $additionalItemIdentification,
     ): self {
+        if (!is_array($this->additionalItemIdentification)) {
+            $this->additionalItemIdentification = [];
+        }
+
         $this->additionalItemIdentification[0] = $additionalItemIdentification;
 
         return $this;
@@ -1111,6 +1163,10 @@ class ItemType
      */
     public function addOnceToAdditionalItemIdentificationWithCreate(): AdditionalItemIdentification
     {
+        if (!is_array($this->additionalItemIdentification)) {
+            $this->additionalItemIdentification = [];
+        }
+
         if ($this->additionalItemIdentification === []) {
             $this->addOnceToadditionalItemIdentification(new AdditionalItemIdentification());
         }
@@ -1205,6 +1261,10 @@ class ItemType
     public function addOnceToItemSpecificationDocumentReference(
         ItemSpecificationDocumentReference $itemSpecificationDocumentReference,
     ): self {
+        if (!is_array($this->itemSpecificationDocumentReference)) {
+            $this->itemSpecificationDocumentReference = [];
+        }
+
         $this->itemSpecificationDocumentReference[0] = $itemSpecificationDocumentReference;
 
         return $this;
@@ -1215,6 +1275,10 @@ class ItemType
      */
     public function addOnceToItemSpecificationDocumentReferenceWithCreate(): ItemSpecificationDocumentReference
     {
+        if (!is_array($this->itemSpecificationDocumentReference)) {
+            $this->itemSpecificationDocumentReference = [];
+        }
+
         if ($this->itemSpecificationDocumentReference === []) {
             $this->addOnceToitemSpecificationDocumentReference(new ItemSpecificationDocumentReference());
         }
@@ -1307,6 +1371,10 @@ class ItemType
      */
     public function addOnceToCommodityClassification(CommodityClassification $commodityClassification): self
     {
+        if (!is_array($this->commodityClassification)) {
+            $this->commodityClassification = [];
+        }
+
         $this->commodityClassification[0] = $commodityClassification;
 
         return $this;
@@ -1317,6 +1385,10 @@ class ItemType
      */
     public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
     {
+        if (!is_array($this->commodityClassification)) {
+            $this->commodityClassification = [];
+        }
+
         if ($this->commodityClassification === []) {
             $this->addOnceTocommodityClassification(new CommodityClassification());
         }
@@ -1380,6 +1452,10 @@ class ItemType
      */
     public function addOnceToTransactionConditions(TransactionConditions $transactionConditions): self
     {
+        if (!is_array($this->transactionConditions)) {
+            $this->transactionConditions = [];
+        }
+
         $this->transactionConditions[0] = $transactionConditions;
 
         return $this;
@@ -1390,6 +1466,10 @@ class ItemType
      */
     public function addOnceToTransactionConditionsWithCreate(): TransactionConditions
     {
+        if (!is_array($this->transactionConditions)) {
+            $this->transactionConditions = [];
+        }
+
         if ($this->transactionConditions === []) {
             $this->addOnceTotransactionConditions(new TransactionConditions());
         }
@@ -1453,6 +1533,10 @@ class ItemType
      */
     public function addOnceToHazardousItem(HazardousItem $hazardousItem): self
     {
+        if (!is_array($this->hazardousItem)) {
+            $this->hazardousItem = [];
+        }
+
         $this->hazardousItem[0] = $hazardousItem;
 
         return $this;
@@ -1463,6 +1547,10 @@ class ItemType
      */
     public function addOnceToHazardousItemWithCreate(): HazardousItem
     {
+        if (!is_array($this->hazardousItem)) {
+            $this->hazardousItem = [];
+        }
+
         if ($this->hazardousItem === []) {
             $this->addOnceTohazardousItem(new HazardousItem());
         }
@@ -1526,6 +1614,10 @@ class ItemType
      */
     public function addOnceToClassifiedTaxCategory(ClassifiedTaxCategory $classifiedTaxCategory): self
     {
+        if (!is_array($this->classifiedTaxCategory)) {
+            $this->classifiedTaxCategory = [];
+        }
+
         $this->classifiedTaxCategory[0] = $classifiedTaxCategory;
 
         return $this;
@@ -1536,6 +1628,10 @@ class ItemType
      */
     public function addOnceToClassifiedTaxCategoryWithCreate(): ClassifiedTaxCategory
     {
+        if (!is_array($this->classifiedTaxCategory)) {
+            $this->classifiedTaxCategory = [];
+        }
+
         if ($this->classifiedTaxCategory === []) {
             $this->addOnceToclassifiedTaxCategory(new ClassifiedTaxCategory());
         }
@@ -1599,6 +1695,10 @@ class ItemType
      */
     public function addOnceToAdditionalItemProperty(AdditionalItemProperty $additionalItemProperty): self
     {
+        if (!is_array($this->additionalItemProperty)) {
+            $this->additionalItemProperty = [];
+        }
+
         $this->additionalItemProperty[0] = $additionalItemProperty;
 
         return $this;
@@ -1609,6 +1709,10 @@ class ItemType
      */
     public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
+        if (!is_array($this->additionalItemProperty)) {
+            $this->additionalItemProperty = [];
+        }
+
         if ($this->additionalItemProperty === []) {
             $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
         }
@@ -1672,6 +1776,10 @@ class ItemType
      */
     public function addOnceToManufacturerParty(ManufacturerParty $manufacturerParty): self
     {
+        if (!is_array($this->manufacturerParty)) {
+            $this->manufacturerParty = [];
+        }
+
         $this->manufacturerParty[0] = $manufacturerParty;
 
         return $this;
@@ -1682,6 +1790,10 @@ class ItemType
      */
     public function addOnceToManufacturerPartyWithCreate(): ManufacturerParty
     {
+        if (!is_array($this->manufacturerParty)) {
+            $this->manufacturerParty = [];
+        }
+
         if ($this->manufacturerParty === []) {
             $this->addOnceTomanufacturerParty(new ManufacturerParty());
         }
@@ -1775,6 +1887,10 @@ class ItemType
      */
     public function addOnceToOriginAddress(OriginAddress $originAddress): self
     {
+        if (!is_array($this->originAddress)) {
+            $this->originAddress = [];
+        }
+
         $this->originAddress[0] = $originAddress;
 
         return $this;
@@ -1785,6 +1901,10 @@ class ItemType
      */
     public function addOnceToOriginAddressWithCreate(): OriginAddress
     {
+        if (!is_array($this->originAddress)) {
+            $this->originAddress = [];
+        }
+
         if ($this->originAddress === []) {
             $this->addOnceTooriginAddress(new OriginAddress());
         }
@@ -1848,6 +1968,10 @@ class ItemType
      */
     public function addOnceToItemInstance(ItemInstance $itemInstance): self
     {
+        if (!is_array($this->itemInstance)) {
+            $this->itemInstance = [];
+        }
+
         $this->itemInstance[0] = $itemInstance;
 
         return $this;
@@ -1858,6 +1982,10 @@ class ItemType
      */
     public function addOnceToItemInstanceWithCreate(): ItemInstance
     {
+        if (!is_array($this->itemInstance)) {
+            $this->itemInstance = [];
+        }
+
         if ($this->itemInstance === []) {
             $this->addOnceToitemInstance(new ItemInstance());
         }
@@ -1921,6 +2049,10 @@ class ItemType
      */
     public function addOnceToCertificate(Certificate $certificate): self
     {
+        if (!is_array($this->certificate)) {
+            $this->certificate = [];
+        }
+
         $this->certificate[0] = $certificate;
 
         return $this;
@@ -1931,6 +2063,10 @@ class ItemType
      */
     public function addOnceToCertificateWithCreate(): Certificate
     {
+        if (!is_array($this->certificate)) {
+            $this->certificate = [];
+        }
+
         if ($this->certificate === []) {
             $this->addOnceTocertificate(new Certificate());
         }
@@ -1994,6 +2130,10 @@ class ItemType
      */
     public function addOnceToDimension(Dimension $dimension): self
     {
+        if (!is_array($this->dimension)) {
+            $this->dimension = [];
+        }
+
         $this->dimension[0] = $dimension;
 
         return $this;
@@ -2004,6 +2144,10 @@ class ItemType
      */
     public function addOnceToDimensionWithCreate(): Dimension
     {
+        if (!is_array($this->dimension)) {
+            $this->dimension = [];
+        }
+
         if ($this->dimension === []) {
             $this->addOnceTodimension(new Dimension());
         }

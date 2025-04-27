@@ -687,6 +687,10 @@ class PersonType
      */
     public function addOnceToIdentityDocumentReference(IdentityDocumentReference $identityDocumentReference): self
     {
+        if (!is_array($this->identityDocumentReference)) {
+            $this->identityDocumentReference = [];
+        }
+
         $this->identityDocumentReference[0] = $identityDocumentReference;
 
         return $this;
@@ -697,6 +701,10 @@ class PersonType
      */
     public function addOnceToIdentityDocumentReferenceWithCreate(): IdentityDocumentReference
     {
+        if (!is_array($this->identityDocumentReference)) {
+            $this->identityDocumentReference = [];
+        }
+
         if ($this->identityDocumentReference === []) {
             $this->addOnceToidentityDocumentReference(new IdentityDocumentReference());
         }

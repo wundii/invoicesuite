@@ -280,6 +280,10 @@ class AwardingCriterionType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -290,6 +294,10 @@ class AwardingCriterionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -382,6 +390,10 @@ class AwardingCriterionType
      */
     public function addOnceToWeight(Weight $weight): self
     {
+        if (!is_array($this->weight)) {
+            $this->weight = [];
+        }
+
         $this->weight[0] = $weight;
 
         return $this;
@@ -392,6 +404,10 @@ class AwardingCriterionType
      */
     public function addOnceToWeightWithCreate(): Weight
     {
+        if (!is_array($this->weight)) {
+            $this->weight = [];
+        }
+
         if ($this->weight === []) {
             $this->addOnceToweight(new Weight());
         }
@@ -455,6 +471,10 @@ class AwardingCriterionType
      */
     public function addOnceToCalculationExpression(CalculationExpression $calculationExpression): self
     {
+        if (!is_array($this->calculationExpression)) {
+            $this->calculationExpression = [];
+        }
+
         $this->calculationExpression[0] = $calculationExpression;
 
         return $this;
@@ -465,6 +485,10 @@ class AwardingCriterionType
      */
     public function addOnceToCalculationExpressionWithCreate(): CalculationExpression
     {
+        if (!is_array($this->calculationExpression)) {
+            $this->calculationExpression = [];
+        }
+
         if ($this->calculationExpression === []) {
             $this->addOnceTocalculationExpression(new CalculationExpression());
         }
@@ -673,6 +697,10 @@ class AwardingCriterionType
      */
     public function addOnceToMinimumImprovementBid(MinimumImprovementBid $minimumImprovementBid): self
     {
+        if (!is_array($this->minimumImprovementBid)) {
+            $this->minimumImprovementBid = [];
+        }
+
         $this->minimumImprovementBid[0] = $minimumImprovementBid;
 
         return $this;
@@ -683,6 +711,10 @@ class AwardingCriterionType
      */
     public function addOnceToMinimumImprovementBidWithCreate(): MinimumImprovementBid
     {
+        if (!is_array($this->minimumImprovementBid)) {
+            $this->minimumImprovementBid = [];
+        }
+
         if ($this->minimumImprovementBid === []) {
             $this->addOnceTominimumImprovementBid(new MinimumImprovementBid());
         }
@@ -748,6 +780,10 @@ class AwardingCriterionType
     public function addOnceToSubordinateAwardingCriterion(
         SubordinateAwardingCriterion $subordinateAwardingCriterion,
     ): self {
+        if (!is_array($this->subordinateAwardingCriterion)) {
+            $this->subordinateAwardingCriterion = [];
+        }
+
         $this->subordinateAwardingCriterion[0] = $subordinateAwardingCriterion;
 
         return $this;
@@ -758,6 +794,10 @@ class AwardingCriterionType
      */
     public function addOnceToSubordinateAwardingCriterionWithCreate(): SubordinateAwardingCriterion
     {
+        if (!is_array($this->subordinateAwardingCriterion)) {
+            $this->subordinateAwardingCriterion = [];
+        }
+
         if ($this->subordinateAwardingCriterion === []) {
             $this->addOnceTosubordinateAwardingCriterion(new SubordinateAwardingCriterion());
         }

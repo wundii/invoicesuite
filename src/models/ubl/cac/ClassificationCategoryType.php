@@ -169,6 +169,10 @@ class ClassificationCategoryType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -179,6 +183,10 @@ class ClassificationCategoryType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -244,6 +252,10 @@ class ClassificationCategoryType
     public function addOnceToCategorizesClassificationCategory(
         CategorizesClassificationCategory $categorizesClassificationCategory,
     ): self {
+        if (!is_array($this->categorizesClassificationCategory)) {
+            $this->categorizesClassificationCategory = [];
+        }
+
         $this->categorizesClassificationCategory[0] = $categorizesClassificationCategory;
 
         return $this;
@@ -254,6 +266,10 @@ class ClassificationCategoryType
      */
     public function addOnceToCategorizesClassificationCategoryWithCreate(): CategorizesClassificationCategory
     {
+        if (!is_array($this->categorizesClassificationCategory)) {
+            $this->categorizesClassificationCategory = [];
+        }
+
         if ($this->categorizesClassificationCategory === []) {
             $this->addOnceTocategorizesClassificationCategory(new CategorizesClassificationCategory());
         }

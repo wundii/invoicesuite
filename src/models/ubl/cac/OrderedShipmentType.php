@@ -114,6 +114,10 @@ class OrderedShipmentType
      */
     public function addOnceToPackage(Package $package): self
     {
+        if (!is_array($this->package)) {
+            $this->package = [];
+        }
+
         $this->package[0] = $package;
 
         return $this;
@@ -124,6 +128,10 @@ class OrderedShipmentType
      */
     public function addOnceToPackageWithCreate(): Package
     {
+        if (!is_array($this->package)) {
+            $this->package = [];
+        }
+
         if ($this->package === []) {
             $this->addOnceTopackage(new Package());
         }

@@ -148,6 +148,10 @@ class DocumentResponseType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -158,6 +162,10 @@ class DocumentResponseType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -279,6 +287,10 @@ class DocumentResponseType
      */
     public function addOnceToLineResponse(LineResponse $lineResponse): self
     {
+        if (!is_array($this->lineResponse)) {
+            $this->lineResponse = [];
+        }
+
         $this->lineResponse[0] = $lineResponse;
 
         return $this;
@@ -289,6 +301,10 @@ class DocumentResponseType
      */
     public function addOnceToLineResponseWithCreate(): LineResponse
     {
+        if (!is_array($this->lineResponse)) {
+            $this->lineResponse = [];
+        }
+
         if ($this->lineResponse === []) {
             $this->addOnceTolineResponse(new LineResponse());
         }

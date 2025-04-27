@@ -115,6 +115,10 @@ class PriceExtensionType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -125,6 +129,10 @@ class PriceExtensionType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }

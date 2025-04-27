@@ -238,6 +238,10 @@ class TaxSchemeType
      */
     public function addOnceToJurisdictionRegionAddress(JurisdictionRegionAddress $jurisdictionRegionAddress): self
     {
+        if (!is_array($this->jurisdictionRegionAddress)) {
+            $this->jurisdictionRegionAddress = [];
+        }
+
         $this->jurisdictionRegionAddress[0] = $jurisdictionRegionAddress;
 
         return $this;
@@ -248,6 +252,10 @@ class TaxSchemeType
      */
     public function addOnceToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
     {
+        if (!is_array($this->jurisdictionRegionAddress)) {
+            $this->jurisdictionRegionAddress = [];
+        }
+
         if ($this->jurisdictionRegionAddress === []) {
             $this->addOnceTojurisdictionRegionAddress(new JurisdictionRegionAddress());
         }

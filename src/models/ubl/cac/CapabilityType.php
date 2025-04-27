@@ -163,6 +163,10 @@ class CapabilityType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -173,6 +177,10 @@ class CapabilityType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -294,6 +302,10 @@ class CapabilityType
      */
     public function addOnceToEvidenceSupplied(EvidenceSupplied $evidenceSupplied): self
     {
+        if (!is_array($this->evidenceSupplied)) {
+            $this->evidenceSupplied = [];
+        }
+
         $this->evidenceSupplied[0] = $evidenceSupplied;
 
         return $this;
@@ -304,6 +316,10 @@ class CapabilityType
      */
     public function addOnceToEvidenceSuppliedWithCreate(): EvidenceSupplied
     {
+        if (!is_array($this->evidenceSupplied)) {
+            $this->evidenceSupplied = [];
+        }
+
         if ($this->evidenceSupplied === []) {
             $this->addOnceToevidenceSupplied(new EvidenceSupplied());
         }

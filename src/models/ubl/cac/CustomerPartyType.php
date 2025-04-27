@@ -201,6 +201,10 @@ class CustomerPartyType
      */
     public function addOnceToAdditionalAccountID(AdditionalAccountID $additionalAccountID): self
     {
+        if (!is_array($this->additionalAccountID)) {
+            $this->additionalAccountID = [];
+        }
+
         $this->additionalAccountID[0] = $additionalAccountID;
 
         return $this;
@@ -211,6 +215,10 @@ class CustomerPartyType
      */
     public function addOnceToAdditionalAccountIDWithCreate(): AdditionalAccountID
     {
+        if (!is_array($this->additionalAccountID)) {
+            $this->additionalAccountID = [];
+        }
+
         if ($this->additionalAccountID === []) {
             $this->addOnceToadditionalAccountID(new AdditionalAccountID());
         }

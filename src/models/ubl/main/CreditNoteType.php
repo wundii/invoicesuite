@@ -694,6 +694,10 @@ class CreditNoteType
      */
     public function addOnceToUBLExtensions(UBLExtension $uBLExtensions): self
     {
+        if (!is_array($this->uBLExtensions)) {
+            $this->uBLExtensions = [];
+        }
+
         $this->uBLExtensions[0] = $uBLExtensions;
 
         return $this;
@@ -704,6 +708,10 @@ class CreditNoteType
      */
     public function addOnceToUBLExtensionsWithCreate(): UBLExtension
     {
+        if (!is_array($this->uBLExtensions)) {
+            $this->uBLExtensions = [];
+        }
+
         if ($this->uBLExtensions === []) {
             $this->addOnceTouBLExtensions(new UBLExtension());
         }
@@ -1046,6 +1054,10 @@ class CreditNoteType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -1056,6 +1068,10 @@ class CreditNoteType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -1381,6 +1397,10 @@ class CreditNoteType
      */
     public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         $this->invoicePeriod[0] = $invoicePeriod;
 
         return $this;
@@ -1391,6 +1411,10 @@ class CreditNoteType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         if ($this->invoicePeriod === []) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
@@ -1454,6 +1478,10 @@ class CreditNoteType
      */
     public function addOnceToDiscrepancyResponse(DiscrepancyResponse $discrepancyResponse): self
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         $this->discrepancyResponse[0] = $discrepancyResponse;
 
         return $this;
@@ -1464,6 +1492,10 @@ class CreditNoteType
      */
     public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         if ($this->discrepancyResponse === []) {
             $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
         }
@@ -1556,6 +1588,10 @@ class CreditNoteType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -1566,6 +1602,10 @@ class CreditNoteType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }
@@ -1629,6 +1669,10 @@ class CreditNoteType
      */
     public function addOnceToDespatchDocumentReference(DespatchDocumentReference $despatchDocumentReference): self
     {
+        if (!is_array($this->despatchDocumentReference)) {
+            $this->despatchDocumentReference = [];
+        }
+
         $this->despatchDocumentReference[0] = $despatchDocumentReference;
 
         return $this;
@@ -1639,6 +1683,10 @@ class CreditNoteType
      */
     public function addOnceToDespatchDocumentReferenceWithCreate(): DespatchDocumentReference
     {
+        if (!is_array($this->despatchDocumentReference)) {
+            $this->despatchDocumentReference = [];
+        }
+
         if ($this->despatchDocumentReference === []) {
             $this->addOnceTodespatchDocumentReference(new DespatchDocumentReference());
         }
@@ -1702,6 +1750,10 @@ class CreditNoteType
      */
     public function addOnceToReceiptDocumentReference(ReceiptDocumentReference $receiptDocumentReference): self
     {
+        if (!is_array($this->receiptDocumentReference)) {
+            $this->receiptDocumentReference = [];
+        }
+
         $this->receiptDocumentReference[0] = $receiptDocumentReference;
 
         return $this;
@@ -1712,6 +1764,10 @@ class CreditNoteType
      */
     public function addOnceToReceiptDocumentReferenceWithCreate(): ReceiptDocumentReference
     {
+        if (!is_array($this->receiptDocumentReference)) {
+            $this->receiptDocumentReference = [];
+        }
+
         if ($this->receiptDocumentReference === []) {
             $this->addOnceToreceiptDocumentReference(new ReceiptDocumentReference());
         }
@@ -1775,6 +1831,10 @@ class CreditNoteType
      */
     public function addOnceToContractDocumentReference(ContractDocumentReference $contractDocumentReference): self
     {
+        if (!is_array($this->contractDocumentReference)) {
+            $this->contractDocumentReference = [];
+        }
+
         $this->contractDocumentReference[0] = $contractDocumentReference;
 
         return $this;
@@ -1785,6 +1845,10 @@ class CreditNoteType
      */
     public function addOnceToContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
+        if (!is_array($this->contractDocumentReference)) {
+            $this->contractDocumentReference = [];
+        }
+
         if ($this->contractDocumentReference === []) {
             $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
         }
@@ -1849,6 +1913,10 @@ class CreditNoteType
     public function addOnceToAdditionalDocumentReference(
         AdditionalDocumentReference $additionalDocumentReference,
     ): self {
+        if (!is_array($this->additionalDocumentReference)) {
+            $this->additionalDocumentReference = [];
+        }
+
         $this->additionalDocumentReference[0] = $additionalDocumentReference;
 
         return $this;
@@ -1859,6 +1927,10 @@ class CreditNoteType
      */
     public function addOnceToAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
+        if (!is_array($this->additionalDocumentReference)) {
+            $this->additionalDocumentReference = [];
+        }
+
         if ($this->additionalDocumentReference === []) {
             $this->addOnceToadditionalDocumentReference(new AdditionalDocumentReference());
         }
@@ -1922,6 +1994,10 @@ class CreditNoteType
      */
     public function addOnceToStatementDocumentReference(StatementDocumentReference $statementDocumentReference): self
     {
+        if (!is_array($this->statementDocumentReference)) {
+            $this->statementDocumentReference = [];
+        }
+
         $this->statementDocumentReference[0] = $statementDocumentReference;
 
         return $this;
@@ -1932,6 +2008,10 @@ class CreditNoteType
      */
     public function addOnceToStatementDocumentReferenceWithCreate(): StatementDocumentReference
     {
+        if (!is_array($this->statementDocumentReference)) {
+            $this->statementDocumentReference = [];
+        }
+
         if ($this->statementDocumentReference === []) {
             $this->addOnceTostatementDocumentReference(new StatementDocumentReference());
         }
@@ -1996,6 +2076,10 @@ class CreditNoteType
     public function addOnceToOriginatorDocumentReference(
         OriginatorDocumentReference $originatorDocumentReference,
     ): self {
+        if (!is_array($this->originatorDocumentReference)) {
+            $this->originatorDocumentReference = [];
+        }
+
         $this->originatorDocumentReference[0] = $originatorDocumentReference;
 
         return $this;
@@ -2006,6 +2090,10 @@ class CreditNoteType
      */
     public function addOnceToOriginatorDocumentReferenceWithCreate(): OriginatorDocumentReference
     {
+        if (!is_array($this->originatorDocumentReference)) {
+            $this->originatorDocumentReference = [];
+        }
+
         if ($this->originatorDocumentReference === []) {
             $this->addOnceTooriginatorDocumentReference(new OriginatorDocumentReference());
         }
@@ -2069,6 +2157,10 @@ class CreditNoteType
      */
     public function addOnceToSignature(Signature $signature): self
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         $this->signature[0] = $signature;
 
         return $this;
@@ -2079,6 +2171,10 @@ class CreditNoteType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         if ($this->signature === []) {
             $this->addOnceTosignature(new Signature());
         }
@@ -2316,6 +2412,10 @@ class CreditNoteType
      */
     public function addOnceToDelivery(Delivery $delivery): self
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         $this->delivery[0] = $delivery;
 
         return $this;
@@ -2326,6 +2426,10 @@ class CreditNoteType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         if ($this->delivery === []) {
             $this->addOnceTodelivery(new Delivery());
         }
@@ -2389,6 +2493,10 @@ class CreditNoteType
      */
     public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         $this->deliveryTerms[0] = $deliveryTerms;
 
         return $this;
@@ -2399,6 +2507,10 @@ class CreditNoteType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         if ($this->deliveryTerms === []) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
@@ -2462,6 +2574,10 @@ class CreditNoteType
      */
     public function addOnceToPaymentMeans(PaymentMeans $paymentMeans): self
     {
+        if (!is_array($this->paymentMeans)) {
+            $this->paymentMeans = [];
+        }
+
         $this->paymentMeans[0] = $paymentMeans;
 
         return $this;
@@ -2472,6 +2588,10 @@ class CreditNoteType
      */
     public function addOnceToPaymentMeansWithCreate(): PaymentMeans
     {
+        if (!is_array($this->paymentMeans)) {
+            $this->paymentMeans = [];
+        }
+
         if ($this->paymentMeans === []) {
             $this->addOnceTopaymentMeans(new PaymentMeans());
         }
@@ -2535,6 +2655,10 @@ class CreditNoteType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -2545,6 +2669,10 @@ class CreditNoteType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
@@ -2725,6 +2853,10 @@ class CreditNoteType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -2735,6 +2867,10 @@ class CreditNoteType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -2798,6 +2934,10 @@ class CreditNoteType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -2808,6 +2948,10 @@ class CreditNoteType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -2900,6 +3044,10 @@ class CreditNoteType
      */
     public function addOnceToCreditNoteLine(CreditNoteLine $creditNoteLine): self
     {
+        if (!is_array($this->creditNoteLine)) {
+            $this->creditNoteLine = [];
+        }
+
         $this->creditNoteLine[0] = $creditNoteLine;
 
         return $this;
@@ -2910,6 +3058,10 @@ class CreditNoteType
      */
     public function addOnceToCreditNoteLineWithCreate(): CreditNoteLine
     {
+        if (!is_array($this->creditNoteLine)) {
+            $this->creditNoteLine = [];
+        }
+
         if ($this->creditNoteLine === []) {
             $this->addOnceTocreditNoteLine(new CreditNoteLine());
         }

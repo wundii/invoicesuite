@@ -315,6 +315,10 @@ class PaymentTermsType
      */
     public function addOnceToPaymentMeansID(PaymentMeansID $paymentMeansID): self
     {
+        if (!is_array($this->paymentMeansID)) {
+            $this->paymentMeansID = [];
+        }
+
         $this->paymentMeansID[0] = $paymentMeansID;
 
         return $this;
@@ -325,6 +329,10 @@ class PaymentTermsType
      */
     public function addOnceToPaymentMeansIDWithCreate(): PaymentMeansID
     {
+        if (!is_array($this->paymentMeansID)) {
+            $this->paymentMeansID = [];
+        }
+
         if ($this->paymentMeansID === []) {
             $this->addOnceTopaymentMeansID(new PaymentMeansID());
         }
@@ -417,6 +425,10 @@ class PaymentTermsType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -427,6 +439,10 @@ class PaymentTermsType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }

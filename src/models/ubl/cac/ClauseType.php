@@ -116,6 +116,10 @@ class ClauseType
      */
     public function addOnceToContent(Content $content): self
     {
+        if (!is_array($this->content)) {
+            $this->content = [];
+        }
+
         $this->content[0] = $content;
 
         return $this;
@@ -126,6 +130,10 @@ class ClauseType
      */
     public function addOnceToContentWithCreate(): Content
     {
+        if (!is_array($this->content)) {
+            $this->content = [];
+        }
+
         if ($this->content === []) {
             $this->addOnceTocontent(new Content());
         }

@@ -225,6 +225,10 @@ class AwardingTermsType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -235,6 +239,10 @@ class AwardingTermsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -300,6 +308,10 @@ class AwardingTermsType
     public function addOnceToTechnicalCommitteeDescription(
         TechnicalCommitteeDescription $technicalCommitteeDescription,
     ): self {
+        if (!is_array($this->technicalCommitteeDescription)) {
+            $this->technicalCommitteeDescription = [];
+        }
+
         $this->technicalCommitteeDescription[0] = $technicalCommitteeDescription;
 
         return $this;
@@ -310,6 +322,10 @@ class AwardingTermsType
      */
     public function addOnceToTechnicalCommitteeDescriptionWithCreate(): TechnicalCommitteeDescription
     {
+        if (!is_array($this->technicalCommitteeDescription)) {
+            $this->technicalCommitteeDescription = [];
+        }
+
         if ($this->technicalCommitteeDescription === []) {
             $this->addOnceTotechnicalCommitteeDescription(new TechnicalCommitteeDescription());
         }
@@ -373,6 +389,10 @@ class AwardingTermsType
      */
     public function addOnceToLowTendersDescription(LowTendersDescription $lowTendersDescription): self
     {
+        if (!is_array($this->lowTendersDescription)) {
+            $this->lowTendersDescription = [];
+        }
+
         $this->lowTendersDescription[0] = $lowTendersDescription;
 
         return $this;
@@ -383,6 +403,10 @@ class AwardingTermsType
      */
     public function addOnceToLowTendersDescriptionWithCreate(): LowTendersDescription
     {
+        if (!is_array($this->lowTendersDescription)) {
+            $this->lowTendersDescription = [];
+        }
+
         if ($this->lowTendersDescription === []) {
             $this->addOnceTolowTendersDescription(new LowTendersDescription());
         }
@@ -465,6 +489,10 @@ class AwardingTermsType
      */
     public function addOnceToPrizeDescription(PrizeDescription $prizeDescription): self
     {
+        if (!is_array($this->prizeDescription)) {
+            $this->prizeDescription = [];
+        }
+
         $this->prizeDescription[0] = $prizeDescription;
 
         return $this;
@@ -475,6 +503,10 @@ class AwardingTermsType
      */
     public function addOnceToPrizeDescriptionWithCreate(): PrizeDescription
     {
+        if (!is_array($this->prizeDescription)) {
+            $this->prizeDescription = [];
+        }
+
         if ($this->prizeDescription === []) {
             $this->addOnceToprizeDescription(new PrizeDescription());
         }
@@ -538,6 +570,10 @@ class AwardingTermsType
      */
     public function addOnceToPaymentDescription(PaymentDescription $paymentDescription): self
     {
+        if (!is_array($this->paymentDescription)) {
+            $this->paymentDescription = [];
+        }
+
         $this->paymentDescription[0] = $paymentDescription;
 
         return $this;
@@ -548,6 +584,10 @@ class AwardingTermsType
      */
     public function addOnceToPaymentDescriptionWithCreate(): PaymentDescription
     {
+        if (!is_array($this->paymentDescription)) {
+            $this->paymentDescription = [];
+        }
+
         if ($this->paymentDescription === []) {
             $this->addOnceTopaymentDescription(new PaymentDescription());
         }
@@ -649,6 +689,10 @@ class AwardingTermsType
      */
     public function addOnceToAwardingCriterion(AwardingCriterion $awardingCriterion): self
     {
+        if (!is_array($this->awardingCriterion)) {
+            $this->awardingCriterion = [];
+        }
+
         $this->awardingCriterion[0] = $awardingCriterion;
 
         return $this;
@@ -659,6 +703,10 @@ class AwardingTermsType
      */
     public function addOnceToAwardingCriterionWithCreate(): AwardingCriterion
     {
+        if (!is_array($this->awardingCriterion)) {
+            $this->awardingCriterion = [];
+        }
+
         if ($this->awardingCriterion === []) {
             $this->addOnceToawardingCriterion(new AwardingCriterion());
         }
@@ -722,6 +770,10 @@ class AwardingTermsType
      */
     public function addOnceToTechnicalCommitteePerson(TechnicalCommitteePerson $technicalCommitteePerson): self
     {
+        if (!is_array($this->technicalCommitteePerson)) {
+            $this->technicalCommitteePerson = [];
+        }
+
         $this->technicalCommitteePerson[0] = $technicalCommitteePerson;
 
         return $this;
@@ -732,6 +784,10 @@ class AwardingTermsType
      */
     public function addOnceToTechnicalCommitteePersonWithCreate(): TechnicalCommitteePerson
     {
+        if (!is_array($this->technicalCommitteePerson)) {
+            $this->technicalCommitteePerson = [];
+        }
+
         if ($this->technicalCommitteePerson === []) {
             $this->addOnceTotechnicalCommitteePerson(new TechnicalCommitteePerson());
         }

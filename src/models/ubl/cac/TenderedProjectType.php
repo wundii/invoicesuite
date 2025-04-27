@@ -251,6 +251,10 @@ class TenderedProjectType
      */
     public function addOnceToFeeDescription(FeeDescription $feeDescription): self
     {
+        if (!is_array($this->feeDescription)) {
+            $this->feeDescription = [];
+        }
+
         $this->feeDescription[0] = $feeDescription;
 
         return $this;
@@ -261,6 +265,10 @@ class TenderedProjectType
      */
     public function addOnceToFeeDescriptionWithCreate(): FeeDescription
     {
+        if (!is_array($this->feeDescription)) {
+            $this->feeDescription = [];
+        }
+
         if ($this->feeDescription === []) {
             $this->addOnceTofeeDescription(new FeeDescription());
         }
@@ -411,6 +419,10 @@ class TenderedProjectType
      */
     public function addOnceToEvidenceDocumentReference(EvidenceDocumentReference $evidenceDocumentReference): self
     {
+        if (!is_array($this->evidenceDocumentReference)) {
+            $this->evidenceDocumentReference = [];
+        }
+
         $this->evidenceDocumentReference[0] = $evidenceDocumentReference;
 
         return $this;
@@ -421,6 +433,10 @@ class TenderedProjectType
      */
     public function addOnceToEvidenceDocumentReferenceWithCreate(): EvidenceDocumentReference
     {
+        if (!is_array($this->evidenceDocumentReference)) {
+            $this->evidenceDocumentReference = [];
+        }
+
         if ($this->evidenceDocumentReference === []) {
             $this->addOnceToevidenceDocumentReference(new EvidenceDocumentReference());
         }
@@ -484,6 +500,10 @@ class TenderedProjectType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -494,6 +514,10 @@ class TenderedProjectType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -586,6 +610,10 @@ class TenderedProjectType
      */
     public function addOnceToTenderLine(TenderLine $tenderLine): self
     {
+        if (!is_array($this->tenderLine)) {
+            $this->tenderLine = [];
+        }
+
         $this->tenderLine[0] = $tenderLine;
 
         return $this;
@@ -596,6 +624,10 @@ class TenderedProjectType
      */
     public function addOnceToTenderLineWithCreate(): TenderLine
     {
+        if (!is_array($this->tenderLine)) {
+            $this->tenderLine = [];
+        }
+
         if ($this->tenderLine === []) {
             $this->addOnceTotenderLine(new TenderLine());
         }
@@ -659,6 +691,10 @@ class TenderedProjectType
      */
     public function addOnceToAwardingCriterionResponse(AwardingCriterionResponse $awardingCriterionResponse): self
     {
+        if (!is_array($this->awardingCriterionResponse)) {
+            $this->awardingCriterionResponse = [];
+        }
+
         $this->awardingCriterionResponse[0] = $awardingCriterionResponse;
 
         return $this;
@@ -669,6 +705,10 @@ class TenderedProjectType
      */
     public function addOnceToAwardingCriterionResponseWithCreate(): AwardingCriterionResponse
     {
+        if (!is_array($this->awardingCriterionResponse)) {
+            $this->awardingCriterionResponse = [];
+        }
+
         if ($this->awardingCriterionResponse === []) {
             $this->addOnceToawardingCriterionResponse(new AwardingCriterionResponse());
         }

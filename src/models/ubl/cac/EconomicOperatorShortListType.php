@@ -123,6 +123,10 @@ class EconomicOperatorShortListType
      */
     public function addOnceToLimitationDescription(LimitationDescription $limitationDescription): self
     {
+        if (!is_array($this->limitationDescription)) {
+            $this->limitationDescription = [];
+        }
+
         $this->limitationDescription[0] = $limitationDescription;
 
         return $this;
@@ -133,6 +137,10 @@ class EconomicOperatorShortListType
      */
     public function addOnceToLimitationDescriptionWithCreate(): LimitationDescription
     {
+        if (!is_array($this->limitationDescription)) {
+            $this->limitationDescription = [];
+        }
+
         if ($this->limitationDescription === []) {
             $this->addOnceTolimitationDescription(new LimitationDescription());
         }
@@ -283,6 +291,10 @@ class EconomicOperatorShortListType
      */
     public function addOnceToPreSelectedParty(PreSelectedParty $preSelectedParty): self
     {
+        if (!is_array($this->preSelectedParty)) {
+            $this->preSelectedParty = [];
+        }
+
         $this->preSelectedParty[0] = $preSelectedParty;
 
         return $this;
@@ -293,6 +305,10 @@ class EconomicOperatorShortListType
      */
     public function addOnceToPreSelectedPartyWithCreate(): PreSelectedParty
     {
+        if (!is_array($this->preSelectedParty)) {
+            $this->preSelectedParty = [];
+        }
+
         if ($this->preSelectedParty === []) {
             $this->addOnceTopreSelectedParty(new PreSelectedParty());
         }

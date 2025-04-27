@@ -167,6 +167,10 @@ class EventLineItemType
      */
     public function addOnceToRetailPlannedImpact(RetailPlannedImpact $retailPlannedImpact): self
     {
+        if (!is_array($this->retailPlannedImpact)) {
+            $this->retailPlannedImpact = [];
+        }
+
         $this->retailPlannedImpact[0] = $retailPlannedImpact;
 
         return $this;
@@ -177,6 +181,10 @@ class EventLineItemType
      */
     public function addOnceToRetailPlannedImpactWithCreate(): RetailPlannedImpact
     {
+        if (!is_array($this->retailPlannedImpact)) {
+            $this->retailPlannedImpact = [];
+        }
+
         if ($this->retailPlannedImpact === []) {
             $this->addOnceToretailPlannedImpact(new RetailPlannedImpact());
         }

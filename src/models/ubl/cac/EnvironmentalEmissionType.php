@@ -170,6 +170,10 @@ class EnvironmentalEmissionType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -180,6 +184,10 @@ class EnvironmentalEmissionType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -243,6 +251,10 @@ class EnvironmentalEmissionType
      */
     public function addOnceToEmissionCalculationMethod(EmissionCalculationMethod $emissionCalculationMethod): self
     {
+        if (!is_array($this->emissionCalculationMethod)) {
+            $this->emissionCalculationMethod = [];
+        }
+
         $this->emissionCalculationMethod[0] = $emissionCalculationMethod;
 
         return $this;
@@ -253,6 +265,10 @@ class EnvironmentalEmissionType
      */
     public function addOnceToEmissionCalculationMethodWithCreate(): EmissionCalculationMethod
     {
+        if (!is_array($this->emissionCalculationMethod)) {
+            $this->emissionCalculationMethod = [];
+        }
+
         if ($this->emissionCalculationMethod === []) {
             $this->addOnceToemissionCalculationMethod(new EmissionCalculationMethod());
         }

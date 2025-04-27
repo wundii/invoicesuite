@@ -278,6 +278,10 @@ class TenderResultType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -288,6 +292,10 @@ class TenderResultType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -671,6 +679,10 @@ class TenderResultType
      */
     public function addOnceToSubcontractTerms(SubcontractTerms $subcontractTerms): self
     {
+        if (!is_array($this->subcontractTerms)) {
+            $this->subcontractTerms = [];
+        }
+
         $this->subcontractTerms[0] = $subcontractTerms;
 
         return $this;
@@ -681,6 +693,10 @@ class TenderResultType
      */
     public function addOnceToSubcontractTermsWithCreate(): SubcontractTerms
     {
+        if (!is_array($this->subcontractTerms)) {
+            $this->subcontractTerms = [];
+        }
+
         if ($this->subcontractTerms === []) {
             $this->addOnceTosubcontractTerms(new SubcontractTerms());
         }
@@ -744,6 +760,10 @@ class TenderResultType
      */
     public function addOnceToWinningParty(WinningParty $winningParty): self
     {
+        if (!is_array($this->winningParty)) {
+            $this->winningParty = [];
+        }
+
         $this->winningParty[0] = $winningParty;
 
         return $this;
@@ -754,6 +774,10 @@ class TenderResultType
      */
     public function addOnceToWinningPartyWithCreate(): WinningParty
     {
+        if (!is_array($this->winningParty)) {
+            $this->winningParty = [];
+        }
+
         if ($this->winningParty === []) {
             $this->addOnceTowinningParty(new WinningParty());
         }

@@ -179,6 +179,10 @@ class ServiceProviderPartyType
      */
     public function addOnceToServiceType(ServiceType $serviceType): self
     {
+        if (!is_array($this->serviceType)) {
+            $this->serviceType = [];
+        }
+
         $this->serviceType[0] = $serviceType;
 
         return $this;
@@ -189,6 +193,10 @@ class ServiceProviderPartyType
      */
     public function addOnceToServiceTypeWithCreate(): ServiceType
     {
+        if (!is_array($this->serviceType)) {
+            $this->serviceType = [];
+        }
+
         if ($this->serviceType === []) {
             $this->addOnceToserviceType(new ServiceType());
         }

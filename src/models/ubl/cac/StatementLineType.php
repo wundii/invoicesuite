@@ -347,6 +347,10 @@ class StatementLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -357,6 +361,10 @@ class StatementLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -613,6 +621,10 @@ class StatementLineType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -623,6 +635,10 @@ class StatementLineType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
@@ -860,6 +876,10 @@ class StatementLineType
      */
     public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         $this->invoicePeriod[0] = $invoicePeriod;
 
         return $this;
@@ -870,6 +890,10 @@ class StatementLineType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         if ($this->invoicePeriod === []) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
@@ -933,6 +957,10 @@ class StatementLineType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -943,6 +971,10 @@ class StatementLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }
@@ -1006,6 +1038,10 @@ class StatementLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -1016,6 +1052,10 @@ class StatementLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -1108,6 +1148,10 @@ class StatementLineType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -1118,6 +1162,10 @@ class StatementLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -1181,6 +1229,10 @@ class StatementLineType
      */
     public function addOnceToCollectedPayment(CollectedPayment $collectedPayment): self
     {
+        if (!is_array($this->collectedPayment)) {
+            $this->collectedPayment = [];
+        }
+
         $this->collectedPayment[0] = $collectedPayment;
 
         return $this;
@@ -1191,6 +1243,10 @@ class StatementLineType
      */
     public function addOnceToCollectedPaymentWithCreate(): CollectedPayment
     {
+        if (!is_array($this->collectedPayment)) {
+            $this->collectedPayment = [];
+        }
+
         if ($this->collectedPayment === []) {
             $this->addOnceTocollectedPayment(new CollectedPayment());
         }

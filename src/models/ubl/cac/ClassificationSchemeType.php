@@ -326,6 +326,10 @@ class ClassificationSchemeType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -336,6 +340,10 @@ class ClassificationSchemeType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -428,6 +436,10 @@ class ClassificationSchemeType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -438,6 +450,10 @@ class ClassificationSchemeType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -675,6 +691,10 @@ class ClassificationSchemeType
      */
     public function addOnceToClassificationCategory(ClassificationCategory $classificationCategory): self
     {
+        if (!is_array($this->classificationCategory)) {
+            $this->classificationCategory = [];
+        }
+
         $this->classificationCategory[0] = $classificationCategory;
 
         return $this;
@@ -685,6 +705,10 @@ class ClassificationSchemeType
      */
     public function addOnceToClassificationCategoryWithCreate(): ClassificationCategory
     {
+        if (!is_array($this->classificationCategory)) {
+            $this->classificationCategory = [];
+        }
+
         if ($this->classificationCategory === []) {
             $this->addOnceToclassificationCategory(new ClassificationCategory());
         }

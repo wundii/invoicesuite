@@ -191,6 +191,10 @@ class CatalogueRequestLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -201,6 +205,10 @@ class CatalogueRequestLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -295,6 +303,10 @@ class CatalogueRequestLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): self {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
 
         return $this;
@@ -305,6 +317,10 @@ class CatalogueRequestLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         if ($this->requiredItemLocationQuantity === []) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }

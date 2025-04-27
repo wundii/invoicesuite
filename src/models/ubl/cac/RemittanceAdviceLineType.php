@@ -301,6 +301,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -311,6 +315,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -722,6 +730,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         $this->invoicePeriod[0] = $invoicePeriod;
 
         return $this;
@@ -732,6 +744,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         if ($this->invoicePeriod === []) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
@@ -795,6 +811,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -805,6 +825,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }
@@ -868,6 +892,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -878,6 +906,10 @@ class RemittanceAdviceLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }

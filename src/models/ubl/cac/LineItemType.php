@@ -525,6 +525,10 @@ class LineItemType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -535,6 +539,10 @@ class LineItemType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -955,6 +963,10 @@ class LineItemType
      */
     public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         $this->warrantyInformation[0] = $warrantyInformation;
 
         return $this;
@@ -965,6 +977,10 @@ class LineItemType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         if ($this->warrantyInformation === []) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
@@ -1028,6 +1044,10 @@ class LineItemType
      */
     public function addOnceToDelivery(Delivery $delivery): self
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         $this->delivery[0] = $delivery;
 
         return $this;
@@ -1038,6 +1058,10 @@ class LineItemType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         if ($this->delivery === []) {
             $this->addOnceTodelivery(new Delivery());
         }
@@ -1159,6 +1183,10 @@ class LineItemType
      */
     public function addOnceToOrderedShipment(OrderedShipment $orderedShipment): self
     {
+        if (!is_array($this->orderedShipment)) {
+            $this->orderedShipment = [];
+        }
+
         $this->orderedShipment[0] = $orderedShipment;
 
         return $this;
@@ -1169,6 +1197,10 @@ class LineItemType
      */
     public function addOnceToOrderedShipmentWithCreate(): OrderedShipment
     {
+        if (!is_array($this->orderedShipment)) {
+            $this->orderedShipment = [];
+        }
+
         if ($this->orderedShipment === []) {
             $this->addOnceToorderedShipment(new OrderedShipment());
         }
@@ -1261,6 +1293,10 @@ class LineItemType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -1271,6 +1307,10 @@ class LineItemType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -1392,6 +1432,10 @@ class LineItemType
      */
     public function addOnceToSubLineItem(SubLineItem $subLineItem): self
     {
+        if (!is_array($this->subLineItem)) {
+            $this->subLineItem = [];
+        }
+
         $this->subLineItem[0] = $subLineItem;
 
         return $this;
@@ -1402,6 +1446,10 @@ class LineItemType
      */
     public function addOnceToSubLineItemWithCreate(): SubLineItem
     {
+        if (!is_array($this->subLineItem)) {
+            $this->subLineItem = [];
+        }
+
         if ($this->subLineItem === []) {
             $this->addOnceTosubLineItem(new SubLineItem());
         }
@@ -1523,6 +1571,10 @@ class LineItemType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -1533,6 +1585,10 @@ class LineItemType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -1625,6 +1681,10 @@ class LineItemType
      */
     public function addOnceToLineReference(LineReference $lineReference): self
     {
+        if (!is_array($this->lineReference)) {
+            $this->lineReference = [];
+        }
+
         $this->lineReference[0] = $lineReference;
 
         return $this;
@@ -1635,6 +1695,10 @@ class LineItemType
      */
     public function addOnceToLineReferenceWithCreate(): LineReference
     {
+        if (!is_array($this->lineReference)) {
+            $this->lineReference = [];
+        }
+
         if ($this->lineReference === []) {
             $this->addOnceTolineReference(new LineReference());
         }

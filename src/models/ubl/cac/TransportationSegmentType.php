@@ -278,6 +278,10 @@ class TransportationSegmentType
      */
     public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         $this->shipmentStage[0] = $shipmentStage;
 
         return $this;
@@ -288,6 +292,10 @@ class TransportationSegmentType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         if ($this->shipmentStage === []) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }

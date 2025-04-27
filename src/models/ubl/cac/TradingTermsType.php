@@ -98,6 +98,10 @@ class TradingTermsType
      */
     public function addOnceToInformation(Information $information): self
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         $this->information[0] = $information;
 
         return $this;
@@ -108,6 +112,10 @@ class TradingTermsType
      */
     public function addOnceToInformationWithCreate(): Information
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         if ($this->information === []) {
             $this->addOnceToinformation(new Information());
         }

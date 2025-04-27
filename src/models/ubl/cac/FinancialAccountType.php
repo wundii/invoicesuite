@@ -343,6 +343,10 @@ class FinancialAccountType
      */
     public function addOnceToPaymentNote(PaymentNote $paymentNote): self
     {
+        if (!is_array($this->paymentNote)) {
+            $this->paymentNote = [];
+        }
+
         $this->paymentNote[0] = $paymentNote;
 
         return $this;
@@ -353,6 +357,10 @@ class FinancialAccountType
      */
     public function addOnceToPaymentNoteWithCreate(): PaymentNote
     {
+        if (!is_array($this->paymentNote)) {
+            $this->paymentNote = [];
+        }
+
         if ($this->paymentNote === []) {
             $this->addOnceTopaymentNote(new PaymentNote());
         }

@@ -363,6 +363,10 @@ class ConsumptionReportType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -373,6 +377,10 @@ class ConsumptionReportType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -784,6 +792,10 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionReportReference(ConsumptionReportReference $consumptionReportReference): self
     {
+        if (!is_array($this->consumptionReportReference)) {
+            $this->consumptionReportReference = [];
+        }
+
         $this->consumptionReportReference[0] = $consumptionReportReference;
 
         return $this;
@@ -794,6 +806,10 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionReportReferenceWithCreate(): ConsumptionReportReference
     {
+        if (!is_array($this->consumptionReportReference)) {
+            $this->consumptionReportReference = [];
+        }
+
         if ($this->consumptionReportReference === []) {
             $this->addOnceToconsumptionReportReference(new ConsumptionReportReference());
         }
@@ -857,6 +873,10 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionHistory(ConsumptionHistory $consumptionHistory): self
     {
+        if (!is_array($this->consumptionHistory)) {
+            $this->consumptionHistory = [];
+        }
+
         $this->consumptionHistory[0] = $consumptionHistory;
 
         return $this;
@@ -867,6 +887,10 @@ class ConsumptionReportType
      */
     public function addOnceToConsumptionHistoryWithCreate(): ConsumptionHistory
     {
+        if (!is_array($this->consumptionHistory)) {
+            $this->consumptionHistory = [];
+        }
+
         if ($this->consumptionHistory === []) {
             $this->addOnceToconsumptionHistory(new ConsumptionHistory());
         }

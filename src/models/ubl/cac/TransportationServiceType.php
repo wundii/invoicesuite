@@ -452,6 +452,10 @@ class TransportationServiceType
     public function addOnceToTransportationServiceDescription(
         TransportationServiceDescription $transportationServiceDescription,
     ): self {
+        if (!is_array($this->transportationServiceDescription)) {
+            $this->transportationServiceDescription = [];
+        }
+
         $this->transportationServiceDescription[0] = $transportationServiceDescription;
 
         return $this;
@@ -462,6 +466,10 @@ class TransportationServiceType
      */
     public function addOnceToTransportationServiceDescriptionWithCreate(): TransportationServiceDescription
     {
+        if (!is_array($this->transportationServiceDescription)) {
+            $this->transportationServiceDescription = [];
+        }
+
         if ($this->transportationServiceDescription === []) {
             $this->addOnceTotransportationServiceDescription(new TransportationServiceDescription());
         }
@@ -651,6 +659,10 @@ class TransportationServiceType
      */
     public function addOnceToTransportEquipment(TransportEquipment $transportEquipment): self
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         $this->transportEquipment[0] = $transportEquipment;
 
         return $this;
@@ -661,6 +673,10 @@ class TransportationServiceType
      */
     public function addOnceToTransportEquipmentWithCreate(): TransportEquipment
     {
+        if (!is_array($this->transportEquipment)) {
+            $this->transportEquipment = [];
+        }
+
         if ($this->transportEquipment === []) {
             $this->addOnceTotransportEquipment(new TransportEquipment());
         }
@@ -725,6 +741,10 @@ class TransportationServiceType
     public function addOnceToSupportedTransportEquipment(
         SupportedTransportEquipment $supportedTransportEquipment,
     ): self {
+        if (!is_array($this->supportedTransportEquipment)) {
+            $this->supportedTransportEquipment = [];
+        }
+
         $this->supportedTransportEquipment[0] = $supportedTransportEquipment;
 
         return $this;
@@ -735,6 +755,10 @@ class TransportationServiceType
      */
     public function addOnceToSupportedTransportEquipmentWithCreate(): SupportedTransportEquipment
     {
+        if (!is_array($this->supportedTransportEquipment)) {
+            $this->supportedTransportEquipment = [];
+        }
+
         if ($this->supportedTransportEquipment === []) {
             $this->addOnceTosupportedTransportEquipment(new SupportedTransportEquipment());
         }
@@ -800,6 +824,10 @@ class TransportationServiceType
     public function addOnceToUnsupportedTransportEquipment(
         UnsupportedTransportEquipment $unsupportedTransportEquipment,
     ): self {
+        if (!is_array($this->unsupportedTransportEquipment)) {
+            $this->unsupportedTransportEquipment = [];
+        }
+
         $this->unsupportedTransportEquipment[0] = $unsupportedTransportEquipment;
 
         return $this;
@@ -810,6 +838,10 @@ class TransportationServiceType
      */
     public function addOnceToUnsupportedTransportEquipmentWithCreate(): UnsupportedTransportEquipment
     {
+        if (!is_array($this->unsupportedTransportEquipment)) {
+            $this->unsupportedTransportEquipment = [];
+        }
+
         if ($this->unsupportedTransportEquipment === []) {
             $this->addOnceTounsupportedTransportEquipment(new UnsupportedTransportEquipment());
         }
@@ -873,6 +905,10 @@ class TransportationServiceType
      */
     public function addOnceToCommodityClassification(CommodityClassification $commodityClassification): self
     {
+        if (!is_array($this->commodityClassification)) {
+            $this->commodityClassification = [];
+        }
+
         $this->commodityClassification[0] = $commodityClassification;
 
         return $this;
@@ -883,6 +919,10 @@ class TransportationServiceType
      */
     public function addOnceToCommodityClassificationWithCreate(): CommodityClassification
     {
+        if (!is_array($this->commodityClassification)) {
+            $this->commodityClassification = [];
+        }
+
         if ($this->commodityClassification === []) {
             $this->addOnceTocommodityClassification(new CommodityClassification());
         }
@@ -948,6 +988,10 @@ class TransportationServiceType
     public function addOnceToSupportedCommodityClassification(
         SupportedCommodityClassification $supportedCommodityClassification,
     ): self {
+        if (!is_array($this->supportedCommodityClassification)) {
+            $this->supportedCommodityClassification = [];
+        }
+
         $this->supportedCommodityClassification[0] = $supportedCommodityClassification;
 
         return $this;
@@ -958,6 +1002,10 @@ class TransportationServiceType
      */
     public function addOnceToSupportedCommodityClassificationWithCreate(): SupportedCommodityClassification
     {
+        if (!is_array($this->supportedCommodityClassification)) {
+            $this->supportedCommodityClassification = [];
+        }
+
         if ($this->supportedCommodityClassification === []) {
             $this->addOnceTosupportedCommodityClassification(new SupportedCommodityClassification());
         }
@@ -1023,6 +1071,10 @@ class TransportationServiceType
     public function addOnceToUnsupportedCommodityClassification(
         UnsupportedCommodityClassification $unsupportedCommodityClassification,
     ): self {
+        if (!is_array($this->unsupportedCommodityClassification)) {
+            $this->unsupportedCommodityClassification = [];
+        }
+
         $this->unsupportedCommodityClassification[0] = $unsupportedCommodityClassification;
 
         return $this;
@@ -1033,6 +1085,10 @@ class TransportationServiceType
      */
     public function addOnceToUnsupportedCommodityClassificationWithCreate(): UnsupportedCommodityClassification
     {
+        if (!is_array($this->unsupportedCommodityClassification)) {
+            $this->unsupportedCommodityClassification = [];
+        }
+
         if ($this->unsupportedCommodityClassification === []) {
             $this->addOnceTounsupportedCommodityClassification(new UnsupportedCommodityClassification());
         }
@@ -1125,6 +1181,10 @@ class TransportationServiceType
      */
     public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         $this->shipmentStage[0] = $shipmentStage;
 
         return $this;
@@ -1135,6 +1195,10 @@ class TransportationServiceType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         if ($this->shipmentStage === []) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }
@@ -1198,6 +1262,10 @@ class TransportationServiceType
      */
     public function addOnceToTransportEvent(TransportEvent $transportEvent): self
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         $this->transportEvent[0] = $transportEvent;
 
         return $this;
@@ -1208,6 +1276,10 @@ class TransportationServiceType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         if ($this->transportEvent === []) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
@@ -1301,6 +1373,10 @@ class TransportationServiceType
      */
     public function addOnceToEnvironmentalEmission(EnvironmentalEmission $environmentalEmission): self
     {
+        if (!is_array($this->environmentalEmission)) {
+            $this->environmentalEmission = [];
+        }
+
         $this->environmentalEmission[0] = $environmentalEmission;
 
         return $this;
@@ -1311,6 +1387,10 @@ class TransportationServiceType
      */
     public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
     {
+        if (!is_array($this->environmentalEmission)) {
+            $this->environmentalEmission = [];
+        }
+
         if ($this->environmentalEmission === []) {
             $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
         }
@@ -1403,6 +1483,10 @@ class TransportationServiceType
      */
     public function addOnceToScheduledServiceFrequency(ScheduledServiceFrequency $scheduledServiceFrequency): self
     {
+        if (!is_array($this->scheduledServiceFrequency)) {
+            $this->scheduledServiceFrequency = [];
+        }
+
         $this->scheduledServiceFrequency[0] = $scheduledServiceFrequency;
 
         return $this;
@@ -1413,6 +1497,10 @@ class TransportationServiceType
      */
     public function addOnceToScheduledServiceFrequencyWithCreate(): ScheduledServiceFrequency
     {
+        if (!is_array($this->scheduledServiceFrequency)) {
+            $this->scheduledServiceFrequency = [];
+        }
+
         if ($this->scheduledServiceFrequency === []) {
             $this->addOnceToscheduledServiceFrequency(new ScheduledServiceFrequency());
         }

@@ -223,6 +223,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotifyParty(NotifyParty $notifyParty): self
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         $this->notifyParty[0] = $notifyParty;
 
         return $this;
@@ -233,6 +237,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotifyPartyWithCreate(): NotifyParty
     {
+        if (!is_array($this->notifyParty)) {
+            $this->notifyParty = [];
+        }
+
         if ($this->notifyParty === []) {
             $this->addOnceTonotifyParty(new NotifyParty());
         }
@@ -296,6 +304,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationPeriod(NotificationPeriod $notificationPeriod): self
     {
+        if (!is_array($this->notificationPeriod)) {
+            $this->notificationPeriod = [];
+        }
+
         $this->notificationPeriod[0] = $notificationPeriod;
 
         return $this;
@@ -306,6 +318,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationPeriodWithCreate(): NotificationPeriod
     {
+        if (!is_array($this->notificationPeriod)) {
+            $this->notificationPeriod = [];
+        }
+
         if ($this->notificationPeriod === []) {
             $this->addOnceTonotificationPeriod(new NotificationPeriod());
         }
@@ -369,6 +385,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationLocation(NotificationLocation $notificationLocation): self
     {
+        if (!is_array($this->notificationLocation)) {
+            $this->notificationLocation = [];
+        }
+
         $this->notificationLocation[0] = $notificationLocation;
 
         return $this;
@@ -379,6 +399,10 @@ class NotificationRequirementType
      */
     public function addOnceToNotificationLocationWithCreate(): NotificationLocation
     {
+        if (!is_array($this->notificationLocation)) {
+            $this->notificationLocation = [];
+        }
+
         if ($this->notificationLocation === []) {
             $this->addOnceTonotificationLocation(new NotificationLocation());
         }

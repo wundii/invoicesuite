@@ -517,6 +517,10 @@ class MeterReadingType
      */
     public function addOnceToMeterReadingComments(MeterReadingComments $meterReadingComments): self
     {
+        if (!is_array($this->meterReadingComments)) {
+            $this->meterReadingComments = [];
+        }
+
         $this->meterReadingComments[0] = $meterReadingComments;
 
         return $this;
@@ -527,6 +531,10 @@ class MeterReadingType
      */
     public function addOnceToMeterReadingCommentsWithCreate(): MeterReadingComments
     {
+        if (!is_array($this->meterReadingComments)) {
+            $this->meterReadingComments = [];
+        }
+
         if ($this->meterReadingComments === []) {
             $this->addOnceTometerReadingComments(new MeterReadingComments());
         }

@@ -1462,6 +1462,10 @@ class ConsignmentType
      */
     public function addOnceToSummaryDescription(SummaryDescription $summaryDescription): self
     {
+        if (!is_array($this->summaryDescription)) {
+            $this->summaryDescription = [];
+        }
+
         $this->summaryDescription[0] = $summaryDescription;
 
         return $this;
@@ -1472,6 +1476,10 @@ class ConsignmentType
      */
     public function addOnceToSummaryDescriptionWithCreate(): SummaryDescription
     {
+        if (!is_array($this->summaryDescription)) {
+            $this->summaryDescription = [];
+        }
+
         if ($this->summaryDescription === []) {
             $this->addOnceTosummaryDescription(new SummaryDescription());
         }
@@ -1593,6 +1601,10 @@ class ConsignmentType
      */
     public function addOnceToTariffDescription(TariffDescription $tariffDescription): self
     {
+        if (!is_array($this->tariffDescription)) {
+            $this->tariffDescription = [];
+        }
+
         $this->tariffDescription[0] = $tariffDescription;
 
         return $this;
@@ -1603,6 +1615,10 @@ class ConsignmentType
      */
     public function addOnceToTariffDescriptionWithCreate(): TariffDescription
     {
+        if (!is_array($this->tariffDescription)) {
+            $this->tariffDescription = [];
+        }
+
         if ($this->tariffDescription === []) {
             $this->addOnceTotariffDescription(new TariffDescription());
         }
@@ -1927,6 +1943,10 @@ class ConsignmentType
      */
     public function addOnceToRemarks(Remarks $remarks): self
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         $this->remarks[0] = $remarks;
 
         return $this;
@@ -1937,6 +1957,10 @@ class ConsignmentType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         if ($this->remarks === []) {
             $this->addOnceToremarks(new Remarks());
         }
@@ -2171,6 +2195,10 @@ class ConsignmentType
      */
     public function addOnceToCarrierServiceInstructions(CarrierServiceInstructions $carrierServiceInstructions): self
     {
+        if (!is_array($this->carrierServiceInstructions)) {
+            $this->carrierServiceInstructions = [];
+        }
+
         $this->carrierServiceInstructions[0] = $carrierServiceInstructions;
 
         return $this;
@@ -2181,6 +2209,10 @@ class ConsignmentType
      */
     public function addOnceToCarrierServiceInstructionsWithCreate(): CarrierServiceInstructions
     {
+        if (!is_array($this->carrierServiceInstructions)) {
+            $this->carrierServiceInstructions = [];
+        }
+
         if ($this->carrierServiceInstructions === []) {
             $this->addOnceTocarrierServiceInstructions(new CarrierServiceInstructions());
         }
@@ -2246,6 +2278,10 @@ class ConsignmentType
     public function addOnceToCustomsClearanceServiceInstructions(
         CustomsClearanceServiceInstructions $customsClearanceServiceInstructions,
     ): self {
+        if (!is_array($this->customsClearanceServiceInstructions)) {
+            $this->customsClearanceServiceInstructions = [];
+        }
+
         $this->customsClearanceServiceInstructions[0] = $customsClearanceServiceInstructions;
 
         return $this;
@@ -2256,6 +2292,10 @@ class ConsignmentType
      */
     public function addOnceToCustomsClearanceServiceInstructionsWithCreate(): CustomsClearanceServiceInstructions
     {
+        if (!is_array($this->customsClearanceServiceInstructions)) {
+            $this->customsClearanceServiceInstructions = [];
+        }
+
         if ($this->customsClearanceServiceInstructions === []) {
             $this->addOnceTocustomsClearanceServiceInstructions(new CustomsClearanceServiceInstructions());
         }
@@ -2321,6 +2361,10 @@ class ConsignmentType
     public function addOnceToForwarderServiceInstructions(
         ForwarderServiceInstructions $forwarderServiceInstructions,
     ): self {
+        if (!is_array($this->forwarderServiceInstructions)) {
+            $this->forwarderServiceInstructions = [];
+        }
+
         $this->forwarderServiceInstructions[0] = $forwarderServiceInstructions;
 
         return $this;
@@ -2331,6 +2375,10 @@ class ConsignmentType
      */
     public function addOnceToForwarderServiceInstructionsWithCreate(): ForwarderServiceInstructions
     {
+        if (!is_array($this->forwarderServiceInstructions)) {
+            $this->forwarderServiceInstructions = [];
+        }
+
         if ($this->forwarderServiceInstructions === []) {
             $this->addOnceToforwarderServiceInstructions(new ForwarderServiceInstructions());
         }
@@ -2394,6 +2442,10 @@ class ConsignmentType
      */
     public function addOnceToSpecialServiceInstructions(SpecialServiceInstructions $specialServiceInstructions): self
     {
+        if (!is_array($this->specialServiceInstructions)) {
+            $this->specialServiceInstructions = [];
+        }
+
         $this->specialServiceInstructions[0] = $specialServiceInstructions;
 
         return $this;
@@ -2404,6 +2456,10 @@ class ConsignmentType
      */
     public function addOnceToSpecialServiceInstructionsWithCreate(): SpecialServiceInstructions
     {
+        if (!is_array($this->specialServiceInstructions)) {
+            $this->specialServiceInstructions = [];
+        }
+
         if ($this->specialServiceInstructions === []) {
             $this->addOnceTospecialServiceInstructions(new SpecialServiceInstructions());
         }
@@ -2554,6 +2610,10 @@ class ConsignmentType
      */
     public function addOnceToHandlingInstructions(HandlingInstructions $handlingInstructions): self
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         $this->handlingInstructions[0] = $handlingInstructions;
 
         return $this;
@@ -2564,6 +2624,10 @@ class ConsignmentType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         if ($this->handlingInstructions === []) {
             $this->addOnceTohandlingInstructions(new HandlingInstructions());
         }
@@ -2627,6 +2691,10 @@ class ConsignmentType
      */
     public function addOnceToInformation(Information $information): self
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         $this->information[0] = $information;
 
         return $this;
@@ -2637,6 +2705,10 @@ class ConsignmentType
      */
     public function addOnceToInformationWithCreate(): Information
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         if ($this->information === []) {
             $this->addOnceToinformation(new Information());
         }
@@ -2877,6 +2949,10 @@ class ConsignmentType
      */
     public function addOnceToSpecialInstructions(SpecialInstructions $specialInstructions): self
     {
+        if (!is_array($this->specialInstructions)) {
+            $this->specialInstructions = [];
+        }
+
         $this->specialInstructions[0] = $specialInstructions;
 
         return $this;
@@ -2887,6 +2963,10 @@ class ConsignmentType
      */
     public function addOnceToSpecialInstructionsWithCreate(): SpecialInstructions
     {
+        if (!is_array($this->specialInstructions)) {
+            $this->specialInstructions = [];
+        }
+
         if ($this->specialInstructions === []) {
             $this->addOnceTospecialInstructions(new SpecialInstructions());
         }
@@ -2969,6 +3049,10 @@ class ConsignmentType
      */
     public function addOnceToDeliveryInstructions(DeliveryInstructions $deliveryInstructions): self
     {
+        if (!is_array($this->deliveryInstructions)) {
+            $this->deliveryInstructions = [];
+        }
+
         $this->deliveryInstructions[0] = $deliveryInstructions;
 
         return $this;
@@ -2979,6 +3063,10 @@ class ConsignmentType
      */
     public function addOnceToDeliveryInstructionsWithCreate(): DeliveryInstructions
     {
+        if (!is_array($this->deliveryInstructions)) {
+            $this->deliveryInstructions = [];
+        }
+
         if ($this->deliveryInstructions === []) {
             $this->addOnceTodeliveryInstructions(new DeliveryInstructions());
         }
@@ -3090,6 +3178,10 @@ class ConsignmentType
      */
     public function addOnceToHaulageInstructions(HaulageInstructions $haulageInstructions): self
     {
+        if (!is_array($this->haulageInstructions)) {
+            $this->haulageInstructions = [];
+        }
+
         $this->haulageInstructions[0] = $haulageInstructions;
 
         return $this;
@@ -3100,6 +3192,10 @@ class ConsignmentType
      */
     public function addOnceToHaulageInstructionsWithCreate(): HaulageInstructions
     {
+        if (!is_array($this->haulageInstructions)) {
+            $this->haulageInstructions = [];
+        }
+
         if ($this->haulageInstructions === []) {
             $this->addOnceTohaulageInstructions(new HaulageInstructions());
         }
@@ -3250,6 +3346,10 @@ class ConsignmentType
      */
     public function addOnceToConsolidatedShipment(ConsolidatedShipment $consolidatedShipment): self
     {
+        if (!is_array($this->consolidatedShipment)) {
+            $this->consolidatedShipment = [];
+        }
+
         $this->consolidatedShipment[0] = $consolidatedShipment;
 
         return $this;
@@ -3260,6 +3360,10 @@ class ConsignmentType
      */
     public function addOnceToConsolidatedShipmentWithCreate(): ConsolidatedShipment
     {
+        if (!is_array($this->consolidatedShipment)) {
+            $this->consolidatedShipment = [];
+        }
+
         if ($this->consolidatedShipment === []) {
             $this->addOnceToconsolidatedShipment(new ConsolidatedShipment());
         }
@@ -3323,6 +3427,10 @@ class ConsignmentType
      */
     public function addOnceToCustomsDeclaration(CustomsDeclaration $customsDeclaration): self
     {
+        if (!is_array($this->customsDeclaration)) {
+            $this->customsDeclaration = [];
+        }
+
         $this->customsDeclaration[0] = $customsDeclaration;
 
         return $this;
@@ -3333,6 +3441,10 @@ class ConsignmentType
      */
     public function addOnceToCustomsDeclarationWithCreate(): CustomsDeclaration
     {
+        if (!is_array($this->customsDeclaration)) {
+            $this->customsDeclaration = [];
+        }
+
         if ($this->customsDeclaration === []) {
             $this->addOnceTocustomsDeclaration(new CustomsDeclaration());
         }
@@ -3515,6 +3627,10 @@ class ConsignmentType
      */
     public function addOnceToStatus(Status $status): self
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         $this->status[0] = $status;
 
         return $this;
@@ -3525,6 +3641,10 @@ class ConsignmentType
      */
     public function addOnceToStatusWithCreate(): Status
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         if ($this->status === []) {
             $this->addOnceTostatus(new Status());
         }
@@ -3588,6 +3708,10 @@ class ConsignmentType
      */
     public function addOnceToChildConsignment(ChildConsignment $childConsignment): self
     {
+        if (!is_array($this->childConsignment)) {
+            $this->childConsignment = [];
+        }
+
         $this->childConsignment[0] = $childConsignment;
 
         return $this;
@@ -3598,6 +3722,10 @@ class ConsignmentType
      */
     public function addOnceToChildConsignmentWithCreate(): ChildConsignment
     {
+        if (!is_array($this->childConsignment)) {
+            $this->childConsignment = [];
+        }
+
         if ($this->childConsignment === []) {
             $this->addOnceTochildConsignment(new ChildConsignment());
         }
@@ -4213,6 +4341,10 @@ class ConsignmentType
      */
     public function addOnceToTransitCountry(TransitCountry $transitCountry): self
     {
+        if (!is_array($this->transitCountry)) {
+            $this->transitCountry = [];
+        }
+
         $this->transitCountry[0] = $transitCountry;
 
         return $this;
@@ -4223,6 +4355,10 @@ class ConsignmentType
      */
     public function addOnceToTransitCountryWithCreate(): TransitCountry
     {
+        if (!is_array($this->transitCountry)) {
+            $this->transitCountry = [];
+        }
+
         if ($this->transitCountry === []) {
             $this->addOnceTotransitCountry(new TransitCountry());
         }
@@ -4315,6 +4451,10 @@ class ConsignmentType
      */
     public function addOnceToTransportEvent(TransportEvent $transportEvent): self
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         $this->transportEvent[0] = $transportEvent;
 
         return $this;
@@ -4325,6 +4465,10 @@ class ConsignmentType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         if ($this->transportEvent === []) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
@@ -4593,6 +4737,10 @@ class ConsignmentType
      */
     public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
 
         return $this;
@@ -4603,6 +4751,10 @@ class ConsignmentType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         if ($this->freightAllowanceCharge === []) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
@@ -4666,6 +4818,10 @@ class ConsignmentType
      */
     public function addOnceToExtraAllowanceCharge(ExtraAllowanceCharge $extraAllowanceCharge): self
     {
+        if (!is_array($this->extraAllowanceCharge)) {
+            $this->extraAllowanceCharge = [];
+        }
+
         $this->extraAllowanceCharge[0] = $extraAllowanceCharge;
 
         return $this;
@@ -4676,6 +4832,10 @@ class ConsignmentType
      */
     public function addOnceToExtraAllowanceChargeWithCreate(): ExtraAllowanceCharge
     {
+        if (!is_array($this->extraAllowanceCharge)) {
+            $this->extraAllowanceCharge = [];
+        }
+
         if ($this->extraAllowanceCharge === []) {
             $this->addOnceToextraAllowanceCharge(new ExtraAllowanceCharge());
         }
@@ -4739,6 +4899,10 @@ class ConsignmentType
      */
     public function addOnceToMainCarriageShipmentStage(MainCarriageShipmentStage $mainCarriageShipmentStage): self
     {
+        if (!is_array($this->mainCarriageShipmentStage)) {
+            $this->mainCarriageShipmentStage = [];
+        }
+
         $this->mainCarriageShipmentStage[0] = $mainCarriageShipmentStage;
 
         return $this;
@@ -4749,6 +4913,10 @@ class ConsignmentType
      */
     public function addOnceToMainCarriageShipmentStageWithCreate(): MainCarriageShipmentStage
     {
+        if (!is_array($this->mainCarriageShipmentStage)) {
+            $this->mainCarriageShipmentStage = [];
+        }
+
         if ($this->mainCarriageShipmentStage === []) {
             $this->addOnceTomainCarriageShipmentStage(new MainCarriageShipmentStage());
         }
@@ -4812,6 +4980,10 @@ class ConsignmentType
      */
     public function addOnceToPreCarriageShipmentStage(PreCarriageShipmentStage $preCarriageShipmentStage): self
     {
+        if (!is_array($this->preCarriageShipmentStage)) {
+            $this->preCarriageShipmentStage = [];
+        }
+
         $this->preCarriageShipmentStage[0] = $preCarriageShipmentStage;
 
         return $this;
@@ -4822,6 +4994,10 @@ class ConsignmentType
      */
     public function addOnceToPreCarriageShipmentStageWithCreate(): PreCarriageShipmentStage
     {
+        if (!is_array($this->preCarriageShipmentStage)) {
+            $this->preCarriageShipmentStage = [];
+        }
+
         if ($this->preCarriageShipmentStage === []) {
             $this->addOnceTopreCarriageShipmentStage(new PreCarriageShipmentStage());
         }
@@ -4885,6 +5061,10 @@ class ConsignmentType
      */
     public function addOnceToOnCarriageShipmentStage(OnCarriageShipmentStage $onCarriageShipmentStage): self
     {
+        if (!is_array($this->onCarriageShipmentStage)) {
+            $this->onCarriageShipmentStage = [];
+        }
+
         $this->onCarriageShipmentStage[0] = $onCarriageShipmentStage;
 
         return $this;
@@ -4895,6 +5075,10 @@ class ConsignmentType
      */
     public function addOnceToOnCarriageShipmentStageWithCreate(): OnCarriageShipmentStage
     {
+        if (!is_array($this->onCarriageShipmentStage)) {
+            $this->onCarriageShipmentStage = [];
+        }
+
         if ($this->onCarriageShipmentStage === []) {
             $this->addOnceToonCarriageShipmentStage(new OnCarriageShipmentStage());
         }
@@ -4958,6 +5142,10 @@ class ConsignmentType
      */
     public function addOnceToTransportHandlingUnit(TransportHandlingUnit $transportHandlingUnit): self
     {
+        if (!is_array($this->transportHandlingUnit)) {
+            $this->transportHandlingUnit = [];
+        }
+
         $this->transportHandlingUnit[0] = $transportHandlingUnit;
 
         return $this;
@@ -4968,6 +5156,10 @@ class ConsignmentType
      */
     public function addOnceToTransportHandlingUnitWithCreate(): TransportHandlingUnit
     {
+        if (!is_array($this->transportHandlingUnit)) {
+            $this->transportHandlingUnit = [];
+        }
+
         if ($this->transportHandlingUnit === []) {
             $this->addOnceTotransportHandlingUnit(new TransportHandlingUnit());
         }

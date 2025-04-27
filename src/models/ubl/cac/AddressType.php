@@ -1081,6 +1081,10 @@ class AddressType
      */
     public function addOnceToAddressLine(AddressLine $addressLine): self
     {
+        if (!is_array($this->addressLine)) {
+            $this->addressLine = [];
+        }
+
         $this->addressLine[0] = $addressLine;
 
         return $this;
@@ -1091,6 +1095,10 @@ class AddressType
      */
     public function addOnceToAddressLineWithCreate(): AddressLine
     {
+        if (!is_array($this->addressLine)) {
+            $this->addressLine = [];
+        }
+
         if ($this->addressLine === []) {
             $this->addOnceToaddressLine(new AddressLine());
         }
@@ -1183,6 +1191,10 @@ class AddressType
      */
     public function addOnceToLocationCoordinate(LocationCoordinate $locationCoordinate): self
     {
+        if (!is_array($this->locationCoordinate)) {
+            $this->locationCoordinate = [];
+        }
+
         $this->locationCoordinate[0] = $locationCoordinate;
 
         return $this;
@@ -1193,6 +1205,10 @@ class AddressType
      */
     public function addOnceToLocationCoordinateWithCreate(): LocationCoordinate
     {
+        if (!is_array($this->locationCoordinate)) {
+            $this->locationCoordinate = [];
+        }
+
         if ($this->locationCoordinate === []) {
             $this->addOnceTolocationCoordinate(new LocationCoordinate());
         }

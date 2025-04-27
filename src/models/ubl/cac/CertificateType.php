@@ -233,6 +233,10 @@ class CertificateType
      */
     public function addOnceToRemarks(Remarks $remarks): self
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         $this->remarks[0] = $remarks;
 
         return $this;
@@ -243,6 +247,10 @@ class CertificateType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         if ($this->remarks === []) {
             $this->addOnceToremarks(new Remarks());
         }
@@ -335,6 +343,10 @@ class CertificateType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -345,6 +357,10 @@ class CertificateType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -408,6 +424,10 @@ class CertificateType
      */
     public function addOnceToSignature(Signature $signature): self
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         $this->signature[0] = $signature;
 
         return $this;
@@ -418,6 +438,10 @@ class CertificateType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         if ($this->signature === []) {
             $this->addOnceTosignature(new Signature());
         }

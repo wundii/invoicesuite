@@ -297,6 +297,10 @@ class TransportEventType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -307,6 +311,10 @@ class TransportEventType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -418,6 +426,10 @@ class TransportEventType
      */
     public function addOnceToCurrentStatus(CurrentStatus $currentStatus): self
     {
+        if (!is_array($this->currentStatus)) {
+            $this->currentStatus = [];
+        }
+
         $this->currentStatus[0] = $currentStatus;
 
         return $this;
@@ -428,6 +440,10 @@ class TransportEventType
      */
     public function addOnceToCurrentStatusWithCreate(): CurrentStatus
     {
+        if (!is_array($this->currentStatus)) {
+            $this->currentStatus = [];
+        }
+
         if ($this->currentStatus === []) {
             $this->addOnceTocurrentStatus(new CurrentStatus());
         }
@@ -491,6 +507,10 @@ class TransportEventType
      */
     public function addOnceToContact(Contact $contact): self
     {
+        if (!is_array($this->contact)) {
+            $this->contact = [];
+        }
+
         $this->contact[0] = $contact;
 
         return $this;
@@ -501,6 +521,10 @@ class TransportEventType
      */
     public function addOnceToContactWithCreate(): Contact
     {
+        if (!is_array($this->contact)) {
+            $this->contact = [];
+        }
+
         if ($this->contact === []) {
             $this->addOnceTocontact(new Contact());
         }
@@ -622,6 +646,10 @@ class TransportEventType
      */
     public function addOnceToPeriod(Period $period): self
     {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
         $this->period[0] = $period;
 
         return $this;
@@ -632,6 +660,10 @@ class TransportEventType
      */
     public function addOnceToPeriodWithCreate(): Period
     {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
         if ($this->period === []) {
             $this->addOnceToperiod(new Period());
         }

@@ -124,6 +124,10 @@ class TendererRequirementType
      */
     public function addOnceToName(Name $name): self
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         $this->name[0] = $name;
 
         return $this;
@@ -134,6 +138,10 @@ class TendererRequirementType
      */
     public function addOnceToNameWithCreate(): Name
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         if ($this->name === []) {
             $this->addOnceToname(new Name());
         }
@@ -226,6 +234,10 @@ class TendererRequirementType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -236,6 +248,10 @@ class TendererRequirementType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -328,6 +344,10 @@ class TendererRequirementType
      */
     public function addOnceToSuggestedEvidence(SuggestedEvidence $suggestedEvidence): self
     {
+        if (!is_array($this->suggestedEvidence)) {
+            $this->suggestedEvidence = [];
+        }
+
         $this->suggestedEvidence[0] = $suggestedEvidence;
 
         return $this;
@@ -338,6 +358,10 @@ class TendererRequirementType
      */
     public function addOnceToSuggestedEvidenceWithCreate(): SuggestedEvidence
     {
+        if (!is_array($this->suggestedEvidence)) {
+            $this->suggestedEvidence = [];
+        }
+
         if ($this->suggestedEvidence === []) {
             $this->addOnceTosuggestedEvidence(new SuggestedEvidence());
         }

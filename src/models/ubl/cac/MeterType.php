@@ -291,6 +291,10 @@ class MeterType
      */
     public function addOnceToMeterReading(MeterReading $meterReading): self
     {
+        if (!is_array($this->meterReading)) {
+            $this->meterReading = [];
+        }
+
         $this->meterReading[0] = $meterReading;
 
         return $this;
@@ -301,6 +305,10 @@ class MeterType
      */
     public function addOnceToMeterReadingWithCreate(): MeterReading
     {
+        if (!is_array($this->meterReading)) {
+            $this->meterReading = [];
+        }
+
         if ($this->meterReading === []) {
             $this->addOnceTometerReading(new MeterReading());
         }
@@ -364,6 +372,10 @@ class MeterType
      */
     public function addOnceToMeterProperty(MeterProperty $meterProperty): self
     {
+        if (!is_array($this->meterProperty)) {
+            $this->meterProperty = [];
+        }
+
         $this->meterProperty[0] = $meterProperty;
 
         return $this;
@@ -374,6 +386,10 @@ class MeterType
      */
     public function addOnceToMeterPropertyWithCreate(): MeterProperty
     {
+        if (!is_array($this->meterProperty)) {
+            $this->meterProperty = [];
+        }
+
         if ($this->meterProperty === []) {
             $this->addOnceTometerProperty(new MeterProperty());
         }

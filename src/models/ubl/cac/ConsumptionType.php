@@ -200,6 +200,10 @@ class ConsumptionType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -210,6 +214,10 @@ class ConsumptionType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -273,6 +281,10 @@ class ConsumptionType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -283,6 +295,10 @@ class ConsumptionType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }

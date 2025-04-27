@@ -128,6 +128,10 @@ class OnAccountPaymentType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -138,6 +142,10 @@ class OnAccountPaymentType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -201,6 +209,10 @@ class OnAccountPaymentType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -211,6 +223,10 @@ class OnAccountPaymentType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }

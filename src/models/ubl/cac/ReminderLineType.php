@@ -258,6 +258,10 @@ class ReminderLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -268,6 +272,10 @@ class ReminderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -582,6 +590,10 @@ class ReminderLineType
      */
     public function addOnceToReminderPeriod(ReminderPeriod $reminderPeriod): self
     {
+        if (!is_array($this->reminderPeriod)) {
+            $this->reminderPeriod = [];
+        }
+
         $this->reminderPeriod[0] = $reminderPeriod;
 
         return $this;
@@ -592,6 +604,10 @@ class ReminderLineType
      */
     public function addOnceToReminderPeriodWithCreate(): ReminderPeriod
     {
+        if (!is_array($this->reminderPeriod)) {
+            $this->reminderPeriod = [];
+        }
+
         if ($this->reminderPeriod === []) {
             $this->addOnceToreminderPeriod(new ReminderPeriod());
         }
@@ -655,6 +671,10 @@ class ReminderLineType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -665,6 +685,10 @@ class ReminderLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }

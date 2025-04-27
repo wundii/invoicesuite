@@ -198,6 +198,10 @@ class ConsumptionPointType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -208,6 +212,10 @@ class ConsumptionPointType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -445,6 +453,10 @@ class ConsumptionPointType
      */
     public function addOnceToUtilityMeter(UtilityMeter $utilityMeter): self
     {
+        if (!is_array($this->utilityMeter)) {
+            $this->utilityMeter = [];
+        }
+
         $this->utilityMeter[0] = $utilityMeter;
 
         return $this;
@@ -455,6 +467,10 @@ class ConsumptionPointType
      */
     public function addOnceToUtilityMeterWithCreate(): UtilityMeter
     {
+        if (!is_array($this->utilityMeter)) {
+            $this->utilityMeter = [];
+        }
+
         if ($this->utilityMeter === []) {
             $this->addOnceToutilityMeter(new UtilityMeter());
         }

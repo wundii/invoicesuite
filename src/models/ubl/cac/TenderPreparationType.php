@@ -193,6 +193,10 @@ class TenderPreparationType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -203,6 +207,10 @@ class TenderPreparationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -295,6 +303,10 @@ class TenderPreparationType
      */
     public function addOnceToProcurementProjectLot(ProcurementProjectLot $procurementProjectLot): self
     {
+        if (!is_array($this->procurementProjectLot)) {
+            $this->procurementProjectLot = [];
+        }
+
         $this->procurementProjectLot[0] = $procurementProjectLot;
 
         return $this;
@@ -305,6 +317,10 @@ class TenderPreparationType
      */
     public function addOnceToProcurementProjectLotWithCreate(): ProcurementProjectLot
     {
+        if (!is_array($this->procurementProjectLot)) {
+            $this->procurementProjectLot = [];
+        }
+
         if ($this->procurementProjectLot === []) {
             $this->addOnceToprocurementProjectLot(new ProcurementProjectLot());
         }
@@ -368,6 +384,10 @@ class TenderPreparationType
      */
     public function addOnceToDocumentTenderRequirement(DocumentTenderRequirement $documentTenderRequirement): self
     {
+        if (!is_array($this->documentTenderRequirement)) {
+            $this->documentTenderRequirement = [];
+        }
+
         $this->documentTenderRequirement[0] = $documentTenderRequirement;
 
         return $this;
@@ -378,6 +398,10 @@ class TenderPreparationType
      */
     public function addOnceToDocumentTenderRequirementWithCreate(): DocumentTenderRequirement
     {
+        if (!is_array($this->documentTenderRequirement)) {
+            $this->documentTenderRequirement = [];
+        }
+
         if ($this->documentTenderRequirement === []) {
             $this->addOnceTodocumentTenderRequirement(new DocumentTenderRequirement());
         }

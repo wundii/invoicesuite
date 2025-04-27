@@ -74,6 +74,10 @@ class UBLExtensionsType
      */
     public function addOnceToUBLExtension(UBLExtension $uBLExtension): self
     {
+        if (!is_array($this->uBLExtension)) {
+            $this->uBLExtension = [];
+        }
+
         $this->uBLExtension[0] = $uBLExtension;
 
         return $this;
@@ -84,6 +88,10 @@ class UBLExtensionsType
      */
     public function addOnceToUBLExtensionWithCreate(): UBLExtension
     {
+        if (!is_array($this->uBLExtension)) {
+            $this->uBLExtension = [];
+        }
+
         if ($this->uBLExtension === []) {
             $this->addOnceTouBLExtension(new UBLExtension());
         }

@@ -271,6 +271,10 @@ class TransportMeansType
      */
     public function addOnceToRegistrationNationality(RegistrationNationality $registrationNationality): self
     {
+        if (!is_array($this->registrationNationality)) {
+            $this->registrationNationality = [];
+        }
+
         $this->registrationNationality[0] = $registrationNationality;
 
         return $this;
@@ -281,6 +285,10 @@ class TransportMeansType
      */
     public function addOnceToRegistrationNationalityWithCreate(): RegistrationNationality
     {
+        if (!is_array($this->registrationNationality)) {
+            $this->registrationNationality = [];
+        }
+
         if ($this->registrationNationality === []) {
             $this->addOnceToregistrationNationality(new RegistrationNationality());
         }
@@ -605,6 +613,10 @@ class TransportMeansType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -615,6 +627,10 @@ class TransportMeansType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }

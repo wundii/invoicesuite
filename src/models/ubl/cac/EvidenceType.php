@@ -203,6 +203,10 @@ class EvidenceType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -213,6 +217,10 @@ class EvidenceType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -276,6 +284,10 @@ class EvidenceType
      */
     public function addOnceToCandidateStatement(CandidateStatement $candidateStatement): self
     {
+        if (!is_array($this->candidateStatement)) {
+            $this->candidateStatement = [];
+        }
+
         $this->candidateStatement[0] = $candidateStatement;
 
         return $this;
@@ -286,6 +298,10 @@ class EvidenceType
      */
     public function addOnceToCandidateStatementWithCreate(): CandidateStatement
     {
+        if (!is_array($this->candidateStatement)) {
+            $this->candidateStatement = [];
+        }
+
         if ($this->candidateStatement === []) {
             $this->addOnceTocandidateStatement(new CandidateStatement());
         }

@@ -440,6 +440,10 @@ class PaymentMandateType
      */
     public function addOnceToClause(Clause $clause): self
     {
+        if (!is_array($this->clause)) {
+            $this->clause = [];
+        }
+
         $this->clause[0] = $clause;
 
         return $this;
@@ -450,6 +454,10 @@ class PaymentMandateType
      */
     public function addOnceToClauseWithCreate(): Clause
     {
+        if (!is_array($this->clause)) {
+            $this->clause = [];
+        }
+
         if ($this->clause === []) {
             $this->addOnceToclause(new Clause());
         }

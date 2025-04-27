@@ -226,6 +226,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -236,6 +240,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -386,6 +394,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToOnAccountPayment(OnAccountPayment $onAccountPayment): self
     {
+        if (!is_array($this->onAccountPayment)) {
+            $this->onAccountPayment = [];
+        }
+
         $this->onAccountPayment[0] = $onAccountPayment;
 
         return $this;
@@ -396,6 +408,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToOnAccountPaymentWithCreate(): OnAccountPayment
     {
+        if (!is_array($this->onAccountPayment)) {
+            $this->onAccountPayment = [];
+        }
+
         if ($this->onAccountPayment === []) {
             $this->addOnceToonAccountPayment(new OnAccountPayment());
         }
@@ -488,6 +504,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToSupplierConsumption(SupplierConsumption $supplierConsumption): self
     {
+        if (!is_array($this->supplierConsumption)) {
+            $this->supplierConsumption = [];
+        }
+
         $this->supplierConsumption[0] = $supplierConsumption;
 
         return $this;
@@ -498,6 +518,10 @@ class SubscriberConsumptionType
      */
     public function addOnceToSupplierConsumptionWithCreate(): SupplierConsumption
     {
+        if (!is_array($this->supplierConsumption)) {
+            $this->supplierConsumption = [];
+        }
+
         if ($this->supplierConsumption === []) {
             $this->addOnceTosupplierConsumption(new SupplierConsumption());
         }

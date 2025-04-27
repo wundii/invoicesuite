@@ -560,6 +560,10 @@ class PartyLegalEntityType
      */
     public function addOnceToShareholderParty(ShareholderParty $shareholderParty): self
     {
+        if (!is_array($this->shareholderParty)) {
+            $this->shareholderParty = [];
+        }
+
         $this->shareholderParty[0] = $shareholderParty;
 
         return $this;
@@ -570,6 +574,10 @@ class PartyLegalEntityType
      */
     public function addOnceToShareholderPartyWithCreate(): ShareholderParty
     {
+        if (!is_array($this->shareholderParty)) {
+            $this->shareholderParty = [];
+        }
+
         if ($this->shareholderParty === []) {
             $this->addOnceToshareholderParty(new ShareholderParty());
         }

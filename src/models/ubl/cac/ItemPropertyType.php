@@ -391,6 +391,10 @@ class ItemPropertyType
      */
     public function addOnceToValueQualifier(ValueQualifier $valueQualifier): self
     {
+        if (!is_array($this->valueQualifier)) {
+            $this->valueQualifier = [];
+        }
+
         $this->valueQualifier[0] = $valueQualifier;
 
         return $this;
@@ -401,6 +405,10 @@ class ItemPropertyType
      */
     public function addOnceToValueQualifierWithCreate(): ValueQualifier
     {
+        if (!is_array($this->valueQualifier)) {
+            $this->valueQualifier = [];
+        }
+
         if ($this->valueQualifier === []) {
             $this->addOnceTovalueQualifier(new ValueQualifier());
         }
@@ -493,6 +501,10 @@ class ItemPropertyType
      */
     public function addOnceToListValue(ListValue $listValue): self
     {
+        if (!is_array($this->listValue)) {
+            $this->listValue = [];
+        }
+
         $this->listValue[0] = $listValue;
 
         return $this;
@@ -503,6 +515,10 @@ class ItemPropertyType
      */
     public function addOnceToListValueWithCreate(): ListValue
     {
+        if (!is_array($this->listValue)) {
+            $this->listValue = [];
+        }
+
         if ($this->listValue === []) {
             $this->addOnceTolistValue(new ListValue());
         }
@@ -595,6 +611,10 @@ class ItemPropertyType
      */
     public function addOnceToItemPropertyGroup(ItemPropertyGroup $itemPropertyGroup): self
     {
+        if (!is_array($this->itemPropertyGroup)) {
+            $this->itemPropertyGroup = [];
+        }
+
         $this->itemPropertyGroup[0] = $itemPropertyGroup;
 
         return $this;
@@ -605,6 +625,10 @@ class ItemPropertyType
      */
     public function addOnceToItemPropertyGroupWithCreate(): ItemPropertyGroup
     {
+        if (!is_array($this->itemPropertyGroup)) {
+            $this->itemPropertyGroup = [];
+        }
+
         if ($this->itemPropertyGroup === []) {
             $this->addOnceToitemPropertyGroup(new ItemPropertyGroup());
         }

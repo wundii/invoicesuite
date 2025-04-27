@@ -162,6 +162,10 @@ class QualificationResolutionType
      */
     public function addOnceToExclusionReason(ExclusionReason $exclusionReason): self
     {
+        if (!is_array($this->exclusionReason)) {
+            $this->exclusionReason = [];
+        }
+
         $this->exclusionReason[0] = $exclusionReason;
 
         return $this;
@@ -172,6 +176,10 @@ class QualificationResolutionType
      */
     public function addOnceToExclusionReasonWithCreate(): ExclusionReason
     {
+        if (!is_array($this->exclusionReason)) {
+            $this->exclusionReason = [];
+        }
+
         if ($this->exclusionReason === []) {
             $this->addOnceToexclusionReason(new ExclusionReason());
         }
@@ -235,6 +243,10 @@ class QualificationResolutionType
      */
     public function addOnceToResolution(Resolution $resolution): self
     {
+        if (!is_array($this->resolution)) {
+            $this->resolution = [];
+        }
+
         $this->resolution[0] = $resolution;
 
         return $this;
@@ -245,6 +257,10 @@ class QualificationResolutionType
      */
     public function addOnceToResolutionWithCreate(): Resolution
     {
+        if (!is_array($this->resolution)) {
+            $this->resolution = [];
+        }
+
         if ($this->resolution === []) {
             $this->addOnceToresolution(new Resolution());
         }

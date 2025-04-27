@@ -127,6 +127,10 @@ class PromotionalSpecificationType
      */
     public function addOnceToPromotionalEventLineItem(PromotionalEventLineItem $promotionalEventLineItem): self
     {
+        if (!is_array($this->promotionalEventLineItem)) {
+            $this->promotionalEventLineItem = [];
+        }
+
         $this->promotionalEventLineItem[0] = $promotionalEventLineItem;
 
         return $this;
@@ -137,6 +141,10 @@ class PromotionalSpecificationType
      */
     public function addOnceToPromotionalEventLineItemWithCreate(): PromotionalEventLineItem
     {
+        if (!is_array($this->promotionalEventLineItem)) {
+            $this->promotionalEventLineItem = [];
+        }
+
         if ($this->promotionalEventLineItem === []) {
             $this->addOnceTopromotionalEventLineItem(new PromotionalEventLineItem());
         }
@@ -200,6 +208,10 @@ class PromotionalSpecificationType
      */
     public function addOnceToEventTactic(EventTactic $eventTactic): self
     {
+        if (!is_array($this->eventTactic)) {
+            $this->eventTactic = [];
+        }
+
         $this->eventTactic[0] = $eventTactic;
 
         return $this;
@@ -210,6 +222,10 @@ class PromotionalSpecificationType
      */
     public function addOnceToEventTacticWithCreate(): EventTactic
     {
+        if (!is_array($this->eventTactic)) {
+            $this->eventTactic = [];
+        }
+
         if ($this->eventTactic === []) {
             $this->addOnceToeventTactic(new EventTactic());
         }

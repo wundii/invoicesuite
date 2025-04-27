@@ -156,6 +156,10 @@ class BudgetAccountLineType
      */
     public function addOnceToBudgetAccount(BudgetAccount $budgetAccount): self
     {
+        if (!is_array($this->budgetAccount)) {
+            $this->budgetAccount = [];
+        }
+
         $this->budgetAccount[0] = $budgetAccount;
 
         return $this;
@@ -166,6 +170,10 @@ class BudgetAccountLineType
      */
     public function addOnceToBudgetAccountWithCreate(): BudgetAccount
     {
+        if (!is_array($this->budgetAccount)) {
+            $this->budgetAccount = [];
+        }
+
         if ($this->budgetAccount === []) {
             $this->addOnceTobudgetAccount(new BudgetAccount());
         }

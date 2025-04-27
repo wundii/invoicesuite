@@ -294,6 +294,10 @@ class TransportScheduleType
      */
     public function addOnceToRemarks(Remarks $remarks): self
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         $this->remarks[0] = $remarks;
 
         return $this;
@@ -304,6 +308,10 @@ class TransportScheduleType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         if ($this->remarks === []) {
             $this->addOnceToremarks(new Remarks());
         }

@@ -169,6 +169,10 @@ class AuctionTermsType
      */
     public function addOnceToJustificationDescription(JustificationDescription $justificationDescription): self
     {
+        if (!is_array($this->justificationDescription)) {
+            $this->justificationDescription = [];
+        }
+
         $this->justificationDescription[0] = $justificationDescription;
 
         return $this;
@@ -179,6 +183,10 @@ class AuctionTermsType
      */
     public function addOnceToJustificationDescriptionWithCreate(): JustificationDescription
     {
+        if (!is_array($this->justificationDescription)) {
+            $this->justificationDescription = [];
+        }
+
         if ($this->justificationDescription === []) {
             $this->addOnceTojustificationDescription(new JustificationDescription());
         }
@@ -242,6 +250,10 @@ class AuctionTermsType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -252,6 +264,10 @@ class AuctionTermsType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -315,6 +331,10 @@ class AuctionTermsType
      */
     public function addOnceToProcessDescription(ProcessDescription $processDescription): self
     {
+        if (!is_array($this->processDescription)) {
+            $this->processDescription = [];
+        }
+
         $this->processDescription[0] = $processDescription;
 
         return $this;
@@ -325,6 +345,10 @@ class AuctionTermsType
      */
     public function addOnceToProcessDescriptionWithCreate(): ProcessDescription
     {
+        if (!is_array($this->processDescription)) {
+            $this->processDescription = [];
+        }
+
         if ($this->processDescription === []) {
             $this->addOnceToprocessDescription(new ProcessDescription());
         }
@@ -388,6 +412,10 @@ class AuctionTermsType
      */
     public function addOnceToConditionsDescription(ConditionsDescription $conditionsDescription): self
     {
+        if (!is_array($this->conditionsDescription)) {
+            $this->conditionsDescription = [];
+        }
+
         $this->conditionsDescription[0] = $conditionsDescription;
 
         return $this;
@@ -398,6 +426,10 @@ class AuctionTermsType
      */
     public function addOnceToConditionsDescriptionWithCreate(): ConditionsDescription
     {
+        if (!is_array($this->conditionsDescription)) {
+            $this->conditionsDescription = [];
+        }
+
         if ($this->conditionsDescription === []) {
             $this->addOnceToconditionsDescription(new ConditionsDescription());
         }
@@ -462,6 +494,10 @@ class AuctionTermsType
     public function addOnceToElectronicDeviceDescription(
         ElectronicDeviceDescription $electronicDeviceDescription,
     ): self {
+        if (!is_array($this->electronicDeviceDescription)) {
+            $this->electronicDeviceDescription = [];
+        }
+
         $this->electronicDeviceDescription[0] = $electronicDeviceDescription;
 
         return $this;
@@ -472,6 +508,10 @@ class AuctionTermsType
      */
     public function addOnceToElectronicDeviceDescriptionWithCreate(): ElectronicDeviceDescription
     {
+        if (!is_array($this->electronicDeviceDescription)) {
+            $this->electronicDeviceDescription = [];
+        }
+
         if ($this->electronicDeviceDescription === []) {
             $this->addOnceToelectronicDeviceDescription(new ElectronicDeviceDescription());
         }

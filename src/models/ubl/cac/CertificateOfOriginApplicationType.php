@@ -394,6 +394,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToRemarks(Remarks $remarks): self
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         $this->remarks[0] = $remarks;
 
         return $this;
@@ -404,6 +408,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         if ($this->remarks === []) {
             $this->addOnceToremarks(new Remarks());
         }
@@ -496,6 +504,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToEndorserParty(EndorserParty $endorserParty): self
     {
+        if (!is_array($this->endorserParty)) {
+            $this->endorserParty = [];
+        }
+
         $this->endorserParty[0] = $endorserParty;
 
         return $this;
@@ -506,6 +518,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToEndorserPartyWithCreate(): EndorserParty
     {
+        if (!is_array($this->endorserParty)) {
+            $this->endorserParty = [];
+        }
+
         if ($this->endorserParty === []) {
             $this->addOnceToendorserParty(new EndorserParty());
         }
@@ -714,6 +730,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToDocumentDistribution(DocumentDistribution $documentDistribution): self
     {
+        if (!is_array($this->documentDistribution)) {
+            $this->documentDistribution = [];
+        }
+
         $this->documentDistribution[0] = $documentDistribution;
 
         return $this;
@@ -724,6 +744,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToDocumentDistributionWithCreate(): DocumentDistribution
     {
+        if (!is_array($this->documentDistribution)) {
+            $this->documentDistribution = [];
+        }
+
         if ($this->documentDistribution === []) {
             $this->addOnceTodocumentDistribution(new DocumentDistribution());
         }
@@ -788,6 +812,10 @@ class CertificateOfOriginApplicationType
     public function addOnceToSupportingDocumentReference(
         SupportingDocumentReference $supportingDocumentReference,
     ): self {
+        if (!is_array($this->supportingDocumentReference)) {
+            $this->supportingDocumentReference = [];
+        }
+
         $this->supportingDocumentReference[0] = $supportingDocumentReference;
 
         return $this;
@@ -798,6 +826,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToSupportingDocumentReferenceWithCreate(): SupportingDocumentReference
     {
+        if (!is_array($this->supportingDocumentReference)) {
+            $this->supportingDocumentReference = [];
+        }
+
         if ($this->supportingDocumentReference === []) {
             $this->addOnceTosupportingDocumentReference(new SupportingDocumentReference());
         }
@@ -861,6 +893,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToSignature(Signature $signature): self
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         $this->signature[0] = $signature;
 
         return $this;
@@ -871,6 +907,10 @@ class CertificateOfOriginApplicationType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         if ($this->signature === []) {
             $this->addOnceTosignature(new Signature());
         }

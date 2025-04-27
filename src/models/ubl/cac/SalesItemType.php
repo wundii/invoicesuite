@@ -150,6 +150,10 @@ class SalesItemType
      */
     public function addOnceToActivityProperty(ActivityProperty $activityProperty): self
     {
+        if (!is_array($this->activityProperty)) {
+            $this->activityProperty = [];
+        }
+
         $this->activityProperty[0] = $activityProperty;
 
         return $this;
@@ -160,6 +164,10 @@ class SalesItemType
      */
     public function addOnceToActivityPropertyWithCreate(): ActivityProperty
     {
+        if (!is_array($this->activityProperty)) {
+            $this->activityProperty = [];
+        }
+
         if ($this->activityProperty === []) {
             $this->addOnceToactivityProperty(new ActivityProperty());
         }
@@ -223,6 +231,10 @@ class SalesItemType
      */
     public function addOnceToTaxExclusivePrice(TaxExclusivePrice $taxExclusivePrice): self
     {
+        if (!is_array($this->taxExclusivePrice)) {
+            $this->taxExclusivePrice = [];
+        }
+
         $this->taxExclusivePrice[0] = $taxExclusivePrice;
 
         return $this;
@@ -233,6 +245,10 @@ class SalesItemType
      */
     public function addOnceToTaxExclusivePriceWithCreate(): TaxExclusivePrice
     {
+        if (!is_array($this->taxExclusivePrice)) {
+            $this->taxExclusivePrice = [];
+        }
+
         if ($this->taxExclusivePrice === []) {
             $this->addOnceTotaxExclusivePrice(new TaxExclusivePrice());
         }
@@ -296,6 +312,10 @@ class SalesItemType
      */
     public function addOnceToTaxInclusivePrice(TaxInclusivePrice $taxInclusivePrice): self
     {
+        if (!is_array($this->taxInclusivePrice)) {
+            $this->taxInclusivePrice = [];
+        }
+
         $this->taxInclusivePrice[0] = $taxInclusivePrice;
 
         return $this;
@@ -306,6 +326,10 @@ class SalesItemType
      */
     public function addOnceToTaxInclusivePriceWithCreate(): TaxInclusivePrice
     {
+        if (!is_array($this->taxInclusivePrice)) {
+            $this->taxInclusivePrice = [];
+        }
+
         if ($this->taxInclusivePrice === []) {
             $this->addOnceTotaxInclusivePrice(new TaxInclusivePrice());
         }

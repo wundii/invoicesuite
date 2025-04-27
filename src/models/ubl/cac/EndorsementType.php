@@ -180,6 +180,10 @@ class EndorsementType
      */
     public function addOnceToRemarks(Remarks $remarks): self
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         $this->remarks[0] = $remarks;
 
         return $this;
@@ -190,6 +194,10 @@ class EndorsementType
      */
     public function addOnceToRemarksWithCreate(): Remarks
     {
+        if (!is_array($this->remarks)) {
+            $this->remarks = [];
+        }
+
         if ($this->remarks === []) {
             $this->addOnceToremarks(new Remarks());
         }
@@ -282,6 +290,10 @@ class EndorsementType
      */
     public function addOnceToSignature(Signature $signature): self
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         $this->signature[0] = $signature;
 
         return $this;
@@ -292,6 +304,10 @@ class EndorsementType
      */
     public function addOnceToSignatureWithCreate(): Signature
     {
+        if (!is_array($this->signature)) {
+            $this->signature = [];
+        }
+
         if ($this->signature === []) {
             $this->addOnceTosignature(new Signature());
         }

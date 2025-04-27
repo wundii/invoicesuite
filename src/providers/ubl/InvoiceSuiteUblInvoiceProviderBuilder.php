@@ -139,7 +139,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteUblProviderBuild
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierPartyWithCreate()
             ->getPartyWithCreate()
-            ->addToPartyLegalEntityWithCreate()
+            ->addOnceToPartyLegalEntityWithCreate()
             ->getRegistrationNameWithCreate()
             ->setValue($newName);
 

@@ -186,6 +186,10 @@ class ProjectReferenceType
      */
     public function addOnceToWorkPhaseReference(WorkPhaseReference $workPhaseReference): self
     {
+        if (!is_array($this->workPhaseReference)) {
+            $this->workPhaseReference = [];
+        }
+
         $this->workPhaseReference[0] = $workPhaseReference;
 
         return $this;
@@ -196,6 +200,10 @@ class ProjectReferenceType
      */
     public function addOnceToWorkPhaseReferenceWithCreate(): WorkPhaseReference
     {
+        if (!is_array($this->workPhaseReference)) {
+            $this->workPhaseReference = [];
+        }
+
         if ($this->workPhaseReference === []) {
             $this->addOnceToworkPhaseReference(new WorkPhaseReference());
         }

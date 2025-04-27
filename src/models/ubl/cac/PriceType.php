@@ -239,6 +239,10 @@ class PriceType
      */
     public function addOnceToPriceChangeReason(PriceChangeReason $priceChangeReason): self
     {
+        if (!is_array($this->priceChangeReason)) {
+            $this->priceChangeReason = [];
+        }
+
         $this->priceChangeReason[0] = $priceChangeReason;
 
         return $this;
@@ -249,6 +253,10 @@ class PriceType
      */
     public function addOnceToPriceChangeReasonWithCreate(): PriceChangeReason
     {
+        if (!is_array($this->priceChangeReason)) {
+            $this->priceChangeReason = [];
+        }
+
         if ($this->priceChangeReason === []) {
             $this->addOnceTopriceChangeReason(new PriceChangeReason());
         }
@@ -399,6 +407,10 @@ class PriceType
      */
     public function addOnceToValidityPeriod(ValidityPeriod $validityPeriod): self
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         $this->validityPeriod[0] = $validityPeriod;
 
         return $this;
@@ -409,6 +421,10 @@ class PriceType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         if ($this->validityPeriod === []) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }
@@ -501,6 +517,10 @@ class PriceType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -511,6 +531,10 @@ class PriceType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }

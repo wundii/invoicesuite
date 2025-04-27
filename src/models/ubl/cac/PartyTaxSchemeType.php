@@ -261,6 +261,10 @@ class PartyTaxSchemeType
      */
     public function addOnceToExemptionReason(ExemptionReason $exemptionReason): self
     {
+        if (!is_array($this->exemptionReason)) {
+            $this->exemptionReason = [];
+        }
+
         $this->exemptionReason[0] = $exemptionReason;
 
         return $this;
@@ -271,6 +275,10 @@ class PartyTaxSchemeType
      */
     public function addOnceToExemptionReasonWithCreate(): ExemptionReason
     {
+        if (!is_array($this->exemptionReason)) {
+            $this->exemptionReason = [];
+        }
+
         if ($this->exemptionReason === []) {
             $this->addOnceToexemptionReason(new ExemptionReason());
         }

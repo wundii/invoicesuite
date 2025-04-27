@@ -530,6 +530,10 @@ class ShipmentType
      */
     public function addOnceToHandlingInstructions(HandlingInstructions $handlingInstructions): self
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         $this->handlingInstructions[0] = $handlingInstructions;
 
         return $this;
@@ -540,6 +544,10 @@ class ShipmentType
      */
     public function addOnceToHandlingInstructionsWithCreate(): HandlingInstructions
     {
+        if (!is_array($this->handlingInstructions)) {
+            $this->handlingInstructions = [];
+        }
+
         if ($this->handlingInstructions === []) {
             $this->addOnceTohandlingInstructions(new HandlingInstructions());
         }
@@ -603,6 +611,10 @@ class ShipmentType
      */
     public function addOnceToInformation(Information $information): self
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         $this->information[0] = $information;
 
         return $this;
@@ -613,6 +625,10 @@ class ShipmentType
      */
     public function addOnceToInformationWithCreate(): Information
     {
+        if (!is_array($this->information)) {
+            $this->information = [];
+        }
+
         if ($this->information === []) {
             $this->addOnceToinformation(new Information());
         }
@@ -1027,6 +1043,10 @@ class ShipmentType
      */
     public function addOnceToSpecialInstructions(SpecialInstructions $specialInstructions): self
     {
+        if (!is_array($this->specialInstructions)) {
+            $this->specialInstructions = [];
+        }
+
         $this->specialInstructions[0] = $specialInstructions;
 
         return $this;
@@ -1037,6 +1057,10 @@ class ShipmentType
      */
     public function addOnceToSpecialInstructionsWithCreate(): SpecialInstructions
     {
+        if (!is_array($this->specialInstructions)) {
+            $this->specialInstructions = [];
+        }
+
         if ($this->specialInstructions === []) {
             $this->addOnceTospecialInstructions(new SpecialInstructions());
         }
@@ -1100,6 +1124,10 @@ class ShipmentType
      */
     public function addOnceToDeliveryInstructions(DeliveryInstructions $deliveryInstructions): self
     {
+        if (!is_array($this->deliveryInstructions)) {
+            $this->deliveryInstructions = [];
+        }
+
         $this->deliveryInstructions[0] = $deliveryInstructions;
 
         return $this;
@@ -1110,6 +1138,10 @@ class ShipmentType
      */
     public function addOnceToDeliveryInstructionsWithCreate(): DeliveryInstructions
     {
+        if (!is_array($this->deliveryInstructions)) {
+            $this->deliveryInstructions = [];
+        }
+
         if ($this->deliveryInstructions === []) {
             $this->addOnceTodeliveryInstructions(new DeliveryInstructions());
         }
@@ -1221,6 +1253,10 @@ class ShipmentType
      */
     public function addOnceToConsignment(Consignment $consignment): self
     {
+        if (!is_array($this->consignment)) {
+            $this->consignment = [];
+        }
+
         $this->consignment[0] = $consignment;
 
         return $this;
@@ -1231,6 +1267,10 @@ class ShipmentType
      */
     public function addOnceToConsignmentWithCreate(): Consignment
     {
+        if (!is_array($this->consignment)) {
+            $this->consignment = [];
+        }
+
         if ($this->consignment === []) {
             $this->addOnceToconsignment(new Consignment());
         }
@@ -1294,6 +1334,10 @@ class ShipmentType
      */
     public function addOnceToGoodsItem(GoodsItem $goodsItem): self
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         $this->goodsItem[0] = $goodsItem;
 
         return $this;
@@ -1304,6 +1348,10 @@ class ShipmentType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         if ($this->goodsItem === []) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
@@ -1367,6 +1415,10 @@ class ShipmentType
      */
     public function addOnceToShipmentStage(ShipmentStage $shipmentStage): self
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         $this->shipmentStage[0] = $shipmentStage;
 
         return $this;
@@ -1377,6 +1429,10 @@ class ShipmentType
      */
     public function addOnceToShipmentStageWithCreate(): ShipmentStage
     {
+        if (!is_array($this->shipmentStage)) {
+            $this->shipmentStage = [];
+        }
+
         if ($this->shipmentStage === []) {
             $this->addOnceToshipmentStage(new ShipmentStage());
         }
@@ -1469,6 +1525,10 @@ class ShipmentType
      */
     public function addOnceToTransportHandlingUnit(TransportHandlingUnit $transportHandlingUnit): self
     {
+        if (!is_array($this->transportHandlingUnit)) {
+            $this->transportHandlingUnit = [];
+        }
+
         $this->transportHandlingUnit[0] = $transportHandlingUnit;
 
         return $this;
@@ -1479,6 +1539,10 @@ class ShipmentType
      */
     public function addOnceToTransportHandlingUnitWithCreate(): TransportHandlingUnit
     {
+        if (!is_array($this->transportHandlingUnit)) {
+            $this->transportHandlingUnit = [];
+        }
+
         if ($this->transportHandlingUnit === []) {
             $this->addOnceTotransportHandlingUnit(new TransportHandlingUnit());
         }
@@ -1687,6 +1751,10 @@ class ShipmentType
      */
     public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
 
         return $this;
@@ -1697,6 +1765,10 @@ class ShipmentType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         if ($this->freightAllowanceCharge === []) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }

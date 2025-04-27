@@ -317,6 +317,10 @@ class AllowanceChargeType
      */
     public function addOnceToAllowanceChargeReason(AllowanceChargeReason $allowanceChargeReason): self
     {
+        if (!is_array($this->allowanceChargeReason)) {
+            $this->allowanceChargeReason = [];
+        }
+
         $this->allowanceChargeReason[0] = $allowanceChargeReason;
 
         return $this;
@@ -327,6 +331,10 @@ class AllowanceChargeType
      */
     public function addOnceToAllowanceChargeReasonWithCreate(): AllowanceChargeReason
     {
+        if (!is_array($this->allowanceChargeReason)) {
+            $this->allowanceChargeReason = [];
+        }
+
         if ($this->allowanceChargeReason === []) {
             $this->addOnceToallowanceChargeReason(new AllowanceChargeReason());
         }
@@ -612,6 +620,10 @@ class AllowanceChargeType
      */
     public function addOnceToTaxCategory(TaxCategory $taxCategory): self
     {
+        if (!is_array($this->taxCategory)) {
+            $this->taxCategory = [];
+        }
+
         $this->taxCategory[0] = $taxCategory;
 
         return $this;
@@ -622,6 +634,10 @@ class AllowanceChargeType
      */
     public function addOnceToTaxCategoryWithCreate(): TaxCategory
     {
+        if (!is_array($this->taxCategory)) {
+            $this->taxCategory = [];
+        }
+
         if ($this->taxCategory === []) {
             $this->addOnceTotaxCategory(new TaxCategory());
         }
@@ -714,6 +730,10 @@ class AllowanceChargeType
      */
     public function addOnceToPaymentMeans(PaymentMeans $paymentMeans): self
     {
+        if (!is_array($this->paymentMeans)) {
+            $this->paymentMeans = [];
+        }
+
         $this->paymentMeans[0] = $paymentMeans;
 
         return $this;
@@ -724,6 +744,10 @@ class AllowanceChargeType
      */
     public function addOnceToPaymentMeansWithCreate(): PaymentMeans
     {
+        if (!is_array($this->paymentMeans)) {
+            $this->paymentMeans = [];
+        }
+
         if ($this->paymentMeans === []) {
             $this->addOnceTopaymentMeans(new PaymentMeans());
         }

@@ -388,6 +388,10 @@ class ContractType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -398,6 +402,10 @@ class ContractType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -490,6 +498,10 @@ class ContractType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -500,6 +512,10 @@ class ContractType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -592,6 +608,10 @@ class ContractType
      */
     public function addOnceToContractDocumentReference(ContractDocumentReference $contractDocumentReference): self
     {
+        if (!is_array($this->contractDocumentReference)) {
+            $this->contractDocumentReference = [];
+        }
+
         $this->contractDocumentReference[0] = $contractDocumentReference;
 
         return $this;
@@ -602,6 +622,10 @@ class ContractType
      */
     public function addOnceToContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
+        if (!is_array($this->contractDocumentReference)) {
+            $this->contractDocumentReference = [];
+        }
+
         if ($this->contractDocumentReference === []) {
             $this->addOnceTocontractDocumentReference(new ContractDocumentReference());
         }

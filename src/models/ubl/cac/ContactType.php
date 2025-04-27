@@ -292,6 +292,10 @@ class ContactType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -302,6 +306,10 @@ class ContactType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -365,6 +373,10 @@ class ContactType
      */
     public function addOnceToOtherCommunication(OtherCommunication $otherCommunication): self
     {
+        if (!is_array($this->otherCommunication)) {
+            $this->otherCommunication = [];
+        }
+
         $this->otherCommunication[0] = $otherCommunication;
 
         return $this;
@@ -375,6 +387,10 @@ class ContactType
      */
     public function addOnceToOtherCommunicationWithCreate(): OtherCommunication
     {
+        if (!is_array($this->otherCommunication)) {
+            $this->otherCommunication = [];
+        }
+
         if ($this->otherCommunication === []) {
             $this->addOnceTootherCommunication(new OtherCommunication());
         }

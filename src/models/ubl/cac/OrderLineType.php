@@ -209,6 +209,10 @@ class OrderLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -219,6 +223,10 @@ class OrderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -313,6 +321,10 @@ class OrderLineType
     public function addOnceToSellerProposedSubstituteLineItem(
         SellerProposedSubstituteLineItem $sellerProposedSubstituteLineItem,
     ): self {
+        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+            $this->sellerProposedSubstituteLineItem = [];
+        }
+
         $this->sellerProposedSubstituteLineItem[0] = $sellerProposedSubstituteLineItem;
 
         return $this;
@@ -323,6 +335,10 @@ class OrderLineType
      */
     public function addOnceToSellerProposedSubstituteLineItemWithCreate(): SellerProposedSubstituteLineItem
     {
+        if (!is_array($this->sellerProposedSubstituteLineItem)) {
+            $this->sellerProposedSubstituteLineItem = [];
+        }
+
         if ($this->sellerProposedSubstituteLineItem === []) {
             $this->addOnceTosellerProposedSubstituteLineItem(new SellerProposedSubstituteLineItem());
         }
@@ -386,6 +402,10 @@ class OrderLineType
      */
     public function addOnceToSellerSubstitutedLineItem(SellerSubstitutedLineItem $sellerSubstitutedLineItem): self
     {
+        if (!is_array($this->sellerSubstitutedLineItem)) {
+            $this->sellerSubstitutedLineItem = [];
+        }
+
         $this->sellerSubstitutedLineItem[0] = $sellerSubstitutedLineItem;
 
         return $this;
@@ -396,6 +416,10 @@ class OrderLineType
      */
     public function addOnceToSellerSubstitutedLineItemWithCreate(): SellerSubstitutedLineItem
     {
+        if (!is_array($this->sellerSubstitutedLineItem)) {
+            $this->sellerSubstitutedLineItem = [];
+        }
+
         if ($this->sellerSubstitutedLineItem === []) {
             $this->addOnceTosellerSubstitutedLineItem(new SellerSubstitutedLineItem());
         }
@@ -461,6 +485,10 @@ class OrderLineType
     public function addOnceToBuyerProposedSubstituteLineItem(
         BuyerProposedSubstituteLineItem $buyerProposedSubstituteLineItem,
     ): self {
+        if (!is_array($this->buyerProposedSubstituteLineItem)) {
+            $this->buyerProposedSubstituteLineItem = [];
+        }
+
         $this->buyerProposedSubstituteLineItem[0] = $buyerProposedSubstituteLineItem;
 
         return $this;
@@ -471,6 +499,10 @@ class OrderLineType
      */
     public function addOnceToBuyerProposedSubstituteLineItemWithCreate(): BuyerProposedSubstituteLineItem
     {
+        if (!is_array($this->buyerProposedSubstituteLineItem)) {
+            $this->buyerProposedSubstituteLineItem = [];
+        }
+
         if ($this->buyerProposedSubstituteLineItem === []) {
             $this->addOnceTobuyerProposedSubstituteLineItem(new BuyerProposedSubstituteLineItem());
         }
@@ -592,6 +624,10 @@ class OrderLineType
      */
     public function addOnceToOrderLineReference(OrderLineReference $orderLineReference): self
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         $this->orderLineReference[0] = $orderLineReference;
 
         return $this;
@@ -602,6 +638,10 @@ class OrderLineType
      */
     public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         if ($this->orderLineReference === []) {
             $this->addOnceToorderLineReference(new OrderLineReference());
         }
@@ -665,6 +705,10 @@ class OrderLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -675,6 +719,10 @@ class OrderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }

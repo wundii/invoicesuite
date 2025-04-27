@@ -193,6 +193,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToTransportUserSpecialTerms(TransportUserSpecialTerms $transportUserSpecialTerms): self
     {
+        if (!is_array($this->transportUserSpecialTerms)) {
+            $this->transportUserSpecialTerms = [];
+        }
+
         $this->transportUserSpecialTerms[0] = $transportUserSpecialTerms;
 
         return $this;
@@ -203,6 +207,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToTransportUserSpecialTermsWithCreate(): TransportUserSpecialTerms
     {
+        if (!is_array($this->transportUserSpecialTerms)) {
+            $this->transportUserSpecialTerms = [];
+        }
+
         if ($this->transportUserSpecialTerms === []) {
             $this->addOnceTotransportUserSpecialTerms(new TransportUserSpecialTerms());
         }
@@ -268,6 +276,10 @@ class TransportExecutionTermsType
     public function addOnceToTransportServiceProviderSpecialTerms(
         TransportServiceProviderSpecialTerms $transportServiceProviderSpecialTerms,
     ): self {
+        if (!is_array($this->transportServiceProviderSpecialTerms)) {
+            $this->transportServiceProviderSpecialTerms = [];
+        }
+
         $this->transportServiceProviderSpecialTerms[0] = $transportServiceProviderSpecialTerms;
 
         return $this;
@@ -278,6 +290,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToTransportServiceProviderSpecialTermsWithCreate(): TransportServiceProviderSpecialTerms
     {
+        if (!is_array($this->transportServiceProviderSpecialTerms)) {
+            $this->transportServiceProviderSpecialTerms = [];
+        }
+
         if ($this->transportServiceProviderSpecialTerms === []) {
             $this->addOnceTotransportServiceProviderSpecialTerms(new TransportServiceProviderSpecialTerms());
         }
@@ -341,6 +357,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToChangeConditions(ChangeConditions $changeConditions): self
     {
+        if (!is_array($this->changeConditions)) {
+            $this->changeConditions = [];
+        }
+
         $this->changeConditions[0] = $changeConditions;
 
         return $this;
@@ -351,6 +371,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToChangeConditionsWithCreate(): ChangeConditions
     {
+        if (!is_array($this->changeConditions)) {
+            $this->changeConditions = [];
+        }
+
         if ($this->changeConditions === []) {
             $this->addOnceTochangeConditions(new ChangeConditions());
         }
@@ -414,6 +438,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -424,6 +452,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
@@ -487,6 +519,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         $this->deliveryTerms[0] = $deliveryTerms;
 
         return $this;
@@ -497,6 +533,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         if ($this->deliveryTerms === []) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
@@ -647,6 +687,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToEnvironmentalEmission(EnvironmentalEmission $environmentalEmission): self
     {
+        if (!is_array($this->environmentalEmission)) {
+            $this->environmentalEmission = [];
+        }
+
         $this->environmentalEmission[0] = $environmentalEmission;
 
         return $this;
@@ -657,6 +701,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToEnvironmentalEmissionWithCreate(): EnvironmentalEmission
     {
+        if (!is_array($this->environmentalEmission)) {
+            $this->environmentalEmission = [];
+        }
+
         if ($this->environmentalEmission === []) {
             $this->addOnceToenvironmentalEmission(new EnvironmentalEmission());
         }
@@ -720,6 +768,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToNotificationRequirement(NotificationRequirement $notificationRequirement): self
     {
+        if (!is_array($this->notificationRequirement)) {
+            $this->notificationRequirement = [];
+        }
+
         $this->notificationRequirement[0] = $notificationRequirement;
 
         return $this;
@@ -730,6 +782,10 @@ class TransportExecutionTermsType
      */
     public function addOnceToNotificationRequirementWithCreate(): NotificationRequirement
     {
+        if (!is_array($this->notificationRequirement)) {
+            $this->notificationRequirement = [];
+        }
+
         if ($this->notificationRequirement === []) {
             $this->addOnceTonotificationRequirement(new NotificationRequirement());
         }

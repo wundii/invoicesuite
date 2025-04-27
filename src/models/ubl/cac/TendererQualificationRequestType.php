@@ -254,6 +254,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToPersonalSituation(PersonalSituation $personalSituation): self
     {
+        if (!is_array($this->personalSituation)) {
+            $this->personalSituation = [];
+        }
+
         $this->personalSituation[0] = $personalSituation;
 
         return $this;
@@ -264,6 +268,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToPersonalSituationWithCreate(): PersonalSituation
     {
+        if (!is_array($this->personalSituation)) {
+            $this->personalSituation = [];
+        }
+
         if ($this->personalSituation === []) {
             $this->addOnceTopersonalSituation(new PersonalSituation());
         }
@@ -385,6 +393,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -395,6 +407,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -460,6 +476,10 @@ class TendererQualificationRequestType
     public function addOnceToRequiredBusinessClassificationScheme(
         RequiredBusinessClassificationScheme $requiredBusinessClassificationScheme,
     ): self {
+        if (!is_array($this->requiredBusinessClassificationScheme)) {
+            $this->requiredBusinessClassificationScheme = [];
+        }
+
         $this->requiredBusinessClassificationScheme[0] = $requiredBusinessClassificationScheme;
 
         return $this;
@@ -470,6 +490,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToRequiredBusinessClassificationSchemeWithCreate(): RequiredBusinessClassificationScheme
     {
+        if (!is_array($this->requiredBusinessClassificationScheme)) {
+            $this->requiredBusinessClassificationScheme = [];
+        }
+
         if ($this->requiredBusinessClassificationScheme === []) {
             $this->addOnceTorequiredBusinessClassificationScheme(new RequiredBusinessClassificationScheme());
         }
@@ -535,6 +559,10 @@ class TendererQualificationRequestType
     public function addOnceToTechnicalEvaluationCriterion(
         TechnicalEvaluationCriterion $technicalEvaluationCriterion,
     ): self {
+        if (!is_array($this->technicalEvaluationCriterion)) {
+            $this->technicalEvaluationCriterion = [];
+        }
+
         $this->technicalEvaluationCriterion[0] = $technicalEvaluationCriterion;
 
         return $this;
@@ -545,6 +573,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToTechnicalEvaluationCriterionWithCreate(): TechnicalEvaluationCriterion
     {
+        if (!is_array($this->technicalEvaluationCriterion)) {
+            $this->technicalEvaluationCriterion = [];
+        }
+
         if ($this->technicalEvaluationCriterion === []) {
             $this->addOnceTotechnicalEvaluationCriterion(new TechnicalEvaluationCriterion());
         }
@@ -610,6 +642,10 @@ class TendererQualificationRequestType
     public function addOnceToFinancialEvaluationCriterion(
         FinancialEvaluationCriterion $financialEvaluationCriterion,
     ): self {
+        if (!is_array($this->financialEvaluationCriterion)) {
+            $this->financialEvaluationCriterion = [];
+        }
+
         $this->financialEvaluationCriterion[0] = $financialEvaluationCriterion;
 
         return $this;
@@ -620,6 +656,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToFinancialEvaluationCriterionWithCreate(): FinancialEvaluationCriterion
     {
+        if (!is_array($this->financialEvaluationCriterion)) {
+            $this->financialEvaluationCriterion = [];
+        }
+
         if ($this->financialEvaluationCriterion === []) {
             $this->addOnceTofinancialEvaluationCriterion(new FinancialEvaluationCriterion());
         }
@@ -684,6 +724,10 @@ class TendererQualificationRequestType
     public function addOnceToSpecificTendererRequirement(
         SpecificTendererRequirement $specificTendererRequirement,
     ): self {
+        if (!is_array($this->specificTendererRequirement)) {
+            $this->specificTendererRequirement = [];
+        }
+
         $this->specificTendererRequirement[0] = $specificTendererRequirement;
 
         return $this;
@@ -694,6 +738,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToSpecificTendererRequirementWithCreate(): SpecificTendererRequirement
     {
+        if (!is_array($this->specificTendererRequirement)) {
+            $this->specificTendererRequirement = [];
+        }
+
         if ($this->specificTendererRequirement === []) {
             $this->addOnceTospecificTendererRequirement(new SpecificTendererRequirement());
         }
@@ -757,6 +805,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToEconomicOperatorRole(EconomicOperatorRole $economicOperatorRole): self
     {
+        if (!is_array($this->economicOperatorRole)) {
+            $this->economicOperatorRole = [];
+        }
+
         $this->economicOperatorRole[0] = $economicOperatorRole;
 
         return $this;
@@ -767,6 +819,10 @@ class TendererQualificationRequestType
      */
     public function addOnceToEconomicOperatorRoleWithCreate(): EconomicOperatorRole
     {
+        if (!is_array($this->economicOperatorRole)) {
+            $this->economicOperatorRole = [];
+        }
+
         if ($this->economicOperatorRole === []) {
             $this->addOnceToeconomicOperatorRole(new EconomicOperatorRole());
         }

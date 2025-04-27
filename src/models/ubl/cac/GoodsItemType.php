@@ -592,6 +592,10 @@ class GoodsItemType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -602,6 +606,10 @@ class GoodsItemType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -1285,6 +1293,10 @@ class GoodsItemType
      */
     public function addOnceToItem(Item $item): self
     {
+        if (!is_array($this->item)) {
+            $this->item = [];
+        }
+
         $this->item[0] = $item;
 
         return $this;
@@ -1295,6 +1307,10 @@ class GoodsItemType
      */
     public function addOnceToItemWithCreate(): Item
     {
+        if (!is_array($this->item)) {
+            $this->item = [];
+        }
+
         if ($this->item === []) {
             $this->addOnceToitem(new Item());
         }
@@ -1358,6 +1374,10 @@ class GoodsItemType
      */
     public function addOnceToGoodsItemContainer(GoodsItemContainer $goodsItemContainer): self
     {
+        if (!is_array($this->goodsItemContainer)) {
+            $this->goodsItemContainer = [];
+        }
+
         $this->goodsItemContainer[0] = $goodsItemContainer;
 
         return $this;
@@ -1368,6 +1388,10 @@ class GoodsItemType
      */
     public function addOnceToGoodsItemContainerWithCreate(): GoodsItemContainer
     {
+        if (!is_array($this->goodsItemContainer)) {
+            $this->goodsItemContainer = [];
+        }
+
         if ($this->goodsItemContainer === []) {
             $this->addOnceTogoodsItemContainer(new GoodsItemContainer());
         }
@@ -1431,6 +1455,10 @@ class GoodsItemType
      */
     public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
 
         return $this;
@@ -1441,6 +1469,10 @@ class GoodsItemType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         if ($this->freightAllowanceCharge === []) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
@@ -1504,6 +1536,10 @@ class GoodsItemType
      */
     public function addOnceToInvoiceLine(InvoiceLine $invoiceLine): self
     {
+        if (!is_array($this->invoiceLine)) {
+            $this->invoiceLine = [];
+        }
+
         $this->invoiceLine[0] = $invoiceLine;
 
         return $this;
@@ -1514,6 +1550,10 @@ class GoodsItemType
      */
     public function addOnceToInvoiceLineWithCreate(): InvoiceLine
     {
+        if (!is_array($this->invoiceLine)) {
+            $this->invoiceLine = [];
+        }
+
         if ($this->invoiceLine === []) {
             $this->addOnceToinvoiceLine(new InvoiceLine());
         }
@@ -1577,6 +1617,10 @@ class GoodsItemType
      */
     public function addOnceToTemperature(Temperature $temperature): self
     {
+        if (!is_array($this->temperature)) {
+            $this->temperature = [];
+        }
+
         $this->temperature[0] = $temperature;
 
         return $this;
@@ -1587,6 +1631,10 @@ class GoodsItemType
      */
     public function addOnceToTemperatureWithCreate(): Temperature
     {
+        if (!is_array($this->temperature)) {
+            $this->temperature = [];
+        }
+
         if ($this->temperature === []) {
             $this->addOnceTotemperature(new Temperature());
         }
@@ -1650,6 +1698,10 @@ class GoodsItemType
      */
     public function addOnceToContainedGoodsItem(ContainedGoodsItem $containedGoodsItem): self
     {
+        if (!is_array($this->containedGoodsItem)) {
+            $this->containedGoodsItem = [];
+        }
+
         $this->containedGoodsItem[0] = $containedGoodsItem;
 
         return $this;
@@ -1660,6 +1712,10 @@ class GoodsItemType
      */
     public function addOnceToContainedGoodsItemWithCreate(): ContainedGoodsItem
     {
+        if (!is_array($this->containedGoodsItem)) {
+            $this->containedGoodsItem = [];
+        }
+
         if ($this->containedGoodsItem === []) {
             $this->addOnceTocontainedGoodsItem(new ContainedGoodsItem());
         }
@@ -1839,6 +1895,10 @@ class GoodsItemType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -1849,6 +1909,10 @@ class GoodsItemType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
@@ -1912,6 +1976,10 @@ class GoodsItemType
      */
     public function addOnceToContainingPackage(ContainingPackage $containingPackage): self
     {
+        if (!is_array($this->containingPackage)) {
+            $this->containingPackage = [];
+        }
+
         $this->containingPackage[0] = $containingPackage;
 
         return $this;
@@ -1922,6 +1990,10 @@ class GoodsItemType
      */
     public function addOnceToContainingPackageWithCreate(): ContainingPackage
     {
+        if (!is_array($this->containingPackage)) {
+            $this->containingPackage = [];
+        }
+
         if ($this->containingPackage === []) {
             $this->addOnceTocontainingPackage(new ContainingPackage());
         }

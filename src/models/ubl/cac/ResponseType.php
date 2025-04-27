@@ -191,6 +191,10 @@ class ResponseType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -201,6 +205,10 @@ class ResponseType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -302,6 +310,10 @@ class ResponseType
      */
     public function addOnceToStatus(Status $status): self
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         $this->status[0] = $status;
 
         return $this;
@@ -312,6 +324,10 @@ class ResponseType
      */
     public function addOnceToStatusWithCreate(): Status
     {
+        if (!is_array($this->status)) {
+            $this->status = [];
+        }
+
         if ($this->status === []) {
             $this->addOnceTostatus(new Status());
         }

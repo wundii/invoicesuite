@@ -223,6 +223,10 @@ class TelecommunicationsSupplyType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -233,6 +237,10 @@ class TelecommunicationsSupplyType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -327,6 +335,10 @@ class TelecommunicationsSupplyType
     public function addOnceToTelecommunicationsSupplyLine(
         TelecommunicationsSupplyLine $telecommunicationsSupplyLine,
     ): self {
+        if (!is_array($this->telecommunicationsSupplyLine)) {
+            $this->telecommunicationsSupplyLine = [];
+        }
+
         $this->telecommunicationsSupplyLine[0] = $telecommunicationsSupplyLine;
 
         return $this;
@@ -337,6 +349,10 @@ class TelecommunicationsSupplyType
      */
     public function addOnceToTelecommunicationsSupplyLineWithCreate(): TelecommunicationsSupplyLine
     {
+        if (!is_array($this->telecommunicationsSupplyLine)) {
+            $this->telecommunicationsSupplyLine = [];
+        }
+
         if ($this->telecommunicationsSupplyLine === []) {
             $this->addOnceTotelecommunicationsSupplyLine(new TelecommunicationsSupplyLine());
         }

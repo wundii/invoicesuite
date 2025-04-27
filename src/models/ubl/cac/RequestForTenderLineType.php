@@ -310,6 +310,10 @@ class RequestForTenderLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -320,6 +324,10 @@ class RequestForTenderLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -576,6 +584,10 @@ class RequestForTenderLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -586,6 +598,10 @@ class RequestForTenderLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -649,6 +665,10 @@ class RequestForTenderLineType
      */
     public function addOnceToDeliveryPeriod(DeliveryPeriod $deliveryPeriod): self
     {
+        if (!is_array($this->deliveryPeriod)) {
+            $this->deliveryPeriod = [];
+        }
+
         $this->deliveryPeriod[0] = $deliveryPeriod;
 
         return $this;
@@ -659,6 +679,10 @@ class RequestForTenderLineType
      */
     public function addOnceToDeliveryPeriodWithCreate(): DeliveryPeriod
     {
+        if (!is_array($this->deliveryPeriod)) {
+            $this->deliveryPeriod = [];
+        }
+
         if ($this->deliveryPeriod === []) {
             $this->addOnceTodeliveryPeriod(new DeliveryPeriod());
         }
@@ -724,6 +748,10 @@ class RequestForTenderLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): self {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
 
         return $this;
@@ -734,6 +762,10 @@ class RequestForTenderLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         if ($this->requiredItemLocationQuantity === []) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
@@ -855,6 +887,10 @@ class RequestForTenderLineType
      */
     public function addOnceToSubRequestForTenderLine(SubRequestForTenderLine $subRequestForTenderLine): self
     {
+        if (!is_array($this->subRequestForTenderLine)) {
+            $this->subRequestForTenderLine = [];
+        }
+
         $this->subRequestForTenderLine[0] = $subRequestForTenderLine;
 
         return $this;
@@ -865,6 +901,10 @@ class RequestForTenderLineType
      */
     public function addOnceToSubRequestForTenderLineWithCreate(): SubRequestForTenderLine
     {
+        if (!is_array($this->subRequestForTenderLine)) {
+            $this->subRequestForTenderLine = [];
+        }
+
         if ($this->subRequestForTenderLine === []) {
             $this->addOnceTosubRequestForTenderLine(new SubRequestForTenderLine());
         }

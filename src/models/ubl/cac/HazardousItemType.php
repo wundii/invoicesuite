@@ -423,6 +423,10 @@ class HazardousItemType
      */
     public function addOnceToAdditionalInformation(AdditionalInformation $additionalInformation): self
     {
+        if (!is_array($this->additionalInformation)) {
+            $this->additionalInformation = [];
+        }
+
         $this->additionalInformation[0] = $additionalInformation;
 
         return $this;
@@ -433,6 +437,10 @@ class HazardousItemType
      */
     public function addOnceToAdditionalInformationWithCreate(): AdditionalInformation
     {
+        if (!is_array($this->additionalInformation)) {
+            $this->additionalInformation = [];
+        }
+
         if ($this->additionalInformation === []) {
             $this->addOnceToadditionalInformation(new AdditionalInformation());
         }
@@ -902,6 +910,10 @@ class HazardousItemType
      */
     public function addOnceToSecondaryHazard(SecondaryHazard $secondaryHazard): self
     {
+        if (!is_array($this->secondaryHazard)) {
+            $this->secondaryHazard = [];
+        }
+
         $this->secondaryHazard[0] = $secondaryHazard;
 
         return $this;
@@ -912,6 +924,10 @@ class HazardousItemType
      */
     public function addOnceToSecondaryHazardWithCreate(): SecondaryHazard
     {
+        if (!is_array($this->secondaryHazard)) {
+            $this->secondaryHazard = [];
+        }
+
         if ($this->secondaryHazard === []) {
             $this->addOnceTosecondaryHazard(new SecondaryHazard());
         }
@@ -975,6 +991,10 @@ class HazardousItemType
      */
     public function addOnceToHazardousGoodsTransit(HazardousGoodsTransit $hazardousGoodsTransit): self
     {
+        if (!is_array($this->hazardousGoodsTransit)) {
+            $this->hazardousGoodsTransit = [];
+        }
+
         $this->hazardousGoodsTransit[0] = $hazardousGoodsTransit;
 
         return $this;
@@ -985,6 +1005,10 @@ class HazardousItemType
      */
     public function addOnceToHazardousGoodsTransitWithCreate(): HazardousGoodsTransit
     {
+        if (!is_array($this->hazardousGoodsTransit)) {
+            $this->hazardousGoodsTransit = [];
+        }
+
         if ($this->hazardousGoodsTransit === []) {
             $this->addOnceTohazardousGoodsTransit(new HazardousGoodsTransit());
         }
@@ -1106,6 +1130,10 @@ class HazardousItemType
      */
     public function addOnceToAdditionalTemperature(AdditionalTemperature $additionalTemperature): self
     {
+        if (!is_array($this->additionalTemperature)) {
+            $this->additionalTemperature = [];
+        }
+
         $this->additionalTemperature[0] = $additionalTemperature;
 
         return $this;
@@ -1116,6 +1144,10 @@ class HazardousItemType
      */
     public function addOnceToAdditionalTemperatureWithCreate(): AdditionalTemperature
     {
+        if (!is_array($this->additionalTemperature)) {
+            $this->additionalTemperature = [];
+        }
+
         if ($this->additionalTemperature === []) {
             $this->addOnceToadditionalTemperature(new AdditionalTemperature());
         }

@@ -298,6 +298,10 @@ class ItemManagementProfileType
     public function addOnceToReplenishmentOwnerDescription(
         ReplenishmentOwnerDescription $replenishmentOwnerDescription,
     ): self {
+        if (!is_array($this->replenishmentOwnerDescription)) {
+            $this->replenishmentOwnerDescription = [];
+        }
+
         $this->replenishmentOwnerDescription[0] = $replenishmentOwnerDescription;
 
         return $this;
@@ -308,6 +312,10 @@ class ItemManagementProfileType
      */
     public function addOnceToReplenishmentOwnerDescriptionWithCreate(): ReplenishmentOwnerDescription
     {
+        if (!is_array($this->replenishmentOwnerDescription)) {
+            $this->replenishmentOwnerDescription = [];
+        }
+
         if ($this->replenishmentOwnerDescription === []) {
             $this->addOnceToreplenishmentOwnerDescription(new ReplenishmentOwnerDescription());
         }

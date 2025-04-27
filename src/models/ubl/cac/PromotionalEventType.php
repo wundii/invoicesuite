@@ -205,6 +205,10 @@ class PromotionalEventType
      */
     public function addOnceToPromotionalSpecification(PromotionalSpecification $promotionalSpecification): self
     {
+        if (!is_array($this->promotionalSpecification)) {
+            $this->promotionalSpecification = [];
+        }
+
         $this->promotionalSpecification[0] = $promotionalSpecification;
 
         return $this;
@@ -215,6 +219,10 @@ class PromotionalEventType
      */
     public function addOnceToPromotionalSpecificationWithCreate(): PromotionalSpecification
     {
+        if (!is_array($this->promotionalSpecification)) {
+            $this->promotionalSpecification = [];
+        }
+
         if ($this->promotionalSpecification === []) {
             $this->addOnceTopromotionalSpecification(new PromotionalSpecification());
         }

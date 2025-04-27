@@ -193,6 +193,10 @@ class FrameworkAgreementType
      */
     public function addOnceToJustification(Justification $justification): self
     {
+        if (!is_array($this->justification)) {
+            $this->justification = [];
+        }
+
         $this->justification[0] = $justification;
 
         return $this;
@@ -203,6 +207,10 @@ class FrameworkAgreementType
      */
     public function addOnceToJustificationWithCreate(): Justification
     {
+        if (!is_array($this->justification)) {
+            $this->justification = [];
+        }
+
         if ($this->justification === []) {
             $this->addOnceTojustification(new Justification());
         }
@@ -266,6 +274,10 @@ class FrameworkAgreementType
      */
     public function addOnceToFrequency(Frequency $frequency): self
     {
+        if (!is_array($this->frequency)) {
+            $this->frequency = [];
+        }
+
         $this->frequency[0] = $frequency;
 
         return $this;
@@ -276,6 +288,10 @@ class FrameworkAgreementType
      */
     public function addOnceToFrequencyWithCreate(): Frequency
     {
+        if (!is_array($this->frequency)) {
+            $this->frequency = [];
+        }
+
         if ($this->frequency === []) {
             $this->addOnceTofrequency(new Frequency());
         }
@@ -370,6 +386,10 @@ class FrameworkAgreementType
     public function addOnceToSubsequentProcessTenderRequirement(
         SubsequentProcessTenderRequirement $subsequentProcessTenderRequirement,
     ): self {
+        if (!is_array($this->subsequentProcessTenderRequirement)) {
+            $this->subsequentProcessTenderRequirement = [];
+        }
+
         $this->subsequentProcessTenderRequirement[0] = $subsequentProcessTenderRequirement;
 
         return $this;
@@ -380,6 +400,10 @@ class FrameworkAgreementType
      */
     public function addOnceToSubsequentProcessTenderRequirementWithCreate(): SubsequentProcessTenderRequirement
     {
+        if (!is_array($this->subsequentProcessTenderRequirement)) {
+            $this->subsequentProcessTenderRequirement = [];
+        }
+
         if ($this->subsequentProcessTenderRequirement === []) {
             $this->addOnceTosubsequentProcessTenderRequirement(new SubsequentProcessTenderRequirement());
         }

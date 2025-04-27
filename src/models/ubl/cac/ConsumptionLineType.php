@@ -336,6 +336,10 @@ class ConsumptionLineType
      */
     public function addOnceToDelivery(Delivery $delivery): self
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         $this->delivery[0] = $delivery;
 
         return $this;
@@ -346,6 +350,10 @@ class ConsumptionLineType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         if ($this->delivery === []) {
             $this->addOnceTodelivery(new Delivery());
         }
@@ -409,6 +417,10 @@ class ConsumptionLineType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -419,6 +431,10 @@ class ConsumptionLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -482,6 +498,10 @@ class ConsumptionLineType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -492,6 +512,10 @@ class ConsumptionLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }

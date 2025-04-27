@@ -434,6 +434,10 @@ class DocumentReferenceType
      */
     public function addOnceToXPath(XPath $xPath): self
     {
+        if (!is_array($this->xPath)) {
+            $this->xPath = [];
+        }
+
         $this->xPath[0] = $xPath;
 
         return $this;
@@ -444,6 +448,10 @@ class DocumentReferenceType
      */
     public function addOnceToXPathWithCreate(): XPath
     {
+        if (!is_array($this->xPath)) {
+            $this->xPath = [];
+        }
+
         if ($this->xPath === []) {
             $this->addOnceToxPath(new XPath());
         }
@@ -623,6 +631,10 @@ class DocumentReferenceType
      */
     public function addOnceToDocumentDescription(DocumentDescription $documentDescription): self
     {
+        if (!is_array($this->documentDescription)) {
+            $this->documentDescription = [];
+        }
+
         $this->documentDescription[0] = $documentDescription;
 
         return $this;
@@ -633,6 +645,10 @@ class DocumentReferenceType
      */
     public function addOnceToDocumentDescriptionWithCreate(): DocumentDescription
     {
+        if (!is_array($this->documentDescription)) {
+            $this->documentDescription = [];
+        }
+
         if ($this->documentDescription === []) {
             $this->addOnceTodocumentDescription(new DocumentDescription());
         }

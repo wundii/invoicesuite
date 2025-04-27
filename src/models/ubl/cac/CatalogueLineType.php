@@ -543,6 +543,10 @@ class CatalogueLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -553,6 +557,10 @@ class CatalogueLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -781,6 +789,10 @@ class CatalogueLineType
      */
     public function addOnceToWarrantyInformation(WarrantyInformation $warrantyInformation): self
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         $this->warrantyInformation[0] = $warrantyInformation;
 
         return $this;
@@ -791,6 +803,10 @@ class CatalogueLineType
      */
     public function addOnceToWarrantyInformationWithCreate(): WarrantyInformation
     {
+        if (!is_array($this->warrantyInformation)) {
+            $this->warrantyInformation = [];
+        }
+
         if ($this->warrantyInformation === []) {
             $this->addOnceTowarrantyInformation(new WarrantyInformation());
         }
@@ -1028,6 +1044,10 @@ class CatalogueLineType
      */
     public function addOnceToItemComparison(ItemComparison $itemComparison): self
     {
+        if (!is_array($this->itemComparison)) {
+            $this->itemComparison = [];
+        }
+
         $this->itemComparison[0] = $itemComparison;
 
         return $this;
@@ -1038,6 +1058,10 @@ class CatalogueLineType
      */
     public function addOnceToItemComparisonWithCreate(): ItemComparison
     {
+        if (!is_array($this->itemComparison)) {
+            $this->itemComparison = [];
+        }
+
         if ($this->itemComparison === []) {
             $this->addOnceToitemComparison(new ItemComparison());
         }
@@ -1101,6 +1125,10 @@ class CatalogueLineType
      */
     public function addOnceToComponentRelatedItem(ComponentRelatedItem $componentRelatedItem): self
     {
+        if (!is_array($this->componentRelatedItem)) {
+            $this->componentRelatedItem = [];
+        }
+
         $this->componentRelatedItem[0] = $componentRelatedItem;
 
         return $this;
@@ -1111,6 +1139,10 @@ class CatalogueLineType
      */
     public function addOnceToComponentRelatedItemWithCreate(): ComponentRelatedItem
     {
+        if (!is_array($this->componentRelatedItem)) {
+            $this->componentRelatedItem = [];
+        }
+
         if ($this->componentRelatedItem === []) {
             $this->addOnceTocomponentRelatedItem(new ComponentRelatedItem());
         }
@@ -1174,6 +1206,10 @@ class CatalogueLineType
      */
     public function addOnceToAccessoryRelatedItem(AccessoryRelatedItem $accessoryRelatedItem): self
     {
+        if (!is_array($this->accessoryRelatedItem)) {
+            $this->accessoryRelatedItem = [];
+        }
+
         $this->accessoryRelatedItem[0] = $accessoryRelatedItem;
 
         return $this;
@@ -1184,6 +1220,10 @@ class CatalogueLineType
      */
     public function addOnceToAccessoryRelatedItemWithCreate(): AccessoryRelatedItem
     {
+        if (!is_array($this->accessoryRelatedItem)) {
+            $this->accessoryRelatedItem = [];
+        }
+
         if ($this->accessoryRelatedItem === []) {
             $this->addOnceToaccessoryRelatedItem(new AccessoryRelatedItem());
         }
@@ -1247,6 +1287,10 @@ class CatalogueLineType
      */
     public function addOnceToRequiredRelatedItem(RequiredRelatedItem $requiredRelatedItem): self
     {
+        if (!is_array($this->requiredRelatedItem)) {
+            $this->requiredRelatedItem = [];
+        }
+
         $this->requiredRelatedItem[0] = $requiredRelatedItem;
 
         return $this;
@@ -1257,6 +1301,10 @@ class CatalogueLineType
      */
     public function addOnceToRequiredRelatedItemWithCreate(): RequiredRelatedItem
     {
+        if (!is_array($this->requiredRelatedItem)) {
+            $this->requiredRelatedItem = [];
+        }
+
         if ($this->requiredRelatedItem === []) {
             $this->addOnceTorequiredRelatedItem(new RequiredRelatedItem());
         }
@@ -1320,6 +1368,10 @@ class CatalogueLineType
      */
     public function addOnceToReplacementRelatedItem(ReplacementRelatedItem $replacementRelatedItem): self
     {
+        if (!is_array($this->replacementRelatedItem)) {
+            $this->replacementRelatedItem = [];
+        }
+
         $this->replacementRelatedItem[0] = $replacementRelatedItem;
 
         return $this;
@@ -1330,6 +1382,10 @@ class CatalogueLineType
      */
     public function addOnceToReplacementRelatedItemWithCreate(): ReplacementRelatedItem
     {
+        if (!is_array($this->replacementRelatedItem)) {
+            $this->replacementRelatedItem = [];
+        }
+
         if ($this->replacementRelatedItem === []) {
             $this->addOnceToreplacementRelatedItem(new ReplacementRelatedItem());
         }
@@ -1393,6 +1449,10 @@ class CatalogueLineType
      */
     public function addOnceToComplementaryRelatedItem(ComplementaryRelatedItem $complementaryRelatedItem): self
     {
+        if (!is_array($this->complementaryRelatedItem)) {
+            $this->complementaryRelatedItem = [];
+        }
+
         $this->complementaryRelatedItem[0] = $complementaryRelatedItem;
 
         return $this;
@@ -1403,6 +1463,10 @@ class CatalogueLineType
      */
     public function addOnceToComplementaryRelatedItemWithCreate(): ComplementaryRelatedItem
     {
+        if (!is_array($this->complementaryRelatedItem)) {
+            $this->complementaryRelatedItem = [];
+        }
+
         if ($this->complementaryRelatedItem === []) {
             $this->addOnceTocomplementaryRelatedItem(new ComplementaryRelatedItem());
         }
@@ -1466,6 +1530,10 @@ class CatalogueLineType
      */
     public function addOnceToReplacedRelatedItem(ReplacedRelatedItem $replacedRelatedItem): self
     {
+        if (!is_array($this->replacedRelatedItem)) {
+            $this->replacedRelatedItem = [];
+        }
+
         $this->replacedRelatedItem[0] = $replacedRelatedItem;
 
         return $this;
@@ -1476,6 +1544,10 @@ class CatalogueLineType
      */
     public function addOnceToReplacedRelatedItemWithCreate(): ReplacedRelatedItem
     {
+        if (!is_array($this->replacedRelatedItem)) {
+            $this->replacedRelatedItem = [];
+        }
+
         if ($this->replacedRelatedItem === []) {
             $this->addOnceToreplacedRelatedItem(new ReplacedRelatedItem());
         }
@@ -1541,6 +1613,10 @@ class CatalogueLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): self {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
 
         return $this;
@@ -1551,6 +1627,10 @@ class CatalogueLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         if ($this->requiredItemLocationQuantity === []) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }
@@ -1614,6 +1694,10 @@ class CatalogueLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -1624,6 +1708,10 @@ class CatalogueLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -1716,6 +1804,10 @@ class CatalogueLineType
      */
     public function addOnceToKeywordItemProperty(KeywordItemProperty $keywordItemProperty): self
     {
+        if (!is_array($this->keywordItemProperty)) {
+            $this->keywordItemProperty = [];
+        }
+
         $this->keywordItemProperty[0] = $keywordItemProperty;
 
         return $this;
@@ -1726,6 +1818,10 @@ class CatalogueLineType
      */
     public function addOnceToKeywordItemPropertyWithCreate(): KeywordItemProperty
     {
+        if (!is_array($this->keywordItemProperty)) {
+            $this->keywordItemProperty = [];
+        }
+
         if ($this->keywordItemProperty === []) {
             $this->addOnceTokeywordItemProperty(new KeywordItemProperty());
         }

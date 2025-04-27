@@ -309,6 +309,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToTradingRestrictions(TradingRestrictions $tradingRestrictions): self
     {
+        if (!is_array($this->tradingRestrictions)) {
+            $this->tradingRestrictions = [];
+        }
+
         $this->tradingRestrictions[0] = $tradingRestrictions;
 
         return $this;
@@ -319,6 +323,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToTradingRestrictionsWithCreate(): TradingRestrictions
     {
+        if (!is_array($this->tradingRestrictions)) {
+            $this->tradingRestrictions = [];
+        }
+
         if ($this->tradingRestrictions === []) {
             $this->addOnceTotradingRestrictions(new TradingRestrictions());
         }
@@ -382,6 +390,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTerritoryAddress(ApplicableTerritoryAddress $applicableTerritoryAddress): self
     {
+        if (!is_array($this->applicableTerritoryAddress)) {
+            $this->applicableTerritoryAddress = [];
+        }
+
         $this->applicableTerritoryAddress[0] = $applicableTerritoryAddress;
 
         return $this;
@@ -392,6 +404,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTerritoryAddressWithCreate(): ApplicableTerritoryAddress
     {
+        if (!is_array($this->applicableTerritoryAddress)) {
+            $this->applicableTerritoryAddress = [];
+        }
+
         if ($this->applicableTerritoryAddress === []) {
             $this->addOnceToapplicableTerritoryAddress(new ApplicableTerritoryAddress());
         }
@@ -484,6 +500,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToDeliveryUnit(DeliveryUnit $deliveryUnit): self
     {
+        if (!is_array($this->deliveryUnit)) {
+            $this->deliveryUnit = [];
+        }
+
         $this->deliveryUnit[0] = $deliveryUnit;
 
         return $this;
@@ -494,6 +514,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
     {
+        if (!is_array($this->deliveryUnit)) {
+            $this->deliveryUnit = [];
+        }
+
         if ($this->deliveryUnit === []) {
             $this->addOnceTodeliveryUnit(new DeliveryUnit());
         }
@@ -557,6 +581,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTaxCategory(ApplicableTaxCategory $applicableTaxCategory): self
     {
+        if (!is_array($this->applicableTaxCategory)) {
+            $this->applicableTaxCategory = [];
+        }
+
         $this->applicableTaxCategory[0] = $applicableTaxCategory;
 
         return $this;
@@ -567,6 +595,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToApplicableTaxCategoryWithCreate(): ApplicableTaxCategory
     {
+        if (!is_array($this->applicableTaxCategory)) {
+            $this->applicableTaxCategory = [];
+        }
+
         if ($this->applicableTaxCategory === []) {
             $this->addOnceToapplicableTaxCategory(new ApplicableTaxCategory());
         }
@@ -659,6 +691,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -669,6 +705,10 @@ class ItemLocationQuantityType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }

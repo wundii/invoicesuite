@@ -216,6 +216,10 @@ class TaxTotalType
      */
     public function addOnceToTaxSubtotal(TaxSubtotal $taxSubtotal): self
     {
+        if (!is_array($this->taxSubtotal)) {
+            $this->taxSubtotal = [];
+        }
+
         $this->taxSubtotal[0] = $taxSubtotal;
 
         return $this;
@@ -226,6 +230,10 @@ class TaxTotalType
      */
     public function addOnceToTaxSubtotalWithCreate(): TaxSubtotal
     {
+        if (!is_array($this->taxSubtotal)) {
+            $this->taxSubtotal = [];
+        }
+
         if ($this->taxSubtotal === []) {
             $this->addOnceTotaxSubtotal(new TaxSubtotal());
         }

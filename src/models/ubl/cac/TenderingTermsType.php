@@ -671,6 +671,10 @@ class TenderingTermsType
     public function addOnceToAcceptedVariantsDescription(
         AcceptedVariantsDescription $acceptedVariantsDescription,
     ): self {
+        if (!is_array($this->acceptedVariantsDescription)) {
+            $this->acceptedVariantsDescription = [];
+        }
+
         $this->acceptedVariantsDescription[0] = $acceptedVariantsDescription;
 
         return $this;
@@ -681,6 +685,10 @@ class TenderingTermsType
      */
     public function addOnceToAcceptedVariantsDescriptionWithCreate(): AcceptedVariantsDescription
     {
+        if (!is_array($this->acceptedVariantsDescription)) {
+            $this->acceptedVariantsDescription = [];
+        }
+
         if ($this->acceptedVariantsDescription === []) {
             $this->addOnceToacceptedVariantsDescription(new AcceptedVariantsDescription());
         }
@@ -746,6 +754,10 @@ class TenderingTermsType
     public function addOnceToPriceRevisionFormulaDescription(
         PriceRevisionFormulaDescription $priceRevisionFormulaDescription,
     ): self {
+        if (!is_array($this->priceRevisionFormulaDescription)) {
+            $this->priceRevisionFormulaDescription = [];
+        }
+
         $this->priceRevisionFormulaDescription[0] = $priceRevisionFormulaDescription;
 
         return $this;
@@ -756,6 +768,10 @@ class TenderingTermsType
      */
     public function addOnceToPriceRevisionFormulaDescriptionWithCreate(): PriceRevisionFormulaDescription
     {
+        if (!is_array($this->priceRevisionFormulaDescription)) {
+            $this->priceRevisionFormulaDescription = [];
+        }
+
         if ($this->priceRevisionFormulaDescription === []) {
             $this->addOnceTopriceRevisionFormulaDescription(new PriceRevisionFormulaDescription());
         }
@@ -848,6 +864,10 @@ class TenderingTermsType
      */
     public function addOnceToFundingProgram(FundingProgram $fundingProgram): self
     {
+        if (!is_array($this->fundingProgram)) {
+            $this->fundingProgram = [];
+        }
+
         $this->fundingProgram[0] = $fundingProgram;
 
         return $this;
@@ -858,6 +878,10 @@ class TenderingTermsType
      */
     public function addOnceToFundingProgramWithCreate(): FundingProgram
     {
+        if (!is_array($this->fundingProgram)) {
+            $this->fundingProgram = [];
+        }
+
         if ($this->fundingProgram === []) {
             $this->addOnceTofundingProgram(new FundingProgram());
         }
@@ -950,6 +974,10 @@ class TenderingTermsType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -960,6 +988,10 @@ class TenderingTermsType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -1119,6 +1151,10 @@ class TenderingTermsType
      */
     public function addOnceToAdditionalConditions(AdditionalConditions $additionalConditions): self
     {
+        if (!is_array($this->additionalConditions)) {
+            $this->additionalConditions = [];
+        }
+
         $this->additionalConditions[0] = $additionalConditions;
 
         return $this;
@@ -1129,6 +1165,10 @@ class TenderingTermsType
      */
     public function addOnceToAdditionalConditionsWithCreate(): AdditionalConditions
     {
+        if (!is_array($this->additionalConditions)) {
+            $this->additionalConditions = [];
+        }
+
         if ($this->additionalConditions === []) {
             $this->addOnceToadditionalConditions(new AdditionalConditions());
         }
@@ -1240,6 +1280,10 @@ class TenderingTermsType
      */
     public function addOnceToPenaltyClause(PenaltyClause $penaltyClause): self
     {
+        if (!is_array($this->penaltyClause)) {
+            $this->penaltyClause = [];
+        }
+
         $this->penaltyClause[0] = $penaltyClause;
 
         return $this;
@@ -1250,6 +1294,10 @@ class TenderingTermsType
      */
     public function addOnceToPenaltyClauseWithCreate(): PenaltyClause
     {
+        if (!is_array($this->penaltyClause)) {
+            $this->penaltyClause = [];
+        }
+
         if ($this->penaltyClause === []) {
             $this->addOnceTopenaltyClause(new PenaltyClause());
         }
@@ -1313,6 +1361,10 @@ class TenderingTermsType
      */
     public function addOnceToRequiredFinancialGuarantee(RequiredFinancialGuarantee $requiredFinancialGuarantee): self
     {
+        if (!is_array($this->requiredFinancialGuarantee)) {
+            $this->requiredFinancialGuarantee = [];
+        }
+
         $this->requiredFinancialGuarantee[0] = $requiredFinancialGuarantee;
 
         return $this;
@@ -1323,6 +1375,10 @@ class TenderingTermsType
      */
     public function addOnceToRequiredFinancialGuaranteeWithCreate(): RequiredFinancialGuarantee
     {
+        if (!is_array($this->requiredFinancialGuarantee)) {
+            $this->requiredFinancialGuarantee = [];
+        }
+
         if ($this->requiredFinancialGuarantee === []) {
             $this->addOnceTorequiredFinancialGuarantee(new RequiredFinancialGuarantee());
         }
@@ -1508,6 +1564,10 @@ class TenderingTermsType
     public function addOnceToContractualDocumentReference(
         ContractualDocumentReference $contractualDocumentReference,
     ): self {
+        if (!is_array($this->contractualDocumentReference)) {
+            $this->contractualDocumentReference = [];
+        }
+
         $this->contractualDocumentReference[0] = $contractualDocumentReference;
 
         return $this;
@@ -1518,6 +1578,10 @@ class TenderingTermsType
      */
     public function addOnceToContractualDocumentReferenceWithCreate(): ContractualDocumentReference
     {
+        if (!is_array($this->contractualDocumentReference)) {
+            $this->contractualDocumentReference = [];
+        }
+
         if ($this->contractualDocumentReference === []) {
             $this->addOnceTocontractualDocumentReference(new ContractualDocumentReference());
         }
@@ -1640,6 +1704,10 @@ class TenderingTermsType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -1650,6 +1718,10 @@ class TenderingTermsType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
@@ -1715,6 +1787,10 @@ class TenderingTermsType
     public function addOnceToTendererQualificationRequest(
         TendererQualificationRequest $tendererQualificationRequest,
     ): self {
+        if (!is_array($this->tendererQualificationRequest)) {
+            $this->tendererQualificationRequest = [];
+        }
+
         $this->tendererQualificationRequest[0] = $tendererQualificationRequest;
 
         return $this;
@@ -1725,6 +1801,10 @@ class TenderingTermsType
      */
     public function addOnceToTendererQualificationRequestWithCreate(): TendererQualificationRequest
     {
+        if (!is_array($this->tendererQualificationRequest)) {
+            $this->tendererQualificationRequest = [];
+        }
+
         if ($this->tendererQualificationRequest === []) {
             $this->addOnceTotendererQualificationRequest(new TendererQualificationRequest());
         }
@@ -1788,6 +1868,10 @@ class TenderingTermsType
      */
     public function addOnceToAllowedSubcontractTerms(AllowedSubcontractTerms $allowedSubcontractTerms): self
     {
+        if (!is_array($this->allowedSubcontractTerms)) {
+            $this->allowedSubcontractTerms = [];
+        }
+
         $this->allowedSubcontractTerms[0] = $allowedSubcontractTerms;
 
         return $this;
@@ -1798,6 +1882,10 @@ class TenderingTermsType
      */
     public function addOnceToAllowedSubcontractTermsWithCreate(): AllowedSubcontractTerms
     {
+        if (!is_array($this->allowedSubcontractTerms)) {
+            $this->allowedSubcontractTerms = [];
+        }
+
         if ($this->allowedSubcontractTerms === []) {
             $this->addOnceToallowedSubcontractTerms(new AllowedSubcontractTerms());
         }
@@ -1861,6 +1949,10 @@ class TenderingTermsType
      */
     public function addOnceToTenderPreparation(TenderPreparation $tenderPreparation): self
     {
+        if (!is_array($this->tenderPreparation)) {
+            $this->tenderPreparation = [];
+        }
+
         $this->tenderPreparation[0] = $tenderPreparation;
 
         return $this;
@@ -1871,6 +1963,10 @@ class TenderingTermsType
      */
     public function addOnceToTenderPreparationWithCreate(): TenderPreparation
     {
+        if (!is_array($this->tenderPreparation)) {
+            $this->tenderPreparation = [];
+        }
+
         if ($this->tenderPreparation === []) {
             $this->addOnceTotenderPreparation(new TenderPreparation());
         }
@@ -1936,6 +2032,10 @@ class TenderingTermsType
     public function addOnceToContractExecutionRequirement(
         ContractExecutionRequirement $contractExecutionRequirement,
     ): self {
+        if (!is_array($this->contractExecutionRequirement)) {
+            $this->contractExecutionRequirement = [];
+        }
+
         $this->contractExecutionRequirement[0] = $contractExecutionRequirement;
 
         return $this;
@@ -1946,6 +2046,10 @@ class TenderingTermsType
      */
     public function addOnceToContractExecutionRequirementWithCreate(): ContractExecutionRequirement
     {
+        if (!is_array($this->contractExecutionRequirement)) {
+            $this->contractExecutionRequirement = [];
+        }
+
         if ($this->contractExecutionRequirement === []) {
             $this->addOnceTocontractExecutionRequirement(new ContractExecutionRequirement());
         }
@@ -2154,6 +2258,10 @@ class TenderingTermsType
      */
     public function addOnceToTenderEvaluationParty(TenderEvaluationParty $tenderEvaluationParty): self
     {
+        if (!is_array($this->tenderEvaluationParty)) {
+            $this->tenderEvaluationParty = [];
+        }
+
         $this->tenderEvaluationParty[0] = $tenderEvaluationParty;
 
         return $this;
@@ -2164,6 +2272,10 @@ class TenderingTermsType
      */
     public function addOnceToTenderEvaluationPartyWithCreate(): TenderEvaluationParty
     {
+        if (!is_array($this->tenderEvaluationParty)) {
+            $this->tenderEvaluationParty = [];
+        }
+
         if ($this->tenderEvaluationParty === []) {
             $this->addOnceTotenderEvaluationParty(new TenderEvaluationParty());
         }
@@ -2314,6 +2426,10 @@ class TenderingTermsType
      */
     public function addOnceToLanguage(Language $language): self
     {
+        if (!is_array($this->language)) {
+            $this->language = [];
+        }
+
         $this->language[0] = $language;
 
         return $this;
@@ -2324,6 +2440,10 @@ class TenderingTermsType
      */
     public function addOnceToLanguageWithCreate(): Language
     {
+        if (!is_array($this->language)) {
+            $this->language = [];
+        }
+
         if ($this->language === []) {
             $this->addOnceTolanguage(new Language());
         }
@@ -2387,6 +2507,10 @@ class TenderingTermsType
      */
     public function addOnceToBudgetAccountLine(BudgetAccountLine $budgetAccountLine): self
     {
+        if (!is_array($this->budgetAccountLine)) {
+            $this->budgetAccountLine = [];
+        }
+
         $this->budgetAccountLine[0] = $budgetAccountLine;
 
         return $this;
@@ -2397,6 +2521,10 @@ class TenderingTermsType
      */
     public function addOnceToBudgetAccountLineWithCreate(): BudgetAccountLine
     {
+        if (!is_array($this->budgetAccountLine)) {
+            $this->budgetAccountLine = [];
+        }
+
         if ($this->budgetAccountLine === []) {
             $this->addOnceTobudgetAccountLine(new BudgetAccountLine());
         }

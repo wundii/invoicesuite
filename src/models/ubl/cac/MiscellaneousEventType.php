@@ -115,6 +115,10 @@ class MiscellaneousEventType
      */
     public function addOnceToEventLineItem(EventLineItem $eventLineItem): self
     {
+        if (!is_array($this->eventLineItem)) {
+            $this->eventLineItem = [];
+        }
+
         $this->eventLineItem[0] = $eventLineItem;
 
         return $this;
@@ -125,6 +129,10 @@ class MiscellaneousEventType
      */
     public function addOnceToEventLineItemWithCreate(): EventLineItem
     {
+        if (!is_array($this->eventLineItem)) {
+            $this->eventLineItem = [];
+        }
+
         if ($this->eventLineItem === []) {
             $this->addOnceToeventLineItem(new EventLineItem());
         }

@@ -249,6 +249,10 @@ class PeriodType
      */
     public function addOnceToDescriptionCode(DescriptionCode $descriptionCode): self
     {
+        if (!is_array($this->descriptionCode)) {
+            $this->descriptionCode = [];
+        }
+
         $this->descriptionCode[0] = $descriptionCode;
 
         return $this;
@@ -259,6 +263,10 @@ class PeriodType
      */
     public function addOnceToDescriptionCodeWithCreate(): DescriptionCode
     {
+        if (!is_array($this->descriptionCode)) {
+            $this->descriptionCode = [];
+        }
+
         if ($this->descriptionCode === []) {
             $this->addOnceTodescriptionCode(new DescriptionCode());
         }
@@ -322,6 +330,10 @@ class PeriodType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -332,6 +344,10 @@ class PeriodType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }

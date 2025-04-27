@@ -171,6 +171,10 @@ class ProcessJustificationType
      */
     public function addOnceToProcessReason(ProcessReason $processReason): self
     {
+        if (!is_array($this->processReason)) {
+            $this->processReason = [];
+        }
+
         $this->processReason[0] = $processReason;
 
         return $this;
@@ -181,6 +185,10 @@ class ProcessJustificationType
      */
     public function addOnceToProcessReasonWithCreate(): ProcessReason
     {
+        if (!is_array($this->processReason)) {
+            $this->processReason = [];
+        }
+
         if ($this->processReason === []) {
             $this->addOnceToprocessReason(new ProcessReason());
         }
@@ -244,6 +252,10 @@ class ProcessJustificationType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -254,6 +266,10 @@ class ProcessJustificationType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }

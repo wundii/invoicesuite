@@ -360,6 +360,10 @@ class ReceiptLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -370,6 +374,10 @@ class ReceiptLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -578,6 +586,10 @@ class ReceiptLineType
      */
     public function addOnceToRejectReason(RejectReason $rejectReason): self
     {
+        if (!is_array($this->rejectReason)) {
+            $this->rejectReason = [];
+        }
+
         $this->rejectReason[0] = $rejectReason;
 
         return $this;
@@ -588,6 +600,10 @@ class ReceiptLineType
      */
     public function addOnceToRejectReasonWithCreate(): RejectReason
     {
+        if (!is_array($this->rejectReason)) {
+            $this->rejectReason = [];
+        }
+
         if ($this->rejectReason === []) {
             $this->addOnceTorejectReason(new RejectReason());
         }
@@ -844,6 +860,10 @@ class ReceiptLineType
      */
     public function addOnceToDespatchLineReference(DespatchLineReference $despatchLineReference): self
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         $this->despatchLineReference[0] = $despatchLineReference;
 
         return $this;
@@ -854,6 +874,10 @@ class ReceiptLineType
      */
     public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         if ($this->despatchLineReference === []) {
             $this->addOnceTodespatchLineReference(new DespatchLineReference());
         }
@@ -917,6 +941,10 @@ class ReceiptLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -927,6 +955,10 @@ class ReceiptLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -990,6 +1022,10 @@ class ReceiptLineType
      */
     public function addOnceToItem(Item $item): self
     {
+        if (!is_array($this->item)) {
+            $this->item = [];
+        }
+
         $this->item[0] = $item;
 
         return $this;
@@ -1000,6 +1036,10 @@ class ReceiptLineType
      */
     public function addOnceToItemWithCreate(): Item
     {
+        if (!is_array($this->item)) {
+            $this->item = [];
+        }
+
         if ($this->item === []) {
             $this->addOnceToitem(new Item());
         }
@@ -1063,6 +1103,10 @@ class ReceiptLineType
      */
     public function addOnceToShipment(Shipment $shipment): self
     {
+        if (!is_array($this->shipment)) {
+            $this->shipment = [];
+        }
+
         $this->shipment[0] = $shipment;
 
         return $this;
@@ -1073,6 +1117,10 @@ class ReceiptLineType
      */
     public function addOnceToShipmentWithCreate(): Shipment
     {
+        if (!is_array($this->shipment)) {
+            $this->shipment = [];
+        }
+
         if ($this->shipment === []) {
             $this->addOnceToshipment(new Shipment());
         }

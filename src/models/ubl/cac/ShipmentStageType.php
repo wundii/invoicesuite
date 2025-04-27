@@ -1042,6 +1042,10 @@ class ShipmentStageType
      */
     public function addOnceToInstructions(Instructions $instructions): self
     {
+        if (!is_array($this->instructions)) {
+            $this->instructions = [];
+        }
+
         $this->instructions[0] = $instructions;
 
         return $this;
@@ -1052,6 +1056,10 @@ class ShipmentStageType
      */
     public function addOnceToInstructionsWithCreate(): Instructions
     {
+        if (!is_array($this->instructions)) {
+            $this->instructions = [];
+        }
+
         if ($this->instructions === []) {
             $this->addOnceToinstructions(new Instructions());
         }
@@ -1115,6 +1123,10 @@ class ShipmentStageType
      */
     public function addOnceToDemurrageInstructions(DemurrageInstructions $demurrageInstructions): self
     {
+        if (!is_array($this->demurrageInstructions)) {
+            $this->demurrageInstructions = [];
+        }
+
         $this->demurrageInstructions[0] = $demurrageInstructions;
 
         return $this;
@@ -1125,6 +1137,10 @@ class ShipmentStageType
      */
     public function addOnceToDemurrageInstructionsWithCreate(): DemurrageInstructions
     {
+        if (!is_array($this->demurrageInstructions)) {
+            $this->demurrageInstructions = [];
+        }
+
         if ($this->demurrageInstructions === []) {
             $this->addOnceTodemurrageInstructions(new DemurrageInstructions());
         }
@@ -1275,6 +1291,10 @@ class ShipmentStageType
      */
     public function addOnceToCarrierParty(CarrierParty $carrierParty): self
     {
+        if (!is_array($this->carrierParty)) {
+            $this->carrierParty = [];
+        }
+
         $this->carrierParty[0] = $carrierParty;
 
         return $this;
@@ -1285,6 +1305,10 @@ class ShipmentStageType
      */
     public function addOnceToCarrierPartyWithCreate(): CarrierParty
     {
+        if (!is_array($this->carrierParty)) {
+            $this->carrierParty = [];
+        }
+
         if ($this->carrierParty === []) {
             $this->addOnceTocarrierParty(new CarrierParty());
         }
@@ -1958,6 +1982,10 @@ class ShipmentStageType
      */
     public function addOnceToFreightAllowanceCharge(FreightAllowanceCharge $freightAllowanceCharge): self
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         $this->freightAllowanceCharge[0] = $freightAllowanceCharge;
 
         return $this;
@@ -1968,6 +1996,10 @@ class ShipmentStageType
      */
     public function addOnceToFreightAllowanceChargeWithCreate(): FreightAllowanceCharge
     {
+        if (!is_array($this->freightAllowanceCharge)) {
+            $this->freightAllowanceCharge = [];
+        }
+
         if ($this->freightAllowanceCharge === []) {
             $this->addOnceTofreightAllowanceCharge(new FreightAllowanceCharge());
         }
@@ -2060,6 +2092,10 @@ class ShipmentStageType
      */
     public function addOnceToDetentionTransportEvent(DetentionTransportEvent $detentionTransportEvent): self
     {
+        if (!is_array($this->detentionTransportEvent)) {
+            $this->detentionTransportEvent = [];
+        }
+
         $this->detentionTransportEvent[0] = $detentionTransportEvent;
 
         return $this;
@@ -2070,6 +2106,10 @@ class ShipmentStageType
      */
     public function addOnceToDetentionTransportEventWithCreate(): DetentionTransportEvent
     {
+        if (!is_array($this->detentionTransportEvent)) {
+            $this->detentionTransportEvent = [];
+        }
+
         if ($this->detentionTransportEvent === []) {
             $this->addOnceTodetentionTransportEvent(new DetentionTransportEvent());
         }
@@ -2195,6 +2235,10 @@ class ShipmentStageType
     public function addOnceToRequestedWaypointTransportEvent(
         RequestedWaypointTransportEvent $requestedWaypointTransportEvent,
     ): self {
+        if (!is_array($this->requestedWaypointTransportEvent)) {
+            $this->requestedWaypointTransportEvent = [];
+        }
+
         $this->requestedWaypointTransportEvent[0] = $requestedWaypointTransportEvent;
 
         return $this;
@@ -2205,6 +2249,10 @@ class ShipmentStageType
      */
     public function addOnceToRequestedWaypointTransportEventWithCreate(): RequestedWaypointTransportEvent
     {
+        if (!is_array($this->requestedWaypointTransportEvent)) {
+            $this->requestedWaypointTransportEvent = [];
+        }
+
         if ($this->requestedWaypointTransportEvent === []) {
             $this->addOnceTorequestedWaypointTransportEvent(new RequestedWaypointTransportEvent());
         }
@@ -2329,6 +2377,10 @@ class ShipmentStageType
     public function addOnceToPlannedWaypointTransportEvent(
         PlannedWaypointTransportEvent $plannedWaypointTransportEvent,
     ): self {
+        if (!is_array($this->plannedWaypointTransportEvent)) {
+            $this->plannedWaypointTransportEvent = [];
+        }
+
         $this->plannedWaypointTransportEvent[0] = $plannedWaypointTransportEvent;
 
         return $this;
@@ -2339,6 +2391,10 @@ class ShipmentStageType
      */
     public function addOnceToPlannedWaypointTransportEventWithCreate(): PlannedWaypointTransportEvent
     {
+        if (!is_array($this->plannedWaypointTransportEvent)) {
+            $this->plannedWaypointTransportEvent = [];
+        }
+
         if ($this->plannedWaypointTransportEvent === []) {
             $this->addOnceToplannedWaypointTransportEvent(new PlannedWaypointTransportEvent());
         }
@@ -2490,6 +2546,10 @@ class ShipmentStageType
      */
     public function addOnceToTransportEvent(TransportEvent $transportEvent): self
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         $this->transportEvent[0] = $transportEvent;
 
         return $this;
@@ -2500,6 +2560,10 @@ class ShipmentStageType
      */
     public function addOnceToTransportEventWithCreate(): TransportEvent
     {
+        if (!is_array($this->transportEvent)) {
+            $this->transportEvent = [];
+        }
+
         if ($this->transportEvent === []) {
             $this->addOnceTotransportEvent(new TransportEvent());
         }
@@ -2623,6 +2687,10 @@ class ShipmentStageType
      */
     public function addOnceToPassengerPerson(PassengerPerson $passengerPerson): self
     {
+        if (!is_array($this->passengerPerson)) {
+            $this->passengerPerson = [];
+        }
+
         $this->passengerPerson[0] = $passengerPerson;
 
         return $this;
@@ -2633,6 +2701,10 @@ class ShipmentStageType
      */
     public function addOnceToPassengerPersonWithCreate(): PassengerPerson
     {
+        if (!is_array($this->passengerPerson)) {
+            $this->passengerPerson = [];
+        }
+
         if ($this->passengerPerson === []) {
             $this->addOnceTopassengerPerson(new PassengerPerson());
         }
@@ -2696,6 +2768,10 @@ class ShipmentStageType
      */
     public function addOnceToDriverPerson(DriverPerson $driverPerson): self
     {
+        if (!is_array($this->driverPerson)) {
+            $this->driverPerson = [];
+        }
+
         $this->driverPerson[0] = $driverPerson;
 
         return $this;
@@ -2706,6 +2782,10 @@ class ShipmentStageType
      */
     public function addOnceToDriverPersonWithCreate(): DriverPerson
     {
+        if (!is_array($this->driverPerson)) {
+            $this->driverPerson = [];
+        }
+
         if ($this->driverPerson === []) {
             $this->addOnceTodriverPerson(new DriverPerson());
         }
@@ -2798,6 +2878,10 @@ class ShipmentStageType
      */
     public function addOnceToCrewMemberPerson(CrewMemberPerson $crewMemberPerson): self
     {
+        if (!is_array($this->crewMemberPerson)) {
+            $this->crewMemberPerson = [];
+        }
+
         $this->crewMemberPerson[0] = $crewMemberPerson;
 
         return $this;
@@ -2808,6 +2892,10 @@ class ShipmentStageType
      */
     public function addOnceToCrewMemberPersonWithCreate(): CrewMemberPerson
     {
+        if (!is_array($this->crewMemberPerson)) {
+            $this->crewMemberPerson = [];
+        }
+
         if ($this->crewMemberPerson === []) {
             $this->addOnceTocrewMemberPerson(new CrewMemberPerson());
         }

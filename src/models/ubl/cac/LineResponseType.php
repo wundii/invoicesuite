@@ -114,6 +114,10 @@ class LineResponseType
      */
     public function addOnceToResponse(Response $response): self
     {
+        if (!is_array($this->response)) {
+            $this->response = [];
+        }
+
         $this->response[0] = $response;
 
         return $this;
@@ -124,6 +128,10 @@ class LineResponseType
      */
     public function addOnceToResponseWithCreate(): Response
     {
+        if (!is_array($this->response)) {
+            $this->response = [];
+        }
+
         if ($this->response === []) {
             $this->addOnceToresponse(new Response());
         }

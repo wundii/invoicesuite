@@ -450,6 +450,10 @@ class CreditNoteLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -460,6 +464,10 @@ class CreditNoteLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -706,6 +714,10 @@ class CreditNoteLineType
      */
     public function addOnceToInvoicePeriod(InvoicePeriod $invoicePeriod): self
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         $this->invoicePeriod[0] = $invoicePeriod;
 
         return $this;
@@ -716,6 +728,10 @@ class CreditNoteLineType
      */
     public function addOnceToInvoicePeriodWithCreate(): InvoicePeriod
     {
+        if (!is_array($this->invoicePeriod)) {
+            $this->invoicePeriod = [];
+        }
+
         if ($this->invoicePeriod === []) {
             $this->addOnceToinvoicePeriod(new InvoicePeriod());
         }
@@ -779,6 +795,10 @@ class CreditNoteLineType
      */
     public function addOnceToOrderLineReference(OrderLineReference $orderLineReference): self
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         $this->orderLineReference[0] = $orderLineReference;
 
         return $this;
@@ -789,6 +809,10 @@ class CreditNoteLineType
      */
     public function addOnceToOrderLineReferenceWithCreate(): OrderLineReference
     {
+        if (!is_array($this->orderLineReference)) {
+            $this->orderLineReference = [];
+        }
+
         if ($this->orderLineReference === []) {
             $this->addOnceToorderLineReference(new OrderLineReference());
         }
@@ -852,6 +876,10 @@ class CreditNoteLineType
      */
     public function addOnceToDiscrepancyResponse(DiscrepancyResponse $discrepancyResponse): self
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         $this->discrepancyResponse[0] = $discrepancyResponse;
 
         return $this;
@@ -862,6 +890,10 @@ class CreditNoteLineType
      */
     public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         if ($this->discrepancyResponse === []) {
             $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
         }
@@ -925,6 +957,10 @@ class CreditNoteLineType
      */
     public function addOnceToDespatchLineReference(DespatchLineReference $despatchLineReference): self
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         $this->despatchLineReference[0] = $despatchLineReference;
 
         return $this;
@@ -935,6 +971,10 @@ class CreditNoteLineType
      */
     public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         if ($this->despatchLineReference === []) {
             $this->addOnceTodespatchLineReference(new DespatchLineReference());
         }
@@ -998,6 +1038,10 @@ class CreditNoteLineType
      */
     public function addOnceToReceiptLineReference(ReceiptLineReference $receiptLineReference): self
     {
+        if (!is_array($this->receiptLineReference)) {
+            $this->receiptLineReference = [];
+        }
+
         $this->receiptLineReference[0] = $receiptLineReference;
 
         return $this;
@@ -1008,6 +1052,10 @@ class CreditNoteLineType
      */
     public function addOnceToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
+        if (!is_array($this->receiptLineReference)) {
+            $this->receiptLineReference = [];
+        }
+
         if ($this->receiptLineReference === []) {
             $this->addOnceToreceiptLineReference(new ReceiptLineReference());
         }
@@ -1071,6 +1119,10 @@ class CreditNoteLineType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -1081,6 +1133,10 @@ class CreditNoteLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }
@@ -1144,6 +1200,10 @@ class CreditNoteLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -1154,6 +1214,10 @@ class CreditNoteLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -1275,6 +1339,10 @@ class CreditNoteLineType
      */
     public function addOnceToDelivery(Delivery $delivery): self
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         $this->delivery[0] = $delivery;
 
         return $this;
@@ -1285,6 +1353,10 @@ class CreditNoteLineType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         if ($this->delivery === []) {
             $this->addOnceTodelivery(new Delivery());
         }
@@ -1348,6 +1420,10 @@ class CreditNoteLineType
      */
     public function addOnceToPaymentTerms(PaymentTerms $paymentTerms): self
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         $this->paymentTerms[0] = $paymentTerms;
 
         return $this;
@@ -1358,6 +1434,10 @@ class CreditNoteLineType
      */
     public function addOnceToPaymentTermsWithCreate(): PaymentTerms
     {
+        if (!is_array($this->paymentTerms)) {
+            $this->paymentTerms = [];
+        }
+
         if ($this->paymentTerms === []) {
             $this->addOnceTopaymentTerms(new PaymentTerms());
         }
@@ -1421,6 +1501,10 @@ class CreditNoteLineType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -1431,6 +1515,10 @@ class CreditNoteLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -1494,6 +1582,10 @@ class CreditNoteLineType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -1504,6 +1596,10 @@ class CreditNoteLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -1625,6 +1721,10 @@ class CreditNoteLineType
      */
     public function addOnceToDeliveryTerms(DeliveryTerms $deliveryTerms): self
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         $this->deliveryTerms[0] = $deliveryTerms;
 
         return $this;
@@ -1635,6 +1735,10 @@ class CreditNoteLineType
      */
     public function addOnceToDeliveryTermsWithCreate(): DeliveryTerms
     {
+        if (!is_array($this->deliveryTerms)) {
+            $this->deliveryTerms = [];
+        }
+
         if ($this->deliveryTerms === []) {
             $this->addOnceTodeliveryTerms(new DeliveryTerms());
         }
@@ -1698,6 +1802,10 @@ class CreditNoteLineType
      */
     public function addOnceToSubCreditNoteLine(SubCreditNoteLine $subCreditNoteLine): self
     {
+        if (!is_array($this->subCreditNoteLine)) {
+            $this->subCreditNoteLine = [];
+        }
+
         $this->subCreditNoteLine[0] = $subCreditNoteLine;
 
         return $this;
@@ -1708,6 +1816,10 @@ class CreditNoteLineType
      */
     public function addOnceToSubCreditNoteLineWithCreate(): SubCreditNoteLine
     {
+        if (!is_array($this->subCreditNoteLine)) {
+            $this->subCreditNoteLine = [];
+        }
+
         if ($this->subCreditNoteLine === []) {
             $this->addOnceTosubCreditNoteLine(new SubCreditNoteLine());
         }

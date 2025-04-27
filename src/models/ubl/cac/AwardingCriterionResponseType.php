@@ -208,6 +208,10 @@ class AwardingCriterionResponseType
     public function addOnceToAwardingCriterionDescription(
         AwardingCriterionDescription $awardingCriterionDescription,
     ): self {
+        if (!is_array($this->awardingCriterionDescription)) {
+            $this->awardingCriterionDescription = [];
+        }
+
         $this->awardingCriterionDescription[0] = $awardingCriterionDescription;
 
         return $this;
@@ -218,6 +222,10 @@ class AwardingCriterionResponseType
      */
     public function addOnceToAwardingCriterionDescriptionWithCreate(): AwardingCriterionDescription
     {
+        if (!is_array($this->awardingCriterionDescription)) {
+            $this->awardingCriterionDescription = [];
+        }
+
         if ($this->awardingCriterionDescription === []) {
             $this->addOnceToawardingCriterionDescription(new AwardingCriterionDescription());
         }
@@ -281,6 +289,10 @@ class AwardingCriterionResponseType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -291,6 +303,10 @@ class AwardingCriterionResponseType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -414,6 +430,10 @@ class AwardingCriterionResponseType
     public function addOnceToSubordinateAwardingCriterionResponse(
         SubordinateAwardingCriterionResponse $subordinateAwardingCriterionResponse,
     ): self {
+        if (!is_array($this->subordinateAwardingCriterionResponse)) {
+            $this->subordinateAwardingCriterionResponse = [];
+        }
+
         $this->subordinateAwardingCriterionResponse[0] = $subordinateAwardingCriterionResponse;
 
         return $this;
@@ -424,6 +444,10 @@ class AwardingCriterionResponseType
      */
     public function addOnceToSubordinateAwardingCriterionResponseWithCreate(): SubordinateAwardingCriterionResponse
     {
+        if (!is_array($this->subordinateAwardingCriterionResponse)) {
+            $this->subordinateAwardingCriterionResponse = [];
+        }
+
         if ($this->subordinateAwardingCriterionResponse === []) {
             $this->addOnceTosubordinateAwardingCriterionResponse(new SubordinateAwardingCriterionResponse());
         }

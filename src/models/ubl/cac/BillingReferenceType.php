@@ -356,6 +356,10 @@ class BillingReferenceType
      */
     public function addOnceToBillingReferenceLine(BillingReferenceLine $billingReferenceLine): self
     {
+        if (!is_array($this->billingReferenceLine)) {
+            $this->billingReferenceLine = [];
+        }
+
         $this->billingReferenceLine[0] = $billingReferenceLine;
 
         return $this;
@@ -366,6 +370,10 @@ class BillingReferenceType
      */
     public function addOnceToBillingReferenceLineWithCreate(): BillingReferenceLine
     {
+        if (!is_array($this->billingReferenceLine)) {
+            $this->billingReferenceLine = [];
+        }
+
         if ($this->billingReferenceLine === []) {
             $this->addOnceTobillingReferenceLine(new BillingReferenceLine());
         }

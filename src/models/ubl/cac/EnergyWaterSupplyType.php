@@ -110,6 +110,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionReport(ConsumptionReport $consumptionReport): self
     {
+        if (!is_array($this->consumptionReport)) {
+            $this->consumptionReport = [];
+        }
+
         $this->consumptionReport[0] = $consumptionReport;
 
         return $this;
@@ -120,6 +124,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionReportWithCreate(): ConsumptionReport
     {
+        if (!is_array($this->consumptionReport)) {
+            $this->consumptionReport = [];
+        }
+
         if ($this->consumptionReport === []) {
             $this->addOnceToconsumptionReport(new ConsumptionReport());
         }
@@ -183,6 +191,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToEnergyTaxReport(EnergyTaxReport $energyTaxReport): self
     {
+        if (!is_array($this->energyTaxReport)) {
+            $this->energyTaxReport = [];
+        }
+
         $this->energyTaxReport[0] = $energyTaxReport;
 
         return $this;
@@ -193,6 +205,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToEnergyTaxReportWithCreate(): EnergyTaxReport
     {
+        if (!is_array($this->energyTaxReport)) {
+            $this->energyTaxReport = [];
+        }
+
         if ($this->energyTaxReport === []) {
             $this->addOnceToenergyTaxReport(new EnergyTaxReport());
         }
@@ -256,6 +272,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionAverage(ConsumptionAverage $consumptionAverage): self
     {
+        if (!is_array($this->consumptionAverage)) {
+            $this->consumptionAverage = [];
+        }
+
         $this->consumptionAverage[0] = $consumptionAverage;
 
         return $this;
@@ -266,6 +286,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToConsumptionAverageWithCreate(): ConsumptionAverage
     {
+        if (!is_array($this->consumptionAverage)) {
+            $this->consumptionAverage = [];
+        }
+
         if ($this->consumptionAverage === []) {
             $this->addOnceToconsumptionAverage(new ConsumptionAverage());
         }
@@ -331,6 +355,10 @@ class EnergyWaterSupplyType
     public function addOnceToEnergyWaterConsumptionCorrection(
         EnergyWaterConsumptionCorrection $energyWaterConsumptionCorrection,
     ): self {
+        if (!is_array($this->energyWaterConsumptionCorrection)) {
+            $this->energyWaterConsumptionCorrection = [];
+        }
+
         $this->energyWaterConsumptionCorrection[0] = $energyWaterConsumptionCorrection;
 
         return $this;
@@ -341,6 +369,10 @@ class EnergyWaterSupplyType
      */
     public function addOnceToEnergyWaterConsumptionCorrectionWithCreate(): EnergyWaterConsumptionCorrection
     {
+        if (!is_array($this->energyWaterConsumptionCorrection)) {
+            $this->energyWaterConsumptionCorrection = [];
+        }
+
         if ($this->energyWaterConsumptionCorrection === []) {
             $this->addOnceToenergyWaterConsumptionCorrection(new EnergyWaterConsumptionCorrection());
         }

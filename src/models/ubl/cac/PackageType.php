@@ -373,6 +373,10 @@ class PackageType
      */
     public function addOnceToPackingMaterial(PackingMaterial $packingMaterial): self
     {
+        if (!is_array($this->packingMaterial)) {
+            $this->packingMaterial = [];
+        }
+
         $this->packingMaterial[0] = $packingMaterial;
 
         return $this;
@@ -383,6 +387,10 @@ class PackageType
      */
     public function addOnceToPackingMaterialWithCreate(): PackingMaterial
     {
+        if (!is_array($this->packingMaterial)) {
+            $this->packingMaterial = [];
+        }
+
         if ($this->packingMaterial === []) {
             $this->addOnceTopackingMaterial(new PackingMaterial());
         }
@@ -475,6 +483,10 @@ class PackageType
      */
     public function addOnceToContainedPackage(ContainedPackage $containedPackage): self
     {
+        if (!is_array($this->containedPackage)) {
+            $this->containedPackage = [];
+        }
+
         $this->containedPackage[0] = $containedPackage;
 
         return $this;
@@ -485,6 +497,10 @@ class PackageType
      */
     public function addOnceToContainedPackageWithCreate(): ContainedPackage
     {
+        if (!is_array($this->containedPackage)) {
+            $this->containedPackage = [];
+        }
+
         if ($this->containedPackage === []) {
             $this->addOnceTocontainedPackage(new ContainedPackage());
         }
@@ -577,6 +593,10 @@ class PackageType
      */
     public function addOnceToGoodsItem(GoodsItem $goodsItem): self
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         $this->goodsItem[0] = $goodsItem;
 
         return $this;
@@ -587,6 +607,10 @@ class PackageType
      */
     public function addOnceToGoodsItemWithCreate(): GoodsItem
     {
+        if (!is_array($this->goodsItem)) {
+            $this->goodsItem = [];
+        }
+
         if ($this->goodsItem === []) {
             $this->addOnceTogoodsItem(new GoodsItem());
         }
@@ -650,6 +674,10 @@ class PackageType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -660,6 +688,10 @@ class PackageType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }
@@ -723,6 +755,10 @@ class PackageType
      */
     public function addOnceToDeliveryUnit(DeliveryUnit $deliveryUnit): self
     {
+        if (!is_array($this->deliveryUnit)) {
+            $this->deliveryUnit = [];
+        }
+
         $this->deliveryUnit[0] = $deliveryUnit;
 
         return $this;
@@ -733,6 +769,10 @@ class PackageType
      */
     public function addOnceToDeliveryUnitWithCreate(): DeliveryUnit
     {
+        if (!is_array($this->deliveryUnit)) {
+            $this->deliveryUnit = [];
+        }
+
         if ($this->deliveryUnit === []) {
             $this->addOnceTodeliveryUnit(new DeliveryUnit());
         }

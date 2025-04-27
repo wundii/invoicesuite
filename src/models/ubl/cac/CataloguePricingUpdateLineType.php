@@ -197,6 +197,10 @@ class CataloguePricingUpdateLineType
     public function addOnceToRequiredItemLocationQuantity(
         RequiredItemLocationQuantity $requiredItemLocationQuantity,
     ): self {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         $this->requiredItemLocationQuantity[0] = $requiredItemLocationQuantity;
 
         return $this;
@@ -207,6 +211,10 @@ class CataloguePricingUpdateLineType
      */
     public function addOnceToRequiredItemLocationQuantityWithCreate(): RequiredItemLocationQuantity
     {
+        if (!is_array($this->requiredItemLocationQuantity)) {
+            $this->requiredItemLocationQuantity = [];
+        }
+
         if ($this->requiredItemLocationQuantity === []) {
             $this->addOnceTorequiredItemLocationQuantity(new RequiredItemLocationQuantity());
         }

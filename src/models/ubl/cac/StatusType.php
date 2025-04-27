@@ -273,6 +273,10 @@ class StatusType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -283,6 +287,10 @@ class StatusType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -375,6 +383,10 @@ class StatusType
      */
     public function addOnceToStatusReason(StatusReason $statusReason): self
     {
+        if (!is_array($this->statusReason)) {
+            $this->statusReason = [];
+        }
+
         $this->statusReason[0] = $statusReason;
 
         return $this;
@@ -385,6 +397,10 @@ class StatusType
      */
     public function addOnceToStatusReasonWithCreate(): StatusReason
     {
+        if (!is_array($this->statusReason)) {
+            $this->statusReason = [];
+        }
+
         if ($this->statusReason === []) {
             $this->addOnceTostatusReason(new StatusReason());
         }
@@ -477,6 +493,10 @@ class StatusType
      */
     public function addOnceToText(Text $text): self
     {
+        if (!is_array($this->text)) {
+            $this->text = [];
+        }
+
         $this->text[0] = $text;
 
         return $this;
@@ -487,6 +507,10 @@ class StatusType
      */
     public function addOnceToTextWithCreate(): Text
     {
+        if (!is_array($this->text)) {
+            $this->text = [];
+        }
+
         if ($this->text === []) {
             $this->addOnceTotext(new Text());
         }
@@ -627,6 +651,10 @@ class StatusType
      */
     public function addOnceToCondition(Condition $condition): self
     {
+        if (!is_array($this->condition)) {
+            $this->condition = [];
+        }
+
         $this->condition[0] = $condition;
 
         return $this;
@@ -637,6 +665,10 @@ class StatusType
      */
     public function addOnceToConditionWithCreate(): Condition
     {
+        if (!is_array($this->condition)) {
+            $this->condition = [];
+        }
+
         if ($this->condition === []) {
             $this->addOnceTocondition(new Condition());
         }

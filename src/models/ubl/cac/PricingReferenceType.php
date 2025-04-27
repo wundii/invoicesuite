@@ -114,6 +114,10 @@ class PricingReferenceType
      */
     public function addOnceToAlternativeConditionPrice(AlternativeConditionPrice $alternativeConditionPrice): self
     {
+        if (!is_array($this->alternativeConditionPrice)) {
+            $this->alternativeConditionPrice = [];
+        }
+
         $this->alternativeConditionPrice[0] = $alternativeConditionPrice;
 
         return $this;
@@ -124,6 +128,10 @@ class PricingReferenceType
      */
     public function addOnceToAlternativeConditionPriceWithCreate(): AlternativeConditionPrice
     {
+        if (!is_array($this->alternativeConditionPrice)) {
+            $this->alternativeConditionPrice = [];
+        }
+
         if ($this->alternativeConditionPrice === []) {
             $this->addOnceToalternativeConditionPrice(new AlternativeConditionPrice());
         }

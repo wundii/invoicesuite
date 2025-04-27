@@ -257,6 +257,10 @@ class QualifyingPartyType
      */
     public function addOnceToPersonalSituation(PersonalSituation $personalSituation): self
     {
+        if (!is_array($this->personalSituation)) {
+            $this->personalSituation = [];
+        }
+
         $this->personalSituation[0] = $personalSituation;
 
         return $this;
@@ -267,6 +271,10 @@ class QualifyingPartyType
      */
     public function addOnceToPersonalSituationWithCreate(): PersonalSituation
     {
+        if (!is_array($this->personalSituation)) {
+            $this->personalSituation = [];
+        }
+
         if ($this->personalSituation === []) {
             $this->addOnceTopersonalSituation(new PersonalSituation());
         }
@@ -505,6 +513,10 @@ class QualifyingPartyType
      */
     public function addOnceToTechnicalCapability(TechnicalCapability $technicalCapability): self
     {
+        if (!is_array($this->technicalCapability)) {
+            $this->technicalCapability = [];
+        }
+
         $this->technicalCapability[0] = $technicalCapability;
 
         return $this;
@@ -515,6 +527,10 @@ class QualifyingPartyType
      */
     public function addOnceToTechnicalCapabilityWithCreate(): TechnicalCapability
     {
+        if (!is_array($this->technicalCapability)) {
+            $this->technicalCapability = [];
+        }
+
         if ($this->technicalCapability === []) {
             $this->addOnceTotechnicalCapability(new TechnicalCapability());
         }
@@ -578,6 +594,10 @@ class QualifyingPartyType
      */
     public function addOnceToFinancialCapability(FinancialCapability $financialCapability): self
     {
+        if (!is_array($this->financialCapability)) {
+            $this->financialCapability = [];
+        }
+
         $this->financialCapability[0] = $financialCapability;
 
         return $this;
@@ -588,6 +608,10 @@ class QualifyingPartyType
      */
     public function addOnceToFinancialCapabilityWithCreate(): FinancialCapability
     {
+        if (!is_array($this->financialCapability)) {
+            $this->financialCapability = [];
+        }
+
         if ($this->financialCapability === []) {
             $this->addOnceTofinancialCapability(new FinancialCapability());
         }
@@ -651,6 +675,10 @@ class QualifyingPartyType
      */
     public function addOnceToCompletedTask(CompletedTask $completedTask): self
     {
+        if (!is_array($this->completedTask)) {
+            $this->completedTask = [];
+        }
+
         $this->completedTask[0] = $completedTask;
 
         return $this;
@@ -661,6 +689,10 @@ class QualifyingPartyType
      */
     public function addOnceToCompletedTaskWithCreate(): CompletedTask
     {
+        if (!is_array($this->completedTask)) {
+            $this->completedTask = [];
+        }
+
         if ($this->completedTask === []) {
             $this->addOnceTocompletedTask(new CompletedTask());
         }
@@ -724,6 +756,10 @@ class QualifyingPartyType
      */
     public function addOnceToDeclaration(Declaration $declaration): self
     {
+        if (!is_array($this->declaration)) {
+            $this->declaration = [];
+        }
+
         $this->declaration[0] = $declaration;
 
         return $this;
@@ -734,6 +770,10 @@ class QualifyingPartyType
      */
     public function addOnceToDeclarationWithCreate(): Declaration
     {
+        if (!is_array($this->declaration)) {
+            $this->declaration = [];
+        }
+
         if ($this->declaration === []) {
             $this->addOnceTodeclaration(new Declaration());
         }

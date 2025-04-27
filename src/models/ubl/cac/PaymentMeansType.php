@@ -348,6 +348,10 @@ class PaymentMeansType
      */
     public function addOnceToInstructionNote(InstructionNote $instructionNote): self
     {
+        if (!is_array($this->instructionNote)) {
+            $this->instructionNote = [];
+        }
+
         $this->instructionNote[0] = $instructionNote;
 
         return $this;
@@ -358,6 +362,10 @@ class PaymentMeansType
      */
     public function addOnceToInstructionNoteWithCreate(): InstructionNote
     {
+        if (!is_array($this->instructionNote)) {
+            $this->instructionNote = [];
+        }
+
         if ($this->instructionNote === []) {
             $this->addOnceToinstructionNote(new InstructionNote());
         }
@@ -421,6 +429,10 @@ class PaymentMeansType
      */
     public function addOnceToPaymentID(PaymentID $paymentID): self
     {
+        if (!is_array($this->paymentID)) {
+            $this->paymentID = [];
+        }
+
         $this->paymentID[0] = $paymentID;
 
         return $this;
@@ -431,6 +443,10 @@ class PaymentMeansType
      */
     public function addOnceToPaymentIDWithCreate(): PaymentID
     {
+        if (!is_array($this->paymentID)) {
+            $this->paymentID = [];
+        }
+
         if ($this->paymentID === []) {
             $this->addOnceTopaymentID(new PaymentID());
         }

@@ -239,6 +239,10 @@ class MeterPropertyType
      */
     public function addOnceToValueQualifier(ValueQualifier $valueQualifier): self
     {
+        if (!is_array($this->valueQualifier)) {
+            $this->valueQualifier = [];
+        }
+
         $this->valueQualifier[0] = $valueQualifier;
 
         return $this;
@@ -249,6 +253,10 @@ class MeterPropertyType
      */
     public function addOnceToValueQualifierWithCreate(): ValueQualifier
     {
+        if (!is_array($this->valueQualifier)) {
+            $this->valueQualifier = [];
+        }
+
         if ($this->valueQualifier === []) {
             $this->addOnceTovalueQualifier(new ValueQualifier());
         }

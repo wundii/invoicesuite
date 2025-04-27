@@ -222,6 +222,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -232,6 +236,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -353,6 +361,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToWitnessParty(WitnessParty $witnessParty): self
     {
+        if (!is_array($this->witnessParty)) {
+            $this->witnessParty = [];
+        }
+
         $this->witnessParty[0] = $witnessParty;
 
         return $this;
@@ -363,6 +375,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToWitnessPartyWithCreate(): WitnessParty
     {
+        if (!is_array($this->witnessParty)) {
+            $this->witnessParty = [];
+        }
+
         if ($this->witnessParty === []) {
             $this->addOnceTowitnessParty(new WitnessParty());
         }
@@ -426,6 +442,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToMandateDocumentReference(MandateDocumentReference $mandateDocumentReference): self
     {
+        if (!is_array($this->mandateDocumentReference)) {
+            $this->mandateDocumentReference = [];
+        }
+
         $this->mandateDocumentReference[0] = $mandateDocumentReference;
 
         return $this;
@@ -436,6 +456,10 @@ class PowerOfAttorneyType
      */
     public function addOnceToMandateDocumentReferenceWithCreate(): MandateDocumentReference
     {
+        if (!is_array($this->mandateDocumentReference)) {
+            $this->mandateDocumentReference = [];
+        }
+
         if ($this->mandateDocumentReference === []) {
             $this->addOnceTomandateDocumentReference(new MandateDocumentReference());
         }

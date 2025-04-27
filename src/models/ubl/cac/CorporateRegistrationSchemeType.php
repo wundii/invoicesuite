@@ -198,6 +198,10 @@ class CorporateRegistrationSchemeType
      */
     public function addOnceToJurisdictionRegionAddress(JurisdictionRegionAddress $jurisdictionRegionAddress): self
     {
+        if (!is_array($this->jurisdictionRegionAddress)) {
+            $this->jurisdictionRegionAddress = [];
+        }
+
         $this->jurisdictionRegionAddress[0] = $jurisdictionRegionAddress;
 
         return $this;
@@ -208,6 +212,10 @@ class CorporateRegistrationSchemeType
      */
     public function addOnceToJurisdictionRegionAddressWithCreate(): JurisdictionRegionAddress
     {
+        if (!is_array($this->jurisdictionRegionAddress)) {
+            $this->jurisdictionRegionAddress = [];
+        }
+
         if ($this->jurisdictionRegionAddress === []) {
             $this->addOnceTojurisdictionRegionAddress(new JurisdictionRegionAddress());
         }

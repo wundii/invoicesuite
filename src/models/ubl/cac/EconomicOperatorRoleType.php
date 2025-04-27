@@ -116,6 +116,10 @@ class EconomicOperatorRoleType
      */
     public function addOnceToRoleDescription(RoleDescription $roleDescription): self
     {
+        if (!is_array($this->roleDescription)) {
+            $this->roleDescription = [];
+        }
+
         $this->roleDescription[0] = $roleDescription;
 
         return $this;
@@ -126,6 +130,10 @@ class EconomicOperatorRoleType
      */
     public function addOnceToRoleDescriptionWithCreate(): RoleDescription
     {
+        if (!is_array($this->roleDescription)) {
+            $this->roleDescription = [];
+        }
+
         if ($this->roleDescription === []) {
             $this->addOnceToroleDescription(new RoleDescription());
         }

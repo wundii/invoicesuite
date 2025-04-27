@@ -369,6 +369,10 @@ class DebitNoteLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -379,6 +383,10 @@ class DebitNoteLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -606,6 +614,10 @@ class DebitNoteLineType
      */
     public function addOnceToDiscrepancyResponse(DiscrepancyResponse $discrepancyResponse): self
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         $this->discrepancyResponse[0] = $discrepancyResponse;
 
         return $this;
@@ -616,6 +628,10 @@ class DebitNoteLineType
      */
     public function addOnceToDiscrepancyResponseWithCreate(): DiscrepancyResponse
     {
+        if (!is_array($this->discrepancyResponse)) {
+            $this->discrepancyResponse = [];
+        }
+
         if ($this->discrepancyResponse === []) {
             $this->addOnceTodiscrepancyResponse(new DiscrepancyResponse());
         }
@@ -679,6 +695,10 @@ class DebitNoteLineType
      */
     public function addOnceToDespatchLineReference(DespatchLineReference $despatchLineReference): self
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         $this->despatchLineReference[0] = $despatchLineReference;
 
         return $this;
@@ -689,6 +709,10 @@ class DebitNoteLineType
      */
     public function addOnceToDespatchLineReferenceWithCreate(): DespatchLineReference
     {
+        if (!is_array($this->despatchLineReference)) {
+            $this->despatchLineReference = [];
+        }
+
         if ($this->despatchLineReference === []) {
             $this->addOnceTodespatchLineReference(new DespatchLineReference());
         }
@@ -752,6 +776,10 @@ class DebitNoteLineType
      */
     public function addOnceToReceiptLineReference(ReceiptLineReference $receiptLineReference): self
     {
+        if (!is_array($this->receiptLineReference)) {
+            $this->receiptLineReference = [];
+        }
+
         $this->receiptLineReference[0] = $receiptLineReference;
 
         return $this;
@@ -762,6 +790,10 @@ class DebitNoteLineType
      */
     public function addOnceToReceiptLineReferenceWithCreate(): ReceiptLineReference
     {
+        if (!is_array($this->receiptLineReference)) {
+            $this->receiptLineReference = [];
+        }
+
         if ($this->receiptLineReference === []) {
             $this->addOnceToreceiptLineReference(new ReceiptLineReference());
         }
@@ -825,6 +857,10 @@ class DebitNoteLineType
      */
     public function addOnceToBillingReference(BillingReference $billingReference): self
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         $this->billingReference[0] = $billingReference;
 
         return $this;
@@ -835,6 +871,10 @@ class DebitNoteLineType
      */
     public function addOnceToBillingReferenceWithCreate(): BillingReference
     {
+        if (!is_array($this->billingReference)) {
+            $this->billingReference = [];
+        }
+
         if ($this->billingReference === []) {
             $this->addOnceTobillingReference(new BillingReference());
         }
@@ -898,6 +938,10 @@ class DebitNoteLineType
      */
     public function addOnceToDocumentReference(DocumentReference $documentReference): self
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         $this->documentReference[0] = $documentReference;
 
         return $this;
@@ -908,6 +952,10 @@ class DebitNoteLineType
      */
     public function addOnceToDocumentReferenceWithCreate(): DocumentReference
     {
+        if (!is_array($this->documentReference)) {
+            $this->documentReference = [];
+        }
+
         if ($this->documentReference === []) {
             $this->addOnceTodocumentReference(new DocumentReference());
         }
@@ -1000,6 +1048,10 @@ class DebitNoteLineType
      */
     public function addOnceToDelivery(Delivery $delivery): self
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         $this->delivery[0] = $delivery;
 
         return $this;
@@ -1010,6 +1062,10 @@ class DebitNoteLineType
      */
     public function addOnceToDeliveryWithCreate(): Delivery
     {
+        if (!is_array($this->delivery)) {
+            $this->delivery = [];
+        }
+
         if ($this->delivery === []) {
             $this->addOnceTodelivery(new Delivery());
         }
@@ -1073,6 +1129,10 @@ class DebitNoteLineType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -1083,6 +1143,10 @@ class DebitNoteLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -1146,6 +1210,10 @@ class DebitNoteLineType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -1156,6 +1224,10 @@ class DebitNoteLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -1277,6 +1349,10 @@ class DebitNoteLineType
      */
     public function addOnceToSubDebitNoteLine(SubDebitNoteLine $subDebitNoteLine): self
     {
+        if (!is_array($this->subDebitNoteLine)) {
+            $this->subDebitNoteLine = [];
+        }
+
         $this->subDebitNoteLine[0] = $subDebitNoteLine;
 
         return $this;
@@ -1287,6 +1363,10 @@ class DebitNoteLineType
      */
     public function addOnceToSubDebitNoteLineWithCreate(): SubDebitNoteLine
     {
+        if (!is_array($this->subDebitNoteLine)) {
+            $this->subDebitNoteLine = [];
+        }
+
         if ($this->subDebitNoteLine === []) {
             $this->addOnceTosubDebitNoteLine(new SubDebitNoteLine());
         }

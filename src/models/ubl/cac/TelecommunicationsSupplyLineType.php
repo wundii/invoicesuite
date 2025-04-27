@@ -217,6 +217,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -227,6 +231,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }
@@ -319,6 +327,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToExchangeRate(ExchangeRate $exchangeRate): self
     {
+        if (!is_array($this->exchangeRate)) {
+            $this->exchangeRate = [];
+        }
+
         $this->exchangeRate[0] = $exchangeRate;
 
         return $this;
@@ -329,6 +341,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToExchangeRateWithCreate(): ExchangeRate
     {
+        if (!is_array($this->exchangeRate)) {
+            $this->exchangeRate = [];
+        }
+
         if ($this->exchangeRate === []) {
             $this->addOnceToexchangeRate(new ExchangeRate());
         }
@@ -392,6 +408,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToAllowanceCharge(AllowanceCharge $allowanceCharge): self
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         $this->allowanceCharge[0] = $allowanceCharge;
 
         return $this;
@@ -402,6 +422,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToAllowanceChargeWithCreate(): AllowanceCharge
     {
+        if (!is_array($this->allowanceCharge)) {
+            $this->allowanceCharge = [];
+        }
+
         if ($this->allowanceCharge === []) {
             $this->addOnceToallowanceCharge(new AllowanceCharge());
         }
@@ -465,6 +489,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTaxTotal(TaxTotal $taxTotal): self
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         $this->taxTotal[0] = $taxTotal;
 
         return $this;
@@ -475,6 +503,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTaxTotalWithCreate(): TaxTotal
     {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
         if ($this->taxTotal === []) {
             $this->addOnceTotaxTotal(new TaxTotal());
         }
@@ -538,6 +570,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTelecommunicationsService(TelecommunicationsService $telecommunicationsService): self
     {
+        if (!is_array($this->telecommunicationsService)) {
+            $this->telecommunicationsService = [];
+        }
+
         $this->telecommunicationsService[0] = $telecommunicationsService;
 
         return $this;
@@ -548,6 +584,10 @@ class TelecommunicationsSupplyLineType
      */
     public function addOnceToTelecommunicationsServiceWithCreate(): TelecommunicationsService
     {
+        if (!is_array($this->telecommunicationsService)) {
+            $this->telecommunicationsService = [];
+        }
+
         if ($this->telecommunicationsService === []) {
             $this->addOnceTotelecommunicationsService(new TelecommunicationsService());
         }

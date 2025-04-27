@@ -100,6 +100,10 @@ class ContractExecutionRequirementType
      */
     public function addOnceToName(Name $name): self
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         $this->name[0] = $name;
 
         return $this;
@@ -110,6 +114,10 @@ class ContractExecutionRequirementType
      */
     public function addOnceToNameWithCreate(): Name
     {
+        if (!is_array($this->name)) {
+            $this->name = [];
+        }
+
         if ($this->name === []) {
             $this->addOnceToname(new Name());
         }
@@ -202,6 +210,10 @@ class ContractExecutionRequirementType
      */
     public function addOnceToDescription(Description $description): self
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         $this->description[0] = $description;
 
         return $this;
@@ -212,6 +224,10 @@ class ContractExecutionRequirementType
      */
     public function addOnceToDescriptionWithCreate(): Description
     {
+        if (!is_array($this->description)) {
+            $this->description = [];
+        }
+
         if ($this->description === []) {
             $this->addOnceTodescription(new Description());
         }

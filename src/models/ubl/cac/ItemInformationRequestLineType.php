@@ -250,6 +250,10 @@ class ItemInformationRequestLineType
      */
     public function addOnceToPeriod(Period $period): self
     {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
         $this->period[0] = $period;
 
         return $this;
@@ -260,6 +264,10 @@ class ItemInformationRequestLineType
      */
     public function addOnceToPeriodWithCreate(): Period
     {
+        if (!is_array($this->period)) {
+            $this->period = [];
+        }
+
         if ($this->period === []) {
             $this->addOnceToperiod(new Period());
         }
@@ -323,6 +331,10 @@ class ItemInformationRequestLineType
      */
     public function addOnceToSalesItem(SalesItem $salesItem): self
     {
+        if (!is_array($this->salesItem)) {
+            $this->salesItem = [];
+        }
+
         $this->salesItem[0] = $salesItem;
 
         return $this;
@@ -333,6 +345,10 @@ class ItemInformationRequestLineType
      */
     public function addOnceToSalesItemWithCreate(): SalesItem
     {
+        if (!is_array($this->salesItem)) {
+            $this->salesItem = [];
+        }
+
         if ($this->salesItem === []) {
             $this->addOnceTosalesItem(new SalesItem());
         }

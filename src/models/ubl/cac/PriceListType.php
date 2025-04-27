@@ -167,6 +167,10 @@ class PriceListType
      */
     public function addOnceToValidityPeriod(ValidityPeriod $validityPeriod): self
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         $this->validityPeriod[0] = $validityPeriod;
 
         return $this;
@@ -177,6 +181,10 @@ class PriceListType
      */
     public function addOnceToValidityPeriodWithCreate(): ValidityPeriod
     {
+        if (!is_array($this->validityPeriod)) {
+            $this->validityPeriod = [];
+        }
+
         if ($this->validityPeriod === []) {
             $this->addOnceTovalidityPeriod(new ValidityPeriod());
         }

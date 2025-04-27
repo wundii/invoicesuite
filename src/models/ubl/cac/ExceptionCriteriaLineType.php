@@ -234,6 +234,10 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToNote(Note $note): self
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         $this->note[0] = $note;
 
         return $this;
@@ -244,6 +248,10 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToNoteWithCreate(): Note
     {
+        if (!is_array($this->note)) {
+            $this->note = [];
+        }
+
         if ($this->note === []) {
             $this->addOnceTonote(new Note());
         }
@@ -539,6 +547,10 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToSupplyItem(SupplyItem $supplyItem): self
     {
+        if (!is_array($this->supplyItem)) {
+            $this->supplyItem = [];
+        }
+
         $this->supplyItem[0] = $supplyItem;
 
         return $this;
@@ -549,6 +561,10 @@ class ExceptionCriteriaLineType
      */
     public function addOnceToSupplyItemWithCreate(): SupplyItem
     {
+        if (!is_array($this->supplyItem)) {
+            $this->supplyItem = [];
+        }
+
         if ($this->supplyItem === []) {
             $this->addOnceTosupplyItem(new SupplyItem());
         }

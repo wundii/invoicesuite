@@ -175,6 +175,10 @@ class DeliveryTermsType
      */
     public function addOnceToSpecialTerms(SpecialTerms $specialTerms): self
     {
+        if (!is_array($this->specialTerms)) {
+            $this->specialTerms = [];
+        }
+
         $this->specialTerms[0] = $specialTerms;
 
         return $this;
@@ -185,6 +189,10 @@ class DeliveryTermsType
      */
     public function addOnceToSpecialTermsWithCreate(): SpecialTerms
     {
+        if (!is_array($this->specialTerms)) {
+            $this->specialTerms = [];
+        }
+
         if ($this->specialTerms === []) {
             $this->addOnceTospecialTerms(new SpecialTerms());
         }
@@ -277,6 +285,10 @@ class DeliveryTermsType
      */
     public function addOnceToLossRisk(LossRisk $lossRisk): self
     {
+        if (!is_array($this->lossRisk)) {
+            $this->lossRisk = [];
+        }
+
         $this->lossRisk[0] = $lossRisk;
 
         return $this;
@@ -287,6 +299,10 @@ class DeliveryTermsType
      */
     public function addOnceToLossRiskWithCreate(): LossRisk
     {
+        if (!is_array($this->lossRisk)) {
+            $this->lossRisk = [];
+        }
+
         if ($this->lossRisk === []) {
             $this->addOnceTolossRisk(new LossRisk());
         }

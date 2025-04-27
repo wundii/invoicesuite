@@ -128,6 +128,10 @@ class StowageType
      */
     public function addOnceToLocation(Location $location): self
     {
+        if (!is_array($this->location)) {
+            $this->location = [];
+        }
+
         $this->location[0] = $location;
 
         return $this;
@@ -138,6 +142,10 @@ class StowageType
      */
     public function addOnceToLocationWithCreate(): Location
     {
+        if (!is_array($this->location)) {
+            $this->location = [];
+        }
+
         if ($this->location === []) {
             $this->addOnceTolocation(new Location());
         }
@@ -201,6 +209,10 @@ class StowageType
      */
     public function addOnceToMeasurementDimension(MeasurementDimension $measurementDimension): self
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         $this->measurementDimension[0] = $measurementDimension;
 
         return $this;
@@ -211,6 +223,10 @@ class StowageType
      */
     public function addOnceToMeasurementDimensionWithCreate(): MeasurementDimension
     {
+        if (!is_array($this->measurementDimension)) {
+            $this->measurementDimension = [];
+        }
+
         if ($this->measurementDimension === []) {
             $this->addOnceTomeasurementDimension(new MeasurementDimension());
         }

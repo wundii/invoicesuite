@@ -145,6 +145,10 @@ class LotIdentificationType
      */
     public function addOnceToAdditionalItemProperty(AdditionalItemProperty $additionalItemProperty): self
     {
+        if (!is_array($this->additionalItemProperty)) {
+            $this->additionalItemProperty = [];
+        }
+
         $this->additionalItemProperty[0] = $additionalItemProperty;
 
         return $this;
@@ -155,6 +159,10 @@ class LotIdentificationType
      */
     public function addOnceToAdditionalItemPropertyWithCreate(): AdditionalItemProperty
     {
+        if (!is_array($this->additionalItemProperty)) {
+            $this->additionalItemProperty = [];
+        }
+
         if ($this->additionalItemProperty === []) {
             $this->addOnceToadditionalItemProperty(new AdditionalItemProperty());
         }
