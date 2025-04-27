@@ -167,6 +167,10 @@ class AdvancePaymentType
      */
     public function addOnceToIncludedTradeTax(TradeTaxType $tradeTaxType): self
     {
+        if (!is_array($this->includedTradeTax)) {
+            $this->includedTradeTax = [];
+        }
+
         $this->includedTradeTax[0] = $tradeTaxType;
 
         return $this;
@@ -177,6 +181,10 @@ class AdvancePaymentType
      */
     public function addOnceToIncludedTradeTaxWithCreate(): TradeTaxType
     {
+        if (!is_array($this->includedTradeTax)) {
+            $this->includedTradeTax = [];
+        }
+
         if ($this->includedTradeTax === []) {
             $this->addOnceToincludedTradeTax(new TradeTaxType());
         }

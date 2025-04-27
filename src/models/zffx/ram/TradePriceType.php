@@ -167,6 +167,10 @@ class TradePriceType
      */
     public function addOnceToAppliedTradeAllowanceCharge(TradeAllowanceChargeType $tradeAllowanceChargeType): self
     {
+        if (!is_array($this->appliedTradeAllowanceCharge)) {
+            $this->appliedTradeAllowanceCharge = [];
+        }
+
         $this->appliedTradeAllowanceCharge[0] = $tradeAllowanceChargeType;
 
         return $this;
@@ -177,6 +181,10 @@ class TradePriceType
      */
     public function addOnceToAppliedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
+        if (!is_array($this->appliedTradeAllowanceCharge)) {
+            $this->appliedTradeAllowanceCharge = [];
+        }
+
         if ($this->appliedTradeAllowanceCharge === []) {
             $this->addOnceToappliedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }

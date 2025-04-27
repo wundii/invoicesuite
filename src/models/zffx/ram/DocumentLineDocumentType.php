@@ -237,6 +237,10 @@ class DocumentLineDocumentType
      */
     public function addOnceToIncludedNote(NoteType $noteType): self
     {
+        if (!is_array($this->includedNote)) {
+            $this->includedNote = [];
+        }
+
         $this->includedNote[0] = $noteType;
 
         return $this;
@@ -247,6 +251,10 @@ class DocumentLineDocumentType
      */
     public function addOnceToIncludedNoteWithCreate(): NoteType
     {
+        if (!is_array($this->includedNote)) {
+            $this->includedNote = [];
+        }
+
         if ($this->includedNote === []) {
             $this->addOnceToincludedNote(new NoteType());
         }

@@ -268,6 +268,10 @@ class LineTradeAgreementType
      */
     public function addOnceToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
+        if (!is_array($this->additionalReferencedDocument)) {
+            $this->additionalReferencedDocument = [];
+        }
+
         $this->additionalReferencedDocument[0] = $referencedDocumentType;
 
         return $this;
@@ -278,6 +282,10 @@ class LineTradeAgreementType
      */
     public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
+        if (!is_array($this->additionalReferencedDocument)) {
+            $this->additionalReferencedDocument = [];
+        }
+
         if ($this->additionalReferencedDocument === []) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }
@@ -401,6 +409,10 @@ class LineTradeAgreementType
     public function addOnceToUltimateCustomerOrderReferencedDocument(
         ReferencedDocumentType $referencedDocumentType,
     ): self {
+        if (!is_array($this->ultimateCustomerOrderReferencedDocument)) {
+            $this->ultimateCustomerOrderReferencedDocument = [];
+        }
+
         $this->ultimateCustomerOrderReferencedDocument[0] = $referencedDocumentType;
 
         return $this;
@@ -411,6 +423,10 @@ class LineTradeAgreementType
      */
     public function addOnceToUltimateCustomerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
+        if (!is_array($this->ultimateCustomerOrderReferencedDocument)) {
+            $this->ultimateCustomerOrderReferencedDocument = [];
+        }
+
         if ($this->ultimateCustomerOrderReferencedDocument === []) {
             $this->addOnceToultimateCustomerOrderReferencedDocument(new ReferencedDocumentType());
         }

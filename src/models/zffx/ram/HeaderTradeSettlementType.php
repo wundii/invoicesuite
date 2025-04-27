@@ -586,6 +586,10 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedTradeSettlementPaymentMeans(
         TradeSettlementPaymentMeansType $tradeSettlementPaymentMeansType,
     ): self {
+        if (!is_array($this->specifiedTradeSettlementPaymentMeans)) {
+            $this->specifiedTradeSettlementPaymentMeans = [];
+        }
+
         $this->specifiedTradeSettlementPaymentMeans[0] = $tradeSettlementPaymentMeansType;
 
         return $this;
@@ -596,6 +600,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate(): TradeSettlementPaymentMeansType
     {
+        if (!is_array($this->specifiedTradeSettlementPaymentMeans)) {
+            $this->specifiedTradeSettlementPaymentMeans = [];
+        }
+
         if ($this->specifiedTradeSettlementPaymentMeans === []) {
             $this->addOnceTospecifiedTradeSettlementPaymentMeans(new TradeSettlementPaymentMeansType());
         }
@@ -659,6 +667,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToApplicableTradeTax(TradeTaxType $tradeTaxType): self
     {
+        if (!is_array($this->applicableTradeTax)) {
+            $this->applicableTradeTax = [];
+        }
+
         $this->applicableTradeTax[0] = $tradeTaxType;
 
         return $this;
@@ -669,6 +681,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToApplicableTradeTaxWithCreate(): TradeTaxType
     {
+        if (!is_array($this->applicableTradeTax)) {
+            $this->applicableTradeTax = [];
+        }
+
         if ($this->applicableTradeTax === []) {
             $this->addOnceToapplicableTradeTax(new TradeTaxType());
         }
@@ -762,6 +778,10 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedTradeAllowanceCharge(
         TradeAllowanceChargeType $tradeAllowanceChargeType,
     ): self {
+        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+            $this->specifiedTradeAllowanceCharge = [];
+        }
+
         $this->specifiedTradeAllowanceCharge[0] = $tradeAllowanceChargeType;
 
         return $this;
@@ -772,6 +792,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
+        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+            $this->specifiedTradeAllowanceCharge = [];
+        }
+
         if ($this->specifiedTradeAllowanceCharge === []) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
@@ -837,6 +861,10 @@ class HeaderTradeSettlementType
     public function addOnceToSpecifiedLogisticsServiceCharge(
         LogisticsServiceChargeType $logisticsServiceChargeType,
     ): self {
+        if (!is_array($this->specifiedLogisticsServiceCharge)) {
+            $this->specifiedLogisticsServiceCharge = [];
+        }
+
         $this->specifiedLogisticsServiceCharge[0] = $logisticsServiceChargeType;
 
         return $this;
@@ -847,6 +875,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedLogisticsServiceChargeWithCreate(): LogisticsServiceChargeType
     {
+        if (!is_array($this->specifiedLogisticsServiceCharge)) {
+            $this->specifiedLogisticsServiceCharge = [];
+        }
+
         if ($this->specifiedLogisticsServiceCharge === []) {
             $this->addOnceTospecifiedLogisticsServiceCharge(new LogisticsServiceChargeType());
         }
@@ -910,6 +942,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradePaymentTerms(TradePaymentTermsType $tradePaymentTermsType): self
     {
+        if (!is_array($this->specifiedTradePaymentTerms)) {
+            $this->specifiedTradePaymentTerms = [];
+        }
+
         $this->specifiedTradePaymentTerms[0] = $tradePaymentTermsType;
 
         return $this;
@@ -920,6 +956,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedTradePaymentTermsWithCreate(): TradePaymentTermsType
     {
+        if (!is_array($this->specifiedTradePaymentTerms)) {
+            $this->specifiedTradePaymentTerms = [];
+        }
+
         if ($this->specifiedTradePaymentTerms === []) {
             $this->addOnceTospecifiedTradePaymentTerms(new TradePaymentTermsType());
         }
@@ -1013,6 +1053,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToInvoiceReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
+        if (!is_array($this->invoiceReferencedDocument)) {
+            $this->invoiceReferencedDocument = [];
+        }
+
         $this->invoiceReferencedDocument[0] = $referencedDocumentType;
 
         return $this;
@@ -1023,6 +1067,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToInvoiceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
+        if (!is_array($this->invoiceReferencedDocument)) {
+            $this->invoiceReferencedDocument = [];
+        }
+
         if ($this->invoiceReferencedDocument === []) {
             $this->addOnceToinvoiceReferencedDocument(new ReferencedDocumentType());
         }
@@ -1089,6 +1137,10 @@ class HeaderTradeSettlementType
     public function addOnceToReceivableSpecifiedTradeAccountingAccount(
         TradeAccountingAccountType $tradeAccountingAccountType,
     ): self {
+        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+            $this->receivableSpecifiedTradeAccountingAccount = [];
+        }
+
         $this->receivableSpecifiedTradeAccountingAccount[0] = $tradeAccountingAccountType;
 
         return $this;
@@ -1099,6 +1151,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate(): TradeAccountingAccountType
     {
+        if (!is_array($this->receivableSpecifiedTradeAccountingAccount)) {
+            $this->receivableSpecifiedTradeAccountingAccount = [];
+        }
+
         if ($this->receivableSpecifiedTradeAccountingAccount === []) {
             $this->addOnceToreceivableSpecifiedTradeAccountingAccount(new TradeAccountingAccountType());
         }
@@ -1162,6 +1218,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedAdvancePayment(AdvancePaymentType $advancePaymentType): self
     {
+        if (!is_array($this->specifiedAdvancePayment)) {
+            $this->specifiedAdvancePayment = [];
+        }
+
         $this->specifiedAdvancePayment[0] = $advancePaymentType;
 
         return $this;
@@ -1172,6 +1232,10 @@ class HeaderTradeSettlementType
      */
     public function addOnceToSpecifiedAdvancePaymentWithCreate(): AdvancePaymentType
     {
+        if (!is_array($this->specifiedAdvancePayment)) {
+            $this->specifiedAdvancePayment = [];
+        }
+
         if ($this->specifiedAdvancePayment === []) {
             $this->addOnceTospecifiedAdvancePayment(new AdvancePaymentType());
         }

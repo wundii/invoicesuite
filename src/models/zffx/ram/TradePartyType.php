@@ -178,6 +178,10 @@ class TradePartyType
      */
     public function addOnceToID(IDType $idType): self
     {
+        if (!is_array($this->iD)) {
+            $this->iD = [];
+        }
+
         $this->iD[0] = $idType;
 
         return $this;
@@ -188,6 +192,10 @@ class TradePartyType
      */
     public function addOnceToIDWithCreate(): IDType
     {
+        if (!is_array($this->iD)) {
+            $this->iD = [];
+        }
+
         if ($this->iD === []) {
             $this->addOnceToiD(new IDType());
         }
@@ -251,6 +259,10 @@ class TradePartyType
      */
     public function addOnceToGlobalID(IDType $idType): self
     {
+        if (!is_array($this->globalID)) {
+            $this->globalID = [];
+        }
+
         $this->globalID[0] = $idType;
 
         return $this;
@@ -261,6 +273,10 @@ class TradePartyType
      */
     public function addOnceToGlobalIDWithCreate(): IDType
     {
+        if (!is_array($this->globalID)) {
+            $this->globalID = [];
+        }
+
         if ($this->globalID === []) {
             $this->addOnceToglobalID(new IDType());
         }
@@ -430,6 +446,10 @@ class TradePartyType
      */
     public function addOnceToDefinedTradeContact(TradeContactType $tradeContactType): self
     {
+        if (!is_array($this->definedTradeContact)) {
+            $this->definedTradeContact = [];
+        }
+
         $this->definedTradeContact[0] = $tradeContactType;
 
         return $this;
@@ -440,6 +460,10 @@ class TradePartyType
      */
     public function addOnceToDefinedTradeContactWithCreate(): TradeContactType
     {
+        if (!is_array($this->definedTradeContact)) {
+            $this->definedTradeContact = [];
+        }
+
         if ($this->definedTradeContact === []) {
             $this->addOnceTodefinedTradeContact(new TradeContactType());
         }
@@ -561,6 +585,10 @@ class TradePartyType
      */
     public function addOnceToSpecifiedTaxRegistration(TaxRegistrationType $taxRegistrationType): self
     {
+        if (!is_array($this->specifiedTaxRegistration)) {
+            $this->specifiedTaxRegistration = [];
+        }
+
         $this->specifiedTaxRegistration[0] = $taxRegistrationType;
 
         return $this;
@@ -571,6 +599,10 @@ class TradePartyType
      */
     public function addOnceToSpecifiedTaxRegistrationWithCreate(): TaxRegistrationType
     {
+        if (!is_array($this->specifiedTaxRegistration)) {
+            $this->specifiedTaxRegistration = [];
+        }
+
         if ($this->specifiedTaxRegistration === []) {
             $this->addOnceTospecifiedTaxRegistration(new TaxRegistrationType());
         }

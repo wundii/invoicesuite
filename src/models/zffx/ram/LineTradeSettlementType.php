@@ -142,6 +142,10 @@ class LineTradeSettlementType
      */
     public function addOnceToApplicableTradeTax(TradeTaxType $tradeTaxType): self
     {
+        if (!is_array($this->applicableTradeTax)) {
+            $this->applicableTradeTax = [];
+        }
+
         $this->applicableTradeTax[0] = $tradeTaxType;
 
         return $this;
@@ -152,6 +156,10 @@ class LineTradeSettlementType
      */
     public function addOnceToApplicableTradeTaxWithCreate(): TradeTaxType
     {
+        if (!is_array($this->applicableTradeTax)) {
+            $this->applicableTradeTax = [];
+        }
+
         if ($this->applicableTradeTax === []) {
             $this->addOnceToapplicableTradeTax(new TradeTaxType());
         }
@@ -245,6 +253,10 @@ class LineTradeSettlementType
     public function addOnceToSpecifiedTradeAllowanceCharge(
         TradeAllowanceChargeType $tradeAllowanceChargeType,
     ): self {
+        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+            $this->specifiedTradeAllowanceCharge = [];
+        }
+
         $this->specifiedTradeAllowanceCharge[0] = $tradeAllowanceChargeType;
 
         return $this;
@@ -255,6 +267,10 @@ class LineTradeSettlementType
      */
     public function addOnceToSpecifiedTradeAllowanceChargeWithCreate(): TradeAllowanceChargeType
     {
+        if (!is_array($this->specifiedTradeAllowanceCharge)) {
+            $this->specifiedTradeAllowanceCharge = [];
+        }
+
         if ($this->specifiedTradeAllowanceCharge === []) {
             $this->addOnceTospecifiedTradeAllowanceCharge(new TradeAllowanceChargeType());
         }
@@ -377,6 +393,10 @@ class LineTradeSettlementType
      */
     public function addOnceToAdditionalReferencedDocument(ReferencedDocumentType $referencedDocumentType): self
     {
+        if (!is_array($this->additionalReferencedDocument)) {
+            $this->additionalReferencedDocument = [];
+        }
+
         $this->additionalReferencedDocument[0] = $referencedDocumentType;
 
         return $this;
@@ -387,6 +407,10 @@ class LineTradeSettlementType
      */
     public function addOnceToAdditionalReferencedDocumentWithCreate(): ReferencedDocumentType
     {
+        if (!is_array($this->additionalReferencedDocument)) {
+            $this->additionalReferencedDocument = [];
+        }
+
         if ($this->additionalReferencedDocument === []) {
             $this->addOnceToadditionalReferencedDocument(new ReferencedDocumentType());
         }

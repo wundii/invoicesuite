@@ -156,6 +156,10 @@ class LogisticsServiceChargeType
      */
     public function addOnceToAppliedTradeTax(TradeTaxType $tradeTaxType): self
     {
+        if (!is_array($this->appliedTradeTax)) {
+            $this->appliedTradeTax = [];
+        }
+
         $this->appliedTradeTax[0] = $tradeTaxType;
 
         return $this;
@@ -166,6 +170,10 @@ class LogisticsServiceChargeType
      */
     public function addOnceToAppliedTradeTaxWithCreate(): TradeTaxType
     {
+        if (!is_array($this->appliedTradeTax)) {
+            $this->appliedTradeTax = [];
+        }
+
         if ($this->appliedTradeTax === []) {
             $this->addOnceToappliedTradeTax(new TradeTaxType());
         }

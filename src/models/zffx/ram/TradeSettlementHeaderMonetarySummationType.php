@@ -279,6 +279,10 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function addOnceToTaxTotalAmount(AmountType $amountType): self
     {
+        if (!is_array($this->taxTotalAmount)) {
+            $this->taxTotalAmount = [];
+        }
+
         $this->taxTotalAmount[0] = $amountType;
 
         return $this;
@@ -289,6 +293,10 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function addOnceToTaxTotalAmountWithCreate(): AmountType
     {
+        if (!is_array($this->taxTotalAmount)) {
+            $this->taxTotalAmount = [];
+        }
+
         if ($this->taxTotalAmount === []) {
             $this->addOnceTotaxTotalAmount(new AmountType());
         }

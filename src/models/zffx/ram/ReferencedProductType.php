@@ -183,6 +183,10 @@ class ReferencedProductType
      */
     public function addOnceToGlobalID(IDType $idType): self
     {
+        if (!is_array($this->globalID)) {
+            $this->globalID = [];
+        }
+
         $this->globalID[0] = $idType;
 
         return $this;
@@ -193,6 +197,10 @@ class ReferencedProductType
      */
     public function addOnceToGlobalIDWithCreate(): IDType
     {
+        if (!is_array($this->globalID)) {
+            $this->globalID = [];
+        }
+
         if ($this->globalID === []) {
             $this->addOnceToglobalID(new IDType());
         }

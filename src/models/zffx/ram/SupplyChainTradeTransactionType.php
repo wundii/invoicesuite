@@ -109,6 +109,10 @@ class SupplyChainTradeTransactionType
     public function addOnceToIncludedSupplyChainTradeLineItem(
         SupplyChainTradeLineItemType $supplyChainTradeLineItemType,
     ): self {
+        if (!is_array($this->includedSupplyChainTradeLineItem)) {
+            $this->includedSupplyChainTradeLineItem = [];
+        }
+
         $this->includedSupplyChainTradeLineItem[0] = $supplyChainTradeLineItemType;
 
         return $this;
@@ -119,6 +123,10 @@ class SupplyChainTradeTransactionType
      */
     public function addOnceToIncludedSupplyChainTradeLineItemWithCreate(): SupplyChainTradeLineItemType
     {
+        if (!is_array($this->includedSupplyChainTradeLineItem)) {
+            $this->includedSupplyChainTradeLineItem = [];
+        }
+
         if ($this->includedSupplyChainTradeLineItem === []) {
             $this->addOnceToincludedSupplyChainTradeLineItem(new SupplyChainTradeLineItemType());
         }

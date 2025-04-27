@@ -153,6 +153,10 @@ class HeaderTradeDeliveryType
     public function addOnceToRelatedSupplyChainConsignment(
         LogisticsTransportMovementType $logisticsTransportMovementType,
     ): self {
+        if (!is_array($this->relatedSupplyChainConsignment)) {
+            $this->relatedSupplyChainConsignment = [];
+        }
+
         $this->relatedSupplyChainConsignment[0] = $logisticsTransportMovementType;
 
         return $this;
@@ -163,6 +167,10 @@ class HeaderTradeDeliveryType
      */
     public function addOnceToRelatedSupplyChainConsignmentWithCreate(): LogisticsTransportMovementType
     {
+        if (!is_array($this->relatedSupplyChainConsignment)) {
+            $this->relatedSupplyChainConsignment = [];
+        }
+
         if ($this->relatedSupplyChainConsignment === []) {
             $this->addOnceTorelatedSupplyChainConsignment(new LogisticsTransportMovementType());
         }

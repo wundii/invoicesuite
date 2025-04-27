@@ -76,6 +76,10 @@ class SupplyChainConsignmentType
     public function addOnceToSpecifiedLogisticsTransportMovement(
         LogisticsTransportMovementType $logisticsTransportMovementType,
     ): self {
+        if (!is_array($this->specifiedLogisticsTransportMovement)) {
+            $this->specifiedLogisticsTransportMovement = [];
+        }
+
         $this->specifiedLogisticsTransportMovement[0] = $logisticsTransportMovementType;
 
         return $this;
@@ -86,6 +90,10 @@ class SupplyChainConsignmentType
      */
     public function addOnceToSpecifiedLogisticsTransportMovementWithCreate(): LogisticsTransportMovementType
     {
+        if (!is_array($this->specifiedLogisticsTransportMovement)) {
+            $this->specifiedLogisticsTransportMovement = [];
+        }
+
         if ($this->specifiedLogisticsTransportMovement === []) {
             $this->addOnceTospecifiedLogisticsTransportMovement(new LogisticsTransportMovementType());
         }

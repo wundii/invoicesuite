@@ -477,6 +477,10 @@ class TradeProductType
      */
     public function addOnceToBatchID(IDType $idType): self
     {
+        if (!is_array($this->batchID)) {
+            $this->batchID = [];
+        }
+
         $this->batchID[0] = $idType;
 
         return $this;
@@ -487,6 +491,10 @@ class TradeProductType
      */
     public function addOnceToBatchIDWithCreate(): IDType
     {
+        if (!is_array($this->batchID)) {
+            $this->batchID = [];
+        }
+
         if ($this->batchID === []) {
             $this->addOnceTobatchID(new IDType());
         }
@@ -610,6 +618,10 @@ class TradeProductType
     public function addOnceToApplicableProductCharacteristic(
         ProductCharacteristicType $productCharacteristicType,
     ): self {
+        if (!is_array($this->applicableProductCharacteristic)) {
+            $this->applicableProductCharacteristic = [];
+        }
+
         $this->applicableProductCharacteristic[0] = $productCharacteristicType;
 
         return $this;
@@ -620,6 +632,10 @@ class TradeProductType
      */
     public function addOnceToApplicableProductCharacteristicWithCreate(): ProductCharacteristicType
     {
+        if (!is_array($this->applicableProductCharacteristic)) {
+            $this->applicableProductCharacteristic = [];
+        }
+
         if ($this->applicableProductCharacteristic === []) {
             $this->addOnceToapplicableProductCharacteristic(new ProductCharacteristicType());
         }
@@ -685,6 +701,10 @@ class TradeProductType
     public function addOnceToDesignatedProductClassification(
         ProductClassificationType $productClassificationType,
     ): self {
+        if (!is_array($this->designatedProductClassification)) {
+            $this->designatedProductClassification = [];
+        }
+
         $this->designatedProductClassification[0] = $productClassificationType;
 
         return $this;
@@ -695,6 +715,10 @@ class TradeProductType
      */
     public function addOnceToDesignatedProductClassificationWithCreate(): ProductClassificationType
     {
+        if (!is_array($this->designatedProductClassification)) {
+            $this->designatedProductClassification = [];
+        }
+
         if ($this->designatedProductClassification === []) {
             $this->addOnceTodesignatedProductClassification(new ProductClassificationType());
         }
@@ -760,6 +784,10 @@ class TradeProductType
     public function addOnceToIndividualTradeProductInstance(
         TradeProductInstanceType $tradeProductInstanceType,
     ): self {
+        if (!is_array($this->individualTradeProductInstance)) {
+            $this->individualTradeProductInstance = [];
+        }
+
         $this->individualTradeProductInstance[0] = $tradeProductInstanceType;
 
         return $this;
@@ -770,6 +798,10 @@ class TradeProductType
      */
     public function addOnceToIndividualTradeProductInstanceWithCreate(): TradeProductInstanceType
     {
+        if (!is_array($this->individualTradeProductInstance)) {
+            $this->individualTradeProductInstance = [];
+        }
+
         if ($this->individualTradeProductInstance === []) {
             $this->addOnceToindividualTradeProductInstance(new TradeProductInstanceType());
         }
@@ -862,6 +894,10 @@ class TradeProductType
      */
     public function addOnceToIncludedReferencedProduct(ReferencedProductType $referencedProductType): self
     {
+        if (!is_array($this->includedReferencedProduct)) {
+            $this->includedReferencedProduct = [];
+        }
+
         $this->includedReferencedProduct[0] = $referencedProductType;
 
         return $this;
@@ -872,6 +908,10 @@ class TradeProductType
      */
     public function addOnceToIncludedReferencedProductWithCreate(): ReferencedProductType
     {
+        if (!is_array($this->includedReferencedProduct)) {
+            $this->includedReferencedProduct = [];
+        }
+
         if ($this->includedReferencedProduct === []) {
             $this->addOnceToincludedReferencedProduct(new ReferencedProductType());
         }
