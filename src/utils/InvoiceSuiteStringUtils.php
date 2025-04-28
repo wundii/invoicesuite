@@ -44,4 +44,15 @@ class InvoiceSuiteStringUtils
 
         return true;
     }
+
+    /**
+     * Returns null if the given string is empty
+     *
+     * @param null|string $str
+     * @return null|string
+     */
+    public static function asNullWhenEmpty(?string $str): ?string
+    {
+        return static::stringIsNullOrEmpty($str) ? null : $str;
+    }
 }

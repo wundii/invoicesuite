@@ -30,7 +30,7 @@ $builder->setSellerTaxRegistration("VA", "893489787987");
 $builder->addSellerTaxRegistration("FC", "893489787987_x");
 $builder->setSellerAddress("line1", "line2", "line3", "06108", "City", "DE", "Bavaria");
 $builder->setSellerLegalOrganisation("8884", "3874837489237", "Lieferant AG");
-$builder->setSellerContact("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@lieferant.de");
+$builder->addSellerContact("Horst Meier", "Buchhaltung", "0815-4711", "0815-4712", "horst.meier@lieferant.de");
 $builder->setSellerCommunication("EM", "info@lieferant.de");
 
 $builder->setBuyerName("Kunde GmbH");

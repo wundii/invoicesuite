@@ -259,13 +259,13 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     }
 
     /**
-     * @param string $newAddressLine1 __BT-35, From BASIC WL__ The main line in the sellers address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-36, From BASIC WL__ Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-162, From BASIC WL__ Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-38, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-37, From BASIC WL__ Usual name of the city or municipality in which the seller's address is located
-     * @param string $newCountryId    __BT-40, From MINIMUM__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-39, From BASIC WL__ The sellers state
+     * @param string $newAddressLine1 The main line in the sellers address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     Identifier for a group of properties, such as a zip code
+     * @param string $newCity         Usual name of the city or municipality in which the seller's address is located
+     * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  The sellers state
      * @return self
      */
     public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -276,9 +276,9 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     /**
      * @inheritDoc
      *
-     * @param string $newType __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
-     * @param string $newName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
+     * @param string $newType The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param string $newId   An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
+     * @param string $newName A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return self
      */
     public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self
@@ -287,11 +287,11 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     }
 
     /**
-     * @param string $newPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     Such as personal name, name of contact person or department or office
+     * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
     public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -300,11 +300,11 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     }
 
     /**
-     * @param string $newPersonName     __BT-41, From EN 16931__ Such as personal name, name of contact person or department or office
-     * @param string $newDepartmentName __BT-41-0, From EN 16931__ If a contact person is specified, either the name or the department must be transmitted.
-     * @param string $newPhoneNumber    __BT-42, From EN 16931__ A telephone number for the contact point
-     * @param string $newFaxNumber      __BT-X-107, From EXTENDED__ A fax number of the contact point
-     * @param string $newEmailAddress   __BT-43, From EN 16931__ An e-mail address of the contact point
+     * @param string $newPersonName     Such as personal name, name of contact person or department or office
+     * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
     public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
@@ -313,8 +313,8 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     }
 
     /**
-     * @param string $newType __BT-34-1, From BASIC WL__ The identifier for the identification scheme of the seller's electronic address
-     * @param string $newUri  __BT-34, From BASIC WL__ Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
+     * @param string $newType The identifier for the identification scheme of the seller's electronic address
+     * @param string $newUri  Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
      * @return self
      */
     public function setSellerCommunication(string $newType, string $newUri): self
@@ -408,13 +408,13 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     }
 
     /**
-     * @param string $newAddressLine1 __BT-50, From BASIC WL__ The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param string $newAddressLine2 __BT-51, From BASIC WL__ Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newAddressLine3 __BT-163, From BASIC WL__ Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string $newPostcode     __BT-53, From BASIC WL__ Identifier for a group of properties, such as a zip code
-     * @param string $newCity         __BT-52, From BASIC WL__ Usual name of the city or municipality in which the buyers address is located
-     * @param string $newCountryId    __BT-55, From BASIC WL__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string $newSubDivision  __BT-54, From BASIC WL__ The buyers state
+     * @param string $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     Identifier for a group of properties, such as a zip code
+     * @param string $newCity         Usual name of the city or municipality in which the buyers address is located
+     * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  The buyers state
      * @return self
      */
     public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
@@ -425,9 +425,9 @@ class InvoiceSuiteUblProviderBuilder extends InvoiceSuiteAbstractFormatProviderB
     /**
      * @inheritDoc
      *
-     * @param string $newType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string $newId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param string $newName __BT-45, From BASIC WL__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
+     * @param string $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
+     * @param string $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
+     * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return self
      */
     public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self

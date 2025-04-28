@@ -18,6 +18,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteUblProviderBuild
         return $this;
     }
 
+    #region Document Generals
+
     /**
      * @inheritDoc
      */
@@ -125,6 +127,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteUblProviderBuild
 
         return $this;
     }
+
+    #endregion
+
+    #region Document Seller/Supplier
 
     /**
      * @inheritDoc
@@ -310,4 +316,523 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteUblProviderBuild
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $postalAddress = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getPostalAddressWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $postalAddress->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $postalAddress->getCountrySubentityWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingSupplierPartyWithCreate()
+                ->getPartyWithCreate()
+                ->addOnceToPartyLegalEntityWithCreate()
+                ->getCompanyIDWithCreate()
+                ->setValue($newId);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingSupplierPartyWithCreate()
+                ->getPartyWithCreate()
+                ->addOnceToPartyNameWithCreate()
+                ->getNameWithCreate()
+                ->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $contact = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $contact->getNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $contact->getElectronicMailWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this->setSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setSellerCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $endpointId = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getEndpointIDWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $endpointId->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $endpointId->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Buyer/Customer
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addOnceToPartyLegalEntityWithCreate()
+            ->getRegistrationNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->setPartyIdentification(
+                array_filter(
+                    $this
+                        ->getUblInvoiceRootObject()
+                        ->getAccountingCustomerPartyWithCreate()
+                        ->getPartyWithCreate()
+                        ->getPartyIdentification() ?? [],
+                    function (
+                        PartyIdentificationType $partyIdentification
+                    ) {
+                        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                    }
+                )
+            );
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate();
+
+        $this->addBuyerId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->setPartyIdentification(
+                array_filter(
+                    $this
+                        ->getUblInvoiceRootObject()
+                        ->getAccountingCustomerPartyWithCreate()
+                        ->getPartyWithCreate()
+                        ->getPartyIdentification() ?? [],
+                    function (
+                        PartyIdentificationType $partyIdentification
+                    ) {
+                        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                    }
+                )
+            );
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate();
+
+        $this->addBuyerGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyIdentificationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->clearPartyTaxScheme();
+
+        $this->addBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+            return $this;
+        }
+
+        $partyTaxScheme = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->addToPartyTaxSchemeWithCreate();
+
+        $partyTaxScheme
+            ->getCompanyIDWithCreate()
+            ->setValue($newTaxRegistrationId);
+
+        $partyTaxScheme
+            ->getTaxSchemeWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationType);
+
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $postalAddress = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getPostalAddressWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $postalAddress->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $postalAddress->getCountrySubentityWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newId)) {
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingCustomerPartyWithCreate()
+                ->getPartyWithCreate()
+                ->addOnceToPartyLegalEntityWithCreate()
+                ->getCompanyIDWithCreate()
+                ->setValue($newId);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $this
+                ->getUblInvoiceRootObject()
+                ->getAccountingCustomerPartyWithCreate()
+                ->getPartyWithCreate()
+                ->addOnceToPartyNameWithCreate()
+                ->getNameWithCreate()
+                ->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $contact = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPersonName)) {
+            $contact->getNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDepartmentName)) {
+            // Nothing here
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPhoneNumber)) {
+            $contact->getTelephoneWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newFaxNumber)) {
+            $contact->getTelefaxWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newEmailAddress)) {
+            $contact->getElectronicMailWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this->setBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setBuyerCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $endpointId = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingCustomerPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getEndpointIDWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $endpointId->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $endpointId->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
 }
