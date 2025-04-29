@@ -1789,5 +1789,4 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     #endregion
-
 }

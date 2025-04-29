@@ -289,8 +289,8 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
-    ): TradeSettlementLineMonetarySummationType {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
+    {
         $this->tradeSettlementLineMonetarySummationType = is_null($this->tradeSettlementLineMonetarySummationType) ? new TradeSettlementLineMonetarySummationType() : $this->tradeSettlementLineMonetarySummationType;
 
         return $this->tradeSettlementLineMonetarySummationType;

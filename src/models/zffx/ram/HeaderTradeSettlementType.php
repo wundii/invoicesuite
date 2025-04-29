@@ -978,8 +978,8 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffx\ram\TradeSettlementHeaderMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(
-    ): TradeSettlementHeaderMonetarySummationType {
+    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(): TradeSettlementHeaderMonetarySummationType
+    {
         $this->tradeSettlementHeaderMonetarySummationType = is_null($this->tradeSettlementHeaderMonetarySummationType) ? new TradeSettlementHeaderMonetarySummationType() : $this->tradeSettlementHeaderMonetarySummationType;
 
         return $this->tradeSettlementHeaderMonetarySummationType;

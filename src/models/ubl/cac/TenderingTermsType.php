@@ -1457,8 +1457,8 @@ class TenderingTermsType
     /**
      * @return \horstoeko\invoicesuite\models\ubl\cac\EnvironmentalLegislationDocumentReference
      */
-    public function getEnvironmentalLegislationDocumentReferenceWithCreate(
-    ): EnvironmentalLegislationDocumentReference {
+    public function getEnvironmentalLegislationDocumentReferenceWithCreate(): EnvironmentalLegislationDocumentReference
+    {
         $this->environmentalLegislationDocumentReference = is_null($this->environmentalLegislationDocumentReference) ? new EnvironmentalLegislationDocumentReference() : $this->environmentalLegislationDocumentReference;
 
         return $this->environmentalLegislationDocumentReference;
