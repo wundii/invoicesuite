@@ -13,8 +13,7 @@ use Rector\Set\ValueObject\SetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        //__DIR__ . '/../src',
-        __DIR__ . '/../src/models/zffx',
+        __DIR__ . '/../src',
     ])
     ->withSkip([
     ])
@@ -22,18 +21,21 @@ return RectorConfig::configure()
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
     ])
-    ->withPhp73Sets()
-    ->withSets([
-        SetList::DEAD_CODE,
-        SetList::CODE_QUALITY,
-        SetList::CODING_STYLE,
-    ])
-    ->withConfiguredRule(EncapsedStringsToSprintfRector::class, [
-        'always' => true,
-    ])
-    ->withRules([
-        RenamePropertyToMatchTypeRector::class,
-        RenameParamToMatchTypeRector::class,
-        RenameVariableToMatchNewTypeRector::class,
-    ])
-    ->withTypeCoverageLevel(0);
+    ->withPreparedSets(
+        codeQuality: true,
+        codingStyle: true,
+        strictBooleans: true,
+        instanceOf: true,
+        earlyReturn: true,
+        phpunitCodeQuality: true,
+        privatization: true,
+        deadCode: true,
+        //
+        carbon: false,
+        doctrineCodeQuality: false,
+        naming: false,
+        rectorPreset: false,
+        symfonyCodeQuality: false,
+        symfonyConfigs: false,
+        typeDeclarations: false,
+    );
