@@ -29,7 +29,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     /**
      * Create reader by file
      *
-     * @param string $fromFile
+     * @param  string $fromFile
      * @return InvoiceSuiteDocumentReader
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
@@ -52,7 +52,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     /**
      * Create reader by content
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return InvoiceSuiteDocumentReader
      */
     public static function createFromContent(string $fromContent): self
@@ -63,7 +63,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     /**
      * Constructor (hidden)
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return static
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContent
@@ -72,9 +72,11 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     {
         $this->resolveAvailableFormatProviders();
 
-        $formatProviders = array_filter($this->getRegisteredFormatProviders(), function ($formatProvider) use ($fromContent) {
-            return $formatProvider->isSatisfiableBy($fromContent);
-        });
+        $formatProviders = array_filter(
+            $this->getRegisteredFormatProviders(), function ($formatProvider) use ($fromContent) {
+                return $formatProvider->isSatisfiableBy($fromContent);
+            }
+        );
 
         if ($formatProviders === []) {
             throw new InvoiceSuiteFormatProviderNotFoundException("unknown");
@@ -90,7 +92,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     /**
      * Dynamically pass missing methods to the reader provided by format provider
      *
-     * @param  string $method
+     * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
      */

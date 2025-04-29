@@ -40,7 +40,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteR
     /**
      * Deserialize from content (will guess)
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return InvoiceSuiteAbstractFormatProviderReader
      * @throws InvoiceSuiteUnknownContent
      */
@@ -60,7 +60,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteR
     /**
      * Read from XML content
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return InvoiceSuiteAbstractFormatProviderReader
      * @throws RuntimeException
      */
@@ -74,7 +74,7 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteR
     /**
      * Read from JSON content
      *
-     * @param string $fromContent
+     * @param  string $fromContent
      * @return InvoiceSuiteAbstractFormatProviderReader
      * @throws RuntimeException
      */
@@ -88,8 +88,8 @@ abstract class InvoiceSuiteAbstractFormatProviderReader implements InvoiceSuiteR
     /**
      * Read from content by type
      *
-     * @param string $fromContent
-     * @param string $contentType
+     * @param  string $fromContent
+     * @param  string $contentType
      * @return InvoiceSuiteAbstractFormatProviderReader
      * @throws RuntimeException
      */

@@ -4,8 +4,8 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");
@@ -72,5 +72,15 @@ $builder->setShipToAddress("line1", "line2", "line3", "10175", "Berlin", "DE", "
 $builder->setShipToLegalOrganisation("8884", "99ß0224444", "User AG");
 $builder->addShipToContact("Alfons Zitterbacke", "Buchhaltung", "030-9991", "030-9992", "alfzit@user-gmbh.de");
 $builder->setShipToCommunication("EM", "invoice@user-gmbh.de");
+
+$builder->setUltimateShipToName("Ultimate User GmbH");
+$builder->setUltimateShipToId("U-1111111");
+$builder->addUltimateShipToId("U-1111111-A");
+$builder->setUltimateShipToGlobalId("9999999", "0088");
+$builder->setUltimateShipToTaxRegistration("VA", "444574987534");
+$builder->setUltimateShipToAddress("line1", "line2", "line3", "10176", "Berlin", "DE", "Berlin");
+$builder->setUltimateShipToLegalOrganisation("8884", "99ß0224444", "User AG");
+$builder->addUltimateShipToContact("Alfons Baum", "Dispo", "030-10001", "030-10001", "alfzit@ultimate-user-gmbh.de");
+$builder->setUltimateShipToCommunication("EM", "invoice@ultimate-user-gmbh.de");
 
 echo $builder->getContentAsXml();

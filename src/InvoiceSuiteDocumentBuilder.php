@@ -31,7 +31,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Create a new InvoiceDocumentBuilder instance for the given format provider
      *
-     * @param string $formatProviderUniqueId
+     * @param  string $formatProviderUniqueId
      * @return InvoiceSuiteDocumentBuilder
      */
     public static function createByProviderUniqueId(string $formatProviderUniqueId): self
@@ -42,7 +42,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Constructor (hidden)
      *
-     * @param string $formatProviderUniqueId
+     * @param  string $formatProviderUniqueId
      * @return InvoiceSuiteDocumentBuilder
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvalidArgumentException
@@ -58,7 +58,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Dynamically pass missing methods to the builder provided by format provider
      *
-     * @param  string $method
+     * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
      */
@@ -90,7 +90,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Save the XML content to a file
      *
-     * @param string $tofile
+     * @param  string $tofile
      * @return void
      */
     public function saveAsXmlFile(string $tofile): void
@@ -101,7 +101,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * Save the JSON content to a file
      *
-     * @param string $tofile
+     * @param  string $tofile
      * @return void
      */
     public function saveAsJsonFile(string $tofile): void
@@ -221,7 +221,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document Seller/Supplier
+    // region Document Seller/Supplier
 
     /**
      * @inheritDoc
@@ -345,7 +345,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document Buyer/Customer
+    // region Document Buyer/Customer
 
     /**
      * @inheritDoc
@@ -469,7 +469,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document tax representativ party
+    // region Document tax representativ party
 
     /**
      * @inheritDoc
@@ -593,7 +593,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document Product Enduser
+    // region Document Product Enduser
 
     /**
      * @inheritDoc
@@ -717,7 +717,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document Ship-To
+    // region Document Ship-To
 
     /**
      * @inheritDoc
@@ -835,6 +835,130 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function setShipToCommunication(string $newType, string $newUri): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->setShipToCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
+
+    // region Document Ultimate Ship-To
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addUltimateShipToId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setUltimateShipToCommunication(string $newType, string $newUri): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToCommunication($newType, $newUri);
 
         return $this;
     }
