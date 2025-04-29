@@ -53,8 +53,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Generals
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentNo
      * @return self
      */
@@ -70,8 +68,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentType
      * @return self
      */
@@ -87,8 +83,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentDescription Document Type. The documenttype (free text)
      * @return self
      */
@@ -104,8 +98,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
      */
@@ -121,8 +113,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param DateTimeInterface $newDocumentDate Date of invoice. The date when the document was issued by the seller
      * @return self
      */
@@ -134,8 +124,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param DateTimeInterface $newCompleteDate The contractual due date of the invoice
      * @return self
      */
@@ -145,8 +133,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentCurrency Code for the invoice currency
      * @return self
      */
@@ -158,11 +144,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
-     * Note: Shall be used in combination with the Total VAT amount in accounting currency
-     * when the VAT accounting currency code differs from the Invoice currency code.
-     *
      * @param string $newDocumentTaxCurrency Code for the tax currency
      * @return self
      */
@@ -174,8 +155,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param bool $newDocumentIsCopy
      * @return self
      */
@@ -187,8 +166,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param bool $newDocumentIsTest
      * @return self
      */
@@ -198,8 +175,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newContent     A free text containing unstructured information that is relevant to the invoice as a whole
      * @param string $newContentCode A code to classify the content of the free text of the invoice
      * @param string $newSubjectCode The qualification of the free text for the invoice from
@@ -217,8 +192,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Seller/Supplier
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
      * @return self
      */
@@ -240,8 +213,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
@@ -270,19 +241,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             );
 
-        $this
-            ->getUblInvoiceRootObject()
-            ->getAccountingSupplierPartyWithCreate()
-            ->getPartyWithCreate();
-
         $this->addSellerId($newId);
 
         return $this;
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
@@ -304,8 +268,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -335,19 +297,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             );
 
-        $this
-            ->getUblInvoiceRootObject()
-            ->getAccountingSupplierPartyWithCreate()
-            ->getPartyWithCreate();
-
         $this->addSellerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -371,8 +326,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationType Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number of the seller or sales tax identification number of the seller
      * @return self
@@ -395,8 +348,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationType Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number of the seller or sales tax identification number of the seller
      * @return self
@@ -427,8 +378,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newAddressLine1 The main line in the sellers address. This is usually the street name and house number or the post office box
      * @param string $newAddressLine2 Line 2 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line used to provide additional details in addition to the main line
      * @param string $newAddressLine3 Line 3 of the seller's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
@@ -488,8 +437,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
      * @param string $newName A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
@@ -525,8 +472,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Such as personal name, name of contact person or department or office
      * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -578,8 +523,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Such as personal name, name of contact person or department or office
      * @param string $newDepartmentName If a contact person is specified, either the name or the department must be transmitted.
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -593,8 +536,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the seller's electronic address
      * @param string $newUri  Specifies the electronic address of the seller to which the response to the invoice can be sent at application level
      * @return self
@@ -627,8 +568,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Buyer/Customer
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName The full name of the buyer
      * @return self
      */
@@ -650,8 +589,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -691,8 +628,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -714,8 +649,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -756,8 +689,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -781,8 +712,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
@@ -805,8 +734,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
@@ -837,8 +764,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
      * @param string $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
      * @param string $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
@@ -897,8 +822,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
      * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
@@ -934,8 +857,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
      * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -987,8 +908,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
      * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -1002,8 +921,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the buyer's electronic address
      * @param string $newUri  Specifies the buyer's electronic address to which the invoice is sent
      * @return self
@@ -1033,11 +950,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
     #endregion
 
-    #region Document tax representativ party
+    #region Document Tax representativ party
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName The full name of the seller's tax agent
      * @return self
      */
@@ -1058,8 +973,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -1092,8 +1005,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -1114,8 +1025,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1149,8 +1058,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1173,8 +1080,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
@@ -1196,8 +1101,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
@@ -1226,8 +1129,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
      * @param string $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
      * @param string $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
@@ -1285,8 +1186,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
      * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
@@ -1320,8 +1219,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
      * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -1372,8 +1269,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
      * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
      * @param string $newPhoneNumber    A telephone number for the contact point
@@ -1387,8 +1282,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType The identifier for the identification scheme of the buyer's electronic address
      * @param string $newUri  Specifies the buyer's electronic address to which the invoice is sent
      * @return self
@@ -1515,5 +1408,228 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
-    #endregion}
+    #endregion
+
+    #region Document Ship-To
+
+    /**
+     * @param string $newName The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
+     * @return self
+     */
+    public function setShipToName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryLocationWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @param string An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function setShipToId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryLocationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @param string An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function addShipToId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this->setShipToId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId     Global identifier of the goods recipient
+     * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryLocationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId     Global identifier of the goods recipient
+     * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
+
+        $this->setShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   Tax number or sales tax identification number
+     * @return self
+     */
+    public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationTyüe Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   Tax number or sales tax identification number
+     * @return self
+     */
+    public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     Identifier for a group of properties, such as a zip code
+     * @param string $newCity         Usual name of the city or municipality in which the party's address is located
+     * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  The party's state
+     * @return self
+     */
+    public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $address = $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryLocationWithCreate()
+            ->getAddressWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $address->getStreetNameWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $address->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $address->getPostalZoneWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $address->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $address->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $address->getCountrySubentityWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param string $newId   An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return self
+     */
+    public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @return self
+     */
+    public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    A telephone number for the contact point
+     * @param string $newFaxNumber      A fax number of the contact point
+     * @param string $newEmailAddress   An e-mail address of the contact point
+     * @return self
+     */
+    public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $newType The identifier for the identification scheme of the product enduser's electronic address
+     * @param string $newUri  Specifies the product enduser's electronic address to which the invoice is sent
+     * @return self
+     */
+    public function setShipToCommunication(string $newType, string $newUri): self
+    {
+        return $this;
+    }
+
+    #endregion
 }

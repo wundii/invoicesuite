@@ -64,8 +64,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Generals
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentNo __BT-1, From MINIMUM__ The document no issued by the seller
      */
     public function setDocumentNo(string $newDocumentNo): self
@@ -84,8 +82,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentType __BT-3, From MINIMUM__ The type of the document
      */
     public function setDocumentType(string $newDocumentType): self
@@ -104,8 +100,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentDescription __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
      */
     public function setDocumentDescription(string $newDocumentDescription): self
@@ -124,8 +118,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      */
     public function setDocumentLanguage(string $newDocumentLanguage): self
@@ -144,8 +136,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      */
     public function setDocumentDate(DateTimeInterface $newDocumentDate): self
@@ -162,8 +152,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param DateTimeInterface $newCompleteDate __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      */
     public function setDocumentCompleteDate(DateTimeInterface $newCompleteDate): self
@@ -181,8 +169,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newDocumentCurrency __BT-5, From MINIMUM__ Code for the invoice currency
      */
     public function setDocumentCurrency(string $newDocumentCurrency): self
@@ -202,11 +188,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
-     * Note: Shall be used in combination with the Total VAT amount in accounting currency (BT-111)
-     * when the VAT accounting currency code differs from the Invoice currency code.
-     *
      * @param string $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
      */
     public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self
@@ -226,8 +207,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param bool $newDocumentIsCopy __BT-X-1-00, From EXTENDED__ Only to be used in the case of a test calculation, with newDocumentIsCopy = true
      */
     public function setDocumentIsCopy(bool $newDocumentIsCopy): self
@@ -242,8 +221,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param bool $newDocumentIsTest __BT-X-3-00, From EXTENDED__ With newDocumentIsTest = true, the document is a copy
      */
     public function setDocumentIsTest(bool $newDocumentIsTest): self
@@ -258,8 +235,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newContent     __BT-22, From BASIC WL__ A free text containing unstructured information that is relevant to the invoice as a whole
      * @param string $newContentCode __BT-X-5, From EXTENDED__ A code to classify the content of the free text of the invoice
      * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
@@ -293,8 +268,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Seller/Supplier
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName __BT-27, From MINIMUM__ The full formal name under which the seller is registered in the National Register of Legal Entities, Taxable Person or otherwise acting as person(s)
      * @return self
      */
@@ -316,8 +289,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
@@ -340,8 +311,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-29, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
@@ -363,8 +332,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-29-0, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -388,8 +355,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-29-o, From BASIC WL__ An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -413,8 +378,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return self
@@ -438,8 +401,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
      * @return self
@@ -528,8 +489,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType __BT-30-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the seller. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   __BT-30, From MINIMUM__ An identifier issued by an official registrar that identifies the seller as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and seller
      * @param string $newName __BT-28, From BASIC WL__ A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
@@ -626,7 +585,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
-            $sellerTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+            $sellerTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
@@ -677,8 +636,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Buyer/Customer
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName __BT-44, From MINIMUM__ The full name of the buyer
      * @return self
      */
@@ -700,8 +657,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -724,8 +679,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-46, From BASIC WL__ An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
@@ -747,8 +700,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -774,8 +725,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-46-0, From BASIC WL__ The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
      * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -801,8 +750,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
      * @return self
@@ -828,8 +775,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
      * @return self
@@ -918,8 +863,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType __BT-47-1, From MINIMUM__ The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   __BT-47, From MINIMUM__ An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
      * @param string $newName __BT-45, From BASIC WL__ A name by which the buyer is known, if different from the buyers name (also known as the company name)
@@ -1016,7 +959,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
-            $buyerTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+            $buyerTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
@@ -1067,8 +1010,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document tax representativ party
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName __BT-62, From BASIC WL__ The full name of the seller's tax agent
      * @return self
      */
@@ -1090,8 +1031,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the sellers tax agent.
      * @return self
      */
@@ -1114,8 +1053,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the sellers tax agent.
      * @return self
      */
@@ -1137,8 +1074,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
      * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1164,8 +1099,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-X-117, From EXTENDED__ The seller's tax agent identifier identification scheme is an identifier uniquely assigned to a seller by a global registration organization.
      * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1191,8 +1124,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
      * @return self
@@ -1218,8 +1149,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
      * @return self
@@ -1308,8 +1237,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType __BT-, From __ The identifier for the identification scheme of the legal registration of the sellers tax agent. If the identification scheme is used, it must be selected from  ISO/IEC 6523 list
      * @param string $newId   __BT-, From __ An identifier issued by an official registrar that identifies the seller tax agent as a legal entity or legal person.
      * @param string $newName __BT-, From __ A name by which the sellers tax agent is known, if different from the  sellers tax agent name (also known as the company name)
@@ -1406,7 +1333,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
-            $taxRepresentativeTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+            $taxRepresentativeTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
@@ -1457,8 +1384,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     #region Document Product Enduser
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName __BT-X-128, From EXTENDED__ Name/company name of the end user
      * @return self
      */
@@ -1480,8 +1405,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
      * @return self
      */
@@ -1504,8 +1427,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the product end user
      * @return self
      */
@@ -1527,8 +1448,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
      * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1554,8 +1473,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-X-127, From EXTENDED__ The identifier is uniquely assigned to a party by a global registration organization.
      * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1581,8 +1498,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
      * @return self
@@ -1608,8 +1523,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
      * @return self
@@ -1698,8 +1611,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType __BT-X-129-0, From EXTENDED__The identifier for the identification scheme of the legal registration of the product end user. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
      * @param string $newId   __BT-X-129, From EXTENDED__ An identifier issued by an official registrar that identifies the product end user as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to all trade parties
      * @param string $newName __BT-X-130, From EXTENDED__ A name by which the product end user is known, if different from the product end users name (also known as the company name)
@@ -1796,7 +1707,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
-            $productEndUserTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+            $productEndUserTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
@@ -1844,11 +1755,9 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     #endregion
 
-    #region Document Product Enduser
+    #region Document Ship-To
 
     /**
-     * @inheritDoc
-     *
      * @param string $newName __BT-70, From BASIC WL__ The name of the party to whom the goods are being delivered or for whom the services are being performed. Must be used if the recipient of the goods or services is not the same as the buyer.
      * @return self
      */
@@ -1870,8 +1779,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
@@ -1894,8 +1801,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newId __BT-71, From BASIC WL__ An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
@@ -1917,8 +1822,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
      * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1944,8 +1847,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newGlobalId     __BT-71-0, From BASIC WL__ Global identifier of the goods recipient
      * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
@@ -1971,8 +1872,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return self
@@ -1998,8 +1897,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return self
@@ -2088,8 +1985,6 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @inheritDoc
-     *
      * @param string $newType __BT-X-153-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
      * @param string $newId   __BT-X-153, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
      * @param string $newName __BT-X-154, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
@@ -2186,7 +2081,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
-            $shipToTradeContact->getDepartmentNameWithCreate()->setValue($newPersonName);
+            $shipToTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
