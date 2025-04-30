@@ -66,7 +66,7 @@ abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuite
         return $this->serializer->serialize(
             $this->getRootObject(),
             $contentType,
-            SerializationContext::create()->setGroups($this->getCurrentFormatProvider()->getGroups())
+            SerializationContext::create()->setGroups($this->getCurrentFormatProvider()->getSerializerGroups())
         );
     }
 

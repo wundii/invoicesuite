@@ -26,7 +26,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     /**
      * @inheritDoc
      */
-    public function getMetadataDirectories(): array
+    public function getSerializerMetadataDirectories(): array
     {
         return [];
     }
@@ -34,7 +34,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     /**
      * @inheritDoc
      */
-    public function getHandlers(): array
+    public function getSerializerHandlers(): array
     {
         return [];
     }
@@ -42,7 +42,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     /**
      * @inheritDoc
      */
-    public function getListeners(): array
+    public function getSerializerListeners(): array
     {
         return [];
     }
@@ -50,7 +50,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     /**
      * @inheritDoc
      */
-    public function getSubscribers(): array
+    public function getSerializerSubscribers(): array
     {
         return [];
     }
@@ -58,7 +58,7 @@ class InvoiceSuiteZfFxBasicProvider extends InvoiceSuiteAbstractFormatProvider
     /**
      * @inheritDoc
      */
-    public function getGroups(): array
+    public function getSerializerGroups(): array
     {
         return ["zffxbasic"];
     }

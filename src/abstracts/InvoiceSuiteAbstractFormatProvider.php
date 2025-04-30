@@ -48,35 +48,35 @@ abstract class InvoiceSuiteAbstractFormatProvider
      *
      * @return array<string,string>
      */
-    abstract public function getMetadataDirectories(): array;
+    abstract public function getSerializerMetadataDirectories(): array;
 
     /**
      * Get custom handlers
      *
      * @return array<integer,string>
      */
-    abstract public function getHandlers(): array;
+    abstract public function getSerializerHandlers(): array;
 
     /**
      * Get custom listeners
      *
      * @return array<string,Closure>
      */
-    abstract public function getListeners(): array;
+    abstract public function getSerializerListeners(): array;
 
     /**
      * Get event subscribers
      *
      * @return array<integer,string>
      */
-    abstract public function getSubscribers(): array;
+    abstract public function getSerializerSubscribers(): array;
 
     /**
      * Get context groups
      *
      * @return array<string>
      */
-    abstract public function getGroups(): array;
+    abstract public function getSerializerGroups(): array;
 
     /**
      * Returns true if the content matches the requirements for this format provider, otherwise false

@@ -45,7 +45,7 @@ trait HandlesSerializer
     {
         $this->serializerBuilder = SerializerBuilder::create();
 
-        $this->serializerBuilder->addMetadataDirs($invoiceSuiteAbstractFormatProvider->getMetadataDirectories());
+        $this->serializerBuilder->addMetadataDirs($invoiceSuiteAbstractFormatProvider->getSerializerMetadataDirectories());
 
         $this->serializerBuilder->addDefaultListeners();
         $this->serializerBuilder->addDefaultHandlers();
@@ -53,19 +53,19 @@ trait HandlesSerializer
         $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry) use ($invoiceSuiteAbstractFormatProvider): void {
             $handlerRegistry->registerSubscribingHandler(new BaseTypesHandler());
             $handlerRegistry->registerSubscribingHandler(new XmlSchemaDateHandler());
-            foreach ($invoiceSuiteAbstractFormatProvider->getHandlers() as $handlerClassname) {
+            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerHandlers() as $handlerClassname) {
                 $handlerRegistry->registerSubscribingHandler(new $handlerClassname());
             }
         });
 
         $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher) use ($invoiceSuiteAbstractFormatProvider): void {
-            foreach ($invoiceSuiteAbstractFormatProvider->getListeners() as $event => $callback) {
+            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerListeners() as $event => $callback) {
                 $eventDispatcher->addListener($event, $callback);
             }
         });
 
         $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher) use ($invoiceSuiteAbstractFormatProvider): void {
-            foreach ($invoiceSuiteAbstractFormatProvider->getSubscribers() as $subscriberClassname) {
+            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerSubscribers() as $subscriberClassname) {
                 $eventDispatcher->addSubscriber(new $subscriberClassname());
             }
         });
