@@ -358,7 +358,7 @@ interface InvoiceSuiteBuilderContract
 
     #endregion
 
-    #region Document tax representativ party
+    #region Document Tax Representativ party
 
     /**
      * Set the name of the tax representative party
@@ -839,6 +839,127 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setUltimateShipToCommunication(string $newType, string $newUri): self;
+
+    #endregion
+
+    #region Document Ship-From
+
+    /**
+     * Set the name of the Ship-From party
+     *
+     * @param  string $newName
+     * @return self
+     */
+    public function setShipFromName(string $newName): self;
+
+    /**
+     * Set the ID of the Ship-From party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function setShipFromId(string $newId): self;
+
+    /**
+     * Add an ID to the Ship-From party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function addShipFromId(string $newId): self;
+
+    /**
+     * Set the Global ID of the Ship-From party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function setShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the Ship-From party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function addShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the Ship-From party
+     *
+     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function setShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the Ship-From party
+     *
+     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function addShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the Ship-From party
+     *
+     * @param  string $newAddressLine1
+     * @param  string $newAddressLine2
+     * @param  string $newAddressLine3
+     * @param  string $newPostcode
+     * @param  string $newCity
+     * @param  string $newCountryId
+     * @param  string $newSubDivision
+     * @return self
+     */
+    public function setShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the Ship-From party
+     *
+     * @param  string $newType
+     * @param  string $newId
+     * @param  string $newName
+     * @return self
+     */
+    public function setShipFromLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the Ship-From party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function setShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the Ship-From party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function addShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the Ship-From party
+     *
+     * @param  string $newType
+     * @param  string $newUri
+     * @return self
+     */
+    public function setShipFromCommunication(string $newType, string $newUri): self;
 
     #endregion
 }

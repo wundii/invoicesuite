@@ -83,4 +83,14 @@ $builder->setUltimateShipToLegalOrganisation("8884", "99ß0224444", "User AG");
 $builder->addUltimateShipToContact("Alfons Baum", "Dispo", "030-10001", "030-10001", "alfzit@ultimate-user-gmbh.de");
 $builder->setUltimateShipToCommunication("EM", "invoice@ultimate-user-gmbh.de");
 
+$builder->setShipFromName("Ship-From GmbH");
+$builder->setShipFromId("SF-999999-A");
+$builder->addShipFromId("SF-999999-B");
+$builder->setShipFromGlobalId("8888888", "0088");
+$builder->setShipFromTaxRegistration("VA", "000008080663");
+$builder->setShipFromAddress("line1", "line2", "line3", "10176", "Düsseldorf", "DE", "NRW");
+$builder->setShipFromLegalOrganisation("8884", "99ß0224444", "Ship-From AG");
+$builder->addShipFromContact("Alfons Baum", "Dispo", "0221-10001", "0221-10001", "alfzit@ship-from-gmbh.de");
+$builder->setShipFromCommunication("EM", "invoice@ship-from-gmbh.de");
+
 echo $builder->getContentAsXml();
