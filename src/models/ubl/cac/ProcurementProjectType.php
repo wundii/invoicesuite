@@ -108,7 +108,7 @@ class ProcurementProjectType
     private $feeDescription;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -610,18 +610,18 @@ class ProcurementProjectType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRequestedDeliveryDate(): ?\DateTime
+    public function getRequestedDeliveryDate(): ?\DateTimeInterface
     {
         return $this->requestedDeliveryDate;
     }
 
     /**
-     * @param \DateTime $requestedDeliveryDate
+     * @param \DateTimeInterface $requestedDeliveryDate
      * @return self
      */
-    public function setRequestedDeliveryDate(\DateTime $requestedDeliveryDate): self
+    public function setRequestedDeliveryDate(\DateTimeInterface $requestedDeliveryDate): self
     {
         $this->requestedDeliveryDate = $requestedDeliveryDate;
 

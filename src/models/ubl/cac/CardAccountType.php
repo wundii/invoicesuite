@@ -49,7 +49,7 @@ class CardAccountType
     private $cardTypeCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class CardAccountType
     private $validityStartDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -224,18 +224,18 @@ class CardAccountType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getValidityStartDate(): ?\DateTime
+    public function getValidityStartDate(): ?\DateTimeInterface
     {
         return $this->validityStartDate;
     }
 
     /**
-     * @param \DateTime $validityStartDate
+     * @param \DateTimeInterface $validityStartDate
      * @return self
      */
-    public function setValidityStartDate(\DateTime $validityStartDate): self
+    public function setValidityStartDate(\DateTimeInterface $validityStartDate): self
     {
         $this->validityStartDate = $validityStartDate;
 
@@ -243,18 +243,18 @@ class CardAccountType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getExpiryDate(): ?\DateTime
+    public function getExpiryDate(): ?\DateTimeInterface
     {
         return $this->expiryDate;
     }
 
     /**
-     * @param \DateTime $expiryDate
+     * @param \DateTimeInterface $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTime $expiryDate): self
+    public function setExpiryDate(\DateTimeInterface $expiryDate): self
     {
         $this->expiryDate = $expiryDate;
 

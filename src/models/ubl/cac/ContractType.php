@@ -24,7 +24,7 @@ class ContractType
     private $iD;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ContractType
     private $issueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class ContractType
     private $issueTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class ContractType
     private $nominationDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -199,18 +199,18 @@ class ContractType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 
@@ -218,18 +218,18 @@ class ContractType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueTime(): ?\DateTime
+    public function getIssueTime(): ?\DateTimeInterface
     {
         return $this->issueTime;
     }
 
     /**
-     * @param \DateTime $issueTime
+     * @param \DateTimeInterface $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTime $issueTime): self
+    public function setIssueTime(\DateTimeInterface $issueTime): self
     {
         $this->issueTime = $issueTime;
 
@@ -237,18 +237,18 @@ class ContractType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getNominationDate(): ?\DateTime
+    public function getNominationDate(): ?\DateTimeInterface
     {
         return $this->nominationDate;
     }
 
     /**
-     * @param \DateTime $nominationDate
+     * @param \DateTimeInterface $nominationDate
      * @return self
      */
-    public function setNominationDate(\DateTime $nominationDate): self
+    public function setNominationDate(\DateTimeInterface $nominationDate): self
     {
         $this->nominationDate = $nominationDate;
 
@@ -256,18 +256,18 @@ class ContractType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getNominationTime(): ?\DateTime
+    public function getNominationTime(): ?\DateTimeInterface
     {
         return $this->nominationTime;
     }
 
     /**
-     * @param \DateTime $nominationTime
+     * @param \DateTimeInterface $nominationTime
      * @return self
      */
-    public function setNominationTime(\DateTime $nominationTime): self
+    public function setNominationTime(\DateTimeInterface $nominationTime): self
     {
         $this->nominationTime = $nominationTime;
 

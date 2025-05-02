@@ -58,7 +58,7 @@ class ForecastRevisionLineType
     private $revisedForecastLineID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class ForecastRevisionLineType
     private $sourceForecastIssueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -333,18 +333,18 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getSourceForecastIssueDate(): ?\DateTime
+    public function getSourceForecastIssueDate(): ?\DateTimeInterface
     {
         return $this->sourceForecastIssueDate;
     }
 
     /**
-     * @param \DateTime $sourceForecastIssueDate
+     * @param \DateTimeInterface $sourceForecastIssueDate
      * @return self
      */
-    public function setSourceForecastIssueDate(\DateTime $sourceForecastIssueDate): self
+    public function setSourceForecastIssueDate(\DateTimeInterface $sourceForecastIssueDate): self
     {
         $this->sourceForecastIssueDate = $sourceForecastIssueDate;
 
@@ -352,18 +352,18 @@ class ForecastRevisionLineType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getSourceForecastIssueTime(): ?\DateTime
+    public function getSourceForecastIssueTime(): ?\DateTimeInterface
     {
         return $this->sourceForecastIssueTime;
     }
 
     /**
-     * @param \DateTime $sourceForecastIssueTime
+     * @param \DateTimeInterface $sourceForecastIssueTime
      * @return self
      */
-    public function setSourceForecastIssueTime(\DateTime $sourceForecastIssueTime): self
+    public function setSourceForecastIssueTime(\DateTimeInterface $sourceForecastIssueTime): self
     {
         $this->sourceForecastIssueTime = $sourceForecastIssueTime;
 

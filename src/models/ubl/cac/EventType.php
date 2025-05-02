@@ -21,7 +21,7 @@ class EventType
     private $identificationID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class EventType
     private $occurrenceDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -141,18 +141,18 @@ class EventType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getOccurrenceDate(): ?\DateTime
+    public function getOccurrenceDate(): ?\DateTimeInterface
     {
         return $this->occurrenceDate;
     }
 
     /**
-     * @param \DateTime $occurrenceDate
+     * @param \DateTimeInterface $occurrenceDate
      * @return self
      */
-    public function setOccurrenceDate(\DateTime $occurrenceDate): self
+    public function setOccurrenceDate(\DateTimeInterface $occurrenceDate): self
     {
         $this->occurrenceDate = $occurrenceDate;
 
@@ -160,18 +160,18 @@ class EventType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getOccurrenceTime(): ?\DateTime
+    public function getOccurrenceTime(): ?\DateTimeInterface
     {
         return $this->occurrenceTime;
     }
 
     /**
-     * @param \DateTime $occurrenceTime
+     * @param \DateTimeInterface $occurrenceTime
      * @return self
      */
-    public function setOccurrenceTime(\DateTime $occurrenceTime): self
+    public function setOccurrenceTime(\DateTimeInterface $occurrenceTime): self
     {
         $this->occurrenceTime = $occurrenceTime;
 

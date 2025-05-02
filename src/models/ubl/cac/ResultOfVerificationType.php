@@ -34,7 +34,7 @@ class ResultOfVerificationType
     private $validationResultCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class ResultOfVerificationType
     private $validationDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -158,18 +158,18 @@ class ResultOfVerificationType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getValidationDate(): ?\DateTime
+    public function getValidationDate(): ?\DateTimeInterface
     {
         return $this->validationDate;
     }
 
     /**
-     * @param \DateTime $validationDate
+     * @param \DateTimeInterface $validationDate
      * @return self
      */
-    public function setValidationDate(\DateTime $validationDate): self
+    public function setValidationDate(\DateTimeInterface $validationDate): self
     {
         $this->validationDate = $validationDate;
 
@@ -177,18 +177,18 @@ class ResultOfVerificationType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getValidationTime(): ?\DateTime
+    public function getValidationTime(): ?\DateTimeInterface
     {
         return $this->validationTime;
     }
 
     /**
-     * @param \DateTime $validationTime
+     * @param \DateTimeInterface $validationTime
      * @return self
      */
-    public function setValidationTime(\DateTime $validationTime): self
+    public function setValidationTime(\DateTimeInterface $validationTime): self
     {
         $this->validationTime = $validationTime;
 

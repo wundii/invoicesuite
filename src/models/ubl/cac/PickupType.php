@@ -19,7 +19,7 @@ class PickupType
     private $iD;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class PickupType
     private $actualPickupDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class PickupType
     private $actualPickupTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -52,7 +52,7 @@ class PickupType
     private $earliestPickupDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -63,7 +63,7 @@ class PickupType
     private $earliestPickupTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -74,7 +74,7 @@ class PickupType
     private $latestPickupDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -136,18 +136,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualPickupDate(): ?\DateTime
+    public function getActualPickupDate(): ?\DateTimeInterface
     {
         return $this->actualPickupDate;
     }
 
     /**
-     * @param \DateTime $actualPickupDate
+     * @param \DateTimeInterface $actualPickupDate
      * @return self
      */
-    public function setActualPickupDate(\DateTime $actualPickupDate): self
+    public function setActualPickupDate(\DateTimeInterface $actualPickupDate): self
     {
         $this->actualPickupDate = $actualPickupDate;
 
@@ -155,18 +155,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualPickupTime(): ?\DateTime
+    public function getActualPickupTime(): ?\DateTimeInterface
     {
         return $this->actualPickupTime;
     }
 
     /**
-     * @param \DateTime $actualPickupTime
+     * @param \DateTimeInterface $actualPickupTime
      * @return self
      */
-    public function setActualPickupTime(\DateTime $actualPickupTime): self
+    public function setActualPickupTime(\DateTimeInterface $actualPickupTime): self
     {
         $this->actualPickupTime = $actualPickupTime;
 
@@ -174,18 +174,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEarliestPickupDate(): ?\DateTime
+    public function getEarliestPickupDate(): ?\DateTimeInterface
     {
         return $this->earliestPickupDate;
     }
 
     /**
-     * @param \DateTime $earliestPickupDate
+     * @param \DateTimeInterface $earliestPickupDate
      * @return self
      */
-    public function setEarliestPickupDate(\DateTime $earliestPickupDate): self
+    public function setEarliestPickupDate(\DateTimeInterface $earliestPickupDate): self
     {
         $this->earliestPickupDate = $earliestPickupDate;
 
@@ -193,18 +193,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEarliestPickupTime(): ?\DateTime
+    public function getEarliestPickupTime(): ?\DateTimeInterface
     {
         return $this->earliestPickupTime;
     }
 
     /**
-     * @param \DateTime $earliestPickupTime
+     * @param \DateTimeInterface $earliestPickupTime
      * @return self
      */
-    public function setEarliestPickupTime(\DateTime $earliestPickupTime): self
+    public function setEarliestPickupTime(\DateTimeInterface $earliestPickupTime): self
     {
         $this->earliestPickupTime = $earliestPickupTime;
 
@@ -212,18 +212,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestPickupDate(): ?\DateTime
+    public function getLatestPickupDate(): ?\DateTimeInterface
     {
         return $this->latestPickupDate;
     }
 
     /**
-     * @param \DateTime $latestPickupDate
+     * @param \DateTimeInterface $latestPickupDate
      * @return self
      */
-    public function setLatestPickupDate(\DateTime $latestPickupDate): self
+    public function setLatestPickupDate(\DateTimeInterface $latestPickupDate): self
     {
         $this->latestPickupDate = $latestPickupDate;
 
@@ -231,18 +231,18 @@ class PickupType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestPickupTime(): ?\DateTime
+    public function getLatestPickupTime(): ?\DateTimeInterface
     {
         return $this->latestPickupTime;
     }
 
     /**
-     * @param \DateTime $latestPickupTime
+     * @param \DateTimeInterface $latestPickupTime
      * @return self
      */
-    public function setLatestPickupTime(\DateTime $latestPickupTime): self
+    public function setLatestPickupTime(\DateTimeInterface $latestPickupTime): self
     {
         $this->latestPickupTime = $latestPickupTime;
 

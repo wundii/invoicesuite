@@ -10,7 +10,7 @@ class DateTimeType
     /**
      * @var DateTime
      * @JMS\Groups({"ubl"})
-     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTimeInterface")
      * @JMS\Expose
      * @JMS\XmlElement(cdata=false)
      * @JMS\XmlValue(cdata=false)

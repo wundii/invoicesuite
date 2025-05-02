@@ -10,7 +10,7 @@ use horstoeko\invoicesuite\models\ubl\cbc\DurationMeasure;
 class PeriodType
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class PeriodType
     private $startDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class PeriodType
     private $startTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class PeriodType
     private $endDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -89,18 +89,18 @@ class PeriodType
     private $description;
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartDate(): ?\DateTime
+    public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
     }
 
     /**
-     * @param \DateTime $startDate
+     * @param \DateTimeInterface $startDate
      * @return self
      */
-    public function setStartDate(\DateTime $startDate): self
+    public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 
@@ -108,18 +108,18 @@ class PeriodType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartTime(): ?\DateTime
+    public function getStartTime(): ?\DateTimeInterface
     {
         return $this->startTime;
     }
 
     /**
-     * @param \DateTime $startTime
+     * @param \DateTimeInterface $startTime
      * @return self
      */
-    public function setStartTime(\DateTime $startTime): self
+    public function setStartTime(\DateTimeInterface $startTime): self
     {
         $this->startTime = $startTime;
 
@@ -127,18 +127,18 @@ class PeriodType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndDate(): ?\DateTime
+    public function getEndDate(): ?\DateTimeInterface
     {
         return $this->endDate;
     }
 
     /**
-     * @param \DateTime $endDate
+     * @param \DateTimeInterface $endDate
      * @return self
      */
-    public function setEndDate(\DateTime $endDate): self
+    public function setEndDate(\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
 
@@ -146,18 +146,18 @@ class PeriodType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndTime(): ?\DateTime
+    public function getEndTime(): ?\DateTimeInterface
     {
         return $this->endTime;
     }
 
     /**
-     * @param \DateTime $endTime
+     * @param \DateTimeInterface $endTime
      * @return self
      */
-    public function setEndTime(\DateTime $endTime): self
+    public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
 

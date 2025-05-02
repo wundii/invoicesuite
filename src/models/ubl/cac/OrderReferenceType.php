@@ -56,7 +56,7 @@ class OrderReferenceType
     private $uUID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class OrderReferenceType
     private $issueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -217,18 +217,18 @@ class OrderReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 
@@ -236,18 +236,18 @@ class OrderReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueTime(): ?\DateTime
+    public function getIssueTime(): ?\DateTimeInterface
     {
         return $this->issueTime;
     }
 
     /**
-     * @param \DateTime $issueTime
+     * @param \DateTimeInterface $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTime $issueTime): self
+    public function setIssueTime(\DateTimeInterface $issueTime): self
     {
         $this->issueTime = $issueTime;
 

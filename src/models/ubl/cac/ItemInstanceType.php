@@ -21,7 +21,7 @@ class ItemInstanceType
     private $productTraceID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class ItemInstanceType
     private $manufactureDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class ItemInstanceType
     private $manufactureTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -128,18 +128,18 @@ class ItemInstanceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getManufactureDate(): ?\DateTime
+    public function getManufactureDate(): ?\DateTimeInterface
     {
         return $this->manufactureDate;
     }
 
     /**
-     * @param \DateTime $manufactureDate
+     * @param \DateTimeInterface $manufactureDate
      * @return self
      */
-    public function setManufactureDate(\DateTime $manufactureDate): self
+    public function setManufactureDate(\DateTimeInterface $manufactureDate): self
     {
         $this->manufactureDate = $manufactureDate;
 
@@ -147,18 +147,18 @@ class ItemInstanceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getManufactureTime(): ?\DateTime
+    public function getManufactureTime(): ?\DateTimeInterface
     {
         return $this->manufactureTime;
     }
 
     /**
-     * @param \DateTime $manufactureTime
+     * @param \DateTimeInterface $manufactureTime
      * @return self
      */
-    public function setManufactureTime(\DateTime $manufactureTime): self
+    public function setManufactureTime(\DateTimeInterface $manufactureTime): self
     {
         $this->manufactureTime = $manufactureTime;
 
@@ -166,18 +166,18 @@ class ItemInstanceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getBestBeforeDate(): ?\DateTime
+    public function getBestBeforeDate(): ?\DateTimeInterface
     {
         return $this->bestBeforeDate;
     }
 
     /**
-     * @param \DateTime $bestBeforeDate
+     * @param \DateTimeInterface $bestBeforeDate
      * @return self
      */
-    public function setBestBeforeDate(\DateTime $bestBeforeDate): self
+    public function setBestBeforeDate(\DateTimeInterface $bestBeforeDate): self
     {
         $this->bestBeforeDate = $bestBeforeDate;
 

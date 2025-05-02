@@ -57,7 +57,7 @@ class DeliveryType
     private $maximumQuantity;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class DeliveryType
     private $actualDeliveryDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -79,7 +79,7 @@ class DeliveryType
     private $actualDeliveryTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -90,7 +90,7 @@ class DeliveryType
     private $latestDeliveryDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -395,18 +395,18 @@ class DeliveryType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualDeliveryDate(): ?\DateTime
+    public function getActualDeliveryDate(): ?\DateTimeInterface
     {
         return $this->actualDeliveryDate;
     }
 
     /**
-     * @param \DateTime $actualDeliveryDate
+     * @param \DateTimeInterface $actualDeliveryDate
      * @return self
      */
-    public function setActualDeliveryDate(\DateTime $actualDeliveryDate): self
+    public function setActualDeliveryDate(\DateTimeInterface $actualDeliveryDate): self
     {
         $this->actualDeliveryDate = $actualDeliveryDate;
 
@@ -414,18 +414,18 @@ class DeliveryType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualDeliveryTime(): ?\DateTime
+    public function getActualDeliveryTime(): ?\DateTimeInterface
     {
         return $this->actualDeliveryTime;
     }
 
     /**
-     * @param \DateTime $actualDeliveryTime
+     * @param \DateTimeInterface $actualDeliveryTime
      * @return self
      */
-    public function setActualDeliveryTime(\DateTime $actualDeliveryTime): self
+    public function setActualDeliveryTime(\DateTimeInterface $actualDeliveryTime): self
     {
         $this->actualDeliveryTime = $actualDeliveryTime;
 
@@ -433,18 +433,18 @@ class DeliveryType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestDeliveryDate(): ?\DateTime
+    public function getLatestDeliveryDate(): ?\DateTimeInterface
     {
         return $this->latestDeliveryDate;
     }
 
     /**
-     * @param \DateTime $latestDeliveryDate
+     * @param \DateTimeInterface $latestDeliveryDate
      * @return self
      */
-    public function setLatestDeliveryDate(\DateTime $latestDeliveryDate): self
+    public function setLatestDeliveryDate(\DateTimeInterface $latestDeliveryDate): self
     {
         $this->latestDeliveryDate = $latestDeliveryDate;
 
@@ -452,18 +452,18 @@ class DeliveryType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestDeliveryTime(): ?\DateTime
+    public function getLatestDeliveryTime(): ?\DateTimeInterface
     {
         return $this->latestDeliveryTime;
     }
 
     /**
-     * @param \DateTime $latestDeliveryTime
+     * @param \DateTimeInterface $latestDeliveryTime
      * @return self
      */
-    public function setLatestDeliveryTime(\DateTime $latestDeliveryTime): self
+    public function setLatestDeliveryTime(\DateTimeInterface $latestDeliveryTime): self
     {
         $this->latestDeliveryTime = $latestDeliveryTime;
 

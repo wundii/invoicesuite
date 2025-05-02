@@ -45,7 +45,7 @@ class QualificationResolutionType
     private $resolution;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class QualificationResolutionType
     private $resolutionDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -269,18 +269,18 @@ class QualificationResolutionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getResolutionDate(): ?\DateTime
+    public function getResolutionDate(): ?\DateTimeInterface
     {
         return $this->resolutionDate;
     }
 
     /**
-     * @param \DateTime $resolutionDate
+     * @param \DateTimeInterface $resolutionDate
      * @return self
      */
-    public function setResolutionDate(\DateTime $resolutionDate): self
+    public function setResolutionDate(\DateTimeInterface $resolutionDate): self
     {
         $this->resolutionDate = $resolutionDate;
 
@@ -288,18 +288,18 @@ class QualificationResolutionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getResolutionTime(): ?\DateTime
+    public function getResolutionTime(): ?\DateTimeInterface
     {
         return $this->resolutionTime;
     }
 
     /**
-     * @param \DateTime $resolutionTime
+     * @param \DateTimeInterface $resolutionTime
      * @return self
      */
-    public function setResolutionTime(\DateTime $resolutionTime): self
+    public function setResolutionTime(\DateTimeInterface $resolutionTime): self
     {
         $this->resolutionTime = $resolutionTime;
 

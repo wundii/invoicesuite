@@ -49,7 +49,7 @@ class TenderResultType
     private $advertisementAmount;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class TenderResultType
     private $awardDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -104,7 +104,7 @@ class TenderResultType
     private $higherTenderAmount;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -333,18 +333,18 @@ class TenderResultType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getAwardDate(): ?\DateTime
+    public function getAwardDate(): ?\DateTimeInterface
     {
         return $this->awardDate;
     }
 
     /**
-     * @param \DateTime $awardDate
+     * @param \DateTimeInterface $awardDate
      * @return self
      */
-    public function setAwardDate(\DateTime $awardDate): self
+    public function setAwardDate(\DateTimeInterface $awardDate): self
     {
         $this->awardDate = $awardDate;
 
@@ -352,18 +352,18 @@ class TenderResultType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getAwardTime(): ?\DateTime
+    public function getAwardTime(): ?\DateTimeInterface
     {
         return $this->awardTime;
     }
 
     /**
-     * @param \DateTime $awardTime
+     * @param \DateTimeInterface $awardTime
      * @return self
      */
-    public function setAwardTime(\DateTime $awardTime): self
+    public function setAwardTime(\DateTimeInterface $awardTime): self
     {
         $this->awardTime = $awardTime;
 
@@ -458,18 +458,18 @@ class TenderResultType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartDate(): ?\DateTime
+    public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
     }
 
     /**
-     * @param \DateTime $startDate
+     * @param \DateTimeInterface $startDate
      * @return self
      */
-    public function setStartDate(\DateTime $startDate): self
+    public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 

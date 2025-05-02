@@ -32,7 +32,7 @@ class PaymentType
     private $paidAmount;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class PaymentType
     private $receivedDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class PaymentType
     private $paidDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -134,18 +134,18 @@ class PaymentType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getReceivedDate(): ?\DateTime
+    public function getReceivedDate(): ?\DateTimeInterface
     {
         return $this->receivedDate;
     }
 
     /**
-     * @param \DateTime $receivedDate
+     * @param \DateTimeInterface $receivedDate
      * @return self
      */
-    public function setReceivedDate(\DateTime $receivedDate): self
+    public function setReceivedDate(\DateTimeInterface $receivedDate): self
     {
         $this->receivedDate = $receivedDate;
 
@@ -153,18 +153,18 @@ class PaymentType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPaidDate(): ?\DateTime
+    public function getPaidDate(): ?\DateTimeInterface
     {
         return $this->paidDate;
     }
 
     /**
-     * @param \DateTime $paidDate
+     * @param \DateTimeInterface $paidDate
      * @return self
      */
-    public function setPaidDate(\DateTime $paidDate): self
+    public function setPaidDate(\DateTimeInterface $paidDate): self
     {
         $this->paidDate = $paidDate;
 
@@ -172,18 +172,18 @@ class PaymentType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPaidTime(): ?\DateTime
+    public function getPaidTime(): ?\DateTimeInterface
     {
         return $this->paidTime;
     }
 
     /**
-     * @param \DateTime $paidTime
+     * @param \DateTimeInterface $paidTime
      * @return self
      */
-    public function setPaidTime(\DateTime $paidTime): self
+    public function setPaidTime(\DateTimeInterface $paidTime): self
     {
         $this->paidTime = $paidTime;
 

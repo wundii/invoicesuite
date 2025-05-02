@@ -154,7 +154,7 @@ class PaymentTermsType
     private $paymentTermsDetailsURI;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -165,7 +165,7 @@ class PaymentTermsType
     private $paymentDueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -683,18 +683,18 @@ class PaymentTermsType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPaymentDueDate(): ?\DateTime
+    public function getPaymentDueDate(): ?\DateTimeInterface
     {
         return $this->paymentDueDate;
     }
 
     /**
-     * @param \DateTime $paymentDueDate
+     * @param \DateTimeInterface $paymentDueDate
      * @return self
      */
-    public function setPaymentDueDate(\DateTime $paymentDueDate): self
+    public function setPaymentDueDate(\DateTimeInterface $paymentDueDate): self
     {
         $this->paymentDueDate = $paymentDueDate;
 
@@ -702,18 +702,18 @@ class PaymentTermsType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getInstallmentDueDate(): ?\DateTime
+    public function getInstallmentDueDate(): ?\DateTimeInterface
     {
         return $this->installmentDueDate;
     }
 
     /**
-     * @param \DateTime $installmentDueDate
+     * @param \DateTimeInterface $installmentDueDate
      * @return self
      */
-    public function setInstallmentDueDate(\DateTime $installmentDueDate): self
+    public function setInstallmentDueDate(\DateTimeInterface $installmentDueDate): self
     {
         $this->installmentDueDate = $installmentDueDate;
 

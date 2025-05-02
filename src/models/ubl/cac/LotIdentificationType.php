@@ -19,7 +19,7 @@ class LotIdentificationType
     private $lotNumberID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -71,18 +71,18 @@ class LotIdentificationType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getExpiryDate(): ?\DateTime
+    public function getExpiryDate(): ?\DateTimeInterface
     {
         return $this->expiryDate;
     }
 
     /**
-     * @param \DateTime $expiryDate
+     * @param \DateTimeInterface $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTime $expiryDate): self
+    public function setExpiryDate(\DateTimeInterface $expiryDate): self
     {
         $this->expiryDate = $expiryDate;
 

@@ -150,7 +150,7 @@ class InvoiceType
     private $uUID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -161,7 +161,7 @@ class InvoiceType
     private $issueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -172,7 +172,7 @@ class InvoiceType
     private $issueTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -206,7 +206,7 @@ class InvoiceType
     private $note;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -949,18 +949,18 @@ class InvoiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 
@@ -968,18 +968,18 @@ class InvoiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueTime(): ?\DateTime
+    public function getIssueTime(): ?\DateTimeInterface
     {
         return $this->issueTime;
     }
 
     /**
-     * @param \DateTime $issueTime
+     * @param \DateTimeInterface $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTime $issueTime): self
+    public function setIssueTime(\DateTimeInterface $issueTime): self
     {
         $this->issueTime = $issueTime;
 
@@ -987,18 +987,18 @@ class InvoiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getDueDate(): ?\DateTime
+    public function getDueDate(): ?\DateTimeInterface
     {
         return $this->dueDate;
     }
 
     /**
-     * @param \DateTime $dueDate
+     * @param \DateTimeInterface $dueDate
      * @return self
      */
-    public function setDueDate(\DateTime $dueDate): self
+    public function setDueDate(\DateTimeInterface $dueDate): self
     {
         $this->dueDate = $dueDate;
 
@@ -1116,18 +1116,18 @@ class InvoiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getTaxPointDate(): ?\DateTime
+    public function getTaxPointDate(): ?\DateTimeInterface
     {
         return $this->taxPointDate;
     }
 
     /**
-     * @param \DateTime $taxPointDate
+     * @param \DateTimeInterface $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(\DateTime $taxPointDate): self
+    public function setTaxPointDate(\DateTimeInterface $taxPointDate): self
     {
         $this->taxPointDate = $taxPointDate;
 

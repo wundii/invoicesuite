@@ -49,7 +49,7 @@ class ExternalReferenceType
     private $hashAlgorithmMethod;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class ExternalReferenceType
     private $expiryDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -225,18 +225,18 @@ class ExternalReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getExpiryDate(): ?\DateTime
+    public function getExpiryDate(): ?\DateTimeInterface
     {
         return $this->expiryDate;
     }
 
     /**
-     * @param \DateTime $expiryDate
+     * @param \DateTimeInterface $expiryDate
      * @return self
      */
-    public function setExpiryDate(\DateTime $expiryDate): self
+    public function setExpiryDate(\DateTimeInterface $expiryDate): self
     {
         $this->expiryDate = $expiryDate;
 
@@ -244,18 +244,18 @@ class ExternalReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getExpiryTime(): ?\DateTime
+    public function getExpiryTime(): ?\DateTimeInterface
     {
         return $this->expiryTime;
     }
 
     /**
-     * @param \DateTime $expiryTime
+     * @param \DateTimeInterface $expiryTime
      * @return self
      */
-    public function setExpiryTime(\DateTime $expiryTime): self
+    public function setExpiryTime(\DateTimeInterface $expiryTime): self
     {
         $this->expiryTime = $expiryTime;
 

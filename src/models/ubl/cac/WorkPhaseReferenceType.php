@@ -56,7 +56,7 @@ class WorkPhaseReferenceType
     private $progressPercent;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class WorkPhaseReferenceType
     private $startDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -258,18 +258,18 @@ class WorkPhaseReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getStartDate(): ?\DateTime
+    public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
     }
 
     /**
-     * @param \DateTime $startDate
+     * @param \DateTimeInterface $startDate
      * @return self
      */
-    public function setStartDate(\DateTime $startDate): self
+    public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 
@@ -277,18 +277,18 @@ class WorkPhaseReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEndDate(): ?\DateTime
+    public function getEndDate(): ?\DateTimeInterface
     {
         return $this->endDate;
     }
 
     /**
-     * @param \DateTime $endDate
+     * @param \DateTimeInterface $endDate
      * @return self
      */
-    public function setEndDate(\DateTime $endDate): self
+    public function setEndDate(\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
 

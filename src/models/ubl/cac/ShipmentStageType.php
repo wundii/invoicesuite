@@ -83,7 +83,7 @@ class ShipmentStageType
     private $onCarriageIndicator;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -94,7 +94,7 @@ class ShipmentStageType
     private $estimatedDeliveryDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -105,7 +105,7 @@ class ShipmentStageType
     private $estimatedDeliveryTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -116,7 +116,7 @@ class ShipmentStageType
     private $requiredDeliveryDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -853,18 +853,18 @@ class ShipmentStageType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEstimatedDeliveryDate(): ?\DateTime
+    public function getEstimatedDeliveryDate(): ?\DateTimeInterface
     {
         return $this->estimatedDeliveryDate;
     }
 
     /**
-     * @param \DateTime $estimatedDeliveryDate
+     * @param \DateTimeInterface $estimatedDeliveryDate
      * @return self
      */
-    public function setEstimatedDeliveryDate(\DateTime $estimatedDeliveryDate): self
+    public function setEstimatedDeliveryDate(\DateTimeInterface $estimatedDeliveryDate): self
     {
         $this->estimatedDeliveryDate = $estimatedDeliveryDate;
 
@@ -872,18 +872,18 @@ class ShipmentStageType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEstimatedDeliveryTime(): ?\DateTime
+    public function getEstimatedDeliveryTime(): ?\DateTimeInterface
     {
         return $this->estimatedDeliveryTime;
     }
 
     /**
-     * @param \DateTime $estimatedDeliveryTime
+     * @param \DateTimeInterface $estimatedDeliveryTime
      * @return self
      */
-    public function setEstimatedDeliveryTime(\DateTime $estimatedDeliveryTime): self
+    public function setEstimatedDeliveryTime(\DateTimeInterface $estimatedDeliveryTime): self
     {
         $this->estimatedDeliveryTime = $estimatedDeliveryTime;
 
@@ -891,18 +891,18 @@ class ShipmentStageType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRequiredDeliveryDate(): ?\DateTime
+    public function getRequiredDeliveryDate(): ?\DateTimeInterface
     {
         return $this->requiredDeliveryDate;
     }
 
     /**
-     * @param \DateTime $requiredDeliveryDate
+     * @param \DateTimeInterface $requiredDeliveryDate
      * @return self
      */
-    public function setRequiredDeliveryDate(\DateTime $requiredDeliveryDate): self
+    public function setRequiredDeliveryDate(\DateTimeInterface $requiredDeliveryDate): self
     {
         $this->requiredDeliveryDate = $requiredDeliveryDate;
 
@@ -910,18 +910,18 @@ class ShipmentStageType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRequiredDeliveryTime(): ?\DateTime
+    public function getRequiredDeliveryTime(): ?\DateTimeInterface
     {
         return $this->requiredDeliveryTime;
     }
 
     /**
-     * @param \DateTime $requiredDeliveryTime
+     * @param \DateTimeInterface $requiredDeliveryTime
      * @return self
      */
-    public function setRequiredDeliveryTime(\DateTime $requiredDeliveryTime): self
+    public function setRequiredDeliveryTime(\DateTimeInterface $requiredDeliveryTime): self
     {
         $this->requiredDeliveryTime = $requiredDeliveryTime;
 

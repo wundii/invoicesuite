@@ -7,7 +7,7 @@ use JMS\Serializer\Annotation as JMS;
 class EarliestPickupDateType
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -18,18 +18,18 @@ class EarliestPickupDateType
     private $value;
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getValue(): ?\DateTime
+    public function getValue(): ?\DateTimeInterface
     {
         return $this->value;
     }
 
     /**
-     * @param \DateTime $value
+     * @param \DateTimeInterface $value
      * @return self
      */
-    public function setValue(\DateTime $value): self
+    public function setValue(\DateTimeInterface $value): self
     {
         $this->value = $value;
 

@@ -35,7 +35,7 @@ class PaymentMeansType
     private $paymentMeansCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -216,18 +216,18 @@ class PaymentMeansType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPaymentDueDate(): ?\DateTime
+    public function getPaymentDueDate(): ?\DateTimeInterface
     {
         return $this->paymentDueDate;
     }
 
     /**
-     * @param \DateTime $paymentDueDate
+     * @param \DateTimeInterface $paymentDueDate
      * @return self
      */
-    public function setPaymentDueDate(\DateTime $paymentDueDate): self
+    public function setPaymentDueDate(\DateTimeInterface $paymentDueDate): self
     {
         $this->paymentDueDate = $paymentDueDate;
 

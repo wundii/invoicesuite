@@ -129,7 +129,7 @@ class PersonType
     private $genderCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -497,18 +497,18 @@ class PersonType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getBirthDate(): ?\DateTime
+    public function getBirthDate(): ?\DateTimeInterface
     {
         return $this->birthDate;
     }
 
     /**
-     * @param \DateTime $birthDate
+     * @param \DateTimeInterface $birthDate
      * @return self
      */
-    public function setBirthDate(\DateTime $birthDate): self
+    public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
 

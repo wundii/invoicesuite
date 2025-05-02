@@ -21,7 +21,7 @@ class TransportScheduleType
     private $sequenceNumeric;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class TransportScheduleType
     private $referenceDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -172,18 +172,18 @@ class TransportScheduleType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getReferenceDate(): ?\DateTime
+    public function getReferenceDate(): ?\DateTimeInterface
     {
         return $this->referenceDate;
     }
 
     /**
-     * @param \DateTime $referenceDate
+     * @param \DateTimeInterface $referenceDate
      * @return self
      */
-    public function setReferenceDate(\DateTime $referenceDate): self
+    public function setReferenceDate(\DateTimeInterface $referenceDate): self
     {
         $this->referenceDate = $referenceDate;
 
@@ -191,18 +191,18 @@ class TransportScheduleType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getReferenceTime(): ?\DateTime
+    public function getReferenceTime(): ?\DateTimeInterface
     {
         return $this->referenceTime;
     }
 
     /**
-     * @param \DateTime $referenceTime
+     * @param \DateTimeInterface $referenceTime
      * @return self
      */
-    public function setReferenceTime(\DateTime $referenceTime): self
+    public function setReferenceTime(\DateTimeInterface $referenceTime): self
     {
         $this->referenceTime = $referenceTime;
 

@@ -57,7 +57,7 @@ class InventoryReportLineType
     private $inventoryValueAmount;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -269,18 +269,18 @@ class InventoryReportLineType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getAvailabilityDate(): ?\DateTime
+    public function getAvailabilityDate(): ?\DateTimeInterface
     {
         return $this->availabilityDate;
     }
 
     /**
-     * @param \DateTime $availabilityDate
+     * @param \DateTimeInterface $availabilityDate
      * @return self
      */
-    public function setAvailabilityDate(\DateTime $availabilityDate): self
+    public function setAvailabilityDate(\DateTimeInterface $availabilityDate): self
     {
         $this->availabilityDate = $availabilityDate;
 

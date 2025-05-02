@@ -35,7 +35,7 @@ class PartyLegalEntityType
     private $companyID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class PartyLegalEntityType
     private $registrationDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -226,18 +226,18 @@ class PartyLegalEntityType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRegistrationDate(): ?\DateTime
+    public function getRegistrationDate(): ?\DateTimeInterface
     {
         return $this->registrationDate;
     }
 
     /**
-     * @param \DateTime $registrationDate
+     * @param \DateTimeInterface $registrationDate
      * @return self
      */
-    public function setRegistrationDate(\DateTime $registrationDate): self
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
     {
         $this->registrationDate = $registrationDate;
 
@@ -245,18 +245,18 @@ class PartyLegalEntityType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRegistrationExpirationDate(): ?\DateTime
+    public function getRegistrationExpirationDate(): ?\DateTimeInterface
     {
         return $this->registrationExpirationDate;
     }
 
     /**
-     * @param \DateTime $registrationExpirationDate
+     * @param \DateTimeInterface $registrationExpirationDate
      * @return self
      */
-    public function setRegistrationExpirationDate(\DateTime $registrationExpirationDate): self
+    public function setRegistrationExpirationDate(\DateTimeInterface $registrationExpirationDate): self
     {
         $this->registrationExpirationDate = $registrationExpirationDate;
 

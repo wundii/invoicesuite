@@ -51,7 +51,7 @@ class MeterReadingType
     private $meterReadingTypeCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class MeterReadingType
     private $previousMeterQuantity;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -249,18 +249,18 @@ class MeterReadingType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getPreviousMeterReadingDate(): ?\DateTime
+    public function getPreviousMeterReadingDate(): ?\DateTimeInterface
     {
         return $this->previousMeterReadingDate;
     }
 
     /**
-     * @param \DateTime $previousMeterReadingDate
+     * @param \DateTimeInterface $previousMeterReadingDate
      * @return self
      */
-    public function setPreviousMeterReadingDate(\DateTime $previousMeterReadingDate): self
+    public function setPreviousMeterReadingDate(\DateTimeInterface $previousMeterReadingDate): self
     {
         $this->previousMeterReadingDate = $previousMeterReadingDate;
 
@@ -297,18 +297,18 @@ class MeterReadingType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestMeterReadingDate(): ?\DateTime
+    public function getLatestMeterReadingDate(): ?\DateTimeInterface
     {
         return $this->latestMeterReadingDate;
     }
 
     /**
-     * @param \DateTime $latestMeterReadingDate
+     * @param \DateTimeInterface $latestMeterReadingDate
      * @return self
      */
-    public function setLatestMeterReadingDate(\DateTime $latestMeterReadingDate): self
+    public function setLatestMeterReadingDate(\DateTimeInterface $latestMeterReadingDate): self
     {
         $this->latestMeterReadingDate = $latestMeterReadingDate;
 

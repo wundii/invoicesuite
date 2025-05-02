@@ -190,7 +190,7 @@ class TenderingTermsType
     private $additionalConditions;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -1177,18 +1177,18 @@ class TenderingTermsType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestSecurityClearanceDate(): ?\DateTime
+    public function getLatestSecurityClearanceDate(): ?\DateTimeInterface
     {
         return $this->latestSecurityClearanceDate;
     }
 
     /**
-     * @param \DateTime $latestSecurityClearanceDate
+     * @param \DateTimeInterface $latestSecurityClearanceDate
      * @return self
      */
-    public function setLatestSecurityClearanceDate(\DateTime $latestSecurityClearanceDate): self
+    public function setLatestSecurityClearanceDate(\DateTimeInterface $latestSecurityClearanceDate): self
     {
         $this->latestSecurityClearanceDate = $latestSecurityClearanceDate;
 

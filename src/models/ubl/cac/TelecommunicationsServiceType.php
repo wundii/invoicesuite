@@ -30,7 +30,7 @@ class TelecommunicationsServiceType
     private $iD;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class TelecommunicationsServiceType
     private $callDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -284,18 +284,18 @@ class TelecommunicationsServiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getCallDate(): ?\DateTime
+    public function getCallDate(): ?\DateTimeInterface
     {
         return $this->callDate;
     }
 
     /**
-     * @param \DateTime $callDate
+     * @param \DateTimeInterface $callDate
      * @return self
      */
-    public function setCallDate(\DateTime $callDate): self
+    public function setCallDate(\DateTimeInterface $callDate): self
     {
         $this->callDate = $callDate;
 
@@ -303,18 +303,18 @@ class TelecommunicationsServiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getCallTime(): ?\DateTime
+    public function getCallTime(): ?\DateTimeInterface
     {
         return $this->callTime;
     }
 
     /**
-     * @param \DateTime $callTime
+     * @param \DateTimeInterface $callTime
      * @return self
      */
-    public function setCallTime(\DateTime $callTime): self
+    public function setCallTime(\DateTimeInterface $callTime): self
     {
         $this->callTime = $callTime;
 

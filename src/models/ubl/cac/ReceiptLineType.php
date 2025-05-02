@@ -155,7 +155,7 @@ class ReceiptLineType
     private $oversupplyQuantity;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -699,18 +699,18 @@ class ReceiptLineType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getReceivedDate(): ?\DateTime
+    public function getReceivedDate(): ?\DateTimeInterface
     {
         return $this->receivedDate;
     }
 
     /**
-     * @param \DateTime $receivedDate
+     * @param \DateTimeInterface $receivedDate
      * @return self
      */
-    public function setReceivedDate(\DateTime $receivedDate): self
+    public function setReceivedDate(\DateTimeInterface $receivedDate): self
     {
         $this->receivedDate = $receivedDate;
 

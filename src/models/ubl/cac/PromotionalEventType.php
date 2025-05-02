@@ -19,7 +19,7 @@ class PromotionalEventType
     private $promotionalEventTypeCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -30,7 +30,7 @@ class PromotionalEventType
     private $submissionDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -41,7 +41,7 @@ class PromotionalEventType
     private $firstShipmentAvailibilityDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -93,18 +93,18 @@ class PromotionalEventType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getSubmissionDate(): ?\DateTime
+    public function getSubmissionDate(): ?\DateTimeInterface
     {
         return $this->submissionDate;
     }
 
     /**
-     * @param \DateTime $submissionDate
+     * @param \DateTimeInterface $submissionDate
      * @return self
      */
-    public function setSubmissionDate(\DateTime $submissionDate): self
+    public function setSubmissionDate(\DateTimeInterface $submissionDate): self
     {
         $this->submissionDate = $submissionDate;
 
@@ -112,18 +112,18 @@ class PromotionalEventType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getFirstShipmentAvailibilityDate(): ?\DateTime
+    public function getFirstShipmentAvailibilityDate(): ?\DateTimeInterface
     {
         return $this->firstShipmentAvailibilityDate;
     }
 
     /**
-     * @param \DateTime $firstShipmentAvailibilityDate
+     * @param \DateTimeInterface $firstShipmentAvailibilityDate
      * @return self
      */
-    public function setFirstShipmentAvailibilityDate(\DateTime $firstShipmentAvailibilityDate): self
+    public function setFirstShipmentAvailibilityDate(\DateTimeInterface $firstShipmentAvailibilityDate): self
     {
         $this->firstShipmentAvailibilityDate = $firstShipmentAvailibilityDate;
 
@@ -131,18 +131,18 @@ class PromotionalEventType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLatestProposalAcceptanceDate(): ?\DateTime
+    public function getLatestProposalAcceptanceDate(): ?\DateTimeInterface
     {
         return $this->latestProposalAcceptanceDate;
     }
 
     /**
-     * @param \DateTime $latestProposalAcceptanceDate
+     * @param \DateTimeInterface $latestProposalAcceptanceDate
      * @return self
      */
-    public function setLatestProposalAcceptanceDate(\DateTime $latestProposalAcceptanceDate): self
+    public function setLatestProposalAcceptanceDate(\DateTimeInterface $latestProposalAcceptanceDate): self
     {
         $this->latestProposalAcceptanceDate = $latestProposalAcceptanceDate;
 

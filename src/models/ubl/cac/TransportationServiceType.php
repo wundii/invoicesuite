@@ -82,7 +82,7 @@ class TransportationServiceType
     private $transportationServiceDetailsURI;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class TransportationServiceType
     private $nominationDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -508,18 +508,18 @@ class TransportationServiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getNominationDate(): ?\DateTime
+    public function getNominationDate(): ?\DateTimeInterface
     {
         return $this->nominationDate;
     }
 
     /**
-     * @param \DateTime $nominationDate
+     * @param \DateTimeInterface $nominationDate
      * @return self
      */
-    public function setNominationDate(\DateTime $nominationDate): self
+    public function setNominationDate(\DateTimeInterface $nominationDate): self
     {
         $this->nominationDate = $nominationDate;
 
@@ -527,18 +527,18 @@ class TransportationServiceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getNominationTime(): ?\DateTime
+    public function getNominationTime(): ?\DateTimeInterface
     {
         return $this->nominationTime;
     }
 
     /**
-     * @param \DateTime $nominationTime
+     * @param \DateTimeInterface $nominationTime
      * @return self
      */
-    public function setNominationTime(\DateTime $nominationTime): self
+    public function setNominationTime(\DateTimeInterface $nominationTime): self
     {
         $this->nominationTime = $nominationTime;
 

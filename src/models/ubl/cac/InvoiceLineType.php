@@ -71,7 +71,7 @@ class InvoiceLineType
     private $lineExtensionAmount;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -533,18 +533,18 @@ class InvoiceLineType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getTaxPointDate(): ?\DateTime
+    public function getTaxPointDate(): ?\DateTimeInterface
     {
         return $this->taxPointDate;
     }
 
     /**
-     * @param \DateTime $taxPointDate
+     * @param \DateTimeInterface $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(\DateTime $taxPointDate): self
+    public function setTaxPointDate(\DateTimeInterface $taxPointDate): self
     {
         $this->taxPointDate = $taxPointDate;
 

@@ -35,7 +35,7 @@ class CatalogueReferenceType
     private $uUID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class CatalogueReferenceType
     private $issueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class CatalogueReferenceType
     private $issueTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -68,7 +68,7 @@ class CatalogueReferenceType
     private $revisionDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -183,18 +183,18 @@ class CatalogueReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 
@@ -202,18 +202,18 @@ class CatalogueReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueTime(): ?\DateTime
+    public function getIssueTime(): ?\DateTimeInterface
     {
         return $this->issueTime;
     }
 
     /**
-     * @param \DateTime $issueTime
+     * @param \DateTimeInterface $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTime $issueTime): self
+    public function setIssueTime(\DateTimeInterface $issueTime): self
     {
         $this->issueTime = $issueTime;
 
@@ -221,18 +221,18 @@ class CatalogueReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRevisionDate(): ?\DateTime
+    public function getRevisionDate(): ?\DateTimeInterface
     {
         return $this->revisionDate;
     }
 
     /**
-     * @param \DateTime $revisionDate
+     * @param \DateTimeInterface $revisionDate
      * @return self
      */
-    public function setRevisionDate(\DateTime $revisionDate): self
+    public function setRevisionDate(\DateTimeInterface $revisionDate): self
     {
         $this->revisionDate = $revisionDate;
 
@@ -240,18 +240,18 @@ class CatalogueReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRevisionTime(): ?\DateTime
+    public function getRevisionTime(): ?\DateTimeInterface
     {
         return $this->revisionTime;
     }
 
     /**
-     * @param \DateTime $revisionTime
+     * @param \DateTimeInterface $revisionTime
      * @return self
      */
-    public function setRevisionTime(\DateTime $revisionTime): self
+    public function setRevisionTime(\DateTimeInterface $revisionTime): self
     {
         $this->revisionTime = $revisionTime;
 

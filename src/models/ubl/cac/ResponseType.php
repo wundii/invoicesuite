@@ -44,7 +44,7 @@ class ResponseType
     private $description;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class ResponseType
     private $effectiveDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -217,18 +217,18 @@ class ResponseType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEffectiveDate(): ?\DateTime
+    public function getEffectiveDate(): ?\DateTimeInterface
     {
         return $this->effectiveDate;
     }
 
     /**
-     * @param \DateTime $effectiveDate
+     * @param \DateTimeInterface $effectiveDate
      * @return self
      */
-    public function setEffectiveDate(\DateTime $effectiveDate): self
+    public function setEffectiveDate(\DateTimeInterface $effectiveDate): self
     {
         $this->effectiveDate = $effectiveDate;
 
@@ -236,18 +236,18 @@ class ResponseType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEffectiveTime(): ?\DateTime
+    public function getEffectiveTime(): ?\DateTimeInterface
     {
         return $this->effectiveTime;
     }
 
     /**
-     * @param \DateTime $effectiveTime
+     * @param \DateTimeInterface $effectiveTime
      * @return self
      */
-    public function setEffectiveTime(\DateTime $effectiveTime): self
+    public function setEffectiveTime(\DateTimeInterface $effectiveTime): self
     {
         $this->effectiveTime = $effectiveTime;
 

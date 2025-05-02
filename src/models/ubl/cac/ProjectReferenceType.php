@@ -31,7 +31,7 @@ class ProjectReferenceType
     private $uUID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -112,18 +112,18 @@ class ProjectReferenceType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 

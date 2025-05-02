@@ -33,7 +33,7 @@ class ForecastExceptionType
     private $forecastTypeCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class ForecastExceptionType
     private $issueDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -77,7 +77,7 @@ class ForecastExceptionType
     private $comparisonDataCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -88,7 +88,7 @@ class ForecastExceptionType
     private $comparisonForecastIssueTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -157,18 +157,18 @@ class ForecastExceptionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueDate(): ?\DateTime
+    public function getIssueDate(): ?\DateTimeInterface
     {
         return $this->issueDate;
     }
 
     /**
-     * @param \DateTime $issueDate
+     * @param \DateTimeInterface $issueDate
      * @return self
      */
-    public function setIssueDate(\DateTime $issueDate): self
+    public function setIssueDate(\DateTimeInterface $issueDate): self
     {
         $this->issueDate = $issueDate;
 
@@ -176,18 +176,18 @@ class ForecastExceptionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getIssueTime(): ?\DateTime
+    public function getIssueTime(): ?\DateTimeInterface
     {
         return $this->issueTime;
     }
 
     /**
-     * @param \DateTime $issueTime
+     * @param \DateTimeInterface $issueTime
      * @return self
      */
-    public function setIssueTime(\DateTime $issueTime): self
+    public function setIssueTime(\DateTimeInterface $issueTime): self
     {
         $this->issueTime = $issueTime;
 
@@ -253,18 +253,18 @@ class ForecastExceptionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getComparisonForecastIssueTime(): ?\DateTime
+    public function getComparisonForecastIssueTime(): ?\DateTimeInterface
     {
         return $this->comparisonForecastIssueTime;
     }
 
     /**
-     * @param \DateTime $comparisonForecastIssueTime
+     * @param \DateTimeInterface $comparisonForecastIssueTime
      * @return self
      */
-    public function setComparisonForecastIssueTime(\DateTime $comparisonForecastIssueTime): self
+    public function setComparisonForecastIssueTime(\DateTimeInterface $comparisonForecastIssueTime): self
     {
         $this->comparisonForecastIssueTime = $comparisonForecastIssueTime;
 
@@ -272,18 +272,18 @@ class ForecastExceptionType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getComparisonForecastIssueDate(): ?\DateTime
+    public function getComparisonForecastIssueDate(): ?\DateTimeInterface
     {
         return $this->comparisonForecastIssueDate;
     }
 
     /**
-     * @param \DateTime $comparisonForecastIssueDate
+     * @param \DateTimeInterface $comparisonForecastIssueDate
      * @return self
      */
-    public function setComparisonForecastIssueDate(\DateTime $comparisonForecastIssueDate): self
+    public function setComparisonForecastIssueDate(\DateTimeInterface $comparisonForecastIssueDate): self
     {
         $this->comparisonForecastIssueDate = $comparisonForecastIssueDate;
 

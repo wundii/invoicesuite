@@ -21,7 +21,7 @@ class DespatchType
     private $iD;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class DespatchType
     private $requestedDespatchDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class DespatchType
     private $requestedDespatchTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class DespatchType
     private $estimatedDespatchDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -65,7 +65,7 @@ class DespatchType
     private $estimatedDespatchTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -76,7 +76,7 @@ class DespatchType
     private $actualDespatchDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -87,7 +87,7 @@ class DespatchType
     private $actualDespatchTime;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -98,7 +98,7 @@ class DespatchType
     private $guaranteedDespatchDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -250,18 +250,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRequestedDespatchDate(): ?\DateTime
+    public function getRequestedDespatchDate(): ?\DateTimeInterface
     {
         return $this->requestedDespatchDate;
     }
 
     /**
-     * @param \DateTime $requestedDespatchDate
+     * @param \DateTimeInterface $requestedDespatchDate
      * @return self
      */
-    public function setRequestedDespatchDate(\DateTime $requestedDespatchDate): self
+    public function setRequestedDespatchDate(\DateTimeInterface $requestedDespatchDate): self
     {
         $this->requestedDespatchDate = $requestedDespatchDate;
 
@@ -269,18 +269,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getRequestedDespatchTime(): ?\DateTime
+    public function getRequestedDespatchTime(): ?\DateTimeInterface
     {
         return $this->requestedDespatchTime;
     }
 
     /**
-     * @param \DateTime $requestedDespatchTime
+     * @param \DateTimeInterface $requestedDespatchTime
      * @return self
      */
-    public function setRequestedDespatchTime(\DateTime $requestedDespatchTime): self
+    public function setRequestedDespatchTime(\DateTimeInterface $requestedDespatchTime): self
     {
         $this->requestedDespatchTime = $requestedDespatchTime;
 
@@ -288,18 +288,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEstimatedDespatchDate(): ?\DateTime
+    public function getEstimatedDespatchDate(): ?\DateTimeInterface
     {
         return $this->estimatedDespatchDate;
     }
 
     /**
-     * @param \DateTime $estimatedDespatchDate
+     * @param \DateTimeInterface $estimatedDespatchDate
      * @return self
      */
-    public function setEstimatedDespatchDate(\DateTime $estimatedDespatchDate): self
+    public function setEstimatedDespatchDate(\DateTimeInterface $estimatedDespatchDate): self
     {
         $this->estimatedDespatchDate = $estimatedDespatchDate;
 
@@ -307,18 +307,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getEstimatedDespatchTime(): ?\DateTime
+    public function getEstimatedDespatchTime(): ?\DateTimeInterface
     {
         return $this->estimatedDespatchTime;
     }
 
     /**
-     * @param \DateTime $estimatedDespatchTime
+     * @param \DateTimeInterface $estimatedDespatchTime
      * @return self
      */
-    public function setEstimatedDespatchTime(\DateTime $estimatedDespatchTime): self
+    public function setEstimatedDespatchTime(\DateTimeInterface $estimatedDespatchTime): self
     {
         $this->estimatedDespatchTime = $estimatedDespatchTime;
 
@@ -326,18 +326,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualDespatchDate(): ?\DateTime
+    public function getActualDespatchDate(): ?\DateTimeInterface
     {
         return $this->actualDespatchDate;
     }
 
     /**
-     * @param \DateTime $actualDespatchDate
+     * @param \DateTimeInterface $actualDespatchDate
      * @return self
      */
-    public function setActualDespatchDate(\DateTime $actualDespatchDate): self
+    public function setActualDespatchDate(\DateTimeInterface $actualDespatchDate): self
     {
         $this->actualDespatchDate = $actualDespatchDate;
 
@@ -345,18 +345,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getActualDespatchTime(): ?\DateTime
+    public function getActualDespatchTime(): ?\DateTimeInterface
     {
         return $this->actualDespatchTime;
     }
 
     /**
-     * @param \DateTime $actualDespatchTime
+     * @param \DateTimeInterface $actualDespatchTime
      * @return self
      */
-    public function setActualDespatchTime(\DateTime $actualDespatchTime): self
+    public function setActualDespatchTime(\DateTimeInterface $actualDespatchTime): self
     {
         $this->actualDespatchTime = $actualDespatchTime;
 
@@ -364,18 +364,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getGuaranteedDespatchDate(): ?\DateTime
+    public function getGuaranteedDespatchDate(): ?\DateTimeInterface
     {
         return $this->guaranteedDespatchDate;
     }
 
     /**
-     * @param \DateTime $guaranteedDespatchDate
+     * @param \DateTimeInterface $guaranteedDespatchDate
      * @return self
      */
-    public function setGuaranteedDespatchDate(\DateTime $guaranteedDespatchDate): self
+    public function setGuaranteedDespatchDate(\DateTimeInterface $guaranteedDespatchDate): self
     {
         $this->guaranteedDespatchDate = $guaranteedDespatchDate;
 
@@ -383,18 +383,18 @@ class DespatchType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getGuaranteedDespatchTime(): ?\DateTime
+    public function getGuaranteedDespatchTime(): ?\DateTimeInterface
     {
         return $this->guaranteedDespatchTime;
     }
 
     /**
-     * @param \DateTime $guaranteedDespatchTime
+     * @param \DateTimeInterface $guaranteedDespatchTime
      * @return self
      */
-    public function setGuaranteedDespatchTime(\DateTime $guaranteedDespatchTime): self
+    public function setGuaranteedDespatchTime(\DateTimeInterface $guaranteedDespatchTime): self
     {
         $this->guaranteedDespatchTime = $guaranteedDespatchTime;
 

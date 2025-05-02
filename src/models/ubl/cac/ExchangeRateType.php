@@ -91,7 +91,7 @@ class ExchangeRateType
     private $mathematicOperatorCode;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -316,18 +316,18 @@ class ExchangeRateType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getDate(): ?\DateTime
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTimeInterface $date
      * @return self
      */
-    public function setDate(\DateTime $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 

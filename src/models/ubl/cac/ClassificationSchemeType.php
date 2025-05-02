@@ -40,7 +40,7 @@ class ClassificationSchemeType
     private $uUID;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class ClassificationSchemeType
     private $lastRevisionDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Time")
      * @JMS\Expose
@@ -233,18 +233,18 @@ class ClassificationSchemeType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLastRevisionDate(): ?\DateTime
+    public function getLastRevisionDate(): ?\DateTimeInterface
     {
         return $this->lastRevisionDate;
     }
 
     /**
-     * @param \DateTime $lastRevisionDate
+     * @param \DateTimeInterface $lastRevisionDate
      * @return self
      */
-    public function setLastRevisionDate(\DateTime $lastRevisionDate): self
+    public function setLastRevisionDate(\DateTimeInterface $lastRevisionDate): self
     {
         $this->lastRevisionDate = $lastRevisionDate;
 
@@ -252,18 +252,18 @@ class ClassificationSchemeType
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTimeInterface|null
      */
-    public function getLastRevisionTime(): ?\DateTime
+    public function getLastRevisionTime(): ?\DateTimeInterface
     {
         return $this->lastRevisionTime;
     }
 
     /**
-     * @param \DateTime $lastRevisionTime
+     * @param \DateTimeInterface $lastRevisionTime
      * @return self
      */
-    public function setLastRevisionTime(\DateTime $lastRevisionTime): self
+    public function setLastRevisionTime(\DateTimeInterface $lastRevisionTime): self
     {
         $this->lastRevisionTime = $lastRevisionTime;
 
