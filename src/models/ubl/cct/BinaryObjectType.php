@@ -8,7 +8,7 @@ use JMS\Serializer\Annotation as JMS;
 class BinaryObjectType
 {
     /**
-     * @var \GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded
+     * @var string
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded")
      * @JMS\Expose
@@ -85,28 +85,18 @@ class BinaryObjectType
     private $filename;
 
     /**
-     * @return \GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded|null
+     * @return string|null
      */
-    public function getValue(): ?Base64Encoded
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
     /**
-     * @return \GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded
-     */
-    public function getValueWithCreate(): Base64Encoded
-    {
-        $this->value = is_null($this->value) ? new Base64Encoded() : $this->value;
-
-        return $this->value;
-    }
-
-    /**
-     * @param \GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded $value
+     * @param string $value
      * @return self
      */
-    public function setValue(Base64Encoded $value): self
+    public function setValue(string $value): self
     {
         $this->value = $value;
 

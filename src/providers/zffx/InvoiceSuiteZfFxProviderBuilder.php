@@ -1804,7 +1804,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
+     * @param string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
     public function setShipToId(string $newId): self

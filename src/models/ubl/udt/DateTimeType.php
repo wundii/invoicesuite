@@ -2,13 +2,13 @@
 
 namespace horstoeko\invoicesuite\models\ubl\udt;
 
-use GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime;
+use DateTime;
 use JMS\Serializer\Annotation as JMS;
 
 class DateTimeType
 {
     /**
-     * @var \GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+     * @var DateTime
      * @JMS\Groups({"ubl"})
      * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
      * @JMS\Expose
@@ -19,7 +19,7 @@ class DateTimeType
     private $value;
 
     /**
-     * @return \GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime|null
+     * @return DateTime|null
      */
     public function getValue(): ?DateTime
     {
@@ -27,7 +27,7 @@ class DateTimeType
     }
 
     /**
-     * @return \GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+     * @return DateTime
      */
     public function getValueWithCreate(): DateTime
     {
@@ -37,7 +37,7 @@ class DateTimeType
     }
 
     /**
-     * @param \GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime $value
+     * @param DateTime $value
      * @return self
      */
     public function setValue(DateTime $value): self
