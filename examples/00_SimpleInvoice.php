@@ -4,8 +4,8 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");
@@ -112,5 +112,15 @@ $builder->setInvoiceeAddress("Invoicee Street", "Invoicee Street 2", "Invoicee S
 $builder->setInvoiceeLegalOrganisation("8884", "Invoicee-Org-Id", "Invoicee AG");
 $builder->addInvoiceeContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@Invoicee-gmbh.de");
 $builder->setInvoiceeCommunication("EM", "invoice@invoicee-gmbh.de");
+
+$builder->setPayeeName("Payee GmbH");
+$builder->setPayeeId("PAYEE-001");
+$builder->addPayeeId("PAYEE-002");
+$builder->setPayeeGlobalId("PAYEE222", "0088");
+$builder->setPayeeTaxRegistration("VA", "9989773373");
+$builder->setPayeeAddress("Payee Street", "Payee Street 2", "Payee Street 3", "99999", "Payee-City", "DE", "RLP");
+$builder->setPayeeLegalOrganisation("8884", "Payee-Org-Id", "Payee AG");
+$builder->addPayeeContact("Alfons Baum", "Dispo", "0999-10001", "0999-10001", "alfzit@payee-gmbh.de");
+$builder->setPayeeCommunication("EM", "invoice@payee-gmbh.de");
 
 echo $builder->getContentAsXml();

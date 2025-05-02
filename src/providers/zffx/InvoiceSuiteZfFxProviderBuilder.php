@@ -754,14 +754,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
      * @return self
      */
-    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -773,20 +773,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getBuyerTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax number or sales tax identification number
      * @return self
      */
-    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -799,7 +799,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -1128,14 +1128,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
      * @return self
      */
-    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1147,20 +1147,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addTaxRepresentativeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-63-0, From BASIC WL__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax number or sales tax identification number
      * @return self
      */
-    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1173,7 +1173,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -1502,14 +1502,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
      * @return self
      */
-    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1521,20 +1521,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getProductEndUserTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-, From __ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-, From __ Tax number or sales tax identification number
      * @return self
      */
-    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1547,7 +1547,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -1876,14 +1876,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function setShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1895,20 +1895,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipToTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-161-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function addShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -1921,7 +1921,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -2250,14 +2250,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -2269,20 +2269,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getUltimateShipToTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addUltimateShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -2295,7 +2295,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -2624,14 +2624,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function setShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -2643,20 +2643,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipFromTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addShipFromTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-199-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function addShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -2669,7 +2669,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -2998,14 +2998,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function setInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -3017,20 +3017,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoicerTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addInvoicerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-223-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function addInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -3043,7 +3043,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -3372,14 +3372,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function setInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -3391,20 +3391,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoiceeTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addInvoiceeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->addInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
 
     /**
-     * @param string $newTaxRegistrationTyüe __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationType __BT-X-242-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
      * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax number or sales tax identification number
      * @return self
      */
-    public function addInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
-            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationTyüe, $newTaxRegistrationId])
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
         ) {
             return $this;
         }
@@ -3417,7 +3417,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->addToSpecifiedTaxRegistrationWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationId)
-            ->setSchemeID($newTaxRegistrationTyüe);
+            ->setSchemeID($newTaxRegistrationType);
 
         return $this;
     }
@@ -3622,6 +3622,380 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $invoiceeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
+        }
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Payee
+
+    /**
+     * @param string $newName __BT-59, From BASIC WL__ The name of the party
+     * @return self
+     */
+    public function setPayeeName(string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newId __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function setPayeeId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->clearID();
+
+        $this->addPayeeId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newId __BT-60, From BASIC WL__ An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
+     * @return self
+     */
+    public function addPayeeId(string $newId): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->addToIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId     __BT-60-0, From BASIC WL__ Global identification number
+     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->clearGlobalID();
+
+        $this->addPayeeGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newGlobalId     __BT-60-0, From BASIC WL__ Global identification number
+     * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
+     * @return self
+     */
+    public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->addToGlobalIDWithCreate()
+            ->setValue($newGlobalId)
+            ->setSchemeID($newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->clearSpecifiedTaxRegistration();
+
+        $this->addPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newTaxRegistrationType __BT-X-257-0, From EXTENDED__ Type of tax number (FC = Tax number, VA = Sales tax identification number)
+     * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax number or sales tax identification number
+     * @return self
+     */
+    public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->addToSpecifiedTaxRegistrationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newTaxRegistrationId)
+            ->setSchemeID($newTaxRegistrationType);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newAddressLine1 __BT-X-250, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param string $newAddressLine2 __BT-X-251, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newAddressLine3 __BT-X-252, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param string $newPostcode     __BT-X-249, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param string $newCity         __BT-X-253, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param string $newCountryId    __BT-X-254, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param string $newSubDivision  __BT-X-255, From EXTENDED__ The party's state
+     * @return self
+     */
+    public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            ])
+        ) {
+            return $this;
+        }
+
+        $payeeTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $payeeTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType __BT-61-1, From BASIC WL__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN,* 0060 : DUNS, 0177 : ODETTE
+     * @param string $newId   __BT-61, From BASIC WL__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param string $newName __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @return self
+     */
+    public function setPayeeLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $payeeTradeParty = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            $payeeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getIDWithCreate()->setValue($newId);
+            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+                $payeeTradeParty->getSpecifiedLegalOrganization()->getID()->setSchemeID($newType);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $payeeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->clearDefinedTradeContact();
+
+        $this->addPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @param string $newPersonName     __BT-X-244, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param string $newDepartmentName __BT-X-245, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param string $newPhoneNumber    __BT-X-246, From EXTENDED__ A telephone number for the contact point
+     * @param string $newFaxNumber      __BT-X-247, From EXTENDED__ A fax number of the contact point
+     * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ An e-mail address of the contact point
+     * @return self
+     */
+    public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $payeeTradeContact = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->addToDefinedTradeContactWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPersonName])) {
+            $payeeTradeContact->getPersonNameWithCreate()->setValue($newPersonName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDepartmentName])) {
+            $payeeTradeContact->getDepartmentNameWithCreate()->setValue($newDepartmentName);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPhoneNumber])) {
+            $payeeTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $payeeTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
+            $payeeTradeContact->getEmailURIUniversalCommunicationWithCreate()->getURIIDWithCreate()->setValue($newEmailAddress);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $newType __BT-X-256-0, From EXTENDED__ The identifier for the identification scheme of the party's electronic address
+     * @param string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address
+     * @return self
+     */
+    public function setPayeeCommunication(string $newType, string $newUri): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $payeeUniversalCommunication = $this->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPayeeTradePartyWithCreate()
+            ->getURIUniversalCommunicationWithCreate();
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
+            $payeeUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
+            $payeeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
 
         return $this;

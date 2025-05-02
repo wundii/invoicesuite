@@ -276,9 +276,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setSellerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setSellerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -286,9 +286,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addSellerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addSellerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -400,9 +400,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -410,9 +410,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addBuyerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -524,9 +524,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setTaxRepresentativeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -534,9 +534,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addTaxRepresentativeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -648,9 +648,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -658,9 +658,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -772,9 +772,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -782,9 +782,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -896,9 +896,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -906,9 +906,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1020,9 +1020,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setShipFromTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1030,9 +1030,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addShipFromTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1144,9 +1144,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1154,9 +1154,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1268,9 +1268,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function setInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->setInvoiceeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->setInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1278,9 +1278,9 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     /**
      * @inheritDoc
      */
-    public function addInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self
+    public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
-        $this->getCurrentFormatProvider()->getBuilder()->addInvoiceeTaxRegistration($newTaxRegistrationTyüe, $newTaxRegistrationId);
+        $this->getCurrentFormatProvider()->getBuilder()->addInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1331,6 +1331,130 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function setInvoiceeCommunication(string $newType, string $newUri): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->setInvoiceeCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Payee
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeName(string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addPayeeId(string $newId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addPayeeId($newId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addPayeeGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeLegalOrganisation(string $newType, string $newId, string $newName): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setPayeeCommunication(string $newType, string $newUri): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setPayeeCommunication($newType, $newUri);
 
         return $this;
     }

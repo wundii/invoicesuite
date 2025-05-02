@@ -284,20 +284,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the buyer/customer party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the buyer/customer party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addBuyerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the buyer/customer party
@@ -405,20 +405,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the tax representative party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the tax representative party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the tax representative party
@@ -526,20 +526,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the product end-user party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the product end-user party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addProductEndUserTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the product end-user party
@@ -647,20 +647,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Ship-To party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the Ship-To party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the Ship-To party
@@ -768,20 +768,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the ultimate Ship-To party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the ultimate Ship-To party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the ultimate Ship-To party
@@ -889,20 +889,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Ship-From party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the Ship-From party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addShipFromTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the Ship-From party
@@ -1010,20 +1010,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Invoicer party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the Invoicer party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addInvoicerTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the Invoicer party
@@ -1131,20 +1131,20 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set the Tax Registration of the Invoicee party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function setInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Add an Tax Registration to the Invoicee party
      *
-     * @param  string $newTaxRegistrationTyüe
+     * @param  string $newTaxRegistrationType
      * @param  string $newTaxRegistrationId
      * @return self
      */
-    public function addInvoiceeTaxRegistration(string $newTaxRegistrationTyüe, string $newTaxRegistrationId): self;
+    public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
 
     /**
      * Set the address of the Invoicee party
@@ -1202,6 +1202,127 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setInvoiceeCommunication(string $newType, string $newUri): self;
+
+    #endregion
+
+    #region Document Payee
+
+    /**
+     * Set the name of the Payee party
+     *
+     * @param  string $newName
+     * @return self
+     */
+    public function setPayeeName(string $newName): self;
+
+    /**
+     * Set the ID of the Payee party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function setPayeeId(string $newId): self;
+
+    /**
+     * Add an ID to the Payee party
+     *
+     * @param  string $newId
+     * @return self
+     */
+    public function addPayeeId(string $newId): self;
+
+    /**
+     * Set the Global ID of the Payee party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Add an ID to the Payee party
+     *
+     * @param  string $newGlobalId
+     * @param  string $newGlobalIdType
+     * @return self
+     */
+    public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self;
+
+    /**
+     * Set the Tax Registration of the Payee party
+     *
+     * @param  string $newTaxRegistrationType
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
+
+    /**
+     * Add an Tax Registration to the Payee party
+     *
+     * @param  string $newTaxRegistrationType
+     * @param  string $newTaxRegistrationId
+     * @return self
+     */
+    public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self;
+
+    /**
+     * Set the address of the Payee party
+     *
+     * @param  string $newAddressLine1
+     * @param  string $newAddressLine2
+     * @param  string $newAddressLine3
+     * @param  string $newPostcode
+     * @param  string $newCity
+     * @param  string $newCountryId
+     * @param  string $newSubDivision
+     * @return self
+     */
+    public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self;
+
+    /**
+     * Set the legal information of the Payee party
+     *
+     * @param  string $newType
+     * @param  string $newId
+     * @param  string $newName
+     * @return self
+     */
+    public function setPayeeLegalOrganisation(string $newType, string $newId, string $newName): self;
+
+    /**
+     * Set the contact information of the Payee party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add contact information of the Payee party
+     *
+     * @param  string $newPersonName
+     * @param  string $newDepartmentName
+     * @param  string $newPhoneNumber
+     * @param  string $newFaxNumber
+     * @param  string $newEmailAddress
+     * @return self
+     */
+    public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self;
+
+    /**
+     * Add communication information of the Payee party
+     *
+     * @param  string $newType
+     * @param  string $newUri
+     * @return self
+     */
+    public function setPayeeCommunication(string $newType, string $newUri): self;
 
     #endregion
 }
