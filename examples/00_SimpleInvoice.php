@@ -4,9 +4,10 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
+
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");
 $builder->setDocumentDescription("Some document description");
@@ -125,5 +126,6 @@ $builder->setDocumentPayeeCommunication("EM", "invoice@payee-gmbh.de");
 
 $builder->setDocumentSellerOrderReference('SO-2025/0000001', new DateTime());
 $builder->setDocumentBuyerOrderReference('PO-0000011', new DateTime());
+$builder->setDocumentSellerQuotationReference('ANG-2025/0000055');
 
 echo $builder->getContentAsXml();

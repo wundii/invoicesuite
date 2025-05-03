@@ -253,6 +253,16 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentSellerQuotationReference(string $newReferenceNumber, ?DateTimeInterface $newReferenceDate = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentSellerQuotationReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier
