@@ -228,11 +228,7 @@ class InvoiceSuiteAttachment
             return false;
         }
 
-        if (($mimeType = $this->getContentMimeType()) === false) {
-            return false;
-        }
-
-        $tempFileExtension = (MimeDb::singleton())->findFirstFileExtensionByMimeType($mimeType);
+        $tempFileExtension = (MimeDb::singleton())->findFirstFileExtensionByMimeType($this->getContentMimeType());
 
         return FileUtils::combineFilenameWithFileextension($this->internalFilename, $tempFileExtension);
     }
