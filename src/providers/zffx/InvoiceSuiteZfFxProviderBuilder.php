@@ -332,7 +332,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-27, From MINIMUM__ The full formal name under which the party is registered.
      * @return self
      */
-    public function setSellerName(string $newName): self
+    public function setDocumentSellerName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -353,7 +353,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setSellerId(string $newId): self
+    public function setDocumentSellerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -366,7 +366,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTradePartyWithCreate()
             ->clearID();
 
-        $this->addSellerId($newId);
+        $this->addDocumentSellerId($newId);
 
         return $this;
     }
@@ -375,7 +375,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-29, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addSellerId(string $newId): self
+    public function addDocumentSellerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -397,7 +397,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function setSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -410,7 +410,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addSellerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -420,7 +420,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-29-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function addSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
@@ -443,7 +443,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
      * @return self
      */
-    public function setSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
@@ -456,7 +456,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -466,7 +466,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-31/32, From MINIMUM/EN 16931__ Tax identification number.
      * @return self
      */
-    public function addSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -497,7 +497,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-39, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -555,7 +555,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-28, From BASIC WL__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setSellerLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentSellerLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -588,7 +588,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
-    public function setSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -608,7 +608,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -621,7 +621,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-43, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
-    public function addSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -669,7 +669,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-34, From BASIC WL__ The party's electronic address.
      * @return self
      */
-    public function setSellerCommunication(string $newType, string $newUri): self
+    public function setDocumentSellerCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -700,7 +700,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-44, From MINIMUM__ The full formal name under which the party is registered
      * @return self
      */
-    public function setBuyerName(string $newName): self
+    public function setDocumentBuyerName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -721,7 +721,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setBuyerId(string $newId): self
+    public function setDocumentBuyerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -734,7 +734,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getBuyerTradePartyWithCreate()
             ->clearID();
 
-        $this->addBuyerId($newId);
+        $this->addDocumentBuyerId($newId);
 
         return $this;
     }
@@ -743,7 +743,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-46, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addBuyerId(string $newId): self
+    public function addDocumentBuyerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -765,7 +765,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function setBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -780,7 +780,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getBuyerTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addBuyerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -790,7 +790,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-46-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function addBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -815,7 +815,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number.
      * @return self
      */
-    public function setBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -830,7 +830,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getBuyerTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -840,7 +840,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number.
      * @return self
      */
-    public function addBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -871,7 +871,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-54, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -929,7 +929,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-45, From BASIC WL__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -962,7 +962,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
-    public function setBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -982,7 +982,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getBuyerTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -995,7 +995,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-58, From EN 16931__ E-Mail address of the contact point.
      * @return self
      */
-    public function addBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1043,7 +1043,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-49, From BASIC WL__ The party's electronic address.
      * @return self
      */
-    public function setBuyerCommunication(string $newType, string $newUri): self
+    public function setDocumentBuyerCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -1074,7 +1074,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-62, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
-    public function setTaxRepresentativeName(string $newName): self
+    public function setDocumentTaxRepresentativeName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -1095,7 +1095,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setTaxRepresentativeId(string $newId): self
+    public function setDocumentTaxRepresentativeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1108,7 +1108,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearID();
 
-        $this->addTaxRepresentativeId($newId);
+        $this->addDocumentTaxRepresentativeId($newId);
 
         return $this;
     }
@@ -1117,7 +1117,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-116, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addTaxRepresentativeId(string $newId): self
+    public function addDocumentTaxRepresentativeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1139,7 +1139,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1154,7 +1154,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1164,7 +1164,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-117-1, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1189,7 +1189,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number.
      * @return self
      */
-    public function setTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1204,7 +1204,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1214,7 +1214,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-63, From BASIC WL__ Tax identification number.
      * @return self
      */
-    public function addTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1245,7 +1245,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-68, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setTaxRepresentativeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentTaxRepresentativeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1303,7 +1303,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-, From __ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setTaxRepresentativeLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentTaxRepresentativeLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -1336,7 +1336,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1356,7 +1356,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getSellerTaxRepresentativeTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -1369,7 +1369,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-124, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1417,7 +1417,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-125, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setTaxRepresentativeCommunication(string $newType, string $newUri): self
+    public function setDocumentTaxRepresentativeCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -1448,7 +1448,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-128, From EXTENDED__ The full formal name under which the party is registered.
      * @return self
      */
-    public function setProductEndUserName(string $newName): self
+    public function setDocumentProductEndUserName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -1469,7 +1469,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setProductEndUserId(string $newId): self
+    public function setDocumentProductEndUserId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1482,7 +1482,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getProductEndUserTradePartyWithCreate()
             ->clearID();
 
-        $this->addProductEndUserId($newId);
+        $this->addDocumentProductEndUserId($newId);
 
         return $this;
     }
@@ -1491,7 +1491,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-126, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addProductEndUserId(string $newId): self
+    public function addDocumentProductEndUserId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1513,7 +1513,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1528,7 +1528,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getProductEndUserTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1538,7 +1538,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-127-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1563,7 +1563,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-, From __ Tax identification number.
      * @return self
      */
-    public function setProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1578,7 +1578,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getProductEndUserTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1588,7 +1588,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-, From __ Tax identification number.
      * @return self
      */
-    public function addProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1619,7 +1619,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-402, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1677,7 +1677,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-130, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -1710,7 +1710,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1730,7 +1730,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getProductEndUserTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -1743,7 +1743,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-135, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -1791,7 +1791,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setProductEndUserCommunication(string $newType, string $newUri): self
+    public function setDocumentProductEndUserCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -1822,7 +1822,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-70, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
-    public function setShipToName(string $newName): self
+    public function setDocumentShipToName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -1843,7 +1843,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setShipToId(string $newId): self
+    public function setDocumentShipToId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1856,7 +1856,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipToTradePartyWithCreate()
             ->clearID();
 
-        $this->addShipToId($newId);
+        $this->addDocumentShipToId($newId);
 
         return $this;
     }
@@ -1865,7 +1865,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-71, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addShipToId(string $newId): self
+    public function addDocumentShipToId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -1887,7 +1887,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function setShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1902,7 +1902,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipToTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -1912,7 +1912,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-71-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function addShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -1937,7 +1937,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1952,7 +1952,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipToTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -1962,7 +1962,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-161, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -1993,7 +1993,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-79, From BASIC WL__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2051,7 +2051,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-154, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentShipToLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -2084,7 +2084,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2104,7 +2104,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipToTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -2117,7 +2117,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-159, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2165,7 +2165,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-160-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setShipToCommunication(string $newType, string $newUri): self
+    public function setDocumentShipToCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -2196,7 +2196,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
-    public function setUltimateShipToName(string $newName): self
+    public function setDocumentUltimateShipToName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -2217,7 +2217,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setUltimateShipToId(string $newId): self
+    public function setDocumentUltimateShipToId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2230,7 +2230,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getUltimateShipToTradePartyWithCreate()
             ->clearID();
 
-        $this->addUltimateShipToId($newId);
+        $this->addDocumentUltimateShipToId($newId);
 
         return $this;
     }
@@ -2239,7 +2239,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addUltimateShipToId(string $newId): self
+    public function addDocumentUltimateShipToId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2261,7 +2261,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -2276,7 +2276,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getUltimateShipToTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2286,7 +2286,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -2311,7 +2311,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -2326,7 +2326,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getUltimateShipToTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2336,7 +2336,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-180, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -2367,7 +2367,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2425,7 +2425,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -2458,7 +2458,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2478,7 +2478,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getUltimateShipToTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -2491,7 +2491,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2539,7 +2539,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-83-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setUltimateShipToCommunication(string $newType, string $newUri): self
+    public function setDocumentUltimateShipToCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -2570,7 +2570,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-183, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
-    public function setShipFromName(string $newName): self
+    public function setDocumentShipFromName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -2591,7 +2591,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setShipFromId(string $newId): self
+    public function setDocumentShipFromId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2604,7 +2604,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipFromTradePartyWithCreate()
             ->clearID();
 
-        $this->addShipFromId($newId);
+        $this->addDocumentShipFromId($newId);
 
         return $this;
     }
@@ -2613,7 +2613,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-181, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addShipFromId(string $newId): self
+    public function addDocumentShipFromId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2635,7 +2635,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -2650,7 +2650,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipFromTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addShipFromGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -2660,7 +2660,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-182-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -2685,7 +2685,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -2700,7 +2700,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipFromTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -2710,7 +2710,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-199, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -2741,7 +2741,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-197, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2799,7 +2799,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-185, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setShipFromLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentShipFromLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -2832,7 +2832,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2852,7 +2852,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getShipFromTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addShipFromContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentShipFromContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -2865,7 +2865,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-190, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -2913,7 +2913,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-199-0, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setShipFromCommunication(string $newType, string $newUri): self
+    public function setDocumentShipFromCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -2944,7 +2944,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-207, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
-    public function setInvoicerName(string $newName): self
+    public function setDocumentInvoicerName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -2965,7 +2965,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setInvoicerId(string $newId): self
+    public function setDocumentInvoicerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -2978,7 +2978,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoicerTradePartyWithCreate()
             ->clearID();
 
-        $this->addInvoicerId($newId);
+        $this->addDocumentInvoicerId($newId);
 
         return $this;
     }
@@ -2987,7 +2987,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-205, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addInvoicerId(string $newId): self
+    public function addDocumentInvoicerId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -3009,7 +3009,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3024,7 +3024,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoicerTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addInvoicerGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3034,7 +3034,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-206-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3059,7 +3059,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3074,7 +3074,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoicerTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3084,7 +3084,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-223, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3115,7 +3115,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-221, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3173,7 +3173,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-209, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -3206,7 +3206,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3226,7 +3226,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoicerTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -3239,7 +3239,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-214, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3287,7 +3287,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-222, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setInvoicerCommunication(string $newType, string $newUri): self
+    public function setDocumentInvoicerCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -3318,7 +3318,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered
      * @return self
      */
-    public function setInvoiceeName(string $newName): self
+    public function setDocumentInvoiceeName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -3339,7 +3339,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setInvoiceeId(string $newId): self
+    public function setDocumentInvoiceeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -3352,7 +3352,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoiceeTradePartyWithCreate()
             ->clearID();
 
-        $this->addInvoiceeId($newId);
+        $this->addDocumentInvoiceeId($newId);
 
         return $this;
     }
@@ -3361,7 +3361,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addInvoiceeId(string $newId): self
+    public function addDocumentInvoiceeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -3383,7 +3383,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function setInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3398,7 +3398,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoiceeTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3408,7 +3408,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-X-225-0, From EXTENDED__ Type of the global identifier of the party.
      * @return self
      */
-    public function addInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3433,7 +3433,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3448,7 +3448,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoiceeTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3458,7 +3458,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-242, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3489,7 +3489,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-240, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3547,7 +3547,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name.
      * @return self
      */
-    public function setInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -3580,7 +3580,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3600,7 +3600,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getInvoiceeTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addInvoiceeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentInvoiceeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -3613,7 +3613,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-233, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3661,7 +3661,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-241, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setInvoiceeCommunication(string $newType, string $newUri): self
+    public function setDocumentInvoiceeCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
@@ -3692,7 +3692,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-59, From BASIC WL__ The full formal name under which the party is registered.
      * @return self
      */
-    public function setPayeeName(string $newName): self
+    public function setDocumentPayeeName(string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
@@ -3713,7 +3713,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-60, From BASIC WL__ >An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function setPayeeId(string $newId): self
+    public function setDocumentPayeeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -3726,7 +3726,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getPayeeTradePartyWithCreate()
             ->clearID();
 
-        $this->addPayeeId($newId);
+        $this->addDocumentPayeeId($newId);
 
         return $this;
     }
@@ -3735,7 +3735,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newId __BT-60, From BASIC WL__ An identifier of the party. In many systems, identification is key information.
      * @return self
      */
-    public function addPayeeId(string $newId): self
+    public function addDocumentPayeeId(string $newId): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
@@ -3757,7 +3757,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function setPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function setDocumentPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3772,7 +3772,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getPayeeTradePartyWithCreate()
             ->clearGlobalID();
 
-        $this->addPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        $this->addDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
         return $this;
     }
@@ -3782,7 +3782,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newGlobalIdType __BT-60-1, From BASIC WL__ Type of the global identifier of the party.
      * @return self
      */
-    public function addPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
+    public function addDocumentPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])
@@ -3807,7 +3807,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function setPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function setDocumentPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3822,7 +3822,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getPayeeTradePartyWithCreate()
             ->clearSpecifiedTaxRegistration();
 
-        $this->addPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        $this->addDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
         return $this;
     }
@@ -3832,7 +3832,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newTaxRegistrationId   __BT-X-257, From EXTENDED__ Tax identification number.
      * @return self
      */
-    public function addPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
+    public function addDocumentPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])
@@ -3863,7 +3863,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newSubDivision  __BT-X-255, From EXTENDED__ Region or federal state in which the party's address is located.
      * @return self
      */
-    public function setPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
+    public function setDocumentPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3921,7 +3921,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newName __BT-X-243, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setPayeeLegalOrganisation(string $newType, string $newId, string $newName): self
+    public function setDocumentPayeeLegalOrganisation(string $newType, string $newId, string $newName): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -3954,7 +3954,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function setPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function setDocumentPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -3974,7 +3974,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getPayeeTradePartyWithCreate()
             ->clearDefinedTradeContact();
 
-        $this->addPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        $this->addDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
 
         return $this;
     }
@@ -3987,7 +3987,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newEmailAddress   __BT-X-248, From EXTENDED__ E-Mail address of the contact point.
      * @return self
      */
-    public function addPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
+    public function addDocumentPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
     {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
@@ -4035,7 +4035,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string $newUri  __BT-X-256, From EXTENDED__ The party's electronic address.
      * @return self
      */
-    public function setPayeeCommunication(string $newType, string $newUri): self
+    public function setDocumentPayeeCommunication(string $newType, string $newUri): self
     {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
