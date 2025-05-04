@@ -39,8 +39,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newProfileId
      * @return static
      */
-    public function setContextParameter(string $newCustomizationId, string $newProfileId = ""): self
-    {
+    public function setContextParameter(
+        string $newCustomizationId,
+        string $newProfileId = ""
+    ): self {
         $this->getUblInvoiceRootObject()->getCustomizationIDWithCreate()->setValue($newCustomizationId);
 
         if ($newProfileId !== "") {
@@ -58,8 +60,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentNo
      * @return self
      */
-    public function setDocumentNo(string $newDocumentNo): self
-    {
+    public function setDocumentNo(
+        string $newDocumentNo
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentNo])) {
             return $this;
         }
@@ -73,8 +76,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentType
      * @return self
      */
-    public function setDocumentType(string $newDocumentType): self
-    {
+    public function setDocumentType(
+        string $newDocumentType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentType])) {
             return $this;
         }
@@ -88,8 +92,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentDescription Document Type. The documenttype (free text)
      * @return self
      */
-    public function setDocumentDescription(string $newDocumentDescription): self
-    {
+    public function setDocumentDescription(
+        string $newDocumentDescription
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentDescription])) {
             return $this;
         }
@@ -103,8 +108,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
      */
-    public function setDocumentLanguage(string $newDocumentLanguage): self
-    {
+    public function setDocumentLanguage(
+        string $newDocumentLanguage
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentLanguage])) {
             return $this;
         }
@@ -118,8 +124,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param DateTimeInterface $newDocumentDate Date of invoice. The date when the document was issued by the seller
      * @return self
      */
-    public function setDocumentDate(DateTimeInterface $newDocumentDate): self
-    {
+    public function setDocumentDate(
+        DateTimeInterface $newDocumentDate
+    ): self {
         $this->getUblInvoiceRootObject()->setIssueDate($newDocumentDate);
 
         return $this;
@@ -129,8 +136,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param DateTimeInterface $newCompleteDate The contractual due date of the invoice
      * @return self
      */
-    public function setDocumentCompleteDate(DateTimeInterface $newCompleteDate): self
-    {
+    public function setDocumentCompleteDate(
+        DateTimeInterface $newCompleteDate
+    ): self {
         return $this;
     }
 
@@ -138,8 +146,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentCurrency Code for the invoice currency
      * @return self
      */
-    public function setDocumentCurrency(string $newDocumentCurrency): self
-    {
+    public function setDocumentCurrency(
+        string $newDocumentCurrency
+    ): self {
         $this->getUblInvoiceRootObject()->getDocumentCurrencyCodeWithCreate()->setValue($newDocumentCurrency);
 
         return $this;
@@ -149,8 +158,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newDocumentTaxCurrency Code for the tax currency
      * @return self
      */
-    public function setDocumentTaxCurrency(string $newDocumentTaxCurrency): self
-    {
+    public function setDocumentTaxCurrency(
+        string $newDocumentTaxCurrency
+    ): self {
         $this->getUblInvoiceRootObject()->getTaxCurrencyCodeWithCreate()->setValue($newDocumentTaxCurrency);
 
         return $this;
@@ -160,8 +170,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param bool $newDocumentIsCopy
      * @return self
      */
-    public function setDocumentIsCopy(bool $newDocumentIsCopy): self
-    {
+    public function setDocumentIsCopy(
+        bool $newDocumentIsCopy
+    ): self {
         $this->getUblInvoiceRootObject()->setCopyIndicator($newDocumentIsCopy);
 
         return $this;
@@ -171,8 +182,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param bool $newDocumentIsTest
      * @return self
      */
-    public function setDocumentIsTest(bool $newDocumentIsTest): self
-    {
+    public function setDocumentIsTest(
+        bool $newDocumentIsTest
+    ): self {
         return $this;
     }
 
@@ -182,8 +194,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubjectCode The qualification of the free text for the invoice from
      * @return self
      */
-    public function setDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
-    {
+    public function setDocumentNote(
+        string $newContent,
+        string $newContentCode,
+        string $newSubjectCode
+    ): self {
         $this->getUblInvoiceRootObject()->clearNote()->addToNoteWithCreate()->setValue($newContent);
 
         return $this;
@@ -195,8 +210,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubjectCode The qualification of the free text for the invoice from
      * @return self
      */
-    public function addDocumentNote(string $newContent, string $newContentCode, string $newSubjectCode): self
-    {
+    public function addDocumentNote(
+        string $newContent,
+        string $newContentCode,
+        string $newSubjectCode
+    ): self {
         $this->getUblInvoiceRootObject()->addToNoteWithCreate()->setValue($newContent);
 
         return $this;
@@ -573,8 +591,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentSellerName(string $newName): self
-    {
+    public function setDocumentSellerName(
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -594,8 +613,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
-    public function setDocumentSellerId(string $newId): self
-    {
+    public function setDocumentSellerId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -628,8 +648,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the seller. In many systems, seller identification is key information. Multiple seller IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged, buyer-assigned identifier of the seller
      * @return self
      */
-    public function addDocumentSellerId(string $newId): self
-    {
+    public function addDocumentSellerId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -650,8 +671,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentSellerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -685,8 +708,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentSellerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentSellerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -708,8 +733,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number of the seller or sales tax identification number of the seller
      * @return self
      */
-    public function setDocumentSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentSellerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -730,8 +757,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number of the seller or sales tax identification number of the seller
      * @return self
      */
-    public function addDocumentSellerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentSellerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -764,8 +793,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The sellers state
      * @return self
      */
-    public function setDocumentSellerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentSellerAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -819,8 +855,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the seller is known, if different from the seller's name (also known as the company name). Note: This may be used if different from the seller's name.
      * @return self
      */
-    public function setDocumentSellerLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentSellerLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
@@ -856,8 +895,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentSellerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -907,8 +951,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentSellerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentSellerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this->setDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
@@ -917,8 +966,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  The party's electronic address
      * @return self
      */
-    public function setDocumentSellerCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentSellerCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -948,8 +999,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentBuyerName(string $newName): self
-    {
+    public function setDocumentBuyerName(
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -969,8 +1021,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
-    public function setDocumentBuyerId(string $newId): self
-    {
+    public function setDocumentBuyerId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1008,8 +1061,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
-    public function addDocumentBuyerId(string $newId): self
-    {
+    public function addDocumentBuyerId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1030,8 +1084,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentBuyerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1070,8 +1126,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentBuyerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentBuyerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1093,8 +1151,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentBuyerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -1115,8 +1175,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentBuyerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentBuyerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -1149,8 +1211,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
      * @param string $newSubDivision  The buyers state
      */
-    public function setDocumentBuyerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentBuyerAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -1204,8 +1273,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return self
      */
-    public function setDocumentBuyerLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentBuyerLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
@@ -1241,8 +1313,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentBuyerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -1292,8 +1369,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentBuyerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentBuyerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
@@ -1302,8 +1384,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  Specifies the buyer's electronic address to which the invoice is sent
      * @return self
      */
-    public function setDocumentBuyerCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentBuyerCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -1333,8 +1417,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentTaxRepresentativeName(string $newName): self
-    {
+    public function setDocumentTaxRepresentativeName(
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -1353,8 +1438,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
-    public function setDocumentTaxRepresentativeId(string $newId): self
-    {
+    public function setDocumentTaxRepresentativeId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1385,8 +1471,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
      * @return self
      */
-    public function addDocumentTaxRepresentativeId(string $newId): self
-    {
+    public function addDocumentTaxRepresentativeId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1406,8 +1493,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentTaxRepresentativeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1439,8 +1528,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentTaxRepresentativeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentTaxRepresentativeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1461,8 +1552,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentTaxRepresentativeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -1482,8 +1575,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentTaxRepresentativeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentTaxRepresentativeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -1514,8 +1609,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
      * @param string $newSubDivision  The buyers state
      */
-    public function setDocumentTaxRepresentativeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentTaxRepresentativeAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -1568,8 +1670,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
      * @return self
      */
-    public function setDocumentTaxRepresentativeLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentTaxRepresentativeLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
@@ -1603,8 +1708,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentTaxRepresentativeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -1653,8 +1763,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentTaxRepresentativeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentTaxRepresentativeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
@@ -1663,8 +1778,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  Specifies the buyer's electronic address to which the invoice is sent
      * @return self
      */
-    public function setDocumentTaxRepresentativeCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentTaxRepresentativeCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -1692,96 +1809,129 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserName(string $newName): self
-    {
+    public function setDocumentProductEndUserName(
+        string $newName
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserId(string $newId): self
-    {
+    public function setDocumentProductEndUserId(
+        string $newId
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function addDocumentProductEndUserId(string $newId): self
-    {
+    public function addDocumentProductEndUserId(
+        string $newId
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentProductEndUserGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function addDocumentProductEndUserGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentProductEndUserGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentProductEndUserTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function addDocumentProductEndUserTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentProductEndUserTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentProductEndUserAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentProductEndUserLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentProductEndUserContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function addDocumentProductEndUserContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentProductEndUserContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function setDocumentProductEndUserCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentProductEndUserCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -1793,8 +1943,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentShipToName(string $newName): self
-    {
+    public function setDocumentShipToName(
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -1813,8 +1964,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function setDocumentShipToId(string $newId): self
-    {
+    public function setDocumentShipToId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1833,8 +1985,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the place where the goods are delivered or where the services are provided. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function addDocumentShipToId(string $newId): self
-    {
+    public function addDocumentShipToId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -1849,8 +2002,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1871,8 +2026,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -1887,8 +2044,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -1897,8 +2056,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId   Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -1912,8 +2073,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentShipToAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -1967,8 +2135,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentShipToLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentShipToLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -1980,8 +2151,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -1993,8 +2169,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2003,8 +2184,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  The party's electronic address
      * @return self
      */
-    public function setDocumentShipToCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentShipToCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -2016,8 +2199,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentUltimateShipToName(string $newName): self
-    {
+    public function setDocumentUltimateShipToName(
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2025,8 +2209,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
      * @return self
      */
-    public function setDocumentUltimateShipToId(string $newId): self
-    {
+    public function setDocumentUltimateShipToId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2034,8 +2219,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId Identification of the different end recipient. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes.
      * @return self
      */
-    public function addDocumentUltimateShipToId(string $newId): self
-    {
+    public function addDocumentUltimateShipToId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2044,8 +2230,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2054,8 +2242,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentUltimateShipToGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentUltimateShipToGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2064,8 +2254,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2074,8 +2266,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentUltimateShipToTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentUltimateShipToTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2089,8 +2283,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentUltimateShipToAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentUltimateShipToAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         return $this;
     }
 
@@ -2102,8 +2303,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentUltimateShipToLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentUltimateShipToLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2117,8 +2321,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2132,8 +2341,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentUltimateShipToContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentUltimateShipToContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2144,8 +2358,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  The party's electronic address
      * @return self
      */
-    public function setDocumentUltimateShipToCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentUltimateShipToCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -2157,8 +2373,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentShipFromName(string $newName): self
-    {
+    public function setDocumentShipFromName(
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2166,8 +2383,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified
      * @return self
      */
-    public function setDocumentShipFromId(string $newId): self
-    {
+    public function setDocumentShipFromId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2175,8 +2393,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified
      * @return self
      */
-    public function addDocumentShipFromId(string $newId): self
-    {
+    public function addDocumentShipFromId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2185,8 +2404,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentShipFromGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2195,8 +2416,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentShipFromGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentShipFromGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2205,8 +2428,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentShipFromTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2215,8 +2440,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentShipFromTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentShipFromTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2230,8 +2457,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentShipFromAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentShipFromAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         return $this;
     }
 
@@ -2243,8 +2477,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentShipFromLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentShipFromLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2258,8 +2495,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentShipFromContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2273,8 +2515,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentShipFromContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentShipFromContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2285,8 +2532,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  The party's electronic address
      * @return self
      */
-    public function setDocumentShipFromCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentShipFromCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -2298,8 +2547,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentInvoicerName(string $newName): self
-    {
+    public function setDocumentInvoicerName(
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2307,8 +2557,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function setDocumentInvoicerId(string $newId): self
-    {
+    public function setDocumentInvoicerId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2316,8 +2567,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function addDocumentInvoicerId(string $newId): self
-    {
+    public function addDocumentInvoicerId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2326,8 +2578,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentInvoicerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2336,8 +2590,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentInvoicerGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentInvoicerGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2346,8 +2602,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentInvoicerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2356,8 +2614,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentInvoicerTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentInvoicerTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2371,8 +2631,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentInvoicerAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentInvoicerAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         return $this;
     }
 
@@ -2384,8 +2651,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentInvoicerLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentInvoicerLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2399,8 +2669,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentInvoicerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2414,8 +2689,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentInvoicerContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentInvoicerContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2426,8 +2706,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri  The party's electronic address
      * @return self
      */
-    public function setDocumentInvoicerCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentInvoicerCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -2439,8 +2721,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentInvoiceeName(string $newName): self
-    {
+    public function setDocumentInvoiceeName(
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2448,8 +2731,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function setDocumentInvoiceeId(string $newId): self
-    {
+    public function setDocumentInvoiceeId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2457,8 +2741,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function addDocumentInvoiceeId(string $newId): self
-    {
+    public function addDocumentInvoiceeId(
+        string $newId
+    ): self {
         return $this;
     }
 
@@ -2467,8 +2752,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentInvoiceeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2477,8 +2764,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentInvoiceeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentInvoiceeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         return $this;
     }
 
@@ -2487,8 +2776,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentInvoiceeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2497,8 +2788,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentInvoiceeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentInvoiceeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         return $this;
     }
 
@@ -2512,8 +2805,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentInvoiceeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentInvoiceeAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         return $this;
     }
 
@@ -2525,8 +2825,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentInvoiceeLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentInvoiceeLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         return $this;
     }
 
@@ -2540,8 +2843,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentInvoiceeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2555,8 +2863,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentInvoiceeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentInvoiceeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this;
     }
 
@@ -2567,8 +2880,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri The party's electronic address
      * @return self
      */
-    public function setDocumentInvoiceeCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentInvoiceeCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         return $this;
     }
 
@@ -2580,8 +2895,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName The full formal name under which the party is registered
      * @return self
      */
-    public function setDocumentPayeeName(string $newName): self
-    {
+    public function setDocumentPayeeName(
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -2600,8 +2916,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function setDocumentPayeeId(string $newId): self
-    {
+    public function setDocumentPayeeId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -2632,8 +2949,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newId An identifier for the party. Multiple IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should  be known to the buyer and seller, e.g. a previously exchanged identifier assigned by the buyer or seller.
      * @return self
      */
-    public function addDocumentPayeeId(string $newId): self
-    {
+    public function addDocumentPayeeId(
+        string $newId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -2653,8 +2971,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function setDocumentPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function setDocumentPayeeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -2686,8 +3006,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newGlobalIdType Type of global identification number, must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
      * @return self
      */
-    public function addDocumentPayeeGlobalId(string $newGlobalId, string $newGlobalIdType): self
-    {
+    public function addDocumentPayeeGlobalId(
+        string $newGlobalId,
+        string $newGlobalIdType
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -2708,8 +3030,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function setDocumentPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function setDocumentPayeeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -2729,8 +3053,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newTaxRegistrationId Tax number or sales tax identification number
      * @return self
      */
-    public function addDocumentPayeeTaxRegistration(string $newTaxRegistrationType, string $newTaxRegistrationId): self
-    {
+    public function addDocumentPayeeTaxRegistration(
+        string $newTaxRegistrationType,
+        string $newTaxRegistrationId
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
@@ -2762,8 +3088,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newSubDivision  The party's state
      * @return self
      */
-    public function setDocumentPayeeAddress(string $newAddressLine1, string $newAddressLine2, string $newAddressLine3, string $newPostcode, string $newCity, string $newCountryId, string $newSubDivision): self
-    {
+    public function setDocumentPayeeAddress(
+        string $newAddressLine1,
+        string $newAddressLine2,
+        string $newAddressLine3,
+        string $newPostcode,
+        string $newCity,
+        string $newCountryId,
+        string $newSubDivision
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -2818,8 +3151,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newName A name by which the party is known, if different from the party's name (also known as the company name)
      * @return self
      */
-    public function setDocumentPayeeLegalOrganisation(string $newType, string $newId, string $newName): self
-    {
+    public function setDocumentPayeeLegalOrganisation(
+        string $newType,
+        string $newId,
+        string $newName
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
@@ -2855,8 +3191,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function setDocumentPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function setDocumentPayeeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -2907,8 +3248,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newEmailAddress   An e-mail address of the contact point
      * @return self
      */
-    public function addDocumentPayeeContact(string $newPersonName, string $newDepartmentName, string $newPhoneNumber, string $newFaxNumber, string $newEmailAddress): self
-    {
+    public function addDocumentPayeeContact(
+        string $newPersonName,
+        string $newDepartmentName,
+        string $newPhoneNumber,
+        string $newFaxNumber,
+        string $newEmailAddress
+    ): self {
         return $this->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
     }
 
@@ -2919,8 +3265,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @param string $newUri The party's electronic address
      * @return self
      */
-    public function setDocumentPayeeCommunication(string $newType, string $newUri): self
-    {
+    public function setDocumentPayeeCommunication(
+        string $newType,
+        string $newUri
+    ): self {
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
