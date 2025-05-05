@@ -583,6 +583,38 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, "220");
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->addDocumentAdditionalReference($newReferenceNumber, $newReferenceDate, "220");
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier

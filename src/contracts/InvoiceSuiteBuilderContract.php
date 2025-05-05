@@ -345,6 +345,30 @@ interface InvoiceSuiteBuilderContract
         ?string $newName = null
     ): self;
 
+    /**
+     * Set an additional ultimate customer order reference
+     *
+     * @param string|null $newReferenceNumber
+     * @param DateTimeInterface|null $newReferenceDate
+     * @return self
+     */
+    public function setDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Set an additional ultimate customer order reference
+     *
+     * @param string|null $newReferenceNumber
+     * @param DateTimeInterface|null $newReferenceDate
+     * @return self
+     */
+    public function addDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
     #endregion
 
     #region Document Seller/Supplier

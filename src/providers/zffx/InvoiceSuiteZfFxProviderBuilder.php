@@ -725,6 +725,64 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newReferenceNumber __BT-X-150, From EXTENDED__ Order number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-151, From EXTENDED__Order date
+     * @return self
+     */
+    public function setDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->clearUltimateCustomerOrderReferencedDocument();
+
+        $this->addDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-150, From EXTENDED__ Order number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-151, From EXTENDED__Order date
+     * @return self
+     */
+    public function addDocumentUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $orderReference = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeAgreementWithCreate()
+            ->addToUltimateCustomerOrderReferencedDocumentWithCreate();
+
+        $orderReference
+            ->getIssuerAssignedIDWithCreate()
+            ->setValue($newReferenceNumber);
+
+        if (!is_null($newReferenceDate)) {
+            $orderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat('102');
+        }
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier
