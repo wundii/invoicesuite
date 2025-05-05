@@ -615,6 +615,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setAocumentSupplyChainEvent(
+        ?DateTimeInterface $newDate = null
+    ): self {
+        if (is_null($newDate)) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->setActualDeliveryDate($newDate);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier

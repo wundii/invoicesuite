@@ -369,6 +369,16 @@ interface InvoiceSuiteBuilderContract
         ?DateTimeInterface $newReferenceDate = null
     ): self;
 
+    /**
+     * Set the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @return self
+     */
+    public function setAocumentSupplyChainEvent(
+        ?DateTimeInterface $newDate = null
+    ): self;
+
     #endregion
 
     #region Document Seller/Supplier

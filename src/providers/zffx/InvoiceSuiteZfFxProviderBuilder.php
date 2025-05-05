@@ -783,6 +783,30 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param DateTimeInterface|null $newDate __BT-72, From BASIC WL__ Actual delivery date
+     * @return self
+     */
+    public function setAocumentSupplyChainEvent(
+        ?DateTimeInterface $newDate = null
+    ): self {
+        if (is_null($newDate)) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeDeliveryWithCreate()
+            ->getActualDeliverySupplyChainEventWithCreate()
+            ->getOccurrenceDateTimeWithCreate()
+            ->getDateTimeStringWithCreate()
+            ->setValue($newDate->format("Ymd"))
+            ->setFormat('102');
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier

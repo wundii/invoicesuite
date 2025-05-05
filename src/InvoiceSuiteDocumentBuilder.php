@@ -484,6 +484,17 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setAocumentSupplyChainEvent(
+        ?DateTimeInterface $newDate = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setAocumentSupplyChainEvent($newDate);
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Seller/Supplier
