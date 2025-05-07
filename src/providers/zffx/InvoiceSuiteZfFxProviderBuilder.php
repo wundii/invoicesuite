@@ -5028,4 +5028,64 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     #endregion
+
+    #region Document Payment
+
+    /**
+     * @param string|null $newTypeCode __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
+     * @param string|null $newName __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function setDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        return $this;
+    }
+
+    /**
+     * @param string|null $newTypeCode __BT-81, From BASIC WL__ Expected or used means of payment expressed as a code
+     * @param string|null $newName __BT-82, From EN 16931__ Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function addDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        return $this;
+    }
+
+    #endregion
 }

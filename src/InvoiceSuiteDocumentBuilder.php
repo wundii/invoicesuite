@@ -2138,4 +2138,70 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Payment
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMean(
+            $newTypeCode,
+            $newName,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            $newBuyerIban,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMean(
+            $newTypeCode,
+            $newName,
+            $newFinancialCardId,
+            $newFinancialCardHolder,
+            $newBuyerIban,
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    #endregion
 }

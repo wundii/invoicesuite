@@ -2112,4 +2112,64 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     #endregion
+
+    #region Document Payment
+
+    /**
+     * Set Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function setDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self;
+
+    /**
+     * Add Payment mean
+     *
+     * @param string|null $newTypeCode Expected or used means of payment expressed as a code
+     * @param string|null $newName Expected or used means of payment expressed in text form
+     * @param string|null $newFinancialCardId Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder Name of the payment card holder
+     * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newPayeeIban Payment account identifier
+     * @param string|null $newPayeeAccountName Name of the payment account
+     * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
+     * @param string|null $newPayeeBic Identifier of the payment service provider
+     * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function addDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self;
+
+    #endregion
 }

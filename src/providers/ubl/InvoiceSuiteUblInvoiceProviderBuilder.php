@@ -12,6 +12,8 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
+    #region Internal
+
     /**
      * Returns the root object as a Invoice
      *
@@ -53,6 +55,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         return $this;
     }
+
+    #endregion
 
     #region Document Generals
 
@@ -3456,6 +3460,46 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $endpointId->setValue($newUri);
         }
 
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Payment
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMean(
+        ?string $newTypeCode = null,
+        ?string $newName = null,
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null,
+        ?string $newBuyerIban = null,
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
         return $this;
     }
 
