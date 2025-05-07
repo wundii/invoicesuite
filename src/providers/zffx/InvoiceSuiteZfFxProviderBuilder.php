@@ -5192,6 +5192,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -5219,6 +5223,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -5246,6 +5254,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -5273,6 +5285,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -5292,6 +5308,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban
@@ -5307,6 +5327,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban
@@ -5322,6 +5346,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban
@@ -5337,6 +5365,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban
@@ -5354,7 +5386,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null
     ): self {
-        $this->addDocumentPaymentMean(
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+            return $this;
+        }
+
+        $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
             newFinancialCardHolder: $newFinancialCardHolder
@@ -5372,11 +5408,52 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
             newFinancialCardHolder: $newFinancialCardHolder
         );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newId __BT-90, From BASIC WL__ Creditor identifier
+     * @return self
+     */
+    public function setDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getCreditorReferenceIDWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newId __BT-90, From BASIC WL__ Creditor identifier
+     * @return self
+     */
+    public function addDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this->setDocumentPaymentCreditorReferenceID($newId);
 
         return $this;
     }

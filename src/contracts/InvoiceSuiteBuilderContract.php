@@ -2307,5 +2307,26 @@ interface InvoiceSuiteBuilderContract
         ?string $newFinancialCardHolder = null
     ): self;
 
+    /**
+     * Set Unique bank details of the payee or the seller
+     *
+     * @param string|null $newId Creditor identifier
+     * @return self
+     */
+    public function setDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self;
+
+
+    /**
+     * Add Unique bank details of the payee or the seller
+     *
+     * @param string|null $newId Creditor identifier
+     * @return self
+     */
+    public function addDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self;
+
     #endregion
 }

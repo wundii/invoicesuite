@@ -150,4 +150,7 @@ $builder->addDocumentPaymentMeanAsDirectDebitSepa("BuyerIBAN");
 $builder->addDocumentPaymentMeanAsDirectDebitNoSepa("BuyerIBAN");
 $builder->addDocumentPaymentMeanAsPaymentCard("CardId", "CardHolder");
 
+$builder->setDocumentPaymentCreditorReferenceID("CREDREF");
+$builder->setDocumentPaymentCreditorReferenceID("CREDREF2");
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

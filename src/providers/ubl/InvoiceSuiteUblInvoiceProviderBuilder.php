@@ -6,6 +6,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
@@ -3612,6 +3613,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -3634,6 +3639,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -3656,6 +3665,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -3678,6 +3691,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -3696,6 +3713,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban
@@ -3710,6 +3731,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban
@@ -3724,6 +3749,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban
@@ -3738,6 +3767,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban
@@ -3753,6 +3786,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+            return $this;
+        }
+
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
@@ -3769,11 +3806,63 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+            return $this;
+        }
+
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
             newFinancialCardHolder: $newFinancialCardHolder
         );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $ids = $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->getPartyIdentification();
+
+        $ids = array_filter($ids, function(PartyIdentification $id) {
+            return strcasecmp($id->getID()->getSchemeID() ?? "", "SEPA") !== 0;
+        });
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getAccountingSupplierPartyWithCreate()
+            ->getPartyWithCreate()
+            ->setPartyIdentification($ids)
+            ->addToPartyIdentificationWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newId)
+            ->setSchemeID("SEPA");
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this->setDocumentPaymentCreditorReferenceID($newId);
 
         return $this;
     }

@@ -2369,5 +2369,31 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentCreditorReferenceID(
+            $newId
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentCreditorReferenceID(
+        ?string $newId = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentCreditorReferenceID(
+            $newId
+        );
+
+        return $this;
+    }
+
     #endregion
 }
