@@ -7,6 +7,7 @@ use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
@@ -3597,6 +3598,182 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
             $paymentMean->clearPaymentID()->addToPaymentIDWithCreate()->setValue($newPaymentReference);
         }
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: $newFinancialCardId,
+            newFinancialCardHolder: $newFinancialCardHolder
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: $newFinancialCardId,
+            newFinancialCardHolder: $newFinancialCardHolder
+        );
 
         return $this;
     }

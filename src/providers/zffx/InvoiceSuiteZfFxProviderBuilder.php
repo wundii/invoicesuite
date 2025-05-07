@@ -7,8 +7,10 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
+use horstoeko\invoicesuite\models\zffx\ram\TradeSettlementPaymentMeansType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
@@ -5171,6 +5173,210 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getPaymentReferenceWithCreate()
                 ->setValue($newPaymentReference);
         }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function setDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function addDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function setDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newPayeeIban __BT-84, From BASIC WL__ Payment account identifier
+     * @param string|null $newPayeeAccountName __BT-85, From BASIC WL__ Name of the payment account
+     * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
+     * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
+     * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @return self
+     */
+    public function addDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
+            newPayeeIban: $newPayeeIban,
+            newPayeeAccountName: $newPayeeAccountName,
+            newPayeeProprietaryId: $newPayeeProprietaryId,
+            newPayeeBic: $newPayeeBic,
+            newPaymentReference: $newPaymentReference,
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @return self
+     */
+    public function setDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @return self
+     */
+    public function addDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @return self
+     */
+    public function setDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->setDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @return self
+     */
+    public function addDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
+            newBuyerIban: $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @return self
+     */
+    public function setDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: $newFinancialCardId,
+            newFinancialCardHolder: $newFinancialCardHolder
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newFinancialCardId __BT-87, From EN 16931__ Primary account number (PAN) of the payment card
+     * @param string|null $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
+     * @return self
+     */
+    public function addDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->addDocumentPaymentMean(
+            newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
+            newFinancialCardId: $newFinancialCardId,
+            newFinancialCardHolder: $newFinancialCardHolder
+        );
 
         return $this;
     }

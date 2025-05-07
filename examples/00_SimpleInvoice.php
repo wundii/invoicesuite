@@ -143,6 +143,11 @@ $builder->setDocumentDeliveryNoteReference('DELIVERYNOTE-0000001', new DateTime(
 
 $builder->setAocumentSupplyChainEvent(new DateTime());
 
-$builder->setDocumentPaymentMean("33", "Name", "CardId", "CardHolder", "BuyerIBAN", "PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+//$builder->setDocumentPaymentMean("33", "Name", "CardId", "CardHolder", "BuyerIBAN", "PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+$builder->addDocumentPaymentMeanAsCreditTransferSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+$builder->addDocumentPaymentMeanAsCreditTransferNoSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+$builder->addDocumentPaymentMeanAsDirectDebitSepa("BuyerIBAN");
+$builder->addDocumentPaymentMeanAsDirectDebitNoSepa("BuyerIBAN");
+$builder->addDocumentPaymentMeanAsPaymentCard("CardId", "CardHolder");
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

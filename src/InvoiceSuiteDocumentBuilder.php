@@ -2203,5 +2203,171 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsCreditTransferSepa(
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsCreditTransferSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsCreditTransferSepa(
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsCreditTransferNoSepa(
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsCreditTransferNoSepa(
+        ?string $newPayeeIban = null,
+        ?string $newPayeeAccountName = null,
+        ?string $newPayeeProprietaryId = null,
+        ?string $newPayeeBic = null,
+        ?string $newPaymentReference = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsCreditTransferNoSepa(
+            $newPayeeIban,
+            $newPayeeAccountName,
+            $newPayeeProprietaryId,
+            $newPayeeBic,
+            $newPaymentReference
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitSepa(
+            $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsDirectDebitSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitSepa(
+            $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitNoSepa(
+            $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsDirectDebitNoSepa(
+        ?string $newBuyerIban = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitNoSepa(
+            $newBuyerIban
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsPaymentCard(
+            $newFinancialCardId,
+            $newFinancialCardHolder
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentMeanAsPaymentCard(
+        ?string $newFinancialCardId = null,
+        ?string $newFinancialCardHolder = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsPaymentCard(
+            $newFinancialCardId,
+            $newFinancialCardHolder
+        );
+
+        return $this;
+    }
+
     #endregion
 }
