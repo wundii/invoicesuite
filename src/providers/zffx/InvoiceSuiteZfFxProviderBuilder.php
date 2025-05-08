@@ -6,6 +6,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
+use horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
@@ -5043,6 +5044,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMean(
@@ -5055,7 +5057,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -5077,7 +5080,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference
+            $newPaymentReference,
+            $newMandate
         );
 
         return $this;
@@ -5094,6 +5098,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string|null $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param string|null $newPayeeBic __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param string|null $newPaymentReference __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMean(
@@ -5106,7 +5111,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -5171,6 +5177,33 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getApplicableHeaderTradeSettlementWithCreate()
                 ->getPaymentReferenceWithCreate()
                 ->setValue($newPaymentReference);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newMandate])) {
+            $paymentTerms = $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransactionWithCreate()
+                ->getApplicableHeaderTradeSettlementWithCreate()
+                ->getSpecifiedTradePaymentTerms() ?? [];
+
+            $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
+                return strcasecmp($paymentTerm->getDescription()?->getValue() ?? "", "Direct Debit") !== 0;
+            });
+
+            $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransactionWithCreate()
+                ->getApplicableHeaderTradeSettlementWithCreate()
+                ->setSpecifiedTradePaymentTerms($paymentTerms);
+
+            $paymentTerm = $this
+                ->getCrossIndustryRootObject()
+                ->getSupplyChainTradeTransactionWithCreate()
+                ->getApplicableHeaderTradeSettlementWithCreate()
+                ->addToSpecifiedTradePaymentTermsWithCreate();
+
+            $paymentTerm->getDescriptionWithCreate()->setValue("Direct Debit");
+            $paymentTerm->getDirectDebitMandateIDWithCreate()->setValue($newMandate);
         }
 
         return $this;
@@ -5302,18 +5335,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     /**
      * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -5321,18 +5357,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     /**
      * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -5340,18 +5379,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     /**
      * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -5359,18 +5401,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
     /**
      * @param string|null $newBuyerIban __BT-91, From BASIC WL__ Identifier of the account to be debited
+     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;

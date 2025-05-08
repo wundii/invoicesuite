@@ -2128,6 +2128,7 @@ interface InvoiceSuiteBuilderContract
      * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
      * @param string|null $newPayeeBic Identifier of the payment service provider
      * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMean(
@@ -2140,7 +2141,8 @@ interface InvoiceSuiteBuilderContract
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self;
 
     /**
@@ -2156,6 +2158,7 @@ interface InvoiceSuiteBuilderContract
      * @param string|null $newPayeeProprietaryId National account number (not for SEPA)
      * @param string|null $newPayeeBic Identifier of the payment service provider
      * @param string|null $newPaymentReference Text value used to link the payment to the invoice issued by the seller
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMean(
@@ -2168,7 +2171,8 @@ interface InvoiceSuiteBuilderContract
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self;
 
     /**
@@ -2247,40 +2251,48 @@ interface InvoiceSuiteBuilderContract
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self;
 
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self;
 
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self;
 
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
      *
      * @param string|null $newBuyerIban Identifier of the account to be debited
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self;
 
     /**

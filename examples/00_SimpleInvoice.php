@@ -5,8 +5,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 //$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxxrechnung');
 
 $builder->setDocumentNo('2025-04-000001');
@@ -144,11 +144,13 @@ $builder->setDocumentDeliveryNoteReference('DELIVERYNOTE-0000001', new DateTime(
 $builder->setAocumentSupplyChainEvent(new DateTime());
 
 //$builder->setDocumentPaymentMean("33", "Name", "CardId", "CardHolder", "BuyerIBAN", "PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
-$builder->addDocumentPaymentMeanAsCreditTransferSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
-$builder->addDocumentPaymentMeanAsCreditTransferNoSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
-$builder->addDocumentPaymentMeanAsDirectDebitSepa("BuyerIBAN");
-$builder->addDocumentPaymentMeanAsDirectDebitNoSepa("BuyerIBAN");
-$builder->addDocumentPaymentMeanAsPaymentCard("CardId", "CardHolder");
+//$builder->addDocumentPaymentMeanAsCreditTransferSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+//$builder->addDocumentPaymentMeanAsCreditTransferNoSepa("PayeeIBAN", "PayeeAccountName", "PayeePropId", "PayeeBIC", "PaymentRef");
+//$builder->addDocumentPaymentMeanAsDirectDebitSepa("BuyerIBAN");
+//$builder->addDocumentPaymentMeanAsDirectDebitNoSepa("BuyerIBAN");
+//$builder->addDocumentPaymentMeanAsPaymentCard("CardId", "CardHolder");
+
+$builder->addDocumentPaymentMeanAsDirectDebitSepa("00000000000000000", "MANDATE-1");
 
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF");
 $builder->setDocumentPaymentCreditorReferenceID("CREDREF2");

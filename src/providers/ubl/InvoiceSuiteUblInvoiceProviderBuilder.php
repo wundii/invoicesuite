@@ -3483,7 +3483,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -3503,24 +3504,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference
-        );
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->clearPaymentMeans();
-
-        $this->addDocumentPaymentMean(
-            $newTypeCode,
-            $newName,
-            $newFinancialCardId,
-            $newFinancialCardHolder,
-            $newBuyerIban,
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference
+            $newPaymentReference,
+            $newMandate
         );
 
         return $this;
@@ -3539,7 +3524,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
@@ -3574,6 +3560,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
             $paymentMean
+                ->getPaymentMandateWithCreate()
                 ->getPayerFinancialAccountWithCreate()
                 ->getIDWithCreate()
                 ->setValue($newBuyerIban);
@@ -3599,6 +3586,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
             $paymentMean->clearPaymentID()->addToPaymentIDWithCreate()->setValue($newPaymentReference);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newMandate])) {
+            $paymentMean->getPaymentMandateWithCreate()->getIDWithCreate()->setValue($newMandate);
         }
 
         return $this;
@@ -3712,15 +3703,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -3730,15 +3723,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -3748,15 +3743,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;
@@ -3766,15 +3763,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
             return $this;
         }
 
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
-            newBuyerIban: $newBuyerIban
+            newBuyerIban: $newBuyerIban,
+            newMandate: $newMandate
         );
 
         return $this;

@@ -2154,7 +2154,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMean(
             $newTypeCode,
@@ -2166,7 +2167,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference
+            $newPaymentReference,
+            $newMandate
         );
 
         return $this;
@@ -2185,7 +2187,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null
+        ?string $newPaymentReference = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMean(
             $newTypeCode,
@@ -2197,7 +2200,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference
+            $newPaymentReference,
+            $newMandate
         );
 
         return $this;
@@ -2291,10 +2295,12 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitSepa(
-            $newBuyerIban
+            $newBuyerIban,
+            $newMandate
         );
 
         return $this;
@@ -2304,10 +2310,12 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentPaymentMeanAsDirectDebitSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitSepa(
-            $newBuyerIban
+            $newBuyerIban,
+            $newMandate
         );
 
         return $this;
@@ -2317,10 +2325,12 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitNoSepa(
-            $newBuyerIban
+            $newBuyerIban,
+            $newMandate
         );
 
         return $this;
@@ -2330,10 +2340,12 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentPaymentMeanAsDirectDebitNoSepa(
-        ?string $newBuyerIban = null
+        ?string $newBuyerIban = null,
+        ?string $newMandate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitNoSepa(
-            $newBuyerIban
+            $newBuyerIban,
+            $newMandate
         );
 
         return $this;
