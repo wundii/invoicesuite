@@ -3835,7 +3835,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getPartyWithCreate()
             ->getPartyIdentification();
 
-        $ids = array_filter($ids, function(PartyIdentification $id) {
+        $ids = array_filter($ids, function (PartyIdentification $id) {
             return strcasecmp($id->getID()->getSchemeID() ?? "", "SEPA") !== 0;
         });
 
