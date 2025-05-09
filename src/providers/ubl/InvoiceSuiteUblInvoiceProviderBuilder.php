@@ -3901,12 +3901,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $paymentTerm = $this
+        $this
             ->getUblInvoiceRootObject()
-            ->addToPaymentTermsWithCreate();
-
-        $paymentTerm
-            ->addOnceToNoteWithCreate()
+            ->addToPaymentTermsWithCreate()
+            ->addToNoteWithCreate()
             ->setValue($newDescription);
 
         if (!is_null($newDueDate)) {
