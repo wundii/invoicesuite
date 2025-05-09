@@ -309,6 +309,74 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * Set the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate __BT-73, From BASIC WL__ Start of the billing period
+     * @param null|DateTimeInterface $newEndDate __BT-74, From BASIC WL__ End of the billing period
+     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @return InvoiceSuiteBuilderContract
+     */
+    public function setDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $billingPeriod = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getBillingSpecifiedPeriodWithCreate();
+
+        if (!is_null($newStartDate)) {
+            $billingPeriod
+                ->getStartDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newStartDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        if (!is_null($newEndDate)) {
+            $billingPeriod
+                ->getEndDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newEndDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add a the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate __BT-73, From BASIC WL__ Start of the billing period
+     * @param null|DateTimeInterface $newEndDate __BT-74, From BASIC WL__ End of the billing period
+     * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
+     * @return InvoiceSuiteBuilderContract
+     */
+    public function addDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $this->setDocumentBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
+
+        return $this;
+    }
+
     #endregion
 
     #region Document References

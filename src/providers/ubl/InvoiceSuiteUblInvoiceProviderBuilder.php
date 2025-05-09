@@ -226,6 +226,62 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->clearInvoicePeriod();
+
+        $this->addDocumentBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $invoicePeriod = $this
+            ->getUblInvoiceRootObject()
+            ->addToInvoicePeriodWithCreate();
+
+        if (!is_null($newStartDate)) {
+            $invoicePeriod->setStartDate($newStartDate);
+        }
+
+        if (!is_null($newEndDate)) {
+            $invoicePeriod->setEndDate($newEndDate);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $invoicePeriod->clearDescription()->addToDescriptionWithCreate()->setValue($newDescription);
+        }
+
+        return $this;
+    }
+
     #endregion
 
     #region Document References

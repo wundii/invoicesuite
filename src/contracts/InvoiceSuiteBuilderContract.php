@@ -153,6 +153,34 @@ interface InvoiceSuiteBuilderContract
         string $newSubjectCode
     ): self;
 
+    /**
+     * Set the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return InvoiceSuiteBuilderContract
+     */
+    public function setDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self;
+
+    /**
+     * Add a the start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return InvoiceSuiteBuilderContract
+     */
+    public function addDocumentBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self;
+
     #endregion
 
     #region Document References

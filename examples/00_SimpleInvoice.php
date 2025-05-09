@@ -21,6 +21,7 @@ $builder->setDocumentIsTest(true);
 $builder->setDocumentIsCopy(true);
 $builder->addDocumentNote("Some content", "CC00", "SC00");
 $builder->addDocumentNote("Some other content", "CC99", "SC99");
+$builder->setDocumentBillingPeriod(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description");
 
 $builder->setDocumentSellerName("Lieferant GmbH");
 $builder->setDocumentSellerId("0815-4711");
