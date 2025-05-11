@@ -4069,4 +4069,117 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->clearAllowanceCharge();
+
+        $this->addDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $allowanceCharge = $this
+            ->getUblInvoiceRootObject()
+            ->addToAllowanceChargeWithCreate();
+
+        $allowanceCharge
+            ->setChargeIndicator($newChargeIndicator ?? false);
+
+        $allowanceCharge
+            ->getAmountWithCreate()
+            ->setValue($newAllowanceChargeAmount);
+
+        if (!is_null($newAllowanceChargeBaseAmount)) {
+            $allowanceCharge
+                ->getBaseAmountWithCreate()
+                ->setValue($newAllowanceChargeBaseAmount);
+        }
+
+        if (!is_null($newAllowanceChargePercent)) {
+            $allowanceCharge
+                ->getMultiplierFactorNumericWithCreate()
+                ->setValue($newAllowanceChargePercent);
+        }
+
+        if (!is_null($newAllowanceChargeReason)) {
+            $allowanceCharge
+                ->clearAllowanceChargeReason()
+                ->addToAllowanceChargeReasonWithCreate()
+                ->setValue($newAllowanceChargeReason);
+        }
+
+        if (!is_null($newAllowanceChargeReasonCode)) {
+            $allowanceCharge
+                ->getAllowanceChargeReasonCodeWithCreate()
+                ->setValue($newAllowanceChargeReasonCode);
+        }
+
+        $taxCategory = $allowanceCharge->clearTaxCategory()->addToTaxCategoryWithCreate();
+
+        $taxCategory->getIDWithCreate()->setValue($newTaxCategory);
+        $taxCategory->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
+
+        if (!is_null($newTaxPercent)) {
+            $taxCategory->getPercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        return $this;
+    }
+
+    #endregion
 }

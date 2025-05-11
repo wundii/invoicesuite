@@ -2449,4 +2449,60 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * Set Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function setDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self;
+
+    /**
+     * Add Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function addDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self;
+
+    #endregion
 }

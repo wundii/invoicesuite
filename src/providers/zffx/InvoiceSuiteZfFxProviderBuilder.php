@@ -5760,4 +5760,139 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * @param boolean|null $newChargeIndicator __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newTaxPercent __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function setDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->clearSpecifiedTradeAllowanceCharge();
+
+        $this->addDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param boolean|null $newChargeIndicator __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newTaxPercent __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function addDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        if (
+            InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
+            InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
+        ) {
+            return $this;
+        }
+
+        $specifiedTradeAllowanceCharge = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->addToSpecifiedTradeAllowanceChargeWithCreate();
+
+        $specifiedTradeAllowanceCharge
+            ->getChargeIndicatorWithCreate()
+            ->setIndicator($newChargeIndicator ?? false);
+
+        $specifiedTradeAllowanceCharge
+            ->getActualAmountWithCreate()
+            ->setValue($newAllowanceChargeAmount);
+
+        if (!is_null($newAllowanceChargeBaseAmount)) {
+            $specifiedTradeAllowanceCharge
+                ->getBasisAmountWithCreate()
+                ->setValue($newAllowanceChargeBaseAmount);
+        }
+
+        if (!is_null($newAllowanceChargePercent)) {
+            $specifiedTradeAllowanceCharge
+                ->getCalculationPercentWithCreate()
+                ->setValue($newAllowanceChargePercent);
+        }
+
+        if (!is_null($newAllowanceChargeReason)) {
+            $specifiedTradeAllowanceCharge
+                ->getReasonWithCreate()
+                ->setValue($newAllowanceChargeReason);
+        }
+
+        if (!is_null($newAllowanceChargeReasonCode)) {
+            $specifiedTradeAllowanceCharge
+                ->getReasonCodeWithCreate()
+                ->setValue($newAllowanceChargeReasonCode);
+        }
+
+        $categoryTradeTax = $specifiedTradeAllowanceCharge->getCategoryTradeTaxWithCreate();
+
+        $categoryTradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
+        $categoryTradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
+
+        if (!is_null($newTaxPercent)) {
+            $categoryTradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+        }
+
+        return $this;
+    }
+
+    #endregion
 }

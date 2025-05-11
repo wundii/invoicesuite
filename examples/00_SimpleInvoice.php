@@ -160,4 +160,6 @@ $builder->setDocumentPaymentCreditorReferenceID("CREDREF2");
 
 $builder->setDocumentTax('S', 'VAT', 100.00, 19.00, 19.0, 'Reason', 'ReasonCode', new DateTime(), 'DUECODE');
 
+$builder->setDocumentAllowanceCharge(true, 10, 100, 'S', 'VAT', 19.0, 'Reason', 'ReasonCode', 2);
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

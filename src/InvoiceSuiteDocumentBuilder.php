@@ -2526,4 +2526,66 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentAllowanceCharge(
+        ?bool $newChargeIndicator = null,
+        ?float $newAllowanceChargeAmount = null,
+        ?float $newAllowanceChargeBaseAmount = null,
+        ?string $newTaxCategory = null,
+        ?string $newTaxType = null,
+        ?float $newTaxPercent = null,
+        ?string $newAllowanceChargeReason = null,
+        ?string $newAllowanceChargeReasonCode = null,
+        ?float $newAllowanceChargePercent = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    #endregion
 }
