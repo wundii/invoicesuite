@@ -868,7 +868,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('id');
                     }
                 )
             );
@@ -894,6 +894,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getAccountingSupplierPartyWithCreate()
             ->getPartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
             ->getIDWithCreate()
             ->setValue($newId);
 
@@ -927,7 +928,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('globalid');
                     }
                 )
             );
@@ -955,6 +956,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getAccountingSupplierPartyWithCreate()
             ->getPartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
             ->getIDWithCreate()
             ->setValue($newGlobalId)
             ->setSchemeID($newGlobalIdType);
@@ -1276,7 +1278,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('id');
                     }
                 )
             );
@@ -1307,6 +1309,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getAccountingCustomerPartyWithCreate()
             ->getPartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
             ->getIDWithCreate()
             ->setValue($newId);
 
@@ -1340,7 +1343,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('globalid');
                     }
                 )
             );
@@ -1373,6 +1376,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getAccountingCustomerPartyWithCreate()
             ->getPartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
             ->getIDWithCreate()
             ->setValue($newGlobalId)
             ->setSchemeID($newGlobalIdType);
@@ -1691,7 +1695,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('id');
                     }
                 )
             );
@@ -1716,6 +1720,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativePartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
             ->getIDWithCreate()
             ->setValue($newId);
 
@@ -1747,7 +1752,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('globalid');
                     }
                 )
             );
@@ -1774,6 +1779,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativePartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
             ->getIDWithCreate()
             ->setValue($newGlobalId)
             ->setSchemeID($newGlobalIdType);
@@ -3169,7 +3175,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('id');
                     }
                 )
             );
@@ -3194,6 +3200,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getPayeePartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('id')
             ->getIDWithCreate()
             ->setValue($newId);
 
@@ -3225,7 +3232,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     function (
                         PartyIdentificationType $partyIdentification
                     ) {
-                        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($partyIdentification->getID()->getSchemeID());
+                        return !$partyIdentification->hasObjectFlag('globalid');
                     }
                 )
             );
@@ -3252,6 +3259,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getPayeePartyWithCreate()
             ->addToPartyIdentificationWithCreate()
+            ->addToObjectFlags('globalid')
             ->getIDWithCreate()
             ->setValue($newGlobalId)
             ->setSchemeID($newGlobalIdType);

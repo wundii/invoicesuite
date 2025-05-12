@@ -28,13 +28,13 @@ trait HandlesObjectFlags
      * @param string $flag
      * @return self
      */
-    public function objectFlagAdd(string $flag): self
+    public function addToObjectFlags(string $flag): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($flag)) {
             return $this;
         }
 
-        if ($this->objectFlagIsSet($flag)) {
+        if ($this->hasObjectFlag($flag)) {
             return $this;
         }
 
@@ -49,13 +49,13 @@ trait HandlesObjectFlags
      * @param string $flag
      * @return self
      */
-    public function objectFlagRemove(string $flag): self
+    public function removeFromObjectFlags(string $flag): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($flag)) {
             return $this;
         }
 
-        if (!$this->objectFlagIsSet($flag)) {
+        if (!$this->hasObjectFlag($flag)) {
             return $this;
         }
 
@@ -73,7 +73,7 @@ trait HandlesObjectFlags
      * @param string $flag
      * @return boolean
      */
-    public function objectFlagIsSet(string $flag): bool
+    public function hasObjectFlag(string $flag): bool
     {
         return array_filter(
             $this->objectFlags,

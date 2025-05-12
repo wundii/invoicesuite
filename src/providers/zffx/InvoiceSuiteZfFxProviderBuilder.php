@@ -5262,7 +5262,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getSpecifiedTradePaymentTerms() ?? [];
 
             $paymentTerms = array_filter($paymentTerms, function (TradePaymentTermsType $paymentTerm) {
-                return strcasecmp($paymentTerm->getDescription()?->getValue() ?? "", "Direct Debit") !== 0;
+                return $paymentTerm->hasObjectFlag('frompaymentmean') === false;
             });
 
             $this
@@ -5275,7 +5275,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->getCrossIndustryRootObject()
                 ->getSupplyChainTradeTransactionWithCreate()
                 ->getApplicableHeaderTradeSettlementWithCreate()
-                ->addToSpecifiedTradePaymentTermsWithCreate();
+                ->addToSpecifiedTradePaymentTermsWithCreate()
+                ->addToObjectFlags('frompaymentmean');
 
             $paymentTerm->getDescriptionWithCreate()->setValue("Direct Debit");
             $paymentTerm->getDirectDebitMandateIDWithCreate()->setValue($newMandate);
