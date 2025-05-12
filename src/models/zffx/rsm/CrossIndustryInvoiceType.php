@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\zffx\rsm;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
 use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffx\ram\SupplyChainTradeTransactionType;
@@ -17,6 +18,8 @@ use horstoeko\invoicesuite\models\zffx\ram\SupplyChainTradeTransactionType;
  */
 class CrossIndustryInvoiceType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

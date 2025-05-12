@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ReliabilityPercent;
 use horstoeko\invoicesuite\models\ubl\cbc\Remarks;
 use horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric;
 
 class TransportScheduleType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric
      * @JMS\Groups({"ubl"})

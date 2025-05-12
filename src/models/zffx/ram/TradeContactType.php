@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\CodeType;
 use horstoeko\invoicesuite\models\zffx\udt\TextType;
 
 class TradeContactType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\TextType
      * @JMS\Groups({"zffxen16931", "zffxextended"})

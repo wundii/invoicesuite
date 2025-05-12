@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID;
 use horstoeko\invoicesuite\models\ubl\cbc\Note;
 use horstoeko\invoicesuite\models\ubl\cbc\SpecificationTypeCode;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TotalMeteredQuantity;
 
 class SubscriberConsumptionType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumptionID
      * @JMS\Groups({"ubl"})

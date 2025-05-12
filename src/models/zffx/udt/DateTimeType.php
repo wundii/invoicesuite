@@ -3,10 +3,13 @@
 namespace horstoeko\invoicesuite\models\zffx\udt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\DateTimeType\DateTimeStringAType;
 
 class DateTimeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\DateTimeType\DateTimeStringAType
      * @JMS\Groups({"zffxminimum", "zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

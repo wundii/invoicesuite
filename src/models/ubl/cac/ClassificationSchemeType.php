@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AgencyID;
 use horstoeko\invoicesuite\models\ubl\cbc\AgencyName;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
@@ -17,6 +18,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\VersionID;
 
 class ClassificationSchemeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

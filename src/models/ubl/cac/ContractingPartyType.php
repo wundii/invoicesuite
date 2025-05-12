@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cac\ContractingPartyType as ContractingPartyType1;
 use horstoeko\invoicesuite\models\ubl\cbc\BuyerProfileURI;
 
 class ContractingPartyType extends ContractingPartyTypeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\BuyerProfileURI
      * @JMS\Groups({"ubl"})

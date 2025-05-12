@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class StatusAvailableIndicatorType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var bool
      * @JMS\Groups({"ubl"})

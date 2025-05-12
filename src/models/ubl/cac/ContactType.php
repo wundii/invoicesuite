@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ElectronicMail;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\Telephone;
 
 class ContactType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

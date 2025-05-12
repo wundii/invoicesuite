@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Information;
 use horstoeko\invoicesuite\models\ubl\cbc\Reference;
 
 class TradingTermsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Information>
      * @JMS\Groups({"ubl"})

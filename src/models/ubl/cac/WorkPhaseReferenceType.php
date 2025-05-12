@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\ProgressPercent;
 use horstoeko\invoicesuite\models\ubl\cbc\WorkPhase;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\WorkPhaseCode;
 
 class WorkPhaseReferenceType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

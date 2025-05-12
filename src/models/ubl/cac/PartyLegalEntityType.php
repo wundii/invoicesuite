@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\CompanyID;
 use horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm;
 use horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\RegistrationName;
 
 class PartyLegalEntityType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\RegistrationName
      * @JMS\Groups({"ubl"})

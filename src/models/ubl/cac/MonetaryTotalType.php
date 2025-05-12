@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AllowanceTotalAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\ChargeTotalAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount;
@@ -15,6 +16,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TaxInclusiveAmount;
 
 class MonetaryTotalType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\LineExtensionAmount
      * @JMS\Groups({"ubl"})

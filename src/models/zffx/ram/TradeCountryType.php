@@ -3,10 +3,13 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\qdt\CountryIDType;
 
 class TradeCountryType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\qdt\CountryIDType
      * @JMS\Groups({"zffxen16931", "zffxextended"})

@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsignmentQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\DeclaredCustomsValueAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\DeclaredForCarriageValueAmount;
@@ -26,6 +27,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TotalTransportHandlingUnitQuantity;
 
 class ShipmentType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

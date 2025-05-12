@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation;
 use horstoeko\invoicesuite\models\ubl\cbc\BrandName;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
@@ -14,6 +15,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\PackSizeNumeric;
 
 class ItemType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Description>
      * @JMS\Groups({"ubl"})

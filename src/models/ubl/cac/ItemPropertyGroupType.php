@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\ImportanceCode;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
 
 class ItemPropertyGroupType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

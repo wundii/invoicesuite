@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ActionCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ContentUnitQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\ContractSubdivision;
@@ -18,6 +19,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\WarrantyInformation;
 
 class CatalogueLineType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

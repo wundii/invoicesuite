@@ -39,6 +39,7 @@
     "require-dev": {
         "goetas-webservices/xsd2php": "^0",
         "nette/php-generator": "*",
+        "nikic/php-parser": "^5.4",
         "pdepend/pdepend": "^2",
         "phpdocumentor/reflection-docblock": "^5",
         "phploc/phploc": "^7",

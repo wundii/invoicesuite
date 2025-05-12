@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Amount;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\InvoicingPartyReference;
@@ -19,6 +20,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\SettlementDiscountPercent;
 
 class PaymentTermsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

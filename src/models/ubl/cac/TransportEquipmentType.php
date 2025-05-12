@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AirFlowPercent;
 use horstoeko\invoicesuite\models\ubl\cbc\Characteristics;
 use horstoeko\invoicesuite\models\ubl\cbc\DamageRemarks;
@@ -26,6 +27,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TransportEquipmentTypeCode;
 
 class TransportEquipmentType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

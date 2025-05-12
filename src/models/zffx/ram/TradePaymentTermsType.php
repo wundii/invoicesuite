@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\AmountType;
 use horstoeko\invoicesuite\models\zffx\udt\DateTimeType;
 use horstoeko\invoicesuite\models\zffx\udt\IDType;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\zffx\udt\TextType;
 
 class TradePaymentTermsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\TextType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

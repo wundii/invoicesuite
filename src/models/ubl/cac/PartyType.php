@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\EndpointID;
 use horstoeko\invoicesuite\models\ubl\cbc\IndustryClassificationCode;
 use horstoeko\invoicesuite\models\ubl\cbc\LogoReferenceID;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\WebsiteURI;
 
 class PartyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var bool
      * @JMS\Groups({"ubl"})

@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class SupplyChainTradeLineItemType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\ram\DocumentLineDocumentType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})

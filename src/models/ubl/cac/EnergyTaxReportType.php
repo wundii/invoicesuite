@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\TaxEnergyAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\TaxEnergyBalanceAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\TaxEnergyOnAccountAmount;
 
 class EnergyTaxReportType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxEnergyAmount
      * @JMS\Groups({"ubl"})

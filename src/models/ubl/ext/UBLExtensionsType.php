@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\ext;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class UBLExtensionsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\ext\UBLExtension>
      * @JMS\Groups({"ubl"})

@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class EnergyWaterSupplyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cac\ConsumptionReport>
      * @JMS\Groups({"ubl"})

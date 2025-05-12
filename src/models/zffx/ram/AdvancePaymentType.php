@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\qdt\FormattedDateTimeType;
 use horstoeko\invoicesuite\models\zffx\udt\AmountType;
 
 class AdvancePaymentType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\AmountType
      * @JMS\Groups({"zffxextended"})

@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AverageAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 
 class ConsumptionAverageType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\AverageAmount
      * @JMS\Groups({"ubl"})

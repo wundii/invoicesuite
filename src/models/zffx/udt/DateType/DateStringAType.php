@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\udt\DateType;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class DateStringAType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var string
      * @JMS\Groups({"zffxen16931", "zffxextended"})

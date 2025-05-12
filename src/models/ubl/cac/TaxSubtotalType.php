@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\BaseUnitMeasure;
 use horstoeko\invoicesuite\models\ubl\cbc\CalculationSequenceNumeric;
 use horstoeko\invoicesuite\models\ubl\cbc\PerUnitAmount;
@@ -15,6 +16,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TransactionCurrencyTaxAmount;
 
 class TaxSubtotalType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxableAmount
      * @JMS\Groups({"ubl"})

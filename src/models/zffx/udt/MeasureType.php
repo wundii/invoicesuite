@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\udt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class MeasureType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var float
      * @JMS\Groups({"zffxextended"})

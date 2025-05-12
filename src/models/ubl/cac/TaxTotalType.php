@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\RoundingAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\TaxAmount;
 
 class TaxTotalType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\TaxAmount
      * @JMS\Groups({"ubl"})

@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\FaceValueAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID;
 use horstoeko\invoicesuite\models\ubl\cbc\MarketValueAmount;
@@ -11,6 +12,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\SharesNumberQuantity;
 
 class ImmobilizedSecurityType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ImmobilizationCertificateID
      * @JMS\Groups({"ubl"})

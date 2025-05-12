@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class RevisionTimeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})

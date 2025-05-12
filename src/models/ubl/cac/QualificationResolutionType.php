@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ExclusionReason;
 use horstoeko\invoicesuite\models\ubl\cbc\Resolution;
 
 class QualificationResolutionType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\AdmissionCode
      * @JMS\Groups({"ubl"})

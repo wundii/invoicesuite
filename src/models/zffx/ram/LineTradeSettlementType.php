@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class LineTradeSettlementType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\zffx\ram\TradeTaxType>
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})

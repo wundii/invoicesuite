@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\udt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class IndicatorType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var bool
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

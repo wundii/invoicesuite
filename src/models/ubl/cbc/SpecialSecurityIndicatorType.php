@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class SpecialSecurityIndicatorType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var bool
      * @JMS\Groups({"ubl"})

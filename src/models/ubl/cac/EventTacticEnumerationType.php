@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumerIncentiveTacticTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\DisplayTacticTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\FeatureTacticTypeCode;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TradeItemPackingLabelingTypeCode;
 
 class EventTacticEnumerationType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ConsumerIncentiveTacticTypeCode
      * @JMS\Groups({"ubl"})

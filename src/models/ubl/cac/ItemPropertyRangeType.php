@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumValue;
 use horstoeko\invoicesuite\models\ubl\cbc\MinimumValue;
 
 class ItemPropertyRangeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\MinimumValue
      * @JMS\Groups({"ubl"})

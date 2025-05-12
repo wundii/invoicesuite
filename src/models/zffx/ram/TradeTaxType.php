@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\qdt\TaxCategoryCodeType;
 use horstoeko\invoicesuite\models\zffx\qdt\TaxTypeCodeType;
 use horstoeko\invoicesuite\models\zffx\qdt\TimeReferenceCodeType;
@@ -14,6 +15,8 @@ use horstoeko\invoicesuite\models\zffx\udt\TextType;
 
 class TradeTaxType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\AmountType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

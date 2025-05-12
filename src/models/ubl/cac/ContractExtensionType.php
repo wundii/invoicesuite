@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumNumberNumeric;
 use horstoeko\invoicesuite\models\ubl\cbc\MinimumNumberNumeric;
 use horstoeko\invoicesuite\models\ubl\cbc\OptionsDescription;
 
 class ContractExtensionType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\OptionsDescription>
      * @JMS\Groups({"ubl"})

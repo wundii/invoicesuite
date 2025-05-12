@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
 use horstoeko\invoicesuite\models\ubl\cbc\NameCode;
 use horstoeko\invoicesuite\models\ubl\cbc\Value;
@@ -11,6 +12,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\ValueQuantity;
 
 class MeterPropertyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
      * @JMS\Groups({"ubl"})

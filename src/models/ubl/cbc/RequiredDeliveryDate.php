@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 /**
  * @JMS\XmlRoot(name="RequiredDeliveryDate", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
  */
 class RequiredDeliveryDate
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})

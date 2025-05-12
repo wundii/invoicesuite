@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\CodeType;
 use horstoeko\invoicesuite\models\zffx\udt\MeasureType;
 use horstoeko\invoicesuite\models\zffx\udt\TextType;
 
 class ProductCharacteristicType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\CodeType
      * @JMS\Groups({"zffxextended"})

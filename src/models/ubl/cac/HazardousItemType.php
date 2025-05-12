@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdditionalInformation;
 use horstoeko\invoicesuite\models\ubl\cbc\CategoryName;
 use horstoeko\invoicesuite\models\ubl\cbc\EmergencyProceduresCode;
@@ -23,6 +24,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\UpperOrangeHazardPlacardID;
 
 class HazardousItemType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

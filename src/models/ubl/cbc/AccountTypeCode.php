@@ -3,10 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 /**
  * @JMS\XmlRoot(name="AccountTypeCode", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
  */
 class AccountTypeCode extends AccountTypeCodeType
 {
+    use HandlesObjectFlags;
 }

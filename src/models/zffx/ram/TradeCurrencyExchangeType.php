@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\qdt\CurrencyCodeType;
 use horstoeko\invoicesuite\models\zffx\udt\DateTimeType;
 use horstoeko\invoicesuite\models\zffx\udt\RateType;
 
 class TradeCurrencyExchangeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\qdt\CurrencyCodeType
      * @JMS\Groups({"zffxextended"})

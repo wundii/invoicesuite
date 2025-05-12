@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\PriceAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\TimeAmount;
 
 class UnstructuredPriceType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\PriceAmount
      * @JMS\Groups({"ubl"})

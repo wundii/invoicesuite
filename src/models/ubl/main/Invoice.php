@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\main;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 /**
  * @JMS\XmlRoot(name="Invoice", namespace="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2")
@@ -12,4 +13,5 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Invoice extends InvoiceType
 {
+    use HandlesObjectFlags;
 }

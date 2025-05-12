@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\PostEventNotificationDurationMeasure;
 use horstoeko\invoicesuite\models\ubl\cbc\PreEventNotificationDurationMeasure;
 
 class NotificationRequirementType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\NotificationTypeCode
      * @JMS\Groups({"ubl"})

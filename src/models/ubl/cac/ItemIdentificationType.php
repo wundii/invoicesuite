@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\BarcodeSymbologyID;
 use horstoeko\invoicesuite\models\ubl\cbc\ExtendedID;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 
 class ItemIdentificationType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

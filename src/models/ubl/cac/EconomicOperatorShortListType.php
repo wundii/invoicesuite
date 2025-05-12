@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ExpectedQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity;
 
 class EconomicOperatorShortListType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\LimitationDescription>
      * @JMS\Groups({"ubl"})

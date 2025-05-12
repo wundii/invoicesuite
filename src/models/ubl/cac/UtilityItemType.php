@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\CurrentChargeType;
@@ -19,6 +20,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\SubscriberTypeCode;
 
 class UtilityItemType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

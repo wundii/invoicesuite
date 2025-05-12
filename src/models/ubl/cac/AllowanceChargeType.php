@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AccountingCost;
 use horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode;
 use horstoeko\invoicesuite\models\ubl\cbc\AllowanceChargeReason;
@@ -16,6 +17,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric;
 
 class AllowanceChargeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\IdentificationID;
 use horstoeko\invoicesuite\models\ubl\cbc\TypeCode;
 
 class EventType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\IdentificationID
      * @JMS\Groups({"ubl"})

@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Amount;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionLevel;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionLevelCode;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\Quantity;
 
 class ConsumptionHistoryType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber
      * @JMS\Groups({"ubl"})

@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\main;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 /**
  * @JMS\XmlNamespace(uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2", prefix="ubl")
@@ -12,4 +13,5 @@ use JMS\Serializer\Annotation as JMS;
  */
 class CreditNote extends CreditNoteType
 {
+    use HandlesObjectFlags;
 }

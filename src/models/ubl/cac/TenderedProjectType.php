@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\FeeAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\FeeDescription;
 use horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID;
@@ -11,6 +12,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\VariantID;
 
 class TenderedProjectType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\VariantID
      * @JMS\Groups({"ubl"})

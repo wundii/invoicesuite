@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ActualTemperatureReductionQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionEnergyQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionWaterQuantity;
@@ -18,6 +19,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\NormalTemperatureReductionQuantity;
 
 class ConsumptionCorrectionType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\CorrectionType
      * @JMS\Groups({"ubl"})

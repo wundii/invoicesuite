@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions;
 use horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms;
 use horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms;
 
 class TransportExecutionTermsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms>
      * @JMS\Groups({"ubl"})

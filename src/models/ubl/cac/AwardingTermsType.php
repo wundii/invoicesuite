@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\LowTendersDescription;
 use horstoeko\invoicesuite\models\ubl\cbc\PaymentDescription;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode;
 
 class AwardingTermsType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\WeightingAlgorithmCode
      * @JMS\Groups({"ubl"})

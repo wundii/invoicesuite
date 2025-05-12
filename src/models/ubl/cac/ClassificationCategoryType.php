@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\CodeValue;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
 
 class ClassificationCategoryType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\Name
      * @JMS\Groups({"ubl"})

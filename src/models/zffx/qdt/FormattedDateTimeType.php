@@ -3,10 +3,13 @@
 namespace horstoeko\invoicesuite\models\zffx\qdt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\qdt\FormattedDateTimeType\DateTimeStringAType;
 
 class FormattedDateTimeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\qdt\FormattedDateTimeType\DateTimeStringAType
      * @JMS\Groups({"zffxbasic", "zffxbasicwl", "zffxen16931", "zffxextended"})

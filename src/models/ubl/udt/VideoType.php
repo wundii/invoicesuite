@@ -3,10 +3,13 @@
 namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cct\BinaryObjectType;
 
 class VideoType extends BinaryObjectType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var string
      * @JMS\Groups({"ubl"})

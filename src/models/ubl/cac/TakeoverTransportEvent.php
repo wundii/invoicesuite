@@ -3,10 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 /**
  * @JMS\XmlRoot(name="TakeoverTransportEvent", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
  */
 class TakeoverTransportEvent extends TransportEventType
 {
+    use HandlesObjectFlags;
 }

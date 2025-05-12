@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\MeterConstant;
 use horstoeko\invoicesuite\models\ubl\cbc\MeterConstantCode;
 use horstoeko\invoicesuite\models\ubl\cbc\MeterName;
@@ -11,6 +12,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TotalDeliveredQuantity;
 
 class MeterType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\MeterNumber
      * @JMS\Groups({"ubl"})

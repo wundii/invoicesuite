@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\DirectionCode;
 use horstoeko\invoicesuite\models\ubl\cbc\JourneyID;
 use horstoeko\invoicesuite\models\ubl\cbc\RegistrationNationality;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TransportMeansTypeCode;
 
 class TransportMeansType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\JourneyID
      * @JMS\Groups({"ubl"})

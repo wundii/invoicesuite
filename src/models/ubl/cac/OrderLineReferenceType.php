@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\LineID;
 use horstoeko\invoicesuite\models\ubl\cbc\LineStatusCode;
 use horstoeko\invoicesuite\models\ubl\cbc\SalesOrderLineID;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\UUID;
 
 class OrderLineReferenceType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\LineID
      * @JMS\Groups({"ubl"})

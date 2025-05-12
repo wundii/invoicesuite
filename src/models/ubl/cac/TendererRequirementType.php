@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\LegalReference;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
@@ -10,6 +11,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TendererRequirementTypeCode;
 
 class TendererRequirementType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var array<\horstoeko\invoicesuite\models\ubl\cbc\Name>
      * @JMS\Groups({"ubl"})

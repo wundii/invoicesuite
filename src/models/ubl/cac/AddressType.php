@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdditionalStreetName;
 use horstoeko\invoicesuite\models\ubl\cbc\AddressFormatCode;
 use horstoeko\invoicesuite\models\ubl\cbc\AddressTypeCode;
@@ -30,6 +31,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TimezoneOffset;
 
 class AddressType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\PrivacyCode;
 use horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType as TelecommunicationsSupplyType1;
@@ -11,6 +12,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TotalAmount;
 
 class TelecommunicationsSupplyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\TelecommunicationsSupplyType
      * @JMS\Groups({"ubl"})

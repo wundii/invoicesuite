@@ -4,9 +4,12 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded;
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class BinaryObjectType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var string
      * @JMS\Groups({"ubl"})

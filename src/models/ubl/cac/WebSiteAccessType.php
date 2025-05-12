@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Login;
 use horstoeko\invoicesuite\models\ubl\cbc\Password;
 use horstoeko\invoicesuite\models\ubl\cbc\URI;
 
 class WebSiteAccessType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\URI
      * @JMS\Groups({"ubl"})

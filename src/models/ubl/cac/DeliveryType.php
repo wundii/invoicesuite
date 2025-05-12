@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity;
@@ -12,6 +13,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TrackingID;
 
 class DeliveryType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

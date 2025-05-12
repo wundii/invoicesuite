@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\DescriptionCode;
 use horstoeko\invoicesuite\models\ubl\cbc\DurationMeasure;
 
 class PeriodType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \DateTimeInterface
      * @JMS\Groups({"ubl"})

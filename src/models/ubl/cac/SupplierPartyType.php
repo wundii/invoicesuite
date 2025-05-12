@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdditionalAccountID;
 use horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID;
 use horstoeko\invoicesuite\models\ubl\cbc\DataSendingCapability;
 
 class SupplierPartyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\CustomerAssignedAccountID
      * @JMS\Groups({"ubl"})

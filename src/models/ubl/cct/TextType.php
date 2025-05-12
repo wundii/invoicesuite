@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\cct;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class TextType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var string
      * @JMS\Groups({"ubl"})

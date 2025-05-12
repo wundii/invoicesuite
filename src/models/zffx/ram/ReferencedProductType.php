@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\IDType;
 use horstoeko\invoicesuite\models\zffx\udt\QuantityType;
 use horstoeko\invoicesuite\models\zffx\udt\TextType;
 
 class ReferencedProductType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\IDType
      * @JMS\Groups({"zffxextended"})

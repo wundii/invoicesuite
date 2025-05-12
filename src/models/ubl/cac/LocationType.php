@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Conditions;
 use horstoeko\invoicesuite\models\ubl\cbc\CountrySubentity;
 use horstoeko\invoicesuite\models\ubl\cbc\CountrySubentityCode;
@@ -14,6 +15,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\Name;
 
 class LocationType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

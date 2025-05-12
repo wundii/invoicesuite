@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class IndicatorType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var bool
      * @JMS\Groups({"ubl"})

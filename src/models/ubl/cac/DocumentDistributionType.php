@@ -3,11 +3,14 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumCopiesNumeric;
 use horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier;
 
 class DocumentDistributionType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\PrintQualifier
      * @JMS\Groups({"ubl"})

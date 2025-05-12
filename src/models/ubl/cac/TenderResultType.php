@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\AdvertisementAmount;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\HigherTenderAmount;
@@ -14,6 +15,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode;
 
 class TenderResultType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\TenderResultCode
      * @JMS\Groups({"ubl"})

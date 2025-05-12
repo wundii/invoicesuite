@@ -3,10 +3,13 @@
 namespace horstoeko\invoicesuite\models\zffx\ram;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\zffx\udt\QuantityType;
 
 class LineTradeDeliveryType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\zffx\udt\QuantityType
      * @JMS\Groups({"zffxbasic", "zffxen16931", "zffxextended"})

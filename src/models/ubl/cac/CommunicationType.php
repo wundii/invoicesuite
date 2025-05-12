@@ -3,12 +3,15 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\Channel;
 use horstoeko\invoicesuite\models\ubl\cbc\ChannelCode;
 use horstoeko\invoicesuite\models\ubl\cbc\Value;
 
 class CommunicationType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ChannelCode
      * @JMS\Groups({"ubl"})

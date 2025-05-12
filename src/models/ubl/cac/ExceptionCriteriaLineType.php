@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\CollaborationPriorityCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ExceptionResolutionCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ExceptionStatusCode;
@@ -15,6 +16,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\ThresholdValueComparisonCode;
 
 class ExceptionCriteriaLineType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ID
      * @JMS\Groups({"ubl"})

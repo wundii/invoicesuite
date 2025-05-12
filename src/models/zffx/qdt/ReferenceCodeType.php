@@ -3,9 +3,12 @@
 namespace horstoeko\invoicesuite\models\zffx\qdt;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class ReferenceCodeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var string
      * @JMS\Groups({"zffxen16931", "zffxextended"})

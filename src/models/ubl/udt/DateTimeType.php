@@ -4,9 +4,12 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use DateTime;
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 
 class DateTimeType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var DateTime
      * @JMS\Groups({"ubl"})

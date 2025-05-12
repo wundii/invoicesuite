@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
+use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
 use horstoeko\invoicesuite\models\ubl\cbc\BusinessClassificationEvidenceID;
 use horstoeko\invoicesuite\models\ubl\cbc\BusinessIdentityEvidenceID;
 use horstoeko\invoicesuite\models\ubl\cbc\EmployeeQuantity;
@@ -13,6 +14,8 @@ use horstoeko\invoicesuite\models\ubl\cbc\TendererRoleCode;
 
 class QualifyingPartyType
 {
+    use HandlesObjectFlags;
+
     /**
      * @var \horstoeko\invoicesuite\models\ubl\cbc\ParticipationPercent
      * @JMS\Groups({"ubl"})
