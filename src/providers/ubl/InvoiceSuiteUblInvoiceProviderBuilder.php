@@ -3980,6 +3980,34 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        return $this;
+    }
+
     #endregion
 
     #region Document Tax

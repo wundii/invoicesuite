@@ -2463,6 +2463,52 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPaymentDiscountTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newDiscountAmount,
+            $newDiscountPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPaymentDiscountTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newDiscountAmount,
+            $newDiscountPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 
     #region Document Tax

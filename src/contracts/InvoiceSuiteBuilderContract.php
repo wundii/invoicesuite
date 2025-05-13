@@ -2392,6 +2392,46 @@ interface InvoiceSuiteBuilderContract
         ?DateTimeInterface $newDueDate = null
     ): self;
 
+    /**
+     * Set payment discount terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self;
+
+    /**
+     * Add payment discount terms in last added payment terms
+     *
+     * @param float|null $newBaseAmount Base amount of the payment discount
+     * @param float|null $newDiscountAmount Amount of the payment discount
+     * @param float|null $newDiscountPercent Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate Due date reference date
+     * @param float|null $newBasePeriod Maturity period (basis)
+     * @param string|null $newBasePeriodUnit Maturity period (unit)
+     * @return self
+     */
+    public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self;
+
     #endregion
 
     #region Document Tax

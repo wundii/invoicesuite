@@ -3,16 +3,17 @@
 namespace horstoeko\invoicesuite\providers\zffx;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
-use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
-use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
-use horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType;
-use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentType;
+use horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType;
+use horstoeko\invoicesuite\models\zffx\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\models\zffx\ram\DocumentContextParameterType;
+use horstoeko\invoicesuite\models\zffx\ram\ExchangedDocumentContextType;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -5633,6 +5634,108 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
                 ->setValue($newDueDate->format("Ymd"))
                 ->setFormat("102");
         }
+
+        return $this;
+    }
+
+    /**
+     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param float|null $newDiscountAmount __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param float|null $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $paymentTerms = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradePaymentTerms() ?? [];
+
+        $lastPaymentTerms = end($paymentTerms);
+
+        if ($lastPaymentTerms === false) {
+            return $this;
+        }
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerms
+         */
+        $paymentDiscountTerms = $lastPaymentTerms->getApplicableTradePaymentDiscountTermsWithCreate();
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBaseAmount)) {
+            $paymentDiscountTerms
+                ->getBasisAmountWithCreate()
+                ->setValue($newBaseAmount);
+        }
+        
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountAmount)) {
+            $paymentDiscountTerms
+                ->getActualDiscountAmountWithCreate()
+                ->setValue($newDiscountAmount);
+        }
+
+        if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountPercent)) {
+            $paymentDiscountTerms
+                ->getCalculationPercentWithCreate()
+                ->setValue($newDiscountPercent);
+        }
+
+        if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newBaseDate)) {
+            $paymentDiscountTerms
+                ->getBasisDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newBaseDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        if (
+            !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBasePeriod) &&
+            !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newBasePeriodUnit)
+        ) {
+            $paymentDiscountTerms
+                ->getBasisPeriodMeasureWithCreate()
+                ->setValue($newBasePeriod)
+                ->setUnitCode($newBasePeriodUnit);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param float|null $newBaseAmount __BT-X-285, From EXTENDED__ Base amount of the payment discount
+     * @param float|null $newDiscountAmount __BT-X-287, From EXTENDED__ Amount of the payment discount
+     * @param float|null $newDiscountPercent __BT-X-286, From EXTENDED__ Percentage of the payment discount
+     * @param DateTimeInterface|null $newBaseDate __BT-X-282, From EXTENDED__ Due date reference date
+     * @param float|null $newBasePeriod __BT-X-283, From EXTENDED__ Maturity period (basis)
+     * @param string|null $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
+     * @return self
+     */
+    public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
+        ?float $newBaseAmount = null,
+        ?float $newDiscountAmount = null,
+        ?float $newDiscountPercent = null,
+        ?DateTimeInterface $newBaseDate = null,
+        ?float $newBasePeriod = null,
+        ?string $newBasePeriodUnit = null
+    ): self {
+        $this->setDocumentPaymentDiscountTermsInLastPaymentTerm(
+            $newBaseAmount,
+            $newDiscountAmount,
+            $newDiscountPercent,
+            $newBaseDate,
+            $newBasePeriod,
+            $newBasePeriodUnit
+        );
 
         return $this;
     }
