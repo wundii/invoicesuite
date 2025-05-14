@@ -15,7 +15,7 @@ $builder->setDocumentDescription("Some document description");
 $builder->setDocumentLanguage("German");
 $builder->setDocumentDate(new DateTime());
 $builder->setDocumentCompleteDate(new DateTime());
-$builder->setDocumentCurrency("EUR");
+//$builder->setDocumentCurrency("EUR");
 $builder->setDocumentTaxCurrency("GBP");
 $builder->setDocumentIsTest(true);
 $builder->setDocumentIsCopy(true);

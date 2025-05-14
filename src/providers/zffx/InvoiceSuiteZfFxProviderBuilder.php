@@ -6254,11 +6254,22 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         $summation->getChargeTotalAmountWithCreate()->setValue(0.0);
         $summation->getAllowanceTotalAmountWithCreate()->setValue(0.0);
         $summation->getTaxBasisTotalAmountWithCreate()->setValue(0.0);
-        $summation->clearTaxTotalAmount()->addOnceToTaxTotalAmountWithCreate()->setValue(0);
         $summation->getRoundingAmountWithCreate()->setValue(0.0);
         $summation->getGrandTotalAmountWithCreate()->setValue(0.0);
         $summation->getTotalPrepaidAmountWithCreate()->setValue(0.0);
         $summation->getDuePayableAmountWithCreate()->setValue(0.0);
+
+        $taxTotalAmount = $summation->clearTaxTotalAmount()->addToTaxTotalAmountWithCreate()->setValue(0);
+
+        $invoiceCurrencyCode = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getInvoiceCurrencyCode()?->getValue();
+
+        if (!is_null($invoiceCurrencyCode)) {
+            $taxTotalAmount->setCurrencyID($invoiceCurrencyCode);
+        }
 
         return $this;
     }
