@@ -5661,16 +5661,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getSpecifiedTradePaymentTerms() ?? [];
 
-        $lastPaymentTerms = end($paymentTerms);
+        $lastPaymentTerm = end($paymentTerms);
 
-        if ($lastPaymentTerms === false) {
+        if ($lastPaymentTerm === false) {
             return $this;
         }
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerms
+         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerm
          */
-        $paymentDiscountTerms = $lastPaymentTerms->getApplicableTradePaymentDiscountTermsWithCreate();
+        $paymentDiscountTerms = $lastPaymentTerm->getApplicableTradePaymentDiscountTermsWithCreate();
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBaseAmount)) {
             $paymentDiscountTerms
@@ -5763,16 +5763,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getSpecifiedTradePaymentTerms() ?? [];
 
-        $lastPaymentTerms = end($paymentTerms);
+        $lastPaymentTerm = end($paymentTerms);
 
-        if ($lastPaymentTerms === false) {
+        if ($lastPaymentTerm === false) {
             return $this;
         }
 
         /**
-         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerms
+         * @var \horstoeko\invoicesuite\models\zffx\ram\TradePaymentTermsType $lastPaymentTerm
          */
-        $paymentPenaltyTerms = $lastPaymentTerms->getApplicableTradePaymentPenaltyTermsWithCreate();
+        $paymentPenaltyTerms = $lastPaymentTerm->getApplicableTradePaymentPenaltyTermsWithCreate();
 
         if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newBaseAmount)) {
             $paymentPenaltyTerms
