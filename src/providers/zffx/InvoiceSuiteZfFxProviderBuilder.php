@@ -6236,4 +6236,32 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
     }
 
     #endregion
+
+    #region Document Amounts
+
+    /**
+     * @inheritDoc
+     */
+    public function prepareDocumentSummation(): self
+    {
+        $summation = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
+
+        $summation->getLineTotalAmountWithCreate()->setValue(0.0);
+        $summation->getChargeTotalAmountWithCreate()->setValue(0.0);
+        $summation->getAllowanceTotalAmountWithCreate()->setValue(0.0);
+        $summation->getTaxBasisTotalAmountWithCreate()->setValue(0.0);
+        $summation->clearTaxTotalAmount()->addOnceToTaxTotalAmountWithCreate()->setValue(0);
+        $summation->getRoundingAmountWithCreate()->setValue(0.0);
+        $summation->getGrandTotalAmountWithCreate()->setValue(0.0);
+        $summation->getTotalPrepaidAmountWithCreate()->setValue(0.0);
+        $summation->getDuePayableAmountWithCreate()->setValue(0.0);
+
+        return $this;
+    }
+
+    #endregion
 }

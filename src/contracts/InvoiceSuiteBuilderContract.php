@@ -2645,4 +2645,15 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     #endregion
+
+    #region Document Amounts
+
+    /**
+     * Prepare the document-level summation (Sets all values to zero)
+     *
+     * @return self
+     */
+    public function prepareDocumentSummation(): self;
+
+    #endregion
 }

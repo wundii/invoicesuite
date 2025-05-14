@@ -4369,4 +4369,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     #endregion
+
+    #region Document Amounts
+
+    /**
+     * @inheritDoc
+     */
+    public function prepareDocumentSummation(): self
+    {
+        return $this;
+    }
+
+    #endregion
 }

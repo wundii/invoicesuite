@@ -2760,4 +2760,18 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     #endregion
+
+    #region Document Amounts
+
+    /**
+     * @inheritDoc
+     */
+    public function prepareDocumentSummation(): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->prepareDocumentSummation();
+
+        return $this;
+    }
+
+    #endregion
 }
