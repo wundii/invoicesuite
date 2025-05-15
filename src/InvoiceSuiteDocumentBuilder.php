@@ -2821,7 +2821,41 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newPositionId,
             $newParentPositionId,
             $newLineStatusCode,
-            $newLineStatusReasonCode,
+            $newLineStatusReasonCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
         );
 
         return $this;

@@ -177,5 +177,8 @@ $builder->setDocumentTaxCurrency("DKK");
 
 $builder->addDocumentPosition("1", null, null, "GROUP");
 $builder->addDocumentPosition("1.1", "1", "0815", "DETAIL");
+$builder->addDocumentPositionNote("Some Content");
+$builder->addDocumentPositionNote("Some second Content");
+$builder->setDocumentPositionNote("Some third Content", "ContentCode", "SubjectCode");
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

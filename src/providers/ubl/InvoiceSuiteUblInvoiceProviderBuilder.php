@@ -4520,5 +4520,53 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        if (is_null($latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLine())) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
+        $latestPosition->clearNote();
+
+        $this->addDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        if (is_null($latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLine())) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
+        $latestPosition->addOnceToNoteWithCreate()->setValue($newContent);
+
+        return $this;
+    }
+
     #endregion
 }

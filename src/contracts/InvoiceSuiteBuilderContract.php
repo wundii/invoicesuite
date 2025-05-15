@@ -2702,5 +2702,33 @@ interface InvoiceSuiteBuilderContract
         ?string $newLineStatusReasonCode = null
     ): self;
 
+    /**
+     * Set text information to latest added position
+     *
+     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @return self
+     */
+    public function setDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self;
+
+    /**
+     * Add text information to latest added position
+     *
+     * @param string|null $newContent Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode Code for qualifying the free text for the invoice item
+     * @return self
+     */
+    public function addDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self;
+
     #endregion
 }

@@ -6445,5 +6445,73 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newContent __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
+     * @return self
+     */
+    public function setDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        if (is_null($latestPosition = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getLatestIncludedSupplyChainTradeLineItem())) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
+        $latestPosition
+            ->getAssociatedDocumentLineDocumentWithCreate()
+            ->clearIncludedNote();
+
+        $this->addDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newContent __BT-127, From BASIC__ Text that contains unstructured information that is relevant to the invoice item
+     * @param string|null $newContentCode __BT-X-9, From EXTENDED__ Code to classify the content of the free text of the invoice
+     * @param string|null $newSubjectCode __BT-X-10, From EXTENDED__ Code for qualifying the free text for the invoice item
+     * @return self
+     */
+    public function addDocumentPositionNote(
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
+    ): self {
+        if (is_null($latestPosition = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getLatestIncludedSupplyChainTradeLineItem())) {
+            return $this;
+        }
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
+        $positionNote = $latestPosition
+            ->getAssociatedDocumentLineDocumentWithCreate()
+            ->addToIncludedNoteWithCreate();
+
+        $positionNote->getContentWithCreate()->setValue($newContent);
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newContentCode)) {
+            $positionNote->getContentCodeWithCreate()->setValue($newContentCode);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubjectCode)) {
+            $positionNote->getSubjectCodeWithCreate()->setValue($newSubjectCode);
+        }
+
+        return $this;
+    }
+
     #endregion
 }
