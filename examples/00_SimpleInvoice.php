@@ -180,7 +180,7 @@ $builder->addDocumentPosition("1.1", "1", "0815", "DETAIL");
 $builder->addDocumentPositionNote("Some Content");
 $builder->addDocumentPositionNote("Some second Content");
 $builder->setDocumentPositionNote("Some third Content", "ContentCode", "SubjectCode");
-$builder->setDocumentPositionProductDetails('ProductId', 'ProductName', 'ProductDescription', 'SellerID', 'BuyerID', '3333432332', '0088', 'IndustryId', 'ModelId', 'BatchId', 'Brandname', 'Modelname');
+$builder->setDocumentPositionProductDetails('ProductId', 'ProductName', 'ProductDescription', 'SellerID', 'BuyerID', '3333432332', '0088', 'IndustryId', 'ModelId', 'BatchId', 'Brandname', 'Modelname', 'CN');
 $builder->setDocumentPositionProductCharacteristic('Füllmenge', '1000 Liter', 'FM', 1000.0, "LTR");
 $builder->setDocumentPositionProductClassification("classcode", 'listid', '1.0', 'classnam');
 

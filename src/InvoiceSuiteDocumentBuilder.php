@@ -2876,7 +2876,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
-        ?string $newProductModelName = null
+        ?string $newProductModelName = null,
+        ?string $newProductOriginTradeCountry = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionProductDetails(
             $newProductId,
@@ -2890,7 +2891,8 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
             $newProductModelId,
             $newProductBatchId,
             $newProductBrandName,
-            $newProductModelName
+            $newProductModelName,
+            $newProductOriginTradeCountry
         );
 
         return $this;

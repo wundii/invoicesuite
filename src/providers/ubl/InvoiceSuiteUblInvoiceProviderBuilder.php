@@ -4567,7 +4567,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
-        ?string $newProductModelName = null
+        ?string $newProductModelName = null,
+        ?string $newProductOriginTradeCountry = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
             return $this;
@@ -4593,6 +4594,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalIdType]) && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalId])) {
             $positionProduct->getStandardItemIdentificationWithCreate()->getIDWithCreate()->setValue($newProductGlobalId)->setSchemeID($newProductGlobalIdType);
+        }
+
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductOriginTradeCountry])) {
+            $positionProduct->getOriginCountryWithCreate()->getNameWithCreate()->setValue($newProductOriginTradeCountry);
         }
 
         return $this;

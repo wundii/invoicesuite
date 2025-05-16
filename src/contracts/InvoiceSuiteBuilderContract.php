@@ -2745,6 +2745,7 @@ interface InvoiceSuiteBuilderContract
      * @param string|null $newProductBatchId Batch (lot) identifier of the product
      * @param string|null $newProductBrandName Brand name of the product
      * @param string|null $newProductModelName Model name of the product
+     * @param string|null $newProductOriginTradeCountry Code indicating the country the goods came from
      * @return self
      */
     public function setDocumentPositionProductDetails(
@@ -2759,7 +2760,8 @@ interface InvoiceSuiteBuilderContract
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
-        ?string $newProductModelName = null
+        ?string $newProductModelName = null,
+        ?string $newProductOriginTradeCountry = null
     ): self;
 
     /**

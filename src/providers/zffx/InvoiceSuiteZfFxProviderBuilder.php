@@ -6528,6 +6528,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
      * @param string|null $newProductBatchId __BT-X-534. From EXTENDED__ Batch (lot) identifier of the product
      * @param string|null $newProductBrandName __BT-X-535. From EXTENDED__ Brand name of the product
      * @param string|null $newProductModelName __BT-X-536. From EXTENDED__ Model name of the product
+     * @param string|null $newProductOriginTradeCountry __BT-159, From EN 16931__ Code indicating the country the goods came from
      * @return self
      */
     public function setDocumentPositionProductDetails(
@@ -6542,7 +6543,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         ?string $newProductModelId = null,
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
-        ?string $newProductModelName = null
+        ?string $newProductModelName = null,
+        ?string $newProductOriginTradeCountry = null
     ): self {
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
             return $this;
@@ -6595,6 +6597,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelName])) {
             $positionProduct->getModelNameWithCreate()->setValue($newProductModelName);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductOriginTradeCountry)) {
+            $positionProduct->getOriginTradeCountryWithCreate()->getIDWithCreate()->setValue($newProductOriginTradeCountry);
         }
 
         return $this;
