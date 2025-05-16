@@ -157,4 +157,15 @@ abstract class InvoiceSuiteAbstractFormatProvider
     {
         return $this->builderInstance;
     }
+
+    /**
+     * Returns true if the given group is supported by SerializerGroups
+     *
+     * @param string $group
+     * @return boolean
+     */
+    public function hasSerializerGroup(string $group): bool
+    {
+        return in_array($group, $this->getSerializerGroups());
+    }
 }
