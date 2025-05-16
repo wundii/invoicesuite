@@ -6891,5 +6891,129 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractFormatProvider
         return $this;
     }
 
+    /**
+     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Seller's order confirmation date
+     * @return self
+     */
+    public function setDocumentPositionSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $latestPositionSellerOrderReference = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->getSellerOrderReferencedDocumentWithCreate();
+
+        $latestPositionSellerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $latestPositionSellerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $latestPositionSellerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Seller's order confirmation date
+     * @return self
+     */
+    public function addDocumentPositionSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionSellerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @return self
+     */
+    public function setDocumentPositionBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $latestPositionBuyerOrderReference = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->getBuyerOrderReferencedDocumentWithCreate();
+
+        $latestPositionBuyerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $latestPositionBuyerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $latestPositionBuyerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @return self
+     */
+    public function addDocumentPositionBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentPositionBuyerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -185,4 +185,7 @@ $builder->setDocumentPositionProductCharacteristic('Füllmenge', '1000 Liter', '
 $builder->setDocumentPositionProductClassification("classcode", 'listid', '1.0', 'classnam');
 $builder->setDocumentPositionReferencedProduct("id", "name", "descr", "sellerid", "buyerid", "324423432", "0088", "industryidentifier", 10, "PCT");
 
+$builder->setDocumentPositionSellerOrderReference('SO-2025/0000001', '10', new DateTime());
+$builder->setDocumentPositionBuyerOrderReference('PO-0000011', '20', new DateTime());
+
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

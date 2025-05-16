@@ -2888,5 +2888,61 @@ interface InvoiceSuiteBuilderContract
         ?string $newProductUnitQuantityUnit = null
     ): self;
 
+    /**
+     * Set the associated seller's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function setDocumentPositionSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an associated seller's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function addDocumentPositionSellerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Set the associated buyer's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function setDocumentPositionBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an associated buyer's order confirmation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function addDocumentPositionBuyerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
     #endregion
 }
