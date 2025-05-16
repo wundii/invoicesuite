@@ -5,9 +5,11 @@ namespace horstoeko\invoicesuite\models\ubl\cct;
 use GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded;
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class BinaryObjectType
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

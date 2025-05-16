@@ -4,9 +4,11 @@ namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class PublishAwardIndicatorType
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

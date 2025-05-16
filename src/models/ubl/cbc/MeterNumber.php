@@ -4,11 +4,13 @@ namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 /**
  * @JMS\XmlRoot(name="MeterNumber", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
  */
 class MeterNumber extends MeterNumberType
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 }

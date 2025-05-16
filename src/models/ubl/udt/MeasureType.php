@@ -4,10 +4,12 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cct\MeasureType as MeasureTypeBase;
 
 class MeasureType extends MeasureTypeBase
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

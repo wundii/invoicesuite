@@ -5,9 +5,11 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 use DateTime;
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class DateTimeType
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

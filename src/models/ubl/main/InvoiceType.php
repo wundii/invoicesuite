@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\ubl\main;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cac\AccountingCustomerParty;
 use horstoeko\invoicesuite\models\ubl\cac\AccountingSupplierParty;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
@@ -61,6 +62,7 @@ use horstoeko\invoicesuite\models\ubl\ext\UBLExtension;
  */
 class InvoiceType
 {
+    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**
