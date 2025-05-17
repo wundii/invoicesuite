@@ -5014,6 +5014,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newNetPriceBasisQuantity = null,
         ?string $newNetPriceBasisQuantityUnit = null
     ): self {
+        if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPrice])) {
+            return $this;
+        }
+
+        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+        $latestPosition->getPriceWithCreate()->getPriceAmountWithCreate()->setValue($newNetPrice);
+
+        if (
+            !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantity]) &&
+            !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantityUnit])
+        ) {
+            $latestPosition
+                ->getPriceWithCreate()
+                ->getBaseQuantityWithCreate()
+                ->setValue($newNetPriceBasisQuantity)
+                ->setUnitCode($newNetPriceBasisQuantityUnit);
+        }
+
         return $this;
     }
 
