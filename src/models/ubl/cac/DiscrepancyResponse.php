@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 /**
  * @JMS\XmlRoot(name="DiscrepancyResponse", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2")
  */
 class DiscrepancyResponse extends ResponseType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 }

@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalForm;
 use horstoeko\invoicesuite\models\ubl\cbc\CompanyLegalFormCode;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
@@ -14,7 +13,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\PersonalSituation;
 
 class TendererQualificationRequestType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

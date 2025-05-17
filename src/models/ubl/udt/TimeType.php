@@ -4,11 +4,9 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class TimeType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

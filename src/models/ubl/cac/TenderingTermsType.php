@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\AcceptedVariantsDescription;
 use horstoeko\invoicesuite\models\ubl\cbc\AdditionalConditions;
 use horstoeko\invoicesuite\models\ubl\cbc\AwardingMethodTypeCode;
@@ -21,7 +20,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\PriceRevisionFormulaDescription;
 
 class TenderingTermsType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

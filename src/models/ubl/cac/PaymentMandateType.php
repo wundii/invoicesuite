@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\MandateTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumPaidAmount;
@@ -13,7 +12,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\SignatureID;
 
 class PaymentMandateType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

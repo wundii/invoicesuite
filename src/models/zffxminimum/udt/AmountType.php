@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\zffxminimum\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class AmountType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var float

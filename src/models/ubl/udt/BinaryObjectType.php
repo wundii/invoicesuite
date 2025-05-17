@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\ubl\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cct\BinaryObjectType as BinaryObjectTypeBase;
 
 class BinaryObjectType extends BinaryObjectTypeBase
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

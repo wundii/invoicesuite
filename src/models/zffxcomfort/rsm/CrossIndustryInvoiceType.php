@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\zffxcomfort\rsm;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\ExchangedDocumentContextType;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeTransactionType;
@@ -20,7 +19,6 @@ use horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeTransactionTyp
 class CrossIndustryInvoiceType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ExchangedDocumentContextType

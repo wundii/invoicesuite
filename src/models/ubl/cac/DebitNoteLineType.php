@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\AccountingCost;
 use horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode;
 use horstoeko\invoicesuite\models\ubl\cbc\DebitedQuantity;
@@ -16,7 +15,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\UUID;
 
 class DebitNoteLineType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

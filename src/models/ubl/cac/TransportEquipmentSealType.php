@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\Condition;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\SealIssuerTypeCode;
@@ -13,7 +12,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\SealingPartyType;
 
 class TransportEquipmentSealType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

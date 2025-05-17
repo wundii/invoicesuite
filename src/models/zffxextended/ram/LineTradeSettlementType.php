@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\zffxextended\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class LineTradeSettlementType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>

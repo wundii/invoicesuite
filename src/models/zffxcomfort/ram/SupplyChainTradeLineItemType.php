@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\zffxcomfort\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class SupplyChainTradeLineItemType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType

@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\zffxextended\qdt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class TaxTypeCodeType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var string

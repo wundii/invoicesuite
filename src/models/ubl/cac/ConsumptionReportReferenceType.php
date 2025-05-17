@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionReportID;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionType;
 use horstoeko\invoicesuite\models\ubl\cbc\ConsumptionTypeCode;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\TotalConsumedQuantity;
 
 class ConsumptionReportReferenceType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

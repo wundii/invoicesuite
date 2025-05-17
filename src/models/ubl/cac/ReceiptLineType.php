@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\Note;
 use horstoeko\invoicesuite\models\ubl\cbc\OversupplyQuantity;
@@ -22,7 +21,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\UUID;
 
 class ReceiptLineType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

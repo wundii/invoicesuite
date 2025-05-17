@@ -4,14 +4,12 @@ namespace horstoeko\invoicesuite\models\zffxextended\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxextended\udt\IDType;
 use horstoeko\invoicesuite\models\zffxextended\udt\TextType;
 
 class TradePartyType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>

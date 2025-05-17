@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\Amount;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\LossRisk;
@@ -13,7 +12,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\SpecialTerms;
 
 class DeliveryTermsType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

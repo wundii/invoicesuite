@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\Description;
 use horstoeko\invoicesuite\models\ubl\cbc\OpenTenderID;
 use horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeID;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\TenderEnvelopeTypeCode;
 
 class TenderPreparationType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

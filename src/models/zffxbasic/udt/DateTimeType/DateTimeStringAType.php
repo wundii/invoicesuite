@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 class DateTimeStringAType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var string

@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cbc\Note;
 use horstoeko\invoicesuite\models\ubl\cbc\PerformanceMetricTypeCode;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\PerformanceValueQuantity;
 
 class PerformanceDataLineType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

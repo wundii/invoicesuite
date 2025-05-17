@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\zffxminimum\rsm;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 /**
  * @JMS\XmlRoot(name="rsm:CrossIndustryInvoice", namespace="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100")
@@ -18,5 +17,4 @@ use horstoeko\invoicesuite\concerns\HandlesOptional;
 class CrossIndustryInvoice extends CrossIndustryInvoiceType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 }

@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\zffxcomfort\qdt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType\DateTimeStringAType;
 
 class FormattedDateTimeType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType\DateTimeStringAType

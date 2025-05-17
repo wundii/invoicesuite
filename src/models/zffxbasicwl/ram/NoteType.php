@@ -4,14 +4,12 @@ namespace horstoeko\invoicesuite\models\zffxbasicwl\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxbasicwl\udt\CodeType;
 use horstoeko\invoicesuite\models\zffxbasicwl\udt\TextType;
 
 class NoteType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\TextType

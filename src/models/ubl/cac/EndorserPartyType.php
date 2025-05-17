@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\RoleCode;
 use horstoeko\invoicesuite\models\ubl\cbc\SequenceNumeric;
 
 class EndorserPartyType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

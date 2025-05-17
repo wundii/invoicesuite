@@ -4,12 +4,10 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\PartecipationPercent;
 
 class ShareholderPartyType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

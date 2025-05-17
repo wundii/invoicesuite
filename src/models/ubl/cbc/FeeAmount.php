@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\ubl\cbc;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 /**
  * @JMS\XmlRoot(name="FeeAmount", namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2")
  */
 class FeeAmount extends FeeAmountType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 }

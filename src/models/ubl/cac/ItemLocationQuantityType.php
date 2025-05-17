@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\LeadTimeMeasure;
 use horstoeko\invoicesuite\models\ubl\cbc\MaximumQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\MinimumQuantity;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\TradingRestrictions;
 
 class ItemLocationQuantityType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

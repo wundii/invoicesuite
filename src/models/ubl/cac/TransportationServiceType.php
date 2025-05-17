@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\FreightRateClassCode;
 use horstoeko\invoicesuite\models\ubl\cbc\Name;
 use horstoeko\invoicesuite\models\ubl\cbc\Priority;
@@ -16,7 +15,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\TransportationServiceDetailsURI;
 
 class TransportationServiceType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

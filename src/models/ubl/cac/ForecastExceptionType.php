@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ComparisonDataCode;
 use horstoeko\invoicesuite\models\ubl\cbc\DataSourceCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ForecastPurposeCode;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\ForecastTypeCode;
 
 class ForecastExceptionType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\zffxbasicwl\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxbasicwl\qdt\AllowanceChargeReasonCodeType;
 use horstoeko\invoicesuite\models\zffxbasicwl\udt\AmountType;
 use horstoeko\invoicesuite\models\zffxbasicwl\udt\IndicatorType;
@@ -14,7 +13,6 @@ use horstoeko\invoicesuite\models\zffxbasicwl\udt\TextType;
 class TradeAllowanceChargeType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IndicatorType

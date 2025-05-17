@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\main;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 
 /**
  * @JMS\XmlRoot(name="Invoice", namespace="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2")
@@ -14,6 +13,5 @@ use horstoeko\invoicesuite\concerns\HandlesOptional;
  */
 class Invoice extends InvoiceType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 }

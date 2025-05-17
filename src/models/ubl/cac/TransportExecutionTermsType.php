@@ -4,14 +4,12 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ChangeConditions;
 use horstoeko\invoicesuite\models\ubl\cbc\TransportServiceProviderSpecialTerms;
 use horstoeko\invoicesuite\models\ubl\cbc\TransportUserSpecialTerms;
 
 class TransportExecutionTermsType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

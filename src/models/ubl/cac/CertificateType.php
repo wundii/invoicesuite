@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\CertificateType as CertificateType1;
 use horstoeko\invoicesuite\models\ubl\cbc\CertificateTypeCode;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\Remarks;
 
 class CertificateType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\BaseQuantity;
 use horstoeko\invoicesuite\models\ubl\cbc\OrderableUnitFactorRate;
 use horstoeko\invoicesuite\models\ubl\cbc\PriceAmount;
@@ -14,7 +13,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\PriceTypeCode;
 
 class PriceType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\zffxcomfort\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxcomfort\udt\QuantityType;
 
 class LineTradeDeliveryType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\QuantityType

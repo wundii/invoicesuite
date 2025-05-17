@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\zffxminimum\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType;
 use horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType;
 use horstoeko\invoicesuite\models\zffxminimum\udt\IDType;
@@ -12,7 +11,6 @@ use horstoeko\invoicesuite\models\zffxminimum\udt\IDType;
 class ExchangedDocumentType
 {
     use HandlesObjectFlags;
-    use HandlesOptional;
 
     /**
      * @var \horstoeko\invoicesuite\models\zffxminimum\udt\IDType

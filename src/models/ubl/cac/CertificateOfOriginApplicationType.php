@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\ApplicationStatusCode;
 use horstoeko\invoicesuite\models\ubl\cbc\CertificateType;
 use horstoeko\invoicesuite\models\ubl\cbc\OriginalJobID;
@@ -14,7 +13,6 @@ use horstoeko\invoicesuite\models\ubl\cbc\Remarks;
 
 class CertificateOfOriginApplicationType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**

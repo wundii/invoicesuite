@@ -4,13 +4,11 @@ namespace horstoeko\invoicesuite\models\ubl\cac;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
-use horstoeko\invoicesuite\concerns\HandlesOptional;
 use horstoeko\invoicesuite\models\ubl\cbc\RailCarID;
 use horstoeko\invoicesuite\models\ubl\cbc\TrainID;
 
 class RailTransportType
 {
-    use HandlesOptional;
     use HandlesObjectFlags;
 
     /**
