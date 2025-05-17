@@ -3044,5 +3044,33 @@ interface InvoiceSuiteBuilderContract
         ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
     ): self;
 
+    /**
+     * Set an additional ultimate customer order reference (line reference)
+     *
+     * @param string|null $newReferenceNumber Ultimate customer order number
+     * @param string|null $newReferenceLineNumber Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @return self
+     */
+    public function setDocumentPositionUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
+    /**
+     * Add an additional ultimate customer order reference (line reference)
+     *
+     * @param string|null $newReferenceNumber Ultimate customer order number
+     * @param string|null $newReferenceLineNumber Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate Ultimate customer order date
+     * @return self
+     */
+    public function addDocumentPositionUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self;
+
     #endregion
 }

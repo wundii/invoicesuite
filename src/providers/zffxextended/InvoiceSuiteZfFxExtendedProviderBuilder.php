@@ -7276,5 +7276,74 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         return $this;
     }
 
+    /**
+     * @param string|null $newReferenceNumber __BT-X-43, From EXTENDED__ Ultimate customer order number
+     * @param string|null $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-45, From EXTENDED__ Ultimate customer order date
+     * @return self
+     */
+    public function setDocumentPositionUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->clearUltimateCustomerOrderReferencedDocument();
+
+        $this->addDocumentPositionUltimateCustomerOrderReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $newReferenceNumber __BT-X-43, From EXTENDED__ Ultimate customer order number
+     * @param string|null $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-45, From EXTENDED__ Ultimate customer order date
+     * @return self
+     */
+    public function addDocumentPositionUltimateCustomerOrderReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null
+    ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $ultimateCustomerOrderReference = $latestPosition
+            ->getSpecifiedLineTradeAgreementWithCreate()
+            ->addToUltimateCustomerOrderReferencedDocumentWithCreate();
+
+        $ultimateCustomerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $ultimateCustomerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+
+        if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $ultimateCustomerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format("Ymd"))
+                ->setFormat("102");
+        }
+
+        return $this;
+    }
+
     #endregion
 }
