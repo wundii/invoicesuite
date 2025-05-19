@@ -7360,20 +7360,17 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             return $this;
         }
 
-        $despatchAdviceReference = $this
+        $latestPosition = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+
+        $despatchAdviceReference = $latestPosition
             ->getSpecifiedLineTradeDeliveryWithCreate()
             ->getDespatchAdviceReferencedDocumentWithCreate();
 
-        $despatchAdviceReference
-            ->getIssuerAssignedIDWithCreate()
-            ->setValue($newReferenceNumber);
-
-        $despatchAdviceReference
-            ->getLineIDWithCreate()
-            ->setValue($newReferenceLineNumber);
+        $despatchAdviceReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
+        $despatchAdviceReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
         if (!is_null($newReferenceDate)) {
             $despatchAdviceReference
