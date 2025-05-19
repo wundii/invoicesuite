@@ -3598,5 +3598,19 @@ interface InvoiceSuiteBuilderContract
         ?DateTimeInterface $newDate = null
     ): self;
 
+    /**
+     * Set the position's start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return InvoiceSuiteBuilderContract
+     */
+    public function setDocumentPositionBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self;
+
     #endregion
 }

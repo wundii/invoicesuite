@@ -226,5 +226,6 @@ $builder->addDocumentPositionUltimateShipToContact("Alfons Baum", "Dispo", "030-
 $builder->setDocumentPositionUltimateShipToCommunication("EM", "invoice@ultimate-user-gmbh.de");
 
 $builder->setDocumentPositionSupplyChainEvent(new DateTime());
+$builder->setDocumentPositionBillingPeriod(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description");
 
 echo $builder->saveAsXmlFile(__DIR__ . "/00_SimpleInvoice.xml");

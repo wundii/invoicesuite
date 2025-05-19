@@ -3897,5 +3897,22 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -5470,5 +5470,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null
+    ): self {
+        // Nothing here
+
+        return $this;
+    }
+
     #endregion
 }
