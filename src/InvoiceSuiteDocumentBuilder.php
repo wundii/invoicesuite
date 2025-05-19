@@ -4027,5 +4027,43 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
         return $this;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function setDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function addDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
     #endregion
 }

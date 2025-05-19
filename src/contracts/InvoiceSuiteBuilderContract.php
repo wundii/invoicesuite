@@ -3157,6 +3157,38 @@ interface InvoiceSuiteBuilderContract
     ): self;
 
     /**
+     * Set an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     */
+    public function setDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self;
+
+    /**
+     * Add an additional invoice document (reference to preceding invoice)
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     */
+    public function addDocumentPositionInvoiceReference(
+        ?string $newReferenceNumber = null,
+        ?string $newReferenceLineNumber = null,
+        ?DateTimeInterface $newReferenceDate = null,
+        ?string $newTypeCode = null
+    ): self;
+
+    /**
      * Set the position's gross price
      *
      * @param null|float $newGrossPrice Unit price excluding sales tax before deduction of the discount on the item price
