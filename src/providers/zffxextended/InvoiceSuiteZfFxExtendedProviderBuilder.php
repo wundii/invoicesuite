@@ -9062,8 +9062,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
-     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param string|null $newType __BT-X-99, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
      * @return self
      */
     public function setDocumentPositionPostingReference(
@@ -9093,8 +9093,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * @param string|null $newType __BT-X-290, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
-     * @param string|null $newAccountId __BT-19, From BASIC WL__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param string|null $newType __BT-X-99, From EXTENDED__ Type of the posting reference, Allowed values: 1 = Financial, 2 = Subsidiary, 3 = Budget, 4 = Cost Accounting, 5 = Payable, 6 = Job Cost Accounting
+     * @param string|null $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer, If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
      * @return self
      */
     public function addDocumentPositionPostingReference(
