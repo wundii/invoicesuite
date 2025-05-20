@@ -124,7 +124,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentNo(
-        string $newDocumentNo
+        ?string $newDocumentNo = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentNo($newDocumentNo);
 
@@ -135,7 +135,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentType(
-        string $newDocumentType
+        ?string $newDocumentType = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentType($newDocumentType);
 
@@ -146,7 +146,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentDescription(
-        string $newDocumentDescription
+        ?string $newDocumentDescription = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentDescription($newDocumentDescription);
 
@@ -157,7 +157,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentLanguage(
-        string $newDocumentLanguage
+        ?string $newDocumentLanguage = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentLanguage($newDocumentLanguage);
 
@@ -168,7 +168,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentDate(
-        DateTimeInterface $newDocumentDate
+        ?DateTimeInterface $newDocumentDate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentDate($newDocumentDate);
 
@@ -179,7 +179,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentCompleteDate(
-        DateTimeInterface $newCompleteDate
+        ?DateTimeInterface $newCompleteDate = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentCompleteDate($newCompleteDate);
 
@@ -190,7 +190,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentCurrency(
-        string $newDocumentCurrency
+        ?string $newDocumentCurrency = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentCurrency($newDocumentCurrency);
 
@@ -201,7 +201,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentTaxCurrency(
-        string $newDocumentTaxCurrency
+        ?string $newDocumentTaxCurrency = null
     ): self {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxCurrency($newDocumentTaxCurrency);
 
@@ -234,7 +234,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function setDocumentNote(
-        string $newContent,
+        ?string $newContent = null,
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {
@@ -247,7 +247,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
      * @inheritDoc
      */
     public function addDocumentNote(
-        string $newContent,
+        ?string $newContent = null,
         ?string $newContentCode = null,
         ?string $newSubjectCode = null
     ): self {

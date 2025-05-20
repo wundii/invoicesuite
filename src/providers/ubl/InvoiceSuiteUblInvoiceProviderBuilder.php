@@ -3,16 +3,17 @@
 namespace horstoeko\invoicesuite\providers\ubl;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
-use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
-use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
-use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
+use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -127,9 +128,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentNo(
-        string $newDocumentNo
+        ?string $newDocumentNo = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentNo])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentNo])) {
             return $this;
         }
 
@@ -143,9 +144,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentType(
-        string $newDocumentType
+        ?string $newDocumentType = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentType])) {
             return $this;
         }
 
@@ -159,9 +160,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentDescription(
-        string $newDocumentDescription
+        ?string $newDocumentDescription = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentDescription])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentDescription])) {
             return $this;
         }
 
@@ -175,9 +176,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentLanguage(
-        string $newDocumentLanguage
+        ?string $newDocumentLanguage = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentLanguage])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentLanguage])) {
             return $this;
         }
 
@@ -191,8 +192,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentDate(
-        DateTimeInterface $newDocumentDate
+        ?DateTimeInterface $newDocumentDate = null
     ): self {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newDocumentDate])) {
+            return $this;
+        }
+
         $this->getUblInvoiceRootObject()->setIssueDate($newDocumentDate);
 
         return $this;
@@ -203,7 +208,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentCompleteDate(
-        DateTimeInterface $newCompleteDate
+        ?DateTimeInterface $newCompleteDate = null
     ): self {
         return $this;
     }
@@ -213,8 +218,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentCurrency(
-        string $newDocumentCurrency
+        ?string $newDocumentCurrency = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentCurrency])) {
+            return $this;
+        }
+
         $this->getUblInvoiceRootObject()->getDocumentCurrencyCodeWithCreate()->setValue($newDocumentCurrency);
         $this->updateCurrencies();
 
@@ -226,8 +235,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentTaxCurrency(
-        string $newDocumentTaxCurrency
+        ?string $newDocumentTaxCurrency = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentTaxCurrency])) {
+            return $this;
+        }
+
         $this->getUblInvoiceRootObject()->getTaxCurrencyCodeWithCreate()->setValue($newDocumentTaxCurrency);
         $this->updateCurrencies();
 
@@ -263,10 +276,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function setDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
         $this->getUblInvoiceRootObject()->clearNote()->addToNoteWithCreate()->setValue($newContent);
 
         return $this;
@@ -279,10 +296,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @return self
      */
     public function addDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
+            return $this;
+        }
+
         $this->getUblInvoiceRootObject()->addToNoteWithCreate()->setValue($newContent);
 
         return $this;

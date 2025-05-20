@@ -133,9 +133,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentNo __BT-1, From MINIMUM__ The document no issued by the seller
      */
     public function setDocumentNo(
-        string $newDocumentNo
+        ?string $newDocumentNo = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentNo])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentNo])) {
             return $this;
         }
 
@@ -152,9 +152,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentType __BT-3, From MINIMUM__ The type of the document
      */
     public function setDocumentType(
-        string $newDocumentType
+        ?string $newDocumentType = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentType])) {
             return $this;
         }
 
@@ -171,9 +171,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentDescription __BT-X-2, From EXTENDED__ Document Type. The documenttype (free text)
      */
     public function setDocumentDescription(
-        string $newDocumentDescription
+        ?string $newDocumentDescription = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentDescription])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentDescription])) {
             return $this;
         }
 
@@ -190,9 +190,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentLanguage __BT-X-4, From EXTENDED__ Language indicator. The language code in which the document was written
      */
     public function setDocumentLanguage(
-        string $newDocumentLanguage
+        ?string $newDocumentLanguage = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentLanguage])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentLanguage])) {
             return $this;
         }
 
@@ -209,8 +209,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of invoice. The date when the document was issued by the seller
      */
     public function setDocumentDate(
-        DateTimeInterface $newDocumentDate
+        ?DateTimeInterface $newDocumentDate = null
     ): self {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newDocumentDate])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -226,8 +230,12 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param DateTimeInterface $newCompleteDate __BT-X-6-000, From EXTENDED__ The contractual due date of the invoice
      */
     public function setDocumentCompleteDate(
-        DateTimeInterface $newCompleteDate
+        ?DateTimeInterface $newCompleteDate = null
     ): self {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newCompleteDate])) {
+            return $this;
+        }
+
         $this
             ->getCrossIndustryRootObject()
             ->getExchangedDocumentWithCreate()
@@ -244,9 +252,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentCurrency __BT-5, From MINIMUM__ Code for the invoice currency
      */
     public function setDocumentCurrency(
-        string $newDocumentCurrency
+        ?string $newDocumentCurrency = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentCurrency])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentCurrency])) {
             return $this;
         }
 
@@ -266,9 +274,9 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newDocumentTaxCurrency __BT-6, From BASIC WL__ Code for the tax currency
      */
     public function setDocumentTaxCurrency(
-        string $newDocumentTaxCurrency
+        ?string $newDocumentTaxCurrency = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newDocumentTaxCurrency])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDocumentTaxCurrency])) {
             return $this;
         }
 
@@ -320,11 +328,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
      */
     public function setDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContent])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
 
@@ -344,11 +352,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param string $newSubjectCode __BT-21, From BASIC WL__ The qualification of the free text for the invoice from BT-22
      */
     public function addDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContent])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
 
@@ -383,7 +391,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null
     ): self {
-        if (is_null($newStartDate) && is_null($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
             return $this;
         }
 
@@ -431,7 +439,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null
     ): self {
-        if (is_null($newStartDate) && is_null($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
             return $this;
         }
 

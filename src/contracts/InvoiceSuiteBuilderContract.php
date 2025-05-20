@@ -32,7 +32,7 @@ interface InvoiceSuiteBuilderContract
      * @return static
      */
     public function setDocumentNo(
-        string $newDocumentNo
+        ?string $newDocumentNo = null
     ): self;
 
     /**
@@ -42,7 +42,7 @@ interface InvoiceSuiteBuilderContract
      * @return static
      */
     public function setDocumentType(
-        string $newDocumentType
+        ?string $newDocumentType = null
     ): self;
 
     /**
@@ -52,7 +52,7 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentDescription(
-        string $newDocumentDescription
+        ?string $newDocumentDescription = null
     ): self;
 
     /**
@@ -62,7 +62,7 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentLanguage(
-        string $newDocumentLanguage
+        ?string $newDocumentLanguage = null
     ): self;
 
     /**
@@ -72,7 +72,7 @@ interface InvoiceSuiteBuilderContract
      * @return InvoiceSuiteBuilderContract
      */
     public function setDocumentDate(
-        DateTimeInterface $newDocumentDate
+        ?DateTimeInterface $newDocumentDate = null
     ): self;
 
     /**
@@ -82,7 +82,7 @@ interface InvoiceSuiteBuilderContract
      * @return InvoiceSuiteBuilderContract
      */
     public function setDocumentCompleteDate(
-        DateTimeInterface $newCompleteDate
+        ?DateTimeInterface $newCompleteDate = null
     ): self;
 
     /**
@@ -92,7 +92,7 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentCurrency(
-        string $newDocumentCurrency
+        ?string $newDocumentCurrency = null
     ): self;
 
     /**
@@ -102,7 +102,7 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentTaxCurrency(
-        string $newDocumentTaxCurrency
+        ?string $newDocumentTaxCurrency = null
     ): self;
 
     /**
@@ -134,9 +134,9 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function setDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self;
 
     /**
@@ -148,9 +148,9 @@ interface InvoiceSuiteBuilderContract
      * @return self
      */
     public function addDocumentNote(
-        string $newContent,
-        string $newContentCode,
-        string $newSubjectCode
+        ?string $newContent = null,
+        ?string $newContentCode = null,
+        ?string $newSubjectCode = null
     ): self;
 
     /**
