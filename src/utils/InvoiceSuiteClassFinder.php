@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite\utils;
 
 use Composer\Autoload\ClassLoader;
+use horstoeko\stringmanagement\PathUtils;
 use Throwable;
 
 /**
@@ -84,10 +85,26 @@ class InvoiceSuiteClassFinder
      * Returns an array of all classes which are a subclass of $subClassOf
      *
      * @param string $isSubClassOf
+     * @param boolean $disableCache
      * @return array<string>
      */
-    public function getClassesWhenItsSubClassOf(string $isSubClassOf): array
+    public function getClassesWhenItsSubClassOf(string $isSubClassOf, bool $disableCache = false): array
     {
+        if ($disableCache !== true) {
+            $cacheFilename = preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", $isSubClassOf));
+            $cacheFilenameFq = PathUtils::combinePathWithFile(sys_get_temp_dir(), $cacheFilename);
+
+            if (file_exists($cacheFilenameFq)) {
+                $cacheFilenameContent = file_get_contents($cacheFilenameFq);
+                if ($cacheFilenameContent !== false) {
+                    $cacheFilenameContentUnserialized = unserialize($cacheFilenameContent);
+                    if (is_array($cacheFilenameContentUnserialized)) {
+                        return $cacheFilenameContentUnserialized;
+                    }
+                }
+            }
+        }
+
         $classes = [];
 
         foreach ($this->classNames as $className) {
@@ -102,6 +119,10 @@ class InvoiceSuiteClassFinder
             } finally {
                 error_reporting($previousErrorReportingState);
             }
+        }
+
+        if ($disableCache !== true) {
+            file_put_contents($cacheFilenameFq, serialize($classes));
         }
 
         return $classes;
