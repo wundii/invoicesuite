@@ -13,7 +13,7 @@ class ExchangedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\IDType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ExchangedDocumentType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ExchangedDocumentType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -93,10 +93,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxminimum\qdt\DocumentCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(DocumentCodeType $typeCode): self
+    public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -122,10 +122,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType $issueDateTime
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\DateTimeType|null $issueDateTime
      * @return self
      */
-    public function setIssueDateTime(DateTimeType $issueDateTime): self
+    public function setIssueDateTime(?DateTimeType $issueDateTime = null): self
     {
         $this->issueDateTime = $issueDateTime;
 

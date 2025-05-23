@@ -10,7 +10,7 @@ class IndicatorType
     use HandlesObjectFlags;
 
     /**
-     * @var bool
+     * @var bool|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("bool")
      * @JMS\Expose
@@ -29,10 +29,10 @@ class IndicatorType
     }
 
     /**
-     * @param bool $indicator
+     * @param bool|null $indicator
      * @return self
      */
-    public function setIndicator(bool $indicator): self
+    public function setIndicator(?bool $indicator = null): self
     {
         $this->indicator = $indicator;
 

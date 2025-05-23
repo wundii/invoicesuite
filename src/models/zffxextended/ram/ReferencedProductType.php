@@ -13,7 +13,7 @@ class ReferencedProductType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ReferencedProductType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\udt\IDType>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class ReferencedProductType
     private $globalID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class ReferencedProductType
     private $sellerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class ReferencedProductType
     private $buyerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class ReferencedProductType
     private $industryAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class ReferencedProductType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class ReferencedProductType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\QuantityType")
      * @JMS\Expose
@@ -120,10 +120,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -139,10 +139,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType> $globalID
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID): self
+    public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
 
@@ -230,10 +230,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $sellerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $sellerAssignedID
      * @return self
      */
-    public function setSellerAssignedID(IDType $sellerAssignedID): self
+    public function setSellerAssignedID(?IDType $sellerAssignedID = null): self
     {
         $this->sellerAssignedID = $sellerAssignedID;
 
@@ -259,10 +259,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $buyerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $buyerAssignedID
      * @return self
      */
-    public function setBuyerAssignedID(IDType $buyerAssignedID): self
+    public function setBuyerAssignedID(?IDType $buyerAssignedID = null): self
     {
         $this->buyerAssignedID = $buyerAssignedID;
 
@@ -288,10 +288,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $industryAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $industryAssignedID
      * @return self
      */
-    public function setIndustryAssignedID(IDType $industryAssignedID): self
+    public function setIndustryAssignedID(?IDType $industryAssignedID = null): self
     {
         $this->industryAssignedID = $industryAssignedID;
 
@@ -317,10 +317,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -346,10 +346,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -375,10 +375,10 @@ class ReferencedProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType $unitQuantity
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null $unitQuantity
      * @return self
      */
-    public function setUnitQuantity(QuantityType $unitQuantity): self
+    public function setUnitQuantity(?QuantityType $unitQuantity = null): self
     {
         $this->unitQuantity = $unitQuantity;
 

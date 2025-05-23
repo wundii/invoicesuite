@@ -10,7 +10,7 @@ class CodeType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class CodeType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class CodeType
     private $listID;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class CodeType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -70,10 +70,10 @@ class CodeType
     }
 
     /**
-     * @param string $listID
+     * @param string|null $listID
      * @return self
      */
-    public function setListID(string $listID): self
+    public function setListID(?string $listID = null): self
     {
         $this->listID = $listID;
 
@@ -89,10 +89,10 @@ class CodeType
     }
 
     /**
-     * @param string $listVersionID
+     * @param string|null $listVersionID
      * @return self
      */
-    public function setListVersionID(string $listVersionID): self
+    public function setListVersionID(?string $listVersionID = null): self
     {
         $this->listVersionID = $listVersionID;
 

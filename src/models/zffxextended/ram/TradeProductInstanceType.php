@@ -11,7 +11,7 @@ class TradeProductInstanceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class TradeProductInstanceType
     private $batchID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class TradeProductInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $batchID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $batchID
      * @return self
      */
-    public function setBatchID(IDType $batchID): self
+    public function setBatchID(?IDType $batchID = null): self
     {
         $this->batchID = $batchID;
 
@@ -80,10 +80,10 @@ class TradeProductInstanceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $supplierAssignedSerialID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $supplierAssignedSerialID
      * @return self
      */
-    public function setSupplierAssignedSerialID(IDType $supplierAssignedSerialID): self
+    public function setSupplierAssignedSerialID(?IDType $supplierAssignedSerialID = null): self
     {
         $this->supplierAssignedSerialID = $supplierAssignedSerialID;
 

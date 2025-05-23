@@ -12,7 +12,7 @@ class TradePartyType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxbasic\udt\IDType>")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TradePartyType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxbasic\udt\IDType>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TradePartyType
     private $globalID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\TextType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TradePartyType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\LegalOrganizationType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\LegalOrganizationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\LegalOrganizationType")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class TradePartyType
     private $specifiedLegalOrganization;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeAddressType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeAddressType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradeAddressType")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class TradePartyType
     private $postalTradeAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\UniversalCommunicationType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\UniversalCommunicationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\UniversalCommunicationType")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class TradePartyType
     private $uRIUniversalCommunication;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxbasic\ram\TaxRegistrationType>
+     * @var array<\horstoeko\invoicesuite\models\zffxbasic\ram\TaxRegistrationType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxbasic\ram\TaxRegistrationType>")
      * @JMS\Expose
@@ -100,10 +100,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType> $iD
+     * @param array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>|null $iD
      * @return self
      */
-    public function setID(array $iD): self
+    public function setID(?array $iD = null): self
     {
         $this->iD = $iD;
 
@@ -181,10 +181,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType> $globalID
+     * @param array<\horstoeko\invoicesuite\models\zffxbasic\udt\IDType>|null $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID): self
+    public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
 
@@ -272,10 +272,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -301,10 +301,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\LegalOrganizationType|null $specifiedLegalOrganization
      * @return self
      */
-    public function setSpecifiedLegalOrganization(LegalOrganizationType $specifiedLegalOrganization): self
+    public function setSpecifiedLegalOrganization(?LegalOrganizationType $specifiedLegalOrganization = null): self
     {
         $this->specifiedLegalOrganization = $specifiedLegalOrganization;
 
@@ -330,10 +330,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeAddressType $postalTradeAddress
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeAddressType|null $postalTradeAddress
      * @return self
      */
-    public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
+    public function setPostalTradeAddress(?TradeAddressType $postalTradeAddress = null): self
     {
         $this->postalTradeAddress = $postalTradeAddress;
 
@@ -359,10 +359,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\UniversalCommunicationType|null $uRIUniversalCommunication
      * @return self
      */
-    public function setURIUniversalCommunication(UniversalCommunicationType $uRIUniversalCommunication): self
+    public function setURIUniversalCommunication(?UniversalCommunicationType $uRIUniversalCommunication = null): self
     {
         $this->uRIUniversalCommunication = $uRIUniversalCommunication;
 
@@ -378,10 +378,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxbasic\ram\TaxRegistrationType> $specifiedTaxRegistration
+     * @param array<\horstoeko\invoicesuite\models\zffxbasic\ram\TaxRegistrationType>|null $specifiedTaxRegistration
      * @return self
      */
-    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration): self
+    public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null): self
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
 

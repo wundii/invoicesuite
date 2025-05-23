@@ -13,7 +13,7 @@ class TradePaymentTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\TextType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TradePaymentTermsType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TradePaymentTermsType
     private $dueDateDateTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\IDType")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -93,10 +93,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType $dueDateDateTime
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\DateTimeType|null $dueDateDateTime
      * @return self
      */
-    public function setDueDateDateTime(DateTimeType $dueDateDateTime): self
+    public function setDueDateDateTime(?DateTimeType $dueDateDateTime = null): self
     {
         $this->dueDateDateTime = $dueDateDateTime;
 
@@ -122,10 +122,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType $directDebitMandateID
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null $directDebitMandateID
      * @return self
      */
-    public function setDirectDebitMandateID(IDType $directDebitMandateID): self
+    public function setDirectDebitMandateID(?IDType $directDebitMandateID = null): self
     {
         $this->directDebitMandateID = $directDebitMandateID;
 

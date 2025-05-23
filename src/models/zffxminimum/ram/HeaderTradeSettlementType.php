@@ -11,7 +11,7 @@ class HeaderTradeSettlementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\qdt\CurrencyCodeType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\qdt\CurrencyCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\qdt\CurrencyCodeType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class HeaderTradeSettlementType
     private $invoiceCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class HeaderTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\qdt\CurrencyCodeType $invoiceCurrencyCode
+     * @param \horstoeko\invoicesuite\models\zffxminimum\qdt\CurrencyCodeType|null $invoiceCurrencyCode
      * @return self
      */
-    public function setInvoiceCurrencyCode(CurrencyCodeType $invoiceCurrencyCode): self
+    public function setInvoiceCurrencyCode(?CurrencyCodeType $invoiceCurrencyCode = null): self
     {
         $this->invoiceCurrencyCode = $invoiceCurrencyCode;
 
@@ -72,19 +72,19 @@ class HeaderTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(): TradeSettlementHeaderMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(
+    ): TradeSettlementHeaderMonetarySummationType {
         $this->specifiedTradeSettlementHeaderMonetarySummation = is_null($this->specifiedTradeSettlementHeaderMonetarySummation) ? new TradeSettlementHeaderMonetarySummationType() : $this->specifiedTradeSettlementHeaderMonetarySummation;
 
         return $this->specifiedTradeSettlementHeaderMonetarySummation;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation
+     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\TradeSettlementHeaderMonetarySummationType|null $specifiedTradeSettlementHeaderMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementHeaderMonetarySummation(
-        TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation,
+        ?TradeSettlementHeaderMonetarySummationType $specifiedTradeSettlementHeaderMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementHeaderMonetarySummation = $specifiedTradeSettlementHeaderMonetarySummation;
 

@@ -15,7 +15,7 @@ class TradeAllowanceChargeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class TradeAllowanceChargeType
     private $chargeIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class TradeAllowanceChargeType
     private $calculationPercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class TradeAllowanceChargeType
     private $basisAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class TradeAllowanceChargeType
     private $actualAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\AllowanceChargeReasonCodeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\AllowanceChargeReasonCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\AllowanceChargeReasonCodeType")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class TradeAllowanceChargeType
     private $reasonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class TradeAllowanceChargeType
     private $reason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType")
      * @JMS\Expose
@@ -110,10 +110,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType $chargeIndicator
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IndicatorType|null $chargeIndicator
      * @return self
      */
-    public function setChargeIndicator(IndicatorType $chargeIndicator): self
+    public function setChargeIndicator(?IndicatorType $chargeIndicator = null): self
     {
         $this->chargeIndicator = $chargeIndicator;
 
@@ -139,10 +139,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType $calculationPercent
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\PercentType|null $calculationPercent
      * @return self
      */
-    public function setCalculationPercent(PercentType $calculationPercent): self
+    public function setCalculationPercent(?PercentType $calculationPercent = null): self
     {
         $this->calculationPercent = $calculationPercent;
 
@@ -168,10 +168,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType $basisAmount
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType|null $basisAmount
      * @return self
      */
-    public function setBasisAmount(AmountType $basisAmount): self
+    public function setBasisAmount(?AmountType $basisAmount = null): self
     {
         $this->basisAmount = $basisAmount;
 
@@ -197,10 +197,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType $actualAmount
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\AmountType|null $actualAmount
      * @return self
      */
-    public function setActualAmount(AmountType $actualAmount): self
+    public function setActualAmount(?AmountType $actualAmount = null): self
     {
         $this->actualAmount = $actualAmount;
 
@@ -226,10 +226,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\AllowanceChargeReasonCodeType $reasonCode
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\AllowanceChargeReasonCodeType|null $reasonCode
      * @return self
      */
-    public function setReasonCode(AllowanceChargeReasonCodeType $reasonCode): self
+    public function setReasonCode(?AllowanceChargeReasonCodeType $reasonCode = null): self
     {
         $this->reasonCode = $reasonCode;
 
@@ -255,10 +255,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $reason
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $reason
      * @return self
      */
-    public function setReason(TextType $reason): self
+    public function setReason(?TextType $reason = null): self
     {
         $this->reason = $reason;
 
@@ -284,10 +284,10 @@ class TradeAllowanceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType $categoryTradeTax
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType|null $categoryTradeTax
      * @return self
      */
-    public function setCategoryTradeTax(TradeTaxType $categoryTradeTax): self
+    public function setCategoryTradeTax(?TradeTaxType $categoryTradeTax = null): self
     {
         $this->categoryTradeTax = $categoryTradeTax;
 

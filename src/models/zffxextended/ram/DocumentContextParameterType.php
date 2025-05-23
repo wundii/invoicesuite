@@ -11,7 +11,7 @@ class DocumentContextParameterType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class DocumentContextParameterType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 

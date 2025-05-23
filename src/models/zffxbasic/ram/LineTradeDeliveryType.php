@@ -11,7 +11,7 @@ class LineTradeDeliveryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType $billedQuantity
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\QuantityType|null $billedQuantity
      * @return self
      */
-    public function setBilledQuantity(QuantityType $billedQuantity): self
+    public function setBilledQuantity(?QuantityType $billedQuantity = null): self
     {
         $this->billedQuantity = $billedQuantity;
 

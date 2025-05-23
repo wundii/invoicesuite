@@ -13,7 +13,7 @@ class ExchangedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class ExchangedDocumentType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class ExchangedDocumentType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class ExchangedDocumentType
     private $issueDateTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType>")
      * @JMS\Expose
@@ -76,10 +76,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -105,10 +105,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(DocumentCodeType $typeCode): self
+    public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -134,10 +134,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType $issueDateTime
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null $issueDateTime
      * @return self
      */
-    public function setIssueDateTime(DateTimeType $issueDateTime): self
+    public function setIssueDateTime(?DateTimeType $issueDateTime = null): self
     {
         $this->issueDateTime = $issueDateTime;
 
@@ -153,10 +153,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType> $includedNote
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\NoteType>|null $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote): self
+    public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
 

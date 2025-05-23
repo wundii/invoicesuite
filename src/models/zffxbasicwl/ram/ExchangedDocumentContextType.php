@@ -10,7 +10,7 @@ class ExchangedDocumentContextType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class ExchangedDocumentContextType
     private $businessProcessSpecifiedDocumentContextParameter;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType")
      * @JMS\Expose
@@ -50,11 +50,11 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType|null $businessProcessSpecifiedDocumentContextParameter
      * @return self
      */
     public function setBusinessProcessSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter,
+        ?DocumentContextParameterType $businessProcessSpecifiedDocumentContextParameter = null,
     ): self {
         $this->businessProcessSpecifiedDocumentContextParameter = $businessProcessSpecifiedDocumentContextParameter;
 
@@ -80,11 +80,11 @@ class ExchangedDocumentContextType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\DocumentContextParameterType|null $guidelineSpecifiedDocumentContextParameter
      * @return self
      */
     public function setGuidelineSpecifiedDocumentContextParameter(
-        DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter,
+        ?DocumentContextParameterType $guidelineSpecifiedDocumentContextParameter = null,
     ): self {
         $this->guidelineSpecifiedDocumentContextParameter = $guidelineSpecifiedDocumentContextParameter;
 

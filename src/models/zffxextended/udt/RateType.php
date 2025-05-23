@@ -10,7 +10,7 @@ class RateType
     use HandlesObjectFlags;
 
     /**
-     * @var float
+     * @var float|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("float")
      * @JMS\Expose
@@ -29,10 +29,10 @@ class RateType
     }
 
     /**
-     * @param float $value
+     * @param float|null $value
      * @return self
      */
-    public function setValue(float $value): self
+    public function setValue(?float $value = null): self
     {
         $this->value = $value;
 

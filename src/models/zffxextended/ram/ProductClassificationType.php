@@ -12,7 +12,7 @@ class ProductClassificationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\CodeType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ProductClassificationType
     private $classCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ProductClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType $classCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null $classCode
      * @return self
      */
-    public function setClassCode(CodeType $classCode): self
+    public function setClassCode(?CodeType $classCode = null): self
     {
         $this->classCode = $classCode;
 
@@ -81,10 +81,10 @@ class ProductClassificationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $className
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $className
      * @return self
      */
-    public function setClassName(TextType $className): self
+    public function setClassName(?TextType $className = null): self
     {
         $this->className = $className;
 

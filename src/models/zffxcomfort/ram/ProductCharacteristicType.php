@@ -11,7 +11,7 @@ class ProductCharacteristicType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class ProductCharacteristicType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -80,10 +80,10 @@ class ProductCharacteristicType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $value
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $value
      * @return self
      */
-    public function setValue(TextType $value): self
+    public function setValue(?TextType $value = null): self
     {
         $this->value = $value;
 

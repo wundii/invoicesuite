@@ -12,7 +12,7 @@ class TradeSettlementPaymentMeansType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\PaymentMeansCodeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\PaymentMeansCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\PaymentMeansCodeType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradeSettlementPaymentMeansType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TradeSettlementPaymentMeansType
     private $information;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementFinancialCardType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementFinancialCardType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementFinancialCardType")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TradeSettlementPaymentMeansType
     private $applicableTradeSettlementFinancialCard;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\DebtorFinancialAccountType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\DebtorFinancialAccountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\DebtorFinancialAccountType")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class TradeSettlementPaymentMeansType
     private $payerPartyDebtorFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialAccountType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialAccountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialAccountType")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class TradeSettlementPaymentMeansType
     private $payeePartyCreditorFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialInstitutionType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialInstitutionType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialInstitutionType")
      * @JMS\Expose
@@ -96,10 +96,10 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\PaymentMeansCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\PaymentMeansCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(PaymentMeansCodeType $typeCode): self
+    public function setTypeCode(?PaymentMeansCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -125,10 +125,10 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $information
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $information
      * @return self
      */
-    public function setInformation(TextType $information): self
+    public function setInformation(?TextType $information = null): self
     {
         $this->information = $information;
 
@@ -154,11 +154,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementFinancialCardType|null $applicableTradeSettlementFinancialCard
      * @return self
      */
     public function setApplicableTradeSettlementFinancialCard(
-        TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard,
+        ?TradeSettlementFinancialCardType $applicableTradeSettlementFinancialCard = null,
     ): self {
         $this->applicableTradeSettlementFinancialCard = $applicableTradeSettlementFinancialCard;
 
@@ -184,11 +184,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\DebtorFinancialAccountType|null $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(
-        DebtorFinancialAccountType $payerPartyDebtorFinancialAccount,
+        ?DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null,
     ): self {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
 
@@ -214,11 +214,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialAccountType|null $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(
-        CreditorFinancialAccountType $payeePartyCreditorFinancialAccount,
+        ?CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null,
     ): self {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
 
@@ -244,11 +244,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\CreditorFinancialInstitutionType|null $payeeSpecifiedCreditorFinancialInstitution
      * @return self
      */
     public function setPayeeSpecifiedCreditorFinancialInstitution(
-        CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution,
+        ?CreditorFinancialInstitutionType $payeeSpecifiedCreditorFinancialInstitution = null,
     ): self {
         $this->payeeSpecifiedCreditorFinancialInstitution = $payeeSpecifiedCreditorFinancialInstitution;
 

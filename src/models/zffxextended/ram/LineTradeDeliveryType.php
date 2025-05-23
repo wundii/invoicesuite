@@ -11,7 +11,7 @@ class LineTradeDeliveryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\QuantityType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class LineTradeDeliveryType
     private $billedQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\QuantityType")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class LineTradeDeliveryType
     private $chargeFreeQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\QuantityType")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class LineTradeDeliveryType
     private $packageQuantity;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class LineTradeDeliveryType
     private $shipToTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class LineTradeDeliveryType
     private $ultimateShipToTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainEventType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainEventType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainEventType")
      * @JMS\Expose
@@ -77,7 +77,7 @@ class LineTradeDeliveryType
     private $actualDeliverySupplyChainEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -88,7 +88,7 @@ class LineTradeDeliveryType
     private $despatchAdviceReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -99,7 +99,7 @@ class LineTradeDeliveryType
     private $receivingAdviceReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -128,10 +128,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType $billedQuantity
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null $billedQuantity
      * @return self
      */
-    public function setBilledQuantity(QuantityType $billedQuantity): self
+    public function setBilledQuantity(?QuantityType $billedQuantity = null): self
     {
         $this->billedQuantity = $billedQuantity;
 
@@ -157,10 +157,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType $chargeFreeQuantity
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null $chargeFreeQuantity
      * @return self
      */
-    public function setChargeFreeQuantity(QuantityType $chargeFreeQuantity): self
+    public function setChargeFreeQuantity(?QuantityType $chargeFreeQuantity = null): self
     {
         $this->chargeFreeQuantity = $chargeFreeQuantity;
 
@@ -186,10 +186,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType $packageQuantity
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null $packageQuantity
      * @return self
      */
-    public function setPackageQuantity(QuantityType $packageQuantity): self
+    public function setPackageQuantity(?QuantityType $packageQuantity = null): self
     {
         $this->packageQuantity = $packageQuantity;
 
@@ -215,10 +215,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType $shipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null $shipToTradeParty
      * @return self
      */
-    public function setShipToTradeParty(TradePartyType $shipToTradeParty): self
+    public function setShipToTradeParty(?TradePartyType $shipToTradeParty = null): self
     {
         $this->shipToTradeParty = $shipToTradeParty;
 
@@ -244,10 +244,10 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType $ultimateShipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null $ultimateShipToTradeParty
      * @return self
      */
-    public function setUltimateShipToTradeParty(TradePartyType $ultimateShipToTradeParty): self
+    public function setUltimateShipToTradeParty(?TradePartyType $ultimateShipToTradeParty = null): self
     {
         $this->ultimateShipToTradeParty = $ultimateShipToTradeParty;
 
@@ -273,11 +273,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(SupplyChainEventType $actualDeliverySupplyChainEvent): self
-    {
+    public function setActualDeliverySupplyChainEvent(
+        ?SupplyChainEventType $actualDeliverySupplyChainEvent = null,
+    ): self {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
 
         return $this;
@@ -302,11 +303,11 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(
-        ReferencedDocumentType $despatchAdviceReferencedDocument,
+        ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
 
@@ -332,11 +333,11 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(
-        ReferencedDocumentType $receivingAdviceReferencedDocument,
+        ?ReferencedDocumentType $receivingAdviceReferencedDocument = null,
     ): self {
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
 
@@ -362,11 +363,12 @@ class LineTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $deliveryNoteReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $deliveryNoteReferencedDocument
      * @return self
      */
-    public function setDeliveryNoteReferencedDocument(ReferencedDocumentType $deliveryNoteReferencedDocument): self
-    {
+    public function setDeliveryNoteReferencedDocument(
+        ?ReferencedDocumentType $deliveryNoteReferencedDocument = null,
+    ): self {
         $this->deliveryNoteReferencedDocument = $deliveryNoteReferencedDocument;
 
         return $this;

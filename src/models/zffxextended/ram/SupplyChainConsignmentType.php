@@ -10,7 +10,7 @@ class SupplyChainConsignmentType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\LogisticsTransportMovementType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\LogisticsTransportMovementType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\LogisticsTransportMovementType>")
      * @JMS\Expose
@@ -30,10 +30,10 @@ class SupplyChainConsignmentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\LogisticsTransportMovementType> $specifiedLogisticsTransportMovement
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\LogisticsTransportMovementType>|null $specifiedLogisticsTransportMovement
      * @return self
      */
-    public function setSpecifiedLogisticsTransportMovement(array $specifiedLogisticsTransportMovement): self
+    public function setSpecifiedLogisticsTransportMovement(?array $specifiedLogisticsTransportMovement = null): self
     {
         $this->specifiedLogisticsTransportMovement = $specifiedLogisticsTransportMovement;
 

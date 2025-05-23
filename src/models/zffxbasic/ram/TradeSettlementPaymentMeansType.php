@@ -11,7 +11,7 @@ class TradeSettlementPaymentMeansType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\qdt\PaymentMeansCodeType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\qdt\PaymentMeansCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\qdt\PaymentMeansCodeType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class TradeSettlementPaymentMeansType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class TradeSettlementPaymentMeansType
     private $payerPartyDebtorFinancialAccount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType")
      * @JMS\Expose
@@ -62,10 +62,10 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\qdt\PaymentMeansCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxbasic\qdt\PaymentMeansCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(PaymentMeansCodeType $typeCode): self
+    public function setTypeCode(?PaymentMeansCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -91,11 +91,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType $payerPartyDebtorFinancialAccount
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\DebtorFinancialAccountType|null $payerPartyDebtorFinancialAccount
      * @return self
      */
     public function setPayerPartyDebtorFinancialAccount(
-        DebtorFinancialAccountType $payerPartyDebtorFinancialAccount,
+        ?DebtorFinancialAccountType $payerPartyDebtorFinancialAccount = null,
     ): self {
         $this->payerPartyDebtorFinancialAccount = $payerPartyDebtorFinancialAccount;
 
@@ -121,11 +121,11 @@ class TradeSettlementPaymentMeansType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType $payeePartyCreditorFinancialAccount
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\CreditorFinancialAccountType|null $payeePartyCreditorFinancialAccount
      * @return self
      */
     public function setPayeePartyCreditorFinancialAccount(
-        CreditorFinancialAccountType $payeePartyCreditorFinancialAccount,
+        ?CreditorFinancialAccountType $payeePartyCreditorFinancialAccount = null,
     ): self {
         $this->payeePartyCreditorFinancialAccount = $payeePartyCreditorFinancialAccount;
 

@@ -11,7 +11,7 @@ class TradeSettlementHeaderMonetarySummationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\AmountType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class TradeSettlementHeaderMonetarySummationType
     private $taxBasisTotalAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxminimum\udt\AmountType>
+     * @var array<\horstoeko\invoicesuite\models\zffxminimum\udt\AmountType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxminimum\udt\AmountType>")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TradeSettlementHeaderMonetarySummationType
     private $taxTotalAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\AmountType")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TradeSettlementHeaderMonetarySummationType
     private $grandTotalAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\AmountType")
      * @JMS\Expose
@@ -74,10 +74,10 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType $taxBasisTotalAmount
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null $taxBasisTotalAmount
      * @return self
      */
-    public function setTaxBasisTotalAmount(AmountType $taxBasisTotalAmount): self
+    public function setTaxBasisTotalAmount(?AmountType $taxBasisTotalAmount = null): self
     {
         $this->taxBasisTotalAmount = $taxBasisTotalAmount;
 
@@ -93,10 +93,10 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxminimum\udt\AmountType> $taxTotalAmount
+     * @param array<\horstoeko\invoicesuite\models\zffxminimum\udt\AmountType>|null $taxTotalAmount
      * @return self
      */
-    public function setTaxTotalAmount(array $taxTotalAmount): self
+    public function setTaxTotalAmount(?array $taxTotalAmount = null): self
     {
         $this->taxTotalAmount = $taxTotalAmount;
 
@@ -184,10 +184,10 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType $grandTotalAmount
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null $grandTotalAmount
      * @return self
      */
-    public function setGrandTotalAmount(AmountType $grandTotalAmount): self
+    public function setGrandTotalAmount(?AmountType $grandTotalAmount = null): self
     {
         $this->grandTotalAmount = $grandTotalAmount;
 
@@ -213,10 +213,10 @@ class TradeSettlementHeaderMonetarySummationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType $duePayableAmount
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\AmountType|null $duePayableAmount
      * @return self
      */
-    public function setDuePayableAmount(AmountType $duePayableAmount): self
+    public function setDuePayableAmount(?AmountType $duePayableAmount = null): self
     {
         $this->duePayableAmount = $duePayableAmount;
 

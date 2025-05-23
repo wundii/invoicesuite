@@ -12,7 +12,7 @@ class ReferencedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ReferencedDocumentType
     private $issuerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType $issuerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(IDType $issuerAssignedID): self
+    public function setIssuerAssignedID(?IDType $issuerAssignedID = null): self
     {
         $this->issuerAssignedID = $issuerAssignedID;
 
@@ -81,10 +81,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param \horstoeko\invoicesuite\models\zffxbasic\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(FormattedDateTimeType $formattedIssueDateTime): self
+    public function setFormattedIssueDateTime(?FormattedDateTimeType $formattedIssueDateTime = null): self
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
 

@@ -10,7 +10,7 @@ class LineTradeAgreementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineTradeAgreementType
     private $sellerOrderReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class LineTradeAgreementType
     private $buyerOrderReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class LineTradeAgreementType
     private $quotationReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class LineTradeAgreementType
     private $contractReferencedDocument;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class LineTradeAgreementType
     private $additionalReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType")
      * @JMS\Expose
@@ -77,7 +77,7 @@ class LineTradeAgreementType
     private $grossPriceProductTradePrice;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType")
      * @JMS\Expose
@@ -88,7 +88,7 @@ class LineTradeAgreementType
     private $netPriceProductTradePrice;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>")
      * @JMS\Expose
@@ -118,11 +118,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $sellerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $sellerOrderReferencedDocument
      * @return self
      */
-    public function setSellerOrderReferencedDocument(ReferencedDocumentType $sellerOrderReferencedDocument): self
-    {
+    public function setSellerOrderReferencedDocument(
+        ?ReferencedDocumentType $sellerOrderReferencedDocument = null,
+    ): self {
         $this->sellerOrderReferencedDocument = $sellerOrderReferencedDocument;
 
         return $this;
@@ -147,11 +148,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
-    {
+    public function setBuyerOrderReferencedDocument(
+        ?ReferencedDocumentType $buyerOrderReferencedDocument = null,
+    ): self {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
 
         return $this;
@@ -176,10 +178,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $quotationReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $quotationReferencedDocument
      * @return self
      */
-    public function setQuotationReferencedDocument(ReferencedDocumentType $quotationReferencedDocument): self
+    public function setQuotationReferencedDocument(?ReferencedDocumentType $quotationReferencedDocument = null): self
     {
         $this->quotationReferencedDocument = $quotationReferencedDocument;
 
@@ -205,10 +207,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $contractReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $contractReferencedDocument
      * @return self
      */
-    public function setContractReferencedDocument(ReferencedDocumentType $contractReferencedDocument): self
+    public function setContractReferencedDocument(?ReferencedDocumentType $contractReferencedDocument = null): self
     {
         $this->contractReferencedDocument = $contractReferencedDocument;
 
@@ -224,10 +226,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType> $additionalReferencedDocument
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null $additionalReferencedDocument
      * @return self
      */
-    public function setAdditionalReferencedDocument(array $additionalReferencedDocument): self
+    public function setAdditionalReferencedDocument(?array $additionalReferencedDocument = null): self
     {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
 
@@ -315,10 +317,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType $grossPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType|null $grossPriceProductTradePrice
      * @return self
      */
-    public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
+    public function setGrossPriceProductTradePrice(?TradePriceType $grossPriceProductTradePrice = null): self
     {
         $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
 
@@ -344,10 +346,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType $netPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePriceType|null $netPriceProductTradePrice
      * @return self
      */
-    public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
+    public function setNetPriceProductTradePrice(?TradePriceType $netPriceProductTradePrice = null): self
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
 
@@ -363,11 +365,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType> $ultimateCustomerOrderReferencedDocument
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>|null $ultimateCustomerOrderReferencedDocument
      * @return self
      */
-    public function setUltimateCustomerOrderReferencedDocument(array $ultimateCustomerOrderReferencedDocument): self
-    {
+    public function setUltimateCustomerOrderReferencedDocument(
+        ?array $ultimateCustomerOrderReferencedDocument = null,
+    ): self {
         $this->ultimateCustomerOrderReferencedDocument = $ultimateCustomerOrderReferencedDocument;
 
         return $this;

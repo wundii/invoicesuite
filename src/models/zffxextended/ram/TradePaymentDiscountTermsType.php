@@ -14,7 +14,7 @@ class TradePaymentDiscountTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TradePaymentDiscountTermsType
     private $basisDateTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\MeasureType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\MeasureType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\MeasureType")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TradePaymentDiscountTermsType
     private $basisPeriodMeasure;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TradePaymentDiscountTermsType
     private $basisAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\PercentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\PercentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\PercentType")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class TradePaymentDiscountTermsType
     private $calculationPercent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType $basisDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null $basisDateTime
      * @return self
      */
-    public function setBasisDateTime(DateTimeType $basisDateTime): self
+    public function setBasisDateTime(?DateTimeType $basisDateTime = null): self
     {
         $this->basisDateTime = $basisDateTime;
 
@@ -116,10 +116,10 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\MeasureType $basisPeriodMeasure
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\MeasureType|null $basisPeriodMeasure
      * @return self
      */
-    public function setBasisPeriodMeasure(MeasureType $basisPeriodMeasure): self
+    public function setBasisPeriodMeasure(?MeasureType $basisPeriodMeasure = null): self
     {
         $this->basisPeriodMeasure = $basisPeriodMeasure;
 
@@ -145,10 +145,10 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $basisAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $basisAmount
      * @return self
      */
-    public function setBasisAmount(AmountType $basisAmount): self
+    public function setBasisAmount(?AmountType $basisAmount = null): self
     {
         $this->basisAmount = $basisAmount;
 
@@ -174,10 +174,10 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\PercentType $calculationPercent
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\PercentType|null $calculationPercent
      * @return self
      */
-    public function setCalculationPercent(PercentType $calculationPercent): self
+    public function setCalculationPercent(?PercentType $calculationPercent = null): self
     {
         $this->calculationPercent = $calculationPercent;
 
@@ -203,10 +203,10 @@ class TradePaymentDiscountTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $actualDiscountAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $actualDiscountAmount
      * @return self
      */
-    public function setActualDiscountAmount(AmountType $actualDiscountAmount): self
+    public function setActualDiscountAmount(?AmountType $actualDiscountAmount = null): self
     {
         $this->actualDiscountAmount = $actualDiscountAmount;
 

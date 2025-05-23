@@ -12,7 +12,7 @@ class ProcuringProjectType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class ProcuringProjectType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class ProcuringProjectType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -81,10 +81,10 @@ class ProcuringProjectType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 

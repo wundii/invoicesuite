@@ -10,7 +10,7 @@ class IDType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class IDType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class IDType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -59,10 +59,10 @@ class IDType
     }
 
     /**
-     * @param string $schemeID
+     * @param string|null $schemeID
      * @return self
      */
-    public function setSchemeID(string $schemeID): self
+    public function setSchemeID(?string $schemeID = null): self
     {
         $this->schemeID = $schemeID;
 

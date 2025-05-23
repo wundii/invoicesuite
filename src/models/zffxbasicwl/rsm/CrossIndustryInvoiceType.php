@@ -21,7 +21,7 @@ class CrossIndustryInvoiceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentContextType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentContextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentContextType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class CrossIndustryInvoiceType
     private $exchangedDocumentContext;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentType")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class CrossIndustryInvoiceType
     private $exchangedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeTransactionType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeTransactionType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeTransactionType")
      * @JMS\Expose
@@ -72,10 +72,10 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentContextType $exchangedDocumentContext
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentContextType|null $exchangedDocumentContext
      * @return self
      */
-    public function setExchangedDocumentContext(ExchangedDocumentContextType $exchangedDocumentContext): self
+    public function setExchangedDocumentContext(?ExchangedDocumentContextType $exchangedDocumentContext = null): self
     {
         $this->exchangedDocumentContext = $exchangedDocumentContext;
 
@@ -101,10 +101,10 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentType $exchangedDocument
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\ExchangedDocumentType|null $exchangedDocument
      * @return self
      */
-    public function setExchangedDocument(ExchangedDocumentType $exchangedDocument): self
+    public function setExchangedDocument(?ExchangedDocumentType $exchangedDocument = null): self
     {
         $this->exchangedDocument = $exchangedDocument;
 
@@ -130,11 +130,12 @@ class CrossIndustryInvoiceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeTransactionType $supplyChainTradeTransaction
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\ram\SupplyChainTradeTransactionType|null $supplyChainTradeTransaction
      * @return self
      */
-    public function setSupplyChainTradeTransaction(SupplyChainTradeTransactionType $supplyChainTradeTransaction): self
-    {
+    public function setSupplyChainTradeTransaction(
+        ?SupplyChainTradeTransactionType $supplyChainTradeTransaction = null,
+    ): self {
         $this->supplyChainTradeTransaction = $supplyChainTradeTransaction;
 
         return $this;

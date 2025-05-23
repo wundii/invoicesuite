@@ -12,7 +12,7 @@ class AdvancePaymentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class AdvancePaymentType
     private $paidAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class AdvancePaymentType
     private $formattedReceivedDateTime;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class AdvancePaymentType
     private $includedTradeTax;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $paidAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $paidAmount
      * @return self
      */
-    public function setPaidAmount(AmountType $paidAmount): self
+    public function setPaidAmount(?AmountType $paidAmount = null): self
     {
         $this->paidAmount = $paidAmount;
 
@@ -104,10 +104,10 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType $formattedReceivedDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\FormattedDateTimeType|null $formattedReceivedDateTime
      * @return self
      */
-    public function setFormattedReceivedDateTime(FormattedDateTimeType $formattedReceivedDateTime): self
+    public function setFormattedReceivedDateTime(?FormattedDateTimeType $formattedReceivedDateTime = null): self
     {
         $this->formattedReceivedDateTime = $formattedReceivedDateTime;
 
@@ -123,10 +123,10 @@ class AdvancePaymentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType> $includedTradeTax
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null $includedTradeTax
      * @return self
      */
-    public function setIncludedTradeTax(array $includedTradeTax): self
+    public function setIncludedTradeTax(?array $includedTradeTax = null): self
     {
         $this->includedTradeTax = $includedTradeTax;
 
@@ -214,11 +214,11 @@ class AdvancePaymentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType $invoiceSpecifiedReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType|null $invoiceSpecifiedReferencedDocument
      * @return self
      */
     public function setInvoiceSpecifiedReferencedDocument(
-        ReferencedDocumentType $invoiceSpecifiedReferencedDocument,
+        ?ReferencedDocumentType $invoiceSpecifiedReferencedDocument = null,
     ): self {
         $this->invoiceSpecifiedReferencedDocument = $invoiceSpecifiedReferencedDocument;
 

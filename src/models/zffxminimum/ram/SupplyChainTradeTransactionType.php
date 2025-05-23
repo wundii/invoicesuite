@@ -10,7 +10,7 @@ class SupplyChainTradeTransactionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeAgreementType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeAgreementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeAgreementType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class SupplyChainTradeTransactionType
     private $applicableHeaderTradeAgreement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeDeliveryType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeDeliveryType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeDeliveryType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class SupplyChainTradeTransactionType
     private $applicableHeaderTradeDelivery;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeSettlementType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeSettlementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeSettlementType")
      * @JMS\Expose
@@ -61,11 +61,12 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeAgreementType|null $applicableHeaderTradeAgreement
      * @return self
      */
-    public function setApplicableHeaderTradeAgreement(HeaderTradeAgreementType $applicableHeaderTradeAgreement): self
-    {
+    public function setApplicableHeaderTradeAgreement(
+        ?HeaderTradeAgreementType $applicableHeaderTradeAgreement = null,
+    ): self {
         $this->applicableHeaderTradeAgreement = $applicableHeaderTradeAgreement;
 
         return $this;
@@ -90,11 +91,12 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeDeliveryType|null $applicableHeaderTradeDelivery
      * @return self
      */
-    public function setApplicableHeaderTradeDelivery(HeaderTradeDeliveryType $applicableHeaderTradeDelivery): self
-    {
+    public function setApplicableHeaderTradeDelivery(
+        ?HeaderTradeDeliveryType $applicableHeaderTradeDelivery = null,
+    ): self {
         $this->applicableHeaderTradeDelivery = $applicableHeaderTradeDelivery;
 
         return $this;
@@ -119,11 +121,11 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @param \horstoeko\invoicesuite\models\zffxminimum\ram\HeaderTradeSettlementType|null $applicableHeaderTradeSettlement
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(
-        HeaderTradeSettlementType $applicableHeaderTradeSettlement,
+        ?HeaderTradeSettlementType $applicableHeaderTradeSettlement = null,
     ): self {
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
 

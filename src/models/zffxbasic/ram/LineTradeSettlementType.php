@@ -10,7 +10,7 @@ class LineTradeSettlementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeTaxType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeTaxType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradeTaxType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineTradeSettlementType
     private $applicableTradeTax;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class LineTradeSettlementType
     private $billingSpecifiedPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType>
+     * @var array<\horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType>")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class LineTradeSettlementType
     private $specifiedTradeAllowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType")
      * @JMS\Expose
@@ -73,10 +73,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeTaxType $applicableTradeTax
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeTaxType|null $applicableTradeTax
      * @return self
      */
-    public function setApplicableTradeTax(TradeTaxType $applicableTradeTax): self
+    public function setApplicableTradeTax(?TradeTaxType $applicableTradeTax = null): self
     {
         $this->applicableTradeTax = $applicableTradeTax;
 
@@ -102,10 +102,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\SpecifiedPeriodType|null $billingSpecifiedPeriod
      * @return self
      */
-    public function setBillingSpecifiedPeriod(SpecifiedPeriodType $billingSpecifiedPeriod): self
+    public function setBillingSpecifiedPeriod(?SpecifiedPeriodType $billingSpecifiedPeriod = null): self
     {
         $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
 
@@ -121,10 +121,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType> $specifiedTradeAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\zffxbasic\ram\TradeAllowanceChargeType>|null $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge): self
+    public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null): self
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
 
@@ -205,19 +205,19 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
+    ): TradeSettlementLineMonetarySummationType {
         $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradeSettlementLineMonetarySummationType|null $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(
-        TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation,
+        ?TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
 

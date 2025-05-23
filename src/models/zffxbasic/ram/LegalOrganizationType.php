@@ -12,7 +12,7 @@ class LegalOrganizationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class LegalOrganizationType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class LegalOrganizationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -81,10 +81,10 @@ class LegalOrganizationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType $tradingBusinessName
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null $tradingBusinessName
      * @return self
      */
-    public function setTradingBusinessName(TextType $tradingBusinessName): self
+    public function setTradingBusinessName(?TextType $tradingBusinessName = null): self
     {
         $this->tradingBusinessName = $tradingBusinessName;
 

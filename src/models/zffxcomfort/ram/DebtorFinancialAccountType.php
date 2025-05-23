@@ -11,7 +11,7 @@ class DebtorFinancialAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class DebtorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $iBANID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $iBANID
      * @return self
      */
-    public function setIBANID(IDType $iBANID): self
+    public function setIBANID(?IDType $iBANID = null): self
     {
         $this->iBANID = $iBANID;
 

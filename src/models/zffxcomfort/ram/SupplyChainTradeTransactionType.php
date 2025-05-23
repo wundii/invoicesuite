@@ -10,7 +10,7 @@ class SupplyChainTradeTransactionType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeLineItemType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeLineItemType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeLineItemType>")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class SupplyChainTradeTransactionType
     private $includedSupplyChainTradeLineItem;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeAgreementType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeAgreementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeAgreementType")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class SupplyChainTradeTransactionType
     private $applicableHeaderTradeAgreement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeDeliveryType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeDeliveryType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeDeliveryType")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class SupplyChainTradeTransactionType
     private $applicableHeaderTradeDelivery;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeSettlementType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeSettlementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeSettlementType")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeLineItemType> $includedSupplyChainTradeLineItem
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainTradeLineItemType>|null $includedSupplyChainTradeLineItem
      * @return self
      */
-    public function setIncludedSupplyChainTradeLineItem(array $includedSupplyChainTradeLineItem): self
+    public function setIncludedSupplyChainTradeLineItem(?array $includedSupplyChainTradeLineItem = null): self
     {
         $this->includedSupplyChainTradeLineItem = $includedSupplyChainTradeLineItem;
 
@@ -156,11 +156,12 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeAgreementType $applicableHeaderTradeAgreement
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeAgreementType|null $applicableHeaderTradeAgreement
      * @return self
      */
-    public function setApplicableHeaderTradeAgreement(HeaderTradeAgreementType $applicableHeaderTradeAgreement): self
-    {
+    public function setApplicableHeaderTradeAgreement(
+        ?HeaderTradeAgreementType $applicableHeaderTradeAgreement = null,
+    ): self {
         $this->applicableHeaderTradeAgreement = $applicableHeaderTradeAgreement;
 
         return $this;
@@ -185,11 +186,12 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeDeliveryType $applicableHeaderTradeDelivery
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeDeliveryType|null $applicableHeaderTradeDelivery
      * @return self
      */
-    public function setApplicableHeaderTradeDelivery(HeaderTradeDeliveryType $applicableHeaderTradeDelivery): self
-    {
+    public function setApplicableHeaderTradeDelivery(
+        ?HeaderTradeDeliveryType $applicableHeaderTradeDelivery = null,
+    ): self {
         $this->applicableHeaderTradeDelivery = $applicableHeaderTradeDelivery;
 
         return $this;
@@ -214,11 +216,11 @@ class SupplyChainTradeTransactionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeSettlementType $applicableHeaderTradeSettlement
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\HeaderTradeSettlementType|null $applicableHeaderTradeSettlement
      * @return self
      */
     public function setApplicableHeaderTradeSettlement(
-        HeaderTradeSettlementType $applicableHeaderTradeSettlement,
+        ?HeaderTradeSettlementType $applicableHeaderTradeSettlement = null,
     ): self {
         $this->applicableHeaderTradeSettlement = $applicableHeaderTradeSettlement;
 

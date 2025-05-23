@@ -11,7 +11,7 @@ class TradeDeliveryTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\DeliveryTermsCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\DeliveryTermsCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\DeliveryTermsCodeType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class TradeDeliveryTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\DeliveryTermsCodeType $deliveryTypeCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\DeliveryTermsCodeType|null $deliveryTypeCode
      * @return self
      */
-    public function setDeliveryTypeCode(DeliveryTermsCodeType $deliveryTypeCode): self
+    public function setDeliveryTypeCode(?DeliveryTermsCodeType $deliveryTypeCode = null): self
     {
         $this->deliveryTypeCode = $deliveryTypeCode;
 

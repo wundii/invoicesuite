@@ -11,7 +11,7 @@ class TradeAccountingAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class TradeAccountingAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 

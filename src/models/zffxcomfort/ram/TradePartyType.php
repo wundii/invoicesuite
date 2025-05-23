@@ -12,7 +12,7 @@ class TradePartyType
     use HandlesObjectFlags;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TradePartyType
     private $iD;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TradePartyType
     private $globalID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TradePartyType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class TradePartyType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LegalOrganizationType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LegalOrganizationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\LegalOrganizationType")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class TradePartyType
     private $specifiedLegalOrganization;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class TradePartyType
     private $definedTradeContact;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAddressType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAddressType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAddressType")
      * @JMS\Expose
@@ -91,7 +91,7 @@ class TradePartyType
     private $postalTradeAddress;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType")
      * @JMS\Expose
@@ -102,7 +102,7 @@ class TradePartyType
     private $uRIUniversalCommunication;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType>")
      * @JMS\Expose
@@ -122,10 +122,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType> $iD
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>|null $iD
      * @return self
      */
-    public function setID(array $iD): self
+    public function setID(?array $iD = null): self
     {
         $this->iD = $iD;
 
@@ -203,10 +203,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType> $globalID
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\udt\IDType>|null $globalID
      * @return self
      */
-    public function setGlobalID(array $globalID): self
+    public function setGlobalID(?array $globalID = null): self
     {
         $this->globalID = $globalID;
 
@@ -294,10 +294,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -323,10 +323,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -352,10 +352,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LegalOrganizationType $specifiedLegalOrganization
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LegalOrganizationType|null $specifiedLegalOrganization
      * @return self
      */
-    public function setSpecifiedLegalOrganization(LegalOrganizationType $specifiedLegalOrganization): self
+    public function setSpecifiedLegalOrganization(?LegalOrganizationType $specifiedLegalOrganization = null): self
     {
         $this->specifiedLegalOrganization = $specifiedLegalOrganization;
 
@@ -381,10 +381,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType $definedTradeContact
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeContactType|null $definedTradeContact
      * @return self
      */
-    public function setDefinedTradeContact(TradeContactType $definedTradeContact): self
+    public function setDefinedTradeContact(?TradeContactType $definedTradeContact = null): self
     {
         $this->definedTradeContact = $definedTradeContact;
 
@@ -410,10 +410,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAddressType $postalTradeAddress
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAddressType|null $postalTradeAddress
      * @return self
      */
-    public function setPostalTradeAddress(TradeAddressType $postalTradeAddress): self
+    public function setPostalTradeAddress(?TradeAddressType $postalTradeAddress = null): self
     {
         $this->postalTradeAddress = $postalTradeAddress;
 
@@ -439,10 +439,10 @@ class TradePartyType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType $uRIUniversalCommunication
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\UniversalCommunicationType|null $uRIUniversalCommunication
      * @return self
      */
-    public function setURIUniversalCommunication(UniversalCommunicationType $uRIUniversalCommunication): self
+    public function setURIUniversalCommunication(?UniversalCommunicationType $uRIUniversalCommunication = null): self
     {
         $this->uRIUniversalCommunication = $uRIUniversalCommunication;
 
@@ -458,10 +458,10 @@ class TradePartyType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType> $specifiedTaxRegistration
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TaxRegistrationType>|null $specifiedTaxRegistration
      * @return self
      */
-    public function setSpecifiedTaxRegistration(array $specifiedTaxRegistration): self
+    public function setSpecifiedTaxRegistration(?array $specifiedTaxRegistration = null): self
     {
         $this->specifiedTaxRegistration = $specifiedTaxRegistration;
 

@@ -12,7 +12,7 @@ class TradeAccountingAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradeAccountingAccountType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class TradeAccountingAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -81,10 +81,10 @@ class TradeAccountingAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\AccountingAccountTypeCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(AccountingAccountTypeCodeType $typeCode): self
+    public function setTypeCode(?AccountingAccountTypeCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 

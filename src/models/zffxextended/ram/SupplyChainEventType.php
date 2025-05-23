@@ -11,7 +11,7 @@ class SupplyChainEventType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class SupplyChainEventType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType $occurrenceDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null $occurrenceDateTime
      * @return self
      */
-    public function setOccurrenceDateTime(DateTimeType $occurrenceDateTime): self
+    public function setOccurrenceDateTime(?DateTimeType $occurrenceDateTime = null): self
     {
         $this->occurrenceDateTime = $occurrenceDateTime;
 

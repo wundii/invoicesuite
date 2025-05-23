@@ -10,7 +10,7 @@ class BinaryObjectType
     use HandlesObjectFlags;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class BinaryObjectType
     private $value;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class BinaryObjectType
     private $mimeCode;
 
     /**
-     * @var string
+     * @var string|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("string")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return self
      */
-    public function setValue(string $value): self
+    public function setValue(?string $value = null): self
     {
         $this->value = $value;
 
@@ -70,10 +70,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $mimeCode
+     * @param string|null $mimeCode
      * @return self
      */
-    public function setMimeCode(string $mimeCode): self
+    public function setMimeCode(?string $mimeCode = null): self
     {
         $this->mimeCode = $mimeCode;
 
@@ -89,10 +89,10 @@ class BinaryObjectType
     }
 
     /**
-     * @param string $filename
+     * @param string|null $filename
      * @return self
      */
-    public function setFilename(string $filename): self
+    public function setFilename(?string $filename = null): self
     {
         $this->filename = $filename;
 

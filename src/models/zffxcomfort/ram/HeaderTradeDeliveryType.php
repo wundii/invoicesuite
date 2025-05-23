@@ -10,7 +10,7 @@ class HeaderTradeDeliveryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class HeaderTradeDeliveryType
     private $shipToTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class HeaderTradeDeliveryType
     private $actualDeliverySupplyChainEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class HeaderTradeDeliveryType
     private $despatchAdviceReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -72,10 +72,10 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType $shipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePartyType|null $shipToTradeParty
      * @return self
      */
-    public function setShipToTradeParty(TradePartyType $shipToTradeParty): self
+    public function setShipToTradeParty(?TradePartyType $shipToTradeParty = null): self
     {
         $this->shipToTradeParty = $shipToTradeParty;
 
@@ -101,11 +101,12 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(SupplyChainEventType $actualDeliverySupplyChainEvent): self
-    {
+    public function setActualDeliverySupplyChainEvent(
+        ?SupplyChainEventType $actualDeliverySupplyChainEvent = null,
+    ): self {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
 
         return $this;
@@ -130,11 +131,11 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(
-        ReferencedDocumentType $despatchAdviceReferencedDocument,
+        ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
 
@@ -160,11 +161,11 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType $receivingAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null $receivingAdviceReferencedDocument
      * @return self
      */
     public function setReceivingAdviceReferencedDocument(
-        ReferencedDocumentType $receivingAdviceReferencedDocument,
+        ?ReferencedDocumentType $receivingAdviceReferencedDocument = null,
     ): self {
         $this->receivingAdviceReferencedDocument = $receivingAdviceReferencedDocument;
 

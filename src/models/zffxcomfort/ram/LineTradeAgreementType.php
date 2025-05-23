@@ -10,7 +10,7 @@ class LineTradeAgreementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineTradeAgreementType
     private $buyerOrderReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class LineTradeAgreementType
     private $grossPriceProductTradePrice;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType")
      * @JMS\Expose
@@ -61,11 +61,12 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
-    {
+    public function setBuyerOrderReferencedDocument(
+        ?ReferencedDocumentType $buyerOrderReferencedDocument = null,
+    ): self {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
 
         return $this;
@@ -90,10 +91,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType $grossPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null $grossPriceProductTradePrice
      * @return self
      */
-    public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
+    public function setGrossPriceProductTradePrice(?TradePriceType $grossPriceProductTradePrice = null): self
     {
         $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
 
@@ -119,10 +120,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType $netPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradePriceType|null $netPriceProductTradePrice
      * @return self
      */
-    public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
+    public function setNetPriceProductTradePrice(?TradePriceType $netPriceProductTradePrice = null): self
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
 

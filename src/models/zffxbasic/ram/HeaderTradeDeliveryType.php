@@ -10,7 +10,7 @@ class HeaderTradeDeliveryType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class HeaderTradeDeliveryType
     private $shipToTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class HeaderTradeDeliveryType
     private $actualDeliverySupplyChainEvent;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -61,10 +61,10 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType $shipToTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null $shipToTradeParty
      * @return self
      */
-    public function setShipToTradeParty(TradePartyType $shipToTradeParty): self
+    public function setShipToTradeParty(?TradePartyType $shipToTradeParty = null): self
     {
         $this->shipToTradeParty = $shipToTradeParty;
 
@@ -90,11 +90,12 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType $actualDeliverySupplyChainEvent
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\SupplyChainEventType|null $actualDeliverySupplyChainEvent
      * @return self
      */
-    public function setActualDeliverySupplyChainEvent(SupplyChainEventType $actualDeliverySupplyChainEvent): self
-    {
+    public function setActualDeliverySupplyChainEvent(
+        ?SupplyChainEventType $actualDeliverySupplyChainEvent = null,
+    ): self {
         $this->actualDeliverySupplyChainEvent = $actualDeliverySupplyChainEvent;
 
         return $this;
@@ -119,11 +120,11 @@ class HeaderTradeDeliveryType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType $despatchAdviceReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null $despatchAdviceReferencedDocument
      * @return self
      */
     public function setDespatchAdviceReferencedDocument(
-        ReferencedDocumentType $despatchAdviceReferencedDocument,
+        ?ReferencedDocumentType $despatchAdviceReferencedDocument = null,
     ): self {
         $this->despatchAdviceReferencedDocument = $despatchAdviceReferencedDocument;
 

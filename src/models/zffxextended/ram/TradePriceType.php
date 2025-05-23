@@ -12,7 +12,7 @@ class TradePriceType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradePriceType
     private $chargeAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\QuantityType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TradePriceType
     private $basisQuantity;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class TradePriceType
     private $appliedTradeAllowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $chargeAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $chargeAmount
      * @return self
      */
-    public function setChargeAmount(AmountType $chargeAmount): self
+    public function setChargeAmount(?AmountType $chargeAmount = null): self
     {
         $this->chargeAmount = $chargeAmount;
 
@@ -104,10 +104,10 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType $basisQuantity
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\QuantityType|null $basisQuantity
      * @return self
      */
-    public function setBasisQuantity(QuantityType $basisQuantity): self
+    public function setBasisQuantity(?QuantityType $basisQuantity = null): self
     {
         $this->basisQuantity = $basisQuantity;
 
@@ -123,10 +123,10 @@ class TradePriceType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType> $appliedTradeAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>|null $appliedTradeAllowanceCharge
      * @return self
      */
-    public function setAppliedTradeAllowanceCharge(array $appliedTradeAllowanceCharge): self
+    public function setAppliedTradeAllowanceCharge(?array $appliedTradeAllowanceCharge = null): self
     {
         $this->appliedTradeAllowanceCharge = $appliedTradeAllowanceCharge;
 
@@ -214,10 +214,10 @@ class TradePriceType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType $includedTradeTax
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType|null $includedTradeTax
      * @return self
      */
-    public function setIncludedTradeTax(TradeTaxType $includedTradeTax): self
+    public function setIncludedTradeTax(?TradeTaxType $includedTradeTax = null): self
     {
         $this->includedTradeTax = $includedTradeTax;
 

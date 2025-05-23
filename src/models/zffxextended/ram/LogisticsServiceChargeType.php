@@ -12,7 +12,7 @@ class LogisticsServiceChargeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class LogisticsServiceChargeType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class LogisticsServiceChargeType
     private $appliedAmount;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>")
      * @JMS\Expose
@@ -64,10 +64,10 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -93,10 +93,10 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $appliedAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $appliedAmount
      * @return self
      */
-    public function setAppliedAmount(AmountType $appliedAmount): self
+    public function setAppliedAmount(?AmountType $appliedAmount = null): self
     {
         $this->appliedAmount = $appliedAmount;
 
@@ -112,10 +112,10 @@ class LogisticsServiceChargeType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType> $appliedTradeTax
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>|null $appliedTradeTax
      * @return self
      */
-    public function setAppliedTradeTax(array $appliedTradeTax): self
+    public function setAppliedTradeTax(?array $appliedTradeTax = null): self
     {
         $this->appliedTradeTax = $appliedTradeTax;
 

@@ -13,7 +13,7 @@ class TradeCurrencyExchangeType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class TradeCurrencyExchangeType
     private $sourceCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class TradeCurrencyExchangeType
     private $targetCurrencyCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\RateType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\RateType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\RateType")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class TradeCurrencyExchangeType
     private $conversionRate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType")
      * @JMS\Expose
@@ -75,10 +75,10 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType $sourceCurrencyCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null $sourceCurrencyCode
      * @return self
      */
-    public function setSourceCurrencyCode(CurrencyCodeType $sourceCurrencyCode): self
+    public function setSourceCurrencyCode(?CurrencyCodeType $sourceCurrencyCode = null): self
     {
         $this->sourceCurrencyCode = $sourceCurrencyCode;
 
@@ -104,10 +104,10 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType $targetCurrencyCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\CurrencyCodeType|null $targetCurrencyCode
      * @return self
      */
-    public function setTargetCurrencyCode(CurrencyCodeType $targetCurrencyCode): self
+    public function setTargetCurrencyCode(?CurrencyCodeType $targetCurrencyCode = null): self
     {
         $this->targetCurrencyCode = $targetCurrencyCode;
 
@@ -133,10 +133,10 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\RateType $conversionRate
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\RateType|null $conversionRate
      * @return self
      */
-    public function setConversionRate(RateType $conversionRate): self
+    public function setConversionRate(?RateType $conversionRate = null): self
     {
         $this->conversionRate = $conversionRate;
 
@@ -162,10 +162,10 @@ class TradeCurrencyExchangeType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType $conversionRateDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null $conversionRateDateTime
      * @return self
      */
-    public function setConversionRateDateTime(DateTimeType $conversionRateDateTime): self
+    public function setConversionRateDateTime(?DateTimeType $conversionRateDateTime = null): self
     {
         $this->conversionRateDateTime = $conversionRateDateTime;
 

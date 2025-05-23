@@ -12,7 +12,7 @@ class TradeSettlementFinancialCardType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradeSettlementFinancialCardType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class TradeSettlementFinancialCardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -81,10 +81,10 @@ class TradeSettlementFinancialCardType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $cardholderName
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $cardholderName
      * @return self
      */
-    public function setCardholderName(TextType $cardholderName): self
+    public function setCardholderName(?TextType $cardholderName = null): self
     {
         $this->cardholderName = $cardholderName;
 

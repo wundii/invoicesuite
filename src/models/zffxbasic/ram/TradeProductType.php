@@ -12,7 +12,7 @@ class TradeProductType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradeProductType
     private $globalID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType $globalID
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\IDType|null $globalID
      * @return self
      */
-    public function setGlobalID(IDType $globalID): self
+    public function setGlobalID(?IDType $globalID = null): self
     {
         $this->globalID = $globalID;
 
@@ -81,10 +81,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 

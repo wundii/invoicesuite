@@ -18,7 +18,7 @@ class TradeTaxType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -29,7 +29,7 @@ class TradeTaxType
     private $calculatedAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TaxTypeCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TaxTypeCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\TaxTypeCodeType")
      * @JMS\Expose
@@ -40,7 +40,7 @@ class TradeTaxType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -51,7 +51,7 @@ class TradeTaxType
     private $exemptionReason;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -62,7 +62,7 @@ class TradeTaxType
     private $basisAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -73,7 +73,7 @@ class TradeTaxType
     private $lineTotalBasisAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -84,7 +84,7 @@ class TradeTaxType
     private $allowanceChargeBasisAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TaxCategoryCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TaxCategoryCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\TaxCategoryCodeType")
      * @JMS\Expose
@@ -95,7 +95,7 @@ class TradeTaxType
     private $categoryCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\CodeType")
      * @JMS\Expose
@@ -106,7 +106,7 @@ class TradeTaxType
     private $exemptionReasonCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateType")
      * @JMS\Expose
@@ -117,7 +117,7 @@ class TradeTaxType
     private $taxPointDate;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TimeReferenceCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\TimeReferenceCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\TimeReferenceCodeType")
      * @JMS\Expose
@@ -128,7 +128,7 @@ class TradeTaxType
     private $dueDateTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\PercentType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\PercentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\PercentType")
      * @JMS\Expose
@@ -157,10 +157,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $calculatedAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $calculatedAmount
      * @return self
      */
-    public function setCalculatedAmount(AmountType $calculatedAmount): self
+    public function setCalculatedAmount(?AmountType $calculatedAmount = null): self
     {
         $this->calculatedAmount = $calculatedAmount;
 
@@ -186,10 +186,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TaxTypeCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TaxTypeCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(TaxTypeCodeType $typeCode): self
+    public function setTypeCode(?TaxTypeCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -215,10 +215,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $exemptionReason
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $exemptionReason
      * @return self
      */
-    public function setExemptionReason(TextType $exemptionReason): self
+    public function setExemptionReason(?TextType $exemptionReason = null): self
     {
         $this->exemptionReason = $exemptionReason;
 
@@ -244,10 +244,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $basisAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $basisAmount
      * @return self
      */
-    public function setBasisAmount(AmountType $basisAmount): self
+    public function setBasisAmount(?AmountType $basisAmount = null): self
     {
         $this->basisAmount = $basisAmount;
 
@@ -273,10 +273,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $lineTotalBasisAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $lineTotalBasisAmount
      * @return self
      */
-    public function setLineTotalBasisAmount(AmountType $lineTotalBasisAmount): self
+    public function setLineTotalBasisAmount(?AmountType $lineTotalBasisAmount = null): self
     {
         $this->lineTotalBasisAmount = $lineTotalBasisAmount;
 
@@ -302,10 +302,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $allowanceChargeBasisAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $allowanceChargeBasisAmount
      * @return self
      */
-    public function setAllowanceChargeBasisAmount(AmountType $allowanceChargeBasisAmount): self
+    public function setAllowanceChargeBasisAmount(?AmountType $allowanceChargeBasisAmount = null): self
     {
         $this->allowanceChargeBasisAmount = $allowanceChargeBasisAmount;
 
@@ -331,10 +331,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TaxCategoryCodeType $categoryCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TaxCategoryCodeType|null $categoryCode
      * @return self
      */
-    public function setCategoryCode(TaxCategoryCodeType $categoryCode): self
+    public function setCategoryCode(?TaxCategoryCodeType $categoryCode = null): self
     {
         $this->categoryCode = $categoryCode;
 
@@ -360,10 +360,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType $exemptionReasonCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null $exemptionReasonCode
      * @return self
      */
-    public function setExemptionReasonCode(CodeType $exemptionReasonCode): self
+    public function setExemptionReasonCode(?CodeType $exemptionReasonCode = null): self
     {
         $this->exemptionReasonCode = $exemptionReasonCode;
 
@@ -389,10 +389,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateType $taxPointDate
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateType|null $taxPointDate
      * @return self
      */
-    public function setTaxPointDate(DateType $taxPointDate): self
+    public function setTaxPointDate(?DateType $taxPointDate = null): self
     {
         $this->taxPointDate = $taxPointDate;
 
@@ -418,10 +418,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TimeReferenceCodeType $dueDateTypeCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\TimeReferenceCodeType|null $dueDateTypeCode
      * @return self
      */
-    public function setDueDateTypeCode(TimeReferenceCodeType $dueDateTypeCode): self
+    public function setDueDateTypeCode(?TimeReferenceCodeType $dueDateTypeCode = null): self
     {
         $this->dueDateTypeCode = $dueDateTypeCode;
 
@@ -447,10 +447,10 @@ class TradeTaxType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\PercentType $rateApplicablePercent
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\PercentType|null $rateApplicablePercent
      * @return self
      */
-    public function setRateApplicablePercent(PercentType $rateApplicablePercent): self
+    public function setRateApplicablePercent(?PercentType $rateApplicablePercent = null): self
     {
         $this->rateApplicablePercent = $rateApplicablePercent;
 

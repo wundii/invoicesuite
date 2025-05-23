@@ -10,7 +10,7 @@ class SupplyChainTradeLineItemType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class SupplyChainTradeLineItemType
     private $associatedDocumentLineDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class SupplyChainTradeLineItemType
     private $specifiedTradeProduct;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeAgreementType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeAgreementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeAgreementType")
      * @JMS\Expose
@@ -43,7 +43,7 @@ class SupplyChainTradeLineItemType
     private $specifiedLineTradeAgreement;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType")
      * @JMS\Expose
@@ -54,7 +54,7 @@ class SupplyChainTradeLineItemType
     private $specifiedLineTradeDelivery;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeSettlementType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeSettlementType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeSettlementType")
      * @JMS\Expose
@@ -83,11 +83,12 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType $associatedDocumentLineDocument
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\DocumentLineDocumentType|null $associatedDocumentLineDocument
      * @return self
      */
-    public function setAssociatedDocumentLineDocument(DocumentLineDocumentType $associatedDocumentLineDocument): self
-    {
+    public function setAssociatedDocumentLineDocument(
+        ?DocumentLineDocumentType $associatedDocumentLineDocument = null,
+    ): self {
         $this->associatedDocumentLineDocument = $associatedDocumentLineDocument;
 
         return $this;
@@ -112,10 +113,10 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType $specifiedTradeProduct
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeProductType|null $specifiedTradeProduct
      * @return self
      */
-    public function setSpecifiedTradeProduct(TradeProductType $specifiedTradeProduct): self
+    public function setSpecifiedTradeProduct(?TradeProductType $specifiedTradeProduct = null): self
     {
         $this->specifiedTradeProduct = $specifiedTradeProduct;
 
@@ -141,10 +142,10 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeAgreementType $specifiedLineTradeAgreement
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeAgreementType|null $specifiedLineTradeAgreement
      * @return self
      */
-    public function setSpecifiedLineTradeAgreement(LineTradeAgreementType $specifiedLineTradeAgreement): self
+    public function setSpecifiedLineTradeAgreement(?LineTradeAgreementType $specifiedLineTradeAgreement = null): self
     {
         $this->specifiedLineTradeAgreement = $specifiedLineTradeAgreement;
 
@@ -170,10 +171,10 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType $specifiedLineTradeDelivery
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeDeliveryType|null $specifiedLineTradeDelivery
      * @return self
      */
-    public function setSpecifiedLineTradeDelivery(LineTradeDeliveryType $specifiedLineTradeDelivery): self
+    public function setSpecifiedLineTradeDelivery(?LineTradeDeliveryType $specifiedLineTradeDelivery = null): self
     {
         $this->specifiedLineTradeDelivery = $specifiedLineTradeDelivery;
 
@@ -199,11 +200,12 @@ class SupplyChainTradeLineItemType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeSettlementType $specifiedLineTradeSettlement
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\LineTradeSettlementType|null $specifiedLineTradeSettlement
      * @return self
      */
-    public function setSpecifiedLineTradeSettlement(LineTradeSettlementType $specifiedLineTradeSettlement): self
-    {
+    public function setSpecifiedLineTradeSettlement(
+        ?LineTradeSettlementType $specifiedLineTradeSettlement = null,
+    ): self {
         $this->specifiedLineTradeSettlement = $specifiedLineTradeSettlement;
 
         return $this;

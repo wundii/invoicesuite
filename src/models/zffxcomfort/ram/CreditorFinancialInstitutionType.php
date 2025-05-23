@@ -11,7 +11,7 @@ class CreditorFinancialInstitutionType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class CreditorFinancialInstitutionType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $bICID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $bICID
      * @return self
      */
-    public function setBICID(IDType $bICID): self
+    public function setBICID(?IDType $bICID = null): self
     {
         $this->bICID = $bICID;
 

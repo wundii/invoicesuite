@@ -12,7 +12,7 @@ class CreditorFinancialAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class CreditorFinancialAccountType
     private $iBANID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class CreditorFinancialAccountType
     private $accountName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iBANID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iBANID
      * @return self
      */
-    public function setIBANID(IDType $iBANID): self
+    public function setIBANID(?IDType $iBANID = null): self
     {
         $this->iBANID = $iBANID;
 
@@ -92,10 +92,10 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $accountName
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $accountName
      * @return self
      */
-    public function setAccountName(TextType $accountName): self
+    public function setAccountName(?TextType $accountName = null): self
     {
         $this->accountName = $accountName;
 
@@ -121,10 +121,10 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $proprietaryID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $proprietaryID
      * @return self
      */
-    public function setProprietaryID(IDType $proprietaryID): self
+    public function setProprietaryID(?IDType $proprietaryID = null): self
     {
         $this->proprietaryID = $proprietaryID;
 

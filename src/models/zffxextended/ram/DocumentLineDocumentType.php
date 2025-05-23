@@ -13,7 +13,7 @@ class DocumentLineDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -24,7 +24,7 @@ class DocumentLineDocumentType
     private $lineID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -35,7 +35,7 @@ class DocumentLineDocumentType
     private $parentLineID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\LineStatusCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\LineStatusCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\LineStatusCodeType")
      * @JMS\Expose
@@ -46,7 +46,7 @@ class DocumentLineDocumentType
     private $lineStatusCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\CodeType")
      * @JMS\Expose
@@ -57,7 +57,7 @@ class DocumentLineDocumentType
     private $lineStatusReasonCode;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\NoteType>")
      * @JMS\Expose
@@ -87,10 +87,10 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $lineID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $lineID
      * @return self
      */
-    public function setLineID(IDType $lineID): self
+    public function setLineID(?IDType $lineID = null): self
     {
         $this->lineID = $lineID;
 
@@ -116,10 +116,10 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $parentLineID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $parentLineID
      * @return self
      */
-    public function setParentLineID(IDType $parentLineID): self
+    public function setParentLineID(?IDType $parentLineID = null): self
     {
         $this->parentLineID = $parentLineID;
 
@@ -145,10 +145,10 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\LineStatusCodeType $lineStatusCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\LineStatusCodeType|null $lineStatusCode
      * @return self
      */
-    public function setLineStatusCode(LineStatusCodeType $lineStatusCode): self
+    public function setLineStatusCode(?LineStatusCodeType $lineStatusCode = null): self
     {
         $this->lineStatusCode = $lineStatusCode;
 
@@ -174,10 +174,10 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType $lineStatusReasonCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null $lineStatusReasonCode
      * @return self
      */
-    public function setLineStatusReasonCode(CodeType $lineStatusReasonCode): self
+    public function setLineStatusReasonCode(?CodeType $lineStatusReasonCode = null): self
     {
         $this->lineStatusReasonCode = $lineStatusReasonCode;
 
@@ -193,10 +193,10 @@ class DocumentLineDocumentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType> $includedNote
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote): self
+    public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
 

@@ -14,7 +14,7 @@ class TradePaymentTermsType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -25,7 +25,7 @@ class TradePaymentTermsType
     private $description;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType")
      * @JMS\Expose
@@ -36,7 +36,7 @@ class TradePaymentTermsType
     private $dueDateDateTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -47,7 +47,7 @@ class TradePaymentTermsType
     private $directDebitMandateID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\AmountType")
      * @JMS\Expose
@@ -58,7 +58,7 @@ class TradePaymentTermsType
     private $partialPaymentAmount;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType")
      * @JMS\Expose
@@ -69,7 +69,7 @@ class TradePaymentTermsType
     private $applicableTradePaymentPenaltyTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType")
      * @JMS\Expose
@@ -80,7 +80,7 @@ class TradePaymentTermsType
     private $applicableTradePaymentDiscountTerms;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType")
      * @JMS\Expose
@@ -109,10 +109,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -138,10 +138,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType $dueDateDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null $dueDateDateTime
      * @return self
      */
-    public function setDueDateDateTime(DateTimeType $dueDateDateTime): self
+    public function setDueDateDateTime(?DateTimeType $dueDateDateTime = null): self
     {
         $this->dueDateDateTime = $dueDateDateTime;
 
@@ -167,10 +167,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $directDebitMandateID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $directDebitMandateID
      * @return self
      */
-    public function setDirectDebitMandateID(IDType $directDebitMandateID): self
+    public function setDirectDebitMandateID(?IDType $directDebitMandateID = null): self
     {
         $this->directDebitMandateID = $directDebitMandateID;
 
@@ -196,10 +196,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType $partialPaymentAmount
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\AmountType|null $partialPaymentAmount
      * @return self
      */
-    public function setPartialPaymentAmount(AmountType $partialPaymentAmount): self
+    public function setPartialPaymentAmount(?AmountType $partialPaymentAmount = null): self
     {
         $this->partialPaymentAmount = $partialPaymentAmount;
 
@@ -225,11 +225,11 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentPenaltyTermsType|null $applicableTradePaymentPenaltyTerms
      * @return self
      */
     public function setApplicableTradePaymentPenaltyTerms(
-        TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms,
+        ?TradePaymentPenaltyTermsType $applicableTradePaymentPenaltyTerms = null,
     ): self {
         $this->applicableTradePaymentPenaltyTerms = $applicableTradePaymentPenaltyTerms;
 
@@ -255,11 +255,11 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentDiscountTermsType|null $applicableTradePaymentDiscountTerms
      * @return self
      */
     public function setApplicableTradePaymentDiscountTerms(
-        TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms,
+        ?TradePaymentDiscountTermsType $applicableTradePaymentDiscountTerms = null,
     ): self {
         $this->applicableTradePaymentDiscountTerms = $applicableTradePaymentDiscountTerms;
 
@@ -285,10 +285,10 @@ class TradePaymentTermsType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType $payeeTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradePartyType|null $payeeTradeParty
      * @return self
      */
-    public function setPayeeTradeParty(TradePartyType $payeeTradeParty): self
+    public function setPayeeTradeParty(?TradePartyType $payeeTradeParty = null): self
     {
         $this->payeeTradeParty = $payeeTradeParty;
 

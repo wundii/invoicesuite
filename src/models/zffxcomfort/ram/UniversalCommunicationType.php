@@ -12,7 +12,7 @@ class UniversalCommunicationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class UniversalCommunicationType
     private $uRIID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -52,10 +52,10 @@ class UniversalCommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $uRIID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $uRIID
      * @return self
      */
-    public function setURIID(IDType $uRIID): self
+    public function setURIID(?IDType $uRIID = null): self
     {
         $this->uRIID = $uRIID;
 
@@ -81,10 +81,10 @@ class UniversalCommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $completeNumber
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $completeNumber
      * @return self
      */
-    public function setCompleteNumber(TextType $completeNumber): self
+    public function setCompleteNumber(?TextType $completeNumber = null): self
     {
         $this->completeNumber = $completeNumber;
 

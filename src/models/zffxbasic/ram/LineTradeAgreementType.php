@@ -10,7 +10,7 @@ class LineTradeAgreementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineTradeAgreementType
     private $grossPriceProductTradePrice;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType")
      * @JMS\Expose
@@ -50,10 +50,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType $grossPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType|null $grossPriceProductTradePrice
      * @return self
      */
-    public function setGrossPriceProductTradePrice(TradePriceType $grossPriceProductTradePrice): self
+    public function setGrossPriceProductTradePrice(?TradePriceType $grossPriceProductTradePrice = null): self
     {
         $this->grossPriceProductTradePrice = $grossPriceProductTradePrice;
 
@@ -79,10 +79,10 @@ class LineTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType $netPriceProductTradePrice
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePriceType|null $netPriceProductTradePrice
      * @return self
      */
-    public function setNetPriceProductTradePrice(TradePriceType $netPriceProductTradePrice): self
+    public function setNetPriceProductTradePrice(?TradePriceType $netPriceProductTradePrice = null): self
     {
         $this->netPriceProductTradePrice = $netPriceProductTradePrice;
 

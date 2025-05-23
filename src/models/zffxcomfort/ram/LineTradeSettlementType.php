@@ -10,7 +10,7 @@ class LineTradeSettlementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType")
      * @JMS\Expose
@@ -21,7 +21,7 @@ class LineTradeSettlementType
     private $applicableTradeTax;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\SpecifiedPeriodType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\SpecifiedPeriodType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\SpecifiedPeriodType")
      * @JMS\Expose
@@ -32,7 +32,7 @@ class LineTradeSettlementType
     private $billingSpecifiedPeriod;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAllowanceChargeType>
+     * @var array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAllowanceChargeType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAllowanceChargeType>")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class LineTradeSettlementType
     private $specifiedTradeAllowanceCharge;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class LineTradeSettlementType
     private $specifiedTradeSettlementLineMonetarySummation;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class LineTradeSettlementType
     private $additionalReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAccountingAccountType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAccountingAccountType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAccountingAccountType")
      * @JMS\Expose
@@ -95,10 +95,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType $applicableTradeTax
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeTaxType|null $applicableTradeTax
      * @return self
      */
-    public function setApplicableTradeTax(TradeTaxType $applicableTradeTax): self
+    public function setApplicableTradeTax(?TradeTaxType $applicableTradeTax = null): self
     {
         $this->applicableTradeTax = $applicableTradeTax;
 
@@ -124,10 +124,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\SpecifiedPeriodType $billingSpecifiedPeriod
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\SpecifiedPeriodType|null $billingSpecifiedPeriod
      * @return self
      */
-    public function setBillingSpecifiedPeriod(SpecifiedPeriodType $billingSpecifiedPeriod): self
+    public function setBillingSpecifiedPeriod(?SpecifiedPeriodType $billingSpecifiedPeriod = null): self
     {
         $this->billingSpecifiedPeriod = $billingSpecifiedPeriod;
 
@@ -143,10 +143,10 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAllowanceChargeType> $specifiedTradeAllowanceCharge
+     * @param array<\horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAllowanceChargeType>|null $specifiedTradeAllowanceCharge
      * @return self
      */
-    public function setSpecifiedTradeAllowanceCharge(array $specifiedTradeAllowanceCharge): self
+    public function setSpecifiedTradeAllowanceCharge(?array $specifiedTradeAllowanceCharge = null): self
     {
         $this->specifiedTradeAllowanceCharge = $specifiedTradeAllowanceCharge;
 
@@ -227,19 +227,19 @@ class LineTradeSettlementType
     /**
      * @return \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType
      */
-    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
-    {
+    public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(
+    ): TradeSettlementLineMonetarySummationType {
         $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeSettlementLineMonetarySummationType|null $specifiedTradeSettlementLineMonetarySummation
      * @return self
      */
     public function setSpecifiedTradeSettlementLineMonetarySummation(
-        TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation,
+        ?TradeSettlementLineMonetarySummationType $specifiedTradeSettlementLineMonetarySummation = null,
     ): self {
         $this->specifiedTradeSettlementLineMonetarySummation = $specifiedTradeSettlementLineMonetarySummation;
 
@@ -265,11 +265,12 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType $additionalReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\ReferencedDocumentType|null $additionalReferencedDocument
      * @return self
      */
-    public function setAdditionalReferencedDocument(ReferencedDocumentType $additionalReferencedDocument): self
-    {
+    public function setAdditionalReferencedDocument(
+        ?ReferencedDocumentType $additionalReferencedDocument = null,
+    ): self {
         $this->additionalReferencedDocument = $additionalReferencedDocument;
 
         return $this;
@@ -294,11 +295,11 @@ class LineTradeSettlementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\ram\TradeAccountingAccountType|null $receivableSpecifiedTradeAccountingAccount
      * @return self
      */
     public function setReceivableSpecifiedTradeAccountingAccount(
-        TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount,
+        ?TradeAccountingAccountType $receivableSpecifiedTradeAccountingAccount = null,
     ): self {
         $this->receivableSpecifiedTradeAccountingAccount = $receivableSpecifiedTradeAccountingAccount;
 

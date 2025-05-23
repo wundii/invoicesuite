@@ -11,7 +11,7 @@ class ReferencedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxminimum\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxminimum\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\IDType $issuerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxminimum\udt\IDType|null $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(IDType $issuerAssignedID): self
+    public function setIssuerAssignedID(?IDType $issuerAssignedID = null): self
     {
         $this->issuerAssignedID = $issuerAssignedID;
 

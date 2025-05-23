@@ -11,7 +11,7 @@ class CreditorFinancialAccountType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class CreditorFinancialAccountType
     private $iBANID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType $iBANID
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null $iBANID
      * @return self
      */
-    public function setIBANID(IDType $iBANID): self
+    public function setIBANID(?IDType $iBANID = null): self
     {
         $this->iBANID = $iBANID;
 
@@ -80,10 +80,10 @@ class CreditorFinancialAccountType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType $proprietaryID
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null $proprietaryID
      * @return self
      */
-    public function setProprietaryID(IDType $proprietaryID): self
+    public function setProprietaryID(?IDType $proprietaryID = null): self
     {
         $this->proprietaryID = $proprietaryID;
 

@@ -16,7 +16,7 @@ class ReferencedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -27,7 +27,7 @@ class ReferencedDocumentType
     private $issuerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -38,7 +38,7 @@ class ReferencedDocumentType
     private $uRIID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\IDType")
      * @JMS\Expose
@@ -49,7 +49,7 @@ class ReferencedDocumentType
     private $lineID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType")
      * @JMS\Expose
@@ -60,7 +60,7 @@ class ReferencedDocumentType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\TextType")
      * @JMS\Expose
@@ -71,7 +71,7 @@ class ReferencedDocumentType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\BinaryObjectType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\BinaryObjectType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\BinaryObjectType")
      * @JMS\Expose
@@ -82,7 +82,7 @@ class ReferencedDocumentType
     private $attachmentBinaryObject;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\ReferenceCodeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\ReferenceCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\ReferenceCodeType")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class ReferencedDocumentType
     private $referenceTypeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType")
      * @JMS\Expose
@@ -122,10 +122,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $issuerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $issuerAssignedID
      * @return self
      */
-    public function setIssuerAssignedID(IDType $issuerAssignedID): self
+    public function setIssuerAssignedID(?IDType $issuerAssignedID = null): self
     {
         $this->issuerAssignedID = $issuerAssignedID;
 
@@ -151,10 +151,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $uRIID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $uRIID
      * @return self
      */
-    public function setURIID(IDType $uRIID): self
+    public function setURIID(?IDType $uRIID = null): self
     {
         $this->uRIID = $uRIID;
 
@@ -180,10 +180,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType $lineID
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\IDType|null $lineID
      * @return self
      */
-    public function setLineID(IDType $lineID): self
+    public function setLineID(?IDType $lineID = null): self
     {
         $this->lineID = $lineID;
 
@@ -209,10 +209,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\DocumentCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(DocumentCodeType $typeCode): self
+    public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -238,10 +238,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -267,10 +267,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\BinaryObjectType $attachmentBinaryObject
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\BinaryObjectType|null $attachmentBinaryObject
      * @return self
      */
-    public function setAttachmentBinaryObject(BinaryObjectType $attachmentBinaryObject): self
+    public function setAttachmentBinaryObject(?BinaryObjectType $attachmentBinaryObject = null): self
     {
         $this->attachmentBinaryObject = $attachmentBinaryObject;
 
@@ -296,10 +296,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\ReferenceCodeType $referenceTypeCode
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\ReferenceCodeType|null $referenceTypeCode
      * @return self
      */
-    public function setReferenceTypeCode(ReferenceCodeType $referenceTypeCode): self
+    public function setReferenceTypeCode(?ReferenceCodeType $referenceTypeCode = null): self
     {
         $this->referenceTypeCode = $referenceTypeCode;
 
@@ -325,10 +325,10 @@ class ReferencedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType $formattedIssueDateTime
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\qdt\FormattedDateTimeType|null $formattedIssueDateTime
      * @return self
      */
-    public function setFormattedIssueDateTime(FormattedDateTimeType $formattedIssueDateTime): self
+    public function setFormattedIssueDateTime(?FormattedDateTimeType $formattedIssueDateTime = null): self
     {
         $this->formattedIssueDateTime = $formattedIssueDateTime;
 

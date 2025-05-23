@@ -12,7 +12,7 @@ class TradeProductType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class TradeProductType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class TradeProductType
     private $globalID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -45,7 +45,7 @@ class TradeProductType
     private $sellerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -56,7 +56,7 @@ class TradeProductType
     private $buyerAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -67,7 +67,7 @@ class TradeProductType
     private $industryAssignedID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -78,7 +78,7 @@ class TradeProductType
     private $modelID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -89,7 +89,7 @@ class TradeProductType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -100,7 +100,7 @@ class TradeProductType
     private $description;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\udt\IDType>")
      * @JMS\Expose
@@ -112,7 +112,7 @@ class TradeProductType
     private $batchID;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -123,7 +123,7 @@ class TradeProductType
     private $brandName;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -134,7 +134,7 @@ class TradeProductType
     private $modelName;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>")
      * @JMS\Expose
@@ -146,7 +146,7 @@ class TradeProductType
     private $applicableProductCharacteristic;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType>")
      * @JMS\Expose
@@ -158,7 +158,7 @@ class TradeProductType
     private $designatedProductClassification;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeProductInstanceType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeProductInstanceType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\TradeProductInstanceType>")
      * @JMS\Expose
@@ -170,7 +170,7 @@ class TradeProductType
     private $individualTradeProductInstance;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeCountryType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeCountryType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\TradeCountryType")
      * @JMS\Expose
@@ -181,7 +181,7 @@ class TradeProductType
     private $originTradeCountry;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType>")
      * @JMS\Expose
@@ -211,10 +211,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -240,10 +240,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $globalID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $globalID
      * @return self
      */
-    public function setGlobalID(IDType $globalID): self
+    public function setGlobalID(?IDType $globalID = null): self
     {
         $this->globalID = $globalID;
 
@@ -269,10 +269,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $sellerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $sellerAssignedID
      * @return self
      */
-    public function setSellerAssignedID(IDType $sellerAssignedID): self
+    public function setSellerAssignedID(?IDType $sellerAssignedID = null): self
     {
         $this->sellerAssignedID = $sellerAssignedID;
 
@@ -298,10 +298,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $buyerAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $buyerAssignedID
      * @return self
      */
-    public function setBuyerAssignedID(IDType $buyerAssignedID): self
+    public function setBuyerAssignedID(?IDType $buyerAssignedID = null): self
     {
         $this->buyerAssignedID = $buyerAssignedID;
 
@@ -327,10 +327,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $industryAssignedID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $industryAssignedID
      * @return self
      */
-    public function setIndustryAssignedID(IDType $industryAssignedID): self
+    public function setIndustryAssignedID(?IDType $industryAssignedID = null): self
     {
         $this->industryAssignedID = $industryAssignedID;
 
@@ -356,10 +356,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $modelID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $modelID
      * @return self
      */
-    public function setModelID(IDType $modelID): self
+    public function setModelID(?IDType $modelID = null): self
     {
         $this->modelID = $modelID;
 
@@ -385,10 +385,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -414,10 +414,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $description
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $description
      * @return self
      */
-    public function setDescription(TextType $description): self
+    public function setDescription(?TextType $description = null): self
     {
         $this->description = $description;
 
@@ -433,10 +433,10 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType> $batchID
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>|null $batchID
      * @return self
      */
-    public function setBatchID(array $batchID): self
+    public function setBatchID(?array $batchID = null): self
     {
         $this->batchID = $batchID;
 
@@ -524,10 +524,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $brandName
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $brandName
      * @return self
      */
-    public function setBrandName(TextType $brandName): self
+    public function setBrandName(?TextType $brandName = null): self
     {
         $this->brandName = $brandName;
 
@@ -553,10 +553,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $modelName
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $modelName
      * @return self
      */
-    public function setModelName(TextType $modelName): self
+    public function setModelName(?TextType $modelName = null): self
     {
         $this->modelName = $modelName;
 
@@ -572,10 +572,10 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType> $applicableProductCharacteristic
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>|null $applicableProductCharacteristic
      * @return self
      */
-    public function setApplicableProductCharacteristic(array $applicableProductCharacteristic): self
+    public function setApplicableProductCharacteristic(?array $applicableProductCharacteristic = null): self
     {
         $this->applicableProductCharacteristic = $applicableProductCharacteristic;
 
@@ -655,10 +655,10 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType> $designatedProductClassification
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductClassificationType>|null $designatedProductClassification
      * @return self
      */
-    public function setDesignatedProductClassification(array $designatedProductClassification): self
+    public function setDesignatedProductClassification(?array $designatedProductClassification = null): self
     {
         $this->designatedProductClassification = $designatedProductClassification;
 
@@ -738,10 +738,10 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeProductInstanceType> $individualTradeProductInstance
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeProductInstanceType>|null $individualTradeProductInstance
      * @return self
      */
-    public function setIndividualTradeProductInstance(array $individualTradeProductInstance): self
+    public function setIndividualTradeProductInstance(?array $individualTradeProductInstance = null): self
     {
         $this->individualTradeProductInstance = $individualTradeProductInstance;
 
@@ -831,10 +831,10 @@ class TradeProductType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradeCountryType $originTradeCountry
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\TradeCountryType|null $originTradeCountry
      * @return self
      */
-    public function setOriginTradeCountry(TradeCountryType $originTradeCountry): self
+    public function setOriginTradeCountry(?TradeCountryType $originTradeCountry = null): self
     {
         $this->originTradeCountry = $originTradeCountry;
 
@@ -850,10 +850,10 @@ class TradeProductType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType> $includedReferencedProduct
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedProductType>|null $includedReferencedProduct
      * @return self
      */
-    public function setIncludedReferencedProduct(array $includedReferencedProduct): self
+    public function setIncludedReferencedProduct(?array $includedReferencedProduct = null): self
     {
         $this->includedReferencedProduct = $includedReferencedProduct;
 

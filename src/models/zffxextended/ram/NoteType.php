@@ -12,7 +12,7 @@ class NoteType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\CodeType")
      * @JMS\Expose
@@ -23,7 +23,7 @@ class NoteType
     private $contentCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -34,7 +34,7 @@ class NoteType
     private $content;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\CodeType")
      * @JMS\Expose
@@ -63,10 +63,10 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType $contentCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null $contentCode
      * @return self
      */
-    public function setContentCode(CodeType $contentCode): self
+    public function setContentCode(?CodeType $contentCode = null): self
     {
         $this->contentCode = $contentCode;
 
@@ -92,10 +92,10 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $content
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $content
      * @return self
      */
-    public function setContent(TextType $content): self
+    public function setContent(?TextType $content = null): self
     {
         $this->content = $content;
 
@@ -121,10 +121,10 @@ class NoteType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType $subjectCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\CodeType|null $subjectCode
      * @return self
      */
-    public function setSubjectCode(CodeType $subjectCode): self
+    public function setSubjectCode(?CodeType $subjectCode = null): self
     {
         $this->subjectCode = $subjectCode;
 

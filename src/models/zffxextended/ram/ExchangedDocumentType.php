@@ -15,7 +15,7 @@ class ExchangedDocumentType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -26,7 +26,7 @@ class ExchangedDocumentType
     private $iD;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\TextType")
      * @JMS\Expose
@@ -37,7 +37,7 @@ class ExchangedDocumentType
     private $name;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType")
      * @JMS\Expose
@@ -48,7 +48,7 @@ class ExchangedDocumentType
     private $typeCode;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType")
      * @JMS\Expose
@@ -59,7 +59,7 @@ class ExchangedDocumentType
     private $issueDateTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IndicatorType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IndicatorType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IndicatorType")
      * @JMS\Expose
@@ -70,7 +70,7 @@ class ExchangedDocumentType
     private $copyIndicator;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\udt\IDType")
      * @JMS\Expose
@@ -81,7 +81,7 @@ class ExchangedDocumentType
     private $languageID;
 
     /**
-     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>
+     * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("array<horstoeko\invoicesuite\models\zffxextended\ram\NoteType>")
      * @JMS\Expose
@@ -93,7 +93,7 @@ class ExchangedDocumentType
     private $includedNote;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType
+     * @var \horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType")
      * @JMS\Expose
@@ -122,10 +122,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $iD
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $iD
      * @return self
      */
-    public function setID(IDType $iD): self
+    public function setID(?IDType $iD = null): self
     {
         $this->iD = $iD;
 
@@ -151,10 +151,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType $name
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\TextType|null $name
      * @return self
      */
-    public function setName(TextType $name): self
+    public function setName(?TextType $name = null): self
     {
         $this->name = $name;
 
@@ -180,10 +180,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType $typeCode
+     * @param \horstoeko\invoicesuite\models\zffxextended\qdt\DocumentCodeType|null $typeCode
      * @return self
      */
-    public function setTypeCode(DocumentCodeType $typeCode): self
+    public function setTypeCode(?DocumentCodeType $typeCode = null): self
     {
         $this->typeCode = $typeCode;
 
@@ -209,10 +209,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType $issueDateTime
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\DateTimeType|null $issueDateTime
      * @return self
      */
-    public function setIssueDateTime(DateTimeType $issueDateTime): self
+    public function setIssueDateTime(?DateTimeType $issueDateTime = null): self
     {
         $this->issueDateTime = $issueDateTime;
 
@@ -238,10 +238,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IndicatorType $copyIndicator
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IndicatorType|null $copyIndicator
      * @return self
      */
-    public function setCopyIndicator(IndicatorType $copyIndicator): self
+    public function setCopyIndicator(?IndicatorType $copyIndicator = null): self
     {
         $this->copyIndicator = $copyIndicator;
 
@@ -267,10 +267,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType $languageID
+     * @param \horstoeko\invoicesuite\models\zffxextended\udt\IDType|null $languageID
      * @return self
      */
-    public function setLanguageID(IDType $languageID): self
+    public function setLanguageID(?IDType $languageID = null): self
     {
         $this->languageID = $languageID;
 
@@ -286,10 +286,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType> $includedNote
+     * @param array<\horstoeko\invoicesuite\models\zffxextended\ram\NoteType>|null $includedNote
      * @return self
      */
-    public function setIncludedNote(array $includedNote): self
+    public function setIncludedNote(?array $includedNote = null): self
     {
         $this->includedNote = $includedNote;
 
@@ -377,10 +377,10 @@ class ExchangedDocumentType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType $effectiveSpecifiedPeriod
+     * @param \horstoeko\invoicesuite\models\zffxextended\ram\SpecifiedPeriodType|null $effectiveSpecifiedPeriod
      * @return self
      */
-    public function setEffectiveSpecifiedPeriod(SpecifiedPeriodType $effectiveSpecifiedPeriod): self
+    public function setEffectiveSpecifiedPeriod(?SpecifiedPeriodType $effectiveSpecifiedPeriod = null): self
     {
         $this->effectiveSpecifiedPeriod = $effectiveSpecifiedPeriod;
 

@@ -11,7 +11,7 @@ class UniversalCommunicationType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType
+     * @var \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType")
      * @JMS\Expose
@@ -40,10 +40,10 @@ class UniversalCommunicationType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType $uRIID
+     * @param \horstoeko\invoicesuite\models\zffxbasicwl\udt\IDType|null $uRIID
      * @return self
      */
-    public function setURIID(IDType $uRIID): self
+    public function setURIID(?IDType $uRIID = null): self
     {
         $this->uRIID = $uRIID;
 

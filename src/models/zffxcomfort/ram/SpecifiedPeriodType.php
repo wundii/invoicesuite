@@ -11,7 +11,7 @@ class SpecifiedPeriodType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class SpecifiedPeriodType
     private $startDateTime;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType
+     * @var \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType")
      * @JMS\Expose
@@ -51,10 +51,10 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType $startDateTime
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null $startDateTime
      * @return self
      */
-    public function setStartDateTime(DateTimeType $startDateTime): self
+    public function setStartDateTime(?DateTimeType $startDateTime = null): self
     {
         $this->startDateTime = $startDateTime;
 
@@ -80,10 +80,10 @@ class SpecifiedPeriodType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType $endDateTime
+     * @param \horstoeko\invoicesuite\models\zffxcomfort\udt\DateTimeType|null $endDateTime
      * @return self
      */
-    public function setEndDateTime(DateTimeType $endDateTime): self
+    public function setEndDateTime(?DateTimeType $endDateTime = null): self
     {
         $this->endDateTime = $endDateTime;
 

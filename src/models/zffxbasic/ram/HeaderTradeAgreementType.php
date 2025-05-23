@@ -11,7 +11,7 @@ class HeaderTradeAgreementType
     use HandlesObjectFlags;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\udt\TextType")
      * @JMS\Expose
@@ -22,7 +22,7 @@ class HeaderTradeAgreementType
     private $buyerReference;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType")
      * @JMS\Expose
@@ -33,7 +33,7 @@ class HeaderTradeAgreementType
     private $sellerTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType")
      * @JMS\Expose
@@ -44,7 +44,7 @@ class HeaderTradeAgreementType
     private $buyerTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType")
      * @JMS\Expose
@@ -55,7 +55,7 @@ class HeaderTradeAgreementType
     private $sellerTaxRepresentativeTradeParty;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -66,7 +66,7 @@ class HeaderTradeAgreementType
     private $buyerOrderReferencedDocument;
 
     /**
-     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType
+     * @var \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null
      * @JMS\Groups({"zffx"})
      * @JMS\Type("horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType")
      * @JMS\Expose
@@ -95,10 +95,10 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType $buyerReference
+     * @param \horstoeko\invoicesuite\models\zffxbasic\udt\TextType|null $buyerReference
      * @return self
      */
-    public function setBuyerReference(TextType $buyerReference): self
+    public function setBuyerReference(?TextType $buyerReference = null): self
     {
         $this->buyerReference = $buyerReference;
 
@@ -124,10 +124,10 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType $sellerTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null $sellerTradeParty
      * @return self
      */
-    public function setSellerTradeParty(TradePartyType $sellerTradeParty): self
+    public function setSellerTradeParty(?TradePartyType $sellerTradeParty = null): self
     {
         $this->sellerTradeParty = $sellerTradeParty;
 
@@ -153,10 +153,10 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType $buyerTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null $buyerTradeParty
      * @return self
      */
-    public function setBuyerTradeParty(TradePartyType $buyerTradeParty): self
+    public function setBuyerTradeParty(?TradePartyType $buyerTradeParty = null): self
     {
         $this->buyerTradeParty = $buyerTradeParty;
 
@@ -182,11 +182,12 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType $sellerTaxRepresentativeTradeParty
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\TradePartyType|null $sellerTaxRepresentativeTradeParty
      * @return self
      */
-    public function setSellerTaxRepresentativeTradeParty(TradePartyType $sellerTaxRepresentativeTradeParty): self
-    {
+    public function setSellerTaxRepresentativeTradeParty(
+        ?TradePartyType $sellerTaxRepresentativeTradeParty = null,
+    ): self {
         $this->sellerTaxRepresentativeTradeParty = $sellerTaxRepresentativeTradeParty;
 
         return $this;
@@ -211,11 +212,12 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType $buyerOrderReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null $buyerOrderReferencedDocument
      * @return self
      */
-    public function setBuyerOrderReferencedDocument(ReferencedDocumentType $buyerOrderReferencedDocument): self
-    {
+    public function setBuyerOrderReferencedDocument(
+        ?ReferencedDocumentType $buyerOrderReferencedDocument = null,
+    ): self {
         $this->buyerOrderReferencedDocument = $buyerOrderReferencedDocument;
 
         return $this;
@@ -240,10 +242,10 @@ class HeaderTradeAgreementType
     }
 
     /**
-     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType $contractReferencedDocument
+     * @param \horstoeko\invoicesuite\models\zffxbasic\ram\ReferencedDocumentType|null $contractReferencedDocument
      * @return self
      */
-    public function setContractReferencedDocument(ReferencedDocumentType $contractReferencedDocument): self
+    public function setContractReferencedDocument(?ReferencedDocumentType $contractReferencedDocument = null): self
     {
         $this->contractReferencedDocument = $contractReferencedDocument;
 
