@@ -227,7 +227,7 @@ $builder->setDocumentPositionUltimateShipToCommunication("EM", "invoice@ultimate
 
 $builder->setDocumentPositionSupplyChainEvent(new DateTime());
 $builder->setDocumentPositionBillingPeriod(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description");
-$builder->setDocumentPositionTax('S', 'VAT', 1.19, 19,  'Reason', 'Reasoncode');
+$builder->setDocumentPositionTax('S', 'VAT', null, 19,  'Reason', 'Reasoncode');
 $builder->setDocumentPositionAllowanceCharge(false, 25.33, 133.44, 'Reason', 'Resoncode', 12.7);
 $builder->setDocumentPositionSummation(2000, 1, 2, 3, 4);
 $builder->addDocumentPositionInvoiceReference("INVREF-001", "4000", new DateTime(), "382");

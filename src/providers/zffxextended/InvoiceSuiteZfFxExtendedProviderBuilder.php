@@ -7823,8 +7823,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         $tradeTax = $netPrice->getIncludedTradeTaxWithCreate();
         $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
-        $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
         $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount])) {
+            $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
+        }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
             $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
@@ -8913,8 +8916,11 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
 
         $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
-        $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
         $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
+
+        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount])) {
+            $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
+        }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
             $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
