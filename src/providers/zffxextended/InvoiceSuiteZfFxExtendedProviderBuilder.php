@@ -7824,10 +7824,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
         $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
-
-        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])) {
-            $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
-        }
+        $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
             $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
@@ -8791,7 +8788,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      * @param null|DateTimeInterface $newStartDate __BT-134, From BASIC__ Start of the billing period
      * @param null|DateTimeInterface $newEndDate __BT-135, From BASIC__ End of the billing period
      * @param null|string $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
-     * @return InvoiceSuiteBuilderContract
+     * @return self
      */
     public function setDocumentPositionBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
@@ -8917,10 +8914,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         $tradeTax->getCategoryCodeWithCreate()->setValue($newTaxCategory);
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
         $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
-
-        if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent])) {
-            $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
-        }
+        $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
             $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
