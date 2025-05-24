@@ -1329,8 +1329,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Buyer/Customer
 
     /**
-     * @param string|null $newName The full formal name under which the party is registered
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerName(
         ?string $newName = null
@@ -1351,8 +1350,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerId(
         ?string $newId = null
@@ -1391,8 +1389,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentBuyerId(
         ?string $newId = null
@@ -1414,9 +1411,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerGlobalId(
         ?string $newGlobalId = null,
@@ -1456,9 +1451,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentBuyerGlobalId(
         ?string $newGlobalId = null,
@@ -1482,9 +1475,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
@@ -1506,9 +1497,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
@@ -1538,13 +1527,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param string|null $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newPostcode     Identifier for a group of properties, such as a zip code
-     * @param string|null $newCity         Usual name of the city or municipality in which the buyers address is located
-     * @param string|null $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string|null $newSubDivision  The buyers state
+     * @inheritDoc
      */
     public function setDocumentBuyerAddress(
         ?string $newAddressLine1 = null,
@@ -1603,10 +1586,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string|null $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param string|null $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerLegalOrganisation(
         ?string $newType = null,
@@ -1641,12 +1621,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerContact(
         ?string $newPersonName = null,
@@ -1697,12 +1672,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentBuyerContact(
         ?string $newPersonName = null,
@@ -1715,9 +1685,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newType The identifier for the identification scheme of the buyer's electronic address
-     * @param string|null $newUri  Specifies the buyer's electronic address to which the invoice is sent
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentBuyerCommunication(
         ?string $newType = null,
@@ -1749,8 +1717,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     #region Document Tax representativ party
 
     /**
-     * @param string|null $newName The full formal name under which the party is registered
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeName(
         ?string $newName = null
@@ -1770,8 +1737,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeId(
         ?string $newId = null
@@ -1803,8 +1769,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newId An identifier of the buyer. In many systems, buyer identification is key information. Multiple buyer IDs can be assigned or specified. They can be differentiated by using different identification schemes. If no scheme is given, it should be known to the buyer and buyer, e.g. a previously exchanged, seller-assigned identifier of the buyer
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentTaxRepresentativeId(
         ?string $newId = null
@@ -1825,9 +1790,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
@@ -1860,9 +1823,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newGlobalId     The buyers's identifier identification scheme is an identifier uniquely assigned to a buyer by a global registration organization.
-     * @param string|null $newGlobalIdType If the identifier is used for the identification scheme, it must be selected from the entries in the list published by the ISO / IEC 6523 Maintenance Agency.
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
@@ -1885,9 +1846,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
@@ -1908,9 +1867,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newTaxRegistrationType Type of tax number (FC = Tax number, VA = Sales tax identification number)
-     * @param string|null $newTaxRegistrationId   Tax number or sales tax identification number
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
@@ -1938,13 +1895,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newAddressLine1 The main line in the buyers address. This is usually the street name and house number or the post office box
-     * @param string|null $newAddressLine2 Line 2 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newAddressLine3 Line 3 of the buyers address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param string|null $newPostcode     Identifier for a group of properties, such as a zip code
-     * @param string|null $newCity         Usual name of the city or municipality in which the buyers address is located
-     * @param string|null $newCountryId    Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param string|null $newSubDivision  The buyers state
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeAddress(
         ?string $newAddressLine1 = null,
@@ -2002,10 +1953,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newType The identifier for the identification scheme of the legal registration of the buyer. If the identification scheme is used, it must be selected from ISO/IEC 6523 list
-     * @param string|null $newId   An identifier issued by an official registrar that identifies the buyer as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer and buyer
-     * @param string|null $newName A name by which the buyer is known, if different from the buyers name (also known as the company name)
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeLegalOrganisation(
         ?string $newType = null,
@@ -2038,12 +1986,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
@@ -2093,12 +2036,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newPersonName     Contact point for a legal entity, such as a personal name of the contact person
-     * @param string|null $newDepartmentName Contact point for a legal entity, such as a name of the department or office
-     * @param string|null $newPhoneNumber    A telephone number for the contact point
-     * @param string|null $newFaxNumber      A fax number of the contact point
-     * @param string|null $newEmailAddress   An e-mail address of the contact point
-     * @return self
+     * @inheritDoc
      */
     public function addDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
@@ -2111,9 +2049,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * @param string|null $newType The identifier for the identification scheme of the buyer's electronic address
-     * @param string|null $newUri  Specifies the buyer's electronic address to which the invoice is sent
-     * @return self
+     * @inheritDoc
      */
     public function setDocumentTaxRepresentativeCommunication(
         ?string $newType = null,
@@ -2147,7 +2083,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserName(
-        string $newName
+        ?string $newName = null
     ): self {
         return $this;
     }
@@ -2156,7 +2092,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserId(
-        string $newId
+        ?string $newId = null
     ): self {
         return $this;
     }
@@ -2165,7 +2101,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentProductEndUserId(
-        string $newId
+        ?string $newId = null
     ): self {
         return $this;
     }
@@ -2174,8 +2110,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         return $this;
     }
@@ -2184,8 +2120,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentProductEndUserGlobalId(
-        string $newGlobalId,
-        string $newGlobalIdType
+        ?string $newGlobalId = null,
+        ?string $newGlobalIdType = null
     ): self {
         return $this;
     }
@@ -2194,8 +2130,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         return $this;
     }
@@ -2204,8 +2140,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentProductEndUserTaxRegistration(
-        string $newTaxRegistrationType,
-        string $newTaxRegistrationId
+        ?string $newTaxRegistrationType = null,
+        ?string $newTaxRegistrationId = null
     ): self {
         return $this;
     }
@@ -2214,13 +2150,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserAddress(
-        string $newAddressLine1,
-        string $newAddressLine2,
-        string $newAddressLine3,
-        string $newPostcode,
-        string $newCity,
-        string $newCountryId,
-        string $newSubDivision
+        ?string $newAddressLine1 = null,
+        ?string $newAddressLine2 = null,
+        ?string $newAddressLine3 = null,
+        ?string $newPostcode = null,
+        ?string $newCity = null,
+        ?string $newCountryId = null,
+        ?string $newSubDivision = null
     ): self {
         return $this;
     }
@@ -2229,9 +2165,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserLegalOrganisation(
-        string $newType,
-        string $newId,
-        string $newName
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null
     ): self {
         return $this;
     }
@@ -2240,11 +2176,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         return $this;
     }
@@ -2253,11 +2189,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function addDocumentProductEndUserContact(
-        string $newPersonName,
-        string $newDepartmentName,
-        string $newPhoneNumber,
-        string $newFaxNumber,
-        string $newEmailAddress
+        ?string $newPersonName = null,
+        ?string $newDepartmentName = null,
+        ?string $newPhoneNumber = null,
+        ?string $newFaxNumber = null,
+        ?string $newEmailAddress = null
     ): self {
         return $this;
     }
@@ -2266,8 +2202,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      * @inheritDoc
      */
     public function setDocumentProductEndUserCommunication(
-        string $newType,
-        string $newUri
+        ?string $newType = null,
+        ?string $newUri = null
     ): self {
         return $this;
     }
