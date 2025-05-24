@@ -6435,28 +6435,26 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             ->getSupplyChainTradeTransactionWithCreate()
             ->addToIncludedSupplyChainTradeLineItemWithCreate();
 
-        $position
-            ->getAssociatedDocumentLineDocumentWithCreate()
+        $positionLineDocument = $position->getAssociatedDocumentLineDocumentWithCreate();
+
+        $positionLineDocument
             ->getLineIDWithCreate()
             ->setValue($newPositionId);
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newParentPositionId)) {
-            $position
-                ->getAssociatedDocumentLineDocumentWithCreate()
+            $positionLineDocument
                 ->getParentLineIDWithCreate()
                 ->setValue($newParentPositionId);
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusCode)) {
-            $position
-                ->getAssociatedDocumentLineDocumentWithCreate()
+            $positionLineDocument
                 ->getLineStatusCodeWithCreate()
                 ->setValue($newLineStatusCode);
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusReasonCode)) {
-            $position
-                ->getAssociatedDocumentLineDocumentWithCreate()
+            $positionLineDocument
                 ->getLineStatusReasonCodeWithCreate()
                 ->setValue($newLineStatusReasonCode);
         }
