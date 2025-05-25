@@ -87,3 +87,4 @@ lint.ps1
 addusetoclasses.php
 addusetoclasses2.php
 convert_string_params.php
+transfer_docblocks*.php
