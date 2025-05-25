@@ -28,7 +28,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document number (e.g. invoice number)
      *
-     * @param string $newDocumentNo
+     * @param string $newDocumentNo The document no issued by the seller
      * @return static
      */
     public function setDocumentNo(
@@ -38,7 +38,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document type code
      *
-     * @param string $newDocumentType
+     * @param string $newDocumentType The type of the document
      * @return static
      */
     public function setDocumentType(
@@ -48,7 +48,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document description
      *
-     * @param string $newDocumentDescription
+     * @param string $newDocumentDescription The documenttype as free text
      * @return self
      */
     public function setDocumentDescription(
@@ -58,7 +58,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document language
      *
-     * @param string $newDocumentLanguage
+     * @param string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
      */
     public function setDocumentLanguage(
@@ -68,7 +68,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document date (e.g. invoice date)
      *
-     * @param DateTimeInterface $newDocumentDate
+     * @param DateTimeInterface $newDocumentDate Date of the document. The date when the document was issued by the seller
      * @return InvoiceSuiteBuilderContract
      */
     public function setDocumentDate(
@@ -78,7 +78,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document period
      *
-     * @param DateTimeInterface $newCompleteDate
+     * @param DateTimeInterface $newCompleteDate Contractual due date of the document
      * @return InvoiceSuiteBuilderContract
      */
     public function setDocumentCompleteDate(
@@ -88,7 +88,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document currency
      *
-     * @param string $newDocumentCurrency
+     * @param string $newDocumentCurrency Code for the invoice currency
      * @return self
      */
     public function setDocumentCurrency(
@@ -98,7 +98,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new document tax currency
      *
-     * @param string $newDocumentTaxCurrency
+     * @param string $newDocumentTaxCurrency Code for the tax currency
      * @return self
      */
     public function setDocumentTaxCurrency(
@@ -108,7 +108,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new status of the copy indicator
      *
-     * @param boolean $newDocumentIsCopy
+     * @param boolean $newDocumentIsCopy Indicates that the  document is a copy
      * @return self
      */
     public function setDocumentIsCopy(
@@ -118,7 +118,7 @@ interface InvoiceSuiteBuilderContract
     /**
      * Sets the new status of the test indicator
      *
-     * @param boolean $newDocumentIsTest
+     * @param boolean $newDocumentIsTest Indicates that the  document is a test
      * @return self
      */
     public function setDocumentIsTest(
@@ -128,9 +128,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Set a note to the document. This clears all added notes
      *
-     * @param string $newContent
-     * @param string $newContentCode
-     * @param string $newSubjectCode
+     * @param string $newContent Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string $newContentCode Code to classify the content of the free text of the invoice
+     * @param string $newSubjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function setDocumentNote(
@@ -142,9 +142,9 @@ interface InvoiceSuiteBuilderContract
     /**
      * Add a note to the document
      *
-     * @param string $newContent
-     * @param string $newContentCode
-     * @param string $newSubjectCode
+     * @param string $newContent Free text containing unstructured information that is relevant to the invoice as a whole
+     * @param string $newContentCode Code to classify the content of the free text of the invoice
+     * @param string $newSubjectCode Qualification of the free text for the invoice
      * @return self
      */
     public function addDocumentNote(
