@@ -1404,6 +1404,28 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
+     * Add a legal information of the seller/supplier party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentSellerLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentSellerLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
      * Set the contact information of the seller/supplier party
      *
      * @param string|null $newPersonName Name of contact person or department or office for the contact point.
