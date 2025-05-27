@@ -33,6 +33,21 @@ class InvoiceSuiteIdDTO
     public ?string $idType = null;
 
     /**
+     * Constructor
+     *
+     * @param string|null $id
+     * @param string|null $idType
+     */
+    public function __construct(
+        ?string $id = null,
+        ?string $idType = null
+    ) {
+        $this
+            ->setId($id)
+            ->setIdType($idType);
+    }
+
+    /**
      * Get the ID
      *
      * @return string|null

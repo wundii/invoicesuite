@@ -58,6 +58,36 @@ class InvoiceSuiteAddressDTO
     public ?string $subDivision = null;
 
     /**
+     * Constructor
+     *
+     * @param string|null $addressLine1
+     * @param string|null $addressLine2
+     * @param string|null $addressLine3
+     * @param string|null $postcode
+     * @param string|null $city
+     * @param string|null $countryId
+     * @param string|null $subDivision
+     */
+    public function __construct(
+        ?string $addressLine1 = null,
+        ?string $addressLine2 = null,
+        ?string $addressLine3 = null,
+        ?string $postcode = null,
+        ?string $city = null,
+        ?string $countryId = null,
+        ?string $subDivision = null
+    ) {
+        $this
+            ->setAddressLine1($addressLine1)
+            ->setAddressLine2($addressLine2)
+            ->setAddressLine3($addressLine3)
+            ->setPostcode($postcode)
+            ->setCity($city)
+            ->setCountryId($countryId)
+            ->setSubDivision($subDivision);
+    }
+
+    /**
      * Get address line 1
      *
      * @return string|null

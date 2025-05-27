@@ -48,6 +48,30 @@ class InvoiceSuiteContactDTO
     public ?string $emailAddress = null;
 
     /**
+     * Constructor
+     *
+     * @param string|null $personName
+     * @param string|null $departmentName
+     * @param string|null $phoneNumber
+     * @param string|null $faxNumber
+     * @param string|null $emailAddress
+     */
+    public function __construct(
+        ?string $personName = null,
+        ?string $departmentName = null,
+        ?string $phoneNumber = null,
+        ?string $faxNumber = null,
+        ?string $emailAddress = null
+    ) {
+        $this
+            ->setPersonName($personName)
+            ->setDepartmentName($departmentName)
+            ->setPhoneNumber($phoneNumber)
+            ->setFaxNumber($faxNumber)
+            ->setEmailAddress($emailAddress);
+    }
+
+    /**
      * Get contact name
      *
      * @return string|null

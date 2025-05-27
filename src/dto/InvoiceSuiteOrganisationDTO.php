@@ -28,6 +28,22 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     public ?string $name = null;
 
     /**
+     * Constructor
+     *
+     * @param string|null $id
+     * @param string|null $idType
+     * @param string|null $name
+     */
+    public function __construct(
+        ?string $id = null,
+        ?string $idType = null,
+        ?string $name = null
+    ) {
+        parent::__construct($id, $idType);
+        $this->setName($name);
+    }
+
+    /**
      * Get the organisation name
      *
      * @return string|null
