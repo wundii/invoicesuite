@@ -1656,7 +1656,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Add communication information of the seller/supplier party
+     * Set communication information of the seller/supplier party
      *
      * @param string|null $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
      * @param string|null $newUri __BT-34, From BASIC WL__ The party's electronic address.
@@ -1681,6 +1681,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $sellerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add communication information of the seller/supplier party
+     *
+     * @param string|null $newType __BT-34-1, From BASIC WL__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-34, From BASIC WL__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentSellerCommunication($newType, $newUri);
 
         return $this;
     }

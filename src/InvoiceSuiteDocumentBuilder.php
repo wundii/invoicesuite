@@ -979,7 +979,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Add communication information of the seller/supplier party
+     * Set communication information of the seller/supplier party
      *
      * @param string|null $newType The type for the party's electronic address.
      * @param string|null $newUri The party's electronic address.
@@ -988,6 +988,20 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentSellerCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
+     * Add communication information of the seller/supplier party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentSellerCommunication($newType, $newUri);
 
         return $this;
     }

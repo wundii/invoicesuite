@@ -1504,7 +1504,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Add communication information of the seller/supplier party
+     * Set communication information of the seller/supplier party
      *
      * @param string|null $newType The type for the party's electronic address.
      * @param string|null $newUri The party's electronic address.
@@ -1529,6 +1529,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $endpointId->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add communication information of the seller/supplier party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentSellerCommunication($newType, $newUri);
 
         return $this;
     }
