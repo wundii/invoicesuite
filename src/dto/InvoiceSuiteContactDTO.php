@@ -84,12 +84,12 @@ class InvoiceSuiteContactDTO
     /**
      * Set contact name
      *
-     * @param string|null $personName
+     * @param string|null $newPersonName
      * @return self
      */
-    public function setPersonName(?string $personName): self
+    public function setPersonName(?string $newPersonName): self
     {
-        $this->personName = $personName;
+        $this->personName = $newPersonName;
         return $this;
     }
 
@@ -116,12 +116,12 @@ class InvoiceSuiteContactDTO
     /**
      * Set department name
      *
-     * @param string|null $departmentName
+     * @param string|null $newDepartmentName
      * @return self
      */
-    public function setDepartmentName(?string $departmentName): self
+    public function setDepartmentName(?string $newDepartmentName): self
     {
-        $this->departmentName = $departmentName;
+        $this->departmentName = $newDepartmentName;
         return $this;
     }
 
@@ -148,12 +148,12 @@ class InvoiceSuiteContactDTO
     /**
      * Set phone number
      *
-     * @param string|null $phoneNumber
+     * @param string|null $newPhoneNumber
      * @return self
      */
-    public function setPhoneNumber(?string $phoneNumber): self
+    public function setPhoneNumber(?string $newPhoneNumber): self
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->phoneNumber = $newPhoneNumber;
         return $this;
     }
 
@@ -180,12 +180,12 @@ class InvoiceSuiteContactDTO
     /**
      * Set fax number
      *
-     * @param string|null $faxNumber
+     * @param string|null $newFaxNumber
      * @return self
      */
-    public function setFaxNumber(?string $faxNumber): self
+    public function setFaxNumber(?string $newFaxNumber): self
     {
-        $this->faxNumber = $faxNumber;
+        $this->faxNumber = $newFaxNumber;
         return $this;
     }
 
@@ -212,12 +212,12 @@ class InvoiceSuiteContactDTO
     /**
      * Set email address
      *
-     * @param string|null $emailAddress
+     * @param string|null $newEmailAddress
      * @return self
      */
-    public function setEmailAddress(?string $emailAddress): self
+    public function setEmailAddress(?string $newEmailAddress): self
     {
-        $this->emailAddress = $emailAddress;
+        $this->emailAddress = $newEmailAddress;
         return $this;
     }
 

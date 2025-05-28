@@ -60,12 +60,12 @@ class InvoiceSuiteIdDTO
     /**
      * Set the ID
      *
-     * @param string|null $id
+     * @param string|null $newId
      * @return self
      */
-    public function setId(?string $id): self
+    public function setId(?string $newId): self
     {
-        $this->id = $id;
+        $this->id = $newId;
         return $this;
     }
 
@@ -92,12 +92,12 @@ class InvoiceSuiteIdDTO
     /**
      * Set the ID type
      *
-     * @param string|null $idType
+     * @param string|null $newIdType
      * @return self
      */
-    public function setIdType(?string $idType): self
+    public function setIdType(?string $newIdType): self
     {
-        $this->idType = $idType;
+        $this->idType = $newIdType;
         return $this;
     }
 

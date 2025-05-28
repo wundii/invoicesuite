@@ -56,12 +56,12 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     /**
      * Set the organisation name
      *
-     * @param string|null $name
+     * @param string|null $newName
      * @return self
      */
-    public function setName(?string $name): self
+    public function setName(?string $newName): self
     {
-        $this->name = $name;
+        $this->name = $newName;
         return $this;
     }
 
