@@ -66,6 +66,7 @@ class InvoiceSuiteIdDTO
     public function setId(?string $newId): self
     {
         $this->id = $newId;
+
         return $this;
     }
 
@@ -98,6 +99,7 @@ class InvoiceSuiteIdDTO
     public function setIdType(?string $newIdType): self
     {
         $this->idType = $newIdType;
+
         return $this;
     }
 

@@ -154,6 +154,7 @@ class InvoiceSuitePartyDTO
     public function setIds(array $newIds): self
     {
         $this->ids = $newIds;
+
         return $this;
     }
 
@@ -164,6 +165,7 @@ class InvoiceSuitePartyDTO
     public function addId(InvoiceSuiteIdDTO $newId): self
     {
         $this->ids[] = $newId;
+
         return $this;
     }
 
@@ -203,6 +205,7 @@ class InvoiceSuitePartyDTO
     public function setGlobalIds(array $newGlobalIds): self
     {
         $this->globalIds = $newGlobalIds;
+
         return $this;
     }
 
@@ -213,6 +216,7 @@ class InvoiceSuitePartyDTO
     public function addGlobalId(InvoiceSuiteIdDTO $newGlobalId): self
     {
         $this->globalIds[] = $newGlobalId;
+
         return $this;
     }
 
@@ -252,6 +256,7 @@ class InvoiceSuitePartyDTO
     public function setTaxRegistrations(array $newTaxRegistrations): self
     {
         $this->taxRegistrations = $newTaxRegistrations;
+
         return $this;
     }
 
@@ -262,6 +267,7 @@ class InvoiceSuitePartyDTO
     public function addTaxRegistration(InvoiceSuiteIdDTO $newTaxRegistration): self
     {
         $this->taxRegistrations[] = $newTaxRegistration;
+
         return $this;
     }
 
@@ -301,6 +307,7 @@ class InvoiceSuitePartyDTO
     public function setAddresses(array $newAddresses): self
     {
         $this->addresses = $newAddresses;
+
         return $this;
     }
 
@@ -311,6 +318,7 @@ class InvoiceSuitePartyDTO
     public function addAddress(InvoiceSuiteAddressDTO $newAddress): self
     {
         $this->addresses[] = $newAddress;
+
         return $this;
     }
 
@@ -350,6 +358,7 @@ class InvoiceSuitePartyDTO
     public function setLegalOrganisations(array $newLegalOrganisations): self
     {
         $this->legalOrganisation = $newLegalOrganisations;
+
         return $this;
     }
 
@@ -360,6 +369,7 @@ class InvoiceSuitePartyDTO
     public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $newLegalOrganisation): self
     {
         $this->legalOrganisation[] = $newLegalOrganisation;
+
         return $this;
     }
 
@@ -399,6 +409,7 @@ class InvoiceSuitePartyDTO
     public function setContact(array $contact): self
     {
         $this->contacts = $contact;
+
         return $this;
     }
 
@@ -409,6 +420,7 @@ class InvoiceSuitePartyDTO
     public function addContact(InvoiceSuiteContactDTO $contact): self
     {
         $this->contacts[] = $contact;
+
         return $this;
     }
 
@@ -448,6 +460,7 @@ class InvoiceSuitePartyDTO
     public function setCommunication(array $communication): self
     {
         $this->communications = $communication;
+
         return $this;
     }
 
@@ -458,6 +471,7 @@ class InvoiceSuitePartyDTO
     public function addCommunication(InvoiceSuiteCommunicationDTO $communication): self
     {
         $this->communications[] = $communication;
+
         return $this;
     }
 

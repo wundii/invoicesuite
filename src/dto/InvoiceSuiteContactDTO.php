@@ -90,6 +90,7 @@ class InvoiceSuiteContactDTO
     public function setPersonName(?string $newPersonName): self
     {
         $this->personName = $newPersonName;
+
         return $this;
     }
 
@@ -122,6 +123,7 @@ class InvoiceSuiteContactDTO
     public function setDepartmentName(?string $newDepartmentName): self
     {
         $this->departmentName = $newDepartmentName;
+
         return $this;
     }
 
@@ -154,6 +156,7 @@ class InvoiceSuiteContactDTO
     public function setPhoneNumber(?string $newPhoneNumber): self
     {
         $this->phoneNumber = $newPhoneNumber;
+
         return $this;
     }
 
@@ -186,6 +189,7 @@ class InvoiceSuiteContactDTO
     public function setFaxNumber(?string $newFaxNumber): self
     {
         $this->faxNumber = $newFaxNumber;
+
         return $this;
     }
 
@@ -218,6 +222,7 @@ class InvoiceSuiteContactDTO
     public function setEmailAddress(?string $newEmailAddress): self
     {
         $this->emailAddress = $newEmailAddress;
+
         return $this;
     }
 

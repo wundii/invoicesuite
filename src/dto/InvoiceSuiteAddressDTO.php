@@ -105,10 +105,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setAddressLine1(?string $newAddressLine1): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine1)) {
-            return $this;
-        }
-
         $this->addressLine1 = $newAddressLine1;
 
         return $this;
@@ -142,10 +138,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setAddressLine2(?string $newAddressLine2): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine2)) {
-            return $this;
-        }
-
         $this->addressLine2 = $newAddressLine2;
 
         return $this;
@@ -179,10 +171,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setAddressLine3(?string $newAddressLine3): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newAddressLine3)) {
-            return $this;
-        }
-
         $this->addressLine3 = $newAddressLine3;
 
         return $this;
@@ -216,10 +204,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setPostcode(?string $newPostcode): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPostcode)) {
-            return $this;
-        }
-
         $this->postcode = $newPostcode;
 
         return $this;
@@ -253,10 +237,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setCity(?string $newCity): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCity)) {
-            return $this;
-        }
-
         $this->city = $newCity;
 
         return $this;
@@ -290,10 +270,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setCountry(?string $newCountry): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newCountry)) {
-            return $this;
-        }
-
         $this->country = $newCountry;
 
         return $this;
@@ -327,10 +303,6 @@ class InvoiceSuiteAddressDTO
      */
     public function setSubDivision(?string $newSubDivision): self
     {
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubDivision)) {
-            return $this;
-        }
-
         $this->subDivision = $newSubDivision;
 
         return $this;

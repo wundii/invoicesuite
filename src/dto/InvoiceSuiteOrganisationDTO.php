@@ -40,6 +40,7 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
         ?string $name = null
     ) {
         parent::__construct($id, $idType);
+
         $this->setName($name);
     }
 
@@ -62,6 +63,7 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     public function setName(?string $newName): self
     {
         $this->name = $newName;
+        
         return $this;
     }
 
