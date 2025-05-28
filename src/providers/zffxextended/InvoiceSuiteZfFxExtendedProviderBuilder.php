@@ -5093,6 +5093,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a name of the Invoicee party
+     *
+     * @param string|null $newName __BT-X-226, From EXTENDED__ The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentInvoiceeName(
+        ?string $newName = null
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            return $this;
+        }
+
+        $this->setDocumentInvoiceeName($newName);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicee party
      *
      * @param string|null $newId __BT-X-224, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
@@ -5362,6 +5380,28 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
+     * Add a legal information of the Invoicee party
+     *
+     * @param string|null $newType __BT-X-227-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-X-227, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-228, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentInvoiceeLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): self {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
+            return $this;
+        }
+
+        $this->setDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
      * Set the contact information of the Invoicee party
      *
      * @param string|null $newPersonName __BT-X-229, From EXTENDED__ Name of contact person or department or office for the contact point.
@@ -5460,7 +5500,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Add communication information of the Invoicee party
+     * Set communication information of the Invoicee party
      *
      * @param string|null $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address.
      * @param string|null $newUri __BT-X-241, From EXTENDED__ The party's electronic address.
@@ -5485,6 +5525,24 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
             $invoiceeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
         }
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the Invoicee party
+     *
+     * @param string|null $newType __BT-X-241-0, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-X-241, From EXTENDED__ The party's electronic address.
+     * @return self
+     */
+    public function addDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+            return $this;
+        }
+
+        $this->setDocumentInvoiceeCommunication($newType, $newUri);
 
         return $this;
     }

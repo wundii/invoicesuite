@@ -2783,6 +2783,20 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a name of the Invoicee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function addDocumentInvoiceeName(
+        ?string $newName = null
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentInvoiceeName($newName);
+
+        return $this;
+    }
+
+    /**
      * Set the ID of the Invoicee party
      *
      * @param string|null $newId An identifier of the party. In many systems, identification is key information.
@@ -2915,6 +2929,24 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a legal information of the Invoicee party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function addDocumentInvoiceeLegalOrganisation(
+        ?string $newType = null,
+        ?string $newId = null,
+        ?string $newName = null,
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
      * Set the contact information of the Invoicee party
      *
      * @param string|null $newPersonName Name of contact person or department or office for the contact point.
@@ -2959,7 +2991,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Add communication information of the Invoicee party
+     * Set communication information of the Invoicee party
      *
      * @param string|null $newType The type for the party's electronic address.
      * @param string|null $newUri The party's electronic address.
@@ -2968,6 +3000,20 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function setDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->setDocumentInvoiceeCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    /**
+     * Add a communication information of the Invoicee party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function addDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
+    {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentInvoiceeCommunication($newType, $newUri);
 
         return $this;
     }
