@@ -1,22 +1,9 @@
 <?php
 
-/**
- * This file is a part of horstoeko/invoicesuite.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace horstoeko\invoicesuite\dto;
 
-use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-
 /**
- * Class representing a DTO for a party (e.g. seller or customer)
+ * Class representing a DTO for...
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
@@ -27,207 +14,285 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 class InvoiceSuitePartyDTO
 {
     /**
-     * Party name
+     * Party names
      *
      * @var array<string>
      */
-    protected array $names = [];
+    protected array $name = [];
 
     /**
      * Party IDs
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $ids = [];
+    protected array $id = [];
 
     /**
-     * Party Global IDs
+     * Party global IDs
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $globalIds = [];
+    protected array $globalId = [];
 
     /**
-     * Party Tax Registration
+     * Party tax registrations
      *
      * @var array<InvoiceSuiteIdDTO>
      */
-    protected array $taxRegistrations = [];
+    protected array $taxRegistration = [];
 
     /**
-     * Party Address
+     * Party addresses
      *
      * @var array<InvoiceSuiteAddressDTO>
      */
-    protected array $addresses = [];
+    protected array $address = [];
 
     /**
-     * Party Legal Organisation
+     * Party legal organisations
      *
      * @var array<InvoiceSuiteOrganisationDTO>
      */
-    protected array $legalOrganisations = [];
+    protected array $legalOrganisation = [];
 
     /**
      * Party contacts
      *
      * @var array<InvoiceSuiteContactDTO>
      */
-    protected array $contacts = [];
+    protected array $contact = [];
 
     /**
-     * Party communication details
+     * Party electronic communications
      *
      * @var array<InvoiceSuiteCommunicationDTO>
      */
-    protected array $communications = [];
+    protected array $communication = [];
 
     /**
+     * Constructor
+     *
+     * @param array<string> $name Party names
+     * @param array<InvoiceSuiteIdDTO> $id Party IDs
+     * @param array<InvoiceSuiteIdDTO> $globalId Party global IDs
+     * @param array<InvoiceSuiteIdDTO> $taxRegistration Party tax registrations
+     * @param array<InvoiceSuiteAddressDTO> $address Party addresses
+     * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisation Party legal organisations
+     * @param array<InvoiceSuiteContactDTO> $contact Party contacts
+     * @param array<InvoiceSuiteCommunicationDTO> $communication Party electronic communications
+     */
+    public function __construct(
+        array $name = [],
+        array $id = [],
+        array $globalId = [],
+        array $taxRegistration = [],
+        array $address = [],
+        array $legalOrganisation = [],
+        array $contact = [],
+        array $communication = [],
+    ) {
+        $this->setName($name);
+        $this->setId($id);
+        $this->setGlobalId($globalId);
+        $this->setTaxRegistration($taxRegistration);
+        $this->setAddress($address);
+        $this->setLegalOrganisation($legalOrganisation);
+        $this->setContact($contact);
+        $this->setCommunication($communication);
+    }
+
+    /**
+     * Returns party names
+     *
      * @return array<string>
      */
-    public function getNames(): array
+    public function getName(): array
     {
-        return $this->names;
+        return $this->name;
     }
 
     /**
-     * @param array<string> $newNames
+     * Sets party names
+     *
+     * @param array<string> $name Party names
      * @return self
      */
-    public function setNames(array $newNames): self
+    public function setName(array $name): self
     {
-        $this->names = array_filter($newNames, function ($name) {
-            return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($name);
-        });
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @param string $newName
+     * Add single Party names
+     *
+     * @param string $name Party names
      * @return self
      */
-    public function addName(string $newName): self
+    public function addName(string $name): self
     {
-        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
-            return $this;
+        $this->name[] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party names
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstName(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($name = reset($this->name)) !== false) {
+            $callback($name);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
         }
 
-        $this->names[] = $newName;
+        return $this;
+    }
+
+    /**
+     * Get next Party names
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextName(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($name = next($this->name)) !== false) {
+            $callback($name);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @return bool
+     * Get previous Party names
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
      */
-    public function hasNames(): bool
+    public function previousName(callable $callback, ?callable $callbackElse = null): self
     {
-        return $this->names !== [];
+        if (($name = prev($this->name)) !== false) {
+            $callback($name);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
     }
 
     /**
-     * @param callable $callback
+     * Get last Party names
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function forEachName(callable $callback, ?int $limit = null): self
+    public function lastName(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($name = end($this->name)) !== false) {
+            $callback($name);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party names and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachName(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
     {
         $count = 0;
 
-        foreach ($this->names as $item) {
+        foreach ($this->name as $name) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
 
             $count++;
 
-            $callback($item);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function firstName(callable $callback): self
-    {
-        if (($name = reset($this->names)) !== false) {
             $callback($name);
         }
 
-        return $this;
-    }
-
-    /**
-     * @return array<InvoiceSuiteIdDTO>
-     */
-    public function getIds(): array
-    {
-        return $this->ids;
-    }
-
-    /**
-     * @param array<InvoiceSuiteIdDTO> $newIds
-     * @return self
-     */
-    public function setIds(array $newIds): self
-    {
-        $this->ids = $newIds;
-
-        return $this;
-    }
-
-    /**
-     * @param InvoiceSuiteIdDTO $newId
-     * @return self
-     */
-    public function addId(InvoiceSuiteIdDTO $newId): self
-    {
-        $this->ids[] = $newId;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasIds(): bool
-    {
-        return $this->ids !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachId(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->ids as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
-            }
-
-            $count++;
-
-            $callback($item);
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callbackelse
+     * Returns party IDs
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getId(): array
+    {
+        return $this->id;
+    }
+
+    /**
+     * Sets party IDs
+     *
+     * @param array<InvoiceSuiteIdDTO> $id Party IDs
+     * @return self
+     */
+    public function setId(array $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party IDs
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO $id Party IDs
+     * @return self
+     */
+    public function addId(InvoiceSuiteIdDTO $id): self
+    {
+        $this->id[] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->ids)) !== false) {
-            $callback($name);
+        if (($id = reset($this->id)) !== false) {
+            $callback($id);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -238,73 +303,141 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @return array<InvoiceSuiteIdDTO>
-     */
-    public function getGlobalIds(): array
-    {
-        return $this->globalIds;
-    }
-
-    /**
-     * @param array<InvoiceSuiteIdDTO> $newGlobalIds
+     * Get next Party IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function setGlobalIds(array $newGlobalIds): self
+    public function nextId(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->globalIds = $newGlobalIds;
-
-        return $this;
-    }
-
-    /**
-     * @param InvoiceSuiteIdDTO $newGlobalId
-     * @return self
-     */
-    public function addGlobalId(InvoiceSuiteIdDTO $newGlobalId): self
-    {
-        $this->globalIds[] = $newGlobalId;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasGlobalIds(): bool
-    {
-        return $this->globalIds !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachGlobalId(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->globalIds as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
+        if (($id = next($this->id)) !== false) {
+            $callback($id);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
             }
-
-            $count++;
-
-            $callback($item);
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callbackElse
+     * Get previous Party IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousId(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($id = prev($this->id)) !== false) {
+            $callback($id);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastId(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($id = end($this->id)) !== false) {
+            $callback($id);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party IDs and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachId(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->id as $id) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($id);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party global IDs
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getGlobalId(): array
+    {
+        return $this->globalId;
+    }
+
+    /**
+     * Sets party global IDs
+     *
+     * @param array<InvoiceSuiteIdDTO> $globalId Party global IDs
+     * @return self
+     */
+    public function setGlobalId(array $globalId): self
+    {
+        $this->globalId = $globalId;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party global IDs
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO $globalId Party global IDs
+     * @return self
+     */
+    public function addGlobalId(InvoiceSuiteIdDTO $globalId): self
+    {
+        $this->globalId[] = $globalId;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party global IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->globalIds)) !== false) {
-            $callback($name);
+        if (($globalId = reset($this->globalId)) !== false) {
+            $callback($globalId);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -315,73 +448,141 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @return array<InvoiceSuiteIdDTO>
-     */
-    public function getTaxRegistrations(): array
-    {
-        return $this->taxRegistrations;
-    }
-
-    /**
-     * @param array<InvoiceSuiteIdDTO> $newTaxRegistrations
+     * Get next Party global IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function setTaxRegistrations(array $newTaxRegistrations): self
+    public function nextGlobalId(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->taxRegistrations = $newTaxRegistrations;
-
-        return $this;
-    }
-
-    /**
-     * @param InvoiceSuiteIdDTO $newTaxRegistration
-     * @return self
-     */
-    public function addTaxRegistration(InvoiceSuiteIdDTO $newTaxRegistration): self
-    {
-        $this->taxRegistrations[] = $newTaxRegistration;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasTaxRegistrations(): bool
-    {
-        return $this->taxRegistrations !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachTaxRegistration(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->taxRegistrations as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
+        if (($globalId = next($this->globalId)) !== false) {
+            $callback($globalId);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
             }
-
-            $count++;
-
-            $callback($item);
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callbackElse
+     * Get previous Party global IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousGlobalId(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($globalId = prev($this->globalId)) !== false) {
+            $callback($globalId);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party global IDs
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastGlobalId(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($globalId = end($this->globalId)) !== false) {
+            $callback($globalId);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party global IDs and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachGlobalId(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->globalId as $globalId) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($globalId);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party tax registrations
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getTaxRegistration(): array
+    {
+        return $this->taxRegistration;
+    }
+
+    /**
+     * Sets party tax registrations
+     *
+     * @param array<InvoiceSuiteIdDTO> $taxRegistration Party tax registrations
+     * @return self
+     */
+    public function setTaxRegistration(array $taxRegistration): self
+    {
+        $this->taxRegistration = $taxRegistration;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party tax registrations
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO $taxRegistration Party tax registrations
+     * @return self
+     */
+    public function addTaxRegistration(InvoiceSuiteIdDTO $taxRegistration): self
+    {
+        $this->taxRegistration[] = $taxRegistration;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party tax registrations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->taxRegistrations)) !== false) {
-            $callback($name);
+        if (($taxRegistration = reset($this->taxRegistration)) !== false) {
+            $callback($taxRegistration);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -392,73 +593,144 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @return array<InvoiceSuiteAddressDTO>
-     */
-    public function getAddresses(): array
-    {
-        return $this->addresses;
-    }
-
-    /**
-     * @param array<InvoiceSuiteAddressDTO> $newAddresses
+     * Get next Party tax registrations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function setAddresses(array $newAddresses): self
+    public function nextTaxRegistration(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->addresses = $newAddresses;
-
-        return $this;
-    }
-
-    /**
-     * @param InvoiceSuiteAddressDTO $newAddress
-     * @return self
-     */
-    public function addAddress(InvoiceSuiteAddressDTO $newAddress): self
-    {
-        $this->addresses[] = $newAddress;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasAddresses(): bool
-    {
-        return $this->addresses !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachAddress(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->addresses as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
+        if (($taxRegistration = next($this->taxRegistration)) !== false) {
+            $callback($taxRegistration);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
             }
-
-            $count++;
-
-            $callback($item);
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callbackElse
+     * Get previous Party tax registrations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousTaxRegistration(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($taxRegistration = prev($this->taxRegistration)) !== false) {
+            $callback($taxRegistration);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party tax registrations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastTaxRegistration(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($taxRegistration = end($this->taxRegistration)) !== false) {
+            $callback($taxRegistration);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party tax registrations and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachTaxRegistration(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->taxRegistration as $taxRegistration) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($taxRegistration);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party addresses
+     *
+     * @return array<InvoiceSuiteAddressDTO>
+     */
+    public function getAddress(): array
+    {
+        return $this->address;
+    }
+
+    /**
+     * Sets party addresses
+     *
+     * @param array<InvoiceSuiteAddressDTO> $address Party addresses
+     * @return self
+     */
+    public function setAddress(array $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party addresses
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO $address Party addresses
+     * @return self
+     */
+    public function addAddress(InvoiceSuiteAddressDTO $address): self
+    {
+        $this->address[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party addresses
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->addresses)) !== false) {
-            $callback($name);
+        if (($address = reset($this->address)) !== false) {
+            $callback($address);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -469,73 +741,141 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @return array<InvoiceSuiteOrganisationDTO>
-     */
-    public function getLegalOrganisations(): array
-    {
-        return $this->legalOrganisations;
-    }
-
-    /**
-     * @param array<InvoiceSuiteOrganisationDTO> $newLegalOrganisations
+     * Get next Party addresses
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function setLegalOrganisations(array $newLegalOrganisations): self
+    public function nextAddress(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->legalOrganisations = $newLegalOrganisations;
-
-        return $this;
-    }
-
-    /**
-     * @param InvoiceSuiteOrganisationDTO $newLegalOrganisation
-     * @return self
-     */
-    public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $newLegalOrganisation): self
-    {
-        $this->legalOrganisations[] = $newLegalOrganisation;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasLegalOrganisations(): bool
-    {
-        return $this->legalOrganisations !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachLegalOrganisation(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->legalOrganisations as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
+        if (($address = next($this->address)) !== false) {
+            $callback($address);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
             }
-
-            $count++;
-
-            $callback($item);
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callbackElse
+     * Get previous Party addresses
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousAddress(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($address = prev($this->address)) !== false) {
+            $callback($address);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party addresses
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastAddress(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($address = end($this->address)) !== false) {
+            $callback($address);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party addresses and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachAddress(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->address as $address) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($address);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party legal organisations
+     *
+     * @return array<InvoiceSuiteOrganisationDTO>
+     */
+    public function getLegalOrganisation(): array
+    {
+        return $this->legalOrganisation;
+    }
+
+    /**
+     * Sets party legal organisations
+     *
+     * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisation Party legal organisations
+     * @return self
+     */
+    public function setLegalOrganisation(array $legalOrganisation): self
+    {
+        $this->legalOrganisation = $legalOrganisation;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party legal organisations
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO $legalOrganisation Party legal organisations
+     * @return self
+     */
+    public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $legalOrganisation): self
+    {
+        $this->legalOrganisation[] = $legalOrganisation;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party legal organisations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->legalOrganisations)) !== false) {
-            $callback($name);
+        if (($legalOrganisation = reset($this->legalOrganisation)) !== false) {
+            $callback($legalOrganisation);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -546,73 +886,144 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Get next Party legal organisations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($legalOrganisation = next($this->legalOrganisation)) !== false) {
+            $callback($legalOrganisation);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous Party legal organisations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($legalOrganisation = prev($this->legalOrganisation)) !== false) {
+            $callback($legalOrganisation);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party legal organisations
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastLegalOrganisation(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($legalOrganisation = end($this->legalOrganisation)) !== false) {
+            $callback($legalOrganisation);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party legal organisations and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachLegalOrganisation(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->legalOrganisation as $legalOrganisation) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($legalOrganisation);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns party contacts
+     *
      * @return array<InvoiceSuiteContactDTO>
      */
     public function getContact(): array
     {
-        return $this->contacts;
+        return $this->contact;
     }
 
     /**
-     * @param array<InvoiceSuiteContactDTO> $newContacts
+     * Sets party contacts
+     *
+     * @param array<InvoiceSuiteContactDTO> $contact Party contacts
      * @return self
      */
-    public function setContact(array $newContacts): self
+    public function setContact(array $contact): self
     {
-        $this->contacts = $newContacts;
+        $this->contact = $contact;
 
         return $this;
     }
 
     /**
-     * @param InvoiceSuiteContactDTO $newContact
+     * Add single Party contacts
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO $contact Party contacts
      * @return self
      */
-    public function addContact(InvoiceSuiteContactDTO $newContact): self
+    public function addContact(InvoiceSuiteContactDTO $contact): self
     {
-        $this->contacts[] = $newContact;
+        $this->contact[] = $contact;
 
         return $this;
     }
 
     /**
-     * @return bool
-     */
-    public function hasContact(): bool
-    {
-        return $this->contacts !== [];
-    }
-
-    /**
-     * @param callable $callback
-     * @return self
-     */
-    public function forEachContact(callable $callback, ?int $limit = null): self
-    {
-        $count = 0;
-
-        foreach ($this->contacts as $item) {
-            if ($limit !== null && $count >= $limit) {
-                break;
-            }
-
-            $count++;
-
-            $callback($item);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param callable $callback
-     * @param callable|null $callback
+     * Get first Party contacts
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstContact(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->contacts)) !== false) {
-            $callback($name);
+        if (($contact = reset($this->contact)) !== false) {
+            $callback($contact);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
@@ -623,77 +1034,234 @@ class InvoiceSuitePartyDTO
     }
 
     /**
-     * @return array<InvoiceSuiteCommunicationDTO>
-     */
-    public function getCommunication(): array
-    {
-        return $this->communications;
-    }
-
-    /**
-     * @param array<InvoiceSuiteCommunicationDTO> $newCommunications
+     * Get next Party contacts
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function setCommunication(array $newCommunications): self
+    public function nextContact(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->communications = $newCommunications;
+        if (($contact = next($this->contact)) !== false) {
+            $callback($contact);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @param InvoiceSuiteCommunicationDTO $newCommunication
+     * Get previous Party contacts
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
-    public function addCommunication(InvoiceSuiteCommunicationDTO $newCommunication): self
+    public function previousContact(callable $callback, ?callable $callbackElse = null): self
     {
-        $this->communications[] = $newCommunication;
+        if (($contact = prev($this->contact)) !== false) {
+            $callback($contact);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
 
         return $this;
     }
 
     /**
-     * @return bool
+     * Get last Party contacts
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
      */
-    public function hasCommunication(): bool
+    public function lastContact(callable $callback, ?callable $callbackElse = null): self
     {
-        return $this->communications !== [];
+        if (($contact = end($this->contact)) !== false) {
+            $callback($contact);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
     }
 
     /**
-     * @param callable $callback
+     * Loop over Party contacts and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
      * @return self
      */
-    public function forEachCommunication(callable $callback, ?int $limit = null): self
+    public function forEachContact(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
     {
         $count = 0;
 
-        foreach ($this->communications as $item) {
+        foreach ($this->contact as $contact) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }
 
             $count++;
 
-            $callback($item);
+            $callback($contact);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
     }
 
     /**
-     * @param callable $callback
-     * @param callable|null $callback
+     * Returns party electronic communications
+     *
+     * @return array<InvoiceSuiteCommunicationDTO>
+     */
+    public function getCommunication(): array
+    {
+        return $this->communication;
+    }
+
+    /**
+     * Sets party electronic communications
+     *
+     * @param array<InvoiceSuiteCommunicationDTO> $communication Party electronic communications
+     * @return self
+     */
+    public function setCommunication(array $communication): self
+    {
+        $this->communication = $communication;
+
+        return $this;
+    }
+
+    /**
+     * Add single Party electronic communications
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO $communication Party electronic communications
+     * @return self
+     */
+    public function addCommunication(InvoiceSuiteCommunicationDTO $communication): self
+    {
+        $this->communication[] = $communication;
+
+        return $this;
+    }
+
+    /**
+     * Get first Party electronic communications
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
      * @return self
      */
     public function firstCommunication(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($name = reset($this->communications)) !== false) {
-            $callback($name);
+        if (($communication = reset($this->communication)) !== false) {
+            $callback($communication);
         } else {
             if (!is_null($callbackElse)) {
                 $callbackElse();
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next Party electronic communications
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextCommunication(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($communication = next($this->communication)) !== false) {
+            $callback($communication);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous Party electronic communications
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousCommunication(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($communication = prev($this->communication)) !== false) {
+            $callback($communication);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last Party electronic communications
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastCommunication(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($communication = end($this->communication)) !== false) {
+            $callback($communication);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party electronic communications and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachCommunication(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->communication as $communication) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($communication);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;

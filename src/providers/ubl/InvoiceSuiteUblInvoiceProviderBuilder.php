@@ -1589,7 +1589,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             fn(InvoiceSuiteIdDTO $item) => $this->addDocumentSellerTaxRegistration(
                 $item->getIdType(),
                 $item->getId()
-            ), 2
+            ),
+            limit: 2
         );
 
         $newDefinition->firstAddress(
