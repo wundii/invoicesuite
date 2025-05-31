@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite;
 
 use DateTimeInterface;
 use JMS\Serializer\Exception\RuntimeException;
-use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
 use JMS\Serializer\Exception\InvalidArgumentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
@@ -1008,19 +1007,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the seller/supplier party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentSeller(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentSeller($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the buyer/customer party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -1266,19 +1252,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentBuyerCommunication($newType, $newUri);
-
-        return $this;
-    }
-
-    /**
-     * Set the buyer/customer party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentBuyer(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentBuyer($newDefinition);
 
         return $this;
     }
@@ -1538,19 +1511,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the tax representative party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentTaxRepresentative(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentTaxRepresentative($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the product end-user party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -1805,19 +1765,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the product end-user party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentProductEndUser(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentProductEndUser($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the Ship-To party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -2063,19 +2010,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
-
-    /**
-     * Set the Ship-to party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentShipTo(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentShipTo($newDefinition);
 
         return $this;
     }
@@ -2335,19 +2269,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the ultimate Ship-to party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentUltimateShipTo(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentUltimateShipTo($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the Ship-From party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -2593,19 +2514,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function addDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentShipFromCommunication($newType, $newUri);
-
-        return $this;
-    }
-
-    /**
-     * Set the Ship-From party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentShipFrom(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentShipFrom($newDefinition);
 
         return $this;
     }
@@ -2861,19 +2769,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the invoicer party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentInvoicer(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentInvoicer($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the Invoicee party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -3124,19 +3019,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set the Invoicee party by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentInvoicee(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentInvoicee($newDefinition);
-
-        return $this;
-    }
-
-    /**
      * Set the name of the Payee party
      *
      * @param string|null $newName The full formal name under which the party is registered.
@@ -3382,19 +3264,6 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
         $this->getCurrentFormatProvider()->getBuilder()->addDocumentPayeeCommunication($newType, $newUri);
-
-        return $this;
-    }
-
-    /**
-     * Set the invoicee by a DTO
-     *
-     * @param InvoiceSuitePartyDTO $newDefinition
-     * @return self
-     */
-    public function setDocumentPayee(InvoiceSuitePartyDTO $newDefinition): self
-    {
-        $this->getCurrentFormatProvider()->getBuilder()->setDocumentPayee($newDefinition);
 
         return $this;
     }
