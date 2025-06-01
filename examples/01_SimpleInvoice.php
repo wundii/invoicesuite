@@ -13,12 +13,13 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -235,6 +236,9 @@ $documentDTO
     )
     ->setSupplyChainEvent(
         new DateTime()
+    )
+    ->addPaymentmean(
+        InvoiceSuitePaymentMeanDTO::createAsDirectDebitSepa('0000000000000815', 'MANDATE-1')
     )
 ;
 

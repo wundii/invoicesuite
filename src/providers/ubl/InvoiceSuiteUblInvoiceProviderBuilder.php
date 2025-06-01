@@ -8,22 +8,23 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -374,6 +375,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         );
 
         $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
+
+        $newDocumentDTO->forEachPaymentmean(
+            fn(InvoiceSuitePaymentMeanDTO $item) => $this->addDocumentPaymentMean(
+                $item->getTypeCode(),
+                $item->getName(),
+                $item->getFinancialCardId(),
+                $item->getFinancialCardHolder(),
+                $item->getBuyerIban(),
+                $item->getPayeeIban(),
+                $item->getPayeeAccountName(),
+                $item->getPayeeProprietaryId(),
+                $item->getPayeeBic(),
+                $item->getPaymentReference(),
+                $item->getMandate()
+            )
+        );
 
         return $this;
     }

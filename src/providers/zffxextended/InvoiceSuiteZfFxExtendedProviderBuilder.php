@@ -22,6 +22,7 @@ use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\DocumentContextParameterType;
 use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentContextType;
 
@@ -735,6 +736,22 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         );
 
         $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
+
+        $newDocumentDTO->forEachPaymentmean(
+            fn(InvoiceSuitePaymentMeanDTO $item) => $this->addDocumentPaymentMean(
+                $item->getTypeCode(),
+                $item->getName(),
+                $item->getFinancialCardId(),
+                $item->getFinancialCardHolder(),
+                $item->getBuyerIban(),
+                $item->getPayeeIban(),
+                $item->getPayeeAccountName(),
+                $item->getPayeeProprietaryId(),
+                $item->getPayeeBic(),
+                $item->getPaymentReference(),
+                $item->getMandate()
+            )
+        );
 
         return $this;
     }
