@@ -366,6 +366,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
         );
 
+        $newDocumentDTO->firstPostingReference(
+            fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPostingReference(
+                $item->getIdType(),
+                $item->getId()
+            )
+        );
+
         $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
 
         return $this;

@@ -230,6 +230,9 @@ $documentDTO
     ->addDeliveryNoteReference(
         (new InvoiceSuiteReferenceDTO('DELIVERYNOTE-0000001', new DateTime()))
     )
+    ->addPostingReference(
+        (new InvoiceSuiteIdDTO('FINACC', '1'))
+    )
     ->setSupplyChainEvent(
         new DateTime()
     )
