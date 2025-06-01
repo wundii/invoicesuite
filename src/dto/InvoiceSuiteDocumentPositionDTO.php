@@ -13,4 +13,10 @@ namespace horstoeko\invoicesuite\dto;
  */
 class InvoiceSuiteDocumentPositionDTO
 {
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    }
 }
