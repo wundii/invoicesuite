@@ -261,6 +261,13 @@ class InvoiceSuiteDocumentHeaderDTO
     protected ?InvoiceSuitePartyDTO $payeeParty = null;
 
     /**
+     * The Document positions
+     *
+     * @var array<InvoiceSuiteDocumentPositionDTO>
+     */
+    protected array $positions = [];
+
+    /**
      * Constructor
      *
      * @param string|null $number The document number issued by the seller
@@ -298,6 +305,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param InvoiceSuitePartyDTO|null $invoicerParty The Invoicer Party
      * @param InvoiceSuitePartyDTO|null $invoiceeParty The Invoicee Party
      * @param InvoiceSuitePartyDTO|null $payeeParty The Payee Party
+     * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
      */
     public function __construct(
         ?string $number = null,
@@ -335,6 +343,7 @@ class InvoiceSuiteDocumentHeaderDTO
         ?InvoiceSuitePartyDTO $invoicerParty = null,
         ?InvoiceSuitePartyDTO $invoiceeParty = null,
         ?InvoiceSuitePartyDTO $payeeParty = null,
+        array $positions = [],
     ) {
         $this->setNumber($number);
         $this->setType($type);
@@ -371,6 +380,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setInvoicerParty($invoicerParty);
         $this->setInvoiceeParty($invoiceeParty);
         $this->setPayeeParty($payeeParty);
+        $this->setPositions($positions);
     }
 
     /**
@@ -2918,6 +2928,151 @@ class InvoiceSuiteDocumentHeaderDTO
     public function setPayeeParty(?InvoiceSuitePartyDTO $payeeParty): self
     {
         $this->payeeParty = $payeeParty;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Document positions
+     *
+     * @return array<InvoiceSuiteDocumentPositionDTO>
+     */
+    public function getPositions(): array
+    {
+        return $this->positions;
+    }
+
+    /**
+     * Sets the Document positions
+     *
+     * @param array<InvoiceSuiteDocumentPositionDTO> $positions The Document positions
+     * @return self
+     */
+    public function setPositions(array $positions): self
+    {
+        $this->positions = $positions;
+
+        return $this;
+    }
+
+    /**
+     * Add single The Document positions
+     *
+     * @param horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO $positions The Document positions
+     * @return self
+     */
+    public function addPositions(InvoiceSuiteDocumentPositionDTO $positions): self
+    {
+        $this->positions[] = $positions;
+
+        return $this;
+    }
+
+    /**
+     * Get first The Document positions
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstPositions(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($positions = reset($this->positions)) !== false) {
+            $callback($positions);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The Document positions
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextPositions(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($positions = next($this->positions)) !== false) {
+            $callback($positions);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The Document positions
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousPositions(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($positions = prev($this->positions)) !== false) {
+            $callback($positions);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The Document positions
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastPositions(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($positions = end($this->positions)) !== false) {
+            $callback($positions);
+        } else {
+            if (!is_null($callbackElse)) {
+                $callbackElse();
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The Document positions and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachPositions(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
+    {
+        $count = 0;
+
+        foreach ($this->positions as $positions) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($positions);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
 
         return $this;
     }
