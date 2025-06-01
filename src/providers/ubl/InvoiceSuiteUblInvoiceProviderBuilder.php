@@ -397,7 +397,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         );
 
         $newDocumentDTO->forEachPaymentTerm(
-            function (InvoiceSuitePaymentTermDTO $item) {
+            function (InvoiceSuitePaymentTermDTO $item): void {
                 $this->addDocumentPaymentTerm(
                     $item->getDescription(),
                     $item->getDueDate()

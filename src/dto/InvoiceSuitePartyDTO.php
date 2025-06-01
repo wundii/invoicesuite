@@ -148,10 +148,8 @@ class InvoiceSuitePartyDTO
     {
         if (($name = reset($this->name)) !== false) {
             $callback($name);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -168,10 +166,8 @@ class InvoiceSuitePartyDTO
     {
         if (($name = next($this->name)) !== false) {
             $callback($name);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -188,10 +184,8 @@ class InvoiceSuitePartyDTO
     {
         if (($name = prev($this->name)) !== false) {
             $callback($name);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -208,10 +202,8 @@ class InvoiceSuitePartyDTO
     {
         if (($name = end($this->name)) !== false) {
             $callback($name);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -293,10 +285,8 @@ class InvoiceSuitePartyDTO
     {
         if (($id = reset($this->id)) !== false) {
             $callback($id);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -313,10 +303,8 @@ class InvoiceSuitePartyDTO
     {
         if (($id = next($this->id)) !== false) {
             $callback($id);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -333,10 +321,8 @@ class InvoiceSuitePartyDTO
     {
         if (($id = prev($this->id)) !== false) {
             $callback($id);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -353,10 +339,8 @@ class InvoiceSuitePartyDTO
     {
         if (($id = end($this->id)) !== false) {
             $callback($id);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -438,10 +422,8 @@ class InvoiceSuitePartyDTO
     {
         if (($globalId = reset($this->globalId)) !== false) {
             $callback($globalId);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -458,10 +440,8 @@ class InvoiceSuitePartyDTO
     {
         if (($globalId = next($this->globalId)) !== false) {
             $callback($globalId);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -478,10 +458,8 @@ class InvoiceSuitePartyDTO
     {
         if (($globalId = prev($this->globalId)) !== false) {
             $callback($globalId);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -498,10 +476,8 @@ class InvoiceSuitePartyDTO
     {
         if (($globalId = end($this->globalId)) !== false) {
             $callback($globalId);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -583,10 +559,8 @@ class InvoiceSuitePartyDTO
     {
         if (($taxRegistration = reset($this->taxRegistration)) !== false) {
             $callback($taxRegistration);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -603,10 +577,8 @@ class InvoiceSuitePartyDTO
     {
         if (($taxRegistration = next($this->taxRegistration)) !== false) {
             $callback($taxRegistration);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -623,10 +595,8 @@ class InvoiceSuitePartyDTO
     {
         if (($taxRegistration = prev($this->taxRegistration)) !== false) {
             $callback($taxRegistration);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -643,10 +613,8 @@ class InvoiceSuitePartyDTO
     {
         if (($taxRegistration = end($this->taxRegistration)) !== false) {
             $callback($taxRegistration);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -731,10 +699,8 @@ class InvoiceSuitePartyDTO
     {
         if (($address = reset($this->address)) !== false) {
             $callback($address);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -751,10 +717,8 @@ class InvoiceSuitePartyDTO
     {
         if (($address = next($this->address)) !== false) {
             $callback($address);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -771,10 +735,8 @@ class InvoiceSuitePartyDTO
     {
         if (($address = prev($this->address)) !== false) {
             $callback($address);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -791,10 +753,8 @@ class InvoiceSuitePartyDTO
     {
         if (($address = end($this->address)) !== false) {
             $callback($address);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -876,10 +836,8 @@ class InvoiceSuitePartyDTO
     {
         if (($legalOrganisation = reset($this->legalOrganisation)) !== false) {
             $callback($legalOrganisation);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -896,10 +854,8 @@ class InvoiceSuitePartyDTO
     {
         if (($legalOrganisation = next($this->legalOrganisation)) !== false) {
             $callback($legalOrganisation);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -916,10 +872,8 @@ class InvoiceSuitePartyDTO
     {
         if (($legalOrganisation = prev($this->legalOrganisation)) !== false) {
             $callback($legalOrganisation);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -936,10 +890,8 @@ class InvoiceSuitePartyDTO
     {
         if (($legalOrganisation = end($this->legalOrganisation)) !== false) {
             $callback($legalOrganisation);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1024,10 +976,8 @@ class InvoiceSuitePartyDTO
     {
         if (($contact = reset($this->contact)) !== false) {
             $callback($contact);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1044,10 +994,8 @@ class InvoiceSuitePartyDTO
     {
         if (($contact = next($this->contact)) !== false) {
             $callback($contact);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1064,10 +1012,8 @@ class InvoiceSuitePartyDTO
     {
         if (($contact = prev($this->contact)) !== false) {
             $callback($contact);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1084,10 +1030,8 @@ class InvoiceSuitePartyDTO
     {
         if (($contact = end($this->contact)) !== false) {
             $callback($contact);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1169,10 +1113,8 @@ class InvoiceSuitePartyDTO
     {
         if (($communication = reset($this->communication)) !== false) {
             $callback($communication);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1189,10 +1131,8 @@ class InvoiceSuitePartyDTO
     {
         if (($communication = next($this->communication)) !== false) {
             $callback($communication);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1209,10 +1149,8 @@ class InvoiceSuitePartyDTO
     {
         if (($communication = prev($this->communication)) !== false) {
             $callback($communication);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1229,10 +1167,8 @@ class InvoiceSuitePartyDTO
     {
         if (($communication = end($this->communication)) !== false) {
             $callback($communication);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;

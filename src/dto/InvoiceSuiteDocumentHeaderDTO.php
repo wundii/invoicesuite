@@ -723,10 +723,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($note = reset($this->note)) !== false) {
             $callback($note);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -743,10 +741,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($note = next($this->note)) !== false) {
             $callback($note);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -763,10 +759,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($note = prev($this->note)) !== false) {
             $callback($note);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -783,10 +777,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($note = end($this->note)) !== false) {
             $callback($note);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -868,10 +860,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($billingPeriod = reset($this->billingPeriod)) !== false) {
             $callback($billingPeriod);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -888,10 +878,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($billingPeriod = next($this->billingPeriod)) !== false) {
             $callback($billingPeriod);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -908,10 +896,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($billingPeriod = prev($this->billingPeriod)) !== false) {
             $callback($billingPeriod);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -928,10 +914,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($billingPeriod = end($this->billingPeriod)) !== false) {
             $callback($billingPeriod);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1013,10 +997,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($postingReference = reset($this->postingReference)) !== false) {
             $callback($postingReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1033,10 +1015,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($postingReference = next($this->postingReference)) !== false) {
             $callback($postingReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1053,10 +1033,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($postingReference = prev($this->postingReference)) !== false) {
             $callback($postingReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1073,10 +1051,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($postingReference = end($this->postingReference)) !== false) {
             $callback($postingReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1161,10 +1137,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($sellerOrderReference = reset($this->sellerOrderReference)) !== false) {
             $callback($sellerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1181,10 +1155,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($sellerOrderReference = next($this->sellerOrderReference)) !== false) {
             $callback($sellerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1201,10 +1173,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($sellerOrderReference = prev($this->sellerOrderReference)) !== false) {
             $callback($sellerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1221,10 +1191,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($sellerOrderReference = end($this->sellerOrderReference)) !== false) {
             $callback($sellerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1309,10 +1277,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($buyerOrderReference = reset($this->buyerOrderReference)) !== false) {
             $callback($buyerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1329,10 +1295,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($buyerOrderReference = next($this->buyerOrderReference)) !== false) {
             $callback($buyerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1349,10 +1313,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($buyerOrderReference = prev($this->buyerOrderReference)) !== false) {
             $callback($buyerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1369,10 +1331,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($buyerOrderReference = end($this->buyerOrderReference)) !== false) {
             $callback($buyerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1457,10 +1417,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($quotationReference = reset($this->quotationReference)) !== false) {
             $callback($quotationReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1477,10 +1435,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($quotationReference = next($this->quotationReference)) !== false) {
             $callback($quotationReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1497,10 +1453,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($quotationReference = prev($this->quotationReference)) !== false) {
             $callback($quotationReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1517,10 +1471,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($quotationReference = end($this->quotationReference)) !== false) {
             $callback($quotationReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1605,10 +1557,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($contractReference = reset($this->contractReference)) !== false) {
             $callback($contractReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1625,10 +1575,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($contractReference = next($this->contractReference)) !== false) {
             $callback($contractReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1645,10 +1593,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($contractReference = prev($this->contractReference)) !== false) {
             $callback($contractReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1665,10 +1611,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($contractReference = end($this->contractReference)) !== false) {
             $callback($contractReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1753,10 +1697,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($additionalReference = reset($this->additionalReference)) !== false) {
             $callback($additionalReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1773,10 +1715,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($additionalReference = next($this->additionalReference)) !== false) {
             $callback($additionalReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1793,10 +1733,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($additionalReference = prev($this->additionalReference)) !== false) {
             $callback($additionalReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1813,10 +1751,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($additionalReference = end($this->additionalReference)) !== false) {
             $callback($additionalReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1901,10 +1837,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($invoiceReference = reset($this->invoiceReference)) !== false) {
             $callback($invoiceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1921,10 +1855,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($invoiceReference = next($this->invoiceReference)) !== false) {
             $callback($invoiceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1941,10 +1873,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($invoiceReference = prev($this->invoiceReference)) !== false) {
             $callback($invoiceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -1961,10 +1891,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($invoiceReference = end($this->invoiceReference)) !== false) {
             $callback($invoiceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2049,10 +1977,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($projectReference = reset($this->projectReference)) !== false) {
             $callback($projectReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2069,10 +1995,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($projectReference = next($this->projectReference)) !== false) {
             $callback($projectReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2089,10 +2013,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($projectReference = prev($this->projectReference)) !== false) {
             $callback($projectReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2109,10 +2031,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($projectReference = end($this->projectReference)) !== false) {
             $callback($projectReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2197,10 +2117,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($ultimateCustomerOrderReference = reset($this->ultimateCustomerOrderReference)) !== false) {
             $callback($ultimateCustomerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2217,10 +2135,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($ultimateCustomerOrderReference = next($this->ultimateCustomerOrderReference)) !== false) {
             $callback($ultimateCustomerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2237,10 +2153,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($ultimateCustomerOrderReference = prev($this->ultimateCustomerOrderReference)) !== false) {
             $callback($ultimateCustomerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2257,10 +2171,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($ultimateCustomerOrderReference = end($this->ultimateCustomerOrderReference)) !== false) {
             $callback($ultimateCustomerOrderReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2345,10 +2257,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($despatchAdviceReference = reset($this->despatchAdviceReference)) !== false) {
             $callback($despatchAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2365,10 +2275,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($despatchAdviceReference = next($this->despatchAdviceReference)) !== false) {
             $callback($despatchAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2385,10 +2293,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($despatchAdviceReference = prev($this->despatchAdviceReference)) !== false) {
             $callback($despatchAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2405,10 +2311,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($despatchAdviceReference = end($this->despatchAdviceReference)) !== false) {
             $callback($despatchAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2493,10 +2397,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($receivingAdviceReference = reset($this->receivingAdviceReference)) !== false) {
             $callback($receivingAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2513,10 +2415,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($receivingAdviceReference = next($this->receivingAdviceReference)) !== false) {
             $callback($receivingAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2533,10 +2433,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($receivingAdviceReference = prev($this->receivingAdviceReference)) !== false) {
             $callback($receivingAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2553,10 +2451,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($receivingAdviceReference = end($this->receivingAdviceReference)) !== false) {
             $callback($receivingAdviceReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2641,10 +2537,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($deliveryNoteReference = reset($this->deliveryNoteReference)) !== false) {
             $callback($deliveryNoteReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2661,10 +2555,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($deliveryNoteReference = next($this->deliveryNoteReference)) !== false) {
             $callback($deliveryNoteReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2681,10 +2573,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($deliveryNoteReference = prev($this->deliveryNoteReference)) !== false) {
             $callback($deliveryNoteReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -2701,10 +2591,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($deliveryNoteReference = end($this->deliveryNoteReference)) !== false) {
             $callback($deliveryNoteReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3019,10 +2907,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentMean = reset($this->paymentMean)) !== false) {
             $callback($paymentMean);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3039,10 +2925,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentMean = next($this->paymentMean)) !== false) {
             $callback($paymentMean);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3059,10 +2943,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentMean = prev($this->paymentMean)) !== false) {
             $callback($paymentMean);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3079,10 +2961,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentMean = end($this->paymentMean)) !== false) {
             $callback($paymentMean);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3164,10 +3044,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentTerm = reset($this->paymentTerm)) !== false) {
             $callback($paymentTerm);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3184,10 +3062,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentTerm = next($this->paymentTerm)) !== false) {
             $callback($paymentTerm);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3204,10 +3080,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentTerm = prev($this->paymentTerm)) !== false) {
             $callback($paymentTerm);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3224,10 +3098,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($paymentTerm = end($this->paymentTerm)) !== false) {
             $callback($paymentTerm);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3309,10 +3181,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($creditorReference = reset($this->creditorReference)) !== false) {
             $callback($creditorReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3329,10 +3199,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($creditorReference = next($this->creditorReference)) !== false) {
             $callback($creditorReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3349,10 +3217,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($creditorReference = prev($this->creditorReference)) !== false) {
             $callback($creditorReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3369,10 +3235,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($creditorReference = end($this->creditorReference)) !== false) {
             $callback($creditorReference);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3457,10 +3321,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($tax = reset($this->tax)) !== false) {
             $callback($tax);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3477,10 +3339,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($tax = next($this->tax)) !== false) {
             $callback($tax);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3497,10 +3357,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($tax = prev($this->tax)) !== false) {
             $callback($tax);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3517,10 +3375,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($tax = end($this->tax)) !== false) {
             $callback($tax);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3602,10 +3458,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($positions = reset($this->positions)) !== false) {
             $callback($positions);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3622,10 +3476,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($positions = next($this->positions)) !== false) {
             $callback($positions);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3642,10 +3494,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($positions = prev($this->positions)) !== false) {
             $callback($positions);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -3662,10 +3512,8 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         if (($positions = end($this->positions)) !== false) {
             $callback($positions);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;

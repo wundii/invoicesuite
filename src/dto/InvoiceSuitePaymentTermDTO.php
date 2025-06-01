@@ -156,10 +156,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($discountTerms = reset($this->discountTerms)) !== false) {
             $callback($discountTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -176,10 +174,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($discountTerms = next($this->discountTerms)) !== false) {
             $callback($discountTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -196,10 +192,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($discountTerms = prev($this->discountTerms)) !== false) {
             $callback($discountTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -216,10 +210,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($discountTerms = end($this->discountTerms)) !== false) {
             $callback($discountTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -301,10 +293,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($penaltyTerms = reset($this->penaltyTerms)) !== false) {
             $callback($penaltyTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -321,10 +311,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($penaltyTerms = next($this->penaltyTerms)) !== false) {
             $callback($penaltyTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -341,10 +329,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($penaltyTerms = prev($this->penaltyTerms)) !== false) {
             $callback($penaltyTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;
@@ -361,10 +347,8 @@ class InvoiceSuitePaymentTermDTO
     {
         if (($penaltyTerms = end($this->penaltyTerms)) !== false) {
             $callback($penaltyTerms);
-        } else {
-            if (!is_null($callbackElse)) {
-                $callbackElse();
-            }
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
         }
 
         return $this;

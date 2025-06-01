@@ -762,7 +762,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         );
 
         $newDocumentDTO->forEachPaymentTerm(
-            function (InvoiceSuitePaymentTermDTO $item) {
+            function (InvoiceSuitePaymentTermDTO $item): void {
                 $this->addDocumentPaymentTerm(
                     $item->getDescription(),
                     $item->getDueDate()
