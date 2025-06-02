@@ -2,15 +2,15 @@
 
 namespace horstoeko\invoicesuite\concerns;
 
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
-use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
-use JMS\Serializer\EventDispatcher\EventDispatcher;
-use JMS\Serializer\Exception\InvalidArgumentException;
-use JMS\Serializer\Exception\RuntimeException;
-use JMS\Serializer\Handler\HandlerRegistryInterface;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
+use JMS\Serializer\Exception\RuntimeException;
+use JMS\Serializer\EventDispatcher\EventDispatcher;
+use JMS\Serializer\Handler\HandlerRegistryInterface;
+use JMS\Serializer\Exception\InvalidArgumentException;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\BaseTypesHandler;
+use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 
 /**
  * Trait representing methods for handling the serializer/deserializer
@@ -23,6 +23,8 @@ use JMS\Serializer\SerializerInterface;
  */
 trait HandlesSerializer
 {
+    use HandlesCurrentFormatProvider;
+
     /**
      * @var SerializerBuilder $serializerBuilder Serializer builder
      */
@@ -36,36 +38,35 @@ trait HandlesSerializer
     /**
      * Build the serializer by a format provider
      *
-     * @param InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider
      * @return void
      * @throws InvalidArgumentException
      * @throws RuntimeException
      */
-    public function createAndInitSerializerByFormatProvider(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider): void
+    public function createAndInitSerializerByFormatProvider(): void
     {
         $this->serializerBuilder = SerializerBuilder::create();
 
-        $this->serializerBuilder->addMetadataDirs($invoiceSuiteAbstractFormatProvider->getSerializerMetadataDirectories());
+        $this->serializerBuilder->addMetadataDirs($this->getCurrentFormatProvider()->getSerializerMetadataDirectories());
         $this->serializerBuilder->setCacheDir(sys_get_temp_dir() . "\jms");
         $this->serializerBuilder->addDefaultListeners();
         $this->serializerBuilder->addDefaultHandlers();
 
-        $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry) use ($invoiceSuiteAbstractFormatProvider): void {
+        $this->serializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry): void {
             $handlerRegistry->registerSubscribingHandler(new BaseTypesHandler());
             $handlerRegistry->registerSubscribingHandler(new XmlSchemaDateHandler());
-            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerHandlers() as $handlerClassname) {
+            foreach ($this->getCurrentFormatProvider()->getSerializerHandlers() as $handlerClassname) {
                 $handlerRegistry->registerSubscribingHandler(new $handlerClassname());
             }
         });
 
-        $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher) use ($invoiceSuiteAbstractFormatProvider): void {
-            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerListeners() as $event => $callback) {
+        $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher): void {
+            foreach ($this->getCurrentFormatProvider()->getSerializerListeners() as $event => $callback) {
                 $eventDispatcher->addListener($event, $callback);
             }
         });
 
-        $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher) use ($invoiceSuiteAbstractFormatProvider): void {
-            foreach ($invoiceSuiteAbstractFormatProvider->getSerializerSubscribers() as $subscriberClassname) {
+        $this->serializerBuilder->configureListeners(function (EventDispatcher $eventDispatcher): void {
+            foreach ($this->getCurrentFormatProvider()->getSerializerSubscribers() as $subscriberClassname) {
                 $eventDispatcher->addSubscriber(new $subscriberClassname());
             }
         });

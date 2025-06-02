@@ -2,11 +2,9 @@
 
 namespace horstoeko\invoicesuite\abstracts;
 
-use horstoeko\invoicesuite\concerns\HandlesConditionals;
 use JMS\Serializer\SerializationContext;
 use horstoeko\invoicesuite\concerns\HandlesRootObject;
 use horstoeko\invoicesuite\concerns\HandlesSerializer;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
@@ -21,10 +19,8 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
  */
 abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuiteBuilderContract
 {
-    use HandlesCurrentFormatProvider;
     use HandlesRootObject;
     use HandlesSerializer;
-    use HandlesConditionals;
 
     /**
      * Constructor
@@ -34,8 +30,8 @@ abstract class InvoiceSuiteAbstractFormatProviderBuilder implements InvoiceSuite
     public function __construct(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider)
     {
         $this->setCurrentFormatProvider($invoiceSuiteAbstractFormatProvider);
-        $this->createAndInitSerializerByFormatProvider($this->getCurrentFormatProvider());
-        $this->createAndInitRootObjectByFormatProvider($this->getCurrentFormatProvider());
+        $this->createAndInitSerializerByFormatProvider();
+        $this->createAndInitRootObjectByFormatProvider();
     }
 
     /**

@@ -15,6 +15,8 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
  */
 trait HandlesRootObject
 {
+    use HandlesCurrentFormatProvider;
+
     /**
      * Invoice root object
      *
@@ -27,9 +29,9 @@ trait HandlesRootObject
      *
      * @return self
      */
-    public function createAndInitRootObjectByFormatProvider(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider): self
+    public function createAndInitRootObjectByFormatProvider(): self
     {
-        $className = $invoiceSuiteAbstractFormatProvider->getRootClassName();
+        $className = $this->getCurrentFormatProvider()->getRootClassName();
 
         return $this->setRootObject(new $className())->initRootObject();
     }
