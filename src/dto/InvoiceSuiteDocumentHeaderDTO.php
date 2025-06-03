@@ -450,7 +450,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setAllowanceCharge($allowanceCharge);
         $this->setServiceCharge($serviceCharge);
         $this->setSummation($summation);
-        $this->setPosition($position);
+        $this->setPositions($position);
     }
 
     /**
@@ -3746,7 +3746,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteDocumentPositionDTO>
      */
-    public function getPosition(): array
+    public function getPositions(): array
     {
         return $this->position;
     }
@@ -3757,7 +3757,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteDocumentPositionDTO> $position The Document positions
      * @return self
      */
-    public function setPosition(array $position): self
+    public function setPositions(array $position): self
     {
         $this->position = $position;
 
