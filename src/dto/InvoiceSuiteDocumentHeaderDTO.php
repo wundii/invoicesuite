@@ -419,20 +419,20 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setTaxCurrency($taxCurrency);
         $this->setIsCopy($isCopy);
         $this->setIsTest($isTest);
-        $this->setNote($note);
-        $this->setBillingPeriod($billingPeriod);
-        $this->setPostingReference($postingReference);
-        $this->setSellerOrderReference($sellerOrderReference);
-        $this->setBuyerOrderReference($buyerOrderReference);
-        $this->setQuotationReference($quotationReference);
-        $this->setContractReference($contractReference);
-        $this->setAdditionalReference($additionalReference);
-        $this->setInvoiceReference($invoiceReference);
-        $this->setProjectReference($projectReference);
-        $this->setUltimateCustomerOrderReference($ultimateCustomerOrderReference);
-        $this->setDespatchAdviceReference($despatchAdviceReference);
-        $this->setReceivingAdviceReference($receivingAdviceReference);
-        $this->setDeliveryNoteReference($deliveryNoteReference);
+        $this->setNotes($note);
+        $this->setBillingPeriods($billingPeriod);
+        $this->setPostingReferences($postingReference);
+        $this->setSellerOrderReferences($sellerOrderReference);
+        $this->setBuyerOrderReferences($buyerOrderReference);
+        $this->setQuotationReferences($quotationReference);
+        $this->setContractReferences($contractReference);
+        $this->setAdditionalReferences($additionalReference);
+        $this->setInvoiceReferences($invoiceReference);
+        $this->setProjectReferences($projectReference);
+        $this->setUltimateCustomerOrderReferences($ultimateCustomerOrderReference);
+        $this->setDespatchAdviceReferences($despatchAdviceReference);
+        $this->setReceivingAdviceReferences($receivingAdviceReference);
+        $this->setDeliveryNoteReferences($deliveryNoteReference);
         $this->setSellerParty($sellerParty);
         $this->setBuyerParty($buyerParty);
         $this->setTaxRepresentativeParty($taxRepresentativeParty);
@@ -443,12 +443,12 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setInvoicerParty($invoicerParty);
         $this->setInvoiceeParty($invoiceeParty);
         $this->setPayeeParty($payeeParty);
-        $this->setPaymentMean($paymentMean);
-        $this->setPaymentTerm($paymentTerm);
-        $this->setCreditorReference($creditorReference);
-        $this->setTax($tax);
-        $this->setAllowanceCharge($allowanceCharge);
-        $this->setServiceCharge($serviceCharge);
+        $this->setPaymentMeans($paymentMean);
+        $this->setPaymentTerms($paymentTerm);
+        $this->setCreditorReferences($creditorReference);
+        $this->setTaxes($tax);
+        $this->setAllowanceCharges($allowanceCharge);
+        $this->setServiceCharges($serviceCharge);
         $this->setSummation($summation);
         $this->setPositions($position);
     }
@@ -711,7 +711,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteNoteDTO>
      */
-    public function getNote(): array
+    public function getNotes(): array
     {
         return $this->note;
     }
@@ -722,7 +722,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteNoteDTO> $note The notes for this document
      * @return self
      */
-    public function setNote(array $note): self
+    public function setNotes(array $note): self
     {
         $this->note = $note;
 
@@ -848,7 +848,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuitePeriodDTO>
      */
-    public function getBillingPeriod(): array
+    public function getBillingPeriods(): array
     {
         return $this->billingPeriod;
     }
@@ -859,7 +859,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePeriodDTO> $billingPeriod The start and/or end date of the billing period
      * @return self
      */
-    public function setBillingPeriod(array $billingPeriod): self
+    public function setBillingPeriods(array $billingPeriod): self
     {
         $this->billingPeriod = $billingPeriod;
 
@@ -985,7 +985,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteIdDTO>
      */
-    public function getPostingReference(): array
+    public function getPostingReferences(): array
     {
         return $this->postingReference;
     }
@@ -996,7 +996,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteIdDTO> $postingReference The posting reference
      * @return self
      */
-    public function setPostingReference(array $postingReference): self
+    public function setPostingReferences(array $postingReference): self
     {
         $this->postingReference = $postingReference;
 
@@ -1125,7 +1125,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getSellerOrderReference(): array
+    public function getSellerOrderReferences(): array
     {
         return $this->sellerOrderReference;
     }
@@ -1136,7 +1136,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $sellerOrderReference The associated seller's order confirmation
      * @return self
      */
-    public function setSellerOrderReference(array $sellerOrderReference): self
+    public function setSellerOrderReferences(array $sellerOrderReference): self
     {
         $this->sellerOrderReference = $sellerOrderReference;
 
@@ -1265,7 +1265,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getBuyerOrderReference(): array
+    public function getBuyerOrderReferences(): array
     {
         return $this->buyerOrderReference;
     }
@@ -1276,7 +1276,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $buyerOrderReference The associated buyer's order
      * @return self
      */
-    public function setBuyerOrderReference(array $buyerOrderReference): self
+    public function setBuyerOrderReferences(array $buyerOrderReference): self
     {
         $this->buyerOrderReference = $buyerOrderReference;
 
@@ -1405,7 +1405,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getQuotationReference(): array
+    public function getQuotationReferences(): array
     {
         return $this->quotationReference;
     }
@@ -1416,7 +1416,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $quotationReference The associated quotation
      * @return self
      */
-    public function setQuotationReference(array $quotationReference): self
+    public function setQuotationReferences(array $quotationReference): self
     {
         $this->quotationReference = $quotationReference;
 
@@ -1545,7 +1545,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getContractReference(): array
+    public function getContractReferences(): array
     {
         return $this->contractReference;
     }
@@ -1556,7 +1556,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $contractReference The associated contract
      * @return self
      */
-    public function setContractReference(array $contractReference): self
+    public function setContractReferences(array $contractReference): self
     {
         $this->contractReference = $contractReference;
 
@@ -1685,7 +1685,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceExtDTO>
      */
-    public function getAdditionalReference(): array
+    public function getAdditionalReferences(): array
     {
         return $this->additionalReference;
     }
@@ -1696,7 +1696,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceExtDTO> $additionalReference The additional associated document
      * @return self
      */
-    public function setAdditionalReference(array $additionalReference): self
+    public function setAdditionalReferences(array $additionalReference): self
     {
         $this->additionalReference = $additionalReference;
 
@@ -1825,7 +1825,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceExtDTO>
      */
-    public function getInvoiceReference(): array
+    public function getInvoiceReferences(): array
     {
         return $this->invoiceReference;
     }
@@ -1836,7 +1836,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceExtDTO> $invoiceReference The additional invoice document
      * @return self
      */
-    public function setInvoiceReference(array $invoiceReference): self
+    public function setInvoiceReferences(array $invoiceReference): self
     {
         $this->invoiceReference = $invoiceReference;
 
@@ -1965,7 +1965,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteProjectDTO>
      */
-    public function getProjectReference(): array
+    public function getProjectReferences(): array
     {
         return $this->projectReference;
     }
@@ -1976,7 +1976,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteProjectDTO> $projectReference The project reference
      * @return self
      */
-    public function setProjectReference(array $projectReference): self
+    public function setProjectReferences(array $projectReference): self
     {
         $this->projectReference = $projectReference;
 
@@ -2105,7 +2105,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getUltimateCustomerOrderReference(): array
+    public function getUltimateCustomerOrderReferences(): array
     {
         return $this->ultimateCustomerOrderReference;
     }
@@ -2116,7 +2116,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $ultimateCustomerOrderReference The ultimate customer order reference
      * @return self
      */
-    public function setUltimateCustomerOrderReference(array $ultimateCustomerOrderReference): self
+    public function setUltimateCustomerOrderReferences(array $ultimateCustomerOrderReference): self
     {
         $this->ultimateCustomerOrderReference = $ultimateCustomerOrderReference;
 
@@ -2245,7 +2245,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getDespatchAdviceReference(): array
+    public function getDespatchAdviceReferences(): array
     {
         return $this->despatchAdviceReference;
     }
@@ -2256,7 +2256,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $despatchAdviceReference The despatch advice reference
      * @return self
      */
-    public function setDespatchAdviceReference(array $despatchAdviceReference): self
+    public function setDespatchAdviceReferences(array $despatchAdviceReference): self
     {
         $this->despatchAdviceReference = $despatchAdviceReference;
 
@@ -2385,7 +2385,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getReceivingAdviceReference(): array
+    public function getReceivingAdviceReferences(): array
     {
         return $this->receivingAdviceReference;
     }
@@ -2396,7 +2396,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $receivingAdviceReference The receiving advice reference
      * @return self
      */
-    public function setReceivingAdviceReference(array $receivingAdviceReference): self
+    public function setReceivingAdviceReferences(array $receivingAdviceReference): self
     {
         $this->receivingAdviceReference = $receivingAdviceReference;
 
@@ -2525,7 +2525,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteReferenceDTO>
      */
-    public function getDeliveryNoteReference(): array
+    public function getDeliveryNoteReferences(): array
     {
         return $this->deliveryNoteReference;
     }
@@ -2536,7 +2536,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteReferenceDTO> $deliveryNoteReference The delivery note reference
      * @return self
      */
-    public function setDeliveryNoteReference(array $deliveryNoteReference): self
+    public function setDeliveryNoteReferences(array $deliveryNoteReference): self
     {
         $this->deliveryNoteReference = $deliveryNoteReference;
 
@@ -2895,7 +2895,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuitePaymentMeanDTO>
      */
-    public function getPaymentMean(): array
+    public function getPaymentMeans(): array
     {
         return $this->paymentMean;
     }
@@ -2906,7 +2906,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentMeanDTO> $paymentMean The payment means
      * @return self
      */
-    public function setPaymentMean(array $paymentMean): self
+    public function setPaymentMeans(array $paymentMean): self
     {
         $this->paymentMean = $paymentMean;
 
@@ -3032,7 +3032,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuitePaymentTermDTO>
      */
-    public function getPaymentTerm(): array
+    public function getPaymentTerms(): array
     {
         return $this->paymentTerm;
     }
@@ -3043,7 +3043,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentTermDTO> $paymentTerm The payment terms
      * @return self
      */
-    public function setPaymentTerm(array $paymentTerm): self
+    public function setPaymentTerms(array $paymentTerm): self
     {
         $this->paymentTerm = $paymentTerm;
 
@@ -3169,7 +3169,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteIdDTO>
      */
-    public function getCreditorReference(): array
+    public function getCreditorReferences(): array
     {
         return $this->creditorReference;
     }
@@ -3180,7 +3180,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteIdDTO> $creditorReference The creditor identifier
      * @return self
      */
-    public function setCreditorReference(array $creditorReference): self
+    public function setCreditorReferences(array $creditorReference): self
     {
         $this->creditorReference = $creditorReference;
 
@@ -3309,7 +3309,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteTaxDTO>
      */
-    public function getTax(): array
+    public function getTaxes(): array
     {
         return $this->tax;
     }
@@ -3320,7 +3320,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteTaxDTO> $tax The VAT breakdown
      * @return self
      */
-    public function setTax(array $tax): self
+    public function setTaxes(array $tax): self
     {
         $this->tax = $tax;
 
@@ -3446,7 +3446,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteAllowanceChargeDTO>
      */
-    public function getAllowanceCharge(): array
+    public function getAllowanceCharges(): array
     {
         return $this->allowanceCharge;
     }
@@ -3457,7 +3457,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharge The allowances/charges
      * @return self
      */
-    public function setAllowanceCharge(array $allowanceCharge): self
+    public function setAllowanceCharges(array $allowanceCharge): self
     {
         $this->allowanceCharge = $allowanceCharge;
 
@@ -3586,7 +3586,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @return array<InvoiceSuiteServiceChargeDTO>
      */
-    public function getServiceCharge(): array
+    public function getServiceCharges(): array
     {
         return $this->serviceCharge;
     }
@@ -3597,7 +3597,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuiteServiceChargeDTO> $serviceCharge The allowances/charges
      * @return self
      */
-    public function setServiceCharge(array $serviceCharge): self
+    public function setServiceCharges(array $serviceCharge): self
     {
         $this->serviceCharge = $serviceCharge;
 
