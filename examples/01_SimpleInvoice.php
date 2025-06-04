@@ -19,6 +19,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
@@ -292,6 +293,7 @@ $position = new InvoiceSuiteDocumentPositionDTO('1.1', '1', '0815', 'DETAIL');
 $position->addNote(new InvoiceSuiteNoteDTO('Some content'));
 $position->addNote(new InvoiceSuiteNoteDTO('Some second content'));
 $position->addNote(new InvoiceSuiteNoteDTO("Some third Content", "ContentCode", "SubjectCode"));
+$position->setProduct(new InvoiceSuiteProductDTO('ProductId', 'ProductName', 'ProductDescription', 'SellerID', 'BuyerID', new InvoiceSuiteIdDTO('3333432332', '0088'), 'IndustryId', 'ModelId', 'BatchId', 'Brandname', 'Modelname', 'CN'));
 $documentDTO->addPosition($position);
 
 $builder->createFromDTO($documentDTO);

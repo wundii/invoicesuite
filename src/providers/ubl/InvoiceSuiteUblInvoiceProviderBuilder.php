@@ -478,6 +478,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         $itemNote->getSubjectCode()
                     )
                 );
+                $this->setDocumentPositionProductDetails(
+                    $item->getProduct()?->getId(),
+                    $item->getProduct()?->getName(),
+                    $item->getProduct()?->getDescription(),
+                    $item->getProduct()?->getSellerId(),
+                    $item->getProduct()?->getBuyerId(),
+                    $item->getProduct()?->getGlobalId()?->getId(),
+                    $item->getProduct()?->getGlobalId()?->getIdType(),
+                    $item->getProduct()?->getIndustryId(),
+                    $item->getProduct()?->getModelId(),
+                    $item->getProduct()?->getBatchId(),
+                    $item->getProduct()?->getBrandName(),
+                    $item->getProduct()?->getModelName(),
+                    $item->getProduct()?->getOriginTradeCountry()
+                );
             }
         );
 

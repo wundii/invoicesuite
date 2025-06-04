@@ -49,6 +49,13 @@ class InvoiceSuiteDocumentPositionDTO
     protected array $note = [];
 
     /**
+     * The product for this position
+     *
+     * @var InvoiceSuiteProductDTO|null
+     */
+    protected ?InvoiceSuiteProductDTO $product = null;
+
+    /**
      * Constructor
      *
      * @param string|null $lineId The identification of the position
@@ -56,6 +63,7 @@ class InvoiceSuiteDocumentPositionDTO
      * @param string|null $lineStatus The indication whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
      * @param string|null $lineStatusReason The type to specify whether the invoice line is
      * @param array<InvoiceSuiteNoteDTO> $note The notes for this position
+     * @param InvoiceSuiteProductDTO|null $product The product for this position
      */
     public function __construct(
         ?string $lineId = null,
@@ -63,12 +71,14 @@ class InvoiceSuiteDocumentPositionDTO
         ?string $lineStatus = null,
         ?string $lineStatusReason = null,
         array $note = [],
+        ?InvoiceSuiteProductDTO $product = null,
     ) {
         $this->setLineId($lineId);
         $this->setParentLineId($parentLineId);
         $this->setLineStatus($lineStatus);
         $this->setLineStatusReason($lineStatusReason);
         $this->setNote($note);
+        $this->setProduct($product);
     }
 
     /**
@@ -296,6 +306,29 @@ class InvoiceSuiteDocumentPositionDTO
         if ($count === 0 && !is_null($callbackElse)) {
             $callbackElse();
         }
+
+        return $this;
+    }
+
+    /**
+     * Returns the product for this position
+     *
+     * @return InvoiceSuiteProductDTO|null
+     */
+    public function getProduct(): ?InvoiceSuiteProductDTO
+    {
+        return $this->product;
+    }
+
+    /**
+     * Sets the product for this position
+     *
+     * @param InvoiceSuiteProductDTO|null $product The product for this position
+     * @return self
+     */
+    public function setProduct(?InvoiceSuiteProductDTO $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }
