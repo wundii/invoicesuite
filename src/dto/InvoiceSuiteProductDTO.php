@@ -98,6 +98,13 @@ class InvoiceSuiteProductDTO
     protected ?string $originTradeCountry = null;
 
     /**
+     * THe product characteristics
+     *
+     * @var array<InvoiceSuiteProductCharacteristicDTO>
+     */
+    protected array $characteristic = [];
+
+    /**
      * Constructor
      *
      * @param string|null $id The ID of the product (product id, Order-X interoperable)
@@ -112,6 +119,7 @@ class InvoiceSuiteProductDTO
      * @param string|null $brandName THe brand name of the product
      * @param string|null $modelName THe model name of the product
      * @param string|null $originTradeCountry THe code indicating the country the goods came from
+     * @param array<InvoiceSuiteProductCharacteristicDTO> $characteristic THe product characteristics
      */
     public function __construct(
         ?string $id = null,
@@ -126,6 +134,7 @@ class InvoiceSuiteProductDTO
         ?string $brandName = null,
         ?string $modelName = null,
         ?string $originTradeCountry = null,
+        array $characteristic = [],
     ) {
         $this->setId($id);
         $this->setName($name);
@@ -139,6 +148,7 @@ class InvoiceSuiteProductDTO
         $this->setBrandName($brandName);
         $this->setModelName($modelName);
         $this->setOriginTradeCountry($originTradeCountry);
+        $this->setCharacteristics($characteristic);
     }
 
     /**
@@ -413,6 +423,146 @@ class InvoiceSuiteProductDTO
     public function setOriginTradeCountry(?string $originTradeCountry): self
     {
         $this->originTradeCountry = $originTradeCountry;
+
+        return $this;
+    }
+
+    /**
+     * Returns tHe product characteristics
+     *
+     * @return array<InvoiceSuiteProductCharacteristicDTO>
+     */
+    public function getCharacteristics(): array
+    {
+        return $this->characteristic;
+    }
+
+    /**
+     * Sets tHe product characteristics
+     *
+     * @param array<InvoiceSuiteProductCharacteristicDTO> $characteristic THe product characteristics
+     * @return self
+     */
+    public function setCharacteristics(array $characteristic): self
+    {
+        $this->characteristic = $characteristic;
+
+        return $this;
+    }
+
+    /**
+     * Add single THe product characteristics
+     *
+     * @param InvoiceSuiteProductCharacteristicDTO $characteristic THe product characteristics
+     * @return self
+     */
+    public function addCharacteristic(InvoiceSuiteProductCharacteristicDTO $characteristic): self
+    {
+        $this->characteristic[] = $characteristic;
+
+        return $this;
+    }
+
+    /**
+     * Get first THe product characteristics
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstCharacteristic(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($characteristic = reset($this->characteristic)) !== false) {
+            $callback($characteristic);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next THe product characteristics
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextCharacteristic(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($characteristic = next($this->characteristic)) !== false) {
+            $callback($characteristic);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous THe product characteristics
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousCharacteristic(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($characteristic = prev($this->characteristic)) !== false) {
+            $callback($characteristic);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last THe product characteristics
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastCharacteristic(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($characteristic = end($this->characteristic)) !== false) {
+            $callback($characteristic);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over THe product characteristics and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachCharacteristic(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->characteristic as $characteristic) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($characteristic);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
 
         return $this;
     }
