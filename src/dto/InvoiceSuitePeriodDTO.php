@@ -2,8 +2,6 @@
 
 namespace horstoeko\invoicesuite\dto;
 
-use DateTimeInterface;
-
 /**
  * Class representing a DTO for...
  *
@@ -16,108 +14,73 @@ use DateTimeInterface;
 class InvoiceSuitePeriodDTO
 {
     /**
-     * Start of the billing period
+     * The period value
      *
-     * @var DateTimeInterface|null
+     * @var float|null
      */
-    protected ?DateTimeInterface $startDate = null;
+    protected ?float $period = null;
 
     /**
-     * End of the billing period
-     *
-     * @var DateTimeInterface|null
-     */
-    protected ?DateTimeInterface $endDate = null;
-
-    /**
-     * Further information of the billing period
+     * The periods's unit
      *
      * @var string|null
      */
-    protected ?string $description = null;
+    protected ?string $periodUnit = null;
 
     /**
      * Constructor
      *
-     * @param DateTimeInterface|null $startDate Start of the billing period
-     * @param DateTimeInterface|null $endDate End of the billing period
-     * @param string|null $description Further information of the billing period
+     * @param float|null $period The period value
+     * @param string|null $periodUnit The periods's unit
      */
-    public function __construct(
-        ?DateTimeInterface $startDate = null,
-        ?DateTimeInterface $endDate = null,
-        ?string $description = null,
-    ) {
-        $this->setStartDate($startDate);
-        $this->setEndDate($endDate);
-        $this->setDescription($description);
-    }
-
-    /**
-     * Returns start of the billing period
-     *
-     * @return DateTimeInterface|null
-     */
-    public function getStartDate(): ?DateTimeInterface
+    public function __construct(?float $period = null, ?string $periodUnit = null)
     {
-        return $this->startDate;
+        $this->setPeriod($period);
+        $this->setPeriodUnit($periodUnit);
     }
 
     /**
-     * Sets start of the billing period
+     * Returns the period value
      *
-     * @param DateTimeInterface|null $startDate Start of the billing period
+     * @return float|null
+     */
+    public function getPeriod(): ?float
+    {
+        return $this->period;
+    }
+
+    /**
+     * Sets the period value
+     *
+     * @param float|null $period The period value
      * @return self
      */
-    public function setStartDate(?DateTimeInterface $startDate): self
+    public function setPeriod(?float $period): self
     {
-        $this->startDate = $startDate;
+        $this->period = $period;
 
         return $this;
     }
 
     /**
-     * Returns end of the billing period
-     *
-     * @return DateTimeInterface|null
-     */
-    public function getEndDate(): ?DateTimeInterface
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * Sets end of the billing period
-     *
-     * @param DateTimeInterface|null $endDate End of the billing period
-     * @return self
-     */
-    public function setEndDate(?DateTimeInterface $endDate): self
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Returns further information of the billing period
+     * Returns the periods's unit
      *
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getPeriodUnit(): ?string
     {
-        return $this->description;
+        return $this->periodUnit;
     }
 
     /**
-     * Sets further information of the billing period
+     * Sets the periods's unit
      *
-     * @param string|null $description Further information of the billing period
+     * @param string|null $periodUnit The periods's unit
      * @return self
      */
-    public function setDescription(?string $description): self
+    public function setPeriodUnit(?string $periodUnit): self
     {
-        $this->description = $description;
+        $this->periodUnit = $periodUnit;
 
         return $this;
     }

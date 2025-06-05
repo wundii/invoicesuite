@@ -22,6 +22,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
@@ -50,7 +51,7 @@ $documentDTO
     ->setIsTest(true)
     ->addNote(new InvoiceSuiteNoteDTO("Some content", "CC00", "SC00"))
     ->addNote(new InvoiceSuiteNoteDTO("Some other content", "CC99", "SC99"))
-    ->addBillingPeriod(new InvoiceSuitePeriodDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
+    ->addBillingPeriod(new InvoiceSuiteDateRangeDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
     ->setSellerParty(
         (new InvoiceSuitePartyDTO())
             ->addName("Lieferant GmbH")
@@ -266,7 +267,7 @@ $documentDTO
             "30 Tage Netto",
             new DateTime("+30 days"),
             [
-                (new InvoiceSuitePaymentTermDiscountDTO(100.0, 10.0, 10.0, new DateTime(), 10.0, 'DAY'))
+                (new InvoiceSuitePaymentTermDiscountDTO(100.0, 10.0, 10.0, new DateTime(), new InvoiceSuitePeriodDTO(10.0, 'DAY')))
             ],
             [
                 (new InvoiceSuitePaymentTermPenaltyDTO(10.0, 1.0, 5.0, new DateTime(), 2, 'MON'))

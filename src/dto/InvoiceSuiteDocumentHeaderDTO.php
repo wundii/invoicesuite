@@ -102,7 +102,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * The start and/or end date of the billing period
      *
-     * @var array<InvoiceSuitePeriodDTO>
+     * @var array<InvoiceSuiteDateRangeDTO>
      */
     protected array $billingPeriods = [];
 
@@ -331,7 +331,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param bool|null $isCopy The flag that indicated that this document is a copy
      * @param bool|null $isTest The flag that indicated that this document is a test
      * @param array<InvoiceSuiteNoteDTO> $notes The notes for this document
-     * @param array<InvoiceSuitePeriodDTO> $billingPeriods The start and/or end date of the billing period
+     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
      * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
      * @param array<InvoiceSuiteReferenceDTO> $sellerOrderReferences The associated seller's order confirmation
      * @param array<InvoiceSuiteReferenceDTO> $buyerOrderReferences The associated buyer's order
@@ -846,7 +846,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Returns the start and/or end date of the billing period
      *
-     * @return array<InvoiceSuitePeriodDTO>
+     * @return array<InvoiceSuiteDateRangeDTO>
      */
     public function getBillingPeriods(): array
     {
@@ -856,7 +856,7 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Sets the start and/or end date of the billing period
      *
-     * @param array<InvoiceSuitePeriodDTO> $billingPeriods The start and/or end date of the billing period
+     * @param array<InvoiceSuiteDateRangeDTO> $billingPeriods The start and/or end date of the billing period
      * @return self
      */
     public function setBillingPeriods(array $billingPeriods): self
@@ -869,10 +869,10 @@ class InvoiceSuiteDocumentHeaderDTO
     /**
      * Add single The start and/or end date of the billing period
      *
-     * @param InvoiceSuitePeriodDTO $billingPeriod The start and/or end date of the billing period
+     * @param InvoiceSuiteDateRangeDTO $billingPeriod The start and/or end date of the billing period
      * @return self
      */
-    public function addBillingPeriod(InvoiceSuitePeriodDTO $billingPeriod): self
+    public function addBillingPeriod(InvoiceSuiteDateRangeDTO $billingPeriod): self
     {
         $this->billingPeriods[] = $billingPeriod;
 
