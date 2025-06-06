@@ -29,6 +29,8 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\models\zffxcomfort\ram\ProductCharacteristicType;
 
@@ -335,6 +337,18 @@ $position->setProduct(
         new InvoiceSuiteQuantityDTO('10', 'KGM')
     ))
 );
+$position->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()));
+$position->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()));
+$position->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()));
+$position->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()));
+$position->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')));
+$position->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')));
+$position->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()));
+$position->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()));
+$position->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()));
+$position->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()));
+$position->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")));
+
 $documentDTO->addPosition($position);
 
 $builder->createFromDTO($documentDTO);

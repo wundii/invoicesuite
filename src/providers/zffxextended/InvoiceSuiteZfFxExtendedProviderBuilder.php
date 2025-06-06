@@ -3,39 +3,40 @@
 namespace horstoeko\invoicesuite\providers\zffxextended;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
+use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
-use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
-use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\models\zffxextended\ram\DocumentContextParameterType;
+use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentContextType;
 use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentType;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
-use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
-use horstoeko\invoicesuite\models\zffxextended\ram\DocumentContextParameterType;
-use horstoeko\invoicesuite\models\zffxextended\ram\ExchangedDocumentContextType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
 {
@@ -918,6 +919,91 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                         $referencedProduct->getUnitQuantity()?->getQuantityUnit()
                     )
                 );
+
+                $item->firstSellerOrderReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionSellerOrderReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstBuyerOrderReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstQuotationReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionQuotationReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstContractReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionContractReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->forEachAdditionalReference(
+                    fn(InvoiceSuiteReferenceLineExtDTO $item) => $this->addDocumentPositionAdditionalReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate(),
+                        $item->getTypeCode(),
+                        $item->getReferenceTypeCode(),
+                        $item->getDescription(),
+                        $item->getAttachment()
+                    )
+                );
+
+                $item->firstUltimateCustomerOrderReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionUltimateCustomerOrderReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstDespatchAdviceReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionDespatchAdviceReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstReceivingAdviceReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionReceivingAdviceReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstDeliveryNoteReference(
+                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionDeliveryNoteReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate()
+                    )
+                );
+
+                $item->firstInvoiceReference(
+                    fn(InvoiceSuiteReferenceLineExtDTO $item) => $this->addDocumentPositionInvoiceReference(
+                        $item->getReferenceNumber(),
+                        $item->getReferenceLineNumber(),
+                        $item->getReferenceDate(),
+                        $item->getTypeCode()
+                    )
+                    );
             }
         );
 
