@@ -286,7 +286,7 @@ class InvoiceSuiteDocumentHeaderDTO
      *
      * @var array<InvoiceSuiteTaxDTO>
      */
-    protected array $taxs = [];
+    protected array $taxes = [];
 
     /**
      * The allowances/charges
@@ -357,7 +357,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param array<InvoiceSuitePaymentMeanDTO> $paymentMeans The payment means
      * @param array<InvoiceSuitePaymentTermDTO> $paymentTerms The payment terms
      * @param array<InvoiceSuiteIdDTO> $creditorReferences The creditor identifier
-     * @param array<InvoiceSuiteTaxDTO> $taxs The VAT breakdown
+     * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
      * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
      * @param array<InvoiceSuiteServiceChargeDTO> $serviceCharges The allowances/charges
      * @param InvoiceSuitesummationDTO|null $summation The summation
@@ -402,7 +402,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $paymentMeans = [],
         array $paymentTerms = [],
         array $creditorReferences = [],
-        array $taxs = [],
+        array $taxes = [],
         array $allowanceCharges = [],
         array $serviceCharges = [],
         ?InvoiceSuitesummationDTO $summation = null,
@@ -446,7 +446,7 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setPaymentMeans($paymentMeans);
         $this->setPaymentTerms($paymentTerms);
         $this->setCreditorReferences($creditorReferences);
-        $this->setTaxes($taxs);
+        $this->setTaxes($taxes);
         $this->setAllowanceCharges($allowanceCharges);
         $this->setServiceCharges($serviceCharges);
         $this->setSummation($summation);
@@ -3311,18 +3311,18 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function getTaxes(): array
     {
-        return $this->taxs;
+        return $this->taxes;
     }
 
     /**
      * Sets the VAT breakdown
      *
-     * @param array<InvoiceSuiteTaxDTO> $taxs The VAT breakdown
+     * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
      * @return self
      */
-    public function setTaxes(array $taxs): self
+    public function setTaxes(array $taxes): self
     {
-        $this->taxs = $taxs;
+        $this->taxes = $taxes;
 
         return $this;
     }
@@ -3335,7 +3335,7 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function addTax(InvoiceSuiteTaxDTO $tax): self
     {
-        $this->taxs[] = $tax;
+        $this->taxes[] = $tax;
 
         return $this;
     }
@@ -3349,7 +3349,7 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function firstTax(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($tax = reset($this->taxs)) !== false) {
+        if (($tax = reset($this->taxes)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3367,7 +3367,7 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function nextTax(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($tax = next($this->taxs)) !== false) {
+        if (($tax = next($this->taxes)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3385,7 +3385,7 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function previousTax(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($tax = prev($this->taxs)) !== false) {
+        if (($tax = prev($this->taxes)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3403,7 +3403,7 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function lastTax(callable $callback, ?callable $callbackElse = null): self
     {
-        if (($tax = end($this->taxs)) !== false) {
+        if (($tax = end($this->taxes)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3424,7 +3424,7 @@ class InvoiceSuiteDocumentHeaderDTO
     {
         $count = 0;
 
-        foreach ($this->taxs as $tax) {
+        foreach ($this->taxes as $tax) {
             if ($limit !== null && $count >= $limit) {
                 break;
             }

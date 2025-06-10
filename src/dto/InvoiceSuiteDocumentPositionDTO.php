@@ -126,6 +126,20 @@ class InvoiceSuiteDocumentPositionDTO
     protected array $invoiceReferences = [];
 
     /**
+     * The gross price
+     *
+     * @var InvoiceSuitePriceGrossDTO|null
+     */
+    protected ?InvoiceSuitePriceGrossDTO $grossPrice = null;
+
+    /**
+     * The net price
+     *
+     * @var InvoiceSuitePriceNetDTO|null
+     */
+    protected ?InvoiceSuitePriceNetDTO $netPrice = null;
+
+    /**
      * Constructor
      *
      * @param string|null $lineId The identification of the position
@@ -144,6 +158,8 @@ class InvoiceSuiteDocumentPositionDTO
      * @param array<InvoiceSuiteReferenceLineDTO> $receivingAdviceReferences The receiving advice reference (line reference)
      * @param array<InvoiceSuiteReferenceLineDTO> $deliveryNoteReferences The delivery note reference (line reference)
      * @param array<InvoiceSuiteReferenceLineExtDTO> $invoiceReferences The additional invoice document (line reference)
+     * @param InvoiceSuitePriceGrossDTO|null $grossPrice The gross price
+     * @param InvoiceSuitePriceNetDTO|null $netPrice The net price
      */
     public function __construct(
         ?string $lineId = null,
@@ -162,6 +178,8 @@ class InvoiceSuiteDocumentPositionDTO
         array $receivingAdviceReferences = [],
         array $deliveryNoteReferences = [],
         array $invoiceReferences = [],
+        ?InvoiceSuitePriceGrossDTO $grossPrice = null,
+        ?InvoiceSuitePriceNetDTO $netPrice = null,
     ) {
         $this->setLineId($lineId);
         $this->setParentLineId($parentLineId);
@@ -179,6 +197,8 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setReceivingAdviceReferences($receivingAdviceReferences);
         $this->setDeliveryNoteReferences($deliveryNoteReferences);
         $this->setInvoiceReferences($invoiceReferences);
+        $this->setGrossPrice($grossPrice);
+        $this->setNetPrice($netPrice);
     }
 
     /**
@@ -1830,6 +1850,52 @@ class InvoiceSuiteDocumentPositionDTO
         if ($count === 0 && !is_null($callbackElse)) {
             $callbackElse();
         }
+
+        return $this;
+    }
+
+    /**
+     * Returns the gross price
+     *
+     * @return InvoiceSuitePriceGrossDTO|null
+     */
+    public function getGrossPrice(): ?InvoiceSuitePriceGrossDTO
+    {
+        return $this->grossPrice;
+    }
+
+    /**
+     * Sets the gross price
+     *
+     * @param InvoiceSuitePriceGrossDTO|null $grossPrice The gross price
+     * @return self
+     */
+    public function setGrossPrice(?InvoiceSuitePriceGrossDTO $grossPrice): self
+    {
+        $this->grossPrice = $grossPrice;
+
+        return $this;
+    }
+
+    /**
+     * Returns the net price
+     *
+     * @return InvoiceSuitePriceNetDTO|null
+     */
+    public function getNetPrice(): ?InvoiceSuitePriceNetDTO
+    {
+        return $this->netPrice;
+    }
+
+    /**
+     * Sets the net price
+     *
+     * @param InvoiceSuitePriceNetDTO|null $netPrice The net price
+     * @return self
+     */
+    public function setNetPrice(?InvoiceSuitePriceNetDTO $netPrice): self
+    {
+        $this->netPrice = $netPrice;
 
         return $this;
     }
