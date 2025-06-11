@@ -303,59 +303,90 @@ $documentDTO->addPosition($position);
 $position = new InvoiceSuiteDocumentPositionDTO('1.1', '1', '0815', 'DETAIL');
 
 $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
-->addNote(new InvoiceSuiteNoteDTO('Some second content'))
-->addNote(new InvoiceSuiteNoteDTO("Some third Content", "ContentCode", "SubjectCode"))
-->setProduct(
-    (new InvoiceSuiteProductDTO(
-        'ProductId',
-        'ProductName',
-        'ProductDescription',
-        'SellerID',
-        'BuyerID',
-        new InvoiceSuiteIdDTO('3333432332', '0088'),
-        'IndustryId',
-        'ModelId',
-        'BatchId',
-        'Brandname',
-        'Modelname',
-        'CN'
-    ))->addCharacteristic(new InvoiceSuiteProductCharacteristicDTO(
-        'Füllmenge',
-        '1000 Liter',
-        'FM',
-        new InvoiceSuiteMeasureDTO(1000.0, "LTR")
-    ))->addClassification(new InvoiceSuiteProductClassificationDTO(
-        'classcode',
-        'classname',
-        'listid',
-        '1.0'
-    ))->addReferenceProduct(new InvoiceSuiteReferenceProductDTO(
-        'id',
-        'some ma,e',
-        'some description',
-        'sellerid',
-        'buyerid',
-        new InvoiceSuiteIdDTO('someid','0088'),
-        'industryid',
-        new InvoiceSuiteQuantityDTO('10', 'KGM')
-    ))
-)
-->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()))
-->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()))
-->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()))
-->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()))
-->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
-->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
-->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()))
-->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
-->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
-->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
-->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
-->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
-->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "ReasonCode")))
-->setQuantityBilled(new InvoiceSuiteQuantityDTO(10.0, "C62"))
-->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2, "KTR"))
-->setQuantityPackage(new InvoiceSuiteQuantityDTO(1, "MTR"));
+    ->addNote(new InvoiceSuiteNoteDTO('Some second content'))
+    ->addNote(new InvoiceSuiteNoteDTO("Some third Content", "ContentCode", "SubjectCode"))
+    ->setProduct(
+        (new InvoiceSuiteProductDTO(
+            'ProductId',
+            'ProductName',
+            'ProductDescription',
+            'SellerID',
+            'BuyerID',
+            new InvoiceSuiteIdDTO('3333432332', '0088'),
+            'IndustryId',
+            'ModelId',
+            'BatchId',
+            'Brandname',
+            'Modelname',
+            'CN'
+        ))->addCharacteristic(new InvoiceSuiteProductCharacteristicDTO(
+            'Füllmenge',
+            '1000 Liter',
+            'FM',
+            new InvoiceSuiteMeasureDTO(1000.0, "LTR")
+        ))->addClassification(new InvoiceSuiteProductClassificationDTO(
+            'classcode',
+            'classname',
+            'listid',
+            '1.0'
+        ))->addReferenceProduct(new InvoiceSuiteReferenceProductDTO(
+            'id',
+            'some ma,e',
+            'some description',
+            'sellerid',
+            'buyerid',
+            new InvoiceSuiteIdDTO('someid', '0088'),
+            'industryid',
+            new InvoiceSuiteQuantityDTO('10', 'KGM')
+        ))
+    )
+    ->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()))
+    ->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()))
+    ->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()))
+    ->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()))
+    ->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
+    ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()))
+    ->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
+    ->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
+    ->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
+    ->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
+    ->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
+    ->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "ReasonCode")))
+    ->setQuantityBilled(new InvoiceSuiteQuantityDTO(10.0, "C62"))
+    ->setQuantityChargeFree(new InvoiceSuiteQuantityDTO(2, "KTR"))
+    ->setQuantityPackage(new InvoiceSuiteQuantityDTO(1, "MTR"))
+    ->setShipToParty(
+        (new InvoiceSuitePartyDTO())
+            ->addName("ShipTo GmbH")
+            ->addId(new InvoiceSuiteIdDTO("1111111"))
+            ->addId(new InvoiceSuiteIdDTO("1111111-A"))
+            ->addGlobalId(new InvoiceSuiteIdDTO("9999999", "0088"))
+            ->addGlobalId(new InvoiceSuiteIdDTO("9999999-A", "0088"))
+            ->addGlobalId(new InvoiceSuiteIdDTO("9999999-B", "0088"))
+            ->addTaxRegistration(new InvoiceSuiteIdDTO("50970870000", "VA"))
+            ->addTaxRegistration(new InvoiceSuiteIdDTO("50970870000-A", "VA"))
+            ->addAddress(new InvoiceSuiteAddressDTO("line1", "line2", "line3", "10175", "Berlin", "DE", "Berlin"))
+            ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("99ß0224444", "8884", "ShipTo AG"))
+            ->addContact(new InvoiceSuiteContactDTO("Alfons Zitterbacke", "Buchhaltung", "030-9991", "030-9992", "alfzit@shipto-gmbh.de"))
+            ->addContact(new InvoiceSuiteContactDTO("Rolf Zitterbacke", "Controlling", "030-9991", "030-9992", "rolzit@shipto-gmbh.de"))
+            ->addCommunication(new InvoiceSuiteCommunicationDTO("invoice@shipto-gmbh.de", "EM"))
+            ->addCommunication(new InvoiceSuiteCommunicationDTO("invoice-2@shipto-gmbh.de", "EM"))
+    )
+    ->setUltimateShipToParty(
+        (new InvoiceSuitePartyDTO())
+            ->addName("Ultimate User GmbH")
+            ->addId(new InvoiceSuiteIdDTO("U-1111111"))
+            ->addId(new InvoiceSuiteIdDTO("U-1111111-A"))
+            ->addGlobalId(new InvoiceSuiteIdDTO("9999999", "0088"))
+            ->addGlobalId(new InvoiceSuiteIdDTO("9999999-A", "0088"))
+            ->addTaxRegistration(new InvoiceSuiteIdDTO("444574987534", "VA"))
+            ->addTaxRegistration(new InvoiceSuiteIdDTO("444574987534-A", "VA"))
+            ->addAddress(new InvoiceSuiteAddressDTO("line1", "line2", "line3", "10176", "Berlin", "DE", "Berlin"))
+            ->addLegalOrganisation(new InvoiceSuiteOrganisationDTO("99ß0224444", "8884", "Ultimate User AG"))
+            ->addContact(new InvoiceSuiteContactDTO("Alfons Baum", "Dispo", "030-10001", "030-10001", "alfzit@ultimate-user-gmbh.de"))
+            ->addCommunication(new InvoiceSuiteCommunicationDTO("invoice@ultimate-user-gmbh.de", "EM"))
+    );
 
 $documentDTO->addPosition($position);
 

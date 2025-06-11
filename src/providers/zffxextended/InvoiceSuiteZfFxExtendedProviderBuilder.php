@@ -1043,6 +1043,100 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                     $item->getQuantityPackage()?->getQuantity(),
                     $item->getQuantityPackage()?->getQuantityUnit()
                 );
+
+                $item->getShipToParty()
+                    ?->firstName(
+                        fn(string $item) => $this->setDocumentPositionShipToName($item)
+                    )
+                    ?->firstId(
+                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToId($item->getId())
+                    )
+                    ?->forEachGlobalId(
+                        fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPositionShipToGlobalId($item->getId(), $item->getIdType())
+                    )
+                    ?->firstTaxRegistration(
+                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionShipToTaxRegistration($item->getIdType(), $item->getId())
+                    )
+                    ?->firstAddress(
+                        fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionShipToAddress(
+                            $item->getAddressLine1(),
+                            $item->getAddressLine2(),
+                            $item->getAddressLine3(),
+                            $item->getPostcode(),
+                            $item->getCity(),
+                            $item->getCountry(),
+                            $item->getSubDivision()
+                        )
+                    )
+                    ?->firstLegalOrganisation(
+                        fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionShipToLegalOrganisation(
+                            $item->getIdType(),
+                            $item->getId(),
+                            $item->getName()
+                        )
+                    )
+                    ?->forEachContact(
+                        fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPositionShipToContact(
+                            $item->getPersonName(),
+                            $item->getDepartmentName(),
+                            $item->getPhoneNumber(),
+                            $item->getFaxNumber(),
+                            $item->getEmailAddress()
+                        )
+                    )
+                    ?->firstCommunication(
+                        fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionShipToCommunication(
+                            $item->getIdType(),
+                            $item->getId()
+                        )
+                    );
+
+                $item->getUltimateShipToParty()
+                    ?->firstName(
+                        fn(string $item) => $this->setDocumentPositionUltimateShipToName($item)
+                    )
+                    ?->firstId(
+                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToId($item->getId())
+                    )
+                    ?->forEachGlobalId(
+                        fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPositionUltimateShipToGlobalId($item->getId(), $item->getIdType())
+                    )
+                    ?->firstTaxRegistration(
+                        fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPositionUltimateShipToTaxRegistration($item->getIdType(), $item->getId())
+                    )
+                    ?->firstAddress(
+                        fn(InvoiceSuiteAddressDTO $item) => $this->setDocumentPositionUltimateShipToAddress(
+                            $item->getAddressLine1(),
+                            $item->getAddressLine2(),
+                            $item->getAddressLine3(),
+                            $item->getPostcode(),
+                            $item->getCity(),
+                            $item->getCountry(),
+                            $item->getSubDivision()
+                        )
+                    )
+                    ?->firstLegalOrganisation(
+                        fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentPositionUltimateShipToLegalOrganisation(
+                            $item->getIdType(),
+                            $item->getId(),
+                            $item->getName()
+                        )
+                    )
+                    ?->forEachContact(
+                        fn(InvoiceSuiteContactDTO $item) => $this->addDocumentPositionUltimateShipToContact(
+                            $item->getPersonName(),
+                            $item->getDepartmentName(),
+                            $item->getPhoneNumber(),
+                            $item->getFaxNumber(),
+                            $item->getEmailAddress()
+                        )
+                    )
+                    ?->firstCommunication(
+                        fn(InvoiceSuiteCommunicationDTO $item) => $this->setDocumentPositionUltimateShipToCommunication(
+                            $item->getIdType(),
+                            $item->getId()
+                        )
+                    );
             }
         );
 

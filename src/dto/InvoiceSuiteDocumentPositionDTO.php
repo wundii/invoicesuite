@@ -161,6 +161,20 @@ class InvoiceSuiteDocumentPositionDTO
     protected ?InvoiceSuiteQuantityDTO $quantityPackage = null;
 
     /**
+     * The Ship-To Party
+     *
+     * @var InvoiceSuitePartyDTO|null
+     */
+    protected ?InvoiceSuitePartyDTO $shipToParty = null;
+
+    /**
+     * The Ultimate Ship-To Party
+     *
+     * @var InvoiceSuitePartyDTO|null
+     */
+    protected ?InvoiceSuitePartyDTO $ultimateShipToParty = null;
+
+    /**
      * Constructor
      *
      * @param string|null $lineId The identification of the position
@@ -184,6 +198,8 @@ class InvoiceSuiteDocumentPositionDTO
      * @param InvoiceSuiteQuantityDTO|null $quantityBilled The billed quantity
      * @param InvoiceSuiteQuantityDTO|null $quantityChargeFree The charge-free quantity
      * @param InvoiceSuiteQuantityDTO|null $quantityPackage The package quantity
+     * @param InvoiceSuitePartyDTO|null $shipToParty The Ship-To Party
+     * @param InvoiceSuitePartyDTO|null $ultimateShipToParty The Ultimate Ship-To Party
      */
     public function __construct(
         ?string $lineId = null,
@@ -207,6 +223,8 @@ class InvoiceSuiteDocumentPositionDTO
         ?InvoiceSuiteQuantityDTO $quantityBilled = null,
         ?InvoiceSuiteQuantityDTO $quantityChargeFree = null,
         ?InvoiceSuiteQuantityDTO $quantityPackage = null,
+        ?InvoiceSuitePartyDTO $shipToParty = null,
+        ?InvoiceSuitePartyDTO $ultimateShipToParty = null,
     ) {
         $this->setLineId($lineId);
         $this->setParentLineId($parentLineId);
@@ -229,6 +247,8 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setQuantityBilled($quantityBilled);
         $this->setQuantityChargeFree($quantityChargeFree);
         $this->setQuantityPackage($quantityPackage);
+        $this->setShipToParty($shipToParty);
+        $this->setUltimateShipToParty($ultimateShipToParty);
     }
 
     /**
@@ -1995,6 +2015,52 @@ class InvoiceSuiteDocumentPositionDTO
     public function setQuantityPackage(?InvoiceSuiteQuantityDTO $quantityPackage): self
     {
         $this->quantityPackage = $quantityPackage;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Ship-To Party
+     *
+     * @return InvoiceSuitePartyDTO|null
+     */
+    public function getShipToParty(): ?InvoiceSuitePartyDTO
+    {
+        return $this->shipToParty;
+    }
+
+    /**
+     * Sets the Ship-To Party
+     *
+     * @param InvoiceSuitePartyDTO|null $shipToParty The Ship-To Party
+     * @return self
+     */
+    public function setShipToParty(?InvoiceSuitePartyDTO $shipToParty): self
+    {
+        $this->shipToParty = $shipToParty;
+
+        return $this;
+    }
+
+    /**
+     * Returns the Ultimate Ship-To Party
+     *
+     * @return InvoiceSuitePartyDTO|null
+     */
+    public function getUltimateShipToParty(): ?InvoiceSuitePartyDTO
+    {
+        return $this->ultimateShipToParty;
+    }
+
+    /**
+     * Sets the Ultimate Ship-To Party
+     *
+     * @param InvoiceSuitePartyDTO|null $ultimateShipToParty The Ultimate Ship-To Party
+     * @return self
+     */
+    public function setUltimateShipToParty(?InvoiceSuitePartyDTO $ultimateShipToParty): self
+    {
+        $this->ultimateShipToParty = $ultimateShipToParty;
 
         return $this;
     }
