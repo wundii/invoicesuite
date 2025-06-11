@@ -10,7 +10,7 @@ use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -18,16 +18,16 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
@@ -316,35 +316,35 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             );
 
         $newDocumentDTO->forEachSellerOrderReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->addDocumentSellerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->addDocumentSellerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstBuyerOrderReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentBuyerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstQuotationReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentQuotationReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstContractReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentContractReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->forEachAdditionalReference(
-            fn(InvoiceSuiteReferenceExtDTO $item) => $this->addDocumentAdditionalReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode(),
@@ -355,7 +355,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         );
 
         $newDocumentDTO->forEachInvoiceReference(
-            fn(InvoiceSuiteReferenceExtDTO $item) => $this->addDocumentInvoiceReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode()
@@ -370,14 +370,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         );
 
         $newDocumentDTO->firstDespatchAdviceReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentDespatchAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstReceivingAdviceReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentReceivingAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )

@@ -11,13 +11,13 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteMeasureDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
@@ -31,8 +31,8 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteQuantityDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 
 require __DIR__ . "/../vendor/autoload.php";
@@ -198,19 +198,19 @@ $documentDTO
             ->addCommunication(new InvoiceSuiteCommunicationDTO("invoice@payee-gmbh.de", "EM"))
     )
     ->addSellerOrderReference(
-        (new InvoiceSuiteReferenceDTO("SO-2025/0000001", new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO("SO-2025/0000001", new DateTime()))
     )
     ->addBuyerOrderReference(
-        (new InvoiceSuiteReferenceDTO("PO-0000011", new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO("PO-0000011", new DateTime()))
     )
     ->addQuotationReference(
-        (new InvoiceSuiteReferenceDTO("ANG-2025/0000055", new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO("ANG-2025/0000055", new DateTime()))
     )
     ->addContractReference(
-        (new InvoiceSuiteReferenceDTO("CON-2025/0000001", new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO("CON-2025/0000001", new DateTime()))
     )
     ->addAdditionalReference(
-        (new InvoiceSuiteReferenceExtDTO(
+        (new InvoiceSuiteReferenceDocumentExtDTO(
             "ADDDOC-001",
             new DateTime(),
             "918",
@@ -220,7 +220,7 @@ $documentDTO
         ))
     )
     ->addAdditionalReference(
-        (new InvoiceSuiteReferenceExtDTO(
+        (new InvoiceSuiteReferenceDocumentExtDTO(
             "ADDDOC-002",
             new DateTime(),
             "918",
@@ -230,25 +230,25 @@ $documentDTO
         ))
     )
     ->addInvoiceReference(
-        (new InvoiceSuiteReferenceExtDTO("INVREF-001", new DateTime(), "382"))
+        (new InvoiceSuiteReferenceDocumentExtDTO("INVREF-001", new DateTime(), "382"))
     )
     ->addInvoiceReference(
-        (new InvoiceSuiteReferenceExtDTO("INVREF-002", new DateTime("+1 day"), "382"))
+        (new InvoiceSuiteReferenceDocumentExtDTO("INVREF-002", new DateTime("+1 day"), "382"))
     )
     ->addProjectReference(
         (new InvoiceSuiteProjectDTO("PROJECT-0001", "Project 1"))
     )
     ->addUltimateCustomerOrderReference(
-        (new InvoiceSuiteReferenceDTO('UCOR-0000001', new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO('UCOR-0000001', new DateTime()))
     )
     ->addDespatchAdviceReference(
-        (new InvoiceSuiteReferenceDTO('DESPATCHADV-0000001', new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO('DESPATCHADV-0000001', new DateTime()))
     )
     ->addReceivingAdviceReference(
-        (new InvoiceSuiteReferenceDTO('RECEIPTADV-0000001', new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO('RECEIPTADV-0000001', new DateTime()))
     )
     ->addDeliveryNoteReference(
-        (new InvoiceSuiteReferenceDTO('DELIVERYNOTE-0000001', new DateTime()))
+        (new InvoiceSuiteReferenceDocumentDTO('DELIVERYNOTE-0000001', new DateTime()))
     )
     ->addPostingReference(
         (new InvoiceSuiteIdDTO('FINACC', '1'))
@@ -340,17 +340,17 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
             new InvoiceSuiteQuantityDTO('10', 'KGM')
         ))
     )
-    ->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()))
-    ->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()))
-    ->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()))
-    ->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()))
-    ->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
-    ->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
-    ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()))
-    ->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
-    ->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
-    ->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
-    ->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
+    ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('SO-2025/0000001', '10', new DateTime()))
+    ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('PO-0000011', '20', new DateTime()))
+    ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('ANG-2025/0000055', '30', new DateTime()))
+    ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-2025/0000001', '40', new DateTime()))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
+    ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-0000001', '200', new DateTime()))
+    ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
+    ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
+    ->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
+    ->addInvoiceReference((new InvoiceSuiteReferenceDocumentLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
     ->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
     ->setNetPrice((new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")))->addTax(new InvoiceSuiteTaxDTO("S", "VAT", null, 9.0, 7.0, "Reason", "ReasonCode")))
     ->setQuantityBilled(new InvoiceSuiteQuantityDTO(10.0, "C62"))

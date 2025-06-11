@@ -14,7 +14,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteReferenceExtDTO extends InvoiceSuiteReferenceDTO
+class InvoiceSuiteReferenceDocumentLineExtDTO extends InvoiceSuiteReferenceDocumentLineDTO
 {
     /**
      * The additional document type code
@@ -48,6 +48,7 @@ class InvoiceSuiteReferenceExtDTO extends InvoiceSuiteReferenceDTO
      * Constructor
      *
      * @param string|null $referenceNumber Reference number
+     * @param string|null $referenceLineNumber Reference line number
      * @param DateTimeInterface|null $referenceDate Issue date of the reference
      * @param string|null $typeCode The additional document type code
      * @param string|null $referenceTypeCode The additional document reference-type code
@@ -56,13 +57,14 @@ class InvoiceSuiteReferenceExtDTO extends InvoiceSuiteReferenceDTO
      */
     public function __construct(
         ?string $referenceNumber = null,
+        ?string $referenceLineNumber = null,
         ?DateTimeInterface $referenceDate = null,
         ?string $typeCode = null,
         ?string $referenceTypeCode = null,
         ?string $description = null,
         ?InvoiceSuiteAttachment $attachment = null,
     ) {
-        parent::__construct($referenceNumber, $referenceDate);
+        parent::__construct($referenceNumber, $referenceLineNumber, $referenceDate);
 
         $this->setTypeCode($typeCode);
         $this->setReferenceTypeCode($referenceTypeCode);

@@ -21,10 +21,10 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceExtDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
@@ -663,35 +663,35 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
             );
 
         $newDocumentDTO->firstSellerOrderReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentSellerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstBuyerOrderReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentBuyerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstQuotationReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentQuotationReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstContractReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentContractReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->forEachAdditionalReference(
-            fn(InvoiceSuiteReferenceExtDTO $item) => $this->addDocumentAdditionalReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode(),
@@ -702,7 +702,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         );
 
         $newDocumentDTO->forEachInvoiceReference(
-            fn(InvoiceSuiteReferenceExtDTO $item) => $this->addDocumentInvoiceReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate(),
                 $item->getTypeCode()
@@ -717,28 +717,28 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         );
 
         $newDocumentDTO->forEachUltimateCustomerOrderReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->addDocumentUltimateCustomerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->addDocumentUltimateCustomerOrderReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstDespatchAdviceReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentDespatchAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstReceivingAdviceReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentReceivingAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
         );
 
         $newDocumentDTO->firstDeliveryNoteReference(
-            fn(InvoiceSuiteReferenceDTO $item) => $this->setDocumentDeliveryNoteReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDeliveryNoteReference(
                 $item->getReferenceNumber(),
                 $item->getReferenceDate()
             )
@@ -927,7 +927,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstSellerOrderReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionSellerOrderReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionSellerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -935,7 +935,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstBuyerOrderReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionBuyerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -943,7 +943,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstQuotationReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionQuotationReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionQuotationReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -951,7 +951,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstContractReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionContractReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionContractReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -959,7 +959,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->forEachAdditionalReference(
-                    fn(InvoiceSuiteReferenceLineExtDTO $item) => $this->addDocumentPositionAdditionalReference(
+                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->addDocumentPositionAdditionalReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate(),
@@ -971,7 +971,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstUltimateCustomerOrderReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionUltimateCustomerOrderReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionUltimateCustomerOrderReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -979,7 +979,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstDespatchAdviceReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionDespatchAdviceReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDespatchAdviceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -987,7 +987,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstReceivingAdviceReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionReceivingAdviceReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionReceivingAdviceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -995,7 +995,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstDeliveryNoteReference(
-                    fn(InvoiceSuiteReferenceLineDTO $item) => $this->setDocumentPositionDeliveryNoteReference(
+                    fn(InvoiceSuiteReferenceDocumentLineDTO $item) => $this->setDocumentPositionDeliveryNoteReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate()
@@ -1003,7 +1003,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstInvoiceReference(
-                    fn(InvoiceSuiteReferenceLineExtDTO $item) => $this->addDocumentPositionInvoiceReference(
+                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->addDocumentPositionInvoiceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate(),

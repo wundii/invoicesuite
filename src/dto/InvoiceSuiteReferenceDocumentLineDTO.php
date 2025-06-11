@@ -13,7 +13,7 @@ use DateTimeInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteReferenceDTO
+class InvoiceSuiteReferenceDocumentLineDTO
 {
     /**
      * Reference number
@@ -21,6 +21,13 @@ class InvoiceSuiteReferenceDTO
      * @var string|null
      */
     protected ?string $referenceNumber = null;
+
+    /**
+     * Reference line number
+     *
+     * @var string|null
+     */
+    protected ?string $referenceLineNumber = null;
 
     /**
      * Issue date of the reference
@@ -33,11 +40,16 @@ class InvoiceSuiteReferenceDTO
      * Constructor
      *
      * @param string|null $referenceNumber Reference number
+     * @param string|null $referenceLineNumber Reference line number
      * @param DateTimeInterface|null $referenceDate Issue date of the reference
      */
-    public function __construct(?string $referenceNumber = null, ?DateTimeInterface $referenceDate = null)
-    {
+    public function __construct(
+        ?string $referenceNumber = null,
+        ?string $referenceLineNumber = null,
+        ?DateTimeInterface $referenceDate = null,
+    ) {
         $this->setReferenceNumber($referenceNumber);
+        $this->setReferenceLineNumber($referenceLineNumber);
         $this->setReferenceDate($referenceDate);
     }
 
@@ -60,6 +72,29 @@ class InvoiceSuiteReferenceDTO
     public function setReferenceNumber(?string $referenceNumber): self
     {
         $this->referenceNumber = $referenceNumber;
+
+        return $this;
+    }
+
+    /**
+     * Returns reference line number
+     *
+     * @return string|null
+     */
+    public function getReferenceLineNumber(): ?string
+    {
+        return $this->referenceLineNumber;
+    }
+
+    /**
+     * Sets reference line number
+     *
+     * @param string|null $referenceLineNumber Reference line number
+     * @return self
+     */
+    public function setReferenceLineNumber(?string $referenceLineNumber): self
+    {
+        $this->referenceLineNumber = $referenceLineNumber;
 
         return $this;
     }

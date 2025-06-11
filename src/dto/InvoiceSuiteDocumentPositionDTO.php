@@ -60,70 +60,70 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * The associated seller's order confirmation (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $sellerOrderReferences = [];
 
     /**
      * The associated buyer's order (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $buyerOrderReferences = [];
 
     /**
      * The associated quotation (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $quotationReferences = [];
 
     /**
      * The associated contract (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $contractReferences = [];
 
     /**
      * The additional associated document (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineExtDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
     protected array $additionalReferences = [];
 
     /**
      * The ultimate customer order reference (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $ultimateCustomerOrderReferences = [];
 
     /**
      * The despatch advice reference (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $despatchAdviceReferences = [];
 
     /**
      * The receiving advice reference (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $receivingAdviceReferences = [];
 
     /**
      * The delivery note reference (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     protected array $deliveryNoteReferences = [];
 
     /**
      * The additional invoice document (line reference)
      *
-     * @var array<InvoiceSuiteReferenceLineExtDTO>
+     * @var array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
     protected array $invoiceReferences = [];
 
@@ -199,16 +199,16 @@ class InvoiceSuiteDocumentPositionDTO
      * @param string|null $lineStatusReason The type to specify whether the invoice line is
      * @param array<InvoiceSuiteNoteDTO> $note The notes for this position
      * @param InvoiceSuiteProductDTO|null $product The product for this position
-     * @param array<InvoiceSuiteReferenceLineDTO> $sellerOrderReferences The associated seller's order confirmation (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $buyerOrderReferences The associated buyer's order (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $quotationReferences The associated quotation (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $contractReferences The associated contract (line reference)
-     * @param array<InvoiceSuiteReferenceLineExtDTO> $additionalReferences The additional associated document (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $ultimateCustomerOrderReferences The ultimate customer order reference (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $despatchAdviceReferences The despatch advice reference (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $receivingAdviceReferences The receiving advice reference (line reference)
-     * @param array<InvoiceSuiteReferenceLineDTO> $deliveryNoteReferences The delivery note reference (line reference)
-     * @param array<InvoiceSuiteReferenceLineExtDTO> $invoiceReferences The additional invoice document (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $sellerOrderReferences The associated seller's order confirmation (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $buyerOrderReferences The associated buyer's order (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $quotationReferences The associated quotation (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $contractReferences The associated contract (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineExtDTO> $additionalReferences The additional associated document (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $ultimateCustomerOrderReferences The ultimate customer order reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $despatchAdviceReferences The despatch advice reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $receivingAdviceReferences The receiving advice reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $deliveryNoteReferences The delivery note reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineExtDTO> $invoiceReferences The additional invoice document (line reference)
      * @param InvoiceSuitePriceGrossDTO|null $grossPrice The gross price
      * @param InvoiceSuitePriceNetDTO|null $netPrice The net price
      * @param InvoiceSuiteQuantityDTO|null $quantityBilled The billed quantity
@@ -528,7 +528,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the associated seller's order confirmation (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getSellerOrderReferences(): array
     {
@@ -538,7 +538,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the associated seller's order confirmation (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $sellerOrderReferences The associated seller's order confirmation (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $sellerOrderReferences The associated seller's order confirmation (line reference)
      * @return self
      */
     public function setSellerOrderReferences(array $sellerOrderReferences): self
@@ -551,10 +551,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The associated seller's order confirmation (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $sellerOrderReference The associated seller's order confirmation (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $sellerOrderReference The associated seller's order confirmation (line reference)
      * @return self
      */
-    public function addSellerOrderReference(InvoiceSuiteReferenceLineDTO $sellerOrderReference): self
+    public function addSellerOrderReference(InvoiceSuiteReferenceDocumentLineDTO $sellerOrderReference): self
     {
         $this->sellerOrderReferences[] = $sellerOrderReference;
 
@@ -668,7 +668,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the associated buyer's order (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getBuyerOrderReferences(): array
     {
@@ -678,7 +678,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the associated buyer's order (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $buyerOrderReferences The associated buyer's order (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $buyerOrderReferences The associated buyer's order (line reference)
      * @return self
      */
     public function setBuyerOrderReferences(array $buyerOrderReferences): self
@@ -691,10 +691,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The associated buyer's order (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $buyerOrderReference The associated buyer's order (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $buyerOrderReference The associated buyer's order (line reference)
      * @return self
      */
-    public function addBuyerOrderReference(InvoiceSuiteReferenceLineDTO $buyerOrderReference): self
+    public function addBuyerOrderReference(InvoiceSuiteReferenceDocumentLineDTO $buyerOrderReference): self
     {
         $this->buyerOrderReferences[] = $buyerOrderReference;
 
@@ -808,7 +808,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the associated quotation (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getQuotationReferences(): array
     {
@@ -818,7 +818,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the associated quotation (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $quotationReferences The associated quotation (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $quotationReferences The associated quotation (line reference)
      * @return self
      */
     public function setQuotationReferences(array $quotationReferences): self
@@ -831,10 +831,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The associated quotation (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $quotationReference The associated quotation (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $quotationReference The associated quotation (line reference)
      * @return self
      */
-    public function addQuotationReference(InvoiceSuiteReferenceLineDTO $quotationReference): self
+    public function addQuotationReference(InvoiceSuiteReferenceDocumentLineDTO $quotationReference): self
     {
         $this->quotationReferences[] = $quotationReference;
 
@@ -948,7 +948,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the associated contract (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getContractReferences(): array
     {
@@ -958,7 +958,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the associated contract (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $contractReferences The associated contract (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $contractReferences The associated contract (line reference)
      * @return self
      */
     public function setContractReferences(array $contractReferences): self
@@ -971,10 +971,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The associated contract (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $contractReference The associated contract (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $contractReference The associated contract (line reference)
      * @return self
      */
-    public function addContractReference(InvoiceSuiteReferenceLineDTO $contractReference): self
+    public function addContractReference(InvoiceSuiteReferenceDocumentLineDTO $contractReference): self
     {
         $this->contractReferences[] = $contractReference;
 
@@ -1088,7 +1088,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the additional associated document (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineExtDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
     public function getAdditionalReferences(): array
     {
@@ -1098,7 +1098,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the additional associated document (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineExtDTO> $additionalReferences The additional associated document (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineExtDTO> $additionalReferences The additional associated document (line reference)
      * @return self
      */
     public function setAdditionalReferences(array $additionalReferences): self
@@ -1111,10 +1111,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The additional associated document (line reference)
      *
-     * @param InvoiceSuiteReferenceLineExtDTO $additionalReference The additional associated document (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineExtDTO $additionalReference The additional associated document (line reference)
      * @return self
      */
-    public function addAdditionalReference(InvoiceSuiteReferenceLineExtDTO $additionalReference): self
+    public function addAdditionalReference(InvoiceSuiteReferenceDocumentLineExtDTO $additionalReference): self
     {
         $this->additionalReferences[] = $additionalReference;
 
@@ -1228,7 +1228,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the ultimate customer order reference (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getUltimateCustomerOrderReferences(): array
     {
@@ -1238,7 +1238,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the ultimate customer order reference (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $ultimateCustomerOrderReferences The ultimate customer order reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $ultimateCustomerOrderReferences The ultimate customer order reference (line reference)
      * @return self
      */
     public function setUltimateCustomerOrderReferences(array $ultimateCustomerOrderReferences): self
@@ -1251,11 +1251,11 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The ultimate customer order reference (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $ultimateCustomerOrderReference The ultimate customer order reference (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $ultimateCustomerOrderReference The ultimate customer order reference (line reference)
      * @return self
      */
     public function addUltimateCustomerOrderReference(
-        InvoiceSuiteReferenceLineDTO $ultimateCustomerOrderReference,
+        InvoiceSuiteReferenceDocumentLineDTO $ultimateCustomerOrderReference,
     ): self {
         $this->ultimateCustomerOrderReferences[] = $ultimateCustomerOrderReference;
 
@@ -1369,7 +1369,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the despatch advice reference (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getDespatchAdviceReferences(): array
     {
@@ -1379,7 +1379,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the despatch advice reference (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $despatchAdviceReferences The despatch advice reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $despatchAdviceReferences The despatch advice reference (line reference)
      * @return self
      */
     public function setDespatchAdviceReferences(array $despatchAdviceReferences): self
@@ -1392,10 +1392,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The despatch advice reference (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $despatchAdviceReference The despatch advice reference (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $despatchAdviceReference The despatch advice reference (line reference)
      * @return self
      */
-    public function addDespatchAdviceReference(InvoiceSuiteReferenceLineDTO $despatchAdviceReference): self
+    public function addDespatchAdviceReference(InvoiceSuiteReferenceDocumentLineDTO $despatchAdviceReference): self
     {
         $this->despatchAdviceReferences[] = $despatchAdviceReference;
 
@@ -1509,7 +1509,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the receiving advice reference (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getReceivingAdviceReferences(): array
     {
@@ -1519,7 +1519,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the receiving advice reference (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $receivingAdviceReferences The receiving advice reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $receivingAdviceReferences The receiving advice reference (line reference)
      * @return self
      */
     public function setReceivingAdviceReferences(array $receivingAdviceReferences): self
@@ -1532,10 +1532,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The receiving advice reference (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $receivingAdviceReference The receiving advice reference (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $receivingAdviceReference The receiving advice reference (line reference)
      * @return self
      */
-    public function addReceivingAdviceReference(InvoiceSuiteReferenceLineDTO $receivingAdviceReference): self
+    public function addReceivingAdviceReference(InvoiceSuiteReferenceDocumentLineDTO $receivingAdviceReference): self
     {
         $this->receivingAdviceReferences[] = $receivingAdviceReference;
 
@@ -1649,7 +1649,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the delivery note reference (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineDTO>
      */
     public function getDeliveryNoteReferences(): array
     {
@@ -1659,7 +1659,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the delivery note reference (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineDTO> $deliveryNoteReferences The delivery note reference (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineDTO> $deliveryNoteReferences The delivery note reference (line reference)
      * @return self
      */
     public function setDeliveryNoteReferences(array $deliveryNoteReferences): self
@@ -1672,10 +1672,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The delivery note reference (line reference)
      *
-     * @param InvoiceSuiteReferenceLineDTO $deliveryNoteReference The delivery note reference (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineDTO $deliveryNoteReference The delivery note reference (line reference)
      * @return self
      */
-    public function addDeliveryNoteReference(InvoiceSuiteReferenceLineDTO $deliveryNoteReference): self
+    public function addDeliveryNoteReference(InvoiceSuiteReferenceDocumentLineDTO $deliveryNoteReference): self
     {
         $this->deliveryNoteReferences[] = $deliveryNoteReference;
 
@@ -1789,7 +1789,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Returns the additional invoice document (line reference)
      *
-     * @return array<InvoiceSuiteReferenceLineExtDTO>
+     * @return array<InvoiceSuiteReferenceDocumentLineExtDTO>
      */
     public function getInvoiceReferences(): array
     {
@@ -1799,7 +1799,7 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Sets the additional invoice document (line reference)
      *
-     * @param array<InvoiceSuiteReferenceLineExtDTO> $invoiceReferences The additional invoice document (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentLineExtDTO> $invoiceReferences The additional invoice document (line reference)
      * @return self
      */
     public function setInvoiceReferences(array $invoiceReferences): self
@@ -1812,10 +1812,10 @@ class InvoiceSuiteDocumentPositionDTO
     /**
      * Add single The additional invoice document (line reference)
      *
-     * @param InvoiceSuiteReferenceLineExtDTO $invoiceReference The additional invoice document (line reference)
+     * @param InvoiceSuiteReferenceDocumentLineExtDTO $invoiceReference The additional invoice document (line reference)
      * @return self
      */
-    public function addInvoiceReference(InvoiceSuiteReferenceLineExtDTO $invoiceReference): self
+    public function addInvoiceReference(InvoiceSuiteReferenceDocumentLineExtDTO $invoiceReference): self
     {
         $this->invoiceReferences[] = $invoiceReference;
 
