@@ -26,18 +26,19 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePriceGrossDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteQuantityDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
-use horstoeko\invoicesuite\models\zffxcomfort\ram\ProductCharacteristicType;
 
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
@@ -296,13 +297,15 @@ $documentDTO
     );
 
 $position = new InvoiceSuiteDocumentPositionDTO('1', null, null, 'GROUP');
+
 $documentDTO->addPosition($position);
 
 $position = new InvoiceSuiteDocumentPositionDTO('1.1', '1', '0815', 'DETAIL');
-$position->addNote(new InvoiceSuiteNoteDTO('Some content'));
-$position->addNote(new InvoiceSuiteNoteDTO('Some second content'));
-$position->addNote(new InvoiceSuiteNoteDTO("Some third Content", "ContentCode", "SubjectCode"));
-$position->setProduct(
+
+$position->addNote(new InvoiceSuiteNoteDTO('Some content'))
+->addNote(new InvoiceSuiteNoteDTO('Some second content'))
+->addNote(new InvoiceSuiteNoteDTO("Some third Content", "ContentCode", "SubjectCode"))
+->setProduct(
     (new InvoiceSuiteProductDTO(
         'ProductId',
         'ProductName',
@@ -336,18 +339,20 @@ $position->setProduct(
         'industryid',
         new InvoiceSuiteQuantityDTO('10', 'KGM')
     ))
-);
-$position->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()));
-$position->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()));
-$position->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()));
-$position->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()));
-$position->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')));
-$position->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')));
-$position->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()));
-$position->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()));
-$position->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()));
-$position->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()));
-$position->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")));
+)
+->addSellerOrderReference(new InvoiceSuiteReferenceLineDTO('SO-2025/0000001', '10', new DateTime()))
+->addBuyerOrderReference(new InvoiceSuiteReferenceLineDTO('PO-0000011', '20', new DateTime()))
+->addQuotationReference(new InvoiceSuiteReferenceLineDTO('ANG-2025/0000055', '30', new DateTime()))
+->addContractReference(new InvoiceSuiteReferenceLineDTO('CON-2025/0000001', '40', new DateTime()))
+->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
+->addAdditionalReference(new InvoiceSuiteReferenceLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
+->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceLineDTO('UCOR-0000001', '200', new DateTime()))
+->addDespatchAdviceReference(new InvoiceSuiteReferenceLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
+->addReceivingAdviceReference(new InvoiceSuiteReferenceLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
+->addDeliveryNoteReference(new InvoiceSuiteReferenceLineDTO('DELIVERYNOTE-0000001', '500', new DateTime()))
+->addInvoiceReference((new InvoiceSuiteReferenceLineExtDTO("INVREF-001", "10", new DateTime(), "382")))
+->setGrossPrice((new InvoiceSuitePriceGrossDTO(110.0, new InvoiceSuiteQuantityDTO(1, "C62")))->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(false, 10)))
+->setNetPrice(new InvoiceSuitePriceNetDTO(100, new InvoiceSuiteQuantityDTO(1.0, "C62")));
 
 $documentDTO->addPosition($position);
 
