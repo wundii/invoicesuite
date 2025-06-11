@@ -544,6 +544,15 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantity(),
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
+
+                $this->setDocumentPositionQuantities(
+                    $item->getQuantityBilled()?->getQuantity(),
+                    $item->getQuantityBilled()?->getQuantityUnit(),
+                    $item->getQuantityChargeFree()?->getQuantity(),
+                    $item->getQuantityChargeFree()?->getQuantityUnit(),
+                    $item->getQuantityPackage()->getQuantity(),
+                    $item->getQuantityPackage()->getQuantityUnit()
+                );
             }
         );
 

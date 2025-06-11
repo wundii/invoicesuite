@@ -140,6 +140,27 @@ class InvoiceSuiteDocumentPositionDTO
     protected ?InvoiceSuitePriceNetDTO $netPrice = null;
 
     /**
+     * The billed quantity
+     *
+     * @var InvoiceSuiteQuantityDTO|null
+     */
+    protected ?InvoiceSuiteQuantityDTO $quantityBilled = null;
+
+    /**
+     * The charge-free quantity
+     *
+     * @var InvoiceSuiteQuantityDTO|null
+     */
+    protected ?InvoiceSuiteQuantityDTO $quantityChargeFree = null;
+
+    /**
+     * The package quantity
+     *
+     * @var InvoiceSuiteQuantityDTO|null
+     */
+    protected ?InvoiceSuiteQuantityDTO $quantityPackage = null;
+
+    /**
      * Constructor
      *
      * @param string|null $lineId The identification of the position
@@ -160,6 +181,9 @@ class InvoiceSuiteDocumentPositionDTO
      * @param array<InvoiceSuiteReferenceLineExtDTO> $invoiceReferences The additional invoice document (line reference)
      * @param InvoiceSuitePriceGrossDTO|null $grossPrice The gross price
      * @param InvoiceSuitePriceNetDTO|null $netPrice The net price
+     * @param InvoiceSuiteQuantityDTO|null $quantityBilled The billed quantity
+     * @param InvoiceSuiteQuantityDTO|null $quantityChargeFree The charge-free quantity
+     * @param InvoiceSuiteQuantityDTO|null $quantityPackage The package quantity
      */
     public function __construct(
         ?string $lineId = null,
@@ -180,6 +204,9 @@ class InvoiceSuiteDocumentPositionDTO
         array $invoiceReferences = [],
         ?InvoiceSuitePriceGrossDTO $grossPrice = null,
         ?InvoiceSuitePriceNetDTO $netPrice = null,
+        ?InvoiceSuiteQuantityDTO $quantityBilled = null,
+        ?InvoiceSuiteQuantityDTO $quantityChargeFree = null,
+        ?InvoiceSuiteQuantityDTO $quantityPackage = null,
     ) {
         $this->setLineId($lineId);
         $this->setParentLineId($parentLineId);
@@ -199,6 +226,9 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setInvoiceReferences($invoiceReferences);
         $this->setGrossPrice($grossPrice);
         $this->setNetPrice($netPrice);
+        $this->setQuantityBilled($quantityBilled);
+        $this->setQuantityChargeFree($quantityChargeFree);
+        $this->setQuantityPackage($quantityPackage);
     }
 
     /**
@@ -1896,6 +1926,75 @@ class InvoiceSuiteDocumentPositionDTO
     public function setNetPrice(?InvoiceSuitePriceNetDTO $netPrice): self
     {
         $this->netPrice = $netPrice;
+
+        return $this;
+    }
+
+    /**
+     * Returns the billed quantity
+     *
+     * @return InvoiceSuiteQuantityDTO|null
+     */
+    public function getQuantityBilled(): ?InvoiceSuiteQuantityDTO
+    {
+        return $this->quantityBilled;
+    }
+
+    /**
+     * Sets the billed quantity
+     *
+     * @param InvoiceSuiteQuantityDTO|null $quantityBilled The billed quantity
+     * @return self
+     */
+    public function setQuantityBilled(?InvoiceSuiteQuantityDTO $quantityBilled): self
+    {
+        $this->quantityBilled = $quantityBilled;
+
+        return $this;
+    }
+
+    /**
+     * Returns the charge-free quantity
+     *
+     * @return InvoiceSuiteQuantityDTO|null
+     */
+    public function getQuantityChargeFree(): ?InvoiceSuiteQuantityDTO
+    {
+        return $this->quantityChargeFree;
+    }
+
+    /**
+     * Sets the charge-free quantity
+     *
+     * @param InvoiceSuiteQuantityDTO|null $quantityChargeFree The charge-free quantity
+     * @return self
+     */
+    public function setQuantityChargeFree(?InvoiceSuiteQuantityDTO $quantityChargeFree): self
+    {
+        $this->quantityChargeFree = $quantityChargeFree;
+
+        return $this;
+    }
+
+    /**
+     * Returns the package quantity
+     *
+     * @return InvoiceSuiteQuantityDTO|null
+     */
+    public function getQuantityPackage(): ?InvoiceSuiteQuantityDTO
+    {
+        return $this->quantityPackage;
+    }
+
+    /**
+     * Sets the package quantity
+     *
+     * @param InvoiceSuiteQuantityDTO|null $quantityPackage The package quantity
+     * @return self
+     */
+    public function setQuantityPackage(?InvoiceSuiteQuantityDTO $quantityPackage): self
+    {
+        $this->quantityPackage = $quantityPackage;
 
         return $this;
     }

@@ -1034,6 +1034,15 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                         $netPriceTax->getExemptionReasonCode()
                     )
                 );
+
+                $this->setDocumentPositionQuantities(
+                    $item->getQuantityBilled()?->getQuantity(),
+                    $item->getQuantityBilled()?->getQuantityUnit(),
+                    $item->getQuantityChargeFree()?->getQuantity(),
+                    $item->getQuantityChargeFree()?->getQuantityUnit(),
+                    $item->getQuantityPackage()?->getQuantity(),
+                    $item->getQuantityPackage()?->getQuantityUnit()
+                );
             }
         );
 
