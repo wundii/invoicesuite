@@ -198,6 +198,13 @@ class InvoiceSuiteDocumentPositionDTO
     protected array $taxes = [];
 
     /**
+     * The allowances/charges
+     *
+     * @var array<InvoiceSuiteAllowanceChargeDTO>
+     */
+    protected array $allowanceCharges = [];
+
+    /**
      * Constructor
      *
      * @param string|null $lineId The identification of the position
@@ -226,6 +233,7 @@ class InvoiceSuiteDocumentPositionDTO
      * @param DateTimeInterface|null $supplyChainEvent The date of the delivery
      * @param InvoiceSuiteDateRangeDTO|null $billingPeriod The start and/or end date of the billing period
      * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
+     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
      */
     public function __construct(
         ?string $lineId = null,
@@ -254,6 +262,7 @@ class InvoiceSuiteDocumentPositionDTO
         ?DateTimeInterface $supplyChainEvent = null,
         ?InvoiceSuiteDateRangeDTO $billingPeriod = null,
         array $taxes = [],
+        array $allowanceCharges = [],
     ) {
         $this->setLineId($lineId);
         $this->setParentLineId($parentLineId);
@@ -281,6 +290,7 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setSupplyChainEvent($supplyChainEvent);
         $this->setBillingPeriod($billingPeriod);
         $this->setTaxes($taxes);
+        $this->setAllowanceCharges($allowanceCharges);
     }
 
     /**
@@ -2271,6 +2281,146 @@ class InvoiceSuiteDocumentPositionDTO
             $count++;
 
             $callback($tax);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the allowances/charges
+     *
+     * @return array<InvoiceSuiteAllowanceChargeDTO>
+     */
+    public function getAllowanceCharges(): array
+    {
+        return $this->allowanceCharges;
+    }
+
+    /**
+     * Sets the allowances/charges
+     *
+     * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
+     * @return self
+     */
+    public function setAllowanceCharges(array $allowanceCharges): self
+    {
+        $this->allowanceCharges = $allowanceCharges;
+
+        return $this;
+    }
+
+    /**
+     * Add single The allowances/charges
+     *
+     * @param InvoiceSuiteAllowanceChargeDTO $allowanceCharge The allowances/charges
+     * @return self
+     */
+    public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): self
+    {
+        $this->allowanceCharges[] = $allowanceCharge;
+
+        return $this;
+    }
+
+    /**
+     * Get first The allowances/charges
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($allowanceCharge = reset($this->allowanceCharges)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The allowances/charges
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($allowanceCharge = next($this->allowanceCharges)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The allowances/charges
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($allowanceCharge = prev($this->allowanceCharges)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The allowances/charges
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastAllowanceCharge(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($allowanceCharge = end($this->allowanceCharges)) !== false) {
+            $callback($allowanceCharge);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The allowances/charges and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachAllowanceCharge(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->allowanceCharges as $allowanceCharge) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($allowanceCharge);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {

@@ -1162,6 +1162,17 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                         $tax->getExemptionReasonCode()
                     )
                 );
+
+                $item->forEachAllowanceCharge(
+                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
+                        $allowanceCharge->getChargeIndicator(),
+                        $allowanceCharge->getAmount(),
+                        $allowanceCharge->getBaseAmount(),
+                        $allowanceCharge->getReason(),
+                        $allowanceCharge->getReasonCode(),
+                        $allowanceCharge->getPercent()
+                    )
+                );
             }
         );
 

@@ -12,7 +12,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $builder->setDocumentNo('2025-04-000001');
 $builder->setDocumentType("380");

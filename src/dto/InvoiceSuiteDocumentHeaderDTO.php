@@ -2015,8 +2015,9 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference The ultimate customer order reference
      * @return self
      */
-    public function addUltimateCustomerOrderReference(InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference): self
-    {
+    public function addUltimateCustomerOrderReference(
+        InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference,
+    ): self {
         $this->ultimateCustomerOrderReferences[] = $ultimateCustomerOrderReference;
 
         return $this;

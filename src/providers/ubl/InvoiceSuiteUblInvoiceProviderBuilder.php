@@ -564,6 +564,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         $tax->getExemptionReasonCode()
                     )
                 );
+
+                $item->forEachAllowanceCharge(
+                    fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentAllowanceCharge(
+                        $allowanceCharge->getChargeIndicator(),
+                        $allowanceCharge->getAmount(),
+                        $allowanceCharge->getBaseAmount(),
+                        $allowanceCharge->getTaxCategory(),
+                        $allowanceCharge->getTaxType(),
+                        $allowanceCharge->getTaxPercent(),
+                        $allowanceCharge->getReason(),
+                        $allowanceCharge->getReasonCode(),
+                        $allowanceCharge->getPercent()
+                    )
+                );
             }
         );
 
