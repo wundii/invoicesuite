@@ -10,7 +10,7 @@ use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\models\ubl\cac\InvoicePeriod;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFloatUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -18,24 +18,25 @@ use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDTO;
 use horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceProductDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
+use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderBuilder;
 
 class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatProviderBuilder
@@ -481,7 +482,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getLineStatusReason()
                 );
 
-                $item->forEachNote(
+                $item->firstNote(
                     fn(InvoiceSuiteNoteDTO $itemNote) => $this->addDocumentPositionNote(
                         $itemNote->getContent(),
                         $itemNote->getContentCode(),
@@ -552,6 +553,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getQuantityChargeFree()?->getQuantityUnit(),
                     $item->getQuantityPackage()?->getQuantity(),
                     $item->getQuantityPackage()?->getQuantityUnit()
+                );
+
+                $this->setDocumentPositionBillingPeriod(
+                    $item->getBillingPeriod()?->getStartDate(),
+                    $item->getBillingPeriod()?->getEndDate(),
+                    $item->getBillingPeriod()?->getDescription()
+                );
+
+                $item->firstPostingReference(
+                    fn(InvoiceSuiteIdDTO $postingReference) => $this->addDocumentPositionPostingReference(
+                        $postingReference->getIdType(),
+                        $postingReference->getId()
+                    )
                 );
 
                 $item->forEachTax(
@@ -7292,7 +7306,55 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null,
     ): self {
-        // Nothing here
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->clearInvoicePeriod();
+
+        $this->addDocumentPositionBillingPeriod($newStartDate, $newEndDate, $newDescription);
+
+        return $this;
+    }
+
+    /**
+     * Add a position's start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
+     */
+    public function addDocumentPositionBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null,
+    ): self {
+        if (is_null($newStartDate) && is_null($newEndDate)) {
+            return $this;
+        }
+
+        $latestPosition = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate();
+
+        $invoicePeriod = $latestPosition
+            ->addToInvoicePeriodWithCreate();
+
+        if (!is_null($newStartDate)) {
+            $invoicePeriod->setStartDate($newStartDate);
+        }
+
+        if (!is_null($newEndDate)) {
+            $invoicePeriod->setEndDate($newEndDate);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $invoicePeriod->clearDescription()->addToDescriptionWithCreate()->setValue($newDescription);
+        }
 
         return $this;
     }

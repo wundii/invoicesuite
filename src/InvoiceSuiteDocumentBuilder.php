@@ -5550,6 +5550,28 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
+     * Add a position's start and/or end date of the billing period
+     *
+     * @param null|DateTimeInterface $newStartDate Start of the billing period
+     * @param null|DateTimeInterface $newEndDate End of the billing period
+     * @param null|string $newDescription Further information of the billing period (Obsolete)
+     * @return self
+     */
+    public function addDocumentPositionBillingPeriod(
+        ?DateTimeInterface $newStartDate = null,
+        ?DateTimeInterface $newEndDate = null,
+        ?string $newDescription = null,
+    ): self {
+        $this->getCurrentFormatProvider()->getBuilder()->addDocumentPositionBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
+
+        return $this;
+    }
+
+    /**
      * Set the position's tax information
      *
      * @param string|null $newTaxCategory Coded description of the tax category

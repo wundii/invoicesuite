@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuitesummationLineDTO;
 require __DIR__ . "/../vendor/autoload.php";
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
-$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+//$builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
 
 $documentDTO = new InvoiceSuiteDocumentHeaderDTO();
 $documentDTO
