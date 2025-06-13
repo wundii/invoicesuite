@@ -1152,6 +1152,13 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                     $item->getBillingPeriod()?->getDescription()
                 );
 
+                $item->firstPostingReference(
+                    fn(InvoiceSuiteIdDTO $postingReference) => $this->addDocumentPositionPostingReference(
+                        $postingReference->getIdType(),
+                        $postingReference->getId()
+                    )
+                );
+
                 $item->forEachTax(
                     fn(InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
                         $tax->getCategory(),

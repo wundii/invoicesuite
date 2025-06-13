@@ -345,8 +345,8 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
     ->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('PO-0000011', '20', new DateTime()))
     ->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO('ANG-2025/0000055', '30', new DateTime()))
     ->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO('CON-2025/0000001', '40', new DateTime()))
-    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-001', '100', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
-    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-002', '101', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-001', '200', new DateTime(), "918", "0815", "Description for additional docuemnt", InvoiceSuiteAttachment::fromBase64String('SWNoIGJpbiBlaW4gVGVzdHRleHQ=', 'att.ext')))
+    ->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO('ADDDOC-002', '201', new DateTime(), "918", "0816", "Description for additional docuemnt", InvoiceSuiteAttachment::fromUrl('http://some.url')))
     ->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO('UCOR-0000001', '200', new DateTime()))
     ->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('DESPATCHADV-0000001', '300', new DateTime()))
     ->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO('RECEIPTADV-0000001', '400', new DateTime()))
@@ -390,10 +390,11 @@ $position->addNote(new InvoiceSuiteNoteDTO('Some content'))
     )
     ->setSupplyChainEvent(new DateTime())
     ->setBillingPeriod(new InvoiceSuiteDateRangeDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
+    ->addPostingReference(new InvoiceSuiteIdDTO("FINACC", "1"))
     ->addTax((new InvoiceSuiteTaxDTO('S', 'VAT', 100.00, 19.00, 19.0, 'Reason', 'ReasonCode', new DateTime(), 'DUECODE')))
     ->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO(true, 10, 100, 2, 'S', 'VAT', 19, 'Reason', 'ReasonCode'))
     ->setSummation(new InvoiceSuitesummationLineDTO(100.0, 0, 0, 19, 119))
-    ;
+;
 
 $documentDTO->addPosition($position);
 

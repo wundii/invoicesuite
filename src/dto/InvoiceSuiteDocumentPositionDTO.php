@@ -191,6 +191,13 @@ class InvoiceSuiteDocumentPositionDTO
     protected ?InvoiceSuiteDateRangeDTO $billingPeriod = null;
 
     /**
+     * The posting reference
+     *
+     * @var array<InvoiceSuiteIdDTO>
+     */
+    protected array $postingReferences = [];
+
+    /**
      * The VAT breakdown
      *
      * @var array<InvoiceSuiteTaxDTO>
@@ -239,6 +246,7 @@ class InvoiceSuiteDocumentPositionDTO
      * @param InvoiceSuitePartyDTO|null $ultimateShipToParty The Ultimate Ship-To Party
      * @param DateTimeInterface|null $supplyChainEvent The date of the delivery
      * @param InvoiceSuiteDateRangeDTO|null $billingPeriod The start and/or end date of the billing period
+     * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
      * @param array<InvoiceSuiteTaxDTO> $taxes The VAT breakdown
      * @param array<InvoiceSuiteAllowanceChargeDTO> $allowanceCharges The allowances/charges
      * @param InvoiceSuitesummationLineDTO|null $summation The summation
@@ -269,6 +277,7 @@ class InvoiceSuiteDocumentPositionDTO
         ?InvoiceSuitePartyDTO $ultimateShipToParty = null,
         ?DateTimeInterface $supplyChainEvent = null,
         ?InvoiceSuiteDateRangeDTO $billingPeriod = null,
+        array $postingReferences = [],
         array $taxes = [],
         array $allowanceCharges = [],
         ?InvoiceSuitesummationLineDTO $summation = null,
@@ -298,6 +307,7 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setUltimateShipToParty($ultimateShipToParty);
         $this->setSupplyChainEvent($supplyChainEvent);
         $this->setBillingPeriod($billingPeriod);
+        $this->setPostingReferences($postingReferences);
         $this->setTaxes($taxes);
         $this->setAllowanceCharges($allowanceCharges);
         $this->setSummation($summation);
@@ -2159,6 +2169,146 @@ class InvoiceSuiteDocumentPositionDTO
     public function setBillingPeriod(?InvoiceSuiteDateRangeDTO $billingPeriod): self
     {
         $this->billingPeriod = $billingPeriod;
+
+        return $this;
+    }
+
+    /**
+     * Returns the posting reference
+     *
+     * @return array<InvoiceSuiteIdDTO>
+     */
+    public function getPostingReferences(): array
+    {
+        return $this->postingReferences;
+    }
+
+    /**
+     * Sets the posting reference
+     *
+     * @param array<InvoiceSuiteIdDTO> $postingReferences The posting reference
+     * @return self
+     */
+    public function setPostingReferences(array $postingReferences): self
+    {
+        $this->postingReferences = $postingReferences;
+
+        return $this;
+    }
+
+    /**
+     * Add single The posting reference
+     *
+     * @param InvoiceSuiteIdDTO $postingReference The posting reference
+     * @return self
+     */
+    public function addPostingReference(InvoiceSuiteIdDTO $postingReference): self
+    {
+        $this->postingReferences[] = $postingReference;
+
+        return $this;
+    }
+
+    /**
+     * Get first The posting reference
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function firstPostingReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($postingReference = reset($this->postingReferences)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The posting reference
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function nextPostingReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($postingReference = next($this->postingReferences)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The posting reference
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function previousPostingReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($postingReference = prev($this->postingReferences)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The posting reference
+     *
+     * @param callable $callback Callback to execute if an item was found
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @return self
+     */
+    public function lastPostingReference(callable $callback, ?callable $callbackElse = null): self
+    {
+        if (($postingReference = end($this->postingReferences)) !== false) {
+            $callback($postingReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The posting reference and execute callback
+     *
+     * @param callable $callback Callback to execute for each item
+     * @param callable|null $callbackElse Callback to execute if no item was found
+     * @param int|null $limit Maximum number of loops
+     * @return self
+     */
+    public function forEachPostingReference(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): self {
+        $count = 0;
+
+        foreach ($this->postingReferences as $postingReference) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            $count++;
+
+            $callback($postingReference);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
 
         return $this;
     }
