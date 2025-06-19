@@ -44,4 +44,32 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Gets the document description
+     *
+     * @param string|null $newDocumentDescription The documenttype as free text
+     * @return self
+     */
+    public function getDocumentDescription(
+        ?string &$newDocumentDescription
+    ): self {
+        $newDocumentDescription = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Gets the document language
+     *
+     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
+     * @return self
+     */
+    public function getDocumentLanguage(
+        ?string &$newDocumentLanguage
+    ): self {
+        $newDocumentLanguage = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getLanguageID()?->getValue() ?? "";
+
+        return $this;
+    }
 }

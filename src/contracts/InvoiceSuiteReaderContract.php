@@ -46,5 +46,25 @@ interface InvoiceSuiteReaderContract
         ?string &$newDocumentType
     ): self;
 
+    /**
+     * Gets the document description
+     *
+     * @param string|null $newDocumentDescription The documenttype as free text
+     * @return self
+     */
+    public function getDocumentDescription(
+        ?string &$newDocumentDescription
+    ): self;
+
+    /**
+     * Gets the document language
+     *
+     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
+     * @return self
+     */
+    public function getDocumentLanguage(
+        ?string &$newDocumentLanguage
+    ): self;
+
     #endregion
 }

@@ -129,4 +129,32 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Gets the document description
+     *
+     * @param string|null $newDocumentDescription The documenttype as free text
+     * @return self
+     */
+    public function getDocumentDescription(
+        ?string &$newDocumentDescription
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentDescription($newDocumentDescription);
+
+        return $this;
+    }
+
+    /**
+     * Gets the document language
+     *
+     * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
+     * @return self
+     */
+    public function getDocumentLanguage(
+        ?string &$newDocumentLanguage
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentLanguage($newDocumentLanguage);
+
+        return $this;
+    }
 }
