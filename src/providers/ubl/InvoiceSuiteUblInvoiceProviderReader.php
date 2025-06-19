@@ -22,11 +22,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentNo
      */
     public function getDocumentNo(
         ?string &$newDocumentNo
     ): self {
-        $newDocumentNo = $this->getUblInvoiceRootObject()?->getID()?->getValue() ?? "";
+        $newDocumentNo = $this->getUblInvoiceRootObject()->getID()?->getValue() ?? "";
 
         return $this;
     }
@@ -36,11 +38,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newDocumentType The type of the document
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentType
      */
     public function getDocumentType(
         ?string &$newDocumentType
     ): self {
-        $newDocumentType = $this->getUblInvoiceRootObject()?->getInvoiceTypeCode()?->getValue() ?? "";
+        $newDocumentType = $this->getUblInvoiceRootObject()->getInvoiceTypeCode()?->getValue() ?? "";
 
         return $this;
     }
@@ -50,11 +54,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newDocumentDescription The documenttype as free text
      * @return self
+     *
+     * @phpstan-param-out string $newDocumentDescription
      */
     public function getDocumentDescription(
         ?string &$newDocumentDescription
     ): self {
-        $newDocumentDescription = $this->getUblInvoiceRootObject()?->getInvoiceTypeCode()?->getName() ?? "";
+        $newDocumentDescription = $this->getUblInvoiceRootObject()->getInvoiceTypeCode()?->getName() ?? "";
 
         return $this;
     }
@@ -64,11 +70,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
+     *
+     * @phpstan-param-out string $newDocumentLanguage
      */
     public function getDocumentLanguage(
         ?string &$newDocumentLanguage
     ): self {
-        $newDocumentLanguage = $this->getUblInvoiceRootObject()?->getInvoiceTypeCode()?->getLanguageID() ?? "";
+        $newDocumentLanguage = $this->getUblInvoiceRootObject()->getInvoiceTypeCode()?->getLanguageID() ?? "";
 
         return $this;
     }

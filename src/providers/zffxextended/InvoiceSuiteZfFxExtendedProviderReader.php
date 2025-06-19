@@ -22,11 +22,13 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newDocumentNo The document no issued by the seller
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentNo
      */
     public function getDocumentNo(
         ?string &$newDocumentNo
     ): self {
-        $newDocumentNo = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getID()?->getValue() ?? "";
+        $newDocumentNo = $this->getCrossIndustryRootObject()->getExchangedDocument()?->getID()?->getValue() ?? "";
 
         return $this;
     }
@@ -36,11 +38,13 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newDocumentType The type of the document
      * @return static
+     *
+     * @phpstan-param-out string $newDocumentType
      */
     public function getDocumentType(
         ?string &$newDocumentType
     ): self {
-        $newDocumentType = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getTypeCode()?->getValue() ?? "";
+        $newDocumentType = $this->getCrossIndustryRootObject()->getExchangedDocument()?->getTypeCode()?->getValue() ?? "";
 
         return $this;
     }
@@ -50,11 +54,13 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newDocumentDescription The documenttype as free text
      * @return self
+     *
+     * @phpstan-param-out string $newDocumentDescription
      */
     public function getDocumentDescription(
         ?string &$newDocumentDescription
     ): self {
-        $newDocumentDescription = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getName()?->getValue() ?? "";
+        $newDocumentDescription = $this->getCrossIndustryRootObject()->getExchangedDocument()?->getName()?->getValue() ?? "";
 
         return $this;
     }
@@ -64,11 +70,13 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return self
+     *
+     * @phpstan-param-out string $newDocumentLanguage
      */
     public function getDocumentLanguage(
         ?string &$newDocumentLanguage
     ): self {
-        $newDocumentLanguage = $this->getCrossIndustryRootObject()?->getExchangedDocument()?->getLanguageID()?->getValue() ?? "";
+        $newDocumentLanguage = $this->getCrossIndustryRootObject()->getExchangedDocument()?->getLanguageID()?->getValue() ?? "";
 
         return $this;
     }

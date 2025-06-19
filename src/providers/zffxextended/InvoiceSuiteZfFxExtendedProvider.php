@@ -89,7 +89,7 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractFormatProvide
                 $this->getParameters()['CONTEXTPARAMETER']
             );
             $contentEntries = $contentDomXPath->query($contentQuery);
-            return $contentEntries?->length === 1;
+            return $contentEntries->length === 1;
         } catch (\Throwable $throwable) {
             // Do nothing
         }
