@@ -87,8 +87,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         $formatProvider = reset($formatProviders);
 
         $this->setCurrentFormatProvider($formatProvider);
-        $this->getCurrentFormatProvider()->initReader();
-        $this->getCurrentFormatProvider()->getReader()->deserializeFromContent($fromContent);
+        $this->getCurrentFormatProvider()->initReader()->getReader()->deserializeFromContent($fromContent);
     }
 
     /**
