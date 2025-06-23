@@ -128,5 +128,19 @@ interface InvoiceSuiteReaderContract
         ?bool &$newDocumentIsTest
     ): self;
 
+    /**
+     * Go to the first document of the document
+     *
+     * @return bool
+     */
+    public function firstDocumentNote(): bool;
+
+    /**
+     * Go to the next document of the document
+     *
+     * @return bool
+     */
+    public function nextDocumentNote(): bool;
+
     #endregion
 }

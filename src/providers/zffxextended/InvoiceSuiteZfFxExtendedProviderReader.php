@@ -194,4 +194,24 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first document of the document
+     *
+     * @return bool
+     */
+    public function firstDocumentNote(): bool
+    {
+        return reset($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []) !== false;
+    }
+
+    /**
+     * Go to the next document of the document
+     *
+     * @return bool
+     */
+    public function nextDocumentNote(): bool
+    {
+        return next($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []) !== false;
+    }
 }

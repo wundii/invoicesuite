@@ -241,4 +241,24 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first document of the document
+     *
+     * @return bool
+     */
+    public function firstDocumentNote(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentNote();
+    }
+
+    /**
+     * Go to the next document of the document
+     *
+     * @return bool
+     */
+    public function nextDocumentNote(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentNote();
+    }
 }

@@ -178,4 +178,24 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first document of the document
+     *
+     * @return bool
+     */
+    public function firstDocumentNote(): bool
+    {
+        return reset($this->getUblInvoiceRootObject()->getNote() ?? []) !== false;
+    }
+
+    /**
+     * Go to the first document of the document
+     *
+     * @return bool
+     */
+    public function nextDocumentNote(): bool
+    {
+        return next($this->getUblInvoiceRootObject()->getNote() ?? []) !== false;
+    }
 }
