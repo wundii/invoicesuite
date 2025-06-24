@@ -206,7 +206,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     {
         InvoiceSuitePointerUtils::first('documentnote');
 
-        return InvoiceSuitePointerUtils::has($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? [], 'documentnote');
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []), 'documentnote');
     }
 
     /**
@@ -218,7 +218,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     {
         InvoiceSuitePointerUtils::next('documentnote');
 
-        return InvoiceSuitePointerUtils::has($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? [], 'documentnote');
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []), 'documentnote');
     }
 
     /**
@@ -238,7 +238,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
-        $documentNotes = ($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []);
+        $documentNotes = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []);
         $documentNote = $documentNotes[InvoiceSuitePointerUtils::getValue('documentnote')];
 
         $newContent = $documentNote->getContent()?->getValue() ?? "";

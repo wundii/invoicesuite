@@ -190,7 +190,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         InvoiceSuitePointerUtils::first('documentnote');
 
-        return InvoiceSuitePointerUtils::has($this->getUblInvoiceRootObject()->getNote() ?? [], 'documentnote');
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []), 'documentnote');
     }
 
     /**
@@ -202,7 +202,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     {
         InvoiceSuitePointerUtils::next('documentnote');
 
-        return InvoiceSuitePointerUtils::has($this->getUblInvoiceRootObject()->getNote() ?? [], 'documentnote');
+        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []), 'documentnote');
     }
 
     /**
@@ -222,7 +222,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         ?string &$newContentCode,
         ?string &$newSubjectCode
     ): self {
-        $documentNotes = ($this->getUblInvoiceRootObject()->getNote() ?? []);
+        $documentNotes = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []);
         $documentNote = $documentNotes[InvoiceSuitePointerUtils::getValue('documentnote')];
 
         $newContent = $documentNote->getValue() ?? "";
