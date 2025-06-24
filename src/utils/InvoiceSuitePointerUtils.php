@@ -100,4 +100,17 @@ class InvoiceSuitePointerUtils
 
         return array_key_exists(static::$pointerState[$name], $array);
     }
+
+    /**
+     * Get the pointer value
+     *
+     * @param string $name
+     * @return integer
+     */
+    public static function getValue(string $name): int
+    {
+        static::initNamedPointerIfNeeded($name);
+
+        return static::$pointerState[$name];
+    }
 }
