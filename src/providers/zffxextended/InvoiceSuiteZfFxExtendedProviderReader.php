@@ -204,9 +204,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function firstDocumentNote(): bool
     {
-        InvoiceSuitePointerUtils::first('documentnote');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []), 'documentnote');
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []
+            ),
+            'documentnote'
+        );
     }
 
     /**
@@ -216,9 +219,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function nextDocumentNote(): bool
     {
-        InvoiceSuitePointerUtils::next('documentnote');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []), 'documentnote');
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getExchangedDocument()?->getIncludedNote() ?? []
+            ),
+            'documentnote'
+        );
     }
 
     /**
@@ -255,9 +261,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function firstDocumentBillingPeriod(): bool
     {
-        InvoiceSuitePointerUtils::first('documentbillingperiod');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []), 'documentbillingperiod');
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []
+            ),
+            'documentbillingperiod'
+        );
     }
 
     /**
@@ -267,8 +276,11 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      */
     public function nextDocumentBillingPeriod(): bool
     {
-        InvoiceSuitePointerUtils::next('documentbillingperiod');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []), 'documentbillingperiod');
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getBillingSpecifiedPeriod() ?? []
+            ),
+            'documentbillingperiod'
+        );
     }
 }

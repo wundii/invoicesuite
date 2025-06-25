@@ -188,9 +188,12 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function firstDocumentNote(): bool
     {
-        InvoiceSuitePointerUtils::first('documentnote');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []), 'documentnote');
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getNote() ?? []
+            ),
+            'documentnote'
+        );
     }
 
     /**
@@ -200,9 +203,12 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function nextDocumentNote(): bool
     {
-        InvoiceSuitePointerUtils::next('documentnote');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getNote() ?? []), 'documentnote');
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getNote() ?? []
+            ),
+            'documentnote'
+        );
     }
 
     /**
@@ -239,9 +245,12 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function firstDocumentBillingPeriod(): bool
     {
-        InvoiceSuitePointerUtils::first('documentbillingperiod');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []), 'documentbillingperiod');
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []
+            ),
+            'documentbillingperiod'
+        );
     }
 
     /**
@@ -251,8 +260,11 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function nextDocumentBillingPeriod(): bool
     {
-        InvoiceSuitePointerUtils::next('documentbillingperiod');
-
-        return InvoiceSuitePointerUtils::has(InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []), 'documentbillingperiod');
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getInvoicePeriod() ?? []
+            ),
+            'documentbillingperiod'
+        );
     }
 }
