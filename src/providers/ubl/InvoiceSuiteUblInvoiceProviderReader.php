@@ -283,8 +283,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param null|string $newDescription Further information of the billing period (Obsolete)
      * @return self
      *
-     * @phpstan-param-out DateTimeInterface $newStartDate
-     * @phpstan-param-out DateTimeInterface $newEndDate
+     * @phpstan-param-out DateTimeInterface|null $newStartDate
+     * @phpstan-param-out DateTimeInterface|null $newEndDate
      * @phpstan-param-out string $newDescription
      */
     public function getDocumentBillingPeriod(
@@ -303,8 +303,10 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $billingPeriod = $billingPeriods[InvoiceSuitePointerUtils::getValue('documentbillingperiod')];
 
         $newStartDate = $billingPeriod->getStartDate();
-        $newEndDate = $billingPeriod->setEndDate();
-        $newDescription = ($billingPeriod->getDescription() ?? [])[0] ?? "";
+        $newEndDate = $billingPeriod->getEndDate();
+        $billingPeriodDescriptions = $billingPeriod->getDescription();
+        $billingPeriodDescription = reset($billingPeriodDescriptions);
+        $newDescription = $billingPeriodDescription !== false ? $billingPeriodDescription->getValue() : "";
 
         return $this;
     }

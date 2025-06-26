@@ -71,7 +71,7 @@ class InvoiceSuitePointerUtils
     {
         static::initNamedPointerIfNeeded($name, -1);
 
-        static::$pointerState[$name] = static::$pointerState[$name] + 1;
+        static::$pointerState[$name] += 1;
     }
 
     /**
@@ -84,13 +84,13 @@ class InvoiceSuitePointerUtils
     {
         static::initNamedPointerIfNeeded($name, 1);
 
-        static::$pointerState[$name] = static::$pointerState[$name] - 1;
+        static::$pointerState[$name] -= 1;
     }
 
     /**
      * Check that an array has key. The array key is identified by a pointer state
      *
-     * @param array $array
+     * @param array<mixed,mixed> $array
      * @param string $name
      * @return boolean
      */
@@ -104,7 +104,7 @@ class InvoiceSuitePointerUtils
     /**
      * Seek to first and check if array has an element
      *
-     * @param array $array
+     * @param array<mixed,mixed> $array
      * @param string $name
      * @return boolean
      */
@@ -118,7 +118,7 @@ class InvoiceSuitePointerUtils
     /**
      * Seek to next and check if array has an element
      *
-     * @param array $array
+     * @param array<mixed,mixed> $array
      * @param string $name
      * @return boolean
      */

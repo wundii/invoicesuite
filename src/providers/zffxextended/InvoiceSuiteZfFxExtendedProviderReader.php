@@ -291,6 +291,10 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      * @param null|DateTimeInterface $newEndDate End of the billing period
      * @param null|string $newDescription Further information of the billing period (Obsolete)
      * @return self
+     *
+     * @phpstan-param-out DateTimeInterface|null $newStartDate
+     * @phpstan-param-out DateTimeInterface|null $newEndDate
+     * @phpstan-param-out string $newDescription
      */
     public function getDocumentBillingPeriod(
         ?DateTimeInterface &$newStartDate,

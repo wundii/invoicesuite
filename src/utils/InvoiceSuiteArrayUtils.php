@@ -16,7 +16,7 @@ class InvoiceSuiteArrayUtils
     /**
      * Returns true if the given array is empty, otherwise false
      *
-     * @param array $array
+     * @param array<mixed,mixed> $array
      * @return boolean
      */
     public static function isEmpty(array $array): bool
@@ -28,7 +28,7 @@ class InvoiceSuiteArrayUtils
      * Seek to the first array element. If the first element was successfully resolved
      * this method returns true, otherwise false
      *
-     * @param array &$array
+     * @param array<mixed,mixed>&$array
      * @return bool
      */
     public static function hasFirst(array &$array): bool
@@ -46,7 +46,7 @@ class InvoiceSuiteArrayUtils
      * Seek to the next array element. If the a element was successfully resolved
      * this method returns true, otherwise false
      *
-     * @param array &$array
+     * @param array<mixed,mixed>&$array
      * @return bool
      */
     public static function hasNext(array &$array): bool
@@ -64,7 +64,7 @@ class InvoiceSuiteArrayUtils
      * Seek to the last array element. If the a element was successfully resolved
      * this method returns true, otherwise false
      *
-     * @param array &$array
+     * @param array<mixed,mixed>&$array
      * @return bool
      */
     public static function hasLast(array &$array): bool
@@ -81,8 +81,8 @@ class InvoiceSuiteArrayUtils
     /**
      * Returns the current value of the array element
      *
-     * @param array $array
-     * @return void
+     * @param array<mixed,mixed> $array
+     * @return mixed
      */
     public static function currentValue(array &$array)
     {
@@ -101,10 +101,10 @@ class InvoiceSuiteArrayUtils
      * Ensure that $value is an array
      *
      * @param mixed $value
-     * @return array
+     * @return array<mixed,mixed>
      */
     public static function ensure($value): array
     {
-        return !is_array($value) ? [$value] : $value;
+        return is_array($value) ? $value : [$value];
     }
 }
