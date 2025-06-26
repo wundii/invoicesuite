@@ -211,4 +211,34 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     #endregion
+
+    #region Document References
+
+    /**
+     * Go to the first associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerOrderReference(): bool;
+
+    /**
+     * Go to the next associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerOrderReference(): bool;
+
+    /**
+     * Get the associated seller's order confirmation.
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function getDocumentSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
+    #endregion
 }

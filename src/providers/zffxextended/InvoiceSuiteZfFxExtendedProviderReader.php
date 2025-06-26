@@ -371,15 +371,72 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         /**
          * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType>
          */
-        $postingReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
+        $documentPostingReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
 
         /**
          * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType
          */
-        $postingReference = $postingReferences[InvoiceSuitePointerUtils::getValue('documentpostingreference')];
+        $documentPostingReference = $documentPostingReferences[InvoiceSuitePointerUtils::getValue('documentpostingreference')];
 
-        $newType = $postingReference->getTypeCode()?->getValue() ?? "";
-        $newAccountId = $postingReference->getID()?->getValue() ?? "";
+        $newType = $documentPostingReference->getTypeCode()?->getValue() ?? "";
+        $newAccountId = $documentPostingReference->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerOrderReferencedDocument() ?? []
+            ),
+            'documentsellerorderreference'
+        );
+    }
+
+    /**
+     * Go to the next associated seller's order confirmation
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerOrderReferencedDocument() ?? []
+            ),
+            'documentsellerorderreference'
+        );
+    }
+
+    /**
+     * Get the associated seller's order confirmation.
+     *
+     * @param string|null $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-146, From EXTENDED__ Seller's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentSellerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()->getSellerOrderReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentSellerOrderReference = $documentSellerOrderReferences[InvoiceSuitePointerUtils::getValue('documentsellerorderreference')];
 
         return $this;
     }
