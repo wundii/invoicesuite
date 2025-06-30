@@ -409,7 +409,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @return self
      *
      * @phpstan-param-out string $newReferenceNumber
-     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out null $newReferenceDate
      */
     public function getDocumentSellerOrderReference(
         ?string &$newReferenceNumber,
@@ -485,7 +485,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
          */
         $documentBuyerOrderReference = $documentBuyerOrderReferences[InvoiceSuitePointerUtils::getValue('documentbuyerorderreference')];
 
-        $newReferenceNumber = $documentBuyerOrderReference->getID() ?? "";
+        $newReferenceNumber = $documentBuyerOrderReference->getID()?->getValue() ?? "";
         $newReferenceDate = $documentBuyerOrderReference->getIssueDate();
 
         return $this;
