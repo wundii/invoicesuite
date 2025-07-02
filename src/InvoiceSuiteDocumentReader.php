@@ -3,6 +3,7 @@
 namespace horstoeko\invoicesuite;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
@@ -494,6 +495,57 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self {
         $this->getCurrentFormatProvider()->getReader()->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional associated document
+     *
+     * @return boolean
+     */
+    public function firstDocumentAdditionalReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentAdditionalReference();
+    }
+
+    /**
+     * Go to the next additional associated document
+     *
+     * @return boolean
+     */
+    public function nextDocumentAdditionalReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentAdditionalReference();
+    }
+
+    /**
+     * Get an additional associated document
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
+     */
+    public function getDocumentAdditionalReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode,
+        ?string &$newReferenceTypeCode,
+        ?string &$newDescription,
+        ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentAdditionalReference(
+            $newReferenceNumber,
+            $newReferenceDate,
+            $newTypeCode,
+            $newReferenceTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
 
         return $this;
     }

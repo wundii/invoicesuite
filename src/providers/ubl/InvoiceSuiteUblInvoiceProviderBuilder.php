@@ -1178,11 +1178,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 ->setValue($newDescription);
         }
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-            $additionalReference
-                ->getAttachmentWithCreate();
-        }
-
         if (!is_null($newInvoiceSuiteAttachment)) {
             if ($newInvoiceSuiteAttachment->isBinaryAttachment()) {
                 $additionalReference

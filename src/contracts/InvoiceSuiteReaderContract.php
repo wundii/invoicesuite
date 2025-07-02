@@ -10,6 +10,7 @@
 namespace horstoeko\invoicesuite\contracts;
 
 use DateTimeInterface;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 /**
  * Interface representing the required methods for a reader
@@ -318,5 +319,39 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first additional associated document
+     *
+     * @return boolean
+     */
+    public function firstDocumentAdditionalReference(): bool;
+
+    /**
+     * Go to the next additional associated document
+     *
+     * @return boolean
+     */
+    public function nextDocumentAdditionalReference(): bool;
+
+    /**
+     * Get an additional associated document
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
+     */
+    public function getDocumentAdditionalReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode,
+        ?string &$newReferenceTypeCode,
+        ?string &$newDescription,
+        ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
+    ): self;
+    
     #endregion
 }

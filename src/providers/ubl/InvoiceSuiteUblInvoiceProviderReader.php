@@ -6,6 +6,7 @@ use DateTime;
 use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
@@ -624,6 +625,83 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         $newReferenceNumber = $documentContractReference->getID()?->getValue() ?? "";
         $newReferenceDate = $documentContractReference->getIssueDate();
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional associated document
+     *
+     * @return boolean
+     */
+    public function firstDocumentAdditionalReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? []
+            ),
+            'documentadditionalreference'
+        );
+    }
+
+    /**
+     * Go to the next additional associated document
+     *
+     * @return boolean
+     */
+    public function nextDocumentAdditionalReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? []
+            ),
+            'documentadditionalreference'
+        );
+    }
+
+    /**
+     * Get an additional associated document
+     *
+     * @param string|null $newReferenceNumber Additional document number
+     * @param DateTimeInterface|null $newReferenceDate Additional document date
+     * @param string|null $newTypeCode Additional document type code
+     * @param string|null $newReferenceTypeCode Additional document reference-type code
+     * @param string|null $newDescription Additional document description
+     * @param InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment Additional document attachment
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     * @phpstan-param-out string $newReferenceTypeCode
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment
+     */
+    public function getDocumentAdditionalReference(
+        ?string &$newReferenceNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode,
+        ?string &$newReferenceTypeCode,
+        ?string &$newDescription,
+        ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference>
+         */
+        $documentAdditionalReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference
+         */
+        $documentAdditionalReference = $documentAdditionalReferences[InvoiceSuitePointerUtils::getValue('documentadditionalreference')];
+
+        $newReferenceNumber = $documentAdditionalReference->getID()?->getValue() ?? "";
+        $newReferenceDate = $documentAdditionalReference->getIssueDate();
+        $newTypeCode = $documentAdditionalReference->getDocumentTypeCode()?->getValue() ?? "";
+        $newReferenceTypeCode = "";
+        $newDescriptions = $documentAdditionalReference->getDocumentDescription() ?? [];
+        $newDescriptions = reset($newDescriptions);
+        $newDescription = $newDescriptions !== false ? $newDescriptions->getValue() ?? "" : "";
 
         return $this;
     }
