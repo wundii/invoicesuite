@@ -769,4 +769,64 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Go to the first additional project reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentProjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getProjectReference() ?? []
+            ),
+            'documentprojectreference'
+        );
+    }
+
+    /**
+     * Go to the next additional project reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentProjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getProjectReference() ?? []
+            ),
+            'documentprojectreference'
+        );
+    }
+
+    /**
+     * Get an additional project reference
+     *
+     * @param string|null $newReferenceNumber Project number
+     * @param string|null $newName Project name
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentProjectReference(
+        ?string &$newReferenceNumber,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\ProjectReference>
+         */
+        $documentProjectReferences = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getProjectReference() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\ProjectReference
+         */
+        $documentProjectReference = $documentProjectReferences[InvoiceSuitePointerUtils::getValue('documentinvoicereference')];
+
+        $newReferenceNumber = $documentProjectReference->getID()?->getValue() ?? "";
+        $newName = "";
+
+        return $this;
+    }
 }

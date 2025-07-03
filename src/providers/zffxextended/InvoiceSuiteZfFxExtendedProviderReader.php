@@ -792,4 +792,64 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first additional project reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentProjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSpecifiedProcuringProject() ?? []
+            ),
+            'documentprojectreference'
+        );
+    }
+
+    /**
+     * Go to the next additional project reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentProjectReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSpecifiedProcuringProject() ?? []
+            ),
+            'documentprojectreference'
+        );
+    }
+
+    /**
+     * Get an additional project reference
+     *
+     * @param string|null $newReferenceNumber __BT-11, From EN 16931__ Project number
+     * @param string|null $newName __BT-11-0, From EN 16931__ Project name
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentProjectReference(
+        ?string &$newReferenceNumber,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProcuringProjectType>
+         */
+        $documentProjectReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSpecifiedProcuringProject() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ProcuringProjectType
+         */
+        $documentProjectReference = $documentProjectReferences[InvoiceSuitePointerUtils::getValue('documentprojectreference')];
+
+        $newReferenceNumber = $documentProjectReference->getID()?->getValue() ?? "";
+        $newName = $documentProjectReference->getName()?->getValue() ?? "";
+
+        return $this;
+    }
 }

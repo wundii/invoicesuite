@@ -587,4 +587,40 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Go to the first additional project reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentProjectReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentProjectReference();
+    }
+
+    /**
+     * Go to the next additional project reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentProjectReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentProjectReference();
+    }
+
+    /**
+     * Get an additional project reference
+     *
+     * @param string|null $newReferenceNumber Project number
+     * @param string|null $newName Project name
+     * @return self
+     */
+    public function getDocumentProjectReference(
+        ?string &$newReferenceNumber,
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentProjectReference($newReferenceNumber, $newName);
+
+        return $this;
+    }
 }

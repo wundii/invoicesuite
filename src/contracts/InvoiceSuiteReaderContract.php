@@ -381,5 +381,31 @@ interface InvoiceSuiteReaderContract
         ?string &$newTypeCode
     ): self;
 
+    /**
+     * Go to the first additional project reference
+     *
+     * @return boolean
+     */
+    public function firstDocumentProjectReference(): bool;
+
+    /**
+     * Go to the next additional project reference
+     *
+     * @return boolean
+     */
+    public function nextDocumentProjectReference(): bool;
+
+    /**
+     * Get an additional project reference
+     *
+     * @param string|null $newReferenceNumber Project number
+     * @param string|null $newName Project name
+     * @return self
+     */
+    public function getDocumentProjectReference(
+        ?string &$newReferenceNumber,
+        ?string &$newName
+    ): self;
+
     #endregion
 }
