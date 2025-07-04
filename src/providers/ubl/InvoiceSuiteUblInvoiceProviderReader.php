@@ -1089,7 +1089,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     ): self {
         $newDate = null;
 
-        $delivery = reset($this->getUblInvoiceRootObject()->getDelivery());
+        $deliveries = $this->getUblInvoiceRootObject()->getDelivery();
+        $delivery = reset($deliveries);
 
         if ($delivery === false) {
             return $this;
