@@ -94,3 +94,6 @@ while ($reader->nextDocumentDeliveryNoteReference()) {
     $reader->getDocumentDeliveryNoteReference($documentDeliveryNoteNo, $documentDeliveryNoteDate);
     echo sprintf("Delivery Note %s by %s\n", $documentDeliveryNoteNo, $documentDeliveryNoteDate?->format("d.m.Y") ?? "");
 }
+
+$reader->getDocumentSupplyChainEvent($documemtSupplyChainEventDate);
+echo sprintf("Supply Chain event at %s", $documemtSupplyChainEventDate?->format("d.m.Y") ?? "");

@@ -1075,4 +1075,28 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Get the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDate
+     */
+    public function getDocumentSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $newDate = null;
+
+        $delivery = reset($this->getUblInvoiceRootObject()->getDelivery());
+
+        if ($delivery === false) {
+            return $this;
+        }
+
+        $newDate = $delivery->getActualDeliveryDate();
+
+        return $this;
+    }
 }

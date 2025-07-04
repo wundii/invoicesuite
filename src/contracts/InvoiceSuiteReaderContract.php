@@ -511,5 +511,15 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Get the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @return self
+     */
+    public function getDocumentSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self;
+
     #endregion
 }

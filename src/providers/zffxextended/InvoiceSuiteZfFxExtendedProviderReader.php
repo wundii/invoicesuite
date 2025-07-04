@@ -1104,4 +1104,23 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Get the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate __BT-72, From BASIC WL__ Actual delivery date
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDate
+     */
+    public function getDocumentSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $newDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getActualDeliverySupplyChainEvent()?->getOccurrenceDateTime()?->getDateTimeString()?->getValue(),
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getActualDeliverySupplyChainEvent()?->getOccurrenceDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
 }

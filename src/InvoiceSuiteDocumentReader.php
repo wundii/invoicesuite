@@ -767,4 +767,18 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
 
         return $this;
     }
+
+    /**
+     * Get the date of the delivery
+     *
+     * @param DateTimeInterface|null $newDate Actual delivery date
+     * @return self
+     */
+    public function getDocumentSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentSupplyChainEvent($newDate);
+
+        return $this;
+    }
 }
