@@ -1009,8 +1009,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     /**
      * Get an additional receiving advice reference
      *
-     * @param string|null $newReferenceNumber Shipping notification number
-     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @param string|null $newReferenceNumber Receipt notification number
+     * @param DateTimeInterface|null $newReferenceDate Receipt notification date
      * @return self
      *
      * @phpstan-param-out string $newReferenceNumber
