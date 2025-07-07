@@ -1100,4 +1100,29 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         return $this;
     }
+
+    /**
+     * Get the name of the seller/supplier party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentSellerName(
+        ?string &$newName
+    ): self {
+        $newName = "";
+
+        $sellerLegalEntities = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity();
+        $sellerLegalEntity = reset($sellerLegalEntities);
+
+        if ($sellerLegalEntity === false) {
+            return $this;
+        }
+
+        $newName = $sellerLegalEntity->getRegistrationName()?->getValue() ?? "";
+
+        return $this;
+    }
 }

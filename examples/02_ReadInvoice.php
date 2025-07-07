@@ -96,4 +96,11 @@ while ($reader->nextDocumentDeliveryNoteReference()) {
 }
 
 $reader->getDocumentSupplyChainEvent($documemtSupplyChainEventDate);
-echo sprintf("Supply Chain event at %s", $documemtSupplyChainEventDate?->format("d.m.Y") ?? "");
+echo sprintf("Supply Chain event at %s\n", $documemtSupplyChainEventDate?->format("d.m.Y") ?? "");
+
+echo "\n";
+echo "Seller/Supplier Party\n";
+echo "\n";
+
+$reader->getDocumentSellerName($documentSellerName);
+echo sprintf("Seller Name ........ %s\n", $documentSellerName);
