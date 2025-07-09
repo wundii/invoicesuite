@@ -675,5 +675,37 @@ interface InvoiceSuiteReaderContract
         ?string &$newName
     ): self;
 
+    /**
+     * Go to the first contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerContact(): bool;
+
+    /**
+     * Go to the next contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerContact(): bool;
+
+    /**
+     * Get the contact information of the seller/supplier party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function getDocumentSellerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self;
+
     #endregion
 }

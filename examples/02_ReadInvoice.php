@@ -133,3 +133,12 @@ while ($reader->nextDocumentSellerLegalOrganisation()) {
     $reader->getDocumentSellerLegalOrganisation($documentSellerLegalOrgType, $documentSellerLegalOrgId, $documentSellerLegalOrgName);
     echo sprintf("Seller Legal ....... %s (%s), %s\n", $documentSellerLegalOrgId, $documentSellerLegalOrgType, $documentSellerLegalOrgName);
 }
+
+while ($reader->nextDocumentSellerContact()) {
+    $reader->getDocumentSellerContact($documentSellerContactName, $documentSellerContactDepartmenrName, $documentSellerContactPhoneNumber, $documentSellerContactFaxNumber, $documentSellerContactEmailAddress);
+    echo sprintf("Seller Contact ..... %s\n", $documentSellerContactName);
+    echo sprintf("               ..... %s\n", $documentSellerContactDepartmenrName);
+    echo sprintf("               ..... %s\n", $documentSellerContactPhoneNumber);
+    echo sprintf("               ..... %s\n", $documentSellerContactFaxNumber);
+    echo sprintf("               ..... %s\n", $documentSellerContactEmailAddress);
+}

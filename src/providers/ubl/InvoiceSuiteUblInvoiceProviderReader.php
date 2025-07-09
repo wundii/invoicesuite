@@ -1442,6 +1442,10 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @param string|null $newId Identification number of the legal registration of the party.
      * @param string|null $newName Name by which the party is known, if different from the party's name.
      * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
      */
     public function getDocumentSellerLegalOrganisation(
         ?string &$newType,
@@ -1463,7 +1467,80 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
 
         // Trading name and Party name are swapped in UBL
         $partyNames = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyName() ?? [];
-        $newName = reset($partyNames) !== false ? reset($partyNames) : "";
+        $partyName = reset($partyNames);
+        $newName = $partyName !== false ? $partyName->getName()?->getValue() ?? "" : "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getContact() ?? []
+            ),
+            'documentsellercontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getContact() ?? []
+            ),
+            'documentsellercontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the seller/supplier party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentSellerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>
+         */
+        $documentSellerContacts = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getContact() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
+         */
+        $documentSellerContact = $documentSellerContacts[InvoiceSuitePointerUtils::getValue('documentsellercontact')];
+
+        $newPersonName = $documentSellerContact->getName()?->getValue() ?? "";
+        $newDepartmentName = "";
+        $newPhoneNumber = $documentSellerContact->getTelephone()?->getValue() ?? "";
+        $newFaxNumber = $documentSellerContact->getTelefax()?->getValue() ?? "";
+        $newEmailAddress = $documentSellerContact->getElectronicMail()?->getValue() ?? "";
 
         return $this;
     }

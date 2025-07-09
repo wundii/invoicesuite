@@ -1459,4 +1459,76 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function firstDocumentSellerContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentsellercontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the seller/supplier party
+     *
+     * @return boolean
+     */
+    public function nextDocumentSellerContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentsellercontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the seller/supplier party
+     *
+     * @param string|null $newPersonName __BT-41, From EN 16931__ Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName __BT-41-0, From EN 16931__ Name of the department for the contact point.
+     * @param string|null $newPhoneNumber __BT-42, From EN 16931__ Telephone number for the contact point.
+     * @param string|null $newFaxNumber __BT-X-107, From EXTENDED__ Fax number of the contact point.
+     * @param string|null $newEmailAddress __BT-43, From EN 16931__ E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentSellerContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeContactType>
+         */
+        $documentSellerContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeAgreement()?->getSellerTradeParty()?->getDefinedTradeContact() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeContactType
+         */
+        $documentSellerContact = $documentSellerContacts[InvoiceSuitePointerUtils::getValue('documentsellercontact')];
+
+        $newPersonName = $documentSellerContact->getPersonName()?->getValue() ?? "";
+        $newDepartmentName = $documentSellerContact->getDepartmentName()?->getValue() ?? "";
+        $newPhoneNumber = $documentSellerContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? "";
+        $newFaxNumber = $documentSellerContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? "";
+        $newEmailAddress = $documentSellerContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? "";
+
+        return $this;
+    }
 }
