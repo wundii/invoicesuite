@@ -98,6 +98,8 @@ while ($reader->nextDocumentDeliveryNoteReference()) {
 $reader->getDocumentSupplyChainEvent($documemtSupplyChainEventDate);
 echo sprintf("Supply Chain event at %s\n", $documemtSupplyChainEventDate?->format("d.m.Y") ?? "");
 
+#region Seller Output
+
 echo "\n";
 echo "Seller/Supplier Party\n";
 echo "\n";
@@ -147,3 +149,5 @@ while ($reader->nextDocumentSellerCommunication()) {
     $reader->getDocumentSellerCommunication($documentSellerCommunicationType, $documentSellerCommunicationUri);
     echo sprintf("Seller Comm. ....... %s (%s)\n", $documentSellerCommunicationUri, $documentSellerCommunicationType);
 }
+
+#endregion
