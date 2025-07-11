@@ -57,8 +57,6 @@ class InvoiceSuitePointerUtils
     public static function first(string $name): void
     {
         static::initNamedPointer($name);
-
-        static::$pointerState[$name] = 0;
     }
 
     /**
