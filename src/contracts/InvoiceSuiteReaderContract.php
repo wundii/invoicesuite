@@ -1582,4 +1582,216 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     #endregion
+
+    #region Document Ultimate Ship-To
+
+    /**
+     * Get the name of the ultimate Ship-To party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentUltimateShipToName(
+        ?string &$newName
+    ): self;
+
+    /**
+     * Go to the first ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToId(): bool;
+
+    /**
+     * Go to the next ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToId(): bool;
+
+    /**
+     * Get the ID of the ultimate Ship-To party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentUltimateShipToId(
+        ?string &$newId
+    ): self;
+
+    /**
+     * Go to the first global ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToGlobalId(): bool;
+
+    /**
+     * Go to the next global ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToGlobalId(): bool;
+
+    /**
+     * Get the Global ID of the ultimate Ship-To party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentUltimateShipToGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self;
+
+    /**
+     * Go to the first Tax Registration of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToTaxRegistration(): bool;
+
+    /**
+     * Go to the next Tax Registration of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToTaxRegistration(): bool;
+
+    /**
+     * Get the Tax Registration of the ultimate Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function getDocumentUltimateShipToTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self;
+
+    /**
+     * Go to the first address of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToAddress(): bool;
+
+    /**
+     * Go to the next address of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToAddress(): bool;
+
+    /**
+     * Get the address of the ultimate Ship-To party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function getDocumentUltimateShipToAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self;
+
+    /**
+     * Go to the first the legal information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToLegalOrganisation(): bool;
+
+    /**
+     * Go to the next the legal information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToLegalOrganisation(): bool;
+
+    /**
+     * Get the legal information of the ultimate Ship-To party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentUltimateShipToLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self;
+
+    /**
+     * Go to the first contact information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToContact(): bool;
+
+    /**
+     * Go to the next contact information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToContact(): bool;
+
+    /**
+     * Get the contact information of the ultimate Ship-To party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function getDocumentUltimateShipToContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self;
+
+    /**
+     * Go to the first communication information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToCommunication(): bool;
+
+    /**
+     * Go to the next communication information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToCommunication(): bool;
+
+    /**
+     * Get communication information of the ultimate Ship-To party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function getDocumentUltimateShipToCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self;
+
+    #endregion
 }

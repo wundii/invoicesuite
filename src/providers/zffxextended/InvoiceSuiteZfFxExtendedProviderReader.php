@@ -3491,4 +3491,476 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     }
 
     #endregion
+
+    #region Document Ultimate Ship-To
+
+    /**
+     * Get the name of the ultimate Ship-To party
+     *
+     * @param string|null $newName __BT-X-164, From EXTENDED__ The full formal name under which the party is registered.
+     * @return self
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentUltimateShipToName(
+        ?string &$newName
+    ): self {
+        $newName = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getID() ?? []
+            ),
+            'documentultimateshiptoid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getID() ?? []
+            ),
+            'documentultimateshiptoid'
+        );
+    }
+
+    /**
+     * Get the ID of the ultimate Ship-To party
+     *
+     * @param string|null $newId __BT-X-162, From EXTENDED__ An identifier of the party. In many systems, identification is key information.
+     * @return self
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentUltimateShipToId(
+        ?string &$newId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+         */
+        $documentShipToIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+         */
+        $documentShipToId = $documentShipToIds[InvoiceSuitePointerUtils::getValue('documentultimateshiptoid')];
+
+        $newId = $documentShipToId->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentultimateshiptoglobalid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getGlobalID() ?? []
+            ),
+            'documentultimateshiptoglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the ultimate Ship-To party
+     *
+     * @param string|null $newGlobalId __BT-X-163, From EXTENDED__ A global identifier of the party.
+     * @param string|null $newGlobalIdType __BT-X-163-0, From EXTENDED__ Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentUltimateShipToGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\udt\IDType>
+         */
+        $documentShipToGlobalIds = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getGlobalID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\udt\IDType
+         */
+        $documentShipToGlobalId = $documentShipToGlobalIds[InvoiceSuitePointerUtils::getValue('documentultimateshiptoglobalid')];
+
+        $newGlobalId = $documentShipToGlobalId->getValue() ?? "";
+        $newGlobalIdType = $documentShipToGlobalId->getSchemeID() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentultimateshiptotaxregistration'
+        );
+    }
+
+    /**
+     * Go to the next Tax Registration of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedTaxRegistration() ?? []
+            ),
+            'documentultimateshiptotaxregistration'
+        );
+    }
+
+    /**
+     * Get the Tax Registration of the ultimate Ship-To party
+     *
+     * @param string|null $newTaxRegistrationType __BT-X-180-0, From EXTENDED__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId __BT-X-180, From EXTENDED__ Tax identification number.
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentUltimateShipToTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TaxRegistrationType>
+         */
+        $documentShipToTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedTaxRegistration() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TaxRegistrationType
+         */
+        $documentShipToTaxRegistration = $documentShipToTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentultimateshiptotaxregistration')];
+
+        $newTaxRegistrationType = $documentShipToTaxRegistration->getID()?->getSchemeID() ?? "";
+        $newTaxRegistrationId = $documentShipToTaxRegistration->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentultimateshiptoaddress'
+        );
+    }
+
+    /**
+     * Go to the next address of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getPostalTradeAddress() ?? []
+            ),
+            'documentultimateshiptoaddress'
+        );
+    }
+
+    /**
+     * Set the address of the ultimate Ship-To party
+     *
+     * @param string|null $newAddressLine1 __BT-X-173, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 __BT-X-174, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 __BT-X-175, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode __BT-X-172, From EXTENDED__ Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity __BT-X-176, From EXTENDED__ Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId __BT-X-177, From EXTENDED__ Country in which the party's address is located.
+     * @param string|null $newSubDivision __BT-X-178, From EXTENDED__ Region or federal state in which the party's address is located.
+     * @return self
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentUltimateShipToAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAddressType>
+         */
+        $documentShipToAddresses = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getPostalTradeAddress() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAddressType
+         */
+        $documentShipToAddress = $documentShipToAddresses[InvoiceSuitePointerUtils::getValue('documentultimateshiptoaddress')];
+
+        $newAddressLine1 = $documentShipToAddress->getLineOne()?->getValue() ?? "";
+        $newAddressLine2 = $documentShipToAddress->getLineTwo()?->getValue() ?? "";
+        $newAddressLine3 = $documentShipToAddress->getLineThree()?->getValue() ?? "";
+        $newPostcode = $documentShipToAddress->getPostcodeCode()?->getValue() ?? "";
+        $newCity = $documentShipToAddress->getCityName()?->getValue() ?? "";
+        $newCountryId = $documentShipToAddress->getCountryID()?->getValue() ?? "";
+        $newSubDivision = $documentShipToAddress->getCountrySubDivisionName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentultimateshiptolegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedLegalOrganization() ?? []
+            ),
+            'documentultimateshiptolegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the ultimate Ship-To party
+     *
+     * @param string|null $newType __BT-X-165-0, From EXTENDED__ Type of the identification number of the legal registration of the party.
+     * @param string|null $newId __BT-X-165, From EXTENDED__ Identification number of the legal registration of the party.
+     * @param string|null $newName __BT-X-166, From EXTENDED__ Name by which the party is known, if different from the party's name.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentUltimateShipToLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\LegalOrganizationType>
+         */
+        $documentShipToLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getSpecifiedLegalOrganization() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\LegalOrganizationType
+         */
+        $documentShipToLegalOrganisation = $documentShipToLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentultimateshiptolegalorganisation')];
+
+        $newType = $documentShipToLegalOrganisation->getID()?->getSchemeID() ?? "";
+        $newId = $documentShipToLegalOrganisation->getID()?->getValue() ?? "";
+        $newName = $documentShipToLegalOrganisation->getTradingBusinessName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentultimateshiptocontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getDefinedTradeContact() ?? []
+            ),
+            'documentultimateshiptocontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the ultimate Ship-To party
+     *
+     * @param string|null $newPersonName __BT-X-167, From EXTENDED__ Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName __BT-X-168, From EXTENDED__ Name of the department for the contact point.
+     * @param string|null $newPhoneNumber __BT-X-169, From EXTENDED__ Telephone number for the contact point.
+     * @param string|null $newFaxNumber __BT-X-170, From EXTENDED__ Fax number of the contact point.
+     * @param string|null $newEmailAddress __BT-X-171, From EXTENDED__ E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentUltimateShipToContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeContactType>
+         */
+        $documentShipToContacts = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getDefinedTradeContact() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeContactType
+         */
+        $documentShipToContact = $documentShipToContacts[InvoiceSuitePointerUtils::getValue('documentultimateshiptocontact')];
+
+        $newPersonName = $documentShipToContact->getPersonName()?->getValue() ?? "";
+        $newDepartmentName = $documentShipToContact->getDepartmentName()?->getValue() ?? "";
+        $newPhoneNumber = $documentShipToContact->getTelephoneUniversalCommunication()?->getCompleteNumber()?->getValue() ?? "";
+        $newFaxNumber = $documentShipToContact->getFaxUniversalCommunication()?->getCompleteNumber()?->getValue() ?? "";
+        $newEmailAddress = $documentShipToContact->getEmailURIUniversalCommunication()->getURIID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function firstDocumentUltimateShipToCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentultimateshiptoecommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the ultimate Ship-To party
+     *
+     * @return boolean
+     */
+    public function nextDocumentUltimateShipToCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getURIUniversalCommunication() ?? []
+            ),
+            'documentultimateshiptoecommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the ultimate Ship-To party
+     *
+     * @param string|null $newType __BT-X-83, From EXTENDED__ The type for the party's electronic address.
+     * @param string|null $newUri __BT-X-83-0, From EXTENDED__ The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentUltimateShipToCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\UniversalCommunicationType>
+         */
+        $documentShipToElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeDelivery()?->getUltimateShipToTradeParty()?->getURIUniversalCommunication() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\UniversalCommunicationType
+         */
+        $documentShipToElectronicCommunication = $documentShipToElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentultimateshiptoecommunication')];
+
+        $newType = $documentShipToElectronicCommunication->getURIID()?->getSchemeID() ?? "";
+        $newUri = $documentShipToElectronicCommunication->getURIID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    #endregion
 }

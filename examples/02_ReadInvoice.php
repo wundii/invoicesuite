@@ -5,7 +5,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 require __DIR__ . "/../vendor/autoload.php";
 
 $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
-$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+//$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
 $reader->getDocumentNo($documentNumber);
 $reader->getDocumentType($documentType);
 $reader->getDocumentDescription($documentDescription);
@@ -365,6 +365,60 @@ while ($reader->nextDocumentShipToContact()) {
 while ($reader->nextDocumentShipToCommunication()) {
     $reader->getDocumentShipToCommunication($documentShipToCommunicationType, $documentShipToCommunicationUri);
     echo sprintf("ShipTo Comm. ....... %s (%s)\n", $documentShipToCommunicationUri, $documentShipToCommunicationType);
+}
+
+#endregion
+
+#region Ultimate Ship-To Output
+
+echo "\n";
+echo "Ultimate Ship-To Party\n";
+echo "\n";
+
+$reader->getDocumentUltimateShipToName($documentUltimateShipToName);
+echo sprintf("UltimateShipTo Name ........ %s\n", $documentUltimateShipToName);
+
+while ($reader->nextDocumentUltimateShipToId()) {
+    $reader->getDocumentUltimateShipToId($documentUltimateShipToGlobalId);
+    echo sprintf("UltimateShipTo ID .......... %s\n", $documentUltimateShipToGlobalId);
+}
+
+while ($reader->nextDocumentUltimateShipToGlobalId()) {
+    $reader->getDocumentUltimateShipToGlobalId($documentUltimateShipToGlobalId, $documentUltimateShipToGlobalIdType);
+    echo sprintf("UltimateShipTo Global ID ... %s (%s)\n", $documentUltimateShipToGlobalId, $documentUltimateShipToGlobalIdType);
+}
+
+while ($reader->nextDocumentUltimateShipToTaxRegistration()) {
+    $reader->getDocumentUltimateShipToTaxRegistration($documentUltimateShipToTaxRegistrationType, $documentUltimateShipToTaxRegistrationId);
+    echo sprintf("UltimateShipTo Tax Reg. .... %s (%s)\n", $documentUltimateShipToTaxRegistrationId, $documentUltimateShipToTaxRegistrationType);
+}
+
+while ($reader->nextDocumentUltimateShipToAddress()) {
+    $reader->getDocumentUltimateShipToAddress($documentUltimateShipToAddressLine1, $documentUltimateShipToAddressLine2, $documentUltimateShipToAddressLine3, $documentUltimateShipToPostCode, $documentUltimateShipToCity, $documentUltimateShipToCountryId, $documentUltimateShipToSubDivision);
+    echo sprintf("UltimateShipTo Address ..... %s\n", $documentUltimateShipToAddressLine1);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToAddressLine2);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToAddressLine3);
+    echo sprintf("                       ..... %s %s %s\n", $documentUltimateShipToCountryId, $documentUltimateShipToPostCode, $documentUltimateShipToCity);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToSubDivision);
+}
+
+while ($reader->nextDocumentUltimateShipToLegalOrganisation()) {
+    $reader->getDocumentUltimateShipToLegalOrganisation($documentUltimateShipToLegalOrgType, $documentUltimateShipToLegalOrgId, $documentUltimateShipToLegalOrgName);
+    echo sprintf("UltimateShipTo Legal ....... %s (%s), %s\n", $documentUltimateShipToLegalOrgId, $documentUltimateShipToLegalOrgType, $documentUltimateShipToLegalOrgName);
+}
+
+while ($reader->nextDocumentUltimateShipToContact()) {
+    $reader->getDocumentUltimateShipToContact($documentUltimateShipToContactName, $documentUltimateShipToContactDepartmenrName, $documentUltimateShipToContactPhoneNumber, $documentUltimateShipToContactFaxNumber, $documentUltimateShipToContactEmailAddress);
+    echo sprintf("UltimateShipTo Contact ..... %s\n", $documentUltimateShipToContactName);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToContactDepartmenrName);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToContactPhoneNumber);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToContactFaxNumber);
+    echo sprintf("                       ..... %s\n", $documentUltimateShipToContactEmailAddress);
+}
+
+while ($reader->nextDocumentUltimateShipToCommunication()) {
+    $reader->getDocumentUltimateShipToCommunication($documentUltimateShipToCommunicationType, $documentUltimateShipToCommunicationUri);
+    echo sprintf("UltimateShipTo Comm. ....... %s (%s)\n", $documentUltimateShipToCommunicationUri, $documentUltimateShipToCommunicationType);
 }
 
 #endregion
