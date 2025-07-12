@@ -147,4 +147,15 @@ class InvoiceSuitePointerUtils
     {
         static::$pointerState = [];
     }
+
+    /**
+     * Clear a single pointer
+     *
+     * @param string $name
+     * @return void
+     */
+    public static function resetSingle(string $name): void
+    {
+        unset(static::$pointerState[$name]);
+    }
 }
