@@ -1126,7 +1126,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     ): self {
         $newName = "";
 
-        $sellerLegalEntities = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity();
+        $sellerLegalEntities = $this->getUblInvoiceRootObject()->getAccountingSupplierParty()?->getParty()?->getPartyLegalEntity() ?? [];
         $sellerLegalEntity = reset($sellerLegalEntities);
 
         if ($sellerLegalEntity === false) {
@@ -1639,7 +1639,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     ): self {
         $newName = "";
 
-        $buyerLegalEntities = $this->getUblInvoiceRootObject()->getAccountingCustomerParty()?->getParty()?->getPartyLegalEntity();
+        $buyerLegalEntities = $this->getUblInvoiceRootObject()->getAccountingCustomerParty()?->getParty()?->getPartyLegalEntity() ?? [];
         $buyerLegalEntity = reset($buyerLegalEntities);
 
         if ($buyerLegalEntity === false) {
@@ -4769,6 +4769,519 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     ): self {
         $newType = "";
         $newUri = "";
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Payee
+
+    /**
+     * Get the name of the Payee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     *
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayeeName(
+        ?string &$newName
+    ): self {
+        $newName = "";
+
+        $payeeLegalEntities = $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? [];
+        $payeeLegalEntity = reset($payeeLegalEntities);
+
+        if ($payeeLegalEntity === false) {
+            return $this;
+        }
+
+        $newName = $payeeLegalEntity->getRegistrationName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all buyer/customer IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentPayeeIds(): array
+    {
+        return
+            array_values(
+                array_filter(
+                    InvoiceSuiteArrayUtils::ensure(
+                        $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyIdentification() ?? []
+                    ),
+                    fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") === ""
+                )
+            );
+    }
+
+    /**
+     * Go to the first ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentPayeeIds(),
+            'documentpayeeid'
+        );
+    }
+
+    /**
+     * Go to the next ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentPayeeIds(),
+            'documentpayeeid'
+        );
+    }
+
+    /**
+     * Get the ID of the Payee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPayeeId(
+        ?string &$newId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+         */
+        $documentPayeeIds = $this->resolveDocumentPayeeIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification
+         */
+        $documentPayeeId = $documentPayeeIds[InvoiceSuitePointerUtils::getValue('documentpayeeid')];
+
+        $newId = $documentPayeeId->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get all buyer/customer global IDs
+     *
+     * @return array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+     */
+    private function resolveDocumentPayeeGlobalIds(): array
+    {
+        return
+            array_values(
+                array_filter(
+                    InvoiceSuiteArrayUtils::ensure(
+                        $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyIdentification() ?? []
+                    ),
+                    fn(PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? "") !== ""
+                )
+            );
+    }
+
+    /**
+     * Go to the first global ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            $this->resolveDocumentPayeeGlobalIds(),
+            'documentpayeeglobalid'
+        );
+    }
+
+    /**
+     * Go to the next global ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeGlobalId(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            $this->resolveDocumentPayeeGlobalIds(),
+            'documentpayeeglobalid'
+        );
+    }
+
+    /**
+     * Get the Global ID of the Payee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     *
+     * @phpstan-param-out string $newGlobalId
+     * @phpstan-param-out string $newGlobalIdType
+     */
+    public function getDocumentPayeeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyIdentification>
+         */
+        $documentPayeeGlobalIds = $this->resolveDocumentPayeeGlobalIds();
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyIdentification
+         */
+        $documentPayeeGlobalId = $documentPayeeGlobalIds[InvoiceSuitePointerUtils::getValue('documentpayeeglobalid')];
+
+        $newGlobalId = $documentPayeeGlobalId->getID()?->getValue() ?? "";
+        $newGlobalIdType = $documentPayeeGlobalId->getID()?->getSchemeID() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []
+            ),
+            'documentpayeetaxregistration'
+        );
+    }
+
+    /**
+     * Go to the next Tax Registration of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeTaxRegistration(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []
+            ),
+            'documentpayeetaxregistration'
+        );
+    }
+
+    /**
+     * Get the Tax Registration of the Payee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxRegistrationType
+     * @phpstan-param-out string $newTaxRegistrationId
+     */
+    public function getDocumentPayeeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme>
+         */
+        $documentPayeeTaxRegistrations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyTaxScheme() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyTaxScheme
+         */
+        $documentPayeeTaxRegistration = $documentPayeeTaxRegistrations[InvoiceSuitePointerUtils::getValue('documentpayeetaxregistration')];
+
+        $newTaxRegistrationType = $documentPayeeTaxRegistration->getTaxScheme()?->getID()?->getValue() ?? "";
+        $newTaxRegistrationId = $documentPayeeTaxRegistration->getCompanyID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []
+            ),
+            'documentpayeeaddress'
+        );
+    }
+
+    /**
+     * Go to the next address of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeAddress(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []
+            ),
+            'documentpayeeaddress'
+        );
+    }
+
+    /**
+     * Set the address of the Payee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     *
+     * @phpstan-param-out string $newAddressLine1
+     * @phpstan-param-out string $newAddressLine2
+     * @phpstan-param-out string $newAddressLine3
+     * @phpstan-param-out string $newPostcode
+     * @phpstan-param-out string $newCity
+     * @phpstan-param-out string $newCountryId
+     * @phpstan-param-out string $newSubDivision
+     */
+    public function getDocumentPayeeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PostalAddress>
+         */
+        $documentPayeeAddresses = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPostalAddress() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PostalAddress
+         */
+        $documentPayeeAddress = $documentPayeeAddresses[InvoiceSuitePointerUtils::getValue('documentpayeeaddress')];
+
+        $newAddressLine1 = $documentPayeeAddress->getStreetName()?->getValue() ?? "";
+        $newAddressLine2 = $documentPayeeAddress->getAdditionalStreetName()?->getValue() ?? "";
+        $newAddressLine3 = "";
+        $newPostcode = $documentPayeeAddress->getPostalZone()?->getValue() ?? "";
+        $newCity = $documentPayeeAddress->getCityName()?->getValue() ?? "";
+        $newCountryId = $documentPayeeAddress->getCountry()?->getIdentificationCode()?->getValue() ?? "";
+        $newSubDivision = $documentPayeeAddress->getCountrySubentity()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []
+            ),
+            'documentpayeelegalorganisation'
+        );
+    }
+
+    /**
+     * Go to the next the legal information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeLegalOrganisation(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []
+            ),
+            'documentpayeelegalorganisation'
+        );
+    }
+
+    /**
+     * Get the legal information of the Payee party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newId
+     * @phpstan-param-out string $newName
+     */
+    public function getDocumentPayeeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity>
+         */
+        $documentPayeeLegalOrganisations = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyLegalEntity() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\PartyLegalEntity
+         */
+        $documentPayeeLegalOrganisation = $documentPayeeLegalOrganisations[InvoiceSuitePointerUtils::getValue('documentpayeelegalorganisation')];
+
+        $newType = $documentPayeeLegalOrganisation->getCompanyID()?->getSchemeID() ?? "";
+        $newId = $documentPayeeLegalOrganisation->getCompanyID()?->getValue() ?? "";
+
+        // Trading name and Party name are swapped in UBL
+        $partyNames = $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getPartyName() ?? [];
+        $partyName = reset($partyNames);
+        $newName = $partyName !== false ? $partyName->getName()?->getValue() ?? "" : "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []
+            ),
+            'documentpayeecontact'
+        );
+    }
+
+    /**
+     * Go to the next contact information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeContact(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []
+            ),
+            'documentpayeecontact'
+        );
+    }
+
+    /**
+     * Get the contact information of the Payee party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     *
+     * @phpstan-param-out string $newPersonName
+     * @phpstan-param-out string $newDepartmentName
+     * @phpstan-param-out string $newPhoneNumber
+     * @phpstan-param-out string $newFaxNumber
+     * @phpstan-param-out string $newEmailAddress
+     */
+    public function getDocumentPayeeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\Contact>
+         */
+        $documentPayeeContacts = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getContact() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\Contact
+         */
+        $documentPayeeContact = $documentPayeeContacts[InvoiceSuitePointerUtils::getValue('documentpayeecontact')];
+
+        $newPersonName = $documentPayeeContact->getName()?->getValue() ?? "";
+        $newDepartmentName = "";
+        $newPhoneNumber = $documentPayeeContact->getTelephone()?->getValue() ?? "";
+        $newFaxNumber = $documentPayeeContact->getTelefax()?->getValue() ?? "";
+        $newEmailAddress = $documentPayeeContact->getElectronicMail()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []
+            ),
+            'documentpayeeecommunication'
+        );
+    }
+
+    /**
+     * Go to the next communication information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeCommunication(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []
+            ),
+            'documentpayeeecommunication'
+        );
+    }
+
+    /**
+     * Get communication information of the Payee party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newUri
+     */
+    public function getDocumentPayeeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\EndpointID>
+         */
+        $documentPayeeElectronicCommunications = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getPayeePartyWithCreate()?->getEndpointID() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\EndpointID
+         */
+        $documentPayeeElectronicCommunication = $documentPayeeElectronicCommunications[InvoiceSuitePointerUtils::getValue('documentpayeeecommunication')];
+
+        $newType = $documentPayeeElectronicCommunication->getSchemeID() ?? "";
+        $newUri = $documentPayeeElectronicCommunication->getValue() ?? "";
 
         return $this;
     }

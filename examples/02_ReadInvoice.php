@@ -5,7 +5,7 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 require __DIR__ . "/../vendor/autoload.php";
 
 $reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice.xml");
-//$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
+$reader = InvoiceSuiteDocumentReader::createFromCFile(__DIR__ . "/01_SimpleInvoice_UBL.xml");
 
 #region General
 
@@ -586,6 +586,60 @@ while ($reader->nextDocumentInvoiceeContact()) {
 while ($reader->nextDocumentInvoiceeCommunication()) {
     $reader->getDocumentInvoiceeCommunication($documentInvoiceeCommunicationType, $documentInvoiceeCommunicationUri);
     echo sprintf("Invoicee Comm. ....... %s (%s)\n", $documentInvoiceeCommunicationUri, $documentInvoiceeCommunicationType);
+}
+
+#endregion
+
+#region Payee Output
+
+echo "\n";
+echo "Payee Party\n";
+echo "\n";
+
+$reader->getDocumentPayeeName($documentPayeeName);
+echo sprintf("Payee Name ........ %s\n", $documentPayeeName);
+
+while ($reader->nextDocumentPayeeId()) {
+    $reader->getDocumentPayeeId($documentPayeeGlobalId);
+    echo sprintf("Payee ID .......... %s\n", $documentPayeeGlobalId);
+}
+
+while ($reader->nextDocumentPayeeGlobalId()) {
+    $reader->getDocumentPayeeGlobalId($documentPayeeGlobalId, $documentPayeeGlobalIdType);
+    echo sprintf("Payee Global ID ... %s (%s)\n", $documentPayeeGlobalId, $documentPayeeGlobalIdType);
+}
+
+while ($reader->nextDocumentPayeeTaxRegistration()) {
+    $reader->getDocumentPayeeTaxRegistration($documentPayeeTaxRegistrationType, $documentPayeeTaxRegistrationId);
+    echo sprintf("Payee Tax Reg. .... %s (%s)\n", $documentPayeeTaxRegistrationId, $documentPayeeTaxRegistrationType);
+}
+
+while ($reader->nextDocumentPayeeAddress()) {
+    $reader->getDocumentPayeeAddress($documentPayeeAddressLine1, $documentPayeeAddressLine2, $documentPayeeAddressLine3, $documentPayeePostCode, $documentPayeeCity, $documentPayeeCountryId, $documentPayeeSubDivision);
+    echo sprintf("Payee Address ..... %s\n", $documentPayeeAddressLine1);
+    echo sprintf("              ..... %s\n", $documentPayeeAddressLine2);
+    echo sprintf("              ..... %s\n", $documentPayeeAddressLine3);
+    echo sprintf("              ..... %s %s %s\n", $documentPayeeCountryId, $documentPayeePostCode, $documentPayeeCity);
+    echo sprintf("              ..... %s\n", $documentPayeeSubDivision);
+}
+
+while ($reader->nextDocumentPayeeLegalOrganisation()) {
+    $reader->getDocumentPayeeLegalOrganisation($documentPayeeLegalOrgType, $documentPayeeLegalOrgId, $documentPayeeLegalOrgName);
+    echo sprintf("Payee Legal ....... %s (%s), %s\n", $documentPayeeLegalOrgId, $documentPayeeLegalOrgType, $documentPayeeLegalOrgName);
+}
+
+while ($reader->nextDocumentPayeeContact()) {
+    $reader->getDocumentPayeeContact($documentPayeeContactName, $documentPayeeContactDepartmenrName, $documentPayeeContactPhoneNumber, $documentPayeeContactFaxNumber, $documentPayeeContactEmailAddress);
+    echo sprintf("Payee Contact ..... %s\n", $documentPayeeContactName);
+    echo sprintf("              ..... %s\n", $documentPayeeContactDepartmenrName);
+    echo sprintf("              ..... %s\n", $documentPayeeContactPhoneNumber);
+    echo sprintf("              ..... %s\n", $documentPayeeContactFaxNumber);
+    echo sprintf("              ..... %s\n", $documentPayeeContactEmailAddress);
+}
+
+while ($reader->nextDocumentPayeeCommunication()) {
+    $reader->getDocumentPayeeCommunication($documentPayeeCommunicationType, $documentPayeeCommunicationUri);
+    echo sprintf("Payee Comm. ....... %s (%s)\n", $documentPayeeCommunicationUri, $documentPayeeCommunicationType);
 }
 
 #endregion

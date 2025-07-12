@@ -3493,4 +3493,304 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     #endregion
+
+    #region Document Payee
+
+    /**
+     * Get the name of the Payee party
+     *
+     * @param string|null $newName The full formal name under which the party is registered.
+     * @return self
+     */
+    public function getDocumentPayeeName(
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeName($newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeId();
+    }
+
+    /**
+     * Go to the next ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeId();
+    }
+
+    /**
+     * Get the ID of the Payee party
+     *
+     * @param string|null $newId An identifier of the party. In many systems, identification is key information.
+     * @return self
+     */
+    public function getDocumentPayeeId(
+        ?string &$newId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeId($newId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first global ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeGlobalId();
+    }
+
+    /**
+     * Go to the next global ID of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeGlobalId(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeGlobalId();
+    }
+
+    /**
+     * Get the Global ID of the Payee party
+     *
+     * @param string|null $newGlobalId A global identifier of the party.
+     * @param string|null $newGlobalIdType Type of the global identifier of the party.
+     * @return self
+     */
+    public function getDocumentPayeeGlobalId(
+        ?string &$newGlobalId,
+        ?string &$newGlobalIdType
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Tax Registration of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeTaxRegistration();
+    }
+
+    /**
+     * Go to the next Tax Registration of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeTaxRegistration(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeTaxRegistration();
+    }
+
+    /**
+     * Get the Tax Registration of the Payee party
+     *
+     * @param string|null $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param string|null $newTaxRegistrationId Tax identification number.
+     * @return self
+     */
+    public function getDocumentPayeeTaxRegistration(
+        ?string &$newTaxRegistrationType,
+        ?string &$newTaxRegistrationId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first address of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
+    }
+
+    /**
+     * Go to the next address of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeAddress(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeAddress();
+    }
+
+    /**
+     * Set the address of the Payee party
+     *
+     * @param string|null $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
+     * @param string|null $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newAddressLine3 Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param string|null $newPostcode Zip code of the city or municipality in which the party's address is located.
+     * @param string|null $newCity Name of the city or municipality in which the party's address is located.
+     * @param string|null $newCountryId Country in which the party's address is located.
+     * @param string|null $newSubDivision Region or federal state in which the party's address is located.
+     * @return self
+     */
+    public function getDocumentPayeeAddress(
+        ?string &$newAddressLine1,
+        ?string &$newAddressLine2,
+        ?string &$newAddressLine3,
+        ?string &$newPostcode,
+        ?string &$newCity,
+        ?string &$newCountryId,
+        ?string &$newSubDivision
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first the legal information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeLegalOrganisation();
+    }
+
+    /**
+     * Go to the next the legal information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeLegalOrganisation(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeLegalOrganisation();
+    }
+
+    /**
+     * Get the legal information of the Payee party
+     *
+     * @param string|null $newType Type of the identification number of the legal registration of the party.
+     * @param string|null $newId Identification number of the legal registration of the party.
+     * @param string|null $newName Name by which the party is known, if different from the party's name.
+     * @return self
+     */
+    public function getDocumentPayeeLegalOrganisation(
+        ?string &$newType,
+        ?string &$newId,
+        ?string &$newName
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
+
+        return $this;
+    }
+
+    /**
+     * Go to the first contact information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeContact();
+    }
+
+    /**
+     * Go to the next contact information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeContact(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeContact();
+    }
+
+    /**
+     * Get the contact information of the Payee party
+     *
+     * @param string|null $newPersonName Name of contact person or department or office for the contact point.
+     * @param string|null $newDepartmentName Name of the department for the contact point.
+     * @param string|null $newPhoneNumber Telephone number for the contact point.
+     * @param string|null $newFaxNumber Fax number of the contact point.
+     * @param string|null $newEmailAddress E-Mail address of the contact point.
+     * @return self
+     */
+    public function getDocumentPayeeContact(
+        ?string &$newPersonName,
+        ?string &$newDepartmentName,
+        ?string &$newPhoneNumber,
+        ?string &$newFaxNumber,
+        ?string &$newEmailAddress
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first communication information of the Payee party
+     *
+     * @return boolean
+     */
+    public function firstDocumentPayeeCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPayeeCommunication();
+    }
+
+    /**
+     * Go to the next communication information of the Payee party
+     *
+     * @return boolean
+     */
+    public function nextDocumentPayeeCommunication(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPayeeCommunication();
+    }
+
+    /**
+     * Get communication information of the Payee party
+     *
+     * @param string|null $newType The type for the party's electronic address.
+     * @param string|null $newUri The party's electronic address.
+     * @return self
+     */
+    public function getDocumentPayeeCommunication(
+        ?string &$newType,
+        ?string &$newUri
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPayeeCommunication($newType, $newUri);
+
+        return $this;
+    }
+
+    #endregion
 }
