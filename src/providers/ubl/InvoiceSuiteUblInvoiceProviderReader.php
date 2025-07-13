@@ -15,7 +15,6 @@ use horstoeko\invoicesuite\models\ubl\cac\PartyIdentification;
 use horstoeko\invoicesuite\models\ubl\cac\PartyIdentificationType;
 use horstoeko\invoicesuite\models\ubl\cac\AdditionalDocumentReference;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
-use horstoeko\invoicesuite\contracts\InvoiceSuiteReaderContract;
 
 class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {

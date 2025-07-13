@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\InvoiceSuiteSettings;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$creationMode = 1; // 0 = UBL, 1 ZF/FX
+$creationMode = 0; // 0 = UBL, 1 ZF/FX
 
 if ($creationMode === 0) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');

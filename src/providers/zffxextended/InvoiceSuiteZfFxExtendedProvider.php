@@ -4,7 +4,6 @@ namespace horstoeko\invoicesuite\providers\zffxextended;
 
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProvider;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedSerializerHandler;
 
 class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractFormatProvider
 {

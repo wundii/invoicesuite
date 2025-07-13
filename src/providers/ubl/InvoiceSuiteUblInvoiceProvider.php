@@ -49,7 +49,9 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
      */
     public function getSerializerHandlers(): array
     {
-        return [];
+        return [
+            InvoiceSuiteUblInvoiceSerializerHandler::class
+        ];
     }
 
     /**
