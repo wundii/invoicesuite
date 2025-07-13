@@ -6397,4 +6397,171 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * Go to the first Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []
+            ),
+            'documentallowancecharge'
+        );
+    }
+
+    /**
+     * Go to the next Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []
+            ),
+            'documentallowancecharge'
+        );
+    }
+
+    /**
+     * Get Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator __BT-20-1/BT-21-1, From BASIC WL__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount __BT-92/BT-99, From BASIC WL__ Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount __BT-93/BT-100, From BASIC WL__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory __BT-95/BT-102, From BASIC WL__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-95-0/BT-102-0, From BASIC WL__ Coded description of the tax type
+     * @param float|null $newTaxPercent __BT-96/BT-103, From BASIC WL__ Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason __BT-98/BT-105, From BASIC WL__ Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode __BT-97/BT-104, From BASIC WL__ Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent __BT-94/BT-101, From BASIC WL__ Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
+     */
+    public function getDocumentAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType>
+         */
+        $documentAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeAllowanceCharge() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAllowanceChargeType
+         */
+        $documentAllowanceCharge = $documentAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentallowancecharge')];
+
+        $newChargeIndicator = $documentAllowanceCharge->getChargeIndicator()?->getIndicator() ?? false;
+        $newAllowanceChargeAmount = $documentAllowanceCharge->getActualAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeBaseAmount = $documentAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0;
+        $newTaxCategory = $documentAllowanceCharge->getCategoryTradeTax()?->getCategoryCode()?->getValue() ?? "";
+        $newTaxType = $documentAllowanceCharge->getCategoryTradeTax()?->getTypeCode()?->getValue() ?? "";
+        $newTaxPercent = $documentAllowanceCharge->getCategoryTradeTax()?->getRateApplicablePercent()?->getValue() ?? 0.0;
+        $newAllowanceChargeReason = $documentAllowanceCharge->getReason()?->getValue() ?? "";
+        $newAllowanceChargeReasonCode = $documentAllowanceCharge->getReasonCode()?->getValue() ?? "";
+        $newAllowanceChargePercent = $documentAllowanceCharge->getCalculationPercent()?->getValue() ?? 0.0;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentLogisticServiceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedLogisticsServiceCharge() ?? []
+            ),
+            'documentlogservicecharge'
+        );
+    }
+
+    /**
+     * Go to the next Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentLogisticServiceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedLogisticsServiceCharge() ?? []
+            ),
+            'documentlogservicecharge'
+        );
+    }
+
+    /**
+     * Get Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
+     *
+     * @phpstan-param-out float $newChargeAmount
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
+     */
+    public function getDocumentLogisticServiceCharge(
+        ?float &$newChargeAmount,
+        ?string &$newDescription,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\LogisticsServiceChargeType>
+         */
+        $documentLogisticServiceCharges = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedLogisticsServiceCharge() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\LogisticsServiceChargeType
+         */
+        $documentLogisticServiceCharge = $documentLogisticServiceCharges[InvoiceSuitePointerUtils::getValue('documentlogservicecharge')];
+
+        $documentLogisticServiceChargeTaxes = $documentLogisticServiceCharge->getAppliedTradeTax() ?? [];
+        $documentLogisticServiceChargeTax = reset($documentLogisticServiceChargeTaxes);
+
+        $newChargeAmount = $documentLogisticServiceCharge->getAppliedAmount()?->getValue() ?? 0.0;
+        $newDescription = $documentLogisticServiceCharge->getDescription()?->getValue() ?? "";
+        $newTaxCategory = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getCategoryCode()?->getValue() ?? "") : "";
+        $newTaxType = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getTypeCode()?->getValue() ?? "") : "";
+        $newTaxPercent = $documentLogisticServiceChargeTax !== false ? ($documentLogisticServiceChargeTax->getRateApplicablePercent()?->getValue() ?? 0.0) : 0.0;
+
+        return $this;
+    }
+
+    #endregion
 }

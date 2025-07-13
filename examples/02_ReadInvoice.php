@@ -774,3 +774,55 @@ while ($reader->nextDocumentTax()) {
 }
 
 #endregion
+
+#region Document Allowance Charges Output
+
+echo "\n";
+echo "Document Allowances/Charges\n";
+echo "\n";
+
+while ($reader->nextDocumentAllowanceCharge()) {
+    $reader->getDocumentAllowanceCharge(
+        $allowanceChargeindicator,
+        $allowanceChargeAmount,
+        $allowanceChargeBaseAmount,
+        $allowanceChargeTaxCategory,
+        $allowanceChargeTaxType,
+        $allowanceChargeTaxPercent,
+        $allowanceChargeReason,
+        $allowanceChargeReasonCode,
+        $allowanceChargePercent
+    );
+    echo " - Allowance/Charge\n";
+    echo sprintf("   Is Charge ............. %s\n", $allowanceChargeindicator === true ? "Yes" : "No");
+    echo sprintf("   Amount ................ %s\n", $allowanceChargeAmount);
+    echo sprintf("   Basis Amount .......... %s\n", $allowanceChargeBaseAmount);
+    echo sprintf("   Tax Category .......... %s\n", $allowanceChargeTaxCategory);
+    echo sprintf("   Tax Type .............. %s\n", $allowanceChargeTaxType);
+    echo sprintf("   Tax Percent ........... %s\n", $allowanceChargeTaxPercent);
+    echo sprintf("   Reason ................ %s\n", $allowanceChargeReason);
+    echo sprintf("   Reason Code ........... %s\n", $allowanceChargeReasonCode);
+    echo sprintf("   Percentage ............ %s\n", $allowanceChargePercent);
+}
+
+echo "\n";
+echo "DOcument Logistic Service Charges\n";
+echo "\n";
+
+while ($reader->nextDocumentLogisticServiceCharge()) {
+    $reader->getDocumentLogisticServiceCharge(
+        $logisticServiceChargeAmount,
+        $logisticServiceChargeDescription,
+        $logisticServiceChargeTaxCategory,
+        $logisticServiceChargeTaxType,
+        $logisticServiceChargeTaxPercent
+    );
+    echo " - Logistic Service Charge\n";
+    echo sprintf("   Amount ................ %s\n", $logisticServiceChargeAmount);
+    echo sprintf("   Description ........... %s\n", $logisticServiceChargeDescription);
+    echo sprintf("   Tax Category .......... %s\n", $logisticServiceChargeTaxCategory);
+    echo sprintf("   Tax Type .............. %s\n", $logisticServiceChargeTaxType);
+    echo sprintf("   Tax Percent ........... %s\n", $logisticServiceChargeTaxPercent);
+}
+
+#endregion

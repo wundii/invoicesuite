@@ -5741,4 +5741,154 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * Go to the first Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? []
+            ),
+            'documentallowancecharge'
+        );
+    }
+
+    /**
+     * Go to the next Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentAllowanceCharge(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? []
+            ),
+            'documentallowancecharge'
+        );
+    }
+
+    /**
+     * Get Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     *
+     * @phpstan-param-out bool $newChargeIndicator
+     * @phpstan-param-out float $newAllowanceChargeAmount
+     * @phpstan-param-out float $newAllowanceChargeBaseAmount
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newAllowanceChargeReason
+     * @phpstan-param-out string $newAllowanceChargeReasonCode
+     * @phpstan-param-out float $newAllowanceChargePercent
+     */
+    public function getDocumentAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge>
+         */
+        $documentAllowanceCharges = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getAllowanceCharge() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\AllowanceCharge
+         */
+        $documentAllowanceCharge = $documentAllowanceCharges[InvoiceSuitePointerUtils::getValue('documentallowancecharge')];
+
+        $documentAllowanceChargeTaxCategories = $documentAllowanceCharge->getTaxCategory() ?? [];
+        $documentAllowanceChargeTaxCategory = reset($documentAllowanceChargeTaxCategories);
+
+        $documentAllowanceChargeReasons = $documentAllowanceCharge->getAllowanceChargeReason() ?? [];
+        $documentAllowanceChargeReason = reset($documentAllowanceChargeReasons);
+
+        $newChargeIndicator = $documentAllowanceCharge->getChargeIndicator() ?? false;
+        $newAllowanceChargeAmount = $documentAllowanceCharge->getAmount()?->getValue() ?? 0.0;
+        $newAllowanceChargeBaseAmount = $documentAllowanceCharge->getBaseAmount()?->getValue() ?? 0.0;
+        $newTaxCategory = $documentAllowanceChargeTaxCategory !== false ? ($documentAllowanceChargeTaxCategory->getID()?->getValue() ?? "") : "";
+        $newTaxType = $documentAllowanceChargeTaxCategory !== false ? ($documentAllowanceChargeTaxCategory->getTaxScheme()?->getID()?->getValue() ?? "") : "";
+        $newTaxPercent = $documentAllowanceChargeTaxCategory !== false ? ($documentAllowanceChargeTaxCategory->getPercent()?->getValue() ?? 0.0) : 0.0;
+        $newAllowanceChargeReason = $documentAllowanceChargeReason !== false ? ($documentAllowanceChargeReason->getValue() ?? "") : "";
+        $newAllowanceChargeReasonCode = $documentAllowanceCharge->getAllowanceChargeReasonCode()?->getValue() ?? "";
+        $newAllowanceChargePercent = $documentAllowanceCharge->getMultiplierFactorNumeric()?->getValue() ?? 0.0;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentLogisticServiceCharge(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentLogisticServiceCharge(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
+     *
+     * @phpstan-param-out float $newChargeAmount
+     * @phpstan-param-out string $newDescription
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxPercent
+     */
+    public function getDocumentLogisticServiceCharge(
+        ?float &$newChargeAmount,
+        ?string &$newDescription,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent
+    ): self {
+        $newChargeAmount = 0.0;
+        $newDescription = "";
+        $newTaxCategory = "";
+        $newTaxType = "";
+        $newTaxPercent = 0.0;
+
+        return $this;
+    }
+
+    #endregion
 }

@@ -4099,4 +4099,116 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     #endregion
+
+    #region Document Allowances/Charges
+
+    /**
+     * Go to the first Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentAllowanceCharge();
+    }
+
+    /**
+     * Go to the next Document Allowance/Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentAllowanceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentAllowanceCharge();
+    }
+
+    /**
+     * Get Document Allowance/Charge
+     *
+     * @param boolean|null $newChargeIndicator Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param float|null $newAllowanceChargeAmount Amount of the surcharge or discount
+     * @param float|null $newAllowanceChargeBaseAmount The base amount that may be used in conjunction with the percentage of the surcharge or discount
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newAllowanceChargeReason Reason given in text form for the surcharge or discount
+     * @param string|null $newAllowanceChargeReasonCode Reason given as a code for the surcharge or discount
+     * @param float|null $newAllowanceChargePercent Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
+     * @return self
+     */
+    public function getDocumentAllowanceCharge(
+        ?bool &$newChargeIndicator,
+        ?float &$newAllowanceChargeAmount,
+        ?float &$newAllowanceChargeBaseAmount,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent,
+        ?string &$newAllowanceChargeReason,
+        ?string &$newAllowanceChargeReasonCode,
+        ?float &$newAllowanceChargePercent
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function firstDocumentLogisticServiceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentLogisticServiceCharge();
+    }
+
+    /**
+     * Go to the next Document Logistic Service Charge
+     *
+     * @return boolean
+     */
+    public function nextDocumentLogisticServiceCharge(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentLogisticServiceCharge();
+    }
+
+    /**
+     * Get Document Logistic Service Charge
+     *
+     * @param float|null $newChargeAmount Amount of the service fee
+     * @param string|null $newDescription Identification of the service fee
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @return self
+     */
+    public function getDocumentLogisticServiceCharge(
+        ?float &$newChargeAmount,
+        ?string &$newDescription,
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxPercent
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentLogisticServiceCharge(
+            $newChargeAmount,
+            $newDescription,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent
+        );
+
+        return $this;
+    }
+
+    #endregion
 }
