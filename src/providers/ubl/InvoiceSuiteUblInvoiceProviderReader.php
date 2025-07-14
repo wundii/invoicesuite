@@ -7,6 +7,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\models\ubl\cbc\ID;
 use horstoeko\invoicesuite\models\ubl\cac\Delivery;
 use horstoeko\invoicesuite\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\models\ubl\cac\InvoiceLine;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -5946,6 +5947,90 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newDueAmount = $documentSummation?->getPayableAmount()?->getValue() ?? 0.0;
         $newPrepaidAmount = $documentSummation?->getPrepaidAmount()?->getValue() ?? 0.0;
         $newRoungingAmount = $documentSummation?->getPayableRoundingAmount()?->getValue() ?? 0.0;
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Positions
+
+    /**
+     * Go to the first document position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPosition(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getInvoiceLine() ?? []
+            ),
+            'documentposition'
+        );
+    }
+
+    /**
+     * Go to the next document position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPosition(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getUblInvoiceRootObject()->getInvoiceLine() ?? []
+            ),
+            'documentposition'
+        );
+    }
+
+    /**
+     * Get the currently seeked document position
+     *
+     * @return InvoiceLine
+     */
+    protected function resolveCurrentDocumentPosition(): InvoiceLine
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\InvoiceLine>
+         */
+        $documentPositions = InvoiceSuiteArrayUtils::ensure($this->getUblInvoiceRootObject()->getInvoiceLine() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\InvoiceLine
+         */
+        $documentPosition = $documentPositions[InvoiceSuitePointerUtils::getValue('documentposition')];
+
+        return $documentPosition;
+    }
+
+    /**
+     * Get position general information
+     *
+     * @param string|null $newPositionId Identification of the position
+     * @param string|null $newParentPositionId Identification of the parent position
+     * @param string|null $newLineStatusCode Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
+     * @param string|null $newLineStatusReasonCode Type to specify whether the invoice line is
+     * @return self
+     *
+     * @phpstan-param-out string $newPositionId
+     * @phpstan-param-out string $newParentPositionId
+     * @phpstan-param-out string $newLineStatusCode
+     * @phpstan-param-out string $newLineStatusReasonCode
+     */
+    public function getDocumentPosition(
+        ?string &$newPositionId,
+        ?string &$newParentPositionId,
+        ?string &$newLineStatusCode,
+        ?string &$newLineStatusReasonCode
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newPositionId = $documentPosition->getID()?->getValue() ?? "";
+        $newParentPositionId = "";
+        $newLineStatusCode = "";
+        $newLineStatusReasonCode = "";
 
         return $this;
     }

@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
+use horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
 {
@@ -6620,6 +6621,92 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newDueAmount = $documentSummation?->getDuePayableAmount()?->getValue() ?? 0.0;
         $newPrepaidAmount = $documentSummation?->getTotalPrepaidAmount()?->getValue() ?? 0.0;
         $newRoungingAmount = $documentSummation?->getRoundingAmount()?->getValue() ?? 0.0;
+
+        return $this;
+    }
+
+    #endregion
+
+    #region Document Positions
+
+    /**
+     * Go to the first document position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPosition(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getIncludedSupplyChainTradeLineItem() ?? []
+            ),
+            'documentposition'
+        );
+    }
+
+    /**
+     * Go to the next document position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPosition(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getIncludedSupplyChainTradeLineItem() ?? []
+            ),
+            'documentposition'
+        );
+    }
+
+    /**
+     * Get the currently seeked document position
+     *
+     * @return SupplyChainTradeLineItemType
+     */
+    protected function resolveCurrentDocumentPosition(): SupplyChainTradeLineItemType
+    {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType>
+         */
+        $documentPositions = InvoiceSuiteArrayUtils::ensure(
+            $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getIncludedSupplyChainTradeLineItem() ?? []
+        );
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType
+         */
+        $documentPosition = $documentPositions[InvoiceSuitePointerUtils::getValue('documentposition')];
+
+        return $documentPosition;
+    }
+
+    /**
+     * Get position general information
+     *
+     * @param string|null $newPositionId __BT-126, From BASIC__ Identification of the position
+     * @param string|null $newParentPositionId __BT-X-304, From EXTENDED__ Identification of the parent position
+     * @param string|null $newLineStatusCode __BT-X-7, From EXTENDED__ Indicates whether the invoice item contains prices that must be taken into account when calculating the invoice amount or whether only information is included
+     * @param string|null $newLineStatusReasonCode __BT-X-8, From EXTENDED__ Type to specify whether the invoice line is
+     * @return self
+     *
+     * @phpstan-param-out string $newPositionId
+     * @phpstan-param-out string $newParentPositionId
+     * @phpstan-param-out string $newLineStatusCode
+     * @phpstan-param-out string $newLineStatusReasonCode
+     */
+    public function getDocumentPosition(
+        ?string &$newPositionId,
+        ?string &$newParentPositionId,
+        ?string &$newLineStatusCode,
+        ?string &$newLineStatusReasonCode
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newPositionId = $documentPosition->getAssociatedDocumentLineDocument()?->getLineID()?->getValue() ?? "";
+        $newParentPositionId = $documentPosition->getAssociatedDocumentLineDocument()?->getParentLineID()?->getValue() ?? "";
+        $newLineStatusCode = $documentPosition->getAssociatedDocumentLineDocument()?->getLineStatusCode()?->getValue() ?? "";
+        $newLineStatusReasonCode = $documentPosition->getAssociatedDocumentLineDocument()?->getLineStatusReasonCode()?->getValue() ?? "";
 
         return $this;
     }

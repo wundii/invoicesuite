@@ -858,3 +858,16 @@ echo sprintf("Prepaid Amount ............ %s\n", $documentPrepaidAmount);
 echo sprintf("Rounding Amount ........... %s\n", $documentRoungingAmount);
 
 #endregion
+
+#region Document Positions
+
+echo "\n";
+echo "Document Positions\n";
+echo "\n";
+
+while ($reader->nextDocumentPosition()) {
+    $reader->getDocumentPosition($positionLineNumber, $positionParentLineNumber, $positionStatusCode, $positionStatusReasonCode);
+    echo sprintf("Line Number: %s, Parent Line Number: %s, StatusCode: %s, ReasonCode: %s\n", $positionLineNumber, $positionParentLineNumber, $positionStatusCode, $positionStatusReasonCode);
+}
+
+#endregion
