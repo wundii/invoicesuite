@@ -5962,6 +5962,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function firstDocumentPosition(): bool
     {
+        $this->resetCurrentDocumentPositionSubPointers();
+
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure(
                 $this->getUblInvoiceRootObject()->getInvoiceLine() ?? []
@@ -5977,6 +5979,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      */
     public function nextDocumentPosition(): bool
     {
+        $this->resetCurrentDocumentPositionSubPointers();
+
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure(
                 $this->getUblInvoiceRootObject()->getInvoiceLine() ?? []
@@ -6003,6 +6007,17 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $documentPosition = $documentPositions[InvoiceSuitePointerUtils::getValue('documentposition')];
 
         return $documentPosition;
+    }
+
+    /**
+     * Resets the sub-pointers releated to the currently seeked position
+     *
+     * @return void
+     */
+    protected function resetCurrentDocumentPositionSubPointers(): void
+    {
+        InvoiceSuitePointerUtils::resetSingle('documentpositionnote');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionproductcharacteristic');
     }
 
     /**
@@ -6088,7 +6103,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
          */
         $documentPositionNote = $documentPositionNotes[InvoiceSuitePointerUtils::getValue('documentpositionnote')];
 
-        $newContent = $documentPositionNote->getValue();
+        $newContent = $documentPositionNote->getValue() ?? "";
         $newContentCode = "";
         $newSubjectCode = "";
 
@@ -6143,7 +6158,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         ?string &$newProductOriginTradeCountry
     ): self {
         /**
-         * @var \horstoeko\invoicesuite\models\ubl\cac\Item
+         * @var \horstoeko\invoicesuite\models\ubl\cac\Item|null
          */
         $documentPositionProduct = $this->resolveCurrentDocumentPosition()->getItem();
 
@@ -6170,6 +6185,74 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newProductBrandName = "";
         $newProductModelName = "";
         $newProductOriginTradeCountry = $documentPositionProduct?->getOriginCountry()?->getName()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductCharacteristic(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getAdditionalItemProperty() ?? []),
+            'documentpositionproductcharacteristic'
+        );
+    }
+
+    /**
+     * Go to the next product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductCharacteristic(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getAdditionalItemProperty() ?? []),
+            'documentpositionproductcharacteristic'
+        );
+    }
+
+    /**
+     * Get product characteristics from latest position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
+     *
+     * @phpstan-param-out string $newProductCharacteristicDescription
+     * @phpstan-param-out string $newProductCharacteristicValue
+     * @phpstan-param-out string $newProductCharacteristicType
+     * @phpstan-param-out float $newProductCharacteristicMeasureValue
+     * @phpstan-param-out string $newProductCharacteristicMeasureUnit
+     */
+    public function getDocumentPositionProductCharacteristic(
+        ?string &$newProductCharacteristicDescription,
+        ?string &$newProductCharacteristicValue,
+        ?string &$newProductCharacteristicType,
+        ?float &$newProductCharacteristicMeasureValue,
+        ?string &$newProductCharacteristicMeasureUnit
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty>
+         */
+        $documentPositionProductCharacteristics = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getAdditionalItemProperty() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\AdditionalItemProperty
+         */
+        $documentPositionProductCharacteristic = $documentPositionProductCharacteristics[InvoiceSuitePointerUtils::getValue('documentpositionproductcharacteristic')];
+
+        $newProductCharacteristicDescription = $documentPositionProductCharacteristic->getName()?->getValue() ?? "";
+        $newProductCharacteristicValue = $documentPositionProductCharacteristic->getValue()?->getValue() ?? "";
+        $newProductCharacteristicType = "";
+        $newProductCharacteristicMeasureValue = $documentPositionProductCharacteristic->getValueQuantity()?->getValue() ?? 0.0;
+        $newProductCharacteristicMeasureUnit = $documentPositionProductCharacteristic->getValueQuantity()?->getUnitCode() ?? "";
 
         return $this;
     }

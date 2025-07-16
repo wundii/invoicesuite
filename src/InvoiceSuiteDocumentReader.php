@@ -4395,5 +4395,53 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductCharacteristic(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionProductCharacteristic();
+    }
+
+    /**
+     * Go to the next product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductCharacteristic(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionProductCharacteristic();
+    }
+
+    /**
+     * Get product characteristics from latest position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
+     */
+    public function getDocumentPositionProductCharacteristic(
+        ?string &$newProductCharacteristicDescription,
+        ?string &$newProductCharacteristicValue,
+        ?string &$newProductCharacteristicType,
+        ?float &$newProductCharacteristicMeasureValue,
+        ?string &$newProductCharacteristicMeasureUnit
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -3054,5 +3054,37 @@ interface InvoiceSuiteReaderContract
         ?string &$newProductOriginTradeCountry
     ): self;
 
+    /**
+     * Go to the first product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductCharacteristic(): bool;
+
+    /**
+     * Go to the next product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductCharacteristic(): bool;
+
+    /**
+     * Get product characteristics from latest position
+     *
+     * @param string|null $newProductCharacteristicDescription Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit Unit of value of the characteristic
+     * @return self
+     */
+    public function getDocumentPositionProductCharacteristic(
+        ?string &$newProductCharacteristicDescription,
+        ?string &$newProductCharacteristicValue,
+        ?string &$newProductCharacteristicType,
+        ?float &$newProductCharacteristicMeasureValue,
+        ?string &$newProductCharacteristicMeasureUnit
+    ): self;
+
     #endregion
 }

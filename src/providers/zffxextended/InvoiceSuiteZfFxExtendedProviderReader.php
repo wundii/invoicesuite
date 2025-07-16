@@ -6693,6 +6693,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     protected function resetCurrentDocumentPositionSubPointers(): void
     {
         InvoiceSuitePointerUtils::resetSingle('documentpositionnote');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionproductcharacteristic');
     }
 
     /**
@@ -6833,7 +6834,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?string &$newProductOriginTradeCountry
     ): self {
         /**
-         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeProductType
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeProductType|null
          */
         $documentPositionProduct = $this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct();
 
@@ -6856,10 +6857,78 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newProductGlobalIdType = $documentPositionProduct?->getGlobalID()?->getSchemeID() ?? "";
         $newProductIndustryId = $documentPositionProduct?->getIndustryAssignedID()?->getValue() ?? "";
         $newProductModelId = $documentPositionProduct?->getModelID()?->getValue() ?? "";
-        $newProductBatchId = $documentPositionProductBatchId !== false ? ($documentPositionProductBatchId?->getValue() ?? "") : "";
+        $newProductBatchId = $documentPositionProductBatchId !== false ? ($documentPositionProductBatchId->getValue() ?? "") : "";
         $newProductBrandName = $documentPositionProduct?->getBrandName()?->getValue() ?? "";
         $newProductModelName = $documentPositionProduct?->getModelName()?->getValue() ?? "";
-        $newProductOriginTradeCountry = $documentPositionProduct?->getOriginTradeCountry()?->getID()?->getValue();
+        $newProductOriginTradeCountry = $documentPositionProduct?->getOriginTradeCountry()?->getID()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionProductCharacteristic(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getApplicableProductCharacteristic() ?? []),
+            'documentpositionproductcharacteristic'
+        );
+    }
+
+    /**
+     * Go to the next product characteristics from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionProductCharacteristic(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getApplicableProductCharacteristic() ?? []),
+            'documentpositionproductcharacteristic'
+        );
+    }
+
+    /**
+     * Get product characteristics from latest position
+     *
+     * @param string|null $newProductCharacteristicDescription __BT-160, From EN 16931__ Name of the attribute or characteristic ("Colour")
+     * @param string|null $newProductCharacteristicValue __BT-161, From EN 16931__ Value of the attribute or characteristic ("Red")
+     * @param string|null $newProductCharacteristicType __BT-X-11, From EXTENDED__ Type (Code) of product characteristic
+     * @param float|null $newProductCharacteristicMeasureValue __BT-X-12, From EXTENDED__ Value of the characteristic (numerical measured)
+     * @param string|null $newProductCharacteristicMeasureUnit __BT-X-12-0, From EXTENDED__ Unit of value of the characteristic
+     * @return self
+     *
+     * @phpstan-param-out string $newProductCharacteristicDescription
+     * @phpstan-param-out string $newProductCharacteristicValue
+     * @phpstan-param-out string $newProductCharacteristicType
+     * @phpstan-param-out float $newProductCharacteristicMeasureValue
+     * @phpstan-param-out string $newProductCharacteristicMeasureUnit
+     */
+    public function getDocumentPositionProductCharacteristic(
+        ?string &$newProductCharacteristicDescription,
+        ?string &$newProductCharacteristicValue,
+        ?string &$newProductCharacteristicType,
+        ?float &$newProductCharacteristicMeasureValue,
+        ?string &$newProductCharacteristicMeasureUnit
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType>
+         */
+        $documentPositionProductCharacteristics = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedTradeProduct()?->getApplicableProductCharacteristic() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ProductCharacteristicType
+         */
+        $documentPositionProductCharacteristic = $documentPositionProductCharacteristics[InvoiceSuitePointerUtils::getValue('documentpositionproductcharacteristic')];
+
+        $newProductCharacteristicDescription = $documentPositionProductCharacteristic->getDescription()?->getValue() ?? "";
+        $newProductCharacteristicValue = $documentPositionProductCharacteristic->getValue()?->getValue() ?? "";
+        $newProductCharacteristicType = $documentPositionProductCharacteristic->getTypeCode()?->getValue() ?? "";
+        $newProductCharacteristicMeasureValue = $documentPositionProductCharacteristic->getValueMeasure()?->getValue() ?? 0.0;
+        $newProductCharacteristicMeasureUnit = $documentPositionProductCharacteristic->getValueMeasure()?->getUnitCode() ?? "";
 
         return $this;
     }

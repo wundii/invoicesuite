@@ -903,6 +903,23 @@ while ($reader->nextDocumentPosition()) {
     echo sprintf("   Product Brandname ....... %s\n", $positionProductBrandName);
     echo sprintf("   Product Modelname ....... %s\n", $positionProductModelName);
     echo sprintf("   Product Country ......... %s\n", $positionProductOriginTradeCountry);
+
+    echo " - Product Characteristics:\n";
+
+    while ($reader->nextDocumentPositionProductCharacteristic()) {
+        $reader->getDocumentPositionProductCharacteristic(
+            $positionProductCharacteristicDescription,
+            $positionProductCharacteristicValue,
+            $positionProductCharacteristicType,
+            $positionProductCharacteristicQtyValue,
+            $positionProductCharacteristicQtyValueUnit
+        );
+        echo "    - Product Characteristic:\n";
+        echo sprintf("      Description ........... %s\n", $positionProductCharacteristicDescription);
+        echo sprintf("      Value ................. %s\n", $positionProductCharacteristicValue);
+        echo sprintf("      Type Code ............. %s\n", $positionProductCharacteristicType);
+        echo sprintf("      Quantity ....-......... %s %s\n", $positionProductCharacteristicQtyValue, $positionProductCharacteristicQtyValueUnit);
+    }
 }
 
 #endregion
