@@ -6696,6 +6696,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductcharacteristic');
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductclassification');
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductreferencedproduct');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionsellerorderreference');
     }
 
     /**
@@ -7093,6 +7094,69 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newProductIndustryId = $documentPositionProductReferencedProduct->getIndustryAssignedID()?->getValue() ?? "";
         $newProductUnitQuantity = $documentPositionProductReferencedProduct->getUnitQuantity()?->getValue() ?? 0.0;
         $newProductUnitQuantityUnit = $documentPositionProductReferencedProduct->getUnitQuantity()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getSellerOrderReferencedDocument() ?? []),
+            'documentpositionsellerorderreference'
+        );
+    }
+
+    /**
+     * Go to the next associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionSellerOrderReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getSellerOrderReferencedDocument() ?? []),
+            'documentpositionsellerorderreference'
+        );
+    }
+
+    /**
+     * Get the associated seller's order confirmation (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber __BT-X-537, From EXTENDED__ Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-539, From EXTENDED__ Seller's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentPositionSellerOrderReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getSellerOrderReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentPositionSellerOrderReference = $documentPositionSellerOrderReferences[InvoiceSuitePointerUtils::getValue('documentpositionsellerorderreference')];
+
+        $newReferenceNumber = $documentPositionSellerOrderReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceLineNumber = $documentPositionSellerOrderReference->getLineID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPositionSellerOrderReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentPositionSellerOrderReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
 
         return $this;
     }

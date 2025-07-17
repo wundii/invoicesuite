@@ -6020,6 +6020,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductcharacteristic');
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductclassification');
         InvoiceSuitePointerUtils::resetSingle('documentpositionproductreferencedproduct');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionsellerorderreference');
     }
 
     /**
@@ -6391,6 +6392,50 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newProductIndustryId = "";
         $newProductUnitQuantity = 0.0;
         $newProductUnitQuantityUnit = "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionSellerOrderReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionSellerOrderReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the associated seller's order confirmation (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out null $newReferenceDate
+     */
+    public function getDocumentPositionSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $newReferenceNumber = "";
+        $newReferenceLineNumber = "";
+        $newReferenceDate = null;
 
         return $this;
     }

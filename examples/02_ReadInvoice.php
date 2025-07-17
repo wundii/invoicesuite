@@ -930,6 +930,7 @@ while ($reader->nextDocumentPosition()) {
             $positionProductClassificationListVersionId,
             $positionProductClassificationClassname,
         );
+
         echo "    - Product Characteristic:\n";
         echo sprintf("      Code .................. %s\n", $positionProductClassificationCode);
         echo sprintf("      List ID ............... %s\n", $positionProductClassificationListId);
@@ -952,6 +953,7 @@ while ($reader->nextDocumentPosition()) {
             $positionReferencedProductUnitQuantity,
             $positionReferencedProductUnitQuantityUnit
         );
+
         echo "    - Referenced Product:\n";
         echo sprintf("      ID .................... %s\n", $positionReferencedProductId);
         echo sprintf("      Name .................. %s\n", $positionReferencedProductName);
@@ -961,6 +963,21 @@ while ($reader->nextDocumentPosition()) {
         echo sprintf("      Global ID ............. %s (%s)\n", $positionReferencedProductGlobalId, $positionReferencedProductGlobalIdType);
         echo sprintf("      Industry ID ........... %s\n", $positionReferencedProductIndustryId);
         echo sprintf("      Unit Quantity ......... %s %s\n", $positionReferencedProductUnitQuantity, $positionReferencedProductUnitQuantityUnit);
+    }
+
+    echo " - Seller Order Line References:\n";
+
+    while ($reader->nextDocumentPositionSellerOrderReference()) {
+        $reader->getDocumentPositionSellerOrderReference(
+            $positionSellerOrderReferenceId,
+            $positionSellerOrderReferenceLineId,
+            $positionSellerOrderReferenceDate
+        );
+
+        echo "    - Seller Order Line Referencet:\n";
+        echo sprintf("      ID .................... %s\n", $positionSellerOrderReferenceId);
+        echo sprintf("      Line ID ............... %s\n", $positionSellerOrderReferenceLineId);
+        echo sprintf("      Date .................. %s\n", $positionSellerOrderReferenceDate?->format("d.m.Y") ?? "");
     }
 }
 

@@ -3158,5 +3158,33 @@ interface InvoiceSuiteReaderContract
         ?string &$newProductUnitQuantityUnit
     ): self;
 
+    /**
+     * Go to the first associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionSellerOrderReference(): bool;
+
+    /**
+     * Go to the next associated seller's order confirmation (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionSellerOrderReference(): bool;
+
+    /**
+     * Get the associated seller's order confirmation (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Seller's order confirmation number
+     * @param string|null $newReferenceLineNumber Seller's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Seller's order confirmation date
+     * @return self
+     */
+    public function getDocumentPositionSellerOrderReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }
