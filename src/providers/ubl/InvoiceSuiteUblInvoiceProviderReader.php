@@ -6313,7 +6313,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         /**
          * @var \horstoeko\invoicesuite\models\ubl\cac\CommodityClassification
          */
-        $documentPositionProductClassification = $$documentPositionProductClassifications[InvoiceSuitePointerUtils::getValue('documentpositionproductclassification')];
+        $documentPositionProductClassification = $documentPositionProductClassifications[InvoiceSuitePointerUtils::getValue('documentpositionproductclassification')];
 
         $newProductClassificationCode = $documentPositionProductClassification->getItemClassificationCode()?->getValue() ?? "";
         $newProductClassificationListId = $documentPositionProductClassification->getItemClassificationCode()?->getListID() ?? "";

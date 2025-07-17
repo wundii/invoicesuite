@@ -112,6 +112,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
             if ($contentEntries === false) {
                 return false;
             }
+
             return $contentEntries->length === 1;
         } catch (\Throwable $throwable) {
             // Do nothing
