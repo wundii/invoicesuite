@@ -6546,5 +6546,49 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Go to the first associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionContractReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionContractReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the associated contract (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out null $newReferenceDate
+     */
+    public function getDocumentPositionContractReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $newReferenceNumber = "";
+        $newReferenceLineNumber = "";
+        $newReferenceDate = null;
+
+        return $this;
+    }
+
     #endregion
 }

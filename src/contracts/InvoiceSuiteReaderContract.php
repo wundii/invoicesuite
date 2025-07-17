@@ -3201,7 +3201,7 @@ interface InvoiceSuiteReaderContract
     public function nextDocumentPositionBuyerOrderReference(): bool;
 
     /**
-     * Get the associated buyer's order confirmation (line reference).
+     * Get the associated buyer's order confirmation (line reference) from latest position
      *
      * @param string|null $newReferenceNumber Buyer's order confirmation number
      * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
@@ -3215,7 +3215,7 @@ interface InvoiceSuiteReaderContract
     ): self;
 
     /**
-     * Go to the first associated quotation (line reference)
+     * Go to the first associated quotation (line reference) from latest position
      *
      * @return boolean
      */
@@ -3229,7 +3229,7 @@ interface InvoiceSuiteReaderContract
     public function nextDocumentPositionQuotationReference(): bool;
 
     /**
-     * Get the associated quotation (line reference).
+     * Get the associated quotation (line reference) from latest position
      *
      * @param string|null $newReferenceNumber Buyer's order confirmation number
      * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
@@ -3237,6 +3237,34 @@ interface InvoiceSuiteReaderContract
      * @return self
      */
     public function getDocumentPositionQuotationReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
+    /**
+     * Go to the first associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionContractReference(): bool;
+
+    /**
+     * Go to the next associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionContractReference(): bool;
+
+    /**
+     * Get the associated contract (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function getDocumentPositionContractReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate

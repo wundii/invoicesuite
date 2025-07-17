@@ -6699,6 +6699,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionsellerorderreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionbuyerorderreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionquotationreference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositioncontractreference');
     }
 
     /**
@@ -7284,6 +7285,69 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
             $documentPositionQuotationReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
             $documentPositionQuotationReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getContractReferencedDocument() ?? []),
+            'documentpositioncontractreference'
+        );
+    }
+
+    /**
+     * Go to the next associated contract (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionContractReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getContractReferencedDocument() ?? []),
+            'documentpositioncontractreference'
+        );
+    }
+
+    /**
+     * Get the associated contract (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber __BT-X-24, From EXTENDED__ Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-26, From EXTENDED__ Buyer's order confirmation date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionContractReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentPositionContractReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getContractReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentPositionContractReference = $documentPositionContractReferences[InvoiceSuitePointerUtils::getValue('documentpositioncontractreference')];
+
+        $newReferenceNumber = $documentPositionContractReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceLineNumber = $documentPositionContractReference->getLineID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPositionContractReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentPositionContractReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
         );
 
         return $this;
