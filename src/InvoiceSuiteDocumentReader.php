@@ -4815,5 +4815,47 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDespatchAdviceReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionDespatchAdviceReference();
+    }
+
+    /**
+     * Go to the next additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDespatchAdviceReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionDespatchAdviceReference();
+    }
+
+    /**
+     * Get an additional despatch advice reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param string|null $newReferenceLineNumber Shipping notification line number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     */
+    public function getDocumentPositionDespatchAdviceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionDespatchAdviceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

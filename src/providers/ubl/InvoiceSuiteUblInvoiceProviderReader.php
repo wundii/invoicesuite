@@ -6025,6 +6025,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionquotationreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionadditionalreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimatecustomerorderreference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
     }
 
     /**
@@ -6685,6 +6686,50 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @phpstan-param-out null $newReferenceDate
      */
     public function getDocumentPositionUltimateCustomerOrderReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $newReferenceNumber = "";
+        $newReferenceLineNumber = "";
+        $newReferenceDate = null;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDespatchAdviceReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDespatchAdviceReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get an additional despatch advice reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param string|null $newReferenceLineNumber Shipping notification line number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out null $newReferenceDate
+     */
+    public function getDocumentPositionDespatchAdviceReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate

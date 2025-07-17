@@ -6703,6 +6703,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositioncontractreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionadditionalreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimatecustomerorderreference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
     }
 
     /**
@@ -7504,6 +7505,69 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
             $documentPositionUltimateCustomerOrderReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
             $documentPositionUltimateCustomerOrderReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDespatchAdviceReferencedDocument() ?? []),
+            'documentpositiondespatchadvicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional despatch advice reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDespatchAdviceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDespatchAdviceReferencedDocument() ?? []),
+            'documentpositiondespatchadvicereference'
+        );
+    }
+
+    /**
+     * Get an additional despatch advice reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Shipping notification number
+     * @param string|null $newReferenceLineNumber Shipping notification line number
+     * @param DateTimeInterface|null $newReferenceDate Shipping notification date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionDespatchAdviceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentPositionDespatchAdviceReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDespatchAdviceReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentPositionDespatchAdviceReference = $documentPositionDespatchAdviceReferences[InvoiceSuitePointerUtils::getValue('documentpositiondespatchadvicereference')];
+
+        $newReferenceNumber = $documentPositionDespatchAdviceReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceLineNumber = $documentPositionDespatchAdviceReference->getLineID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPositionDespatchAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentPositionDespatchAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
         );
 
         return $this;
