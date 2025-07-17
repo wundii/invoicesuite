@@ -4635,5 +4635,47 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first associated quotation (line reference)
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionQuotationReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionQuotationReference();
+    }
+
+    /**
+     * Go to the next associated quotation (line reference)
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionQuotationReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionQuotationReference();
+    }
+
+    /**
+     * Set the associated quotation (line reference).
+     *
+     * @param string|null $newReferenceNumber Buyer's order confirmation number
+     * @param string|null $newReferenceLineNumber Buyer's order confirmation line number
+     * @param DateTimeInterface|null $newReferenceDate Buyer's order confirmation date
+     * @return self
+     */
+    public function getDocumentPositionQuotationReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionQuotationReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate
+        );
+
+        return $this;
+    }
+
     #endregion
 }

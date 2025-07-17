@@ -994,6 +994,21 @@ while ($reader->nextDocumentPosition()) {
         echo sprintf("      Line ID ............... %s\n", $positionBuyerOrderReferenceLineId);
         echo sprintf("      Date .................. %s\n", $positionBuyerOrderReferenceDate?->format("d.m.Y") ?? "");
     }
+
+    echo " - Quotation Line References:\n";
+
+    while ($reader->nextDocumentPositionQuotationReference()) {
+        $reader->getDocumentPositionQuotationReference(
+            $positionQuotationReferenceId,
+            $positionQuotationReferenceLineId,
+            $positionQuotationReferenceDate
+        );
+
+        echo "    - Quotation Line Referencet:\n";
+        echo sprintf("      ID .................... %s\n", $positionQuotationReferenceId);
+        echo sprintf("      Line ID ............... %s\n", $positionQuotationReferenceLineId);
+        echo sprintf("      Date .................. %s\n", $positionQuotationReferenceDate?->format("d.m.Y") ?? "");
+    }
 }
 
 #endregion
