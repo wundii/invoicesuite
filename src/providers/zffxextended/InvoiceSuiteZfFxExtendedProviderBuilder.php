@@ -9866,7 +9866,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Set an additional despatch advice reference
+     * Set an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Receipt notification number
      * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
@@ -9906,7 +9906,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
     }
 
     /**
-     * Add an additional despatch advice reference
+     * Add an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber __BT-X-89, From EXTENDED__ Receipt notification number
      * @param string|null $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number

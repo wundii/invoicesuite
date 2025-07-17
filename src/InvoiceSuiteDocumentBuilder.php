@@ -4971,7 +4971,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Set an additional despatch advice reference
+     * Set an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number
@@ -4993,7 +4993,7 @@ class InvoiceSuiteDocumentBuilder implements InvoiceSuiteBuilderContract
     }
 
     /**
-     * Add an additional despatch advice reference
+     * Add an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number

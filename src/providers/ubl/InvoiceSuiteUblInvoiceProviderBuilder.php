@@ -6972,7 +6972,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Set an additional despatch advice reference
+     * Set an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number
@@ -6990,7 +6990,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     }
 
     /**
-     * Add an additional despatch advice reference
+     * Add an additional receiving advice reference
      *
      * @param string|null $newReferenceNumber Receipt notification number
      * @param string|null $newReferenceLineNumber Receipt notification line number
