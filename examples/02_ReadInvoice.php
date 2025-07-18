@@ -1103,6 +1103,23 @@ while ($reader->nextDocumentPosition()) {
         echo sprintf("      Line ID ............... %s\n", $positionDeliveryNoteReferenceLineId);
         echo sprintf("      Date .................. %s\n", $positionDeliveryNoteReferenceDate?->format("d.m.Y") ?? "");
     }
+
+    echo " - Invoice Line References:\n";
+
+    while ($reader->nextDocumentPositionInvoiceReference()) {
+        $reader->getDocumentPositionInvoiceReference(
+            $positionInvoiceReferenceId,
+            $positionInvoiceReferenceLineId,
+            $positionInvoiceReferenceDate,
+            $positionInvoiceReferenceTypeCode
+        );
+
+        echo "    - Invoice Line Referencet:\n";
+        echo sprintf("      ID .................... %s\n", $positionInvoiceReferenceId);
+        echo sprintf("      Line ID ............... %s\n", $positionInvoiceReferenceLineId);
+        echo sprintf("      Date .................. %s\n", $positionInvoiceReferenceDate?->format("d.m.Y") ?? "");
+        echo sprintf("      Type Code ............. %s\n", $positionInvoiceReferenceTypeCode);
+    }
 }
 
 #endregion

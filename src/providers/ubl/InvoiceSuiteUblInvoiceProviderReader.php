@@ -6028,6 +6028,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
     }
 
     /**
@@ -6827,6 +6828,54 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newReferenceNumber = "";
         $newReferenceLineNumber = "";
         $newReferenceDate = null;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionInvoiceReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionInvoiceReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     */
+    public function getDocumentPositionInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self {
+        $newReferenceNumber = "";
+        $newReferenceLineNumber = "";
+        $newReferenceDate = null;
+        $newTypeCode = "";
 
         return $this;
     }

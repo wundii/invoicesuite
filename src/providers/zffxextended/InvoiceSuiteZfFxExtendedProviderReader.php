@@ -6706,6 +6706,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositioninvoicereference');
     }
 
     /**
@@ -7697,6 +7698,73 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
             $documentPositionDeliveryNoteReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
             $documentPositionDeliveryNoteReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
         );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getInvoiceReferencedDocument() ?? []),
+            'documentpositioninvoicereference'
+        );
+    }
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionInvoiceReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getInvoiceReferencedDocument() ?? []),
+            'documentpositioninvoicereference'
+        );
+    }
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber __BT-X-331, From EXTENDED__ Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber __BT-X-540, From EXTENDED__ Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @param string|null $newTypeCode __BT-X-332, From EXTENDED__ Type code of previous invoice
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     * @phpstan-param-out string $newTypeCode
+     */
+    public function getDocumentPositionInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentPositionInvoiceReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getInvoiceReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentPositionInvoiceReference = $documentPositionInvoiceReferences[InvoiceSuitePointerUtils::getValue('documentpositioninvoicereference')];
+
+        $newReferenceNumber = $documentPositionInvoiceReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceLineNumber = $documentPositionInvoiceReference->getLineID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPositionInvoiceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentPositionInvoiceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
+        $newTypeCode = $documentPositionInvoiceReference->getTypeCode()?->getValue() ?? "";
 
         return $this;
     }

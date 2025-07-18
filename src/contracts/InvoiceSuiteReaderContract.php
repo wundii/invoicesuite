@@ -3418,5 +3418,35 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionInvoiceReference(): bool;
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionInvoiceReference(): bool;
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     */
+    public function getDocumentPositionInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self;
+
     #endregion
 }

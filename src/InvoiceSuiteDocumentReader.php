@@ -4941,5 +4941,50 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionInvoiceReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionInvoiceReference();
+    }
+
+    /**
+     * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionInvoiceReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionInvoiceReference();
+    }
+
+    /**
+     * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Identification of an invoice previously sent
+     * @param string|null $newReferenceLineNumber Identification of an invoice line previously sent
+     * @param DateTimeInterface|null $newReferenceDate Date of the previous invoice
+     * @param string|null $newTypeCode Type code of previous invoice
+     * @return self
+     */
+    public function getDocumentPositionInvoiceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate,
+        ?string &$newTypeCode
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionInvoiceReference(
+            $newReferenceNumber,
+            $newReferenceLineNumber,
+            $newReferenceDate,
+            $newTypeCode
+        );
+
+        return $this;
+    }
+
     #endregion
 }
