@@ -6705,6 +6705,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimatecustomerorderreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
     }
 
     /**
@@ -7632,6 +7633,69 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
             $documentPositionReceivingAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
             $documentPositionReceivingAdviceReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDeliveryNoteReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDeliveryNoteReferencedDocument() ?? []),
+            'documentpositiondeliverynotereference'
+        );
+    }
+
+    /**
+     * Go to the next additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDeliveryNoteReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDeliveryNoteReferencedDocument() ?? []),
+            'documentpositiondeliverynotereference'
+        );
+    }
+
+    /**
+     * Get an additional delivery note reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber __BT-X-92, From EXTENDED__ Delivery slip number
+     * @param string|null $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate __BT-X-94, From EXTENDED__ Delivery slip date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionDeliveryNoteReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType>
+         */
+        $documentPositionDeliveryNoteReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getDeliveryNoteReferencedDocument() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\ReferencedDocumentType
+         */
+        $documentPositionDeliveryNoteReference = $documentPositionDeliveryNoteReferences[InvoiceSuitePointerUtils::getValue('documentpositiondeliverynotereference')];
+
+        $newReferenceNumber = $documentPositionDeliveryNoteReference->getIssuerAssignedID()?->getValue() ?? "";
+        $newReferenceLineNumber = $documentPositionDeliveryNoteReference->getLineID()?->getValue() ?? "";
+        $newReferenceDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $documentPositionDeliveryNoteReference->getFormattedIssueDateTime()?->getDateTimeString()?->getValue(),
+            $documentPositionDeliveryNoteReference->getFormattedIssueDateTime()?->getDateTimeString()?->getFormat()
         );
 
         return $this;

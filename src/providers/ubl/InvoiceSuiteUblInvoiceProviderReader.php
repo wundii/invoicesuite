@@ -6027,6 +6027,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimatecustomerorderreference');
         InvoiceSuitePointerUtils::resetSingle('documentpositiondespatchadvicereference');
         InvoiceSuitePointerUtils::resetSingle('documentpositionreceivingadvicereference');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiondeliverynotereference');
     }
 
     /**
@@ -6775,6 +6776,50 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      * @phpstan-param-out null $newReferenceDate
      */
     public function getDocumentPositionReceivingAdviceReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self {
+        $newReferenceNumber = "";
+        $newReferenceLineNumber = "";
+        $newReferenceDate = null;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDeliveryNoteReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDeliveryNoteReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get an additional delivery note reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
+     *
+     * @phpstan-param-out string $newReferenceNumber
+     * @phpstan-param-out string $newReferenceLineNumber
+     * @phpstan-param-out null $newReferenceDate
+     */
+    public function getDocumentPositionDeliveryNoteReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate

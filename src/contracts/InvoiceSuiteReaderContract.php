@@ -3390,5 +3390,33 @@ interface InvoiceSuiteReaderContract
         ?DateTimeInterface &$newReferenceDate
     ): self;
 
+    /**
+     * Go to the first additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionDeliveryNoteReference(): bool;
+
+    /**
+     * Go to the next additional delivery note reference (line reference) from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionDeliveryNoteReference(): bool;
+
+    /**
+     * Get an additional delivery note reference (line reference) from latest position
+     *
+     * @param string|null $newReferenceNumber Delivery slip number
+     * @param string|null $newReferenceLineNumber Delivery slip line number
+     * @param DateTimeInterface|null $newReferenceDate Delivery slip date
+     * @return self
+     */
+    public function getDocumentPositionDeliveryNoteReference(
+        ?string &$newReferenceNumber,
+        ?string &$newReferenceLineNumber,
+        ?DateTimeInterface &$newReferenceDate
+    ): self;
+
     #endregion
 }
