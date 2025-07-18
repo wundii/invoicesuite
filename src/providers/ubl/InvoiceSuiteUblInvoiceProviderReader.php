@@ -6987,5 +6987,41 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Get the position's net price included tax from latest position
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     */
+    public function getDocumentPositionNetPriceTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): self {
+        $newTaxCategory = "";
+        $newTaxType = "";
+        $newTaxAmount = 0.0;
+        $newTaxPercent = 0.0;
+        $newExemptionReason = "";
+        $newExemptionReasonCode = "";
+
+        return $this;
+    }
+
     #endregion
 }

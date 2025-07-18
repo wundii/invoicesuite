@@ -3510,5 +3510,25 @@ interface InvoiceSuiteReaderContract
         ?string &$newNetPriceBasisQuantityUnit
     ): self;
 
+    /**
+     * Get the position's net price included tax from latest position
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     */
+    public function getDocumentPositionNetPriceTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): self;
+
     #endregion
 }

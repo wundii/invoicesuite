@@ -7892,5 +7892,43 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Get the position's net price included tax from latest position
+     *
+     * @param string|null $newTaxCategory __BT-X-40, From EXTENDED__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-X-38, From EXTENDED__ Coded description of the tax type
+     * @param float|null $newTaxAmount __BT-X-37, From EXTENDED__ Tax total amount
+     * @param float|null $newTaxPercent __BT-X-42, From EXTENDED__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-X-39, From EXTENDED__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-X-41, From EXTENDED__ Reason for tax exemption (Code)
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     */
+    public function getDocumentPositionNetPriceTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newTaxCategory = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getCategoryCode()?->getValue() ?? "";
+        $newTaxType = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getTypeCode()?->getValue() ?? "";
+        $newTaxAmount = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getCalculatedAmount()?->getValue() ?? 0.0;
+        $newTaxPercent = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getRateApplicablePercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getExemptionReason()?->getValue() ?? "";
+        $newExemptionReasonCode = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getIncludedTradeTax()?->getExemptionReasonCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

@@ -1154,6 +1154,24 @@ while ($reader->nextDocumentPosition()) {
 
     echo sprintf("    - Net Price .............. %s\n", $positionNetPrice);
     echo sprintf("    - Base Quantity: ......... %s %s\n", $positionNetPriceBaseQuantity, $positionNetPriceBaseQuantityUnit);
+
+    echo " - Position Net Price Included Tax:\n";
+
+    $reader->getDocumentPositionNetPriceTax(
+        $positionNetPriceTaxCategory,
+        $positionNetPriceTaxType,
+        $positionNetPriceTaxAmount,
+        $positionNetPriceTaxPercent,
+        $positionNetPriceExemptionReason,
+        $positionNetPriceExemptionReasonCode
+    );
+
+    echo sprintf("    - Tax Category ........... %s\n", $positionNetPriceTaxCategory);
+    echo sprintf("    - Tax Type ............... %s\n", $positionNetPriceTaxType);
+    echo sprintf("    - Tax Amount ............. %s\n", $positionNetPriceTaxAmount);
+    echo sprintf("    - Tax Percent ............ %s\n", $positionNetPriceTaxPercent);
+    echo sprintf("    - Tax Exception Reason ... %s\n", $positionNetPriceExemptionReason);
+    echo sprintf("    - Tax Exception Reason C.. %s\n", $positionNetPriceExemptionReasonCode);
 }
 
 #endregion
