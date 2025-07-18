@@ -3496,5 +3496,19 @@ interface InvoiceSuiteReaderContract
         ?string &$newGrossPriceAllowanceChargeReasonCode
     ): self;
 
+    /**
+     * Get the position's net price from latest position
+     *
+     * @param null|float $newNetPrice Unit price excluding sales tax after deduction of the discount on the item price
+     * @param null|float $newNetPriceBasisQuantity Number of item units for which the price applies
+     * @param null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @return self
+     */
+    public function getDocumentPositionNetPrice(
+        ?float &$newNetPrice,
+        ?float &$newNetPriceBasisQuantity,
+        ?string &$newNetPriceBasisQuantityUnit
+    ): self;
+
     #endregion
 }

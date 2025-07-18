@@ -1127,6 +1127,33 @@ while ($reader->nextDocumentPosition()) {
 
     echo sprintf("    - Gross Price: ........... %s\n", $positionGrossPrice);
     echo sprintf("    - Base Quantity: ......... %s %s\n", $positionGrossPriceBaseQuantity, $positionGrossPriceBaseQuantityUnit);
+
+    echo "    - Position Gross Price Allowances/Charges:\n";
+
+    while ($reader->nextDocumentPositionGrossPriceAllowanceCharge()) {
+        $reader->getDocumentPositionGrossPriceAllowanceCharge(
+            $positionGrossPriceAllowanceChargeAmount,
+            $positionGrossPriceAllowanceChargeIsCharge,
+            $positionGrossPriceAllowanceChargePercent,
+            $positionGrossPriceAllowanceChargeBasisAmount,
+            $positionGrossPriceAllowanceChargeReason,
+            $positionGrossPriceAllowanceChargeReasonCode
+        );
+        echo "      - Position Gross Price Allowances/Charge:\n";
+        echo sprintf("        Charge Amount .......... %s:\n", $positionGrossPriceAllowanceChargeAmount);
+        echo sprintf("        Is Charge .............. %s:\n", $positionGrossPriceAllowanceChargeIsCharge === true ? "Yes" : "Mo");
+        echo sprintf("        Charge Percent ......... %s:\n", $positionGrossPriceAllowanceChargePercent);
+        echo sprintf("        Basis Amount ........... %s:\n", $positionGrossPriceAllowanceChargeBasisAmount);
+        echo sprintf("        Reason ................. %s:\n", $positionGrossPriceAllowanceChargeReason);
+        echo sprintf("        Reason Code ............ %s:\n", $positionGrossPriceAllowanceChargeReasonCode);
+    }
+
+    echo " - Position Net Price:\n";
+
+    $reader->getDocumentPositionNetPrice($positionNetPrice, $positionNetPriceBaseQuantity, $positionNetPriceBaseQuantityUnit);
+
+    echo sprintf("    - Net Price .............. %s\n", $positionNetPrice);
+    echo sprintf("    - Base Quantity: ......... %s %s\n", $positionNetPriceBaseQuantity, $positionNetPriceBaseQuantityUnit);
 }
 
 #endregion

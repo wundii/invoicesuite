@@ -7787,11 +7787,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         ?float &$newGrossPriceBasisQuantity,
         ?string &$newGrossPriceBasisQuantityUnit
     ): self {
-        $documentPosition = $this->resolveCurrentDocumentPosition();
-
-        $newGrossPrice = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getChargeAmount()?->getValue() ?? 0.0;
-        $newGrossPriceBasisQuantity = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getValue() ?? 0.0;
-        $newGrossPriceBasisQuantityUnit = $documentPosition->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getUnitCode() ?? "";
+        $newGrossPrice = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getChargeAmount()?->getValue() ?? 0.0;
+        $newGrossPriceBasisQuantity = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getValue() ?? 0.0;
+        $newGrossPriceBasisQuantityUnit = $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeAgreement()?->getGrossPriceProductTradePrice()?->getBasisQuantity()?->getUnitCode() ?? "";
 
         return $this;
     }
@@ -7864,6 +7862,32 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newGrossPriceAllowanceChargeBasisAmount = $positionGrossPriceAllowanceCharge->getBasisAmount()?->getValue() ?? 0.0;
         $newGrossPriceAllowanceChargeReason = $positionGrossPriceAllowanceCharge->getReason()?->getValue() ?? "";
         $newGrossPriceAllowanceChargeReasonCode = $positionGrossPriceAllowanceCharge->getReasonCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
+    /**
+     * Get the position's net price from latest position
+     *
+     * @param null|float $newNetPrice __BT-146, From BASIC__ Unit price excluding sales tax after deduction of the discount on the item price
+     * @param null|float $newNetPriceBasisQuantity __BT-149, From BASIC__ Number of item units for which the price applies
+     * @param null|string $newNetPriceBasisQuantityUnit __BT-150, From BASIC__ Unit code of the number of item units for which the price applies
+     * @return self
+     *
+     * @phpstan-param-out float $newNetPrice
+     * @phpstan-param-out float $newNetPriceBasisQuantity
+     * @phpstan-param-out string $newNetPriceBasisQuantityUnit
+     */
+    public function getDocumentPositionNetPrice(
+        ?float &$newNetPrice,
+        ?float &$newNetPriceBasisQuantity,
+        ?string &$newNetPriceBasisQuantityUnit
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newNetPrice = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getChargeAmount()?->getValue() ?? 0.0;
+        $newNetPriceBasisQuantity = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getBasisQuantity()?->getValue() ?? 0.0;
+        $newNetPriceBasisQuantityUnit = $documentPosition->getSpecifiedLineTradeAgreement()?->getNetPriceProductTradePrice()?->getBasisQuantity()?->getUnitCode() ?? "";
 
         return $this;
     }

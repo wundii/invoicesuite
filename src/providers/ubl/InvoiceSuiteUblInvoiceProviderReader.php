@@ -6961,5 +6961,31 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Get the position's net price from latest position
+     *
+     * @param null|float $newNetPrice Unit price excluding sales tax after deduction of the discount on the item price
+     * @param null|float $newNetPriceBasisQuantity Number of item units for which the price applies
+     * @param null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
+     * @return self
+     *
+     * @phpstan-param-out float $newNetPrice
+     * @phpstan-param-out float $newNetPriceBasisQuantity
+     * @phpstan-param-out string $newNetPriceBasisQuantityUnit
+     */
+    public function getDocumentPositionNetPrice(
+        ?float &$newNetPrice,
+        ?float &$newNetPriceBasisQuantity,
+        ?string &$newNetPriceBasisQuantityUnit
+    ): self {
+        $documentPosition = $this->resolveCurrentDocumentPosition();
+
+        $newNetPrice = $documentPosition->getPrice()?->getPriceAmount()?->getValue() ?? 0.0;
+        $newNetPriceBasisQuantity = $documentPosition->getPrice()?->getBaseQuantity()?->getValue() ?? 0.0;
+        $newNetPriceBasisQuantityUnit = $documentPosition->getPrice()?->getBaseQuantity()?->getUnitCode() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }
