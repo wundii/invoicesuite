@@ -6046,6 +6046,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptocontact');
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptoecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
     }
 
     /**
@@ -7780,7 +7781,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
     }
 
     /**
-     * Get the start and/or end date of the billing period
+     * Get the start and/or end date of the billing period from latest position
      *
      * @param null|DateTimeInterface $newStartDate Start of the billing period
      * @param null|DateTimeInterface $newEndDate End of the billing period
@@ -7806,9 +7807,91 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
          */
         $positionBillingPeriod = $positionBillingPeriods[InvoiceSuitePointerUtils::getValue('documentpositionbillingperiod')];
 
+        $positionBillingPeriodDescriptions = $positionBillingPeriod->getDescription() ?? [];
+        $positionBillingPeriodDescription = reset($positionBillingPeriodDescriptions);
+
         $newStartDate = $positionBillingPeriod->getStartDate();
         $newEndDate = $positionBillingPeriod->getEndDate();
-        $newDescription = $positionBillingPeriod->getDescription() ?? "";
+        $newDescription = $positionBillingPeriodDescription !== false ? ($positionBillingPeriodDescription->getValue() ?? "") : "";
+
+        return $this;
+    }
+
+    /**
+     * Go to the first position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getItem()?->getClassifiedTaxCategory() ?? []
+            ),
+            'documentpositiontax'
+        );
+    }
+
+    /**
+     * Go to the next position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getItem()?->getClassifiedTaxCategory() ?? []
+            ),
+            'documentpositiontax'
+        );
+    }
+
+    /**
+     * Get the position's tax information from latest position
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     */
+    public function getDocumentPositionTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory>
+         */
+        $positionTaxes = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getItem()?->getClassifiedTaxCategory() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cac\ClassifiedTaxCategory
+         */
+        $positionTax = $positionTaxes[InvoiceSuitePointerUtils::getValue('documentpositiontax')];
+
+        $positionTaxExcemptionReasons = $positionTax->getTaxExemptionReason() ?? [];
+        $positionTaxExcemptionReason = reset($positionTaxExcemptionReasons);
+
+        $newTaxCategory = $positionTax->getID()?->getValue() ?? "";
+        $newTaxType = $positionTax->getTaxScheme()->getID()?->getValue() ?? "";
+        $newTaxAmount = 0.0;
+        $newTaxPercent = $positionTax->getPercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $positionTaxExcemptionReason !== false ? ($positionTaxExcemptionReason->getValue() ?? "") : "";
+        $newExemptionReasonCode = $positionTax->getTaxExemptionReasonCode()?->getValue() ?? "";
 
         return $this;
     }

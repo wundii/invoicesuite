@@ -6723,6 +6723,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptocontact');
         InvoiceSuitePointerUtils::resetSingle('documentpositionultimateshiptoecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
+        InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
     }
 
     /**
@@ -8973,7 +8974,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
     }
 
     /**
-     * Get the start and/or end date of the billing period
+     * Get the start and/or end date of the billing period from latest position
      *
      * @param null|DateTimeInterface $newStartDate __BT-134, From BASIC__ Start of the billing period
      * @param null|DateTimeInterface $newEndDate __BT-135, From BASIC__ End of the billing period
@@ -9011,5 +9012,82 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
 
         return $this;
     }
+
+    /**
+     * Go to the first position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+            ),
+            'documentpositiontax'
+        );
+    }
+
+    /**
+     * Go to the next position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionTax(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []
+            ),
+            'documentpositiontax'
+        );
+    }
+
+    /**
+     * Get the position's tax information from latest position
+     *
+     * @param string|null $newTaxCategory __BT-151, From BASIC__ Coded description of the tax category
+     * @param string|null $newTaxType __BT-151-0, From BASIC__ Coded description of the tax type
+     * @param float|null $newTaxAmount __BT-X-95, From EXTENDED__ Tax total amount
+     * @param float|null $newTaxPercent __BT-152, From BASIC__ Tax Rate (Percentage)
+     * @param string|null $newExemptionReason __BT-X-96, From EXTENDED__ Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode __BT-X-97, From EXTENDED__ Reason for tax exemption (Code)
+     * @return self
+     *
+     * @phpstan-param-out string $newTaxCategory
+     * @phpstan-param-out string $newTaxType
+     * @phpstan-param-out float $newTaxAmount
+     * @phpstan-param-out float $newTaxPercent
+     * @phpstan-param-out string $newExemptionReason
+     * @phpstan-param-out string $newExemptionReasonCode
+     */
+    public function getDocumentPositionTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType>
+         */
+        $positionTaxes = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getApplicableTradeTax() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeTaxType
+         */
+        $positionTax = $positionTaxes[InvoiceSuitePointerUtils::getValue('documentpositiontax')];
+
+        $newTaxCategory = $positionTax->getCategoryCode()?->getValue() ?? "";
+        $newTaxType = $positionTax->getTypeCode()?->getValue() ?? "";
+        $newTaxAmount = $positionTax->getCalculatedAmount()?->getValue() ?? 0.0;
+        $newTaxPercent = $positionTax->getRateApplicablePercent()?->getValue() ?? 0.0;
+        $newExemptionReason = $positionTax->getExemptionReason()?->getValue() ?? "";
+        $newExemptionReasonCode = $positionTax->getExemptionReasonCode()?->getValue() ?? "";
+
+        return $this;
+    }
+
     #endregion
 }

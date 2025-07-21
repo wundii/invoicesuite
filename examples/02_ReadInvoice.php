@@ -1303,6 +1303,20 @@ while ($reader->nextDocumentPosition()) {
         $reader->getDocumentPositionBillingPeriod($documentBillingPeriodStartDate, $documentBillingPeriodEndDate, $documentBillingPeriodDescription);
         echo sprintf("   %s - %s (%s)\n", $documentBillingPeriodStartDate?->format("d.m.Y") ?? "", $documentBillingPeriodEndDate?->format("d.m.Y") ?? "", $documentBillingPeriodDescription);
     }
+
+    echo "\n";
+    echo " - Position Tax\n";
+    echo "\n";
+
+    while ($reader->nextDocumentPositionTax()) {
+        $reader->getDocumentPositionTax($positionTaxCategory, $positionTaxType, $positionTaxAmount, $positionTaxPercent, $positionTaxExcemptionReason, $positionTaxExcemptionReasonCode);
+        echo sprintf("   Tax Category ........ %s\n", $positionTaxCategory);
+        echo sprintf("   Tax Type ............ %s\n", $positionTaxType);
+        echo sprintf("   Tax Amount .......... %s\n", $positionTaxAmount);
+        echo sprintf("   Tax Percent ......... %s\n", $positionTaxPercent);
+        echo sprintf("   Tax Exc. Reason ..... %s\n", $positionTaxExcemptionReason);
+        echo sprintf("   Tax Exc. Reason Code  %s\n", $positionTaxExcemptionReasonCode);
+    }
 }
 
 #endregion

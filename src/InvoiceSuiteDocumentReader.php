@@ -5790,7 +5790,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
     }
 
     /**
-     * Get the start and/or end date of the billing period
+     * Get the start and/or end date of the billing period from latest position
      *
      * @param null|DateTimeInterface $newStartDate Start of the billing period
      * @param null|DateTimeInterface $newEndDate End of the billing period
@@ -5806,6 +5806,57 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
             $newStartDate,
             $newEndDate,
             $newDescription
+        );
+
+        return $this;
+    }
+
+    /**
+     * Go to the first position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionTax(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionTax();
+    }
+
+    /**
+     * Go to the next position's tax information from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionTax(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionTax();
+    }
+
+    /**
+     * Get the position's tax information from latest position
+     *
+     * @param string|null $newTaxCategory Coded description of the tax category
+     * @param string|null $newTaxType Coded description of the tax type
+     * @param float|null $newTaxAmount Tax total amount
+     * @param float|null $newTaxPercent Tax Rate (Percentage)
+     * @param string|null $newExemptionReason Reason for tax exemption (free text)
+     * @param string|null $newExemptionReasonCode Reason for tax exemption (Code)
+     * @return self
+     */
+    public function getDocumentPositionTax(
+        ?string &$newTaxCategory,
+        ?string &$newTaxType,
+        ?float &$newTaxAmount,
+        ?float &$newTaxPercent,
+        ?string &$newExemptionReason,
+        ?string &$newExemptionReasonCode,
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
         );
 
         return $this;
