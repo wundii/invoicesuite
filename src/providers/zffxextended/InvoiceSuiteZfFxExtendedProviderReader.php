@@ -6725,6 +6725,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
         InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
         InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionpostingreference');
     }
 
     /**
@@ -9196,6 +9197,66 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         $newDiscountTotalAmount = $positionSummation?->getAllowanceTotalAmount()?->getValue() ?? 0.0;
         $newTaxTotalAmount = $positionSummation?->getTaxTotalAmount()?->getValue() ?? 0.0;
         $newGrossAmount = $positionSummation?->getGrandTotalAmount()?->getValue() ?? 0.0;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            ),
+            'documentpositionpostingreference'
+        );
+    }
+
+    /**
+     * Go to the next posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []
+            ),
+            'documentpositionpostingreference'
+        );
+    }
+
+    /**
+     * Get a position's posting reference from latest position
+     *
+     * @param string|null $newType __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @param string|null $newAccountId __BT-133, From EN 16931__ Posting reference of the byuer
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
+     */
+    public function getDocumentPositionPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType>
+         */
+        $positionPostingReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getReceivableSpecifiedTradeAccountingAccount() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\zffxextended\ram\TradeAccountingAccountType
+         */
+        $positionPostingReference = $positionPostingReferences[InvoiceSuitePointerUtils::getValue('documentpositionpostingreference')];
+
+        $newType = $positionPostingReference->getTypeCode()?->getValue() ?? "";
+        $newAccountId = $positionPostingReference->getID()?->getValue() ?? "";
 
         return $this;
     }

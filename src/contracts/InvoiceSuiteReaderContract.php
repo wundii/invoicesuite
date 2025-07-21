@@ -4090,5 +4090,31 @@ interface InvoiceSuiteReaderContract
         ?float &$newGrossAmount
     ): self;
 
+    /**
+     * Go to the first posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionPostingReference(): bool;
+
+    /**
+     * Go to the next posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionPostingReference(): bool;
+
+    /**
+     * Get a position's posting reference from latest position
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function getDocumentPositionPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self;
+
     #endregion
 }

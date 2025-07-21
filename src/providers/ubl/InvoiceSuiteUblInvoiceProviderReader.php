@@ -6048,6 +6048,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
         InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
         InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionpostingreference');
     }
 
     /**
@@ -8004,6 +8005,66 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         $newDiscountTotalAmount = 0.0;
         $newTaxTotalAmount = 0.0;
         $newGrossAmount = 0.0;
+
+        return $this;
+    }
+
+    /**
+     * Go to the first posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getAccountingCostCode() ?? []
+            ),
+            'documentpositionpostingreference'
+        );
+    }
+
+    /**
+     * Go to the next posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionPostingReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->resolveCurrentDocumentPosition()->getAccountingCostCode() ?? []
+            ),
+            'documentpositionpostingreference'
+        );
+    }
+
+    /**
+     * Get a position's posting reference from latest position
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     *
+     * @phpstan-param-out string $newType
+     * @phpstan-param-out string $newAccountId
+     */
+    public function getDocumentPositionPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self {
+        /**
+         * @var array<\horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode>
+         */
+        $positionPostingReferences = InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getAccountingCostCode() ?? []);
+
+        /**
+         * @var \horstoeko\invoicesuite\models\ubl\cbc\AccountingCostCode
+         */
+        $positionPostingReference = $positionPostingReferences[InvoiceSuitePointerUtils::getValue('documentpositionpostingreference')];
+
+        $newType = "";
+        $newAccountId = $positionPostingReference->getValue() ?? "";
 
         return $this;
     }

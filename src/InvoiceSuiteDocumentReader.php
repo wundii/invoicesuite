@@ -5941,5 +5941,44 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Go to the first posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function firstDocumentPositionPostingReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->firstDocumentPositionPostingReference();
+    }
+
+    /**
+     * Go to the next posting reference from latest position
+     *
+     * @return boolean
+     */
+    public function nextDocumentPositionPostingReference(): bool
+    {
+        return $this->getCurrentFormatProvider()->getReader()->nextDocumentPositionPostingReference();
+    }
+
+    /**
+     * Get a position's posting reference from latest position
+     *
+     * @param string|null $newType Type of the posting reference
+     * @param string|null $newAccountId Posting reference of the byuer
+     * @return self
+     */
+    public function getDocumentPositionPostingReference(
+        ?string &$newType,
+        ?string &$newAccountId
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionPostingReference(
+            $newType,
+            $newAccountId
+        );
+
+        return $this;
+    }
+
     #endregion
 }

@@ -1345,6 +1345,17 @@ while ($reader->nextDocumentPosition()) {
     echo sprintf("     Disc. Total Amount .. %s\n", $positionDiscountTotalAmount);
     echo sprintf("     Tax Total Amount .... %s\n", $positionTaxTotalAmount);
     echo sprintf("     Gross Amount ........ %s\n", $positionGrossAmount);
+
+    echo "\n";
+    echo " - Position Posting References\n";
+    echo "\n";
+
+    while ($reader->nextDocumentPositionPostingReference()) {
+        $reader->getDocumentPositionPostingReference($positionPostingReferenceType, $positionPostingReferenceAccountId);
+        echo sprintf("   - Posting Reference:\n");
+        echo sprintf("     Type ................ %s\n", $positionPostingReferenceType);
+        echo sprintf("     Account ID .......... %s\n", $positionPostingReferenceAccountId);
+    }
 }
 
 #endregion
