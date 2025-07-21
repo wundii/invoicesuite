@@ -5755,5 +5755,19 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
         return $this;
     }
 
+    /**
+     * Get the date of the delivery from latest position
+     *
+     * @param DateTimeInterface|null $newDate
+     * @return self
+     */
+    public function getDocumentPositionSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $this->getCurrentFormatProvider()->getReader()->getDocumentPositionSupplyChainEvent($newDate);
+
+        return $this;
+    }
+
     #endregion
 }

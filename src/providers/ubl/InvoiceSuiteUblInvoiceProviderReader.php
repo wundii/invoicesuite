@@ -7732,5 +7732,21 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
         return $this;
     }
 
+    /**
+     * Get the date of the delivery from latest position
+     *
+     * @param DateTimeInterface|null $newDate
+     * @return self
+     *
+     * @phpstan-param-out null $newDate
+     */
+    public function getDocumentPositionSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $newDate = null;
+
+        return $this;
+    }
+
     #endregion
 }

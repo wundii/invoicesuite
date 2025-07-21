@@ -1287,6 +1287,13 @@ while ($reader->nextDocumentPosition()) {
         $reader->getDocumentPositionUltimateShipToCommunication($documentPositionUltimateShipToCommunicationType, $documentPositionUltimateShipToCommunicationUri);
         echo sprintf("   UltimateShipTo Comm. ....... %s (%s)\n", $documentPositionUltimateShipToCommunicationUri, $documentPositionUltimateShipToCommunicationType);
     }
+
+    echo "\n";
+    echo " - Position Supply Chain Event\n";
+    echo "\n";
+
+    $reader->getDocumentPositionSupplyChainEvent($positionSupplyChainEvent);
+    echo sprintf("   Date of Event .............. %s\n", $positionSupplyChainEvent?->format("d.m.y") ?? "");
 }
 
 #endregion

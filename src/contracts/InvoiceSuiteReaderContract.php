@@ -3966,5 +3966,15 @@ interface InvoiceSuiteReaderContract
         ?string &$newUri
     ): self;
 
+    /**
+     * Get the date of the delivery from latest position
+     *
+     * @param DateTimeInterface|null $newDate
+     * @return self
+     */
+    public function getDocumentPositionSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self;
+
     #endregion
 }

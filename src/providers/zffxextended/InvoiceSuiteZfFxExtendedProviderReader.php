@@ -8922,5 +8922,24 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
         return $this;
     }
 
+    /**
+     * Get the date of the delivery from latest position
+     *
+     * @param DateTimeInterface|null $newDate __BT-X-85, From EXTENDED__
+     * @return self
+     *
+     * @phpstan-param-out DateTimeInterface|null $newDate
+     */
+    public function getDocumentPositionSupplyChainEvent(
+        ?DateTimeInterface &$newDate
+    ): self {
+        $newDate = InvoiceSuiteDateTimeUtils::convertZfFxDateStringToDateTime(
+            $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getActualDeliverySupplyChainEvent()?->getOccurrenceDateTime()?->getDateTimeString()?->getValue(),
+            $this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeDelivery()?->getActualDeliverySupplyChainEvent()?->getOccurrenceDateTime()?->getDateTimeString()?->getFormat()
+        );
+
+        return $this;
+    }
+
     #endregion
 }
