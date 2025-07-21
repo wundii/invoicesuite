@@ -7941,12 +7941,12 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      * @param null|string $newPackageQuantityUnit __BT-X-47-0, From EXTENDED__ Package quantity unit
      * @return self
      *
-     * @phpstan-param-out string $newQuantity
-     * @phpstan-param-out float $newQuantityUnit
-     * @phpstan-param-out string $newChargeFreeQuantity
-     * @phpstan-param-out float $newChargeFreeQuantityUnit
-     * @phpstan-param-out string $newPackageQuantity
-     * @phpstan-param-out float $newPackageQuantityUnit
+     * @phpstan-param-out float $newQuantity
+     * @phpstan-param-out string $newQuantityUnit
+     * @phpstan-param-out float $newChargeFreeQuantity
+     * @phpstan-param-out string $newChargeFreeQuantityUnit
+     * @phpstan-param-out float $newPackageQuantity
+     * @phpstan-param-out string $newPackageQuantityUnit
      */
     public function getDocumentPositionQuantities(
         ?float &$newQuantity,
