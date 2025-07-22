@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\providers\zffxextended;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePeriodDTO;
@@ -11,6 +12,7 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDateRangeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentMeanDTO;
@@ -19,7 +21,10 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentPositionDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\dto\InvoiceSuitePaymentTermDiscountDTO;
@@ -27,10 +32,10 @@ use horstoeko\invoicesuite\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\TradePaymentTermsType;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoiceType;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractFormatProviderReader;
-use horstoeko\invoicesuite\dto\InvoiceSuiteAllowanceChargeDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitesummationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteMeasureDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductCharacteristicDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\dto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\models\zffxextended\ram\SupplyChainTradeLineItemType;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatProviderReader
@@ -1720,6 +1725,118 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
                 $newDocumentRoungingAmount
             )
         );
+
+        // Positions
+
+        while ($this->nextDocumentPosition()) {
+            $this->getDocumentPosition(
+                $newDocumentPositionId,
+                $newDocumentPositionParentPositionId,
+                $newDocumentPositionLineStatusCode,
+                $newDocumentPositionLineStatusReasonCode
+            );
+
+            $newDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO(
+                $newDocumentPositionId,
+                $newDocumentPositionParentPositionId,
+                $newDocumentPositionLineStatusCode,
+                $newDocumentPositionLineStatusReasonCode
+            );
+
+            while ($this->nextDocumentPositionNote()) {
+                $this->getDocumentPositionNote(
+                    $newDocumentPositionNoteContent,
+                    $newDocumentPositionNoteContentCode,
+                    $newDocumentPositionNoteSubjectCode
+                );
+
+                $newDocumentPositionDTO->addNote(
+                    new InvoiceSuiteNoteDTO(
+                        $newDocumentPositionNoteContent,
+                        $newDocumentPositionNoteContentCode,
+                        $newDocumentPositionNoteSubjectCode
+                    )
+                );
+            }
+
+            $this->getDocumentPositionProductDetails(
+                $newDocumentPositionProductId,
+                $newDocumentPositionProductName,
+                $newDocumentPositionProductDescription,
+                $newDocumentPositionProductSellerId,
+                $newDocumentPositionProductBuyerId,
+                $newDocumentPositionProductGlobalId,
+                $newDocumentPositionProductGlobalIdType,
+                $newDocumentPositionProductIndustryId,
+                $newDocumentPositionProductModelId,
+                $newDocumentPositionProductBatchId,
+                $newDocumentPositionProductBrandName,
+                $newDocumentPositionProductModelName,
+                $newDocumentPositionProductOriginTradeCountry
+            );
+
+            $newDocumentPositionProductDTO = new InvoiceSuiteProductDTO(
+                $newDocumentPositionProductId,
+                $newDocumentPositionProductName,
+                $newDocumentPositionProductDescription,
+                $newDocumentPositionProductSellerId,
+                $newDocumentPositionProductBuyerId,
+                new InvoiceSuiteIdDTO(
+                    $newDocumentPositionProductGlobalId,
+                    $newDocumentPositionProductGlobalIdType
+                ),
+                $newDocumentPositionProductIndustryId,
+                $newDocumentPositionProductModelId,
+                $newDocumentPositionProductBatchId,
+                $newDocumentPositionProductBrandName,
+                $newDocumentPositionProductModelName,
+                $newDocumentPositionProductOriginTradeCountry
+            );
+
+            while ($this->nextDocumentPositionProductCharacteristic()) {
+                $this->getDocumentPositionProductCharacteristic(
+                    $newDocumentPositionProductCharacteristicDescription,
+                    $newDocumentPositionProductCharacteristicValue,
+                    $newDocumentPositionProductCharacteristicType,
+                    $newDocumentPositionProductCharacteristicMeasureValue,
+                    $newDocumentPositionProductCharacteristicMeasureUnit
+                );
+
+                $newDocumentPositionProductDTO->addCharacteristic(
+                    new InvoiceSuiteProductCharacteristicDTO(
+                        $newDocumentPositionProductCharacteristicDescription,
+                        $newDocumentPositionProductCharacteristicValue,
+                        $newDocumentPositionProductCharacteristicType,
+                        new InvoiceSuiteMeasureDTO(
+                            $newDocumentPositionProductCharacteristicMeasureValue,
+                            $newDocumentPositionProductCharacteristicMeasureUnit
+                        )
+                    )
+                );
+            }
+
+            while ($this->nextDocumentPositionProductClassification()) {
+                $this->getDocumentPositionProductClassification(
+                    $newDocumentPositionProductClassificationCode,
+                    $newDocumentPositionProductClassificationListId,
+                    $newDocumentPositionProductClassificationListVersionId,
+                    $newDocumentPositionProductClassificationCodeClassname
+                );
+
+                $newDocumentPositionProductDTO->addClassification(
+                    new InvoiceSuiteProductClassificationDTO(
+                        $newDocumentPositionProductClassificationCode,
+                        $newDocumentPositionProductClassificationCodeClassname,
+                        $newDocumentPositionProductClassificationListId,
+                        $newDocumentPositionProductClassificationListVersionId
+                    )
+                );
+            }
+
+            $newDocumentPositionDTO->setProduct($newDocumentPositionProductDTO);
+
+            $newDocumentDTO->addPosition($newDocumentPositionDTO);
+        }
 
         // Finished
 
