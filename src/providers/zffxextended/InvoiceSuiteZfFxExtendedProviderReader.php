@@ -64,6 +64,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param InvoiceSuiteDocumentHeaderDTO|null $newDocumentDTO Data-Transfer-Object
      * @return self
+     *
+     * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
@@ -3731,6 +3733,8 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractFormatP
      *
      * @param string|null $newBuyerReference __BT-10, From MINIMUM__ An identifier assigned by the buyer and used for internal routing
      * @return self
+     *
+     * @phpstan-param-out string $newBuyerReference
      */
     public function getDocumentBuyerReference(
         ?string &$newBuyerReference

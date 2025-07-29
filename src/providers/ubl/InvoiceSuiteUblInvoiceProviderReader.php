@@ -1239,6 +1239,8 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractFormatPro
      *
      * @param string|null $newBuyerReference An identifier assigned by the buyer and used for internal routing
      * @return self
+     *
+     * @phpstan-param-out string $newBuyerReference
      */
     public function getDocumentBuyerReference(
         ?string &$newBuyerReference
