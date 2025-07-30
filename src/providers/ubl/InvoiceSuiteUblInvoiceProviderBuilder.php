@@ -156,6 +156,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function createFromDTO(
         InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
     ): self {
+
+        // Document-Level General information
+
         $this->setDocumentNo($newDocumentDTO->getNumber());
         $this->setDocumentType($newDocumentDTO->getType());
         $this->setDocumentDescription($newDocumentDTO->getDescription());
@@ -167,11 +170,138 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $this->setDocumentIsTest($newDocumentDTO->getIsTest());
         $this->setDocumentIsCopy($newDocumentDTO->getIsCopy());
 
+        // Document-Level Notes
+
         $newDocumentDTO->forEachNote(fn(InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
             $note->getContent(),
             $note->getContentCode(),
             $note->getSubjectCode()
         ));
+
+        // Document-Level Billing period
+
+        $newDocumentDTO->firstBillingPeriod(
+            fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
+                $item->getStartDate(),
+                $item->getEndDate(),
+                $item->getDescription()
+            )
+        );
+
+        // Document-Level Posting Reference
+
+        $newDocumentDTO->firstPostingReference(
+            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
+                $item->getIdType(),
+                $item->getId()
+            )
+        );
+
+        // Document-Level Seller Order Reference
+
+        $newDocumentDTO->firstSellerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Buyer Order Reference
+
+        $newDocumentDTO->firstBuyerOrderReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Quotation Reference
+
+        $newDocumentDTO->firstQuotationReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Contract Reference
+
+        $newDocumentDTO->firstContractReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Additional Reference
+
+        $newDocumentDTO->forEachAdditionalReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate(),
+                $item->getTypeCode(),
+                $item->getReferenceTypeCode(),
+                $item->getDescription(),
+                $item->getAttachment()
+            )
+        );
+
+        // Document-Level Invoice Reference
+
+        $newDocumentDTO->forEachInvoiceReference(
+            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate(),
+                $item->getTypeCode()
+            )
+        );
+
+        // Document-Level Project Reference
+
+        $newDocumentDTO->firstProjectReference(
+            fn(InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
+                $item->getProjectNumber(),
+                $item->getProjectName()
+            )
+        );
+
+        // Document-Level Ultimate Customer Order Reference
+
+        // ... nothing here, not supported
+
+        // Document-Level Despatch Advice Reference
+
+        $newDocumentDTO->firstDespatchAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Receiving Advice Reference
+
+        $newDocumentDTO->firstReceivingAdviceReference(
+            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
+                $item->getReferenceNumber(),
+                $item->getReferenceDate()
+            )
+        );
+
+        // Document-Level Delivery Note Reference
+
+        // ... nothing here, not supported
+
+        // Document-Level Supply Chain Event
+
+        $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
+
+        // Document-Level Buyer Reference
+
+        $newDocumentDTO->firstBuyerReference(
+            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
+        );
+
+        // Document-Level Seller/Supplier Party
 
         $newDocumentDTO
             ->getSellerParty()
@@ -223,6 +353,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             );
 
+        // Document-Level Buyer/Customer Party
+
         $newDocumentDTO
             ->getBuyerParty()
             ?->firstName(
@@ -269,6 +401,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             );
 
+        // Document-Level Seller Tax Representative Party
+
         $newDocumentDTO
             ->getTaxRepresentativeParty()
             ->firstName(
@@ -288,6 +422,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getSubDivision()
                 )
             );
+
+        // Document-Level Product End-User Party
+
+        // ... nothing here, not supported
+
+        // Document-Level Ship-To Party
 
         $newDocumentDTO
             ->getShipToParty()
@@ -309,6 +449,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getSubDivision()
                 )
             );
+
+        // Document-Level Ultimate Ship-To Party
+
+        // ... nothing here, not supported
+
+        // Document-Level Ship-From Party
+
+        // ... nothing here, not supported
+
+        // Document-Level Invoicer Party
+
+        // ... nothing here, not supported
+
+        // Document-Level Invoicee Party
+
+        // ... nothing here, not supported
+
+        // Document-Level Payee Party
 
         $newDocumentDTO
             ->getPayeeParty()
@@ -356,90 +514,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 )
             );
 
-        $newDocumentDTO->firstSellerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentSellerOrderReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->firstBuyerOrderReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentBuyerOrderReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->firstQuotationReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentQuotationReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->firstContractReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentContractReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->forEachAdditionalReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentAdditionalReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate(),
-                $item->getTypeCode(),
-                $item->getReferenceTypeCode(),
-                $item->getDescription(),
-                $item->getAttachment()
-            )
-        );
-
-        $newDocumentDTO->forEachInvoiceReference(
-            fn(InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentInvoiceReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate(),
-                $item->getTypeCode()
-            )
-        );
-
-        $newDocumentDTO->firstProjectReference(
-            fn(InvoiceSuiteProjectDTO $item) => $this->setDocumentProjectReference(
-                $item->getProjectNumber(),
-                $item->getProjectName()
-            )
-        );
-
-        $newDocumentDTO->firstDespatchAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentDespatchAdviceReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->firstReceivingAdviceReference(
-            fn(InvoiceSuiteReferenceDocumentDTO $item) => $this->setDocumentReceivingAdviceReference(
-                $item->getReferenceNumber(),
-                $item->getReferenceDate()
-            )
-        );
-
-        $newDocumentDTO->firstPostingReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
-                $item->getIdType(),
-                $item->getId()
-            )
-        );
-
-        $newDocumentDTO->firstBillingPeriod(
-            fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentBillingPeriod(
-                $item->getStartDate(),
-                $item->getEndDate(),
-                $item->getDescription()
-            )
-        );
-
-        $this->setDocumentSupplyChainEvent($newDocumentDTO->getSupplyChainEvent());
+        // Document-Level Payment Means
 
         $newDocumentDTO->firstPaymentmean(
             fn(InvoiceSuitePaymentMeanDTO $item) => $this->setDocumentPaymentMean(
@@ -457,6 +532,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
         );
 
+        // Document-Level Payment Terms
+
         $newDocumentDTO->firstPaymentTerm(
             function (InvoiceSuitePaymentTermDTO $item): void {
                 $this->setDocumentPaymentTerm(
@@ -466,13 +543,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             }
         );
 
+        // Document-Level Creditor reference
+
         $newDocumentDTO->firstCreditorReference(
             fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPaymentCreditorReferenceID($item->getId())
         );
 
-        $newDocumentDTO->firstBuyerReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerReference($item->getId())
-        );
+        // Document-Level Taxes
 
         $newDocumentDTO->forEachTax(
             fn(InvoiceSuiteTaxDTO $item) => $this->addDocumentTax(
@@ -488,6 +565,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
         );
 
+        // Document-Level Allowances/Charges
+
         $newDocumentDTO->forEachAllowanceCharge(
             fn(InvoiceSuiteAllowanceChargeDTO $item) => $this->addDocumentAllowanceCharge(
                 $item->getChargeIndicator(),
@@ -502,6 +581,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
         );
 
+        // Document-Level Logistic Service Charges
+
         $newDocumentDTO->forEachServiceCharge(
             fn(InvoiceSuiteServiceChargeDTO $item) => $this->addDocumentLogisticServiceCharge(
                 $item->getAmount(),
@@ -511,6 +592,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 $item->getTaxPercent()
             )
         );
+
+        // Document-Level Summation
 
         $this->setDocumentSummation(
             $newDocumentDTO->getSummation()?->getNetAmount(),
@@ -524,6 +607,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $newDocumentDTO->getSummation()?->getPrepaidAmount(),
             $newDocumentDTO->getSummation()?->getRoungingAmount()
         );
+
+        // Positions
 
         $newDocumentDTO->forEachPosition(
             function (InvoiceSuiteDocumentPositionDTO $item): void {
@@ -585,11 +670,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     )
                 );
 
+                // Position Gross Price
+
+                // ... nothing here, not supported
+
+                // Position Net Price
+
                 $this->setDocumentPositionNetPrice(
                     $item->getNetPrice()?->getAmount(),
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantity(),
                     $item->getNetPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
+
+                // Position Quantities
 
                 $this->setDocumentPositionQuantities(
                     $item->getQuantityBilled()?->getQuantity(),
@@ -600,6 +693,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getQuantityPackage()?->getQuantityUnit()
                 );
 
+                // Position Ship-To
+
+                // ... nothing here, not supported
+
+                // Position Ultimate Ship-To
+
+                // ... nothing here, not supported
+
+                // Position supply chain event
+
+                // ... nothing here, not supported
+
+                // Position billing period
+
                 $item->firstBillingPeriod(
                     fn(InvoiceSuiteDateRangeDTO $item) => $this->setDocumentPositionBillingPeriod(
                         $item->getStartDate(),
@@ -608,12 +715,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     )
                 );
 
+                // Position posting references
+
                 $item->firstPostingReference(
                     fn(InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )
                 );
+
+                // Position taxes
 
                 $item->forEachTax(
                     fn(InvoiceSuiteTaxDTO $tax) => $this->addDocumentPositionTax(
@@ -626,6 +737,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     )
                 );
 
+                // Position allowances/charges
+
                 $item->forEachAllowanceCharge(
                     fn(InvoiceSuiteAllowanceChargeDTO $allowanceCharge) => $this->addDocumentPositionAllowanceCharge(
                         $allowanceCharge->getChargeIndicator(),
@@ -636,6 +749,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                         $allowanceCharge->getPercent()
                     )
                 );
+
+                // Position summation
 
                 $this->setDocumentPositionSummation(
                     $item->getSummation()?->getNetAmount(),
