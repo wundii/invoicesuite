@@ -1,17 +1,21 @@
 <?php
 
-use Nette\PhpGenerator\Printer;
-use Nette\PhpGenerator\ClassType;
+use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
+use horstoeko\invoicesuite\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
+use horstoeko\invoicesuite\providers\ubl\InvoiceSuiteUblInvoiceProviderReader;
+use horstoeko\invoicesuite\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderBuilder;
+use horstoeko\invoicesuite\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderReader;
+use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
+use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\stringmanagement\StringUtils;
-use phpDocumentor\Reflection\DocBlockFactory;
-use Webmozart\Assert\InvalidArgumentException;
+use Nette\PhpGenerator\ClassType;
+use Nette\PhpGenerator\Printer;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\Exception\PcreException;
-use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\contracts\InvoiceSuiteBuilderContract;
-use horstoeko\invoicesuite\providers\ubl\InvoiceSuiteUblInvoiceProviderBuilder;
-use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
+use Webmozart\Assert\InvalidArgumentException;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -662,7 +666,11 @@ BatchMarkDownGenerator::generate([
     InvoiceSuiteBuilderContract::class => dirname(__FILE__) . '/classes/Interface-InvoiceSuiteBuilderContract.md',
     InvoiceSuiteDocumentBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentBuilder.md',
     InvoiceSuiteZfFxExtendedProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxExtendedProviderBuilder.md',
+    InvoiceSuiteZfFxExtendedProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxExtendedProviderReader.md',
+    InvoiceSuiteZfFxComfortProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxComfortProviderBuilder.md',
+    InvoiceSuiteZfFxComfortProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxComfortProviderReader.md',
     InvoiceSuiteUblInvoiceProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderBuilder.md',
+    InvoiceSuiteUblInvoiceProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderReader.md',
 ], [
     //'horstoeko\\invoicesuite\\MyClass::myMethodName',
 ]);
