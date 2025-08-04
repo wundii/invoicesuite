@@ -20,7 +20,7 @@ trait HandlesCurrentFormatProvider
      *
      * @var InvoiceSuiteAbstractFormatProvider
      */
-    protected $currentInvoiceSuiteAbstractFormat;
+    protected $currentInvoiceSuiteAbstractFormatProvider;
 
     /**
      * Returns the requested format provider
@@ -29,7 +29,7 @@ trait HandlesCurrentFormatProvider
      */
     public function getCurrentFormatProvider(): InvoiceSuiteAbstractFormatProvider
     {
-        return $this->currentInvoiceSuiteAbstractFormat;
+        return $this->currentInvoiceSuiteAbstractFormatProvider;
     }
 
     /**
@@ -40,7 +40,7 @@ trait HandlesCurrentFormatProvider
      */
     public function setCurrentFormatProvider(InvoiceSuiteAbstractFormatProvider $invoiceSuiteAbstractFormatProvider): void
     {
-        $this->currentInvoiceSuiteAbstractFormat = $invoiceSuiteAbstractFormatProvider;
+        $this->currentInvoiceSuiteAbstractFormatProvider = $invoiceSuiteAbstractFormatProvider;
     }
 
     /**
@@ -50,7 +50,7 @@ trait HandlesCurrentFormatProvider
      */
     public function resolveCurrentFormatProviderParameters(): array
     {
-        return $this->currentInvoiceSuiteAbstractFormat->getParameters();
+        return $this->currentInvoiceSuiteAbstractFormatProvider->getParameters();
     }
 
     /**
