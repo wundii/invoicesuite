@@ -189,8 +189,8 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
 
         // Document-Level Posting Reference
 
-        $newDocumentDTO->forEachPostingReference(
-            fn(InvoiceSuiteIdDTO $item) => $this->addDocumentPostingReference(
+        $newDocumentDTO->firstPostingReference(
+            fn(InvoiceSuiteIdDTO $item) => $this->setDocumentPostingReference(
                 $item->getIdType(),
                 $item->getId()
             )
@@ -1096,8 +1096,8 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
                     $item->getGrossPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
 
-                $item->getGrossPrice()?->forEachAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
+                $item->getGrossPrice()?->firstAllowanceCharge(
+                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->setDocumentPositionGrossPriceAllowanceCharge(
                         $itemGrossPriceAllowanceCharge->getAmount(),
                         $itemGrossPriceAllowanceCharge->getChargeIndicator(),
                         $itemGrossPriceAllowanceCharge->getPercent(),
@@ -1252,7 +1252,7 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractFormatP
                 // Position posting references
 
                 $item->firstPostingReference(
-                    fn(InvoiceSuiteIdDTO $postingReference) => $this->addDocumentPositionPostingReference(
+                    fn(InvoiceSuiteIdDTO $postingReference) => $this->setDocumentPositionPostingReference(
                         $postingReference->getIdType(),
                         $postingReference->getId()
                     )
