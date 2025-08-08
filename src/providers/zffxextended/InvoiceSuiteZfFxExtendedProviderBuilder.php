@@ -1088,8 +1088,8 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                     $item->getGrossPrice()?->getPriceQuantity()?->getQuantityUnit()
                 );
 
-                $item->getGrossPrice()?->firstAllowanceCharge(
-                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->setDocumentPositionGrossPriceAllowanceCharge(
+                $item->getGrossPrice()?->forEachAllowanceCharge(
+                    fn(InvoiceSuiteAllowanceChargeDTO $itemGrossPriceAllowanceCharge) => $this->addDocumentPositionGrossPriceAllowanceCharge(
                         $itemGrossPriceAllowanceCharge->getAmount(),
                         $itemGrossPriceAllowanceCharge->getChargeIndicator(),
                         $itemGrossPriceAllowanceCharge->getPercent(),
