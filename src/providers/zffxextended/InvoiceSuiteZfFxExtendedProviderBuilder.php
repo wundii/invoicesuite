@@ -1072,7 +1072,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
                 );
 
                 $item->firstInvoiceReference(
-                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->addDocumentPositionInvoiceReference(
+                    fn(InvoiceSuiteReferenceDocumentLineExtDTO $item) => $this->setDocumentPositionInvoiceReference(
                         $item->getReferenceNumber(),
                         $item->getReferenceLineNumber(),
                         $item->getReferenceDate(),
