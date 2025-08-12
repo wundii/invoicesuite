@@ -70,7 +70,7 @@ class InvoiceSuiteClassFinder
      *
      * @return InvoiceSuiteClassFinder
      */
-    protected function init(): InvoiceSuiteClassFinder
+    public function init(): InvoiceSuiteClassFinder
     {
         $classMaps = array_values(ClassLoader::getRegisteredLoaders())[0]->getClassMap();
 
