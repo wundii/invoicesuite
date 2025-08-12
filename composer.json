@@ -29,12 +29,15 @@
     },
     "require": {
         "php": ">=8.0",
-        "ext-simplexml": "*",
         "doctrine/annotations": "^2.0",
+        "ext-simplexml": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.17",
         "horstoeko/mimedb": "^1",
         "horstoeko/stringmanagement": "^1",
-        "jms/serializer": "^3"
+        "jms/serializer": "^3",
+        "setasign/fpdf": "^1",
+        "setasign/fpdi": "^2",
+        "smalot/pdfparser": "^0|^2"
     },
     "require-dev": {
         "goetas-webservices/xsd2php": "^0",
