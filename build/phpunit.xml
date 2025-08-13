@@ -13,6 +13,7 @@
         </testsuite>
         <testsuite name="providers">
             <file>../tests/testcases/providers/ZfFxExtendedProviderTest.php</file>
+            <file>../tests/testcases/providers/ZfFxExtendedProviderBuilderTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
