@@ -28,7 +28,7 @@
         }
     },
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "doctrine/annotations": "^2.0",
         "ext-simplexml": "*",
         "goetas-webservices/xsd2php-runtime": "^0.2.17",
