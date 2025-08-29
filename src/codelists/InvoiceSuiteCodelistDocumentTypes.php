@@ -6594,10 +6594,6 @@ enum InvoiceSuiteCodelistDocumentTypes: string
             InvoiceSuiteCodelistDocumentTypes::COST_DATA_SUMMARY => "Cost data summary",
             InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT => "Cost performance report",
             InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "Cost Performance Report (CPR) format 1",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "Cost Performance Report (CPR) format 2",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "Cost Performance Report (CPR) format 3",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "Cost Performance Report (CPR) format 4",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "Cost Performance Report (CPR) format 5",
             InvoiceSuiteCodelistDocumentTypes::COST_SCHEDULE_STATUS_REPORT_CSSR => "Cost Schedule Status Report (CSSR)",
             InvoiceSuiteCodelistDocumentTypes::COURT_JUDGMENT => "Court judgment",
             InvoiceSuiteCodelistDocumentTypes::COVER_NOTE => "Cover note",
@@ -6665,8 +6661,6 @@ enum InvoiceSuiteCodelistDocumentTypes: string
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_ADVICE => "Despatch advice",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_POST_PARCELS => "Despatch note (post parcels)",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "Despatch note model T",
-            InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "Despatch note model T1",
-            InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "Despatch note model T2",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_TL => "Despatch note model T2L",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_ORDER => "Despatch order",
             InvoiceSuiteCodelistDocumentTypes::DIRECT_DEBIT_AUTHORISATION => "Direct debit authorisation",
@@ -7409,10 +7403,6 @@ enum InvoiceSuiteCodelistDocumentTypes: string
             InvoiceSuiteCodelistDocumentTypes::COST_DATA_SUMMARY => "A document indicating a summary of cost data.",
             InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT => "A report to convey cost performance data for a project or contract.",
             InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "A report identifying the cost performance on a contract including the current months values at specified levels of the work breakdown structure (format 1 - work breakdown structure).",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "A report identifying the cost performance on a contract at specified levels of the work breakdown structure (format 2 - organizational categories).",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "A report identifying the cost performance on a contract that summarizes changes to a contract over a given reporting period with beginning and ending values (format 3 - baseline).",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "A report identifying the cost performance on a contract including forecasts of labour requirements for the remaining portion of the contract (format 4 - staffing).",
-            InvoiceSuiteCodelistDocumentTypes::COST_PERFORMANCE_REPORT_CPR_FORMAT => "A report identifying the cost performance on a contract that summarizes cost or schedule variances (format 5 - explanations and problem analysis).",
             InvoiceSuiteCodelistDocumentTypes::COST_SCHEDULE_STATUS_REPORT_CSSR => "A report providing the status of the cost and schedule applicable to a contract.",
             InvoiceSuiteCodelistDocumentTypes::COURT_JUDGMENT => "Document specifying a judgment of a court.",
             InvoiceSuiteCodelistDocumentTypes::COVER_NOTE => "Document/message issued by an insurer (insurance broker, agent, etc.) to notify the insured that his insurance have been carried out.",
@@ -7480,8 +7470,6 @@ enum InvoiceSuiteCodelistDocumentTypes: string
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_ADVICE => "Document/message by means of which the seller or consignor informs the consignee about the despatch of goods.",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_POST_PARCELS => "Document/message which, according to Article 106 of the Agreement concerning Postal Parcels under the UPU convention, is to accompany post parcels.",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "European community transit declaration.",
-            InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "Transit declaration for goods circulating under internal community transit procedures (between European Union (EU) countries).",
-            InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_T => "Ascertainment that the declared goods were originally produced in an European Union (EU) country.",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_NOTE_MODEL_TL => "Ascertainment that the declared goods were originally produced in an European Union (EU) country. May only be used for goods that are loaded on one single means of transport in one single departure point for one single delivery point.",
             InvoiceSuiteCodelistDocumentTypes::DESPATCH_ORDER => "Document/message issued by a supplier initiating the despatch of goods to a buyer (consignee).",
             InvoiceSuiteCodelistDocumentTypes::DIRECT_DEBIT_AUTHORISATION => "Document giving the addressee the right to debit from an account of the authorizing party.",
@@ -8085,6 +8073,6 @@ enum InvoiceSuiteCodelistDocumentTypes: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }

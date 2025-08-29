@@ -2954,7 +2954,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_INFO_FOR_CONS => "Consignment information for consignee",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_INVO_INFO => "Consignment invoice information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_ROUT => "Consignment route",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_ROUT => "Consignment routing",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_TARI => "Consignment tariff",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_TRAN => "Consignment transport",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONSTRAINT => "Constraint",
@@ -3099,8 +3098,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::LONG_TERM_DEBT => "Long term debt",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_CONT => "Marital contract",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Maritime Declaration of Health",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Maritime Declaration of Health",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Maritime Declaration of Health",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARK_SECU => "Marketable securities",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARK_ACTI => "Marketing activities",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MEDI_HIST => "Medical history",
@@ -3137,7 +3134,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_INFO => "Packaging information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_MATE_INFO => "Packaging material information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_TERM_INFO => "Packaging terms information",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_INFO => "Packing/marking information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PART_INFO => "Party information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PART_INST => "Party instructions",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PASS_BAGG_INFO => "Passenger baggage information",
@@ -3203,7 +3199,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::REVI_COMM => "Review comments",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::RISK_AND_HAND_INFO => "Risk and handling information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_APPL => "Safeguard applicable",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_APPL => "Safeguard applicable",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_SUBJ => "Safeguard subject",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_INFO => "Safety information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SALES => "Sales",
@@ -3217,7 +3212,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SEMA_NOTE => "Semantic note",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_CHAR => "Service characteristic",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_REQU_COMM => "Service request comment",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_REQU_COMM => "Service requesters comment",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHAR_CLAS => "Share classifications",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHAR_INFO => "Shareholding information",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHIP_LINE_REQU => "Ship line requested",
@@ -3368,7 +3362,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_INFO_FOR_CONS => "[4070] Any remarks given for the information of the consignee.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_INVO_INFO => "Information pertaining to the invoice covering the consignment.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_ROUT => "[3050] Description of a route to be used for the transport of goods.",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_ROUT => "Information on routing of the consignment.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_TARI => "[5430] Free text specification of tariff applied to a consignment.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONS_TRAN => "[8012] Transport information for commercial purposes (generic term).",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::CONSTRAINT => "Denotes that the associated text is a constraint.",
@@ -3513,8 +3506,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::LONG_TERM_DEBT => "Description of the long term debt.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_CONT => "Details on a marital contract.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Information about Maritime Declaration of Health.",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Information about Maritime Declaration of Health.",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARI_DECL_OF_HEAL => "Information about Maritime Declaration of Health.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARK_SECU => "Description of the marketable securities.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MARK_ACTI => "Information concerning marketing activities.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::MEDI_HIST => "Historical details of a patients medical events.",
@@ -3551,7 +3542,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_INFO => "Note contains packaging information.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_MATE_INFO => "The text contains a description of the material used for packaging.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_TERM_INFO => "The text contains packaging terms information.",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::PACK_INFO => "Information regarding the packaging and/or marking of goods.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PART_INFO => "Free text information related to a party.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PART_INST => "Indicates that the segment contains instructions to be passed on to the identified party.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::PASS_BAGG_INFO => "Information related to baggage tendered by a passenger, such as odd size indication, tag.",
@@ -3617,7 +3607,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::REVI_COMM => "Comments relevant to a review.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::RISK_AND_HAND_INFO => "Information concerning risks induced by the goods and/or handling instruction.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_APPL => "Identifies safeguard applies",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_APPL => "Identifies safeguard applies",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_SUBJ => "Identifies if the goods are subject to a safeguard measure",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SAFE_INFO => "The text contains safety information.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SALES => "Description of the sales.",
@@ -3631,7 +3620,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SEMA_NOTE => "Denotes that the associated text is a semantic note.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_CHAR => "Free text description is related to a service characteristic.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_REQU_COMM => "Comment about the requested service.",
-            InvoiceSuiteCodelistTextSubjectCodeQualifiers::SERV_REQU_COMM => "Comment by the requester of a service.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHAR_CLAS => "Information about the classes or categories of shares.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHAR_INFO => "General description of shareholding.",
             InvoiceSuiteCodelistTextSubjectCodeQualifiers::SHIP_LINE_REQU => "Shipping line requested to be used for traffic between European continent and U.K. for Ireland.",
@@ -3737,6 +3725,6 @@ enum InvoiceSuiteCodelistTextSubjectCodeQualifiers: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }

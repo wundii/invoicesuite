@@ -1388,7 +1388,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::COMM_GROU => "Commodity grouping",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_BREA => "Contract breakdown",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_NUMB => "Contract number",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_NUMB => "Control number",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::COUP_NUMB => "Coupon number",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CPV_COMM_PROC_VOCA => "CPV (Common Procurement Vocabulary)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CUST_ORDE_NUMB => "Customer order number",
@@ -1442,7 +1441,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::ICPS_INTE_CLAS_FOR_PATI_SAFE => "ICPS (International Classification for Patient Safety)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IFDA_INTE_FOOD_DIST_ASSO => "IFDA (International Foodservice Distributors Association)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IFLS_INST_FRAN_DU_LIBR_SERV__DIGI_PROD_CLAS_CODE => "IFLS (Institut Francais du Libre Service) 5 digit product classification code",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::IFLS_INST_FRAN_DU_LIBR_SERV__DIGI_PROD_CLAS_CODE => "IFLS (Institut Francais du Libre Service) 9 digit product classification code",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_MAIN_HAZA_CLAS => "IMDG main hazard class",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_PACK_GROU => "IMDG packing group",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_SUBS_RISK_CLAS => "IMDG subsidiary risk class",
@@ -1474,9 +1472,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NAPC_NORT_AMER_PROD_CLAS_SYST => "NAPCS (North American Product Classification System)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE => "National drug code",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "National drug code 4-4-2 format",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "National drug code 5-3-2 format",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "National drug code 5-4-1 format",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "National drug code 5-4-2 format",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_PROD_GROU_CODE => "National product group code",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NEXT_HIGH_ASSE_NUMB => "Next higher assembly number",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NHS_NATI_HEAL_SERV_ECLA => "NHS (National Health Services) eClass",
@@ -1530,7 +1525,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UNSPSC => "UNSPSC",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE => "UPC (Universal product code)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_CONS_PACK_CODE => "UPC (Universal Product Code) Consumer package code (1-5-5)",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_CONS_PACK_CODE => "UPC (Universal Product Code) Consumer package code (1-5-5-1)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_SHIP_CONT_CODE => "UPC (Universal Product Code) Shipping container code (1-2-5-5)",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_SUFF => "UPC (Universal Product Code) suffix",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_EURO_ARTI_NUMB_SHIP_CONT_CODE => "UPC (Universal Product Code)/EAN (European article number) Shipping container code (1-2-5-5-1)",
@@ -1583,7 +1577,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::COMM_GROU => "Code for a group of articles with common characteristics (e.g. used for statistical purposes).",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_BREA => "To specify as an item, the contract breakdown.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_NUMB => "Reference number identifying a contract.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::CONT_NUMB => "To specify the control number.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::COUP_NUMB => "A number identifying a coupon.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CPV_COMM_PROC_VOCA => "Official classification system for public procurement in the European Union.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::CUST_ORDE_NUMB => "Reference number of a customers order.",
@@ -1637,7 +1630,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::ICPS_INTE_CLAS_FOR_PATI_SAFE => "A patient safety taxonomy maintained by the World Health Organisation.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IFDA_INTE_FOOD_DIST_ASSO => "International Foodservice Distributors Association (IFDA).",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IFLS_INST_FRAN_DU_LIBR_SERV__DIGI_PROD_CLAS_CODE => "5 digit code for product classification managed by the Institut Francais du Libre Service.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::IFLS_INST_FRAN_DU_LIBR_SERV__DIGI_PROD_CLAS_CODE => "9 digit code for product classification managed by the Institut Francais du Libre Service.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_MAIN_HAZA_CLAS => "Main hazard class as defined in the International Maritime Dangerous Goods (IMDG) specification.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_PACK_GROU => "Packing group as defined in the International Marititme Dangerous Goods (IMDG) specification.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::IMDG_SUBS_RISK_CLAS => "Subsidiary risk class as defined in the International Maritime Dangerous Goods (IMDG) specification.",
@@ -1669,9 +1661,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NAPC_NORT_AMER_PROD_CLAS_SYST => "Product classification system used in the North American market.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE => "A code specifying the national drug classification.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "A code identifying the product in national drug format 4-4-2.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "A code identifying the product in national drug format 5-3-2.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "A code identifying the product in national drug format 5-4-1.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_DRUG_CODE__FORM => "A code identifying the product in national drug format 5-4-2.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NATI_PROD_GROU_CODE => "National product group code. Administered by a national agency.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NEXT_HIGH_ASSE_NUMB => "A number specifying the next higher assembly or component into which the product is being incorporated.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::NHS_NATI_HEAL_SERV_ECLA => "Product and Service classification system used in United Kingdom market.",
@@ -1725,7 +1714,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UNSPSC => "The UNSPSC commodity classification system.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE => "Number assigned to a manufacturers product by the Product Code Council.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_CONS_PACK_CODE => "An 11-digit code that uniquely identifies consumer packaging of a product; does not have a check digit.",
-            InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_CONS_PACK_CODE => "A 12-digit code that uniquely identifies the consumer packaging of a product, including a check digit.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_SHIP_CONT_CODE => "A 13-digit code that uniquely identifies the manufacturers shipping unit, including the packaging indicator.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_SUFF => "A suffix used in conjunction with a higher level UPC (Universal product code) to define packing variations for a product.",
             InvoiceSuiteCodelistItemTypeIdentificationCodes::UPC_UNIV_PROD_CODE_EURO_ARTI_NUMB_SHIP_CONT_CODE => "A 14-digit code that uniquely identifies the manufacturers shipping unit, including the packaging indicator and the check digit.",
@@ -1774,6 +1762,6 @@ enum InvoiceSuiteCodelistItemTypeIdentificationCodes: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }

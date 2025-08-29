@@ -1300,7 +1300,6 @@ enum InvoiceSuiteCodelistCurrencyCodes: string
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_COMPOSITE_UNIT_EURCO => "Bond Markets Unit European Composite Unit (EURCO)",
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_MONETARY_UNIT_EMU => "Bond Markets Unit European Monetary Unit (E.M.U.-6)",
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_UNIT_OF_ACCOUNT__EUA => "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)",
-            InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_UNIT_OF_ACCOUNT__EUA => "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)",
             InvoiceSuiteCodelistCurrencyCodes::BRAZILIAN_REAL => "Brazilian Real",
             InvoiceSuiteCodelistCurrencyCodes::BRUNEI_DOLLAR => "Brunei Dollar",
             InvoiceSuiteCodelistCurrencyCodes::BULGARIAN_LEV => "Bulgarian Lev",
@@ -1492,7 +1491,6 @@ enum InvoiceSuiteCodelistCurrencyCodes: string
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_COMPOSITE_UNIT_EURCO => "Bond Markets Unit European Composite Unit (EURCO)",
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_MONETARY_UNIT_EMU => "Bond Markets Unit European Monetary Unit (E.M.U.-6)",
             InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_UNIT_OF_ACCOUNT__EUA => "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)",
-            InvoiceSuiteCodelistCurrencyCodes::BOND_MARKETS_UNIT_EUROPEAN_UNIT_OF_ACCOUNT__EUA => "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)",
             InvoiceSuiteCodelistCurrencyCodes::BRAZILIAN_REAL => "Brazilian Real",
             InvoiceSuiteCodelistCurrencyCodes::BRUNEI_DOLLAR => "Brunei Dollar",
             InvoiceSuiteCodelistCurrencyCodes::BULGARIAN_LEV => "Bulgarian Lev",
@@ -1687,6 +1685,6 @@ enum InvoiceSuiteCodelistCurrencyCodes: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }

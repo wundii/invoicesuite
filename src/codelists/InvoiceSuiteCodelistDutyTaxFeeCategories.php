@@ -274,6 +274,6 @@ enum InvoiceSuiteCodelistDutyTaxFeeCategories: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }

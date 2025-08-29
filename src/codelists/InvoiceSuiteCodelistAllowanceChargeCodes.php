@@ -2291,7 +2291,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
             InvoiceSuiteCodelistAllowanceChargeCodes::PENA_FOR_LATE_DELI_OF_VALU_OF_WORK => "Penalty for late delivery of valuation of works",
             InvoiceSuiteCodelistAllowanceChargeCodes::PHON_FEE => "Phone fee",
             InvoiceSuiteCodelistAllowanceChargeCodes::PLAT_SURC => "Platinum surcharge",
-            InvoiceSuiteCodelistAllowanceChargeCodes::POIN_OF_SALE_THRE_ALLO => "Point of sales threshold allowance",
             InvoiceSuiteCodelistAllowanceChargeCodes::POST_FEE => "Postage fee",
             InvoiceSuiteCodelistAllowanceChargeCodes::PREA_COMM => "Pre-advice commission",
             InvoiceSuiteCodelistAllowanceChargeCodes::PRIC_INDE_SURC => "Price index surcharge",
@@ -2300,7 +2299,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
             InvoiceSuiteCodelistAllowanceChargeCodes::PROJ_MANA_COST => "Project management cost",
             InvoiceSuiteCodelistAllowanceChargeCodes::REIM_COMM => "Reimbursement commission",
             InvoiceSuiteCodelistAllowanceChargeCodes::REPA_CHAR => "Repair charge",
-            InvoiceSuiteCodelistAllowanceChargeCodes::REPA_CHAR => "Repatriation charges",
             InvoiceSuiteCodelistAllowanceChargeCodes::RETU_COMM => "Return commission",
             InvoiceSuiteCodelistAllowanceChargeCodes::RISK_COMM => "Risk commission",
             InvoiceSuiteCodelistAllowanceChargeCodes::RUSH_DELI_SURC => "Rush delivery surcharge",
@@ -2586,7 +2584,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
             InvoiceSuiteCodelistAllowanceChargeCodes::PENA_FOR_LATE_DELI_OF_VALU_OF_WORK => "Penalty imposed when valuation of works is delivered late.",
             InvoiceSuiteCodelistAllowanceChargeCodes::PHON_FEE => "Fee for use of phone.",
             InvoiceSuiteCodelistAllowanceChargeCodes::PLAT_SURC => "Difference between current price and basic value contained in product price in relation to platinum content.",
-            InvoiceSuiteCodelistAllowanceChargeCodes::POIN_OF_SALE_THRE_ALLO => "Allowance for reaching or exceeding an agreed sales threshold at the point of sales.",
             InvoiceSuiteCodelistAllowanceChargeCodes::POST_FEE => "Fee for postage.",
             InvoiceSuiteCodelistAllowanceChargeCodes::PREA_COMM => "Fee for the pre-advice of a documentary credit.",
             InvoiceSuiteCodelistAllowanceChargeCodes::PRIC_INDE_SURC => "Higher/lower price, resulting from change in costs between the times of making offer and delivery.",
@@ -2595,7 +2592,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
             InvoiceSuiteCodelistAllowanceChargeCodes::PROJ_MANA_COST => "Cost for project management.",
             InvoiceSuiteCodelistAllowanceChargeCodes::REIM_COMM => "Fee for reimbursement of, for example, documentary credits.",
             InvoiceSuiteCodelistAllowanceChargeCodes::REPA_CHAR => "Charge for repair.",
-            InvoiceSuiteCodelistAllowanceChargeCodes::REPA_CHAR => "Charges for repatriation.",
             InvoiceSuiteCodelistAllowanceChargeCodes::RETU_COMM => "Fee for cheques, bills and collections returned unpaid and/or recalled.",
             InvoiceSuiteCodelistAllowanceChargeCodes::RISK_COMM => "Commission in addition to the confirmation commission for documentary credits from sensitive countries.",
             InvoiceSuiteCodelistAllowanceChargeCodes::RUSH_DELI_SURC => "Charge for increased delivery speed.",
@@ -2659,6 +2655,6 @@ enum InvoiceSuiteCodelistAllowanceChargeCodes: string
      */
     final public static function getCreatedAt(): string
     {
-        return '2025-08-13T11:28:03+02:00';
+        return '2025-08-29T14:18:05+02:00';
     }
 }
