@@ -2548,7 +2548,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -2578,7 +2578,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3021,7 +3021,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function setDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3051,7 +3051,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3498,7 +3498,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3528,7 +3528,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function addDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -4251,7 +4251,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function setDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -4281,7 +4281,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5832,23 +5832,18 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $payeeUniversalCommunication = $this->getCrossIndustryRootObject()
+        $this->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getPayeeTradePartyWithCreate()
-            ->getURIUniversalCommunicationWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $payeeUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $payeeUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
-        }
+            ->getURIUniversalCommunicationWithCreate()
+            ->getURIIDWithCreate()
+            ->setValue($newUri)
+            ->setSchemeID($newType);
 
         return $this;
     }
@@ -5862,7 +5857,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
      */
     public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 

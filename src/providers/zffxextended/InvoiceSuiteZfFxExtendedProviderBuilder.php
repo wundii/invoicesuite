@@ -2904,23 +2904,18 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $sellerUniversalCommunication = $this->getCrossIndustryRootObject()
+        $this->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate()
-            ->getURIUniversalCommunicationWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $sellerUniversalCommunication->getURIIDWithCreate()->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $sellerUniversalCommunication->getURIIDWithCreate()->setValue($newUri);
-        }
+            ->getURIUniversalCommunicationWithCreate()
+            ->getURIIDWithCreate()
+            ->setValue($newUri)
+            ->setSchemeID($newType);
 
         return $this;
     }
@@ -2934,7 +2929,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3431,7 +3426,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3461,7 +3456,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3962,7 +3957,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3992,7 +3987,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -4493,7 +4488,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -4523,7 +4518,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5020,7 +5015,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5050,7 +5045,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5551,7 +5546,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5581,7 +5576,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -6078,7 +6073,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -6108,7 +6103,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -6605,7 +6600,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -6635,7 +6630,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -7132,7 +7127,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -7162,7 +7157,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -7659,7 +7654,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -7689,7 +7684,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
      */
     public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -10992,7 +10987,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newType = null,
         ?string $newUri = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -11030,7 +11025,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newType = null,
         ?string $newUri = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -11548,7 +11543,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newType = null,
         ?string $newUri = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -11586,7 +11581,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
         ?string $newType = null,
         ?string $newUri = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
