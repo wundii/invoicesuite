@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxbasicwl\udt\DateTimeType;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class DateTimeStringAType
 {
@@ -45,7 +46,7 @@ class DateTimeStringAType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }
@@ -64,7 +65,7 @@ class DateTimeStringAType
      */
     public function setFormat(?string $format = null): self
     {
-        $this->format = $format;
+        $this->format = InvoiceSuiteStringUtils::asNullWhenEmpty($format);
 
         return $this;
     }

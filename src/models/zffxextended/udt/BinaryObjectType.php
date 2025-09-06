@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxextended\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class BinaryObjectType
 {
@@ -56,7 +57,7 @@ class BinaryObjectType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }
@@ -75,7 +76,7 @@ class BinaryObjectType
      */
     public function setMimeCode(?string $mimeCode = null): self
     {
-        $this->mimeCode = $mimeCode;
+        $this->mimeCode = InvoiceSuiteStringUtils::asNullWhenEmpty($mimeCode);
 
         return $this;
     }
@@ -94,7 +95,7 @@ class BinaryObjectType
      */
     public function setFilename(?string $filename = null): self
     {
-        $this->filename = $filename;
+        $this->filename = InvoiceSuiteStringUtils::asNullWhenEmpty($filename);
 
         return $this;
     }

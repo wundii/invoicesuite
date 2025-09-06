@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxextended\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class MeasureType
 {
@@ -64,7 +65,7 @@ class MeasureType
      */
     public function setUnitCode(?string $unitCode = null): self
     {
-        $this->unitCode = $unitCode;
+        $this->unitCode = InvoiceSuiteStringUtils::asNullWhenEmpty($unitCode);
 
         return $this;
     }

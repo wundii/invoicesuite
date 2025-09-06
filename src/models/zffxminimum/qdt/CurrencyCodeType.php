@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxminimum\qdt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class CurrencyCodeType
 {
@@ -34,7 +35,7 @@ class CurrencyCodeType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }

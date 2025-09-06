@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxextended\qdt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class ContactTypeCodeType
 {
@@ -34,7 +35,7 @@ class ContactTypeCodeType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }

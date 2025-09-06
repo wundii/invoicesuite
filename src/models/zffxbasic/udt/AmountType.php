@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxbasic\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class AmountType
 {
@@ -64,7 +65,7 @@ class AmountType
      */
     public function setCurrencyID(?string $currencyID = null): self
     {
-        $this->currencyID = $currencyID;
+        $this->currencyID = InvoiceSuiteStringUtils::asNullWhenEmpty($currencyID);
 
         return $this;
     }

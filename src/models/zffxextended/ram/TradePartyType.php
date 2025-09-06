@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxextended\ram;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\models\zffxextended\udt\IDType;
 use horstoeko\invoicesuite\models\zffxextended\udt\TextType;
 
@@ -330,7 +331,7 @@ class TradePartyType
      */
     public function setRoleCode(?string $roleCode = null): self
     {
-        $this->roleCode = $roleCode;
+        $this->roleCode = InvoiceSuiteStringUtils::asNullWhenEmpty($roleCode);
 
         return $this;
     }

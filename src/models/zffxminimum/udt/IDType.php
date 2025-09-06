@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxminimum\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class IDType
 {
@@ -45,7 +46,7 @@ class IDType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }
@@ -64,7 +65,7 @@ class IDType
      */
     public function setSchemeID(?string $schemeID = null): self
     {
-        $this->schemeID = $schemeID;
+        $this->schemeID = InvoiceSuiteStringUtils::asNullWhenEmpty($schemeID);
 
         return $this;
     }

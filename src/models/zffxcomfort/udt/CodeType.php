@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\models\zffxcomfort\udt;
 
 use JMS\Serializer\Annotation as JMS;
 use horstoeko\invoicesuite\concerns\HandlesObjectFlags;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class CodeType
 {
@@ -56,7 +57,7 @@ class CodeType
      */
     public function setValue(?string $value = null): self
     {
-        $this->value = $value;
+        $this->value = InvoiceSuiteStringUtils::asNullWhenEmpty($value);
 
         return $this;
     }
@@ -75,7 +76,7 @@ class CodeType
      */
     public function setListID(?string $listID = null): self
     {
-        $this->listID = $listID;
+        $this->listID = InvoiceSuiteStringUtils::asNullWhenEmpty($listID);
 
         return $this;
     }
@@ -94,7 +95,7 @@ class CodeType
      */
     public function setListVersionID(?string $listVersionID = null): self
     {
-        $this->listVersionID = $listVersionID;
+        $this->listVersionID = InvoiceSuiteStringUtils::asNullWhenEmpty($listVersionID);
 
         return $this;
     }
