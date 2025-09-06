@@ -1828,7 +1828,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -1861,7 +1861,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -1889,7 +1889,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -1915,7 +1915,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -2202,23 +2202,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $endpointId = $this
+        $this
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierPartyWithCreate()
             ->getPartyWithCreate()
-            ->getEndpointIDWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $endpointId->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $endpointId->setValue($newUri);
-        }
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -2232,7 +2226,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentSellerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -2355,7 +2349,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -2393,7 +2387,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -2421,7 +2415,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -2447,7 +2441,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -2735,23 +2729,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $endpointId = $this
+        $this
             ->getUblInvoiceRootObject()
             ->getAccountingCustomerPartyWithCreate()
             ->getPartyWithCreate()
-            ->getEndpointIDWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $endpointId->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $endpointId->setValue($newUri);
-        }
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -2765,7 +2753,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentBuyerCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -2886,7 +2874,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -2919,7 +2907,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -2946,7 +2934,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -2971,7 +2959,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -3253,22 +3241,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $endpointId = $this
+        $this
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativePartyWithCreate()
-            ->getEndpointIDWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $endpointId->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $endpointId->setValue($newUri);
-        }
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -3282,7 +3264,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -3631,7 +3613,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -3655,7 +3637,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -4989,7 +4971,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -5020,7 +5002,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
 
@@ -5047,7 +5029,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -5072,7 +5054,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
 
@@ -5345,22 +5327,16 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
-        $endpointId = $this
+        $this
             ->getUblInvoiceRootObject()
             ->getPayeePartyWithCreate()
-            ->getEndpointIDWithCreate();
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType])) {
-            $endpointId->setSchemeID($newType);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newUri])) {
-            $endpointId->setValue($newUri);
-        }
+            ->getEndpointIDWithCreate()
+            ->setSchemeID($newType)
+            ->setValue($newUri);
 
         return $this;
     }
@@ -5374,7 +5350,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newUri])) {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
 
@@ -5480,7 +5456,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $paymentMean->getPaymentMeansCodeWithCreate()->setName($newName);
         }
 
-        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId, $newFinancialCardHolder])) {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
             $paymentMean
                 ->getCardAccountWithCreate()
                 ->getPrimaryAccountNumberIDWithCreate()
@@ -5491,10 +5467,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 ->getNetworkIDWithCreate()
                 ->setValue('mapped-from-cii');
 
-            $paymentMean
-                ->getCardAccountWithCreate()
-                ->getHolderNameWithCreate()
-                ->setValue($newFinancialCardHolder);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId, $newFinancialCardHolder])) {
+                $paymentMean
+                    ->getCardAccountWithCreate()
+                    ->getHolderNameWithCreate()
+                    ->setValue($newFinancialCardHolder);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban])) {
@@ -5505,22 +5483,26 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                 ->setValue($newBuyerIban);
         }
 
-        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban, $newPayeeAccountName, $newPayeeProprietaryId, $newPayeeBic])) {
+        if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
             $paymentMean
                 ->getPayeeFinancialAccountWithCreate()
                 ->getIDWithCreate()
                 ->setValue($newPayeeIban);
 
-            $paymentMean
-                ->getPayeeFinancialAccountWithCreate()
-                ->getNameWithCreate()
-                ->setValue($newPayeeAccountName);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeAccountName])) {
+                $paymentMean
+                    ->getPayeeFinancialAccountWithCreate()
+                    ->getNameWithCreate()
+                    ->setValue($newPayeeAccountName);
+            }
 
-            $paymentMean
-                ->getPayeeFinancialAccountWithCreate()
-                ->getFinancialInstitutionBranchWithCreate()
-                ->getIDWithCreate()
-                ->setValue($newPayeeBic);
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeBic])) {
+                $paymentMean
+                    ->getPayeeFinancialAccountWithCreate()
+                    ->getFinancialInstitutionBranchWithCreate()
+                    ->getIDWithCreate()
+                    ->setValue($newPayeeBic);
+            }
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPaymentReference])) {
