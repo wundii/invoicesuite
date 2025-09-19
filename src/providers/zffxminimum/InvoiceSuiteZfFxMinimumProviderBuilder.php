@@ -1604,7 +1604,13 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -2158,7 +2164,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $sellerTradeParty = $this->getCrossIndustryRootObject()
+        $sellerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
@@ -2242,7 +2249,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $sellerTradeParty = $this->getCrossIndustryRootObject()
+        $sellerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
@@ -2557,7 +2565,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $buyerTradeParty = $this->getCrossIndustryRootObject()
+        $buyerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate();
@@ -2641,7 +2650,8 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractFormatP
             return $this;
         }
 
-        $buyerTradeParty = $this->getCrossIndustryRootObject()
+        $buyerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate();

@@ -1745,7 +1745,13 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -1833,7 +1839,13 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -2448,7 +2460,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $sellerTradeParty = $this->getCrossIndustryRootObject()
+        $sellerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
@@ -2556,7 +2569,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $sellerTradeParty = $this->getCrossIndustryRootObject()
+        $sellerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate();
@@ -2661,7 +2675,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $this->getCrossIndustryRootObject()
+        $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTradePartyWithCreate()
@@ -2944,7 +2959,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $buyerTradeParty = $this->getCrossIndustryRootObject()
+        $buyerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate();
@@ -3052,7 +3068,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $buyerTradeParty = $this->getCrossIndustryRootObject()
+        $buyerTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate();
@@ -3157,7 +3174,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $buyerUniversalCommunication = $this->getCrossIndustryRootObject()
+        $buyerUniversalCommunication = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerTradePartyWithCreate()
@@ -3449,7 +3467,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $taxRepresentativeTradeParty = $this->getCrossIndustryRootObject()
+        $taxRepresentativeTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTaxRepresentativeTradePartyWithCreate();
@@ -3557,7 +3576,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $taxRepresentativeTradeParty = $this->getCrossIndustryRootObject()
+        $taxRepresentativeTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTaxRepresentativeTradePartyWithCreate();
@@ -3662,7 +3682,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $taxRepresentativeUniversalCommunication = $this->getCrossIndustryRootObject()
+        $taxRepresentativeUniversalCommunication = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
             ->getSellerTaxRepresentativeTradePartyWithCreate()
@@ -4230,7 +4251,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $shipToTradeParty = $this->getCrossIndustryRootObject()
+        $shipToTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getShipToTradePartyWithCreate();
@@ -4338,7 +4360,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $shipToTradeParty = $this->getCrossIndustryRootObject()
+        $shipToTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getShipToTradePartyWithCreate();
@@ -4443,7 +4466,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $shipToUniversalCommunication = $this->getCrossIndustryRootObject()
+        $shipToUniversalCommunication = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeDeliveryWithCreate()
             ->getShipToTradePartyWithCreate()
@@ -5839,7 +5863,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $payeeTradeParty = $this->getCrossIndustryRootObject()
+        $payeeTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getPayeeTradePartyWithCreate();
@@ -5947,7 +5972,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $payeeTradeParty = $this->getCrossIndustryRootObject()
+        $payeeTradeParty = $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getPayeeTradePartyWithCreate();
@@ -6052,7 +6078,8 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $this->getCrossIndustryRootObject()
+        $this
+            ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeSettlementWithCreate()
             ->getPayeeTradePartyWithCreate()
