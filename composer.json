@@ -57,6 +57,7 @@
         ],
         "tests": "./vendor/bin/phpunit ./tests/",
         "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
+        "testsrealquick": "./vendor/bin/phpunit --configuration ./build/phpunitquick.xml",
         "phpcs": "@phpcs12",
         "phpcs12": [
             "Composer\\Config::disableProcessTimeout",
