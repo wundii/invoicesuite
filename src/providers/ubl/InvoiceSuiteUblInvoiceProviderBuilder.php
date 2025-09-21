@@ -421,6 +421,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getCountry(),
                     $item->getSubDivision()
                 )
+            )
+            ?->firstLegalOrganisation(
+                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentTaxRepresentativeLegalOrganisation(
+                    $item->getIdType(),
+                    $item->getId(),
+                    $item->getName()
+                )
             );
 
         // Document-Level Product End-User Party
@@ -1008,7 +1015,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     ): self {
         $this->getUblInvoiceRootObject()->unsetInvoicePeriod();
 
-        if (is_null($newStartDate) && is_null($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
             return $this;
         }
 
@@ -1034,7 +1041,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null,
     ): self {
-        if (is_null($newStartDate) && is_null($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
             return $this;
         }
 
@@ -1140,7 +1147,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -1167,10 +1180,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getOrderReferenceWithCreate();
 
         $orderReference->getIDWithCreate()->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $orderReference->setIssueDate($newReferenceDate);
-        }
+        $orderReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1186,7 +1196,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -1200,10 +1216,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
-            return $this;
-        }
-
         $additionalDocTypeCode = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCTYPECODE', '');
         $additionalDocDescription = $this->getCurrentFormatProviderParameterValue('BUILDER_QUOTATION_DOCDESCRIPTION', '');
 
@@ -1219,6 +1231,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);
 
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
         $additionalDocReference = $this->getUblInvoiceRootObject()->addToAdditionalDocumentReferenceWithCreate();
 
         $additionalDocReference->getIDWithCreate()->setValue($newReferenceNumber);
@@ -1231,9 +1247,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $additionalDocReference->addOnceToDocumentDescriptionWithCreate()->setValue($additionalDocDescription);
         }
 
-        if (!is_null($newReferenceDate)) {
-            $additionalDocReference->setIssueDate($newReferenceDate);
-        }
+        $additionalDocReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1249,7 +1263,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        return $this->setDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newReferenceNumber])) {
+            return $this;
+        }
+
+        $this->setDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -1271,7 +1291,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        return $this->addDocumentContractReference($newReferenceNumber, $newReferenceDate);
+        $this->addDocumentContractReference($newReferenceNumber, $newReferenceDate);
+
+        return $this;
     }
 
     /**
@@ -1294,10 +1316,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->addToContractDocumentReferenceWithCreate();
 
         $contractReference->getIDWithCreate()->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $contractReference->setIssueDate($newReferenceDate);
-        }
+        $contractReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1368,14 +1387,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->addToAdditionalDocumentReferenceWithCreate();
 
-        $additionalReference
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $additionalReference
-                ->setIssueDate($newReferenceDate);
-        }
+        $additionalReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $additionalReference->setIssueDate($newReferenceDate);
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
             $additionalReference
@@ -1464,14 +1477,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->addToBillingReferenceWithCreate()
             ->getInvoiceDocumentReferenceWithCreate();
 
-        $invoiceReference
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $invoiceReference
-                ->setIssueDate($newReferenceDate);
-        }
+        $invoiceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $invoiceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1511,11 +1518,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $projectReference = $this
+        $this
             ->getUblInvoiceRootObject()
-            ->addToProjectReferenceWithCreate();
-
-        $projectReference
+            ->addToProjectReferenceWithCreate()
             ->getIDWithCreate()
             ->setValue($newReferenceNumber);
 
@@ -1605,13 +1610,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->addToDespatchDocumentReferenceWithCreate();
 
-        $despatchAdviceReference
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $despatchAdviceReference->setIssueDate($newReferenceDate);
-        }
+        $despatchAdviceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $despatchAdviceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1659,13 +1659,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->addToReceiptDocumentReferenceWithCreate();
 
-        $receivingAdviceReference
-            ->getIDWithCreate()
-            ->setValue($newReferenceNumber);
-
-        if (!is_null($newReferenceDate)) {
-            $receivingAdviceReference->setIssueDate($newReferenceDate);
-        }
+        $receivingAdviceReference->getIDWithCreate()->setValue($newReferenceNumber);
+        $receivingAdviceReference->setIssueDate($newReferenceDate);
 
         return $this;
     }
@@ -1681,9 +1676,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
-            return $this;
-        }
+        // Nothing here...
 
         return $this;
     }
@@ -1699,9 +1692,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
-            return $this;
-        }
+        // Nothing here...
 
         return $this;
     }
@@ -1810,10 +1801,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentSellerId(
         ?string $newId = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierPartyWithCreate()
@@ -1828,6 +1815,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
 
         $this->addDocumentSellerId($newId);
 
@@ -1868,10 +1859,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentSellerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierPartyWithCreate()
@@ -1886,6 +1873,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
 
         $this->addDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -2255,7 +2246,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
-        return $this->setDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
     }
 
     /**
@@ -2364,29 +2369,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentBuyerId(
         ?string $newId = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->setPartyIdentification(
+            ->getAccountingCustomerParty()
+            ?->getParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getAccountingCustomerPartyWithCreate()
-                        ->getPartyWithCreate()
-                        ->getPartyIdentification() ?? [],
+                        ->getAccountingCustomerParty()
+                        ?->getPartyWithCreate()
+                        ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
 
-        $this
-            ->getUblInvoiceRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate();
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
 
         $this->addDocumentBuyerId($newId);
 
@@ -2427,29 +2427,24 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentBuyerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate()
-            ->setPartyIdentification(
+            ->getAccountingCustomerParty()
+            ?->getParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getAccountingCustomerPartyWithCreate()
-                        ->getPartyWithCreate()
-                        ->getPartyIdentification() ?? [],
+                        ->getAccountingCustomerParty()
+                        ?->getParty()
+                        ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
 
-        $this
-            ->getUblInvoiceRootObject()
-            ->getAccountingCustomerPartyWithCreate()
-            ->getPartyWithCreate();
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
 
         $this->addDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -2537,7 +2532,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getTaxSchemeWithCreate()
             ->getIDWithCreate()
             ->setValue($newTaxRegistrationType);
-
 
         return $this;
     }
@@ -2820,7 +2814,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
-        return $this->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
     }
 
     /**
@@ -2880,6 +2888,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentTaxRepresentativeName(
         ?string $newName = null
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetPartyName();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -2887,9 +2900,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $this
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativePartyWithCreate()
-            ->clearPartyName();
-
-        $this->addDocumentTaxRepresentativeName($newName);
+            ->addToPartyNameWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
 
         return $this;
     }
@@ -2907,12 +2920,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $this
-            ->getUblInvoiceRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->addToPartyNameWithCreate()
-            ->getNameWithCreate()
-            ->setValue($newName);
+        $this->setDocumentTaxRepresentativeName($newName);
 
         return $this;
     }
@@ -2926,22 +2934,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentTaxRepresentativeId(
         ?string $newId = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->setPartyIdentification(
+            ->getTaxRepresentativeParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getTaxRepresentativePartyWithCreate()
-                        ->getPartyIdentification() ?? [],
+                        ->getTaxRepresentativeParty()
+                        ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
 
         $this->addDocumentTaxRepresentativeId($newId);
 
@@ -2983,22 +2991,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->setPartyIdentification(
+            ->getTaxRepresentativeParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getTaxRepresentativePartyWithCreate()
-                        ->getPartyIdentification() ?? [],
+                        ->getTaxRepresentativeParty()
+                        ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
 
         $this->addDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -3043,14 +3051,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetPartyTaxScheme();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->getTaxRepresentativePartyWithCreate()
-            ->clearPartyTaxScheme();
 
         $this->addDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -3110,6 +3118,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetPostalAddress();
+
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -3217,6 +3230,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->getPartyLegalEntity()[0]
+            ?->unsetCompanyID();
+
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetPartyName();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
