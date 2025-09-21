@@ -16,6 +16,8 @@
             <file>../tests/testcases/providers/ZfFxExtendedProviderBuilderTest.php</file>
             <file>../tests/testcases/providers/ZfFxComfortProviderTest.php</file>
             <file>../tests/testcases/providers/ZfFxComfortProviderBuilderTest.php</file>
+            <file>../tests/testcases/providers/ZfFxBasicProviderTest.php</file>
+            <file>../tests/testcases/providers/ZfFxBasicProviderBuilderTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -6233,10 +6233,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -6266,10 +6262,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             newPayeeIban: $newPayeeIban,
@@ -6299,10 +6291,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -6332,10 +6320,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeIban])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             newPayeeIban: $newPayeeIban,
@@ -6359,10 +6343,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
@@ -6383,10 +6363,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
             newBuyerIban: $newBuyerIban,
@@ -6407,10 +6383,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
@@ -6431,10 +6403,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newBuyerIban = null,
         ?string $newMandate = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newBuyerIban, $newMandate])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
             newBuyerIban: $newBuyerIban,
@@ -6455,10 +6423,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
-            return $this;
-        }
-
         $this->setDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
@@ -6479,10 +6443,6 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractFormatP
         ?string $newFinancialCardId = null,
         ?string $newFinancialCardHolder = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
-            return $this;
-        }
-
         $this->addDocumentPaymentMean(
             newTypeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             newFinancialCardId: $newFinancialCardId,
