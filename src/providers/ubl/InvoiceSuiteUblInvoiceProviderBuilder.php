@@ -6836,11 +6836,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $position = $this
+        $this
             ->getUblInvoiceRootObject()
-            ->addToInvoiceLineWithCreate();
-
-        $position->getIDWithCreate()->setValue($newPositionId);
+            ->addToInvoiceLineWithCreate()
+            ->getIDWithCreate()
+            ->setValue($newPositionId);
 
         return $this;
     }
