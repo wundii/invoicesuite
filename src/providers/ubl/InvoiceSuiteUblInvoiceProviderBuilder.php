@@ -421,13 +421,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $item->getCountry(),
                     $item->getSubDivision()
                 )
-            )
-            ?->firstLegalOrganisation(
-                fn(InvoiceSuiteOrganisationDTO $item) => $this->setDocumentTaxRepresentativeLegalOrganisation(
-                    $item->getIdType(),
-                    $item->getId(),
-                    $item->getName()
-                )
             );
 
         // Document-Level Product End-User Party
@@ -1756,7 +1749,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierParty()
             ?->getParty()
-            ?->getPartyLegalEntity()[0]
+            ?->firstPartyLegalEntity()
             ?->unsetRegistrationName();
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
@@ -2107,7 +2100,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getAccountingSupplierParty()
             ?->getParty()
-            ?->getPartyLegalEntity()[0]
+            ?->firstPartyLegalEntity()
             ?->unsetCompanyID();
 
         $this
@@ -2324,7 +2317,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->getPartyLegalEntity()[0]
+            ?->firstPartyLegalEntity()
             ?->unsetRegistrationName();
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
@@ -2436,7 +2429,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $this
                         ->getUblInvoiceRootObject()
                         ->getAccountingCustomerParty()
-                        ?->getParty()
+                        ->getParty()
                         ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
@@ -2675,7 +2668,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             ->getUblInvoiceRootObject()
             ->getAccountingCustomerParty()
             ?->getParty()
-            ?->getPartyLegalEntity()[0]
+            ?->firstPartyLegalEntity()
             ?->unsetCompanyID();
 
         $this
@@ -2942,7 +2935,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $this
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativeParty()
-                        ?->getPartyIdentification() ?? [],
+                        ->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
@@ -2999,7 +2992,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
                     $this
                         ->getUblInvoiceRootObject()
                         ->getTaxRepresentativeParty()
-                        ?->getPartyIdentification() ?? [],
+                        ->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
@@ -3233,13 +3226,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         $this
             ->getUblInvoiceRootObject()
             ->getTaxRepresentativeParty()
-            ?->getPartyLegalEntity()[0]
-            ?->unsetCompanyID();
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->getTaxRepresentativeParty()
-            ?->unsetPartyName();
+            ?->firstPartyLegalEntity()
+            ?->unsetCompanyID()
+            ?->unsetRegistrationName();
 
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
@@ -3258,8 +3247,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             $this
                 ->getUblInvoiceRootObject()
                 ->getTaxRepresentativePartyWithCreate()
-                ->addOnceToPartyNameWithCreate()
-                ->getNameWithCreate()
+                ->addOnceToPartyLegalEntityWithCreate()
+                ->getRegistrationNameWithCreate()
                 ->setValue($newName);
         }
 
@@ -3305,6 +3294,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetContact();
+
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -3362,7 +3356,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
-        return $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
     }
 
     /**
@@ -3374,6 +3382,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentTaxRepresentativeCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getTaxRepresentativeParty()
+            ?->unsetEndpointID();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -3415,6 +3428,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentProductEndUserName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3427,6 +3442,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentProductEndUserName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3439,6 +3456,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentProductEndUserId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3451,6 +3470,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentProductEndUserId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3465,6 +3486,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3479,6 +3502,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3493,6 +3518,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3507,6 +3534,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3531,6 +3560,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3555,6 +3586,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3571,6 +3604,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3587,6 +3622,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3607,6 +3644,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3627,6 +3666,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3639,6 +3680,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3651,6 +3694,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentProductEndUserCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3663,6 +3708,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentShipToName(
         ?string $newName = null
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->firstDelivery()
+            ?->getDeliveryParty()
+            ?->unsetPartyName();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -3705,6 +3756,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentShipToId(
         ?string $newId = null
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->firstDelivery()
+            ?->getDeliveryLocation()
+            ?->unsetID();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
             return $this;
         }
@@ -3746,6 +3803,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentShipToGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        $this
+            ->getUblInvoiceRootObject()
+            ->firstDelivery()
+            ?->getDeliveryLocation()
+            ?->unsetID();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
             return $this;
         }
@@ -3790,6 +3853,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3804,6 +3869,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3828,6 +3895,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->firstDelivery()
+            ?->getDeliveryLocation()
+            ?->unsetAddress();
+
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -3936,6 +4009,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3952,6 +4027,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3972,6 +4049,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -3992,6 +4071,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4004,6 +4085,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4016,6 +4099,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4028,6 +4113,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentUltimateShipToName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4040,6 +4127,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentUltimateShipToName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4052,6 +4141,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentUltimateShipToId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4064,6 +4155,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentUltimateShipToId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4078,6 +4171,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4092,6 +4187,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4106,6 +4203,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4120,6 +4219,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4144,6 +4245,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4168,6 +4271,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4184,6 +4289,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4200,6 +4307,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4220,6 +4329,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4240,6 +4351,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4252,6 +4365,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4264,6 +4379,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentUltimateShipToCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4276,6 +4393,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentShipFromName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4288,6 +4407,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentShipFromName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4300,6 +4421,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentShipFromId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4312,6 +4435,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentShipFromId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4324,6 +4449,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4336,6 +4463,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentShipFromGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4350,6 +4479,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4364,6 +4495,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4388,6 +4521,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4412,6 +4547,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4428,6 +4565,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4444,6 +4583,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4464,6 +4605,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4484,6 +4627,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4496,6 +4641,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4508,6 +4655,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentShipFromCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4520,6 +4669,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentInvoicerName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4532,6 +4683,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentInvoicerName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4544,6 +4697,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentInvoicerId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4556,6 +4711,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentInvoicerId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4568,6 +4725,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4580,6 +4739,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentInvoicerGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4594,6 +4755,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4608,6 +4771,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4632,6 +4797,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4656,6 +4823,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4672,6 +4841,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4688,6 +4859,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4708,6 +4881,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4728,6 +4903,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4740,6 +4917,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4752,6 +4931,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentInvoicerCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4764,6 +4945,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentInvoiceeName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4776,6 +4959,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentInvoiceeName(
         ?string $newName = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4788,6 +4973,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentInvoiceeId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4800,6 +4987,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function addDocumentInvoiceeId(
         ?string $newId = null
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4812,6 +5001,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4824,6 +5015,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentInvoiceeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4838,6 +5031,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4852,6 +5047,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4876,6 +5073,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4900,6 +5099,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4916,6 +5117,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4932,6 +5135,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4952,6 +5157,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4972,6 +5179,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4984,6 +5193,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -4996,6 +5207,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function addDocumentInvoiceeCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        // Nothing here...
+
         return $this;
     }
 
@@ -5008,6 +5221,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentPayeeName(
         ?string $newName = null
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->firstPartyName()
+            ?->unsetName();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
             return $this;
         }
@@ -5049,22 +5268,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
     public function setDocumentPayeeId(
         ?string $newId = null
     ): self {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getPayeePartyWithCreate()
-            ->setPartyIdentification(
+            ->getPayeeParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getPayeePartyWithCreate()
+                        ->getPayeeParty()
                         ->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('id')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newId])) {
+            return $this;
+        }
 
         $this->addDocumentPayeeId($newId);
 
@@ -5104,22 +5323,22 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentPayeeGlobalId(?string $newGlobalId = null, ?string $newGlobalIdType = null): self
     {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getPayeePartyWithCreate()
-            ->setPartyIdentification(
+            ->getPayeeParty()
+            ?->setPartyIdentification(
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getPayeePartyWithCreate()
+                        ->getPayeeParty()
                         ->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
                 )
             );
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGlobalId, $newGlobalIdType])) {
+            return $this;
+        }
 
         $this->addDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
 
@@ -5162,14 +5381,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->unsetPartyTaxScheme();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxRegistrationType, $newTaxRegistrationId])) {
             return $this;
         }
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->getPayeePartyWithCreate()
-            ->clearPartyTaxScheme();
 
         $this->addDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
 
@@ -5229,6 +5448,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newCountryId = null,
         ?string $newSubDivision = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->unsetPostalAddress();
+
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newAddressLine1,
@@ -5336,6 +5560,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newId = null,
         ?string $newName = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->firstPartyLegalEntity()
+            ?->unsetCompanyID();
+
         if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newType, $newId, $newName])) {
             return $this;
         }
@@ -5391,6 +5621,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->unsetContact();
+
         if (
             InvoiceSuiteStringUtils::allIsNullOrEmpty([
                 $newPersonName,
@@ -5448,7 +5683,21 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null,
     ): self {
-        return $this->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+        if (
+            InvoiceSuiteStringUtils::allIsNullOrEmpty([
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            ])
+        ) {
+            return $this;
+        }
+
+        $this->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
+
+        return $this;
     }
 
     /**
@@ -5460,6 +5709,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentPayeeCommunication(?string $newType = null, ?string $newUri = null): self
     {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getPayeeParty()
+            ?->unsetEndpointID();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType, $newUri])) {
             return $this;
         }
@@ -5521,13 +5775,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newPaymentReference = null,
         ?string $newMandate = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->unsetPaymentMeans();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTypeCode])) {
             return $this;
         }
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->clearPaymentMeans();
 
         $this->addDocumentPaymentMean(
             $newTypeCode,
@@ -5988,13 +6242,13 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->unsetPaymentTerms();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newDescription])) {
             return $this;
         }
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->clearPaymentTerms();
 
         $this->addDocumentPaymentTerm(
             $newDescription,
@@ -6051,6 +6305,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newBasePeriod = null,
         ?string $newBasePeriodUnit = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -6073,6 +6329,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newBasePeriod = null,
         ?string $newBasePeriodUnit = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -6095,6 +6353,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newBasePeriod = null,
         ?string $newBasePeriodUnit = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -6117,6 +6377,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newBasePeriod = null,
         ?string $newBasePeriodUnit = null,
     ): self {
+        // Nothing here...
+
         return $this;
     }
 
@@ -6145,17 +6407,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newTaxDueDate = null,
         ?string $newTaxDueCode = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->firstTaxTotal()
+            ?->unsetTaxSubtotal();
+
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newBasisAmount, $newTaxAmount])
         ) {
             return $this;
         }
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->addOnceToTaxTotalWithCreate()
-            ->clearTaxSubtotal();
 
         $this->addDocumentTax(
             $newTaxCategory,
@@ -6260,21 +6522,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newAllowanceChargeReasonCode = null,
         ?float $newAllowanceChargePercent = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->setAllowanceCharge(array_filter(
+                $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
+                fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('allowancecharge')
+            ));
+
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType]) ||
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount])
         ) {
             return $this;
         }
-
-        $allowanceCharges = array_filter(
-            $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-            fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('allowancecharge')
-        );
-
-        $this
-            ->getUblInvoiceRootObject()
-            ->setAllowanceCharge($allowanceCharges);
 
         $this->addDocumentAllowanceCharge(
             $newChargeIndicator,
@@ -6361,7 +6621,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         }
 
         $taxCategory = $allowanceCharge->clearTaxCategory()->addToTaxCategoryWithCreate();
-
         $taxCategory->getIDWithCreate()->setValue($newTaxCategory);
         $taxCategory->getTaxSchemeWithCreate()->getIDWithCreate()->setValue($newTaxType);
 
@@ -6389,19 +6648,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newTaxType = null,
         ?float $newTaxPercent = null,
     ): self {
+        $this->getUblInvoiceRootObject()->setAllowanceCharge(
+            array_filter(
+                $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
+                fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('logservicecharge')
+            )
+        );
+
         if (
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType, $newDescription]) ||
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent, $newChargeAmount])
         ) {
             return $this;
         }
-
-        $allowanceCharges = array_filter(
-            $this->getUblInvoiceRootObject()->getAllowanceCharge() ?? [],
-            fn(AllowanceCharge $currentAllowanceChage) => !$currentAllowanceChage->hasObjectFlag('logservicecharge')
-        );
-
-        $this->getUblInvoiceRootObject()->setAllowanceCharge($allowanceCharges);
 
         $this->addDocumentLogisticServiceCharge(
             $newChargeAmount,
@@ -6499,6 +6758,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPrepaidAmount = null,
         ?float $newRoungingAmount = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->unsetLegalMonetaryTotal();
+
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount, $newTaxBasisAmount, $newTaxTotalAmount, $newGrossAmount, $newDueAmount])) {
             return $this;
         }
@@ -6595,13 +6858,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newContentCode = null,
         ?string $newSubjectCode = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetNote();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newContent])) {
             return $this;
         }
-
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $latestPosition->clearNote();
 
         $this->addDocumentPositionNote(
             $newContent,
@@ -6629,9 +6893,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $latestPosition->addToNoteWithCreate()->setValue($newContent);
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->addToNoteWithCreate()
+            ->setValue($newContent);
 
         return $this;
     }
@@ -6669,13 +6935,19 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductModelName = null,
         ?string $newProductOriginTradeCountry = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetItem();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductName])) {
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $positionProduct = $latestPosition->getItemWithCreate();
+        $positionProduct = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->getItemWithCreate();
 
         $positionProduct->getNameWithCreate()->setValue($newProductName);
 
@@ -6719,15 +6991,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newProductCharacteristicMeasureValue = null,
         ?string $newProductCharacteristicMeasureUnit = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+        $positionProduct = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->getItem();
+
+        if (is_null($positionProduct)) {
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+        $positionProduct->unsetAdditionalItemProperty();
 
-        $positionProduct = $latestPosition->getItemWithCreate();
-
-        $positionProduct->clearAdditionalItemProperty();
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
 
         $this->addDocumentPositionProductCharacteristic(
             $newProductCharacteristicDescription,
@@ -6757,13 +7034,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newProductCharacteristicMeasureValue = null,
         ?string $newProductCharacteristicMeasureUnit = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+        $positionProduct = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->getItem();
+
+        if (is_null($positionProduct)) {
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $positionProduct = $latestPosition->getItemWithCreate();
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicDescription, $newProductCharacteristicValue])) {
+            return $this;
+        }
 
         $positionProductCharacteristic = $positionProduct->addToAdditionalItemPropertyWithCreate();
         $positionProductCharacteristic->getNameWithCreate()->setValue($newProductCharacteristicDescription);
@@ -6797,15 +7079,20 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductClassificationListVersionId = null,
         ?string $newProductClassificationCodeClassname = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
+        $positionProduct = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->getItem();
+
+        if (is_null($positionProduct)) {
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
+        $positionProduct->unsetCommodityClassification();
 
-        $positionProduct = $latestPosition->getItemWithCreate();
-
-        $positionProduct->clearCommodityClassification();
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
+            return $this;
+        }
 
         $this->addDocumentPositionProductClassification(
             $newProductClassificationCode,
@@ -6832,13 +7119,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newProductClassificationListVersionId = null,
         ?string $newProductClassificationCodeClassname = null,
     ): self {
-        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
+        $positionProduct = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->getItem();
+
+        if (is_null($positionProduct)) {
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $positionProduct = $latestPosition->getItemWithCreate();
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductClassificationCode, $newProductClassificationListId])) {
+            return $this;
+        }
 
         $positionProductClassification = $positionProduct->addToCommodityClassificationWithCreate();
 
@@ -6967,13 +7259,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetOrderLineReference();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber, $newReferenceLineNumber])) {
             return $this;
         }
-
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $latestPosition->clearOrderLineReference();
 
         $this->addDocumentPositionBuyerOrderReference(
             $newReferenceNumber,
@@ -7001,11 +7294,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $buyerOrderReference = $latestPosition->addToOrderLineReferenceWithCreate();
-
-        $buyerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->addToOrderLineReferenceWithCreate()
+            ->getLineIDWithCreate()
+            ->setValue($newReferenceLineNumber);
 
         return $this;
     }
@@ -7397,19 +7691,26 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newNetPriceBasisQuantity = null,
         ?string $newNetPriceBasisQuantityUnit = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetPrice();
+
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPrice])) {
             return $this;
         }
 
         $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-        $latestPosition->getPriceWithCreate()->getPriceAmountWithCreate()->setValue($newNetPrice);
+
+        $netPrice = $latestPosition->getPriceWithCreate();
+
+        $netPrice->getPriceAmountWithCreate()->setValue($newNetPrice);
 
         if (
             !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantity]) &&
             !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newNetPriceBasisQuantityUnit])
         ) {
-            $latestPosition
-                ->getPriceWithCreate()
+            $netPrice
                 ->getBaseQuantityWithCreate()
                 ->setValue($newNetPriceBasisQuantity)
                 ->setUnitCode($newNetPriceBasisQuantityUnit);
@@ -7461,6 +7762,11 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newPackageQuantity = null,
         ?string $newPackageQuantityUnit = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetInvoicedQuantity();
+
         if (
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newQuantity]) ||
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newQuantityUnit])
@@ -7468,8 +7774,12 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-        $latestPosition->getInvoicedQuantityWithCreate()->setValue($newQuantity)->setUnitCode($newQuantityUnit);
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->getInvoicedQuantityWithCreate()
+            ->setValue($newQuantity)
+            ->setUnitCode($newQuantityUnit);
 
         return $this;
     }
@@ -8069,14 +8379,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null,
     ): self {
-        if (is_null($newStartDate) && is_null($newEndDate)) {
-            return $this;
-        }
-
         $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate()
-            ->clearInvoicePeriod();
+            ->getLatestInvoiceLine()
+            ?->unsetInvoicePeriod();
+
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
+            return $this;
+        }
 
         $this->addDocumentPositionBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
@@ -8096,24 +8406,17 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?DateTimeInterface $newEndDate = null,
         ?string $newDescription = null,
     ): self {
-        if (is_null($newStartDate) && is_null($newEndDate)) {
+        if (InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newStartDate, $newEndDate])) {
             return $this;
         }
 
-        $latestPosition = $this
+        $invoicePeriod = $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $invoicePeriod = $latestPosition
+            ->getLatestInvoiceLineWithCreate()
             ->addToInvoicePeriodWithCreate();
 
-        if (!is_null($newStartDate)) {
-            $invoicePeriod->setStartDate($newStartDate);
-        }
-
-        if (!is_null($newEndDate)) {
-            $invoicePeriod->setEndDate($newEndDate);
-        }
+        $invoicePeriod->setStartDate($newStartDate);
+        $invoicePeriod->setEndDate($newEndDate);
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
             $invoicePeriod->clearDescription()->addToDescriptionWithCreate()->setValue($newDescription);
@@ -8141,20 +8444,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->getItem()
+            ?->unsetClassifiedTaxCategory();
+
         if (
             InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxPercent]) ||
             InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newTaxCategory, $newTaxType])
         ) {
             return $this;
         }
-
-        $latestPosition = $this
-            ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $latestPosition
-            ->getItemWithCreate()
-            ->clearClassifiedTaxCategory();
 
         $this->addDocumentPositionTax(
             $newTaxCategory,
@@ -8194,11 +8495,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this
+        $tradeTax = $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $tradeTax = $latestPosition
+            ->getLatestInvoiceLineWithCreate()
             ->getItemWithCreate()
             ->addToClassifiedTaxCategoryWithCreate();
 
@@ -8236,16 +8535,14 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?string $newAllowanceChargeReasonCode = null,
         ?float $newAllowanceChargePercent = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetAllowanceCharge();
+
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeAmount]) || is_null($newChargeIndicator)) {
             return $this;
         }
-
-        $latestPosition = $this
-            ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $latestPosition
-            ->clearAllowanceCharge();
 
         $this->addDocumentPositionAllowanceCharge(
             $newChargeIndicator,
@@ -8282,11 +8579,9 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this
+        $allowanceCharge = $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $allowanceCharge = $latestPosition
+            ->getLatestInvoiceLineWithCreate()
             ->addToAllowanceChargeWithCreate();
 
         $allowanceCharge->setChargeIndicator($newChargeIndicator);
@@ -8328,15 +8623,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
         ?float $newTaxTotalAmount = null,
         ?float $newGrossAmount = null,
     ): self {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetLineExtensionAmount();
+
         if (InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newNetAmount])) {
             return $this;
         }
 
-        $latestPosition = $this
+        $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $latestPosition
+            ->getLatestInvoiceLineWithCreate()
             ->getLineExtensionAmountWithCreate()
             ->setValue($newNetAmount);
 
@@ -8352,15 +8650,18 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
      */
     public function setDocumentPositionPostingReference(?string $newType = null, ?string $newAccountId = null): self
     {
+        $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLine()
+            ?->unsetAccountingCost();
+
         if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAccountId])) {
             return $this;
         }
 
-        $latestPosition = $this
+        $this
             ->getUblInvoiceRootObject()
-            ->getLatestInvoiceLineWithCreate();
-
-        $latestPosition
+            ->getLatestInvoiceLineWithCreate()
             ->getAccountingCostCodeWithCreate()
             ->setValue($newAccountId);
 
