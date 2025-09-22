@@ -7700,9 +7700,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             return $this;
         }
 
-        $latestPosition = $this->getUblInvoiceRootObject()->getLatestInvoiceLineWithCreate();
-
-        $netPrice = $latestPosition->getPriceWithCreate();
+        $netPrice = $this
+            ->getUblInvoiceRootObject()
+            ->getLatestInvoiceLineWithCreate()
+            ->getPriceWithCreate();
 
         $netPrice->getPriceAmountWithCreate()->setValue($newNetPrice);
 

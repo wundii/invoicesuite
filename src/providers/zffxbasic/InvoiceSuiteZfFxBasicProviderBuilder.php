@@ -7941,12 +7941,10 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractFormatPro
             return $this;
         }
 
-        $latestPosition = $this
+        $netPrice = $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getLatestIncludedSupplyChainTradeLineItemWithCreate();
-
-        $netPrice = $latestPosition
+            ->getLatestIncludedSupplyChainTradeLineItemWithCreate()
             ->getSpecifiedLineTradeAgreementWithCreate()
             ->getNetPriceProductTradePriceWithCreate();
 
