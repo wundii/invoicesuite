@@ -106,7 +106,7 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractFormatProvider
                 return false;
             }
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getParameters()['PROFILEID']);
+            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getParameters()['ProfileId']);
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
