@@ -36,6 +36,7 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractFormatProvider
             'PDFXmpName' => 'MINIMUM',
             'PDFXmpVersion' => '1.0',
             'PDFXmlAttachmentFilename' => 'factur-x.xml',
+            'PDFXmlAttachmentName' => 'Factur-X Invoice',
         ];
     }
 

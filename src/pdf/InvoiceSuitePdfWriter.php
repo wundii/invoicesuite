@@ -205,12 +205,12 @@ class InvoiceSuitePdfWriter extends PdfFpdi
      * Set the status of the deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @param  bool $deterministicModeEnabled
+     * @param  bool $newDeterministicModeEnabled
      * @return void
      */
-    public function setDeterministicModeEnabled(bool $deterministicModeEnabled): void
+    public function setDeterministicModeEnabled(bool $newDeterministicModeEnabled): void
     {
-        $this->deterministicModeEnabled = $deterministicModeEnabled;
+        $this->deterministicModeEnabled = $newDeterministicModeEnabled;
     }
 
     /**

@@ -9,18 +9,22 @@
 
 namespace horstoeko\invoicesuite\pdf;
 
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use DateTime;
+use DOMXPath;
+use DOMDocument;
+use horstoeko\mimedb\MimeDb;
+use JMS\Serializer\Exception\RuntimeException;
+use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\mimedb\MimeDb;
-use JMS\Serializer\Exception\RuntimeException;
+use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 
 class InvoiceSuitePdfDocumentBuilder
 {
@@ -49,13 +53,6 @@ class InvoiceSuitePdfDocumentBuilder
     protected InvoiceSuitePdfWriter $pdfWriter;
 
     /**
-     * Additional creator tool (e.g. the ERP software that called the PHP library)
-     *
-     * @var string
-     */
-    private $additionalCreatorTool = "";
-
-    /**
      * The relationship type to use for the XML attachment. Detault is Data
      *
      * @var string
@@ -71,39 +68,46 @@ class InvoiceSuitePdfDocumentBuilder
     private $additionalFilesToAttach = [];
 
     /**
+     * Additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @var string
+     */
+    private $metadataAdditionalCreatorTool = "";
+
+    /**
      * User-defined template for the author-metainformation
      *
      * @var string
      */
-    private $authorTemplate = "";
+    private $metadataAuthorTemplate = "";
 
     /**
      * User-defined template for the keyword-metainformation
      *
      * @var string
      */
-    private $keywordTemplate = "";
+    private $metadataKeywordTemplate = "";
 
     /**
      * User-defined template for the title-metainformation
      *
      * @var string
      */
-    private $titleTemplate = "";
+    private $metadataTitleTemplate = "";
 
     /**
      * User-defined template for the subject-metainformation
      *
      * @var string
      */
-    private $subjectTemplate = "";
+    private $metadataSubjectTemplate = "";
 
     /**
      * User-defined callback function for all metainformation
      *
      * @var callable|null
      */
-    private $metaInformationCallback;
+    private $metadataCallback;
 
     /**
      * Internal flag which indicate, that attachment pane should be opened
@@ -368,45 +372,6 @@ class InvoiceSuitePdfDocumentBuilder
     }
 
     /**
-     * Gets an additional creator tool (e.g. the ERP software that called the PHP library)
-     *
-     * @return string
-     */
-    public function getAdditionalCreatorTool(): string
-    {
-        return $this->additionalCreatorTool;
-    }
-
-    /**
-     * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
-     *
-     * @param  string $additionalCreatorTool The name of the creator
-     * @return static
-     */
-    public function setAdditionalCreatorTool(string $additionalCreatorTool)
-    {
-        $this->additionalCreatorTool = $additionalCreatorTool;
-
-        return $this;
-    }
-
-    /**
-     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
-     *
-     * @return string
-     */
-    private function getCreatorToolName(): string
-    {
-        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', '1.0');
-
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getAdditionalCreatorTool())) {
-            return $this->getAdditionalCreatorTool() . ' / ' . $toolName;
-        }
-
-        return $toolName;
-    }
-
-    /**
      * Returns the relationship type for the XML attachment. This
      * can return 'Data', 'Alternative'
      *
@@ -421,16 +386,16 @@ class InvoiceSuitePdfDocumentBuilder
      * Set the type of relationship for the XML attachment. Allowed
      * types are 'Data', 'Alternative' and 'Source'
      *
-     * @param  string $relationshipType Type of relationship
+     * @param  string $newRelationshipType Type of relationship
      * @return static
      */
-    public function setAttachmentRelationshipType(string $relationshipType)
+    public function setAttachmentRelationshipType(string $newRelationshipType)
     {
-        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE])) {
-            $relationshipType = static::AF_RELATIONSHIP_DATA;
+        if (!in_array($newRelationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE])) {
+            $newRelationshipType = static::AF_RELATIONSHIP_DATA;
         }
 
-        $this->attachmentRelationshipType = $relationshipType;
+        $this->attachmentRelationshipType = $newRelationshipType;
 
         return $this;
     }
@@ -575,13 +540,391 @@ class InvoiceSuitePdfDocumentBuilder
      * Set the the deterministic mode. This mode should only be used
      * for testing purposes
      *
-     * @param  bool $deterministicModeEnabled
+     * @param  bool $newDeterministicModeEnabled
      * @return static
      */
-    public function setDeterministicModeEnabled(bool $deterministicModeEnabled)
+    public function setDeterministicModeEnabled(bool $newDeterministicModeEnabled)
     {
-        $this->pdfWriter->setDeterministicModeEnabled($deterministicModeEnabled);
+        $this->pdfWriter->setDeterministicModeEnabled($newDeterministicModeEnabled);
 
         return $this;
+    }
+
+    /**
+     * Gets an additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @return string
+     */
+    public function getMetadataAdditionalCreatorTool(): string
+    {
+        return $this->metadataAdditionalCreatorTool;
+    }
+
+    /**
+     * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @param  string $newMetadataAdditionalCreatorTool The name of the creator
+     * @return static
+     */
+    public function setMetadataAdditionalCreatorTool(string $newMetadataAdditionalCreatorTool)
+    {
+        $this->metadataAdditionalCreatorTool = $newMetadataAdditionalCreatorTool;
+
+        return $this;
+    }
+
+    /**
+     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
+     *
+     * @return string
+     */
+    private function getMetadataCreatorToolName(): string
+    {
+        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', '1.0');
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getMetadataAdditionalCreatorTool())) {
+            return $this->getMetadataAdditionalCreatorTool() . ' / ' . $toolName;
+        }
+
+        return $toolName;
+    }
+
+    /**
+     * Set the template for the author meta information
+     *
+     * @param  string $newMetadataAuthorTemplate
+     * @return static
+     */
+    public function setMetadataAuthorTemplate(string $newMetadataAuthorTemplate)
+    {
+        $this->metadataAuthorTemplate = $newMetadataAuthorTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the keyword meta information
+     *
+     * @param  string $newMetadataKeywordTemplate
+     * @return static
+     */
+    public function setMetadataKeywordTemplate(string $newMetadataKeywordTemplate)
+    {
+        $this->metadataKeywordTemplate = $newMetadataKeywordTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the title meta information
+     *
+     * @param  string $newMetadataTitleTemplate
+     * @return static
+     */
+    public function setMetadataTitleTemplate(string $newMetadataTitleTemplate)
+    {
+        $this->metadataTitleTemplate = $newMetadataTitleTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the template for the subject meta information
+     *
+     * @param  string $newMetadataSubjectTemplate
+     * @return static
+     */
+    public function setMetadataSubjectTemplate(string $newMetadataSubjectTemplate)
+    {
+        $this->metadataSubjectTemplate = $newMetadataSubjectTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Set the user defined callback for generating custom meta information
+     *
+     * @param  callable|null $newMetadataCallback
+     * @return static
+     */
+    public function setMetadataCallback(?callable $newMetadataCallback = null)
+    {
+        $this->metadataCallback = is_callable($newMetadataCallback) ? $newMetadataCallback : null;
+
+        return $this;
+    }
+
+    /**
+     * Returns true if the attachment pane is visible, otherwise false
+     *
+     * @return boolean
+     */
+    public function getAttachmentPaneVisibility(): bool
+    {
+        return $this->attachmentPaneVisibility;
+    }
+
+    /**
+     * Sets the flag that indicates, that the attachment pane should be visible on start (True)
+     * or hidden (False)
+     *
+     * @param boolean $attachmentPaneVisibility Flag that indicates, that the attachment pane should be visible or hidden
+     * @return static
+     */
+    public function setAttachmentPaneVisibility(bool $attachmentPaneVisibility)
+    {
+        $this->attachmentPaneVisibility = $attachmentPaneVisibility;
+
+        return $this;
+    }
+
+    /**
+     * Show attachment pane on startup
+     *
+     * @return static
+     */
+    public function setAttachmentPaneVisible()
+    {
+        $this->setAttachmentPaneVisibility(true);
+
+        return $this;
+    }
+
+    /**
+     * Hide attachment pane on startup
+     *
+     * @return static
+     */
+    public function setAttachmentPaneHidden()
+    {
+        $this->setAttachmentPaneVisibility(false);
+
+        return $this;
+    }
+
+    /**
+     * Internal function which sets up the PDF
+     *
+     * @return void
+     */
+    private function startCreatePdf(): void
+    {
+        // Get PDF data
+
+        $pdfDataRef = PdfStreamReader::createByString($this->getCurrentPdfContent());
+
+        // Get XML data from Builder
+
+        $documentBuilderXmlDataRef = PdfStreamReader::createByString($this->getCurrentXmlContent());
+
+        // Start
+
+        $this->pdfWriter->attach(
+            $documentBuilderXmlDataRef,
+            $this->getCurrentFormatProviderParameterValue('PDFXmlAttachmentFilename', 'factur-x.xml'),
+            $this->getCurrentFormatProviderParameterValue('PDFXmlAttachmentName', 'Factur-X Invoice'),
+            $this->getAttachmentRelationshipType(),
+            'text#2Fxml'
+        );
+
+        // Add additional attachments
+
+        foreach ($this->additionalFilesToAttach as $fileToAttach) {
+            $this->pdfWriter->attach(
+                $fileToAttach[0],
+                $fileToAttach[1],
+                $fileToAttach[2],
+                $fileToAttach[3],
+                $fileToAttach[4],
+            );
+        }
+
+        // Set flag to always show the attachment pane
+
+        if ($this->getAttachmentPaneVisibility() === true) {
+            $this->pdfWriter->openAttachmentPane();
+        }
+
+        // Copy pages from the original PDF
+
+        $pageCount = $this->pdfWriter->setSourceFile($pdfDataRef);
+
+        for ($pageNumber = 1; $pageNumber <= $pageCount; ++$pageNumber) {
+            $pageContent = $this->pdfWriter->importPage($pageNumber, '/MediaBox', true, true);
+            $this->pdfWriter->AddPage();
+            $this->pdfWriter->useTemplate($pageContent, 0, 0, null, null, true);
+        }
+
+        // Set PDF version 1.7 according to PDF/A-3 ISO 32000-1
+
+        $this->pdfWriter->setPdfVersion('1.7', true);
+
+        // Update meta data (e.g. such as author, producer, title)
+
+        $this->updatePdfMetadata();
+    }
+
+    /**
+     * Update PDF metadata to according to FacturX/ZUGFeRD XML data.
+     *
+     * @return void
+     */
+    private function updatePdfMetadata(): void
+    {
+        $pdfCreatorToolInfos = $this->getMetadataCreatorToolName();
+
+        $pdfMetadataInfos = $this->preparePdfMetadata();
+        $this->pdfWriter->setPdfMetadataInfos($pdfMetadataInfos);
+
+        $xmp = simplexml_load_file(InvoiceSuiteSettings::getFullPdfXmpMetaDataFilename());
+        $descriptionNodes = $xmp->xpath('rdf:Description');
+
+        $descFx = $descriptionNodes[0];
+        $descFx->children('fx', true)->{'ConformanceLevel'} = strtoupper($this->getCurrentFormatProviderParameterValue('PDFXmpName', ''));
+        $descFx->children('fx', true)->{'Version'} = strtoupper($this->getCurrentFormatProviderParameterValue('PDFXmpVersion', '1.0'));
+        $descFx->children('fx', true)->{'DocumentFileName'} = $this->getCurrentFormatProviderParameterValue('PDFXmpVersion', 'factur-x.xml');
+        $this->pdfWriter->addMetadataDescriptionNode($descFx->asXML());
+
+        $this->pdfWriter->addMetadataDescriptionNode($descriptionNodes[1]->asXML());
+
+        $descPdfAid = $descriptionNodes[2];
+        $this->pdfWriter->addMetadataDescriptionNode($descPdfAid->asXML());
+
+        $descDc = $descriptionNodes[3];
+        $descNodes = $descDc->children('dc', true);
+        $descNodes->title->children('rdf', true)->Alt->li = $pdfMetadataInfos['title'];
+        $descNodes->creator->children('rdf', true)->Seq->li = $pdfMetadataInfos['author'];
+        $descNodes->description->children('rdf', true)->Alt->li = $pdfMetadataInfos['subject'];
+
+        $this->pdfWriter->addMetadataDescriptionNode($descDc->asXML());
+
+        $descAdobe = $descriptionNodes[4];
+        $descAdobe->children('pdf', true)->{'Producer'} = 'FPDF';
+        $this->pdfWriter->addMetadataDescriptionNode($descAdobe->asXML());
+
+        $descXmp = $descriptionNodes[5];
+        $xmpNodes = $descXmp->children('xmp', true);
+        $xmpNodes->{'CreatorTool'} = $pdfCreatorToolInfos;
+        $xmpNodes->{'CreateDate'} = $pdfMetadataInfos['createdDate'];
+        $xmpNodes->{'ModifyDate'} = $pdfMetadataInfos['modifiedDate'];
+
+        $this->pdfWriter->addMetadataDescriptionNode($descXmp->asXML());
+
+        $this->pdfWriter->SetAuthor($pdfMetadataInfos['author'], true);
+        $this->pdfWriter->SetKeywords($pdfMetadataInfos['keywords'], true);
+        $this->pdfWriter->SetTitle($pdfMetadataInfos['title'], true);
+        $this->pdfWriter->SetSubject($pdfMetadataInfos['subject'], true);
+        $this->pdfWriter->SetCreator($pdfCreatorToolInfos, true);
+    }
+
+    /**
+     * Prepare PDF Metadata informations from FacturX/ZUGFeRD XML.
+     *
+     * @return array
+     */
+    private function preparePdfMetadata(): array
+    {
+        $invoiceInformations = $this->extractInvoiceInformations();
+
+        $dateString = date('Y-m-d', strtotime($invoiceInformations['date']));
+
+        $author = $invoiceInformations['seller'];
+        $keywords = sprintf('%s, FacturX/ZUGFeRD', $invoiceInformations['docTypeName']);
+        $title = sprintf('%s : %s %s', $invoiceInformations['seller'], $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId']);
+        $subject = sprintf('FacturX/ZUGFeRD %s %s dated %s issued by %s', $invoiceInformations['docTypeName'], $invoiceInformations['invoiceId'], $dateString, $invoiceInformations['seller']);
+
+        return [
+            'author' => $this->buildMetadataField('author', $author, $invoiceInformations),
+            'keywords' => $this->buildMetadataField('keywords', $keywords, $invoiceInformations),
+            'title' => $this->buildMetadataField('title', $title, $invoiceInformations),
+            'subject' => $this->buildMetadataField('subject', $subject, $invoiceInformations),
+            'createdDate' => $invoiceInformations['date'],
+            'modifiedDate' => (new DateTime())->format('Y-m-d\TH:i:sP'),
+        ];
+    }
+
+    /**
+     * Extract major invoice information from FacturX/ZUGFeRD XML.
+     *
+     * @return array
+     */
+    protected function extractInvoiceInformations(): array
+    {
+        $domDocument = new DOMDocument();
+        $domDocument->loadXML($this->getCurrentXmlContent());
+
+        $xpath = new DOMXPath($domDocument);
+
+        $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
+        $date = $dateXpath->item(0)->nodeValue;
+        $dateReformatted = (new DateTime())->setTimestamp(strtotime($date))->format('Y-m-d\TH:i:sP');
+
+        $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
+        $invoiceId = $invoiceIdXpath->item(0)->nodeValue;
+
+        $sellerXpath = $xpath->query('//ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:Name');
+        $sellerName = $sellerXpath->item(0)->nodeValue;
+
+        $docTypeXpath = $xpath->query('//rsm:ExchangedDocument/ram:TypeCode');
+        $docTypeCode = $docTypeXpath->item(0)->nodeValue;
+
+        switch ($docTypeCode) {
+            case '381':
+                $docTypeName = 'Credit Note';
+                break;
+            default:
+                $docTypeName = 'Invoice';
+                break;
+        }
+
+        return [
+            'invoiceId' => $invoiceId,
+            'docTypeName' => $docTypeName,
+            'seller' => $sellerName,
+            'date' => $dateReformatted,
+        ];
+    }
+
+    /**
+     * Returns the parsed meta-field content
+     *
+     * @param  string $templateId
+     * @param  string $defaultValue
+     * @param  array  $invoiceInformation
+     * @return string
+     */
+    private function buildMetadataField(string $templateId, string $defaultValue, array $invoiceInformation): string
+    {
+        $xmlContent = $this->getCurrentXmlContent();
+
+        if (is_callable($this->metadataCallback)) {
+            $callbackResult = call_user_func($this->metadataCallback, $templateId, $xmlContent, $invoiceInformation, $defaultValue);
+            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($callbackResult)) {
+                return $callbackResult;
+            }
+        }
+
+        $templates = [
+            'author' => $this->metadataAuthorTemplate,
+            'keywords' => $this->metadataKeywordTemplate,
+            'title' => $this->metadataTitleTemplate,
+            'subject' => $this->metadataSubjectTemplate,
+        ];
+
+        if (!isset($templates[$templateId])) {
+            return $defaultValue;
+        }
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($templates[$templateId])) {
+            return $defaultValue;
+        }
+
+        return sprintf(
+            $templates[$templateId],
+            $invoiceInformation['invoiceId'],
+            $invoiceInformation['docTypeName'],
+            $invoiceInformation['seller'],
+            $invoiceInformation['date']
+        );
     }
 }

@@ -37,6 +37,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractFormatProvider
             'PDFXmpName' => 'BASIC WL',
             'PDFXmpVersion' => '1.0',
             'PDFXmlAttachmentFilename' => 'factur-x.xml',
+            'PDFXmlAttachmentName' => 'Factur-X Invoice',
         ];
     }
 
