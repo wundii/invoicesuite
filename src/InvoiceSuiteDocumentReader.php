@@ -39,7 +39,7 @@ class InvoiceSuiteDocumentReader implements InvoiceSuiteReaderContract
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      */
-    public static function createFromCFile(string $fromFile): self
+    public static function createFromFile(string $fromFile): self
     {
         if (!file_exists($fromFile)) {
             throw new InvoiceSuiteFileNotFoundException($fromFile);

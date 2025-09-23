@@ -10,12 +10,14 @@
 namespace horstoeko\invoicesuite\pdf;
 
 use InvalidArgumentException;
-use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use JMS\Serializer\Exception\RuntimeException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use JMS\Serializer\Exception\RuntimeException;
+use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
+use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 
 class InvoiceSuitePdfDocumentBuilder
 {
@@ -51,6 +53,94 @@ class InvoiceSuitePdfDocumentBuilder
     }
 
     /**
+     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF filename and XML content
+     *
+     * @param string $newPdfFile
+     * @param string $newXmlContent
+     * @return InvoiceSuitePdfDocumentBuilder
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     */
+    public static function createFromPdfFileAndXmlContent(string $newPdfFile, string $newXmlContent): self
+    {
+        if (!file_exists($newPdfFile)) {
+            throw new InvoiceSuiteFileNotFoundException($newPdfFile);
+        }
+
+        $newPdfContent = file_get_contents($newPdfFile);
+
+        if ($newPdfContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($newPdfFile);
+        }
+
+        return static::createFromPdfContentAndXmlContent($newPdfContent, $newXmlContent);
+    }
+
+    /**
+     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF content and XML filename
+     *
+     * @param string $newPdfContent
+     * @param string $newXmlFile
+     * @return InvoiceSuitePdfDocumentBuilder
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     */
+    public static function createFromPdfContentAndXmlFile(string $newPdfContent, string $newXmlFile): self
+    {
+        if (!file_exists($newXmlFile)) {
+            throw new InvoiceSuiteFileNotFoundException($newXmlFile);
+        }
+
+        $newXmlContent = file_get_contents($newXmlFile);
+
+        if ($newXmlContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($newXmlFile);
+        }
+
+        return static::createFromPdfContentAndXmlContent($newPdfContent, $newXmlContent);
+    }
+
+    /**
+     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF filename and XML filename
+     *
+     * @param string $newPdfFile
+     * @param string $newXmlFile
+     * @return InvoiceSuitePdfDocumentBuilder
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     */
+    public static function createFromPdfFileAndXmlFile(string $newPdfFile, string $newXmlFile): self
+    {
+        if (!file_exists($newPdfFile)) {
+            throw new InvoiceSuiteFileNotFoundException($newPdfFile);
+        }
+
+        $newPdfContent = file_get_contents($newPdfFile);
+
+        if ($newPdfContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($newPdfFile);
+        }
+
+        if (!file_exists($newXmlFile)) {
+            throw new InvoiceSuiteFileNotFoundException($newXmlFile);
+        }
+
+        $newXmlContent = file_get_contents($newXmlFile);
+
+        if ($newXmlContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($newXmlFile);
+        }
+
+        return static::createFromPdfContentAndXmlContent($newPdfContent, $newXmlContent);
+    }
+
+    /**
      * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF content and an InvoiceSuiteDocumentBuilder
      *
      * @param string $newPdfContent
@@ -62,6 +152,30 @@ class InvoiceSuitePdfDocumentBuilder
     public static function createFromPdfContentAndDocumentBuilder(string $newPdfContent, InvoiceSuiteDocumentBuilder $newDocumentBuilder): self
     {
         return (new static())->setCurrentPdfContent($newPdfContent)->setCurrentDocumentBuilder($newDocumentBuilder);
+    }
+
+    /**
+     * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF content and an InvoiceSuiteDocumentBuilder
+     *
+     * @param string $newPdfContent
+     * @param InvoiceSuiteDocumentBuilder $newDocumentBuilder
+     * @return InvoiceSuitePdfDocumentBuilder
+     * @throws InvalidArgumentException
+     * @throws RuntimeException
+     */
+    public static function createFromPdfFileAndDocumentBuilder(string $newPdfFile, InvoiceSuiteDocumentBuilder $newDocumentBuilder): self
+    {
+        if (!file_exists($newPdfFile)) {
+            throw new InvoiceSuiteFileNotFoundException($newPdfFile);
+        }
+
+        $newPdfContent = file_get_contents($newPdfFile);
+
+        if ($newPdfContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($newPdfFile);
+        }
+
+        return static::createFromPdfContentAndDocumentBuilder($newPdfContent, $newDocumentBuilder);
     }
 
     /**
