@@ -339,7 +339,7 @@ class InvoiceSuitePdfDocumentBuilder
 
         $formatProviders = array_filter(
             $this->getRegisteredFormatProviders(),
-            fn ($formatProvider) =>
+            fn($formatProvider) =>
                 ($formatProvider->isSatisfiableBySerializedContent($newXmlContent)) &&
                 ($formatProvider->getFormatProviderParameterValue('PDFEmbeddable', false) === true)
         );

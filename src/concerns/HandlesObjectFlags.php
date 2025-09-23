@@ -61,7 +61,7 @@ trait HandlesObjectFlags
 
         $this->objectFlags = array_filter(
             $this->objectFlags,
-            fn ($currentFlag) => strcasecmp($currentFlag, $flag) !== 0
+            fn($currentFlag) => strcasecmp($currentFlag, $flag) !== 0
         );
 
         return $this;
@@ -77,7 +77,7 @@ trait HandlesObjectFlags
     {
         return array_filter(
             $this->objectFlags,
-            fn ($currentFlag) => strcasecmp($currentFlag, $flag) === 0
+            fn($currentFlag) => strcasecmp($currentFlag, $flag) === 0
         ) !== [];
     }
 }
