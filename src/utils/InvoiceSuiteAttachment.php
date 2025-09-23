@@ -2,10 +2,10 @@
 
 namespace horstoeko\invoicesuite\utils;
 
+use horstoeko\mimedb\MimeDb;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\mimedb\MimeDb;
-use InvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 
 /**
  * class representing a definition for a binary object
@@ -100,14 +100,14 @@ class InvoiceSuiteAttachment
      * @param string $content
      * @param string $filename
      * @return InvoiceSuiteAttachment
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public static function fromBase64String(string $content, string $filename): InvoiceSuiteAttachment
     {
         $content = base64_decode($content, true);
 
         if ($content === false) {
-            throw new InvalidArgumentException("Not a BASE64 string");
+            throw new InvoiceSuiteInvalidArgumentException("Not a BASE64 string");
         }
 
         return new static($content, $filename, static::IS_FROM_BASE64_STRING);
@@ -118,12 +118,12 @@ class InvoiceSuiteAttachment
      *
      * @param string $url
      * @return InvoiceSuiteAttachment
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public static function fromUrl(string $url): InvoiceSuiteAttachment
     {
         if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            throw new InvalidArgumentException(sprintf('Not a valid URL: %s', $url));
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('Not a valid URL: %s', $url));
         }
 
         return new static($url, '', static::IS_FROM_URL);

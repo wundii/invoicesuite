@@ -9,8 +9,10 @@
 
 namespace horstoeko\invoicesuite\exceptions;
 
+use Throwable;
+
 /**
- * Class representing the exception codes
+ * Class representing the base exception
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
@@ -18,17 +20,17 @@ namespace horstoeko\invoicesuite\exceptions;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteExceptionCodes
+class InvoiceSuiteInvalidArgumentException extends InvoiceSuiteBaseException
 {
-    public const FORMATPROVIDER_NOTFOUND = -1000;
-
-    public const FILENOTFOUND = -1001;
-
-    public const FILENOTREADABLE = -1002;
-
-    public const UNKNOWN_CONTENT = -1003;
-
-    public const BAD_METHOD_CALL = -1004;
-
-    public const INVALID_ARGUMENT = -1005;
+    /**
+     * Constructor
+     *
+     * @param string $message
+     * @param null|Throwable $throwable
+     * @return void
+     */
+    public function __construct(string $message, ?Throwable $throwable = null)
+    {
+        parent::__construct($message, InvoiceSuiteExceptionCodes::INVALID_ARGUMENT, $throwable);
+    }
 }

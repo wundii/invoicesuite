@@ -9,15 +9,18 @@
 
 namespace horstoeko\invoicesuite\pdf;
 
-use InvalidArgumentException;
-use JMS\Serializer\Exception\RuntimeException;
-use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\concerns\HandlesCurrentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesFormatProviders;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\mimedb\MimeDb;
+use JMS\Serializer\Exception\RuntimeException;
+use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
 
 class InvoiceSuitePdfDocumentBuilder
 {
@@ -129,7 +132,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $newPdfContent
      * @param string $newXmlContent
      * @return InvoiceSuitePdfDocumentBuilder
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromPdfContentAndXmlContent(string $newPdfContent, string $newXmlContent): self
@@ -145,7 +148,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromPdfFileAndXmlContent(string $newPdfFile, string $newXmlContent): self
@@ -171,7 +174,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromPdfContentAndXmlFile(string $newPdfContent, string $newXmlFile): self
@@ -197,7 +200,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromPdfFileAndXmlFile(string $newPdfFile, string $newXmlFile): self
@@ -231,7 +234,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $newPdfContent
      * @param InvoiceSuiteDocumentBuilder $newDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws RuntimeException
      */
     public static function createFromPdfContentAndDocumentBuilder(string $newPdfContent, InvoiceSuiteDocumentBuilder $newDocumentBuilder): self
@@ -247,7 +250,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws RuntimeException
      */
     public static function createFromPdfFileAndDocumentBuilder(string $newPdfFile, InvoiceSuiteDocumentBuilder $newDocumentBuilder): self
@@ -291,12 +294,12 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @param string $newPdfContent
      * @return InvoiceSuitePdfDocumentBuilder
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     protected function setCurrentPdfContent(string $newPdfContent): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPdfContent)) {
-            throw new InvalidArgumentException('Invalid PDF content given');
+            throw new InvoiceSuiteInvalidArgumentException('Invalid PDF content given');
         }
 
         $this->currentPdfContent = $newPdfContent;
@@ -319,13 +322,13 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @param string $newXmlContent
      * @return InvoiceSuitePdfDocumentBuilder
-     * @throws InvalidArgumentException
+     * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     protected function setCurrentXmlContent(string $newXmlContent): self
     {
         if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newXmlContent)) {
-            throw new InvalidArgumentException('Invalid XML content given');
+            throw new InvoiceSuiteInvalidArgumentException('Invalid XML content given');
         }
 
         $this->resolveAvailableFormatProviders();
@@ -450,5 +453,135 @@ class InvoiceSuitePdfDocumentBuilder
     public function setAttachmentRelationshipTypeToSource()
     {
         return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_SOURCE);
+    }
+
+    /**
+     * Attach an additional file to PDF. The file that is specified in $fullFilename
+     * must exists
+     *
+     * @param string $fullFilename
+     * @param string $displayName
+     * @param string $relationshipType
+     * @return $this
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     */
+    public function attachAdditionalFileFromFile(string $fullFilename, string $displayName = "", string $relationshipType = "")
+    {
+        // Checks that the file really exists
+
+        if ($fullFilename === '') {
+            throw new InvoiceSuiteInvalidArgumentException("You must specify a filename for the content to attach");
+        }
+
+        if (!file_exists($fullFilename)) {
+            throw new InvoiceSuiteFileNotFoundException($fullFilename);
+        }
+
+        // Load content
+
+        $content = file_get_contents($fullFilename);
+
+        if ($content === false) {
+            throw new InvoiceSuiteFileNotReadableException($fullFilename);
+        }
+
+        // Add attachment
+
+        $this->attachAdditionalFileFromContent(
+            $content,
+            $fullFilename,
+            $displayName,
+            $relationshipType,
+        );
+
+        return $this;
+    }
+
+    /**
+     * Attach an additional file to PDF by a content
+     *
+     * @param string $content
+     * @param string $filename
+     * @param string $displayName
+     * @param string $relationshipType
+     * @return $this
+     * @throws InvoiceSuiteInvalidArgumentException
+     */
+    public function attachAdditionalFileFromContent(string $content, string $filename, string $displayName = "", string $relationshipType = "")
+    {
+        // Check content. The content must not be empty
+
+        if ($content === '') {
+            throw new InvoiceSuiteInvalidArgumentException("You must specify a content to attach");
+        }
+
+        // Check filename. The filename must not be empty
+
+        if ($filename === '') {
+            throw new InvoiceSuiteInvalidArgumentException("You must specify a filename for the content to attach");
+        }
+
+        // Mimetype for the file must exist
+
+        $mimeType = (new MimeDb())->findFirstMimeTypeByExtension(InvoiceSuiteFileUtils::getFileExtension($filename));
+
+        if (is_null($mimeType)) {
+            throw new InvoiceSuiteInvalidArgumentException("Unknown mimetypr");
+        }
+
+        // Sanatize relationship type
+
+        if ($relationshipType === '') {
+            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+        }
+
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE, static::AF_RELATIONSHIP_SUPPLEMENT, static::AF_RELATIONSHIP_UNSPECIFIED])) {
+            $relationshipType = static::AF_RELATIONSHIP_SUPPLEMENT;
+        }
+
+        // Sanatize displayname
+
+        if ($displayName === '') {
+            $displayName = InvoiceSuiteFileUtils::getFilenameWithExtension($filename);
+        }
+
+        // Add to attachment list
+
+        $this->additionalFilesToAttach[] = [
+            PdfStreamReader::createByString($content),
+            InvoiceSuiteFileUtils::getFilenameWithExtension($filename),
+            $displayName,
+            $relationshipType,
+            str_replace('/', '#2F', $mimeType)
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Get the the deterministic mode. This mode should only be used
+     * for testing purposes
+     *
+     * @return bool
+     */
+    public function getDeterministicModeEnabled(): bool
+    {
+        return $this->pdfWriter->getDeterministicModeEnabled();
+    }
+
+    /**
+     * Set the the deterministic mode. This mode should only be used
+     * for testing purposes
+     *
+     * @param  bool $deterministicModeEnabled
+     * @return static
+     */
+    public function setDeterministicModeEnabled(bool $deterministicModeEnabled)
+    {
+        $this->pdfWriter->setDeterministicModeEnabled($deterministicModeEnabled);
+
+        return $this;
     }
 }

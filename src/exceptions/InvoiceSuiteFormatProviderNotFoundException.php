@@ -20,7 +20,7 @@ use Throwable;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteFormatProviderNotFoundException extends \Exception
+class InvoiceSuiteFormatProviderNotFoundException extends InvoiceSuiteBaseException
 {
     /**
      * Constructor
