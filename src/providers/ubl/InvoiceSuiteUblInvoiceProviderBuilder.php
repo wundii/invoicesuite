@@ -172,7 +172,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
 
         // Document-Level Notes
 
-        $newDocumentDTO->forEachNote(fn (InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
+        $newDocumentDTO->forEachNote(fn(InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
             $note->getContent(),
             $note->getContentCode(),
             $note->getSubjectCode()
@@ -362,7 +362,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerId($item->getId()),
-                fn () => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn ($item) => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
+                fn () => $newDocumentDTO->getBuyerParty()->firstGlobalId(fn($item) => $this->setDocumentBuyerGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstTaxRegistration(
                 fn (InvoiceSuiteIdDTO $item) => $this->setDocumentBuyerTaxRegistration($item->getIdType(), $item->getId())
@@ -436,7 +436,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipToId($item->getId()),
-                fn () => $newDocumentDTO->getShipToParty()->firstGlobalId(fn ($item) => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
+                fn () => $newDocumentDTO->getShipToParty()->firstGlobalId(fn($item) => $this->setDocumentShipToGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstAddress(
                 fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipToAddress(
@@ -475,7 +475,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractFormatPr
             )
             ?->firstId(
                 fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeId($item->getId()),
-                fn () => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn ($item) => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
+                fn () => $newDocumentDTO->getPayeeParty()->firstGlobalId(fn($item) => $this->setDocumentPayeeGlobalId($item->getId(), $item->getIdType()))
             )
             ?->firstTaxRegistration(
                 fn (InvoiceSuiteIdDTO $item) => $this->setDocumentPayeeTaxRegistration($item->getIdType(), $item->getId())

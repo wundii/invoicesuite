@@ -163,7 +163,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractFormat
 
         // Document-Level Notes
 
-        $newDocumentDTO->forEachNote(fn (InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
+        $newDocumentDTO->forEachNote(fn(InvoiceSuiteNoteDTO $note) => $this->addDocumentNote(
             $note->getContent(),
             $note->getContentCode(),
             $note->getSubjectCode()
