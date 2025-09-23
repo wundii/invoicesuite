@@ -39,6 +39,91 @@ class InvoiceSuitePdfDocumentBuilder
     protected string $currentXmlContent = "";
 
     /**
+     * Internal PDF helper instance
+     *
+     * @var InvoiceSuitePdfWriter
+     */
+    protected InvoiceSuitePdfWriter $pdfWriter;
+
+    /**
+     * Additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @var string
+     */
+    private $additionalCreatorTool = "";
+
+    /**
+     * The relationship type to use for the XML attachment. Detault is Data
+     *
+     * @var string
+     */
+
+    private $attachmentRelationshipType = 'Data';
+
+    /**
+     * List of files which should be additionally attached to PDF
+     *
+     * @var array
+     */
+    private $additionalFilesToAttach = [];
+
+    /**
+     * User-defined template for the author-metainformation
+     *
+     * @var string
+     */
+    private $authorTemplate = "";
+
+    /**
+     * User-defined template for the keyword-metainformation
+     *
+     * @var string
+     */
+    private $keywordTemplate = "";
+
+    /**
+     * User-defined template for the title-metainformation
+     *
+     * @var string
+     */
+    private $titleTemplate = "";
+
+    /**
+     * User-defined template for the subject-metainformation
+     *
+     * @var string
+     */
+    private $subjectTemplate = "";
+
+    /**
+     * User-defined callback function for all metainformation
+     *
+     * @var callable|null
+     */
+    private $metaInformationCallback;
+
+    /**
+     * Internal flag which indicate, that attachment pane should be opened
+     *
+     * @var boolean
+     */
+    private $attachmentPaneVisibility = true;
+
+    /**
+     * Constants for Relationship types
+     * 'Data', 'Alternative', 'Source', 'Supplement', 'Unspecified'
+     */
+    public const AF_RELATIONSHIP_DATA = "Data";
+
+    public const AF_RELATIONSHIP_ALTERNATIVE = "Alternative";
+
+    public const AF_RELATIONSHIP_SOURCE = "Source";
+
+    public const AF_RELATIONSHIP_SUPPLEMENT = "Supplement";
+
+    public const AF_RELATIONSHIP_UNSPECIFIED = "Unspecified";
+
+    /**
      * Create a new instance of InvoiceSuitePdfDocumentBuilder by given PDF content and XML content
      *
      * @param string $newPdfContent
@@ -188,6 +273,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     final protected function __construct()
     {
+        $this->pdfWriter = new InvoiceSuitePdfWriter();
     }
 
     /**
@@ -276,5 +362,93 @@ class InvoiceSuitePdfDocumentBuilder
         $this->currentXmlContent = $newDocumentBuilder->getContentAsXml();
 
         return $this;
+    }
+
+    /**
+     * Gets an additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @return string
+     */
+    public function getAdditionalCreatorTool(): string
+    {
+        return $this->additionalCreatorTool;
+    }
+
+    /**
+     * Sets an additional creator tool (e.g. the ERP software that called the PHP library)
+     *
+     * @param  string $additionalCreatorTool The name of the creator
+     * @return static
+     */
+    public function setAdditionalCreatorTool(string $additionalCreatorTool)
+    {
+        $this->additionalCreatorTool = $additionalCreatorTool;
+
+        return $this;
+    }
+
+    /**
+     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
+     *
+     * @return string
+     */
+    private function getCreatorToolName(): string
+    {
+        $toolName = sprintf('Factur-X PHP library v%s by HorstOeko', '1.0');
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getAdditionalCreatorTool())) {
+            return $this->getAdditionalCreatorTool() . ' / ' . $toolName;
+        }
+
+        return $toolName;
+    }
+
+    /**
+     * Returns the relationship type for the XML attachment. This
+     * can return 'Data', 'Alternative'
+     *
+     * @return string
+     */
+    public function getAttachmentRelationshipType(): string
+    {
+        return $this->attachmentRelationshipType;
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment. Allowed
+     * types are 'Data', 'Alternative' and 'Source'
+     *
+     * @param  string $relationshipType Type of relationship
+     * @return static
+     */
+    public function setAttachmentRelationshipType(string $relationshipType)
+    {
+        if (!in_array($relationshipType, [static::AF_RELATIONSHIP_DATA, static::AF_RELATIONSHIP_ALTERNATIVE, static::AF_RELATIONSHIP_SOURCE])) {
+            $relationshipType = static::AF_RELATIONSHIP_DATA;
+        }
+
+        $this->attachmentRelationshipType = $relationshipType;
+
+        return $this;
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment to "Alternative"
+     *
+     * @return static
+     */
+    public function setAttachmentRelationshipTypeToAlternative()
+    {
+        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_ALTERNATIVE);
+    }
+
+    /**
+     * Set the type of relationship for the XML attachment to "Source"
+     *
+     * @return static
+     */
+    public function setAttachmentRelationshipTypeToSource()
+    {
+        return $this->setAttachmentRelationshipType(static::AF_RELATIONSHIP_SOURCE);
     }
 }
