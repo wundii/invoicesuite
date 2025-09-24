@@ -87,6 +87,7 @@ lint.ps1
 /examples/00_SimpleInvoice.xml
 /examples/01_SimpleInvoice.xml
 /examples/01_SimpleInvoice_UBL.xml
+/examples/01_SimpleInvoice_copy.xml
 addusetoclasses.php
 addusetoclasses2.php
 convert_string_params.php
