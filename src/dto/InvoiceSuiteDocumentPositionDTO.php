@@ -2156,8 +2156,12 @@ class InvoiceSuiteDocumentPositionDTO
      * @param DateTimeInterface $supplyChainEvent The date of the delivery
      * @return self
      */
-    public function addSupplyChainEvent(DateTimeInterface $supplyChainEvent): self
+    public function addSupplyChainEvent(?DateTimeInterface $supplyChainEvent): self
     {
+        if (is_null($supplyChainEvent)) {
+            return $this;
+        }
+
         $this->supplyChainEvents[] = $supplyChainEvent;
 
         return $this;
