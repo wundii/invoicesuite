@@ -175,8 +175,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         $this->setDocumentCompleteDate($newDocumentDTO->getCompleteDate());
         $this->setDocumentCurrency($newDocumentDTO->getCurrency());
         $this->setDocumentTaxCurrency($newDocumentDTO->getTaxCurrency());
-        $this->setDocumentIsTest($newDocumentDTO->getIsTest());
         $this->setDocumentIsCopy($newDocumentDTO->getIsCopy());
+        $this->setDocumentIsTest($newDocumentDTO->getIsTest());
 
         // Document-Level Notes
 
