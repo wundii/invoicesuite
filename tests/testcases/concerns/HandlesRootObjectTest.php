@@ -6,7 +6,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\models\zffxextended\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
+use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 
 class HandlesRootObjectTest extends TestCase
 {
