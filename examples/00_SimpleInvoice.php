@@ -1,11 +1,11 @@
 <?php
 
-use horstoeko\invoicesuite\dto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\dto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteAddressDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteContactDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePartyDTO;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 

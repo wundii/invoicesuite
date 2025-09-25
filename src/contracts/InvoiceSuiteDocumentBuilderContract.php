@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\contracts;
 
 use DateTimeInterface;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 /**

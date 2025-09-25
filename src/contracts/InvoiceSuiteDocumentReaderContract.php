@@ -11,7 +11,7 @@ namespace horstoeko\invoicesuite\contracts;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\dto\InvoiceSuiteDocumentHeaderDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentHeaderDTO;
 
 /**
  * Interface representing the required methods for a reader
