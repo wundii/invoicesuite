@@ -9,12 +9,6 @@
 
 namespace horstoeko\invoicesuite\pdfutils;
 
-use Exception;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use Smalot\PdfParser\Parser as PdfParser;
-
 /**
  * Class representing an attachment of an PDF extracted by InvoiceSuitePdfExtractor
  *
@@ -24,7 +18,6 @@ use Smalot\PdfParser\Parser as PdfParser;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-
 class InvoiceSuitePdfExtractorAttachment
 {
     /**
