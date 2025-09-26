@@ -24,7 +24,7 @@ use Smalot\PdfParser\Parser as PdfParser;
  * @license  https://opensource.org/licenses/MIT MIT
  * @link     https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePdfExtractor
+class InvoiceSuitePdfAttachmentExtractor
 {
     /**
      * Array containing all the attached files found in PDF
@@ -62,7 +62,7 @@ class InvoiceSuitePdfExtractor
      * Start getting attached files from a PDF file
      *
      * @param string $pdfFilename
-     * @return InvoiceSuitePdfExtractor
+     * @return InvoiceSuitePdfAttachmentExtractor
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws Exception
@@ -86,12 +86,12 @@ class InvoiceSuitePdfExtractor
      * Start getting attached files from a PDF content
      *
      * @param string $pdfContent
-     * @return InvoiceSuitePdfExtractor
+     * @return InvoiceSuitePdfAttachmentExtractor
      * @throws Exception
      */
     public static function fromContent(string $pdfContent): self
     {
-        return (new InvoiceSuitePdfExtractor())->collectAttachmentsFromPdfContent($pdfContent);
+        return (new InvoiceSuitePdfAttachmentExtractor())->collectAttachmentsFromPdfContent($pdfContent);
     }
 
     /**
@@ -148,7 +148,7 @@ class InvoiceSuitePdfExtractor
      * @param callable $callback Callback called when attachment is available. The callback gets the current attachment and it's internal undex
      * @param null|callable $callbackElse Callback called when no attachment is available
      * @param null|int $limit Maximum iterations. When null through all attachments is iterated
-     * @return InvoiceSuitePdfExtractor
+     * @return InvoiceSuitePdfAttachmentExtractor
      */
     public function foreachAttachment(callable $callback, ?callable $callbackElse = null, ?int $limit = null): self
     {
@@ -175,7 +175,7 @@ class InvoiceSuitePdfExtractor
      * Get a list of all the attachments.
      *
      * @param string $pdfContent
-     * @return InvoiceSuitePdfExtractor
+     * @return InvoiceSuitePdfAttachmentExtractor
      * @throws Exception
      */
     protected function collectAttachmentsFromPdfContent(string $pdfContent): self
