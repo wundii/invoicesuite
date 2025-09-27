@@ -173,7 +173,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     }
 
     /**
-     * Enable foreach ($extractor as $attachment) { ... }
+     * Enable foreach
      *
      * @return Traversable<int, InvoiceSuitePdfExtractorAttachment>
      */
@@ -183,7 +183,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     }
 
     /**
-     * Enable count($extractor)
+     * Enable count
      */
     public function count(): int
     {
