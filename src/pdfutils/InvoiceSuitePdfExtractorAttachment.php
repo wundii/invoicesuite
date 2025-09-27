@@ -54,9 +54,9 @@ class InvoiceSuitePdfExtractorAttachment
         string $newAttachmentFilename,
         string $newAttachmentMimeType
     ) {
-        $this->setNewAttachmentContent($newAttachmentContent);
-        $this->setNewAttachmentFilename($newAttachmentFilename);
-        $this->setNewAttachmentMimeType($newAttachmentMimeType);
+        $this->setAttachmentContent($newAttachmentContent);
+        $this->setAttachmentFilename($newAttachmentFilename);
+        $this->setAttachmentMimeType($newAttachmentMimeType);
     }
 
     /**
@@ -64,7 +64,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return string
      */
-    public function getNewAttachmentContent(): string
+    public function getAttachmentContent(): string
     {
         return $this->attachmentContent;
     }
@@ -74,7 +74,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return self
      */
-    public function setNewAttachmentContent(string $newAttachmentContent): self
+    public function setAttachmentContent(string $newAttachmentContent): self
     {
         $this->attachmentContent = $newAttachmentContent;
 
@@ -86,7 +86,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return string
      */
-    public function getNewAttachmentFilename(): string
+    public function getAttachmentFilename(): string
     {
         return $this->attachmentFilename;
     }
@@ -96,7 +96,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return self
      */
-    public function setNewAttachmentFilename(string $newAttachmentFilename): self
+    public function setAttachmentFilename(string $newAttachmentFilename): self
     {
         $this->attachmentFilename = $newAttachmentFilename;
 
@@ -108,7 +108,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return string
      */
-    public function getNewAttachmentMimeType(): string
+    public function getAttachmentMimeType(): string
     {
         return $this->attachmentMimeType;
     }
@@ -118,7 +118,7 @@ class InvoiceSuitePdfExtractorAttachment
      *
      * @return self
      */
-    public function setNewAttachmentMimeType(string $newAttachmentMimeType): self
+    public function setAttachmentMimeType(string $newAttachmentMimeType): self
     {
         $this->attachmentMimeType = $newAttachmentMimeType;
 
