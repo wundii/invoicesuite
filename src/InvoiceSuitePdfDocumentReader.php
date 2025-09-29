@@ -95,7 +95,7 @@ class InvoiceSuitePdfDocumentReader
             $formatProvider = reset($formatProviders);
 
             $this->setCurrentPdfDocumentFormatProvider($formatProvider);
-            $this->getCurrentPdfDocumentFormatProvider()->initPdfReader()->getPdfReader()->readFromContent($pdfExtractorAttachment->getAttachmentContent());
+            $this->getCurrentPdfDocumentFormatProvider()->initPdfReader()->getPdfReader()->setContents($pdfExtractorAttachment->getAttachmentContent());
 
             break;
         }

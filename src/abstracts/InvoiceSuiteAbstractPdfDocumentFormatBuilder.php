@@ -33,4 +33,28 @@ abstract class InvoiceSuiteAbstractPdfDocumentFormatBuilder
     {
         $this->setCurrentPdfDocumentFormatProvider($newProvider);
     }
+
+    /**
+     * Initialize, Set contents to merge
+     *
+     * @param string $fromDocumentContent
+     * @param string $fromPdfContent
+     * @return self
+     */
+    abstract public function setContents(string $fromDocumentContent, string $fromPdfContent): self;
+
+    /**
+     * Get the generated PDF as content string
+     *
+     * @return string
+     */
+    abstract public function getGeneratedPdfContent(): string;
+
+    /**
+     * Save the generated PDF to a file
+     *
+     * @param string $newFilename
+     * @return self
+     */
+    abstract public function saveGeneratedPdfContentToFile(string $newFilename): self;
 }

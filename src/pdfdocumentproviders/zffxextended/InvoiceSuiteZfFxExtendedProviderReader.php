@@ -9,8 +9,18 @@
 
 namespace horstoeko\invoicesuite\pdfdocumentproviders\zffxextended;
 
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractPdfDocumentFormatReader;
 
 class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractPdfDocumentFormatReader
 {
+    /**
+     * Initialize, Set contents to merge
+     */
+    public function setContents(string $fromContent): self
+    {
+        $this->setDocumentReaderObject(InvoiceSuiteDocumentReader::createFromContent($fromContent));
+
+        return $this;
+    }
 }

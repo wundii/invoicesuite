@@ -11,7 +11,6 @@ namespace horstoeko\invoicesuite\abstracts;
 
 use horstoeko\invoicesuite\concerns\HandlesPdfDocumentReaderObject;
 use horstoeko\invoicesuite\concerns\HandlesCurrentPdfDocumentFormatProvider;
-use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 
 /**
  * Class representing methods for a PDF reader
@@ -38,15 +37,10 @@ abstract class InvoiceSuiteAbstractPdfDocumentFormatReader
     }
 
     /**
-     * Read content
+     * Initialize, Set contents to read
      *
-     * @param string $fromContent
-     * @return InvoiceSuiteAbstractPdfDocumentFormatReader
+     * @param string $fromDocumentContent
+     * @return self
      */
-    public function readFromContent(string $fromContent): self
-    {
-        $this->setDocumentReaderObject(InvoiceSuiteDocumentReader::createFromContent($fromContent));
-
-        return $this;
-    }
+    abstract public function setContents(string $fromDocumentContent): self;
 }

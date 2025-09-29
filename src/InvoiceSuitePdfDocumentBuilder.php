@@ -132,7 +132,7 @@ class InvoiceSuitePdfDocumentBuilder
         $formatProvider = reset($formatProviders);
 
         $this->setCurrentPdfDocumentFormatProvider($formatProvider);
-        $this->getCurrentPdfDocumentFormatProvider()->initPdfBuilder();
+        $this->getCurrentPdfDocumentFormatProvider()->initPdfBuilder()->getPdfBuilder()->setContents($fromDocumentContent, $fromPdfContent);
     }
 
     /**
