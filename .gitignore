@@ -95,3 +95,4 @@ transfer_docblocks*.php
 gendto.php
 gencodelists.php
 myfile_dbg.xml
+/examples/04_Invoice.pdf
