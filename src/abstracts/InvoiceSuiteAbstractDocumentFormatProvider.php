@@ -172,6 +172,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function getReader(): InvoiceSuiteAbstractDocumentFormatReader
     {
+        if (is_null($this->readerInstance)) {
+            $this->initReader();
+        }
+
         return $this->readerInstance;
     }
 
@@ -194,6 +198,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      */
     public function getBuilder(): InvoiceSuiteAbstractDocumentFormatBuilder
     {
+        if (is_null($this->builderInstance)) {
+            $this->initBuilder();
+        }
+
         return $this->builderInstance;
     }
 

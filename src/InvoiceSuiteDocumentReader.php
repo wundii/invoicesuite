@@ -95,7 +95,7 @@ class InvoiceSuiteDocumentReader
         $formatProvider = reset($formatProviders);
 
         $this->setCurrentDocumentFormatProvider($formatProvider);
-        $this->getCurrentDocumentFormatProvider()->initReader()->getReader()->deserializeFromContent($fromContent);
+        $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($fromContent);
     }
 
     /**
