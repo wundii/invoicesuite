@@ -34,6 +34,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
     use HandlesDocumentRootObject;
     use HandlesDocumentSerializer;
 
+    #region General
+
     /**
      * Constructor
      *
@@ -101,6 +103,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
     {
         file_put_contents($tofile, $this->getContentAsJson());
     }
+
+    #endregion
 
     #region Document DTO
 

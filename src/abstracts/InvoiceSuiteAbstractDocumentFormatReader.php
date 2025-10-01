@@ -35,6 +35,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     use HandlesDocumentRootObject;
     use HandlesDocumentSerializer;
 
+    #region General
+
     /**
      * Constructor
      *
@@ -115,6 +117,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
 
         return $this;
     }
+
+    #endregion
+
     #region Document DTO
 
     /**
