@@ -228,7 +228,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     }
 
     /**
-     * Returns the parameter value for the request parameter for the requested format provider
+     * Returns the parameter value for the requested parameter
      *
      * @param string $parameterName
      * @param mixed $defaultValue
