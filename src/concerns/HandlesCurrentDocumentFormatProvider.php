@@ -23,6 +23,26 @@ trait HandlesCurrentDocumentFormatProvider
     protected $currentDocumentFormatProvider;
 
     /**
+     * Returns true if a format provider is set, otherwise false
+     *
+     * @return boolean
+     */
+    public function hasCurrentDocumentFormatProvider(): bool
+    {
+        return !is_null($this->getCurrentDocumentFormatProvider());
+    }
+
+    /**
+     * Returns true if a format provider is not set, otherwise false
+     *
+     * @return boolean
+     */
+    public function hasNotCurrentDocumentFormatProvider(): bool
+    {
+        return !$this->hasCurrentDocumentFormatProvider();
+    }
+
+    /**
      * Returns the requested format provider
      *
      * @return InvoiceSuiteAbstractDocumentFormatProvider|null

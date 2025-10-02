@@ -100,7 +100,7 @@ class InvoiceSuitePdfDocumentReader
         $pdfExtractor = InvoiceSuitePdfExtractor::fromContent($fromContent);
 
         foreach ($pdfExtractor as $pdfExtractorAttachment) {
-            if (!is_null($this->getCurrentDocumentFormatProvider())) {
+            if ($this->hasCurrentDocumentFormatProvider()) {
                 $this->addAdditionalDocumentAttachments($pdfExtractorAttachment);
                 continue;
             }
@@ -118,14 +118,15 @@ class InvoiceSuitePdfDocumentReader
                 continue;
             }
 
+            $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
+
             $formatProvider = reset($formatProviders);
 
-            $this->setInvoiceDocumentAttachment($pdfExtractorAttachment);
             $this->setCurrentDocumentFormatProvider($formatProvider);
             $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($pdfExtractorAttachment->getAttachmentContent());
         }
 
-        if (is_null($this->getCurrentDocumentFormatProvider())) {
+        if ($this->hasNotCurrentDocumentFormatProvider()) {
             throw new InvoiceSuiteFormatProviderNotFoundException("unknown");
         }
     }
