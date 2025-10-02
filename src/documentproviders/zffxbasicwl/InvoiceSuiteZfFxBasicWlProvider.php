@@ -189,4 +189,14 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
     {
         return "factur-x.xml";
     }
+
+    /**
+     * Returns the PDF constructor classname for this format provider
+     *
+     * @return string
+     */
+    public function getPdfConstructorClassName(): string
+    {
+        return "";
+    }
 }

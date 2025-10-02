@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
+use horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor;
 use JMS\Serializer\Exception\LogicException;
 use JMS\Serializer\Exception\RuntimeException;
 
@@ -35,9 +36,26 @@ class InvoiceSuitePdfDocumentBuilder
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
 
-    protected $documentContent;
+    /**
+     * Internal buffer which holds the content of the invoice document
+     *
+     * @var string
+     */
+    private $documentContent;
 
-    protected $pdfContent;
+    /**
+     * Internal buffer which holds the content of the PDF document
+     *
+     * @var string
+     */
+    private $pdfContent;
+
+    /**
+     * The PDF constructor instance
+     *
+     * @var \horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor
+     */
+    private $pdfConstructorInstance;
 
     /**
      * Create the PDF builder from a document builder and a PDF file
@@ -78,7 +96,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): InvoiceSuitePdfDocumentBuilder
     {
-        return (new static())->setDocumentBuilder($fromDocumentBuilder)->setPdfContentDirect($fromPdfContent);
+        return (new static())->setDocumentBuilder($fromDocumentBuilder)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
     }
 
     /**
@@ -116,7 +134,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): InvoiceSuitePdfDocumentBuilder
     {
-        return (new static())->setDocumentContent($fromDocumentContent)->setPdfContentDirect($fromPdfContent);
+        return (new static())->setDocumentContent($fromDocumentContent)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
     }
 
     /**
@@ -138,8 +156,12 @@ class InvoiceSuitePdfDocumentBuilder
      */
     protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): InvoiceSuitePdfDocumentBuilder
     {
-        if (!$fromDocumentBuilder->isPdfSupportAvailable()) {
+        if (!$fromDocumentBuilder->getCurrentDocumentFormatProvider()->isPdfSupportAvailable()) {
             throw new InvoiceSuiteInvalidArgumentException(sprintf("Provider %s does not support PDF embedding", $this->getCurrentDocumentFormatProvider()->getUniqueId()));
+        }
+
+        if (!is_subclass_of($fromDocumentBuilder->getCurrentDocumentFormatProvider()->getPdfConstructorClassName(), InvoiceSuiteAbstractPdfConstructor::class)) {
+            throw new InvoiceSuiteInvalidArgumentException("The PDF constructor class provided by format provider must inherit from InvoiceSuiteAbstractPdfConstructor");
         }
 
         $this->setCurrentDocumentFormatProvider($fromDocumentBuilder->getCurrentDocumentFormatProvider());
@@ -162,7 +184,7 @@ class InvoiceSuitePdfDocumentBuilder
 
         $formatProviders = array_filter(
             $this->getRegisteredDocumentFormatProviders(),
-            fn($formatProvider) => $formatProvider->isPdfSupportAvailable() && $formatProvider->isSatisfiableBySerializedContent($fromDocumentContent())
+            fn($formatProvider) => $formatProvider->isPdfSupportAvailable() && is_subclass_of($formatProvider->getPdfConstructorClassName(), InvoiceSuiteAbstractPdfConstructor::class) && $formatProvider->isSatisfiableBySerializedContent($fromDocumentContent())
         );
 
         if ($formatProviders === []) {
@@ -178,7 +200,7 @@ class InvoiceSuitePdfDocumentBuilder
     }
 
     /**
-     * Internal method to set the document content directly
+     * Internal method to set the invoice document content directly
      *
      * @param string $fromDocumentContent
      * @return InvoiceSuitePdfDocumentBuilder
@@ -188,6 +210,16 @@ class InvoiceSuitePdfDocumentBuilder
         $this->documentContent = $fromDocumentContent;
 
         return $this;
+    }
+
+    /**
+     * Returns the given document content
+     *
+     * @return string
+     */
+    protected function getDocumentContent(): string
+    {
+        return $this->documentContent;
     }
 
     /**
@@ -201,5 +233,41 @@ class InvoiceSuitePdfDocumentBuilder
         $this->pdfContent = $fromPdfContent;
 
         return $this;
+    }
+
+    /**
+     * Returns the given PDF content
+     *
+     * @return string
+     */
+    protected function getPdfContent(): string
+    {
+        return $this->pdfContent;
+    }
+
+    /**
+     * Initialize the internal PDF constructor
+     *
+     * @return InvoiceSuitePdfDocumentBuilder
+     */
+    protected function initPdfConstructor(): InvoiceSuitePdfDocumentBuilder
+    {
+        $this->pdfConstructorInstance = new ($this->getCurrentDocumentFormatProvider()->getPdfConstructorClassName())(
+            $this->getCurrentDocumentFormatProvider(),
+            $this->getDocumentContent(),
+            $this->getPdfContent()
+        );
+
+        return $this;
+    }
+
+    /**
+     * Retrieve the internal PDF constructor implementation
+     *
+     * @return InvoiceSuiteAbstractPdfConstructor
+     */
+    protected function getPdfConstructor(): InvoiceSuiteAbstractPdfConstructor
+    {
+        return $this->pdfConstructorInstance;
     }
 }

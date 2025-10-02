@@ -149,6 +149,13 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      */
     abstract public function getDefaultPdfAttachmentFilename(): string;
 
+    /**
+     * Returns the PDF constructor classname for this format provider
+     *
+     * @return string
+     */
+    abstract public function getPdfConstructorClassName(): string;
+
     #endregion
 
     #region General

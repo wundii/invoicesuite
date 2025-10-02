@@ -184,4 +184,14 @@ class InvoiceSuiteUblInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatP
     {
         return "";
     }
+
+    /**
+     * Returns the PDF constructor classname for this format provider
+     *
+     * @return string
+     */
+    public function getPdfConstructorClassName(): string
+    {
+        return "";
+    }
 }
