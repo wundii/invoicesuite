@@ -41,21 +41,21 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @var string
      */
-    private $documentContent;
+    private $rawDocumentContent;
 
     /**
      * Internal buffer which holds the content of the PDF document
      *
      * @var string
      */
-    private $pdfContent;
+    private $rawPdfContent;
 
     /**
      * The PDF constructor instance
      *
      * @var \horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor
      */
-    private $pdfConstructorInstance;
+    private $currentPdfConstructorInstance;
 
     /**
      * Create the PDF builder from a document builder and a PDF file
@@ -96,7 +96,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): self
     {
-        return (new static())->setDocumentBuilder($fromDocumentBuilder)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
+        return (new static())->setDocumentBuilder($fromDocumentBuilder)->setRawPdfContent($fromPdfContent)->initPdfConstructor();
     }
 
     /**
@@ -134,7 +134,7 @@ class InvoiceSuitePdfDocumentBuilder
      */
     public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): self
     {
-        return (new static())->setDocumentContent($fromDocumentContent)->setPdfContentDirect($fromPdfContent)->initPdfConstructor();
+        return (new static())->setDocumentContent($fromDocumentContent)->setRawPdfContent($fromPdfContent)->initPdfConstructor();
     }
 
     /**
@@ -165,7 +165,7 @@ class InvoiceSuitePdfDocumentBuilder
         }
 
         $this->setCurrentDocumentFormatProvider($fromDocumentBuilder->getCurrentDocumentFormatProvider());
-        $this->setDocumentContentDirect($fromDocumentBuilder->getContentAsXml());
+        $this->setRawDocumentContent($fromDocumentBuilder->getContentAsXml());
 
         return $this;
     }
@@ -197,20 +197,20 @@ class InvoiceSuitePdfDocumentBuilder
         $formatProvider = reset($formatProviders);
 
         $this->setCurrentDocumentFormatProvider($formatProvider);
-        $this->setDocumentContentDirect($fromDocumentContent);
+        $this->setRawDocumentContent($fromDocumentContent);
 
         return $this;
     }
 
     /**
-     * Internal method to set the invoice document content directly
+     * Internal method to set the raw invoice document content
      *
      * @param string $fromDocumentContent
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    protected function setDocumentContentDirect(string $fromDocumentContent): self
+    protected function setRawDocumentContent(string $fromDocumentContent): self
     {
-        $this->documentContent = $fromDocumentContent;
+        $this->rawDocumentContent = $fromDocumentContent;
 
         return $this;
     }
@@ -220,9 +220,9 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return string
      */
-    protected function getDocumentContent(): string
+    protected function getRawDocumentContent(): string
     {
-        return $this->documentContent;
+        return $this->rawDocumentContent;
     }
 
     /**
@@ -231,9 +231,9 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $fromPdfContent
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    protected function setPdfContentDirect(string $fromPdfContent): self
+    protected function setRawPdfContent(string $fromPdfContent): self
     {
-        $this->pdfContent = $fromPdfContent;
+        $this->rawPdfContent = $fromPdfContent;
 
         return $this;
     }
@@ -243,9 +243,9 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return string
      */
-    protected function getPdfContent(): string
+    protected function getRawPdfContent(): string
     {
-        return $this->pdfContent;
+        return $this->rawPdfContent;
     }
 
     /**
@@ -255,10 +255,10 @@ class InvoiceSuitePdfDocumentBuilder
      */
     protected function initPdfConstructor(): self
     {
-        $this->pdfConstructorInstance = new ($this->getCurrentDocumentFormatProvider()->getPdfConstructorClassName())(
+        $this->currentPdfConstructorInstance = new ($this->getCurrentDocumentFormatProvider()->getPdfConstructorClassName())(
             $this->getCurrentDocumentFormatProvider(),
-            $this->getDocumentContent(),
-            $this->getPdfContent()
+            $this->getRawDocumentContent(),
+            $this->getRawPdfContent()
         );
 
         return $this;
@@ -271,6 +271,6 @@ class InvoiceSuitePdfDocumentBuilder
      */
     protected function getPdfConstructor(): InvoiceSuiteAbstractPdfConstructor
     {
-        return $this->pdfConstructorInstance;
+        return $this->currentPdfConstructorInstance;
     }
 }

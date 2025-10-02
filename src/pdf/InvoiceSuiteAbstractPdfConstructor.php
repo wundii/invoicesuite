@@ -30,31 +30,31 @@ class InvoiceSuiteAbstractPdfConstructor
      *
      * @var string
      */
-    private $documentContent;
+    private $rawDocumentContent;
 
     /**
      * Internal buffer which holds the content of the PDF document
      *
      * @var string
      */
-    private $pdfContent;
+    private $rawPdfContent;
 
     /**
      * Constructor
      *
      * @param InvoiceSuiteAbstractDocumentFormatProvider $newProvider
-     * @param string $newDocumentContent
-     * @param string $newPdfContent
+     * @param string $rawDocumentContent
+     * @param string $rawPdfContent
      * @return self
      */
     public function __construct(
         InvoiceSuiteAbstractDocumentFormatProvider $newProvider,
-        string $newDocumentContent,
-        string $newPdfContent
+        string $rawDocumentContent,
+        string $rawPdfContent
     ) {
         $this->setCurrentDocumentFormatProvider($newProvider);
-        $this->setDocumentContent($newDocumentContent);
-        $this->setPdfContent($newPdfContent);
+        $this->setRawDocumentContent($rawDocumentContent);
+        $this->setRawPdfContent($rawPdfContent);
     }
 
     /**
@@ -62,20 +62,20 @@ class InvoiceSuiteAbstractPdfConstructor
      *
      * @return string
      */
-    protected function getDocumentContent(): string
+    protected function getRawDocumentContent(): string
     {
-        return $this->documentContent;
+        return $this->rawDocumentContent;
     }
 
     /**
      * Internal method to set the invoice document content
      *
-     * @param string $newDocumentContent
+     * @param string $rawDocumentContent
      * @return InvoiceSuiteAbstractPdfConstructor
      */
-    protected function setDocumentContent(string $newDocumentContent): self
+    protected function setRawDocumentContent(string $rawDocumentContent): self
     {
-        $this->documentContent = $newDocumentContent;
+        $this->rawDocumentContent = $rawDocumentContent;
 
         return $this;
     }
@@ -85,20 +85,20 @@ class InvoiceSuiteAbstractPdfConstructor
      *
      * @return string
      */
-    protected function getPdfContent(): string
+    protected function getRawPdfContent(): string
     {
-        return $this->pdfContent;
+        return $this->rawPdfContent;
     }
 
     /**
      * Internal method to set the PDF content
      *
-     * @param string $newPdfContent
+     * @param string $rawPdfContent
      * @return self
      */
-    protected function setPdfContent(string $newPdfContent): self
+    protected function setRawPdfContent(string $rawPdfContent): self
     {
-        $this->pdfContent = $newPdfContent;
+        $this->rawPdfContent = $rawPdfContent;
 
         return $this;
     }
