@@ -10,3 +10,4 @@ $pdfContent = file_get_contents(InvoiceSuitePathUtils::combinePathWithFile(__DIR
 
 $builder = InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfContent($xmlContent, $pdfContent);
 
+$builder->generatePdfDocumentAndSaveToFile(InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "05_pdf_1.pdf"));

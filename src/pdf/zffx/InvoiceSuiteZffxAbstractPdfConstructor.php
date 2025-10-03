@@ -114,11 +114,13 @@ abstract class InvoiceSuiteZffxAbstractPdfConstructor extends InvoiceSuiteAbstra
 
     protected function getGeneratedPdfDocumentContent(): string
     {
-        return "";
+        return $this->pdfWriter->Output('S');
     }
 
     protected function saveGeneratedPdfDocumentToFile(string $toFilename): InvoiceSuiteAbstractPdfConstructor
     {
+        $this->pdfWriter->Output('F', $toFilename);
+
         return $this;
     }
 
