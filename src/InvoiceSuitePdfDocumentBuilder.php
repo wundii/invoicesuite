@@ -405,7 +405,7 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    public function setDeterministicModeToEnabled(): Self
+    public function setDeterministicModeToEnabled(): self
     {
         $this->getCurrentPdfConstructor()->setDeterministicModeToEnabled();
 
@@ -417,7 +417,7 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @return InvoiceSuitePdfDocumentBuilder
      */
-    public function setDeterministicModeToDisabled(): Self
+    public function setDeterministicModeToDisabled(): self
     {
         $this->getCurrentPdfConstructor()->setDeterministicModeToDisabled();
 

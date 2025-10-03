@@ -44,7 +44,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * (Hidden) Constructor
      */
-    final protected function __construct() {}
+    final protected function __construct()
+    {
+    }
 
     /**
      * Start getting attached files from a PDF file

@@ -362,7 +362,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @return InvoiceSuiteAbstractPdfConstructor
      */
-    public function setDeterministicModeToEnabled(): Self
+    public function setDeterministicModeToEnabled(): self
     {
         return $this->setDeterministicMode(true);
     }
@@ -372,7 +372,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @return InvoiceSuiteAbstractPdfConstructor
      */
-    public function setDeterministicModeToDisabled(): Self
+    public function setDeterministicModeToDisabled(): self
     {
         return $this->setDeterministicMode(false);
     }
@@ -520,14 +520,14 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @return InvoiceSuiteAbstractPdfConstructor
      */
-    protected abstract function generatePdfDocument(): self;
+    abstract protected function generatePdfDocument(): self;
 
     /**
      * Get the content of the generated PDF as string
      *
      * @return string
      */
-    protected abstract function getGeneratedPdfDocumentContent(): string;
+    abstract protected function getGeneratedPdfDocumentContent(): string;
 
     /**
      * Save the content of the generated PDF to a file
@@ -535,5 +535,5 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      * @param string $toFilename
      * @return InvoiceSuiteAbstractPdfConstructor
      */
-    protected abstract function saveGeneratedPdfDocumentToFile(string $toFilename): self;
+    abstract protected function saveGeneratedPdfDocumentToFile(string $toFilename): self;
 }
