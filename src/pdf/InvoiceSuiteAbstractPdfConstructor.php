@@ -16,12 +16,13 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
+use horstoeko\invoicesuite\InvoiceSuitePackageVersion;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\mimedb\MimeDb;
 
 /**
- * Class representing the PDF document build
+ * Class representing the basics for a PDF document constructor
  *
  * @category InvoiceSuite
  * @package  InvoiceSuite
@@ -189,6 +190,22 @@ abstract class InvoiceSuiteAbstractPdfConstructor
         $this->additionalCreatorTool = $newAdditionalCreatorTool;
 
         return $this;
+    }
+
+    /**
+     * Returns the creator tool name (the PHP library, and if given also the additional creator tool)
+     *
+     * @return string
+     */
+    public function getCreatorToolName(): string
+    {
+        $creatorToolName = sprintf('InvoiceSuite PHP library v%s by HorstOeko', InvoiceSuitePackageVersion::getInstalledVersion());
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getAdditionalCreatorTool())) {
+            return sprintf("%s / %s", $this->getAdditionalCreatorTool(), $creatorToolName);
+        }
+
+        return $creatorToolName;
     }
 
     /**
