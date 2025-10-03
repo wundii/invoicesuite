@@ -80,11 +80,7 @@ class InvoiceSuiteStringUtils
      */
     public static function createGuid(): string
     {
-        if (function_exists('openssl_random_pseudo_bytes')) {
-            $randomBytes = openssl_random_pseudo_bytes(16);
-        } else {
-            $randomBytes = random_bytes(16);
-        }
+        $randomBytes = function_exists('openssl_random_pseudo_bytes') ? openssl_random_pseudo_bytes(16) : random_bytes(16);
 
         $randomBytes[6] = chr(ord($randomBytes[6]) & 0x0f | 0x40);
         $randomBytes[8] = chr(ord($randomBytes[8]) & 0x3f | 0x80);
