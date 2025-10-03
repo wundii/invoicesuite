@@ -11,6 +11,7 @@ namespace horstoeko\invoicesuite\pdf;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
 
 /**
  * Class representing the PDF document build
@@ -24,20 +25,7 @@ use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 class InvoiceSuiteAbstractPdfConstructor
 {
     use HandlesCurrentDocumentFormatProvider;
-
-    /**
-     * Internal buffer which holds the content of the invoice document
-     *
-     * @var string
-     */
-    private $rawDocumentContent;
-
-    /**
-     * Internal buffer which holds the content of the PDF document
-     *
-     * @var string
-     */
-    private $rawPdfContent;
+    use HandlesPdfConstructorRawContents;
 
     /**
      * Constructor
@@ -55,51 +43,5 @@ class InvoiceSuiteAbstractPdfConstructor
         $this->setCurrentDocumentFormatProvider($newProvider);
         $this->setRawDocumentContent($rawDocumentContent);
         $this->setRawPdfContent($rawPdfContent);
-    }
-
-    /**
-     * Internal method to get the invoice document content
-     *
-     * @return string
-     */
-    protected function getRawDocumentContent(): string
-    {
-        return $this->rawDocumentContent;
-    }
-
-    /**
-     * Internal method to set the invoice document content
-     *
-     * @param string $rawDocumentContent
-     * @return InvoiceSuiteAbstractPdfConstructor
-     */
-    protected function setRawDocumentContent(string $rawDocumentContent): self
-    {
-        $this->rawDocumentContent = $rawDocumentContent;
-
-        return $this;
-    }
-
-    /**
-     * Internal method to get the PDF content
-     *
-     * @return string
-     */
-    protected function getRawPdfContent(): string
-    {
-        return $this->rawPdfContent;
-    }
-
-    /**
-     * Internal method to set the PDF content
-     *
-     * @param string $rawPdfContent
-     * @return self
-     */
-    protected function setRawPdfContent(string $rawPdfContent): self
-    {
-        $this->rawPdfContent = $rawPdfContent;
-
-        return $this;
     }
 }

@@ -12,6 +12,7 @@ namespace horstoeko\invoicesuite;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
+use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -35,20 +36,7 @@ class InvoiceSuitePdfDocumentBuilder
     use HandlesCallForwarding;
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
-
-    /**
-     * Internal buffer which holds the content of the invoice document
-     *
-     * @var string
-     */
-    private $rawDocumentContent;
-
-    /**
-     * Internal buffer which holds the content of the PDF document
-     *
-     * @var string
-     */
-    private $rawPdfContent;
+    use HandlesPdfConstructorRawContents;
 
     /**
      * The PDF constructor instance
@@ -203,52 +191,6 @@ class InvoiceSuitePdfDocumentBuilder
         $this->setRawDocumentContent($fromDocumentContent);
 
         return $this;
-    }
-
-    /**
-     * Internal method to set the raw invoice document content
-     *
-     * @param string $fromDocumentContent
-     * @return InvoiceSuitePdfDocumentBuilder
-     */
-    protected function setRawDocumentContent(string $fromDocumentContent): self
-    {
-        $this->rawDocumentContent = $fromDocumentContent;
-
-        return $this;
-    }
-
-    /**
-     * Returns the given document content
-     *
-     * @return string
-     */
-    protected function getRawDocumentContent(): string
-    {
-        return $this->rawDocumentContent;
-    }
-
-    /**
-     * Internal method to set the PDF content directly
-     *
-     * @param string $fromPdfContent
-     * @return InvoiceSuitePdfDocumentBuilder
-     */
-    protected function setRawPdfContent(string $fromPdfContent): self
-    {
-        $this->rawPdfContent = $fromPdfContent;
-
-        return $this;
-    }
-
-    /**
-     * Returns the given PDF content
-     *
-     * @return string
-     */
-    protected function getRawPdfContent(): string
-    {
-        return $this->rawPdfContent;
     }
 
     /**
