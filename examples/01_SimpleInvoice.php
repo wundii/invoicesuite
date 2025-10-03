@@ -1,45 +1,45 @@
 <?php
 
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteIdDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteNoteDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAddressDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteContactDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteMeasureDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteProductDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteProjectDTO;
-use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentMeanDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteOrganisationDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteCommunicationDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteCommunicationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteDateRangeDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentPositionDTO;
-use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteMeasureDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteNoteDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteOrganisationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePartyDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentMeanDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermDiscountDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermPenaltyDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePriceGrossDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteProductCharacteristicDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteProductClassificationDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteProjectDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineExtDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceProductDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteServiceChargeDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitesummationLineDTO;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteTaxDTO;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$creationMode = 2; // 0 = UBL, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic, 5 = ZF/FX Minimum
+$creationMode = 6; // 0 = UBL, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic, 5 = ZF/FX Minimum, 6 = XRechnung
 
 if ($creationMode === 0) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('ublinvoice');
@@ -58,6 +58,9 @@ if ($creationMode === 4) {
 }
 if ($creationMode === 5) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxminimum');
+}
+if ($creationMode === 6) {
+    $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnung');
 }
 
 InvoiceSuiteSettings::setUnitAmountDecimals(5);
@@ -438,5 +441,8 @@ if ($creationMode === 4) {
     $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
 }
 if ($creationMode === 5) {
+    $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
+}
+if ($creationMode === 6) {
     $builder->saveAsXmlFile(__DIR__ . "/01_SimpleInvoice.xml");
 }

@@ -1,0 +1,205 @@
+<?php
+
+/**
+ * This file is a part of horstoeko/invoicesuite
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace horstoeko\invoicesuite\documentproviders\xrechnung;
+
+use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteXRechnungPdfConstructor;
+use horstoeko\invoicesuite\documentmodels\zffxcomfort\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
+
+class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatProvider
+{
+    /**
+     * @inheritDoc
+     */
+    public function getUniqueId(): string
+    {
+        return 'xrechnung';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDescription(): string
+    {
+        return 'The reference profile is based on the CIUS XRechnung, which is maintained by KoSIT. It represents an ' .
+            'extension of EN 16931-1 with its own business rules, the national German laws and regulations. It is therefore more ' .
+            'specific than the EN 16931 (COMFORT) profile.';
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getParameters(): array
+    {
+        return [
+            'ContextParameter' => 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0',
+            'BusinessProcess' => 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
+            'AlternativeContextParameters' => [
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2',
+                'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3',
+            ],
+        ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSerializerMetadataDirectories(): array
+    {
+        return [];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSerializerHandlers(): array
+    {
+        return [
+            InvoiceSuiteXRechnungSerializerHandler::class
+        ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSerializerListeners(): array
+    {
+        return [];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSerializerSubscribers(): array
+    {
+        return [];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSerializerGroups(): array
+    {
+        return ["zffx"];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function isSatisfiableBySerializedContent(string $serializedContent): bool
+    {
+        $prevUseInternalErrors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
+        try {
+            $contextParameters = array_merge(
+                [$this->getFormatProviderParameterValue('ContextParameter', '')],
+                $this->getFormatProviderParameterValue('AlternativeContextParameters', '')
+            );
+
+            foreach ($contextParameters as $contextParameter) {
+                $contentDomDocument = new \DOMDocument();
+                $contentDomDocument->loadXML($serializedContent);
+                $contentDomXPath = new \DOMXPath($contentDomDocument);
+                $contentDomXPath->registerNamespace('rsm', 'urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100');
+                $contentDomXPath->registerNamespace('ram', 'urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100');
+
+                $contentQuery = sprintf(
+                    "//rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text()='%s']",
+                    $contextParameter
+                );
+
+                $contentEntries = $contentDomXPath->query($contentQuery);
+
+                if ($contentEntries === false) {
+                    continue;
+                }
+
+                if ($contentEntries->length === 1) {
+                    return true;
+                }
+            }
+        } catch (\Throwable) {
+            // Do nothing
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($prevUseInternalErrors);
+        }
+
+        return false;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRootClassName(): string
+    {
+        return CrossIndustryInvoice::class;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getReaderClassName(): string
+    {
+        return InvoiceSuiteXRechnungProviderReader::class;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getBuilderClassName(): string
+    {
+        return InvoiceSuiteXRechnungProviderBuilder::class;
+    }
+
+    /**
+     * Returns true if PDF support is available
+     *
+     * @return boolean
+     */
+    public function isPdfSupportAvailable(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Returns a list of valid PDF attachment filenames
+     *
+     * @return array<string>
+     */
+    public function getAllowedPdfAttachmentFilenames(): array
+    {
+        return ['xrechnung.xml'];
+    }
+
+    /**
+     * Get the default PDF attachment filename
+     *
+     * @return string
+     */
+    public function getDefaultPdfAttachmentFilename(): string
+    {
+        return "xrechnung.xml";
+    }
+
+    /**
+     * Returns the PDF constructor classname for this format provider
+     *
+     * @return string
+     */
+    public function getPdfConstructorClassName(): string
+    {
+        return InvoiceSuiteXRechnungPdfConstructor::class;
+    }
+}
