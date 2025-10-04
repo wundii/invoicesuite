@@ -57,6 +57,21 @@ class UtilsTest extends TestCase
         $this->assertCount(3, $variable);
     }
 
+    public function testInvoiceSuiteArrayUtilsInArrayNoCase(): void
+    {
+        $variable = ["a", "b"];
+
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
+        $this->assertIsArray($variable);
+
+        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "a"));
+        $this->assertTrue(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "A"));
+        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "c"));
+        $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, "C"));
+    }
+
     #endregion
 
     #region InvoiceSuiteDateTimeUtils
