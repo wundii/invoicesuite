@@ -141,7 +141,6 @@ class InvoiceSuiteClassFinder
         foreach ($files as $file) {
             if (is_file($file)) {
                 unlink($file);
-                echo "Deleted: " . basename($file) . PHP_EOL;
             }
         }
     }
