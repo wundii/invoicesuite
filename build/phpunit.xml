@@ -22,6 +22,8 @@
             <file>../tests/testcases/documentdto/InvoiceSuiteNoteDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteOrganisationDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuitePaymentMeanDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteDocumentHeaderDTOTest.php</file>
+            <file>../tests/testcases/documentdto/InvoiceSuiteDocumentPositionDTOTest.php</file>
         </testsuite>
         <testsuite name="providers">
             <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>
