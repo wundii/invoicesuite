@@ -26,6 +26,11 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
 {
     #region DataProvider
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: string|bool|\DateTimeInterface}>
+     */
     public static function scalarSetterProvider(): array
     {
         $d1 = new DateTimeImmutable('2024-01-01');
@@ -45,6 +50,11 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: InvoiceSuitePartyDTO}>
+     */
     public static function partySetterProvider(): array
     {
         $p = new InvoiceSuitePartyDTO();
@@ -63,6 +73,11 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array{0: string, 1: string, 2: list<object>}>
+     */
     public static function collectionProvider(): array
     {
         $dtA = new DateTimeImmutable('2024-03-03');
@@ -77,8 +92,8 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $idA = new InvoiceSuiteIdDTO('ID1', 'T1');
         $idB = new InvoiceSuiteIdDTO('ID2', 'T2');
 
-        $refA = new InvoiceSuiteReferenceDocumentDTO('RD1', $dtA, 'RT1');
-        $refB = new InvoiceSuiteReferenceDocumentDTO('RD2', $dtB, 'RT2');
+        $refA = new InvoiceSuiteReferenceDocumentDTO('RD1', $dtA);
+        $refB = new InvoiceSuiteReferenceDocumentDTO('RD2', $dtB);
 
         $refExA = new InvoiceSuiteReferenceDocumentExtDTO('RDE1', $dtA, 'RTE1', 'ADD1');
         $refExB = new InvoiceSuiteReferenceDocumentExtDTO('RDE2', $dtB, 'RTE2', 'ADD2');
@@ -193,6 +208,8 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
 
     /**
      * @dataProvider scalarSetterProvider
+     * @param string $suffix
+     * @param string|bool $value
      */
     public function testScalarSetters(string $suffix, $value): void
     {
@@ -219,6 +236,9 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
 
     /**
      * @dataProvider collectionProvider
+     * @param string $base
+     * @param string $singular
+     * @param list<object> $items
      */
     public function testCollectionSettersAndAdders(string $base, string $singular, array $items): void
     {
@@ -241,6 +261,9 @@ class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
 
     /**
      * @dataProvider collectionProvider
+     * @param string $base
+     * @param string $singular
+     * @param list<object> $items
      */
     public function testCollectionIterators(string $base, string $singular, array $items): void
     {

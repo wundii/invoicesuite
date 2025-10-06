@@ -26,11 +26,21 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public static function dpConstructorDefaults(): array
     {
         return [['default']];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array<array{ lineId: string, parentLineId: string, lineStatus: string, lineStatusReason: string }>>
+     */
     public static function dpConstructorWithValues(): array
     {
         return [[[
@@ -41,6 +51,11 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         ]]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: string, 2: string}>
+     */
     public static function dpScalarSetters(): array
     {
         return [
@@ -51,6 +66,11 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array{0: string, 1: string, 2: string, 3: string}>
+     */
     public static function dpCollections(): array
     {
         return [
@@ -72,6 +92,11 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array{0: string, 1: string, 2: list<object>}>
+     */
     public static function dpCollectionIterators(): array
     {
         return [
@@ -196,6 +221,7 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
 
     /**
      * @dataProvider dpConstructorWithValues
+     * @param array{ lineId: string, parentLineId: string, lineStatus: string, lineStatusReason: string } $v
      */
     public function testConstructorWithValuesUsesSetterChain(array $v): void
     {
@@ -338,6 +364,7 @@ class InvoiceSuiteDocumentPositionDTOTest extends TestCase
 
     /**
      * @dataProvider dpCollectionIterators
+     * @param array{0: string, 1: string, 2: list<object>} $items
      */
     public function testCollectionIterators(string $base, string $singular, array $items): void
     {

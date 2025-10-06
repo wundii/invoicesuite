@@ -11,11 +11,21 @@ final class InvoiceSuiteMeasureDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,float|null>>
+     */
     public function floatValues(): array
     {
         return [[null], [0.0], [1.5], [-3.2]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public function stringValues(): array
     {
         return [[null], [''], ['KG']];

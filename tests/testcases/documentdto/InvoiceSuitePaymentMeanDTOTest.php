@@ -10,11 +10,21 @@ class InvoiceSuitePaymentMeanDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public static function dpConstructorDefaults(): array
     {
         return [['default']];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array<array{ typeCode: string, name: string, financialCardId: string, financialCardHolder: string, buyerIban: string, payeeIban: string, payeeAccountName: string, payeeProprietaryId: string, payeeBic: string, paymentReference: string, mandate: string }>>
+     */
     public static function dpConstructorWithValues(): array
     {
         return [[[
@@ -32,6 +42,11 @@ class InvoiceSuitePaymentMeanDTOTest extends TestCase
         ]]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: string, 2: string}>
+     */
     public static function dpScalarSetters(): array
     {
         return [
@@ -76,6 +91,7 @@ class InvoiceSuitePaymentMeanDTOTest extends TestCase
 
     /**
      * @dataProvider dpConstructorWithValues
+     * @param array{ typeCode: string, name: string, financialCardId: string, financialCardHolder: string, buyerIban: string, payeeIban: string, payeeAccountName: string, payeeProprietaryId: string, payeeBic: string, paymentReference: string, mandate: string } $v
      */
     public function testConstructorWithValuesUsesSetterChain(array $v): void
     {

@@ -14,11 +14,21 @@ class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public static function dpConstructorDefaults(): array
     {
         return [['default']];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array<array{ baseAmount: float, discountAmount: float, discountPercent: float, baseDate: DateTimeImmutable }>>
+     */
     public static function dpConstructorWithValues(): array
     {
         return [[[
@@ -29,6 +39,11 @@ class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
         ]]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: string, 2: float}>
+     */
     public static function dpScalarSetters(): array
     {
         return [
@@ -38,6 +53,11 @@ class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: DateTimeImmutable}>
+     */
     public static function dpDateSetter(): array
     {
         return [
@@ -45,6 +65,11 @@ class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<array{0: string, 1: string}>
+     */
     public static function dpObjectSetter(): array
     {
         return [
@@ -82,6 +107,7 @@ class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
 
     /**
      * @dataProvider dpConstructorWithValues
+     * @param array{ baseAmount: float, discountAmount: float, discountPercent: float, baseDate: DateTimeImmutable } $v
      */
     public function testConstructorWithValuesUsesSetterChain(array $v): void
     {

@@ -11,6 +11,11 @@ final class InvoiceSuiteIdDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public function stringValues(): array
     {
         return [[null], [''], ['X']];

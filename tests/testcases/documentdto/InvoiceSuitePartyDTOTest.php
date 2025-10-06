@@ -16,16 +16,31 @@ class InvoiceSuitePartyDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public static function dpConstructorDefaults(): array
     {
         return [['default']];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array>
+     */
     public static function dpConstructorWithValues(): array
     {
         return [[]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array{0: string, 1: string, 2: string, 3: string}>
+     */
     public static function dpCollections(): array
     {
         return [
@@ -40,6 +55,11 @@ class InvoiceSuitePartyDTOTest extends TestCase
         ];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return list<array{0: string, 1: string, 2: list<string|object>}>
+     */
     public static function dpCollectionIterators(): array
     {
         return [
@@ -113,7 +133,7 @@ class InvoiceSuitePartyDTOTest extends TestCase
     /**
      * @dataProvider dpConstructorWithValues
      */
-    public function testConstructorWithValuesUsesSetterChain(array $unused = []): void
+    public function testConstructorWithValuesUsesSetterChain(): void
     {
         $n1 = 'ACME GmbH';
         $n2 = 'Werk 1';
@@ -175,6 +195,8 @@ class InvoiceSuitePartyDTOTest extends TestCase
 
     /**
      * @dataProvider dpCollectionIterators
+     *
+     * @param array{0: string, 1: string, 2: list<string|object>} $items
      */
     public function testCollectionIterators(string $base, string $singular, array $items): void
     {

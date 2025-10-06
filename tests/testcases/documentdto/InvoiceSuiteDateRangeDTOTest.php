@@ -13,11 +13,21 @@ final class InvoiceSuiteDateRangeDTOTest extends TestCase
 {
     #region DataProviders
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,DateTimeImmutable|null>>
+     */
     public function dateValues(): array
     {
         return [[null], [new DateTimeImmutable('2020-01-01')], [new DateTimeImmutable('2030-12-31')]];
     }
 
+    /**
+     * Data Provider
+     *
+     * @return array<int,array<int,string|null>>
+     */
     public function stringValues(): array
     {
         return [[null], [''], ['Desc']];
