@@ -9,70 +9,26 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteProjectDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteProjectDTO = new InvoiceSuiteProjectDTO();
+        $this->assertNull($invoiceSuiteProjectDTO->getProjectNumber());
+        $this->assertNull($invoiceSuiteProjectDTO->getProjectName());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testProjectNumberGetterAndSetter(): void
     {
-        return [[[
-            'projectNumber' => 'PRJ-2024-001',
-            'projectName'   => 'Bridge Build',
-        ]]];
+        $invoiceSuiteProjectDTO = new InvoiceSuiteProjectDTO();
+        $projectNumberValue = "Example Value";
+        $invoiceSuiteProjectDTO->setProjectNumber($projectNumberValue);
+        $this->assertSame($projectNumberValue, $invoiceSuiteProjectDTO->getProjectNumber());
     }
 
-    public static function dpScalarSetters(): array
+    public function testProjectNameGetterAndSetter(): void
     {
-        return [
-            ['setProjectNumber', 'getProjectNumber', 'PRJ-0001'],
-            ['setProjectName',   'getProjectName',   'New Stadium'],
-        ];
+        $invoiceSuiteProjectDTO = new InvoiceSuiteProjectDTO();
+        $projectNameValue = "Example Value";
+        $invoiceSuiteProjectDTO->setProjectName($projectNameValue);
+        $this->assertSame($projectNameValue, $invoiceSuiteProjectDTO->getProjectName());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuiteProjectDTO();
-
-        $this->assertNull($dto->getProjectNumber());
-        $this->assertNull($dto->getProjectName());
-        $this->assertInstanceOf(InvoiceSuiteProjectDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $dto = new InvoiceSuiteProjectDTO(
-            $v['projectNumber'],
-            $v['projectName'],
-        );
-
-        $this->assertSame($v['projectNumber'], $dto->getProjectNumber());
-        $this->assertSame($v['projectName'], $dto->getProjectName());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteProjectDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    #endregion
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
 use DateTimeImmutable;
-use DateTimeInterface;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteDateRangeDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteDocumentPositionDTO;
@@ -24,422 +23,857 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteDocumentPositionDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getLineId());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getParentLineId());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getLineStatus());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getLineStatusReason());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getNote());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getProduct());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getSellerOrderReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getBuyerOrderReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getQuotationReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getContractReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getAdditionalReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getUltimateCustomerOrderReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getDespatchAdviceReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getReceivingAdviceReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getDeliveryNoteReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getInvoiceReferences());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getGrossPrice());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getNetPrice());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getQuantityBilled());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getQuantityChargeFree());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getQuantityPackage());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getShipToParty());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getUltimateShipToParty());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getSupplyChainEvents());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getBillingPeriods());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getPostingReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getTaxes());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getAllowanceCharges());
+        $this->assertNull($invoiceSuiteDocumentPositionDTO->getSummation());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array<array{ lineId: string, parentLineId: string, lineStatus: string, lineStatusReason: string }>>
-     */
-    public static function dpConstructorWithValues(): array
+    public function testLineIdGetterAndSetter(): void
     {
-        return [[[
-            'lineId'           => '10',
-            'parentLineId'     => '1',
-            'lineStatus'       => 'BILLED',
-            'lineStatusReason' => 'PARTIAL',
-        ]]];
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $lineIdValue = "Example Value";
+        $invoiceSuiteDocumentPositionDTO->setLineId($lineIdValue);
+        $this->assertSame($lineIdValue, $invoiceSuiteDocumentPositionDTO->getLineId());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array{0: string, 1: string, 2: string}>
-     */
-    public static function dpScalarSetters(): array
+    public function testParentLineIdGetterAndSetter(): void
     {
-        return [
-            ['setLineId',           'getLineId',           '42'],
-            ['setParentLineId',     'getParentLineId',     '5'],
-            ['setLineStatus',       'getLineStatus',       'INFORMATION'],
-            ['setLineStatusReason', 'getLineStatusReason', 'FREE_TEXT'],
-        ];
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $parentLineIdValue = "Example Value";
+        $invoiceSuiteDocumentPositionDTO->setParentLineId($parentLineIdValue);
+        $this->assertSame($parentLineIdValue, $invoiceSuiteDocumentPositionDTO->getParentLineId());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return list<array{0: string, 1: string, 2: string, 3: string}>
-     */
-    public static function dpCollections(): array
+    public function testLineStatusGetterAndSetter(): void
     {
-        return [
-            ['setNote',                           'addNote',                           'getNote',                           'newNote'],
-            ['setSellerOrderReferences',          'addSellerOrderReference',           'getSellerOrderReferences',          'newRefLine'],
-            ['setBuyerOrderReferences',           'addBuyerOrderReference',            'getBuyerOrderReferences',           'newRefLine'],
-            ['setQuotationReferences',            'addQuotationReference',             'getQuotationReferences',            'newRefLine'],
-            ['setContractReferences',             'addContractReference',              'getContractReferences',             'newRefLine'],
-            ['setAdditionalReferences',           'addAdditionalReference',            'getAdditionalReferences',           'newRefLineExt'],
-            ['setUltimateCustomerOrderReferences', 'addUltimateCustomerOrderReference', 'getUltimateCustomerOrderReferences', 'newRefLine'],
-            ['setDespatchAdviceReferences',       'addDespatchAdviceReference',        'getDespatchAdviceReferences',       'newRefLine'],
-            ['setReceivingAdviceReferences',      'addReceivingAdviceReference',       'getReceivingAdviceReferences',      'newRefLine'],
-            ['setDeliveryNoteReferences',         'addDeliveryNoteReference',          'getDeliveryNoteReferences',         'newRefLine'],
-            ['setInvoiceReferences',              'addInvoiceReference',               'getInvoiceReferences',              'newRefLineExt'],
-            ['setBillingPeriods',                  'addBillingPeriod',                  'getBillingPeriods',                  'newDateRange'],
-            ['setPostingReferences',               'addPostingReference',               'getPostingReferences',               'newId'],
-            ['setTaxes',                           'addTax',                            'getTaxes',                           'newTax'],
-            ['setAllowanceCharges',                'addAllowanceCharge',                'getAllowanceCharges',                'newAllowanceCharge'],
-        ];
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $lineStatusValue = "Example Value";
+        $invoiceSuiteDocumentPositionDTO->setLineStatus($lineStatusValue);
+        $this->assertSame($lineStatusValue, $invoiceSuiteDocumentPositionDTO->getLineStatus());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return list<array{0: string, 1: string, 2: list<object>}>
-     */
-    public static function dpCollectionIterators(): array
+    public function testLineStatusReasonGetterAndSetter(): void
     {
-        return [
-            ['Note',                           'Note',                           [new InvoiceSuiteNoteDTO(), new InvoiceSuiteNoteDTO()]],
-            ['SellerOrderReferences',          'SellerOrderReference',           [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['BuyerOrderReferences',           'BuyerOrderReference',            [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['QuotationReferences',            'QuotationReference',             [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['ContractReferences',             'ContractReference',              [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['AdditionalReferences',           'AdditionalReference',            [new InvoiceSuiteReferenceDocumentLineExtDTO(), new InvoiceSuiteReferenceDocumentLineExtDTO()]],
-            ['UltimateCustomerOrderReferences', 'UltimateCustomerOrderReference', [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['DespatchAdviceReferences',       'DespatchAdviceReference',        [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['ReceivingAdviceReferences',      'ReceivingAdviceReference',       [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['DeliveryNoteReferences',         'DeliveryNoteReference',          [new InvoiceSuiteReferenceDocumentLineDTO(), new InvoiceSuiteReferenceDocumentLineDTO()]],
-            ['InvoiceReferences',              'InvoiceReference',               [new InvoiceSuiteReferenceDocumentLineExtDTO(), new InvoiceSuiteReferenceDocumentLineExtDTO()]],
-            ['SupplyChainEvents',              'SupplyChainEvent',               [new DateTimeImmutable('2024-01-01 10:00:00'), new DateTimeImmutable('2024-02-02 12:00:00')]],
-            ['BillingPeriods',                  'BillingPeriod',                  [new InvoiceSuiteDateRangeDTO(), new InvoiceSuiteDateRangeDTO()]],
-            ['PostingReferences',               'PostingReference',               [new InvoiceSuiteIdDTO(), new InvoiceSuiteIdDTO()]],
-            ['Taxes',                           'Tax',                            [new InvoiceSuiteTaxDTO(), new InvoiceSuiteTaxDTO()]],
-            ['AllowanceCharges',                'AllowanceCharge',                [new InvoiceSuiteAllowanceChargeDTO(), new InvoiceSuiteAllowanceChargeDTO()]],
-        ];
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $lineStatusReasonValue = "Example Value";
+        $invoiceSuiteDocumentPositionDTO->setLineStatusReason($lineStatusReasonValue);
+        $this->assertSame($lineStatusReasonValue, $invoiceSuiteDocumentPositionDTO->getLineStatusReason());
     }
 
-    #endregion
-
-    #region Helpers
-
-    private function newNote(): InvoiceSuiteNoteDTO
+    public function testNoteGetterAndSetter(): void
     {
-        return new InvoiceSuiteNoteDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $noteValue = [];
+        $invoiceSuiteDocumentPositionDTO->setNote($noteValue);
+        $this->assertSame($noteValue, $invoiceSuiteDocumentPositionDTO->getNote());
     }
-    private function newRefLine(): InvoiceSuiteReferenceDocumentLineDTO
+
+    public function testProductGetterAndSetter(): void
     {
-        return new InvoiceSuiteReferenceDocumentLineDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $productValue = new InvoiceSuiteProductDTO();
+        $invoiceSuiteDocumentPositionDTO->setProduct($productValue);
+        $this->assertSame($productValue, $invoiceSuiteDocumentPositionDTO->getProduct());
     }
-    private function newRefLineExt(): InvoiceSuiteReferenceDocumentLineExtDTO
+
+    public function testSellerOrderReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteReferenceDocumentLineExtDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $sellerOrderReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setSellerOrderReferences($sellerOrderReferencesValue);
+        $this->assertSame($sellerOrderReferencesValue, $invoiceSuiteDocumentPositionDTO->getSellerOrderReferences());
     }
-    private function newProduct(): InvoiceSuiteProductDTO
+
+    public function testBuyerOrderReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteProductDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $buyerOrderReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setBuyerOrderReferences($buyerOrderReferencesValue);
+        $this->assertSame($buyerOrderReferencesValue, $invoiceSuiteDocumentPositionDTO->getBuyerOrderReferences());
     }
-    private function newGross(): InvoiceSuitePriceGrossDTO
+
+    public function testQuotationReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuitePriceGrossDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $quotationReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setQuotationReferences($quotationReferencesValue);
+        $this->assertSame($quotationReferencesValue, $invoiceSuiteDocumentPositionDTO->getQuotationReferences());
     }
-    private function newNet(): InvoiceSuitePriceNetDTO
+
+    public function testContractReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuitePriceNetDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $contractReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setContractReferences($contractReferencesValue);
+        $this->assertSame($contractReferencesValue, $invoiceSuiteDocumentPositionDTO->getContractReferences());
     }
-    private function newQty(): InvoiceSuiteQuantityDTO
+
+    public function testAdditionalReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $additionalReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setAdditionalReferences($additionalReferencesValue);
+        $this->assertSame($additionalReferencesValue, $invoiceSuiteDocumentPositionDTO->getAdditionalReferences());
     }
-    private function newParty(): InvoiceSuitePartyDTO
+
+    public function testUltimateCustomerOrderReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuitePartyDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $ultimateCustomerOrderReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setUltimateCustomerOrderReferences($ultimateCustomerOrderReferencesValue);
+        $this->assertSame($ultimateCustomerOrderReferencesValue, $invoiceSuiteDocumentPositionDTO->getUltimateCustomerOrderReferences());
     }
-    private function newDateRange(): InvoiceSuiteDateRangeDTO
+
+    public function testDespatchAdviceReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteDateRangeDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $despatchAdviceReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setDespatchAdviceReferences($despatchAdviceReferencesValue);
+        $this->assertSame($despatchAdviceReferencesValue, $invoiceSuiteDocumentPositionDTO->getDespatchAdviceReferences());
     }
-    private function newId(): InvoiceSuiteIdDTO
+
+    public function testReceivingAdviceReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteIdDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $receivingAdviceReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setReceivingAdviceReferences($receivingAdviceReferencesValue);
+        $this->assertSame($receivingAdviceReferencesValue, $invoiceSuiteDocumentPositionDTO->getReceivingAdviceReferences());
     }
-    private function newTax(): InvoiceSuiteTaxDTO
+
+    public function testDeliveryNoteReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteTaxDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $deliveryNoteReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setDeliveryNoteReferences($deliveryNoteReferencesValue);
+        $this->assertSame($deliveryNoteReferencesValue, $invoiceSuiteDocumentPositionDTO->getDeliveryNoteReferences());
     }
-    private function newAllowanceCharge(): InvoiceSuiteAllowanceChargeDTO
+
+    public function testInvoiceReferencesGetterAndSetter(): void
     {
-        return new InvoiceSuiteAllowanceChargeDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setInvoiceReferences($invoiceReferencesValue);
+        $this->assertSame($invoiceReferencesValue, $invoiceSuiteDocumentPositionDTO->getInvoiceReferences());
     }
-    private function newSummation(): InvoiceSuitesummationLineDTO
+
+    public function testGrossPriceGetterAndSetter(): void
     {
-        return new InvoiceSuitesummationLineDTO();
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $grossPriceValue = new InvoiceSuitePriceGrossDTO();
+        $invoiceSuiteDocumentPositionDTO->setGrossPrice($grossPriceValue);
+        $this->assertSame($grossPriceValue, $invoiceSuiteDocumentPositionDTO->getGrossPrice());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testNetPriceGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteDocumentPositionDTO();
-
-        $this->assertNull($dto->getLineId());
-        $this->assertNull($dto->getParentLineId());
-        $this->assertNull($dto->getLineStatus());
-        $this->assertNull($dto->getLineStatusReason());
-        $this->assertSame([], $dto->getNote());
-        $this->assertNull($dto->getProduct());
-        $this->assertSame([], $dto->getSellerOrderReferences());
-        $this->assertSame([], $dto->getBuyerOrderReferences());
-        $this->assertSame([], $dto->getQuotationReferences());
-        $this->assertSame([], $dto->getContractReferences());
-        $this->assertSame([], $dto->getAdditionalReferences());
-        $this->assertSame([], $dto->getUltimateCustomerOrderReferences());
-        $this->assertSame([], $dto->getDespatchAdviceReferences());
-        $this->assertSame([], $dto->getReceivingAdviceReferences());
-        $this->assertSame([], $dto->getDeliveryNoteReferences());
-        $this->assertSame([], $dto->getInvoiceReferences());
-        $this->assertNull($dto->getGrossPrice());
-        $this->assertNull($dto->getNetPrice());
-        $this->assertNull($dto->getQuantityBilled());
-        $this->assertNull($dto->getQuantityChargeFree());
-        $this->assertNull($dto->getQuantityPackage());
-        $this->assertNull($dto->getShipToParty());
-        $this->assertNull($dto->getUltimateShipToParty());
-        $this->assertSame([], $dto->getSupplyChainEvents());
-        $this->assertSame([], $dto->getBillingPeriods());
-        $this->assertSame([], $dto->getPostingReferences());
-        $this->assertSame([], $dto->getTaxes());
-        $this->assertSame([], $dto->getAllowanceCharges());
-        $this->assertNull($dto->getSummation());
-        $this->assertInstanceOf(InvoiceSuiteDocumentPositionDTO::class, $dto);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $netPriceValue = new InvoiceSuitePriceNetDTO();
+        $invoiceSuiteDocumentPositionDTO->setNetPrice($netPriceValue);
+        $this->assertSame($netPriceValue, $invoiceSuiteDocumentPositionDTO->getNetPrice());
     }
 
-    /**
-     * @dataProvider dpConstructorWithValues
-     * @param array{ lineId: string, parentLineId: string, lineStatus: string, lineStatusReason: string } $v
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
+    public function testQuantityBilledGetterAndSetter(): void
     {
-        $n1 = $this->newNote();
-        $n2 = $this->newNote();
-        $seller1 = $this->newRefLine();
-        $seller2 = $this->newRefLine();
-        $buyer1 = $this->newRefLine();
-        $buyer2 = $this->newRefLine();
-        $quot1 = $this->newRefLine();
-        $quot2 = $this->newRefLine();
-        $cont1 = $this->newRefLine();
-        $cont2 = $this->newRefLine();
-        $add1 = $this->newRefLineExt();
-        $add2 = $this->newRefLineExt();
-        $uco1 = $this->newRefLine();
-        $uco2 = $this->newRefLine();
-        $des1 = $this->newRefLine();
-        $des2 = $this->newRefLine();
-        $rec1 = $this->newRefLine();
-        $rec2 = $this->newRefLine();
-        $del1 = $this->newRefLine();
-        $del2 = $this->newRefLine();
-        $inv1 = $this->newRefLineExt();
-        $inv2 = $this->newRefLineExt();
-        $gross = $this->newGross();
-        $net = $this->newNet();
-        $qtyB = $this->newQty();
-        $qtyCF = $this->newQty();
-        $qtyP = $this->newQty();
-        $ship = $this->newParty();
-        $uship = $this->newParty();
-        $sc1 = new DateTimeImmutable('2024-01-02 10:00:00');
-        $sc2 = new DateTimeImmutable('2024-02-03 11:00:00');
-        $bp1 = $this->newDateRange();
-        $bp2 = $this->newDateRange();
-        $post1 = $this->newId();
-        $post2 = $this->newId();
-        $tax1 = $this->newTax();
-        $tax2 = $this->newTax();
-        $alc1 = $this->newAllowanceCharge();
-        $alc2 = $this->newAllowanceCharge();
-        $sum = $this->newSummation();
-        $product = $this->newProduct();
-
-        $dto = new InvoiceSuiteDocumentPositionDTO(
-            $v['lineId'],
-            $v['parentLineId'],
-            $v['lineStatus'],
-            $v['lineStatusReason'],
-            [$n1, $n2],
-            $product,
-            [$seller1, $seller2],
-            [$buyer1, $buyer2],
-            [$quot1, $quot2],
-            [$cont1, $cont2],
-            [$add1, $add2],
-            [$uco1, $uco2],
-            [$des1, $des2],
-            [$rec1, $rec2],
-            [$del1, $del2],
-            [$inv1, $inv2],
-            $gross,
-            $net,
-            $qtyB,
-            $qtyCF,
-            $qtyP,
-            $ship,
-            $uship,
-            [$sc1, $sc2],
-            [$bp1, $bp2],
-            [$post1, $post2],
-            [$tax1, $tax2],
-            [$alc1, $alc2],
-            $sum
-        );
-
-        $this->assertSame($v['lineId'], $dto->getLineId());
-        $this->assertSame($v['parentLineId'], $dto->getParentLineId());
-        $this->assertSame($v['lineStatus'], $dto->getLineStatus());
-        $this->assertSame($v['lineStatusReason'], $dto->getLineStatusReason());
-        $this->assertSame([$n1, $n2], $dto->getNote());
-        $this->assertSame($product, $dto->getProduct());
-        $this->assertSame([$seller1, $seller2], $dto->getSellerOrderReferences());
-        $this->assertSame([$buyer1, $buyer2], $dto->getBuyerOrderReferences());
-        $this->assertSame([$quot1, $quot2], $dto->getQuotationReferences());
-        $this->assertSame([$cont1, $cont2], $dto->getContractReferences());
-        $this->assertSame([$add1, $add2], $dto->getAdditionalReferences());
-        $this->assertSame([$uco1, $uco2], $dto->getUltimateCustomerOrderReferences());
-        $this->assertSame([$des1, $des2], $dto->getDespatchAdviceReferences());
-        $this->assertSame([$rec1, $rec2], $dto->getReceivingAdviceReferences());
-        $this->assertSame([$del1, $del2], $dto->getDeliveryNoteReferences());
-        $this->assertSame([$inv1, $inv2], $dto->getInvoiceReferences());
-        $this->assertSame($gross, $dto->getGrossPrice());
-        $this->assertSame($net, $dto->getNetPrice());
-        $this->assertSame($qtyB, $dto->getQuantityBilled());
-        $this->assertSame($qtyCF, $dto->getQuantityChargeFree());
-        $this->assertSame($qtyP, $dto->getQuantityPackage());
-        $this->assertSame($ship, $dto->getShipToParty());
-        $this->assertSame($uship, $dto->getUltimateShipToParty());
-        $this->assertSame([$sc1, $sc2], $dto->getSupplyChainEvents());
-        $this->assertSame([$bp1, $bp2], $dto->getBillingPeriods());
-        $this->assertSame([$post1, $post2], $dto->getPostingReferences());
-        $this->assertSame([$tax1, $tax2], $dto->getTaxes());
-        $this->assertSame([$alc1, $alc2], $dto->getAllowanceCharges());
-        $this->assertSame($sum, $dto->getSummation());
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $quantityBilledValue = new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteDocumentPositionDTO->setQuantityBilled($quantityBilledValue);
+        $this->assertSame($quantityBilledValue, $invoiceSuiteDocumentPositionDTO->getQuantityBilled());
     }
 
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
+    public function testQuantityChargeFreeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteDocumentPositionDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $quantityChargeFreeValue = new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteDocumentPositionDTO->setQuantityChargeFree($quantityChargeFreeValue);
+        $this->assertSame($quantityChargeFreeValue, $invoiceSuiteDocumentPositionDTO->getQuantityChargeFree());
     }
 
-    /**
-     * @dataProvider dpCollections
-     */
-    public function testCollectionSettersAndAdders(
-        string $arraySetter,
-        string $adder,
-        string $arrayGetter,
-        string $factoryName
-    ): void {
-        $dto = new InvoiceSuiteDocumentPositionDTO();
-        $a = $this->{$factoryName}();
-        $b = $this->{$factoryName}();
-
-        $dto->{$arraySetter}([$a]);
-        $this->assertSame([$a], $dto->{$arrayGetter}());
-
-        $dto->{$adder}($b);
-        $this->assertSame([$a, $b], $dto->{$arrayGetter}());
-    }
-
-    /**
-     * @dataProvider dpCollectionIterators
-     * @param array{0: string, 1: string, 2: list<object>} $items
-     */
-    public function testCollectionIterators(string $base, string $singular, array $items): void
+    public function testQuantityPackageGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteDocumentPositionDTO();
-        $set = 'set' . $base;
-        $first = 'first' . $singular;
-        $next = 'next' . $singular;
-        $prev = 'previous' . $singular;
-        $last = 'last' . $singular;
-        $each = 'forEach' . $singular;
-
-        $dto->$set($items);
-
-        $seen = [];
-
-        $dto->$first(function ($v) use (&$seen) {
-            $seen[] = $v;
-        });
-        $dto->$next(function ($v) use (&$seen) {
-            $seen[] = $v;
-        });
-        $dto->$prev(function ($v) use (&$seen) {
-            $seen[] = $v;
-        });
-        $dto->$last(function ($v) use (&$seen) {
-            $seen[] = $v;
-        });
-
-        $count = 0;
-
-        $dto->$each(function ($v) use (&$count) {
-            $count++;
-        }, null, null);
-
-        $this->assertSame($items[0], $seen[0]);
-        $this->assertSame($items[1], $seen[1]);
-        $this->assertSame($items[0], $seen[2]);
-        $this->assertSame($items[1], $seen[3]);
-        $this->assertSame(2, $count);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $quantityPackageValue = new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteDocumentPositionDTO->setQuantityPackage($quantityPackageValue);
+        $this->assertSame($quantityPackageValue, $invoiceSuiteDocumentPositionDTO->getQuantityPackage());
     }
 
-    public function testSupplyChainEventsSettersAddersAndIterators(): void
+    public function testShipToPartyGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteDocumentPositionDTO();
-        $d1 = new DateTimeImmutable('2024-03-04 12:00:00');
-        $d2 = new DateTimeImmutable('2024-05-06 14:30:00');
-
-        $dto->setSupplyChainEvents([$d1]);
-        $seen = [];
-        $iter = [];
-
-        $dto->addSupplyChainEvent(null);
-        $dto->addSupplyChainEvent($d2);
-
-        $dto->firstSupplyChainEvent(function (DateTimeInterface $it) use (&$seen) {
-            $seen[] = $it;
-        });
-        $dto->nextSupplyChainEvent(function (DateTimeInterface $it) use (&$seen) {
-            $seen[] = $it;
-        });
-        $dto->previousSupplyChainEvent(function (DateTimeInterface $it) use (&$seen) {
-            $seen[] = $it;
-        });
-        $dto->lastSupplyChainEvent(function (DateTimeInterface $it) use (&$seen) {
-            $seen[] = $it;
-        });
-
-        $dto->forEachSupplyChainEvent(function (DateTimeInterface $it) use (&$iter) {
-            $iter[] = $it;
-        }, null, null);
-
-        $this->assertSame([$d1, $d2], $dto->getSupplyChainEvents());
-        $this->assertNotEmpty($seen);
-        $this->assertSame($dto->getSupplyChainEvents(), $iter);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $shipToPartyValue = new InvoiceSuitePartyDTO();
+        $invoiceSuiteDocumentPositionDTO->setShipToParty($shipToPartyValue);
+        $this->assertSame($shipToPartyValue, $invoiceSuiteDocumentPositionDTO->getShipToParty());
     }
 
-    #endregion
+    public function testUltimateShipToPartyGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $ultimateShipToPartyValue = new InvoiceSuitePartyDTO();
+        $invoiceSuiteDocumentPositionDTO->setUltimateShipToParty($ultimateShipToPartyValue);
+        $this->assertSame($ultimateShipToPartyValue, $invoiceSuiteDocumentPositionDTO->getUltimateShipToParty());
+    }
+
+    public function testSupplyChainEventsGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $supplyChainEventsValue = [];
+        $invoiceSuiteDocumentPositionDTO->setSupplyChainEvents($supplyChainEventsValue);
+        $this->assertSame($supplyChainEventsValue, $invoiceSuiteDocumentPositionDTO->getSupplyChainEvents());
+    }
+
+    public function testBillingPeriodsGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $billingPeriodsValue = [];
+        $invoiceSuiteDocumentPositionDTO->setBillingPeriods($billingPeriodsValue);
+        $this->assertSame($billingPeriodsValue, $invoiceSuiteDocumentPositionDTO->getBillingPeriods());
+    }
+
+    public function testPostingReferencesGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $postingReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setPostingReferences($postingReferencesValue);
+        $this->assertSame($postingReferencesValue, $invoiceSuiteDocumentPositionDTO->getPostingReferences());
+    }
+
+    public function testTaxesGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $taxesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setTaxes($taxesValue);
+        $this->assertSame($taxesValue, $invoiceSuiteDocumentPositionDTO->getTaxes());
+    }
+
+    public function testAllowanceChargesGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $allowanceChargesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setAllowanceCharges($allowanceChargesValue);
+        $this->assertSame($allowanceChargesValue, $invoiceSuiteDocumentPositionDTO->getAllowanceCharges());
+    }
+
+    public function testSummationGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $summationValue = new InvoiceSuitesummationLineDTO();
+        $invoiceSuiteDocumentPositionDTO->setSummation($summationValue);
+        $this->assertSame($summationValue, $invoiceSuiteDocumentPositionDTO->getSummation());
+    }
+
+    public function testCollectionSellerOrderReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addSellerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachSellerOrderReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastSellerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachSellerOrderReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionBuyerOrderReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addBuyerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachBuyerOrderReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastBuyerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachBuyerOrderReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionQuotationReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addQuotationReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachQuotationReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastQuotationReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachQuotationReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionContractReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addContractReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachContractReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastContractReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachContractReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionAdditionalReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO());
+        $invoiceSuiteDocumentPositionDTO->addAdditionalReference(new InvoiceSuiteReferenceDocumentLineExtDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAdditionalReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastAdditionalReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAdditionalReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionUltimateCustomerOrderReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addUltimateCustomerOrderReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachUltimateCustomerOrderReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastUltimateCustomerOrderReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachUltimateCustomerOrderReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionDespatchAdviceReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addDespatchAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachDespatchAdviceReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastDespatchAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachDespatchAdviceReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionReceivingAdviceReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addReceivingAdviceReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachReceivingAdviceReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastReceivingAdviceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachReceivingAdviceReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionDeliveryNoteReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $invoiceSuiteDocumentPositionDTO->addDeliveryNoteReference(new InvoiceSuiteReferenceDocumentLineDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachDeliveryNoteReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastDeliveryNoteReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachDeliveryNoteReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionInvoiceReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO());
+        $invoiceSuiteDocumentPositionDTO->addInvoiceReference(new InvoiceSuiteReferenceDocumentLineExtDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachInvoiceReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastInvoiceReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachInvoiceReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionSupplyChainEventIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addSupplyChainEvent(new DateTimeImmutable("2025-01-02"));
+        $invoiceSuiteDocumentPositionDTO->addSupplyChainEvent(new DateTimeImmutable("2025-01-02"));
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachSupplyChainEvent($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastSupplyChainEvent($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachSupplyChainEvent($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionBillingPeriodIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addBillingPeriod(new InvoiceSuiteDateRangeDTO());
+        $invoiceSuiteDocumentPositionDTO->addBillingPeriod(new InvoiceSuiteDateRangeDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachBillingPeriod($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastBillingPeriod($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachBillingPeriod($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionPostingReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addPostingReference(new InvoiceSuiteIdDTO());
+        $invoiceSuiteDocumentPositionDTO->addPostingReference(new InvoiceSuiteIdDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachPostingReference($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastPostingReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachPostingReference($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionAllowanceChargeIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO());
+        $invoiceSuiteDocumentPositionDTO->addAllowanceCharge(new InvoiceSuiteAllowanceChargeDTO());
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAllowanceCharge($cb, $cbElse);
+        $this->assertSame(5, $hitCount);
+        $this->assertSame(3, $elseCount);
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $hitCount = 0;
+        $elseCount = 0;
+        $cb = function ($item) use (&$hitCount) {
+            $hitCount++;
+        };
+        $cbElse = function () use (&$elseCount) {
+            $elseCount++;
+        };
+        $invoiceSuiteDocumentPositionDTO->firstAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastAllowanceCharge($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAllowanceCharge($cb, $cbElse);
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
 }

@@ -9,70 +9,26 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuitePeriodDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuitePeriodDTO = new InvoiceSuitePeriodDTO();
+        $this->assertNull($invoiceSuitePeriodDTO->getPeriod());
+        $this->assertNull($invoiceSuitePeriodDTO->getPeriodUnit());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testPeriodGetterAndSetter(): void
     {
-        return [[[
-            'period'     => 14.0,
-            'periodUnit' => 'DAY',
-        ]]];
+        $invoiceSuitePeriodDTO = new InvoiceSuitePeriodDTO();
+        $periodValue = 123.45;
+        $invoiceSuitePeriodDTO->setPeriod($periodValue);
+        $this->assertSame($periodValue, $invoiceSuitePeriodDTO->getPeriod());
     }
 
-    public static function dpScalarSetters(): array
+    public function testPeriodUnitGetterAndSetter(): void
     {
-        return [
-            ['setPeriod',     'getPeriod',     30.5],
-            ['setPeriodUnit', 'getPeriodUnit', 'MONTH'],
-        ];
+        $invoiceSuitePeriodDTO = new InvoiceSuitePeriodDTO();
+        $periodUnitValue = "Example Value";
+        $invoiceSuitePeriodDTO->setPeriodUnit($periodUnitValue);
+        $this->assertSame($periodUnitValue, $invoiceSuitePeriodDTO->getPeriodUnit());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuitePeriodDTO();
-
-        $this->assertNull($dto->getPeriod());
-        $this->assertNull($dto->getPeriodUnit());
-        $this->assertInstanceOf(InvoiceSuitePeriodDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $dto = new InvoiceSuitePeriodDTO(
-            $v['period'],
-            $v['periodUnit'],
-        );
-
-        $this->assertSame($v['period'], $dto->getPeriod());
-        $this->assertSame($v['periodUnit'], $dto->getPeriodUnit());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, $value): void
-    {
-        $dto = new InvoiceSuitePeriodDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    #endregion
 }

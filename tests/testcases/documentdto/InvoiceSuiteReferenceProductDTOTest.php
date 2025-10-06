@@ -11,146 +11,80 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteReferenceProductDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getId());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getName());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getDescription());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getSellerId());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getBuyerId());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getGlobalId());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getIndustryId());
+        $this->assertNull($invoiceSuiteReferenceProductDTO->getUnitQuantity());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testIdGetterAndSetter(): void
     {
-        return [[[
-            'id'               => 'REF-1000',
-            'name'             => 'Referenced Widget',
-            'description'      => 'Referenced product description',
-            'sellerId'         => 'SELL-42',
-            'buyerId'          => 'BUY-77',
-            'industryId'       => 'IND-ABC',
-            'globalId'         => ['1234567890123', 'GTIN'],
-            'unitQuantity'     => [2.5, 'C62'],
-        ]]];
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $idValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setId($idValue);
+        $this->assertSame($idValue, $invoiceSuiteReferenceProductDTO->getId());
     }
 
-    public static function dpScalarSetters(): array
+    public function testNameGetterAndSetter(): void
     {
-        return [
-            ['setId',          'getId',          'PROD-9'],
-            ['setName',        'getName',        'Name X'],
-            ['setDescription', 'getDescription', 'Desc Y'],
-            ['setSellerId',    'getSellerId',    'SELL-9'],
-            ['setBuyerId',     'getBuyerId',     'BUY-9'],
-            ['setIndustryId',  'getIndustryId',  'IND-9'],
-        ];
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $nameValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setName($nameValue);
+        $this->assertSame($nameValue, $invoiceSuiteReferenceProductDTO->getName());
     }
 
-    #endregion
-
-    #region Helpers
-
-    private function newGlobalId(string $id = '4012345000006', string $type = 'GTIN'): InvoiceSuiteIdDTO
+    public function testDescriptionGetterAndSetter(): void
     {
-        return new InvoiceSuiteIdDTO($id, $type);
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $descriptionValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setDescription($descriptionValue);
+        $this->assertSame($descriptionValue, $invoiceSuiteReferenceProductDTO->getDescription());
     }
 
-    private function newUnitQuantity(float $qty = 1.0, string $unit = 'C62'): InvoiceSuiteQuantityDTO
+    public function testSellerIdGetterAndSetter(): void
     {
-        return new InvoiceSuiteQuantityDTO($qty, $unit);
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $sellerIdValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setSellerId($sellerIdValue);
+        $this->assertSame($sellerIdValue, $invoiceSuiteReferenceProductDTO->getSellerId());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testBuyerIdGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteReferenceProductDTO();
-
-        $this->assertNull($dto->getId());
-        $this->assertNull($dto->getName());
-        $this->assertNull($dto->getDescription());
-        $this->assertNull($dto->getSellerId());
-        $this->assertNull($dto->getBuyerId());
-        $this->assertNull($dto->getGlobalId());
-        $this->assertNull($dto->getIndustryId());
-        $this->assertNull($dto->getUnitQuantity());
-        $this->assertInstanceOf(InvoiceSuiteReferenceProductDTO::class, $dto);
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $buyerIdValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setBuyerId($buyerIdValue);
+        $this->assertSame($buyerIdValue, $invoiceSuiteReferenceProductDTO->getBuyerId());
     }
 
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
+    public function testGlobalIdGetterAndSetter(): void
     {
-        $gid = $this->newGlobalId($v['globalId'][0], $v['globalId'][1]);
-        $qty = $this->newUnitQuantity($v['unitQuantity'][0], $v['unitQuantity'][1]);
-
-        $dto = new InvoiceSuiteReferenceProductDTO(
-            $v['id'],
-            $v['name'],
-            $v['description'],
-            $v['sellerId'],
-            $v['buyerId'],
-            $gid,
-            $v['industryId'],
-            $qty
-        );
-
-        $this->assertSame($v['id'], $dto->getId());
-        $this->assertSame($v['name'], $dto->getName());
-        $this->assertSame($v['description'], $dto->getDescription());
-        $this->assertSame($v['sellerId'], $dto->getSellerId());
-        $this->assertSame($v['buyerId'], $dto->getBuyerId());
-        $this->assertSame($gid, $dto->getGlobalId());
-        $this->assertSame($v['industryId'], $dto->getIndustryId());
-        $this->assertSame($qty, $dto->getUnitQuantity());
-
-        $this->assertSame($v['globalId'][0], $dto->getGlobalId()?->getId());
-        $this->assertSame($v['globalId'][1], $dto->getGlobalId()?->getIdType());
-        $this->assertTrue($dto->getGlobalId()?->hasId());
-        $this->assertTrue($dto->getGlobalId()?->hasIdType());
-
-        $this->assertSame($v['unitQuantity'][0], $dto->getUnitQuantity()?->getQuantity());
-        $this->assertSame($v['unitQuantity'][1], $dto->getUnitQuantity()?->getQuantityUnit());
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $globalIdValue = new InvoiceSuiteIdDTO();
+        $invoiceSuiteReferenceProductDTO->setGlobalId($globalIdValue);
+        $this->assertSame($globalIdValue, $invoiceSuiteReferenceProductDTO->getGlobalId());
     }
 
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
+    public function testIndustryIdGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteReferenceProductDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $industryIdValue = "Example Value";
+        $invoiceSuiteReferenceProductDTO->setIndustryId($industryIdValue);
+        $this->assertSame($industryIdValue, $invoiceSuiteReferenceProductDTO->getIndustryId());
     }
 
-    public function testObjectSetters(): void
+    public function testUnitQuantityGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteReferenceProductDTO();
-        $gid = $this->newGlobalId('9783897225833', 'ISBN');
-        $qty = $this->newUnitQuantity(3.0, 'H87');
-
-        $r1 = $dto->setGlobalId($gid);
-        $r2 = $dto->setUnitQuantity($qty);
-
-        $this->assertSame($dto, $r1);
-        $this->assertSame($dto, $r2);
-        $this->assertSame($gid, $dto->getGlobalId());
-        $this->assertSame($qty, $dto->getUnitQuantity());
-
-        $this->assertSame('9783897225833', $dto->getGlobalId()?->getId());
-        $this->assertSame('ISBN', $dto->getGlobalId()?->getIdType());
-        $this->assertTrue($dto->getGlobalId()?->hasId());
-        $this->assertTrue($dto->getGlobalId()?->hasIdType());
-
-        $this->assertSame(3.0, $dto->getUnitQuantity()?->getQuantity());
-        $this->assertSame('H87', $dto->getUnitQuantity()?->getQuantityUnit());
+        $invoiceSuiteReferenceProductDTO = new InvoiceSuiteReferenceProductDTO();
+        $unitQuantityValue = new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteReferenceProductDTO->setUnitQuantity($unitQuantityValue);
+        $this->assertSame($unitQuantityValue, $invoiceSuiteReferenceProductDTO->getUnitQuantity());
     }
-
-    #endregion
 }

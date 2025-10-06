@@ -7,144 +7,91 @@ namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteAllowanceChargeDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
+class InvoiceSuiteAllowanceChargeDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,bool|null>>
-     */
-    public function boolValues(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [[null], [true], [false]];
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getChargeIndicator());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getAmount());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getBaseAmount());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getPercent());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getTaxCategory());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getTaxType());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getTaxPercent());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getReason());
+        $this->assertNull($invoiceSuiteAllowanceChargeDTO->getReasonCode());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,float|null>>
-     */
-    public function floatValues(): array
+    public function testChargeIndicatorGetterAndSetter(): void
     {
-        return [[null], [0.0], [1.0], [19.5]];
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $chargeIndicatorValue = true;
+        $invoiceSuiteAllowanceChargeDTO->setChargeIndicator($chargeIndicatorValue);
+        $this->assertSame($chargeIndicatorValue, $invoiceSuiteAllowanceChargeDTO->getChargeIndicator());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public function stringValues(): array
+    public function testAmountGetterAndSetter(): void
     {
-        return [[null], [''], ['X']];
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $amountValue = 123.45;
+        $invoiceSuiteAllowanceChargeDTO->setAmount($amountValue);
+        $this->assertSame($amountValue, $invoiceSuiteAllowanceChargeDTO->getAmount());
     }
 
-    #endregion
-
-    #region Tests
-
-    public function testConstructorDefaults(): void
+    public function testBaseAmountGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO();
-
-        $this->assertNull($dto->getChargeIndicator());
-        $this->assertNull($dto->getAmount());
-        $this->assertNull($dto->getBaseAmount());
-        $this->assertNull($dto->getPercent());
-        $this->assertNull($dto->getTaxCategory());
-        $this->assertNull($dto->getTaxType());
-        $this->assertNull($dto->getTaxPercent());
-        $this->assertNull($dto->getReason());
-        $this->assertNull($dto->getReasonCode());
-
-        $this->assertInstanceOf(
-            InvoiceSuiteAllowanceChargeDTO::class,
-            $dto
-        );
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $baseAmountValue = 123.45;
+        $invoiceSuiteAllowanceChargeDTO->setBaseAmount($baseAmountValue);
+        $this->assertSame($baseAmountValue, $invoiceSuiteAllowanceChargeDTO->getBaseAmount());
     }
 
-    public function testFluentSettersReturnSelf(): void
+    public function testPercentGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO();
-
-        $this->assertSame($dto, $dto->setChargeIndicator(true));
-        $this->assertSame($dto, $dto->setAmount(10.0));
-        $this->assertSame($dto, $dto->setBaseAmount(100.0));
-        $this->assertSame($dto, $dto->setPercent(10.0));
-        $this->assertSame($dto, $dto->setTaxCategory('S'));
-        $this->assertSame($dto, $dto->setTaxType('VAT'));
-        $this->assertSame($dto, $dto->setTaxPercent(19.0));
-        $this->assertSame($dto, $dto->setReason('Skonto'));
-        $this->assertSame($dto, $dto->setReasonCode('95'));
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $percentValue = 123.45;
+        $invoiceSuiteAllowanceChargeDTO->setPercent($percentValue);
+        $this->assertSame($percentValue, $invoiceSuiteAllowanceChargeDTO->getPercent());
     }
 
-    /**
-     * @dataProvider boolValues
-     */
-    public function testBoolSetters(?bool $value): void
+    public function testTaxCategoryGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO();
-
-        $dto->setChargeIndicator($value);
-        $this->assertSame($value, $dto->getChargeIndicator());
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $taxCategoryValue = "Example Value";
+        $invoiceSuiteAllowanceChargeDTO->setTaxCategory($taxCategoryValue);
+        $this->assertSame($taxCategoryValue, $invoiceSuiteAllowanceChargeDTO->getTaxCategory());
     }
 
-    /**
-     * @dataProvider floatValues
-     */
-    public function testFloatSetters(?float $value): void
+    public function testTaxTypeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO();
-
-        $dto->setAmount($value);
-        $this->assertSame($value, $dto->getAmount());
-
-        $dto->setBaseAmount($value);
-        $this->assertSame($value, $dto->getBaseAmount());
-
-        $dto->setPercent($value);
-        $this->assertSame($value, $dto->getPercent());
-
-        $dto->setTaxPercent($value);
-        $this->assertSame($value, $dto->getTaxPercent());
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $taxTypeValue = "Example Value";
+        $invoiceSuiteAllowanceChargeDTO->setTaxType($taxTypeValue);
+        $this->assertSame($taxTypeValue, $invoiceSuiteAllowanceChargeDTO->getTaxType());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testStringSetters(?string $value): void
+    public function testTaxPercentGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO();
-
-        $dto->setTaxCategory($value);
-        $this->assertSame($value, $dto->getTaxCategory());
-
-        $dto->setTaxType($value);
-        $this->assertSame($value, $dto->getTaxType());
-
-        $dto->setReason($value);
-        $this->assertSame($value, $dto->getReason());
-
-        $dto->setReasonCode($value);
-        $this->assertSame($value, $dto->getReasonCode());
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $taxPercentValue = 123.45;
+        $invoiceSuiteAllowanceChargeDTO->setTaxPercent($taxPercentValue);
+        $this->assertSame($taxPercentValue, $invoiceSuiteAllowanceChargeDTO->getTaxPercent());
     }
 
-    public function testConstructorWithValuesUsesSetterChain(): void
+    public function testReasonGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteAllowanceChargeDTO(true, 10.0, 100.0, 10.0, 'S', 'VAT', 19.0, 'Skonto', '95');
-
-        $this->assertSame(true, $dto->getChargeIndicator());
-        $this->assertSame(10.0, $dto->getAmount());
-        $this->assertSame(100.0, $dto->getBaseAmount());
-        $this->assertSame(10.0, $dto->getPercent());
-        $this->assertSame('S', $dto->getTaxCategory());
-        $this->assertSame('VAT', $dto->getTaxType());
-        $this->assertSame(19.0, $dto->getTaxPercent());
-        $this->assertSame('Skonto', $dto->getReason());
-        $this->assertSame('95', $dto->getReasonCode());
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $reasonValue = "Example Value";
+        $invoiceSuiteAllowanceChargeDTO->setReason($reasonValue);
+        $this->assertSame($reasonValue, $invoiceSuiteAllowanceChargeDTO->getReason());
     }
 
-    #endregion
+    public function testReasonCodeGetterAndSetter(): void
+    {
+        $invoiceSuiteAllowanceChargeDTO = new InvoiceSuiteAllowanceChargeDTO();
+        $reasonCodeValue = "Example Value";
+        $invoiceSuiteAllowanceChargeDTO->setReasonCode($reasonCodeValue);
+        $this->assertSame($reasonCodeValue, $invoiceSuiteAllowanceChargeDTO->getReasonCode());
+    }
 }

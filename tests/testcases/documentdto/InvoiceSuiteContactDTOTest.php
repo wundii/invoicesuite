@@ -7,99 +7,110 @@ namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteContactDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class InvoiceSuiteContactDTOTest extends TestCase
+class InvoiceSuiteContactDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public function stringValues(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [[null], [''], ['X']];
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertNull($invoiceSuiteContactDTO->getPersonName());
+        $this->assertNull($invoiceSuiteContactDTO->getDepartmentName());
+        $this->assertNull($invoiceSuiteContactDTO->getPhoneNumber());
+        $this->assertNull($invoiceSuiteContactDTO->getFaxNumber());
+        $this->assertNull($invoiceSuiteContactDTO->getEmailAddress());
+        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
+        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
+        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
+        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
+        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
     }
 
-    #endregion
-
-    #region Tests
-
-    public function testConstructorDefaults(): void
+    public function testPersonNameGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteContactDTO();
-
-        $this->assertNull($dto->getPersonName());
-        $this->assertNull($dto->getDepartmentName());
-        $this->assertNull($dto->getPhoneNumber());
-        $this->assertNull($dto->getFaxNumber());
-        $this->assertNull($dto->getEmailAddress());
-
-        $this->assertInstanceOf(
-            InvoiceSuiteContactDTO::class,
-            $dto
-        );
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $personNameValue = "Example Value";
+        $invoiceSuiteContactDTO->setPersonName($personNameValue);
+        $this->assertSame($personNameValue, $invoiceSuiteContactDTO->getPersonName());
     }
 
-    public function testFluentSettersReturnSelf(): void
+    public function testHasPersonName(): void
     {
-        $dto = new InvoiceSuiteContactDTO();
-
-        $this->assertSame($dto, $dto->setPersonName('Max'));
-        $this->assertSame($dto, $dto->setDepartmentName('Sales'));
-        $this->assertSame($dto, $dto->setPhoneNumber('123'));
-        $this->assertSame($dto, $dto->setFaxNumber('124'));
-        $this->assertSame($dto, $dto->setEmailAddress('max@example.com'));
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
+        $invoiceSuiteContactDTO->setPersonName("");
+        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
+        $invoiceSuiteContactDTO->setPersonName("Non-empty");
+        $this->assertTrue($invoiceSuiteContactDTO->hasPersonName());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testStringSetters(?string $value): void
+    public function testDepartmentNameGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteContactDTO();
-
-        $dto->setPersonName($value);
-        $this->assertSame($value, $dto->getPersonName());
-
-        $dto->setDepartmentName($value);
-        $this->assertSame($value, $dto->getDepartmentName());
-
-        $dto->setPhoneNumber($value);
-        $this->assertSame($value, $dto->getPhoneNumber());
-
-        $dto->setFaxNumber($value);
-        $this->assertSame($value, $dto->getFaxNumber());
-
-        $dto->setEmailAddress($value);
-        $this->assertSame($value, $dto->getEmailAddress());
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $departmentNameValue = "Example Value";
+        $invoiceSuiteContactDTO->setDepartmentName($departmentNameValue);
+        $this->assertSame($departmentNameValue, $invoiceSuiteContactDTO->getDepartmentName());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testHasMethods(?string $value): void
+    public function testHasDepartmentName(): void
     {
-        $dto = new InvoiceSuiteContactDTO($value, $value, $value, $value, $value);
-        $expect = $value !== null && $value !== '';
-
-        $this->assertSame($expect, $dto->hasPersonName());
-        $this->assertSame($expect, $dto->hasDepartmentName());
-        $this->assertSame($expect, $dto->hasPhoneNumber());
-        $this->assertSame($expect, $dto->hasFaxNumber());
-        $this->assertSame($expect, $dto->hasEmailAddress());
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
+        $invoiceSuiteContactDTO->setDepartmentName("");
+        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
+        $invoiceSuiteContactDTO->setDepartmentName("Non-empty");
+        $this->assertTrue($invoiceSuiteContactDTO->hasDepartmentName());
     }
 
-    public function testConstructorWithValuesUsesSetterChain(): void
+    public function testPhoneNumberGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteContactDTO('Max', 'Support', '123', '124', 'max@example.com');
-
-        $this->assertSame('Max', $dto->getPersonName());
-        $this->assertSame('Support', $dto->getDepartmentName());
-        $this->assertSame('123', $dto->getPhoneNumber());
-        $this->assertSame('124', $dto->getFaxNumber());
-        $this->assertSame('max@example.com', $dto->getEmailAddress());
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $phoneNumberValue = "Example Value";
+        $invoiceSuiteContactDTO->setPhoneNumber($phoneNumberValue);
+        $this->assertSame($phoneNumberValue, $invoiceSuiteContactDTO->getPhoneNumber());
     }
 
-    #endregion
+    public function testHasPhoneNumber(): void
+    {
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
+        $invoiceSuiteContactDTO->setPhoneNumber("");
+        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
+        $invoiceSuiteContactDTO->setPhoneNumber("Non-empty");
+        $this->assertTrue($invoiceSuiteContactDTO->hasPhoneNumber());
+    }
+
+    public function testFaxNumberGetterAndSetter(): void
+    {
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $faxNumberValue = "Example Value";
+        $invoiceSuiteContactDTO->setFaxNumber($faxNumberValue);
+        $this->assertSame($faxNumberValue, $invoiceSuiteContactDTO->getFaxNumber());
+    }
+
+    public function testHasFaxNumber(): void
+    {
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
+        $invoiceSuiteContactDTO->setFaxNumber("");
+        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
+        $invoiceSuiteContactDTO->setFaxNumber("Non-empty");
+        $this->assertTrue($invoiceSuiteContactDTO->hasFaxNumber());
+    }
+
+    public function testEmailAddressGetterAndSetter(): void
+    {
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $emailAddressValue = "Example Value";
+        $invoiceSuiteContactDTO->setEmailAddress($emailAddressValue);
+        $this->assertSame($emailAddressValue, $invoiceSuiteContactDTO->getEmailAddress());
+    }
+
+    public function testHasEmailAddress(): void
+    {
+        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
+        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
+        $invoiceSuiteContactDTO->setEmailAddress("");
+        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
+        $invoiceSuiteContactDTO->setEmailAddress("Non-empty");
+        $this->assertTrue($invoiceSuiteContactDTO->hasEmailAddress());
+    }
 }

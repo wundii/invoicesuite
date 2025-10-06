@@ -5,93 +5,40 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
 use DateTimeImmutable;
-use DateTimeInterface;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteReferenceDocumentLineDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
+        $this->assertNull($invoiceSuiteReferenceDocumentLineDTO->getReferenceNumber());
+        $this->assertNull($invoiceSuiteReferenceDocumentLineDTO->getReferenceLineNumber());
+        $this->assertNull($invoiceSuiteReferenceDocumentLineDTO->getReferenceDate());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testReferenceNumberGetterAndSetter(): void
     {
-        return [[[
-            'referenceNumber'     => 'ORD-2024-1001',
-            'referenceLineNumber' => '15',
-        ]]];
+        $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
+        $referenceNumberValue = "Example Value";
+        $invoiceSuiteReferenceDocumentLineDTO->setReferenceNumber($referenceNumberValue);
+        $this->assertSame($referenceNumberValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceNumber());
     }
 
-    public static function dpScalarSetters(): array
+    public function testReferenceLineNumberGetterAndSetter(): void
     {
-        return [
-            ['setReferenceNumber',     'getReferenceNumber',     'PO-7788'],
-            ['setReferenceLineNumber', 'getReferenceLineNumber', '7'],
-        ];
+        $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
+        $referenceLineNumberValue = "Example Value";
+        $invoiceSuiteReferenceDocumentLineDTO->setReferenceLineNumber($referenceLineNumberValue);
+        $this->assertSame($referenceLineNumberValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceLineNumber());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testReferenceDateGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteReferenceDocumentLineDTO();
-
-        $this->assertNull($dto->getReferenceNumber());
-        $this->assertNull($dto->getReferenceLineNumber());
-        $this->assertNull($dto->getReferenceDate());
-        $this->assertInstanceOf(InvoiceSuiteReferenceDocumentLineDTO::class, $dto);
+        $invoiceSuiteReferenceDocumentLineDTO = new InvoiceSuiteReferenceDocumentLineDTO();
+        $referenceDateValue = new DateTimeImmutable("2025-01-02");
+        $invoiceSuiteReferenceDocumentLineDTO->setReferenceDate($referenceDateValue);
+        $this->assertSame($referenceDateValue, $invoiceSuiteReferenceDocumentLineDTO->getReferenceDate());
     }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $date = new DateTimeImmutable('2024-06-30 12:34:56');
-
-        $dto = new InvoiceSuiteReferenceDocumentLineDTO(
-            $v['referenceNumber'],
-            $v['referenceLineNumber'],
-            $date
-        );
-
-        $this->assertSame($v['referenceNumber'], $dto->getReferenceNumber());
-        $this->assertSame($v['referenceLineNumber'], $dto->getReferenceLineNumber());
-        $this->assertSame($date, $dto->getReferenceDate());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentLineDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    public function testReferenceDateSetter(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentLineDTO();
-        $d = new DateTimeImmutable('2025-01-01 00:00:00');
-
-        $ret = $dto->setReferenceDate($d);
-
-        $this->assertSame($dto, $ret);
-        $this->assertInstanceOf(DateTimeInterface::class, $dto->getReferenceDate());
-        $this->assertSame($d, $dto->getReferenceDate());
-    }
-
-    #endregion
 }

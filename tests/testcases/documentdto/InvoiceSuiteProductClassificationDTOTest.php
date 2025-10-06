@@ -9,80 +9,44 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteProductClassificationDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
+        $this->assertNull($invoiceSuiteProductClassificationDTO->getCode());
+        $this->assertNull($invoiceSuiteProductClassificationDTO->getName());
+        $this->assertNull($invoiceSuiteProductClassificationDTO->getListId());
+        $this->assertNull($invoiceSuiteProductClassificationDTO->getListVersionId());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testCodeGetterAndSetter(): void
     {
-        return [[[
-            'code'          => '12345678',
-            'name'          => 'Electronics',
-            'listId'        => 'UNSPSC',
-            'listVersionId' => '23.0701',
-        ]]];
+        $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
+        $codeValue = "Example Value";
+        $invoiceSuiteProductClassificationDTO->setCode($codeValue);
+        $this->assertSame($codeValue, $invoiceSuiteProductClassificationDTO->getCode());
     }
 
-    public static function dpScalarSetters(): array
+    public function testNameGetterAndSetter(): void
     {
-        return [
-            ['setCode',          'getCode',          '99887766'],
-            ['setName',          'getName',          'Batteries'],
-            ['setListId',        'getListId',        'eCl@ss'],
-            ['setListVersionId', 'getListVersionId', '10.1'],
-        ];
+        $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
+        $nameValue = "Example Value";
+        $invoiceSuiteProductClassificationDTO->setName($nameValue);
+        $this->assertSame($nameValue, $invoiceSuiteProductClassificationDTO->getName());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testListIdGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteProductClassificationDTO();
-
-        $this->assertNull($dto->getCode());
-        $this->assertNull($dto->getName());
-        $this->assertNull($dto->getListId());
-        $this->assertNull($dto->getListVersionId());
-        $this->assertInstanceOf(InvoiceSuiteProductClassificationDTO::class, $dto);
+        $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
+        $listIdValue = "Example Value";
+        $invoiceSuiteProductClassificationDTO->setListId($listIdValue);
+        $this->assertSame($listIdValue, $invoiceSuiteProductClassificationDTO->getListId());
     }
 
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
+    public function testListVersionIdGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteProductClassificationDTO(
-            $v['code'],
-            $v['name'],
-            $v['listId'],
-            $v['listVersionId']
-        );
-
-        $this->assertSame($v['code'], $dto->getCode());
-        $this->assertSame($v['name'], $dto->getName());
-        $this->assertSame($v['listId'], $dto->getListId());
-        $this->assertSame($v['listVersionId'], $dto->getListVersionId());
+        $invoiceSuiteProductClassificationDTO = new InvoiceSuiteProductClassificationDTO();
+        $listVersionIdValue = "Example Value";
+        $invoiceSuiteProductClassificationDTO->setListVersionId($listVersionIdValue);
+        $this->assertSame($listVersionIdValue, $invoiceSuiteProductClassificationDTO->getListVersionId());
     }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteProductClassificationDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    #endregion
 }

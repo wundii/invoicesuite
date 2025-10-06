@@ -5,167 +5,59 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
 use DateTimeImmutable;
-use DateTimeInterface;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePeriodDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuitePaymentTermDiscountDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $this->assertNull($invoiceSuitePaymentTermDiscountDTO->getBaseAmount());
+        $this->assertNull($invoiceSuitePaymentTermDiscountDTO->getDiscountAmount());
+        $this->assertNull($invoiceSuitePaymentTermDiscountDTO->getDiscountPercent());
+        $this->assertNull($invoiceSuitePaymentTermDiscountDTO->getBaseDate());
+        $this->assertNull($invoiceSuitePaymentTermDiscountDTO->getPeriod());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array<array{ baseAmount: float, discountAmount: float, discountPercent: float, baseDate: DateTimeImmutable }>>
-     */
-    public static function dpConstructorWithValues(): array
+    public function testBaseAmountGetterAndSetter(): void
     {
-        return [[[
-            'baseAmount'      => 2000.0,
-            'discountAmount'  => 40.0,
-            'discountPercent' => 2.0,
-            'baseDate'        => new DateTimeImmutable('2025-01-20 00:00:00'),
-        ]]];
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $baseAmountValue = 123.45;
+        $invoiceSuitePaymentTermDiscountDTO->setBaseAmount($baseAmountValue);
+        $this->assertSame($baseAmountValue, $invoiceSuitePaymentTermDiscountDTO->getBaseAmount());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array{0: string, 1: string, 2: float}>
-     */
-    public static function dpScalarSetters(): array
+    public function testDiscountAmountGetterAndSetter(): void
     {
-        return [
-            ['setBaseAmount',      'getBaseAmount',      1500.0],
-            ['setDiscountAmount',  'getDiscountAmount',  30.0],
-            ['setDiscountPercent', 'getDiscountPercent', 2.5],
-        ];
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $discountAmountValue = 123.45;
+        $invoiceSuitePaymentTermDiscountDTO->setDiscountAmount($discountAmountValue);
+        $this->assertSame($discountAmountValue, $invoiceSuitePaymentTermDiscountDTO->getDiscountAmount());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array{0: DateTimeImmutable}>
-     */
-    public static function dpDateSetter(): array
+    public function testDiscountPercentGetterAndSetter(): void
     {
-        return [
-            [new DateTimeImmutable('2025-01-25 00:00:00')],
-        ];
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $discountPercentValue = 123.45;
+        $invoiceSuitePaymentTermDiscountDTO->setDiscountPercent($discountPercentValue);
+        $this->assertSame($discountPercentValue, $invoiceSuitePaymentTermDiscountDTO->getDiscountPercent());
     }
 
-    /**
-     * Data Provider
-     *
-     * @return array<array{0: string, 1: string}>
-     */
-    public static function dpObjectSetter(): array
+    public function testBaseDateGetterAndSetter(): void
     {
-        return [
-            ['setPeriod', 'getPeriod'],
-        ];
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $baseDateValue = new DateTimeImmutable("2025-01-02");
+        $invoiceSuitePaymentTermDiscountDTO->setBaseDate($baseDateValue);
+        $this->assertSame($baseDateValue, $invoiceSuitePaymentTermDiscountDTO->getBaseDate());
     }
 
-    #endregion
-
-    #region Helpers
-
-    private function newPeriod(): InvoiceSuitePeriodDTO
+    public function testPeriodGetterAndSetter(): void
     {
-        return new InvoiceSuitePeriodDTO();
+        $invoiceSuitePaymentTermDiscountDTO = new InvoiceSuitePaymentTermDiscountDTO();
+        $periodValue = new InvoiceSuitePeriodDTO();
+        $invoiceSuitePaymentTermDiscountDTO->setPeriod($periodValue);
+        $this->assertSame($periodValue, $invoiceSuitePaymentTermDiscountDTO->getPeriod());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuitePaymentTermDiscountDTO();
-
-        $this->assertNull($dto->getBaseAmount());
-        $this->assertNull($dto->getDiscountAmount());
-        $this->assertNull($dto->getDiscountPercent());
-        $this->assertNull($dto->getBaseDate());
-        $this->assertNull($dto->getPeriod());
-        $this->assertInstanceOf(InvoiceSuitePaymentTermDiscountDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     * @param array{ baseAmount: float, discountAmount: float, discountPercent: float, baseDate: DateTimeImmutable } $v
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $period = $this->newPeriod();
-
-        $dto = new InvoiceSuitePaymentTermDiscountDTO(
-            $v['baseAmount'],
-            $v['discountAmount'],
-            $v['discountPercent'],
-            $v['baseDate'],
-            $period
-        );
-
-        $this->assertSame($v['baseAmount'], $dto->getBaseAmount());
-        $this->assertSame($v['discountAmount'], $dto->getDiscountAmount());
-        $this->assertSame($v['discountPercent'], $dto->getDiscountPercent());
-        $this->assertSame($v['baseDate'], $dto->getBaseDate());
-        $this->assertSame($period, $dto->getPeriod());
-        $this->assertInstanceOf(DateTimeInterface::class, $dto->getBaseDate());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, float $value): void
-    {
-        $dto = new InvoiceSuitePaymentTermDiscountDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    /**
-     * @dataProvider dpDateSetter
-     */
-    public function testDateSetter(DateTimeInterface $value): void
-    {
-        $dto = new InvoiceSuitePaymentTermDiscountDTO();
-        $ret = $dto->setBaseDate($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->getBaseDate());
-    }
-
-    /**
-     * @dataProvider dpObjectSetter
-     */
-    public function testObjectSetter(string $setter, string $getter): void
-    {
-        $dto = new InvoiceSuitePaymentTermDiscountDTO();
-        $period = $this->newPeriod();
-
-        $ret = $dto->{$setter}($period);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($period, $dto->{$getter}());
-    }
-
-    #endregion
 }

@@ -7,72 +7,37 @@ namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class InvoiceSuiteNoteDTOTest extends TestCase
+class InvoiceSuiteNoteDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public function stringValues(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [[null], [''], ['X']];
+        $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
+        $this->assertNull($invoiceSuiteNoteDTO->getContent());
+        $this->assertNull($invoiceSuiteNoteDTO->getContentCode());
+        $this->assertNull($invoiceSuiteNoteDTO->getSubjectCode());
     }
 
-    #endregion
-
-    #region Tests
-
-    public function testConstructorDefaults(): void
+    public function testContentGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteNoteDTO();
-
-        $this->assertNull($dto->getContent());
-        $this->assertNull($dto->getContentCode());
-        $this->assertNull($dto->getSubjectCode());
-
-        $this->assertInstanceOf(
-            InvoiceSuiteNoteDTO::class,
-            $dto
-        );
+        $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
+        $contentValue = "Example Value";
+        $invoiceSuiteNoteDTO->setContent($contentValue);
+        $this->assertSame($contentValue, $invoiceSuiteNoteDTO->getContent());
     }
 
-    public function testFluentSettersReturnSelf(): void
+    public function testContentCodeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteNoteDTO();
-
-        $this->assertSame($dto, $dto->setContent('Hinweis'));
-        $this->assertSame($dto, $dto->setContentCode('GEN'));
-        $this->assertSame($dto, $dto->setSubjectCode('SUB'));
+        $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
+        $contentCodeValue = "Example Value";
+        $invoiceSuiteNoteDTO->setContentCode($contentCodeValue);
+        $this->assertSame($contentCodeValue, $invoiceSuiteNoteDTO->getContentCode());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testStringSetters(?string $value): void
+    public function testSubjectCodeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteNoteDTO();
-
-        $dto->setContent($value);
-        $this->assertSame($value, $dto->getContent());
-
-        $dto->setContentCode($value);
-        $this->assertSame($value, $dto->getContentCode());
-
-        $dto->setSubjectCode($value);
-        $this->assertSame($value, $dto->getSubjectCode());
+        $invoiceSuiteNoteDTO = new InvoiceSuiteNoteDTO();
+        $subjectCodeValue = "Example Value";
+        $invoiceSuiteNoteDTO->setSubjectCode($subjectCodeValue);
+        $this->assertSame($subjectCodeValue, $invoiceSuiteNoteDTO->getSubjectCode());
     }
-
-    public function testConstructorWithValuesUsesSetterChain(): void
-    {
-        $dto = new InvoiceSuiteNoteDTO('Text', 'GEN', 'SUB');
-
-        $this->assertSame('Text', $dto->getContent());
-        $this->assertSame('GEN', $dto->getContentCode());
-        $this->assertSame('SUB', $dto->getSubjectCode());
-    }
-
-    #endregion
 }

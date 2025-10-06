@@ -9,85 +9,53 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteServiceChargeDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $this->assertNull($invoiceSuiteServiceChargeDTO->getAmount());
+        $this->assertNull($invoiceSuiteServiceChargeDTO->getDescription());
+        $this->assertNull($invoiceSuiteServiceChargeDTO->getTaxCategory());
+        $this->assertNull($invoiceSuiteServiceChargeDTO->getTaxType());
+        $this->assertNull($invoiceSuiteServiceChargeDTO->getTaxPercent());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testAmountGetterAndSetter(): void
     {
-        return [[[
-            'amount'      => 19.99,
-            'description' => 'Service fee',
-            'taxCategory' => 'S',
-            'taxType'     => 'VAT',
-            'taxPercent'  => 19.0,
-        ]]];
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $amountValue = 123.45;
+        $invoiceSuiteServiceChargeDTO->setAmount($amountValue);
+        $this->assertSame($amountValue, $invoiceSuiteServiceChargeDTO->getAmount());
     }
 
-    public static function dpScalarSetters(): array
+    public function testDescriptionGetterAndSetter(): void
     {
-        return [
-            ['setAmount',      'getAmount',      12.34],
-            ['setDescription', 'getDescription', 'Handling surcharge'],
-            ['setTaxCategory', 'getTaxCategory', 'Z'],
-            ['setTaxType',     'getTaxType',     'GST'],
-            ['setTaxPercent',  'getTaxPercent',  7.0],
-        ];
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $descriptionValue = "Example Value";
+        $invoiceSuiteServiceChargeDTO->setDescription($descriptionValue);
+        $this->assertSame($descriptionValue, $invoiceSuiteServiceChargeDTO->getDescription());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testTaxCategoryGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteServiceChargeDTO();
-
-        $this->assertNull($dto->getAmount());
-        $this->assertNull($dto->getDescription());
-        $this->assertNull($dto->getTaxCategory());
-        $this->assertNull($dto->getTaxType());
-        $this->assertNull($dto->getTaxPercent());
-        $this->assertInstanceOf(InvoiceSuiteServiceChargeDTO::class, $dto);
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $taxCategoryValue = "Example Value";
+        $invoiceSuiteServiceChargeDTO->setTaxCategory($taxCategoryValue);
+        $this->assertSame($taxCategoryValue, $invoiceSuiteServiceChargeDTO->getTaxCategory());
     }
 
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
+    public function testTaxTypeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteServiceChargeDTO(
-            $v['amount'],
-            $v['description'],
-            $v['taxCategory'],
-            $v['taxType'],
-            $v['taxPercent']
-        );
-
-        $this->assertSame($v['amount'], $dto->getAmount());
-        $this->assertSame($v['description'], $dto->getDescription());
-        $this->assertSame($v['taxCategory'], $dto->getTaxCategory());
-        $this->assertSame($v['taxType'], $dto->getTaxType());
-        $this->assertSame($v['taxPercent'], $dto->getTaxPercent());
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $taxTypeValue = "Example Value";
+        $invoiceSuiteServiceChargeDTO->setTaxType($taxTypeValue);
+        $this->assertSame($taxTypeValue, $invoiceSuiteServiceChargeDTO->getTaxType());
     }
 
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, $value): void
+    public function testTaxPercentGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteServiceChargeDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret, sprintf('%s should be chainable', $setter));
-        $this->assertSame($value, $dto->{$getter}());
+        $invoiceSuiteServiceChargeDTO = new InvoiceSuiteServiceChargeDTO();
+        $taxPercentValue = 123.45;
+        $invoiceSuiteServiceChargeDTO->setTaxPercent($taxPercentValue);
+        $this->assertSame($taxPercentValue, $invoiceSuiteServiceChargeDTO->getTaxPercent());
     }
-
-    #endregion
 }

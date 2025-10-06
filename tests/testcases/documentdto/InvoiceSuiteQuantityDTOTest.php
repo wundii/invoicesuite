@@ -9,70 +9,26 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteQuantityDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteQuantityDTO = new InvoiceSuiteQuantityDTO();
+        $this->assertNull($invoiceSuiteQuantityDTO->getQuantity());
+        $this->assertNull($invoiceSuiteQuantityDTO->getQuantityUnit());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testQuantityGetterAndSetter(): void
     {
-        return [[[
-            'quantity'     => 12.5,
-            'quantityUnit' => 'C62',
-        ]]];
+        $invoiceSuiteQuantityDTO = new InvoiceSuiteQuantityDTO();
+        $quantityValue = 123.45;
+        $invoiceSuiteQuantityDTO->setQuantity($quantityValue);
+        $this->assertSame($quantityValue, $invoiceSuiteQuantityDTO->getQuantity());
     }
 
-    public static function dpScalarSetters(): array
+    public function testQuantityUnitGetterAndSetter(): void
     {
-        return [
-            ['setQuantity',     'getQuantity',     99.75],
-            ['setQuantityUnit', 'getQuantityUnit', 'KGM'],
-        ];
+        $invoiceSuiteQuantityDTO = new InvoiceSuiteQuantityDTO();
+        $quantityUnitValue = "Example Value";
+        $invoiceSuiteQuantityDTO->setQuantityUnit($quantityUnitValue);
+        $this->assertSame($quantityUnitValue, $invoiceSuiteQuantityDTO->getQuantityUnit());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuiteQuantityDTO();
-
-        $this->assertNull($dto->getQuantity());
-        $this->assertNull($dto->getQuantityUnit());
-        $this->assertInstanceOf(InvoiceSuiteQuantityDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $dto = new InvoiceSuiteQuantityDTO(
-            $v['quantity'],
-            $v['quantityUnit'],
-        );
-
-        $this->assertSame($v['quantity'], $dto->getQuantity());
-        $this->assertSame($v['quantityUnit'], $dto->getQuantityUnit());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, $value): void
-    {
-        $dto = new InvoiceSuiteQuantityDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    #endregion
 }

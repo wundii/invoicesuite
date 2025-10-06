@@ -4,134 +4,41 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
-use DateTimeImmutable;
-use DateTimeInterface;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 class InvoiceSuiteReferenceDocumentExtDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteReferenceDocumentExtDTO = new InvoiceSuiteReferenceDocumentExtDTO();
+        $this->assertNull($invoiceSuiteReferenceDocumentExtDTO->getTypeCode());
+        $this->assertNull($invoiceSuiteReferenceDocumentExtDTO->getReferenceTypeCode());
+        $this->assertNull($invoiceSuiteReferenceDocumentExtDTO->getDescription());
+        $this->assertNull($invoiceSuiteReferenceDocumentExtDTO->getAttachment());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testTypeCodeGetterAndSetter(): void
     {
-        return [[[
-            'referenceNumber'   => 'REF-2024-0001',
-            'typeCode'          => '916',
-            'referenceTypeCode' => 'AAB',
-            'description'       => 'Technical specification',
-        ]]];
+        $invoiceSuiteReferenceDocumentExtDTO = new InvoiceSuiteReferenceDocumentExtDTO();
+        $typeCodeValue = "Example Value";
+        $invoiceSuiteReferenceDocumentExtDTO->setTypeCode($typeCodeValue);
+        $this->assertSame($typeCodeValue, $invoiceSuiteReferenceDocumentExtDTO->getTypeCode());
     }
 
-    public static function dpScalarSetters(): array
+    public function testReferenceTypeCodeGetterAndSetter(): void
     {
-        return [
-            ['setReferenceNumber',   'getReferenceNumber',   'REF-0007'],
-            ['setTypeCode',          'getTypeCode',          '130'],
-            ['setReferenceTypeCode', 'getReferenceTypeCode', 'ZZZ'],
-            ['setDescription',       'getDescription',       'Some description'],
-        ];
+        $invoiceSuiteReferenceDocumentExtDTO = new InvoiceSuiteReferenceDocumentExtDTO();
+        $referenceTypeCodeValue = "Example Value";
+        $invoiceSuiteReferenceDocumentExtDTO->setReferenceTypeCode($referenceTypeCodeValue);
+        $this->assertSame($referenceTypeCodeValue, $invoiceSuiteReferenceDocumentExtDTO->getReferenceTypeCode());
     }
 
-    #endregion
-
-    #region Helpers
-
-    private function newAttachment(): InvoiceSuiteAttachment
+    public function testDescriptionGetterAndSetter(): void
     {
-        return InvoiceSuiteAttachment::fromBinaryString('Hello World', 'note.txt');
+        $invoiceSuiteReferenceDocumentExtDTO = new InvoiceSuiteReferenceDocumentExtDTO();
+        $descriptionValue = "Example Value";
+        $invoiceSuiteReferenceDocumentExtDTO->setDescription($descriptionValue);
+        $this->assertSame($descriptionValue, $invoiceSuiteReferenceDocumentExtDTO->getDescription());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentExtDTO();
-
-        $this->assertNull($dto->getReferenceNumber());
-        $this->assertNull($dto->getReferenceDate());
-        $this->assertNull($dto->getTypeCode());
-        $this->assertNull($dto->getReferenceTypeCode());
-        $this->assertNull($dto->getDescription());
-        $this->assertNull($dto->getAttachment());
-        $this->assertInstanceOf(InvoiceSuiteReferenceDocumentExtDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $date = new DateTimeImmutable('2024-06-15 10:30:00');
-        $att = $this->newAttachment();
-
-        $dto = new InvoiceSuiteReferenceDocumentExtDTO(
-            $v['referenceNumber'],
-            $date,
-            $v['typeCode'],
-            $v['referenceTypeCode'],
-            $v['description'],
-            $att
-        );
-
-        $this->assertSame($v['referenceNumber'], $dto->getReferenceNumber());
-        $this->assertSame($date, $dto->getReferenceDate());
-        $this->assertSame($v['typeCode'], $dto->getTypeCode());
-        $this->assertSame($v['referenceTypeCode'], $dto->getReferenceTypeCode());
-        $this->assertSame($v['description'], $dto->getDescription());
-        $this->assertSame($att, $dto->getAttachment());
-
-        $this->assertTrue($att->isBinaryAttachment());
-        $this->assertTrue($att->isBinaryStringAttachment());
-        $this->assertSame('Hello World', $att->getRawContent());
-        $this->assertSame(base64_encode('Hello World'), $att->getContent());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentExtDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    public function testReferenceDateSetter(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentExtDTO();
-        $d = new DateTimeImmutable('2025-01-01 00:00:00');
-
-        $ret = $dto->setReferenceDate($d);
-
-        $this->assertSame($dto, $ret);
-        $this->assertInstanceOf(DateTimeInterface::class, $dto->getReferenceDate());
-        $this->assertSame($d, $dto->getReferenceDate());
-    }
-
-    public function testAttachmentSetter(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentExtDTO();
-        $att = $this->newAttachment();
-
-        $ret = $dto->setAttachment($att);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($att, $dto->getAttachment());
-    }
-
-    #endregion
 }

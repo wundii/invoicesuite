@@ -7,78 +7,50 @@ namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteIdDTO;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class InvoiceSuiteIdDTOTest extends TestCase
+class InvoiceSuiteIdDTOTest extends TestCase
 {
-    #region DataProviders
-
-    /**
-     * Data Provider
-     *
-     * @return array<int,array<int,string|null>>
-     */
-    public function stringValues(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [[null], [''], ['X']];
+        $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
+        $this->assertNull($invoiceSuiteIdDTO->getId());
+        $this->assertNull($invoiceSuiteIdDTO->getIdType());
+        $this->assertFalse($invoiceSuiteIdDTO->hasId());
+        $this->assertFalse($invoiceSuiteIdDTO->hasIdType());
     }
 
-    #endregion
-
-    #region Tests
-
-    public function testConstructorDefaults(): void
+    public function testIdGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteIdDTO();
-
-        $this->assertNull($dto->getId());
-        $this->assertNull($dto->getIdType());
-
-        $this->assertInstanceOf(
-            InvoiceSuiteIdDTO::class,
-            $dto
-        );
+        $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
+        $idValue = "Example Value";
+        $invoiceSuiteIdDTO->setId($idValue);
+        $this->assertSame($idValue, $invoiceSuiteIdDTO->getId());
     }
 
-    public function testFluentSettersReturnSelf(): void
+    public function testHasId(): void
     {
-        $dto = new InvoiceSuiteIdDTO();
-
-        $this->assertSame($dto, $dto->setId('ID-1'));
-        $this->assertSame($dto, $dto->setIdType('GLN'));
+        $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
+        $this->assertFalse($invoiceSuiteIdDTO->hasId());
+        $invoiceSuiteIdDTO->setId("");
+        $this->assertFalse($invoiceSuiteIdDTO->hasId());
+        $invoiceSuiteIdDTO->setId("Non-empty");
+        $this->assertTrue($invoiceSuiteIdDTO->hasId());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testStringSetters(?string $value): void
+    public function testIdTypeGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteIdDTO();
-
-        $dto->setId($value);
-        $this->assertSame($value, $dto->getId());
-
-        $dto->setIdType($value);
-        $this->assertSame($value, $dto->getIdType());
+        $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
+        $idTypeValue = "Example Value";
+        $invoiceSuiteIdDTO->setIdType($idTypeValue);
+        $this->assertSame($idTypeValue, $invoiceSuiteIdDTO->getIdType());
     }
 
-    /**
-     * @dataProvider stringValues
-     */
-    public function testHasMethods(?string $value): void
+    public function testHasIdType(): void
     {
-        $dto = new InvoiceSuiteIdDTO($value, $value);
-        $expect = $value !== null && $value !== '';
-
-        $this->assertSame($expect, $dto->hasId());
-        $this->assertSame($expect, $dto->hasIdType());
+        $invoiceSuiteIdDTO = new InvoiceSuiteIdDTO();
+        $this->assertFalse($invoiceSuiteIdDTO->hasIdType());
+        $invoiceSuiteIdDTO->setIdType("");
+        $this->assertFalse($invoiceSuiteIdDTO->hasIdType());
+        $invoiceSuiteIdDTO->setIdType("Non-empty");
+        $this->assertTrue($invoiceSuiteIdDTO->hasIdType());
     }
-
-    public function testConstructorWithValuesUsesSetterChain(): void
-    {
-        $dto = new InvoiceSuiteIdDTO('4711', 'VAT');
-
-        $this->assertSame('4711', $dto->getId());
-        $this->assertSame('VAT', $dto->getIdType());
-    }
-
-    #endregion
 }

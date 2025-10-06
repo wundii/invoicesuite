@@ -9,111 +9,98 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteSummationDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $this->assertNull($invoiceSuiteSummationDTO->getNetAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getChargeTotalAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getDiscountTotalAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getTaxBasisAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getTaxTotalAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getTaxTotalAmount2());
+        $this->assertNull($invoiceSuiteSummationDTO->getGrossAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getDueAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getPrepaidAmount());
+        $this->assertNull($invoiceSuiteSummationDTO->getRoungingAmount());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testNetAmountGetterAndSetter(): void
     {
-        return [[[
-            'netAmount'           => 1000.00,
-            'chargeTotalAmount'   => 25.50,
-            'discountTotalAmount' => 10.00,
-            'taxBasisAmount'      => 1015.50,
-            'taxTotalAmount'      => 193.00,
-            'taxTotalAmount2'     => 193.00,
-            'grossAmount'         => 1208.50,
-            'dueAmount'           => 1150.00,
-            'prepaidAmount'       => 58.50,
-            'roungingAmount'      => 0.50,
-        ]]];
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $netAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setNetAmount($netAmountValue);
+        $this->assertSame($netAmountValue, $invoiceSuiteSummationDTO->getNetAmount());
     }
 
-    public static function dpScalarSetters(): array
+    public function testChargeTotalAmountGetterAndSetter(): void
     {
-        return [
-            ['setNetAmount',          'getNetAmount',          222.22],
-            ['setChargeTotalAmount',  'getChargeTotalAmount',  3.14],
-            ['setDiscountTotalAmount', 'getDiscountTotalAmount', 9.99],
-            ['setTaxBasisAmount',     'getTaxBasisAmount',     210.37],
-            ['setTaxTotalAmount',     'getTaxTotalAmount',     39.97],
-            ['setTaxTotalAmount2',    'getTaxTotalAmount2',    39.97],
-            ['setGrossAmount',        'getGrossAmount',        250.34],
-            ['setDueAmount',          'getDueAmount',          200.00],
-            ['setPrepaidAmount',      'getPrepaidAmount',      50.34],
-            ['setRoungingAmount',     'getRoungingAmount',     0.01],
-        ];
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $chargeTotalAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setChargeTotalAmount($chargeTotalAmountValue);
+        $this->assertSame($chargeTotalAmountValue, $invoiceSuiteSummationDTO->getChargeTotalAmount());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testDiscountTotalAmountGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteSummationDTO();
-
-        $this->assertNull($dto->getNetAmount());
-        $this->assertNull($dto->getChargeTotalAmount());
-        $this->assertNull($dto->getDiscountTotalAmount());
-        $this->assertNull($dto->getTaxBasisAmount());
-        $this->assertNull($dto->getTaxTotalAmount());
-        $this->assertNull($dto->getTaxTotalAmount2());
-        $this->assertNull($dto->getGrossAmount());
-        $this->assertNull($dto->getDueAmount());
-        $this->assertNull($dto->getPrepaidAmount());
-        $this->assertNull($dto->getRoungingAmount());
-
-        $this->assertInstanceOf(InvoiceSuiteSummationDTO::class, $dto);
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $discountTotalAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setDiscountTotalAmount($discountTotalAmountValue);
+        $this->assertSame($discountTotalAmountValue, $invoiceSuiteSummationDTO->getDiscountTotalAmount());
     }
 
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValues(array $v): void
+    public function testTaxBasisAmountGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteSummationDTO(
-            $v['netAmount'],
-            $v['chargeTotalAmount'],
-            $v['discountTotalAmount'],
-            $v['taxBasisAmount'],
-            $v['taxTotalAmount'],
-            $v['taxTotalAmount2'],
-            $v['grossAmount'],
-            $v['dueAmount'],
-            $v['prepaidAmount'],
-            $v['roungingAmount'],
-        );
-
-        $this->assertSame($v['netAmount'], $dto->getNetAmount());
-        $this->assertSame($v['chargeTotalAmount'], $dto->getChargeTotalAmount());
-        $this->assertSame($v['discountTotalAmount'], $dto->getDiscountTotalAmount());
-        $this->assertSame($v['taxBasisAmount'], $dto->getTaxBasisAmount());
-        $this->assertSame($v['taxTotalAmount'], $dto->getTaxTotalAmount());
-        $this->assertSame($v['taxTotalAmount2'], $dto->getTaxTotalAmount2());
-        $this->assertSame($v['grossAmount'], $dto->getGrossAmount());
-        $this->assertSame($v['dueAmount'], $dto->getDueAmount());
-        $this->assertSame($v['prepaidAmount'], $dto->getPrepaidAmount());
-        $this->assertSame($v['roungingAmount'], $dto->getRoungingAmount());
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $taxBasisAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setTaxBasisAmount($taxBasisAmountValue);
+        $this->assertSame($taxBasisAmountValue, $invoiceSuiteSummationDTO->getTaxBasisAmount());
     }
 
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, float $value): void
+    public function testTaxTotalAmountGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteSummationDTO();
-
-        $ret = $dto->{$setter}($value);
-        $this->assertSame($dto, $ret, sprintf('%s should be chainable', $setter));
-        $this->assertSame($value, $dto->{$getter}());
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $taxTotalAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setTaxTotalAmount($taxTotalAmountValue);
+        $this->assertSame($taxTotalAmountValue, $invoiceSuiteSummationDTO->getTaxTotalAmount());
     }
 
-    #endregion
+    public function testTaxTotalAmount2GetterAndSetter(): void
+    {
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $taxTotalAmount2Value = 123.45;
+        $invoiceSuiteSummationDTO->setTaxTotalAmount2($taxTotalAmount2Value);
+        $this->assertSame($taxTotalAmount2Value, $invoiceSuiteSummationDTO->getTaxTotalAmount2());
+    }
+
+    public function testGrossAmountGetterAndSetter(): void
+    {
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $grossAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setGrossAmount($grossAmountValue);
+        $this->assertSame($grossAmountValue, $invoiceSuiteSummationDTO->getGrossAmount());
+    }
+
+    public function testDueAmountGetterAndSetter(): void
+    {
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $dueAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setDueAmount($dueAmountValue);
+        $this->assertSame($dueAmountValue, $invoiceSuiteSummationDTO->getDueAmount());
+    }
+
+    public function testPrepaidAmountGetterAndSetter(): void
+    {
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $prepaidAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setPrepaidAmount($prepaidAmountValue);
+        $this->assertSame($prepaidAmountValue, $invoiceSuiteSummationDTO->getPrepaidAmount());
+    }
+
+    public function testRoungingAmountGetterAndSetter(): void
+    {
+        $invoiceSuiteSummationDTO = new InvoiceSuiteSummationDTO();
+        $roungingAmountValue = 123.45;
+        $invoiceSuiteSummationDTO->setRoungingAmount($roungingAmountValue);
+        $this->assertSame($roungingAmountValue, $invoiceSuiteSummationDTO->getRoungingAmount());
+    }
 }

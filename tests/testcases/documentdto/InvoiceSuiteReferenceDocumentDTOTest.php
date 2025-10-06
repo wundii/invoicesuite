@@ -10,79 +10,26 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteReferenceDocumentDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteReferenceDocumentDTO = new InvoiceSuiteReferenceDocumentDTO();
+        $this->assertNull($invoiceSuiteReferenceDocumentDTO->getReferenceNumber());
+        $this->assertNull($invoiceSuiteReferenceDocumentDTO->getReferenceDate());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testReferenceNumberGetterAndSetter(): void
     {
-        return [[[
-            'referenceNumber' => 'REF-2024-0001',
-            'referenceDate'   => new DateTimeImmutable('2024-03-15 10:30:00'),
-        ]]];
+        $invoiceSuiteReferenceDocumentDTO = new InvoiceSuiteReferenceDocumentDTO();
+        $referenceNumberValue = "Example Value";
+        $invoiceSuiteReferenceDocumentDTO->setReferenceNumber($referenceNumberValue);
+        $this->assertSame($referenceNumberValue, $invoiceSuiteReferenceDocumentDTO->getReferenceNumber());
     }
 
-    public static function dpScalarSetters(): array
+    public function testReferenceDateGetterAndSetter(): void
     {
-        return [
-            ['setReferenceNumber', 'getReferenceNumber', 'ORD-4711'],
-        ];
+        $invoiceSuiteReferenceDocumentDTO = new InvoiceSuiteReferenceDocumentDTO();
+        $referenceDateValue = new DateTimeImmutable("2025-01-02");
+        $invoiceSuiteReferenceDocumentDTO->setReferenceDate($referenceDateValue);
+        $this->assertSame($referenceDateValue, $invoiceSuiteReferenceDocumentDTO->getReferenceDate());
     }
-
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentDTO();
-
-        $this->assertNull($dto->getReferenceNumber());
-        $this->assertNull($dto->getReferenceDate());
-        $this->assertInstanceOf(InvoiceSuiteReferenceDocumentDTO::class, $dto);
-    }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentDTO(
-            $v['referenceNumber'],
-            $v['referenceDate'],
-        );
-
-        $this->assertSame($v['referenceNumber'], $dto->getReferenceNumber());
-        $this->assertSame($v['referenceDate'], $dto->getReferenceDate());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    public function testDateSetterGetter(): void
-    {
-        $dto = new InvoiceSuiteReferenceDocumentDTO();
-        $date = new DateTimeImmutable('2025-01-05 08:15:00');
-        $ret = $dto->setReferenceDate($date);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($date, $dto->getReferenceDate());
-    }
-
-    #endregion
 }

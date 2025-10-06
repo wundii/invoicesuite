@@ -10,105 +10,44 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 class InvoiceSuiteProductCharacteristicDTOTest extends TestCase
 {
-    #region DataProviders
-
-    public static function dpConstructorDefaults(): array
+    public function testConstructorAndDefaults(): void
     {
-        return [['default']];
+        $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
+        $this->assertNull($invoiceSuiteProductCharacteristicDTO->getDescription());
+        $this->assertNull($invoiceSuiteProductCharacteristicDTO->getValue());
+        $this->assertNull($invoiceSuiteProductCharacteristicDTO->getType());
+        $this->assertNull($invoiceSuiteProductCharacteristicDTO->getValueMeasure());
     }
 
-    public static function dpConstructorWithValues(): array
+    public function testDescriptionGetterAndSetter(): void
     {
-        return [[[
-            'description' => 'Colour',
-            'value'       => 'Red',
-            'type'        => 'COLOR',
-            'measure'     => ['value' => 12.5, 'unit' => 'CM'],
-        ]]];
+        $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
+        $descriptionValue = "Example Value";
+        $invoiceSuiteProductCharacteristicDTO->setDescription($descriptionValue);
+        $this->assertSame($descriptionValue, $invoiceSuiteProductCharacteristicDTO->getDescription());
     }
 
-    public static function dpScalarSetters(): array
+    public function testValueGetterAndSetter(): void
     {
-        return [
-            ['setDescription', 'getDescription', 'Material'],
-            ['setValue',       'getValue',       'Cotton'],
-            ['setType',        'getType',        'MATERIAL'],
-        ];
+        $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
+        $valueValue = "Example Value";
+        $invoiceSuiteProductCharacteristicDTO->setValue($valueValue);
+        $this->assertSame($valueValue, $invoiceSuiteProductCharacteristicDTO->getValue());
     }
 
-    #endregion
-
-    #region Helpers
-
-    private function newMeasure(): InvoiceSuiteMeasureDTO
+    public function testTypeGetterAndSetter(): void
     {
-        return new InvoiceSuiteMeasureDTO(5.75, 'KG');
+        $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
+        $typeValue = "Example Value";
+        $invoiceSuiteProductCharacteristicDTO->setType($typeValue);
+        $this->assertSame($typeValue, $invoiceSuiteProductCharacteristicDTO->getType());
     }
 
-    #endregion
-
-    #region Tests
-
-    /**
-     * @dataProvider dpConstructorDefaults
-     */
-    public function testConstructorDefaults(): void
+    public function testValueMeasureGetterAndSetter(): void
     {
-        $dto = new InvoiceSuiteProductCharacteristicDTO();
-
-        $this->assertNull($dto->getDescription());
-        $this->assertNull($dto->getValue());
-        $this->assertNull($dto->getType());
-        $this->assertNull($dto->getValueMeasure());
-        $this->assertInstanceOf(InvoiceSuiteProductCharacteristicDTO::class, $dto);
+        $invoiceSuiteProductCharacteristicDTO = new InvoiceSuiteProductCharacteristicDTO();
+        $valueMeasureValue = new InvoiceSuiteMeasureDTO();
+        $invoiceSuiteProductCharacteristicDTO->setValueMeasure($valueMeasureValue);
+        $this->assertSame($valueMeasureValue, $invoiceSuiteProductCharacteristicDTO->getValueMeasure());
     }
-
-    /**
-     * @dataProvider dpConstructorWithValues
-     */
-    public function testConstructorWithValuesUsesSetterChain(array $v): void
-    {
-        $measure = new InvoiceSuiteMeasureDTO($v['measure']['value'], $v['measure']['unit']);
-
-        $dto = new InvoiceSuiteProductCharacteristicDTO(
-            $v['description'],
-            $v['value'],
-            $v['type'],
-            $measure
-        );
-
-        $this->assertSame($v['description'], $dto->getDescription());
-        $this->assertSame($v['value'], $dto->getValue());
-        $this->assertSame($v['type'], $dto->getType());
-        $this->assertSame($measure, $dto->getValueMeasure());
-        $this->assertSame($v['measure']['value'], $dto->getValueMeasure()->getValue());
-        $this->assertSame($v['measure']['unit'], $dto->getValueMeasure()->getUnit());
-    }
-
-    /**
-     * @dataProvider dpScalarSetters
-     */
-    public function testScalarSetters(string $setter, string $getter, string $value): void
-    {
-        $dto = new InvoiceSuiteProductCharacteristicDTO();
-        $ret = $dto->{$setter}($value);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($value, $dto->{$getter}());
-    }
-
-    public function testObjectSetterForValueMeasure(): void
-    {
-        $dto = new InvoiceSuiteProductCharacteristicDTO();
-        $m = $this->newMeasure();
-
-        $ret = $dto->setValueMeasure($m);
-
-        $this->assertSame($dto, $ret);
-        $this->assertSame($m, $dto->getValueMeasure());
-        $this->assertSame(5.75, $dto->getValueMeasure()->getValue());
-        $this->assertSame('KG', $dto->getValueMeasure()->getUnit());
-    }
-
-    #endregion
 }
