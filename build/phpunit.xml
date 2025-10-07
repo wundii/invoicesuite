@@ -12,6 +12,9 @@
             <file>../tests/testcases/concerns/HandlesSerializerTest.php</file>
             <file>../tests/testcases/concerns/HandlesPdfConstructorRawContentsTest.php</file>
         </testsuite>
+        <testsuite name="codelists">
+            <file>../tests/testcases/codelists/CodeListsTest.php</file>
+        </testsuite>
         <testsuite name="dto">
             <file>../tests/testcases/documentdto/InvoiceSuiteAddressDTOTest.php</file>
             <file>../tests/testcases/documentdto/InvoiceSuiteAllowanceChargeDTOTest.php</file>
