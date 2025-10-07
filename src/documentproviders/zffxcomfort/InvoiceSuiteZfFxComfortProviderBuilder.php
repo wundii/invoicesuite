@@ -847,7 +847,7 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
                     $item->getDescription(),
                     $item->getDueDate()
                 );
-                $item->firstDiscountTerms(
+                $item->firstDiscountTerm(
                     fn(InvoiceSuitePaymentTermDiscountDTO $item) => $this->setDocumentPaymentDiscountTermsInLastPaymentTerm(
                         $item->getBaseAmount(),
                         $item->getDiscountAmount(),
@@ -857,7 +857,7 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
                         $item->getPeriod()?->getPeriodUnit()
                     )
                 );
-                $item->firstPenaltyTerms(
+                $item->firstPenaltyTerm(
                     fn(InvoiceSuitePaymentTermPenaltyDTO $item) => $this->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
                         $item->getBaseAmount(),
                         $item->getPenaltyAmount(),

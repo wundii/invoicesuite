@@ -61,8 +61,8 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
     public function testCollectionPaymentTermDiscountIteratorsWithCallbacks(): void
     {
         $invoiceSuitePaymentTermDTO = new InvoiceSuitePaymentTermDTO();
-        $invoiceSuitePaymentTermDTO->addDiscountTerms(new InvoiceSuitePaymentTermDiscountDTO());
-        $invoiceSuitePaymentTermDTO->addDiscountTerms(new InvoiceSuitePaymentTermDiscountDTO());
+        $invoiceSuitePaymentTermDTO->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO());
+        $invoiceSuitePaymentTermDTO->addDiscountTerm(new InvoiceSuitePaymentTermDiscountDTO());
 
         $hitCount = 0;
         $elseCount = 0;
@@ -75,19 +75,19 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
             $elseCount++;
         };
 
-        $invoiceSuitePaymentTermDTO->firstDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextDiscountTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextDiscountTerm($cb, $cbElse);
 
-        $invoiceSuitePaymentTermDTO->firstDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousDiscountTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousDiscountTerm($cb, $cbElse);
 
         $invoiceSuitePaymentTermDTO->lastDiscountTerms($cb, $cbElse);
 
-        $invoiceSuitePaymentTermDTO->forEachDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->forEachDiscountTerms($cb, $cbElse, 1);
+        $invoiceSuitePaymentTermDTO->forEachDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->forEachDiscountTerm($cb, $cbElse, 1);
 
         $this->assertSame(9, $hitCount);
         $this->assertSame(2, $elseCount);
@@ -105,13 +105,13 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
             $elseCount++;
         };
 
-        $invoiceSuitePaymentTermDTO->firstDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousDiscountTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousDiscountTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousDiscountTerm($cb, $cbElse);
         $invoiceSuitePaymentTermDTO->lastDiscountTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->forEachDiscountTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->forEachDiscountTerm($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);
@@ -120,8 +120,8 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
     public function testCollectionPaymentTermPenaltyIteratorsWithCallbacks(): void
     {
         $invoiceSuitePaymentTermDTO = new InvoiceSuitePaymentTermDTO();
-        $invoiceSuitePaymentTermDTO->addPenaltyTerms(new InvoiceSuitePaymentTermPenaltyDTO());
-        $invoiceSuitePaymentTermDTO->addPenaltyTerms(new InvoiceSuitePaymentTermPenaltyDTO());
+        $invoiceSuitePaymentTermDTO->addPenaltyTerm(new InvoiceSuitePaymentTermPenaltyDTO());
+        $invoiceSuitePaymentTermDTO->addPenaltyTerm(new InvoiceSuitePaymentTermPenaltyDTO());
 
         $hitCount = 0;
         $elseCount = 0;
@@ -134,19 +134,19 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
             $elseCount++;
         };
 
-        $invoiceSuitePaymentTermDTO->firstPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextPenaltyTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextPenaltyTerm($cb, $cbElse);
 
-        $invoiceSuitePaymentTermDTO->firstPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousPenaltyTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousPenaltyTerm($cb, $cbElse);
 
-        $invoiceSuitePaymentTermDTO->lastPenaltyTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->lastPenaltyTerm($cb, $cbElse);
 
-        $invoiceSuitePaymentTermDTO->forEachPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->forEachPenaltyTerms($cb, $cbElse, 1);
+        $invoiceSuitePaymentTermDTO->forEachPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->forEachPenaltyTerm($cb, $cbElse, 1);
 
         $this->assertSame(9, $hitCount);
         $this->assertSame(2, $elseCount);
@@ -164,13 +164,13 @@ class InvoiceSuitePaymentTermDTOTest extends TestCase
             $elseCount++;
         };
 
-        $invoiceSuitePaymentTermDTO->firstPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->nextPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->previousPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->lastPenaltyTerms($cb, $cbElse);
-        $invoiceSuitePaymentTermDTO->forEachPenaltyTerms($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->firstPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->nextPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->previousPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->lastPenaltyTerm($cb, $cbElse);
+        $invoiceSuitePaymentTermDTO->forEachPenaltyTerm($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);

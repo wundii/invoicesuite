@@ -1007,7 +1007,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
                     $newDocumentPaymentTermPenaltyBasePeriodUnit
                 );
 
-                $documentPaymentTermDTO->addPenaltyTerms(
+                $documentPaymentTermDTO->addPenaltyTerm(
                     new InvoiceSuitePaymentTermPenaltyDTO(
                         $newDocumentPaymentTermPenaltyBaseAmount,
                         $newDocumentPaymentTermPenaltyAmount,
@@ -1029,7 +1029,7 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
                     $newDocumentPaymentTermDiscountBasePeriodUnit
                 );
 
-                $documentPaymentTermDTO->addDiscountTerms(
+                $documentPaymentTermDTO->addDiscountTerm(
                     new InvoiceSuitePaymentTermDiscountDTO(
                         $newDocumentPaymentTermDiscountBaseAmount,
                         $newDocumentPaymentTermDiscountAmount,

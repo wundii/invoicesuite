@@ -1593,7 +1593,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
                     $newDocumentPaymentTermPenaltyBasePeriodUnit
                 );
 
-                $documentPaymentTermDTO->addPenaltyTerms(
+                $documentPaymentTermDTO->addPenaltyTerm(
                     new InvoiceSuitePaymentTermPenaltyDTO(
                         $newDocumentPaymentTermPenaltyBaseAmount,
                         $newDocumentPaymentTermPenaltyAmount,
@@ -1615,7 +1615,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
                     $newDocumentPaymentTermDiscountBasePeriodUnit
                 );
 
-                $documentPaymentTermDTO->addDiscountTerms(
+                $documentPaymentTermDTO->addDiscountTerm(
                     new InvoiceSuitePaymentTermDiscountDTO(
                         $newDocumentPaymentTermDiscountBaseAmount,
                         $newDocumentPaymentTermDiscountAmount,
