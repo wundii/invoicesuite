@@ -83,7 +83,7 @@ class InvoiceSuitePartyDTO
      * @param array<InvoiceSuiteIdDTO> $ids Party IDs
      * @param array<InvoiceSuiteIdDTO> $globalIds Party global IDs
      * @param array<InvoiceSuiteIdDTO> $taxRegistrations Party tax registrations
-     * @param array<InvoiceSuiteAddressDTO> $addres Party addresses
+     * @param array<InvoiceSuiteAddressDTO> $addresses Party addresses
      * @param array<InvoiceSuiteOrganisationDTO> $legalOrganisations Party legal organisations
      * @param array<InvoiceSuiteContactDTO> $contacts Party contacts
      * @param array<InvoiceSuiteCommunicationDTO> $communications Party electronic communications
@@ -93,7 +93,7 @@ class InvoiceSuitePartyDTO
         array $ids = [],
         array $globalIds = [],
         array $taxRegistrations = [],
-        array $addres = [],
+        array $addresses = [],
         array $legalOrganisations = [],
         array $contacts = [],
         array $communications = [],
@@ -102,7 +102,7 @@ class InvoiceSuitePartyDTO
         $this->setIds($ids);
         $this->setGlobalIds($globalIds);
         $this->setTaxRegistrations($taxRegistrations);
-        $this->setAddresses($addres);
+        $this->setAddresses($addresses);
         $this->setLegalOrganisations($legalOrganisations);
         $this->setContacts($contacts);
         $this->setCommunications($communications);
@@ -672,12 +672,12 @@ class InvoiceSuitePartyDTO
     /**
      * Sets party addresses
      *
-     * @param array<InvoiceSuiteAddressDTO> $addres Party addresses
+     * @param array<InvoiceSuiteAddressDTO> $addresses Party addresses
      * @return self
      */
-    public function setAddresses(array $addres): self
+    public function setAddresses(array $addresses): self
     {
-        $this->addresses = $addres;
+        $this->addresses = $addresses;
 
         return $this;
     }
