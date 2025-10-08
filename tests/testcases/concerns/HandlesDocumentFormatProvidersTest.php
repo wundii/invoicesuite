@@ -9,7 +9,7 @@ use horstoeko\invoicesuite\documentproviders\zffxminimum\InvoiceSuiteZfFxMinimum
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 
-class HandlesFormatProvidersTest extends TestCase
+class HandlesDocumentFormatProvidersTest extends TestCase
 {
     use HandlesDocumentFormatProviders;
 

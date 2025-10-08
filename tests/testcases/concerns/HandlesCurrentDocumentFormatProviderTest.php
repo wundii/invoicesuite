@@ -6,7 +6,7 @@ use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\tests\TestCase;
 
-class HandlesCurrentFormatProviderTest extends TestCase
+class HandlesCurrentDocumentFormatProviderTest extends TestCase
 {
     use HandlesCurrentDocumentFormatProvider;
 

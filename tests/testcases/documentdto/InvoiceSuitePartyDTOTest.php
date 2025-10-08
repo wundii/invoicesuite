@@ -398,8 +398,8 @@ class InvoiceSuitePartyDTOTest extends TestCase
     public function testCollectionLegalOrganisationIteratorsWithCallbacks(): void
     {
         $invoiceSuitePartyDTO = new InvoiceSuitePartyDTO();
-        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID1'), null, "Name 1");
-        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID2'), null, "Name 1");
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID1', null, "Name 1"));
+        $invoiceSuitePartyDTO->addLegalOrganisation(new InvoiceSuiteOrganisationDTO('ID2', null, "Name 1"));
 
         $hitCount = 0;
         $elseCount = 0;

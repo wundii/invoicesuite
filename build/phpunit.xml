@@ -5,8 +5,8 @@
             <file>../tests/testcases/utils/UtilsTest.php</file>
         </testsuite>
         <testsuite name="Concerns">
-            <file>../tests/testcases/concerns/HandlesFormatProvidersTest.php</file>
-            <file>../tests/testcases/concerns/HandlesCurrentFormatProviderTest.php</file>
+            <file>../tests/testcases/concerns/HandlesDocumentFormatProvidersTest.php</file>
+            <file>../tests/testcases/concerns/HandlesCurrentDocumentFormatProviderTest.php</file>
             <file>../tests/testcases/concerns/HandlesObjectFlagsTest.php</file>
             <file>../tests/testcases/concerns/HandlesDocumentRootObjectTest.php</file>
             <file>../tests/testcases/concerns/HandlesDocumentSerializerTest.php</file>

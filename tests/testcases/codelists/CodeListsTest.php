@@ -17,9 +17,20 @@ use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistTextSubjectCodeQualifie
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistUnitCodes as InvoiceSuiteCodelistUnitCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistVatCategoryCodes as InvoiceSuiteCodelistVatCategoryCodes;
 use horstoeko\invoicesuite\tests\TestCase;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\Exception;
 
 class AllCodelistsEnumsTest extends TestCase
 {
+    /**
+     * @return iterable<string, array{
+     *     0: string,
+     *     1: int,
+     *     2: string,
+     *     3: string
+     * }>
+     */
     public function provideExpectedOrder(): iterable
     {
         yield 'InvoiceSuiteCodelistAllowanceChargeCodes:ACCEPTANCE' => [InvoiceSuiteCodelistAllowanceChargeCodes::class, 0, 'ACCEPTANCE', 'AAS'];
@@ -5387,6 +5398,12 @@ class AllCodelistsEnumsTest extends TestCase
         yield 'InvoiceSuiteCodelistVatCategoryCodes:ZERO_RATE_GOOD' => [InvoiceSuiteCodelistVatCategoryCodes::class, 20, 'ZERO_RATE_GOOD', 'Z'];
     }
 
+    /**
+     * @return iterable<string, array{
+     *     0: string,
+     *     1: int|string
+     * }>
+     */
     public function provideValidValues(): iterable
     {
         foreach (InvoiceSuiteCodelistAllowanceChargeCodes::cases() as $c) {
@@ -5438,6 +5455,12 @@ class AllCodelistsEnumsTest extends TestCase
         }
     }
 
+    /**
+     * @return iterable<string, array{
+     *     0: string,
+     *     1: string
+     * }>
+     */
     public function provideInvalidValues(): iterable
     {
         yield 'InvoiceSuiteCodelistAllowanceChargeCodes' => [InvoiceSuiteCodelistAllowanceChargeCodes::class, '__INVALID__'];
@@ -5454,6 +5477,12 @@ class AllCodelistsEnumsTest extends TestCase
         yield 'InvoiceSuiteCodelistVatCategoryCodes' => [InvoiceSuiteCodelistVatCategoryCodes::class, '__INVALID__'];
     }
 
+    /**
+     * @return void
+     * @throws InvalidArgumentException
+     * @throws ExpectationFailedException
+     * @throws Exception
+     */
     public function testCasesAreNotEmptyAndUnique(): void
     {
         $enumClasses = [
@@ -5482,6 +5511,11 @@ class AllCodelistsEnumsTest extends TestCase
     }
 
     /**
+     * @param string $enumClass
+     * @param integer $index
+     * @param string $expectedName
+     * @param mixed $expectedValue
+     * @return void
      * @dataProvider provideExpectedOrder
      */
     public function testOrderAndValuesAreStable(string $enumClass, int $index, string $expectedName, $expectedValue = null): void
@@ -5491,6 +5525,9 @@ class AllCodelistsEnumsTest extends TestCase
     }
 
     /**
+     * @param string $enumClass
+     * @param mixed $value
+     * @return void
      * @dataProvider provideValidValues
      */
     public function testFromAndTryFromRoundtrip(string $enumClass, $value): void
@@ -5501,6 +5538,9 @@ class AllCodelistsEnumsTest extends TestCase
     }
 
     /**
+     * @param string $enumClass
+     * @param mixed $invalid
+     * @return void
      * @dataProvider provideInvalidValues
      */
     public function testInvalidValues(string $enumClass, $invalid): void
