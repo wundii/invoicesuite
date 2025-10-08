@@ -65,6 +65,9 @@
             <file>../tests/testcases/documentproviders/XRechnungProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungProviderBuilderTest.php</file>
         </testsuite>
+        <testsuite name="pdf">
+            <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
