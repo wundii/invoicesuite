@@ -55,9 +55,18 @@
         "post-autoload-dump": [
             "horstoeko\\invoicesuite\\utils\\InvoiceSuiteClassFinder::clearCache"
         ],
-        "tests": "./vendor/bin/phpunit ./tests/",
-        "testsreal": "./vendor/bin/phpunit --configuration ./build/phpunit.xml",
-        "testsrealquick": "./vendor/bin/phpunit --configuration ./build/phpunitquick.xml",
+        "tests": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit ./tests/"
+        ],
+        "testsreal": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunit.xml"
+        ],
+        "testsrealquick": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/phpunit --configuration ./build/phpunitquick.xml"
+        ],
         "phpcs": "@phpcs12",
         "phpcs12": [
             "Composer\\Config::disableProcessTimeout",
