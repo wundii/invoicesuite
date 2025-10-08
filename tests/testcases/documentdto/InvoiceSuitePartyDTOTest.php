@@ -389,7 +389,7 @@ class InvoiceSuitePartyDTOTest extends TestCase
         $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
         $invoiceSuitePartyDTO->previousAddress($cb, $cbElse);
         $invoiceSuitePartyDTO->lastAddress($cb, $cbElse);
-        $invoiceSuitePartyDTO->forEachGlobalId($cb, $cbElse);
+        $invoiceSuitePartyDTO->forEachAddress($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);
