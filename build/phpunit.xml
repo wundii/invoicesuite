@@ -13,7 +13,7 @@
             <file>../tests/testcases/concerns/HandlesPdfConstructorRawContentsTest.php</file>
         </testsuite>
         <testsuite name="codelists">
-            <file>../tests/testcases/codelists/CodeListsTest.php</file>
+            <file>../tests/testcases/codelists/AllCodelistsEnumsTest.php</file>
         </testsuite>
         <testsuite name="dto">
             <file>../tests/testcases/documentdto/InvoiceSuiteAddressDTOTest.php</file>
@@ -68,8 +68,8 @@
         <testsuite name="pdf">
             <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
         </testsuite>
-        <testsuite name="core">
-            <file>../tests/testcases/core/ZfFxExtendedDocumentBuilderTest.php</file>
+        <testsuite name="documentreadbuild">
+            <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\tests\testcases\core;
+namespace horstoeko\invoicesuite\tests\testcases\documentreadbuild;
 
 use DateTime;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -10,6 +10,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
+use horstoeko\invoicesuite\documentmodels\zffxextended\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
 
 class ZfFxExtendedDocumentBuilderTest extends TestCase
@@ -25,9 +26,10 @@ class ZfFxExtendedDocumentBuilderTest extends TestCase
     {
         $this->assertTrue(self::$document->hasCurrentDocumentFormatProvider());
         $this->assertSame('zffxextended', self::$document->getCurrentDocumentFormatProvider()->getUniqueId());
-        $this->assertNotNull(self::$document->getDocumentRootObject());
         $this->assertNotNull(self::$document->getCurrentDocumentFormatProvider()->getBuilder());
         $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProviderBuilder::class, self::$document->getCurrentDocumentFormatProvider()->getBuilder());
+        $this->assertNotNull(self::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
+        $this->assertInstanceOf(CrossIndustryInvoice::class, self::$document->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject());
     }
 
     public function testSetDocumentNo(): void
