@@ -36,6 +36,14 @@ class ZfFxMinimumProviderBuilderTest extends TestCase
         $this->assertInstanceOf(CrossIndustryInvoice::class, self::$document->getDocumentRootObject());
     }
 
+    public function testDocumentProfile(): void
+    {
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 1);
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', 0, 'urn:factur-x.eu:1p0:minimum');
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', 1);
+    }
+
     public function testSetDocumentNo(): void
     {
         self::$document->setDocumentNo(null);

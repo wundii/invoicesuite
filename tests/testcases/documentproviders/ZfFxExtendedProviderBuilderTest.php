@@ -36,6 +36,14 @@ class ZfFxExtendedProviderBuilderTest extends TestCase
         $this->assertInstanceOf(CrossIndustryInvoice::class, self::$document->getDocumentRootObject());
     }
 
+    public function testDocumentProfile(): void
+    {
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 0, 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 1);
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', 0, 'urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended');
+        $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID', 1);
+    }
+
     public function testSetDocumentNo(): void
     {
         self::$document->setDocumentNo(null);
