@@ -2528,7 +2528,7 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
         $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
-            ->getApplicableHeaderTradeAgreement()
+            ->getApplicableHeaderTradeAgreementWithCreate()
             ->getBuyerReferenceWithCreate()
             ->setValue($newBuyerReference);
 
