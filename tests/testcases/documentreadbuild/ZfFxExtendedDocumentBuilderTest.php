@@ -16540,6 +16540,9 @@ class ZfFxExtendedDocumentBuilderTest extends TestCase
         $xmlFileContent = file_get_contents($xmlFilename);
 
         $this->assertNotFalse($xmlFileContent);
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsString($xmlFileContent);
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($xmlFileContent);
@@ -16560,6 +16563,9 @@ class ZfFxExtendedDocumentBuilderTest extends TestCase
         $jsonFileContent = file_get_contents($jsonFilename);
 
         $this->assertNotFalse($jsonFileContent);
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsString($jsonFileContent);
 
         $resolvedContentType = InvoiceSuiteContentTypeResolver::resolveContentType($jsonFileContent);
