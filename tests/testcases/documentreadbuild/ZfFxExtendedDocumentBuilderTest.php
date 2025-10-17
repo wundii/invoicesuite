@@ -36,6 +36,7 @@ use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermPenaltyDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuitePaymentTermDiscountDTO;
 use horstoeko\invoicesuite\documentdto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
+use horstoeko\invoicesuite\documentdto\InvoiceSuiteProductDTO;
 use horstoeko\invoicesuite\documentmodels\zffxextended\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\documentproviders\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
@@ -16904,12 +16905,20 @@ class ZfFxExtendedDocumentBuilderTest extends TestCase
                     ->setRoungingAmount(10.0)
             )
             ->addPosition((new InvoiceSuiteDocumentPositionDTO())
-                ->setLineId('1.1')
-                ->setParentLineId('1')
-                ->setLineStatus('LINESTATUS')
-                ->setLineStatusReason('LINESTATUSREASON')
-                ->addNote(new InvoiceSuiteNoteDTO('CONTENT-1', 'CONTENTCODE-1', 'SUBJECTCODE-1'))
-                ->addNote(new InvoiceSuiteNoteDTO('CONTENT-2', 'CONTENTCODE-2', 'SUBJECTCODE-2'))
+                    ->setLineId('1.1')
+                    ->setParentLineId('1')
+                    ->setLineStatus('LINESTATUS')
+                    ->setLineStatusReason('LINESTATUSREASON')
+                    ->addNote(new InvoiceSuiteNoteDTO('CONTENT-1', 'CONTENTCODE-1', 'SUBJECTCODE-1'))
+                    ->addNote(new InvoiceSuiteNoteDTO('CONTENT-2', 'CONTENTCODE-2', 'SUBJECTCODE-2'))
+                    ->setProduct((new InvoiceSuiteProductDTO())
+                        ->setId('PRODUCTID-1')
+                        ->setGlobalId(new InvoiceSuiteIdDTO('PRODUCTGLOBALID-1', 'PRODUCTGLOBALIDTYPE-1'))
+                        ->setSellerId('PRODUCTSELLERID-1')
+                        ->setBuyerId('PRODUCTBUYER-1')
+                        ->setIndustryId('PRODUCTIND-1')
+                        ->setModelId('PRODUCTMODELID-1')
+                        ->setName('PRODUCTNAME-1'))
             )
         ;
 
@@ -17738,5 +17747,15 @@ class ZfFxExtendedDocumentBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:IncludedNote/ram:Content', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:IncludedNote/ram:ContentCode', 1);
         $this->assertXPathNotExistsWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument/ram:IncludedNote/ram:SubjectCode', 1);
+
+        // Position Product
+
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ID', 0, 'PRODUCTID-1');
+        $this->assertXPathValueWithIndexAndAttribute('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:GlobalID', 0, 'PRODUCTGLOBALID-1', 'schemeID', 'PRODUCTGLOBALIDTYPE-1');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:SellerAssignedID', 0, 'PRODUCTSELLERID-1');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:BuyerAssignedID', 0, 'PRODUCTBUYER-1');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:IndustryAssignedID', 0, 'PRODUCTIND-1');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ModelID', 0, 'PRODUCTMODELID-1');
+        $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:Name', 0, 'PRODUCTNAME-1');
     }
 }
