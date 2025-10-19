@@ -249,7 +249,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
 
         $dateXpath = $xpath->query('//rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString');
         $date = $dateXpath->item(0)->nodeValue;
-        $dateReformatted = (new DateTime())->setTimestamp(strtotime($date))->format('Y-m-d\TH:i:sP');
+        $dateReformatted = (new DateTime())->setTimestamp(strtotime((string) $date))->format('Y-m-d\TH:i:sP');
 
         $invoiceIdXpath = $xpath->query('//rsm:ExchangedDocument/ram:ID');
         $invoiceId = $invoiceIdXpath->item(0)->nodeValue;

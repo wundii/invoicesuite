@@ -15,9 +15,9 @@ return RectorConfig::configure()
         __DIR__ . '/../src',
         __DIR__ . '/../tests/testcases',
     ])
-    ->withSkip([
+    ->withSkipPath(
         __DIR__ . '/../src/models',
-    ])
+    )
     ->withSkip([
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,

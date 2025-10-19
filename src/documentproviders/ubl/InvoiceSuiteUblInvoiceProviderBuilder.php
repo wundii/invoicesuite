@@ -1231,7 +1231,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         $additionalDocumentReferences =
             array_filter(
                 $this->getUblInvoiceRootObject()->getAdditionalDocumentReference() ?? [],
-                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), $additionalDocTypeCode) !== 0
+                fn(AdditionalDocumentReference $additionalDocumentReference) => strcasecmp(($additionalDocumentReference->getDocumentTypeCode()?->getValue() ?? ""), (string) $additionalDocTypeCode) !== 0
             );
 
         $this->getUblInvoiceRootObject()->setAdditionalDocumentReference($additionalDocumentReferences);

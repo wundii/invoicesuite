@@ -583,7 +583,7 @@ class UtilsTest extends TestCase
 
     public function testInvoiceSuiteClassFinderFactory(): void
     {
-        $cacheFilename = md5(preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", InvoiceSuiteAbstractDocumentFormatProvider::class))) . ".cache";
+        $cacheFilename = md5((string) preg_replace("/[^a-zA-Z0-9]/", "", sprintf("invoicesuite-cf-%s", InvoiceSuiteAbstractDocumentFormatProvider::class))) . ".cache";
         $cacheFullFilename = __DIR__ . '/../../../src/cache/' . $cacheFilename;
         @unlink($cacheFullFilename);
 

@@ -128,12 +128,12 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     public function attach($file, $name = '', $desc = '', $relationship = 'Unspecified', $mimetype = '', $isUTF8 = false): void
     {
         if ('' == $name) {
-            $p = strrpos($file, '/');
+            $p = strrpos((string) $file, '/');
             if (false === $p) {
-                $p = strrpos($file, '\\');
+                $p = strrpos((string) $file, '\\');
             }
 
-            $name = false !== $p ? substr($file, $p + 1) : $file;
+            $name = false !== $p ? substr((string) $file, $p + 1) : $file;
         }
 
         if (!$isUTF8) {

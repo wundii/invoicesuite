@@ -86,7 +86,7 @@ class InvoiceSuiteDateTimeUtils
             return null;
         }
 
-        $dateTimeString = trim($dateTimeString);
+        $dateTimeString = trim((string) $dateTimeString);
 
         if ($format == "102") {
             return DateTime::createFromFormat("Ymd", $dateTimeString);
