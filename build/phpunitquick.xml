@@ -71,6 +71,7 @@
         <testsuite name="documentreadbuild">
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentBuilderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentBuilderTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
