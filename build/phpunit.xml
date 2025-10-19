@@ -73,6 +73,7 @@
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentBuilderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentBuilderTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
