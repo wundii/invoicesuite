@@ -70,6 +70,7 @@
         </testsuite>
         <testsuite name="documentreadbuild">
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentBuilderTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

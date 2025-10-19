@@ -841,9 +841,9 @@ class InvoiceSuiteZfFxBasicProviderBuilder extends InvoiceSuiteAbstractDocumentF
 
         // Document-Level Payment Terms
 
-        $newDocumentDTO->forEachPaymentTerm(
+        $newDocumentDTO->firstPaymentTerm(
             function (InvoiceSuitePaymentTermDTO $item): void {
-                $this->addDocumentPaymentTerm(
+                $this->setDocumentPaymentTerm(
                     $item->getDescription(),
                     $item->getDueDate()
                 );
