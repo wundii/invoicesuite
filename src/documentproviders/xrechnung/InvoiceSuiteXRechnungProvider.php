@@ -12,6 +12,7 @@ namespace horstoeko\invoicesuite\documentproviders\xrechnung;
 use horstoeko\invoicesuite\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documentmodels\zffxcomfort\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 
 class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -105,8 +106,8 @@ class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatPr
 
         try {
             $contextParameters = array_merge(
-                [$this->getFormatProviderParameterValue('ContextParameter', '')],
-                $this->getFormatProviderParameterValue('AlternativeContextParameters', '')
+                InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('ContextParameter', '')),
+                InvoiceSuiteArrayUtils::ensure($this->getFormatProviderParameterValue('AlternativeContextParameters', ''))
             );
 
             foreach ($contextParameters as $contextParameter) {
