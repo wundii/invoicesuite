@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdf\zffx;
+namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use BadMethodCallException;
 use DateTime;
@@ -16,8 +16,8 @@ use DOMDocument;
 use Exception;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
-use horstoeko\invoicesuite\pdf\InvoiceSuiteAbstractPdfConstructor;
-use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfWriter;
+use horstoeko\invoicesuite\pdfs\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfWriter;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Random\RandomException;

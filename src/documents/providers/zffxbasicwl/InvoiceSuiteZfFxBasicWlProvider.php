@@ -10,7 +10,7 @@
 namespace horstoeko\invoicesuite\documents\providers\zffxbasicwl;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\documents\models\zffxbasicwl\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 

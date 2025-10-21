@@ -11,7 +11,7 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnung;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\pdf\zffx\InvoiceSuiteZffxPdfConstructor;
+use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 
 class InvoiceSuiteXRechnungProvider extends InvoiceSuiteAbstractDocumentFormatProvider

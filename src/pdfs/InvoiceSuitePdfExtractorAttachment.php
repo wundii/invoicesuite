@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdf;
+namespace horstoeko\invoicesuite\pdfs;
 
 /**
  * Class representing an attachment of an PDF extracted by InvoiceSuitePdfExtractor

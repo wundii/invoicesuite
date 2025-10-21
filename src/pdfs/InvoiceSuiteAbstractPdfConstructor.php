@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdf;
+namespace horstoeko\invoicesuite\pdfs;
 
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;

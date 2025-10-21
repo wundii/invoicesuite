@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdf\zffx;
+namespace horstoeko\invoicesuite\pdfs\zffx;
 
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use setasign\Fpdi\Fpdi as PdfFpdi;

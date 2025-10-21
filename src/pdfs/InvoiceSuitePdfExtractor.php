@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdf;
+namespace horstoeko\invoicesuite\pdfs;
 
 use ArrayAccess;
 use ArrayIterator;
@@ -147,7 +147,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
 					$fileSpec->get('EF')->get('F')->getContent(),
 					$fileSpec->get('F')->getContent(),
 					$fileSpec->get('EF')->get('F')->has('Subtype') ? (string)($fileSpec->get('EF')->get('F')->get('Subtype')->getContent()) : ""
-				);				
+				);
             }
 
             return $this;
