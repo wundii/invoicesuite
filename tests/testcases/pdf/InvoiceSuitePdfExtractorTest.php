@@ -8,8 +8,8 @@ use ArrayAccess;
 use Countable;
 use IteratorAggregate;
 use LogicException;
-use horstoeko\invoicesuite\pdfs\InvoiceSuitePdfExtractor;
-use horstoeko\invoicesuite\pdfs\InvoiceSuitePdfExtractorAttachment;
+use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
+use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 

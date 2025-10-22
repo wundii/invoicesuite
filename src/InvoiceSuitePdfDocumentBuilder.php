@@ -19,7 +19,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundExceptio
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
-use horstoeko\invoicesuite\pdfs\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use JMS\Serializer\Exception\LogicException;
 use JMS\Serializer\Exception\RuntimeException;
 
@@ -42,7 +42,7 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * The PDF constructor instance
      *
-     * @var \horstoeko\invoicesuite\pdfs\InvoiceSuiteAbstractPdfConstructor
+     * @var \horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor
      */
     private $currentPdfConstructor;
 

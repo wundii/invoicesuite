@@ -14,7 +14,7 @@ use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExte
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
-use horstoeko\invoicesuite\pdfs\InvoiceSuitePdfExtractor;
+use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use Nette\PhpGenerator\ClassType;

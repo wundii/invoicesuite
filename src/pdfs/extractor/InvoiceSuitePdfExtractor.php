@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\pdfs;
+namespace horstoeko\invoicesuite\pdfs\extractor;
 
 use ArrayAccess;
 use ArrayIterator;

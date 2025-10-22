@@ -18,8 +18,8 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
-use horstoeko\invoicesuite\pdfs\InvoiceSuitePdfExtractor;
-use horstoeko\invoicesuite\pdfs\InvoiceSuitePdfExtractorAttachment;
+use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
+use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 
 /**
  * Class representing the PDF document reader
