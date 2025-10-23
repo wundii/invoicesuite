@@ -44,4 +44,18 @@ class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('380', $newDocumentType);
     }
+
+    public function testGetDocumentDescription(): void
+    {
+        self::$document->getDocumentDescription($newDocumentDescription);
+
+        $this->assertSame('Some document description', $newDocumentDescription);
+    }
+
+    public function testGetDocumentLanguage(): void
+    {
+        self::$document->getDocumentLanguage($newDocumentLanguage);
+
+        $this->assertSame('de-DE', $newDocumentLanguage);
+    }
 }
