@@ -2,6 +2,8 @@
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
+use DateTime;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
@@ -57,5 +59,15 @@ class ZfFxExtendedProviderReaderTest extends TestCase
         self::$document->getDocumentLanguage($newDocumentLanguage);
 
         $this->assertSame('de-DE', $newDocumentLanguage);
+    }
+
+    public function testGetDocumentDate(): void
+    {
+        self::$document->getDocumentDate($newDocumentDate);
+
+        $this->assertInstanceOf(DateTimeInterface::class, $newDocumentDate);
+        $this->assertSame('01', $newDocumentDate->format('d'));
+        $this->assertSame('01', $newDocumentDate->format('m'));
+        $this->assertSame('1970', $newDocumentDate->format('Y'));
     }
 }
