@@ -6212,7 +6212,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function setDocumentPaymentTerm(
@@ -6242,7 +6242,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
      *
      * @param string|null $newDescription Text description of the payment terms
      * @param DateTimeInterface|null $newDueDate Date by which payment is due
-     * @param string|null $newMandate __BT-89, From BASIC WL__ Identification of the mandate reference
+     * @param string|null $newMandate Identification of the mandate reference
      * @return self
      */
     public function addDocumentPaymentTerm(
