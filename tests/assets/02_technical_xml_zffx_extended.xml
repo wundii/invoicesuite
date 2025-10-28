@@ -50,6 +50,11 @@
           <ram:Content>CONTENT-1</ram:Content>
           <ram:SubjectCode>SUBJECTCODE-1</ram:SubjectCode>
         </ram:IncludedNote>
+        <ram:IncludedNote>
+          <ram:ContentCode>CONTENTCODE-2</ram:ContentCode>
+          <ram:Content>CONTENT-2</ram:Content>
+          <ram:SubjectCode>SUBJECTCODE-2</ram:SubjectCode>
+        </ram:IncludedNote>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:ID>PRODUCTID-1</ram:ID>
@@ -69,9 +74,19 @@
           <ram:ValueMeasure unitCode="C62">1.00</ram:ValueMeasure>
           <ram:Value>PRODUCTCHARACTERISTICVALUE-1</ram:Value>
         </ram:ApplicableProductCharacteristic>
+        <ram:ApplicableProductCharacteristic>
+          <ram:TypeCode>PRODUCTCHARACTERISTICTYPE-2</ram:TypeCode>
+          <ram:Description>PRODUCTCHARACTERISTICDESC-2</ram:Description>
+          <ram:ValueMeasure unitCode="H87">2.00</ram:ValueMeasure>
+          <ram:Value>PRODUCTCHARACTERISTICVALUE-2</ram:Value>
+        </ram:ApplicableProductCharacteristic>
         <ram:DesignatedProductClassification>
           <ram:ClassCode listID="PRODUCTLISTID-1" listVersionID="PRODUCTLISTVERSIONID-1">PRODUCTCLASSCODE-1</ram:ClassCode>
           <ram:ClassName>PRODUCTCLASSNAME-1</ram:ClassName>
+        </ram:DesignatedProductClassification>
+        <ram:DesignatedProductClassification>
+          <ram:ClassCode listID="PRODUCTLISTID-2">PRODUCTCLASSCODE-2</ram:ClassCode>
+          <ram:ClassName>PRODUCTCLASSNAME-2</ram:ClassName>
         </ram:DesignatedProductClassification>
         <ram:OriginTradeCountry>
           <ram:ID>PRODUCTCOUNTRY-1</ram:ID>

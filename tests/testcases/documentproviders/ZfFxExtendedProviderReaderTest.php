@@ -2378,4 +2378,180 @@ class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertSame(9.00, $newPrepaidAmount);
         $this->assertSame(10.00, $newRoungingAmount);
     }
+
+    public function testFirstNextGetDocumentPosition(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        self::$document->getDocumentPosition(
+            $newPositionId,
+            $newParentPositionId,
+            $newLineStatusCode,
+            $newLineStatusReasonCode
+        );
+
+        $this->assertSame("1.1", $newPositionId);
+        $this->assertSame("1", $newParentPositionId);
+        $this->assertSame("LINESTATUS", $newLineStatusCode);
+        $this->assertSame("LINESTATUSREASON", $newLineStatusReasonCode);
+
+        $this->assertTrue(self::$document->firstDocumentPositionNote());
+
+        self::$document->getDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
+
+        $this->assertSame("CONTENT-1", $newContent);
+        $this->assertSame("CONTENTCODE-1", $newContentCode);
+        $this->assertSame("SUBJECTCODE-1", $newSubjectCode);
+
+        $this->assertTrue(self::$document->nextDocumentPositionNote());
+
+        self::$document->getDocumentPositionNote(
+            $newContent,
+            $newContentCode,
+            $newSubjectCode
+        );
+
+        $this->assertSame("CONTENT-2", $newContent);
+        $this->assertSame("CONTENTCODE-2", $newContentCode);
+        $this->assertSame("SUBJECTCODE-2", $newSubjectCode);
+
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testGetDocumentPositionProductDetails(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        self::$document->getDocumentPositionProductDetails(
+            $newProductId,
+            $newProductName,
+            $newProductDescription,
+            $newProductSellerId,
+            $newProductBuyerId,
+            $newProductGlobalId,
+            $newProductGlobalIdType,
+            $newProductIndustryId,
+            $newProductModelId,
+            $newProductBatchId,
+            $newProductBrandName,
+            $newProductModelName,
+            $newProductOriginTradeCountry
+        );
+
+        $this->assertSame("PRODUCTID-1", $newProductId);
+        $this->assertSame("PRODUCTNAME-1", $newProductName);
+        $this->assertSame("PRODUCTDESC-1", $newProductDescription);
+        $this->assertSame("PRODUCTSELLERID-1", $newProductSellerId);
+        $this->assertSame("PRODUCTBUYER-1", $newProductBuyerId);
+        $this->assertSame("PRODUCTGLOBALID-1", $newProductGlobalId);
+        $this->assertSame("PRODUCTGLOBALIDTYPE-1", $newProductGlobalIdType);
+        $this->assertSame("PRODUCTIND-1", $newProductIndustryId);
+        $this->assertSame("PRODUCTMODELID-1", $newProductModelId);
+        $this->assertSame("PRODUCTBATCH-1", $newProductBatchId);
+        $this->assertSame("PRODUCTBRAND-1", $newProductBrandName);
+        $this->assertSame("PRODUCTMODEL-1", $newProductModelName);
+        $this->assertSame("PRODUCTCOUNTRY-1", $newProductOriginTradeCountry);
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionProductCharacteristic(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionProductCharacteristic());
+
+        self::$document->getDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit
+        );
+
+        $this->assertSame("PRODUCTCHARACTERISTICDESC-1", $newProductCharacteristicDescription);
+        $this->assertSame("PRODUCTCHARACTERISTICVALUE-1", $newProductCharacteristicValue);
+        $this->assertSame("PRODUCTCHARACTERISTICTYPE-1", $newProductCharacteristicType);
+        $this->assertSame(1.0, $newProductCharacteristicMeasureValue);
+        $this->assertSame("C62", $newProductCharacteristicMeasureUnit);
+
+        $this->assertTrue(self::$document->nextDocumentPositionProductCharacteristic());
+
+        self::$document->getDocumentPositionProductCharacteristic(
+            $newProductCharacteristicDescription,
+            $newProductCharacteristicValue,
+            $newProductCharacteristicType,
+            $newProductCharacteristicMeasureValue,
+            $newProductCharacteristicMeasureUnit
+        );
+
+        $this->assertSame("PRODUCTCHARACTERISTICDESC-2", $newProductCharacteristicDescription);
+        $this->assertSame("PRODUCTCHARACTERISTICVALUE-2", $newProductCharacteristicValue);
+        $this->assertSame("PRODUCTCHARACTERISTICTYPE-2", $newProductCharacteristicType);
+        $this->assertSame(2.0, $newProductCharacteristicMeasureValue);
+        $this->assertSame("H87", $newProductCharacteristicMeasureUnit);
+
+        $this->assertFalse(self::$document->nextDocumentPositionProductCharacteristic());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionProductClassification(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionProductClassification());
+
+        self::$document->getDocumentPositionProductClassification(
+            $newProductClassificationCode,
+            $newProductClassificationListId,
+            $newProductClassificationListVersionId,
+            $newProductClassificationCodeClassname
+        );
+
+        $this->assertSame("PRODUCTCLASSCODE-1", $newProductClassificationCode);
+        $this->assertSame("PRODUCTLISTID-1", $newProductClassificationListId);
+        $this->assertSame("PRODUCTLISTVERSIONID-1", $newProductClassificationListVersionId);
+        $this->assertSame("PRODUCTCLASSNAME-1", $newProductClassificationCodeClassname);
+
+        $this->assertTrue(self::$document->nextDocumentPositionProductClassification());
+
+        self::$document->getDocumentPositionProductClassification(
+            $newProductClassificationCode,
+            $newProductClassificationListId,
+            $newProductClassificationListVersionId,
+            $newProductClassificationCodeClassname
+        );
+
+        $this->assertSame("PRODUCTCLASSCODE-2", $newProductClassificationCode);
+        $this->assertSame("PRODUCTLISTID-2", $newProductClassificationListId);
+        $this->assertSame("", $newProductClassificationListVersionId);
+        $this->assertSame("PRODUCTCLASSNAME-2", $newProductClassificationCodeClassname);
+
+        $this->assertFalse(self::$document->nextDocumentPositionProductClassification());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
 }
