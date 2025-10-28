@@ -2116,7 +2116,7 @@ class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertTrue(self::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
 
-        self::$document->getDocumentPaymentDiscountTermsInLastPaymentTerm(
+        self::$document->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
             $newBaseAmount,
             $newDiscountAmount,
             $newDiscountPercent,
@@ -2169,5 +2169,213 @@ class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertFalse(self::$document->firstDocumentPaymentDiscountTermsInLastPaymentTerm());
         $this->assertFalse(self::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
+    }
+
+    public function testFirstNextGetDocumentTax(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentTax());
+
+        self::$document->getDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(100.0, $newBasisAmount);
+        $this->assertSame(19.0, $newTaxAmount);
+        $this->assertSame(19.0, $newTaxPercent);
+        $this->assertSame("Reason", $newExemptionReason);
+        $this->assertSame("ReasonCode", $newExemptionReasonCode);
+        $this->assertSame("19700101", $newTaxDueDate->format("Ymd"));
+        $this->assertSame("DUECODE", $newTaxDueCode);
+
+        $this->assertTrue(self::$document->nextDocumentTax());
+
+        self::$document->getDocumentTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newBasisAmount,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+            $newTaxDueDate,
+            $newTaxDueCode
+        );
+
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(100.0, $newBasisAmount);
+        $this->assertSame(7.0, $newTaxAmount);
+        $this->assertSame(7.0, $newTaxPercent);
+        $this->assertSame("Reason2", $newExemptionReason);
+        $this->assertSame("ReasonCode2", $newExemptionReasonCode);
+        $this->assertSame("19700102", $newTaxDueDate->format("Ymd"));
+        $this->assertSame("DUECODE2", $newTaxDueCode);
+
+        $this->assertFalse(self::$document->nextDocumentTax());
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentTax(
+                $newTaxCategory,
+                $newTaxType,
+                $newBasisAmount,
+                $newTaxAmount,
+                $newTaxPercent,
+                $newExemptionReason,
+                $newExemptionReasonCode,
+                $newTaxDueDate,
+                $newTaxDueCode
+            );
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testFirstNextGetDocumentAllowanceCharge(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
+
+        self::$document->getDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        $this->assertSame(true, $newChargeIndicator);
+        $this->assertSame(10.0, $newAllowanceChargeAmount);
+        $this->assertSame(100.0, $newAllowanceChargeBaseAmount);
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(19.0, $newTaxPercent);
+        $this->assertSame("Reason", $newAllowanceChargeReason);
+        $this->assertSame("ReasonCode", $newAllowanceChargeReasonCode);
+        $this->assertSame(10.0, $newAllowanceChargePercent);
+
+        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
+
+        self::$document->getDocumentAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        $this->assertSame(false, $newChargeIndicator);
+        $this->assertSame(1.0, $newAllowanceChargeAmount);
+        $this->assertSame(10.0, $newAllowanceChargeBaseAmount);
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(19.0, $newTaxPercent);
+        $this->assertSame("Reason2", $newAllowanceChargeReason);
+        $this->assertSame("ReasonCode2", $newAllowanceChargeReasonCode);
+        $this->assertSame(1.00, $newAllowanceChargePercent);
+
+        $this->assertFalse(self::$document->nextDocumentAllowanceCharge());
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentAllowanceCharge(
+                $newChargeIndicator,
+                $newAllowanceChargeAmount,
+                $newAllowanceChargeBaseAmount,
+                $newTaxCategory,
+                $newTaxType,
+                $newTaxPercent,
+                $newAllowanceChargeReason,
+                $newAllowanceChargeReasonCode,
+                $newAllowanceChargePercent
+            );
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testFirstNextGetDocumentLogisticServiceCharge(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentLogisticServiceCharge());
+
+        self::$document->getDocumentLogisticServiceCharge(
+            $newChargeAmount,
+            $newDescription,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent
+        );
+
+        $this->assertSame(10.00, $newChargeAmount);
+        $this->assertSame("description", $newDescription);
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(19.0, $newTaxPercent);
+
+        $this->assertTrue(self::$document->nextDocumentLogisticServiceCharge());
+
+        self::$document->getDocumentLogisticServiceCharge(
+            $newChargeAmount,
+            $newDescription,
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxPercent
+        );
+
+        $this->assertSame(20.00, $newChargeAmount);
+        $this->assertSame("description2", $newDescription);
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(19.0, $newTaxPercent);
+
+        $this->assertFalse(self::$document->nextDocumentLogisticServiceCharge());
+
+        $this->expectNoticeOrWarningExt(function () {
+            self::$document->getDocumentLogisticServiceCharge(
+                $newChargeAmount,
+                $newDescription,
+                $newTaxCategory,
+                $newTaxType,
+                $newTaxPercent
+            );
+        }, '/Undefined (array key|index)/');
+    }
+
+    public function testGetDocumentSummation(): void
+    {
+        self::$document->getDocumentSummation(
+            $newNetAmount,
+            $newChargeTotalAmount,
+            $newDiscountTotalAmount,
+            $newTaxBasisAmount,
+            $newTaxTotalAmount,
+            $newTaxTotalAmount2,
+            $newGrossAmount,
+            $newDueAmount,
+            $newPrepaidAmount,
+            $newRoungingAmount
+        );
+
+        $this->assertSame(1.00, $newNetAmount);
+        $this->assertSame(2.00, $newChargeTotalAmount);
+        $this->assertSame(3.00, $newDiscountTotalAmount);
+        $this->assertSame(4.00, $newTaxBasisAmount);
+        $this->assertSame(5.00, $newTaxTotalAmount);
+        $this->assertSame(6.00, $newTaxTotalAmount2);
+        $this->assertSame(7.00, $newGrossAmount);
+        $this->assertSame(8.00, $newDueAmount);
+        $this->assertSame(9.00, $newPrepaidAmount);
+        $this->assertSame(10.00, $newRoungingAmount);
     }
 }
