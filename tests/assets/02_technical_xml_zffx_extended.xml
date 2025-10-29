@@ -174,6 +174,16 @@
             <ram:ReasonCode>REASONCODE-1</ram:ReasonCode>
             <ram:Reason>REASON-1</ram:Reason>
           </ram:AppliedTradeAllowanceCharge>
+          <ram:AppliedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+              <udt:Indicator>true</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:CalculationPercent>33.00</ram:CalculationPercent>
+            <ram:BasisAmount>22.00</ram:BasisAmount>
+            <ram:ActualAmount>11.00</ram:ActualAmount>
+            <ram:ReasonCode>REASONCODE-2</ram:ReasonCode>
+            <ram:Reason>REASON-2</ram:Reason>
+          </ram:AppliedTradeAllowanceCharge>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
           <ram:ChargeAmount>1.00</ram:ChargeAmount>
@@ -196,8 +206,8 @@
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">1.00</ram:BilledQuantity>
-        <ram:ChargeFreeQuantity unitCode="C62">2.00</ram:ChargeFreeQuantity>
-        <ram:PackageQuantity unitCode="C62">3.00</ram:PackageQuantity>
+        <ram:ChargeFreeQuantity unitCode="H87">2.00</ram:ChargeFreeQuantity>
+        <ram:PackageQuantity unitCode="XPP">3.00</ram:PackageQuantity>
         <ram:ShipToTradeParty>
           <ram:ID>0815-4711</ram:ID>
           <ram:GlobalID schemeID="0088">11111</ram:GlobalID>

@@ -2911,4 +2911,131 @@ class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertFalse(self::$document->nextDocumentPosition());
     }
+
+    public function testFirstGetDcumentPositionGrossPrice(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDcumentPositionGrossPrice());
+
+        self::$document->getDocumentPositionGrossPrice(
+            $newGrossPrice,
+            $newGrossPriceBasisQuantity,
+            $newGrossPriceBasisQuantityUnit
+        );
+
+        $this->assertSame(100.0, $newGrossPrice);
+        $this->assertSame(1.0, $newGrossPriceBasisQuantity);
+        $this->assertSame("C62", $newGrossPriceBasisQuantityUnit);
+
+        $this->assertTrue(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+
+        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+            $newGrossPriceAllowanceChargeAmount,
+            $newIsCharge,
+            $newGrossPriceAllowanceChargePercent,
+            $newGrossPriceAllowanceChargeBasisAmount,
+            $newGrossPriceAllowanceChargeReason,
+            $newGrossPriceAllowanceChargeReasonCode
+        );
+
+        $this->assertSame(1.0, $newGrossPriceAllowanceChargeAmount);
+        $this->assertSame(false, $newIsCharge);
+        $this->assertSame(3.0, $newGrossPriceAllowanceChargePercent);
+        $this->assertSame(2.0, $newGrossPriceAllowanceChargeBasisAmount);
+        $this->assertSame("REASON-1", $newGrossPriceAllowanceChargeReason);
+        $this->assertSame("REASONCODE-1", $newGrossPriceAllowanceChargeReasonCode);
+
+        $this->assertTrue(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+            $newGrossPriceAllowanceChargeAmount,
+            $newIsCharge,
+            $newGrossPriceAllowanceChargePercent,
+            $newGrossPriceAllowanceChargeBasisAmount,
+            $newGrossPriceAllowanceChargeReason,
+            $newGrossPriceAllowanceChargeReasonCode
+        );
+
+        $this->assertSame(11.0, $newGrossPriceAllowanceChargeAmount);
+        $this->assertSame(true, $newIsCharge);
+        $this->assertSame(33.0, $newGrossPriceAllowanceChargePercent);
+        $this->assertSame(22.0, $newGrossPriceAllowanceChargeBasisAmount);
+        $this->assertSame("REASON-2", $newGrossPriceAllowanceChargeReason);
+        $this->assertSame("REASONCODE-2", $newGrossPriceAllowanceChargeReasonCode);
+
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstGetDocumentPositionNetPrice(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionNetPrice());
+
+        self::$document->getDocumentPositionNetPrice(
+            $newNetPrice,
+            $newNetPriceBasisQuantity,
+            $newNetPriceBasisQuantityUnit
+        );
+
+        $this->assertSame(1.0, $newNetPrice);
+        $this->assertSame(2.0, $newNetPriceBasisQuantity);
+        $this->assertSame("C62", $newNetPriceBasisQuantityUnit);
+
+        self::$document->getDocumentPositionNetPriceTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode
+        );
+
+        $this->assertSame("", $newTaxCategory);
+        $this->assertSame("", $newTaxType);
+        $this->assertSame(0.0, $newTaxAmount);
+        $this->assertSame(0.0, $newTaxPercent);
+        $this->assertSame("", $newExemptionReason);
+        $this->assertSame("", $newExemptionReasonCode);
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testGetDocumentPositionQuantities(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        self::$document->getDocumentPositionQuantities(
+            $newQuantity,
+            $newQuantityUnit,
+            $newChargeFreeQuantity,
+            $newChargeFreeQuantityUnit,
+            $newPackageQuantity,
+            $newPackageQuantityUnit
+        );
+
+        $this->assertSame(1.0, $newQuantity);
+        $this->assertSame("C62", $newQuantityUnit);
+        $this->assertSame(2.0, $newChargeFreeQuantity);
+        $this->assertSame("H87", $newChargeFreeQuantityUnit);
+        $this->assertSame(3.0, $newPackageQuantity);
+        $this->assertSame("XPP", $newPackageQuantityUnit);
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
 }
