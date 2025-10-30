@@ -60,6 +60,7 @@
             <file>../tests/testcases/documentproviders/ZfFxComfortProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxBasicProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/ZfFxMinimumProviderTest.php</file>
