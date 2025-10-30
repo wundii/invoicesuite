@@ -4,6 +4,7 @@ namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -3037,5 +3038,445 @@ class ZfFxExtendedProviderReaderTest extends TestCase
         // Second position
 
         $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testGetDocumentPositionShipTo(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        // Name
+
+        self::$document->getDocumentPositionShipToName($newName);
+
+        $this->assertSame('Ship Tó GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToId());
+
+        self::$document->getDocumentPositionShipToId($newId);
+
+        $this->assertSame('0815-4711', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToGlobalId());
+
+        self::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentPositionShipToGlobalId());
+
+        self::$document->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToTaxRegistration());
+
+        self::$document->getDocumentPositionShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToAddress());
+
+        self::$document->getDocumentPositionShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToLegalOrganisation());
+
+        self::$document->getDocumentPositionShipToLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Ship To AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToContact());
+
+        self::$document->getDocumentPositionShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Meier', $newPersonName);
+        $this->assertSame('Buchhaltung', $newDepartmentName);
+        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('0815-4712', $newFaxNumber);
+        $this->assertSame('horst.meier@shipto.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentPositionShipToCommunication());
+
+        self::$document->getDocumentPositionShipToCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@shipto.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentPositionShipToCommunication());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testGetDocumentPositionUltimateShipTo(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        // Name
+
+        self::$document->getDocumentPositionUltimateShipToName($newName);
+
+        $this->assertSame('Ultimate Ship To GmbH', $newName);
+
+        // ID
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToId());
+
+        self::$document->getDocumentPositionUltimateShipToId($newId);
+
+        $this->assertSame('0815-4711', $newId);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToId());
+
+        // Global ID
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToGlobalId());
+
+        self::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('11111', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertTrue(self::$document->nextDocumentPositionUltimateShipToGlobalId());
+
+        self::$document->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
+
+        $this->assertSame('22222', $newGlobalId);
+        $this->assertSame('0088', $newGlobalIdType);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToGlobalId());
+
+        // Tax Registration
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToTaxRegistration());
+
+        self::$document->getDocumentPositionUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+
+        $this->assertSame('893489787987', $newTaxRegistrationId);
+        $this->assertSame('VA', $newTaxRegistrationType);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToTaxRegistration());
+
+        // Address
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToAddress());
+
+        self::$document->getDocumentPositionUltimateShipToAddress(
+            $newAddressLine1,
+            $newAddressLine2,
+            $newAddressLine3,
+            $newPostcode,
+            $newCity,
+            $newCountryId,
+            $newSubDivision
+        );
+
+        $this->assertSame('Line 1', $newAddressLine1);
+        $this->assertSame('Line 2', $newAddressLine2);
+        $this->assertSame('Line 3', $newAddressLine3);
+        $this->assertSame('06108', $newPostcode);
+        $this->assertSame('City', $newCity);
+        $this->assertSame('DE', $newCountryId);
+        $this->assertSame('Bavaria', $newSubDivision);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToAddress());
+
+        // Legal Organisation
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToLegalOrganisation());
+
+        self::$document->getDocumentPositionUltimateShipToLegalOrganisation($newType, $newId, $newName);
+
+        $this->assertSame('8884', $newType);
+        $this->assertSame('3874837489237', $newId);
+        $this->assertSame('Ultimate Ship To AG', $newName);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToLegalOrganisation());
+
+        // Contact
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToContact());
+
+        self::$document->getDocumentPositionUltimateShipToContact(
+            $newPersonName,
+            $newDepartmentName,
+            $newPhoneNumber,
+            $newFaxNumber,
+            $newEmailAddress
+        );
+
+        $this->assertSame('Horst Meier', $newPersonName);
+        $this->assertSame('Buchhaltung', $newDepartmentName);
+        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('0815-4712', $newFaxNumber);
+        $this->assertSame('horst.meier@ultimateshipto.de', $newEmailAddress);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToContact());
+
+        // Communication
+
+        $this->assertTrue(self::$document->firstDocumentPositionUltimateShipToCommunication());
+
+        self::$document->getDocumentPositionUltimateShipToCommunication($newType, $newUri);
+
+        $this->assertSame('EM', $newType);
+        $this->assertSame('info@ultimateshipto.de', $newUri);
+
+        $this->assertFalse(self::$document->nextDocumentPositionUltimateShipToCommunication());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testGetDocumentPositionSupplyChainEvent(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        self::$document->getDocumentPositionSupplyChainEvent($newDate);
+
+        $this->assertSame("19700101", $newDate->format("Ymd"));
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionBillingPeriod(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionBillingPeriod());
+
+        self::$document->getDocumentPositionBillingPeriod(
+            $newStartDate,
+            $newEndDate,
+            $newDescription
+        );
+
+        $this->assertSame("19700101", $newStartDate->format("Ymd"));
+        $this->assertSame("19700131", $newEndDate->format("Ymd"));
+        $this->assertSame("Some Description", $newDescription);
+
+        $this->assertFalse(self::$document->nextDocumentPositionBillingPeriod());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionTax(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+
+        self::$document->getDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+        );
+
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(7.0, $newTaxAmount);
+        $this->assertSame(7.0, $newTaxPercent);
+        $this->assertSame("Reason", $newExemptionReason);
+        $this->assertSame("ReasonCode", $newExemptionReasonCode);
+
+        $this->assertTrue(self::$document->nextDocumentPositionTax());
+
+        self::$document->getDocumentPositionTax(
+            $newTaxCategory,
+            $newTaxType,
+            $newTaxAmount,
+            $newTaxPercent,
+            $newExemptionReason,
+            $newExemptionReasonCode,
+        );
+
+        $this->assertSame("S", $newTaxCategory);
+        $this->assertSame("VAT", $newTaxType);
+        $this->assertSame(7.0, $newTaxAmount);
+        $this->assertSame(7.0, $newTaxPercent);
+        $this->assertSame("Reason2", $newExemptionReason);
+        $this->assertSame("ReasonCode2", $newExemptionReasonCode);
+
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionAllowanceCharge(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionAllowanceCharge());
+
+        self::$document->getDocumentPositionAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        $this->assertSame(true, $newChargeIndicator);
+        $this->assertSame(10.00, $newAllowanceChargeAmount);
+        $this->assertSame(100.00, $newAllowanceChargeBaseAmount);
+        $this->assertSame("Reason", $newAllowanceChargeReason);
+        $this->assertSame("ReasonCode", $newAllowanceChargeReasonCode);
+        $this->assertSame(10.00, $newAllowanceChargePercent);
+
+        $this->assertTrue(self::$document->nextDocumentPositionAllowanceCharge());
+
+        self::$document->getDocumentPositionAllowanceCharge(
+            $newChargeIndicator,
+            $newAllowanceChargeAmount,
+            $newAllowanceChargeBaseAmount,
+            $newAllowanceChargeReason,
+            $newAllowanceChargeReasonCode,
+            $newAllowanceChargePercent
+        );
+
+        $this->assertSame(false, $newChargeIndicator);
+        $this->assertSame(1.00, $newAllowanceChargeAmount);
+        $this->assertSame(10.00, $newAllowanceChargeBaseAmount);
+        $this->assertSame("Reason2", $newAllowanceChargeReason);
+        $this->assertSame("ReasonCode2", $newAllowanceChargeReasonCode);
+        $this->assertSame(1.00, $newAllowanceChargePercent);
+
+        $this->assertFalse(self::$document->nextDocumentPositionAllowanceCharge());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstGetDocumentPositionSummation(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionSummation());
+
+        self::$document->getDocumentPositionSummation(
+            $newNetAmount,
+            $newChargeTotalAmount,
+            $newDiscountTotalAmount,
+            $newTaxTotalAmount,
+            $newGrossAmount
+        );
+
+        $this->assertSame(100.00, $newNetAmount);
+        $this->assertSame(1.0, $newChargeTotalAmount);
+        $this->assertSame(2.0, $newDiscountTotalAmount);
+        $this->assertSame(3.0, $newTaxTotalAmount);
+        $this->assertSame(4.0, $newGrossAmount);
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testFirstNextGetDocumentPositionPostingReference(): void
+    {
+        // First position
+
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        $this->assertTrue(self::$document->firstDocumentPositionPostingReference());
+
+        self::$document->getDocumentPositionPostingReference($newType, $newAccountId);
+
+        $this->assertSame("PREF-1-TYPE", $newType);
+        $this->assertSame("PREF-1", $newAccountId);
+
+        $this->assertFalse(self::$document->nextDocumentPositionPostingReference());
+
+        // Second position
+
+        $this->assertFalse(self::$document->nextDocumentPosition());
+    }
+
+    public function testConvertToDTO(): void
+    {
+        self::$document->convertToDTO($newDocmentDTO);
+
+        $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
+
+        $this->assertSame("2025-04-000001", $newDocmentDTO->getNumber());
     }
 }
