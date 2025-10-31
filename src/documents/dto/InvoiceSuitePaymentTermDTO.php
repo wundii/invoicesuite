@@ -116,7 +116,7 @@ class InvoiceSuitePaymentTermDTO
     /**
      * Sets the mandate reference
      *
-     * @param string|null $description The mandate reference
+     * @param string|null $mandate The mandate reference
      * @return self
      */
     public function setMandate(?string $mandate): self
