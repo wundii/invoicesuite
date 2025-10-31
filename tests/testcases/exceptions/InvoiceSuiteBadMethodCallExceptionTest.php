@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\invoicesuite\tests\testcases\pdf;
+namespace horstoeko\invoicesuite\tests\testcases\exceptions;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
