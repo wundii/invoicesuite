@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+namespace horstoeko\invoicesuite\tests\testcases\pdf;
+
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
+use horstoeko\invoicesuite\tests\TestCase;
+
+class InvoiceSuiteBadMethodCallExceptionTest extends TestCase
+{
+    public function testException(): void
+    {
+        $this->expectException(InvoiceSuiteBadMethodCallException::class);
+        $this->expectExceptionMessage('Call to undefined method horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException::myMethod()');
+        $this->expectExceptionCode(InvoiceSuiteExceptionCodes::BAD_METHOD_CALL);
+
+        throw new InvoiceSuiteBadMethodCallException('myMethod');
+    }
+}

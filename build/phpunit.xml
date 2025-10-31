@@ -4,6 +4,15 @@
         <testsuite name="Utils">
             <file>../tests/testcases/utils/UtilsTest.php</file>
         </testsuite>
+        <testsuite name="Exceptions">
+            <file>../tests/testcases/exceptions/InvoiceSuiteBadMethodCallExceptionTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteFileNotFoundExceptionTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteFileNotReadableExceptionTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteFormatProviderNotFoundExceptionTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteInvalidArgumentExceptionTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteUnknownContentTest.php</file>
+            <file>../tests/testcases/exceptions/InvoiceSuiteUnknownProviderParameterExceptionTest.php</file>
+        </testsuite>
         <testsuite name="Concerns">
             <file>../tests/testcases/concerns/HandlesDocumentFormatProvidersTest.php</file>
             <file>../tests/testcases/concerns/HandlesCurrentDocumentFormatProviderTest.php</file>

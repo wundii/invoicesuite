@@ -17,7 +17,7 @@ use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractorAttachment;
 
@@ -90,7 +90,7 @@ class InvoiceSuitePdfDocumentReader
      * @param string $fromContent
      * @return void
      * @throws Exception
-     * @throws InvoiceSuiteUnknownContent
+     * @throws InvoiceSuiteUnknownContentException
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     final protected function __construct(string $fromContent)

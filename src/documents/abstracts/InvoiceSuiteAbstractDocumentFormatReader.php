@@ -14,7 +14,7 @@ use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
 use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 use JMS\Serializer\DeserializationContext;
@@ -53,7 +53,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  string $fromContent
      * @return InvoiceSuiteAbstractDocumentFormatReader
-     * @throws InvoiceSuiteUnknownContent
+     * @throws InvoiceSuiteUnknownContentException
      */
     public function deserializeFromContent(string $fromContent): self
     {
@@ -65,7 +65,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
             return $this->deserializeFromXmlContent($fromContent);
         }
 
-        throw new InvoiceSuiteUnknownContent();
+        throw new InvoiceSuiteUnknownContentException();
     }
 
     /**

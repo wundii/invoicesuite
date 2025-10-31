@@ -17,7 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContent;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use JMS\Serializer\Exception\LogicException;
@@ -360,7 +360,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteUnknownContent
+     * @throws InvoiceSuiteUnknownContentException
      */
     public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = "", string $newRelationshipType = ""): self
     {
@@ -378,7 +378,7 @@ class InvoiceSuitePdfDocumentBuilder
      * @param string $newRelationshipType
      * @return InvoiceSuitePdfDocumentBuilder
      * @throws InvoiceSuiteInvalidArgumentException
-     * @throws InvoiceSuiteUnknownContent
+     * @throws InvoiceSuiteUnknownContentException
      */
     public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = "", string $newRelationshipType = ""): self
     {
