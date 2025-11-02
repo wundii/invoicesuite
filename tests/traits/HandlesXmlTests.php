@@ -42,9 +42,15 @@ trait HandlesXmlTests
      */
     protected function getXml(): \SimpleXMLElement
     {
-        if ($this->renderingOfXmlDisabled === false) {
-            $this->latestXml = new \SimpleXMLElement((self::$document)->getContentAsXml());
+        if ($this->renderingOfXmlDisabled === false || $this->latestXml === null) {
+            $xml = new \SimpleXMLElement((self::$document)->getContentAsXml());
+            $ns = $xml->getDocNamespaces(true);
+            foreach ($ns as $prefix => $uri) {
+                $xml->registerXPathNamespace($prefix ?: 'ns', $uri);
+            }
+            $this->latestXml = $xml;
         }
+
 
         return $this->latestXml;
     }
