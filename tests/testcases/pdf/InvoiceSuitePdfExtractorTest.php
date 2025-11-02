@@ -19,12 +19,18 @@ final class InvoiceSuitePdfExtractorTest extends TestCase
 {
     private function getSamplePdfPath(): string
     {
-        return InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"), "pdf_with_multiple_attachments.pdf");
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
+            "pdf_with_multiple_attachments.pdf"
+        );
     }
 
     private function getNotExistingSamplePdfPath(): string
     {
-        return InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"), "notexisting.pdf");
+        return InvoiceSuitePathUtils::combinePathWithFile(
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, "..", "..", "assets"),
+            "notexisting.pdf"
+        );
     }
 
     public function testAttachmentConstructorAndAccessors(): void
