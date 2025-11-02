@@ -95,6 +95,7 @@
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentReaderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentReaderTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
