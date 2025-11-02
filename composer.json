@@ -69,6 +69,12 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpunit --configuration ./build/phpunit.xml --no-coverage"
         ],
+        "testsreal:pdfreadsmalot": [
+            "Composer\\Config::disableProcessTimeout",
+            "composer require --dev smalot/pdfparser:^2 --no-interaction --quiet",
+            "@testsreal",
+            "composer remove --dev smalot/pdfparser --no-interaction --quiet"
+        ],
         "phpcs": "@phpcs12",
         "phpcs12": [
             "Composer\\Config::disableProcessTimeout",
