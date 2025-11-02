@@ -94,6 +94,7 @@
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentReaderTest.php</file>
+            <file>../tests/testcases/documentreadbuild/ZfFxBasicWlDocumentReaderTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
