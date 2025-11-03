@@ -84,6 +84,7 @@
         </testsuite>
         <testsuite name="pdf">
             <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
+            <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentReaderTest.php</file>
         </testsuite>
         <testsuite name="documentreadbuild">
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
