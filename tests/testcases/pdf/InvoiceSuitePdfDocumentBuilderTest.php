@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\pdf;
 use Closure;
 use DateTime;
 use DateTimeInterface;
+use PrinsFrank\PdfParser\PdfParser;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
@@ -14,8 +15,8 @@ use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfWriter;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
-use PrinsFrank\PdfParser\PdfParser;
 
 final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 {
@@ -490,5 +491,26 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertInstanceOf(DateTimeInterface::class, $pdfParsed->getInformationDictionary()?->getCreationDate());
         $this->assertSame("2000-01-01", $pdfParsed->getInformationDictionary()?->getCreationDate()->format("Y-m-d"));
         $this->assertNull($pdfParsed->getInformationDictionary()?->getModificationDate());
+
+        unset($pdfDOcumentBuilder);
+    }
+
+    public function testProviderThatDoesNotSupportPdf(): void
+    {
+        $this->expectException(InvoiceSuiteInvalidArgumentException::class);
+        $this->expectExceptionMessage('Provider ublinvoice does not support PDF embedding');
+        $this->expectExceptionCode(-1005);
+
+        $documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId("ublinvoice");
+        $documentBuilder->setDocumentNo('2025-04-000001');
+        $documentBuilder->setDocumentType(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value);
+        $documentBuilder->setDocumentSellerId('0815');
+        $documentBuilder->setDocumentSellerName('Lieferant GmbH');
+        $documentBuilder->setDocumentDate(DateTime::createFromFormat('Ymd', '19700101'));
+
+        InvoiceSuitePdfDocumentBuilder::createFromDocumentBuilderAndPdfFile(
+            $documentBuilder,
+            $this->getSamplePlainPdfFile()
+        );
     }
 }
