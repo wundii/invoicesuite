@@ -107,7 +107,13 @@ class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentLanguage(): void
     {
-        $this->assertTrue(1 == 1);
+        $xml = $this->getXml();
+
+        self::$document->setDocumentLanguage('de-DE');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertEquals($xml, $this->getXml(), 'Nothing should be added to XML');
     }
 
     public function testSetDocumentDate(): void
@@ -173,12 +179,24 @@ class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetDocumentIsCopy(): void
     {
-        $this->assertTrue(1 == 1);
+        $xml = $this->getXml();
+
+        self::$document->setDocumentIsCopy(true);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertEquals($xml, $this->getXml(), 'Nothing should be added to XML');
     }
 
     public function testSetDocumentIsTest(): void
     {
-        $this->assertTrue(1 == 1);
+        $xml = $this->getXml();
+
+        self::$document->setDocumentIsTest(true);
+
+        $this->disableRenderXmlContent();
+
+        $this->assertEquals($xml, $this->getXml(), 'Nothing should be added to XML');
     }
 
     public function testSetAddDocumentNote(): void
@@ -1022,7 +1040,11 @@ class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentUltimateCustomerOrderReference(): void
     {
-        $this->assertTrue(1 == 1);
+        $xml = $this->getXml();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertEquals($xml, $this->getXml(), 'Nothing should be added to XML');
     }
 
 
@@ -1168,7 +1190,14 @@ class UblInvoiceProviderBuilderTest extends TestCase
 
     public function testSetAddDocumentDeliveryNoteReference(): void
     {
-        $this->assertTrue(1 == 1);
+        $xml = $this->getXml();
+
+        self::$document->setDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+        self::$document->addDocumentDeliveryNoteReference('DEVNOTE-1', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'));
+
+        $this->disableRenderXmlContent();
+
+        $this->assertEquals($xml, $this->getXml(), 'Nothing should be added to XML');
     }
 
     public function testSetDocumentSupplyChainEvent(): void
