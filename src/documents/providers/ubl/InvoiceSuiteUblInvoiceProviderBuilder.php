@@ -1874,7 +1874,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
                 array_filter(
                     $this
                         ->getUblInvoiceRootObject()
-                        ->getAccountingSupplierPartyWithCreate()
+                        ->getAccountingSupplierParty()
                         ?->getParty()
                         ?->getPartyIdentification() ?? [],
                     fn(PartyIdentificationType $partyIdentification) => !$partyIdentification->hasObjectFlag('globalid')
