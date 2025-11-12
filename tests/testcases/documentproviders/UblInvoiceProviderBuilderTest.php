@@ -5368,4 +5368,220 @@ class UblInvoiceProviderBuilderTest extends TestCase
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 2);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 3);
     }
+
+    public function testSetAddDocumentPaymentTerm(): void
+    {
+        self::$document->setDocumentPaymentTerm();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->setDocumentPaymentTerm('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->setDocumentPaymentTerm('Term');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->addDocumentPaymentTerm();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->addDocumentPaymentTerm('');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->addDocumentPaymentTerm('Term2');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 0);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1, 'Term2');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+
+        self::$document->addDocumentPaymentTerm('Term3', (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 'MANDATE-4');
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Term');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cbc:DueDate', 0, '1970-01-01');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 1, 'Term2');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 1);
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentTerms/cbc:Note', 2, 'Term3');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cbc:DueDate', 2);
+    }
+
+    public function testSetAddDocumentPaymentDiscountTermsInLastPaymentTerm(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
+            self::$document->addDocumentPaymentDiscountTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
+        });
+    }
+
+    public function testSetAddDocumentPaymentPenaltyTermsInLastPaymentTerm(): void
+    {
+        $this->assertXmlWasNotChanged(function () {
+            self::$document->setDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
+            self::$document->addDocumentPaymentPenaltyTermsInLastPaymentTerm(100.0, 10, 10, (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'), 2.0, 'DAY');
+        });
+    }
+
+    public function testSetAddDocumentTax(): void
+    {
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->setDocumentTax();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->setDocumentTax(
+            'S',
+            'VAT',
+            100.00,
+            19.00,
+            19.00,
+            'Reason',
+            'ReasonCode',
+            (new DateTime())->createFromFormat('d.m.Y', '01.01.1970'),
+            'DUECODE'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0, '100.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 0, 'ReasonCode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 0, 'Reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->addDocumentTax();
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0, '100.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 0, 'ReasonCode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 0, 'Reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 1);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1);
+
+        self::$document->addDocumentTax(
+            'S',
+            'VAT',
+            100.00,
+            19.00,
+            19.00,
+            'Reason2',
+            'ReasonCode2',
+            (new DateTime())->createFromFormat('d.m.Y', '02.01.1970'),
+            'DUECODE2'
+        );
+
+        $this->disableRenderXmlContent();
+
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 0, '100.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 0, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 0, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 0, 'ReasonCode');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 0, 'Reason');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 0, 'VAT');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 1, '100.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 1, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 1, 'S');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 1, '19.00');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 1, 'ReasonCode2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason', 1, 'Reason2');
+        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 1, 'VAT');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReasonCode', 2);
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID', 2);
+    }
 }
