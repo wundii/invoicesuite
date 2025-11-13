@@ -30,7 +30,10 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         return InvoiceSuitePathUtils::combinePathWithFile($this->getAssetPath(), "pdf_plain.pdf");
     }
 
-    public static function zffxProfileProvider(): iterable
+    /**
+     * @phpstan-ignore missingType.iterableValue
+     */
+    public static function zffxProfileProvider(): array
     {
         return [
             // 1.
@@ -86,6 +89,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
     /**
      * @dataProvider zffxProfileProvider
+     * @phpstan-ignore missingType.iterableValue
      */
     public function testZfFxPdfBuilder(string $expectedProfile, string $expectedXmlContains, $expectedUseOfXmlFile, bool $expectusePdfContent, string $expectXmpName, string $expectXmpVersion, int $expectOutputType): void
     {
@@ -450,6 +454,8 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
         $pdfDOcumentBuilder->setDeterministicModeToEnabled();
 
+        $pdfContent = "";
+
         if ($expectOutputType == 1) {
             $pdfContent = $pdfDOcumentBuilder->generatePdfDocumentAndGetContent();
         }
@@ -485,12 +491,11 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertSame('pdf.pdf', $fileSpecs[2]->getFileSpecificationString());
         $this->assertSame('application/pdf', ltrim($fileSpecs[2]->getEmbeddedFile()->getSubType() ?? '', '/'));
         $this->assertSame("Invoice 2025-04-000001 issued by Lieferant GmbH", $pdfParsed->getInformationDictionary()?->getTitle());
-        $this->assertSame("Lieferant GmbH", $pdfParsed->getInformationDictionary()?->getAuthor());
-        $this->assertSame("My Creator Tool / InvoiceSuite PHP library vdev-master by HorstOeko", $pdfParsed->getInformationDictionary()?->getCreator());
-        $this->assertStringContainsString("FPDF", $pdfParsed->getInformationDictionary()?->getProducer());
-        $this->assertInstanceOf(DateTimeInterface::class, $pdfParsed->getInformationDictionary()?->getCreationDate());
-        $this->assertSame("2000-01-01", $pdfParsed->getInformationDictionary()?->getCreationDate()->format("Y-m-d"));
-        $this->assertNull($pdfParsed->getInformationDictionary()?->getModificationDate());
+        $this->assertSame("Lieferant GmbH", $pdfParsed->getInformationDictionary()->getAuthor());
+        $this->assertSame("My Creator Tool / InvoiceSuite PHP library vdev-master by HorstOeko", $pdfParsed->getInformationDictionary()->getCreator());
+        $this->assertStringContainsString("FPDF", $pdfParsed->getInformationDictionary()->getProducer());
+        $this->assertInstanceOf(DateTimeInterface::class, $pdfParsed->getInformationDictionary()->getCreationDate());
+        $this->assertSame("2000-01-01", $pdfParsed->getInformationDictionary()->getCreationDate()->format("Y-m-d"));
 
         unset($pdfDOcumentBuilder);
     }

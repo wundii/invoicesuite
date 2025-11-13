@@ -48,11 +48,20 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $pdfDocumentReader->getInvoiceDocumentAttachment());
         $this->assertSame("factur-x.xml", $pdfDocumentReader->getInvoiceDocumentAttachment()->getAttachmentFilename());
         $this->assertSame("text/xml", $pdfDocumentReader->getInvoiceDocumentAttachment()->getAttachmentMimeType());
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsString($pdfDocumentReader->getInvoiceDocumentAttachment()->getAttachmentContent());
         $this->assertStringContainsString('rsm:CrossIndustryInvoice xmlns:rsm', $pdfDocumentReader->getInvoiceDocumentAttachment()->getAttachmentContent());
 
         $this->assertCount(2, $additionalAttachments);
+        /**
+         * @phpstan-ignore arguments.count
+         */
         $this->arrayHasKey(0, $additionalAttachments);
+        /**
+         * @phpstan-ignore arguments.count
+         */
         $this->arrayHasKey(1, $additionalAttachments);
         $this->assertArrayNotHasKey(2, $additionalAttachments);
         $this->assertInstanceOf(InvoiceSuitePdfExtractorAttachment::class, $additionalAttachments[0]);
@@ -61,11 +70,20 @@ final class InvoiceSuitePdfDocumentReaderTest extends TestCase
         $this->assertSame("EN16931_Elektron_ElektronRapport.pdf", $additionalAttachments[1]->getAttachmentFilename());
         $this->assertSame("image/png", $additionalAttachments[0]->getAttachmentMimeType());
         $this->assertSame("application/pdf", $additionalAttachments[1]->getAttachmentMimeType());
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsString($additionalAttachments[0]->getAttachmentContent());
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertIsString($additionalAttachments[1]->getAttachmentContent());
 
         $documentReader = $pdfDocumentReader->getDocumentReader();
 
+        /**
+         * @phpstan-ignore method.alreadyNarrowedType
+         */
         $this->assertNotNull($documentReader);
     }
 
