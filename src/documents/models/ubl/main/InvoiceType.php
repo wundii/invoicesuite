@@ -4075,7 +4075,7 @@ class InvoiceType
             $this->taxTotal = [];
         }
 
-        if (!isset($this->taxTotal[$index])) {
+        if (!array_key_exists($index, $this->taxTotal)) {
             $this->taxTotal[$index] = new TaxTotal();
         }
 
