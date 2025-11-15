@@ -6908,7 +6908,7 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductOriginTradeCountry])) {
-            $positionProduct->getOriginCountryWithCreate()->getNameWithCreate()->setValue($newProductOriginTradeCountry);
+            $positionProduct->getOriginCountryWithCreate()->getIdentificationCodeWithCreate() ->setValue($newProductOriginTradeCountry);
         }
 
         return $this;
