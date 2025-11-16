@@ -16571,7 +16571,7 @@ final class ZfFxBasicDocumentBuilderTest extends TestCase
 
     public function testSaveAsXmlFile(): void
     {
-        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "invoice.json");
+        $xmlFilename = InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "invoice.xml");
 
         $this->registerFileForTestCaseTeardown($xmlFilename);
 
