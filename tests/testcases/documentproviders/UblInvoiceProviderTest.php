@@ -13,6 +13,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 
 final class UblInvoiceProviderTest extends TestCase
 {
+
     public function testGetUniqueId(): void
     {
         $provider = new InvoiceSuiteUblInvoiceProvider();
