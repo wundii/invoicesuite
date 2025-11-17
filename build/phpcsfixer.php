@@ -61,8 +61,7 @@ return (new Config())
             'trailing_comma_in_multiline' => [
                 'elements' => [
                     'arrays',
-                    'arguments',
-                    'parameters'
+                    'arguments'
                 ],
             ],
             'visibility_required' => [
