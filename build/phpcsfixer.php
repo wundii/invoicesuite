@@ -93,6 +93,7 @@ return (new Config())
             'phpdoc_trim_consecutive_blank_line_separation' => true,
             'phpdoc_summary' => false,
             'phpdoc_no_empty_return' => false,
+            'phpdoc_separation' => false,
             'elseif' => true,
             'blank_line_before_statement' => [
                 'statements' => [
