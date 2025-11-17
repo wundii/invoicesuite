@@ -82,7 +82,9 @@ return (new Config())
                 'tags' => [
                     'param',
                     'return',
-                    'throws'
+                    'throws',
+                    'see',
+                    'license'
                 ],
             ],
             'phpdoc_order' => true,
@@ -110,6 +112,9 @@ return (new Config())
                 'import_classes'   => true,
                 'import_constants' => false,
                 'import_functions' => false,
+            ],
+            'multiline_whitespace_before_semicolons' => [
+                'strategy' => 'no_multi_line',
             ],
         ]
     );
