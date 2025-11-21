@@ -37,6 +37,7 @@ class InvoiceSuiteAttachment
      * Indicator that attachment comes from a URL
      */
     protected const IS_FROM_URL = 4;
+
     /**
      * The content type
      *
