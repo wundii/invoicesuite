@@ -67,7 +67,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Add a message to the bag (append).
      *
-     * @param  InvoiceSuiteMessageBagItem $messageBagItem The message to add
+     * @param  InvoiceSuiteMessageBagItem $messageBagItem the message to add
      * @return self
      */
     public function add(InvoiceSuiteMessageBagItem $messageBagItem): self
@@ -93,7 +93,149 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
         ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
         ?DateTimeInterface $newMessageTimestamp = null
     ): self {
-        return $this->add(new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp));
+        return $this->add(
+            new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp)
+        );
+    }
+
+    /**
+     * Check if the bag contains any messages.
+     *
+     * @return bool true if at least one message exists, otherwise false
+     */
+    public function hasMessages(): bool
+    {
+        return $this->messageBagItems !== [];
+    }
+
+    /**
+     * Check if the bag contains any messages of the given severity.
+     * Uses foreach to short-circuit on first match.
+     *
+     * @param  InvoiceSuiteMessageSeverity $severity the severity to check
+     * @return bool                        true if at least one message of this severity exists, otherwise false
+     */
+    public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): bool
+    {
+        foreach ($this->messageBagItems as $messageBagItem) {
+            if ($messageBagItem->getMessageSeverity() === $severity) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the bag contains any INFO messages.
+     *
+     * @return bool true if at least one INFO message exists, otherwise false
+     */
+    public function hasInfoMessages(): bool
+    {
+        return $this->hasMessagesBySeverity(InvoiceSuiteMessageSeverity::INFO);
+    }
+
+    /**
+     * Check if the bag contains any WARNING messages.
+     *
+     * @return bool true if at least one WARNING message exists, otherwise false
+     */
+    public function hasWarningMessages(): bool
+    {
+        return $this->hasMessagesBySeverity(InvoiceSuiteMessageSeverity::WARNING);
+    }
+
+    /**
+     * Check if the bag contains any ERROR messages.
+     *
+     * @return bool true if at least one ERROR message exists, otherwise false
+     */
+    public function hasErrorMessages(): bool
+    {
+        return $this->hasMessagesBySeverity(InvoiceSuiteMessageSeverity::ERROR);
+    }
+
+    /**
+     * Count messages by severity.
+     *
+     * @param  InvoiceSuiteMessageSeverity $severity the severity to count
+     * @return int                         number of messages with the given severity
+     */
+    public function countBySeverity(InvoiceSuiteMessageSeverity $severity): int
+    {
+        return count($this->filterMessagesBySeverity($severity));
+    }
+
+    /**
+     * Count INFO messages.
+     *
+     * @return int number of INFO messages
+     */
+    public function countInfoMessages(): int
+    {
+        return $this->countBySeverity(InvoiceSuiteMessageSeverity::INFO);
+    }
+
+    /**
+     * Count WARNING messages.
+     *
+     * @return int number of WARNING messages
+     */
+    public function countWarningMessages(): int
+    {
+        return $this->countBySeverity(InvoiceSuiteMessageSeverity::WARNING);
+    }
+
+    /**
+     * Count ERROR messages.
+     *
+     * @return int number of ERROR messages
+     */
+    public function countErrorMessages(): int
+    {
+        return $this->countBySeverity(InvoiceSuiteMessageSeverity::ERROR);
+    }
+
+    /**
+     * Get messages by severity.
+     *
+     * @param  InvoiceSuiteMessageSeverity            $severity the severity to filter by
+     * @return array<int, InvoiceSuiteMessageBagItem> list of messages with the given severity
+     */
+    public function getMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): array
+    {
+        return $this->filterMessagesBySeverity($severity);
+    }
+
+    /**
+     * Get INFO messages.
+     *
+     * @return array<int, InvoiceSuiteMessageBagItem> list of INFO messages
+     */
+    public function getInfoMessages(): array
+    {
+        return $this->getMessagesBySeverity(InvoiceSuiteMessageSeverity::INFO);
+    }
+
+    /**
+     * Get WARNING messages.
+     *
+     * @return array<int, InvoiceSuiteMessageBagItem> list of WARNING messages
+     */
+    public function getWarningMessages(): array
+    {
+        return $this->getMessagesBySeverity(InvoiceSuiteMessageSeverity::WARNING);
+    }
+
+    /**
+     * Get ERROR messages.
+     *
+     * @return array<int, InvoiceSuiteMessageBagItem> list of ERROR messages
+     */
+    public function getErrorMessages(): array
+    {
+        return $this->getMessagesBySeverity(InvoiceSuiteMessageSeverity::ERROR);
     }
 
     /**
@@ -192,6 +334,25 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
         unset($this->messageBagItems[$offset]);
 
         $this->normalizeMessageBagItems();
+    }
+
+    /**
+     * Filter internal items by severity.
+     * Returned array is reindexed to consecutive int keys (0..n-1).
+     *
+     * @param  InvoiceSuiteMessageSeverity            $severity the severity to filter by
+     * @return array<int, InvoiceSuiteMessageBagItem> filtered message items
+     */
+    private function filterMessagesBySeverity(InvoiceSuiteMessageSeverity $severity): array
+    {
+        return array_values(
+            array_filter(
+                $this->messageBagItems,
+                static function (InvoiceSuiteMessageBagItem $messageBagItem) use ($severity): bool {
+                    return $messageBagItem->getMessageSeverity() === $severity;
+                }
+            )
+        );
     }
 
     /**
