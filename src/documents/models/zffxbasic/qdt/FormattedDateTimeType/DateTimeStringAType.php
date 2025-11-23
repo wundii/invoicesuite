@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\models\zffxbasic\qdt\FormattedDateTimeType;
 
 use JMS\Serializer\Annotation as JMS;

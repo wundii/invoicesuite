@@ -9,6 +9,7 @@ use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -37,10 +38,11 @@ return RectorConfig::configure()
         //RenamePropertyToMatchTypeRector::class,
         //RenameParamToMatchTypeRector::class,
         //RenameVariableToMatchNewTypeRector::class,
+        DeclareStrictTypesRector::class,
     ])
     ->withImportNames(
         importShortClasses: true,
         removeUnusedImports: true
     )
-    ->withParallel(60 * 5, 10, 32)
+    ->withoutParallel()
     ->withTypeCoverageLevel(0);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\models\zffxextended\ram;
 
 use JMS\Serializer\Annotation as JMS;

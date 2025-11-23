@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\models\zffxcomfort\qdt;
 
 use JMS\Serializer\Annotation as JMS;

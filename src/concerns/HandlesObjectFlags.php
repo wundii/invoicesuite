@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\concerns;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
