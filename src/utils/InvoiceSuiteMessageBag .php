@@ -11,7 +11,7 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * Class representing a collection (message bag) of messages.
+ * Class representing a collection (message bag) of InvoiceSuiteMessageBagItem.
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -34,7 +34,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Constructor. Keys from input are ignored and normalized to consecutive int keys (0..n-1).
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems initial message items
-     * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
+     * @throws InvoiceSuiteInvalidArgumentException   if any message is not an InvoiceSuiteMessageBagItem
      */
     public function __construct(array $messageBagItems = [])
     {
@@ -46,7 +46,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Internally uses add() to keep behaviour in one place.
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems the message items to add
-     * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
+     * @throws InvoiceSuiteInvalidArgumentException   if any message is not an InvoiceSuiteMessageBagItem
      * @return self
      */
     public function addMessages(array $messageBagItems): self
@@ -65,9 +65,9 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Add a message item to the bag (append).
+     * Add a message to the bag (append).
      *
-     * @param  InvoiceSuiteMessageBagItem $messageBagItem the message item to add
+     * @param  InvoiceSuiteMessageBagItem $messageBagItem The message to add
      * @return self
      */
     public function add(InvoiceSuiteMessageBagItem $messageBagItem): self
@@ -78,7 +78,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Convenience: create and add a message item in one call.
+     * Convenience: create and add a message in one call.
      *
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
@@ -128,11 +128,11 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Get message item at offset.
+     * Get message at offset.
      *
      * @param  mixed                                $offset the index to read
      * @throws InvoiceSuiteInvalidArgumentException if offset is not an int
-     * @return null|InvoiceSuiteMessageBagItem      the stored item or null if not found
+     * @return null|InvoiceSuiteMessageBagItem      the stored message or null if not found
      */
     public function offsetGet(mixed $offset): ?InvoiceSuiteMessageBagItem
     {
@@ -144,10 +144,8 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Set message item at offset.
-     * If offset is null, the item will be appended.
-     * After setting a numeric offset, keys are normalized to 0..n-1 to avoid gaps.
-     * Note: setting a high offset (e.g. 10) will append and reindex the bag.
+     * Set message at offset. If offset is null, the message will be appended. After setting a numeric offset,
+     * keys are normalized to 0..n-1 to avoid gaps. Setting a high offset (e.g. 10) will append and reindex the bag.
      *
      * @param  mixed                                $offset the index to write (int) or null to append
      * @param  mixed                                $value  the value to set
@@ -180,8 +178,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Unset message item at offset.
-     * Reindexes items afterwards to keep consecutive int keys (0..n-1).
+     * Unset message at offset. Reindexes items afterwards to keep consecutive int keys (0..n-1).
      *
      * @param  mixed $offset the index to remove
      * @return void

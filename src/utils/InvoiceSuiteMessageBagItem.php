@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 
 /**
- * Class representing a message bag item.
+ * Class representing an entry for the message bag.
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
