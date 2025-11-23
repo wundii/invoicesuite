@@ -31,21 +31,35 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     private array $messageBagItems = [];
 
     /**
-     * Constructor.
-     * Keys from input are ignored and normalized to consecutive int keys (0..n-1).
+     * Constructor. Keys from input are ignored and normalized to consecutive int keys (0..n-1).
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems initial message items
      * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
      */
     public function __construct(array $messageBagItems = [])
     {
+        $this->addMessages($messageBagItems);
+    }
+
+    /**
+     * Add multiple message items to the bag (append).
+     * Internally uses add() to keep behaviour in one place.
+     *
+     * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems the message items to add
+     * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
+     * @return self
+     */
+    public function addMessages(array $messageBagItems): self
+    {
         foreach ($messageBagItems as $messageBagItem) {
             if (!$messageBagItem instanceof InvoiceSuiteMessageBagItem) {
                 throw new InvoiceSuiteInvalidArgumentException('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
             }
 
-            $this->messageBagItems[] = $messageBagItem;
+            $this->add($messageBagItem);
         }
+
+        return $this;
     }
 
     /**
@@ -69,7 +83,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * @param  DateTimeInterface           $newMessageTimestamp the message timestamp
      * @return self
      */
-    public function addMessage(
+    public function addNewMessage(
         string $newMessageContent,
         InvoiceSuiteMessageSeverity $newMessageSeverity,
         DateTimeInterface $newMessageTimestamp
@@ -105,7 +119,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      */
     public function offsetExists(mixed $offset): bool
     {
-        return is_int($offset) && array_key_exists($offset, $this->messageBagItems);
+        return is_int($offset) && isset($this->messageBagItems[$offset]);
     }
 
     /**
@@ -128,10 +142,13 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Set message item at offset.
      * If offset is null, the item will be appended.
      * After setting a numeric offset, keys are normalized to 0..n-1 to avoid gaps.
+     * Note: setting a high offset (e.g. 10) will append and reindex the bag.
      *
      * @param  mixed                                $offset the index to write (int) or null to append
      * @param  mixed                                $value  the value to set
      * @throws InvoiceSuiteInvalidArgumentException
+     *                                              - if value is not an InvoiceSuiteMessageBagItem.
+     *                                              - if offset is neither int nor null
      * @return void
      */
     public function offsetSet(mixed $offset, mixed $value): void
@@ -142,7 +159,6 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
         if ($offset === null) {
             $this->messageBagItems[] = $value;
-
             return;
         }
 
@@ -152,7 +168,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
         $this->messageBagItems[$offset] = $value;
 
-        $this->messageBagItems = array_values($this->messageBagItems);
+        $this->normalizeMessageBagItems();
     }
 
     /**
@@ -170,6 +186,16 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
         unset($this->messageBagItems[$offset]);
 
+        $this->normalizeMessageBagItems();
+    }
+
+    /**
+     * Normalize internal message items array to consecutive int keys (0..n-1).
+     *
+     * @return void
+     */
+    private function normalizeMessageBagItems(): void
+    {
         $this->messageBagItems = array_values($this->messageBagItems);
     }
 }
