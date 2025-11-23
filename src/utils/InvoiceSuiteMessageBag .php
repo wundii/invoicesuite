@@ -46,14 +46,16 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      * Internally uses add() to keep behaviour in one place.
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $messageBagItems the message items to add
-     * @return self
      * @throws InvoiceSuiteInvalidArgumentException   if any item is not an InvoiceSuiteMessageBagItem
+     * @return self
      */
     public function addMessages(array $messageBagItems): self
     {
         foreach ($messageBagItems as $messageBagItem) {
             if (!$messageBagItem instanceof InvoiceSuiteMessageBagItem) {
-                throw new InvoiceSuiteInvalidArgumentException('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
+                throw new InvoiceSuiteInvalidArgumentException(
+                    'InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.'
+                );
             }
 
             $this->add($messageBagItem);
@@ -78,15 +80,18 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Convenience: create and add a message item in one call.
      *
-     * @param  string                      $newMessageContent   the message text
-     * @param  InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity
-     * @param  DateTimeInterface           $newMessageTimestamp the message timestamp
+     * If severity is not given, INFO is used.
+     * If timestamp is not given, the current datetime is used.
+     *
+     * @param  string                           $newMessageContent   the message text
+     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
+     * @param  null|DateTimeInterface           $newMessageTimestamp the message timestamp (default now)
      * @return self
      */
     public function addNewMessage(
         string $newMessageContent,
-        InvoiceSuiteMessageSeverity $newMessageSeverity,
-        DateTimeInterface $newMessageTimestamp
+        ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
+        ?DateTimeInterface $newMessageTimestamp = null
     ): self {
         return $this->add(new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp));
     }
@@ -154,11 +159,14 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!$value instanceof InvoiceSuiteMessageBagItem) {
-            throw new InvoiceSuiteInvalidArgumentException('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
+            throw new InvoiceSuiteInvalidArgumentException(
+                'InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.'
+            );
         }
 
         if ($offset === null) {
             $this->messageBagItems[] = $value;
+
             return;
         }
 

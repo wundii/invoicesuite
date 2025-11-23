@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use DateTimeImmutable;
 use DateTimeInterface;
 
 /**
@@ -38,19 +39,22 @@ final class InvoiceSuiteMessageBagItem
     /**
      * Constructor.
      *
-     * @param string                      $newMessageContent   the message text
-     * @param InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity
-     * @param DateTimeInterface           $newMessageTimestamp the message timestamp
+     * If no severity is given, INFO is used.
+     * If no timestamp is given, the current datetime is used.
+     *
+     * @param string                           $newMessageContent   the message text
+     * @param null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
+     * @param null|DateTimeInterface           $newMessageTimestamp the message timestamp (default now)
      */
     public function __construct(
         string $newMessageContent,
-        InvoiceSuiteMessageSeverity $newMessageSeverity,
-        DateTimeInterface $newMessageTimestamp
+        ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
+        ?DateTimeInterface $newMessageTimestamp = null
     ) {
         $this
             ->setMessageContent($newMessageContent)
-            ->setMessageSeverity($newMessageSeverity)
-            ->setMessageTimestamp($newMessageTimestamp);
+            ->setMessageSeverity($newMessageSeverity ?? InvoiceSuiteMessageSeverity::INFO)
+            ->setMessageTimestamp($newMessageTimestamp ?? new DateTimeImmutable());
     }
 
     /**
