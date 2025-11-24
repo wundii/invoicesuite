@@ -29,7 +29,7 @@ trait HandlesMessageBag
     /**
      * Internal message bag instance (lazy).
      *
-     * @var InvoiceSuiteMessageBag|null
+     * @var null|InvoiceSuiteMessageBag
      */
     protected ?InvoiceSuiteMessageBag $messageBag = null;
 
@@ -177,7 +177,7 @@ trait HandlesMessageBag
     /**
      * Get messages by severity from internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity $severity
+     * @param  InvoiceSuiteMessageSeverity            $severity
      * @return array<int, InvoiceSuiteMessageBagItem>
      */
     public function getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $severity): array

@@ -309,6 +309,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
         if ($offset === null) {
             $this->messageBagItems[] = $value;
+
             return;
         }
 
