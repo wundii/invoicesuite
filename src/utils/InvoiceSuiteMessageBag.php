@@ -17,6 +17,7 @@ use Countable;
 use DateTimeInterface;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use IteratorAggregate;
+use LogicException;
 use Traversable;
 
 /**
@@ -88,7 +89,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Convenience: create and add a message in one call.
+     * Create and add a message.
      *
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
@@ -126,7 +127,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
      */
     public function hasMessagesBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): bool
     {
-        return count($this->filterMessagesBySeverity($filterSeverity)) > 0;
+        return $this->filterMessagesBySeverity($filterSeverity) !== [];
     }
 
     /**
@@ -264,12 +265,17 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     /**
      * Whether a message index exists.
      *
-     * @param  mixed $offset the index to check
-     * @return bool  true if the index exists, otherwise false
+     * @param  mixed                                $offset the index to check
+     * @throws InvoiceSuiteInvalidArgumentException if offset is not an int
+     * @return bool                                 true if the index exists, otherwise false
      */
     public function offsetExists(mixed $offset): bool
     {
-        return is_int($offset) && isset($this->messageBagItems[$offset]);
+        if (!is_int($offset)) {
+            throw new InvoiceSuiteInvalidArgumentException('Offset must be an int.');
+        }
+
+        return isset($this->messageBagItems[$offset]);
     }
 
     /**
@@ -289,54 +295,28 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Set message at offset. If offset is null, the message will be appended. After setting a numeric offset,
-     * keys are normalized to 0..n-1 to avoid gaps. Setting a high offset (e.g. 10) will append and reindex the bag.
+     * Set a message at offset. Disallow external modification
      *
-     * @param  mixed                                $offset the index to write (int) or null to append
-     * @param  mixed                                $value  the value to set
-     * @throws InvoiceSuiteInvalidArgumentException
-     *                                              - if value is not an InvoiceSuiteMessageBagItem.
-     *                                              - if offset is neither int nor null
+     * @param  mixed          $offset The index to write (ignored)
+     * @param  mixed          $value  The value to set (ignored)
+     * @throws LogicException Always, because array access is read-only
      * @return void
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        if (!$value instanceof InvoiceSuiteMessageBagItem) {
-            throw new InvoiceSuiteInvalidArgumentException(
-                'InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.'
-            );
-        }
-
-        if ($offset === null) {
-            $this->messageBagItems[] = $value;
-
-            return;
-        }
-
-        if (!is_int($offset)) {
-            throw new InvoiceSuiteInvalidArgumentException('Offset must be an int or null.');
-        }
-
-        $this->messageBagItems[$offset] = $value;
-
-        $this->normalizeMessageBagItems();
+        throw new LogicException('Messages are read-only via array access.');
     }
 
     /**
-     * Unset message at offset. Reindexes items afterwards to keep consecutive int keys (0..n-1).
+     * Unset a message at offset. Disallow external modification
      *
-     * @param  mixed $offset the index to remove
+     * @param  mixed          $offset The index to remove (ignored)
+     * @throws LogicException Always, because array access is read-only
      * @return void
      */
     public function offsetUnset(mixed $offset): void
     {
-        if (!is_int($offset)) {
-            return;
-        }
-
-        unset($this->messageBagItems[$offset]);
-
-        $this->normalizeMessageBagItems();
+        throw new LogicException('Messages are read-only via array access.');
     }
 
     /**
@@ -356,15 +336,5 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
                 }
             )
         );
-    }
-
-    /**
-     * Normalize internal message items array to consecutive int keys (0..n-1).
-     *
-     * @return void
-     */
-    private function normalizeMessageBagItems(): void
-    {
-        $this->messageBagItems = array_values($this->messageBagItems);
     }
 }

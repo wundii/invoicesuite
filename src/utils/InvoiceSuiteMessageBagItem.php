@@ -136,11 +136,11 @@ final class InvoiceSuiteMessageBagItem
     }
 
     /**
-     * Convenience: severity as string value.
+     * Get the severity as string value.
      *
      * @return string The backing string (e.g. "info").
      */
-    public function getSeverityValue(): string
+    public function getMessageSeverityValue(): string
     {
         return $this->messageSeverity->value;
     }
