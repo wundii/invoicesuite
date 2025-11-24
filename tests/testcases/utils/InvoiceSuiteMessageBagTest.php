@@ -52,6 +52,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->expectExceptionMessage('InvoiceSuiteMessageBag only accepts instances of InvoiceSuiteMessageBagItem.');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::INVALID_ARGUMENT);
 
+        // @phpstan-ignore argument.type
         new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new stdClass(),
@@ -73,9 +74,6 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame(1, $messageBag->countInfoMessages());
         $this->assertSame(1, $messageBag->countWarningMessages());
         $this->assertSame(1, $messageBag->countErrorMessages());
-        $this->assertIsArray($messageBag->getInfoMessages());
-        $this->assertIsArray($messageBag->getWarningMessages());
-        $this->assertIsArray($messageBag->getErrorMessages());
         $this->assertArrayHasKey(0, $messageBag->getInfoMessages());
         $this->assertArrayNotHasKey(1, $messageBag->getInfoMessages());
         $this->assertArrayHasKey(0, $messageBag->getWarningMessages());
@@ -122,9 +120,6 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame(1, $messageBag->countInfoMessages());
         $this->assertSame(1, $messageBag->countWarningMessages());
         $this->assertSame(1, $messageBag->countErrorMessages());
-        $this->assertIsArray($messageBag->getInfoMessages());
-        $this->assertIsArray($messageBag->getWarningMessages());
-        $this->assertIsArray($messageBag->getErrorMessages());
         $this->assertArrayHasKey(0, $messageBag->getInfoMessages());
         $this->assertArrayNotHasKey(1, $messageBag->getInfoMessages());
         $this->assertArrayHasKey(0, $messageBag->getWarningMessages());
@@ -161,9 +156,6 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame(2, $messageBag->countInfoMessages());
         $this->assertSame(2, $messageBag->countWarningMessages());
         $this->assertSame(2, $messageBag->countErrorMessages());
-        $this->assertIsArray($messageBag->getInfoMessages());
-        $this->assertIsArray($messageBag->getWarningMessages());
-        $this->assertIsArray($messageBag->getErrorMessages());
         $this->assertArrayHasKey(0, $messageBag->getInfoMessages());
         $this->assertArrayHasKey(1, $messageBag->getInfoMessages());
         $this->assertArrayNotHasKey(2, $messageBag->getInfoMessages());
@@ -241,7 +233,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Offset must be an int.');
 
-        $messageBag['key'];
+        $this->assertTrue(isset($messageBag['key']));
     }
 
     public function testInvoiceSuiteMessageBagArrayAccessInvalid2(): void
@@ -255,7 +247,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
         $this->expectExceptionMessage('Offset must be an int.');
 
-        $messageBag['key'];
+        $this->assertNull($messageBag['key']);
     }
 
     public function testInvoiceSuiteMessageBagArrayAccessInvalid3(): void
