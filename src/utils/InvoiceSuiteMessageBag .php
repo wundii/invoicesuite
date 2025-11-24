@@ -65,7 +65,7 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
     }
 
     /**
-     * Add a message to the bag (append).
+     * Add a message to the bag.
      *
      * @param  InvoiceSuiteMessageBagItem $messageBagItem the message to add
      * @return self
@@ -299,7 +299,6 @@ final class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Co
 
         if ($offset === null) {
             $this->messageBagItems[] = $value;
-
             return;
         }
 
