@@ -106,6 +106,9 @@
             <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungDocumentReaderTest.php</file>
         </testsuite>
+        <testsuite name="documentcase">
+            <file>../tests/testcases/documentcases/InvoiceSuiteComfortSimpleTest.php</file>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
