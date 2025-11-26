@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\invoicesuite\tests\testcases\documentdto;
+namespace horstoeko\invoicesuite\tests\testcases\documentcases;
 
 use DateTime;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
