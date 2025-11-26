@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
+use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -37,7 +37,7 @@ class InvoiceSuitePdfDocumentBuilder
     use HandlesCallForwarding;
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
-    use HandlesPdfConstructorRawContents;
+    use HandlesRawContents;
 
     /**
      * The PDF constructor instance

@@ -19,7 +19,7 @@ namespace horstoeko\invoicesuite\concerns;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-trait HandlesPdfConstructorRawContents
+trait HandlesRawContents
 {
     /**
      * Internal buffer which holds the content of the invoice document

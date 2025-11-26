@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\pdfs\abstracts;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
+use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
@@ -34,7 +34,7 @@ use horstoeko\mimedb\MimeDb;
 abstract class InvoiceSuiteAbstractPdfConstructor
 {
     use HandlesCurrentDocumentFormatProvider;
-    use HandlesPdfConstructorRawContents;
+    use HandlesRawContents;
 
     /**
      * Constant for Relationship types "Data"

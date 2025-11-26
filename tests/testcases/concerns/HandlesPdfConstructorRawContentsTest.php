@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
-use horstoeko\invoicesuite\concerns\HandlesPdfConstructorRawContents;
+use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class HandlesPdfConstructorRawContentsTest extends TestCase
 {
-    use HandlesPdfConstructorRawContents;
+    use HandlesRawContents;
 
     public function testRawDocumentContent(): void
     {
