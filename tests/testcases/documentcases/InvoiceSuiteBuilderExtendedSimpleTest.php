@@ -32,8 +32,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         static::$document->addDocumentNote('Es bestehen Rabatt- oder Bonusvereinbarungen.', 'ST3', 'AAK');
         static::$document->addDocumentNote('Der Verkäufer bleibt Eigentümer der Waren bis zu vollständigen Erfüllung der Kaufpreisforderung.', 'EEV', 'AAJ');
         static::$document->addDocumentNote("MUSTERLIEFERANT GMBH\nBAHNHOFSTRASSE 99\n99199 MUSTERHAUSEN\nGeschäftsführung:\nMax Mustermann\nUSt-IdNr: DE123456789\nTelefon: +49 932 431 0\nwww.musterlieferant.de\nHRB Nr. 372876\nAmtsgericht Musterstadt\nGLN 4304171000002\nWEEE-Reg-Nr.: DE87654321\n", newSubjectCode: 'REG');
-        static::$document->addDocumentNote("Leergutwert: 46,50");
-        static::$document->addDocumentNote("Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.");
+        static::$document->addDocumentNote('Leergutwert: 46,50');
+        static::$document->addDocumentNote('Wichtige Information: Bei Bestellungen bis zum 19.12. ist die Auslieferung bis spätestens 23.12. garantiert.');
         static::$document->setDocumentCurrency(InvoiceSuiteCodelistCurrencyCodes::EURO->value);
         static::$document->setDocumentIsTest(true);
 
