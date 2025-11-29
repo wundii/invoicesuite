@@ -565,7 +565,7 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertInstanceOf(TradeAddressType::class, $testValueForPostalTradeAddress);
         $this->assertSame($testValueForPostalTradeAddress, $model->getPostalTradeAddress());
 
-        // Property SpecifiedTaxRegistration
+        // (1) Property SpecifiedTaxRegistration - Test set empty array
 
         $specifiedTaxRegistrationItems = [];
         $model->setSpecifiedTaxRegistration($specifiedTaxRegistrationItems);
@@ -573,15 +573,23 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
         $this->assertCount(0, $model->getSpecifiedTaxRegistration());
 
+        // (2) Property SpecifiedTaxRegistration - Add instance
+
         $specifiedTaxRegistrationItem = new TaxRegistrationType();
         $model->addToSpecifiedTaxRegistration($specifiedTaxRegistrationItem);
 
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTaxRegistration()));
+        $this->assertCount(1, $model->getSpecifiedTaxRegistration());
+
+        // (3) Property SpecifiedTaxRegistration - Add and create instancc
 
         $testValueForSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
 
         $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationItem);
+        $this->assertIsArray($model->getSpecifiedTaxRegistration());
+        $this->assertCount(2, $model->getSpecifiedTaxRegistration());
+
+        // (4) Property SpecifiedTaxRegistration - Add once an instance
 
         $specifiedTaxRegistrationOnceItem = new TaxRegistrationType();
 
@@ -593,13 +601,26 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
+        // (5) Property SpecifiedTaxRegistration - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationOnceItem);
+        $firstSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTaxRegistration();
+        $this->assertInstanceOf(TaxRegistrationType::class, $firstSpecifiedTaxRegistrationOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTaxRegistration();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTaxRegistration - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTaxRegistrationOnceItem, $secondSpecifiedTaxRegistrationOnceItem);
+
+        // (7) Property SpecifiedTaxRegistration - Clesr
 
         $model->clearSpecifiedTaxRegistration();
 
@@ -634,7 +655,7 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
         $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
-        // Property TaxTotalAmount
+        // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
         $model->setTaxTotalAmount($taxTotalAmountItems);
@@ -642,15 +663,23 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($model->getTaxTotalAmount());
         $this->assertCount(0, $model->getTaxTotalAmount());
 
+        // (2) Property TaxTotalAmount - Add instance
+
         $taxTotalAmountItem = new AmountType();
         $model->addToTaxTotalAmount($taxTotalAmountItem);
 
         $this->assertIsArray($model->getTaxTotalAmount());
-        $this->assertGreaterThanOrEqual(1, count($model->getTaxTotalAmount()));
+        $this->assertCount(1, $model->getTaxTotalAmount());
+
+        // (3) Property TaxTotalAmount - Add and create instancc
 
         $testValueForTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
 
         $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountItem);
+        $this->assertIsArray($model->getTaxTotalAmount());
+        $this->assertCount(2, $model->getTaxTotalAmount());
+
+        // (4) Property TaxTotalAmount - Add once an instance
 
         $taxTotalAmountOnceItem = new AmountType();
 
@@ -662,13 +691,26 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
+        // (5) Property TaxTotalAmount - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountOnceItem);
+        $firstTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getTaxTotalAmount();
+        $this->assertInstanceOf(AmountType::class, $firstTaxTotalAmountOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getTaxTotalAmount();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property TaxTotalAmount - Add once an instance with implicit creation (2)
+
+        $secondTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
+
+        // (7) Property TaxTotalAmount - Clesr
 
         $model->clearTaxTotalAmount();
 

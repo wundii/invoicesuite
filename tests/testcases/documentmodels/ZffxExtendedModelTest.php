@@ -505,7 +505,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(FormattedDateTimeType::class, $testValueForFormattedReceivedDateTime);
         $this->assertSame($testValueForFormattedReceivedDateTime, $model->getFormattedReceivedDateTime());
 
-        // Property IncludedTradeTax
+        // (1) Property IncludedTradeTax - Test set empty array
 
         $includedTradeTaxItems = [];
         $model->setIncludedTradeTax($includedTradeTaxItems);
@@ -513,15 +513,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedTradeTax());
         $this->assertCount(0, $model->getIncludedTradeTax());
 
+        // (2) Property IncludedTradeTax - Add instance
+
         $includedTradeTaxItem = new TradeTaxType();
         $model->addToIncludedTradeTax($includedTradeTaxItem);
 
         $this->assertIsArray($model->getIncludedTradeTax());
-        $this->assertGreaterThanOrEqual(1, count($model->getIncludedTradeTax()));
+        $this->assertCount(1, $model->getIncludedTradeTax());
+
+        // (3) Property IncludedTradeTax - Add and create instancc
 
         $testValueForIncludedTradeTaxItem = $model->addToIncludedTradeTaxWithCreate();
 
         $this->assertInstanceOf(TradeTaxType::class, $testValueForIncludedTradeTaxItem);
+        $this->assertIsArray($model->getIncludedTradeTax());
+        $this->assertCount(2, $model->getIncludedTradeTax());
+
+        // (4) Property IncludedTradeTax - Add once an instance
 
         $includedTradeTaxOnceItem = new TradeTaxType();
 
@@ -533,13 +541,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIncludedTradeTaxOnceItem = $model->addOnceToIncludedTradeTaxWithCreate();
+        // (5) Property IncludedTradeTax - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeTaxType::class, $testValueForIncludedTradeTaxOnceItem);
+        $firstIncludedTradeTaxOnceItem = $model->addOnceToIncludedTradeTaxWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIncludedTradeTax();
+        $this->assertInstanceOf(TradeTaxType::class, $firstIncludedTradeTaxOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIncludedTradeTax();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IncludedTradeTax - Add once an instance with implicit creation (2)
+
+        $secondIncludedTradeTaxOnceItem = $model->addOnceToIncludedTradeTaxWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIncludedTradeTaxOnceItem, $secondIncludedTradeTaxOnceItem);
+
+        // (7) Property IncludedTradeTax - Clesr
 
         $model->clearIncludedTradeTax();
 
@@ -774,7 +795,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(CodeType::class, $testValueForLineStatusReasonCode);
         $this->assertSame($testValueForLineStatusReasonCode, $model->getLineStatusReasonCode());
 
-        // Property IncludedNote
+        // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
         $model->setIncludedNote($includedNoteItems);
@@ -782,15 +803,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedNote());
         $this->assertCount(0, $model->getIncludedNote());
 
+        // (2) Property IncludedNote - Add instance
+
         $includedNoteItem = new NoteType();
         $model->addToIncludedNote($includedNoteItem);
 
         $this->assertIsArray($model->getIncludedNote());
-        $this->assertGreaterThanOrEqual(1, count($model->getIncludedNote()));
+        $this->assertCount(1, $model->getIncludedNote());
+
+        // (3) Property IncludedNote - Add and create instancc
 
         $testValueForIncludedNoteItem = $model->addToIncludedNoteWithCreate();
 
         $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteItem);
+        $this->assertIsArray($model->getIncludedNote());
+        $this->assertCount(2, $model->getIncludedNote());
+
+        // (4) Property IncludedNote - Add once an instance
 
         $includedNoteOnceItem = new NoteType();
 
@@ -802,13 +831,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
+        // (5) Property IncludedNote - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteOnceItem);
+        $firstIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIncludedNote();
+        $this->assertInstanceOf(NoteType::class, $firstIncludedNoteOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIncludedNote();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IncludedNote - Add once an instance with implicit creation (2)
+
+        $secondIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
+
+        // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
 
@@ -981,7 +1023,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForLanguageID);
         $this->assertSame($testValueForLanguageID, $model->getLanguageID());
 
-        // Property IncludedNote
+        // (1) Property IncludedNote - Test set empty array
 
         $includedNoteItems = [];
         $model->setIncludedNote($includedNoteItems);
@@ -989,15 +1031,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedNote());
         $this->assertCount(0, $model->getIncludedNote());
 
+        // (2) Property IncludedNote - Add instance
+
         $includedNoteItem = new NoteType();
         $model->addToIncludedNote($includedNoteItem);
 
         $this->assertIsArray($model->getIncludedNote());
-        $this->assertGreaterThanOrEqual(1, count($model->getIncludedNote()));
+        $this->assertCount(1, $model->getIncludedNote());
+
+        // (3) Property IncludedNote - Add and create instancc
 
         $testValueForIncludedNoteItem = $model->addToIncludedNoteWithCreate();
 
         $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteItem);
+        $this->assertIsArray($model->getIncludedNote());
+        $this->assertCount(2, $model->getIncludedNote());
+
+        // (4) Property IncludedNote - Add once an instance
 
         $includedNoteOnceItem = new NoteType();
 
@@ -1009,13 +1059,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
+        // (5) Property IncludedNote - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteOnceItem);
+        $firstIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIncludedNote();
+        $this->assertInstanceOf(NoteType::class, $firstIncludedNoteOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIncludedNote();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IncludedNote - Add once an instance with implicit creation (2)
+
+        $secondIncludedNoteOnceItem = $model->addOnceToIncludedNoteWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIncludedNoteOnceItem, $secondIncludedNoteOnceItem);
+
+        // (7) Property IncludedNote - Clesr
 
         $model->clearIncludedNote();
 
@@ -1242,7 +1305,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
-        // Property AdditionalReferencedDocument
+        // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
         $model->setAdditionalReferencedDocument($additionalReferencedDocumentItems);
@@ -1250,15 +1313,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertCount(0, $model->getAdditionalReferencedDocument());
 
+        // (2) Property AdditionalReferencedDocument - Add instance
+
         $additionalReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToAdditionalReferencedDocument($additionalReferencedDocumentItem);
 
         $this->assertIsArray($model->getAdditionalReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
+        $this->assertCount(1, $model->getAdditionalReferencedDocument());
+
+        // (3) Property AdditionalReferencedDocument - Add and create instancc
 
         $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
+        $this->assertIsArray($model->getAdditionalReferencedDocument());
+        $this->assertCount(2, $model->getAdditionalReferencedDocument());
+
+        // (4) Property AdditionalReferencedDocument - Add once an instance
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1270,13 +1341,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentOnceItem);
+        $firstAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getAdditionalReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstAdditionalReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getAdditionalReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
+
+        // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
 
@@ -1317,7 +1401,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(ProcuringProjectType::class, $testValueForSpecifiedProcuringProject);
         $this->assertSame($testValueForSpecifiedProcuringProject, $model->getSpecifiedProcuringProject());
 
-        // Property UltimateCustomerOrderReferencedDocument
+        // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
         $ultimateCustomerOrderReferencedDocumentItems = [];
         $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocumentItems);
@@ -1325,15 +1409,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
         $this->assertCount(0, $model->getUltimateCustomerOrderReferencedDocument());
 
+        // (2) Property UltimateCustomerOrderReferencedDocument - Add instance
+
         $ultimateCustomerOrderReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocumentItem);
 
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getUltimateCustomerOrderReferencedDocument()));
+        $this->assertCount(1, $model->getUltimateCustomerOrderReferencedDocument());
+
+        // (3) Property UltimateCustomerOrderReferencedDocument - Add and create instancc
 
         $testValueForUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentItem);
+        $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
+        $this->assertCount(2, $model->getUltimateCustomerOrderReferencedDocument());
+
+        // (4) Property UltimateCustomerOrderReferencedDocument - Add once an instance
 
         $ultimateCustomerOrderReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1345,13 +1437,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
+        // (5) Property UltimateCustomerOrderReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentOnceItem);
+        $firstUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getUltimateCustomerOrderReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstUltimateCustomerOrderReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getUltimateCustomerOrderReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property UltimateCustomerOrderReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
+
+        // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
 
@@ -1370,7 +1475,7 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertInstanceOf(HeaderTradeDeliveryType::class, $model);
 
-        // Property RelatedSupplyChainConsignment
+        // (1) Property RelatedSupplyChainConsignment - Test set empty array
 
         $relatedSupplyChainConsignmentItems = [];
         $model->setRelatedSupplyChainConsignment($relatedSupplyChainConsignmentItems);
@@ -1378,15 +1483,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getRelatedSupplyChainConsignment());
         $this->assertCount(0, $model->getRelatedSupplyChainConsignment());
 
+        // (2) Property RelatedSupplyChainConsignment - Add instance
+
         $relatedSupplyChainConsignmentItem = new LogisticsTransportMovementType();
         $model->addToRelatedSupplyChainConsignment($relatedSupplyChainConsignmentItem);
 
         $this->assertIsArray($model->getRelatedSupplyChainConsignment());
-        $this->assertGreaterThanOrEqual(1, count($model->getRelatedSupplyChainConsignment()));
+        $this->assertCount(1, $model->getRelatedSupplyChainConsignment());
+
+        // (3) Property RelatedSupplyChainConsignment - Add and create instancc
 
         $testValueForRelatedSupplyChainConsignmentItem = $model->addToRelatedSupplyChainConsignmentWithCreate();
 
         $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForRelatedSupplyChainConsignmentItem);
+        $this->assertIsArray($model->getRelatedSupplyChainConsignment());
+        $this->assertCount(2, $model->getRelatedSupplyChainConsignment());
+
+        // (4) Property RelatedSupplyChainConsignment - Add once an instance
 
         $relatedSupplyChainConsignmentOnceItem = new LogisticsTransportMovementType();
 
@@ -1398,13 +1511,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForRelatedSupplyChainConsignmentOnceItem = $model->addOnceToRelatedSupplyChainConsignmentWithCreate();
+        // (5) Property RelatedSupplyChainConsignment - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForRelatedSupplyChainConsignmentOnceItem);
+        $firstRelatedSupplyChainConsignmentOnceItem = $model->addOnceToRelatedSupplyChainConsignmentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getRelatedSupplyChainConsignment();
+        $this->assertInstanceOf(LogisticsTransportMovementType::class, $firstRelatedSupplyChainConsignmentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getRelatedSupplyChainConsignment();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property RelatedSupplyChainConsignment - Add once an instance with implicit creation (2)
+
+        $secondRelatedSupplyChainConsignmentOnceItem = $model->addOnceToRelatedSupplyChainConsignmentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstRelatedSupplyChainConsignmentOnceItem, $secondRelatedSupplyChainConsignmentOnceItem);
+
+        // (7) Property RelatedSupplyChainConsignment - Clesr
 
         $model->clearRelatedSupplyChainConsignment();
 
@@ -1695,7 +1821,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TradeCurrencyExchangeType::class, $testValueForTaxApplicableTradeCurrencyExchange);
         $this->assertSame($testValueForTaxApplicableTradeCurrencyExchange, $model->getTaxApplicableTradeCurrencyExchange());
 
-        // Property SpecifiedTradeSettlementPaymentMeans
+        // (1) Property SpecifiedTradeSettlementPaymentMeans - Test set empty array
 
         $specifiedTradeSettlementPaymentMeansItems = [];
         $model->setSpecifiedTradeSettlementPaymentMeans($specifiedTradeSettlementPaymentMeansItems);
@@ -1703,15 +1829,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeSettlementPaymentMeans());
         $this->assertCount(0, $model->getSpecifiedTradeSettlementPaymentMeans());
 
+        // (2) Property SpecifiedTradeSettlementPaymentMeans - Add instance
+
         $specifiedTradeSettlementPaymentMeansItem = new TradeSettlementPaymentMeansType();
         $model->addToSpecifiedTradeSettlementPaymentMeans($specifiedTradeSettlementPaymentMeansItem);
 
         $this->assertIsArray($model->getSpecifiedTradeSettlementPaymentMeans());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeSettlementPaymentMeans()));
+        $this->assertCount(1, $model->getSpecifiedTradeSettlementPaymentMeans());
+
+        // (3) Property SpecifiedTradeSettlementPaymentMeans - Add and create instancc
 
         $testValueForSpecifiedTradeSettlementPaymentMeansItem = $model->addToSpecifiedTradeSettlementPaymentMeansWithCreate();
 
         $this->assertInstanceOf(TradeSettlementPaymentMeansType::class, $testValueForSpecifiedTradeSettlementPaymentMeansItem);
+        $this->assertIsArray($model->getSpecifiedTradeSettlementPaymentMeans());
+        $this->assertCount(2, $model->getSpecifiedTradeSettlementPaymentMeans());
+
+        // (4) Property SpecifiedTradeSettlementPaymentMeans - Add once an instance
 
         $specifiedTradeSettlementPaymentMeansOnceItem = new TradeSettlementPaymentMeansType();
 
@@ -1723,13 +1857,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTradeSettlementPaymentMeansOnceItem = $model->addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate();
+        // (5) Property SpecifiedTradeSettlementPaymentMeans - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeSettlementPaymentMeansType::class, $testValueForSpecifiedTradeSettlementPaymentMeansOnceItem);
+        $firstSpecifiedTradeSettlementPaymentMeansOnceItem = $model->addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTradeSettlementPaymentMeans();
+        $this->assertInstanceOf(TradeSettlementPaymentMeansType::class, $firstSpecifiedTradeSettlementPaymentMeansOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTradeSettlementPaymentMeans();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTradeSettlementPaymentMeans - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTradeSettlementPaymentMeansOnceItem = $model->addOnceToSpecifiedTradeSettlementPaymentMeansWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTradeSettlementPaymentMeansOnceItem, $secondSpecifiedTradeSettlementPaymentMeansOnceItem);
+
+        // (7) Property SpecifiedTradeSettlementPaymentMeans - Clesr
 
         $model->clearSpecifiedTradeSettlementPaymentMeans();
 
@@ -1738,7 +1885,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property ApplicableTradeTax
+        // (1) Property ApplicableTradeTax - Test set empty array
 
         $applicableTradeTaxItems = [];
         $model->setApplicableTradeTax($applicableTradeTaxItems);
@@ -1746,15 +1893,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableTradeTax());
         $this->assertCount(0, $model->getApplicableTradeTax());
 
+        // (2) Property ApplicableTradeTax - Add instance
+
         $applicableTradeTaxItem = new TradeTaxType();
         $model->addToApplicableTradeTax($applicableTradeTaxItem);
 
         $this->assertIsArray($model->getApplicableTradeTax());
-        $this->assertGreaterThanOrEqual(1, count($model->getApplicableTradeTax()));
+        $this->assertCount(1, $model->getApplicableTradeTax());
+
+        // (3) Property ApplicableTradeTax - Add and create instancc
 
         $testValueForApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
 
         $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxItem);
+        $this->assertIsArray($model->getApplicableTradeTax());
+        $this->assertCount(2, $model->getApplicableTradeTax());
+
+        // (4) Property ApplicableTradeTax - Add once an instance
 
         $applicableTradeTaxOnceItem = new TradeTaxType();
 
@@ -1766,13 +1921,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
+        // (5) Property ApplicableTradeTax - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxOnceItem);
+        $firstApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getApplicableTradeTax();
+        $this->assertInstanceOf(TradeTaxType::class, $firstApplicableTradeTaxOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getApplicableTradeTax();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ApplicableTradeTax - Add once an instance with implicit creation (2)
+
+        $secondApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
+
+        // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
 
@@ -1797,7 +1965,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
 
-        // Property SpecifiedTradeAllowanceCharge
+        // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
         $specifiedTradeAllowanceChargeItems = [];
         $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceChargeItems);
@@ -1805,15 +1973,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
         $this->assertCount(0, $model->getSpecifiedTradeAllowanceCharge());
 
+        // (2) Property SpecifiedTradeAllowanceCharge - Add instance
+
         $specifiedTradeAllowanceChargeItem = new TradeAllowanceChargeType();
         $model->addToSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceChargeItem);
 
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeAllowanceCharge()));
+        $this->assertCount(1, $model->getSpecifiedTradeAllowanceCharge());
+
+        // (3) Property SpecifiedTradeAllowanceCharge - Add and create instancc
 
         $testValueForSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
 
         $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeItem);
+        $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
+        $this->assertCount(2, $model->getSpecifiedTradeAllowanceCharge());
+
+        // (4) Property SpecifiedTradeAllowanceCharge - Add once an instance
 
         $specifiedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -1825,13 +2001,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
+        // (5) Property SpecifiedTradeAllowanceCharge - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeOnceItem);
+        $firstSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTradeAllowanceCharge();
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $firstSpecifiedTradeAllowanceChargeOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTradeAllowanceCharge();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTradeAllowanceCharge - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
+
+        // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
 
@@ -1840,7 +2029,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property SpecifiedLogisticsServiceCharge
+        // (1) Property SpecifiedLogisticsServiceCharge - Test set empty array
 
         $specifiedLogisticsServiceChargeItems = [];
         $model->setSpecifiedLogisticsServiceCharge($specifiedLogisticsServiceChargeItems);
@@ -1848,15 +2037,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedLogisticsServiceCharge());
         $this->assertCount(0, $model->getSpecifiedLogisticsServiceCharge());
 
+        // (2) Property SpecifiedLogisticsServiceCharge - Add instance
+
         $specifiedLogisticsServiceChargeItem = new LogisticsServiceChargeType();
         $model->addToSpecifiedLogisticsServiceCharge($specifiedLogisticsServiceChargeItem);
 
         $this->assertIsArray($model->getSpecifiedLogisticsServiceCharge());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedLogisticsServiceCharge()));
+        $this->assertCount(1, $model->getSpecifiedLogisticsServiceCharge());
+
+        // (3) Property SpecifiedLogisticsServiceCharge - Add and create instancc
 
         $testValueForSpecifiedLogisticsServiceChargeItem = $model->addToSpecifiedLogisticsServiceChargeWithCreate();
 
         $this->assertInstanceOf(LogisticsServiceChargeType::class, $testValueForSpecifiedLogisticsServiceChargeItem);
+        $this->assertIsArray($model->getSpecifiedLogisticsServiceCharge());
+        $this->assertCount(2, $model->getSpecifiedLogisticsServiceCharge());
+
+        // (4) Property SpecifiedLogisticsServiceCharge - Add once an instance
 
         $specifiedLogisticsServiceChargeOnceItem = new LogisticsServiceChargeType();
 
@@ -1868,13 +2065,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedLogisticsServiceChargeOnceItem = $model->addOnceToSpecifiedLogisticsServiceChargeWithCreate();
+        // (5) Property SpecifiedLogisticsServiceCharge - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(LogisticsServiceChargeType::class, $testValueForSpecifiedLogisticsServiceChargeOnceItem);
+        $firstSpecifiedLogisticsServiceChargeOnceItem = $model->addOnceToSpecifiedLogisticsServiceChargeWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedLogisticsServiceCharge();
+        $this->assertInstanceOf(LogisticsServiceChargeType::class, $firstSpecifiedLogisticsServiceChargeOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedLogisticsServiceCharge();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedLogisticsServiceCharge - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedLogisticsServiceChargeOnceItem = $model->addOnceToSpecifiedLogisticsServiceChargeWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedLogisticsServiceChargeOnceItem, $secondSpecifiedLogisticsServiceChargeOnceItem);
+
+        // (7) Property SpecifiedLogisticsServiceCharge - Clesr
 
         $model->clearSpecifiedLogisticsServiceCharge();
 
@@ -1883,7 +2093,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property SpecifiedTradePaymentTerms
+        // (1) Property SpecifiedTradePaymentTerms - Test set empty array
 
         $specifiedTradePaymentTermsItems = [];
         $model->setSpecifiedTradePaymentTerms($specifiedTradePaymentTermsItems);
@@ -1891,15 +2101,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradePaymentTerms());
         $this->assertCount(0, $model->getSpecifiedTradePaymentTerms());
 
+        // (2) Property SpecifiedTradePaymentTerms - Add instance
+
         $specifiedTradePaymentTermsItem = new TradePaymentTermsType();
         $model->addToSpecifiedTradePaymentTerms($specifiedTradePaymentTermsItem);
 
         $this->assertIsArray($model->getSpecifiedTradePaymentTerms());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradePaymentTerms()));
+        $this->assertCount(1, $model->getSpecifiedTradePaymentTerms());
+
+        // (3) Property SpecifiedTradePaymentTerms - Add and create instancc
 
         $testValueForSpecifiedTradePaymentTermsItem = $model->addToSpecifiedTradePaymentTermsWithCreate();
 
         $this->assertInstanceOf(TradePaymentTermsType::class, $testValueForSpecifiedTradePaymentTermsItem);
+        $this->assertIsArray($model->getSpecifiedTradePaymentTerms());
+        $this->assertCount(2, $model->getSpecifiedTradePaymentTerms());
+
+        // (4) Property SpecifiedTradePaymentTerms - Add once an instance
 
         $specifiedTradePaymentTermsOnceItem = new TradePaymentTermsType();
 
@@ -1911,13 +2129,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTradePaymentTermsOnceItem = $model->addOnceToSpecifiedTradePaymentTermsWithCreate();
+        // (5) Property SpecifiedTradePaymentTerms - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradePaymentTermsType::class, $testValueForSpecifiedTradePaymentTermsOnceItem);
+        $firstSpecifiedTradePaymentTermsOnceItem = $model->addOnceToSpecifiedTradePaymentTermsWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTradePaymentTerms();
+        $this->assertInstanceOf(TradePaymentTermsType::class, $firstSpecifiedTradePaymentTermsOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTradePaymentTerms();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTradePaymentTerms - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTradePaymentTermsOnceItem = $model->addOnceToSpecifiedTradePaymentTermsWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTradePaymentTermsOnceItem, $secondSpecifiedTradePaymentTermsOnceItem);
+
+        // (7) Property SpecifiedTradePaymentTerms - Clesr
 
         $model->clearSpecifiedTradePaymentTerms();
 
@@ -1942,7 +2173,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $testValueForSpecifiedTradeSettlementHeaderMonetarySummation);
         $this->assertSame($testValueForSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
-        // Property InvoiceReferencedDocument
+        // (1) Property InvoiceReferencedDocument - Test set empty array
 
         $invoiceReferencedDocumentItems = [];
         $model->setInvoiceReferencedDocument($invoiceReferencedDocumentItems);
@@ -1950,15 +2181,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getInvoiceReferencedDocument());
         $this->assertCount(0, $model->getInvoiceReferencedDocument());
 
+        // (2) Property InvoiceReferencedDocument - Add instance
+
         $invoiceReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToInvoiceReferencedDocument($invoiceReferencedDocumentItem);
 
         $this->assertIsArray($model->getInvoiceReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getInvoiceReferencedDocument()));
+        $this->assertCount(1, $model->getInvoiceReferencedDocument());
+
+        // (3) Property InvoiceReferencedDocument - Add and create instancc
 
         $testValueForInvoiceReferencedDocumentItem = $model->addToInvoiceReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocumentItem);
+        $this->assertIsArray($model->getInvoiceReferencedDocument());
+        $this->assertCount(2, $model->getInvoiceReferencedDocument());
+
+        // (4) Property InvoiceReferencedDocument - Add once an instance
 
         $invoiceReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1970,13 +2209,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForInvoiceReferencedDocumentOnceItem = $model->addOnceToInvoiceReferencedDocumentWithCreate();
+        // (5) Property InvoiceReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocumentOnceItem);
+        $firstInvoiceReferencedDocumentOnceItem = $model->addOnceToInvoiceReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getInvoiceReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstInvoiceReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getInvoiceReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property InvoiceReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondInvoiceReferencedDocumentOnceItem = $model->addOnceToInvoiceReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstInvoiceReferencedDocumentOnceItem, $secondInvoiceReferencedDocumentOnceItem);
+
+        // (7) Property InvoiceReferencedDocument - Clesr
 
         $model->clearInvoiceReferencedDocument();
 
@@ -1985,7 +2237,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property ReceivableSpecifiedTradeAccountingAccount
+        // (1) Property ReceivableSpecifiedTradeAccountingAccount - Test set empty array
 
         $receivableSpecifiedTradeAccountingAccountItems = [];
         $model->setReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountItems);
@@ -1993,15 +2245,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
         $this->assertCount(0, $model->getReceivableSpecifiedTradeAccountingAccount());
 
+        // (2) Property ReceivableSpecifiedTradeAccountingAccount - Add instance
+
         $receivableSpecifiedTradeAccountingAccountItem = new TradeAccountingAccountType();
         $model->addToReceivableSpecifiedTradeAccountingAccount($receivableSpecifiedTradeAccountingAccountItem);
 
         $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
-        $this->assertGreaterThanOrEqual(1, count($model->getReceivableSpecifiedTradeAccountingAccount()));
+        $this->assertCount(1, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        // (3) Property ReceivableSpecifiedTradeAccountingAccount - Add and create instancc
 
         $testValueForReceivableSpecifiedTradeAccountingAccountItem = $model->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
 
         $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccountItem);
+        $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertCount(2, $model->getReceivableSpecifiedTradeAccountingAccount());
+
+        // (4) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance
 
         $receivableSpecifiedTradeAccountingAccountOnceItem = new TradeAccountingAccountType();
 
@@ -2013,13 +2273,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForReceivableSpecifiedTradeAccountingAccountOnceItem = $model->addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate();
+        // (5) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccountOnceItem);
+        $firstReceivableSpecifiedTradeAccountingAccountOnceItem = $model->addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getReceivableSpecifiedTradeAccountingAccount();
+        $this->assertInstanceOf(TradeAccountingAccountType::class, $firstReceivableSpecifiedTradeAccountingAccountOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getReceivableSpecifiedTradeAccountingAccount();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ReceivableSpecifiedTradeAccountingAccount - Add once an instance with implicit creation (2)
+
+        $secondReceivableSpecifiedTradeAccountingAccountOnceItem = $model->addOnceToReceivableSpecifiedTradeAccountingAccountWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstReceivableSpecifiedTradeAccountingAccountOnceItem, $secondReceivableSpecifiedTradeAccountingAccountOnceItem);
+
+        // (7) Property ReceivableSpecifiedTradeAccountingAccount - Clesr
 
         $model->clearReceivableSpecifiedTradeAccountingAccount();
 
@@ -2028,7 +2301,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property SpecifiedAdvancePayment
+        // (1) Property SpecifiedAdvancePayment - Test set empty array
 
         $specifiedAdvancePaymentItems = [];
         $model->setSpecifiedAdvancePayment($specifiedAdvancePaymentItems);
@@ -2036,15 +2309,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedAdvancePayment());
         $this->assertCount(0, $model->getSpecifiedAdvancePayment());
 
+        // (2) Property SpecifiedAdvancePayment - Add instance
+
         $specifiedAdvancePaymentItem = new AdvancePaymentType();
         $model->addToSpecifiedAdvancePayment($specifiedAdvancePaymentItem);
 
         $this->assertIsArray($model->getSpecifiedAdvancePayment());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedAdvancePayment()));
+        $this->assertCount(1, $model->getSpecifiedAdvancePayment());
+
+        // (3) Property SpecifiedAdvancePayment - Add and create instancc
 
         $testValueForSpecifiedAdvancePaymentItem = $model->addToSpecifiedAdvancePaymentWithCreate();
 
         $this->assertInstanceOf(AdvancePaymentType::class, $testValueForSpecifiedAdvancePaymentItem);
+        $this->assertIsArray($model->getSpecifiedAdvancePayment());
+        $this->assertCount(2, $model->getSpecifiedAdvancePayment());
+
+        // (4) Property SpecifiedAdvancePayment - Add once an instance
 
         $specifiedAdvancePaymentOnceItem = new AdvancePaymentType();
 
@@ -2056,13 +2337,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedAdvancePaymentOnceItem = $model->addOnceToSpecifiedAdvancePaymentWithCreate();
+        // (5) Property SpecifiedAdvancePayment - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(AdvancePaymentType::class, $testValueForSpecifiedAdvancePaymentOnceItem);
+        $firstSpecifiedAdvancePaymentOnceItem = $model->addOnceToSpecifiedAdvancePaymentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedAdvancePayment();
+        $this->assertInstanceOf(AdvancePaymentType::class, $firstSpecifiedAdvancePaymentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedAdvancePayment();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedAdvancePayment - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedAdvancePaymentOnceItem = $model->addOnceToSpecifiedAdvancePaymentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedAdvancePaymentOnceItem, $secondSpecifiedAdvancePaymentOnceItem);
+
+        // (7) Property SpecifiedAdvancePayment - Clesr
 
         $model->clearSpecifiedAdvancePayment();
 
@@ -2203,7 +2497,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
         $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
-        // Property AdditionalReferencedDocument
+        // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
         $model->setAdditionalReferencedDocument($additionalReferencedDocumentItems);
@@ -2211,15 +2505,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertCount(0, $model->getAdditionalReferencedDocument());
 
+        // (2) Property AdditionalReferencedDocument - Add instance
+
         $additionalReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToAdditionalReferencedDocument($additionalReferencedDocumentItem);
 
         $this->assertIsArray($model->getAdditionalReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
+        $this->assertCount(1, $model->getAdditionalReferencedDocument());
+
+        // (3) Property AdditionalReferencedDocument - Add and create instancc
 
         $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
+        $this->assertIsArray($model->getAdditionalReferencedDocument());
+        $this->assertCount(2, $model->getAdditionalReferencedDocument());
+
+        // (4) Property AdditionalReferencedDocument - Add once an instance
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2231,13 +2533,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentOnceItem);
+        $firstAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getAdditionalReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstAdditionalReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getAdditionalReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
+
+        // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
 
@@ -2278,7 +2593,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TradePriceType::class, $testValueForNetPriceProductTradePrice);
         $this->assertSame($testValueForNetPriceProductTradePrice, $model->getNetPriceProductTradePrice());
 
-        // Property UltimateCustomerOrderReferencedDocument
+        // (1) Property UltimateCustomerOrderReferencedDocument - Test set empty array
 
         $ultimateCustomerOrderReferencedDocumentItems = [];
         $model->setUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocumentItems);
@@ -2286,15 +2601,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
         $this->assertCount(0, $model->getUltimateCustomerOrderReferencedDocument());
 
+        // (2) Property UltimateCustomerOrderReferencedDocument - Add instance
+
         $ultimateCustomerOrderReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToUltimateCustomerOrderReferencedDocument($ultimateCustomerOrderReferencedDocumentItem);
 
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getUltimateCustomerOrderReferencedDocument()));
+        $this->assertCount(1, $model->getUltimateCustomerOrderReferencedDocument());
+
+        // (3) Property UltimateCustomerOrderReferencedDocument - Add and create instancc
 
         $testValueForUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentItem);
+        $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
+        $this->assertCount(2, $model->getUltimateCustomerOrderReferencedDocument());
+
+        // (4) Property UltimateCustomerOrderReferencedDocument - Add once an instance
 
         $ultimateCustomerOrderReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2306,13 +2629,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
+        // (5) Property UltimateCustomerOrderReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentOnceItem);
+        $firstUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getUltimateCustomerOrderReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstUltimateCustomerOrderReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getUltimateCustomerOrderReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property UltimateCustomerOrderReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondUltimateCustomerOrderReferencedDocumentOnceItem = $model->addOnceToUltimateCustomerOrderReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstUltimateCustomerOrderReferencedDocumentOnceItem, $secondUltimateCustomerOrderReferencedDocumentOnceItem);
+
+        // (7) Property UltimateCustomerOrderReferencedDocument - Clesr
 
         $model->clearUltimateCustomerOrderReferencedDocument();
 
@@ -2485,7 +2821,7 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertInstanceOf(LineTradeSettlementType::class, $model);
 
-        // Property ApplicableTradeTax
+        // (1) Property ApplicableTradeTax - Test set empty array
 
         $applicableTradeTaxItems = [];
         $model->setApplicableTradeTax($applicableTradeTaxItems);
@@ -2493,15 +2829,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableTradeTax());
         $this->assertCount(0, $model->getApplicableTradeTax());
 
+        // (2) Property ApplicableTradeTax - Add instance
+
         $applicableTradeTaxItem = new TradeTaxType();
         $model->addToApplicableTradeTax($applicableTradeTaxItem);
 
         $this->assertIsArray($model->getApplicableTradeTax());
-        $this->assertGreaterThanOrEqual(1, count($model->getApplicableTradeTax()));
+        $this->assertCount(1, $model->getApplicableTradeTax());
+
+        // (3) Property ApplicableTradeTax - Add and create instancc
 
         $testValueForApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
 
         $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxItem);
+        $this->assertIsArray($model->getApplicableTradeTax());
+        $this->assertCount(2, $model->getApplicableTradeTax());
+
+        // (4) Property ApplicableTradeTax - Add once an instance
 
         $applicableTradeTaxOnceItem = new TradeTaxType();
 
@@ -2513,13 +2857,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
+        // (5) Property ApplicableTradeTax - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxOnceItem);
+        $firstApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getApplicableTradeTax();
+        $this->assertInstanceOf(TradeTaxType::class, $firstApplicableTradeTaxOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getApplicableTradeTax();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ApplicableTradeTax - Add once an instance with implicit creation (2)
+
+        $secondApplicableTradeTaxOnceItem = $model->addOnceToApplicableTradeTaxWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstApplicableTradeTaxOnceItem, $secondApplicableTradeTaxOnceItem);
+
+        // (7) Property ApplicableTradeTax - Clesr
 
         $model->clearApplicableTradeTax();
 
@@ -2544,7 +2901,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
         $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
 
-        // Property SpecifiedTradeAllowanceCharge
+        // (1) Property SpecifiedTradeAllowanceCharge - Test set empty array
 
         $specifiedTradeAllowanceChargeItems = [];
         $model->setSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceChargeItems);
@@ -2552,15 +2909,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
         $this->assertCount(0, $model->getSpecifiedTradeAllowanceCharge());
 
+        // (2) Property SpecifiedTradeAllowanceCharge - Add instance
+
         $specifiedTradeAllowanceChargeItem = new TradeAllowanceChargeType();
         $model->addToSpecifiedTradeAllowanceCharge($specifiedTradeAllowanceChargeItem);
 
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeAllowanceCharge()));
+        $this->assertCount(1, $model->getSpecifiedTradeAllowanceCharge());
+
+        // (3) Property SpecifiedTradeAllowanceCharge - Add and create instancc
 
         $testValueForSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
 
         $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeItem);
+        $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
+        $this->assertCount(2, $model->getSpecifiedTradeAllowanceCharge());
+
+        // (4) Property SpecifiedTradeAllowanceCharge - Add once an instance
 
         $specifiedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -2572,13 +2937,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
+        // (5) Property SpecifiedTradeAllowanceCharge - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeOnceItem);
+        $firstSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTradeAllowanceCharge();
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $firstSpecifiedTradeAllowanceChargeOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTradeAllowanceCharge();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTradeAllowanceCharge - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTradeAllowanceChargeOnceItem = $model->addOnceToSpecifiedTradeAllowanceChargeWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTradeAllowanceChargeOnceItem, $secondSpecifiedTradeAllowanceChargeOnceItem);
+
+        // (7) Property SpecifiedTradeAllowanceCharge - Clesr
 
         $model->clearSpecifiedTradeAllowanceCharge();
 
@@ -2619,7 +2997,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocument);
         $this->assertSame($testValueForInvoiceReferencedDocument, $model->getInvoiceReferencedDocument());
 
-        // Property AdditionalReferencedDocument
+        // (1) Property AdditionalReferencedDocument - Test set empty array
 
         $additionalReferencedDocumentItems = [];
         $model->setAdditionalReferencedDocument($additionalReferencedDocumentItems);
@@ -2627,15 +3005,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertCount(0, $model->getAdditionalReferencedDocument());
 
+        // (2) Property AdditionalReferencedDocument - Add instance
+
         $additionalReferencedDocumentItem = new ReferencedDocumentType();
         $model->addToAdditionalReferencedDocument($additionalReferencedDocumentItem);
 
         $this->assertIsArray($model->getAdditionalReferencedDocument());
-        $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
+        $this->assertCount(1, $model->getAdditionalReferencedDocument());
+
+        // (3) Property AdditionalReferencedDocument - Add and create instancc
 
         $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
         $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
+        $this->assertIsArray($model->getAdditionalReferencedDocument());
+        $this->assertCount(2, $model->getAdditionalReferencedDocument());
+
+        // (4) Property AdditionalReferencedDocument - Add once an instance
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2647,13 +3033,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentOnceItem);
+        $firstAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getAdditionalReferencedDocument();
+        $this->assertInstanceOf(ReferencedDocumentType::class, $firstAdditionalReferencedDocumentOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getAdditionalReferencedDocument();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property AdditionalReferencedDocument - Add once an instance with implicit creation (2)
+
+        $secondAdditionalReferencedDocumentOnceItem = $model->addOnceToAdditionalReferencedDocumentWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstAdditionalReferencedDocumentOnceItem, $secondAdditionalReferencedDocumentOnceItem);
+
+        // (7) Property AdditionalReferencedDocument - Clesr
 
         $model->clearAdditionalReferencedDocument();
 
@@ -2720,7 +3119,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForAppliedAmount);
         $this->assertSame($testValueForAppliedAmount, $model->getAppliedAmount());
 
-        // Property AppliedTradeTax
+        // (1) Property AppliedTradeTax - Test set empty array
 
         $appliedTradeTaxItems = [];
         $model->setAppliedTradeTax($appliedTradeTaxItems);
@@ -2728,15 +3127,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAppliedTradeTax());
         $this->assertCount(0, $model->getAppliedTradeTax());
 
+        // (2) Property AppliedTradeTax - Add instance
+
         $appliedTradeTaxItem = new TradeTaxType();
         $model->addToAppliedTradeTax($appliedTradeTaxItem);
 
         $this->assertIsArray($model->getAppliedTradeTax());
-        $this->assertGreaterThanOrEqual(1, count($model->getAppliedTradeTax()));
+        $this->assertCount(1, $model->getAppliedTradeTax());
+
+        // (3) Property AppliedTradeTax - Add and create instancc
 
         $testValueForAppliedTradeTaxItem = $model->addToAppliedTradeTaxWithCreate();
 
         $this->assertInstanceOf(TradeTaxType::class, $testValueForAppliedTradeTaxItem);
+        $this->assertIsArray($model->getAppliedTradeTax());
+        $this->assertCount(2, $model->getAppliedTradeTax());
+
+        // (4) Property AppliedTradeTax - Add once an instance
 
         $appliedTradeTaxOnceItem = new TradeTaxType();
 
@@ -2748,13 +3155,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForAppliedTradeTaxOnceItem = $model->addOnceToAppliedTradeTaxWithCreate();
+        // (5) Property AppliedTradeTax - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeTaxType::class, $testValueForAppliedTradeTaxOnceItem);
+        $firstAppliedTradeTaxOnceItem = $model->addOnceToAppliedTradeTaxWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getAppliedTradeTax();
+        $this->assertInstanceOf(TradeTaxType::class, $firstAppliedTradeTaxOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getAppliedTradeTax();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property AppliedTradeTax - Add once an instance with implicit creation (2)
+
+        $secondAppliedTradeTaxOnceItem = $model->addOnceToAppliedTradeTaxWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstAppliedTradeTaxOnceItem, $secondAppliedTradeTaxOnceItem);
+
+        // (7) Property AppliedTradeTax - Clesr
 
         $model->clearAppliedTradeTax();
 
@@ -3169,7 +3589,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(IDType::class, $testValueForID);
         $this->assertSame($testValueForID, $model->getID());
 
-        // Property GlobalID
+        // (1) Property GlobalID - Test set empty array
 
         $globalIDItems = [];
         $model->setGlobalID($globalIDItems);
@@ -3177,15 +3597,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getGlobalID());
         $this->assertCount(0, $model->getGlobalID());
 
+        // (2) Property GlobalID - Add instance
+
         $globalIDItem = new IDType();
         $model->addToGlobalID($globalIDItem);
 
         $this->assertIsArray($model->getGlobalID());
-        $this->assertGreaterThanOrEqual(1, count($model->getGlobalID()));
+        $this->assertCount(1, $model->getGlobalID());
+
+        // (3) Property GlobalID - Add and create instancc
 
         $testValueForGlobalIDItem = $model->addToGlobalIDWithCreate();
 
         $this->assertInstanceOf(IDType::class, $testValueForGlobalIDItem);
+        $this->assertIsArray($model->getGlobalID());
+        $this->assertCount(2, $model->getGlobalID());
+
+        // (4) Property GlobalID - Add once an instance
 
         $globalIDOnceItem = new IDType();
 
@@ -3197,13 +3625,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
+        // (5) Property GlobalID - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(IDType::class, $testValueForGlobalIDOnceItem);
+        $firstGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getGlobalID();
+        $this->assertInstanceOf(IDType::class, $firstGlobalIDOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getGlobalID();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property GlobalID - Add once an instance with implicit creation (2)
+
+        $secondGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
+
+        // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
 
@@ -3392,7 +3833,7 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainConsignmentType::class, $model);
 
-        // Property SpecifiedLogisticsTransportMovement
+        // (1) Property SpecifiedLogisticsTransportMovement - Test set empty array
 
         $specifiedLogisticsTransportMovementItems = [];
         $model->setSpecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovementItems);
@@ -3400,15 +3841,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedLogisticsTransportMovement());
         $this->assertCount(0, $model->getSpecifiedLogisticsTransportMovement());
 
+        // (2) Property SpecifiedLogisticsTransportMovement - Add instance
+
         $specifiedLogisticsTransportMovementItem = new LogisticsTransportMovementType();
         $model->addToSpecifiedLogisticsTransportMovement($specifiedLogisticsTransportMovementItem);
 
         $this->assertIsArray($model->getSpecifiedLogisticsTransportMovement());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedLogisticsTransportMovement()));
+        $this->assertCount(1, $model->getSpecifiedLogisticsTransportMovement());
+
+        // (3) Property SpecifiedLogisticsTransportMovement - Add and create instancc
 
         $testValueForSpecifiedLogisticsTransportMovementItem = $model->addToSpecifiedLogisticsTransportMovementWithCreate();
 
         $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForSpecifiedLogisticsTransportMovementItem);
+        $this->assertIsArray($model->getSpecifiedLogisticsTransportMovement());
+        $this->assertCount(2, $model->getSpecifiedLogisticsTransportMovement());
+
+        // (4) Property SpecifiedLogisticsTransportMovement - Add once an instance
 
         $specifiedLogisticsTransportMovementOnceItem = new LogisticsTransportMovementType();
 
@@ -3420,13 +3869,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedLogisticsTransportMovementOnceItem = $model->addOnceToSpecifiedLogisticsTransportMovementWithCreate();
+        // (5) Property SpecifiedLogisticsTransportMovement - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForSpecifiedLogisticsTransportMovementOnceItem);
+        $firstSpecifiedLogisticsTransportMovementOnceItem = $model->addOnceToSpecifiedLogisticsTransportMovementWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedLogisticsTransportMovement();
+        $this->assertInstanceOf(LogisticsTransportMovementType::class, $firstSpecifiedLogisticsTransportMovementOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedLogisticsTransportMovement();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedLogisticsTransportMovement - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedLogisticsTransportMovementOnceItem = $model->addOnceToSpecifiedLogisticsTransportMovementWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedLogisticsTransportMovementOnceItem, $secondSpecifiedLogisticsTransportMovementOnceItem);
+
+        // (7) Property SpecifiedLogisticsTransportMovement - Clesr
 
         $model->clearSpecifiedLogisticsTransportMovement();
 
@@ -3561,7 +4023,7 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $model);
 
-        // Property IncludedSupplyChainTradeLineItem
+        // (1) Property IncludedSupplyChainTradeLineItem - Test set empty array
 
         $includedSupplyChainTradeLineItemItems = [];
         $model->setIncludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItemItems);
@@ -3569,15 +4031,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedSupplyChainTradeLineItem());
         $this->assertCount(0, $model->getIncludedSupplyChainTradeLineItem());
 
+        // (2) Property IncludedSupplyChainTradeLineItem - Add instance
+
         $includedSupplyChainTradeLineItemItem = new SupplyChainTradeLineItemType();
         $model->addToIncludedSupplyChainTradeLineItem($includedSupplyChainTradeLineItemItem);
 
         $this->assertIsArray($model->getIncludedSupplyChainTradeLineItem());
-        $this->assertGreaterThanOrEqual(1, count($model->getIncludedSupplyChainTradeLineItem()));
+        $this->assertCount(1, $model->getIncludedSupplyChainTradeLineItem());
+
+        // (3) Property IncludedSupplyChainTradeLineItem - Add and create instancc
 
         $testValueForIncludedSupplyChainTradeLineItemItem = $model->addToIncludedSupplyChainTradeLineItemWithCreate();
 
         $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $testValueForIncludedSupplyChainTradeLineItemItem);
+        $this->assertIsArray($model->getIncludedSupplyChainTradeLineItem());
+        $this->assertCount(2, $model->getIncludedSupplyChainTradeLineItem());
+
+        // (4) Property IncludedSupplyChainTradeLineItem - Add once an instance
 
         $includedSupplyChainTradeLineItemOnceItem = new SupplyChainTradeLineItemType();
 
@@ -3589,20 +4059,38 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIncludedSupplyChainTradeLineItemOnceItem = $model->addOnceToIncludedSupplyChainTradeLineItemWithCreate();
+        // (5) Property IncludedSupplyChainTradeLineItem - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $testValueForIncludedSupplyChainTradeLineItemOnceItem);
+        $firstIncludedSupplyChainTradeLineItemOnceItem = $model->addOnceToIncludedSupplyChainTradeLineItemWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIncludedSupplyChainTradeLineItem();
+        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $firstIncludedSupplyChainTradeLineItemOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIncludedSupplyChainTradeLineItem();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IncludedSupplyChainTradeLineItem - Add once an instance with implicit creation (2)
+
+        $secondIncludedSupplyChainTradeLineItemOnceItem = $model->addOnceToIncludedSupplyChainTradeLineItemWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIncludedSupplyChainTradeLineItemOnceItem, $secondIncludedSupplyChainTradeLineItemOnceItem);
+
+        // (6) Property IncludedSupplyChainTradeLineItem - Latest added instance
 
         $latestIncludedSupplyChainTradeLineItem = $model->getLatestIncludedSupplyChainTradeLineItem();
 
         $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $latestIncludedSupplyChainTradeLineItem);
 
+        // (6) Property IncludedSupplyChainTradeLineItem - Has latest added instance
+
         $hasLatestIncludedSupplyChainTradeLineItem = $model->hasLatestIncludedSupplyChainTradeLineItem();
+
         $this->assertIsBool($hasLatestIncludedSupplyChainTradeLineItem);
+
+        // (7) Property IncludedSupplyChainTradeLineItem - Clesr
 
         $model->clearIncludedSupplyChainTradeLineItem();
 
@@ -4256,7 +4744,7 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertInstanceOf(TradePartyType::class, $model);
 
-        // Property ID
+        // (1) Property ID - Test set empty array
 
         $iDItems = [];
         $model->setID($iDItems);
@@ -4264,15 +4752,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getID());
         $this->assertCount(0, $model->getID());
 
+        // (2) Property ID - Add instance
+
         $iDItem = new IDType();
         $model->addToID($iDItem);
 
         $this->assertIsArray($model->getID());
-        $this->assertGreaterThanOrEqual(1, count($model->getID()));
+        $this->assertCount(1, $model->getID());
+
+        // (3) Property ID - Add and create instancc
 
         $testValueForIDItem = $model->addToIDWithCreate();
 
         $this->assertInstanceOf(IDType::class, $testValueForIDItem);
+        $this->assertIsArray($model->getID());
+        $this->assertCount(2, $model->getID());
+
+        // (4) Property ID - Add once an instance
 
         $iDOnceItem = new IDType();
 
@@ -4284,13 +4780,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIDOnceItem = $model->addOnceToIDWithCreate();
+        // (5) Property ID - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(IDType::class, $testValueForIDOnceItem);
+        $firstIDOnceItem = $model->addOnceToIDWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getID();
+        $this->assertInstanceOf(IDType::class, $firstIDOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getID();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ID - Add once an instance with implicit creation (2)
+
+        $secondIDOnceItem = $model->addOnceToIDWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIDOnceItem, $secondIDOnceItem);
+
+        // (7) Property ID - Clesr
 
         $model->clearID();
 
@@ -4299,7 +4808,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property GlobalID
+        // (1) Property GlobalID - Test set empty array
 
         $globalIDItems = [];
         $model->setGlobalID($globalIDItems);
@@ -4307,15 +4816,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getGlobalID());
         $this->assertCount(0, $model->getGlobalID());
 
+        // (2) Property GlobalID - Add instance
+
         $globalIDItem = new IDType();
         $model->addToGlobalID($globalIDItem);
 
         $this->assertIsArray($model->getGlobalID());
-        $this->assertGreaterThanOrEqual(1, count($model->getGlobalID()));
+        $this->assertCount(1, $model->getGlobalID());
+
+        // (3) Property GlobalID - Add and create instancc
 
         $testValueForGlobalIDItem = $model->addToGlobalIDWithCreate();
 
         $this->assertInstanceOf(IDType::class, $testValueForGlobalIDItem);
+        $this->assertIsArray($model->getGlobalID());
+        $this->assertCount(2, $model->getGlobalID());
+
+        // (4) Property GlobalID - Add once an instance
 
         $globalIDOnceItem = new IDType();
 
@@ -4327,13 +4844,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
+        // (5) Property GlobalID - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(IDType::class, $testValueForGlobalIDOnceItem);
+        $firstGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getGlobalID();
+        $this->assertInstanceOf(IDType::class, $firstGlobalIDOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getGlobalID();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property GlobalID - Add once an instance with implicit creation (2)
+
+        $secondGlobalIDOnceItem = $model->addOnceToGlobalIDWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstGlobalIDOnceItem, $secondGlobalIDOnceItem);
+
+        // (7) Property GlobalID - Clesr
 
         $model->clearGlobalID();
 
@@ -4401,7 +4931,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(LegalOrganizationType::class, $testValueForSpecifiedLegalOrganization);
         $this->assertSame($testValueForSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
 
-        // Property DefinedTradeContact
+        // (1) Property DefinedTradeContact - Test set empty array
 
         $definedTradeContactItems = [];
         $model->setDefinedTradeContact($definedTradeContactItems);
@@ -4409,15 +4939,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getDefinedTradeContact());
         $this->assertCount(0, $model->getDefinedTradeContact());
 
+        // (2) Property DefinedTradeContact - Add instance
+
         $definedTradeContactItem = new TradeContactType();
         $model->addToDefinedTradeContact($definedTradeContactItem);
 
         $this->assertIsArray($model->getDefinedTradeContact());
-        $this->assertGreaterThanOrEqual(1, count($model->getDefinedTradeContact()));
+        $this->assertCount(1, $model->getDefinedTradeContact());
+
+        // (3) Property DefinedTradeContact - Add and create instancc
 
         $testValueForDefinedTradeContactItem = $model->addToDefinedTradeContactWithCreate();
 
         $this->assertInstanceOf(TradeContactType::class, $testValueForDefinedTradeContactItem);
+        $this->assertIsArray($model->getDefinedTradeContact());
+        $this->assertCount(2, $model->getDefinedTradeContact());
+
+        // (4) Property DefinedTradeContact - Add once an instance
 
         $definedTradeContactOnceItem = new TradeContactType();
 
@@ -4429,13 +4967,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForDefinedTradeContactOnceItem = $model->addOnceToDefinedTradeContactWithCreate();
+        // (5) Property DefinedTradeContact - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeContactType::class, $testValueForDefinedTradeContactOnceItem);
+        $firstDefinedTradeContactOnceItem = $model->addOnceToDefinedTradeContactWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getDefinedTradeContact();
+        $this->assertInstanceOf(TradeContactType::class, $firstDefinedTradeContactOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getDefinedTradeContact();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property DefinedTradeContact - Add once an instance with implicit creation (2)
+
+        $secondDefinedTradeContactOnceItem = $model->addOnceToDefinedTradeContactWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstDefinedTradeContactOnceItem, $secondDefinedTradeContactOnceItem);
+
+        // (7) Property DefinedTradeContact - Clesr
 
         $model->clearDefinedTradeContact();
 
@@ -4476,7 +5027,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForURIUniversalCommunication);
         $this->assertSame($testValueForURIUniversalCommunication, $model->getURIUniversalCommunication());
 
-        // Property SpecifiedTaxRegistration
+        // (1) Property SpecifiedTaxRegistration - Test set empty array
 
         $specifiedTaxRegistrationItems = [];
         $model->setSpecifiedTaxRegistration($specifiedTaxRegistrationItems);
@@ -4484,15 +5035,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
         $this->assertCount(0, $model->getSpecifiedTaxRegistration());
 
+        // (2) Property SpecifiedTaxRegistration - Add instance
+
         $specifiedTaxRegistrationItem = new TaxRegistrationType();
         $model->addToSpecifiedTaxRegistration($specifiedTaxRegistrationItem);
 
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
-        $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTaxRegistration()));
+        $this->assertCount(1, $model->getSpecifiedTaxRegistration());
+
+        // (3) Property SpecifiedTaxRegistration - Add and create instancc
 
         $testValueForSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
 
         $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationItem);
+        $this->assertIsArray($model->getSpecifiedTaxRegistration());
+        $this->assertCount(2, $model->getSpecifiedTaxRegistration());
+
+        // (4) Property SpecifiedTaxRegistration - Add once an instance
 
         $specifiedTaxRegistrationOnceItem = new TaxRegistrationType();
 
@@ -4504,13 +5063,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
+        // (5) Property SpecifiedTaxRegistration - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationOnceItem);
+        $firstSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getSpecifiedTaxRegistration();
+        $this->assertInstanceOf(TaxRegistrationType::class, $firstSpecifiedTaxRegistrationOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getSpecifiedTaxRegistration();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property SpecifiedTaxRegistration - Add once an instance with implicit creation (2)
+
+        $secondSpecifiedTaxRegistrationOnceItem = $model->addOnceToSpecifiedTaxRegistrationWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstSpecifiedTaxRegistrationOnceItem, $secondSpecifiedTaxRegistrationOnceItem);
+
+        // (7) Property SpecifiedTaxRegistration - Clesr
 
         $model->clearSpecifiedTaxRegistration();
 
@@ -4863,7 +5435,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(QuantityType::class, $testValueForBasisQuantity);
         $this->assertSame($testValueForBasisQuantity, $model->getBasisQuantity());
 
-        // Property AppliedTradeAllowanceCharge
+        // (1) Property AppliedTradeAllowanceCharge - Test set empty array
 
         $appliedTradeAllowanceChargeItems = [];
         $model->setAppliedTradeAllowanceCharge($appliedTradeAllowanceChargeItems);
@@ -4871,15 +5443,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAppliedTradeAllowanceCharge());
         $this->assertCount(0, $model->getAppliedTradeAllowanceCharge());
 
+        // (2) Property AppliedTradeAllowanceCharge - Add instance
+
         $appliedTradeAllowanceChargeItem = new TradeAllowanceChargeType();
         $model->addToAppliedTradeAllowanceCharge($appliedTradeAllowanceChargeItem);
 
         $this->assertIsArray($model->getAppliedTradeAllowanceCharge());
-        $this->assertGreaterThanOrEqual(1, count($model->getAppliedTradeAllowanceCharge()));
+        $this->assertCount(1, $model->getAppliedTradeAllowanceCharge());
+
+        // (3) Property AppliedTradeAllowanceCharge - Add and create instancc
 
         $testValueForAppliedTradeAllowanceChargeItem = $model->addToAppliedTradeAllowanceChargeWithCreate();
 
         $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForAppliedTradeAllowanceChargeItem);
+        $this->assertIsArray($model->getAppliedTradeAllowanceCharge());
+        $this->assertCount(2, $model->getAppliedTradeAllowanceCharge());
+
+        // (4) Property AppliedTradeAllowanceCharge - Add once an instance
 
         $appliedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -4891,13 +5471,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForAppliedTradeAllowanceChargeOnceItem = $model->addOnceToAppliedTradeAllowanceChargeWithCreate();
+        // (5) Property AppliedTradeAllowanceCharge - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForAppliedTradeAllowanceChargeOnceItem);
+        $firstAppliedTradeAllowanceChargeOnceItem = $model->addOnceToAppliedTradeAllowanceChargeWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getAppliedTradeAllowanceCharge();
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $firstAppliedTradeAllowanceChargeOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getAppliedTradeAllowanceCharge();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property AppliedTradeAllowanceCharge - Add once an instance with implicit creation (2)
+
+        $secondAppliedTradeAllowanceChargeOnceItem = $model->addOnceToAppliedTradeAllowanceChargeWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstAppliedTradeAllowanceChargeOnceItem, $secondAppliedTradeAllowanceChargeOnceItem);
+
+        // (7) Property AppliedTradeAllowanceCharge - Clesr
 
         $model->clearAppliedTradeAllowanceCharge();
 
@@ -5102,7 +5695,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TextType::class, $testValueForDescription);
         $this->assertSame($testValueForDescription, $model->getDescription());
 
-        // Property BatchID
+        // (1) Property BatchID - Test set empty array
 
         $batchIDItems = [];
         $model->setBatchID($batchIDItems);
@@ -5110,15 +5703,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getBatchID());
         $this->assertCount(0, $model->getBatchID());
 
+        // (2) Property BatchID - Add instance
+
         $batchIDItem = new IDType();
         $model->addToBatchID($batchIDItem);
 
         $this->assertIsArray($model->getBatchID());
-        $this->assertGreaterThanOrEqual(1, count($model->getBatchID()));
+        $this->assertCount(1, $model->getBatchID());
+
+        // (3) Property BatchID - Add and create instancc
 
         $testValueForBatchIDItem = $model->addToBatchIDWithCreate();
 
         $this->assertInstanceOf(IDType::class, $testValueForBatchIDItem);
+        $this->assertIsArray($model->getBatchID());
+        $this->assertCount(2, $model->getBatchID());
+
+        // (4) Property BatchID - Add once an instance
 
         $batchIDOnceItem = new IDType();
 
@@ -5130,13 +5731,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForBatchIDOnceItem = $model->addOnceToBatchIDWithCreate();
+        // (5) Property BatchID - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(IDType::class, $testValueForBatchIDOnceItem);
+        $firstBatchIDOnceItem = $model->addOnceToBatchIDWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getBatchID();
+        $this->assertInstanceOf(IDType::class, $firstBatchIDOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getBatchID();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property BatchID - Add once an instance with implicit creation (2)
+
+        $secondBatchIDOnceItem = $model->addOnceToBatchIDWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstBatchIDOnceItem, $secondBatchIDOnceItem);
+
+        // (7) Property BatchID - Clesr
 
         $model->clearBatchID();
 
@@ -5177,7 +5791,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TextType::class, $testValueForModelName);
         $this->assertSame($testValueForModelName, $model->getModelName());
 
-        // Property ApplicableProductCharacteristic
+        // (1) Property ApplicableProductCharacteristic - Test set empty array
 
         $applicableProductCharacteristicItems = [];
         $model->setApplicableProductCharacteristic($applicableProductCharacteristicItems);
@@ -5185,15 +5799,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableProductCharacteristic());
         $this->assertCount(0, $model->getApplicableProductCharacteristic());
 
+        // (2) Property ApplicableProductCharacteristic - Add instance
+
         $applicableProductCharacteristicItem = new ProductCharacteristicType();
         $model->addToApplicableProductCharacteristic($applicableProductCharacteristicItem);
 
         $this->assertIsArray($model->getApplicableProductCharacteristic());
-        $this->assertGreaterThanOrEqual(1, count($model->getApplicableProductCharacteristic()));
+        $this->assertCount(1, $model->getApplicableProductCharacteristic());
+
+        // (3) Property ApplicableProductCharacteristic - Add and create instancc
 
         $testValueForApplicableProductCharacteristicItem = $model->addToApplicableProductCharacteristicWithCreate();
 
         $this->assertInstanceOf(ProductCharacteristicType::class, $testValueForApplicableProductCharacteristicItem);
+        $this->assertIsArray($model->getApplicableProductCharacteristic());
+        $this->assertCount(2, $model->getApplicableProductCharacteristic());
+
+        // (4) Property ApplicableProductCharacteristic - Add once an instance
 
         $applicableProductCharacteristicOnceItem = new ProductCharacteristicType();
 
@@ -5205,13 +5827,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForApplicableProductCharacteristicOnceItem = $model->addOnceToApplicableProductCharacteristicWithCreate();
+        // (5) Property ApplicableProductCharacteristic - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ProductCharacteristicType::class, $testValueForApplicableProductCharacteristicOnceItem);
+        $firstApplicableProductCharacteristicOnceItem = $model->addOnceToApplicableProductCharacteristicWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getApplicableProductCharacteristic();
+        $this->assertInstanceOf(ProductCharacteristicType::class, $firstApplicableProductCharacteristicOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getApplicableProductCharacteristic();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property ApplicableProductCharacteristic - Add once an instance with implicit creation (2)
+
+        $secondApplicableProductCharacteristicOnceItem = $model->addOnceToApplicableProductCharacteristicWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstApplicableProductCharacteristicOnceItem, $secondApplicableProductCharacteristicOnceItem);
+
+        // (7) Property ApplicableProductCharacteristic - Clesr
 
         $model->clearApplicableProductCharacteristic();
 
@@ -5220,7 +5855,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property DesignatedProductClassification
+        // (1) Property DesignatedProductClassification - Test set empty array
 
         $designatedProductClassificationItems = [];
         $model->setDesignatedProductClassification($designatedProductClassificationItems);
@@ -5228,15 +5863,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getDesignatedProductClassification());
         $this->assertCount(0, $model->getDesignatedProductClassification());
 
+        // (2) Property DesignatedProductClassification - Add instance
+
         $designatedProductClassificationItem = new ProductClassificationType();
         $model->addToDesignatedProductClassification($designatedProductClassificationItem);
 
         $this->assertIsArray($model->getDesignatedProductClassification());
-        $this->assertGreaterThanOrEqual(1, count($model->getDesignatedProductClassification()));
+        $this->assertCount(1, $model->getDesignatedProductClassification());
+
+        // (3) Property DesignatedProductClassification - Add and create instancc
 
         $testValueForDesignatedProductClassificationItem = $model->addToDesignatedProductClassificationWithCreate();
 
         $this->assertInstanceOf(ProductClassificationType::class, $testValueForDesignatedProductClassificationItem);
+        $this->assertIsArray($model->getDesignatedProductClassification());
+        $this->assertCount(2, $model->getDesignatedProductClassification());
+
+        // (4) Property DesignatedProductClassification - Add once an instance
 
         $designatedProductClassificationOnceItem = new ProductClassificationType();
 
@@ -5248,13 +5891,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForDesignatedProductClassificationOnceItem = $model->addOnceToDesignatedProductClassificationWithCreate();
+        // (5) Property DesignatedProductClassification - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ProductClassificationType::class, $testValueForDesignatedProductClassificationOnceItem);
+        $firstDesignatedProductClassificationOnceItem = $model->addOnceToDesignatedProductClassificationWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getDesignatedProductClassification();
+        $this->assertInstanceOf(ProductClassificationType::class, $firstDesignatedProductClassificationOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getDesignatedProductClassification();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property DesignatedProductClassification - Add once an instance with implicit creation (2)
+
+        $secondDesignatedProductClassificationOnceItem = $model->addOnceToDesignatedProductClassificationWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstDesignatedProductClassificationOnceItem, $secondDesignatedProductClassificationOnceItem);
+
+        // (7) Property DesignatedProductClassification - Clesr
 
         $model->clearDesignatedProductClassification();
 
@@ -5263,7 +5919,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterClear);
         $this->assertCount(0, $itemsAfterClear);
 
-        // Property IndividualTradeProductInstance
+        // (1) Property IndividualTradeProductInstance - Test set empty array
 
         $individualTradeProductInstanceItems = [];
         $model->setIndividualTradeProductInstance($individualTradeProductInstanceItems);
@@ -5271,15 +5927,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIndividualTradeProductInstance());
         $this->assertCount(0, $model->getIndividualTradeProductInstance());
 
+        // (2) Property IndividualTradeProductInstance - Add instance
+
         $individualTradeProductInstanceItem = new TradeProductInstanceType();
         $model->addToIndividualTradeProductInstance($individualTradeProductInstanceItem);
 
         $this->assertIsArray($model->getIndividualTradeProductInstance());
-        $this->assertGreaterThanOrEqual(1, count($model->getIndividualTradeProductInstance()));
+        $this->assertCount(1, $model->getIndividualTradeProductInstance());
+
+        // (3) Property IndividualTradeProductInstance - Add and create instancc
 
         $testValueForIndividualTradeProductInstanceItem = $model->addToIndividualTradeProductInstanceWithCreate();
 
         $this->assertInstanceOf(TradeProductInstanceType::class, $testValueForIndividualTradeProductInstanceItem);
+        $this->assertIsArray($model->getIndividualTradeProductInstance());
+        $this->assertCount(2, $model->getIndividualTradeProductInstance());
+
+        // (4) Property IndividualTradeProductInstance - Add once an instance
 
         $individualTradeProductInstanceOnceItem = new TradeProductInstanceType();
 
@@ -5291,13 +5955,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIndividualTradeProductInstanceOnceItem = $model->addOnceToIndividualTradeProductInstanceWithCreate();
+        // (5) Property IndividualTradeProductInstance - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(TradeProductInstanceType::class, $testValueForIndividualTradeProductInstanceOnceItem);
+        $firstIndividualTradeProductInstanceOnceItem = $model->addOnceToIndividualTradeProductInstanceWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIndividualTradeProductInstance();
+        $this->assertInstanceOf(TradeProductInstanceType::class, $firstIndividualTradeProductInstanceOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIndividualTradeProductInstance();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IndividualTradeProductInstance - Add once an instance with implicit creation (2)
+
+        $secondIndividualTradeProductInstanceOnceItem = $model->addOnceToIndividualTradeProductInstanceWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIndividualTradeProductInstanceOnceItem, $secondIndividualTradeProductInstanceOnceItem);
+
+        // (7) Property IndividualTradeProductInstance - Clesr
 
         $model->clearIndividualTradeProductInstance();
 
@@ -5322,7 +5999,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(TradeCountryType::class, $testValueForOriginTradeCountry);
         $this->assertSame($testValueForOriginTradeCountry, $model->getOriginTradeCountry());
 
-        // Property IncludedReferencedProduct
+        // (1) Property IncludedReferencedProduct - Test set empty array
 
         $includedReferencedProductItems = [];
         $model->setIncludedReferencedProduct($includedReferencedProductItems);
@@ -5330,15 +6007,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedReferencedProduct());
         $this->assertCount(0, $model->getIncludedReferencedProduct());
 
+        // (2) Property IncludedReferencedProduct - Add instance
+
         $includedReferencedProductItem = new ReferencedProductType();
         $model->addToIncludedReferencedProduct($includedReferencedProductItem);
 
         $this->assertIsArray($model->getIncludedReferencedProduct());
-        $this->assertGreaterThanOrEqual(1, count($model->getIncludedReferencedProduct()));
+        $this->assertCount(1, $model->getIncludedReferencedProduct());
+
+        // (3) Property IncludedReferencedProduct - Add and create instancc
 
         $testValueForIncludedReferencedProductItem = $model->addToIncludedReferencedProductWithCreate();
 
         $this->assertInstanceOf(ReferencedProductType::class, $testValueForIncludedReferencedProductItem);
+        $this->assertIsArray($model->getIncludedReferencedProduct());
+        $this->assertCount(2, $model->getIncludedReferencedProduct());
+
+        // (4) Property IncludedReferencedProduct - Add once an instance
 
         $includedReferencedProductOnceItem = new ReferencedProductType();
 
@@ -5350,13 +6035,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForIncludedReferencedProductOnceItem = $model->addOnceToIncludedReferencedProductWithCreate();
+        // (5) Property IncludedReferencedProduct - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(ReferencedProductType::class, $testValueForIncludedReferencedProductOnceItem);
+        $firstIncludedReferencedProductOnceItem = $model->addOnceToIncludedReferencedProductWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getIncludedReferencedProduct();
+        $this->assertInstanceOf(ReferencedProductType::class, $firstIncludedReferencedProductOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getIncludedReferencedProduct();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property IncludedReferencedProduct - Add once an instance with implicit creation (2)
+
+        $secondIncludedReferencedProductOnceItem = $model->addOnceToIncludedReferencedProductWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstIncludedReferencedProductOnceItem, $secondIncludedReferencedProductOnceItem);
+
+        // (7) Property IncludedReferencedProduct - Clesr
 
         $model->clearIncludedReferencedProduct();
 
@@ -5481,7 +6179,7 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
         $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
-        // Property TaxTotalAmount
+        // (1) Property TaxTotalAmount - Test set empty array
 
         $taxTotalAmountItems = [];
         $model->setTaxTotalAmount($taxTotalAmountItems);
@@ -5489,15 +6187,23 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getTaxTotalAmount());
         $this->assertCount(0, $model->getTaxTotalAmount());
 
+        // (2) Property TaxTotalAmount - Add instance
+
         $taxTotalAmountItem = new AmountType();
         $model->addToTaxTotalAmount($taxTotalAmountItem);
 
         $this->assertIsArray($model->getTaxTotalAmount());
-        $this->assertGreaterThanOrEqual(1, count($model->getTaxTotalAmount()));
+        $this->assertCount(1, $model->getTaxTotalAmount());
+
+        // (3) Property TaxTotalAmount - Add and create instancc
 
         $testValueForTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
 
         $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountItem);
+        $this->assertIsArray($model->getTaxTotalAmount());
+        $this->assertCount(2, $model->getTaxTotalAmount());
+
+        // (4) Property TaxTotalAmount - Add once an instance
 
         $taxTotalAmountOnceItem = new AmountType();
 
@@ -5509,13 +6215,26 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($itemsAfterOnce);
         $this->assertCount(2, $itemsAfterOnce);
 
-        $testValueForTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
+        // (5) Property TaxTotalAmount - Add once an instance with implicit creation
 
-        $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountOnceItem);
+        $firstTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
 
-        $itemsAfterOnceWithCreate = $model->getTaxTotalAmount();
+        $this->assertInstanceOf(AmountType::class, $firstTaxTotalAmountOnceItem);
 
-        $this->assertIsArray($itemsAfterOnceWithCreate);
+        $itemsAfterFirstOnceWithCreate = $model->getTaxTotalAmount();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+
+        // (5) Property TaxTotalAmount - Add once an instance with implicit creation (2)
+
+        $secondTaxTotalAmountOnceItem = $model->addOnceToTaxTotalAmountWithCreate();
+
+        $this->assertIsArray($itemsAfterFirstOnceWithCreate);
+        $this->assertCount(2, $itemsAfterFirstOnceWithCreate);
+        $this->assertSame($firstTaxTotalAmountOnceItem, $secondTaxTotalAmountOnceItem);
+
+        // (7) Property TaxTotalAmount - Clesr
 
         $model->clearTaxTotalAmount();
 
