@@ -218,7 +218,7 @@ final class ZfFxExtendedProviderBuilderTest extends TestCase
     {
         static::$document->setDocumentIsCopy(null);
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator/udt:Indicator', 'false');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator/udt:Indicator');
 
         static::$document->setDocumentIsCopy(true);
 
@@ -226,14 +226,14 @@ final class ZfFxExtendedProviderBuilderTest extends TestCase
 
         static::$document->setDocumentIsCopy(null);
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator/udt:Indicator', 'false');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:CopyIndicator/udt:Indicator');
     }
 
     public function testSetDocumentIsTest(): void
     {
         static::$document->setDocumentIsTest(null);
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:TestIndicator/udt:Indicator', 'false');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:TestIndicator/udt:Indicator');
 
         static::$document->setDocumentIsTest(true);
 
@@ -241,7 +241,7 @@ final class ZfFxExtendedProviderBuilderTest extends TestCase
 
         static::$document->setDocumentIsTest(null);
 
-        $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:TestIndicator/udt:Indicator', 'false');
+        $this->assertXPathNotExists('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:TestIndicator/udt:Indicator');
     }
 
     public function testSetAddDocumentNote(): void
