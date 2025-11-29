@@ -114,10 +114,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -140,10 +140,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getBusinessProcessSpecifiedDocumentContextParameter());
 
-        $createdBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
+        $testValueForBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
 
-        $this->assertInstanceOf(DocumentContextParameterType::class, $createdBusinessProcessSpecifiedDocumentContextParameter);
-        $this->assertSame($createdBusinessProcessSpecifiedDocumentContextParameter, $model->getBusinessProcessSpecifiedDocumentContextParameter());
+        $this->assertInstanceOf(DocumentContextParameterType::class, $testValueForBusinessProcessSpecifiedDocumentContextParameter);
+        $this->assertSame($testValueForBusinessProcessSpecifiedDocumentContextParameter, $model->getBusinessProcessSpecifiedDocumentContextParameter());
 
         // Property GuidelineSpecifiedDocumentContextParameter
 
@@ -156,10 +156,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getGuidelineSpecifiedDocumentContextParameter());
 
-        $createdGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
+        $testValueForGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
 
-        $this->assertInstanceOf(DocumentContextParameterType::class, $createdGuidelineSpecifiedDocumentContextParameter);
-        $this->assertSame($createdGuidelineSpecifiedDocumentContextParameter, $model->getGuidelineSpecifiedDocumentContextParameter());
+        $this->assertInstanceOf(DocumentContextParameterType::class, $testValueForGuidelineSpecifiedDocumentContextParameter);
+        $this->assertSame($testValueForGuidelineSpecifiedDocumentContextParameter, $model->getGuidelineSpecifiedDocumentContextParameter());
     }
 
     /**
@@ -182,10 +182,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property TypeCode
 
@@ -198,10 +198,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(DocumentCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(DocumentCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property IssueDateTime
 
@@ -214,10 +214,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getIssueDateTime());
 
-        $createdIssueDateTime = $model->getIssueDateTimeWithCreate();
+        $testValueForIssueDateTime = $model->getIssueDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdIssueDateTime);
-        $this->assertSame($createdIssueDateTime, $model->getIssueDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForIssueDateTime);
+        $this->assertSame($testValueForIssueDateTime, $model->getIssueDateTime());
     }
 
     /**
@@ -240,10 +240,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getBuyerReference());
 
-        $createdBuyerReference = $model->getBuyerReferenceWithCreate();
+        $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdBuyerReference);
-        $this->assertSame($createdBuyerReference, $model->getBuyerReference());
+        $this->assertInstanceOf(TextType::class, $testValueForBuyerReference);
+        $this->assertSame($testValueForBuyerReference, $model->getBuyerReference());
 
         // Property SellerTradeParty
 
@@ -256,10 +256,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getSellerTradeParty());
 
-        $createdSellerTradeParty = $model->getSellerTradePartyWithCreate();
+        $testValueForSellerTradeParty = $model->getSellerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdSellerTradeParty);
-        $this->assertSame($createdSellerTradeParty, $model->getSellerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForSellerTradeParty);
+        $this->assertSame($testValueForSellerTradeParty, $model->getSellerTradeParty());
 
         // Property BuyerTradeParty
 
@@ -272,10 +272,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getBuyerTradeParty());
 
-        $createdBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
+        $testValueForBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdBuyerTradeParty);
-        $this->assertSame($createdBuyerTradeParty, $model->getBuyerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForBuyerTradeParty);
+        $this->assertSame($testValueForBuyerTradeParty, $model->getBuyerTradeParty());
 
         // Property BuyerOrderReferencedDocument
 
@@ -288,10 +288,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getBuyerOrderReferencedDocument());
 
-        $createdBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
+        $testValueForBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdBuyerOrderReferencedDocument);
-        $this->assertSame($createdBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForBuyerOrderReferencedDocument);
+        $this->assertSame($testValueForBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
     }
 
     /**
@@ -324,10 +324,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceCurrencyCode());
 
-        $createdInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
+        $testValueForInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
 
-        $this->assertInstanceOf(CurrencyCodeType::class, $createdInvoiceCurrencyCode);
-        $this->assertSame($createdInvoiceCurrencyCode, $model->getInvoiceCurrencyCode());
+        $this->assertInstanceOf(CurrencyCodeType::class, $testValueForInvoiceCurrencyCode);
+        $this->assertSame($testValueForInvoiceCurrencyCode, $model->getInvoiceCurrencyCode());
 
         // Property SpecifiedTradeSettlementHeaderMonetarySummation
 
@@ -340,10 +340,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
-        $createdSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
+        $testValueForSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
 
-        $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $createdSpecifiedTradeSettlementHeaderMonetarySummation);
-        $this->assertSame($createdSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
+        $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $testValueForSpecifiedTradeSettlementHeaderMonetarySummation);
+        $this->assertSame($testValueForSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
     }
 
     /**
@@ -366,10 +366,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -392,10 +392,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getIssuerAssignedID());
 
-        $createdIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
+        $testValueForIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIssuerAssignedID);
-        $this->assertSame($createdIssuerAssignedID, $model->getIssuerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForIssuerAssignedID);
+        $this->assertSame($testValueForIssuerAssignedID, $model->getIssuerAssignedID());
     }
 
     /**
@@ -418,10 +418,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeAgreement());
 
-        $createdApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
+        $testValueForApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeAgreementType::class, $createdApplicableHeaderTradeAgreement);
-        $this->assertSame($createdApplicableHeaderTradeAgreement, $model->getApplicableHeaderTradeAgreement());
+        $this->assertInstanceOf(HeaderTradeAgreementType::class, $testValueForApplicableHeaderTradeAgreement);
+        $this->assertSame($testValueForApplicableHeaderTradeAgreement, $model->getApplicableHeaderTradeAgreement());
 
         // Property ApplicableHeaderTradeDelivery
 
@@ -434,10 +434,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeDelivery());
 
-        $createdApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
+        $testValueForApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeDeliveryType::class, $createdApplicableHeaderTradeDelivery);
-        $this->assertSame($createdApplicableHeaderTradeDelivery, $model->getApplicableHeaderTradeDelivery());
+        $this->assertInstanceOf(HeaderTradeDeliveryType::class, $testValueForApplicableHeaderTradeDelivery);
+        $this->assertSame($testValueForApplicableHeaderTradeDelivery, $model->getApplicableHeaderTradeDelivery());
 
         // Property ApplicableHeaderTradeSettlement
 
@@ -450,10 +450,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeSettlement());
 
-        $createdApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
+        $testValueForApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeSettlementType::class, $createdApplicableHeaderTradeSettlement);
-        $this->assertSame($createdApplicableHeaderTradeSettlement, $model->getApplicableHeaderTradeSettlement());
+        $this->assertInstanceOf(HeaderTradeSettlementType::class, $testValueForApplicableHeaderTradeSettlement);
+        $this->assertSame($testValueForApplicableHeaderTradeSettlement, $model->getApplicableHeaderTradeSettlement());
     }
 
     /**
@@ -476,10 +476,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -502,10 +502,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getCountryID());
 
-        $createdCountryID = $model->getCountryIDWithCreate();
+        $testValueForCountryID = $model->getCountryIDWithCreate();
 
-        $this->assertInstanceOf(CountryIDType::class, $createdCountryID);
-        $this->assertSame($createdCountryID, $model->getCountryID());
+        $this->assertInstanceOf(CountryIDType::class, $testValueForCountryID);
+        $this->assertSame($testValueForCountryID, $model->getCountryID());
     }
 
     /**
@@ -528,10 +528,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property SpecifiedLegalOrganization
 
@@ -544,10 +544,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedLegalOrganization());
 
-        $createdSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
+        $testValueForSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
 
-        $this->assertInstanceOf(LegalOrganizationType::class, $createdSpecifiedLegalOrganization);
-        $this->assertSame($createdSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
+        $this->assertInstanceOf(LegalOrganizationType::class, $testValueForSpecifiedLegalOrganization);
+        $this->assertSame($testValueForSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
 
         // Property PostalTradeAddress
 
@@ -560,10 +560,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getPostalTradeAddress());
 
-        $createdPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
+        $testValueForPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
 
-        $this->assertInstanceOf(TradeAddressType::class, $createdPostalTradeAddress);
-        $this->assertSame($createdPostalTradeAddress, $model->getPostalTradeAddress());
+        $this->assertInstanceOf(TradeAddressType::class, $testValueForPostalTradeAddress);
+        $this->assertSame($testValueForPostalTradeAddress, $model->getPostalTradeAddress());
 
         // Property SpecifiedTaxRegistration
 
@@ -579,9 +579,9 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTaxRegistration()));
 
-        $createdSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
+        $testValueForSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
 
-        $this->assertInstanceOf(TaxRegistrationType::class, $createdSpecifiedTaxRegistrationItem);
+        $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationItem);
 
         $specifiedTaxRegistrationOnceItem = new TaxRegistrationType();
 
@@ -620,10 +620,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getTaxBasisTotalAmount());
 
-        $createdTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
+        $testValueForTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTaxBasisTotalAmount);
-        $this->assertSame($createdTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
+        $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
         // Property TaxTotalAmount
 
@@ -639,9 +639,9 @@ final class ZffxMinimumModelTest extends TestCase
         $this->assertIsArray($model->getTaxTotalAmount());
         $this->assertGreaterThanOrEqual(1, count($model->getTaxTotalAmount()));
 
-        $createdTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
+        $testValueForTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTaxTotalAmountItem);
+        $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountItem);
 
         $taxTotalAmountOnceItem = new AmountType();
 
@@ -670,10 +670,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getGrandTotalAmount());
 
-        $createdGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
+        $testValueForGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdGrandTotalAmount);
-        $this->assertSame($createdGrandTotalAmount, $model->getGrandTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForGrandTotalAmount);
+        $this->assertSame($testValueForGrandTotalAmount, $model->getGrandTotalAmount());
 
         // Property DuePayableAmount
 
@@ -686,10 +686,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getDuePayableAmount());
 
-        $createdDuePayableAmount = $model->getDuePayableAmountWithCreate();
+        $testValueForDuePayableAmount = $model->getDuePayableAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdDuePayableAmount);
-        $this->assertSame($createdDuePayableAmount, $model->getDuePayableAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForDuePayableAmount);
+        $this->assertSame($testValueForDuePayableAmount, $model->getDuePayableAmount());
     }
 
     /**
@@ -723,10 +723,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getExchangedDocumentContext());
 
-        $createdExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
+        $testValueForExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
 
-        $this->assertInstanceOf(ExchangedDocumentContextType::class, $createdExchangedDocumentContext);
-        $this->assertSame($createdExchangedDocumentContext, $model->getExchangedDocumentContext());
+        $this->assertInstanceOf(ExchangedDocumentContextType::class, $testValueForExchangedDocumentContext);
+        $this->assertSame($testValueForExchangedDocumentContext, $model->getExchangedDocumentContext());
 
         // Property ExchangedDocument
 
@@ -739,10 +739,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getExchangedDocument());
 
-        $createdExchangedDocument = $model->getExchangedDocumentWithCreate();
+        $testValueForExchangedDocument = $model->getExchangedDocumentWithCreate();
 
-        $this->assertInstanceOf(ExchangedDocumentType::class, $createdExchangedDocument);
-        $this->assertSame($createdExchangedDocument, $model->getExchangedDocument());
+        $this->assertInstanceOf(ExchangedDocumentType::class, $testValueForExchangedDocument);
+        $this->assertSame($testValueForExchangedDocument, $model->getExchangedDocument());
 
         // Property SupplyChainTradeTransaction
 
@@ -755,10 +755,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getSupplyChainTradeTransaction());
 
-        $createdSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
+        $testValueForSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
 
-        $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $createdSupplyChainTradeTransaction);
-        $this->assertSame($createdSupplyChainTradeTransaction, $model->getSupplyChainTradeTransaction());
+        $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $testValueForSupplyChainTradeTransaction);
+        $this->assertSame($testValueForSupplyChainTradeTransaction, $model->getSupplyChainTradeTransaction());
     }
 
     /**
@@ -845,10 +845,10 @@ final class ZffxMinimumModelTest extends TestCase
 
         $this->assertNull($model->getDateTimeString());
 
-        $createdDateTimeString = $model->getDateTimeStringWithCreate();
+        $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
-        $this->assertInstanceOf(DateTimeStringAType::class, $createdDateTimeString);
-        $this->assertSame($createdDateTimeString, $model->getDateTimeString());
+        $this->assertInstanceOf(DateTimeStringAType::class, $testValueForDateTimeString);
+        $this->assertSame($testValueForDateTimeString, $model->getDateTimeString());
     }
 
     /**

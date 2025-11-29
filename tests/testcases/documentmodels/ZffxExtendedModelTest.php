@@ -290,10 +290,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDateTimeString());
 
-        $createdDateTimeString = $model->getDateTimeStringWithCreate();
+        $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
-        $this->assertInstanceOf(DateTimeStringAType::class, $createdDateTimeString);
-        $this->assertSame($createdDateTimeString, $model->getDateTimeString());
+        $this->assertInstanceOf(DateTimeStringAType::class, $testValueForDateTimeString);
+        $this->assertSame($testValueForDateTimeString, $model->getDateTimeString());
     }
 
     /**
@@ -484,10 +484,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPaidAmount());
 
-        $createdPaidAmount = $model->getPaidAmountWithCreate();
+        $testValueForPaidAmount = $model->getPaidAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdPaidAmount);
-        $this->assertSame($createdPaidAmount, $model->getPaidAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForPaidAmount);
+        $this->assertSame($testValueForPaidAmount, $model->getPaidAmount());
 
         // Property FormattedReceivedDateTime
 
@@ -500,10 +500,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getFormattedReceivedDateTime());
 
-        $createdFormattedReceivedDateTime = $model->getFormattedReceivedDateTimeWithCreate();
+        $testValueForFormattedReceivedDateTime = $model->getFormattedReceivedDateTimeWithCreate();
 
-        $this->assertInstanceOf(FormattedDateTimeType::class, $createdFormattedReceivedDateTime);
-        $this->assertSame($createdFormattedReceivedDateTime, $model->getFormattedReceivedDateTime());
+        $this->assertInstanceOf(FormattedDateTimeType::class, $testValueForFormattedReceivedDateTime);
+        $this->assertSame($testValueForFormattedReceivedDateTime, $model->getFormattedReceivedDateTime());
 
         // Property IncludedTradeTax
 
@@ -519,9 +519,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedTradeTax());
         $this->assertGreaterThanOrEqual(1, count($model->getIncludedTradeTax()));
 
-        $createdIncludedTradeTaxItem = $model->addToIncludedTradeTaxWithCreate();
+        $testValueForIncludedTradeTaxItem = $model->addToIncludedTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdIncludedTradeTaxItem);
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForIncludedTradeTaxItem);
 
         $includedTradeTaxOnceItem = new TradeTaxType();
 
@@ -550,10 +550,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceSpecifiedReferencedDocument());
 
-        $createdInvoiceSpecifiedReferencedDocument = $model->getInvoiceSpecifiedReferencedDocumentWithCreate();
+        $testValueForInvoiceSpecifiedReferencedDocument = $model->getInvoiceSpecifiedReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdInvoiceSpecifiedReferencedDocument);
-        $this->assertSame($createdInvoiceSpecifiedReferencedDocument, $model->getInvoiceSpecifiedReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceSpecifiedReferencedDocument);
+        $this->assertSame($testValueForInvoiceSpecifiedReferencedDocument, $model->getInvoiceSpecifiedReferencedDocument());
     }
 
     /**
@@ -576,10 +576,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIBANID());
 
-        $createdIBANID = $model->getIBANIDWithCreate();
+        $testValueForIBANID = $model->getIBANIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIBANID);
-        $this->assertSame($createdIBANID, $model->getIBANID());
+        $this->assertInstanceOf(IDType::class, $testValueForIBANID);
+        $this->assertSame($testValueForIBANID, $model->getIBANID());
 
         // Property AccountName
 
@@ -592,10 +592,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAccountName());
 
-        $createdAccountName = $model->getAccountNameWithCreate();
+        $testValueForAccountName = $model->getAccountNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdAccountName);
-        $this->assertSame($createdAccountName, $model->getAccountName());
+        $this->assertInstanceOf(TextType::class, $testValueForAccountName);
+        $this->assertSame($testValueForAccountName, $model->getAccountName());
 
         // Property ProprietaryID
 
@@ -608,10 +608,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getProprietaryID());
 
-        $createdProprietaryID = $model->getProprietaryIDWithCreate();
+        $testValueForProprietaryID = $model->getProprietaryIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdProprietaryID);
-        $this->assertSame($createdProprietaryID, $model->getProprietaryID());
+        $this->assertInstanceOf(IDType::class, $testValueForProprietaryID);
+        $this->assertSame($testValueForProprietaryID, $model->getProprietaryID());
     }
 
     /**
@@ -634,10 +634,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBICID());
 
-        $createdBICID = $model->getBICIDWithCreate();
+        $testValueForBICID = $model->getBICIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdBICID);
-        $this->assertSame($createdBICID, $model->getBICID());
+        $this->assertInstanceOf(IDType::class, $testValueForBICID);
+        $this->assertSame($testValueForBICID, $model->getBICID());
     }
 
     /**
@@ -660,10 +660,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIBANID());
 
-        $createdIBANID = $model->getIBANIDWithCreate();
+        $testValueForIBANID = $model->getIBANIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIBANID);
-        $this->assertSame($createdIBANID, $model->getIBANID());
+        $this->assertInstanceOf(IDType::class, $testValueForIBANID);
+        $this->assertSame($testValueForIBANID, $model->getIBANID());
     }
 
     /**
@@ -686,10 +686,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -712,10 +712,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineID());
 
-        $createdLineID = $model->getLineIDWithCreate();
+        $testValueForLineID = $model->getLineIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdLineID);
-        $this->assertSame($createdLineID, $model->getLineID());
+        $this->assertInstanceOf(IDType::class, $testValueForLineID);
+        $this->assertSame($testValueForLineID, $model->getLineID());
 
         // Property ParentLineID
 
@@ -728,10 +728,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getParentLineID());
 
-        $createdParentLineID = $model->getParentLineIDWithCreate();
+        $testValueForParentLineID = $model->getParentLineIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdParentLineID);
-        $this->assertSame($createdParentLineID, $model->getParentLineID());
+        $this->assertInstanceOf(IDType::class, $testValueForParentLineID);
+        $this->assertSame($testValueForParentLineID, $model->getParentLineID());
 
         // Property LineStatusCode
 
@@ -744,10 +744,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineStatusCode());
 
-        $createdLineStatusCode = $model->getLineStatusCodeWithCreate();
+        $testValueForLineStatusCode = $model->getLineStatusCodeWithCreate();
 
-        $this->assertInstanceOf(LineStatusCodeType::class, $createdLineStatusCode);
-        $this->assertSame($createdLineStatusCode, $model->getLineStatusCode());
+        $this->assertInstanceOf(LineStatusCodeType::class, $testValueForLineStatusCode);
+        $this->assertSame($testValueForLineStatusCode, $model->getLineStatusCode());
 
         // Property LineStatusReasonCode
 
@@ -760,10 +760,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineStatusReasonCode());
 
-        $createdLineStatusReasonCode = $model->getLineStatusReasonCodeWithCreate();
+        $testValueForLineStatusReasonCode = $model->getLineStatusReasonCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdLineStatusReasonCode);
-        $this->assertSame($createdLineStatusReasonCode, $model->getLineStatusReasonCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForLineStatusReasonCode);
+        $this->assertSame($testValueForLineStatusReasonCode, $model->getLineStatusReasonCode());
 
         // Property IncludedNote
 
@@ -779,9 +779,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedNote());
         $this->assertGreaterThanOrEqual(1, count($model->getIncludedNote()));
 
-        $createdIncludedNoteItem = $model->addToIncludedNoteWithCreate();
+        $testValueForIncludedNoteItem = $model->addToIncludedNoteWithCreate();
 
-        $this->assertInstanceOf(NoteType::class, $createdIncludedNoteItem);
+        $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteItem);
 
         $includedNoteOnceItem = new NoteType();
 
@@ -820,10 +820,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTestIndicator());
 
-        $createdTestIndicator = $model->getTestIndicatorWithCreate();
+        $testValueForTestIndicator = $model->getTestIndicatorWithCreate();
 
-        $this->assertInstanceOf(IndicatorType::class, $createdTestIndicator);
-        $this->assertSame($createdTestIndicator, $model->getTestIndicator());
+        $this->assertInstanceOf(IndicatorType::class, $testValueForTestIndicator);
+        $this->assertSame($testValueForTestIndicator, $model->getTestIndicator());
 
         // Property BusinessProcessSpecifiedDocumentContextParameter
 
@@ -836,10 +836,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBusinessProcessSpecifiedDocumentContextParameter());
 
-        $createdBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
+        $testValueForBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
 
-        $this->assertInstanceOf(DocumentContextParameterType::class, $createdBusinessProcessSpecifiedDocumentContextParameter);
-        $this->assertSame($createdBusinessProcessSpecifiedDocumentContextParameter, $model->getBusinessProcessSpecifiedDocumentContextParameter());
+        $this->assertInstanceOf(DocumentContextParameterType::class, $testValueForBusinessProcessSpecifiedDocumentContextParameter);
+        $this->assertSame($testValueForBusinessProcessSpecifiedDocumentContextParameter, $model->getBusinessProcessSpecifiedDocumentContextParameter());
 
         // Property GuidelineSpecifiedDocumentContextParameter
 
@@ -852,10 +852,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getGuidelineSpecifiedDocumentContextParameter());
 
-        $createdGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
+        $testValueForGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
 
-        $this->assertInstanceOf(DocumentContextParameterType::class, $createdGuidelineSpecifiedDocumentContextParameter);
-        $this->assertSame($createdGuidelineSpecifiedDocumentContextParameter, $model->getGuidelineSpecifiedDocumentContextParameter());
+        $this->assertInstanceOf(DocumentContextParameterType::class, $testValueForGuidelineSpecifiedDocumentContextParameter);
+        $this->assertSame($testValueForGuidelineSpecifiedDocumentContextParameter, $model->getGuidelineSpecifiedDocumentContextParameter());
     }
 
     /**
@@ -878,10 +878,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property Name
 
@@ -894,10 +894,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property TypeCode
 
@@ -910,10 +910,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(DocumentCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(DocumentCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property IssueDateTime
 
@@ -926,10 +926,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIssueDateTime());
 
-        $createdIssueDateTime = $model->getIssueDateTimeWithCreate();
+        $testValueForIssueDateTime = $model->getIssueDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdIssueDateTime);
-        $this->assertSame($createdIssueDateTime, $model->getIssueDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForIssueDateTime);
+        $this->assertSame($testValueForIssueDateTime, $model->getIssueDateTime());
 
         // Property CopyIndicator
 
@@ -942,10 +942,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCopyIndicator());
 
-        $createdCopyIndicator = $model->getCopyIndicatorWithCreate();
+        $testValueForCopyIndicator = $model->getCopyIndicatorWithCreate();
 
-        $this->assertInstanceOf(IndicatorType::class, $createdCopyIndicator);
-        $this->assertSame($createdCopyIndicator, $model->getCopyIndicator());
+        $this->assertInstanceOf(IndicatorType::class, $testValueForCopyIndicator);
+        $this->assertSame($testValueForCopyIndicator, $model->getCopyIndicator());
 
         // Property LanguageID
 
@@ -958,10 +958,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLanguageID());
 
-        $createdLanguageID = $model->getLanguageIDWithCreate();
+        $testValueForLanguageID = $model->getLanguageIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdLanguageID);
-        $this->assertSame($createdLanguageID, $model->getLanguageID());
+        $this->assertInstanceOf(IDType::class, $testValueForLanguageID);
+        $this->assertSame($testValueForLanguageID, $model->getLanguageID());
 
         // Property IncludedNote
 
@@ -977,9 +977,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedNote());
         $this->assertGreaterThanOrEqual(1, count($model->getIncludedNote()));
 
-        $createdIncludedNoteItem = $model->addToIncludedNoteWithCreate();
+        $testValueForIncludedNoteItem = $model->addToIncludedNoteWithCreate();
 
-        $this->assertInstanceOf(NoteType::class, $createdIncludedNoteItem);
+        $this->assertInstanceOf(NoteType::class, $testValueForIncludedNoteItem);
 
         $includedNoteOnceItem = new NoteType();
 
@@ -1008,10 +1008,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getEffectiveSpecifiedPeriod());
 
-        $createdEffectiveSpecifiedPeriod = $model->getEffectiveSpecifiedPeriodWithCreate();
+        $testValueForEffectiveSpecifiedPeriod = $model->getEffectiveSpecifiedPeriodWithCreate();
 
-        $this->assertInstanceOf(SpecifiedPeriodType::class, $createdEffectiveSpecifiedPeriod);
-        $this->assertSame($createdEffectiveSpecifiedPeriod, $model->getEffectiveSpecifiedPeriod());
+        $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForEffectiveSpecifiedPeriod);
+        $this->assertSame($testValueForEffectiveSpecifiedPeriod, $model->getEffectiveSpecifiedPeriod());
     }
 
     /**
@@ -1034,10 +1034,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerReference());
 
-        $createdBuyerReference = $model->getBuyerReferenceWithCreate();
+        $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdBuyerReference);
-        $this->assertSame($createdBuyerReference, $model->getBuyerReference());
+        $this->assertInstanceOf(TextType::class, $testValueForBuyerReference);
+        $this->assertSame($testValueForBuyerReference, $model->getBuyerReference());
 
         // Property SellerTradeParty
 
@@ -1050,10 +1050,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerTradeParty());
 
-        $createdSellerTradeParty = $model->getSellerTradePartyWithCreate();
+        $testValueForSellerTradeParty = $model->getSellerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdSellerTradeParty);
-        $this->assertSame($createdSellerTradeParty, $model->getSellerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForSellerTradeParty);
+        $this->assertSame($testValueForSellerTradeParty, $model->getSellerTradeParty());
 
         // Property BuyerTradeParty
 
@@ -1066,10 +1066,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerTradeParty());
 
-        $createdBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
+        $testValueForBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdBuyerTradeParty);
-        $this->assertSame($createdBuyerTradeParty, $model->getBuyerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForBuyerTradeParty);
+        $this->assertSame($testValueForBuyerTradeParty, $model->getBuyerTradeParty());
 
         // Property SalesAgentTradeParty
 
@@ -1082,10 +1082,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSalesAgentTradeParty());
 
-        $createdSalesAgentTradeParty = $model->getSalesAgentTradePartyWithCreate();
+        $testValueForSalesAgentTradeParty = $model->getSalesAgentTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdSalesAgentTradeParty);
-        $this->assertSame($createdSalesAgentTradeParty, $model->getSalesAgentTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForSalesAgentTradeParty);
+        $this->assertSame($testValueForSalesAgentTradeParty, $model->getSalesAgentTradeParty());
 
         // Property BuyerTaxRepresentativeTradeParty
 
@@ -1098,10 +1098,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerTaxRepresentativeTradeParty());
 
-        $createdBuyerTaxRepresentativeTradeParty = $model->getBuyerTaxRepresentativeTradePartyWithCreate();
+        $testValueForBuyerTaxRepresentativeTradeParty = $model->getBuyerTaxRepresentativeTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdBuyerTaxRepresentativeTradeParty);
-        $this->assertSame($createdBuyerTaxRepresentativeTradeParty, $model->getBuyerTaxRepresentativeTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForBuyerTaxRepresentativeTradeParty);
+        $this->assertSame($testValueForBuyerTaxRepresentativeTradeParty, $model->getBuyerTaxRepresentativeTradeParty());
 
         // Property SellerTaxRepresentativeTradeParty
 
@@ -1114,10 +1114,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerTaxRepresentativeTradeParty());
 
-        $createdSellerTaxRepresentativeTradeParty = $model->getSellerTaxRepresentativeTradePartyWithCreate();
+        $testValueForSellerTaxRepresentativeTradeParty = $model->getSellerTaxRepresentativeTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdSellerTaxRepresentativeTradeParty);
-        $this->assertSame($createdSellerTaxRepresentativeTradeParty, $model->getSellerTaxRepresentativeTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForSellerTaxRepresentativeTradeParty);
+        $this->assertSame($testValueForSellerTaxRepresentativeTradeParty, $model->getSellerTaxRepresentativeTradeParty());
 
         // Property ProductEndUserTradeParty
 
@@ -1130,10 +1130,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getProductEndUserTradeParty());
 
-        $createdProductEndUserTradeParty = $model->getProductEndUserTradePartyWithCreate();
+        $testValueForProductEndUserTradeParty = $model->getProductEndUserTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdProductEndUserTradeParty);
-        $this->assertSame($createdProductEndUserTradeParty, $model->getProductEndUserTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForProductEndUserTradeParty);
+        $this->assertSame($testValueForProductEndUserTradeParty, $model->getProductEndUserTradeParty());
 
         // Property ApplicableTradeDeliveryTerms
 
@@ -1146,10 +1146,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableTradeDeliveryTerms());
 
-        $createdApplicableTradeDeliveryTerms = $model->getApplicableTradeDeliveryTermsWithCreate();
+        $testValueForApplicableTradeDeliveryTerms = $model->getApplicableTradeDeliveryTermsWithCreate();
 
-        $this->assertInstanceOf(TradeDeliveryTermsType::class, $createdApplicableTradeDeliveryTerms);
-        $this->assertSame($createdApplicableTradeDeliveryTerms, $model->getApplicableTradeDeliveryTerms());
+        $this->assertInstanceOf(TradeDeliveryTermsType::class, $testValueForApplicableTradeDeliveryTerms);
+        $this->assertSame($testValueForApplicableTradeDeliveryTerms, $model->getApplicableTradeDeliveryTerms());
 
         // Property SellerOrderReferencedDocument
 
@@ -1162,10 +1162,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerOrderReferencedDocument());
 
-        $createdSellerOrderReferencedDocument = $model->getSellerOrderReferencedDocumentWithCreate();
+        $testValueForSellerOrderReferencedDocument = $model->getSellerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdSellerOrderReferencedDocument);
-        $this->assertSame($createdSellerOrderReferencedDocument, $model->getSellerOrderReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForSellerOrderReferencedDocument);
+        $this->assertSame($testValueForSellerOrderReferencedDocument, $model->getSellerOrderReferencedDocument());
 
         // Property BuyerOrderReferencedDocument
 
@@ -1178,10 +1178,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerOrderReferencedDocument());
 
-        $createdBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
+        $testValueForBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdBuyerOrderReferencedDocument);
-        $this->assertSame($createdBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForBuyerOrderReferencedDocument);
+        $this->assertSame($testValueForBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
 
         // Property QuotationReferencedDocument
 
@@ -1194,10 +1194,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getQuotationReferencedDocument());
 
-        $createdQuotationReferencedDocument = $model->getQuotationReferencedDocumentWithCreate();
+        $testValueForQuotationReferencedDocument = $model->getQuotationReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdQuotationReferencedDocument);
-        $this->assertSame($createdQuotationReferencedDocument, $model->getQuotationReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForQuotationReferencedDocument);
+        $this->assertSame($testValueForQuotationReferencedDocument, $model->getQuotationReferencedDocument());
 
         // Property ContractReferencedDocument
 
@@ -1210,10 +1210,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getContractReferencedDocument());
 
-        $createdContractReferencedDocument = $model->getContractReferencedDocumentWithCreate();
+        $testValueForContractReferencedDocument = $model->getContractReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdContractReferencedDocument);
-        $this->assertSame($createdContractReferencedDocument, $model->getContractReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
+        $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
         // Property AdditionalReferencedDocument
 
@@ -1229,9 +1229,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
 
-        $createdAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
+        $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdAdditionalReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1260,10 +1260,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerAgentTradeParty());
 
-        $createdBuyerAgentTradeParty = $model->getBuyerAgentTradePartyWithCreate();
+        $testValueForBuyerAgentTradeParty = $model->getBuyerAgentTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdBuyerAgentTradeParty);
-        $this->assertSame($createdBuyerAgentTradeParty, $model->getBuyerAgentTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForBuyerAgentTradeParty);
+        $this->assertSame($testValueForBuyerAgentTradeParty, $model->getBuyerAgentTradeParty());
 
         // Property SpecifiedProcuringProject
 
@@ -1276,10 +1276,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedProcuringProject());
 
-        $createdSpecifiedProcuringProject = $model->getSpecifiedProcuringProjectWithCreate();
+        $testValueForSpecifiedProcuringProject = $model->getSpecifiedProcuringProjectWithCreate();
 
-        $this->assertInstanceOf(ProcuringProjectType::class, $createdSpecifiedProcuringProject);
-        $this->assertSame($createdSpecifiedProcuringProject, $model->getSpecifiedProcuringProject());
+        $this->assertInstanceOf(ProcuringProjectType::class, $testValueForSpecifiedProcuringProject);
+        $this->assertSame($testValueForSpecifiedProcuringProject, $model->getSpecifiedProcuringProject());
 
         // Property UltimateCustomerOrderReferencedDocument
 
@@ -1295,9 +1295,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getUltimateCustomerOrderReferencedDocument()));
 
-        $createdUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
+        $testValueForUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdUltimateCustomerOrderReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentItem);
 
         $ultimateCustomerOrderReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1339,9 +1339,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getRelatedSupplyChainConsignment());
         $this->assertGreaterThanOrEqual(1, count($model->getRelatedSupplyChainConsignment()));
 
-        $createdRelatedSupplyChainConsignmentItem = $model->addToRelatedSupplyChainConsignmentWithCreate();
+        $testValueForRelatedSupplyChainConsignmentItem = $model->addToRelatedSupplyChainConsignmentWithCreate();
 
-        $this->assertInstanceOf(LogisticsTransportMovementType::class, $createdRelatedSupplyChainConsignmentItem);
+        $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForRelatedSupplyChainConsignmentItem);
 
         $relatedSupplyChainConsignmentOnceItem = new LogisticsTransportMovementType();
 
@@ -1370,10 +1370,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getShipToTradeParty());
 
-        $createdShipToTradeParty = $model->getShipToTradePartyWithCreate();
+        $testValueForShipToTradeParty = $model->getShipToTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdShipToTradeParty);
-        $this->assertSame($createdShipToTradeParty, $model->getShipToTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForShipToTradeParty);
+        $this->assertSame($testValueForShipToTradeParty, $model->getShipToTradeParty());
 
         // Property UltimateShipToTradeParty
 
@@ -1386,10 +1386,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getUltimateShipToTradeParty());
 
-        $createdUltimateShipToTradeParty = $model->getUltimateShipToTradePartyWithCreate();
+        $testValueForUltimateShipToTradeParty = $model->getUltimateShipToTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdUltimateShipToTradeParty);
-        $this->assertSame($createdUltimateShipToTradeParty, $model->getUltimateShipToTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForUltimateShipToTradeParty);
+        $this->assertSame($testValueForUltimateShipToTradeParty, $model->getUltimateShipToTradeParty());
 
         // Property ShipFromTradeParty
 
@@ -1402,10 +1402,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getShipFromTradeParty());
 
-        $createdShipFromTradeParty = $model->getShipFromTradePartyWithCreate();
+        $testValueForShipFromTradeParty = $model->getShipFromTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdShipFromTradeParty);
-        $this->assertSame($createdShipFromTradeParty, $model->getShipFromTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForShipFromTradeParty);
+        $this->assertSame($testValueForShipFromTradeParty, $model->getShipFromTradeParty());
 
         // Property ActualDeliverySupplyChainEvent
 
@@ -1418,10 +1418,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getActualDeliverySupplyChainEvent());
 
-        $createdActualDeliverySupplyChainEvent = $model->getActualDeliverySupplyChainEventWithCreate();
+        $testValueForActualDeliverySupplyChainEvent = $model->getActualDeliverySupplyChainEventWithCreate();
 
-        $this->assertInstanceOf(SupplyChainEventType::class, $createdActualDeliverySupplyChainEvent);
-        $this->assertSame($createdActualDeliverySupplyChainEvent, $model->getActualDeliverySupplyChainEvent());
+        $this->assertInstanceOf(SupplyChainEventType::class, $testValueForActualDeliverySupplyChainEvent);
+        $this->assertSame($testValueForActualDeliverySupplyChainEvent, $model->getActualDeliverySupplyChainEvent());
 
         // Property DespatchAdviceReferencedDocument
 
@@ -1434,10 +1434,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDespatchAdviceReferencedDocument());
 
-        $createdDespatchAdviceReferencedDocument = $model->getDespatchAdviceReferencedDocumentWithCreate();
+        $testValueForDespatchAdviceReferencedDocument = $model->getDespatchAdviceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdDespatchAdviceReferencedDocument);
-        $this->assertSame($createdDespatchAdviceReferencedDocument, $model->getDespatchAdviceReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForDespatchAdviceReferencedDocument);
+        $this->assertSame($testValueForDespatchAdviceReferencedDocument, $model->getDespatchAdviceReferencedDocument());
 
         // Property ReceivingAdviceReferencedDocument
 
@@ -1450,10 +1450,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReceivingAdviceReferencedDocument());
 
-        $createdReceivingAdviceReferencedDocument = $model->getReceivingAdviceReferencedDocumentWithCreate();
+        $testValueForReceivingAdviceReferencedDocument = $model->getReceivingAdviceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdReceivingAdviceReferencedDocument);
-        $this->assertSame($createdReceivingAdviceReferencedDocument, $model->getReceivingAdviceReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForReceivingAdviceReferencedDocument);
+        $this->assertSame($testValueForReceivingAdviceReferencedDocument, $model->getReceivingAdviceReferencedDocument());
 
         // Property DeliveryNoteReferencedDocument
 
@@ -1466,10 +1466,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDeliveryNoteReferencedDocument());
 
-        $createdDeliveryNoteReferencedDocument = $model->getDeliveryNoteReferencedDocumentWithCreate();
+        $testValueForDeliveryNoteReferencedDocument = $model->getDeliveryNoteReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdDeliveryNoteReferencedDocument);
-        $this->assertSame($createdDeliveryNoteReferencedDocument, $model->getDeliveryNoteReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForDeliveryNoteReferencedDocument);
+        $this->assertSame($testValueForDeliveryNoteReferencedDocument, $model->getDeliveryNoteReferencedDocument());
     }
 
     /**
@@ -1492,10 +1492,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCreditorReferenceID());
 
-        $createdCreditorReferenceID = $model->getCreditorReferenceIDWithCreate();
+        $testValueForCreditorReferenceID = $model->getCreditorReferenceIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdCreditorReferenceID);
-        $this->assertSame($createdCreditorReferenceID, $model->getCreditorReferenceID());
+        $this->assertInstanceOf(IDType::class, $testValueForCreditorReferenceID);
+        $this->assertSame($testValueForCreditorReferenceID, $model->getCreditorReferenceID());
 
         // Property PaymentReference
 
@@ -1508,10 +1508,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPaymentReference());
 
-        $createdPaymentReference = $model->getPaymentReferenceWithCreate();
+        $testValueForPaymentReference = $model->getPaymentReferenceWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdPaymentReference);
-        $this->assertSame($createdPaymentReference, $model->getPaymentReference());
+        $this->assertInstanceOf(TextType::class, $testValueForPaymentReference);
+        $this->assertSame($testValueForPaymentReference, $model->getPaymentReference());
 
         // Property TaxCurrencyCode
 
@@ -1524,10 +1524,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTaxCurrencyCode());
 
-        $createdTaxCurrencyCode = $model->getTaxCurrencyCodeWithCreate();
+        $testValueForTaxCurrencyCode = $model->getTaxCurrencyCodeWithCreate();
 
-        $this->assertInstanceOf(CurrencyCodeType::class, $createdTaxCurrencyCode);
-        $this->assertSame($createdTaxCurrencyCode, $model->getTaxCurrencyCode());
+        $this->assertInstanceOf(CurrencyCodeType::class, $testValueForTaxCurrencyCode);
+        $this->assertSame($testValueForTaxCurrencyCode, $model->getTaxCurrencyCode());
 
         // Property InvoiceCurrencyCode
 
@@ -1540,10 +1540,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceCurrencyCode());
 
-        $createdInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
+        $testValueForInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
 
-        $this->assertInstanceOf(CurrencyCodeType::class, $createdInvoiceCurrencyCode);
-        $this->assertSame($createdInvoiceCurrencyCode, $model->getInvoiceCurrencyCode());
+        $this->assertInstanceOf(CurrencyCodeType::class, $testValueForInvoiceCurrencyCode);
+        $this->assertSame($testValueForInvoiceCurrencyCode, $model->getInvoiceCurrencyCode());
 
         // Property InvoiceIssuerReference
 
@@ -1556,10 +1556,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceIssuerReference());
 
-        $createdInvoiceIssuerReference = $model->getInvoiceIssuerReferenceWithCreate();
+        $testValueForInvoiceIssuerReference = $model->getInvoiceIssuerReferenceWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdInvoiceIssuerReference);
-        $this->assertSame($createdInvoiceIssuerReference, $model->getInvoiceIssuerReference());
+        $this->assertInstanceOf(TextType::class, $testValueForInvoiceIssuerReference);
+        $this->assertSame($testValueForInvoiceIssuerReference, $model->getInvoiceIssuerReference());
 
         // Property InvoicerTradeParty
 
@@ -1572,10 +1572,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoicerTradeParty());
 
-        $createdInvoicerTradeParty = $model->getInvoicerTradePartyWithCreate();
+        $testValueForInvoicerTradeParty = $model->getInvoicerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdInvoicerTradeParty);
-        $this->assertSame($createdInvoicerTradeParty, $model->getInvoicerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForInvoicerTradeParty);
+        $this->assertSame($testValueForInvoicerTradeParty, $model->getInvoicerTradeParty());
 
         // Property InvoiceeTradeParty
 
@@ -1588,10 +1588,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceeTradeParty());
 
-        $createdInvoiceeTradeParty = $model->getInvoiceeTradePartyWithCreate();
+        $testValueForInvoiceeTradeParty = $model->getInvoiceeTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdInvoiceeTradeParty);
-        $this->assertSame($createdInvoiceeTradeParty, $model->getInvoiceeTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForInvoiceeTradeParty);
+        $this->assertSame($testValueForInvoiceeTradeParty, $model->getInvoiceeTradeParty());
 
         // Property PayeeTradeParty
 
@@ -1604,10 +1604,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayeeTradeParty());
 
-        $createdPayeeTradeParty = $model->getPayeeTradePartyWithCreate();
+        $testValueForPayeeTradeParty = $model->getPayeeTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdPayeeTradeParty);
-        $this->assertSame($createdPayeeTradeParty, $model->getPayeeTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForPayeeTradeParty);
+        $this->assertSame($testValueForPayeeTradeParty, $model->getPayeeTradeParty());
 
         // Property PayerTradeParty
 
@@ -1620,10 +1620,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayerTradeParty());
 
-        $createdPayerTradeParty = $model->getPayerTradePartyWithCreate();
+        $testValueForPayerTradeParty = $model->getPayerTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdPayerTradeParty);
-        $this->assertSame($createdPayerTradeParty, $model->getPayerTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForPayerTradeParty);
+        $this->assertSame($testValueForPayerTradeParty, $model->getPayerTradeParty());
 
         // Property TaxApplicableTradeCurrencyExchange
 
@@ -1636,10 +1636,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTaxApplicableTradeCurrencyExchange());
 
-        $createdTaxApplicableTradeCurrencyExchange = $model->getTaxApplicableTradeCurrencyExchangeWithCreate();
+        $testValueForTaxApplicableTradeCurrencyExchange = $model->getTaxApplicableTradeCurrencyExchangeWithCreate();
 
-        $this->assertInstanceOf(TradeCurrencyExchangeType::class, $createdTaxApplicableTradeCurrencyExchange);
-        $this->assertSame($createdTaxApplicableTradeCurrencyExchange, $model->getTaxApplicableTradeCurrencyExchange());
+        $this->assertInstanceOf(TradeCurrencyExchangeType::class, $testValueForTaxApplicableTradeCurrencyExchange);
+        $this->assertSame($testValueForTaxApplicableTradeCurrencyExchange, $model->getTaxApplicableTradeCurrencyExchange());
 
         // Property SpecifiedTradeSettlementPaymentMeans
 
@@ -1655,9 +1655,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeSettlementPaymentMeans());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeSettlementPaymentMeans()));
 
-        $createdSpecifiedTradeSettlementPaymentMeansItem = $model->addToSpecifiedTradeSettlementPaymentMeansWithCreate();
+        $testValueForSpecifiedTradeSettlementPaymentMeansItem = $model->addToSpecifiedTradeSettlementPaymentMeansWithCreate();
 
-        $this->assertInstanceOf(TradeSettlementPaymentMeansType::class, $createdSpecifiedTradeSettlementPaymentMeansItem);
+        $this->assertInstanceOf(TradeSettlementPaymentMeansType::class, $testValueForSpecifiedTradeSettlementPaymentMeansItem);
 
         $specifiedTradeSettlementPaymentMeansOnceItem = new TradeSettlementPaymentMeansType();
 
@@ -1689,9 +1689,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableTradeTax());
         $this->assertGreaterThanOrEqual(1, count($model->getApplicableTradeTax()));
 
-        $createdApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
+        $testValueForApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdApplicableTradeTaxItem);
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxItem);
 
         $applicableTradeTaxOnceItem = new TradeTaxType();
 
@@ -1720,10 +1720,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBillingSpecifiedPeriod());
 
-        $createdBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
+        $testValueForBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
 
-        $this->assertInstanceOf(SpecifiedPeriodType::class, $createdBillingSpecifiedPeriod);
-        $this->assertSame($createdBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
+        $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
+        $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
 
         // Property SpecifiedTradeAllowanceCharge
 
@@ -1739,9 +1739,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeAllowanceCharge()));
 
-        $createdSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
+        $testValueForSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $createdSpecifiedTradeAllowanceChargeItem);
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeItem);
 
         $specifiedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -1773,9 +1773,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedLogisticsServiceCharge());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedLogisticsServiceCharge()));
 
-        $createdSpecifiedLogisticsServiceChargeItem = $model->addToSpecifiedLogisticsServiceChargeWithCreate();
+        $testValueForSpecifiedLogisticsServiceChargeItem = $model->addToSpecifiedLogisticsServiceChargeWithCreate();
 
-        $this->assertInstanceOf(LogisticsServiceChargeType::class, $createdSpecifiedLogisticsServiceChargeItem);
+        $this->assertInstanceOf(LogisticsServiceChargeType::class, $testValueForSpecifiedLogisticsServiceChargeItem);
 
         $specifiedLogisticsServiceChargeOnceItem = new LogisticsServiceChargeType();
 
@@ -1807,9 +1807,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradePaymentTerms());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradePaymentTerms()));
 
-        $createdSpecifiedTradePaymentTermsItem = $model->addToSpecifiedTradePaymentTermsWithCreate();
+        $testValueForSpecifiedTradePaymentTermsItem = $model->addToSpecifiedTradePaymentTermsWithCreate();
 
-        $this->assertInstanceOf(TradePaymentTermsType::class, $createdSpecifiedTradePaymentTermsItem);
+        $this->assertInstanceOf(TradePaymentTermsType::class, $testValueForSpecifiedTradePaymentTermsItem);
 
         $specifiedTradePaymentTermsOnceItem = new TradePaymentTermsType();
 
@@ -1838,10 +1838,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
-        $createdSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
+        $testValueForSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
 
-        $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $createdSpecifiedTradeSettlementHeaderMonetarySummation);
-        $this->assertSame($createdSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
+        $this->assertInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $testValueForSpecifiedTradeSettlementHeaderMonetarySummation);
+        $this->assertSame($testValueForSpecifiedTradeSettlementHeaderMonetarySummation, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
         // Property InvoiceReferencedDocument
 
@@ -1857,9 +1857,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getInvoiceReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getInvoiceReferencedDocument()));
 
-        $createdInvoiceReferencedDocumentItem = $model->addToInvoiceReferencedDocumentWithCreate();
+        $testValueForInvoiceReferencedDocumentItem = $model->addToInvoiceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdInvoiceReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocumentItem);
 
         $invoiceReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -1891,9 +1891,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getReceivableSpecifiedTradeAccountingAccount());
         $this->assertGreaterThanOrEqual(1, count($model->getReceivableSpecifiedTradeAccountingAccount()));
 
-        $createdReceivableSpecifiedTradeAccountingAccountItem = $model->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
+        $testValueForReceivableSpecifiedTradeAccountingAccountItem = $model->addToReceivableSpecifiedTradeAccountingAccountWithCreate();
 
-        $this->assertInstanceOf(TradeAccountingAccountType::class, $createdReceivableSpecifiedTradeAccountingAccountItem);
+        $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccountItem);
 
         $receivableSpecifiedTradeAccountingAccountOnceItem = new TradeAccountingAccountType();
 
@@ -1925,9 +1925,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedAdvancePayment());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedAdvancePayment()));
 
-        $createdSpecifiedAdvancePaymentItem = $model->addToSpecifiedAdvancePaymentWithCreate();
+        $testValueForSpecifiedAdvancePaymentItem = $model->addToSpecifiedAdvancePaymentWithCreate();
 
-        $this->assertInstanceOf(AdvancePaymentType::class, $createdSpecifiedAdvancePaymentItem);
+        $this->assertInstanceOf(AdvancePaymentType::class, $testValueForSpecifiedAdvancePaymentItem);
 
         $specifiedAdvancePaymentOnceItem = new AdvancePaymentType();
 
@@ -1966,10 +1966,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property TradingBusinessName
 
@@ -1982,10 +1982,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTradingBusinessName());
 
-        $createdTradingBusinessName = $model->getTradingBusinessNameWithCreate();
+        $testValueForTradingBusinessName = $model->getTradingBusinessNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdTradingBusinessName);
-        $this->assertSame($createdTradingBusinessName, $model->getTradingBusinessName());
+        $this->assertInstanceOf(TextType::class, $testValueForTradingBusinessName);
+        $this->assertSame($testValueForTradingBusinessName, $model->getTradingBusinessName());
 
         // Property PostalTradeAddress
 
@@ -1998,10 +1998,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPostalTradeAddress());
 
-        $createdPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
+        $testValueForPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
 
-        $this->assertInstanceOf(TradeAddressType::class, $createdPostalTradeAddress);
-        $this->assertSame($createdPostalTradeAddress, $model->getPostalTradeAddress());
+        $this->assertInstanceOf(TradeAddressType::class, $testValueForPostalTradeAddress);
+        $this->assertSame($testValueForPostalTradeAddress, $model->getPostalTradeAddress());
     }
 
     /**
@@ -2024,10 +2024,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerOrderReferencedDocument());
 
-        $createdSellerOrderReferencedDocument = $model->getSellerOrderReferencedDocumentWithCreate();
+        $testValueForSellerOrderReferencedDocument = $model->getSellerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdSellerOrderReferencedDocument);
-        $this->assertSame($createdSellerOrderReferencedDocument, $model->getSellerOrderReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForSellerOrderReferencedDocument);
+        $this->assertSame($testValueForSellerOrderReferencedDocument, $model->getSellerOrderReferencedDocument());
 
         // Property BuyerOrderReferencedDocument
 
@@ -2040,10 +2040,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerOrderReferencedDocument());
 
-        $createdBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
+        $testValueForBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdBuyerOrderReferencedDocument);
-        $this->assertSame($createdBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForBuyerOrderReferencedDocument);
+        $this->assertSame($testValueForBuyerOrderReferencedDocument, $model->getBuyerOrderReferencedDocument());
 
         // Property QuotationReferencedDocument
 
@@ -2056,10 +2056,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getQuotationReferencedDocument());
 
-        $createdQuotationReferencedDocument = $model->getQuotationReferencedDocumentWithCreate();
+        $testValueForQuotationReferencedDocument = $model->getQuotationReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdQuotationReferencedDocument);
-        $this->assertSame($createdQuotationReferencedDocument, $model->getQuotationReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForQuotationReferencedDocument);
+        $this->assertSame($testValueForQuotationReferencedDocument, $model->getQuotationReferencedDocument());
 
         // Property ContractReferencedDocument
 
@@ -2072,10 +2072,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getContractReferencedDocument());
 
-        $createdContractReferencedDocument = $model->getContractReferencedDocumentWithCreate();
+        $testValueForContractReferencedDocument = $model->getContractReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdContractReferencedDocument);
-        $this->assertSame($createdContractReferencedDocument, $model->getContractReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForContractReferencedDocument);
+        $this->assertSame($testValueForContractReferencedDocument, $model->getContractReferencedDocument());
 
         // Property AdditionalReferencedDocument
 
@@ -2091,9 +2091,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
 
-        $createdAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
+        $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdAdditionalReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2122,10 +2122,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getGrossPriceProductTradePrice());
 
-        $createdGrossPriceProductTradePrice = $model->getGrossPriceProductTradePriceWithCreate();
+        $testValueForGrossPriceProductTradePrice = $model->getGrossPriceProductTradePriceWithCreate();
 
-        $this->assertInstanceOf(TradePriceType::class, $createdGrossPriceProductTradePrice);
-        $this->assertSame($createdGrossPriceProductTradePrice, $model->getGrossPriceProductTradePrice());
+        $this->assertInstanceOf(TradePriceType::class, $testValueForGrossPriceProductTradePrice);
+        $this->assertSame($testValueForGrossPriceProductTradePrice, $model->getGrossPriceProductTradePrice());
 
         // Property NetPriceProductTradePrice
 
@@ -2138,10 +2138,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getNetPriceProductTradePrice());
 
-        $createdNetPriceProductTradePrice = $model->getNetPriceProductTradePriceWithCreate();
+        $testValueForNetPriceProductTradePrice = $model->getNetPriceProductTradePriceWithCreate();
 
-        $this->assertInstanceOf(TradePriceType::class, $createdNetPriceProductTradePrice);
-        $this->assertSame($createdNetPriceProductTradePrice, $model->getNetPriceProductTradePrice());
+        $this->assertInstanceOf(TradePriceType::class, $testValueForNetPriceProductTradePrice);
+        $this->assertSame($testValueForNetPriceProductTradePrice, $model->getNetPriceProductTradePrice());
 
         // Property UltimateCustomerOrderReferencedDocument
 
@@ -2157,9 +2157,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getUltimateCustomerOrderReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getUltimateCustomerOrderReferencedDocument()));
 
-        $createdUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
+        $testValueForUltimateCustomerOrderReferencedDocumentItem = $model->addToUltimateCustomerOrderReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdUltimateCustomerOrderReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForUltimateCustomerOrderReferencedDocumentItem);
 
         $ultimateCustomerOrderReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2198,10 +2198,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBilledQuantity());
 
-        $createdBilledQuantity = $model->getBilledQuantityWithCreate();
+        $testValueForBilledQuantity = $model->getBilledQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdBilledQuantity);
-        $this->assertSame($createdBilledQuantity, $model->getBilledQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForBilledQuantity);
+        $this->assertSame($testValueForBilledQuantity, $model->getBilledQuantity());
 
         // Property ChargeFreeQuantity
 
@@ -2214,10 +2214,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getChargeFreeQuantity());
 
-        $createdChargeFreeQuantity = $model->getChargeFreeQuantityWithCreate();
+        $testValueForChargeFreeQuantity = $model->getChargeFreeQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdChargeFreeQuantity);
-        $this->assertSame($createdChargeFreeQuantity, $model->getChargeFreeQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForChargeFreeQuantity);
+        $this->assertSame($testValueForChargeFreeQuantity, $model->getChargeFreeQuantity());
 
         // Property PackageQuantity
 
@@ -2230,10 +2230,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPackageQuantity());
 
-        $createdPackageQuantity = $model->getPackageQuantityWithCreate();
+        $testValueForPackageQuantity = $model->getPackageQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdPackageQuantity);
-        $this->assertSame($createdPackageQuantity, $model->getPackageQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForPackageQuantity);
+        $this->assertSame($testValueForPackageQuantity, $model->getPackageQuantity());
 
         // Property ShipToTradeParty
 
@@ -2246,10 +2246,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getShipToTradeParty());
 
-        $createdShipToTradeParty = $model->getShipToTradePartyWithCreate();
+        $testValueForShipToTradeParty = $model->getShipToTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdShipToTradeParty);
-        $this->assertSame($createdShipToTradeParty, $model->getShipToTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForShipToTradeParty);
+        $this->assertSame($testValueForShipToTradeParty, $model->getShipToTradeParty());
 
         // Property UltimateShipToTradeParty
 
@@ -2262,10 +2262,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getUltimateShipToTradeParty());
 
-        $createdUltimateShipToTradeParty = $model->getUltimateShipToTradePartyWithCreate();
+        $testValueForUltimateShipToTradeParty = $model->getUltimateShipToTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdUltimateShipToTradeParty);
-        $this->assertSame($createdUltimateShipToTradeParty, $model->getUltimateShipToTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForUltimateShipToTradeParty);
+        $this->assertSame($testValueForUltimateShipToTradeParty, $model->getUltimateShipToTradeParty());
 
         // Property ActualDeliverySupplyChainEvent
 
@@ -2278,10 +2278,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getActualDeliverySupplyChainEvent());
 
-        $createdActualDeliverySupplyChainEvent = $model->getActualDeliverySupplyChainEventWithCreate();
+        $testValueForActualDeliverySupplyChainEvent = $model->getActualDeliverySupplyChainEventWithCreate();
 
-        $this->assertInstanceOf(SupplyChainEventType::class, $createdActualDeliverySupplyChainEvent);
-        $this->assertSame($createdActualDeliverySupplyChainEvent, $model->getActualDeliverySupplyChainEvent());
+        $this->assertInstanceOf(SupplyChainEventType::class, $testValueForActualDeliverySupplyChainEvent);
+        $this->assertSame($testValueForActualDeliverySupplyChainEvent, $model->getActualDeliverySupplyChainEvent());
 
         // Property DespatchAdviceReferencedDocument
 
@@ -2294,10 +2294,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDespatchAdviceReferencedDocument());
 
-        $createdDespatchAdviceReferencedDocument = $model->getDespatchAdviceReferencedDocumentWithCreate();
+        $testValueForDespatchAdviceReferencedDocument = $model->getDespatchAdviceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdDespatchAdviceReferencedDocument);
-        $this->assertSame($createdDespatchAdviceReferencedDocument, $model->getDespatchAdviceReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForDespatchAdviceReferencedDocument);
+        $this->assertSame($testValueForDespatchAdviceReferencedDocument, $model->getDespatchAdviceReferencedDocument());
 
         // Property ReceivingAdviceReferencedDocument
 
@@ -2310,10 +2310,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReceivingAdviceReferencedDocument());
 
-        $createdReceivingAdviceReferencedDocument = $model->getReceivingAdviceReferencedDocumentWithCreate();
+        $testValueForReceivingAdviceReferencedDocument = $model->getReceivingAdviceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdReceivingAdviceReferencedDocument);
-        $this->assertSame($createdReceivingAdviceReferencedDocument, $model->getReceivingAdviceReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForReceivingAdviceReferencedDocument);
+        $this->assertSame($testValueForReceivingAdviceReferencedDocument, $model->getReceivingAdviceReferencedDocument());
 
         // Property DeliveryNoteReferencedDocument
 
@@ -2326,10 +2326,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDeliveryNoteReferencedDocument());
 
-        $createdDeliveryNoteReferencedDocument = $model->getDeliveryNoteReferencedDocumentWithCreate();
+        $testValueForDeliveryNoteReferencedDocument = $model->getDeliveryNoteReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdDeliveryNoteReferencedDocument);
-        $this->assertSame($createdDeliveryNoteReferencedDocument, $model->getDeliveryNoteReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForDeliveryNoteReferencedDocument);
+        $this->assertSame($testValueForDeliveryNoteReferencedDocument, $model->getDeliveryNoteReferencedDocument());
     }
 
     /**
@@ -2355,9 +2355,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableTradeTax());
         $this->assertGreaterThanOrEqual(1, count($model->getApplicableTradeTax()));
 
-        $createdApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
+        $testValueForApplicableTradeTaxItem = $model->addToApplicableTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdApplicableTradeTaxItem);
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForApplicableTradeTaxItem);
 
         $applicableTradeTaxOnceItem = new TradeTaxType();
 
@@ -2386,10 +2386,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBillingSpecifiedPeriod());
 
-        $createdBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
+        $testValueForBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
 
-        $this->assertInstanceOf(SpecifiedPeriodType::class, $createdBillingSpecifiedPeriod);
-        $this->assertSame($createdBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
+        $this->assertInstanceOf(SpecifiedPeriodType::class, $testValueForBillingSpecifiedPeriod);
+        $this->assertSame($testValueForBillingSpecifiedPeriod, $model->getBillingSpecifiedPeriod());
 
         // Property SpecifiedTradeAllowanceCharge
 
@@ -2405,9 +2405,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTradeAllowanceCharge());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTradeAllowanceCharge()));
 
-        $createdSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
+        $testValueForSpecifiedTradeAllowanceChargeItem = $model->addToSpecifiedTradeAllowanceChargeWithCreate();
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $createdSpecifiedTradeAllowanceChargeItem);
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForSpecifiedTradeAllowanceChargeItem);
 
         $specifiedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -2436,10 +2436,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedTradeSettlementLineMonetarySummation());
 
-        $createdSpecifiedTradeSettlementLineMonetarySummation = $model->getSpecifiedTradeSettlementLineMonetarySummationWithCreate();
+        $testValueForSpecifiedTradeSettlementLineMonetarySummation = $model->getSpecifiedTradeSettlementLineMonetarySummationWithCreate();
 
-        $this->assertInstanceOf(TradeSettlementLineMonetarySummationType::class, $createdSpecifiedTradeSettlementLineMonetarySummation);
-        $this->assertSame($createdSpecifiedTradeSettlementLineMonetarySummation, $model->getSpecifiedTradeSettlementLineMonetarySummation());
+        $this->assertInstanceOf(TradeSettlementLineMonetarySummationType::class, $testValueForSpecifiedTradeSettlementLineMonetarySummation);
+        $this->assertSame($testValueForSpecifiedTradeSettlementLineMonetarySummation, $model->getSpecifiedTradeSettlementLineMonetarySummation());
 
         // Property InvoiceReferencedDocument
 
@@ -2452,10 +2452,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInvoiceReferencedDocument());
 
-        $createdInvoiceReferencedDocument = $model->getInvoiceReferencedDocumentWithCreate();
+        $testValueForInvoiceReferencedDocument = $model->getInvoiceReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdInvoiceReferencedDocument);
-        $this->assertSame($createdInvoiceReferencedDocument, $model->getInvoiceReferencedDocument());
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForInvoiceReferencedDocument);
+        $this->assertSame($testValueForInvoiceReferencedDocument, $model->getInvoiceReferencedDocument());
 
         // Property AdditionalReferencedDocument
 
@@ -2471,9 +2471,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAdditionalReferencedDocument());
         $this->assertGreaterThanOrEqual(1, count($model->getAdditionalReferencedDocument()));
 
-        $createdAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
+        $testValueForAdditionalReferencedDocumentItem = $model->addToAdditionalReferencedDocumentWithCreate();
 
-        $this->assertInstanceOf(ReferencedDocumentType::class, $createdAdditionalReferencedDocumentItem);
+        $this->assertInstanceOf(ReferencedDocumentType::class, $testValueForAdditionalReferencedDocumentItem);
 
         $additionalReferencedDocumentOnceItem = new ReferencedDocumentType();
 
@@ -2502,10 +2502,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReceivableSpecifiedTradeAccountingAccount());
 
-        $createdReceivableSpecifiedTradeAccountingAccount = $model->getReceivableSpecifiedTradeAccountingAccountWithCreate();
+        $testValueForReceivableSpecifiedTradeAccountingAccount = $model->getReceivableSpecifiedTradeAccountingAccountWithCreate();
 
-        $this->assertInstanceOf(TradeAccountingAccountType::class, $createdReceivableSpecifiedTradeAccountingAccount);
-        $this->assertSame($createdReceivableSpecifiedTradeAccountingAccount, $model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertInstanceOf(TradeAccountingAccountType::class, $testValueForReceivableSpecifiedTradeAccountingAccount);
+        $this->assertSame($testValueForReceivableSpecifiedTradeAccountingAccount, $model->getReceivableSpecifiedTradeAccountingAccount());
     }
 
     /**
@@ -2528,10 +2528,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property AppliedAmount
 
@@ -2544,10 +2544,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAppliedAmount());
 
-        $createdAppliedAmount = $model->getAppliedAmountWithCreate();
+        $testValueForAppliedAmount = $model->getAppliedAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdAppliedAmount);
-        $this->assertSame($createdAppliedAmount, $model->getAppliedAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForAppliedAmount);
+        $this->assertSame($testValueForAppliedAmount, $model->getAppliedAmount());
 
         // Property AppliedTradeTax
 
@@ -2563,9 +2563,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAppliedTradeTax());
         $this->assertGreaterThanOrEqual(1, count($model->getAppliedTradeTax()));
 
-        $createdAppliedTradeTaxItem = $model->addToAppliedTradeTaxWithCreate();
+        $testValueForAppliedTradeTaxItem = $model->addToAppliedTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdAppliedTradeTaxItem);
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForAppliedTradeTaxItem);
 
         $appliedTradeTaxOnceItem = new TradeTaxType();
 
@@ -2604,10 +2604,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getModeCode());
 
-        $createdModeCode = $model->getModeCodeWithCreate();
+        $testValueForModeCode = $model->getModeCodeWithCreate();
 
-        $this->assertInstanceOf(TransportModeCodeType::class, $createdModeCode);
-        $this->assertSame($createdModeCode, $model->getModeCode());
+        $this->assertInstanceOf(TransportModeCodeType::class, $testValueForModeCode);
+        $this->assertSame($testValueForModeCode, $model->getModeCode());
     }
 
     /**
@@ -2630,10 +2630,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getContentCode());
 
-        $createdContentCode = $model->getContentCodeWithCreate();
+        $testValueForContentCode = $model->getContentCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdContentCode);
-        $this->assertSame($createdContentCode, $model->getContentCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForContentCode);
+        $this->assertSame($testValueForContentCode, $model->getContentCode());
 
         // Property Content
 
@@ -2646,10 +2646,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getContent());
 
-        $createdContent = $model->getContentWithCreate();
+        $testValueForContent = $model->getContentWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdContent);
-        $this->assertSame($createdContent, $model->getContent());
+        $this->assertInstanceOf(TextType::class, $testValueForContent);
+        $this->assertSame($testValueForContent, $model->getContent());
 
         // Property SubjectCode
 
@@ -2662,10 +2662,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSubjectCode());
 
-        $createdSubjectCode = $model->getSubjectCodeWithCreate();
+        $testValueForSubjectCode = $model->getSubjectCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdSubjectCode);
-        $this->assertSame($createdSubjectCode, $model->getSubjectCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForSubjectCode);
+        $this->assertSame($testValueForSubjectCode, $model->getSubjectCode());
     }
 
     /**
@@ -2688,10 +2688,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property Name
 
@@ -2704,10 +2704,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
     }
 
     /**
@@ -2730,10 +2730,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property Description
 
@@ -2746,10 +2746,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property ValueMeasure
 
@@ -2762,10 +2762,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getValueMeasure());
 
-        $createdValueMeasure = $model->getValueMeasureWithCreate();
+        $testValueForValueMeasure = $model->getValueMeasureWithCreate();
 
-        $this->assertInstanceOf(MeasureType::class, $createdValueMeasure);
-        $this->assertSame($createdValueMeasure, $model->getValueMeasure());
+        $this->assertInstanceOf(MeasureType::class, $testValueForValueMeasure);
+        $this->assertSame($testValueForValueMeasure, $model->getValueMeasure());
 
         // Property Value
 
@@ -2778,10 +2778,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getValue());
 
-        $createdValue = $model->getValueWithCreate();
+        $testValueForValue = $model->getValueWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdValue);
-        $this->assertSame($createdValue, $model->getValue());
+        $this->assertInstanceOf(TextType::class, $testValueForValue);
+        $this->assertSame($testValueForValue, $model->getValue());
     }
 
     /**
@@ -2804,10 +2804,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getClassCode());
 
-        $createdClassCode = $model->getClassCodeWithCreate();
+        $testValueForClassCode = $model->getClassCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdClassCode);
-        $this->assertSame($createdClassCode, $model->getClassCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForClassCode);
+        $this->assertSame($testValueForClassCode, $model->getClassCode());
 
         // Property ClassName
 
@@ -2820,10 +2820,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getClassName());
 
-        $createdClassName = $model->getClassNameWithCreate();
+        $testValueForClassName = $model->getClassNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdClassName);
-        $this->assertSame($createdClassName, $model->getClassName());
+        $this->assertInstanceOf(TextType::class, $testValueForClassName);
+        $this->assertSame($testValueForClassName, $model->getClassName());
     }
 
     /**
@@ -2846,10 +2846,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIssuerAssignedID());
 
-        $createdIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
+        $testValueForIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIssuerAssignedID);
-        $this->assertSame($createdIssuerAssignedID, $model->getIssuerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForIssuerAssignedID);
+        $this->assertSame($testValueForIssuerAssignedID, $model->getIssuerAssignedID());
 
         // Property URIID
 
@@ -2862,10 +2862,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getURIID());
 
-        $createdURIID = $model->getURIIDWithCreate();
+        $testValueForURIID = $model->getURIIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdURIID);
-        $this->assertSame($createdURIID, $model->getURIID());
+        $this->assertInstanceOf(IDType::class, $testValueForURIID);
+        $this->assertSame($testValueForURIID, $model->getURIID());
 
         // Property LineID
 
@@ -2878,10 +2878,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineID());
 
-        $createdLineID = $model->getLineIDWithCreate();
+        $testValueForLineID = $model->getLineIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdLineID);
-        $this->assertSame($createdLineID, $model->getLineID());
+        $this->assertInstanceOf(IDType::class, $testValueForLineID);
+        $this->assertSame($testValueForLineID, $model->getLineID());
 
         // Property TypeCode
 
@@ -2894,10 +2894,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(DocumentCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(DocumentCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property Name
 
@@ -2910,10 +2910,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property AttachmentBinaryObject
 
@@ -2926,10 +2926,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAttachmentBinaryObject());
 
-        $createdAttachmentBinaryObject = $model->getAttachmentBinaryObjectWithCreate();
+        $testValueForAttachmentBinaryObject = $model->getAttachmentBinaryObjectWithCreate();
 
-        $this->assertInstanceOf(BinaryObjectType::class, $createdAttachmentBinaryObject);
-        $this->assertSame($createdAttachmentBinaryObject, $model->getAttachmentBinaryObject());
+        $this->assertInstanceOf(BinaryObjectType::class, $testValueForAttachmentBinaryObject);
+        $this->assertSame($testValueForAttachmentBinaryObject, $model->getAttachmentBinaryObject());
 
         // Property ReferenceTypeCode
 
@@ -2942,10 +2942,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReferenceTypeCode());
 
-        $createdReferenceTypeCode = $model->getReferenceTypeCodeWithCreate();
+        $testValueForReferenceTypeCode = $model->getReferenceTypeCodeWithCreate();
 
-        $this->assertInstanceOf(ReferenceCodeType::class, $createdReferenceTypeCode);
-        $this->assertSame($createdReferenceTypeCode, $model->getReferenceTypeCode());
+        $this->assertInstanceOf(ReferenceCodeType::class, $testValueForReferenceTypeCode);
+        $this->assertSame($testValueForReferenceTypeCode, $model->getReferenceTypeCode());
 
         // Property FormattedIssueDateTime
 
@@ -2958,10 +2958,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getFormattedIssueDateTime());
 
-        $createdFormattedIssueDateTime = $model->getFormattedIssueDateTimeWithCreate();
+        $testValueForFormattedIssueDateTime = $model->getFormattedIssueDateTimeWithCreate();
 
-        $this->assertInstanceOf(FormattedDateTimeType::class, $createdFormattedIssueDateTime);
-        $this->assertSame($createdFormattedIssueDateTime, $model->getFormattedIssueDateTime());
+        $this->assertInstanceOf(FormattedDateTimeType::class, $testValueForFormattedIssueDateTime);
+        $this->assertSame($testValueForFormattedIssueDateTime, $model->getFormattedIssueDateTime());
     }
 
     /**
@@ -2984,10 +2984,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property GlobalID
 
@@ -3003,9 +3003,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getGlobalID());
         $this->assertGreaterThanOrEqual(1, count($model->getGlobalID()));
 
-        $createdGlobalIDItem = $model->addToGlobalIDWithCreate();
+        $testValueForGlobalIDItem = $model->addToGlobalIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdGlobalIDItem);
+        $this->assertInstanceOf(IDType::class, $testValueForGlobalIDItem);
 
         $globalIDOnceItem = new IDType();
 
@@ -3034,10 +3034,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerAssignedID());
 
-        $createdSellerAssignedID = $model->getSellerAssignedIDWithCreate();
+        $testValueForSellerAssignedID = $model->getSellerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdSellerAssignedID);
-        $this->assertSame($createdSellerAssignedID, $model->getSellerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForSellerAssignedID);
+        $this->assertSame($testValueForSellerAssignedID, $model->getSellerAssignedID());
 
         // Property BuyerAssignedID
 
@@ -3050,10 +3050,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerAssignedID());
 
-        $createdBuyerAssignedID = $model->getBuyerAssignedIDWithCreate();
+        $testValueForBuyerAssignedID = $model->getBuyerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdBuyerAssignedID);
-        $this->assertSame($createdBuyerAssignedID, $model->getBuyerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForBuyerAssignedID);
+        $this->assertSame($testValueForBuyerAssignedID, $model->getBuyerAssignedID());
 
         // Property IndustryAssignedID
 
@@ -3066,10 +3066,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIndustryAssignedID());
 
-        $createdIndustryAssignedID = $model->getIndustryAssignedIDWithCreate();
+        $testValueForIndustryAssignedID = $model->getIndustryAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIndustryAssignedID);
-        $this->assertSame($createdIndustryAssignedID, $model->getIndustryAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForIndustryAssignedID);
+        $this->assertSame($testValueForIndustryAssignedID, $model->getIndustryAssignedID());
 
         // Property Name
 
@@ -3082,10 +3082,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property Description
 
@@ -3098,10 +3098,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property UnitQuantity
 
@@ -3114,10 +3114,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getUnitQuantity());
 
-        $createdUnitQuantity = $model->getUnitQuantityWithCreate();
+        $testValueForUnitQuantity = $model->getUnitQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdUnitQuantity);
-        $this->assertSame($createdUnitQuantity, $model->getUnitQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForUnitQuantity);
+        $this->assertSame($testValueForUnitQuantity, $model->getUnitQuantity());
     }
 
     /**
@@ -3140,10 +3140,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property StartDateTime
 
@@ -3156,10 +3156,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getStartDateTime());
 
-        $createdStartDateTime = $model->getStartDateTimeWithCreate();
+        $testValueForStartDateTime = $model->getStartDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdStartDateTime);
-        $this->assertSame($createdStartDateTime, $model->getStartDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForStartDateTime);
+        $this->assertSame($testValueForStartDateTime, $model->getStartDateTime());
 
         // Property EndDateTime
 
@@ -3172,10 +3172,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getEndDateTime());
 
-        $createdEndDateTime = $model->getEndDateTimeWithCreate();
+        $testValueForEndDateTime = $model->getEndDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdEndDateTime);
-        $this->assertSame($createdEndDateTime, $model->getEndDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForEndDateTime);
+        $this->assertSame($testValueForEndDateTime, $model->getEndDateTime());
 
         // Property CompleteDateTime
 
@@ -3188,10 +3188,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCompleteDateTime());
 
-        $createdCompleteDateTime = $model->getCompleteDateTimeWithCreate();
+        $testValueForCompleteDateTime = $model->getCompleteDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdCompleteDateTime);
-        $this->assertSame($createdCompleteDateTime, $model->getCompleteDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForCompleteDateTime);
+        $this->assertSame($testValueForCompleteDateTime, $model->getCompleteDateTime());
     }
 
     /**
@@ -3217,9 +3217,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedLogisticsTransportMovement());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedLogisticsTransportMovement()));
 
-        $createdSpecifiedLogisticsTransportMovementItem = $model->addToSpecifiedLogisticsTransportMovementWithCreate();
+        $testValueForSpecifiedLogisticsTransportMovementItem = $model->addToSpecifiedLogisticsTransportMovementWithCreate();
 
-        $this->assertInstanceOf(LogisticsTransportMovementType::class, $createdSpecifiedLogisticsTransportMovementItem);
+        $this->assertInstanceOf(LogisticsTransportMovementType::class, $testValueForSpecifiedLogisticsTransportMovementItem);
 
         $specifiedLogisticsTransportMovementOnceItem = new LogisticsTransportMovementType();
 
@@ -3258,10 +3258,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getOccurrenceDateTime());
 
-        $createdOccurrenceDateTime = $model->getOccurrenceDateTimeWithCreate();
+        $testValueForOccurrenceDateTime = $model->getOccurrenceDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdOccurrenceDateTime);
-        $this->assertSame($createdOccurrenceDateTime, $model->getOccurrenceDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForOccurrenceDateTime);
+        $this->assertSame($testValueForOccurrenceDateTime, $model->getOccurrenceDateTime());
     }
 
     /**
@@ -3284,10 +3284,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAssociatedDocumentLineDocument());
 
-        $createdAssociatedDocumentLineDocument = $model->getAssociatedDocumentLineDocumentWithCreate();
+        $testValueForAssociatedDocumentLineDocument = $model->getAssociatedDocumentLineDocumentWithCreate();
 
-        $this->assertInstanceOf(DocumentLineDocumentType::class, $createdAssociatedDocumentLineDocument);
-        $this->assertSame($createdAssociatedDocumentLineDocument, $model->getAssociatedDocumentLineDocument());
+        $this->assertInstanceOf(DocumentLineDocumentType::class, $testValueForAssociatedDocumentLineDocument);
+        $this->assertSame($testValueForAssociatedDocumentLineDocument, $model->getAssociatedDocumentLineDocument());
 
         // Property SpecifiedTradeProduct
 
@@ -3300,10 +3300,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedTradeProduct());
 
-        $createdSpecifiedTradeProduct = $model->getSpecifiedTradeProductWithCreate();
+        $testValueForSpecifiedTradeProduct = $model->getSpecifiedTradeProductWithCreate();
 
-        $this->assertInstanceOf(TradeProductType::class, $createdSpecifiedTradeProduct);
-        $this->assertSame($createdSpecifiedTradeProduct, $model->getSpecifiedTradeProduct());
+        $this->assertInstanceOf(TradeProductType::class, $testValueForSpecifiedTradeProduct);
+        $this->assertSame($testValueForSpecifiedTradeProduct, $model->getSpecifiedTradeProduct());
 
         // Property SpecifiedLineTradeAgreement
 
@@ -3316,10 +3316,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedLineTradeAgreement());
 
-        $createdSpecifiedLineTradeAgreement = $model->getSpecifiedLineTradeAgreementWithCreate();
+        $testValueForSpecifiedLineTradeAgreement = $model->getSpecifiedLineTradeAgreementWithCreate();
 
-        $this->assertInstanceOf(LineTradeAgreementType::class, $createdSpecifiedLineTradeAgreement);
-        $this->assertSame($createdSpecifiedLineTradeAgreement, $model->getSpecifiedLineTradeAgreement());
+        $this->assertInstanceOf(LineTradeAgreementType::class, $testValueForSpecifiedLineTradeAgreement);
+        $this->assertSame($testValueForSpecifiedLineTradeAgreement, $model->getSpecifiedLineTradeAgreement());
 
         // Property SpecifiedLineTradeDelivery
 
@@ -3332,10 +3332,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedLineTradeDelivery());
 
-        $createdSpecifiedLineTradeDelivery = $model->getSpecifiedLineTradeDeliveryWithCreate();
+        $testValueForSpecifiedLineTradeDelivery = $model->getSpecifiedLineTradeDeliveryWithCreate();
 
-        $this->assertInstanceOf(LineTradeDeliveryType::class, $createdSpecifiedLineTradeDelivery);
-        $this->assertSame($createdSpecifiedLineTradeDelivery, $model->getSpecifiedLineTradeDelivery());
+        $this->assertInstanceOf(LineTradeDeliveryType::class, $testValueForSpecifiedLineTradeDelivery);
+        $this->assertSame($testValueForSpecifiedLineTradeDelivery, $model->getSpecifiedLineTradeDelivery());
 
         // Property SpecifiedLineTradeSettlement
 
@@ -3348,10 +3348,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedLineTradeSettlement());
 
-        $createdSpecifiedLineTradeSettlement = $model->getSpecifiedLineTradeSettlementWithCreate();
+        $testValueForSpecifiedLineTradeSettlement = $model->getSpecifiedLineTradeSettlementWithCreate();
 
-        $this->assertInstanceOf(LineTradeSettlementType::class, $createdSpecifiedLineTradeSettlement);
-        $this->assertSame($createdSpecifiedLineTradeSettlement, $model->getSpecifiedLineTradeSettlement());
+        $this->assertInstanceOf(LineTradeSettlementType::class, $testValueForSpecifiedLineTradeSettlement);
+        $this->assertSame($testValueForSpecifiedLineTradeSettlement, $model->getSpecifiedLineTradeSettlement());
     }
 
     /**
@@ -3377,9 +3377,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedSupplyChainTradeLineItem());
         $this->assertGreaterThanOrEqual(1, count($model->getIncludedSupplyChainTradeLineItem()));
 
-        $createdIncludedSupplyChainTradeLineItemItem = $model->addToIncludedSupplyChainTradeLineItemWithCreate();
+        $testValueForIncludedSupplyChainTradeLineItemItem = $model->addToIncludedSupplyChainTradeLineItemWithCreate();
 
-        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $createdIncludedSupplyChainTradeLineItemItem);
+        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $testValueForIncludedSupplyChainTradeLineItemItem);
 
         $includedSupplyChainTradeLineItemOnceItem = new SupplyChainTradeLineItemType();
 
@@ -3415,10 +3415,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeAgreement());
 
-        $createdApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
+        $testValueForApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeAgreementType::class, $createdApplicableHeaderTradeAgreement);
-        $this->assertSame($createdApplicableHeaderTradeAgreement, $model->getApplicableHeaderTradeAgreement());
+        $this->assertInstanceOf(HeaderTradeAgreementType::class, $testValueForApplicableHeaderTradeAgreement);
+        $this->assertSame($testValueForApplicableHeaderTradeAgreement, $model->getApplicableHeaderTradeAgreement());
 
         // Property ApplicableHeaderTradeDelivery
 
@@ -3431,10 +3431,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeDelivery());
 
-        $createdApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
+        $testValueForApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeDeliveryType::class, $createdApplicableHeaderTradeDelivery);
-        $this->assertSame($createdApplicableHeaderTradeDelivery, $model->getApplicableHeaderTradeDelivery());
+        $this->assertInstanceOf(HeaderTradeDeliveryType::class, $testValueForApplicableHeaderTradeDelivery);
+        $this->assertSame($testValueForApplicableHeaderTradeDelivery, $model->getApplicableHeaderTradeDelivery());
 
         // Property ApplicableHeaderTradeSettlement
 
@@ -3447,17 +3447,17 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableHeaderTradeSettlement());
 
-        $createdApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
+        $testValueForApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
 
-        $this->assertInstanceOf(HeaderTradeSettlementType::class, $createdApplicableHeaderTradeSettlement);
-        $this->assertSame($createdApplicableHeaderTradeSettlement, $model->getApplicableHeaderTradeSettlement());
+        $this->assertInstanceOf(HeaderTradeSettlementType::class, $testValueForApplicableHeaderTradeSettlement);
+        $this->assertSame($testValueForApplicableHeaderTradeSettlement, $model->getApplicableHeaderTradeSettlement());
 
         // Property LatestIncludedSupplyChainTradeLineItem
 
-        $createdLatestIncludedSupplyChainTradeLineItem = $model->getLatestIncludedSupplyChainTradeLineItemWithCreate();
+        $testValueForLatestIncludedSupplyChainTradeLineItem = $model->getLatestIncludedSupplyChainTradeLineItemWithCreate();
 
-        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $createdLatestIncludedSupplyChainTradeLineItem);
-        $this->assertSame($createdLatestIncludedSupplyChainTradeLineItem, $model->getLatestIncludedSupplyChainTradeLineItem());
+        $this->assertInstanceOf(SupplyChainTradeLineItemType::class, $testValueForLatestIncludedSupplyChainTradeLineItem);
+        $this->assertSame($testValueForLatestIncludedSupplyChainTradeLineItem, $model->getLatestIncludedSupplyChainTradeLineItem());
 
         // Property IncludedSupplyChainTradeLineItemWithCreate
 
@@ -3484,10 +3484,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -3510,10 +3510,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property TypeCode
 
@@ -3526,10 +3526,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(AccountingAccountTypeCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(AccountingAccountTypeCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
     }
 
     /**
@@ -3552,10 +3552,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPostcodeCode());
 
-        $createdPostcodeCode = $model->getPostcodeCodeWithCreate();
+        $testValueForPostcodeCode = $model->getPostcodeCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdPostcodeCode);
-        $this->assertSame($createdPostcodeCode, $model->getPostcodeCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForPostcodeCode);
+        $this->assertSame($testValueForPostcodeCode, $model->getPostcodeCode());
 
         // Property LineOne
 
@@ -3568,10 +3568,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineOne());
 
-        $createdLineOne = $model->getLineOneWithCreate();
+        $testValueForLineOne = $model->getLineOneWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdLineOne);
-        $this->assertSame($createdLineOne, $model->getLineOne());
+        $this->assertInstanceOf(TextType::class, $testValueForLineOne);
+        $this->assertSame($testValueForLineOne, $model->getLineOne());
 
         // Property LineTwo
 
@@ -3584,10 +3584,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineTwo());
 
-        $createdLineTwo = $model->getLineTwoWithCreate();
+        $testValueForLineTwo = $model->getLineTwoWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdLineTwo);
-        $this->assertSame($createdLineTwo, $model->getLineTwo());
+        $this->assertInstanceOf(TextType::class, $testValueForLineTwo);
+        $this->assertSame($testValueForLineTwo, $model->getLineTwo());
 
         // Property LineThree
 
@@ -3600,10 +3600,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineThree());
 
-        $createdLineThree = $model->getLineThreeWithCreate();
+        $testValueForLineThree = $model->getLineThreeWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdLineThree);
-        $this->assertSame($createdLineThree, $model->getLineThree());
+        $this->assertInstanceOf(TextType::class, $testValueForLineThree);
+        $this->assertSame($testValueForLineThree, $model->getLineThree());
 
         // Property CityName
 
@@ -3616,10 +3616,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCityName());
 
-        $createdCityName = $model->getCityNameWithCreate();
+        $testValueForCityName = $model->getCityNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdCityName);
-        $this->assertSame($createdCityName, $model->getCityName());
+        $this->assertInstanceOf(TextType::class, $testValueForCityName);
+        $this->assertSame($testValueForCityName, $model->getCityName());
 
         // Property CountryID
 
@@ -3632,10 +3632,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCountryID());
 
-        $createdCountryID = $model->getCountryIDWithCreate();
+        $testValueForCountryID = $model->getCountryIDWithCreate();
 
-        $this->assertInstanceOf(CountryIDType::class, $createdCountryID);
-        $this->assertSame($createdCountryID, $model->getCountryID());
+        $this->assertInstanceOf(CountryIDType::class, $testValueForCountryID);
+        $this->assertSame($testValueForCountryID, $model->getCountryID());
 
         // Property CountrySubDivisionName
 
@@ -3648,10 +3648,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCountrySubDivisionName());
 
-        $createdCountrySubDivisionName = $model->getCountrySubDivisionNameWithCreate();
+        $testValueForCountrySubDivisionName = $model->getCountrySubDivisionNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdCountrySubDivisionName);
-        $this->assertSame($createdCountrySubDivisionName, $model->getCountrySubDivisionName());
+        $this->assertInstanceOf(TextType::class, $testValueForCountrySubDivisionName);
+        $this->assertSame($testValueForCountrySubDivisionName, $model->getCountrySubDivisionName());
     }
 
     /**
@@ -3674,10 +3674,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getChargeIndicator());
 
-        $createdChargeIndicator = $model->getChargeIndicatorWithCreate();
+        $testValueForChargeIndicator = $model->getChargeIndicatorWithCreate();
 
-        $this->assertInstanceOf(IndicatorType::class, $createdChargeIndicator);
-        $this->assertSame($createdChargeIndicator, $model->getChargeIndicator());
+        $this->assertInstanceOf(IndicatorType::class, $testValueForChargeIndicator);
+        $this->assertSame($testValueForChargeIndicator, $model->getChargeIndicator());
 
         // Property SequenceNumeric
 
@@ -3690,10 +3690,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSequenceNumeric());
 
-        $createdSequenceNumeric = $model->getSequenceNumericWithCreate();
+        $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
-        $this->assertInstanceOf(NumericType::class, $createdSequenceNumeric);
-        $this->assertSame($createdSequenceNumeric, $model->getSequenceNumeric());
+        $this->assertInstanceOf(NumericType::class, $testValueForSequenceNumeric);
+        $this->assertSame($testValueForSequenceNumeric, $model->getSequenceNumeric());
 
         // Property CalculationPercent
 
@@ -3706,10 +3706,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCalculationPercent());
 
-        $createdCalculationPercent = $model->getCalculationPercentWithCreate();
+        $testValueForCalculationPercent = $model->getCalculationPercentWithCreate();
 
-        $this->assertInstanceOf(PercentType::class, $createdCalculationPercent);
-        $this->assertSame($createdCalculationPercent, $model->getCalculationPercent());
+        $this->assertInstanceOf(PercentType::class, $testValueForCalculationPercent);
+        $this->assertSame($testValueForCalculationPercent, $model->getCalculationPercent());
 
         // Property BasisAmount
 
@@ -3722,10 +3722,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisAmount());
 
-        $createdBasisAmount = $model->getBasisAmountWithCreate();
+        $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdBasisAmount);
-        $this->assertSame($createdBasisAmount, $model->getBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForBasisAmount);
+        $this->assertSame($testValueForBasisAmount, $model->getBasisAmount());
 
         // Property BasisQuantity
 
@@ -3738,10 +3738,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisQuantity());
 
-        $createdBasisQuantity = $model->getBasisQuantityWithCreate();
+        $testValueForBasisQuantity = $model->getBasisQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdBasisQuantity);
-        $this->assertSame($createdBasisQuantity, $model->getBasisQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForBasisQuantity);
+        $this->assertSame($testValueForBasisQuantity, $model->getBasisQuantity());
 
         // Property ActualAmount
 
@@ -3754,10 +3754,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getActualAmount());
 
-        $createdActualAmount = $model->getActualAmountWithCreate();
+        $testValueForActualAmount = $model->getActualAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdActualAmount);
-        $this->assertSame($createdActualAmount, $model->getActualAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForActualAmount);
+        $this->assertSame($testValueForActualAmount, $model->getActualAmount());
 
         // Property ReasonCode
 
@@ -3770,10 +3770,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReasonCode());
 
-        $createdReasonCode = $model->getReasonCodeWithCreate();
+        $testValueForReasonCode = $model->getReasonCodeWithCreate();
 
-        $this->assertInstanceOf(AllowanceChargeReasonCodeType::class, $createdReasonCode);
-        $this->assertSame($createdReasonCode, $model->getReasonCode());
+        $this->assertInstanceOf(AllowanceChargeReasonCodeType::class, $testValueForReasonCode);
+        $this->assertSame($testValueForReasonCode, $model->getReasonCode());
 
         // Property Reason
 
@@ -3786,10 +3786,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getReason());
 
-        $createdReason = $model->getReasonWithCreate();
+        $testValueForReason = $model->getReasonWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdReason);
-        $this->assertSame($createdReason, $model->getReason());
+        $this->assertInstanceOf(TextType::class, $testValueForReason);
+        $this->assertSame($testValueForReason, $model->getReason());
 
         // Property CategoryTradeTax
 
@@ -3802,10 +3802,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCategoryTradeTax());
 
-        $createdCategoryTradeTax = $model->getCategoryTradeTaxWithCreate();
+        $testValueForCategoryTradeTax = $model->getCategoryTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdCategoryTradeTax);
-        $this->assertSame($createdCategoryTradeTax, $model->getCategoryTradeTax());
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForCategoryTradeTax);
+        $this->assertSame($testValueForCategoryTradeTax, $model->getCategoryTradeTax());
     }
 
     /**
@@ -3828,10 +3828,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPersonName());
 
-        $createdPersonName = $model->getPersonNameWithCreate();
+        $testValueForPersonName = $model->getPersonNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdPersonName);
-        $this->assertSame($createdPersonName, $model->getPersonName());
+        $this->assertInstanceOf(TextType::class, $testValueForPersonName);
+        $this->assertSame($testValueForPersonName, $model->getPersonName());
 
         // Property DepartmentName
 
@@ -3844,10 +3844,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDepartmentName());
 
-        $createdDepartmentName = $model->getDepartmentNameWithCreate();
+        $testValueForDepartmentName = $model->getDepartmentNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDepartmentName);
-        $this->assertSame($createdDepartmentName, $model->getDepartmentName());
+        $this->assertInstanceOf(TextType::class, $testValueForDepartmentName);
+        $this->assertSame($testValueForDepartmentName, $model->getDepartmentName());
 
         // Property TypeCode
 
@@ -3860,10 +3860,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property TelephoneUniversalCommunication
 
@@ -3876,10 +3876,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTelephoneUniversalCommunication());
 
-        $createdTelephoneUniversalCommunication = $model->getTelephoneUniversalCommunicationWithCreate();
+        $testValueForTelephoneUniversalCommunication = $model->getTelephoneUniversalCommunicationWithCreate();
 
-        $this->assertInstanceOf(UniversalCommunicationType::class, $createdTelephoneUniversalCommunication);
-        $this->assertSame($createdTelephoneUniversalCommunication, $model->getTelephoneUniversalCommunication());
+        $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForTelephoneUniversalCommunication);
+        $this->assertSame($testValueForTelephoneUniversalCommunication, $model->getTelephoneUniversalCommunication());
 
         // Property FaxUniversalCommunication
 
@@ -3892,10 +3892,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getFaxUniversalCommunication());
 
-        $createdFaxUniversalCommunication = $model->getFaxUniversalCommunicationWithCreate();
+        $testValueForFaxUniversalCommunication = $model->getFaxUniversalCommunicationWithCreate();
 
-        $this->assertInstanceOf(UniversalCommunicationType::class, $createdFaxUniversalCommunication);
-        $this->assertSame($createdFaxUniversalCommunication, $model->getFaxUniversalCommunication());
+        $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForFaxUniversalCommunication);
+        $this->assertSame($testValueForFaxUniversalCommunication, $model->getFaxUniversalCommunication());
 
         // Property EmailURIUniversalCommunication
 
@@ -3908,10 +3908,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getEmailURIUniversalCommunication());
 
-        $createdEmailURIUniversalCommunication = $model->getEmailURIUniversalCommunicationWithCreate();
+        $testValueForEmailURIUniversalCommunication = $model->getEmailURIUniversalCommunicationWithCreate();
 
-        $this->assertInstanceOf(UniversalCommunicationType::class, $createdEmailURIUniversalCommunication);
-        $this->assertSame($createdEmailURIUniversalCommunication, $model->getEmailURIUniversalCommunication());
+        $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForEmailURIUniversalCommunication);
+        $this->assertSame($testValueForEmailURIUniversalCommunication, $model->getEmailURIUniversalCommunication());
     }
 
     /**
@@ -3934,10 +3934,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(CountryIDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(CountryIDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
     }
 
     /**
@@ -3960,10 +3960,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSourceCurrencyCode());
 
-        $createdSourceCurrencyCode = $model->getSourceCurrencyCodeWithCreate();
+        $testValueForSourceCurrencyCode = $model->getSourceCurrencyCodeWithCreate();
 
-        $this->assertInstanceOf(CurrencyCodeType::class, $createdSourceCurrencyCode);
-        $this->assertSame($createdSourceCurrencyCode, $model->getSourceCurrencyCode());
+        $this->assertInstanceOf(CurrencyCodeType::class, $testValueForSourceCurrencyCode);
+        $this->assertSame($testValueForSourceCurrencyCode, $model->getSourceCurrencyCode());
 
         // Property TargetCurrencyCode
 
@@ -3976,10 +3976,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTargetCurrencyCode());
 
-        $createdTargetCurrencyCode = $model->getTargetCurrencyCodeWithCreate();
+        $testValueForTargetCurrencyCode = $model->getTargetCurrencyCodeWithCreate();
 
-        $this->assertInstanceOf(CurrencyCodeType::class, $createdTargetCurrencyCode);
-        $this->assertSame($createdTargetCurrencyCode, $model->getTargetCurrencyCode());
+        $this->assertInstanceOf(CurrencyCodeType::class, $testValueForTargetCurrencyCode);
+        $this->assertSame($testValueForTargetCurrencyCode, $model->getTargetCurrencyCode());
 
         // Property ConversionRate
 
@@ -3992,10 +3992,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getConversionRate());
 
-        $createdConversionRate = $model->getConversionRateWithCreate();
+        $testValueForConversionRate = $model->getConversionRateWithCreate();
 
-        $this->assertInstanceOf(RateType::class, $createdConversionRate);
-        $this->assertSame($createdConversionRate, $model->getConversionRate());
+        $this->assertInstanceOf(RateType::class, $testValueForConversionRate);
+        $this->assertSame($testValueForConversionRate, $model->getConversionRate());
 
         // Property ConversionRateDateTime
 
@@ -4008,10 +4008,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getConversionRateDateTime());
 
-        $createdConversionRateDateTime = $model->getConversionRateDateTimeWithCreate();
+        $testValueForConversionRateDateTime = $model->getConversionRateDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdConversionRateDateTime);
-        $this->assertSame($createdConversionRateDateTime, $model->getConversionRateDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForConversionRateDateTime);
+        $this->assertSame($testValueForConversionRateDateTime, $model->getConversionRateDateTime());
     }
 
     /**
@@ -4034,10 +4034,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDeliveryTypeCode());
 
-        $createdDeliveryTypeCode = $model->getDeliveryTypeCodeWithCreate();
+        $testValueForDeliveryTypeCode = $model->getDeliveryTypeCodeWithCreate();
 
-        $this->assertInstanceOf(DeliveryTermsCodeType::class, $createdDeliveryTypeCode);
-        $this->assertSame($createdDeliveryTypeCode, $model->getDeliveryTypeCode());
+        $this->assertInstanceOf(DeliveryTermsCodeType::class, $testValueForDeliveryTypeCode);
+        $this->assertSame($testValueForDeliveryTypeCode, $model->getDeliveryTypeCode());
     }
 
     /**
@@ -4063,9 +4063,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getID());
         $this->assertGreaterThanOrEqual(1, count($model->getID()));
 
-        $createdIDItem = $model->addToIDWithCreate();
+        $testValueForIDItem = $model->addToIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIDItem);
+        $this->assertInstanceOf(IDType::class, $testValueForIDItem);
 
         $iDOnceItem = new IDType();
 
@@ -4097,9 +4097,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getGlobalID());
         $this->assertGreaterThanOrEqual(1, count($model->getGlobalID()));
 
-        $createdGlobalIDItem = $model->addToGlobalIDWithCreate();
+        $testValueForGlobalIDItem = $model->addToGlobalIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdGlobalIDItem);
+        $this->assertInstanceOf(IDType::class, $testValueForGlobalIDItem);
 
         $globalIDOnceItem = new IDType();
 
@@ -4128,10 +4128,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property RoleCode
 
@@ -4155,10 +4155,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property SpecifiedLegalOrganization
 
@@ -4171,10 +4171,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSpecifiedLegalOrganization());
 
-        $createdSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
+        $testValueForSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
 
-        $this->assertInstanceOf(LegalOrganizationType::class, $createdSpecifiedLegalOrganization);
-        $this->assertSame($createdSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
+        $this->assertInstanceOf(LegalOrganizationType::class, $testValueForSpecifiedLegalOrganization);
+        $this->assertSame($testValueForSpecifiedLegalOrganization, $model->getSpecifiedLegalOrganization());
 
         // Property DefinedTradeContact
 
@@ -4190,9 +4190,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getDefinedTradeContact());
         $this->assertGreaterThanOrEqual(1, count($model->getDefinedTradeContact()));
 
-        $createdDefinedTradeContactItem = $model->addToDefinedTradeContactWithCreate();
+        $testValueForDefinedTradeContactItem = $model->addToDefinedTradeContactWithCreate();
 
-        $this->assertInstanceOf(TradeContactType::class, $createdDefinedTradeContactItem);
+        $this->assertInstanceOf(TradeContactType::class, $testValueForDefinedTradeContactItem);
 
         $definedTradeContactOnceItem = new TradeContactType();
 
@@ -4221,10 +4221,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPostalTradeAddress());
 
-        $createdPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
+        $testValueForPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
 
-        $this->assertInstanceOf(TradeAddressType::class, $createdPostalTradeAddress);
-        $this->assertSame($createdPostalTradeAddress, $model->getPostalTradeAddress());
+        $this->assertInstanceOf(TradeAddressType::class, $testValueForPostalTradeAddress);
+        $this->assertSame($testValueForPostalTradeAddress, $model->getPostalTradeAddress());
 
         // Property URIUniversalCommunication
 
@@ -4237,10 +4237,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getURIUniversalCommunication());
 
-        $createdURIUniversalCommunication = $model->getURIUniversalCommunicationWithCreate();
+        $testValueForURIUniversalCommunication = $model->getURIUniversalCommunicationWithCreate();
 
-        $this->assertInstanceOf(UniversalCommunicationType::class, $createdURIUniversalCommunication);
-        $this->assertSame($createdURIUniversalCommunication, $model->getURIUniversalCommunication());
+        $this->assertInstanceOf(UniversalCommunicationType::class, $testValueForURIUniversalCommunication);
+        $this->assertSame($testValueForURIUniversalCommunication, $model->getURIUniversalCommunication());
 
         // Property SpecifiedTaxRegistration
 
@@ -4256,9 +4256,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getSpecifiedTaxRegistration());
         $this->assertGreaterThanOrEqual(1, count($model->getSpecifiedTaxRegistration()));
 
-        $createdSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
+        $testValueForSpecifiedTaxRegistrationItem = $model->addToSpecifiedTaxRegistrationWithCreate();
 
-        $this->assertInstanceOf(TaxRegistrationType::class, $createdSpecifiedTaxRegistrationItem);
+        $this->assertInstanceOf(TaxRegistrationType::class, $testValueForSpecifiedTaxRegistrationItem);
 
         $specifiedTaxRegistrationOnceItem = new TaxRegistrationType();
 
@@ -4297,10 +4297,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisDateTime());
 
-        $createdBasisDateTime = $model->getBasisDateTimeWithCreate();
+        $testValueForBasisDateTime = $model->getBasisDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdBasisDateTime);
-        $this->assertSame($createdBasisDateTime, $model->getBasisDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForBasisDateTime);
+        $this->assertSame($testValueForBasisDateTime, $model->getBasisDateTime());
 
         // Property BasisPeriodMeasure
 
@@ -4313,10 +4313,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisPeriodMeasure());
 
-        $createdBasisPeriodMeasure = $model->getBasisPeriodMeasureWithCreate();
+        $testValueForBasisPeriodMeasure = $model->getBasisPeriodMeasureWithCreate();
 
-        $this->assertInstanceOf(MeasureType::class, $createdBasisPeriodMeasure);
-        $this->assertSame($createdBasisPeriodMeasure, $model->getBasisPeriodMeasure());
+        $this->assertInstanceOf(MeasureType::class, $testValueForBasisPeriodMeasure);
+        $this->assertSame($testValueForBasisPeriodMeasure, $model->getBasisPeriodMeasure());
 
         // Property BasisAmount
 
@@ -4329,10 +4329,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisAmount());
 
-        $createdBasisAmount = $model->getBasisAmountWithCreate();
+        $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdBasisAmount);
-        $this->assertSame($createdBasisAmount, $model->getBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForBasisAmount);
+        $this->assertSame($testValueForBasisAmount, $model->getBasisAmount());
 
         // Property CalculationPercent
 
@@ -4345,10 +4345,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCalculationPercent());
 
-        $createdCalculationPercent = $model->getCalculationPercentWithCreate();
+        $testValueForCalculationPercent = $model->getCalculationPercentWithCreate();
 
-        $this->assertInstanceOf(PercentType::class, $createdCalculationPercent);
-        $this->assertSame($createdCalculationPercent, $model->getCalculationPercent());
+        $this->assertInstanceOf(PercentType::class, $testValueForCalculationPercent);
+        $this->assertSame($testValueForCalculationPercent, $model->getCalculationPercent());
 
         // Property ActualDiscountAmount
 
@@ -4361,10 +4361,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getActualDiscountAmount());
 
-        $createdActualDiscountAmount = $model->getActualDiscountAmountWithCreate();
+        $testValueForActualDiscountAmount = $model->getActualDiscountAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdActualDiscountAmount);
-        $this->assertSame($createdActualDiscountAmount, $model->getActualDiscountAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForActualDiscountAmount);
+        $this->assertSame($testValueForActualDiscountAmount, $model->getActualDiscountAmount());
     }
 
     /**
@@ -4387,10 +4387,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisDateTime());
 
-        $createdBasisDateTime = $model->getBasisDateTimeWithCreate();
+        $testValueForBasisDateTime = $model->getBasisDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdBasisDateTime);
-        $this->assertSame($createdBasisDateTime, $model->getBasisDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForBasisDateTime);
+        $this->assertSame($testValueForBasisDateTime, $model->getBasisDateTime());
 
         // Property BasisPeriodMeasure
 
@@ -4403,10 +4403,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisPeriodMeasure());
 
-        $createdBasisPeriodMeasure = $model->getBasisPeriodMeasureWithCreate();
+        $testValueForBasisPeriodMeasure = $model->getBasisPeriodMeasureWithCreate();
 
-        $this->assertInstanceOf(MeasureType::class, $createdBasisPeriodMeasure);
-        $this->assertSame($createdBasisPeriodMeasure, $model->getBasisPeriodMeasure());
+        $this->assertInstanceOf(MeasureType::class, $testValueForBasisPeriodMeasure);
+        $this->assertSame($testValueForBasisPeriodMeasure, $model->getBasisPeriodMeasure());
 
         // Property BasisAmount
 
@@ -4419,10 +4419,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisAmount());
 
-        $createdBasisAmount = $model->getBasisAmountWithCreate();
+        $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdBasisAmount);
-        $this->assertSame($createdBasisAmount, $model->getBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForBasisAmount);
+        $this->assertSame($testValueForBasisAmount, $model->getBasisAmount());
 
         // Property CalculationPercent
 
@@ -4435,10 +4435,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCalculationPercent());
 
-        $createdCalculationPercent = $model->getCalculationPercentWithCreate();
+        $testValueForCalculationPercent = $model->getCalculationPercentWithCreate();
 
-        $this->assertInstanceOf(PercentType::class, $createdCalculationPercent);
-        $this->assertSame($createdCalculationPercent, $model->getCalculationPercent());
+        $this->assertInstanceOf(PercentType::class, $testValueForCalculationPercent);
+        $this->assertSame($testValueForCalculationPercent, $model->getCalculationPercent());
 
         // Property ActualPenaltyAmount
 
@@ -4451,10 +4451,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getActualPenaltyAmount());
 
-        $createdActualPenaltyAmount = $model->getActualPenaltyAmountWithCreate();
+        $testValueForActualPenaltyAmount = $model->getActualPenaltyAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdActualPenaltyAmount);
-        $this->assertSame($createdActualPenaltyAmount, $model->getActualPenaltyAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForActualPenaltyAmount);
+        $this->assertSame($testValueForActualPenaltyAmount, $model->getActualPenaltyAmount());
     }
 
     /**
@@ -4477,10 +4477,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property DueDateDateTime
 
@@ -4493,10 +4493,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDueDateDateTime());
 
-        $createdDueDateDateTime = $model->getDueDateDateTimeWithCreate();
+        $testValueForDueDateDateTime = $model->getDueDateDateTimeWithCreate();
 
-        $this->assertInstanceOf(DateTimeType::class, $createdDueDateDateTime);
-        $this->assertSame($createdDueDateDateTime, $model->getDueDateDateTime());
+        $this->assertInstanceOf(DateTimeType::class, $testValueForDueDateDateTime);
+        $this->assertSame($testValueForDueDateDateTime, $model->getDueDateDateTime());
 
         // Property DirectDebitMandateID
 
@@ -4509,10 +4509,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDirectDebitMandateID());
 
-        $createdDirectDebitMandateID = $model->getDirectDebitMandateIDWithCreate();
+        $testValueForDirectDebitMandateID = $model->getDirectDebitMandateIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdDirectDebitMandateID);
-        $this->assertSame($createdDirectDebitMandateID, $model->getDirectDebitMandateID());
+        $this->assertInstanceOf(IDType::class, $testValueForDirectDebitMandateID);
+        $this->assertSame($testValueForDirectDebitMandateID, $model->getDirectDebitMandateID());
 
         // Property PartialPaymentAmount
 
@@ -4525,10 +4525,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPartialPaymentAmount());
 
-        $createdPartialPaymentAmount = $model->getPartialPaymentAmountWithCreate();
+        $testValueForPartialPaymentAmount = $model->getPartialPaymentAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdPartialPaymentAmount);
-        $this->assertSame($createdPartialPaymentAmount, $model->getPartialPaymentAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForPartialPaymentAmount);
+        $this->assertSame($testValueForPartialPaymentAmount, $model->getPartialPaymentAmount());
 
         // Property ApplicableTradePaymentPenaltyTerms
 
@@ -4541,10 +4541,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableTradePaymentPenaltyTerms());
 
-        $createdApplicableTradePaymentPenaltyTerms = $model->getApplicableTradePaymentPenaltyTermsWithCreate();
+        $testValueForApplicableTradePaymentPenaltyTerms = $model->getApplicableTradePaymentPenaltyTermsWithCreate();
 
-        $this->assertInstanceOf(TradePaymentPenaltyTermsType::class, $createdApplicableTradePaymentPenaltyTerms);
-        $this->assertSame($createdApplicableTradePaymentPenaltyTerms, $model->getApplicableTradePaymentPenaltyTerms());
+        $this->assertInstanceOf(TradePaymentPenaltyTermsType::class, $testValueForApplicableTradePaymentPenaltyTerms);
+        $this->assertSame($testValueForApplicableTradePaymentPenaltyTerms, $model->getApplicableTradePaymentPenaltyTerms());
 
         // Property ApplicableTradePaymentDiscountTerms
 
@@ -4557,10 +4557,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableTradePaymentDiscountTerms());
 
-        $createdApplicableTradePaymentDiscountTerms = $model->getApplicableTradePaymentDiscountTermsWithCreate();
+        $testValueForApplicableTradePaymentDiscountTerms = $model->getApplicableTradePaymentDiscountTermsWithCreate();
 
-        $this->assertInstanceOf(TradePaymentDiscountTermsType::class, $createdApplicableTradePaymentDiscountTerms);
-        $this->assertSame($createdApplicableTradePaymentDiscountTerms, $model->getApplicableTradePaymentDiscountTerms());
+        $this->assertInstanceOf(TradePaymentDiscountTermsType::class, $testValueForApplicableTradePaymentDiscountTerms);
+        $this->assertSame($testValueForApplicableTradePaymentDiscountTerms, $model->getApplicableTradePaymentDiscountTerms());
 
         // Property PayeeTradeParty
 
@@ -4573,10 +4573,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayeeTradeParty());
 
-        $createdPayeeTradeParty = $model->getPayeeTradePartyWithCreate();
+        $testValueForPayeeTradeParty = $model->getPayeeTradePartyWithCreate();
 
-        $this->assertInstanceOf(TradePartyType::class, $createdPayeeTradeParty);
-        $this->assertSame($createdPayeeTradeParty, $model->getPayeeTradeParty());
+        $this->assertInstanceOf(TradePartyType::class, $testValueForPayeeTradeParty);
+        $this->assertSame($testValueForPayeeTradeParty, $model->getPayeeTradeParty());
     }
 
     /**
@@ -4599,10 +4599,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getChargeAmount());
 
-        $createdChargeAmount = $model->getChargeAmountWithCreate();
+        $testValueForChargeAmount = $model->getChargeAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdChargeAmount);
-        $this->assertSame($createdChargeAmount, $model->getChargeAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForChargeAmount);
+        $this->assertSame($testValueForChargeAmount, $model->getChargeAmount());
 
         // Property BasisQuantity
 
@@ -4615,10 +4615,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisQuantity());
 
-        $createdBasisQuantity = $model->getBasisQuantityWithCreate();
+        $testValueForBasisQuantity = $model->getBasisQuantityWithCreate();
 
-        $this->assertInstanceOf(QuantityType::class, $createdBasisQuantity);
-        $this->assertSame($createdBasisQuantity, $model->getBasisQuantity());
+        $this->assertInstanceOf(QuantityType::class, $testValueForBasisQuantity);
+        $this->assertSame($testValueForBasisQuantity, $model->getBasisQuantity());
 
         // Property AppliedTradeAllowanceCharge
 
@@ -4634,9 +4634,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getAppliedTradeAllowanceCharge());
         $this->assertGreaterThanOrEqual(1, count($model->getAppliedTradeAllowanceCharge()));
 
-        $createdAppliedTradeAllowanceChargeItem = $model->addToAppliedTradeAllowanceChargeWithCreate();
+        $testValueForAppliedTradeAllowanceChargeItem = $model->addToAppliedTradeAllowanceChargeWithCreate();
 
-        $this->assertInstanceOf(TradeAllowanceChargeType::class, $createdAppliedTradeAllowanceChargeItem);
+        $this->assertInstanceOf(TradeAllowanceChargeType::class, $testValueForAppliedTradeAllowanceChargeItem);
 
         $appliedTradeAllowanceChargeOnceItem = new TradeAllowanceChargeType();
 
@@ -4665,10 +4665,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIncludedTradeTax());
 
-        $createdIncludedTradeTax = $model->getIncludedTradeTaxWithCreate();
+        $testValueForIncludedTradeTax = $model->getIncludedTradeTaxWithCreate();
 
-        $this->assertInstanceOf(TradeTaxType::class, $createdIncludedTradeTax);
-        $this->assertSame($createdIncludedTradeTax, $model->getIncludedTradeTax());
+        $this->assertInstanceOf(TradeTaxType::class, $testValueForIncludedTradeTax);
+        $this->assertSame($testValueForIncludedTradeTax, $model->getIncludedTradeTax());
     }
 
     /**
@@ -4691,10 +4691,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBatchID());
 
-        $createdBatchID = $model->getBatchIDWithCreate();
+        $testValueForBatchID = $model->getBatchIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdBatchID);
-        $this->assertSame($createdBatchID, $model->getBatchID());
+        $this->assertInstanceOf(IDType::class, $testValueForBatchID);
+        $this->assertSame($testValueForBatchID, $model->getBatchID());
 
         // Property SupplierAssignedSerialID
 
@@ -4707,10 +4707,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSupplierAssignedSerialID());
 
-        $createdSupplierAssignedSerialID = $model->getSupplierAssignedSerialIDWithCreate();
+        $testValueForSupplierAssignedSerialID = $model->getSupplierAssignedSerialIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdSupplierAssignedSerialID);
-        $this->assertSame($createdSupplierAssignedSerialID, $model->getSupplierAssignedSerialID());
+        $this->assertInstanceOf(IDType::class, $testValueForSupplierAssignedSerialID);
+        $this->assertSame($testValueForSupplierAssignedSerialID, $model->getSupplierAssignedSerialID());
     }
 
     /**
@@ -4733,10 +4733,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property GlobalID
 
@@ -4749,10 +4749,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getGlobalID());
 
-        $createdGlobalID = $model->getGlobalIDWithCreate();
+        $testValueForGlobalID = $model->getGlobalIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdGlobalID);
-        $this->assertSame($createdGlobalID, $model->getGlobalID());
+        $this->assertInstanceOf(IDType::class, $testValueForGlobalID);
+        $this->assertSame($testValueForGlobalID, $model->getGlobalID());
 
         // Property SellerAssignedID
 
@@ -4765,10 +4765,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSellerAssignedID());
 
-        $createdSellerAssignedID = $model->getSellerAssignedIDWithCreate();
+        $testValueForSellerAssignedID = $model->getSellerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdSellerAssignedID);
-        $this->assertSame($createdSellerAssignedID, $model->getSellerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForSellerAssignedID);
+        $this->assertSame($testValueForSellerAssignedID, $model->getSellerAssignedID());
 
         // Property BuyerAssignedID
 
@@ -4781,10 +4781,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBuyerAssignedID());
 
-        $createdBuyerAssignedID = $model->getBuyerAssignedIDWithCreate();
+        $testValueForBuyerAssignedID = $model->getBuyerAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdBuyerAssignedID);
-        $this->assertSame($createdBuyerAssignedID, $model->getBuyerAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForBuyerAssignedID);
+        $this->assertSame($testValueForBuyerAssignedID, $model->getBuyerAssignedID());
 
         // Property IndustryAssignedID
 
@@ -4797,10 +4797,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getIndustryAssignedID());
 
-        $createdIndustryAssignedID = $model->getIndustryAssignedIDWithCreate();
+        $testValueForIndustryAssignedID = $model->getIndustryAssignedIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdIndustryAssignedID);
-        $this->assertSame($createdIndustryAssignedID, $model->getIndustryAssignedID());
+        $this->assertInstanceOf(IDType::class, $testValueForIndustryAssignedID);
+        $this->assertSame($testValueForIndustryAssignedID, $model->getIndustryAssignedID());
 
         // Property ModelID
 
@@ -4813,10 +4813,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getModelID());
 
-        $createdModelID = $model->getModelIDWithCreate();
+        $testValueForModelID = $model->getModelIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdModelID);
-        $this->assertSame($createdModelID, $model->getModelID());
+        $this->assertInstanceOf(IDType::class, $testValueForModelID);
+        $this->assertSame($testValueForModelID, $model->getModelID());
 
         // Property Name
 
@@ -4829,10 +4829,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getName());
 
-        $createdName = $model->getNameWithCreate();
+        $testValueForName = $model->getNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdName);
-        $this->assertSame($createdName, $model->getName());
+        $this->assertInstanceOf(TextType::class, $testValueForName);
+        $this->assertSame($testValueForName, $model->getName());
 
         // Property Description
 
@@ -4845,10 +4845,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDescription());
 
-        $createdDescription = $model->getDescriptionWithCreate();
+        $testValueForDescription = $model->getDescriptionWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdDescription);
-        $this->assertSame($createdDescription, $model->getDescription());
+        $this->assertInstanceOf(TextType::class, $testValueForDescription);
+        $this->assertSame($testValueForDescription, $model->getDescription());
 
         // Property BatchID
 
@@ -4864,9 +4864,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getBatchID());
         $this->assertGreaterThanOrEqual(1, count($model->getBatchID()));
 
-        $createdBatchIDItem = $model->addToBatchIDWithCreate();
+        $testValueForBatchIDItem = $model->addToBatchIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdBatchIDItem);
+        $this->assertInstanceOf(IDType::class, $testValueForBatchIDItem);
 
         $batchIDOnceItem = new IDType();
 
@@ -4895,10 +4895,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBrandName());
 
-        $createdBrandName = $model->getBrandNameWithCreate();
+        $testValueForBrandName = $model->getBrandNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdBrandName);
-        $this->assertSame($createdBrandName, $model->getBrandName());
+        $this->assertInstanceOf(TextType::class, $testValueForBrandName);
+        $this->assertSame($testValueForBrandName, $model->getBrandName());
 
         // Property ModelName
 
@@ -4911,10 +4911,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getModelName());
 
-        $createdModelName = $model->getModelNameWithCreate();
+        $testValueForModelName = $model->getModelNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdModelName);
-        $this->assertSame($createdModelName, $model->getModelName());
+        $this->assertInstanceOf(TextType::class, $testValueForModelName);
+        $this->assertSame($testValueForModelName, $model->getModelName());
 
         // Property ApplicableProductCharacteristic
 
@@ -4930,9 +4930,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getApplicableProductCharacteristic());
         $this->assertGreaterThanOrEqual(1, count($model->getApplicableProductCharacteristic()));
 
-        $createdApplicableProductCharacteristicItem = $model->addToApplicableProductCharacteristicWithCreate();
+        $testValueForApplicableProductCharacteristicItem = $model->addToApplicableProductCharacteristicWithCreate();
 
-        $this->assertInstanceOf(ProductCharacteristicType::class, $createdApplicableProductCharacteristicItem);
+        $this->assertInstanceOf(ProductCharacteristicType::class, $testValueForApplicableProductCharacteristicItem);
 
         $applicableProductCharacteristicOnceItem = new ProductCharacteristicType();
 
@@ -4964,9 +4964,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getDesignatedProductClassification());
         $this->assertGreaterThanOrEqual(1, count($model->getDesignatedProductClassification()));
 
-        $createdDesignatedProductClassificationItem = $model->addToDesignatedProductClassificationWithCreate();
+        $testValueForDesignatedProductClassificationItem = $model->addToDesignatedProductClassificationWithCreate();
 
-        $this->assertInstanceOf(ProductClassificationType::class, $createdDesignatedProductClassificationItem);
+        $this->assertInstanceOf(ProductClassificationType::class, $testValueForDesignatedProductClassificationItem);
 
         $designatedProductClassificationOnceItem = new ProductClassificationType();
 
@@ -4998,9 +4998,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIndividualTradeProductInstance());
         $this->assertGreaterThanOrEqual(1, count($model->getIndividualTradeProductInstance()));
 
-        $createdIndividualTradeProductInstanceItem = $model->addToIndividualTradeProductInstanceWithCreate();
+        $testValueForIndividualTradeProductInstanceItem = $model->addToIndividualTradeProductInstanceWithCreate();
 
-        $this->assertInstanceOf(TradeProductInstanceType::class, $createdIndividualTradeProductInstanceItem);
+        $this->assertInstanceOf(TradeProductInstanceType::class, $testValueForIndividualTradeProductInstanceItem);
 
         $individualTradeProductInstanceOnceItem = new TradeProductInstanceType();
 
@@ -5029,10 +5029,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getOriginTradeCountry());
 
-        $createdOriginTradeCountry = $model->getOriginTradeCountryWithCreate();
+        $testValueForOriginTradeCountry = $model->getOriginTradeCountryWithCreate();
 
-        $this->assertInstanceOf(TradeCountryType::class, $createdOriginTradeCountry);
-        $this->assertSame($createdOriginTradeCountry, $model->getOriginTradeCountry());
+        $this->assertInstanceOf(TradeCountryType::class, $testValueForOriginTradeCountry);
+        $this->assertSame($testValueForOriginTradeCountry, $model->getOriginTradeCountry());
 
         // Property IncludedReferencedProduct
 
@@ -5048,9 +5048,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getIncludedReferencedProduct());
         $this->assertGreaterThanOrEqual(1, count($model->getIncludedReferencedProduct()));
 
-        $createdIncludedReferencedProductItem = $model->addToIncludedReferencedProductWithCreate();
+        $testValueForIncludedReferencedProductItem = $model->addToIncludedReferencedProductWithCreate();
 
-        $this->assertInstanceOf(ReferencedProductType::class, $createdIncludedReferencedProductItem);
+        $this->assertInstanceOf(ReferencedProductType::class, $testValueForIncludedReferencedProductItem);
 
         $includedReferencedProductOnceItem = new ReferencedProductType();
 
@@ -5089,10 +5089,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getID());
 
-        $createdID = $model->getIDWithCreate();
+        $testValueForID = $model->getIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdID);
-        $this->assertSame($createdID, $model->getID());
+        $this->assertInstanceOf(IDType::class, $testValueForID);
+        $this->assertSame($testValueForID, $model->getID());
 
         // Property CardholderName
 
@@ -5105,10 +5105,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCardholderName());
 
-        $createdCardholderName = $model->getCardholderNameWithCreate();
+        $testValueForCardholderName = $model->getCardholderNameWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdCardholderName);
-        $this->assertSame($createdCardholderName, $model->getCardholderName());
+        $this->assertInstanceOf(TextType::class, $testValueForCardholderName);
+        $this->assertSame($testValueForCardholderName, $model->getCardholderName());
     }
 
     /**
@@ -5131,10 +5131,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineTotalAmount());
 
-        $createdLineTotalAmount = $model->getLineTotalAmountWithCreate();
+        $testValueForLineTotalAmount = $model->getLineTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdLineTotalAmount);
-        $this->assertSame($createdLineTotalAmount, $model->getLineTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForLineTotalAmount);
+        $this->assertSame($testValueForLineTotalAmount, $model->getLineTotalAmount());
 
         // Property ChargeTotalAmount
 
@@ -5147,10 +5147,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getChargeTotalAmount());
 
-        $createdChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
+        $testValueForChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdChargeTotalAmount);
-        $this->assertSame($createdChargeTotalAmount, $model->getChargeTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForChargeTotalAmount);
+        $this->assertSame($testValueForChargeTotalAmount, $model->getChargeTotalAmount());
 
         // Property AllowanceTotalAmount
 
@@ -5163,10 +5163,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAllowanceTotalAmount());
 
-        $createdAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
+        $testValueForAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdAllowanceTotalAmount);
-        $this->assertSame($createdAllowanceTotalAmount, $model->getAllowanceTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForAllowanceTotalAmount);
+        $this->assertSame($testValueForAllowanceTotalAmount, $model->getAllowanceTotalAmount());
 
         // Property TaxBasisTotalAmount
 
@@ -5179,10 +5179,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTaxBasisTotalAmount());
 
-        $createdTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
+        $testValueForTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTaxBasisTotalAmount);
-        $this->assertSame($createdTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForTaxBasisTotalAmount);
+        $this->assertSame($testValueForTaxBasisTotalAmount, $model->getTaxBasisTotalAmount());
 
         // Property TaxTotalAmount
 
@@ -5198,9 +5198,9 @@ final class ZffxExtendedModelTest extends TestCase
         $this->assertIsArray($model->getTaxTotalAmount());
         $this->assertGreaterThanOrEqual(1, count($model->getTaxTotalAmount()));
 
-        $createdTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
+        $testValueForTaxTotalAmountItem = $model->addToTaxTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTaxTotalAmountItem);
+        $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmountItem);
 
         $taxTotalAmountOnceItem = new AmountType();
 
@@ -5229,10 +5229,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getRoundingAmount());
 
-        $createdRoundingAmount = $model->getRoundingAmountWithCreate();
+        $testValueForRoundingAmount = $model->getRoundingAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdRoundingAmount);
-        $this->assertSame($createdRoundingAmount, $model->getRoundingAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForRoundingAmount);
+        $this->assertSame($testValueForRoundingAmount, $model->getRoundingAmount());
 
         // Property GrandTotalAmount
 
@@ -5245,10 +5245,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getGrandTotalAmount());
 
-        $createdGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
+        $testValueForGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdGrandTotalAmount);
-        $this->assertSame($createdGrandTotalAmount, $model->getGrandTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForGrandTotalAmount);
+        $this->assertSame($testValueForGrandTotalAmount, $model->getGrandTotalAmount());
 
         // Property TotalPrepaidAmount
 
@@ -5261,10 +5261,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTotalPrepaidAmount());
 
-        $createdTotalPrepaidAmount = $model->getTotalPrepaidAmountWithCreate();
+        $testValueForTotalPrepaidAmount = $model->getTotalPrepaidAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTotalPrepaidAmount);
-        $this->assertSame($createdTotalPrepaidAmount, $model->getTotalPrepaidAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForTotalPrepaidAmount);
+        $this->assertSame($testValueForTotalPrepaidAmount, $model->getTotalPrepaidAmount());
 
         // Property DuePayableAmount
 
@@ -5277,10 +5277,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDuePayableAmount());
 
-        $createdDuePayableAmount = $model->getDuePayableAmountWithCreate();
+        $testValueForDuePayableAmount = $model->getDuePayableAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdDuePayableAmount);
-        $this->assertSame($createdDuePayableAmount, $model->getDuePayableAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForDuePayableAmount);
+        $this->assertSame($testValueForDuePayableAmount, $model->getDuePayableAmount());
     }
 
     /**
@@ -5303,10 +5303,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineTotalAmount());
 
-        $createdLineTotalAmount = $model->getLineTotalAmountWithCreate();
+        $testValueForLineTotalAmount = $model->getLineTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdLineTotalAmount);
-        $this->assertSame($createdLineTotalAmount, $model->getLineTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForLineTotalAmount);
+        $this->assertSame($testValueForLineTotalAmount, $model->getLineTotalAmount());
 
         // Property ChargeTotalAmount
 
@@ -5319,10 +5319,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getChargeTotalAmount());
 
-        $createdChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
+        $testValueForChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdChargeTotalAmount);
-        $this->assertSame($createdChargeTotalAmount, $model->getChargeTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForChargeTotalAmount);
+        $this->assertSame($testValueForChargeTotalAmount, $model->getChargeTotalAmount());
 
         // Property AllowanceTotalAmount
 
@@ -5335,10 +5335,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAllowanceTotalAmount());
 
-        $createdAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
+        $testValueForAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdAllowanceTotalAmount);
-        $this->assertSame($createdAllowanceTotalAmount, $model->getAllowanceTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForAllowanceTotalAmount);
+        $this->assertSame($testValueForAllowanceTotalAmount, $model->getAllowanceTotalAmount());
 
         // Property TaxTotalAmount
 
@@ -5351,10 +5351,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTaxTotalAmount());
 
-        $createdTaxTotalAmount = $model->getTaxTotalAmountWithCreate();
+        $testValueForTaxTotalAmount = $model->getTaxTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTaxTotalAmount);
-        $this->assertSame($createdTaxTotalAmount, $model->getTaxTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForTaxTotalAmount);
+        $this->assertSame($testValueForTaxTotalAmount, $model->getTaxTotalAmount());
 
         // Property GrandTotalAmount
 
@@ -5367,10 +5367,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getGrandTotalAmount());
 
-        $createdGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
+        $testValueForGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdGrandTotalAmount);
-        $this->assertSame($createdGrandTotalAmount, $model->getGrandTotalAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForGrandTotalAmount);
+        $this->assertSame($testValueForGrandTotalAmount, $model->getGrandTotalAmount());
 
         // Property TotalAllowanceChargeAmount
 
@@ -5383,10 +5383,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTotalAllowanceChargeAmount());
 
-        $createdTotalAllowanceChargeAmount = $model->getTotalAllowanceChargeAmountWithCreate();
+        $testValueForTotalAllowanceChargeAmount = $model->getTotalAllowanceChargeAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdTotalAllowanceChargeAmount);
-        $this->assertSame($createdTotalAllowanceChargeAmount, $model->getTotalAllowanceChargeAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForTotalAllowanceChargeAmount);
+        $this->assertSame($testValueForTotalAllowanceChargeAmount, $model->getTotalAllowanceChargeAmount());
     }
 
     /**
@@ -5409,10 +5409,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(PaymentMeansCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(PaymentMeansCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property Information
 
@@ -5425,10 +5425,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getInformation());
 
-        $createdInformation = $model->getInformationWithCreate();
+        $testValueForInformation = $model->getInformationWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdInformation);
-        $this->assertSame($createdInformation, $model->getInformation());
+        $this->assertInstanceOf(TextType::class, $testValueForInformation);
+        $this->assertSame($testValueForInformation, $model->getInformation());
 
         // Property ApplicableTradeSettlementFinancialCard
 
@@ -5441,10 +5441,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getApplicableTradeSettlementFinancialCard());
 
-        $createdApplicableTradeSettlementFinancialCard = $model->getApplicableTradeSettlementFinancialCardWithCreate();
+        $testValueForApplicableTradeSettlementFinancialCard = $model->getApplicableTradeSettlementFinancialCardWithCreate();
 
-        $this->assertInstanceOf(TradeSettlementFinancialCardType::class, $createdApplicableTradeSettlementFinancialCard);
-        $this->assertSame($createdApplicableTradeSettlementFinancialCard, $model->getApplicableTradeSettlementFinancialCard());
+        $this->assertInstanceOf(TradeSettlementFinancialCardType::class, $testValueForApplicableTradeSettlementFinancialCard);
+        $this->assertSame($testValueForApplicableTradeSettlementFinancialCard, $model->getApplicableTradeSettlementFinancialCard());
 
         // Property PayerPartyDebtorFinancialAccount
 
@@ -5457,10 +5457,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayerPartyDebtorFinancialAccount());
 
-        $createdPayerPartyDebtorFinancialAccount = $model->getPayerPartyDebtorFinancialAccountWithCreate();
+        $testValueForPayerPartyDebtorFinancialAccount = $model->getPayerPartyDebtorFinancialAccountWithCreate();
 
-        $this->assertInstanceOf(DebtorFinancialAccountType::class, $createdPayerPartyDebtorFinancialAccount);
-        $this->assertSame($createdPayerPartyDebtorFinancialAccount, $model->getPayerPartyDebtorFinancialAccount());
+        $this->assertInstanceOf(DebtorFinancialAccountType::class, $testValueForPayerPartyDebtorFinancialAccount);
+        $this->assertSame($testValueForPayerPartyDebtorFinancialAccount, $model->getPayerPartyDebtorFinancialAccount());
 
         // Property PayeePartyCreditorFinancialAccount
 
@@ -5473,10 +5473,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayeePartyCreditorFinancialAccount());
 
-        $createdPayeePartyCreditorFinancialAccount = $model->getPayeePartyCreditorFinancialAccountWithCreate();
+        $testValueForPayeePartyCreditorFinancialAccount = $model->getPayeePartyCreditorFinancialAccountWithCreate();
 
-        $this->assertInstanceOf(CreditorFinancialAccountType::class, $createdPayeePartyCreditorFinancialAccount);
-        $this->assertSame($createdPayeePartyCreditorFinancialAccount, $model->getPayeePartyCreditorFinancialAccount());
+        $this->assertInstanceOf(CreditorFinancialAccountType::class, $testValueForPayeePartyCreditorFinancialAccount);
+        $this->assertSame($testValueForPayeePartyCreditorFinancialAccount, $model->getPayeePartyCreditorFinancialAccount());
 
         // Property PayeeSpecifiedCreditorFinancialInstitution
 
@@ -5489,10 +5489,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getPayeeSpecifiedCreditorFinancialInstitution());
 
-        $createdPayeeSpecifiedCreditorFinancialInstitution = $model->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate();
+        $testValueForPayeeSpecifiedCreditorFinancialInstitution = $model->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate();
 
-        $this->assertInstanceOf(CreditorFinancialInstitutionType::class, $createdPayeeSpecifiedCreditorFinancialInstitution);
-        $this->assertSame($createdPayeeSpecifiedCreditorFinancialInstitution, $model->getPayeeSpecifiedCreditorFinancialInstitution());
+        $this->assertInstanceOf(CreditorFinancialInstitutionType::class, $testValueForPayeeSpecifiedCreditorFinancialInstitution);
+        $this->assertSame($testValueForPayeeSpecifiedCreditorFinancialInstitution, $model->getPayeeSpecifiedCreditorFinancialInstitution());
     }
 
     /**
@@ -5515,10 +5515,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCalculatedAmount());
 
-        $createdCalculatedAmount = $model->getCalculatedAmountWithCreate();
+        $testValueForCalculatedAmount = $model->getCalculatedAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdCalculatedAmount);
-        $this->assertSame($createdCalculatedAmount, $model->getCalculatedAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForCalculatedAmount);
+        $this->assertSame($testValueForCalculatedAmount, $model->getCalculatedAmount());
 
         // Property TypeCode
 
@@ -5531,10 +5531,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTypeCode());
 
-        $createdTypeCode = $model->getTypeCodeWithCreate();
+        $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
-        $this->assertInstanceOf(TaxTypeCodeType::class, $createdTypeCode);
-        $this->assertSame($createdTypeCode, $model->getTypeCode());
+        $this->assertInstanceOf(TaxTypeCodeType::class, $testValueForTypeCode);
+        $this->assertSame($testValueForTypeCode, $model->getTypeCode());
 
         // Property ExemptionReason
 
@@ -5547,10 +5547,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getExemptionReason());
 
-        $createdExemptionReason = $model->getExemptionReasonWithCreate();
+        $testValueForExemptionReason = $model->getExemptionReasonWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdExemptionReason);
-        $this->assertSame($createdExemptionReason, $model->getExemptionReason());
+        $this->assertInstanceOf(TextType::class, $testValueForExemptionReason);
+        $this->assertSame($testValueForExemptionReason, $model->getExemptionReason());
 
         // Property BasisAmount
 
@@ -5563,10 +5563,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getBasisAmount());
 
-        $createdBasisAmount = $model->getBasisAmountWithCreate();
+        $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdBasisAmount);
-        $this->assertSame($createdBasisAmount, $model->getBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForBasisAmount);
+        $this->assertSame($testValueForBasisAmount, $model->getBasisAmount());
 
         // Property LineTotalBasisAmount
 
@@ -5579,10 +5579,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getLineTotalBasisAmount());
 
-        $createdLineTotalBasisAmount = $model->getLineTotalBasisAmountWithCreate();
+        $testValueForLineTotalBasisAmount = $model->getLineTotalBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdLineTotalBasisAmount);
-        $this->assertSame($createdLineTotalBasisAmount, $model->getLineTotalBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForLineTotalBasisAmount);
+        $this->assertSame($testValueForLineTotalBasisAmount, $model->getLineTotalBasisAmount());
 
         // Property AllowanceChargeBasisAmount
 
@@ -5595,10 +5595,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getAllowanceChargeBasisAmount());
 
-        $createdAllowanceChargeBasisAmount = $model->getAllowanceChargeBasisAmountWithCreate();
+        $testValueForAllowanceChargeBasisAmount = $model->getAllowanceChargeBasisAmountWithCreate();
 
-        $this->assertInstanceOf(AmountType::class, $createdAllowanceChargeBasisAmount);
-        $this->assertSame($createdAllowanceChargeBasisAmount, $model->getAllowanceChargeBasisAmount());
+        $this->assertInstanceOf(AmountType::class, $testValueForAllowanceChargeBasisAmount);
+        $this->assertSame($testValueForAllowanceChargeBasisAmount, $model->getAllowanceChargeBasisAmount());
 
         // Property CategoryCode
 
@@ -5611,10 +5611,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCategoryCode());
 
-        $createdCategoryCode = $model->getCategoryCodeWithCreate();
+        $testValueForCategoryCode = $model->getCategoryCodeWithCreate();
 
-        $this->assertInstanceOf(TaxCategoryCodeType::class, $createdCategoryCode);
-        $this->assertSame($createdCategoryCode, $model->getCategoryCode());
+        $this->assertInstanceOf(TaxCategoryCodeType::class, $testValueForCategoryCode);
+        $this->assertSame($testValueForCategoryCode, $model->getCategoryCode());
 
         // Property ExemptionReasonCode
 
@@ -5627,10 +5627,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getExemptionReasonCode());
 
-        $createdExemptionReasonCode = $model->getExemptionReasonCodeWithCreate();
+        $testValueForExemptionReasonCode = $model->getExemptionReasonCodeWithCreate();
 
-        $this->assertInstanceOf(CodeType::class, $createdExemptionReasonCode);
-        $this->assertSame($createdExemptionReasonCode, $model->getExemptionReasonCode());
+        $this->assertInstanceOf(CodeType::class, $testValueForExemptionReasonCode);
+        $this->assertSame($testValueForExemptionReasonCode, $model->getExemptionReasonCode());
 
         // Property TaxPointDate
 
@@ -5643,10 +5643,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getTaxPointDate());
 
-        $createdTaxPointDate = $model->getTaxPointDateWithCreate();
+        $testValueForTaxPointDate = $model->getTaxPointDateWithCreate();
 
-        $this->assertInstanceOf(DateType::class, $createdTaxPointDate);
-        $this->assertSame($createdTaxPointDate, $model->getTaxPointDate());
+        $this->assertInstanceOf(DateType::class, $testValueForTaxPointDate);
+        $this->assertSame($testValueForTaxPointDate, $model->getTaxPointDate());
 
         // Property DueDateTypeCode
 
@@ -5659,10 +5659,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDueDateTypeCode());
 
-        $createdDueDateTypeCode = $model->getDueDateTypeCodeWithCreate();
+        $testValueForDueDateTypeCode = $model->getDueDateTypeCodeWithCreate();
 
-        $this->assertInstanceOf(TimeReferenceCodeType::class, $createdDueDateTypeCode);
-        $this->assertSame($createdDueDateTypeCode, $model->getDueDateTypeCode());
+        $this->assertInstanceOf(TimeReferenceCodeType::class, $testValueForDueDateTypeCode);
+        $this->assertSame($testValueForDueDateTypeCode, $model->getDueDateTypeCode());
 
         // Property RateApplicablePercent
 
@@ -5675,10 +5675,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getRateApplicablePercent());
 
-        $createdRateApplicablePercent = $model->getRateApplicablePercentWithCreate();
+        $testValueForRateApplicablePercent = $model->getRateApplicablePercentWithCreate();
 
-        $this->assertInstanceOf(PercentType::class, $createdRateApplicablePercent);
-        $this->assertSame($createdRateApplicablePercent, $model->getRateApplicablePercent());
+        $this->assertInstanceOf(PercentType::class, $testValueForRateApplicablePercent);
+        $this->assertSame($testValueForRateApplicablePercent, $model->getRateApplicablePercent());
     }
 
     /**
@@ -5701,10 +5701,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getURIID());
 
-        $createdURIID = $model->getURIIDWithCreate();
+        $testValueForURIID = $model->getURIIDWithCreate();
 
-        $this->assertInstanceOf(IDType::class, $createdURIID);
-        $this->assertSame($createdURIID, $model->getURIID());
+        $this->assertInstanceOf(IDType::class, $testValueForURIID);
+        $this->assertSame($testValueForURIID, $model->getURIID());
 
         // Property CompleteNumber
 
@@ -5717,10 +5717,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getCompleteNumber());
 
-        $createdCompleteNumber = $model->getCompleteNumberWithCreate();
+        $testValueForCompleteNumber = $model->getCompleteNumberWithCreate();
 
-        $this->assertInstanceOf(TextType::class, $createdCompleteNumber);
-        $this->assertSame($createdCompleteNumber, $model->getCompleteNumber());
+        $this->assertInstanceOf(TextType::class, $testValueForCompleteNumber);
+        $this->assertSame($testValueForCompleteNumber, $model->getCompleteNumber());
     }
 
     /**
@@ -5754,10 +5754,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getExchangedDocumentContext());
 
-        $createdExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
+        $testValueForExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
 
-        $this->assertInstanceOf(ExchangedDocumentContextType::class, $createdExchangedDocumentContext);
-        $this->assertSame($createdExchangedDocumentContext, $model->getExchangedDocumentContext());
+        $this->assertInstanceOf(ExchangedDocumentContextType::class, $testValueForExchangedDocumentContext);
+        $this->assertSame($testValueForExchangedDocumentContext, $model->getExchangedDocumentContext());
 
         // Property ExchangedDocument
 
@@ -5770,10 +5770,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getExchangedDocument());
 
-        $createdExchangedDocument = $model->getExchangedDocumentWithCreate();
+        $testValueForExchangedDocument = $model->getExchangedDocumentWithCreate();
 
-        $this->assertInstanceOf(ExchangedDocumentType::class, $createdExchangedDocument);
-        $this->assertSame($createdExchangedDocument, $model->getExchangedDocument());
+        $this->assertInstanceOf(ExchangedDocumentType::class, $testValueForExchangedDocument);
+        $this->assertSame($testValueForExchangedDocument, $model->getExchangedDocument());
 
         // Property SupplyChainTradeTransaction
 
@@ -5786,10 +5786,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getSupplyChainTradeTransaction());
 
-        $createdSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
+        $testValueForSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
 
-        $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $createdSupplyChainTradeTransaction);
-        $this->assertSame($createdSupplyChainTradeTransaction, $model->getSupplyChainTradeTransaction());
+        $this->assertInstanceOf(SupplyChainTradeTransactionType::class, $testValueForSupplyChainTradeTransaction);
+        $this->assertSame($testValueForSupplyChainTradeTransaction, $model->getSupplyChainTradeTransaction());
     }
 
     /**
@@ -5962,10 +5962,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDateTimeString());
 
-        $createdDateTimeString = $model->getDateTimeStringWithCreate();
+        $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
-        $this->assertInstanceOf(DateTimeStringAType1::class, $createdDateTimeString);
-        $this->assertSame($createdDateTimeString, $model->getDateTimeString());
+        $this->assertInstanceOf(DateTimeStringAType1::class, $testValueForDateTimeString);
+        $this->assertSame($testValueForDateTimeString, $model->getDateTimeString());
     }
 
     /**
@@ -6020,10 +6020,10 @@ final class ZffxExtendedModelTest extends TestCase
 
         $this->assertNull($model->getDateString());
 
-        $createdDateString = $model->getDateStringWithCreate();
+        $testValueForDateString = $model->getDateStringWithCreate();
 
-        $this->assertInstanceOf(DateStringAType::class, $createdDateString);
-        $this->assertSame($createdDateString, $model->getDateString());
+        $this->assertInstanceOf(DateStringAType::class, $testValueForDateString);
+        $this->assertSame($testValueForDateString, $model->getDateString());
     }
 
     /**
