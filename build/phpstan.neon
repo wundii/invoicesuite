@@ -6,3 +6,5 @@ parameters:
     treatPhpDocTypesAsCertain: false
     excludePaths:
         - ../src/entities/*
+    parallel:
+		maximumNumberOfProcesses: 1
