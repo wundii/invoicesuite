@@ -64,7 +64,7 @@ return (new Config())
                     'arrays'
                 ],
             ],
-            'visibility_required' => [
+            'modifier_keywords' => [
                 'elements' => ['property', 'method', 'const'],
             ],
             'constant_case' => [
