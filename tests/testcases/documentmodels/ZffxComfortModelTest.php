@@ -2150,6 +2150,7 @@ final class ZffxComfortModelTest extends TestCase
         $hasLatestIncludedSupplyChainTradeLineItem = $model->hasLatestIncludedSupplyChainTradeLineItem();
 
         $this->assertIsBool($hasLatestIncludedSupplyChainTradeLineItem);
+        $this->assertTrue($hasLatestIncludedSupplyChainTradeLineItem);
 
         // (7) Property IncludedSupplyChainTradeLineItem - Clesr
 
