@@ -26,12 +26,9 @@ env:
   VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
   VALIDATORJARFILENAME: validationtool-1.5.0-standalone.jar
   VALIDATORSCENARIOFILENAME: scenarios.xml
-  PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
-  PHPDOCUMENTORFILENAME: phpDocumentor.phar
   VERAPDFURL: https://software.verapdf.org/rel/verapdf-installer.zip
   VERAPDFPATH: build/verapdf
   VERAPDFZIPFILENAME: verapdf.zip
-  GH_PAT: ${{ secrets.UPDATEWIKITOKEN }}
 
 jobs:
   build:
