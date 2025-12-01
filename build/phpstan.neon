@@ -1,10 +1,15 @@
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
 parameters:
     paths:
         - ../src
-        - ../tests/testcases
-    excludePaths:
-        - ../build/*
     level: 6
     treatPhpDocTypesAsCertain: false
+    phpVersion: 80400
     parallel:
-        maximumNumberOfProcesses: 1
+        jobSize: 20
+        maximumNumberOfProcesses: 32
+        minimumNumberOfJobsPerProcess: 2
+    ignoreErrors:
+        -
+            identifier: classConstant.internalClass

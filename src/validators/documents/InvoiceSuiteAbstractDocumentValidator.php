@@ -92,6 +92,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      */
     public static function createFromContent(string $fromDocumentContent): static
     {
+        // @phpstan-ignore new.staticInAbstractClassStaticMethod
         return new static($fromDocumentContent);
     }
 

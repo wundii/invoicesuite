@@ -111,7 +111,7 @@ jobs:
         continue-on-error: true
         shell: pwsh
         run: |
-          php vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
+          vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=checkstyle > build/logs/checkstyle_phpstan.xml
 
       - name: Run Tests (PHPUnit)
         shell: pwsh

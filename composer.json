@@ -40,8 +40,8 @@
         "jms/serializer": "^3",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2",
-        "symfony/finder": "^5|^6|^7",
-        "symfony/process": "^5|^6|^7",
+        "symfony/finder": "^5|^6|^7|^8",
+        "symfony/process": "^5|^6|^7|^8",
         "prinsfrank/pdfparser": "^2"
     },
     "require-dev": {
@@ -92,7 +92,7 @@
         "phpstan": "@phpstan12",
         "phpstan12": [
             "Composer\\Config::disableProcessTimeout",
-            "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --no-progress"
+            "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G"
         ],
         "phpstancache": "@phpstan12cache",
         "phpstan12cache": [
@@ -115,11 +115,15 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/php-cs-fixer fix --config=./build/phpcsfixer.php"
         ],
+        "lint": [
+            "Composer\\Config::disableProcessTimeout",
+            "./vendor/bin/parallel-lint src tests"
+        ],
         "checkstyle": [
             "Composer\\Config::disableProcessTimeout",
-            "@phpcs",
-            "@phpstan",
-            "@rector"
+            "@lint",
+            "@phpcsfixer:dryrun",
+            "@phpstan"
         ]
     }
 }
