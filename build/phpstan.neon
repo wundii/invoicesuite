@@ -8,3 +8,4 @@ parameters:
     treatPhpDocTypesAsCertain: false
     parallel:
         maximumNumberOfProcesses: 1
+    memoryLimit: 1G
