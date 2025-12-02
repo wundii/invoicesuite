@@ -3,6 +3,8 @@ includes:
 parameters:
     paths:
         - ../src
+    excludePaths:
+        - ../src/codelists
     level: 6
     treatPhpDocTypesAsCertain: false
     phpVersion: 80400
