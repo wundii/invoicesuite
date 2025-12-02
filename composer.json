@@ -82,12 +82,12 @@
         "phpcs": "@phpcs12",
         "phpcs12": [
             "Composer\\Config::disableProcessTimeout",
-            "./vendor/bin/phpcs --standard=./build/phpcsrules_psr12.xml --extensions=php --ignore=autoload.php ./src ./tests"
+            "@phpcsfixer:dryrun"
         ],
         "phpcbf": "@phpcbf12",
         "phpcbf12": [
             "Composer\\Config::disableProcessTimeout",
-            "./vendor/bin/phpcbf --standard=./build/phpcsrules_psr12.xml -q ./src ./tests"
+            "@phpcsfixer:run"
         ],
         "phpstan": "@phpstan12",
         "phpstan12": [
