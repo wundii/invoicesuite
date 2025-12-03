@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\ubl;
 
 use DateTime;
-use DateTimeImmutable;
 use DateTimeZone;
 use DOMElement;
 use DOMText;
@@ -189,16 +188,16 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
                 'method' => 'serializeJsonTime',
             ],
             [
-                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
-                'format' => 'json',
-                'type' => 'GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded',
-                'method' => 'base64EncodedToJson',
-            ],
-            [
                 'direction' => GraphNavigator::DIRECTION_DESERIALIZATION,
                 'format' => 'json',
                 'type' => 'GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded',
-                'method' => 'base64EncodedFromJson',
+                'method' => 'deserializeBase64EncodedFromJson',
+            ],
+            [
+                'direction' => GraphNavigator::DIRECTION_SERIALIZATION,
+                'format' => 'json',
+                'type' => 'GoetasWebservices\Xsd\XsdToPhp\Jms\Base64Encoded',
+                'method' => 'serializeBase64EncodedToJson',
             ],
         ];
     }
@@ -321,11 +320,11 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
-     * @return null|DateTimeImmutable
+     * @return null|DateTime
      */
-    public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTimeImmutable
+    public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTimeImmutable((string) $data);
+        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTime((string) $data, $this->defaultTimezone);
     }
 
     /**
@@ -346,11 +345,11 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
-     * @return null|DateTimeImmutable
+     * @return null|DateTime
      */
-    public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTimeImmutable
+    public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTimeImmutable((string) $data);
+        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTime((string) $data, $this->defaultTimezone);
     }
 
     /**
@@ -371,11 +370,11 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      *
      * @param  JsonDeserializationVisitor $visitor
      * @param  null|string                $data
-     * @return null|DateTimeImmutable
+     * @return null|DateTime
      */
-    public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTimeImmutable
+    public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTimeImmutable($data, $this->defaultTimezone);
+        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : new DateTime($data, $this->defaultTimezone);
     }
 
     /**
@@ -388,13 +387,13 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      */
     public function serializeJsonTime(JsonSerializationVisitor $visitor, DateTime $date, array $type): string
     {
-        $v = $date->format('H:i:s');
+        $formattedDate = $date->format('H:i:s');
 
         if ($date->getTimezone()->getOffset($date) !== $this->defaultTimezone->getOffset($date)) {
-            $v .= $date->format('P');
+            $formattedDate .= $date->format('P');
         }
 
-        return $visitor->visitString($v, $type);
+        return $visitor->visitString($formattedDate, $type);
     }
 
     /**
@@ -404,9 +403,19 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param  null|string                $data
      * @return null|string
      */
-    public function base64EncodedFromJson(JsonDeserializationVisitor $visitor, $data): ?string
+    public function deserializeBase64EncodedFromJson(JsonDeserializationVisitor $visitor, $data): ?string
     {
-        return InvoiceSuiteStringUtils::stringIsNullOrEmpty($data) ? null : base64_decode((string) $data);
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($data)) {
+            return null;
+        }
+
+        $decodedBase64 = base64_decode((string) $data, true);
+
+        if ($decodedBase64 === false) {
+            return null;
+        }
+
+        return $decodedBase64;
     }
 
     /**
@@ -417,7 +426,7 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * @param  array<mixed,mixed>       $type
      * @return string
      */
-    public function base64EncodedToJson(JsonSerializationVisitor $visitor, $data, array $type): string
+    public function serializeBase64EncodedToJson(JsonSerializationVisitor $visitor, $data, array $type): string
     {
         return $visitor->visitString(base64_encode($data), $type);
     }
