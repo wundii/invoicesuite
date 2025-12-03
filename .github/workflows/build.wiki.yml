@@ -46,7 +46,6 @@ jobs:
           composer update --no-interaction --prefer-dist
 
       - name: Update Wiki
-        continue-on-error: true
         run: |
           php -f make/genmethoddocs.php
           git clone https://$GH_PAT@github.com/horstoeko/invoicesuite.wiki.git wiki

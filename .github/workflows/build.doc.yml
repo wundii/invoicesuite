@@ -53,7 +53,6 @@ jobs:
           mkdir build/phpdoc
 
       - name: Documentation
-        continue-on-error: true
         run: |
           wget $PHPDOCUMENTORURL -O $PHPDOCUMENTORFILENAME
           chmod +x $PHPDOCUMENTORFILENAME
@@ -63,6 +62,5 @@ jobs:
           rm -f $PHPDOCUMENTORFILENAME
 
       - name: Deploy
-        continue-on-error: true
         run: |
           zip -r build/dist/doc.zip build/doc
