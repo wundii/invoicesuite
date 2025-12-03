@@ -9,18 +9,19 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\validators\documents;
+namespace horstoeko\invoicesuite\validators\kosit;
 
-use DOMDocument;
 use DOMXPath;
-use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
-use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-use Symfony\Component\Process\ExecutableFinder;
-use Symfony\Component\Process\Process;
 use Throwable;
 use ZipArchive;
+use DOMDocument;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ExecutableFinder;
+use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
+use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentValidator;
 
 /**
  * Class representing the implementation for a KosIT Validator

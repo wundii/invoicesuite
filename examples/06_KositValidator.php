@@ -3,7 +3,7 @@
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistCurrencyCodes;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
-use horstoeko\invoicesuite\validators\documents\InvoiceSuiteKositDocumentValidator;
+use horstoeko\invoicesuite\validators\kosit\InvoiceSuiteKositDocumentValidator;
 
 require __DIR__ . "/../vendor/autoload.php";
 
