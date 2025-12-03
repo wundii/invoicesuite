@@ -454,7 +454,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     }
 
     /**
-     * CHeck general requirements (common for local and remote validation)
+     * Check general requirements (common for local and remote validation)
      *
      * @return bool
      */
@@ -470,7 +470,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     }
 
     /**
-     * CHeck requirements for usage on a local installation
+     * Check requirements for usage on a local installation
      *
      * @return bool
      */
@@ -498,7 +498,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     }
 
     /**
-     * CHeck requirements for usage on a remote host which is running the application
+     * Check requirements for usage on a remote host which is running the application
      * in daemon mode
      *
      * @return bool
