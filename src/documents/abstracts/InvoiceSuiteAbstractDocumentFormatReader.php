@@ -78,6 +78,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
+     *
+     * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
     abstract public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO

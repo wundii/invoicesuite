@@ -134,6 +134,8 @@ class InvoiceSuiteDocumentReader
      *
      * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
+     *
+     * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
