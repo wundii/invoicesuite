@@ -635,6 +635,10 @@ class MarkDownGenerator
             $string = 'array';
         }
 
+        if (stripos($string, '\Traversable') === 0) {
+            $string = 'array';
+        }
+
         if ($string === '$this') {
             return 'static';
         }
