@@ -149,43 +149,45 @@ jobs:
       - name: Download Application (VeraPDF)
         if: steps.cache-verapdf.outputs.cache-hit != 'true'
         run: |
+          set -e
           rm -rf $VERAPDFPATH
           mkdir -p $VERAPDFPATH
           wget $VERAPDFURL -O $VERAPDFPATH/$VERAPDFZIPFILENAME
           unzip -j $VERAPDFPATH/$VERAPDFZIPFILENAME -d $VERAPDFPATH
 
-      - name: Run Tests (VeraPDF)
-        run: |
-          set -e
           echo "Creating veraPDF install config"
-          echo "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>
-            <AutomatedInstallation langpack=\"eng\">
-                <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id=\"welcome\"/>
-                <com.izforge.izpack.panels.target.TargetPanel id=\"install_dir\">
-                    <installpath>$(pwd)/$VERAPDFPATH</installpath>
-                </com.izforge.izpack.panels.target.TargetPanel>
-                <com.izforge.izpack.panels.packs.PacksPanel id=\"sdk_pack_select\">
-                    <pack index=\"0\" name=\"veraPDF Mac and *nix Scripts\" selected=\"true\"/>
-                    <pack index=\"1\" name=\"veraPDF Validation model\" selected=\"true\"/>
-                    <pack index=\"2\" name=\"veraPDF Documentation\" selected=\"true\"/>
-                    <pack index=\"3\" name=\"veraPDF Sample Plugins\" selected=\"true\"/>
-                </com.izforge.izpack.panels.packs.PacksPanel>
-                <com.izforge.izpack.panels.install.InstallPanel id=\"install\"/>
-                <com.izforge.izpack.panels.finish.FinishPanel id=\"finish\"/>
-            </AutomatedInstallation>" > $VERAPDFPATH/install.xml
+          cat > "$VERAPDFPATH/install.xml" <<EOF
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <AutomatedInstallation langpack="eng">
+              <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
+              <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
+                  <installpath>$(pwd)/$VERAPDFPATH</installpath>
+              </com.izforge.izpack.panels.target.TargetPanel>
+              <com.izforge.izpack.panels.packs.PacksPanel id="sdk_pack_select">
+                  <pack index="0" name="veraPDF Mac and *nix Scripts" selected="true"/>
+                  <pack index="1" name="veraPDF Validation model" selected="true"/>
+                  <pack index="2" name="veraPDF Documentation" selected="true"/>
+                  <pack index="3" name="veraPDF Sample Plugins" selected="true"/>
+              </com.izforge.izpack.panels.packs.PacksPanel>
+              <com.izforge.izpack.panels.install.InstallPanel id="install"/>
+              <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
+          </AutomatedInstallation>
+          EOF
+
           echo "Installing veraPDF"
           VERAPDFINSTALLJAR=$(find $VERAPDFPATH -type f -name "*.jar" | head -n 1); [[ -z "$VERAPDFINSTALLJAR" ]] && { echo "No veraPDF installer found" >&2; exit 1; } || echo "veraPDF installer fount at $VERAPDFINSTALLJAR"
           java -jar $VERAPDFINSTALLJAR $VERAPDFPATH/install.xml
-          echo "Creating test PDF (1)"
-          echo "Running PDF validation"
+
+      - name: Run Tests (VeraPDF)
+        run: |
+          echo "Running PDF validation (1)"
           VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 tests/assets/00_case_comfort_simple.pdf)
-          echo "Result of validation"
+          echo "Result of validation (1)"
           echo $VERAPDFRESULT
           [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
-          echo "Creating test PDF (2)"
-          echo "Running PDF validation"
+          echo "Running PDF validation (2)"
           VERAPDFRESULT=$($VERAPDFPATH/verapdf --format text --flavour 3b --loglevel 0 tests/assets/00_case_extended_simple.pdf)
-          echo "Result of validation"
+          echo "Result of validation (2)"
           echo $VERAPDFRESULT
           [[ $VERAPDFRESULT == PASS* ]] && echo "PDF validation passed" || { echo "Error: PDF validation not passed" >&2; exit 1; }
 
