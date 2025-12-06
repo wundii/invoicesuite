@@ -89,7 +89,8 @@ return (new Config())
                     'var',
                     'throws',
                     'see',
-                    'license'
+                    'license',
+                    'todo'
                 ],
             ],
             'phpdoc_order' => true,
