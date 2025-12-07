@@ -3065,6 +3065,26 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
     ): static;
 
     /**
+     * Set a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    abstract public function setDocumentPaymentReference(
+        ?string $newId = null
+    ): static;
+
+    /**
+     * Add a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    abstract public function addDocumentPaymentReference(
+        ?string $newId = null
+    ): static;
+
+    /**
      * Set payment term
      *
      * @param  null|string            $newDescription Text description of the payment terms

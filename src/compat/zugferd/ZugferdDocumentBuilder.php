@@ -204,8 +204,7 @@ class ZugferdDocumentBuilder implements Stringable
         ?string $paymentReference = null
     ): static {
         $this->documentBuilder->setDocumentPaymentCreditorReferenceID($creditorReferenceID);
-        // TODO: Make this possible
-        // $this->getObjectHelper()->tryCall($this->headerTradeSettlement, "setPaymentReference", $this->getObjectHelper()->getIdType($paymentReference));
+        $this->documentBuilder->setDocumentPaymentReference($paymentReference);
 
         return $this;
     }

@@ -3928,6 +3928,38 @@ class InvoiceSuiteDocumentBuilder
     }
 
     /**
+     * Set a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    public function setDocumentPaymentReference(
+        ?string $newId = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentReference(
+            $newId
+        );
+
+        return $this;
+    }
+
+    /**
+     * Add a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    public function addDocumentPaymentReference(
+        ?string $newId = null
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentReference(
+            $newId
+        );
+
+        return $this;
+    }
+
+    /**
      * Set payment term
      *
      * @param  null|string            $newDescription Text description of the payment terms

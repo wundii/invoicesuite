@@ -63,8 +63,6 @@ class ZugferdDocumentBuilderExtendedTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID', 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0');
     }
 
-    /*
-    // TODO: Add support for payment refernece
     public function testSetDocumentGeneralPaymentInformation(): void
     {
         self::$document->setDocumentGeneralPaymentInformation('1111111111', '2222222222');
@@ -73,7 +71,6 @@ class ZugferdDocumentBuilderExtendedTest extends TestCase
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID', '1111111111');
         $this->assertXPathValue('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:PaymentReference', '2222222222');
     }
-    */
 
     public function testSetIsDocumentCopy(): void
     {

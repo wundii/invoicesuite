@@ -6177,6 +6177,53 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     }
 
     /**
+     * Set a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId __BT-83, From BASIC WL__ A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    public function setDocumentPaymentReference(
+        ?string $newId = null
+    ): static {
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransaction()
+            ?->getApplicableHeaderTradeSettlement()
+            ?->unsetPaymentReference();
+
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getPaymentReferenceWithCreate()
+            ->setValue($newId);
+
+        return $this;
+    }
+
+    /**
+     * Add a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId __BT-83, From BASIC WL__ A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    public function addDocumentPaymentReference(
+        ?string $newId = null
+    ): static {
+        if (InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newId])) {
+            return $this;
+        }
+
+        $this->setDocumentPaymentReference($newId);
+
+        return $this;
+    }
+
+    /**
      * Set payment term
      *
      * @param  null|string            $newDescription __BT-20, From _BASIC WL__ Text description of the payment terms
