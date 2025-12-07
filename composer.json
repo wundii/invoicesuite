@@ -3,7 +3,7 @@
     "keywords": [],
     "description": "A library",
     "homepage": "https://github.com/horstoeko/invoicesuite",
-    "type": "package",
+    "type": "library",
     "license": "MIT",
     "prefer-stable": true,
     "authors": [
@@ -22,13 +22,20 @@
     },
     "autoload": {
         "psr-4": {
-            "horstoeko\\invoicesuite\\": "src"
+            "horstoeko\\invoicesuite\\": "src/",
+            "horstoeko\\zugferd\\": "src/compat/zugferd"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "horstoeko\\invoicesuite\\tests\\": "tests"
+            "horstoeko\\invoicesuite\\tests\\": "tests/"
         }
+    },
+    "conflict": {
+        "horstoeko/zugferd": "*"
+    },
+    "replace": {
+        "horstoeko/zugferd": "*"
     },
     "require": {
         "php": ">=8.1",
