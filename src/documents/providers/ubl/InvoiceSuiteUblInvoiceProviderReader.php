@@ -1666,6 +1666,13 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
             $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
         }
 
+        // Document-Level Payment Reference
+
+        while ($this->nextDocumentPaymentReference()) {
+            $this->getDocumentPaymentReference($newDocumentPaymentReference);
+            $newDocumentDTO->addPaymentReference(new InvoiceSuiteIdDTO($newDocumentPaymentReference));
+        }
+
         // Document-Level Taxes
 
         while ($this->nextDocumentTax()) {
@@ -7726,6 +7733,42 @@ class InvoiceSuiteUblInvoiceProviderReader extends InvoiceSuiteAbstractDocumentF
         $documentCreditorReference = $documentCreditorReferences[InvoiceSuitePointerUtils::getValue('documentpaymentcreditorreferences')];
 
         $newId = $documentCreditorReference->getID()->getValue() ?? '';
+
+        return $this;
+    }
+
+    /**
+     * Go to the first link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function firstDocumentPaymentReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function nextDocumentPaymentReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPaymentReference(
+        ?string &$newId
+    ): static {
+        $newId = '';
 
         return $this;
     }

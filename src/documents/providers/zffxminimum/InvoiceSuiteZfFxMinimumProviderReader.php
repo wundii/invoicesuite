@@ -1636,6 +1636,13 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
             $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
         }
 
+        // Document-Level Payment Reference
+
+        while ($this->nextDocumentPaymentReference()) {
+            $this->getDocumentPaymentReference($newDocumentPaymentReference);
+            $newDocumentDTO->addPaymentReference(new InvoiceSuiteIdDTO($newDocumentPaymentReference));
+        }
+
         // Document-Level Taxes
 
         while ($this->nextDocumentTax()) {
@@ -6891,6 +6898,42 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
     }
 
     /**
+     * Go to the first link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function firstDocumentPaymentReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Go to the next link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function nextDocumentPaymentReference(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId __BT-83, From BASIC WL__ A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPaymentReference(
+        ?string &$newId
+    ): static {
+        $newId = '';
+
+        return $this;
+    }
+
+    /**
      * Go to the first payment term
      *
      * @return bool
@@ -9321,6 +9364,7 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
         InvoiceSuitePointerUtils::resetSingle('documentpayeecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentmean');
         InvoiceSuitePointerUtils::resetSingle('documentcreditorreference');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymentreference');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentterm');
         InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
         InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');

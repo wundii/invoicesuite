@@ -3952,6 +3952,40 @@ class InvoiceSuiteDocumentReader
     }
 
     /**
+     * Go to the first link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function firstDocumentPaymentReference(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentReference();
+    }
+
+    /**
+     * Go to the next link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function nextDocumentPaymentReference(): bool
+    {
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentReference();
+    }
+
+    /**
+     * Get a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     */
+    public function getDocumentPaymentReference(
+        ?string &$newId
+    ): static {
+        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentReference($newId);
+
+        return $this;
+    }
+
+    /**
      * Go to the first payment term
      *
      * @return bool

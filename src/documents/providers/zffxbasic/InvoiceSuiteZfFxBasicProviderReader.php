@@ -1647,6 +1647,13 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
             $newDocumentDTO->addCreditorReference(new InvoiceSuiteIdDTO($newDocumentCreditorReferenceId));
         }
 
+        // Document-Level Payment Reference
+
+        while ($this->nextDocumentPaymentReference()) {
+            $this->getDocumentPaymentReference($newDocumentPaymentReference);
+            $newDocumentDTO->addPaymentReference(new InvoiceSuiteIdDTO($newDocumentPaymentReference));
+        }
+
         // Document-Level Taxes
 
         while ($this->nextDocumentTax()) {
@@ -7572,6 +7579,62 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
     }
 
     /**
+     * Go to the first link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function firstDocumentPaymentReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasFirst(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference() ?? []
+            ),
+            'documentpaymentreference'
+        );
+    }
+
+    /**
+     * Go to the next link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    public function nextDocumentPaymentReference(): bool
+    {
+        return InvoiceSuitePointerUtils::hasNext(
+            InvoiceSuiteArrayUtils::ensure(
+                $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference() ?? []
+            ),
+            'documentpaymentreference'
+        );
+    }
+
+    /**
+     * Get a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId __BT-83, From BASIC WL__ A text value used to link the payment to the invoice issued by the seller
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    public function getDocumentPaymentReference(
+        ?string &$newId
+    ): static {
+        /**
+         * @var array<IDType>
+         */
+        $documentPaymentReferences = InvoiceSuiteArrayUtils::ensure($this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getPaymentReference() ?? []);
+
+        /**
+         * @var IDType
+         */
+        $documentPaymentReference = $documentPaymentReferences[InvoiceSuitePointerUtils::getValue('documentpaymentreference')];
+
+        $newId = $documentPaymentReference->getValue() ?? '';
+
+        return $this;
+    }
+
+    /**
      * Go to the first payment term
      *
      * @return bool
@@ -10185,6 +10248,7 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
         InvoiceSuitePointerUtils::resetSingle('documentpayeecommunication');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentmean');
         InvoiceSuitePointerUtils::resetSingle('documentcreditorreference');
+        InvoiceSuitePointerUtils::resetSingle('documentpaymentreference');
         InvoiceSuitePointerUtils::resetSingle('documentpaymentterm');
         InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentdiscount');
         InvoiceSuitePointerUtils::resetSingle('documentpaymenttermpaymentpenalty');

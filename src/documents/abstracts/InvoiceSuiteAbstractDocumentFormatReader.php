@@ -2784,6 +2784,30 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
     ): static;
 
     /**
+     * Go to the first link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentPaymentReference(): bool;
+
+    /**
+     * Go to the next link to the invoice issued by the seller
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentPaymentReference(): bool;
+
+    /**
+     * Get a link to the invoice issued by the seller
+     *
+     * @param  null|string $newId Creditor identifier
+     * @return static
+     */
+    abstract public function getDocumentPaymentReference(
+        ?string &$newId
+    ): static;
+
+    /**
      * Go to the first payment term
      *
      * @return bool
