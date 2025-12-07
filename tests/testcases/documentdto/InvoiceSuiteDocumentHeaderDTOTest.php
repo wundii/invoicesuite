@@ -67,6 +67,7 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getPaymentMeans());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getPaymentTerms());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getCreditorReferences());
+        $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getPaymentReferences());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getBuyerReferences());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getTaxes());
         $this->assertSame([], $invoiceSuiteDocumentHeaderDTO->getAllowanceCharges());
@@ -415,6 +416,15 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->setCreditorReferences($creditorReferencesValue);
 
         $this->assertSame($creditorReferencesValue, $invoiceSuiteDocumentHeaderDTO->getCreditorReferences());
+    }
+
+    public function testPaymentReferencesGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $paymentReferencesValue = [];
+        $invoiceSuiteDocumentHeaderDTO->setPaymentReferences($paymentReferencesValue);
+
+        $this->assertSame($paymentReferencesValue, $invoiceSuiteDocumentHeaderDTO->getPaymentReferences());
     }
 
     public function testBuyerReferencesGetterAndSetter(): void
@@ -1529,6 +1539,65 @@ final class InvoiceSuiteDocumentHeaderDTOTest extends TestCase
         $invoiceSuiteDocumentHeaderDTO->previousCreditorReference($cb, $cbElse);
         $invoiceSuiteDocumentHeaderDTO->lastCreditorReference($cb, $cbElse);
         $invoiceSuiteDocumentHeaderDTO->forEachCreditorReference($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionPaymentReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+        $invoiceSuiteDocumentHeaderDTO->addPaymentReference(new InvoiceSuiteIdDTO());
+        $invoiceSuiteDocumentHeaderDTO->addPaymentReference(new InvoiceSuiteIdDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentHeaderDTO->firstPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextPaymentReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->firstPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousPaymentReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->lastPaymentReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentHeaderDTO->forEachPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->forEachPaymentReference($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuiteDocumentHeaderDTO = new InvoiceSuiteDocumentHeaderDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentHeaderDTO->firstPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->nextPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->previousPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->lastPaymentReference($cb, $cbElse);
+        $invoiceSuiteDocumentHeaderDTO->forEachPaymentReference($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);

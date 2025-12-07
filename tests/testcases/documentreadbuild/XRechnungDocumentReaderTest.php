@@ -1858,6 +1858,21 @@ final class XRechnungDocumentReaderTest extends TestCase
         }, '/Undefined (array key|index)/');
     }
 
+    public function testFirstNextGetDocumentPaymentReference(): void
+    {
+        $this->assertTrue(static::$document->firstDocumentPaymentReference());
+
+        static::$document->getDocumentPaymentReference($newId);
+
+        $this->assertSame('paymentReference2', $newId);
+
+        $this->assertFalse(static::$document->nextDocumentPaymentReference());
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPaymentReference($newId);
+        }, '/Undefined (array key|index)/');
+    }
+
     public function testFirstNextGetDocumentPaymentTerm(): void
     {
         // First Payment Term

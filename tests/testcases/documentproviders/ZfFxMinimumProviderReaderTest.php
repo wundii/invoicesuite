@@ -1596,6 +1596,12 @@ final class ZfFxMinimumProviderReaderTest extends TestCase
         $this->assertFalse(static::$document->nextDocumentPaymentCreditorReferenceID());
     }
 
+    public function testFirstNextGetDocumentPaymentReference(): void
+    {
+        $this->assertFalse(static::$document->firstDocumentPaymentReference());
+        $this->assertFalse(static::$document->nextDocumentPaymentReference());
+    }
+
     public function testFirstNextGetDocumentPaymentTerm(): void
     {
         $this->assertFalse(static::$document->firstDocumentPaymentTerm());

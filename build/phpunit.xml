@@ -121,6 +121,9 @@
             <file>../tests/testcases/pdf/InvoiceSuitePdfDocumentBuilderTest.php</file>
             <file>../tests/testcases/pdf/InvoiceSuitePdfMergerTest.php</file>
         </testsuite>
+        <testsuite name="compat">
+            <file>../tests/testcases/compat/ZugferdDocumentBuilderExtendedTest.php</file>
+        </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
