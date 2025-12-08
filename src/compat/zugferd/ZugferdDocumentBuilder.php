@@ -4363,7 +4363,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetSeller(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setSellerTradeParty',
             null
         );
@@ -4377,7 +4377,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetBuyer(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setBuyerTradeParty',
             null
         );
@@ -4391,7 +4391,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetSellerTaxRepresentative(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setSellerTaxRepresentativeTradeParty',
             null
         );
@@ -4405,7 +4405,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetProductEndUser(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeAgreement.setProductEndUserTradeParty',
             null
         );
@@ -4419,7 +4419,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetShipTo(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.setShipToTradeParty',
             null
         );
@@ -4433,7 +4433,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetUltimateShipTo(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.setUltimateShipToTradeParty',
             null
         );
@@ -4447,7 +4447,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetShipFrom(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeDelivery.setShipFromTradeParty',
             null
         );
@@ -4461,7 +4461,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetInvoicer(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.setInvoicerTradeParty',
             null
         );
@@ -4475,7 +4475,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetInvoicee(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.setInvoiceeTradeParty',
             null
         );
@@ -4489,7 +4489,7 @@ class ZugferdDocumentBuilder implements Stringable
     protected function unsetPayee(): void
     {
         $this->safeInvokeTryCallByPath(
-            $this->getRootObjectFromDocumentBuilder(),
+            $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject(),
             'getSupplyChainTradeTransaction.getApplicableHeaderTradeSettlement.setPayeeTradeParty',
             null
         );
@@ -4504,15 +4504,5 @@ class ZugferdDocumentBuilder implements Stringable
     protected function onBeforeGetContent(): void
     {
         // Do nothing
-    }
-
-    /**
-     * Returns the internal root object from document builder
-     *
-     * @return object
-     */
-    private function getRootObjectFromDocumentBuilder()
-    {
-        return $this->documentBuilder->getCurrentDocumentFormatProvider()->getBuilder()->getDocumentRootObject();
     }
 }
