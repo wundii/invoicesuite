@@ -59,9 +59,9 @@ class ZugferdDocumentBuilder implements Stringable
             throw new InvoiceSuiteInvalidArgumentException(sprintf('Unknown profile id %s', $profile));
         }
 
-        $profileDef = ZugferdProfiles::PROFILEDEF[$profile];
-
-        $this->documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId($profileDef['invoicesuiteproviderid']);
+        $this->documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
+            ZugferdProfiles::PROFILEDEF[$profile]['invoicesuiteproviderid']
+        );
     }
 
     /**
