@@ -3558,14 +3558,14 @@ abstract class InvoiceSuiteAbstractDocumentFormatReader
      *
      * @return bool
      */
-    abstract public function firstDocumentAdditionalObjectReference(): bool;
+    abstract public function firstDocumentPositionAdditionalObjectReference(): bool;
 
     /**
      * Go to the next additional object reference
      *
      * @return bool
      */
-    abstract public function nextDocumentAdditionalObjectReference(): bool;
+    abstract public function nextDocumentPositionAdditionalObjectReference(): bool;
 
     /**
      * Get an additional object reference

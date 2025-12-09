@@ -5,21 +5,22 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentdto;
 
 use DateTimeImmutable;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteIdDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteNoteDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitePartyDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteProductDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceNetDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteQuantityDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDateRangeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitePriceGrossDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentPositionDTO;
+use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentExtDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteReferenceDocumentLineExtDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
-use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\tests\TestCase;
 
 final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
 {
@@ -43,6 +44,7 @@ final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getReceivingAdviceReferences());
         $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getDeliveryNoteReferences());
         $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getInvoiceReferences());
+        $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getAdditionalObjectReferences());
         $this->assertNotInstanceOf(InvoiceSuitePriceGrossDTO::class, $invoiceSuiteDocumentPositionDTO->getGrossPrice());
         $this->assertNotInstanceOf(InvoiceSuitePriceNetDTO::class, $invoiceSuiteDocumentPositionDTO->getNetPrice());
         $this->assertNotInstanceOf(InvoiceSuiteQuantityDTO::class, $invoiceSuiteDocumentPositionDTO->getQuantityBilled());
@@ -200,6 +202,15 @@ final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $invoiceSuiteDocumentPositionDTO->setInvoiceReferences($invoiceReferencesValue);
 
         $this->assertSame($invoiceReferencesValue, $invoiceSuiteDocumentPositionDTO->getInvoiceReferences());
+    }
+
+    public function testAdditionalObjectReferencesGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $additionalObjectReferencesValue = [];
+        $invoiceSuiteDocumentPositionDTO->setAdditionalObjectReferences($additionalObjectReferencesValue);
+
+        $this->assertSame($additionalObjectReferencesValue, $invoiceSuiteDocumentPositionDTO->getAdditionalObjectReferences());
     }
 
     public function testGrossPriceGetterAndSetter(): void
@@ -963,6 +974,65 @@ final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $invoiceSuiteDocumentPositionDTO->previousInvoiceReference($cb, $cbElse);
         $invoiceSuiteDocumentPositionDTO->lastInvoiceReference($cb, $cbElse);
         $invoiceSuiteDocumentPositionDTO->forEachInvoiceReference($cb, $cbElse);
+
+        $this->assertSame(0, $hitCount);
+        $this->assertSame(7, $elseCount);
+    }
+
+    public function testCollectionAdditionalObjectReferenceIteratorsWithCallbacks(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $invoiceSuiteDocumentPositionDTO->addAdditionalObjectReference(new InvoiceSuiteReferenceDocumentExtDTO());
+        $invoiceSuiteDocumentPositionDTO->addAdditionalObjectReference(new InvoiceSuiteReferenceDocumentExtDTO());
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentPositionDTO->firstAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalObjectReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentPositionDTO->firstAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalObjectReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentPositionDTO->lastAdditionalObjectReference($cb, $cbElse);
+
+        $invoiceSuiteDocumentPositionDTO->forEachAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAdditionalObjectReference($cb, $cbElse, 1);
+
+        $this->assertSame(9, $hitCount);
+        $this->assertSame(2, $elseCount);
+
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+
+        $hitCount = 0;
+        $elseCount = 0;
+
+        $cb = static function ($item) use (&$hitCount): void {
+            ++$hitCount;
+        };
+
+        $cbElse = static function () use (&$elseCount): void {
+            ++$elseCount;
+        };
+
+        $invoiceSuiteDocumentPositionDTO->firstAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->nextAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->previousAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->lastAdditionalObjectReference($cb, $cbElse);
+        $invoiceSuiteDocumentPositionDTO->forEachAdditionalObjectReference($cb, $cbElse);
 
         $this->assertSame(0, $hitCount);
         $this->assertSame(7, $elseCount);

@@ -1051,6 +1051,14 @@ class InvoiceSuiteZfFxExtendedProviderBuilder extends InvoiceSuiteAbstractDocume
                     )
                 );
 
+                $item->forEachAdditionalObjectReference(
+                    fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->addDocumentPositionAdditionalObjectReference(
+                        $item->getReferenceNumber(),
+                        $item->getTypeCode(),
+                        $item->getReferenceTypeCode()
+                    )
+                );
+
                 // Position Gross Price
 
                 $this->setDocumentPositionGrossPrice(

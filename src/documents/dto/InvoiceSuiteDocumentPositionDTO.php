@@ -136,6 +136,13 @@ class InvoiceSuiteDocumentPositionDTO
     protected array $invoiceReferences = [];
 
     /**
+     * The additional object references (line reference)
+     *
+     * @var array<InvoiceSuiteReferenceDocumentExtDTO>
+     */
+    protected array $additionalObjectReferences = [];
+
+    /**
      * The gross price
      *
      * @var null|InvoiceSuitePriceGrossDTO
@@ -245,6 +252,7 @@ class InvoiceSuiteDocumentPositionDTO
      * @param array<InvoiceSuiteReferenceDocumentLineDTO>    $receivingAdviceReferences       The receiving advice reference (line reference)
      * @param array<InvoiceSuiteReferenceDocumentLineDTO>    $deliveryNoteReferences          The delivery note reference (line reference)
      * @param array<InvoiceSuiteReferenceDocumentLineExtDTO> $invoiceReferences               The additional invoice document (line reference)
+     * @param array<InvoiceSuiteReferenceDocumentExtDTO>     $additionalObjectReferences      The additional object references
      * @param null|InvoiceSuitePriceGrossDTO                 $grossPrice                      The gross price
      * @param null|InvoiceSuitePriceNetDTO                   $netPrice                        The net price
      * @param null|InvoiceSuiteQuantityDTO                   $quantityBilled                  The billed quantity
@@ -276,6 +284,7 @@ class InvoiceSuiteDocumentPositionDTO
         array $receivingAdviceReferences = [],
         array $deliveryNoteReferences = [],
         array $invoiceReferences = [],
+        array $additionalObjectReferences = [],
         ?InvoiceSuitePriceGrossDTO $grossPrice = null,
         ?InvoiceSuitePriceNetDTO $netPrice = null,
         ?InvoiceSuiteQuantityDTO $quantityBilled = null,
@@ -306,6 +315,7 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setReceivingAdviceReferences($receivingAdviceReferences);
         $this->setDeliveryNoteReferences($deliveryNoteReferences);
         $this->setInvoiceReferences($invoiceReferences);
+        $this->setAdditionalObjectReferences($additionalObjectReferences);
         $this->setGrossPrice($grossPrice);
         $this->setNetPrice($netPrice);
         $this->setQuantityBilled($quantityBilled);
@@ -1965,6 +1975,146 @@ class InvoiceSuiteDocumentPositionDTO
             ++$count;
 
             $callback($invoiceReference);
+        }
+
+        if ($count === 0 && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns the additional invoice document (line reference)
+     *
+     * @return array<InvoiceSuiteReferenceDocumentExtDTO>
+     */
+    public function getAdditionalObjectReferences(): array
+    {
+        return $this->additionalObjectReferences;
+    }
+
+    /**
+     * Sets the additional invoice document (line reference)
+     *
+     * @param  array<InvoiceSuiteReferenceDocumentExtDTO> $additionalObjectReferences The additional invoice document (line reference)
+     * @return static
+     */
+    public function setAdditionalObjectReferences(array $additionalObjectReferences): static
+    {
+        $this->additionalObjectReferences = $additionalObjectReferences;
+
+        return $this;
+    }
+
+    /**
+     * Add single The additional invoice document (line reference)
+     *
+     * @param  InvoiceSuiteReferenceDocumentExtDTO $additionalObjectReference The additional invoice document (line reference)
+     * @return static
+     */
+    public function addAdditionalObjectReference(InvoiceSuiteReferenceDocumentExtDTO $additionalObjectReference): static
+    {
+        $this->additionalObjectReferences[] = $additionalObjectReference;
+
+        return $this;
+    }
+
+    /**
+     * Get first The additional invoice document (line reference)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function firstAdditionalObjectReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($additionalObjectReference = reset($this->additionalObjectReferences)) !== false) {
+            $callback($additionalObjectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get next The additional invoice document (line reference)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function nextAdditionalObjectReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($additionalObjectReference = next($this->additionalObjectReferences)) !== false) {
+            $callback($additionalObjectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get previous The additional invoice document (line reference)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function previousAdditionalObjectReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($additionalObjectReference = prev($this->additionalObjectReferences)) !== false) {
+            $callback($additionalObjectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get last The additional invoice document (line reference)
+     *
+     * @param  callable      $callback     Callback to execute if an item was found
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @return static
+     */
+    public function lastAdditionalObjectReference(callable $callback, ?callable $callbackElse = null): static
+    {
+        if (($additionalObjectReference = end($this->additionalObjectReferences)) !== false) {
+            $callback($additionalObjectReference);
+        } elseif (!is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The additional invoice document (line reference) and execute callback
+     *
+     * @param  callable      $callback     Callback to execute for each item
+     * @param  null|callable $callbackElse Callback to execute if no item was found
+     * @param  null|int      $limit        Maximum number of loops
+     * @return static
+     */
+    public function forEachAdditionalObjectReference(
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        $count = 0;
+
+        foreach ($this->additionalObjectReferences as $additionalObjectReference) {
+            if ($limit !== null && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($additionalObjectReference);
         }
 
         if ($count === 0 && !is_null($callbackElse)) {

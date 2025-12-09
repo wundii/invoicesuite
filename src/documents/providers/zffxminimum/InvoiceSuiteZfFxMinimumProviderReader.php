@@ -2074,6 +2074,22 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
                 );
             }
 
+            while ($this->nextDocumentPositionAdditionalObjectReference()) {
+                $this->getDocumentPositionAdditionalObjectReference(
+                    $newDocumentPositionAdditionalObjectReferenceNumber,
+                    $newDocumentPositionAdditionalObjectReferenceTypeCode,
+                    $newDocumentPositionAdditionalObjectReferenceReferenceTypeCode
+                );
+
+                $newDocumentPositionDTO->addAdditionalObjectReference(
+                    new InvoiceSuiteReferenceDocumentExtDTO(
+                        referenceNumber: $newDocumentPositionInvoiceReferenceNumber,
+                        typeCode: $newDocumentPositionInvoiceReferenceTypeCode,
+                        referenceTypeCode: $newDocumentPositionAdditionalObjectReferenceReferenceTypeCode
+                    )
+                );
+            }
+
             // Position Gross Price
 
             if ($this->firstDcumentPositionGrossPrice()) {
@@ -8178,7 +8194,7 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      *
      * @return bool
      */
-    public function firstDocumentAdditionalObjectReference(): bool
+    public function firstDocumentPositionAdditionalObjectReference(): bool
     {
         return false;
     }
@@ -8188,7 +8204,7 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      *
      * @return bool
      */
-    public function nextDocumentAdditionalObjectReference(): bool
+    public function nextDocumentPositionAdditionalObjectReference(): bool
     {
         return false;
     }

@@ -1050,6 +1050,14 @@ class InvoiceSuiteZfFxComfortProviderBuilder extends InvoiceSuiteAbstractDocumen
                     )
                 );
 
+                $item->firstAdditionalObjectReference(
+                    fn (InvoiceSuiteReferenceDocumentExtDTO $item) => $this->setDocumentPositionAdditionalObjectReference(
+                        $item->getReferenceNumber(),
+                        $item->getTypeCode(),
+                        $item->getReferenceTypeCode()
+                    )
+                );
+
                 // Position Gross Price
 
                 $this->setDocumentPositionGrossPrice(

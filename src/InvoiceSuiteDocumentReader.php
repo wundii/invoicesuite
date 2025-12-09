@@ -5095,9 +5095,9 @@ class InvoiceSuiteDocumentReader
      *
      * @return bool
      */
-    public function firstDocumentAdditionalObjectReference(): bool
+    public function firstDocumentPositionAdditionalObjectReference(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentAdditionalObjectReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAdditionalObjectReference();
     }
 
     /**
@@ -5105,9 +5105,9 @@ class InvoiceSuiteDocumentReader
      *
      * @return bool
      */
-    public function nextDocumentAdditionalObjectReference(): bool
+    public function nextDocumentPositionAdditionalObjectReference(): bool
     {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentAdditionalObjectReference();
+        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAdditionalObjectReference();
     }
 
     /**

@@ -2093,6 +2093,22 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
                 );
             }
 
+            while ($this->nextDocumentPositionAdditionalObjectReference()) {
+                $this->getDocumentPositionAdditionalObjectReference(
+                    $newDocumentPositionAdditionalObjectReferenceNumber,
+                    $newDocumentPositionAdditionalObjectReferenceTypeCode,
+                    $newDocumentPositionAdditionalObjectReferenceReferenceTypeCode
+                );
+
+                $newDocumentPositionDTO->addAdditionalObjectReference(
+                    new InvoiceSuiteReferenceDocumentExtDTO(
+                        referenceNumber: $newDocumentPositionInvoiceReferenceNumber,
+                        typeCode: $newDocumentPositionInvoiceReferenceTypeCode,
+                        referenceTypeCode: $newDocumentPositionAdditionalObjectReferenceReferenceTypeCode
+                    )
+                );
+            }
+
             // Position Gross Price
 
             if ($this->firstDcumentPositionGrossPrice()) {
@@ -10357,7 +10373,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @return bool
      */
-    public function firstDocumentAdditionalObjectReference(): bool
+    public function firstDocumentPositionAdditionalObjectReference(): bool
     {
         return InvoiceSuitePointerUtils::hasFirst(
             InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
@@ -10370,7 +10386,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @return bool
      */
-    public function nextDocumentAdditionalObjectReference(): bool
+    public function nextDocumentPositionAdditionalObjectReference(): bool
     {
         return InvoiceSuitePointerUtils::hasNext(
             InvoiceSuiteArrayUtils::ensure($this->resolveCurrentDocumentPosition()->getSpecifiedLineTradeSettlement()?->getAdditionalReferencedDocument() ?? []),
