@@ -808,7 +808,7 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Set information on the delivery conditions
      *
-     * @param  null|string $code The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
+     * @param  null|string $newCode The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
      * @return static
      */
     public function setDocumentDeliveryTerms(

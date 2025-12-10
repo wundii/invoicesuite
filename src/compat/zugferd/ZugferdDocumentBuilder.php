@@ -266,6 +266,7 @@ class ZugferdDocumentBuilder implements Stringable
     public function setDocumentBusinessProcess(
         ?string $id = null
     ): static {
+        // @phpstan-ignore method.notFound (Handled by Call-Forwarding)
         $this->documentBuilder->setContextParameter('', $id);
 
         return $this;
