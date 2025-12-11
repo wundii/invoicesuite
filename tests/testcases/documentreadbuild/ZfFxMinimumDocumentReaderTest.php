@@ -70,7 +70,7 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
         static::$document->getDocumentDate($newDocumentDate);
 
         $this->assertInstanceOf(DateTimeInterface::class, $newDocumentDate);
-        $this->assertSame('19700101', $newDocumentDate->format('Ymd'));
+        $this->assertSame('19700101', $newDocumentDate?->format('Ymd'));
     }
 
     public function testGetDocumentCompleteDate(): void
@@ -2670,7 +2670,7 @@ final class ZfFxMinimumDocumentReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
-        $this->assertSame('2025-04-000001', $newDocmentDTO->getNumber());
+        $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
     }
 
     public function testCopyToBuilder(): void

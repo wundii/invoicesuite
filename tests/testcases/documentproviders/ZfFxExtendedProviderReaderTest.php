@@ -69,7 +69,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentDate($newDocumentDate);
 
         $this->assertInstanceOf(DateTimeInterface::class, $newDocumentDate);
-        $this->assertSame('19700101', $newDocumentDate->format('Ymd'));
+        $this->assertSame('19700101', $newDocumentDate?->format('Ymd'));
     }
 
     public function testGetDocumentCompleteDate(): void
@@ -77,7 +77,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentCompleteDate($newCompleteDate);
 
         $this->assertInstanceOf(DateTimeInterface::class, $newCompleteDate);
-        $this->assertSame('19700102', $newCompleteDate->format('Ymd'));
+        $this->assertSame('19700102', $newCompleteDate?->format('Ymd'));
     }
 
     public function testGetDocumentCurrency(): void
@@ -139,8 +139,8 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         static::$document->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
 
-        $this->assertSame('19700101', $newStartDate->format('Ymd'));
-        $this->assertSame('19700131', $newEndDate->format('Ymd'));
+        $this->assertSame('19700101', $newStartDate?->format('Ymd'));
+        $this->assertSame('19700131', $newEndDate?->format('Ymd'));
         $this->assertSame('Some Description', $newDescription);
 
         $this->assertFalse(static::$document->nextDocumentBillingPeriod());
@@ -180,7 +180,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('SO-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentSellerOrderReference());
 
@@ -196,7 +196,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('BO-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentBuyerOrderReference());
 
@@ -212,7 +212,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('QU-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentQuotationReference());
 
@@ -228,7 +228,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('CON-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentContractReference());
 
@@ -251,7 +251,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         );
 
         $this->assertSame('ADD-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
         $this->assertSame('typecode', $newTypeCode);
         $this->assertSame('reftypecode', $newReferenceTypeCode);
         $this->assertSame('description', $newDescription);
@@ -269,7 +269,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         );
 
         $this->assertSame('ADD-2', $newReferenceNumber);
-        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700102', $newReferenceDate?->format('Ymd'));
         $this->assertSame('typecode2', $newTypeCode);
         $this->assertSame('reftypecode2', $newReferenceTypeCode);
         $this->assertSame('description2', $newDescription);
@@ -296,7 +296,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         $this->assertSame('INVREF-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
         $this->assertSame('typecode', $newTypeCode);
 
         $this->assertTrue(static::$document->nextDocumentInvoiceReference());
@@ -304,7 +304,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
 
         $this->assertSame('INVREF-2', $newReferenceNumber);
-        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700102', $newReferenceDate?->format('Ymd'));
         $this->assertSame('typecode2', $newTypeCode);
 
         $this->assertFalse(static::$document->nextDocumentInvoiceReference());
@@ -337,14 +337,14 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('UCOR-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertTrue(static::$document->nextDocumentUltimateCustomerOrderReference());
 
         static::$document->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('UCOR-2', $newReferenceNumber);
-        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700102', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentUltimateCustomerOrderReference());
 
@@ -360,7 +360,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('DESPADV-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentDespatchAdviceReference());
 
@@ -376,7 +376,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('RECADV-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentReceivingAdviceReference());
 
@@ -392,7 +392,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
 
         $this->assertSame('DEVNOTE-1', $newReferenceNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentDeliveryNoteReference());
 
@@ -405,7 +405,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
     {
         static::$document->getDocumentSupplyChainEvent($newDate);
 
-        $this->assertSame('19700101', $newDate->format('Ymd'));
+        $this->assertSame('19700101', $newDate?->format('Ymd'));
     }
 
     public function testGetDocumentBuyerReference(): void
@@ -2137,7 +2137,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Payment Term Description 1', $newDescription);
-        $this->assertSame('19700131', $newDueDate->format('Ymd'));
+        $this->assertSame('19700131', $newDueDate?->format('Ymd'));
         $this->assertSame('', $newMandate);
 
         $this->assertTrue(static::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
@@ -2156,7 +2156,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(2.0, $newDiscountPercent, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(1.0, $newBasePeriod, PHP_FLOAT_EPSILON);
         $this->assertSame('DAY', $newBasePeriodUnit);
-        $this->assertSame('19700224', $newBaseDate->format('Ymd'));
+        $this->assertSame('19700224', $newBaseDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPaymentPenaltyTermsInLastPaymentTerm());
 
@@ -2176,7 +2176,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(2.0, $newDiscountPercent, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(1.0, $newBasePeriod, PHP_FLOAT_EPSILON);
         $this->assertSame('DAY', $newBasePeriodUnit);
-        $this->assertSame('19700224', $newBaseDate->format('Ymd'));
+        $this->assertSame('19700224', $newBaseDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPaymentDiscountTermsInLastPaymentTerm());
 
@@ -2187,7 +2187,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         static::$document->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
 
         $this->assertSame('Payment Term Description 2', $newDescription);
-        $this->assertSame('19700331', $newDueDate->format('Ymd'));
+        $this->assertSame('19700331', $newDueDate?->format('Ymd'));
         $this->assertSame('', $newMandate);
 
         $this->assertFalse(static::$document->firstDocumentPaymentPenaltyTermsInLastPaymentTerm());
@@ -2220,7 +2220,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(19.0, $newTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason', $newExemptionReason);
         $this->assertSame('ReasonCode', $newExemptionReasonCode);
-        $this->assertSame('19700101', $newTaxDueDate->format('Ymd'));
+        $this->assertSame('19700101', $newTaxDueDate?->format('Ymd'));
         $this->assertSame('DUECODE', $newTaxDueCode);
 
         $this->assertTrue(static::$document->nextDocumentTax());
@@ -2244,7 +2244,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(7.0, $newTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason2', $newExemptionReason);
         $this->assertSame('ReasonCode2', $newExemptionReasonCode);
-        $this->assertSame('19700102', $newTaxDueDate->format('Ymd'));
+        $this->assertSame('19700102', $newTaxDueDate?->format('Ymd'));
         $this->assertSame('DUECODE2', $newTaxDueCode);
 
         $this->assertFalse(static::$document->nextDocumentTax());
@@ -2662,7 +2662,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('SO-1', $newReferenceNumber);
         $this->assertSame('1', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionSellerOrderReference());
 
@@ -2687,7 +2687,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('BO-1', $newReferenceNumber);
         $this->assertSame('10', $newReferenceLineNumber);
-        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700102', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionBuyerOrderReference());
 
@@ -2712,7 +2712,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('QU-1', $newReferenceNumber);
         $this->assertSame('100', $newReferenceLineNumber);
-        $this->assertSame('19700103', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700103', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionQuotationReference());
 
@@ -2737,7 +2737,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('CON-1', $newReferenceNumber);
         $this->assertSame('100', $newReferenceLineNumber);
-        $this->assertSame('19700104', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700104', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionContractReference());
 
@@ -2766,7 +2766,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('ADD-1', $newReferenceNumber);
         $this->assertSame('100', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
         $this->assertSame('TYPECODE-1', $newTypeCode);
         $this->assertSame('REFTYPECODE-1', $newReferenceTypeCode);
         $this->assertSame('DESC-1', $newDescription);
@@ -2786,7 +2786,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('ADD-1', $newReferenceNumber);
         $this->assertSame('200', $newReferenceLineNumber);
-        $this->assertSame('19700102', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700102', $newReferenceDate?->format('Ymd'));
         $this->assertSame('TYPECODE-2', $newTypeCode);
         $this->assertSame('REFTYPECODE-2', $newReferenceTypeCode);
         $this->assertSame('DESC-2', $newDescription);
@@ -2815,7 +2815,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('UCOR-1', $newReferenceNumber);
         $this->assertSame('10', $newReferenceLineNumber);
-        $this->assertSame('19700110', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700110', $newReferenceDate?->format('Ymd'));
 
         $this->assertTrue(static::$document->nextDocumentPositionUltimateCustomerOrderReference());
 
@@ -2827,7 +2827,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('UCOR-1', $newReferenceNumber);
         $this->assertSame('20', $newReferenceLineNumber);
-        $this->assertSame('19700111', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700111', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionUltimateCustomerOrderReference());
 
@@ -2852,7 +2852,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('DESPADV-1', $newReferenceNumber);
         $this->assertSame('100', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionDespatchAdviceReference());
 
@@ -2877,7 +2877,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('RECADV-1', $newReferenceNumber);
         $this->assertSame('10', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionReceivingAdviceReference());
 
@@ -2902,7 +2902,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('DEVNOTE-1', $newReferenceNumber);
         $this->assertSame('10', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
 
         $this->assertFalse(static::$document->nextDocumentPositionDeliveryNoteReference());
 
@@ -2928,7 +2928,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertSame('INVREF-1', $newReferenceNumber);
         $this->assertSame('100', $newReferenceLineNumber);
-        $this->assertSame('19700101', $newReferenceDate->format('Ymd'));
+        $this->assertSame('19700101', $newReferenceDate?->format('Ymd'));
         $this->assertSame('TYPECODE-1', $newTypeCode);
 
         $this->assertFalse(static::$document->nextDocumentPositionInvoiceReference());
@@ -3356,7 +3356,7 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         static::$document->getDocumentPositionSupplyChainEvent($newDate);
 
-        $this->assertSame('19700101', $newDate->format('Ymd'));
+        $this->assertSame('19700101', $newDate?->format('Ymd'));
 
         // Second position
 
@@ -3377,8 +3377,8 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
             $newDescription
         );
 
-        $this->assertSame('19700101', $newStartDate->format('Ymd'));
-        $this->assertSame('19700131', $newEndDate->format('Ymd'));
+        $this->assertSame('19700101', $newStartDate?->format('Ymd'));
+        $this->assertSame('19700131', $newEndDate?->format('Ymd'));
         $this->assertSame('Some Description', $newDescription);
 
         $this->assertFalse(static::$document->nextDocumentPositionBillingPeriod());
@@ -3539,6 +3539,6 @@ final class ZfFxExtendedProviderReaderTest extends TestCase
 
         $this->assertInstanceOf(InvoiceSuiteDocumentHeaderDTO::class, $newDocmentDTO);
 
-        $this->assertSame('2025-04-000001', $newDocmentDTO->getNumber());
+        $this->assertSame('2025-04-000001', $newDocmentDTO?->getNumber());
     }
 }
