@@ -90,7 +90,9 @@ return (new Config())
                     'throws',
                     'see',
                     'license',
-                    'todo'
+                    'todo',
+                    '@phpstan-param',
+                    '@phpstan-param-out',
                 ],
             ],
             'phpdoc_order' => true,
