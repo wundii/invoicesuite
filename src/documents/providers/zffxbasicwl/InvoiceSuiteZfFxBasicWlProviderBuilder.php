@@ -7118,9 +7118,9 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Set the associated buyer's order confirmation (line reference).
      *
-     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Buyer's order confirmation number
-     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
-     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-21, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-132, From EN 16931__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-22, From EXTENDED__ Buyer's order confirmation date
      * @return static
      */
     public function setDocumentPositionBuyerOrderReference(
@@ -7136,9 +7136,9 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Add an associated buyer's order confirmation (line reference).
      *
-     * @param  null|string            $newReferenceNumber     __BT-X-537, From EXTENDED__ Buyer's order confirmation number
-     * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Buyer's order confirmation line number
-     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Buyer's order confirmation date
+     * @param  null|string            $newReferenceNumber     __BT-X-21, From EXTENDED__ Buyer's order confirmation number
+     * @param  null|string            $newReferenceLineNumber __BT-132, From EN 16931__ Buyer's order confirmation line number
+     * @param  null|DateTimeInterface $newReferenceDate       __BT-X-22, From EXTENDED__ Buyer's order confirmation date
      * @return static
      */
     public function addDocumentPositionBuyerOrderReference(
