@@ -16,6 +16,9 @@ use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesSafeInvoking;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
+use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 /**
  * Legacy-class representing the ZUGFeRD document reader for incoming documents
@@ -36,6 +39,11 @@ class ZugferdDocumentReader
      * @var InvoiceSuiteDocumentReader
      */
     protected InvoiceSuiteDocumentReader $documentReader;
+
+    /**
+     * @var string
+     */
+    protected $binarydatadirectory = '';
 
     /**
      * Constructor (hidden)
@@ -98,6 +106,21 @@ class ZugferdDocumentReader
         }
 
         return -1;
+    }
+
+    /**
+     * Set the directory where the attached binary data from additional referenced documents are temporary stored.
+     *
+     * @param  string                $binaryDataDirectory
+     * @return ZugferdDocumentReader
+     */
+    public function setBinaryDataDirectory(string $binaryDataDirectory): self
+    {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataDirectory) && is_dir($binaryDataDirectory)) {
+            $this->binarydatadirectory = $binaryDataDirectory;
+        }
+
+        return $this;
     }
 
     /**
@@ -2728,14 +2751,16 @@ class ZugferdDocumentReader
             $typeCode,
             $refTypeCode,
             $newDescription,
-            $attachment
+            $newInvoiceSuiteAttachment
         );
 
         InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($name, $newDescription);
 
-        // TODO Handle attachment in ZugerdDocumentReader::getDocumentAdditionalReferencedDocument
-        $binaryDataFilename = '';
-        $uriId = '';
+        $this->internalHandleInvoiceSuiteAttachment(
+            $newInvoiceSuiteAttachment,
+            $uriId,
+            $binaryDataFilename
+        );
 
         return $this;
     }
@@ -3445,7 +3470,7 @@ class ZugferdDocumentReader
                     'description' => $newDescription,
                     'duedate' => $newDueDate,
                     'directdebitmandateid' => $newMandate,
-                    'partialpaymentamount' => 0.0, // TODO support for PartialPaymentAmount (EXTENDED only)
+                    'partialpaymentamount' => 0.0,
                 ]);
             } while ($this->documentReader->nextDocumentPaymentTerm());
         }
@@ -4302,9 +4327,11 @@ class ZugferdDocumentReader
 
         InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($name, $newDescription);
 
-        // TODO Handle attachment in ZugerdDocumentReader::getDocumentPositionAdditionalReferencedDocument
-        $binaryDataFilename = '';
-        $uriId = '';
+        $this->internalHandleInvoiceSuiteAttachment(
+            $newInvoiceSuiteAttachment,
+            $uriId,
+            $binaryDataFilename
+        );
 
         return $this;
     }
@@ -5039,6 +5066,46 @@ class ZugferdDocumentReader
             $typeCode,
             $id
         );
+
+        return $this;
+    }
+
+    /**
+     * Handle an attachment. Save binaries to binarydatadirectory or return an URI
+     *
+     * @param  null|string $uriId
+     * @param  null|string $binaryDataFilename
+     * @return static
+     */
+    private function internalHandleInvoiceSuiteAttachment(
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment,
+        ?string &$uriId,
+        ?string &$binaryDataFilename
+    ): static {
+        $binaryDataFilename = '';
+        $uriId = '';
+
+        if (is_null($newInvoiceSuiteAttachment)) {
+            return $this;
+        }
+
+        if ($newInvoiceSuiteAttachment?->isBinaryAttachment()) {
+            $binaryDataFilename = $newInvoiceSuiteAttachment->getFilename();
+            $binarydata = $newInvoiceSuiteAttachment->getRawContent();
+
+            if (
+                !InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataFilename)
+                && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($binarydata)
+                && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->binarydatadirectory)
+            ) {
+                $binaryDataFilename = InvoiceSuitePathUtils::combinePathWithFile($this->binarydatadirectory, $binaryDataFilename);
+                file_put_contents($binaryDataFilename, $binarydata);
+            }
+        }
+
+        if ($newInvoiceSuiteAttachment?->isUrlAttachment()) {
+            $uriId = $newInvoiceSuiteAttachment->getRawContent();
+        }
 
         return $this;
     }
