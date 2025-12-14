@@ -1073,587 +1073,585 @@ class ZugferdDocumentReaderExtendedTest extends TestCase
         $this->assertFalse(self::$document->nextDocumentPosition());
     }
 
-    /*
-        public function testDocumentPositionFirst(): void
-        {
-            $this->assertTrue(self::$document->firstDocumentPosition());
-
-            self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
-            $this->assertSame("1", $lineid);
-            $this->assertSame("", $linestatuscode);
-            $this->assertSame("", $linestatusreasoncode);
-
-            self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-            $this->assertSame("Wirkarbeit HT", $prodname);
-            $this->assertSame("", $proddesc);
-            $this->assertSame("WA997", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("4123456000014", $prodglobalid);
-
-            self::$document->getDocumentPositionProductDetailsExt($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid, $prodindustyid, $prodmodelid, $prodbatchid, $prodbrandname, $prodmodelname);
-            $this->assertSame("Wirkarbeit HT", $prodname);
-            $this->assertSame("", $proddesc);
-            $this->assertSame("WA997", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("4123456000014", $prodglobalid);
-            $this->assertSame("IndustryId", $prodindustyid);
-            $this->assertSame("ModelId", $prodmodelid);
-            $this->assertSame("BatchId", $prodbatchid);
-            $this->assertSame("BrandeName", $prodbrandname);
-            $this->assertSame("ModelName", $prodmodelname);
-
-            self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0520, $grosspriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $grosspricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0520, $netpriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $netpricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("", $categoryCode);
-            $this->assertSame("", $typeCode);
-            $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-            $this->assertEqualsWithDelta(10000.0, $billedquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("KWH", $billedquantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $chargeFreeQuantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $packageQuantityunitcode);
-
-            self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
-            $this->assertSame("", $docposdespadvid);
-            $this->assertSame("", $docposdespadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
-
-            self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
-            $this->assertSame("", $docposrecadvid);
-            $this->assertSame("", $docposrecadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
-
-            self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
-            $this->assertSame("", $docposdelnoteid);
-            $this->assertSame("", $docposdelnotelineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
-
-            self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-            $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-            $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
-
-            $this->assertFalse(self::$document->firstDocumentPositionNote());
-            $this->assertFalse(self::$document->nextDocumentPositionNote());
-
-            $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
-            $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
-
-            $this->assertTrue(self::$document->firstDocumentPositionTax());
-            $this->assertFalse(self::$document->nextDocumentPositionTax());
-
-            self::$document->firstDocumentPositionTax();
-            self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("S", $categoryCode);
-            $this->assertSame("VAT", $typeCode);
-            $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-            $this->assertEqualsWithDelta(52.00, $lineTotalAmount, PHP_FLOAT_EPSILON);
-
-            self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-            $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
-        }
-
-        public function testDocumentPositionSecond(): void
-        {
-            $this->assertTrue(self::$document->nextDocumentPosition());
-
-            self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
-            $this->assertSame("2", $lineid);
-            $this->assertSame("", $linestatuscode);
-            $this->assertSame("", $linestatusreasoncode);
-
-            self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-            $this->assertSame("Ökosteuer Lieferant", $prodname);
-            $this->assertSame("", $proddesc);
-            $this->assertSame("ÖST250", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("4123456000021", $prodglobalid);
-
-            self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0205, $grosspriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $grosspricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0205, $netpriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $netpricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("", $categoryCode);
-            $this->assertSame("", $typeCode);
-            $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-            $this->assertEquals(10000, $billedquantity);
-            $this->assertSame("KWH", $billedquantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $chargeFreeQuantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $packageQuantityunitcode);
-
-            self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
-            $this->assertSame("", $docposdespadvid);
-            $this->assertSame("", $docposdespadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
-
-            self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
-            $this->assertSame("", $docposrecadvid);
-            $this->assertSame("", $docposrecadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
-
-            self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
-            $this->assertSame("", $docposdelnoteid);
-            $this->assertSame("", $docposdelnotelineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
-
-            self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-            $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-            $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
-
-            $this->assertFalse(self::$document->firstDocumentPositionNote());
-            $this->assertFalse(self::$document->nextDocumentPositionNote());
-
-            $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
-            $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
-
-            $this->assertTrue(self::$document->firstDocumentPositionTax());
-            $this->assertFalse(self::$document->nextDocumentPositionTax());
-
-            self::$document->firstDocumentPositionTax();
-            self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("S", $categoryCode);
-            $this->assertSame("VAT", $typeCode);
-            $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-            $this->assertEqualsWithDelta(20.50, $lineTotalAmount, PHP_FLOAT_EPSILON);
-
-            self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-            $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
-        }
-
-        public function testDocumentPositionThird(): void
-        {
-            $this->assertTrue(self::$document->nextDocumentPosition());
-
-            self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
-            $this->assertSame("3", $lineid);
-            $this->assertSame("", $linestatuscode);
-            $this->assertSame("", $linestatusreasoncode);
-
-            self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-            $this->assertSame("Kommissionierer 1250032 D. Muster", $prodname);
-            $this->assertSame("Besteller: Hr. Mayer, Personalnr. 4488", $proddesc);
-            $this->assertSame("", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("4260331811362", $prodglobalid);
-
-            self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(15.0000, $grosspriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $grosspricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(10.5000, $netpriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $netpricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("", $categoryCode);
-            $this->assertSame("", $typeCode);
-            $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-            $this->assertEqualsWithDelta(27.5000, $billedquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("HUR", $billedquantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $chargeFreeQuantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $packageQuantityunitcode);
-
-            self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
-            $this->assertSame("", $docposdespadvid);
-            $this->assertSame("", $docposdespadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
-
-            self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
-            $this->assertSame("", $docposrecadvid);
-            $this->assertSame("", $docposrecadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
-
-            self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
-            $this->assertSame("", $docposdelnoteid);
-            $this->assertSame("", $docposdelnotelineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
-
-            self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-            $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-            $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
-
-            $this->assertFalse(self::$document->firstDocumentPositionNote());
-            $this->assertFalse(self::$document->nextDocumentPositionNote());
-
-            $this->assertTrue(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
-            $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
-
-            self::$document->firstDocumentPositionGrossPriceAllowanceCharge();
-            self::$document->getDocumentPositionGrossPriceAllowanceCharge(
-                $docPosAllowanceChargeactualAmount,
-                $docPosAllowanceChargeisCharge,
-                $docPosAllowanceChargecalculationPercent,
-                $docPosAllowanceChargebasisAmount,
-                $docPosAllowanceChargereason,
-                $docPosAllowanceChargeTaxTypeCode,
-                $docPosAllowanceChargeTaxCategoryCode,
-                $docPosAllowanceChargerateApplicablePercent,
-                $docPosAllowanceChargesequence,
-                $docPosAllowanceChargebasisQuantity,
-                $docPosAllowanceChargebasisQuantityUnitCode,
-                $docPosAllowanceChargereasonCode
-            );
-            $this->assertEqualsWithDelta(4.5000, $docPosAllowanceChargeactualAmount, PHP_FLOAT_EPSILON);
-            $this->assertFalse($docPosAllowanceChargeisCharge);
-            $this->assertEquals(0, $docPosAllowanceChargecalculationPercent);
-            $this->assertEquals(0, $docPosAllowanceChargebasisAmount);
-            $this->assertSame("Artikelrabatt 1", $docPosAllowanceChargereason);
-            $this->assertSame("", $docPosAllowanceChargeTaxTypeCode);
-            $this->assertSame("", $docPosAllowanceChargeTaxCategoryCode);
-            $this->assertEquals(0, $docPosAllowanceChargerateApplicablePercent);
-            $this->assertEquals(0, $docPosAllowanceChargesequence);
-            $this->assertEquals(0, $docPosAllowanceChargebasisQuantity);
-            $this->assertSame("", $docPosAllowanceChargebasisQuantityUnitCode);
-            $this->assertSame("", $docPosAllowanceChargereasonCode);
-
-            $this->assertTrue(self::$document->firstDocumentPositionTax());
-            $this->assertFalse(self::$document->nextDocumentPositionTax());
-
-            self::$document->firstDocumentPositionTax();
-            self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("S", $categoryCode);
-            $this->assertSame("VAT", $typeCode);
-            $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-            $this->assertEqualsWithDelta(288.75, $lineTotalAmount, PHP_FLOAT_EPSILON);
-
-            self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-            $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
-        }
-
-        public function testDocumentPositionFourth(): void
-        {
-            $this->assertTrue(self::$document->nextDocumentPosition());
-
-            self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
-            $this->assertSame("4", $lineid);
-            $this->assertSame("", $linestatuscode);
-            $this->assertSame("", $linestatusreasoncode);
-
-            self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-            $this->assertSame("FALTENBEUTEL 16x6x28 CM", $prodname);
-            $this->assertSame("", $proddesc);
-            $this->assertSame("FB05", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("2001015001325", $prodglobalid);
-
-            self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0105, $grosspriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $grosspricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0105, $netpriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $netpricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("", $categoryCode);
-            $this->assertSame("", $typeCode);
-            $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-            $this->assertEqualsWithDelta(3500.0, $billedquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("H87", $billedquantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $chargeFreeQuantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $packageQuantityunitcode);
-
-            self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
-            $this->assertSame("", $docposdespadvid);
-            $this->assertSame("", $docposdespadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
-
-            self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
-            $this->assertSame("", $docposrecadvid);
-            $this->assertSame("", $docposrecadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
-
-            self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
-            $this->assertSame("", $docposdelnoteid);
-            $this->assertSame("", $docposdelnotelineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
-
-            self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-            $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-            $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
-
-            $this->assertFalse(self::$document->firstDocumentPositionNote());
-            $this->assertFalse(self::$document->nextDocumentPositionNote());
-
-            $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
-            $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
-
-            $this->assertTrue(self::$document->firstDocumentPositionTax());
-            $this->assertFalse(self::$document->nextDocumentPositionTax());
-
-            self::$document->firstDocumentPositionTax();
-            self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("S", $categoryCode);
-            $this->assertSame("VAT", $typeCode);
-            $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-            $this->assertEqualsWithDelta(36.75, $lineTotalAmount, PHP_FLOAT_EPSILON);
-
-            self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-            $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
-        }
-
-        public function testDocumentPositionFifth(): void
-        {
-            $this->assertTrue(self::$document->nextDocumentPosition());
-
-            self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
-            $this->assertSame("5", $lineid);
-            $this->assertSame("", $linestatuscode);
-            $this->assertSame("", $linestatusreasoncode);
-
-            self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-            $this->assertSame("Kopierpapier A4", $prodname);
-            $this->assertSame("Zählerstand von-bis: 543210 - 544420", $proddesc);
-            $this->assertSame("KOP05", $prodsellerid);
-            $this->assertSame("", $prodbuyerid);
-            $this->assertSame("0088", $prodglobalidtype);
-            $this->assertSame("4123456000038", $prodglobalid);
-
-            self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
-            $this->assertSame("", $doclineorderid);
-            $this->assertSame("", $doclineorderlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclineorderdate);
-
-            self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
-            $this->assertSame("", $doclinecontid);
-            $this->assertSame("", $doclinecontlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $doclinecontdate);
-
-            self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0100, $grosspriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $grosspricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-            $this->assertEqualsWithDelta(0.0100, $netpriceamount, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $netpricebasisquantityunitcode);
-
-            self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("", $categoryCode);
-            $this->assertSame("", $typeCode);
-            $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-            $this->assertEqualsWithDelta(1210.0, $billedquantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("H87", $billedquantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $chargeFreeQuantityunitcode);
-            $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $packageQuantityunitcode);
-
-            self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
-            $this->assertSame("", $docposdespadvid);
-            $this->assertSame("", $docposdespadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdespadvdatetime);
-
-            self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
-            $this->assertSame("", $docposrecadvid);
-            $this->assertSame("", $docposrecadvlineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposrecadvdatetime);
-
-            self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
-            $this->assertSame("", $docposdelnoteid);
-            $this->assertSame("", $docposdelnotelineid);
-            $this->assertNotInstanceOf(\DateTime::class, $docposdelnotedatetime);
-
-            self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-            $this->assertNotInstanceOf(\DateTime::class, $docposstartdate);
-            $this->assertNotInstanceOf(\DateTime::class, $docpostenddate);
-
-            $this->assertFalse(self::$document->firstDocumentPositionNote());
-            $this->assertFalse(self::$document->nextDocumentPositionNote());
-
-            $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
-            $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
-
-            $this->assertTrue(self::$document->firstDocumentPositionTax());
-            $this->assertFalse(self::$document->nextDocumentPositionTax());
-
-            self::$document->firstDocumentPositionTax();
-            self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
-            $this->assertSame("S", $categoryCode);
-            $this->assertSame("VAT", $typeCode);
-            $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-            $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
-            $this->assertSame("", $exemptionReason);
-            $this->assertSame("", $exemptionReasonCode);
-
-            self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-            $this->assertEqualsWithDelta(12.10, $lineTotalAmount, PHP_FLOAT_EPSILON);
-
-            self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
-            $this->assertNotInstanceOf(\DateTime::class, $supplyeventdatetime);
-        }
-
-        public function testDocumentPositionAdditionalReferencedDocument(): void
-        {
-            $this->assertFalse(self::$document->firstDocumentPositionAdditionalReferencedDocument());
-            $this->assertFalse(self::$document->nextDocumentPositionAdditionalReferencedDocument());
-        }
-            */
+    public function testDocumentPositionFirst(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('1', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('Wirkarbeit HT', $prodname);
+        $this->assertSame('', $proddesc);
+        $this->assertSame('WA997', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('4123456000014', $prodglobalid);
+
+        self::$document->getDocumentPositionProductDetailsExt($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid, $prodindustyid, $prodmodelid, $prodbatchid, $prodbrandname, $prodmodelname);
+        $this->assertSame('Wirkarbeit HT', $prodname);
+        $this->assertSame('', $proddesc);
+        $this->assertSame('WA997', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('4123456000014', $prodglobalid);
+        $this->assertSame('IndustryId', $prodindustyid);
+        $this->assertSame('ModelId', $prodmodelid);
+        $this->assertSame('BatchId', $prodbatchid);
+        $this->assertSame('BrandeName', $prodbrandname);
+        $this->assertSame('ModelName', $prodmodelname);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0520, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0520, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEqualsWithDelta(10000.0, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('KWH', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(52.00, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionSecond(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('2', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('Ökosteuer Lieferant', $prodname);
+        $this->assertSame('', $proddesc);
+        $this->assertSame('ÖST250', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('4123456000021', $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0205, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0205, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEquals(10000, $billedquantity);
+        $this->assertSame('KWH', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(20.50, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionThird(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('3', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('Kommissionierer 1250032 D. Muster', $prodname);
+        $this->assertSame('Besteller: Hr. Mayer, Personalnr. 4488', $proddesc);
+        $this->assertSame('', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('4260331811362', $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(15.0000, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(10.5000, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEqualsWithDelta(27.5000, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('HUR', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertTrue(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        self::$document->firstDocumentPositionGrossPriceAllowanceCharge();
+        self::$document->getDocumentPositionGrossPriceAllowanceCharge(
+            $docPosAllowanceChargeactualAmount,
+            $docPosAllowanceChargeisCharge,
+            $docPosAllowanceChargecalculationPercent,
+            $docPosAllowanceChargebasisAmount,
+            $docPosAllowanceChargereason,
+            $docPosAllowanceChargeTaxTypeCode,
+            $docPosAllowanceChargeTaxCategoryCode,
+            $docPosAllowanceChargerateApplicablePercent,
+            $docPosAllowanceChargesequence,
+            $docPosAllowanceChargebasisQuantity,
+            $docPosAllowanceChargebasisQuantityUnitCode,
+            $docPosAllowanceChargereasonCode
+        );
+        $this->assertEqualsWithDelta(4.5000, $docPosAllowanceChargeactualAmount, PHP_FLOAT_EPSILON);
+        $this->assertFalse($docPosAllowanceChargeisCharge);
+        $this->assertEquals(0, $docPosAllowanceChargecalculationPercent);
+        $this->assertEquals(0, $docPosAllowanceChargebasisAmount);
+        $this->assertSame('Artikelrabatt 1', $docPosAllowanceChargereason);
+        $this->assertSame('', $docPosAllowanceChargeTaxTypeCode);
+        $this->assertSame('', $docPosAllowanceChargeTaxCategoryCode);
+        $this->assertEquals(0, $docPosAllowanceChargerateApplicablePercent);
+        $this->assertEquals(0, $docPosAllowanceChargesequence);
+        $this->assertEquals(0, $docPosAllowanceChargebasisQuantity);
+        $this->assertSame('', $docPosAllowanceChargebasisQuantityUnitCode);
+        $this->assertSame('', $docPosAllowanceChargereasonCode);
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(288.75, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionFourth(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('4', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('FALTENBEUTEL 16x6x28 CM', $prodname);
+        $this->assertSame('', $proddesc);
+        $this->assertSame('FB05', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('2001015001325', $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0105, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0105, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEqualsWithDelta(3500.0, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('H87', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(36.75, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionFifth(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('5', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('Kopierpapier A4', $prodname);
+        $this->assertSame('Zählerstand von-bis: 543210 - 544420', $proddesc);
+        $this->assertSame('KOP05', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('4123456000038', $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0100, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0100, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEqualsWithDelta(1210.0, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('H87', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(12.10, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionAdditionalReferencedDocument(): void
+    {
+        $this->assertFalse(self::$document->firstDocumentPositionAdditionalReferencedDocument());
+        $this->assertFalse(self::$document->nextDocumentPositionAdditionalReferencedDocument());
+    }
 }

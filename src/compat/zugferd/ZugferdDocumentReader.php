@@ -4169,4 +4169,877 @@ class ZugferdDocumentReader
 
         return $this;
     }
+
+    /**
+     * Get details of the associated offer position.
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-310, From EXTENDED__ Offer number
+     * @param  null|string            $lineId           __BT-X-311, From EXTENDED__ Position identifier within the offer
+     * @param  null|DateTimeInterface $issueDate        __BT-X-312, From EXTENDED__ Date of offder
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionQuotationReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineId,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineId = '';
+        $issueDate = null;
+
+        if ($this->documentReader->firstDocumentPositionQuotationReference()) {
+            $this->documentReader->getDocumentPositionQuotationReference(
+                $issuerAssignedId,
+                $lineId,
+                $issueDate
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get details of the related contract position.
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-24, From EXTENDED__ The contract reference should be assigned once in the context of the specific trade relationship and for a defined period of time (contract number)
+     * @param  null|string            $lineId           __BT-X-25, From EXTENDED__ Identifier of the according contract position
+     * @param  null|DateTimeInterface $issueDate        __BT-X-26, From EXTENDED__ Contract date
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out DateTimeInterface|null $newReferenceDate
+     */
+    public function getDocumentPositionContractReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineId,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineId = '';
+        $issueDate = null;
+
+        if ($this->documentReader->firstDocumentPositionContractReference()) {
+            $this->documentReader->getDocumentPositionContractReference(
+                $issuerAssignedId,
+                $lineId,
+                $issueDate
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first documents position additional referenced document. Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedDocument.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionAdditionalReferencedDocument(): bool
+    {
+        return $this->documentReader->firstDocumentPositionAdditionalReference();
+    }
+
+    /**
+     * Seek to the next documents position additional referenced document. Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedDocument.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionAdditionalReferencedDocument(): bool
+    {
+        return $this->documentReader->nextDocumentPositionAdditionalReference();
+    }
+
+    /**
+     * Details of an additional Document reference (on position level).
+     *
+     * @param  null|string            $issuerAssignedId   __BT-X-27, From EXTENDED__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
+     * @param  null|string            $typeCode           __BT-X-30, From EXTENDED__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  null|string            $uriId              __BT-X-28, From EXTENDED__ The Uniform Resource Locator (URL) at which the external document is available. A means of finding the resource including the primary access method intended for it, e.g. http: // or ftp: //. The location of the external document must be used if the buyer needs additional information to support the amounts billed. External documents are not part of the invoice. Access to external documents can involve certain risks.
+     * @param  null|string            $lineId             __BT-X-29, From EXTENDED__ The referenced position identifier in the additional document
+     * @param  null|array             $name               __BT-X-299, From EXTENDED__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @param  null|string            $refTypeCode        __BT-X-32, From EXTENDED__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @param  null|DateTimeInterface $issueDate          __BT-X-33, From EXTENDED__ Document date
+     * @param  null|string            $binaryDataFilename __BT-X-31, From EXTENDED__ Contains a file name of an attachment document embedded as a binary object
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $typeCode
+     * @phpstan-param-out string $uriId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out array<int,string> $name
+     * @phpstan-param-out string $refTypeCode
+     * @phpstan-param-out null|DateTimeInterface $issueDate
+     * @phpstan-param-out string $binaryDataFilename
+     */
+    public function getDocumentPositionAdditionalReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$typeCode,
+        ?string &$uriId,
+        ?string &$lineId,
+        ?array &$name,
+        ?string &$refTypeCode,
+        ?DateTimeInterface &$issueDate,
+        ?string &$binaryDataFilename
+    ): static {
+        $name = [];
+
+        $this->documentReader->getDocumentPositionAdditionalReference(
+            $issuerAssignedId,
+            $lineId,
+            $issueDate,
+            $typeCode,
+            $refTypeCode,
+            $newDescription,
+            $newInvoiceSuiteAttachment
+        );
+
+        InvoiceSuiteArrayUtils::pushStringToIntIndexedArray($name, $newDescription);
+
+        // TODO Handle attachment in ZugerdDocumentReader::getDocumentPositionAdditionalReferencedDocument
+        $binaryDataFilename = '';
+        $uriId = '';
+
+        return $this;
+    }
+
+    /**
+     * Get the unit price excluding sales tax before deduction of the discount on the item price.
+     *
+     * @param  null|float  $amount                __BT-148, From BASIC__ The unit price excluding sales tax before deduction of the discount on the item price. If the price is shown according to the net calculation, the price must also be shown according to the gross calculation.
+     * @param  null|float  $basisQuantity         __BT-149-1, From BASIC__ The number of item units for which the price applies (price base quantity)
+     * @param  null|string $basisQuantityUnitCode __BT-150-1, From BASIC__ The unit code of the number of item units for which the price applies (price base quantity)
+     * @return static
+     *
+     * @phpstan-param-out float $amount
+     * @phpstan-param-out float $basisQuantity
+     * @phpstan-param-out string $basisQuantityUnitCode
+     */
+    public function getDocumentPositionGrossPrice(
+        ?float &$amount,
+        ?float &$basisQuantity,
+        ?string &$basisQuantityUnitCode
+    ): static {
+        $this->documentReader->getDocumentPositionGrossPrice(
+            $amount,
+            $basisQuantity,
+            $basisQuantityUnitCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first documents position gross price allowance charge position. Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionGrossPriceAllowanceCharge.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return $this->documentReader->firstDocumentPositionGrossPriceAllowanceCharge();
+    }
+
+    /**
+     * Seek to the next documents position gross price allowance charge position. Returns true if a other position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionGrossPriceAllowanceCharge.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
+    {
+        return $this->documentReader->nextDocumentPositionGrossPriceAllowanceCharge();
+    }
+
+    /**
+     * Get Detailed information on surcharges and discounts on item gross price.
+     *
+     * @param  null|float  $actualAmount          __BT-147, From BASIC__ Discount on the item price. The total discount subtracted from the gross price to calculate the net price. Note: Only applies if the discount is given per unit and is not included in the gross price.
+     * @param  null|bool   $isCharge              __BT-147-02, From BASIC__ Switch for surcharge/discount, if true then its an charge
+     * @param  null|float  $calculationPercent    __BT-X-34, From EXTENDED__Discount/surcharge in percent. Up to level EN16931, only the final result of the discount (ActualAmount) is transferred
+     * @param  null|float  $basisAmount           __BT-X-35, From EXTENDED__ Base amount of the discount/surcharge
+     * @param  null|string $reason                __BT-X-36, From EXTENDED__ Reason for surcharge/discount (free text)
+     * @param  null|string $taxTypeCode           __BT-, From BASIC__
+     * @param  null|string $taxCategoryCode       __BT-, From BASIC__
+     * @param  null|float  $rateApplicablePercent __BT-, From BASIC__
+     * @param  null|float  $sequence              __BT-, From BASIC__
+     * @param  null|float  $basisQuantity         __BT-, From BASIC__
+     * @param  null|string $basisQuantityUnitCode __BT-, From BASIC__
+     * @param  null|string $reasonCode            __BT-X-313, From EXTENDED__ Reason code for surcharge/discount
+     * @return static
+     *
+     * @phpstan-param-out float $actualAmount
+     * @phpstan-param-out bool $isCharge
+     * @phpstan-param-out float $calculationPercent
+     * @phpstan-param-out float $basisAmount
+     * @phpstan-param-out string $reason
+     * @phpstan-param-out string $taxTypeCode
+     * @phpstan-param-out string $taxCategoryCode
+     * @phpstan-param-out float $rateApplicablePercent
+     * @phpstan-param-out float $sequence
+     * @phpstan-param-out float $basisQuantity
+     * @phpstan-param-out string $basisQuantityUnitCode
+     * @phpstan-param-out string $reasonCode
+     */
+    public function getDocumentPositionGrossPriceAllowanceCharge(
+        ?float &$actualAmount,
+        ?bool &$isCharge,
+        ?float &$calculationPercent,
+        ?float &$basisAmount,
+        ?string &$reason,
+        ?string &$taxTypeCode,
+        ?string &$taxCategoryCode,
+        ?float &$rateApplicablePercent,
+        ?float &$sequence,
+        ?float &$basisQuantity,
+        ?string &$basisQuantityUnitCode,
+        ?string &$reasonCode
+    ): static {
+        $taxTypeCode = '';
+        $taxCategoryCode = '';
+        $rateApplicablePercent = 0.0;
+        $sequence = 0.0;
+        $basisQuantity = 0.0;
+        $basisQuantityUnitCode = '';
+
+        $this->documentReader->getDocumentPositionGrossPriceAllowanceCharge(
+            $actualAmount,
+            $isCharge,
+            $calculationPercent,
+            $basisAmount,
+            $reason,
+            $reasonCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the net price of the item.
+     *
+     * @param  null|float  $amount                __BT-146, From BASIC__ Net price of the item
+     * @param  null|float  $basisQuantity         __BT-149, From BASIC__ Base quantity at the item price
+     * @param  null|string $basisQuantityUnitCode __BT-150, From BASIC__ Code of the unit of measurement of the base quantity at the item price
+     * @return static
+     *
+     * @phpstan-param-out float $amount
+     * @phpstan-param-out float $basisQuantity
+     * @phpstan-param-out string $basisQuantityUnitCode
+     */
+    public function getDocumentPositionNetPrice(
+        ?float &$amount,
+        ?float &$basisQuantity,
+        ?string &$basisQuantityUnitCode
+    ): static {
+        $this->documentReader->getDocumentPositionNetPrice(
+            $amount,
+            $basisQuantity,
+            $basisQuantityUnitCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Tax included for B2C on position level.
+     *
+     * @param  null|string $categoryCode          __BT-, From __ Coded description of a sales tax category
+     * @param  null|string $typeCode              __BT-, From __ Coded description of a sales tax category. Note: Fixed value = "VAT"
+     * @param  null|float  $rateApplicablePercent __BT-, From __ The sales tax rate, expressed as the percentage applicable to the sales tax category in question. Note: The code of the sales tax category and the category-specific sales tax rate must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  null|float  $calculatedAmount      __BT-, From __ The total amount to be paid for the relevant VAT category. Note: Calculated by multiplying the amount to be taxed according to the sales tax category by the sales tax rate applicable for the sales tax category concerned
+     * @param  null|string $exemptionReason       __BT-, From __ Reason for tax exemption (free text)
+     * @param  null|string $exemptionReasonCode   __BT-, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility.
+     * @return static
+     *
+     * @phpstan-param-out string $categoryCode
+     * @phpstan-param-out string $typeCode
+     * @phpstan-param-out float $rateApplicablePercent
+     * @phpstan-param-out float $calculatedAmount
+     * @phpstan-param-out string $exemptionReason
+     * @phpstan-param-out string $exemptionReasonCode
+     */
+    public function getDocumentPositionNetPriceTax(
+        ?string &$categoryCode,
+        ?string &$typeCode,
+        ?float &$rateApplicablePercent,
+        ?float &$calculatedAmount,
+        ?string &$exemptionReason,
+        ?string &$exemptionReasonCode
+    ): static {
+        $this->documentReader->getDocumentPositionNetPriceTax(
+            $categoryCode,
+            $typeCode,
+            $calculatedAmount,
+            $rateApplicablePercent,
+            $exemptionReason,
+            $exemptionReasonCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get the position Quantity.
+     *
+     * @param  null|float  $billedQuantity             __BT-129, From BASIC__ The quantity of individual items (goods or services) billed in the relevant line
+     * @param  null|string $billedQuantityUnitCode     __BT-130, From BASIC__ The unit of measure applicable to the amount billed
+     * @param  null|float  $chargeFreeQuantity         __BT-X-46, From EXTENDED__ Quantity, free of charge
+     * @param  null|string $chargeFreeQuantityUnitCpde __BT-X-46-0, From EXTENDED__ Unit of measure code for the quantity free of charge
+     * @param  null|float  $packageQuantity            __BT-X-47, From EXTENDED__ Number of packages
+     * @param  null|string $packageQuantityUnitCode    __BT-X-47-0, From EXTENDED__ Unit of measure code for number of packages
+     * @return static
+     *
+     * @phpstan-param-out float $billedQuantity
+     * @phpstan-param-out string $billedQuantityUnitCode
+     * @phpstan-param-out float $chargeFreeQuantity
+     * @phpstan-param-out string $chargeFreeQuantityUnitCpde
+     * @phpstan-param-out float $packageQuantity
+     * @phpstan-param-out string $packageQuantityUnitCode
+     */
+    public function getDocumentPositionQuantity(
+        ?float &$billedQuantity,
+        ?string &$billedQuantityUnitCode,
+        ?float &$chargeFreeQuantity,
+        ?string &$chargeFreeQuantityUnitCpde,
+        ?float &$packageQuantity,
+        ?string &$packageQuantityUnitCode
+    ): static {
+        $this->documentReader->getDocumentPositionQuantities(
+            $billedQuantity,
+            $billedQuantityUnitCode,
+            $chargeFreeQuantity,
+            $chargeFreeQuantityUnitCpde,
+            $packageQuantity,
+            $packageQuantityUnitCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the actual delivery (on position level).
+     *
+     * @param  null|DateTimeInterface $date __BT-X-85, From EXTENDED__ Actual delivery date
+     * @return static
+     *
+     * @phpstan-param-out null|DateTimeInterface $date
+     */
+    public function getDocumentPositionSupplyChainEvent(
+        ?DateTimeInterface &$date
+    ): static {
+        $this->documentReader->getDocumentPositionSupplyChainEvent(
+            $date
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on the associated shipping notification (on position level).
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-86, From EXTENDED__ Shipping notification number
+     * @param  null|string            $lineId           __BT-X-87, From EXTENDED__ Shipping notification position
+     * @param  null|DateTimeInterface $issueDate        __BT-X-88, From EXTENDED__ Date of Shipping notification number
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out DateTimeInterface|null $issueDate
+     */
+    public function getDocumentPositionDespatchAdviceReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineId,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineId = '';
+        $issueDate = null;
+
+        if ($this->documentReader->firstDocumentPositionDespatchAdviceReference()) {
+            $this->documentReader->getDocumentPositionDespatchAdviceReference(
+                $issuerAssignedId,
+                $lineId,
+                $issueDate
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on the associated shipping notification (on position level).
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-89, From EXTENDED__ Goods receipt number
+     * @param  null|string            $lineId           __BT-X-90, From EXTENDED__ Goods receipt position
+     * @param  null|DateTimeInterface $issueDate        __BT-X-91, From EXTENDED__ Date of Goods receipt
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out DateTimeInterface|null $issueDate
+     */
+    public function getDocumentPositionReceivingAdviceReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineId,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineId = '';
+        $issueDate = null;
+
+        if ($this->documentReader->firstDocumentPositionReceivingAdviceReference()) {
+            $this->documentReader->getDocumentPositionReceivingAdviceReference(
+                $issuerAssignedId,
+                $lineId,
+                $issueDate
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on the associated delivery note on position level.
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-92, From EXTENDED__ Delivery note number
+     * @param  null|string            $lineId           __BT-X-93, From EXTENDED__ Delivery note position
+     * @param  null|DateTimeInterface $issueDate        __BT-X-94, From EXTENDED__ Date of Delivery note
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineId
+     * @phpstan-param-out DateTimeInterface|null $issueDate
+     */
+    public function getDocumentPositionDeliveryNoteReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineId,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineId = '';
+        $issueDate = null;
+
+        if ($this->documentReader->firstDocumentPositionDeliveryNoteReference()) {
+            $this->documentReader->getDocumentPositionDeliveryNoteReference(
+                $issuerAssignedId,
+                $lineId,
+                $issueDate
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first document position tax. Returns true if the first tax position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionTax.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionTax(): bool
+    {
+        return $this->documentReader->firstDocumentPositionTax();
+    }
+
+    /**
+     * Seek to the next document position tax. Returns true if another tax position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionTax.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionTax(): bool
+    {
+        return $this->documentReader->nextDocumentPositionTax();
+    }
+
+    /**
+     * Get information about the sales tax that applies to the goods and services invoiced in the relevant invoice line.
+     *
+     * @param  null|string $categoryCode          __BT-151, From BASIC__ Coded description of a sales tax category
+     * @param  null|string $typeCode              __BT-151-0, From BASIC__ In EN 16931 only the tax type “sales tax” with the code “VAT” is supported. Should other types of tax be specified, such as an insurance tax or a mineral oil tax the EXTENDED profile must be used. The code for the tax type must then be taken from the code list UNTDID 5153.
+     * @param  null|float  $rateApplicablePercent __BT-152, From BASIC__ The VAT rate applicable to the item invoiced and expressed as a percentage. Note: The code of the sales tax category and the category-specific sales tax rate  must correspond to one another. The value to be given is the percentage. For example, the value 20 is given for 20% (and not 0.2)
+     * @param  null|float  $calculatedAmount      __BT-, From __ Tax amount. Information only for taxes that are not VAT (Obsolete)
+     * @param  null|string $exemptionReason       __BT-, From __ Reason for tax exemption (free text) (Obsolete)
+     * @param  null|string $exemptionReasonCode   __BT-, From __ Reason given in code form for the exemption of the amount from VAT. Note: Code list issued and maintained by the Connecting Europe Facility. (Obsolete)
+     * @return static
+     *
+     * @phpstan-param-out string $categoryCode
+     * @phpstan-param-out string $typeCode
+     * @phpstan-param-out float $rateApplicablePercent
+     * @phpstan-param-out float $calculatedAmount
+     * @phpstan-param-out string $exemptionReason
+     * @phpstan-param-out string $exemptionReasonCode
+     */
+    public function getDocumentPositionTax(
+        ?string &$categoryCode,
+        ?string &$typeCode,
+        ?float &$rateApplicablePercent,
+        ?float &$calculatedAmount,
+        ?string &$exemptionReason,
+        ?string &$exemptionReasonCode
+    ): static {
+        $this->documentReader->getDocumentPositionTax(
+            $categoryCode,
+            $typeCode,
+            $calculatedAmount,
+            $rateApplicablePercent,
+            $exemptionReason,
+            $exemptionReasonCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get information about the period relevant for the invoice item. Also known as the invoice line delivery period.
+     *
+     * @param  null|DateTimeInterface $startDate __BT-134, From BASIC__ Start of the billing period
+     * @param  null|DateTimeInterface $endDate   __BT-135, From BASIC__ End of the billing period
+     * @return static
+     *
+     * @phpstan-param-out DateTimeInterface|null $startDate
+     * @phpstan-param-out DateTimeInterface|null $endDate
+     */
+    public function getDocumentPositionBillingPeriod(
+        ?DateTimeInterface &$startDate,
+        ?DateTimeInterface &$endDate
+    ): static {
+        $startDate = null;
+        $endDate = null;
+
+        if ($this->documentReader->firstDocumentPositionBillingPeriod()) {
+            $this->documentReader->getDocumentPositionBillingPeriod(
+                $startDate,
+                $endDate,
+                $newDescription
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first allowance charge (on position level). Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionAllowanceCharge(): bool
+    {
+        return $this->documentReader->firstDocumentPositionAllowanceCharge();
+    }
+
+    /**
+     * Seek to the next allowance charge (on position level). Returns true if another position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionAllowanceCharge(): bool
+    {
+        return $this->documentReader->nextDocumentPositionAllowanceCharge();
+    }
+
+    /**
+     * Detailed information on currentley seeked surcharges and discounts on position level.
+     *
+     * @param  null|float  $actualAmount          __BT-136/BT-141, From BASIC__ The surcharge/discount amount excluding sales tax
+     * @param  null|bool   $isCharge              __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
+     * @param  null|float  $calculationPercent    __BT-138, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
+     * @param  null|float  $basisAmount           __BT-137, From EN 16931__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
+     * @param  null|string $reason                __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
+     * @param  null|string $taxTypeCode
+     * @param  null|string $taxCategoryCode
+     * @param  null|float  $rateApplicablePercent
+     * @param  null|float  $sequence
+     * @param  null|float  $basisQuantity
+     * @param  null|string $basisQuantityUnitCode
+     * @param  null|string $reasonCode            __BT-140/BT-145, From BASIC__ The reason given as a code for the invoice line discount
+     * @return static
+     *
+     * @phpstan-param-out float $actualAmount
+     * @phpstan-param-out bool $isCharge
+     * @phpstan-param-out float $calculationPercent
+     * @phpstan-param-out float $basisAmount
+     * @phpstan-param-out string $reason
+     * @phpstan-param-out string $taxTypeCode
+     * @phpstan-param-out string $taxCategoryCode
+     * @phpstan-param-out float $rateApplicablePercent
+     * @phpstan-param-out float $sequence
+     * @phpstan-param-out float $basisQuantity
+     * @phpstan-param-out string $basisQuantityUnitCode
+     * @phpstan-param-out string $reasonCode
+     */
+    public function getDocumentPositionAllowanceCharge(
+        ?float &$actualAmount,
+        ?bool &$isCharge,
+        ?float &$calculationPercent,
+        ?float &$basisAmount,
+        ?string &$reason,
+        ?string &$taxTypeCode,
+        ?string &$taxCategoryCode,
+        ?float &$rateApplicablePercent,
+        ?float &$sequence,
+        ?float &$basisQuantity,
+        ?string &$basisQuantityUnitCode,
+        ?string &$reasonCode
+    ): static {
+        $taxTypeCode = '';
+        $taxCategoryCode = '';
+        $rateApplicablePercent = 0.0;
+        $sequence = 0.0;
+        $basisQuantity = 0.0;
+        $basisQuantityUnitCode = '';
+
+        $this->documentReader->getDocumentPositionAllowanceCharge(
+            $isCharge,
+            $actualAmount,
+            $basisAmount,
+            $reason,
+            $reasonCode,
+            $calculationPercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * Detailed information on surcharges and discounts on position level (on a simple way).
+     * This is the simplified version of ZugferdDocumentReader::getDocumentPositionAllowanceCharge.
+     *
+     * @param  null|float  $actualAmount       __BT-136/BT-141, From BASIC__ The surcharge/discount amount excluding sales tax
+     * @param  null|bool   $isCharge           __BT-27-1/BT-28-1, From BASIC__ (true for BT-/ and false for /BT-) Switch that indicates whether the following data refer to an allowance or a discount, true means that it is a surcharge
+     * @param  null|float  $calculationPercent __BT-138, From BASIC__ The percentage that may be used in conjunction with the base invoice line discount amount to calculate the invoice line discount amount
+     * @param  null|float  $basisAmount        __BT-137, From EN 16931__ The base amount that may be used in conjunction with the invoice line discount percentage to calculate the invoice line discount amount
+     * @param  null|string $reasonCode         __BT-140/BT-145, From BASIC__ The reason given as a code for the invoice line discount
+     * @param  null|string $reason             __BT-139/BT-144, From BASIC__ The reason given in text form for the invoice item discount/surcharge
+     * @return static
+     *
+     * @phpstan-param-out float $actualAmount
+     * @phpstan-param-out bool $isCharge
+     * @phpstan-param-out float $calculationPercent
+     * @phpstan-param-out float $basisAmount
+     * @phpstan-param-out string $reasonCode
+     * @phpstan-param-out string $reason
+     */
+    public function getDocumentPositionAllowanceCharge2(
+        ?float &$actualAmount,
+        ?bool &$isCharge,
+        ?float &$calculationPercent,
+        ?float &$basisAmount,
+        ?string &$reasonCode,
+        ?string &$reason
+    ): static {
+        $this->documentReader->getDocumentPositionAllowanceCharge(
+            $isCharge,
+            $actualAmount,
+            $basisAmount,
+            $reason,
+            $reasonCode,
+            $calculationPercent
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on item totals.
+     *
+     * @param  null|float $lineTotalAmount            __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  null|float $totalAllowanceChargeAmount __BT-, From __ Total amount of item surcharges and discounts
+     * @return static
+     *
+     * @phpstan-param-out float $lineTotalAmount
+     * @phpstan-param-out float $totalAllowanceChargeAmount
+     */
+    public function getDocumentPositionLineSummation(
+        ?float &$lineTotalAmount,
+        ?float &$totalAllowanceChargeAmount
+    ): static {
+        $totalAllowanceChargeAmount = 0.0;
+
+        $this->documentReader->getDocumentPositionSummation(
+            $lineTotalAmount,
+            $newChargeTotalAmount,
+            $newDiscountTotalAmount,
+            $newTaxTotalAmount,
+            $newGrossAmount
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on item totals.
+     *
+     * @param  null|float $lineTotalAmount __BT-131, From BASIC__ The total amount of the invoice item
+     * @return static
+     *
+     * @phpstan-param-out float $lineTotalAmount
+     */
+    public function getDocumentPositionLineSummationSimple(
+        ?float &$lineTotalAmount
+    ): static {
+        $this->documentReader->getDocumentPositionSummation(
+            $lineTotalAmount,
+            $newChargeTotalAmount,
+            $newDiscountTotalAmount,
+            $newTaxTotalAmount,
+            $newGrossAmount
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get detailed information on item totals (with support for EXTENDED profile).
+     *
+     * @param  null|float $lineTotalAmount            __BT-131, From BASIC__ The total amount of the invoice item
+     * @param  null|float $chargeTotalAmount          __BT-X-327, From EXTENDED__ Total amount of item surcharges
+     * @param  null|float $allowanceTotalAmount       __BT-X-328, From EXTENDED__ Total amount of item discounts
+     * @param  null|float $taxTotalAmount             __BT-X-329, From EXTENDED__ Total amount of item taxes
+     * @param  null|float $grandTotalAmount           __BT-X-330, From EXTENDED__ Total gross amount of the item
+     * @param  null|float $totalAllowanceChargeAmount __BT-X-98, From EXTENDED__ Total amount of item surcharges and discounts
+     * @return static
+     *
+     * @phpstan-param-out float $lineTotalAmount
+     * @phpstan-param-out float $chargeTotalAmount
+     * @phpstan-param-out float $allowanceTotalAmount
+     * @phpstan-param-out float $taxTotalAmount
+     * @phpstan-param-out float $grandTotalAmount
+     * @phpstan-param-out float $totalAllowanceChargeAmount
+     */
+    public function getDocumentPositionLineSummationExt(
+        ?float &$lineTotalAmount,
+        ?float &$chargeTotalAmount,
+        ?float &$allowanceTotalAmount,
+        ?float &$taxTotalAmount,
+        ?float &$grandTotalAmount,
+        ?float &$totalAllowanceChargeAmount
+    ): static {
+        $totalAllowanceChargeAmount = 0.0;
+
+        $this->documentReader->getDocumentPositionSummation(
+            $lineTotalAmount,
+            $chargeTotalAmount,
+            $allowanceTotalAmount,
+            $taxTotalAmount,
+            $grandTotalAmount
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get a Reference to the previous invoice (on position level).
+     *
+     * @param  null|string            $issuerAssignedId __BT-X-331, From EXTENDED__ The identification of an invoice previously sent by the seller
+     * @param  null|string            $lineid           __BT-X-540, From EXTENDED__ Identification of the invoice item
+     * @param  null|string            $typeCode         __BT-X-332, From EXTENDED__ Type of previous invoice (code)
+     * @param  null|DateTimeInterface $issueDate        __BT-X-333, From EXTENDED__ Date of the previous invoice
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $lineid
+     * @phpstan-param-out string $typeCode
+     * @phpstan-param-out DateTimeInterface|null $issueDate
+     */
+    public function getDocumentPositionInvoiceReferencedDocument(
+        ?string &$issuerAssignedId,
+        ?string &$lineid,
+        ?string &$typeCode,
+        ?DateTimeInterface &$issueDate
+    ): static {
+        $issuerAssignedId = '';
+        $lineid = '';
+        $issueDate = null;
+        $typeCode = '';
+
+        if ($this->documentReader->firstDocumentPositionInvoiceReference()) {
+            $this->documentReader->getDocumentPositionInvoiceReference(
+                $issuerAssignedId,
+                $lineid,
+                $issueDate,
+                $typeCode
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Seek to the first documents position additional referenced document (Object detection at the level of the accounting position). Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedObjDocument.
+     *
+     * @return bool
+     */
+    public function firstDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        return $this->documentReader->firstDocumentPositionAdditionalObjectReference();
+    }
+
+    /**
+     * Seek to the next documents position additional referenced document (Object detection at the level of the accounting position). Returns true if the first position is available, otherwise false.
+     * You may use it together with ZugferdDocumentReader::getDocumentPositionAdditionalReferencedObjDocument.
+     *
+     * @return bool
+     */
+    public function nextDocumentPositionAdditionalReferencedObjDocument(): bool
+    {
+        return $this->documentReader->nextDocumentPositionAdditionalObjectReference();
+    }
+
+    /**
+     * Get additional Document reference on a position (Object detection).
+     *
+     * @param  null|string $issuerAssignedId __BT-128, From EN 16931__ The identifier of the tender or lot to which the invoice relates, or an identifier specified by the seller for an object on which the invoice is based, or an identifier of the document on which the invoice is based
+     * @param  null|string $typeCode         __BT-128-0, From EN 16931__ Type of referenced document (See codelist UNTDID 1001)
+     * @param  null|string $refTypeCode      __BT-128-1, From EN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
+     * @return static
+     *
+     * @phpstan-param-out string $issuerAssignedId
+     * @phpstan-param-out string $typeCode
+     * @phpstan-param-out string $refTypeCode
+     */
+    public function getDocumentPositionAdditionalReferencedObjDocument(
+        ?string &$issuerAssignedId,
+        ?string &$typeCode,
+        ?string &$refTypeCode
+    ): static {
+        $this->documentReader->getDocumentPositionAdditionalObjectReference(
+            $issuerAssignedId,
+            $typeCode,
+            $refTypeCode
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get information on the booking reference (on position level).
+     *
+     * @param  null|string &$id       __BT-133, From EN 16931__ Posting reference of the byuer. If required, this reference shall be provided by the Buyer to the Seller prior to the issuing of the Invoice.
+     * @param  null|string &$typeCode __BT-X-99, From EXTENDED__ Type of the posting reference
+     * @return static
+     *
+     * @phpstan-param-out string $id
+     * @phpstan-param-out string $typeCode
+     */
+    public function getDocumentPositionReceivableSpecifiedTradeAccountingAccount(
+        ?string &$id,
+        ?string &$typeCode
+    ): static {
+        $this->documentReader->getDocumentPositionPostingReference(
+            $typeCode,
+            $id
+        );
+
+        return $this;
+    }
 }
