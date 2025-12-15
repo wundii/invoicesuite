@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
-use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 
 /**
  * Legacy-class representing the ZUGFeRD PDF document builder for outgoing documents
@@ -23,40 +23,64 @@ use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class ZugferdDocumentPdfBuilder extends InvoiceSuiteAbstractPdfConstructor
+class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
 {
-    /**
-     * @see self::__construct
-     */
-    public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): self
-    {
-        if (!is_file($pdfFileName)) {
-            throw new InvoiceSuiteFileNotFoundException($pdfFileName);
-        }
-
-        return new self($documentBuilder, $pdfFileName);
-    }
-
-    /**
-     * @see self::__construct
-     */
-    public static function fromPdfString(ZugferdDocumentBuilder $documentBuilder, string $pdfContent): self
-    {
-        return new self($documentBuilder, $pdfContent);
-    }
+    use HandlesRawContents;
 
     /**
      * Constructor
      *
      * @param ZugferdDocumentBuilder $documentBuilder The instance of the document builder. Needed to get the XML data
-     * @param string                 $pdfData         The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @param string                 $pdfContent      The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
      */
-    public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfData)
+    public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfContent)
     {
-        parent::__construct(
-            $documentBuilder->getDocumentBuilderInstance()->getCurrentDocumentFormatProvider(),
-            $documentBuilder->getContent(),
-            $pdfData
-        );
+        $this->setRawDocumentContent($documentBuilder->getContent());
+
+        parent::__construct($pdfContent);
+    }
+
+    /**
+     * Generate PDF document by ZugferdDocumentBuilder and PDF-File
+     *
+     * @param  ZugferdDocumentBuilder $documentBuilder
+     * @param  string                 $pdfFileName
+     * @return static
+     */
+    public static function fromPdfFile(ZugferdDocumentBuilder $documentBuilder, string $pdfFileName): static
+    {
+        if (!is_file($pdfFileName)) {
+            throw new InvoiceSuiteFileNotFoundException($pdfFileName);
+        }
+
+        $pdfContent = file_get_contents($pdfFileName);
+
+        if ($pdfContent === false) {
+            throw new InvoiceSuiteFileNotReadableException($pdfFileName);
+        }
+
+        return new static($documentBuilder, $pdfContent);
+    }
+
+    /**
+     * Generate PDF document by ZugferdDocumentBuilder and PDF-content
+     *
+     * @param  ZugferdDocumentBuilder $documentBuilder
+     * @param  string                 $pdfContent
+     * @return static
+     */
+    public static function fromPdfString(ZugferdDocumentBuilder $documentBuilder, string $pdfContent): static
+    {
+        return new static($documentBuilder, $pdfContent);
+    }
+
+    /**
+     * Get the content of XML to attach
+     *
+     * @return string
+     */
+    protected function getXmlContent(): string
+    {
+        return $this->getRawDocumentContent();
     }
 }
