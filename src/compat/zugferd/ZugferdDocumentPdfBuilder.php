@@ -36,6 +36,7 @@ class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
     public function __construct(ZugferdDocumentBuilder $documentBuilder, string $pdfContent)
     {
         $this->setRawDocumentContent($documentBuilder->getContent());
+        $this->setRawPdfContent($pdfContent);
 
         parent::__construct($pdfContent);
     }
