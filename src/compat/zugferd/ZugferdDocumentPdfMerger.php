@@ -23,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class ZugferdDocumentPdfBuilder extends ZugferdDocumentPdfBuilderAbstract
+class ZugferdDocumentPdfMerger extends ZugferdDocumentPdfBuilderAbstract
 {
     use HandlesRawContents;
 
