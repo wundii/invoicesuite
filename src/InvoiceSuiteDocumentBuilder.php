@@ -39,10 +39,7 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Constructor (hidden)
      *
-     * @param  string                                      $formatProviderUniqueId
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvalidArgumentException
-     * @throws RuntimeException
+     * @param string $formatProviderUniqueId
      * @return InvoiceSuiteDocumentBuilder
      */
     final protected function __construct(
@@ -124,8 +121,6 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Copy Builder to a Reader instance
      *
-     * @throws LogicException
-     * @throws RuntimeException
      * @return InvoiceSuiteDocumentReader
      */
     public function copyToReader(): InvoiceSuiteDocumentReader

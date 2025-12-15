@@ -67,13 +67,6 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Generate the final PDF
      *
-     * @throws PdfParserException
-     * @throws CrossReferenceException
-     * @throws FilterException
-     * @throws PdfTypeException
-     * @throws PdfReaderException
-     * @throws BadMethodCallException
-     * @throws RandomException
      * @return static
      */
     protected function generatePdfDocument(): static
@@ -134,7 +127,6 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Get the content of the generated PDF as string
      *
-     * @throws Exception
      * @return string
      */
     protected function getGeneratedPdfDocumentContent(): string
@@ -145,8 +137,7 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
     /**
      * Save the content of the generated PDF to a file
      *
-     * @param  string    $toFilename
-     * @throws Exception
+     * @param string $toFilename
      * @return static
      */
     protected function saveGeneratedPdfDocumentToFile(string $toFilename): static

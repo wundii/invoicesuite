@@ -38,8 +38,6 @@ trait HandlesDocumentSerializer
     /**
      * Build the serializer by a format provider
      *
-     * @throws InvalidArgumentException
-     * @throws RuntimeException
      * @return void
      */
     public function createAndInitDocumentSerializerByFormatProvider(): void

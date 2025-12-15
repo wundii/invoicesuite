@@ -52,12 +52,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Start getting attached files from a PDF file
      *
-     * @param  string                               $pdfFilename
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws PdfParserException
-     * @throws InvalidArgumentException
-     * @throws ParseFailureException
+     * @param string $pdfFilename
      * @return static
      */
     public static function fromFile(string $pdfFilename): static
@@ -78,10 +73,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Start getting attached files from a PDF content
      *
-     * @param  string                   $pdfContent
-     * @throws PdfParserException
-     * @throws InvalidArgumentException
-     * @throws ParseFailureException
+     * @param string $pdfContent
      * @return static
      */
     public static function fromContent(string $pdfContent): static
@@ -136,9 +128,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Set an attachment at index. Disallow external modification
      *
-     * @param  mixed          $offset
-     * @param  mixed          $value
-     * @throws LogicException
+     * @param mixed $offset
+     * @param mixed $value
      * @return void
      */
     public function offsetSet(mixed $offset, mixed $value): void
@@ -149,8 +140,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Remove an attachment at index. Disallow external modification
      *
-     * @param  mixed          $offset
-     * @throws LogicException
+     * @param mixed $offset
      * @return void
      */
     public function offsetUnset(mixed $offset): void
@@ -191,10 +181,7 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get a list of all the attachments.
      *
-     * @param  string                   $pdfContent
-     * @throws InvalidArgumentException
-     * @throws ParseFailureException
-     * @throws PdfParserException
+     * @param string $pdfContent
      * @return static
      */
     protected function collectAttachmentsFromPdfContent(string $pdfContent): static

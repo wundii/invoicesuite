@@ -54,10 +54,7 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Constructor (hidden)
      *
-     * @param  string                                      $fromContent
-     * @throws Exception
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @param string $fromContent
      * @return void
      */
     final protected function __construct(string $fromContent)
@@ -100,9 +97,7 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Create PDF reader by file
      *
-     * @param  string                               $fromFile
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
+     * @param string $fromFile
      * @return static
      */
     public static function createFromFile(string $fromFile): static

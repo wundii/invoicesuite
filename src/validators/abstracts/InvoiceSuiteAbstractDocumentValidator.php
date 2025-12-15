@@ -100,7 +100,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
     /**
      * Main validation method. Checks for non-empty content
      *
-     * @throws InvoiceSuiteInvalidArgumentException
      * @return static
      */
     public function validate(): static
