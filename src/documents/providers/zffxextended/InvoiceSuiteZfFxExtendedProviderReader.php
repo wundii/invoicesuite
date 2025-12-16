@@ -84,8 +84,9 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
     /**
      * Create a DTO from this document
      *
-     * @param  null|InvoiceSuiteDocumentHeaderDTO   $newDocumentDTO Data-Transfer-Object
+     * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws ValueError
      *
@@ -2645,6 +2646,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @param  null|DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
@@ -2665,6 +2667,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @param  null|DateTimeInterface $newCompleteDate __BT-X-6-000, From EXTENDED__ Contractual due date of the document
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newCompleteDate
@@ -2855,6 +2858,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newEndDate     __BT-74, From BASIC WL__ End of the billing period
      * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newStartDate
@@ -2989,6 +2993,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-14, From EN 16931__ Seller's order confirmation number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-146, From EXTENDED__ Seller's order confirmation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3053,6 +3058,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-147, From EXTENDED__ Buyer's order date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3117,6 +3123,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-X-403, From EXTENDED__ Quotation number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-404, From EXTENDED__ Quotation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3181,6 +3188,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  string                 $newReferenceNumber __BT-12, From BASIC WL__ Contract number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-26, From EXTENDED__ Contract date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3242,13 +3250,14 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
     /**
      * Get an additional associated document
      *
-     * @param  null|string                          $newReferenceNumber        __BT-122, From EN 16931__ Additional document number
-     * @param  null|DateTimeInterface               $newReferenceDate          __BT-X-149, From EXTENDED__ Additional document date
-     * @param  null|string                          $newTypeCode               __BT-122-0, From EN 16931__ Additional document type code
-     * @param  null|string                          $newReferenceTypeCode      __BT-18-1, From EN 16931__ Additional document reference-type code
-     * @param  null|string                          $newDescription            __BT-123, From EN 16931__ Additional document description
-     * @param  null|InvoiceSuiteAttachment          $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-122, From EN 16931__ Additional document number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-149, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-122-0, From EN 16931__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-18-1, From EN 16931__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-123, From EN 16931__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws ValueError
      *
@@ -3338,6 +3347,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
      * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3465,6 +3475,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-X-150, From EXTENDED__
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-151, From EXTENDED__
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3529,6 +3540,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-200, From EXTENDED__ Shipping notification date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3593,6 +3605,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-15, From BASIC WL__ Receipt notification number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-201, From EXTENDED__ Receipt notification date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3657,6 +3670,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceNumber __BT-X-202, From EXTENDED__ Delivery slip number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-203, From EXTENDED__ Delivery slip date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3690,6 +3704,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @param  null|DateTimeInterface $newDate __BT-72, From BASIC WL__ Actual delivery date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
@@ -8718,6 +8733,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newDueDate     __BT-9, From BASIC WL__ Date by which payment is due
      * @param  null|string            $newMandate     __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newDescription
@@ -8812,6 +8828,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|float             $newBasePeriod      __BT-X-283, From EXTENDED__ Maturity period (basis)
      * @param  null|string            $newBasePeriodUnit  __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out float $newBaseAmount
@@ -8921,6 +8938,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|float             $newBasePeriod     __BT-X-283, From EXTENDED__ Maturity period (basis)
      * @param  null|string            $newBasePeriodUnit __BT-X-284, From EXTENDED__ Maturity period (unit)
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out float $newBaseAmount
@@ -9017,6 +9035,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newTaxDueDate          __BT-7-00, From EN 16931__ Date on which tax is due
      * @param  null|string            $newTaxDueCode          __BT-8, From BASIC WL__ Code for the date on which tax is due
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newTaxCategory
@@ -9764,6 +9783,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-538, From EXTENDED__ Seller's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-539, From EXTENDED__ Seller's order confirmation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -9828,6 +9848,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-132, From EN 16931__ Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-22, From EXTENDED__ Buyer's order confirmation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -9892,6 +9913,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-311, From EXTENDED__ Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-312, From EXTENDED__ Buyer's order confirmation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -9956,6 +9978,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-25, From EXTENDED__ Buyer's order confirmation line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-26, From EXTENDED__ Buyer's order confirmation date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -10016,14 +10039,15 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
     /**
      * Get an additional associated document (line reference) from latest position
      *
-     * @param  null|string                          $newReferenceNumber        __BT-X-27, From EXTENDED__ Additional document number
-     * @param  null|string                          $newReferenceLineNumber    __BT-X-29, From EXTENDED__ Additional document line number
-     * @param  null|DateTimeInterface               $newReferenceDate          __BT-X-33, From EXTENDED__ Additional document date
-     * @param  null|string                          $newTypeCode               __BT-X-30, From EXTENDED__ Additional document type code
-     * @param  null|string                          $newReferenceTypeCode      __BT-X-32, From EXTENDED__ Additional document reference-type code
-     * @param  null|string                          $newDescription            __BT-X-299, From EXTENDED__ Additional document description
-     * @param  null|InvoiceSuiteAttachment          $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
+     * @param  null|string                 $newReferenceNumber        __BT-X-27, From EXTENDED__ Additional document number
+     * @param  null|string                 $newReferenceLineNumber    __BT-X-29, From EXTENDED__ Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-33, From EXTENDED__ Additional document date
+     * @param  null|string                 $newTypeCode               __BT-X-30, From EXTENDED__ Additional document type code
+     * @param  null|string                 $newReferenceTypeCode      __BT-X-32, From EXTENDED__ Additional document reference-type code
+     * @param  null|string                 $newDescription            __BT-X-299, From EXTENDED__ Additional document description
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment __BT-X-31, From EXTENDED__ Additional document attachment
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws ValueError
      *
@@ -10112,6 +10136,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-44, From EXTENDED__ Ultimate customer order line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-45, From EXTENDED__ Ultimate customer order date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -10176,6 +10201,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber Shipping notification line number
      * @param  null|DateTimeInterface $newReferenceDate       Shipping notification date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -10240,6 +10266,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-90, From EXTENDED__ Receipt notification line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-91, From EXTENDED__ Receipt notification date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -10304,6 +10331,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|string            $newReferenceLineNumber __BT-X-93, From EXTENDED__ Delivery slip line number
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-94, From EXTENDED__ Delivery slip date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -10369,6 +10397,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newReferenceDate       __BT-X-333, From EXTENDED__ Date of the previous invoice
      * @param  null|string            $newTypeCode            __BT-X-332, From EXTENDED__ Type code of previous invoice
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -11626,6 +11655,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      *
      * @param  null|DateTimeInterface $newDate __BT-X-85, From EXTENDED__
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
@@ -11678,6 +11708,7 @@ class InvoiceSuiteZfFxExtendedProviderReader extends InvoiceSuiteAbstractDocumen
      * @param  null|DateTimeInterface $newEndDate     __BT-135, From BASIC__ End of the billing period
      * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newStartDate

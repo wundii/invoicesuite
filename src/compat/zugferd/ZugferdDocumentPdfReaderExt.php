@@ -50,8 +50,9 @@ class ZugferdDocumentPdfReaderExt
     /**
      * Load a PDF file
      *
-     * @param  string                                      $pdfFilename Contains a full-qualified filename which must exist and must be readable
+     * @param  string $pdfFilename Contains a full-qualified filename which must exist and must be readable
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -67,8 +68,9 @@ class ZugferdDocumentPdfReaderExt
     /**
      * Load a PDF content string
      *
-     * @param  string                                      $pdfContent Contains the raw data of a PDF
+     * @param  string $pdfContent Contains the raw data of a PDF
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException

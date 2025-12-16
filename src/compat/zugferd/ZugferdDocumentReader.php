@@ -68,9 +68,10 @@ class ZugferdDocumentReader
     /**
      * Dynamically pass missing methods to the internal reader
      *
-     * @param  string                             $method
-     * @param  array<mixed>                       $parameters
+     * @param  string       $method
+     * @param  array<mixed> $parameters
      * @return mixed
+     *
      * @throws BadMethodCallException
      * @throws Error
      * @throws InvoiceSuiteBadMethodCallException
@@ -83,8 +84,9 @@ class ZugferdDocumentReader
     /**
      * Guess the profile type of a xml file.
      *
-     * @param  string                                      $xmlFilename
+     * @param  string $xmlFilename
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -99,8 +101,9 @@ class ZugferdDocumentReader
     /**
      * Guess the profile type of the readden xml document.
      *
-     * @param  string                                      $xmlContent
+     * @param  string $xmlContent
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
@@ -149,8 +152,9 @@ class ZugferdDocumentReader
     /**
      * Get a parameter from profile definition
      *
-     * @param  string                               $parameterName
+     * @param  string $parameterName
      * @return mixed
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getProfileDefinitionParameter(string $parameterName)
@@ -168,6 +172,7 @@ class ZugferdDocumentReader
      * Returns the internal InvoiceSuiteDocumentReader instance
      *
      * @return InvoiceSuiteDocumentReader
+     *
      * @throws RuntimeException
      */
     public function getDocumentReaderInstance(): InvoiceSuiteDocumentReader

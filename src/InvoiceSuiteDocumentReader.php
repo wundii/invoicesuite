@@ -43,8 +43,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Constructor (hidden)
      *
-     * @param  string                                      $fromContent
+     * @param  string $fromContent
      * @return void
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
@@ -71,9 +72,10 @@ class InvoiceSuiteDocumentReader
     /**
      * Dynamically pass missing methods to the reader provided by format provider
      *
-     * @param  string                             $method
-     * @param  array<mixed>                       $parameters
+     * @param  string       $method
+     * @param  array<mixed> $parameters
      * @return mixed
+     *
      * @throws BadMethodCallException
      * @throws Error
      * @throws InvoiceSuiteBadMethodCallException
@@ -88,8 +90,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Create reader by file
      *
-     * @param  string                                      $fromFile
+     * @param  string $fromFile
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -114,8 +117,9 @@ class InvoiceSuiteDocumentReader
     /**
      * Create reader by content
      *
-     * @param  string                                      $fromContent
+     * @param  string $fromContent
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException
@@ -129,6 +133,7 @@ class InvoiceSuiteDocumentReader
      * Copy Reader to a Builder instance
      *
      * @return InvoiceSuiteDocumentBuilder
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function copyToBuilder(): InvoiceSuiteDocumentBuilder

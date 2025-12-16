@@ -36,7 +36,8 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Constructor
      *
-     * @param  string                       $defaultTimezone
+     * @param string $defaultTimezone
+     *
      * @throws DateInvalidTimeZoneException
      */
     public function __construct(string $defaultTimezone = 'UTC')
@@ -215,8 +216,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -243,8 +245,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -290,8 +293,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * Serialize a meassure value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -319,8 +323,9 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement
@@ -331,9 +336,10 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialize JSON date
      *
-     * @param  JsonDeserializationVisitor   $visitor
-     * @param  null|string                  $data
+     * @param  JsonDeserializationVisitor $visitor
+     * @param  null|string                $data
      * @return null|DateTime
+     *
      * @throws DateMalformedStringException
      */
     public function deserializeJsonDate(JsonDeserializationVisitor $visitor, $data): ?DateTime
@@ -357,9 +363,10 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialze JSON Date/Time
      *
-     * @param  JsonDeserializationVisitor   $visitor
-     * @param  null|string                  $data
+     * @param  JsonDeserializationVisitor $visitor
+     * @param  null|string                $data
      * @return null|DateTime
+     *
      * @throws DateMalformedStringException
      */
     public function deserializeJsonDateTime(JsonDeserializationVisitor $visitor, $data): ?DateTime
@@ -383,9 +390,10 @@ class InvoiceSuiteUblInvoiceSerializerHandler implements SubscribingHandlerInter
     /**
      * Deserialize JSON time
      *
-     * @param  JsonDeserializationVisitor   $visitor
-     * @param  null|string                  $data
+     * @param  JsonDeserializationVisitor $visitor
+     * @param  null|string                $data
      * @return null|DateTime
+     *
      * @throws DateMalformedStringException
      */
     public function deserializeJsonTime(JsonDeserializationVisitor $visitor, $data): ?DateTime

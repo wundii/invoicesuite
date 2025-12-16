@@ -41,6 +41,7 @@ trait HandlesMessageBag
      * Creates a new instance on first access.
      *
      * @return InvoiceSuiteMessageBag
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getMessageBag(): InvoiceSuiteMessageBag
@@ -56,6 +57,7 @@ trait HandlesMessageBag
      * Clears the internal message container
      *
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function clearMessageBag(): static
@@ -68,8 +70,9 @@ trait HandlesMessageBag
     /**
      * Add an existing message bag item to internal message bag.
      *
-     * @param  InvoiceSuiteMessageBagItem           $newMessageBagItem the item to add
+     * @param  InvoiceSuiteMessageBagItem $newMessageBagItem the item to add
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addMessageItemToMessageBag(InvoiceSuiteMessageBagItem $newMessageBagItem): static
@@ -85,10 +88,11 @@ trait HandlesMessageBag
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                               $newMessageContent   the message text
-     * @param  null|InvoiceSuiteMessageSeverity     $newMessageSeverity  the message severity (default INFO)
-     * @param  null|DateTimeInterface               $newMessageTimestamp the timestamp (default now)
+     * @param  string                           $newMessageContent   the message text
+     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
+     * @param  null|DateTimeInterface           $newMessageTimestamp the timestamp (default now)
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addMessageToMessageBag(
@@ -106,9 +110,10 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                               $newMessageContent
-     * @param  null|DateTimeInterface               $newMessageTimestamp
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addInfoMessageToMessageBag(
@@ -125,9 +130,10 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                               $newMessageContent
-     * @param  null|DateTimeInterface               $newMessageTimestamp
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addWarningMessageToMessageBag(
@@ -144,9 +150,10 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                               $newMessageContent
-     * @param  null|DateTimeInterface               $newMessageTimestamp
+     * @param  string                 $newMessageContent
+     * @param  null|DateTimeInterface $newMessageTimestamp
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addErrorMessageToMessageBag(
@@ -162,6 +169,7 @@ trait HandlesMessageBag
      * Check if any messages exist in the internal message bag.
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function hasMessagesInMessageBag(): bool
@@ -172,8 +180,9 @@ trait HandlesMessageBag
     /**
      * Check if any messages with the given severity exist in internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity          $filterSeverity
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): bool
@@ -185,6 +194,7 @@ trait HandlesMessageBag
      * Check if any INFO messages exist in internal message bag.
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function hasInfoMessagesInMessageBag(): bool
@@ -196,6 +206,7 @@ trait HandlesMessageBag
      * Check if any WARNING messages exist in internal message bag.
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function hasWarningMessagesInMessageBag(): bool
@@ -207,6 +218,7 @@ trait HandlesMessageBag
      * Check if any ERROR messages exist in internal message bag.
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function hasErrorMessagesInMessageBag(): bool
@@ -217,8 +229,9 @@ trait HandlesMessageBag
     /**
      * Count messages by severity in internal message bag.
      *
-     * @param  InvoiceSuiteMessageSeverity          $filterSeverity
+     * @param  InvoiceSuiteMessageSeverity $filterSeverity
      * @return int
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): int
@@ -230,6 +243,7 @@ trait HandlesMessageBag
      * Count INFO messages in internal message bag.
      *
      * @return int
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function countInfoMessagesInMessageBag(): int
@@ -241,6 +255,7 @@ trait HandlesMessageBag
      * Count WARNING messages in internal message bag.
      *
      * @return int
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function countWarningMessagesInMessageBag(): int
@@ -252,6 +267,7 @@ trait HandlesMessageBag
      * Count ERROR messages in internal message bag.
      *
      * @return int
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function countErrorMessagesInMessageBag(): int
@@ -264,6 +280,7 @@ trait HandlesMessageBag
      *
      * @param  InvoiceSuiteMessageSeverity            $filterSeverity
      * @return array<int, InvoiceSuiteMessageBagItem>
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity $filterSeverity): array
@@ -275,6 +292,7 @@ trait HandlesMessageBag
      * Get INFO messages from internal message bag.
      *
      * @return array<int, InvoiceSuiteMessageBagItem>
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getInfoMessagesInMessageBag(): array
@@ -286,6 +304,7 @@ trait HandlesMessageBag
      * Get WARNING messages from internal message bag.
      *
      * @return array<int, InvoiceSuiteMessageBagItem>
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getWarningMessagesInMessageBag(): array
@@ -297,6 +316,7 @@ trait HandlesMessageBag
      * Get ERROR messages from internal message bag.
      *
      * @return array<int, InvoiceSuiteMessageBagItem>
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function getErrorMessagesInMessageBag(): array

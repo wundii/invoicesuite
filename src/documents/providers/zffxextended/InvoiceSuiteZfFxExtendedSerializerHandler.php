@@ -66,8 +66,9 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -94,8 +95,9 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -141,8 +143,9 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
      * Serialize a meassure value
      * The value will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeMeasureType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -170,8 +173,9 @@ class InvoiceSuiteZfFxExtendedSerializerHandler implements SubscribingHandlerInt
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement

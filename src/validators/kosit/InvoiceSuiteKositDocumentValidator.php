@@ -316,6 +316,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * The validation entry point
      *
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -445,6 +446,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check Requirements
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirements(): bool
@@ -464,6 +466,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check general requirements (common for local and remote validation)
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsGeneral(): bool
@@ -481,6 +484,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check requirements for usage on a local installation
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsLocal(): bool
@@ -511,6 +515,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * in daemon mode
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsRemote(): bool
@@ -578,6 +583,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Download required files
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function downloadRequiredFiles(): bool
@@ -605,6 +611,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Unpack required files
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFiles(): bool
@@ -634,8 +641,9 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Unpack single required file
      *
-     * @param  string                               $filename
+     * @param  string $filename
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFile(string $filename): bool
@@ -683,6 +691,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -700,6 +709,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application locally
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -742,6 +752,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application on the remote host
      *
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function performValidationRemote(): bool
@@ -796,6 +807,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * to messagebag
      *
      * @return void
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -822,8 +834,9 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Parses the XML content string containing the response from the validation app (JAVA application) and put errors
      * to messagebag
      *
-     * @param  string                               $xmlContent
+     * @param  string $xmlContent
      * @return void
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -844,8 +857,9 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Parses the XML DOMDocument containing the response from the validation app (JAVA application) and put errors
      * to messagebag
      *
-     * @param  DOMDocument                          $domDocument
+     * @param  DOMDocument $domDocument
      * @return void
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws TypeError
      * @throws ValueError
@@ -937,9 +951,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs a process. If the process runned successfully this method
      * returns true, otherwise false
      *
-     * @param  array<int,string>                    $command
-     * @param  string                               $workingdirectory
+     * @param  array<int,string> $command
+     * @param  string            $workingdirectory
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool
@@ -983,10 +998,11 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
     /**
      * Run a file download.
      *
-     * @param  string                               $url
-     * @param  string                               $toFilePath
-     * @param  bool                                 $forceOverwrite
+     * @param  string $url
+     * @param  string $toFilePath
+     * @param  bool   $forceOverwrite
      * @return bool
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runFileDownload(string $url, string $toFilePath, bool $forceOverwrite = false): bool

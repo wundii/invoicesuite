@@ -55,9 +55,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document builder and a PDF file
      *
-     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
-     * @param  string                               $fromPdfFilename
+     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
+     * @param  string                      $fromPdfFilename
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
@@ -81,9 +82,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document builder and a PDF content
      *
-     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
-     * @param  string                               $fromPdfContent
+     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
+     * @param  string                      $fromPdfContent
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws RuntimeException
      */
@@ -95,9 +97,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document content and a PDF file
      *
-     * @param  string                                      $fromDocumentContent
-     * @param  string                                      $fromPdfFilename
+     * @param  string $fromDocumentContent
+     * @param  string $fromPdfFilename
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -120,9 +123,10 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Create the PDF builder from a document content and a PDF content
      *
-     * @param  string                                      $fromDocumentContent
-     * @param  string                                      $fromPdfContent
+     * @param  string $fromDocumentContent
+     * @param  string $fromPdfContent
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): static
@@ -248,10 +252,11 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by an existing file
      *
-     * @param  string                               $newFullFilename
-     * @param  string                               $newDisplayName
-     * @param  string                               $newRelationshipType
+     * @param  string $newFullFilename
+     * @param  string $newDisplayName
+     * @param  string $newRelationshipType
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
@@ -267,11 +272,12 @@ class InvoiceSuitePdfDocumentBuilder
     /**
      * Add an additional document to attach by a content string
      *
-     * @param  string                               $newContent
-     * @param  string                               $newFilename
-     * @param  string                               $newDisplayName
-     * @param  string                               $newRelationshipType
+     * @param  string $newContent
+     * @param  string $newFilename
+     * @param  string $newDisplayName
+     * @param  string $newRelationshipType
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteUnknownContentException
      */
@@ -471,8 +477,9 @@ class InvoiceSuitePdfDocumentBuilder
      * Internal method to set a document builder from which to get the content from. This will check
      * if the given provider has an enabled PDF support
      *
-     * @param  InvoiceSuiteDocumentBuilder          $fromDocumentBuilder
+     * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws RuntimeException
      */
@@ -496,8 +503,9 @@ class InvoiceSuitePdfDocumentBuilder
      * Internal method to set the document content directly. This will look for a provider and check if
      * PDF support is enabled
      *
-     * @param  string                                      $fromDocumentContent
+     * @param  string $fromDocumentContent
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     protected function setDocumentContent(string $fromDocumentContent): static

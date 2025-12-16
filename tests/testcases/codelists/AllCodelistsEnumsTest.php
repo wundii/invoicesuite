@@ -26,6 +26,7 @@ final class AllCodelistsEnumsTest extends TestCase
 {
     /**
      * @return void
+     *
      * @throws Exception
      * @throws ExpectationFailedException
      * @throws InvalidArgumentException

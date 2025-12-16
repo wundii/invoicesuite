@@ -109,7 +109,8 @@ return (new Config())
             'phpdoc_separation' => [
                 'groups' => [
                     ['category', 'package', 'author', 'license', 'subpackage', 'copyright', 'link', 'see'],
-                    ['param', 'return', 'throws'],
+                    ['param', 'return'],
+                    ['throws'],
                     ['deprecated', 'since'],
                     ['var', 'JMS\\*']
                 ],

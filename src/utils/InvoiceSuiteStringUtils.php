@@ -78,8 +78,9 @@ class InvoiceSuiteStringUtils
     /**
      * Create a new GUID
      *
-     * @param  bool            $useOpenSsl Use OpenSSL-Framework. Default is true
+     * @param  bool   $useOpenSsl Use OpenSSL-Framework. Default is true
      * @return string
+     *
      * @throws RandomException
      */
     public static function createGuid(bool $useOpenSsl = true): string

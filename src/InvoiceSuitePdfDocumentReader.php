@@ -55,8 +55,9 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Constructor (hidden)
      *
-     * @param  string                                      $fromContent
+     * @param  string $fromContent
      * @return void
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException
@@ -102,8 +103,9 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Create PDF reader by file
      *
-     * @param  string                                      $fromFile
+     * @param  string $fromFile
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -129,8 +131,9 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Create PDF reader by content
      *
-     * @param  string                                      $fromContent
+     * @param  string $fromContent
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws PdfParserException

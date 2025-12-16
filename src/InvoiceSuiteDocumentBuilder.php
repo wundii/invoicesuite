@@ -41,8 +41,9 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Constructor (hidden)
      *
-     * @param  string                                      $formatProviderUniqueId
+     * @param  string                      $formatProviderUniqueId
      * @return InvoiceSuiteDocumentBuilder
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     final protected function __construct(
@@ -56,9 +57,10 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Dynamically pass missing methods to the builder provided by format provider
      *
-     * @param  string                             $method
-     * @param  array<mixed>                       $parameters
+     * @param  string       $method
+     * @param  array<mixed> $parameters
      * @return mixed
+     *
      * @throws BadMethodCallException
      * @throws Error
      * @throws InvoiceSuiteBadMethodCallException
@@ -71,8 +73,9 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Create a new InvoiceDocumentBuilder instance for the given format provider
      *
-     * @param  string                                      $formatProviderUniqueId
+     * @param  string $formatProviderUniqueId
      * @return static
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createByProviderUniqueId(
@@ -85,6 +88,7 @@ class InvoiceSuiteDocumentBuilder
      * Get the content as XML string
      *
      * @return string
+     *
      * @throws RuntimeException
      */
     public function getContentAsXml(): string
@@ -96,6 +100,7 @@ class InvoiceSuiteDocumentBuilder
      * Get the content as JSON string
      *
      * @return string
+     *
      * @throws RuntimeException
      */
     public function getContentAsJson(): string
@@ -106,8 +111,9 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Save the XML content to a file
      *
-     * @param  string           $tofile
+     * @param  string $tofile
      * @return void
+     *
      * @throws RuntimeException
      */
     public function saveAsXmlFile(
@@ -119,8 +125,9 @@ class InvoiceSuiteDocumentBuilder
     /**
      * Save the JSON content to a file
      *
-     * @param  string           $tofile
+     * @param  string $tofile
      * @return void
+     *
      * @throws RuntimeException
      */
     public function saveAsJsonFile(
@@ -133,6 +140,7 @@ class InvoiceSuiteDocumentBuilder
      * Copy Builder to a Reader instance
      *
      * @return InvoiceSuiteDocumentReader
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
      * @throws RuntimeException

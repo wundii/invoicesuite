@@ -75,6 +75,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      *
      * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
@@ -2633,6 +2634,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      *
      * @param  null|DateTimeInterface $newDocumentDate __BT-2, From MINIMUM__ Date of the document. The date when the document was issued by the seller
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
@@ -2835,6 +2837,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  null|DateTimeInterface $newEndDate     __BT-74, From BASIC WL__ End of the billing period
      * @param  null|string            $newDescription __BT-X-264, From EXTENDED__ Further information of the billing period (Obsolete)
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newStartDate
@@ -3009,6 +3012,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  null|string            $newReferenceNumber __BT-13, From MINIMUM__ Buyers's order number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-147, From EXTENDED__ Buyer's order date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3113,6 +3117,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  string                 $newReferenceNumber __BT-12, From BASIC WL__ Contract number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-26, From EXTENDED__ Contract date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3234,6 +3239,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  null|DateTimeInterface $newReferenceDate   __BT-26, From BASIC WL__Date of the previous invoice
      * @param  null|string            $newTypeCode        __BT-X-555, From EXTENDED__ Type code of previous invoice
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3381,6 +3387,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  null|string            $newReferenceNumber __BT-16, From BASIC WL__ Shipping notification number
      * @param  null|DateTimeInterface $newReferenceDate   __BT-X-200, From EXTENDED__ Shipping notification date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -3494,6 +3501,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      *
      * @param  null|DateTimeInterface $newDate __BT-72, From BASIC WL__ Actual delivery date
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
@@ -7722,6 +7730,7 @@ class InvoiceSuiteZfFxBasicWlProviderReader extends InvoiceSuiteAbstractDocument
      * @param  null|DateTimeInterface $newDueDate     __BT-9, From BASIC WL__ Date by which payment is due
      * @param  null|string            $newMandate     __BT-89, From BASIC WL__ Identification of the mandate reference
      * @return static
+     *
      * @throws ValueError
      *
      * @phpstan-param-out string $newDescription

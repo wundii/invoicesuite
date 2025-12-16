@@ -44,7 +44,8 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * Constructor.
      * Keys from input are ignored and normalized to consecutive int keys (0..n-1).
      *
-     * @param  array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems initial message items
+     * @param array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems initial message items
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function __construct(array $newMessageBagItems = [])
@@ -70,6 +71,7 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      *
      * @param  array<int, InvoiceSuiteMessageBagItem> $newMessageBagItems The message items to add
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addMessages(array $newMessageBagItems): static
@@ -277,8 +279,9 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     /**
      * Whether a message index exists.
      *
-     * @param  mixed                                $offset the index to check
-     * @return bool                                 true if the index exists, otherwise false
+     * @param  mixed $offset the index to check
+     * @return bool  true if the index exists, otherwise false
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function offsetExists(mixed $offset): bool
@@ -293,8 +296,9 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     /**
      * Get message at offset.
      *
-     * @param  mixed                                $offset the index to read
-     * @return null|InvoiceSuiteMessageBagItem      the stored message or null if not found
+     * @param  mixed                           $offset the index to read
+     * @return null|InvoiceSuiteMessageBagItem the stored message or null if not found
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function offsetGet(mixed $offset): ?InvoiceSuiteMessageBagItem
@@ -309,9 +313,10 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     /**
      * Set a message at offset. Disallow external modification
      *
-     * @param  mixed          $offset The index to write (ignored)
-     * @param  mixed          $value  The value to set (ignored)
+     * @param  mixed $offset The index to write (ignored)
+     * @param  mixed $value  The value to set (ignored)
      * @return void
+     *
      * @throws LogicException
      */
     public function offsetSet(mixed $offset, mixed $value): void
@@ -322,8 +327,9 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     /**
      * Unset a message at offset. Disallow external modification
      *
-     * @param  mixed          $offset The index to remove (ignored)
+     * @param  mixed $offset The index to remove (ignored)
      * @return void
+     *
      * @throws LogicException
      */
     public function offsetUnset(mixed $offset): void

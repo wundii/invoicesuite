@@ -94,9 +94,10 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     /**
      * Set the PDF version.
      *
-     * @param  string          $version     contains the PDF version number
-     * @param  bool            $binary_data This is true for binary data
+     * @param  string $version     contains the PDF version number
+     * @param  bool   $binary_data This is true for binary data
      * @return void
+     *
      * @throws RandomException
      */
     public function setPdfVersion($version = '1.3', $binary_data = false): void

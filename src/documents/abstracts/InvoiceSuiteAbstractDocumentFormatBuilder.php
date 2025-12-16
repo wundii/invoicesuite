@@ -53,6 +53,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content as XML string
      *
      * @return string
+     *
      * @throws RuntimeException
      */
     public function getContentAsXml(): string
@@ -64,6 +65,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content as JSON string
      *
      * @return string
+     *
      * @throws RuntimeException
      */
     public function getContentAsJson(): string
@@ -74,8 +76,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Save the XML content to a file
      *
-     * @param  string           $tofile
+     * @param  string $tofile
      * @return void
+     *
      * @throws RuntimeException
      */
     public function saveAsXmlFile(string $tofile): void
@@ -86,8 +89,9 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
     /**
      * Save the JSON content to a file
      *
-     * @param  string           $tofile
+     * @param  string $tofile
      * @return void
+     *
      * @throws RuntimeException
      */
     public function saveAsJsonFile(string $tofile): void
@@ -4639,6 +4643,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content by type
      *
      * @return string
+     *
      * @throws RuntimeException
      */
     protected function getContentByType(string $contentType): string

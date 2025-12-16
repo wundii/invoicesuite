@@ -50,8 +50,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Start getting attached files from a PDF file
      *
-     * @param  string                               $pdfFilename
+     * @param  string $pdfFilename
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws PdfParserException
@@ -74,8 +75,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Start getting attached files from a PDF content
      *
-     * @param  string             $pdfContent
+     * @param  string $pdfContent
      * @return static
+     *
      * @throws PdfParserException
      */
     public static function fromContent(string $pdfContent): static
@@ -130,9 +132,10 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Set an attachment at index. Disallow external modification
      *
-     * @param  mixed          $offset
-     * @param  mixed          $value
+     * @param  mixed $offset
+     * @param  mixed $value
      * @return void
+     *
      * @throws LogicException
      */
     public function offsetSet(mixed $offset, mixed $value): void
@@ -143,8 +146,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Remove an attachment at index. Disallow external modification
      *
-     * @param  mixed          $offset
+     * @param  mixed $offset
      * @return void
+     *
      * @throws LogicException
      */
     public function offsetUnset(mixed $offset): void
@@ -185,8 +189,9 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
     /**
      * Get a list of all the attachments.
      *
-     * @param  string             $pdfContent
+     * @param  string $pdfContent
      * @return static
+     *
      * @throws PdfParserException
      */
     protected function collectAttachmentsFromPdfContent(string $pdfContent): static

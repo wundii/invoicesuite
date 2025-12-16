@@ -60,8 +60,9 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
      * Serialize Anount type
      * The amounts will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -88,8 +89,9 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
      * Serialize quantity type
      * The quantity will be serialized (by default) with a precission of 2 digits
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeQuantityType(XmlSerializationVisitor $visitor, $data): DOMText
@@ -136,8 +138,9 @@ class InvoiceSuiteZfFxBasicSerializerHandler implements SubscribingHandlerInterf
      * False and true values will be serialized correctly (false won't be serialized
      * in the default implementation)
      *
-     * @param  XmlSerializationVisitor $visitor
-     * @param  mixed                   $data
+     * @param XmlSerializationVisitor $visitor
+     * @param mixed                   $data
+     *
      * @throws DOMException
      */
     public function serializeIndicatorType(XmlSerializationVisitor $visitor, $data): DOMElement

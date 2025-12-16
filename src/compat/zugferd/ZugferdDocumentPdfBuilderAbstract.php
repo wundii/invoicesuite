@@ -38,7 +38,8 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Constructor
      *
-     * @param  string                                      $pdfContent The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     * @param string $pdfContent The full filename or a string containing the binary pdf data. This is the original PDF (e.g. created by a ERP system)
+     *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public function __construct(string $pdfContent)
@@ -180,10 +181,11 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Attach an additional file to PDF. The file that is specified in $fullFilename must exists
      *
-     * @param  string                               $fullFilename
-     * @param  string                               $displayName
-     * @param  string                               $relationshipType
+     * @param  string $fullFilename
+     * @param  string $displayName
+     * @param  string $relationshipType
      * @return static
+     *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteInvalidArgumentException
@@ -206,11 +208,12 @@ abstract class ZugferdDocumentPdfBuilderAbstract
     /**
      * Attach an additional file to PDF by a content string
      *
-     * @param  string                               $content
-     * @param  string                               $filename
-     * @param  string                               $displayName
-     * @param  string                               $relationshipType
+     * @param  string $content
+     * @param  string $filename
+     * @param  string $displayName
+     * @param  string $relationshipType
      * @return static
+     *
      * @throws InvoiceSuiteInvalidArgumentException
      * @throws InvoiceSuiteUnknownContentException
      */
