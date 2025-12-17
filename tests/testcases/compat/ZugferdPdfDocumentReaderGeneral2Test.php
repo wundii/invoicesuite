@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\zugferd\tests\testcases;
+namespace horstoeko\invoicesuite\tests\testcases\compat;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
