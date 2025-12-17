@@ -253,10 +253,10 @@ class ZugferdDocumentPdfReaderExt
 
         foreach ($attachmentContentList as $attachmentContentItem) {
             $result[] = [
-                self::ATTACHMENT_KEY_TYPE => self::ATTACHMENT_TYPE_ADDITIONAL,
-                self::ATTACHMENT_KEY_CONTENT => $attachmentContentItem->getAttachmentContent(),
-                self::ATTACHMENT_KEY_FILENAME => $attachmentContentItem->getAttachmentFilename(),
-                self::ATTACHMENT_KEY_MIMETYPE => $attachmentContentItem->getAttachmentMimeType(),
+                static::ATTACHMENT_KEY_TYPE => static::ATTACHMENT_TYPE_ADDITIONAL,
+                static::ATTACHMENT_KEY_CONTENT => $attachmentContentItem->getAttachmentContent(),
+                static::ATTACHMENT_KEY_FILENAME => $attachmentContentItem->getAttachmentFilename(),
+                static::ATTACHMENT_KEY_MIMETYPE => $attachmentContentItem->getAttachmentMimeType(),
             ];
         }
 

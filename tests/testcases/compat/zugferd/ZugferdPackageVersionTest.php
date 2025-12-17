@@ -11,6 +11,6 @@ class ZugferdPackageVersionTest extends TestCase
 {
     public function testVersion(): void
     {
-        $this->assertSame("dev-master", ZugferdPackageVersion::getInstalledVersion());
+        $this->assertSame('dev-master', ZugferdPackageVersion::getInstalledVersion());
     }
 }

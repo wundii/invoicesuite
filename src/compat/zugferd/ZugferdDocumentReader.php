@@ -171,10 +171,10 @@ class ZugferdDocumentReader
     /**
      * Set the directory where the attached binary data from additional referenced documents are temporary stored.
      *
-     * @param  string                $binaryDataDirectory
-     * @return ZugferdDocumentReader
+     * @param  string $binaryDataDirectory
+     * @return static
      */
-    public function setBinaryDataDirectory(string $binaryDataDirectory): self
+    public function setBinaryDataDirectory(string $binaryDataDirectory): static
     {
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataDirectory) && is_dir($binaryDataDirectory)) {
             $this->binarydatadirectory = $binaryDataDirectory;
@@ -4245,7 +4245,7 @@ class ZugferdDocumentReader
         ?string &$issuerAssignedId,
         ?string &$lineId,
         ?DateTimeInterface &$issueDate
-    ): self {
+    ): static {
         $issuerAssignedId = '';
         $lineId = '';
         $issueDate = null;
