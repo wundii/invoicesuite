@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdPackageVersion;

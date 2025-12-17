@@ -1,43 +1,42 @@
 <?php
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+declare(strict_types=1);
+
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistDocumentTypes;
 use horstoeko\invoicesuite\tests\TestCase;
-use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdPdfDocumentReaderComfortTest extends TestCase
+final class ZugferdDocumentReaderExtended2Test extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
      */
-    protected static $document;
+    private static $document;
 
-    public function testCanReadPdf(): void
+    public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentPdfReader::readAndGuessFromFile(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_3.pdf');
-        $this->assertNotNull(self::$document);
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__.'/../../../assets/03_zugferddocumentreader_2.xml');
     }
 
     public function testDocumentProfile(): void
     {
-        $this->assertEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->getProfileId());
+        $this->assertNotEquals(ZugferdProfiles::PROFILE_EN16931, self::$document->getProfileId());
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASIC, self::$document->getProfileId());
         $this->assertNotEquals(ZugferdProfiles::PROFILE_BASICWL, self::$document->getProfileId());
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
-        $this->assertNotEquals(ZugferdProfiles::PROFILE_XRECHNUNG, self::$document->getProfileId());
+        $this->assertEquals(ZugferdProfiles::PROFILE_EXTENDED, self::$document->getProfileId());
     }
 
     public function testDocumentGenerals(): void
     {
         self::$document->getDocumentInformation($documentno, $documenttypecode, $documentdate, $invoiceCurrency, $taxCurrency, $documentname, $documentlanguage, $effectiveSpecifiedPeriod);
-        $this->assertSame('471102', $documentno);
+        $this->assertSame('F20200027', $documentno);
         $this->assertSame(InvoiceSuiteCodelistDocumentTypes::COMMERCIAL_INVOICE->value, $documenttypecode);
         $this->assertInstanceOf(DateTime::class, $documentdate);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20180305')->format('Ymd'), $documentdate->format('Ymd'));
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $documentdate->format('Ymd'));
         $this->assertSame('EUR', $invoiceCurrency);
         $this->assertSame('', $taxCurrency);
         $this->assertSame('', $documentname);
@@ -63,24 +62,19 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertArrayHasKey('content', $notes[1]);
         $this->assertArrayHasKey('subjectcode', $notes[1]);
         $this->assertArrayHasKey('contentcode', $notes[1]);
-        $this->assertEquals('', $notes[0]['contentcode']);
-        $this->assertEquals('', $notes[0]['subjectcode']);
-        $this->assertEquals('Rechnung gemäß Bestellung vom 01.03.2018.', $notes[0]['content']);
-        $this->assertEquals('', $notes[1]['contentcode']);
-        $this->assertEquals('REG', $notes[1]['subjectcode']);
-        $this->assertStringContainsString('Lieferant GmbH', $notes[1]['content']);
-        $this->assertStringContainsString('Lieferantenstraße 20', $notes[1]['content']);
-        $this->assertStringContainsString('80333 München', $notes[1]['content']);
-        $this->assertStringContainsString('Deutschland', $notes[1]['content']);
-        $this->assertStringContainsString('Geschäftsführer: Hans Muster', $notes[1]['content']);
-        $this->assertStringContainsString('Handelsregisternummer: H A 123', $notes[1]['content']);
+        $this->assertSame('', $notes[0]['contentcode']);
+        $this->assertSame('REG', $notes[0]['subjectcode']);
+        $this->assertSame('FOURNISSEUR F SARL au capital de 50 000 EUR', $notes[0]['content']);
+        $this->assertSame('', $notes[1]['contentcode']);
+        $this->assertSame('ABL', $notes[1]['subjectcode']);
+        $this->assertSame('RCS MAVILLE 123 456 789', $notes[1]['content']);
     }
 
     public function testDocumentGeneralPaymentInformation(): void
     {
         self::$document->getDocumentGeneralPaymentInformation($creditorReferenceID, $paymentReference);
         $this->assertSame('', $creditorReferenceID);
-        $this->assertSame('', $paymentReference);
+        $this->assertSame('F20180023BUYER', $paymentReference);
     }
 
     public function testDocumentIsCopy(): void
@@ -98,31 +92,30 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentSummation(): void
     {
         self::$document->getDocumentSummation($grandTotalAmount, $duePayableAmount, $lineTotalAmount, $chargeTotalAmount, $allowanceTotalAmount, $taxBasisTotalAmount, $taxTotalAmount, $roundingAmount, $totalPrepaidAmount);
-        $this->assertEqualsWithDelta(529.87, $grandTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(529.87, $duePayableAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(473.00, $lineTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.00, $chargeTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.00, $allowanceTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(473.00, $taxBasisTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(56.87, $taxTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(110.0, $grandTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $duePayableAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(95.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $chargeTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(5.0, $allowanceTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $taxBasisTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $taxTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $roundingAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.00, $totalPrepaidAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.00, $totalPrepaidAmount, PHP_FLOAT_EPSILON);
     }
 
     public function testGetDocumentBuyerReference(): void
     {
         self::$document->getDocumentBuyerReference($buyerReference);
-        $this->assertSame('', $buyerReference);
+        $this->assertSame('SERVEXEC', $buyerReference);
     }
 
     public function testDocumentSellerGeneral(): void
     {
         self::$document->getDocumentSeller($sellername, $sellerids, $sellerdescription);
-        $this->assertSame('Lieferant GmbH', $sellername);
+        $this->assertSame('LE FOURNISSEUR', $sellername);
         $this->assertIsArray($sellerids);
-        $this->assertArrayHasKey(0, $sellerids);
+        $this->assertArrayNotHasKey(0, $sellerids);
         $this->assertArrayNotHasKey(1, $sellerids);
-        $this->assertEquals('549910', $sellerids[0]);
         $this->assertSame('', $sellerdescription);
     }
 
@@ -131,7 +124,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentSellerGlobalId($sellerglobalids);
         $this->assertIsArray($sellerglobalids);
         $this->assertArrayHasKey('0088', $sellerglobalids);
-        $this->assertEquals('4000001123452', $sellerglobalids['0088']);
+        $this->assertEquals('587451236587', $sellerglobalids['0088']);
     }
 
     public function testDocumentSellerTaxRegistration(): void
@@ -139,23 +132,22 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentSellerTaxRegistration($sellertaxreg);
         $this->assertIsArray($sellertaxreg);
         $this->assertArrayHasKey('VA', $sellertaxreg);
-        $this->assertArrayHasKey('FC', $sellertaxreg);
+        $this->assertArrayNotHasKey('FC', $sellertaxreg);
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey('ZZ', $sellertaxreg);
-        $this->assertEquals('201/113/40209', $sellertaxreg['FC']);
-        $this->assertEquals('DE123456789', $sellertaxreg['VA']);
+        $this->assertSame('FR32123456789', $sellertaxreg['VA']);
     }
 
     public function testDocumentSellerAddress(): void
     {
         self::$document->getDocumentSellerAddress($sellerlineone, $sellerlinetwo, $sellerlinethree, $sellerpostcode, $sellercity, $sellercountry, $sellersubdivision);
-        $this->assertSame('Lieferantenstraße 20', $sellerlineone);
-        $this->assertSame('', $sellerlinetwo);
+        $this->assertSame("35 rue d'ici", $sellerlineone);
+        $this->assertSame('Seller line 2', $sellerlinetwo);
         $this->assertSame('', $sellerlinethree);
-        $this->assertSame('80333', $sellerpostcode);
-        $this->assertSame('München', $sellercity);
-        $this->assertSame('DE', $sellercountry);
+        $this->assertSame('75018', $sellerpostcode);
+        $this->assertSame('PARIS', $sellercity);
+        $this->assertSame('FR', $sellercountry);
         $this->assertIsArray($sellersubdivision);
         $this->assertEmpty($sellersubdivision);
     }
@@ -163,9 +155,9 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentSellerLegalOrganization(): void
     {
         self::$document->getDocumentSellerLegalOrganisation($sellerlegalorgid, $sellerlegalorgtype, $sellerlegalorgname);
-        $this->assertSame('', $sellerlegalorgid);
-        $this->assertSame('', $sellerlegalorgtype);
-        $this->assertSame('', $sellerlegalorgname);
+        $this->assertSame('12345678900014', $sellerlegalorgid);
+        $this->assertSame('0002', $sellerlegalorgtype);
+        $this->assertSame('SELLER TRADE NAME', $sellerlegalorgname);
     }
 
     public function testDocumentSellerContact(): void
@@ -173,7 +165,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerContact());
         $this->assertFalse(self::$document->nextDocumentSellerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
             }
         );
@@ -182,18 +174,17 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testGetDocumentSellerCommunication(): void
     {
         self::$document->getDocumentSellerCommunication($uriScheme, $uri);
-        $this->assertSame('', $uriScheme);
-        $this->assertSame('', $uri);
+        $this->assertSame('EM', $uriScheme);
+        $this->assertSame('moi@seller.com', $uri);
     }
 
     public function testDocumentBuyerGeneral(): void
     {
         self::$document->getDocumentBuyer($buyername, $buyerids, $buyerdescription);
-        $this->assertSame('Kunden AG Mitte', $buyername);
+        $this->assertSame('LE CLIENT', $buyername);
         $this->assertIsArray($buyerids);
-        $this->assertArrayHasKey(0, $buyerids);
+        $this->assertArrayNotHasKey(0, $buyerids);
         $this->assertArrayNotHasKey(1, $buyerids);
-        $this->assertEquals('GE2020211', $buyerids[0]);
         $this->assertSame('', $buyerdescription);
     }
 
@@ -201,25 +192,31 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     {
         self::$document->getDocumentBuyerGlobalId($buyerglobalids);
         $this->assertIsArray($buyerglobalids);
-        $this->assertEmpty($buyerglobalids);
+        $this->assertArrayHasKey('0088', $buyerglobalids);
+        $this->assertEquals('3654789851', $buyerglobalids['0088']);
     }
 
     public function testDocumentBuyerTaxRegistration(): void
     {
         self::$document->getDocumentBuyerTaxRegistration($buyertaxreg);
         $this->assertIsArray($buyertaxreg);
-        $this->assertEmpty($buyertaxreg);
+        $this->assertArrayHasKey('VA', $buyertaxreg);
+        $this->assertArrayNotHasKey('FC', $buyertaxreg);
+        $this->assertArrayNotHasKey(0, $buyertaxreg);
+        $this->assertArrayNotHasKey(1, $buyertaxreg);
+        $this->assertArrayNotHasKey('ZZ', $buyertaxreg);
+        $this->assertSame('FR 05 987 654 321', $buyertaxreg['VA']);
     }
 
     public function testDocumentBuyerAddress(): void
     {
         self::$document->getDocumentBuyerAddress($buyerlineone, $buyerlinetwo, $buyerlinethree, $buyerpostcode, $buyercity, $buyercountry, $buyersubdivision);
-        $this->assertSame('Kundenstraße 15', $buyerlineone);
-        $this->assertSame('', $buyerlinetwo);
+        $this->assertSame('58 rue de la mer', $buyerlineone);
+        $this->assertSame('Buyer line 2', $buyerlinetwo);
         $this->assertSame('', $buyerlinethree);
-        $this->assertSame('69876', $buyerpostcode);
-        $this->assertSame('Frankfurt', $buyercity);
-        $this->assertSame('DE', $buyercountry);
+        $this->assertSame('06000', $buyerpostcode);
+        $this->assertSame('NICE', $buyercity);
+        $this->assertSame('FR', $buyercountry);
         $this->assertIsArray($buyersubdivision);
         $this->assertEmpty($buyersubdivision);
     }
@@ -227,8 +224,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentBuyerLegalOrganization(): void
     {
         self::$document->getDocumentBuyerLegalOrganisation($buyerlegalorgid, $buyerlegalorgtype, $buyerlegalorgname);
-        $this->assertSame('', $buyerlegalorgid);
-        $this->assertSame('', $buyerlegalorgtype);
+        $this->assertSame('98765432100029', $buyerlegalorgid);
+        $this->assertSame('0002', $buyerlegalorgtype);
         $this->assertSame('', $buyerlegalorgname);
     }
 
@@ -237,7 +234,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
             }
         );
@@ -246,8 +243,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testGetDocumentBuyerCommunication(): void
     {
         self::$document->getDocumentBuyerCommunication($uriScheme, $uri);
-        $this->assertSame('', $uriScheme);
-        $this->assertSame('', $uri);
+        $this->assertSame('EM', $uriScheme);
+        $this->assertSame('me@buyer.com', $uri);
     }
 
     public function testDocumentSellerTaxRepresentativeGeneral(): void
@@ -299,7 +296,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
             }
         );
@@ -308,11 +305,9 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentShipToGeneral(): void
     {
         self::$document->getDocumentShipTo($shiptoname, $shiptoids, $shiptodescription);
-        $this->assertNotNull($shiptoname);
-        $this->assertSame('', $shiptoname);
+        $this->assertSame('DEL Name', $shiptoname);
         $this->assertIsArray($shiptoids);
         $this->assertEmpty($shiptoids);
-        $this->assertNotNull($shiptodescription);
         $this->assertSame('', $shiptodescription);
     }
 
@@ -320,7 +315,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     {
         self::$document->getDocumentShipToGlobalId($shiptoglobalids);
         $this->assertIsArray($shiptoglobalids);
-        $this->assertEmpty($shiptoglobalids);
+        $this->assertArrayHasKey('0088', $shiptoglobalids);
+        $this->assertEquals('3654789851', $shiptoglobalids['0088']);
     }
 
     public function testDocumentShipToTaxRegistration(): void
@@ -333,12 +329,12 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentShipToAddress(): void
     {
         self::$document->getDocumentShipToAddress($shiptolineone, $shiptolinetwo, $shiptolinethree, $shiptopostcode, $shiptocity, $shiptocountry, $shiptosubdivision);
-        $this->assertSame('', $shiptolineone);
-        $this->assertSame('', $shiptolinetwo);
+        $this->assertSame('DEL 58 rue de la mer', $shiptolineone);
+        $this->assertSame('DEL line 2', $shiptolinetwo);
         $this->assertSame('', $shiptolinethree);
-        $this->assertSame('', $shiptopostcode);
-        $this->assertSame('', $shiptocity);
-        $this->assertSame('', $shiptocountry);
+        $this->assertSame('06000', $shiptopostcode);
+        $this->assertSame('NICE', $shiptocity);
+        $this->assertSame('FR', $shiptocountry);
         $this->assertIsArray($shiptosubdivision);
         $this->assertEmpty($shiptosubdivision);
     }
@@ -356,7 +352,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentShipToContact());
         $this->assertFalse(self::$document->nextDocumentShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
             }
         );
@@ -409,24 +405,17 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentUltimateShipToContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
-
-        self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
-
-        $this->assertSame('', $ultimateshiptocontactpersonname);
-        $this->assertSame('', $ultimateshiptocontactdepartmentname);
-        $this->assertSame('', $ultimateshiptocontactphoneno);
-        $this->assertSame('', $ultimateshiptocontactfaxno);
-        $this->assertSame('', $ultimateshiptocontactemailaddr);
-
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
-
-        self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
-
-        $this->assertSame('', $ultimateshiptocontactpersonname);
-        $this->assertSame('', $ultimateshiptocontactdepartmentname);
-        $this->assertSame('', $ultimateshiptocontactphoneno);
-        $this->assertSame('', $ultimateshiptocontactfaxno);
-        $this->assertSame('', $ultimateshiptocontactemailaddr);
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
+            }
+        );
     }
 
     public function testDocumentShipFromGeneral(): void
@@ -476,24 +465,17 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentShipFromContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
-
-        self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
-
-        $this->assertSame('', $shipfromcontactpersonname);
-        $this->assertSame('', $shipfromcontactdepartmentname);
-        $this->assertSame('', $shipfromcontactphoneno);
-        $this->assertSame('', $shipfromcontactfaxno);
-        $this->assertSame('', $shipfromcontactemailaddr);
-
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
-
-        self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
-
-        $this->assertSame('', $shipfromcontactpersonname);
-        $this->assertSame('', $shipfromcontactdepartmentname);
-        $this->assertSame('', $shipfromcontactphoneno);
-        $this->assertSame('', $shipfromcontactfaxno);
-        $this->assertSame('', $shipfromcontactemailaddr);
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
+            }
+        );
     }
 
     public function testDocumentInvoicerGeneral(): void
@@ -543,24 +525,17 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentInvoicerContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
-
-        self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
-
-        $this->assertSame('', $invoicercontactpersonname);
-        $this->assertSame('', $invoicercontactdepartmentname);
-        $this->assertSame('', $invoicercontactphoneno);
-        $this->assertSame('', $invoicercontactfaxno);
-        $this->assertSame('', $invoicercontactemailaddr);
-
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
-
-        self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
-
-        $this->assertSame('', $invoicercontactpersonname);
-        $this->assertSame('', $invoicercontactdepartmentname);
-        $this->assertSame('', $invoicercontactphoneno);
-        $this->assertSame('', $invoicercontactfaxno);
-        $this->assertSame('', $invoicercontactemailaddr);
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
+            }
+        );
     }
 
     public function testDocumentInvoiceeGeneral(): void
@@ -610,24 +585,17 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentInvoiceeContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
-
-        self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
-
-        $this->assertSame('', $invoiceecontactpersonname);
-        $this->assertSame('', $invoiceecontactdepartmentname);
-        $this->assertSame('', $invoiceecontactphoneno);
-        $this->assertSame('', $invoiceecontactfaxno);
-        $this->assertSame('', $invoiceecontactemailaddr);
-
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
-
-        self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
-
-        $this->assertSame('', $invoiceecontactpersonname);
-        $this->assertSame('', $invoiceecontactdepartmentname);
-        $this->assertSame('', $invoiceecontactphoneno);
-        $this->assertSame('', $invoiceecontactfaxno);
-        $this->assertSame('', $invoiceecontactemailaddr);
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
+            }
+        );
     }
 
     public function testDocumentPayeeGeneral(): void
@@ -678,13 +646,13 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
@@ -742,37 +710,25 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentProductEndUserContact(): void
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
-
-        self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
-
-        $this->assertSame('', $producendusercontactpersonname);
-        $this->assertSame('', $producendusercontactdepartmentname);
-        $this->assertSame('', $producendusercontactphoneno);
-        $this->assertSame('', $producendusercontactfaxno);
-        $this->assertSame('', $producendusercontactemailaddr);
-
+        $this->expectNoticeOrWarningExt(
+            static function (): void {
+                self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
+            }
+        );
         $this->assertFalse(self::$document->nextDocumentProductEndUserContactContact());
-
-        self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
-
-        $this->assertSame('', $producendusercontactpersonname);
-        $this->assertSame('', $producendusercontactdepartmentname);
-        $this->assertSame('', $producendusercontactphoneno);
-        $this->assertSame('', $producendusercontactfaxno);
-        $this->assertSame('', $producendusercontactemailaddr);
     }
 
     public function testDocumentSellerOrderReferencedDocument(): void
     {
         self::$document->getDocumentSellerOrderReferencedDocument($sellerorderrefdocid, $sellerorderrefdocdate);
-        $this->assertSame('', $sellerorderrefdocid);
+        $this->assertSame('SALES REF 2547', $sellerorderrefdocid);
         $this->assertNotInstanceOf(DateTime::class, $sellerorderrefdocdate);
     }
 
     public function testDocumentBuyerOrderReferencedDocument(): void
     {
         self::$document->getDocumentBuyerOrderReferencedDocument($buyerorderrefdocid, $buyerorderrefdocdate);
-        $this->assertSame('', $buyerorderrefdocid);
+        $this->assertSame('PO201925478', $buyerorderrefdocid);
         $this->assertNotInstanceOf(DateTime::class, $buyerorderrefdocdate);
     }
 
@@ -786,7 +742,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentContractReferencedDocument(): void
     {
         self::$document->getDocumentContractReferencedDocument($contractrefdocid, $contractrefdocdate);
-        $this->assertSame('', $contractrefdocid);
+        $this->assertSame('CT2018120802', $contractrefdocid);
         $this->assertNotInstanceOf(DateTime::class, $contractrefdocdate);
     }
 
@@ -794,14 +750,20 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     {
         self::$document->getDocumentAdditionalReferencedDocuments($additionalrefdocs);
         $this->assertIsArray($additionalrefdocs);
-        $this->assertEmpty($additionalrefdocs);
+        $this->assertNotEmpty($additionalrefdocs);
+        $this->assertArrayHasKey(0, $additionalrefdocs);
+        $this->assertIsArray($additionalrefdocs[0]);
+        $this->assertArrayHasKey('IssuerAssignedID', $additionalrefdocs[0]);
+        $this->assertArrayHasKey('TypeCode', $additionalrefdocs[0]);
+        $this->assertSame('SUPPort doc', $additionalrefdocs[0]['IssuerAssignedID']);
+        $this->assertEquals('916', $additionalrefdocs[0]['TypeCode']);
     }
 
     public function testDocumentProcuringProject(): void
     {
         self::$document->getDocumentProcuringProject($projectid, $projectname);
-        $this->assertSame('', $projectid);
-        $this->assertSame('', $projectname);
+        $this->assertSame('PROJET2547', $projectid);
+        $this->assertSame('Project reference', $projectname);
     }
 
     public function testDocumentSupplyChainEvent(): void
@@ -809,20 +771,20 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentSupplyChainEvent($supplychainevent);
         $this->assertInstanceOf(DateTime::class, $supplychainevent);
         $this->assertInstanceOf('DateTime', $supplychainevent);
-        $this->assertEquals(DateTime::createFromFormat('Ymd', '20180305')->format('Ymd'), $supplychainevent?->format('Ymd'));
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200115')->format('Ymd'), $supplychainevent?->format('Ymd'));
     }
 
     public function testDocumentDespatchAdviceReferencedDocument(): void
     {
         self::$document->getDocumentDespatchAdviceReferencedDocument($despatchdocid, $despatchdocdate);
-        $this->assertSame('', $despatchdocid);
+        $this->assertSame('DESPADV002', $despatchdocid);
         $this->assertNotInstanceOf(DateTime::class, $despatchdocdate);
     }
 
     public function testDocumentReceivingAdviceReferencedDocument(): void
     {
         self::$document->getDocumentReceivingAdviceReferencedDocument($recadvid, $recadvdate);
-        $this->assertSame('', $recadvid);
+        $this->assertSame('RECEIV-ADV002', $recadvid);
         $this->assertNotInstanceOf(DateTime::class, $recadvdate);
     }
 
@@ -836,15 +798,18 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
     public function testDocumentBillingPeriod(): void
     {
         self::$document->getDocumentBillingPeriod($docbillingperiodstart, $docbillingperiodend);
-        $this->assertNotInstanceOf(DateTime::class, $docbillingperiodstart);
-        $this->assertNotInstanceOf(DateTime::class, $docbillingperiodend);
+        $this->assertInstanceOf('DateTime', $docbillingperiodstart);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docbillingperiodstart?->format('Ymd'));
+        $this->assertInstanceOf('DateTime', $docbillingperiodend);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docbillingperiodend?->format('Ymd'));
     }
 
     public function testDocumentAllowanceCharges(): void
     {
         self::$document->getDocumentAllowanceCharges($docallowancecharge);
         $this->assertIsArray($docallowancecharge);
-        $this->assertEmpty($docallowancecharge);
+        $this->assertNotEmpty($docallowancecharge);
+        $this->assertCount(2, $docallowancecharge);
     }
 
     public function testDocumentPaymentTerms(): void
@@ -858,10 +823,10 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertArrayHasKey('duedate', $docpaymentterms[0]);
         $this->assertArrayHasKey('directdebitmandateid', $docpaymentterms[0]);
         $this->assertArrayHasKey('partialpaymentamount', $docpaymentterms[0]);
-        $this->assertEquals('Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018', $docpaymentterms[0]['description']);
-        $this->assertNull($docpaymentterms[0]['duedate']);
-        $this->assertNotInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
-        $this->assertEquals('', $docpaymentterms[0]['directdebitmandateid']);
+        $this->assertSame('', $docpaymentterms[0]['description']);
+        $this->assertInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $docpaymentterms[0]['duedate']->format('Ymd'));
+        $this->assertSame('', $docpaymentterms[0]['directdebitmandateid']);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]['partialpaymentamount'], PHP_FLOAT_EPSILON);
     }
 
@@ -873,8 +838,29 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
 
     public function testDocumentAdditionalReferencedDocumentLoop(): void
     {
-        $this->assertFalse(self::$document->firstDocumentAdditionalReferencedDocument());
+        $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
+        $this->assertTrue(self::$document->nextDocumentAdditionalReferencedDocument());
+        $this->assertTrue(self::$document->nextDocumentAdditionalReferencedDocument());
         $this->assertFalse(self::$document->nextDocumentAdditionalReferencedDocument());
+    }
+
+    public function testGetDocumentAdditionalReferencedDocument(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentAdditionalReferencedDocument());
+        // TODO: Exception handling
+        /*
+        self::$document->getDocumentAdditionalReferencedDocument($issuerassignedid, $typecode, $uriid, $name, $reftypecode, $issueddate, $binarydatafilename);
+        $this->assertSame("SUPPort doc", $issuerassignedid);
+        $this->assertSame("916", $typecode);
+        $this->assertSame("url:gffter", $uriid);
+        $this->assertIsArray($name);
+        $this->assertNotEmpty($name);
+        $this->assertArrayHasKey(0, $name);
+        $this->assertSame("support descript", $name[0]);
+        $this->assertSame("", $reftypecode);
+        $this->assertNotInstanceOf(DateTime::class, $issueddate);
+        $this->assertSame("", $binarydatafilename);
+        */
     }
 
     public function testDocumentUltimateCustomerOrderReferencedDocumentLoop(): void
@@ -885,14 +871,30 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
 
     public function testDocumentPaymentMeansLoop(): void
     {
-        $this->assertFalse(self::$document->firstGetDocumentPaymentMeans());
+        $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
         $this->assertFalse(self::$document->nextGetDocumentPaymentMeans());
+    }
+
+    public function testGetDocumentPaymentMeans(): void
+    {
+        $this->assertTrue(self::$document->firstGetDocumentPaymentMeans());
+        self::$document->getDocumentPaymentMeans($typeCode, $information, $cardType, $cardId, $cardHolderName, $buyerIban, $payeeIban, $payeeAccountName, $payeePropId, $payeeBic);
+        $this->assertSame('30', $typeCode);
+        $this->assertSame('', $information);
+        $this->assertSame('', $cardType);
+        $this->assertSame('', $cardId);
+        $this->assertSame('', $cardHolderName);
+        $this->assertSame('', $buyerIban);
+        $this->assertSame('FR76 1254 2547 2569 8542 5874 698', $payeeIban);
+        $this->assertSame('', $payeeAccountName);
+        $this->assertSame('', $payeePropId);
+        $this->assertSame('', $payeeBic);
     }
 
     public function testDocumentTaxLoop(): void
     {
         $this->assertTrue(self::$document->firstDocumentTax());
-        $this->assertTrue(self::$document->nextDocumentTax());
+        $this->assertFalse(self::$document->nextDocumentTax());
     }
 
     public function testDocumentTax(): void
@@ -901,23 +903,50 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
         $this->assertSame('S', $categoryCode);
         $this->assertSame('VAT', $typeCode);
-        $this->assertEqualsWithDelta(275.0, $basisAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(19.25, $calculatedAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(7.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
-
-        $this->assertTrue(self::$document->nextDocumentTax());
-        self::$document->getDocumentTax($categoryCode, $typeCode, $basisAmount, $calculatedAmount, $rateApplicablePercent, $exemptionReason, $exemptionReasonCode, $lineTotalBasisAmount, $allowanceChargeBasisAmount, $taxPointDate, $dueDateTypeCode);
-        $this->assertSame('S', $categoryCode);
-        $this->assertSame('VAT', $typeCode);
-        $this->assertEqualsWithDelta(198.0, $basisAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(37.62, $calculatedAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(100.0, $basisAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $allowanceChargeBasisAmount, PHP_FLOAT_EPSILON);
     }
 
     public function testtDocumentAllowanceChargeLoop(): void
     {
-        $this->assertFalse(self::$document->firstDocumentAllowanceCharge());
+        $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
+        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
         $this->assertFalse(self::$document->nextDocumentAllowanceCharge());
+    }
+
+    public function testtDocumentAllowanceCharge(): void
+    {
+        $this->assertTrue(self::$document->firstDocumentAllowanceCharge());
+        self::$document->getDocumentAllowanceCharge($actualAmount, $isCharge, $taxCategoryCode, $taxTypeCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
+        $this->assertEqualsWithDelta(5.0, $actualAmount, PHP_FLOAT_EPSILON);
+        $this->assertFalse($isCharge);
+        $this->assertSame('S', $taxCategoryCode);
+        $this->assertSame('VAT', $taxTypeCode);
+        $this->assertEqualsWithDelta(10.00, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEquals(0, $sequence);
+        $this->assertEquals(0, $calculationPercent);
+        $this->assertEquals(0, $basisAmount);
+        $this->assertEquals(0, $basisQuantity);
+        $this->assertSame('', $basisQuantityUnitCode);
+        $this->assertSame('', $reasonCode);
+        $this->assertSame('REMISE COMMERCIALE', $reason);
+
+        $this->assertTrue(self::$document->nextDocumentAllowanceCharge());
+        self::$document->getDocumentAllowanceCharge($actualAmount, $isCharge, $taxCategoryCode, $taxTypeCode, $rateApplicablePercent, $sequence, $calculationPercent, $basisAmount, $basisQuantity, $basisQuantityUnitCode, $reasonCode, $reason);
+        $this->assertEqualsWithDelta(10.0, $actualAmount, PHP_FLOAT_EPSILON);
+        $this->assertTrue($isCharge);
+        $this->assertSame('S', $taxCategoryCode);
+        $this->assertSame('VAT', $taxTypeCode);
+        $this->assertEqualsWithDelta(10.00, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEquals(0, $sequence);
+        $this->assertEquals(0, $calculationPercent);
+        $this->assertEquals(0, $basisAmount);
+        $this->assertEquals(0, $basisQuantity);
+        $this->assertSame('', $basisQuantityUnitCode);
+        $this->assertSame('', $reasonCode);
+        $this->assertSame('FRAIS DEPLACEMENT', $reason);
     }
 
     public function testtDocumentLogisticsServiceChargeLoop(): void
@@ -939,10 +968,11 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDiscountTermsFromPaymentTerm($dispercent, $discbasedatetime, $discmeasureval, $discmeasureunit, $discbaseamount, $discamount);
         self::$document->getPenaltyTermsFromPaymentTerm($penaltypercent, $penaltybasedatetime, $penaltymeasureval, $penaltymeasureunit, $penaltybaseamount, $penaltyamount);
 
-        $this->assertSame('Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018', $termdescription);
-        $this->assertNotInstanceOf(DateTime::class, $termduedate);
+        $this->assertSame('', $termdescription);
+        $this->assertInstanceOf('DateTime', $termduedate);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $termduedate?->format('Ymd'));
         $this->assertSame('', $termmandate);
-        $this->assertEquals(0, $dispercent);
+        $this->assertEqualsWithDelta(0.0, $dispercent, PHP_FLOAT_EPSILON);
         $this->assertNotInstanceOf(DateTime::class, $discbasedatetime);
         $this->assertEquals(0, $discmeasureval);
         $this->assertSame('', $discmeasureunit);
@@ -959,15 +989,22 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
 
     public function testDocumentReceivableSpecifiedTradeAccountingAccount(): void
     {
-        $this->assertFalse(self::$document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
+        $this->assertTrue(self::$document->firstDocumentReceivableSpecifiedTradeAccountingAccount());
+
+        self::$document->getDocumentReceivableSpecifiedTradeAccountingAccount($accountId, $accountType);
+
+        $this->assertSame('BUYER ACCOUNT REF', $accountId);
+        $this->assertSame('', $accountType);
+
         $this->assertFalse(self::$document->nextDocumentReceivableSpecifiedTradeAccountingAccount());
     }
 
     public function testDocumentPositionLoop(): void
     {
-        $this->assertTrue(self::$document->firstDocumentPosition(), 'has a first position');
-        $this->assertTrue(self::$document->nextDocumentPosition(), 'has a second position');
-        $this->assertFalse(self::$document->nextDocumentPosition(), 'has no third position');
+        $this->assertTrue(self::$document->firstDocumentPosition());
+        $this->assertTrue(self::$document->nextDocumentPosition());
+        $this->assertTrue(self::$document->nextDocumentPosition());
+        $this->assertFalse(self::$document->nextDocumentPosition());
     }
 
     public function testDocumentPositionFirst(): void
@@ -980,12 +1017,12 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertSame('', $linestatusreasoncode);
 
         self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-        $this->assertSame('Trennblätter A4', $prodname);
-        $this->assertSame('', $proddesc);
-        $this->assertSame('TB100A4', $prodsellerid);
+        $this->assertSame('PRESTATION SUPPORT', $prodname);
+        $this->assertSame('Description', $proddesc);
+        $this->assertSame('', $prodsellerid);
         $this->assertSame('', $prodbuyerid);
-        $this->assertSame('0160', $prodglobalidtype);
-        $this->assertSame('4012345001235', $prodglobalid);
+        $this->assertSame('0088', $prodglobalidtype);
+        $this->assertSame('598785412598745', $prodglobalid);
 
         self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame('', $doclineorderid);
@@ -994,7 +1031,7 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
 
         self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame('', $doclineorderid);
-        $this->assertSame('', $doclineorderlineid);
+        $this->assertSame('1', $doclineorderlineid);
         $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
 
         self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
@@ -1008,14 +1045,14 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-        $this->assertEqualsWithDelta(9.90, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspriceamount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $grosspricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $this->assertEqualsWithDelta(9.90, $netpriceamount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
-        $this->assertSame('', $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(60.0, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(1.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('C62', $netpricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertSame('', $categoryCode);
@@ -1026,8 +1063,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertSame('', $exemptionReasonCode);
 
         self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-        $this->assertEqualsWithDelta(20.0, $billedquantity, PHP_FLOAT_EPSILON);
-        $this->assertSame('H87', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(1.0, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('C62', $billedquantityunitcode);
         $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $chargeFreeQuantityunitcode);
         $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
@@ -1049,8 +1086,10 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
-        $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
-        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+        $this->assertInstanceOf('DateTime', $docposstartdate);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
+        $this->assertInstanceOf('DateTime', $docpostenddate);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1065,13 +1104,13 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertSame('S', $categoryCode);
         $this->assertSame('VAT', $typeCode);
-        $this->assertEqualsWithDelta(19.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('', $exemptionReason);
         $this->assertSame('', $exemptionReasonCode);
 
         self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-        $this->assertEqualsWithDelta(198.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(60.00, $lineTotalAmount, PHP_FLOAT_EPSILON);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
         $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
@@ -1087,12 +1126,120 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertSame('', $linestatusreasoncode);
 
         self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
-        $this->assertSame('Joghurt Banane', $prodname);
-        $this->assertSame('', $proddesc);
-        $this->assertSame('ARNR2', $prodsellerid);
+        $this->assertSame('FOURNITURES DIVERSES', $prodname);
+        $this->assertSame('Description', $proddesc);
+        $this->assertSame('', $prodsellerid);
         $this->assertSame('', $prodbuyerid);
-        $this->assertSame('0160', $prodglobalidtype);
-        $this->assertSame('4000050986428', $prodglobalid);
+        $this->assertSame('', $prodglobalidtype);
+        $this->assertSame('', $prodglobalid);
+
+        self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionBuyerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
+        $this->assertSame('', $doclineorderid);
+        $this->assertSame('3', $doclineorderlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclineorderdate);
+
+        self::$document->getDocumentPositionQuotationReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionContractReferencedDocument($doclinecontid, $doclinecontlineid, $doclinecontdate);
+        $this->assertSame('', $doclinecontid);
+        $this->assertSame('', $doclinecontlineid);
+        $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
+
+        self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $grosspricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
+        $this->assertEqualsWithDelta(10.0, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $netpricebasisquantityunitcode);
+
+        self::$document->getDocumentPositionNetPriceTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('', $categoryCode);
+        $this->assertSame('', $typeCode);
+        $this->assertEqualsWithDelta(0.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
+        $this->assertEquals(3, $billedquantity);
+        $this->assertSame('C62', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $chargeFreeQuantityunitcode);
+        $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $packageQuantityunitcode);
+
+        self::$document->getDocumentPositionDespatchAdviceReferencedDocument($docposdespadvid, $docposdespadvlineid, $docposdespadvdatetime);
+        $this->assertSame('', $docposdespadvid);
+        $this->assertSame('', $docposdespadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdespadvdatetime);
+
+        self::$document->getDocumentPositionReceivingAdviceReferencedDocument($docposrecadvid, $docposrecadvlineid, $docposrecadvdatetime);
+        $this->assertSame('', $docposrecadvid);
+        $this->assertSame('', $docposrecadvlineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposrecadvdatetime);
+
+        self::$document->getDocumentPositionDeliveryNoteReferencedDocument($docposdelnoteid, $docposdelnotelineid, $docposdelnotedatetime);
+        $this->assertSame('', $docposdelnoteid);
+        $this->assertSame('', $docposdelnotelineid);
+        $this->assertNotInstanceOf(DateTime::class, $docposdelnotedatetime);
+
+        self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
+        $this->assertInstanceOf('DateTime', $docposstartdate);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191201')->format('Ymd'), $docposstartdate?->format('Ymd'));
+        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+
+        $this->assertFalse(self::$document->firstDocumentPositionNote());
+        $this->assertFalse(self::$document->nextDocumentPositionNote());
+
+        $this->assertFalse(self::$document->firstDocumentPositionGrossPriceAllowanceCharge());
+        $this->assertFalse(self::$document->nextDocumentPositionGrossPriceAllowanceCharge());
+
+        $this->assertTrue(self::$document->firstDocumentPositionTax());
+        $this->assertFalse(self::$document->nextDocumentPositionTax());
+
+        self::$document->firstDocumentPositionTax();
+        self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
+        $this->assertSame('S', $categoryCode);
+        $this->assertSame('VAT', $typeCode);
+        $this->assertEqualsWithDelta(10.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
+        $this->assertSame('', $exemptionReason);
+        $this->assertSame('', $exemptionReasonCode);
+
+        self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
+        $this->assertEqualsWithDelta(30.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
+
+        self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
+        $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);
+    }
+
+    public function testDocumentPositionThird(): void
+    {
+        $this->assertTrue(self::$document->nextDocumentPosition());
+
+        self::$document->getDocumentPositionGenerals($lineid, $linestatuscode, $linestatusreasoncode);
+        $this->assertSame('3', $lineid);
+        $this->assertSame('', $linestatuscode);
+        $this->assertSame('', $linestatusreasoncode);
+
+        self::$document->getDocumentPositionProductDetails($prodname, $proddesc, $prodsellerid, $prodbuyerid, $prodglobalidtype, $prodglobalid);
+        $this->assertSame('APPEL', $prodname);
+        $this->assertSame('Description', $proddesc);
+        $this->assertSame('', $prodsellerid);
+        $this->assertSame('', $prodbuyerid);
+        $this->assertSame('', $prodglobalidtype);
+        $this->assertSame('', $prodglobalid);
 
         self::$document->getDocumentPositionSellerOrderReferencedDocument($doclineorderid, $doclineorderlineid, $doclineorderdate);
         $this->assertSame('', $doclineorderid);
@@ -1115,12 +1262,12 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertNotInstanceOf(DateTime::class, $doclinecontdate);
 
         self::$document->getDocumentPositionGrossPrice($grosspriceamount, $grosspricebasisquantity, $grosspricebasisquantityunitcode);
-        $this->assertEqualsWithDelta(5.50, $grosspriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.0000, $grosspriceamount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $grosspricebasisquantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $grosspricebasisquantityunitcode);
 
         self::$document->getDocumentPositionNetPrice($netpriceamount, $netpricebasisquantity, $netpricebasisquantityunitcode);
-        $this->assertEqualsWithDelta(5.50, $netpriceamount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(5.0, $netpriceamount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $netpricebasisquantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $netpricebasisquantityunitcode);
 
@@ -1133,8 +1280,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         $this->assertSame('', $exemptionReasonCode);
 
         self::$document->getDocumentPositionQuantity($billedquantity, $billedquantityunitcode, $chargeFreeQuantity, $chargeFreeQuantityunitcode, $packageQuantity, $packageQuantityunitcode);
-        $this->assertEqualsWithDelta(50.0, $billedquantity, PHP_FLOAT_EPSILON);
-        $this->assertSame('H87', $billedquantityunitcode);
+        $this->assertEqualsWithDelta(1.0, $billedquantity, PHP_FLOAT_EPSILON);
+        $this->assertSame('C62', $billedquantityunitcode);
         $this->assertEqualsWithDelta(0.0, $chargeFreeQuantity, PHP_FLOAT_EPSILON);
         $this->assertSame('', $chargeFreeQuantityunitcode);
         $this->assertEqualsWithDelta(0.0, $packageQuantity, PHP_FLOAT_EPSILON);
@@ -1157,7 +1304,8 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
 
         self::$document->getDocumentPositionBillingPeriod($docposstartdate, $docpostenddate);
         $this->assertNotInstanceOf(DateTime::class, $docposstartdate);
-        $this->assertNotInstanceOf(DateTime::class, $docpostenddate);
+        $this->assertInstanceOf('DateTime', $docpostenddate);
+        $this->assertEquals(DateTime::createFromFormat('Ymd', '20191231')->format('Ymd'), $docpostenddate?->format('Ymd'));
 
         $this->assertFalse(self::$document->firstDocumentPositionNote());
         $this->assertFalse(self::$document->nextDocumentPositionNote());
@@ -1172,13 +1320,13 @@ class ZugferdPdfDocumentReaderComfortTest extends TestCase
         self::$document->getDocumentPositionTax($categoryCode, $typeCode, $rateApplicablePercent, $calculatedAmount, $exemptionReason, $exemptionReasonCode);
         $this->assertSame('S', $categoryCode);
         $this->assertSame('VAT', $typeCode);
-        $this->assertEqualsWithDelta(7.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.0, $rateApplicablePercent, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.0, $calculatedAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('', $exemptionReason);
         $this->assertSame('', $exemptionReasonCode);
 
         self::$document->getDocumentPositionLineSummationSimple($lineTotalAmount);
-        $this->assertEqualsWithDelta(275.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(5.0, $lineTotalAmount, PHP_FLOAT_EPSILON);
 
         self::$document->getDocumentPositionSupplyChainEvent($supplyeventdatetime);
         $this->assertNotInstanceOf(DateTime::class, $supplyeventdatetime);

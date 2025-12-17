@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
 use DOMDocument;
@@ -1412,7 +1412,7 @@ final class ZugferdDocumentBuilderExtendedTest extends TestCase
 
     public function testAddDocumentAdditionalReferencedDocumentWithAttachment(): void
     {
-        self::$document->addDocumentAdditionalReferencedDocument('A-1011', 'type', 'http://lieferant.de/docs/a1011.pdf', 'Leistungsnachweis', 'reftype', new DateTime(), __DIR__.'/../../assets/pdf_plain.pdf');
+        self::$document->addDocumentAdditionalReferencedDocument('A-1011', 'type', 'http://lieferant.de/docs/a1011.pdf', 'Leistungsnachweis', 'reftype', new DateTime(), __DIR__.'/../../../assets/pdf_plain.pdf');
 
         $this->disableRenderXmlContent();
         $this->assertXPathValueWithIndex('/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:IssuerAssignedID', 2, 'A-1011');

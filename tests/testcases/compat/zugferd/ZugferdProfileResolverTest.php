@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use Exception;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;

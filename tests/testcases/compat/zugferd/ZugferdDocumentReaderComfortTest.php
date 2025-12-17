@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
@@ -17,7 +17,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__.'/../../assets/03_zugferddocumentreader_3.xml');
+        self::$document = ZugferdDocumentReader::readAndGuessFromFile(__DIR__.'/../../../assets/03_zugferddocumentreader_3.xml');
     }
 
     public function testDocumentProfile(): void

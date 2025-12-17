@@ -1,6 +1,6 @@
 <?php
 
-namespace horstoeko\invoicesuite\tests\testcases\compat;
+namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
@@ -15,7 +15,7 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
 
-        ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../assets/unknown.pdf');
+        ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../../assets/unknown.pdf');
     }
 
     public function testReadFromFileWhichHasNoValidAttachment(): void
@@ -24,12 +24,12 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
-        ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../assets/pdf_plain.pdf');
+        ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../../assets/pdf_plain.pdf');
     }
 
     public function testReadFromFileWhichExistsAndHasValidAttachment(): void
     {
-        $document = ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_3.pdf');
+        $document = ZugferdDocumentPdfReaderExt::readAndGuessFromFile(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_3.pdf');
 
         $this->checkDocumentReader($document);
     }
@@ -40,14 +40,14 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
-        $pdfContent = file_get_contents(__DIR__.'/../../assets/pdf_plain.pdf');
+        $pdfContent = file_get_contents(__DIR__.'/../../../assets/pdf_plain.pdf');
 
         ZugferdDocumentPdfReaderExt::readAndGuessFromContent($pdfContent);
     }
 
     public function testReadFromContentWhichHasValidAttachment(): void
     {
-        $pdfContent = file_get_contents(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_3.pdf');
+        $pdfContent = file_get_contents(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_3.pdf');
 
         $document = ZugferdDocumentPdfReaderExt::readAndGuessFromContent($pdfContent);
 
@@ -58,7 +58,7 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     {
         $this->expectException(InvoiceSuiteFileNotFoundException::class);
 
-        ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../assets/unknown.pdf');
+        ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../../assets/unknown.pdf');
     }
 
     public function testGetXmlFromFileWhichHasNoValidAttachment(): void
@@ -67,12 +67,12 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
-        ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../assets/pdf_plain.pdf');
+        ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../../assets/pdf_plain.pdf');
     }
 
     public function testGetXmlFromFileWhichExistsAndHasValidAttachment(): void
     {
-        $xmlString = ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_3.pdf');
+        $xmlString = ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_3.pdf');
 
         $this->checkInvoiceDocumentXml($xmlString);
     }
@@ -83,14 +83,14 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
         $this->expectExceptionMessage('The format provider with unique id unknown was not found');
         $this->expectExceptionCode(InvoiceSuiteExceptionCodes::FORMATPROVIDER_NOTFOUND);
 
-        $pdfContent = file_get_contents(__DIR__.'/../../assets/pdf_plain.pdf');
+        $pdfContent = file_get_contents(__DIR__.'/../../../assets/pdf_plain.pdf');
 
         ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromContent($pdfContent);
     }
 
     public function testGetXmlFromContentWhichHasValidAttachment(): void
     {
-        $pdfContent = file_get_contents(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_3.pdf');
+        $pdfContent = file_get_contents(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_3.pdf');
 
         $xmlString = ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromContent($pdfContent);
 
@@ -101,7 +101,7 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     {
         $this->markTestSkipped('Error from another library');
 
-        $filename = __DIR__.'/../../assets/03_zugferdpdfdocumentreader_4.pdf';
+        $filename = __DIR__.'/../../../assets/03_zugferdpdfdocumentreader_4.pdf';
 
         $xmlString = ZugferdDocumentPdfReaderExt::getInvoiceDocumentContentFromFile($filename);
 
@@ -121,7 +121,7 @@ class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
     {
         $this->markTestSkipped('Error from another library');
 
-        $pdfReaderExt = ZugferdDocumentPdfReaderExt::fromFile(__DIR__.'/../../assets/03_zugferdpdfdocumentreader_4.pdf');
+        $pdfReaderExt = ZugferdDocumentPdfReaderExt::fromFile(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_4.pdf');
 
         $documentReader = $pdfReaderExt->resolveInvoiceDocumentReader();
 

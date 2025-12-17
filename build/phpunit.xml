@@ -123,22 +123,22 @@
         </testsuite>
         <testsuite name="compat">
             <!-- Document General -->
-            <file>../tests/testcases/compat/ZugferdPackageVersionTest.php</file>
-            <file>../tests/testcases/compat/ZugferdProfileResolverTest.php</file>
-            <file>../tests/testcases/compat/ZugferdProfileConverterTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPackageVersionTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdProfileResolverTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdProfileConverterTest.php</file>
             <!-- Document Builder -->
-            <file>../tests/testcases/compat/ZugferdDocumentBuilderExtendedTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdDocumentBuilderExtendedTest.php</file>
             <!-- Document Reader -->
-            <file>../tests/testcases/compat/ZugferdDocumentReaderComfortTest.php</file>
-            <file>../tests/testcases/compat/ZugferdDocumentReaderExtendedTest.php</file>
-            <file>../tests/testcases/compat/ZugferdDocumentReaderExtended2Test.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdDocumentReaderComfortTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdDocumentReaderExtendedTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdDocumentReaderExtended2Test.php</file>
             <!-- Document PDF Reader -->
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderGeneralTest.php</file>
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderGeneral2Test.php</file>
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderMinimumTest.php</file>
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderComfortTest.php</file>
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtendedTest.php</file>
-            <file>../tests/testcases/compat/ZugferdPdfDocumentReaderExtended2Test.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderGeneralTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderGeneral2Test.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderMinimumTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderComfortTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderExtendedTest.php</file>
+            <file>../tests/testcases/compat/zugferd/ZugferdPdfDocumentReaderExtended2Test.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
