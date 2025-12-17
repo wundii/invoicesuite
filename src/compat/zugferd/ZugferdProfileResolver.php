@@ -45,7 +45,7 @@ class ZugferdProfileResolver
     /**
      * Resolve profile id and profile definition by the content of $xmlContent
      *
-     * @param  string                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $xmlContent
+     * @param  string                     $xmlContent
      * @return array{0:int, 1:ProfileDef}
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -83,12 +83,12 @@ class ZugferdProfileResolver
     /**
      * Resolve profile definition by the content of $xmlContent
      *
-     * @param  string                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $xmlContent
+     * @param  string     $xmlContent
      * @return ProfileDef
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
      * @throws InvoiceSuiteUnknownContentException
-     * @throws \JMS\Serializer\Exception\RuntimeException
+     * @throws RuntimeException
      */
     public static function resolveProfileDef(string $xmlContent): array
     {
@@ -98,7 +98,7 @@ class ZugferdProfileResolver
     /**
      * Resolve profile id and profile definition by it's id
      *
-     * @param  int                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       $profileId
+     * @param  int                        $profileId
      * @return array{0:int, 1:ProfileDef}
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
@@ -115,7 +115,7 @@ class ZugferdProfileResolver
     /**
      * Resolve profile profile definition by it's id
      *
-     * @param  int                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       $profileId
+     * @param  int        $profileId
      * @return ProfileDef
      *
      * @throws InvoiceSuiteFormatProviderNotFoundException
