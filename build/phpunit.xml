@@ -123,6 +123,7 @@
         </testsuite>
         <testsuite name="compat">
             <!-- Document General -->
+            <file>../tests/testcases/compat/zugferd/ZugferdSettingsTest.php</file>
             <file>../tests/testcases/compat/zugferd/ZugferdPackageVersionTest.php</file>
             <file>../tests/testcases/compat/zugferd/ZugferdProfileResolverTest.php</file>
             <file>../tests/testcases/compat/zugferd/ZugferdProfileConverterTest.php</file>
