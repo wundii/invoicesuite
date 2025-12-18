@@ -1969,6 +1969,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
         }
 
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $postalAddress->addOnceToAddressLineWithCreate()->getLineWithCreate()->setValue($newAddressLine3);
+        }
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
             $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
         }
@@ -2537,6 +2541,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
         }
 
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $postalAddress->addOnceToAddressLineWithCreate()->getLineWithCreate()->setValue($newAddressLine3);
+        }
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
             $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
         }
@@ -3094,6 +3102,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
             $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $postalAddress->addOnceToAddressLineWithCreate()->getLineWithCreate()->setValue($newAddressLine3);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
@@ -3868,34 +3880,38 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             return $this;
         }
 
-        $address = $this
+        $postalAddress = $this
             ->getUblInvoiceRootObject()
             ->addOnceToDeliveryWithCreate()
             ->getDeliveryLocationWithCreate()
             ->getAddressWithCreate();
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
-            $address->getStreetNameWithCreate()->setValue($newAddressLine1);
+            $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
-            $address->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+            $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $postalAddress->addOnceToAddressLineWithCreate()->getLineWithCreate()->setValue($newAddressLine3);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
-            $address->getPostalZoneWithCreate()->setValue($newPostcode);
+            $postalAddress->getPostalZoneWithCreate()->setValue($newPostcode);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
-            $address->getCityNameWithCreate()->setValue($newCity);
+            $postalAddress->getCityNameWithCreate()->setValue($newCity);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $address->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
-            $address->getCountrySubentityWithCreate()->setValue($newSubDivision);
+            $postalAddress->getCountrySubentityWithCreate()->setValue($newSubDivision);
         }
 
         return $this;
@@ -5431,6 +5447,10 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
             $postalAddress->getAdditionalStreetNameWithCreate()->setValue($newAddressLine2);
+        }
+
+        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $postalAddress->addOnceToAddressLineWithCreate()->getLineWithCreate()->setValue($newAddressLine3);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
