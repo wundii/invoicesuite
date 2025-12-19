@@ -403,7 +403,7 @@ class InvoiceSuitePaymentMeanDTO
      * @param  null|string $payeeProprietaryId National account number (not for SEPA)
      * @param  null|string $payeeBic           Identifier of the payment service provider
      * @param  null|string $paymentReference   Text value used to link the payment to the invoice issued by the seller
-     * @return static
+     * @return self
      */
     public static function createAsCreditTransferSepa(
         ?string $payeeIban = null,
@@ -411,7 +411,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
         ?string $paymentReference = null,
-    ): static {
+    ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
             payeeIban: $payeeIban,
@@ -430,7 +430,7 @@ class InvoiceSuitePaymentMeanDTO
      * @param  null|string $payeeProprietaryId National account number (not for SEPA)
      * @param  null|string $payeeBic           Identifier of the payment service provider
      * @param  null|string $paymentReference   Text value used to link the payment to the invoice issued by the seller
-     * @return static
+     * @return self
      */
     public static function createAsCreditTransferNoSepa(
         ?string $payeeIban = null,
@@ -438,7 +438,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
         ?string $paymentReference = null,
-    ): static {
+    ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
             payeeIban: $payeeIban,
@@ -454,9 +454,9 @@ class InvoiceSuitePaymentMeanDTO
      *
      * @param  null|string $buyerIban Identifier of the account to be debited
      * @param  null|string $mandate   Identification of the mandate reference
-     * @return static
+     * @return self
      */
-    public static function createAsDirectDebitSepa(?string $buyerIban = null, ?string $mandate = null): static
+    public static function createAsDirectDebitSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_59->value,
@@ -470,9 +470,9 @@ class InvoiceSuitePaymentMeanDTO
      *
      * @param  null|string $buyerIban Identifier of the account to be debited
      * @param  null|string $mandate   Identification of the mandate reference
-     * @return static
+     * @return self
      */
-    public static function createAsDirectDebitNoSepa(?string $buyerIban = null, ?string $mandate = null): static
+    public static function createAsDirectDebitNoSepa(?string $buyerIban = null, ?string $mandate = null): self
     {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_49->value,
@@ -486,12 +486,12 @@ class InvoiceSuitePaymentMeanDTO
      *
      * @param  null|string $financialCardId     Primary account number (PAN) of the payment card
      * @param  null|string $financialCardHolder Name of the payment card holder
-     * @return static
+     * @return self
      */
     public static function createAsPaymentCardPayment(
         ?string $financialCardId = null,
         ?string $financialCardHolder = null,
-    ): static {
+    ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,
             financialCardId: $financialCardId,

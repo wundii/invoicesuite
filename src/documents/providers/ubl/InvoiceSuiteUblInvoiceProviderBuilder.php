@@ -1817,6 +1817,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             ->getPartyWithCreate()
             ->getPostalAddressWithCreate();
 
+        $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
         }
@@ -1835,10 +1837,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $postalAddress->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -2338,6 +2336,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             ->getPartyWithCreate()
             ->getPostalAddressWithCreate();
 
+        $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
         }
@@ -2356,10 +2356,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $postalAddress->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -2818,6 +2814,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             ->getTaxRepresentativePartyWithCreate()
             ->getPostalAddressWithCreate();
 
+        $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
         }
@@ -2836,10 +2834,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $postalAddress->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
@@ -3473,6 +3467,8 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
             ->getDeliveryLocationWithCreate()
             ->getAddressWithCreate();
 
+        $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
+
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
             $postalAddress->getStreetNameWithCreate()->setValue($newAddressLine1);
         }
@@ -3491,10 +3487,6 @@ class InvoiceSuiteUblInvoiceProviderBuilder extends InvoiceSuiteAbstractDocument
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
             $postalAddress->getCityNameWithCreate()->setValue($newCity);
-        }
-
-        if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCountryId])) {
-            $postalAddress->getCountryWithCreate()->getIdentificationCodeWithCreate()->setValue($newCountryId);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
