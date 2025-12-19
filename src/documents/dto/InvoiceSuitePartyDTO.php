@@ -138,8 +138,12 @@ class InvoiceSuitePartyDTO
      * @param  string $name Party names
      * @return static
      */
-    public function addName(string $name): static
+    public function addName(?string $name): static
     {
+        if (is_null($name)) {
+            return $this;
+        }
+
         $this->names[] = $name;
 
         return $this;
@@ -275,8 +279,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteIdDTO $id Party IDs
      * @return static
      */
-    public function addId(InvoiceSuiteIdDTO $id): static
+    public function addId(?InvoiceSuiteIdDTO $id): static
     {
+        if (is_null($id)) {
+            return $this;
+        }
+
         $this->ids[] = $id;
 
         return $this;
@@ -412,8 +420,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteIdDTO $globalId Party global IDs
      * @return static
      */
-    public function addGlobalId(InvoiceSuiteIdDTO $globalId): static
+    public function addGlobalId(?InvoiceSuiteIdDTO $globalId): static
     {
+        if (is_null($globalId)) {
+            return $this;
+        }
+
         $this->globalIds[] = $globalId;
 
         return $this;
@@ -549,8 +561,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteIdDTO $taxRegistration Party tax registrations
      * @return static
      */
-    public function addTaxRegistration(InvoiceSuiteIdDTO $taxRegistration): static
+    public function addTaxRegistration(?InvoiceSuiteIdDTO $taxRegistration): static
     {
+        if (is_null($taxRegistration)) {
+            return $this;
+        }
+
         $this->taxRegistrations[] = $taxRegistration;
 
         return $this;
@@ -689,8 +705,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteAddressDTO $address Party addresses
      * @return static
      */
-    public function addAddress(InvoiceSuiteAddressDTO $address): static
+    public function addAddress(?InvoiceSuiteAddressDTO $address): static
     {
+        if (is_null($address)) {
+            return $this;
+        }
+
         $this->addresses[] = $address;
 
         return $this;
@@ -826,8 +846,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteOrganisationDTO $legalOrganisation Party legal organisations
      * @return static
      */
-    public function addLegalOrganisation(InvoiceSuiteOrganisationDTO $legalOrganisation): static
+    public function addLegalOrganisation(?InvoiceSuiteOrganisationDTO $legalOrganisation): static
     {
+        if (is_null($legalOrganisation)) {
+            return $this;
+        }
+
         $this->legalOrganisations[] = $legalOrganisation;
 
         return $this;
@@ -966,8 +990,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteContactDTO $contact Party contacts
      * @return static
      */
-    public function addContact(InvoiceSuiteContactDTO $contact): static
+    public function addContact(?InvoiceSuiteContactDTO $contact): static
     {
+        if (is_null($contact)) {
+            return $this;
+        }
+
         $this->contacts[] = $contact;
 
         return $this;
@@ -1103,8 +1131,12 @@ class InvoiceSuitePartyDTO
      * @param  InvoiceSuiteCommunicationDTO $communication Party electronic communications
      * @return static
      */
-    public function addCommunication(InvoiceSuiteCommunicationDTO $communication): static
+    public function addCommunication(?InvoiceSuiteCommunicationDTO $communication): static
     {
+        if (is_null($communication)) {
+            return $this;
+        }
+
         $this->communications[] = $communication;
 
         return $this;

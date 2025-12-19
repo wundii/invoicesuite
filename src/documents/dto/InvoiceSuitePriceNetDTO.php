@@ -74,8 +74,12 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
      * @param  InvoiceSuiteTaxDTO $tax The net price included tax
      * @return static
      */
-    public function addTax(InvoiceSuiteTaxDTO $tax): static
+    public function addTax(?InvoiceSuiteTaxDTO $tax): static
     {
+        if (is_null($tax)) {
+            return $this;
+        }
+
         $this->taxes[] = $tax;
 
         return $this;

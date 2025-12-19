@@ -74,8 +74,12 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
      * @param  InvoiceSuiteAllowanceChargeDTO $allowanceCharge The discounts or charges to the gross price
      * @return static
      */
-    public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static
+    public function addAllowanceCharge(?InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static
     {
+        if (is_null($allowanceCharge)) {
+            return $this;
+        }
+
         $this->allowanceCharges[] = $allowanceCharge;
 
         return $this;

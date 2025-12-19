@@ -895,8 +895,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteNoteDTO $note The notes for this document
      * @return static
      */
-    public function addNote(InvoiceSuiteNoteDTO $note): static
+    public function addNote(?InvoiceSuiteNoteDTO $note): static
     {
+        if (is_null($note)) {
+            return $this;
+        }
+
         $this->notes[] = $note;
 
         return $this;
@@ -1032,8 +1036,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteDateRangeDTO $billingPeriod The start and/or end date of the billing period
      * @return static
      */
-    public function addBillingPeriod(InvoiceSuiteDateRangeDTO $billingPeriod): static
+    public function addBillingPeriod(?InvoiceSuiteDateRangeDTO $billingPeriod): static
     {
+        if (is_null($billingPeriod)) {
+            return $this;
+        }
+
         $this->billingPeriods[] = $billingPeriod;
 
         return $this;
@@ -1172,8 +1180,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteIdDTO $postingReference The posting reference
      * @return static
      */
-    public function addPostingReference(InvoiceSuiteIdDTO $postingReference): static
+    public function addPostingReference(?InvoiceSuiteIdDTO $postingReference): static
     {
+        if (is_null($postingReference)) {
+            return $this;
+        }
+
         $this->postingReferences[] = $postingReference;
 
         return $this;
@@ -1312,8 +1324,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $sellerOrderReference The associated seller's order confirmation
      * @return static
      */
-    public function addSellerOrderReference(InvoiceSuiteReferenceDocumentDTO $sellerOrderReference): static
+    public function addSellerOrderReference(?InvoiceSuiteReferenceDocumentDTO $sellerOrderReference): static
     {
+        if (is_null($sellerOrderReference)) {
+            return $this;
+        }
+
         $this->sellerOrderReferences[] = $sellerOrderReference;
 
         return $this;
@@ -1452,8 +1468,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $buyerOrderReference The associated buyer's order
      * @return static
      */
-    public function addBuyerOrderReference(InvoiceSuiteReferenceDocumentDTO $buyerOrderReference): static
+    public function addBuyerOrderReference(?InvoiceSuiteReferenceDocumentDTO $buyerOrderReference): static
     {
+        if (is_null($buyerOrderReference)) {
+            return $this;
+        }
+
         $this->buyerOrderReferences[] = $buyerOrderReference;
 
         return $this;
@@ -1592,8 +1612,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $quotationReference The associated quotation
      * @return static
      */
-    public function addQuotationReference(InvoiceSuiteReferenceDocumentDTO $quotationReference): static
+    public function addQuotationReference(?InvoiceSuiteReferenceDocumentDTO $quotationReference): static
     {
+        if (is_null($quotationReference)) {
+            return $this;
+        }
+
         $this->quotationReferences[] = $quotationReference;
 
         return $this;
@@ -1732,8 +1756,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $contractReference The associated contract
      * @return static
      */
-    public function addContractReference(InvoiceSuiteReferenceDocumentDTO $contractReference): static
+    public function addContractReference(?InvoiceSuiteReferenceDocumentDTO $contractReference): static
     {
+        if (is_null($contractReference)) {
+            return $this;
+        }
+
         $this->contractReferences[] = $contractReference;
 
         return $this;
@@ -1872,8 +1900,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentExtDTO $additionalReference The additional associated document
      * @return static
      */
-    public function addAdditionalReference(InvoiceSuiteReferenceDocumentExtDTO $additionalReference): static
+    public function addAdditionalReference(?InvoiceSuiteReferenceDocumentExtDTO $additionalReference): static
     {
+        if (is_null($additionalReference)) {
+            return $this;
+        }
+
         $this->additionalReferences[] = $additionalReference;
 
         return $this;
@@ -2012,8 +2044,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentExtDTO $invoiceReference The additional invoice document
      * @return static
      */
-    public function addInvoiceReference(InvoiceSuiteReferenceDocumentExtDTO $invoiceReference): static
+    public function addInvoiceReference(?InvoiceSuiteReferenceDocumentExtDTO $invoiceReference): static
     {
+        if (is_null($invoiceReference)) {
+            return $this;
+        }
+
         $this->invoiceReferences[] = $invoiceReference;
 
         return $this;
@@ -2152,8 +2188,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteProjectDTO $projectReference The project reference
      * @return static
      */
-    public function addProjectReference(InvoiceSuiteProjectDTO $projectReference): static
+    public function addProjectReference(?InvoiceSuiteProjectDTO $projectReference): static
     {
+        if (is_null($projectReference)) {
+            return $this;
+        }
+
         $this->projectReferences[] = $projectReference;
 
         return $this;
@@ -2293,8 +2333,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @return static
      */
     public function addUltimateCustomerOrderReference(
-        InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference,
+        ?InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference,
     ): static {
+        if (is_null($ultimateCustomerOrderReference)) {
+            return $this;
+        }
+
         $this->ultimateCustomerOrderReferences[] = $ultimateCustomerOrderReference;
 
         return $this;
@@ -2433,8 +2477,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference The despatch advice reference
      * @return static
      */
-    public function addDespatchAdviceReference(InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference): static
+    public function addDespatchAdviceReference(?InvoiceSuiteReferenceDocumentDTO $despatchAdviceReference): static
     {
+        if (is_null($despatchAdviceReference)) {
+            return $this;
+        }
+
         $this->despatchAdviceReferences[] = $despatchAdviceReference;
 
         return $this;
@@ -2573,8 +2621,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference The receiving advice reference
      * @return static
      */
-    public function addReceivingAdviceReference(InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference): static
+    public function addReceivingAdviceReference(?InvoiceSuiteReferenceDocumentDTO $receivingAdviceReference): static
     {
+        if (is_null($receivingAdviceReference)) {
+            return $this;
+        }
+
         $this->receivingAdviceReferences[] = $receivingAdviceReference;
 
         return $this;
@@ -2713,8 +2765,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference The delivery note reference
      * @return static
      */
-    public function addDeliveryNoteReference(InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference): static
+    public function addDeliveryNoteReference(?InvoiceSuiteReferenceDocumentDTO $deliveryNoteReference): static
     {
+        if (is_null($deliveryNoteReference)) {
+            return $this;
+        }
+
         $this->deliveryNoteReferences[] = $deliveryNoteReference;
 
         return $this;
@@ -3083,8 +3139,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuitePaymentMeanDTO $paymentMean The payment means
      * @return static
      */
-    public function addPaymentMean(InvoiceSuitePaymentMeanDTO $paymentMean): static
+    public function addPaymentMean(?InvoiceSuitePaymentMeanDTO $paymentMean): static
     {
+        if (is_null($paymentMean)) {
+            return $this;
+        }
+
         $this->paymentMeans[] = $paymentMean;
 
         return $this;
@@ -3220,8 +3280,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuitePaymentTermDTO $paymentTerm The payment terms
      * @return static
      */
-    public function addPaymentTerm(InvoiceSuitePaymentTermDTO $paymentTerm): static
+    public function addPaymentTerm(?InvoiceSuitePaymentTermDTO $paymentTerm): static
     {
+        if (is_null($paymentTerm)) {
+            return $this;
+        }
+
         $this->paymentTerms[] = $paymentTerm;
 
         return $this;
@@ -3357,8 +3421,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteIdDTO $creditorReference The creditor identifier
      * @return static
      */
-    public function addCreditorReference(InvoiceSuiteIdDTO $creditorReference): static
+    public function addCreditorReference(?InvoiceSuiteIdDTO $creditorReference): static
     {
+        if (is_null($creditorReference)) {
+            return $this;
+        }
+
         $this->creditorReferences[] = $creditorReference;
 
         return $this;
@@ -3497,8 +3565,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteIdDTO $paymentReference The payment reference
      * @return static
      */
-    public function addPaymentReference(InvoiceSuiteIdDTO $paymentReference): static
+    public function addPaymentReference(?InvoiceSuiteIdDTO $paymentReference): static
     {
+        if (is_null($paymentReference)) {
+            return $this;
+        }
+
         $this->paymentReferences[] = $paymentReference;
 
         return $this;
@@ -3637,8 +3709,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteIdDTO $buyerReference The ID for internal routing (Leitweg ID)
      * @return static
      */
-    public function addBuyerReference(InvoiceSuiteIdDTO $buyerReference): static
+    public function addBuyerReference(?InvoiceSuiteIdDTO $buyerReference): static
     {
+        if (is_null($buyerReference)) {
+            return $this;
+        }
+
         $this->buyerReferences[] = $buyerReference;
 
         return $this;
@@ -3777,8 +3853,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteDocumentPositionDTO $position The Document positions
      * @return static
      */
-    public function addPosition(InvoiceSuiteDocumentPositionDTO $position): static
+    public function addPosition(?InvoiceSuiteDocumentPositionDTO $position): static
     {
+        if (is_null($position)) {
+            return $this;
+        }
+
         $this->positions[] = $position;
 
         return $this;
@@ -3914,8 +3994,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteIdDTO $deliveryTerm delivery term
      * @return static
      */
-    public function addDeliveryTerm(InvoiceSuiteIdDTO $deliveryTerm): static
+    public function addDeliveryTerm(?InvoiceSuiteIdDTO $deliveryTerm): static
     {
+        if (is_null($deliveryTerm)) {
+            return $this;
+        }
+
         $this->deliveryTerms[] = $deliveryTerm;
 
         return $this;
@@ -4054,8 +4138,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteTaxDTO $tax The VAT breakdown
      * @return static
      */
-    public function addTax(InvoiceSuiteTaxDTO $tax): static
+    public function addTax(?InvoiceSuiteTaxDTO $tax): static
     {
+        if (is_null($tax)) {
+            return $this;
+        }
+
         $this->taxes[] = $tax;
 
         return $this;
@@ -4191,8 +4279,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteAllowanceChargeDTO $allowanceCharge The allowances/charges
      * @return static
      */
-    public function addAllowanceCharge(InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static
+    public function addAllowanceCharge(?InvoiceSuiteAllowanceChargeDTO $allowanceCharge): static
     {
+        if (is_null($allowanceCharge)) {
+            return $this;
+        }
+
         $this->allowanceCharges[] = $allowanceCharge;
 
         return $this;
@@ -4331,8 +4423,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteServiceChargeDTO $serviceCharge The allowances/charges
      * @return static
      */
-    public function addServiceCharge(InvoiceSuiteServiceChargeDTO $serviceCharge): static
+    public function addServiceCharge(?InvoiceSuiteServiceChargeDTO $serviceCharge): static
     {
+        if (is_null($serviceCharge)) {
+            return $this;
+        }
+
         $this->serviceCharges[] = $serviceCharge;
 
         return $this;
@@ -4471,8 +4567,12 @@ class InvoiceSuiteDocumentHeaderDTO
      * @param  InvoiceSuiteSummationDTO $summation The summation
      * @return static
      */
-    public function addSummation(InvoiceSuiteSummationDTO $summation): static
+    public function addSummation(?InvoiceSuiteSummationDTO $summation): static
     {
+        if (is_null($summation)) {
+            return $this;
+        }
+
         $this->summations[] = $summation;
 
         return $this;

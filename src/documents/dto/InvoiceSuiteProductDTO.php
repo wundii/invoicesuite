@@ -486,8 +486,12 @@ class InvoiceSuiteProductDTO
      * @param  InvoiceSuiteProductCharacteristicDTO $characteristic The product characteristics
      * @return static
      */
-    public function addCharacteristic(InvoiceSuiteProductCharacteristicDTO $characteristic): static
+    public function addCharacteristic(?InvoiceSuiteProductCharacteristicDTO $characteristic): static
     {
+        if (is_null($characteristic)) {
+            return $this;
+        }
+
         $this->characteristics[] = $characteristic;
 
         return $this;
@@ -626,8 +630,12 @@ class InvoiceSuiteProductDTO
      * @param  InvoiceSuiteProductClassificationDTO $classification The product classification
      * @return static
      */
-    public function addClassification(InvoiceSuiteProductClassificationDTO $classification): static
+    public function addClassification(?InvoiceSuiteProductClassificationDTO $classification): static
     {
+        if (is_null($classification)) {
+            return $this;
+        }
+
         $this->classifications[] = $classification;
 
         return $this;
@@ -766,8 +774,12 @@ class InvoiceSuiteProductDTO
      * @param  InvoiceSuiteReferenceProductDTO $referenceProduct The reference product
      * @return static
      */
-    public function addReferenceProduct(InvoiceSuiteReferenceProductDTO $referenceProduct): static
+    public function addReferenceProduct(?InvoiceSuiteReferenceProductDTO $referenceProduct): static
     {
+        if (is_null($referenceProduct)) {
+            return $this;
+        }
+
         $this->referenceProducts[] = $referenceProduct;
 
         return $this;

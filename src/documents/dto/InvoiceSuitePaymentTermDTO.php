@@ -157,8 +157,12 @@ class InvoiceSuitePaymentTermDTO
      * @param  InvoiceSuitePaymentTermDiscountDTO $discountTerm The payment discounts
      * @return static
      */
-    public function addDiscountTerm(InvoiceSuitePaymentTermDiscountDTO $discountTerm): static
+    public function addDiscountTerm(?InvoiceSuitePaymentTermDiscountDTO $discountTerm): static
     {
+        if (is_null($discountTerm)) {
+            return $this;
+        }
+
         $this->discountTerms[] = $discountTerm;
 
         return $this;
@@ -297,8 +301,12 @@ class InvoiceSuitePaymentTermDTO
      * @param  InvoiceSuitePaymentTermPenaltyDTO $penaltyTerm The payment penalties
      * @return static
      */
-    public function addPenaltyTerm(InvoiceSuitePaymentTermPenaltyDTO $penaltyTerm): static
+    public function addPenaltyTerm(?InvoiceSuitePaymentTermPenaltyDTO $penaltyTerm): static
     {
+        if (is_null($penaltyTerm)) {
+            return $this;
+        }
+
         $this->penaltyTerms[] = $penaltyTerm;
 
         return $this;
