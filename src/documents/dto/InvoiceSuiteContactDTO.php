@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is a part of horstoeko/invoicesuite.
  *
@@ -9,12 +7,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\dto;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-
 /**
- * Class representing a DTO for a contact
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -25,55 +23,64 @@ class InvoiceSuiteContactDTO
 {
     /**
      * Contact name
+     *
+     * @var null|string
      */
-    public ?string $personName = null;
+    protected ?string $personName = null;
 
     /**
      * Contact department name
+     *
+     * @var null|string
      */
-    public ?string $departmentName = null;
+    protected ?string $departmentName = null;
 
     /**
      * Contact phone number
+     *
+     * @var null|string
      */
-    public ?string $phoneNumber = null;
+    protected ?string $phoneNumber = null;
 
     /**
      * Contact fax number
+     *
+     * @var null|string
      */
-    public ?string $faxNumber = null;
+    protected ?string $faxNumber = null;
 
     /**
      * Contact e-mail address
+     *
+     * @var null|string
      */
-    public ?string $emailAddress = null;
+    protected ?string $emailAddress = null;
 
     /**
      * Constructor
      *
-     * @param null|string $personName
-     * @param null|string $departmentName
-     * @param null|string $phoneNumber
-     * @param null|string $faxNumber
-     * @param null|string $emailAddress
+     * @param null|string $personName     Contact name
+     * @param null|string $departmentName Contact department name
+     * @param null|string $phoneNumber    Contact phone number
+     * @param null|string $faxNumber      Contact fax number
+     * @param null|string $emailAddress   Contact e-mail address
      */
     public function __construct(
         ?string $personName = null,
         ?string $departmentName = null,
         ?string $phoneNumber = null,
         ?string $faxNumber = null,
-        ?string $emailAddress = null
+        ?string $emailAddress = null,
     ) {
-        $this
-            ->setPersonName($personName)
-            ->setDepartmentName($departmentName)
-            ->setPhoneNumber($phoneNumber)
-            ->setFaxNumber($faxNumber)
-            ->setEmailAddress($emailAddress);
+        $this->setPersonName($personName);
+        $this->setDepartmentName($departmentName);
+        $this->setPhoneNumber($phoneNumber);
+        $this->setFaxNumber($faxNumber);
+        $this->setEmailAddress($emailAddress);
     }
 
     /**
-     * Get contact name
+     * Returns contact name
      *
      * @return null|string
      */
@@ -83,30 +90,20 @@ class InvoiceSuiteContactDTO
     }
 
     /**
-     * Set contact name
+     * Sets contact name
      *
-     * @param  null|string $newPersonName
+     * @param  null|string $personName Contact name
      * @return static
      */
-    public function setPersonName(?string $newPersonName): static
+    public function setPersonName(?string $personName): static
     {
-        $this->personName = $newPersonName;
+        $this->personName = $personName;
 
         return $this;
     }
 
     /**
-     * Check if contact name is set and not empty
-     *
-     * @return bool
-     */
-    public function hasPersonName(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->personName);
-    }
-
-    /**
-     * Get department name
+     * Returns contact department name
      *
      * @return null|string
      */
@@ -116,30 +113,20 @@ class InvoiceSuiteContactDTO
     }
 
     /**
-     * Set department name
+     * Sets contact department name
      *
-     * @param  null|string $newDepartmentName
+     * @param  null|string $departmentName Contact department name
      * @return static
      */
-    public function setDepartmentName(?string $newDepartmentName): static
+    public function setDepartmentName(?string $departmentName): static
     {
-        $this->departmentName = $newDepartmentName;
+        $this->departmentName = $departmentName;
 
         return $this;
     }
 
     /**
-     * Check if department name is set and not empty
-     *
-     * @return bool
-     */
-    public function hasDepartmentName(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->departmentName);
-    }
-
-    /**
-     * Get phone number
+     * Returns contact phone number
      *
      * @return null|string
      */
@@ -149,30 +136,20 @@ class InvoiceSuiteContactDTO
     }
 
     /**
-     * Set phone number
+     * Sets contact phone number
      *
-     * @param  null|string $newPhoneNumber
+     * @param  null|string $phoneNumber Contact phone number
      * @return static
      */
-    public function setPhoneNumber(?string $newPhoneNumber): static
+    public function setPhoneNumber(?string $phoneNumber): static
     {
-        $this->phoneNumber = $newPhoneNumber;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
     /**
-     * Check if phone number is set and not empty
-     *
-     * @return bool
-     */
-    public function hasPhoneNumber(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->phoneNumber);
-    }
-
-    /**
-     * Get fax number
+     * Returns contact fax number
      *
      * @return null|string
      */
@@ -182,30 +159,20 @@ class InvoiceSuiteContactDTO
     }
 
     /**
-     * Set fax number
+     * Sets contact fax number
      *
-     * @param  null|string $newFaxNumber
+     * @param  null|string $faxNumber Contact fax number
      * @return static
      */
-    public function setFaxNumber(?string $newFaxNumber): static
+    public function setFaxNumber(?string $faxNumber): static
     {
-        $this->faxNumber = $newFaxNumber;
+        $this->faxNumber = $faxNumber;
 
         return $this;
     }
 
     /**
-     * Check if fax number is set and not empty
-     *
-     * @return bool
-     */
-    public function hasFaxNumber(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->faxNumber);
-    }
-
-    /**
-     * Get email address
+     * Returns contact e-mail address
      *
      * @return null|string
      */
@@ -215,25 +182,15 @@ class InvoiceSuiteContactDTO
     }
 
     /**
-     * Set email address
+     * Sets contact e-mail address
      *
-     * @param  null|string $newEmailAddress
+     * @param  null|string $emailAddress Contact e-mail address
      * @return static
      */
-    public function setEmailAddress(?string $newEmailAddress): static
+    public function setEmailAddress(?string $emailAddress): static
     {
-        $this->emailAddress = $newEmailAddress;
+        $this->emailAddress = $emailAddress;
 
         return $this;
-    }
-
-    /**
-     * Check if email address is set and not empty
-     *
-     * @return bool
-     */
-    public function hasEmailAddress(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->emailAddress);
     }
 }

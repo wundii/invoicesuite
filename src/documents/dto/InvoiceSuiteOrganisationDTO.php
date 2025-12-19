@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is a part of horstoeko/invoicesuite.
  *
@@ -9,12 +7,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\dto;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-
 /**
- * Class representing a DTO for a party organisation identification
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -24,29 +22,28 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
 {
     /**
-     * Name of the organisation
+     * Organisation Name
+     *
+     * @var null|string
      */
-    public ?string $name = null;
+    protected ?string $name = null;
 
     /**
      * Constructor
      *
-     * @param null|string $id
-     * @param null|string $idType
-     * @param null|string $name
+     * @param null|string $id     ID
+     * @param null|string $idType Type of the ID
+     * @param null|string $name   Organisation Name
      */
-    public function __construct(
-        ?string $id = null,
-        ?string $idType = null,
-        ?string $name = null
-    ) {
+    public function __construct(?string $id = null, ?string $idType = null, ?string $name = null)
+    {
         parent::__construct($id, $idType);
 
         $this->setName($name);
     }
 
     /**
-     * Get the organisation name
+     * Returns organisation Name
      *
      * @return null|string
      */
@@ -56,25 +53,15 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
     }
 
     /**
-     * Set the organisation name
+     * Sets organisation Name
      *
-     * @param  null|string $newName
+     * @param  null|string $name Organisation Name
      * @return static
      */
-    public function setName(?string $newName): static
+    public function setName(?string $name): static
     {
-        $this->name = $newName;
+        $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * Check if organisation name is set and not empty
-     *
-     * @return bool
-     */
-    public function hasName(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->name);
     }
 }

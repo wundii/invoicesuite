@@ -18,12 +18,6 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $this->assertNull($invoiceSuiteContactDTO->getPhoneNumber());
         $this->assertNull($invoiceSuiteContactDTO->getFaxNumber());
         $this->assertNull($invoiceSuiteContactDTO->getEmailAddress());
-
-        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
-        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
-        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
-        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
-        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
     }
 
     public function testPersonNameGetterAndSetter(): void
@@ -35,18 +29,6 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $this->assertSame($personNameValue, $invoiceSuiteContactDTO->getPersonName());
     }
 
-    public function testHasPersonName(): void
-    {
-        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
-        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
-
-        $invoiceSuiteContactDTO->setPersonName('');
-        $this->assertFalse($invoiceSuiteContactDTO->hasPersonName());
-
-        $invoiceSuiteContactDTO->setPersonName('Non-empty');
-        $this->assertTrue($invoiceSuiteContactDTO->hasPersonName());
-    }
-
     public function testDepartmentNameGetterAndSetter(): void
     {
         $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
@@ -54,18 +36,6 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $invoiceSuiteContactDTO->setDepartmentName($departmentNameValue);
 
         $this->assertSame($departmentNameValue, $invoiceSuiteContactDTO->getDepartmentName());
-    }
-
-    public function testHasDepartmentName(): void
-    {
-        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
-        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
-
-        $invoiceSuiteContactDTO->setDepartmentName('');
-        $this->assertFalse($invoiceSuiteContactDTO->hasDepartmentName());
-
-        $invoiceSuiteContactDTO->setDepartmentName('Non-empty');
-        $this->assertTrue($invoiceSuiteContactDTO->hasDepartmentName());
     }
 
     public function testPhoneNumberGetterAndSetter(): void
@@ -77,18 +47,6 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $this->assertSame($phoneNumberValue, $invoiceSuiteContactDTO->getPhoneNumber());
     }
 
-    public function testHasPhoneNumber(): void
-    {
-        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
-        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
-
-        $invoiceSuiteContactDTO->setPhoneNumber('');
-        $this->assertFalse($invoiceSuiteContactDTO->hasPhoneNumber());
-
-        $invoiceSuiteContactDTO->setPhoneNumber('Non-empty');
-        $this->assertTrue($invoiceSuiteContactDTO->hasPhoneNumber());
-    }
-
     public function testFaxNumberGetterAndSetter(): void
     {
         $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
@@ -98,18 +56,6 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $this->assertSame($faxNumberValue, $invoiceSuiteContactDTO->getFaxNumber());
     }
 
-    public function testHasFaxNumber(): void
-    {
-        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
-        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
-
-        $invoiceSuiteContactDTO->setFaxNumber('');
-        $this->assertFalse($invoiceSuiteContactDTO->hasFaxNumber());
-
-        $invoiceSuiteContactDTO->setFaxNumber('Non-empty');
-        $this->assertTrue($invoiceSuiteContactDTO->hasFaxNumber());
-    }
-
     public function testEmailAddressGetterAndSetter(): void
     {
         $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
@@ -117,17 +63,5 @@ final class InvoiceSuiteContactDTOTest extends TestCase
         $invoiceSuiteContactDTO->setEmailAddress($emailAddressValue);
 
         $this->assertSame($emailAddressValue, $invoiceSuiteContactDTO->getEmailAddress());
-    }
-
-    public function testHasEmailAddress(): void
-    {
-        $invoiceSuiteContactDTO = new InvoiceSuiteContactDTO();
-        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
-
-        $invoiceSuiteContactDTO->setEmailAddress('');
-        $this->assertFalse($invoiceSuiteContactDTO->hasEmailAddress());
-
-        $invoiceSuiteContactDTO->setEmailAddress('Non-empty');
-        $this->assertTrue($invoiceSuiteContactDTO->hasEmailAddress());
     }
 }

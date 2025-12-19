@@ -15,9 +15,6 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
 
         $this->assertNull($invoiceSuiteCommunicationDTO->getId());
         $this->assertNull($invoiceSuiteCommunicationDTO->getIdType());
-
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasId());
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasIdType());
     }
 
     public function testIdGetterAndSetter(): void
@@ -29,18 +26,6 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
         $this->assertSame($idValue, $invoiceSuiteCommunicationDTO->getId());
     }
 
-    public function testHasId(): void
-    {
-        $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasId());
-
-        $invoiceSuiteCommunicationDTO->setId('');
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasId());
-
-        $invoiceSuiteCommunicationDTO->setId('Non-empty');
-        $this->assertTrue($invoiceSuiteCommunicationDTO->hasId());
-    }
-
     public function testIdTypeGetterAndSetter(): void
     {
         $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
@@ -48,17 +33,5 @@ final class InvoiceSuiteCommunicationDTOTest extends TestCase
         $invoiceSuiteCommunicationDTO->setIdType($idTypeValue);
 
         $this->assertSame($idTypeValue, $invoiceSuiteCommunicationDTO->getIdType());
-    }
-
-    public function testHasIdType(): void
-    {
-        $invoiceSuiteCommunicationDTO = new InvoiceSuiteCommunicationDTO();
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasIdType());
-
-        $invoiceSuiteCommunicationDTO->setIdType('');
-        $this->assertFalse($invoiceSuiteCommunicationDTO->hasIdType());
-
-        $invoiceSuiteCommunicationDTO->setIdType('Non-empty');
-        $this->assertTrue($invoiceSuiteCommunicationDTO->hasIdType());
     }
 }

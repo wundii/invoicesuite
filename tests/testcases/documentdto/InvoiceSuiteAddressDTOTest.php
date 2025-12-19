@@ -20,14 +20,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $this->assertNull($invoiceSuiteAddressDTO->getCity());
         $this->assertNull($invoiceSuiteAddressDTO->getCountry());
         $this->assertNull($invoiceSuiteAddressDTO->getSubDivision());
-
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine1());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine2());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine3());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasPostcode());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCity());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCountry());
-        $this->assertFalse($invoiceSuiteAddressDTO->hasSubDivision());
     }
 
     public function testAddressLine1GetterAndSetter(): void
@@ -39,18 +31,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $this->assertSame($addressLine1Value, $invoiceSuiteAddressDTO->getAddressLine1());
     }
 
-    public function testHasAddressLine1(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine1());
-
-        $invoiceSuiteAddressDTO->setAddressLine1('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine1());
-
-        $invoiceSuiteAddressDTO->setAddressLine1('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasAddressLine1());
-    }
-
     public function testAddressLine2GetterAndSetter(): void
     {
         $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
@@ -58,18 +38,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $invoiceSuiteAddressDTO->setAddressLine2($addressLine2Value);
 
         $this->assertSame($addressLine2Value, $invoiceSuiteAddressDTO->getAddressLine2());
-    }
-
-    public function testHasAddressLine2(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine2());
-
-        $invoiceSuiteAddressDTO->setAddressLine2('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine2());
-
-        $invoiceSuiteAddressDTO->setAddressLine2('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasAddressLine2());
     }
 
     public function testAddressLine3GetterAndSetter(): void
@@ -81,18 +49,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $this->assertSame($addressLine3Value, $invoiceSuiteAddressDTO->getAddressLine3());
     }
 
-    public function testHasAddressLine3(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine3());
-
-        $invoiceSuiteAddressDTO->setAddressLine3('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasAddressLine3());
-
-        $invoiceSuiteAddressDTO->setAddressLine3('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasAddressLine3());
-    }
-
     public function testPostcodeGetterAndSetter(): void
     {
         $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
@@ -100,18 +56,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $invoiceSuiteAddressDTO->setPostcode($postcodeValue);
 
         $this->assertSame($postcodeValue, $invoiceSuiteAddressDTO->getPostcode());
-    }
-
-    public function testHasPostcode(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasPostcode());
-
-        $invoiceSuiteAddressDTO->setPostcode('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasPostcode());
-
-        $invoiceSuiteAddressDTO->setPostcode('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasPostcode());
     }
 
     public function testCityGetterAndSetter(): void
@@ -123,18 +67,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $this->assertSame($cityValue, $invoiceSuiteAddressDTO->getCity());
     }
 
-    public function testHasCity(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCity());
-
-        $invoiceSuiteAddressDTO->setCity('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCity());
-
-        $invoiceSuiteAddressDTO->setCity('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasCity());
-    }
-
     public function testCountryGetterAndSetter(): void
     {
         $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
@@ -144,18 +76,6 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $this->assertSame($countryValue, $invoiceSuiteAddressDTO->getCountry());
     }
 
-    public function testHasCountry(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCountry());
-
-        $invoiceSuiteAddressDTO->setCountry('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasCountry());
-
-        $invoiceSuiteAddressDTO->setCountry('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasCountry());
-    }
-
     public function testSubDivisionGetterAndSetter(): void
     {
         $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
@@ -163,17 +83,5 @@ final class InvoiceSuiteAddressDTOTest extends TestCase
         $invoiceSuiteAddressDTO->setSubDivision($subDivisionValue);
 
         $this->assertSame($subDivisionValue, $invoiceSuiteAddressDTO->getSubDivision());
-    }
-
-    public function testHasSubDivision(): void
-    {
-        $invoiceSuiteAddressDTO = new InvoiceSuiteAddressDTO();
-        $this->assertFalse($invoiceSuiteAddressDTO->hasSubDivision());
-
-        $invoiceSuiteAddressDTO->setSubDivision('');
-        $this->assertFalse($invoiceSuiteAddressDTO->hasSubDivision());
-
-        $invoiceSuiteAddressDTO->setSubDivision('Non-empty');
-        $this->assertTrue($invoiceSuiteAddressDTO->hasSubDivision());
     }
 }

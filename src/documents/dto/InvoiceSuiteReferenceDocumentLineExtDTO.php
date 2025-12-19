@@ -15,7 +15,7 @@ use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 /**
- * Class representing a DTO for...
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>

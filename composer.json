@@ -135,6 +135,11 @@
             "@lint",
             "@phpcsfixer:dryrun",
             "@phpstan"
+        ],
+        "generatedto": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php ./make/gendto2.php",
+            "@phpcsfixer:run"
         ]
     }
 }

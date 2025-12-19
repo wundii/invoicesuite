@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is a part of horstoeko/invoicesuite.
  *
@@ -9,12 +7,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\dto;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-
 /**
- * Class representing a DTO for a party identification
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -25,31 +23,32 @@ class InvoiceSuiteIdDTO
 {
     /**
      * ID
+     *
+     * @var null|string
      */
-    public ?string $id = null;
+    protected ?string $id = null;
 
     /**
      * Type of the ID
+     *
+     * @var null|string
      */
-    public ?string $idType = null;
+    protected ?string $idType = null;
 
     /**
      * Constructor
      *
-     * @param null|string $id
-     * @param null|string $idType
+     * @param null|string $id     ID
+     * @param null|string $idType Type of the ID
      */
-    public function __construct(
-        ?string $id = null,
-        ?string $idType = null
-    ) {
-        $this
-            ->setId($id)
-            ->setIdType($idType);
+    public function __construct(?string $id = null, ?string $idType = null)
+    {
+        $this->setId($id);
+        $this->setIdType($idType);
     }
 
     /**
-     * Get the ID
+     * Returns iD
      *
      * @return null|string
      */
@@ -59,30 +58,20 @@ class InvoiceSuiteIdDTO
     }
 
     /**
-     * Set the ID
+     * Sets iD
      *
-     * @param  null|string $newId
+     * @param  null|string $id ID
      * @return static
      */
-    public function setId(?string $newId): static
+    public function setId(?string $id): static
     {
-        $this->id = $newId;
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * Check if ID is set and not empty
-     *
-     * @return bool
-     */
-    public function hasId(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->id);
-    }
-
-    /**
-     * Get the ID type
+     * Returns type of the ID
      *
      * @return null|string
      */
@@ -92,25 +81,15 @@ class InvoiceSuiteIdDTO
     }
 
     /**
-     * Set the ID type
+     * Sets type of the ID
      *
-     * @param  null|string $newIdType
+     * @param  null|string $idType Type of the ID
      * @return static
      */
-    public function setIdType(?string $newIdType): static
+    public function setIdType(?string $idType): static
     {
-        $this->idType = $newIdType;
+        $this->idType = $idType;
 
         return $this;
-    }
-
-    /**
-     * Check if ID type is set and not empty
-     *
-     * @return bool
-     */
-    public function hasIdType(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->idType);
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * This file is a part of horstoeko/invoicesuite.
  *
@@ -9,12 +7,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\documents\dto;
 
-use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
-
 /**
- * Class representing a DTO for a party address
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
@@ -25,49 +23,63 @@ class InvoiceSuiteAddressDTO
 {
     /**
      * Address line 1
+     *
+     * @var null|string
      */
-    public ?string $addressLine1 = null;
+    protected ?string $addressLine1 = null;
 
     /**
      * Address line 2
+     *
+     * @var null|string
      */
-    public ?string $addressLine2 = null;
+    protected ?string $addressLine2 = null;
 
     /**
      * Address line 3
+     *
+     * @var null|string
      */
-    public ?string $addressLine3 = null;
+    protected ?string $addressLine3 = null;
 
     /**
      * Post Code / ZIP Code
+     *
+     * @var null|string
      */
-    public ?string $postcode = null;
+    protected ?string $postcode = null;
 
     /**
      * City
+     *
+     * @var null|string
      */
-    public ?string $city = null;
+    protected ?string $city = null;
 
     /**
      * Country
+     *
+     * @var null|string
      */
-    public ?string $country = null;
+    protected ?string $country = null;
 
     /**
      * Subdivision
+     *
+     * @var null|string
      */
-    public ?string $subDivision = null;
+    protected ?string $subDivision = null;
 
     /**
      * Constructor
      *
-     * @param null|string $addressLine1
-     * @param null|string $addressLine2
-     * @param null|string $addressLine3
-     * @param null|string $postcode
-     * @param null|string $city
-     * @param null|string $country
-     * @param null|string $subDivision
+     * @param null|string $addressLine1 Address line 1
+     * @param null|string $addressLine2 Address line 2
+     * @param null|string $addressLine3 Address line 3
+     * @param null|string $postcode     Post Code / ZIP Code
+     * @param null|string $city         City
+     * @param null|string $country      Country
+     * @param null|string $subDivision  Subdivision
      */
     public function __construct(
         ?string $addressLine1 = null,
@@ -76,20 +88,19 @@ class InvoiceSuiteAddressDTO
         ?string $postcode = null,
         ?string $city = null,
         ?string $country = null,
-        ?string $subDivision = null
+        ?string $subDivision = null,
     ) {
-        $this
-            ->setAddressLine1($addressLine1)
-            ->setAddressLine2($addressLine2)
-            ->setAddressLine3($addressLine3)
-            ->setPostcode($postcode)
-            ->setCity($city)
-            ->setCountry($country)
-            ->setSubDivision($subDivision);
+        $this->setAddressLine1($addressLine1);
+        $this->setAddressLine2($addressLine2);
+        $this->setAddressLine3($addressLine3);
+        $this->setPostcode($postcode);
+        $this->setCity($city);
+        $this->setCountry($country);
+        $this->setSubDivision($subDivision);
     }
 
     /**
-     * Get address line 1
+     * Returns address line 1
      *
      * @return null|string
      */
@@ -99,30 +110,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set address line 1
+     * Sets address line 1
      *
-     * @param  null|string $newAddressLine1
+     * @param  null|string $addressLine1 Address line 1
      * @return static
      */
-    public function setAddressLine1(?string $newAddressLine1): static
+    public function setAddressLine1(?string $addressLine1): static
     {
-        $this->addressLine1 = $newAddressLine1;
+        $this->addressLine1 = $addressLine1;
 
         return $this;
     }
 
     /**
-     * Check if address line 1 is set and not empty
-     *
-     * @return bool
-     */
-    public function hasAddressLine1(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->addressLine1);
-    }
-
-    /**
-     * Get address line 2
+     * Returns address line 2
      *
      * @return null|string
      */
@@ -132,30 +133,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set address line 2
+     * Sets address line 2
      *
-     * @param  null|string $newAddressLine2
+     * @param  null|string $addressLine2 Address line 2
      * @return static
      */
-    public function setAddressLine2(?string $newAddressLine2): static
+    public function setAddressLine2(?string $addressLine2): static
     {
-        $this->addressLine2 = $newAddressLine2;
+        $this->addressLine2 = $addressLine2;
 
         return $this;
     }
 
     /**
-     * Check if address line 2 is set and not empty
-     *
-     * @return bool
-     */
-    public function hasAddressLine2(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->addressLine2);
-    }
-
-    /**
-     * Get address line 3
+     * Returns address line 3
      *
      * @return null|string
      */
@@ -165,30 +156,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set address line 3
+     * Sets address line 3
      *
-     * @param  null|string $newAddressLine3
+     * @param  null|string $addressLine3 Address line 3
      * @return static
      */
-    public function setAddressLine3(?string $newAddressLine3): static
+    public function setAddressLine3(?string $addressLine3): static
     {
-        $this->addressLine3 = $newAddressLine3;
+        $this->addressLine3 = $addressLine3;
 
         return $this;
     }
 
     /**
-     * Check if address line 3 is set and not empty
-     *
-     * @return bool
-     */
-    public function hasAddressLine3(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->addressLine3);
-    }
-
-    /**
-     * Get postcode
+     * Returns post Code / ZIP Code
      *
      * @return null|string
      */
@@ -198,30 +179,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set postcode
+     * Sets post Code / ZIP Code
      *
-     * @param  null|string $newPostcode
+     * @param  null|string $postcode Post Code / ZIP Code
      * @return static
      */
-    public function setPostcode(?string $newPostcode): static
+    public function setPostcode(?string $postcode): static
     {
-        $this->postcode = $newPostcode;
+        $this->postcode = $postcode;
 
         return $this;
     }
 
     /**
-     * Check if postcode is set and not empty
-     *
-     * @return bool
-     */
-    public function hasPostcode(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->postcode);
-    }
-
-    /**
-     * Get city
+     * Returns city
      *
      * @return null|string
      */
@@ -231,30 +202,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set city
+     * Sets city
      *
-     * @param  null|string $newCity
+     * @param  null|string $city City
      * @return static
      */
-    public function setCity(?string $newCity): static
+    public function setCity(?string $city): static
     {
-        $this->city = $newCity;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Check if city is set and not empty
-     *
-     * @return bool
-     */
-    public function hasCity(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->city);
-    }
-
-    /**
-     * Get country ID
+     * Returns country
      *
      * @return null|string
      */
@@ -264,30 +225,20 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set country ID
+     * Sets country
      *
-     * @param  null|string $newCountry
+     * @param  null|string $country Country
      * @return static
      */
-    public function setCountry(?string $newCountry): static
+    public function setCountry(?string $country): static
     {
-        $this->country = $newCountry;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Check if country ID is set and not empty
-     *
-     * @return bool
-     */
-    public function hasCountry(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->country);
-    }
-
-    /**
-     * Get subdivision
+     * Returns subdivision
      *
      * @return null|string
      */
@@ -297,25 +248,15 @@ class InvoiceSuiteAddressDTO
     }
 
     /**
-     * Set subdivision
+     * Sets subdivision
      *
-     * @param  null|string $newSubDivision
+     * @param  null|string $subDivision Subdivision
      * @return static
      */
-    public function setSubDivision(?string $newSubDivision): static
+    public function setSubDivision(?string $subDivision): static
     {
-        $this->subDivision = $newSubDivision;
+        $this->subDivision = $subDivision;
 
         return $this;
-    }
-
-    /**
-     * Check if subdivision is set and not empty
-     *
-     * @return bool
-     */
-    public function hasSubDivision(): bool
-    {
-        return !InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->subDivision);
     }
 }

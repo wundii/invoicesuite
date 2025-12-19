@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 
 /**
- * Class representing a DTO for...
+ * Class representing a DTO for ...
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
