@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
@@ -9,7 +11,7 @@ use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdPdfDocumentReaderMinimumTest extends TestCase
+final class ZugferdPdfDocumentReaderMinimumTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
@@ -118,7 +120,7 @@ class ZugferdPdfDocumentReaderMinimumTest extends TestCase
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey('ZZ', $sellertaxreg);
-        $this->assertEquals('FR11123456782', $sellertaxreg['VA']);
+        $this->assertSame('FR11123456782', $sellertaxreg['VA']);
     }
 
     public function testDocumentSellerAddress(): void

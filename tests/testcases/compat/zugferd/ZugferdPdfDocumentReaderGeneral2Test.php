@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
@@ -9,7 +11,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentPdfReaderExt;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
+final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
 {
     public function testReadFromFileWhichDoesNotExist(): void
     {

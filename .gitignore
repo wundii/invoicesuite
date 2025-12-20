@@ -111,3 +111,5 @@ myfile_dbg.xml
 parsephpstanlog.php
 phpstan.json
 phpstan.txt
+
+/build/rector

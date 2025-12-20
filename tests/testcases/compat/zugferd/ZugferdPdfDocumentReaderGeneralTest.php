@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteExceptionCodes;
@@ -9,7 +11,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentReader;
 
-class ZugferdPdfDocumentReaderGeneralTest extends TestCase
+final class ZugferdPdfDocumentReaderGeneralTest extends TestCase
 {
     // ZugferdPdfReader::readAndGuessFromFile
 

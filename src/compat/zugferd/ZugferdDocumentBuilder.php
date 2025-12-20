@@ -96,7 +96,7 @@ class ZugferdDocumentBuilder implements Stringable
      *
      * @throws RuntimeException
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getContent();
     }
@@ -128,7 +128,7 @@ class ZugferdDocumentBuilder implements Stringable
     {
         $providerId = $this->documentBuilder->getCurrentDocumentFormatProvider()->getUniqueId();
 
-        foreach (ZugferdProfiles::PROFILEDEF as $profileId => $profileDef) {
+        foreach (ZugferdProfiles::PROFILEDEF as $profileDef) {
             if ($profileDef['invoicesuiteproviderid'] == $providerId) {
                 return $profileDef;
             }
@@ -3206,9 +3206,7 @@ class ZugferdDocumentBuilder implements Stringable
 
         $paymentDiscountDays = array_filter(
             $paymentDiscountDays,
-            static function ($k) use ($paymentDiscountPercents) {
-                return isset($paymentDiscountPercents[$k]);
-            },
+            static fn ($k) => isset($paymentDiscountPercents[$k]),
             ARRAY_FILTER_USE_KEY
         );
 
@@ -3406,8 +3404,8 @@ class ZugferdDocumentBuilder implements Stringable
             newProductDescription: $description,
             newProductSellerId: $sellerAssignedID,
             newProductBuyerId: $buyerAssignedID,
-            newProductGlobalIdType: $globalIDType,
             newProductGlobalId: $globalID,
+            newProductGlobalIdType: $globalIDType,
             newProductIndustryId: $industryAssignedID,
             newProductModelId: $modelID,
             newProductBatchId: $batchID,
@@ -3505,9 +3503,9 @@ class ZugferdDocumentBuilder implements Stringable
             newProductBuyerId: $buyerAssignedID,
             newProductGlobalId: $globalID,
             newProductGlobalIdType: $globalIDType,
+            newProductIndustryId: $industryAssignedID,
             newProductUnitQuantity: $unitQuantity,
             newProductUnitQuantityUnit: $unitCode,
-            newProductIndustryId: $industryAssignedID,
         );
 
         return $this;

@@ -75,7 +75,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -96,7 +96,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -117,7 +117,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -138,7 +138,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -159,7 +159,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -170,7 +170,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -195,7 +195,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDateTimeString();
 
-        $this->assertNull($model->getDateTimeString());
+        $this->assertNotInstanceOf(DateTimeStringAType::class, $model->getDateTimeString());
 
         $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
@@ -217,7 +217,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -238,7 +238,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -259,7 +259,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -280,7 +280,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -305,7 +305,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetIBANID();
 
-        $this->assertNull($model->getIBANID());
+        $this->assertNotInstanceOf(IDType::class, $model->getIBANID());
 
         $testValueForIBANID = $model->getIBANIDWithCreate();
 
@@ -321,7 +321,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetProprietaryID();
 
-        $this->assertNull($model->getProprietaryID());
+        $this->assertNotInstanceOf(IDType::class, $model->getProprietaryID());
 
         $testValueForProprietaryID = $model->getProprietaryIDWithCreate();
 
@@ -347,7 +347,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetIBANID();
 
-        $this->assertNull($model->getIBANID());
+        $this->assertNotInstanceOf(IDType::class, $model->getIBANID());
 
         $testValueForIBANID = $model->getIBANIDWithCreate();
 
@@ -373,7 +373,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -399,7 +399,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineID();
 
-        $this->assertNull($model->getLineID());
+        $this->assertNotInstanceOf(IDType::class, $model->getLineID());
 
         $testValueForLineID = $model->getLineIDWithCreate();
 
@@ -415,7 +415,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetIncludedNote();
 
-        $this->assertNull($model->getIncludedNote());
+        $this->assertNotInstanceOf(NoteType::class, $model->getIncludedNote());
 
         $testValueForIncludedNote = $model->getIncludedNoteWithCreate();
 
@@ -441,7 +441,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBusinessProcessSpecifiedDocumentContextParameter();
 
-        $this->assertNull($model->getBusinessProcessSpecifiedDocumentContextParameter());
+        $this->assertNotInstanceOf(DocumentContextParameterType::class, $model->getBusinessProcessSpecifiedDocumentContextParameter());
 
         $testValueForBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
 
@@ -457,7 +457,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetGuidelineSpecifiedDocumentContextParameter();
 
-        $this->assertNull($model->getGuidelineSpecifiedDocumentContextParameter());
+        $this->assertNotInstanceOf(DocumentContextParameterType::class, $model->getGuidelineSpecifiedDocumentContextParameter());
 
         $testValueForGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
 
@@ -483,7 +483,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -499,7 +499,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTypeCode();
 
-        $this->assertNull($model->getTypeCode());
+        $this->assertNotInstanceOf(DocumentCodeType::class, $model->getTypeCode());
 
         $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
@@ -515,7 +515,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetIssueDateTime();
 
-        $this->assertNull($model->getIssueDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getIssueDateTime());
 
         $testValueForIssueDateTime = $model->getIssueDateTimeWithCreate();
 
@@ -605,7 +605,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBuyerReference();
 
-        $this->assertNull($model->getBuyerReference());
+        $this->assertNotInstanceOf(TextType::class, $model->getBuyerReference());
 
         $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
@@ -621,7 +621,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSellerTradeParty();
 
-        $this->assertNull($model->getSellerTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getSellerTradeParty());
 
         $testValueForSellerTradeParty = $model->getSellerTradePartyWithCreate();
 
@@ -637,7 +637,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBuyerTradeParty();
 
-        $this->assertNull($model->getBuyerTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getBuyerTradeParty());
 
         $testValueForBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
 
@@ -653,7 +653,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSellerTaxRepresentativeTradeParty();
 
-        $this->assertNull($model->getSellerTaxRepresentativeTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getSellerTaxRepresentativeTradeParty());
 
         $testValueForSellerTaxRepresentativeTradeParty = $model->getSellerTaxRepresentativeTradePartyWithCreate();
 
@@ -669,7 +669,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBuyerOrderReferencedDocument();
 
-        $this->assertNull($model->getBuyerOrderReferencedDocument());
+        $this->assertNotInstanceOf(ReferencedDocumentType::class, $model->getBuyerOrderReferencedDocument());
 
         $testValueForBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
 
@@ -685,7 +685,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetContractReferencedDocument();
 
-        $this->assertNull($model->getContractReferencedDocument());
+        $this->assertNotInstanceOf(ReferencedDocumentType::class, $model->getContractReferencedDocument());
 
         $testValueForContractReferencedDocument = $model->getContractReferencedDocumentWithCreate();
 
@@ -711,7 +711,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetShipToTradeParty();
 
-        $this->assertNull($model->getShipToTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getShipToTradeParty());
 
         $testValueForShipToTradeParty = $model->getShipToTradePartyWithCreate();
 
@@ -727,7 +727,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetActualDeliverySupplyChainEvent();
 
-        $this->assertNull($model->getActualDeliverySupplyChainEvent());
+        $this->assertNotInstanceOf(SupplyChainEventType::class, $model->getActualDeliverySupplyChainEvent());
 
         $testValueForActualDeliverySupplyChainEvent = $model->getActualDeliverySupplyChainEventWithCreate();
 
@@ -743,7 +743,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDespatchAdviceReferencedDocument();
 
-        $this->assertNull($model->getDespatchAdviceReferencedDocument());
+        $this->assertNotInstanceOf(ReferencedDocumentType::class, $model->getDespatchAdviceReferencedDocument());
 
         $testValueForDespatchAdviceReferencedDocument = $model->getDespatchAdviceReferencedDocumentWithCreate();
 
@@ -769,7 +769,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCreditorReferenceID();
 
-        $this->assertNull($model->getCreditorReferenceID());
+        $this->assertNotInstanceOf(IDType::class, $model->getCreditorReferenceID());
 
         $testValueForCreditorReferenceID = $model->getCreditorReferenceIDWithCreate();
 
@@ -785,7 +785,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPaymentReference();
 
-        $this->assertNull($model->getPaymentReference());
+        $this->assertNotInstanceOf(TextType::class, $model->getPaymentReference());
 
         $testValueForPaymentReference = $model->getPaymentReferenceWithCreate();
 
@@ -801,7 +801,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTaxCurrencyCode();
 
-        $this->assertNull($model->getTaxCurrencyCode());
+        $this->assertNotInstanceOf(CurrencyCodeType::class, $model->getTaxCurrencyCode());
 
         $testValueForTaxCurrencyCode = $model->getTaxCurrencyCodeWithCreate();
 
@@ -817,7 +817,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetInvoiceCurrencyCode();
 
-        $this->assertNull($model->getInvoiceCurrencyCode());
+        $this->assertNotInstanceOf(CurrencyCodeType::class, $model->getInvoiceCurrencyCode());
 
         $testValueForInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
 
@@ -833,7 +833,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPayeeTradeParty();
 
-        $this->assertNull($model->getPayeeTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getPayeeTradeParty());
 
         $testValueForPayeeTradeParty = $model->getPayeeTradePartyWithCreate();
 
@@ -977,7 +977,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBillingSpecifiedPeriod();
 
-        $this->assertNull($model->getBillingSpecifiedPeriod());
+        $this->assertNotInstanceOf(SpecifiedPeriodType::class, $model->getBillingSpecifiedPeriod());
 
         $testValueForBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
 
@@ -1057,7 +1057,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedTradePaymentTerms();
 
-        $this->assertNull($model->getSpecifiedTradePaymentTerms());
+        $this->assertNotInstanceOf(TradePaymentTermsType::class, $model->getSpecifiedTradePaymentTerms());
 
         $testValueForSpecifiedTradePaymentTerms = $model->getSpecifiedTradePaymentTermsWithCreate();
 
@@ -1073,7 +1073,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedTradeSettlementHeaderMonetarySummation();
 
-        $this->assertNull($model->getSpecifiedTradeSettlementHeaderMonetarySummation());
+        $this->assertNotInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
         $testValueForSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
 
@@ -1153,7 +1153,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetReceivableSpecifiedTradeAccountingAccount();
 
-        $this->assertNull($model->getReceivableSpecifiedTradeAccountingAccount());
+        $this->assertNotInstanceOf(TradeAccountingAccountType::class, $model->getReceivableSpecifiedTradeAccountingAccount());
 
         $testValueForReceivableSpecifiedTradeAccountingAccount = $model->getReceivableSpecifiedTradeAccountingAccountWithCreate();
 
@@ -1179,7 +1179,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -1195,7 +1195,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTradingBusinessName();
 
-        $this->assertNull($model->getTradingBusinessName());
+        $this->assertNotInstanceOf(TextType::class, $model->getTradingBusinessName());
 
         $testValueForTradingBusinessName = $model->getTradingBusinessNameWithCreate();
 
@@ -1221,7 +1221,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetGrossPriceProductTradePrice();
 
-        $this->assertNull($model->getGrossPriceProductTradePrice());
+        $this->assertNotInstanceOf(TradePriceType::class, $model->getGrossPriceProductTradePrice());
 
         $testValueForGrossPriceProductTradePrice = $model->getGrossPriceProductTradePriceWithCreate();
 
@@ -1237,7 +1237,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetNetPriceProductTradePrice();
 
-        $this->assertNull($model->getNetPriceProductTradePrice());
+        $this->assertNotInstanceOf(TradePriceType::class, $model->getNetPriceProductTradePrice());
 
         $testValueForNetPriceProductTradePrice = $model->getNetPriceProductTradePriceWithCreate();
 
@@ -1263,7 +1263,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBilledQuantity();
 
-        $this->assertNull($model->getBilledQuantity());
+        $this->assertNotInstanceOf(QuantityType::class, $model->getBilledQuantity());
 
         $testValueForBilledQuantity = $model->getBilledQuantityWithCreate();
 
@@ -1289,7 +1289,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetApplicableTradeTax();
 
-        $this->assertNull($model->getApplicableTradeTax());
+        $this->assertNotInstanceOf(TradeTaxType::class, $model->getApplicableTradeTax());
 
         $testValueForApplicableTradeTax = $model->getApplicableTradeTaxWithCreate();
 
@@ -1305,7 +1305,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBillingSpecifiedPeriod();
 
-        $this->assertNull($model->getBillingSpecifiedPeriod());
+        $this->assertNotInstanceOf(SpecifiedPeriodType::class, $model->getBillingSpecifiedPeriod());
 
         $testValueForBillingSpecifiedPeriod = $model->getBillingSpecifiedPeriodWithCreate();
 
@@ -1385,7 +1385,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedTradeSettlementLineMonetarySummation();
 
-        $this->assertNull($model->getSpecifiedTradeSettlementLineMonetarySummation());
+        $this->assertNotInstanceOf(TradeSettlementLineMonetarySummationType::class, $model->getSpecifiedTradeSettlementLineMonetarySummation());
 
         $testValueForSpecifiedTradeSettlementLineMonetarySummation = $model->getSpecifiedTradeSettlementLineMonetarySummationWithCreate();
 
@@ -1411,7 +1411,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetContent();
 
-        $this->assertNull($model->getContent());
+        $this->assertNotInstanceOf(TextType::class, $model->getContent());
 
         $testValueForContent = $model->getContentWithCreate();
 
@@ -1427,7 +1427,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSubjectCode();
 
-        $this->assertNull($model->getSubjectCode());
+        $this->assertNotInstanceOf(CodeType::class, $model->getSubjectCode());
 
         $testValueForSubjectCode = $model->getSubjectCodeWithCreate();
 
@@ -1453,7 +1453,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetIssuerAssignedID();
 
-        $this->assertNull($model->getIssuerAssignedID());
+        $this->assertNotInstanceOf(IDType::class, $model->getIssuerAssignedID());
 
         $testValueForIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
 
@@ -1469,7 +1469,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetFormattedIssueDateTime();
 
-        $this->assertNull($model->getFormattedIssueDateTime());
+        $this->assertNotInstanceOf(FormattedDateTimeType::class, $model->getFormattedIssueDateTime());
 
         $testValueForFormattedIssueDateTime = $model->getFormattedIssueDateTimeWithCreate();
 
@@ -1495,7 +1495,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetStartDateTime();
 
-        $this->assertNull($model->getStartDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getStartDateTime());
 
         $testValueForStartDateTime = $model->getStartDateTimeWithCreate();
 
@@ -1511,7 +1511,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetEndDateTime();
 
-        $this->assertNull($model->getEndDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getEndDateTime());
 
         $testValueForEndDateTime = $model->getEndDateTimeWithCreate();
 
@@ -1537,7 +1537,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetOccurrenceDateTime();
 
-        $this->assertNull($model->getOccurrenceDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getOccurrenceDateTime());
 
         $testValueForOccurrenceDateTime = $model->getOccurrenceDateTimeWithCreate();
 
@@ -1563,7 +1563,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetAssociatedDocumentLineDocument();
 
-        $this->assertNull($model->getAssociatedDocumentLineDocument());
+        $this->assertNotInstanceOf(DocumentLineDocumentType::class, $model->getAssociatedDocumentLineDocument());
 
         $testValueForAssociatedDocumentLineDocument = $model->getAssociatedDocumentLineDocumentWithCreate();
 
@@ -1579,7 +1579,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedTradeProduct();
 
-        $this->assertNull($model->getSpecifiedTradeProduct());
+        $this->assertNotInstanceOf(TradeProductType::class, $model->getSpecifiedTradeProduct());
 
         $testValueForSpecifiedTradeProduct = $model->getSpecifiedTradeProductWithCreate();
 
@@ -1595,7 +1595,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedLineTradeAgreement();
 
-        $this->assertNull($model->getSpecifiedLineTradeAgreement());
+        $this->assertNotInstanceOf(LineTradeAgreementType::class, $model->getSpecifiedLineTradeAgreement());
 
         $testValueForSpecifiedLineTradeAgreement = $model->getSpecifiedLineTradeAgreementWithCreate();
 
@@ -1611,7 +1611,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedLineTradeDelivery();
 
-        $this->assertNull($model->getSpecifiedLineTradeDelivery());
+        $this->assertNotInstanceOf(LineTradeDeliveryType::class, $model->getSpecifiedLineTradeDelivery());
 
         $testValueForSpecifiedLineTradeDelivery = $model->getSpecifiedLineTradeDeliveryWithCreate();
 
@@ -1627,7 +1627,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedLineTradeSettlement();
 
-        $this->assertNull($model->getSpecifiedLineTradeSettlement());
+        $this->assertNotInstanceOf(LineTradeSettlementType::class, $model->getSpecifiedLineTradeSettlement());
 
         $testValueForSpecifiedLineTradeSettlement = $model->getSpecifiedLineTradeSettlementWithCreate();
 
@@ -1730,7 +1730,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeAgreement();
 
-        $this->assertNull($model->getApplicableHeaderTradeAgreement());
+        $this->assertNotInstanceOf(HeaderTradeAgreementType::class, $model->getApplicableHeaderTradeAgreement());
 
         $testValueForApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
 
@@ -1746,7 +1746,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeDelivery();
 
-        $this->assertNull($model->getApplicableHeaderTradeDelivery());
+        $this->assertNotInstanceOf(HeaderTradeDeliveryType::class, $model->getApplicableHeaderTradeDelivery());
 
         $testValueForApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
 
@@ -1762,7 +1762,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeSettlement();
 
-        $this->assertNull($model->getApplicableHeaderTradeSettlement());
+        $this->assertNotInstanceOf(HeaderTradeSettlementType::class, $model->getApplicableHeaderTradeSettlement());
 
         $testValueForApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
 
@@ -1799,7 +1799,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -1825,7 +1825,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -1851,7 +1851,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPostcodeCode();
 
-        $this->assertNull($model->getPostcodeCode());
+        $this->assertNotInstanceOf(CodeType::class, $model->getPostcodeCode());
 
         $testValueForPostcodeCode = $model->getPostcodeCodeWithCreate();
 
@@ -1867,7 +1867,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineOne();
 
-        $this->assertNull($model->getLineOne());
+        $this->assertNotInstanceOf(TextType::class, $model->getLineOne());
 
         $testValueForLineOne = $model->getLineOneWithCreate();
 
@@ -1883,7 +1883,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineTwo();
 
-        $this->assertNull($model->getLineTwo());
+        $this->assertNotInstanceOf(TextType::class, $model->getLineTwo());
 
         $testValueForLineTwo = $model->getLineTwoWithCreate();
 
@@ -1899,7 +1899,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineThree();
 
-        $this->assertNull($model->getLineThree());
+        $this->assertNotInstanceOf(TextType::class, $model->getLineThree());
 
         $testValueForLineThree = $model->getLineThreeWithCreate();
 
@@ -1915,7 +1915,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCityName();
 
-        $this->assertNull($model->getCityName());
+        $this->assertNotInstanceOf(TextType::class, $model->getCityName());
 
         $testValueForCityName = $model->getCityNameWithCreate();
 
@@ -1931,7 +1931,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCountryID();
 
-        $this->assertNull($model->getCountryID());
+        $this->assertNotInstanceOf(CountryIDType::class, $model->getCountryID());
 
         $testValueForCountryID = $model->getCountryIDWithCreate();
 
@@ -1947,7 +1947,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCountrySubDivisionName();
 
-        $this->assertNull($model->getCountrySubDivisionName());
+        $this->assertNotInstanceOf(TextType::class, $model->getCountrySubDivisionName());
 
         $testValueForCountrySubDivisionName = $model->getCountrySubDivisionNameWithCreate();
 
@@ -1973,7 +1973,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetChargeIndicator();
 
-        $this->assertNull($model->getChargeIndicator());
+        $this->assertNotInstanceOf(IndicatorType::class, $model->getChargeIndicator());
 
         $testValueForChargeIndicator = $model->getChargeIndicatorWithCreate();
 
@@ -1989,7 +1989,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCalculationPercent();
 
-        $this->assertNull($model->getCalculationPercent());
+        $this->assertNotInstanceOf(PercentType::class, $model->getCalculationPercent());
 
         $testValueForCalculationPercent = $model->getCalculationPercentWithCreate();
 
@@ -2005,7 +2005,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBasisAmount();
 
-        $this->assertNull($model->getBasisAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getBasisAmount());
 
         $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
@@ -2021,7 +2021,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetActualAmount();
 
-        $this->assertNull($model->getActualAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getActualAmount());
 
         $testValueForActualAmount = $model->getActualAmountWithCreate();
 
@@ -2037,7 +2037,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetReasonCode();
 
-        $this->assertNull($model->getReasonCode());
+        $this->assertNotInstanceOf(AllowanceChargeReasonCodeType::class, $model->getReasonCode());
 
         $testValueForReasonCode = $model->getReasonCodeWithCreate();
 
@@ -2053,7 +2053,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetReason();
 
-        $this->assertNull($model->getReason());
+        $this->assertNotInstanceOf(TextType::class, $model->getReason());
 
         $testValueForReason = $model->getReasonWithCreate();
 
@@ -2069,7 +2069,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCategoryTradeTax();
 
-        $this->assertNull($model->getCategoryTradeTax());
+        $this->assertNotInstanceOf(TradeTaxType::class, $model->getCategoryTradeTax());
 
         $testValueForCategoryTradeTax = $model->getCategoryTradeTaxWithCreate();
 
@@ -2223,7 +2223,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(TextType::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -2239,7 +2239,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSpecifiedLegalOrganization();
 
-        $this->assertNull($model->getSpecifiedLegalOrganization());
+        $this->assertNotInstanceOf(LegalOrganizationType::class, $model->getSpecifiedLegalOrganization());
 
         $testValueForSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
 
@@ -2255,7 +2255,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPostalTradeAddress();
 
-        $this->assertNull($model->getPostalTradeAddress());
+        $this->assertNotInstanceOf(TradeAddressType::class, $model->getPostalTradeAddress());
 
         $testValueForPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
 
@@ -2271,7 +2271,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetURIUniversalCommunication();
 
-        $this->assertNull($model->getURIUniversalCommunication());
+        $this->assertNotInstanceOf(UniversalCommunicationType::class, $model->getURIUniversalCommunication());
 
         $testValueForURIUniversalCommunication = $model->getURIUniversalCommunicationWithCreate();
 
@@ -2361,7 +2361,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDescription();
 
-        $this->assertNull($model->getDescription());
+        $this->assertNotInstanceOf(TextType::class, $model->getDescription());
 
         $testValueForDescription = $model->getDescriptionWithCreate();
 
@@ -2377,7 +2377,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDueDateDateTime();
 
-        $this->assertNull($model->getDueDateDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getDueDateDateTime());
 
         $testValueForDueDateDateTime = $model->getDueDateDateTimeWithCreate();
 
@@ -2393,7 +2393,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDirectDebitMandateID();
 
-        $this->assertNull($model->getDirectDebitMandateID());
+        $this->assertNotInstanceOf(IDType::class, $model->getDirectDebitMandateID());
 
         $testValueForDirectDebitMandateID = $model->getDirectDebitMandateIDWithCreate();
 
@@ -2419,7 +2419,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetChargeAmount();
 
-        $this->assertNull($model->getChargeAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getChargeAmount());
 
         $testValueForChargeAmount = $model->getChargeAmountWithCreate();
 
@@ -2435,7 +2435,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBasisQuantity();
 
-        $this->assertNull($model->getBasisQuantity());
+        $this->assertNotInstanceOf(QuantityType::class, $model->getBasisQuantity());
 
         $testValueForBasisQuantity = $model->getBasisQuantityWithCreate();
 
@@ -2451,7 +2451,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetAppliedTradeAllowanceCharge();
 
-        $this->assertNull($model->getAppliedTradeAllowanceCharge());
+        $this->assertNotInstanceOf(TradeAllowanceChargeType::class, $model->getAppliedTradeAllowanceCharge());
 
         $testValueForAppliedTradeAllowanceCharge = $model->getAppliedTradeAllowanceChargeWithCreate();
 
@@ -2477,7 +2477,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetGlobalID();
 
-        $this->assertNull($model->getGlobalID());
+        $this->assertNotInstanceOf(IDType::class, $model->getGlobalID());
 
         $testValueForGlobalID = $model->getGlobalIDWithCreate();
 
@@ -2493,7 +2493,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(TextType::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -2519,7 +2519,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineTotalAmount();
 
-        $this->assertNull($model->getLineTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getLineTotalAmount());
 
         $testValueForLineTotalAmount = $model->getLineTotalAmountWithCreate();
 
@@ -2535,7 +2535,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetChargeTotalAmount();
 
-        $this->assertNull($model->getChargeTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getChargeTotalAmount());
 
         $testValueForChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
 
@@ -2551,7 +2551,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetAllowanceTotalAmount();
 
-        $this->assertNull($model->getAllowanceTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getAllowanceTotalAmount());
 
         $testValueForAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
 
@@ -2567,7 +2567,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTaxBasisTotalAmount();
 
-        $this->assertNull($model->getTaxBasisTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getTaxBasisTotalAmount());
 
         $testValueForTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
 
@@ -2647,7 +2647,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetGrandTotalAmount();
 
-        $this->assertNull($model->getGrandTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getGrandTotalAmount());
 
         $testValueForGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
 
@@ -2663,7 +2663,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTotalPrepaidAmount();
 
-        $this->assertNull($model->getTotalPrepaidAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getTotalPrepaidAmount());
 
         $testValueForTotalPrepaidAmount = $model->getTotalPrepaidAmountWithCreate();
 
@@ -2679,7 +2679,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDuePayableAmount();
 
-        $this->assertNull($model->getDuePayableAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getDuePayableAmount());
 
         $testValueForDuePayableAmount = $model->getDuePayableAmountWithCreate();
 
@@ -2705,7 +2705,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetLineTotalAmount();
 
-        $this->assertNull($model->getLineTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getLineTotalAmount());
 
         $testValueForLineTotalAmount = $model->getLineTotalAmountWithCreate();
 
@@ -2731,7 +2731,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTypeCode();
 
-        $this->assertNull($model->getTypeCode());
+        $this->assertNotInstanceOf(PaymentMeansCodeType::class, $model->getTypeCode());
 
         $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
@@ -2747,7 +2747,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPayerPartyDebtorFinancialAccount();
 
-        $this->assertNull($model->getPayerPartyDebtorFinancialAccount());
+        $this->assertNotInstanceOf(DebtorFinancialAccountType::class, $model->getPayerPartyDebtorFinancialAccount());
 
         $testValueForPayerPartyDebtorFinancialAccount = $model->getPayerPartyDebtorFinancialAccountWithCreate();
 
@@ -2763,7 +2763,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetPayeePartyCreditorFinancialAccount();
 
-        $this->assertNull($model->getPayeePartyCreditorFinancialAccount());
+        $this->assertNotInstanceOf(CreditorFinancialAccountType::class, $model->getPayeePartyCreditorFinancialAccount());
 
         $testValueForPayeePartyCreditorFinancialAccount = $model->getPayeePartyCreditorFinancialAccountWithCreate();
 
@@ -2789,7 +2789,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCalculatedAmount();
 
-        $this->assertNull($model->getCalculatedAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getCalculatedAmount());
 
         $testValueForCalculatedAmount = $model->getCalculatedAmountWithCreate();
 
@@ -2805,7 +2805,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetTypeCode();
 
-        $this->assertNull($model->getTypeCode());
+        $this->assertNotInstanceOf(TaxTypeCodeType::class, $model->getTypeCode());
 
         $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
@@ -2821,7 +2821,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetExemptionReason();
 
-        $this->assertNull($model->getExemptionReason());
+        $this->assertNotInstanceOf(TextType::class, $model->getExemptionReason());
 
         $testValueForExemptionReason = $model->getExemptionReasonWithCreate();
 
@@ -2837,7 +2837,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetBasisAmount();
 
-        $this->assertNull($model->getBasisAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getBasisAmount());
 
         $testValueForBasisAmount = $model->getBasisAmountWithCreate();
 
@@ -2853,7 +2853,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetCategoryCode();
 
-        $this->assertNull($model->getCategoryCode());
+        $this->assertNotInstanceOf(TaxCategoryCodeType::class, $model->getCategoryCode());
 
         $testValueForCategoryCode = $model->getCategoryCodeWithCreate();
 
@@ -2869,7 +2869,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetExemptionReasonCode();
 
-        $this->assertNull($model->getExemptionReasonCode());
+        $this->assertNotInstanceOf(CodeType::class, $model->getExemptionReasonCode());
 
         $testValueForExemptionReasonCode = $model->getExemptionReasonCodeWithCreate();
 
@@ -2885,7 +2885,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDueDateTypeCode();
 
-        $this->assertNull($model->getDueDateTypeCode());
+        $this->assertNotInstanceOf(TimeReferenceCodeType::class, $model->getDueDateTypeCode());
 
         $testValueForDueDateTypeCode = $model->getDueDateTypeCodeWithCreate();
 
@@ -2901,7 +2901,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetRateApplicablePercent();
 
-        $this->assertNull($model->getRateApplicablePercent());
+        $this->assertNotInstanceOf(PercentType::class, $model->getRateApplicablePercent());
 
         $testValueForRateApplicablePercent = $model->getRateApplicablePercentWithCreate();
 
@@ -2927,7 +2927,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetURIID();
 
-        $this->assertNull($model->getURIID());
+        $this->assertNotInstanceOf(IDType::class, $model->getURIID());
 
         $testValueForURIID = $model->getURIIDWithCreate();
 
@@ -2964,7 +2964,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetExchangedDocumentContext();
 
-        $this->assertNull($model->getExchangedDocumentContext());
+        $this->assertNotInstanceOf(ExchangedDocumentContextType::class, $model->getExchangedDocumentContext());
 
         $testValueForExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
 
@@ -2980,7 +2980,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetExchangedDocument();
 
-        $this->assertNull($model->getExchangedDocument());
+        $this->assertNotInstanceOf(ExchangedDocumentType::class, $model->getExchangedDocument());
 
         $testValueForExchangedDocument = $model->getExchangedDocumentWithCreate();
 
@@ -2996,7 +2996,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetSupplyChainTradeTransaction();
 
-        $this->assertNull($model->getSupplyChainTradeTransaction());
+        $this->assertNotInstanceOf(SupplyChainTradeTransactionType::class, $model->getSupplyChainTradeTransaction());
 
         $testValueForSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
 
@@ -3018,7 +3018,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3029,7 +3029,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-CurrencyIDValue';
         $model->setCurrencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getCurrencyID());
+        $this->assertSame($testValue, $model->getCurrencyID());
 
         $model->unsetCurrencyID();
 
@@ -3050,7 +3050,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3071,7 +3071,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3082,7 +3082,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -3107,7 +3107,7 @@ final class ZffxBasicModelTest extends TestCase
 
         $model->unsetDateTimeString();
 
-        $this->assertNull($model->getDateTimeString());
+        $this->assertNotInstanceOf(DateTimeStringAType1::class, $model->getDateTimeString());
 
         $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
@@ -3129,7 +3129,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3140,7 +3140,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-SchemeIDValue';
         $model->setSchemeID($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeID());
+        $this->assertSame($testValue, $model->getSchemeID());
 
         $model->unsetSchemeID();
 
@@ -3182,7 +3182,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3203,7 +3203,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -3214,7 +3214,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-UnitCodeValue';
         $model->setUnitCode($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCode());
+        $this->assertSame($testValue, $model->getUnitCode());
 
         $model->unsetUnitCode();
 
@@ -3235,7 +3235,7 @@ final class ZffxBasicModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 

@@ -173,9 +173,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
         $this->assertSame('Some title template', $pdfDOcumentBuilder->getMetaInformationTitleTemplate());
         $pdfDOcumentBuilder->setMetaInformationSubjectTemplate('Some subject template');
         $this->assertSame('Some subject template', $pdfDOcumentBuilder->getMetaInformationSubjectTemplate());
-        $pdfDOcumentBuilder->setMetaInformationCallback(static function () {
-            return 'Some Result';
-        });
+        $pdfDOcumentBuilder->setMetaInformationCallback(static fn () => 'Some Result');
         $this->assertInstanceOf(Closure::class, $pdfDOcumentBuilder->getMetaInformationCallback());
 
         $pdfDOcumentBuilder->setAttachmentPaneVisibility(false);
@@ -414,9 +412,7 @@ final class InvoiceSuitePdfDocumentBuilderTest extends TestCase
 
         $fileSpecs = array_filter(
             $fileSpecs,
-            static function ($fileSpec) {
-                return !is_null($fileSpec->getEmbeddedFile());
-            }
+            static fn ($fileSpec) => !is_null($fileSpec->getEmbeddedFile())
         );
 
         $this->assertStringContainsString('PDF-1.7', (string) $pdfContent);

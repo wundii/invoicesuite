@@ -41,10 +41,10 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('1');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4123456000014',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Zitronensäure 100ml',
             newProductSellerId: 'ZS997',
-            newProductName: 'Zitronensäure 100ml'
+            newProductGlobalId: '4123456000014',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionProductCharacteristic(
             newProductCharacteristicDescription: 'Verpackungsart',
@@ -67,10 +67,10 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('2');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4123456000021',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Gelierzucker Extra 250g',
             newProductSellerId: 'GZ250',
-            newProductName: 'Gelierzucker Extra 250g'
+            newProductGlobalId: '4123456000021',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionGrossPrice(1.5000);
         static::$document->setDocumentPositionGrossPriceAllowanceCharge(
@@ -99,11 +99,11 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('3');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4123456000021',
-            newProductGlobalIdType: '0160',
-            newProductSellerId: 'GZ250',
             newProductName: 'Gelierzucker Extra 250g',
-            newProductDescription: 'Artikel wie vereinbart ohne Berechnung'
+            newProductDescription: 'Artikel wie vereinbart ohne Berechnung',
+            newProductSellerId: 'GZ250',
+            newProductGlobalId: '4123456000021',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionGrossPrice(0.0000);
         static::$document->setDocumentPositionNetPrice(0.0000);
@@ -122,11 +122,11 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('4');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4100130013294',
-            newProductGlobalIdType: '0160',
-            newProductSellerId: '2031',
             newProductName: 'Bierbrau Pils 20/0500',
-            newProductDescription: 'EAN-VKE: 4100130913297'
+            newProductDescription: 'EAN-VKE: 4100130913297',
+            newProductSellerId: '2031',
+            newProductGlobalId: '4100130013294',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionProductCharacteristic(
             newProductCharacteristicDescription: 'Verpackung',
@@ -149,10 +149,10 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('5');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '2001015001325',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Leergutpfand 20 x 0,5l',
             newProductSellerId: '1805',
-            newProductName: 'Leergutpfand 20 x 0,5l'
+            newProductGlobalId: '2001015001325',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionProductCharacteristic(
             newProductCharacteristicDescription: 'Verpackung',
@@ -175,36 +175,36 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('6');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4123456000038',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Mischpalette Joghurt Karton 3 x 20',
             newProductSellerId: 'MP107',
-            newProductName: 'Mischpalette Joghurt Karton 3 x 20'
+            newProductGlobalId: '4123456000038',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionProductCharacteristic(
             newProductCharacteristicDescription: 'Verpackung',
             newProductCharacteristicValue: 'Karton'
         );
         static::$document->setDocumentPositionReferencedProduct(
+            newProductName: 'Erdbeer 20 x 150g Becher',
+            newProductSellerId: 'JOG103',
             newProductGlobalId: '4123456001035',
             newProductGlobalIdType: '0160',
-            newProductSellerId: 'JOG103',
-            newProductName: 'Erdbeer 20 x 150g Becher',
             newProductUnitQuantity: 20.00000,
             newProductUnitQuantityUnit: 'C62'
         );
         static::$document->addDocumentPositionReferencedProduct(
+            newProductName: 'Banane 20 x 150g Becher',
+            newProductSellerId: 'JOG203',
             newProductGlobalId: '4123456002032',
             newProductGlobalIdType: '0160',
-            newProductSellerId: 'JOG203',
-            newProductName: 'Banane 20 x 150g Becher',
             newProductUnitQuantity: 20.00000,
             newProductUnitQuantityUnit: 'C62'
         );
         static::$document->addDocumentPositionReferencedProduct(
+            newProductName: 'Schoko 20 x 150g Becher',
+            newProductSellerId: 'JOG303',
             newProductGlobalId: '4123456003039',
             newProductGlobalIdType: '0160',
-            newProductSellerId: 'JOG303',
-            newProductName: 'Schoko 20 x 150g Becher',
             newProductUnitQuantity: 20.00000,
             newProductUnitQuantityUnit: 'C62'
         );
@@ -236,8 +236,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
             newEmailAddress: 'max.mustermann@musterlieferant.de'
         );
         static::$document->setDocumentSellerAddress(
-            newPostcode: '99199',
             newAddressLine1: 'BAHNHOFSTRASSE 99',
+            newPostcode: '99199',
             newCity: 'MUSTERHAUSEN',
             newCountryId: 'DE'
         );
@@ -247,8 +247,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         static::$document->setDocumentBuyerGlobalId('4304171000002', '0088');
         static::$document->setDocumentBuyerName('MUSTER-KUNDE GMBH');
         static::$document->setDocumentBuyerAddress(
-            newPostcode: '40235',
             newAddressLine1: 'KUNDENWEG 88',
+            newPostcode: '40235',
             newCity: 'DUESSELDORF',
             newCountryId: 'DE'
         );
@@ -260,8 +260,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         static::$document->setDocumentShipToName('MUSTER-MARKT');
         static::$document->setDocumentShipToContact(newDepartmentName: '8211');
         static::$document->setDocumentShipToAddress(
-            newPostcode: '31157',
             newAddressLine1: 'HAUPTSTRASSE 44',
+            newPostcode: '31157',
             newCity: 'SARSTEDT',
             newCountryId: 'DE'
         );
@@ -274,80 +274,80 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
         static::$document->setDocumentInvoiceeGlobalId('4304171000002', '0088');
         static::$document->setDocumentInvoiceeName('MUSTER-KUNDE GMBH');
         static::$document->setDocumentInvoiceeAddress(
-            newPostcode: '40235',
             newAddressLine1: 'KUNDENWEG 88',
+            newPostcode: '40235',
             newCity: 'DUESSELDORF',
             newCountryId: 'DE'
         );
 
         static::$document->addDocumentTax(
-            newTaxAmount: 61.07,
+            newTaxCategory: 'S',
             newTaxType: 'VAT',
             newBasisAmount: 321.40,
-            newTaxCategory: 'S',
+            newTaxAmount: 61.07,
             newTaxPercent: 19.00
         );
         static::$document->addDocumentTax(
-            newTaxAmount: 8.93,
+            newTaxCategory: 'S',
             newTaxType: 'VAT',
             newBasisAmount: 127.59,
-            newTaxCategory: 'S',
+            newTaxAmount: 8.93,
             newTaxPercent: 7.00
         );
 
         static::$document->addDocumentAllowanceCharge(
             newChargeIndicator: false,
-            newAllowanceChargePercent: 2.0000,
-            newAllowanceChargeBaseAmount: 280.00,
             newAllowanceChargeAmount: 5.60,
-            newAllowanceChargeReason: 'Rechnungsrabatt 1',
-            newTaxType: 'VAT',
-            newTaxCategory: 'S',
-            newTaxPercent: 19.00
-        );
-        static::$document->addDocumentAllowanceCharge(
-            newChargeIndicator: false,
-            newAllowanceChargePercent: 2.0000,
-            newAllowanceChargeBaseAmount: 130.70,
-            newAllowanceChargeAmount: 2.61,
-            newAllowanceChargeReason: 'Rechnungsrabatt 1',
-            newTaxType: 'VAT',
-            newTaxCategory: 'S',
-            newTaxPercent: 7.00
-        );
-        static::$document->addDocumentAllowanceCharge(
-            newChargeIndicator: false,
             newAllowanceChargeBaseAmount: 280.00,
-            newAllowanceChargeAmount: 2.50,
-            newAllowanceChargeReason: 'Rechnungsrabatt 2',
-            newTaxType: 'VAT',
             newTaxCategory: 'S',
-            newTaxPercent: 19.00
+            newTaxType: 'VAT',
+            newTaxPercent: 19.00,
+            newAllowanceChargeReason: 'Rechnungsrabatt 1',
+            newAllowanceChargePercent: 2.0000
         );
         static::$document->addDocumentAllowanceCharge(
             newChargeIndicator: false,
+            newAllowanceChargeAmount: 2.61,
             newAllowanceChargeBaseAmount: 130.70,
-            newAllowanceChargeAmount: 0.50,
-            newAllowanceChargeReason: 'Rechnungsrabatt 2',
-            newTaxType: 'VAT',
             newTaxCategory: 'S',
-            newTaxPercent: 7.00
+            newTaxType: 'VAT',
+            newTaxPercent: 7.00,
+            newAllowanceChargeReason: 'Rechnungsrabatt 1',
+            newAllowanceChargePercent: 2.0000
+        );
+        static::$document->addDocumentAllowanceCharge(
+            newChargeIndicator: false,
+            newAllowanceChargeAmount: 2.50,
+            newAllowanceChargeBaseAmount: 280.00,
+            newTaxCategory: 'S',
+            newTaxType: 'VAT',
+            newTaxPercent: 19.00,
+            newAllowanceChargeReason: 'Rechnungsrabatt 2'
+        );
+        static::$document->addDocumentAllowanceCharge(
+            newChargeIndicator: false,
+            newAllowanceChargeAmount: 0.50,
+            newAllowanceChargeBaseAmount: 130.70,
+            newTaxCategory: 'S',
+            newTaxType: 'VAT',
+            newTaxPercent: 7.00,
+            newAllowanceChargeReason: 'Rechnungsrabatt 2'
         );
 
         static::$document->setDocumentLogisticServiceCharge(
-            newDescription: 'Transportkosten',
             newChargeAmount: 3.00,
-            newTaxType: 'VAT',
+            newDescription: 'Transportkosten',
             newTaxCategory: 'S',
+            newTaxType: 'VAT',
             newTaxPercent: 19.00
         );
 
         static::$document->addDocumentPaymentTerm('Bei Zahlung innerhalb 14 Tagen gewähren wir 2,0% Skonto.');
 
         static::$document->addDocumentPaymentDiscountTermsInLastPaymentTerm(
+            newDiscountPercent: 2.00,
             newBasePeriod: 14.00,
             newBasePeriodUnit: 'DAY',
-            newDiscountPercent: 2.00,
         );
         static::$document->setDocumentSummation(
             newNetAmount: 457.20,
@@ -356,8 +356,8 @@ final class InvoiceSuiteBuilderExtendedSimpleTest extends TestCase
             newTaxBasisAmount: 448.99,
             newTaxTotalAmount: 70.00,
             newGrossAmount: 518.99,
-            newPrepaidAmount: 0.00,
-            newDueAmount: 518.99
+            newDueAmount: 518.99,
+            newPrepaidAmount: 0.00
         );
     }
 

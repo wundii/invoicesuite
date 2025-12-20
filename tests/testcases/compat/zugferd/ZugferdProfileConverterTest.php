@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
@@ -7,7 +9,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentProfileConverter;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdProfileConverterTest extends TestCase
+final class ZugferdProfileConverterTest extends TestCase
 {
     public function testComvertFromFileToFileXRechnung3(): void
     {

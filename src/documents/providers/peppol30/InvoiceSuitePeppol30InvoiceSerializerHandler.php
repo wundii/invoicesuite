@@ -452,6 +452,6 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      */
     public function serializeBase64EncodedToJson(JsonSerializationVisitor $visitor, $data, array $type): string
     {
-        return $visitor->visitString(base64_encode($data), $type);
+        return $visitor->visitString(base64_encode((string) $data), $type);
     }
 }

@@ -671,7 +671,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
             }
         }
 
-        if ($numFilesExists == $zipArchive->numFiles) {
+        if ($numFilesExists === $zipArchive->numFiles) {
             return true;
         }
 

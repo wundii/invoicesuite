@@ -35,10 +35,10 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('1');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4012345001235',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Trennblätter A4',
             newProductSellerId: 'TB100A4',
-            newProductName: 'Trennblätter A4'
+            newProductGlobalId: '4012345001235',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionGrossPrice(9.9000);
         static::$document->setDocumentPositionNetPrice(9.9000);
@@ -52,10 +52,10 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
 
         static::$document->addDocumentPosition('2');
         static::$document->setDocumentPositionProductDetails(
-            newProductGlobalId: '4000050986428',
-            newProductGlobalIdType: '0160',
+            newProductName: 'Joghurt Banane',
             newProductSellerId: 'ARNR2',
-            newProductName: 'Joghurt Banane'
+            newProductGlobalId: '4000050986428',
+            newProductGlobalIdType: '0160'
         );
         static::$document->setDocumentPositionGrossPrice(5.5000);
         static::$document->setDocumentPositionNetPrice(5.5000);
@@ -71,8 +71,8 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
         static::$document->setDocumentSellerGlobalId('4000001123452', '0088');
         static::$document->setDocumentSellerName('Lieferant GmbH');
         static::$document->setDocumentSellerAddress(
-            newPostcode: '80333',
             newAddressLine1: 'Lieferantenstraße 20',
+            newPostcode: '80333',
             newCity: 'München',
             newCountryId: 'DE'
         );
@@ -82,8 +82,8 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
         static::$document->setDocumentBuyerId('GE2020211');
         static::$document->setDocumentBuyerName('Kunden AG Mitte');
         static::$document->setDocumentBuyerAddress(
-            newPostcode: '69876',
             newAddressLine1: 'Kundenstraße 15',
+            newPostcode: '69876',
             newCity: 'Frankfurt',
             newCountryId: 'DE'
         );
@@ -91,17 +91,17 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
         static::$document->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20241114'));
 
         static::$document->addDocumentTax(
-            newTaxAmount: 19.25,
+            newTaxCategory: 'S',
             newTaxType: 'VAT',
             newBasisAmount: 275.00,
-            newTaxCategory: 'S',
+            newTaxAmount: 19.25,
             newTaxPercent: 7.00
         );
         static::$document->addDocumentTax(
-            newTaxAmount: 37.62,
+            newTaxCategory: 'S',
             newTaxType: 'VAT',
             newBasisAmount: 198.00,
-            newTaxCategory: 'S',
+            newTaxAmount: 37.62,
             newTaxPercent: 19.00
         );
 
@@ -114,8 +114,8 @@ final class InvoiceSuiteBuilderComfortSimpleTest extends TestCase
             newTaxBasisAmount: 473.00,
             newTaxTotalAmount: 56.87,
             newGrossAmount: 529.87,
-            newPrepaidAmount: 0.00,
-            newDueAmount: 529.87
+            newDueAmount: 529.87,
+            newPrepaidAmount: 0.00
         );
     }
 

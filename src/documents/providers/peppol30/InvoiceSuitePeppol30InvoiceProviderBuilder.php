@@ -8165,7 +8165,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return '';
         }
 
-        if (strcasecmp($newTaxRegistrationType, 'VA') === 0) {
+        if (strcasecmp((string) $newTaxRegistrationType, 'VA') === 0) {
             return 'VAT';
         }
 

@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
+use DateTimeInterface;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdDocumentReaderComfortTest extends TestCase
+final class ZugferdDocumentReaderComfortTest extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
@@ -72,11 +75,11 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertArrayHasKey('content', $notes[1]);
         $this->assertArrayHasKey('subjectcode', $notes[1]);
         $this->assertArrayHasKey('contentcode', $notes[1]);
-        $this->assertEquals('', $notes[0]['contentcode']);
-        $this->assertEquals('', $notes[0]['subjectcode']);
-        $this->assertEquals('Rechnung gemäß Bestellung vom 01.03.2018.', $notes[0]['content']);
-        $this->assertEquals('', $notes[1]['contentcode']);
-        $this->assertEquals('REG', $notes[1]['subjectcode']);
+        $this->assertSame('', $notes[0]['contentcode']);
+        $this->assertSame('', $notes[0]['subjectcode']);
+        $this->assertSame('Rechnung gemäß Bestellung vom 01.03.2018.', $notes[0]['content']);
+        $this->assertSame('', $notes[1]['contentcode']);
+        $this->assertSame('REG', $notes[1]['subjectcode']);
         $this->assertStringContainsString('Lieferant GmbH', $notes[1]['content']);
         $this->assertStringContainsString('Lieferantenstraße 20', $notes[1]['content']);
         $this->assertStringContainsString('80333 München', $notes[1]['content']);
@@ -152,8 +155,8 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey('ZZ', $sellertaxreg);
-        $this->assertEquals('201/113/40209', $sellertaxreg['FC']);
-        $this->assertEquals('DE123456789', $sellertaxreg['VA']);
+        $this->assertSame('201/113/40209', $sellertaxreg['FC']);
+        $this->assertSame('DE123456789', $sellertaxreg['VA']);
     }
 
     public function testDocumentSellerAddress(): void
@@ -182,7 +185,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerContact());
         $this->assertFalse(self::$document->nextDocumentSellerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
             }
         );
@@ -202,7 +205,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertIsArray($buyerids);
         $this->assertArrayHasKey(0, $buyerids);
         $this->assertArrayNotHasKey(1, $buyerids);
-        $this->assertEquals('GE2020211', $buyerids[0]);
+        $this->assertSame('GE2020211', $buyerids[0]);
         $this->assertSame('', $buyerdescription);
     }
 
@@ -246,7 +249,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
             }
         );
@@ -308,7 +311,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
             }
         );
@@ -365,7 +368,7 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertFalse(self::$document->firstDocumentShipToContact());
         $this->assertFalse(self::$document->nextDocumentShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
             }
         );
@@ -687,13 +690,13 @@ class ZugferdDocumentReaderComfortTest extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
@@ -867,10 +870,10 @@ class ZugferdDocumentReaderComfortTest extends TestCase
         $this->assertArrayHasKey('duedate', $docpaymentterms[0]);
         $this->assertArrayHasKey('directdebitmandateid', $docpaymentterms[0]);
         $this->assertArrayHasKey('partialpaymentamount', $docpaymentterms[0]);
-        $this->assertEquals('Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018', $docpaymentterms[0]['description']);
-        $this->assertNull($docpaymentterms[0]['duedate']);
+        $this->assertSame('Zahlbar innerhalb 30 Tagen netto bis 04.04.2018, 3% Skonto innerhalb 10 Tagen bis 15.03.2018', $docpaymentterms[0]['description']);
+        $this->assertNotInstanceOf(DateTimeInterface::class, $docpaymentterms[0]['duedate']);
         $this->assertNotInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
-        $this->assertEquals('', $docpaymentterms[0]['directdebitmandateid']);
+        $this->assertSame('', $docpaymentterms[0]['directdebitmandateid']);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]['partialpaymentamount'], PHP_FLOAT_EPSILON);
     }
 

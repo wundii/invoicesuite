@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use DateTime;
@@ -9,7 +11,7 @@ use horstoeko\zugferd\ZugferdDocumentPdfReader;
 use horstoeko\zugferd\ZugferdDocumentReader;
 use horstoeko\zugferd\ZugferdProfiles;
 
-class ZugferdPdfDocumentReaderExtended2Test extends TestCase
+final class ZugferdPdfDocumentReaderExtended2Test extends TestCase
 {
     /**
      * @var ZugferdDocumentReader
@@ -62,12 +64,12 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertArrayHasKey('content', $notes[1]);
         $this->assertArrayHasKey('subjectcode', $notes[1]);
         $this->assertArrayHasKey('contentcode', $notes[1]);
-        $this->assertEquals('', $notes[0]['contentcode']);
-        $this->assertEquals('REG', $notes[0]['subjectcode']);
-        $this->assertEquals('FOURNISSEUR F SARL au capital de 50 000 EUR', $notes[0]['content']);
-        $this->assertEquals('', $notes[1]['contentcode']);
-        $this->assertEquals('ABL', $notes[1]['subjectcode']);
-        $this->assertEquals('RCS MAVILLE 123 456 789', $notes[1]['content']);
+        $this->assertSame('', $notes[0]['contentcode']);
+        $this->assertSame('REG', $notes[0]['subjectcode']);
+        $this->assertSame('FOURNISSEUR F SARL au capital de 50 000 EUR', $notes[0]['content']);
+        $this->assertSame('', $notes[1]['contentcode']);
+        $this->assertSame('ABL', $notes[1]['subjectcode']);
+        $this->assertSame('RCS MAVILLE 123 456 789', $notes[1]['content']);
     }
 
     public function testDocumentGeneralPaymentInformation(): void
@@ -136,7 +138,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertArrayNotHasKey(0, $sellertaxreg);
         $this->assertArrayNotHasKey(1, $sellertaxreg);
         $this->assertArrayNotHasKey('ZZ', $sellertaxreg);
-        $this->assertEquals('FR32123456789', $sellertaxreg['VA']);
+        $this->assertSame('FR32123456789', $sellertaxreg['VA']);
     }
 
     public function testDocumentSellerAddress(): void
@@ -165,7 +167,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerContact());
         $this->assertFalse(self::$document->nextDocumentSellerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerContact($sellercontactpersonname, $sellercontactdepartmentname, $sellercontactphoneno, $sellercontactfaxno, $sellercontactemailaddr);
             }
         );
@@ -205,7 +207,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertArrayNotHasKey(0, $buyertaxreg);
         $this->assertArrayNotHasKey(1, $buyertaxreg);
         $this->assertArrayNotHasKey('ZZ', $buyertaxreg);
-        $this->assertEquals('FR 05 987 654 321', $buyertaxreg['VA']);
+        $this->assertSame('FR 05 987 654 321', $buyertaxreg['VA']);
     }
 
     public function testDocumentBuyerAddress(): void
@@ -234,7 +236,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->firstDocumentBuyerContact());
         $this->assertFalse(self::$document->nextDocumentBuyerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentBuyerContact($buyercontactpersonname, $buyercontactdepartmentname, $buyercontactphoneno, $buyercontactfaxno, $buyercontactemailaddr);
             }
         );
@@ -296,7 +298,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->firstDocumentSellerTaxRepresentativeContact());
         $this->assertFalse(self::$document->nextDocumentSellerTaxRepresentativeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentSellerTaxRepresentativeContact($sellertaxreprcontactpersonname, $sellertaxreprcontactdepartmentname, $sellertaxreprcontactphoneno, $sellertaxreprcontactfaxno, $sellertaxreprcontactemailaddr);
             }
         );
@@ -352,7 +354,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertFalse(self::$document->firstDocumentShipToContact());
         $this->assertFalse(self::$document->nextDocumentShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipToContact($shiptocontactpersonname, $shiptocontactdepartmentname, $shiptocontactphoneno, $shiptocontactfaxno, $shiptocontactemailaddr);
             }
         );
@@ -406,13 +408,13 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentUltimateShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentUltimateShipToContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentUltimateShipToContact($ultimateshiptocontactpersonname, $ultimateshiptocontactdepartmentname, $ultimateshiptocontactphoneno, $ultimateshiptocontactfaxno, $ultimateshiptocontactemailaddr);
             }
         );
@@ -466,13 +468,13 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentShipFromContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentShipFromContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentShipFromContact($shipfromcontactpersonname, $shipfromcontactdepartmentname, $shipfromcontactphoneno, $shipfromcontactfaxno, $shipfromcontactemailaddr);
             }
         );
@@ -526,13 +528,13 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentInvoicerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentInvoicerContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoicerContact($invoicercontactpersonname, $invoicercontactdepartmentname, $invoicercontactphoneno, $invoicercontactfaxno, $invoicercontactemailaddr);
             }
         );
@@ -586,13 +588,13 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentInvoiceeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentInvoiceeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentInvoiceeContact($invoiceecontactpersonname, $invoiceecontactdepartmentname, $invoiceecontactphoneno, $invoiceecontactfaxno, $invoiceecontactemailaddr);
             }
         );
@@ -646,13 +648,13 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
         $this->assertFalse(self::$document->nextDocumentPayeeContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentPayeeContact($payeecontactpersonname, $payeecontactdepartmentname, $payeecontactphoneno, $payeecontactfaxno, $payeecontactemailaddr);
             }
         );
@@ -711,7 +713,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
     {
         $this->assertFalse(self::$document->firstDocumentProductEndUserContactContact());
         $this->expectNoticeOrWarningExt(
-            static function () {
+            static function (): void {
                 self::$document->getDocumentProductEndUserContact($producendusercontactpersonname, $producendusercontactdepartmentname, $producendusercontactphoneno, $producendusercontactfaxno, $producendusercontactemailaddr);
             }
         );
@@ -755,7 +757,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertIsArray($additionalrefdocs[0]);
         $this->assertArrayHasKey('IssuerAssignedID', $additionalrefdocs[0]);
         $this->assertArrayHasKey('TypeCode', $additionalrefdocs[0]);
-        $this->assertEquals('SUPPort doc', $additionalrefdocs[0]['IssuerAssignedID']);
+        $this->assertSame('SUPPort doc', $additionalrefdocs[0]['IssuerAssignedID']);
         $this->assertEquals('916', $additionalrefdocs[0]['TypeCode']);
     }
 
@@ -823,10 +825,10 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertArrayHasKey('duedate', $docpaymentterms[0]);
         $this->assertArrayHasKey('directdebitmandateid', $docpaymentterms[0]);
         $this->assertArrayHasKey('partialpaymentamount', $docpaymentterms[0]);
-        $this->assertEquals('', $docpaymentterms[0]['description']);
+        $this->assertSame('', $docpaymentterms[0]['description']);
         $this->assertInstanceOf('DateTime', $docpaymentterms[0]['duedate']);
         $this->assertEquals(DateTime::createFromFormat('Ymd', '20200215')->format('Ymd'), $docpaymentterms[0]['duedate']->format('Ymd'));
-        $this->assertEquals('', $docpaymentterms[0]['directdebitmandateid']);
+        $this->assertSame('', $docpaymentterms[0]['directdebitmandateid']);
         $this->assertEqualsWithDelta(0.0, $docpaymentterms[0]['partialpaymentamount'], PHP_FLOAT_EPSILON);
     }
 
@@ -854,7 +856,7 @@ class ZugferdPdfDocumentReaderExtended2Test extends TestCase
         $this->assertIsArray($name);
         $this->assertNotEmpty($name);
         $this->assertArrayHasKey(0, $name);
-        $this->assertEquals('support descript', $name[0]);
+        $this->assertSame('support descript', $name[0]);
         $this->assertSame('', $reftypecode);
         $this->assertNotInstanceOf(DateTime::class, $issueddate);
         $this->assertSame('', $binarydatafilename);

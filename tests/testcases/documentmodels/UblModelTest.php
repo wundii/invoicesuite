@@ -6,6 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\documentmodels;
 
 use DateTime;
 use DateTimeImmutable;
+use DateTimeInterface;
 use horstoeko\invoicesuite\documents\models\ubl\cac\AcceptanceTransportEvent;
 use horstoeko\invoicesuite\documents\models\ubl\cac\AccessoryRelatedItem;
 use horstoeko\invoicesuite\documents\models\ubl\cac\AccountingContact;
@@ -2790,7 +2791,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -2806,7 +2807,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyChainActivityTypeCode();
 
-        $this->assertNull($model->getSupplyChainActivityTypeCode());
+        $this->assertNotInstanceOf(SupplyChainActivityTypeCode::class, $model->getSupplyChainActivityTypeCode());
 
         $testValueForSupplyChainActivityTypeCode = $model->getSupplyChainActivityTypeCodeWithCreate();
 
@@ -2822,7 +2823,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerCustomerParty();
 
-        $this->assertNull($model->getBuyerCustomerParty());
+        $this->assertNotInstanceOf(BuyerCustomerParty::class, $model->getBuyerCustomerParty());
 
         $testValueForBuyerCustomerParty = $model->getBuyerCustomerPartyWithCreate();
 
@@ -2838,7 +2839,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -2854,7 +2855,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActivityPeriod();
 
-        $this->assertNull($model->getActivityPeriod());
+        $this->assertNotInstanceOf(ActivityPeriod::class, $model->getActivityPeriod());
 
         $testValueForActivityPeriod = $model->getActivityPeriodWithCreate();
 
@@ -2870,7 +2871,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActivityOriginLocation();
 
-        $this->assertNull($model->getActivityOriginLocation());
+        $this->assertNotInstanceOf(ActivityOriginLocation::class, $model->getActivityOriginLocation());
 
         $testValueForActivityOriginLocation = $model->getActivityOriginLocationWithCreate();
 
@@ -2886,7 +2887,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActivityFinalLocation();
 
-        $this->assertNull($model->getActivityFinalLocation());
+        $this->assertNotInstanceOf(ActivityFinalLocation::class, $model->getActivityFinalLocation());
 
         $testValueForActivityFinalLocation = $model->getActivityFinalLocationWithCreate();
 
@@ -3028,7 +3029,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -3044,7 +3045,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(Value::class, $model->getValue());
 
         $testValueForValue = $model->getValueWithCreate();
 
@@ -3246,7 +3247,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLine();
 
-        $this->assertNull($model->getLine());
+        $this->assertNotInstanceOf(Line::class, $model->getLine());
 
         $testValueForLine = $model->getLineWithCreate();
 
@@ -3272,7 +3273,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -3288,7 +3289,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddressTypeCode();
 
-        $this->assertNull($model->getAddressTypeCode());
+        $this->assertNotInstanceOf(AddressTypeCode::class, $model->getAddressTypeCode());
 
         $testValueForAddressTypeCode = $model->getAddressTypeCodeWithCreate();
 
@@ -3304,7 +3305,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddressFormatCode();
 
-        $this->assertNull($model->getAddressFormatCode());
+        $this->assertNotInstanceOf(AddressFormatCode::class, $model->getAddressFormatCode());
 
         $testValueForAddressFormatCode = $model->getAddressFormatCodeWithCreate();
 
@@ -3320,7 +3321,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPostbox();
 
-        $this->assertNull($model->getPostbox());
+        $this->assertNotInstanceOf(Postbox::class, $model->getPostbox());
 
         $testValueForPostbox = $model->getPostboxWithCreate();
 
@@ -3336,7 +3337,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFloor();
 
-        $this->assertNull($model->getFloor());
+        $this->assertNotInstanceOf(Floor::class, $model->getFloor());
 
         $testValueForFloor = $model->getFloorWithCreate();
 
@@ -3352,7 +3353,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoom();
 
-        $this->assertNull($model->getRoom());
+        $this->assertNotInstanceOf(Room::class, $model->getRoom());
 
         $testValueForRoom = $model->getRoomWithCreate();
 
@@ -3368,7 +3369,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStreetName();
 
-        $this->assertNull($model->getStreetName());
+        $this->assertNotInstanceOf(StreetName::class, $model->getStreetName());
 
         $testValueForStreetName = $model->getStreetNameWithCreate();
 
@@ -3384,7 +3385,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdditionalStreetName();
 
-        $this->assertNull($model->getAdditionalStreetName());
+        $this->assertNotInstanceOf(AdditionalStreetName::class, $model->getAdditionalStreetName());
 
         $testValueForAdditionalStreetName = $model->getAdditionalStreetNameWithCreate();
 
@@ -3400,7 +3401,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBlockName();
 
-        $this->assertNull($model->getBlockName());
+        $this->assertNotInstanceOf(BlockName::class, $model->getBlockName());
 
         $testValueForBlockName = $model->getBlockNameWithCreate();
 
@@ -3416,7 +3417,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuildingName();
 
-        $this->assertNull($model->getBuildingName());
+        $this->assertNotInstanceOf(BuildingName::class, $model->getBuildingName());
 
         $testValueForBuildingName = $model->getBuildingNameWithCreate();
 
@@ -3432,7 +3433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuildingNumber();
 
-        $this->assertNull($model->getBuildingNumber());
+        $this->assertNotInstanceOf(BuildingNumber::class, $model->getBuildingNumber());
 
         $testValueForBuildingNumber = $model->getBuildingNumberWithCreate();
 
@@ -3448,7 +3449,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInhouseMail();
 
-        $this->assertNull($model->getInhouseMail());
+        $this->assertNotInstanceOf(InhouseMail::class, $model->getInhouseMail());
 
         $testValueForInhouseMail = $model->getInhouseMailWithCreate();
 
@@ -3464,7 +3465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDepartment();
 
-        $this->assertNull($model->getDepartment());
+        $this->assertNotInstanceOf(Department::class, $model->getDepartment());
 
         $testValueForDepartment = $model->getDepartmentWithCreate();
 
@@ -3480,7 +3481,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMarkAttention();
 
-        $this->assertNull($model->getMarkAttention());
+        $this->assertNotInstanceOf(MarkAttention::class, $model->getMarkAttention());
 
         $testValueForMarkAttention = $model->getMarkAttentionWithCreate();
 
@@ -3496,7 +3497,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMarkCare();
 
-        $this->assertNull($model->getMarkCare());
+        $this->assertNotInstanceOf(MarkCare::class, $model->getMarkCare());
 
         $testValueForMarkCare = $model->getMarkCareWithCreate();
 
@@ -3512,7 +3513,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlotIdentification();
 
-        $this->assertNull($model->getPlotIdentification());
+        $this->assertNotInstanceOf(PlotIdentification::class, $model->getPlotIdentification());
 
         $testValueForPlotIdentification = $model->getPlotIdentificationWithCreate();
 
@@ -3528,7 +3529,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCitySubdivisionName();
 
-        $this->assertNull($model->getCitySubdivisionName());
+        $this->assertNotInstanceOf(CitySubdivisionName::class, $model->getCitySubdivisionName());
 
         $testValueForCitySubdivisionName = $model->getCitySubdivisionNameWithCreate();
 
@@ -3544,7 +3545,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCityName();
 
-        $this->assertNull($model->getCityName());
+        $this->assertNotInstanceOf(CityName::class, $model->getCityName());
 
         $testValueForCityName = $model->getCityNameWithCreate();
 
@@ -3560,7 +3561,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPostalZone();
 
-        $this->assertNull($model->getPostalZone());
+        $this->assertNotInstanceOf(PostalZone::class, $model->getPostalZone());
 
         $testValueForPostalZone = $model->getPostalZoneWithCreate();
 
@@ -3576,7 +3577,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountrySubentity();
 
-        $this->assertNull($model->getCountrySubentity());
+        $this->assertNotInstanceOf(CountrySubentity::class, $model->getCountrySubentity());
 
         $testValueForCountrySubentity = $model->getCountrySubentityWithCreate();
 
@@ -3592,7 +3593,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountrySubentityCode();
 
-        $this->assertNull($model->getCountrySubentityCode());
+        $this->assertNotInstanceOf(CountrySubentityCode::class, $model->getCountrySubentityCode());
 
         $testValueForCountrySubentityCode = $model->getCountrySubentityCodeWithCreate();
 
@@ -3608,7 +3609,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegion();
 
-        $this->assertNull($model->getRegion());
+        $this->assertNotInstanceOf(Region::class, $model->getRegion());
 
         $testValueForRegion = $model->getRegionWithCreate();
 
@@ -3624,7 +3625,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDistrict();
 
-        $this->assertNull($model->getDistrict());
+        $this->assertNotInstanceOf(District::class, $model->getDistrict());
 
         $testValueForDistrict = $model->getDistrictWithCreate();
 
@@ -3640,7 +3641,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimezoneOffset();
 
-        $this->assertNull($model->getTimezoneOffset());
+        $this->assertNotInstanceOf(TimezoneOffset::class, $model->getTimezoneOffset());
 
         $testValueForTimezoneOffset = $model->getTimezoneOffsetWithCreate();
 
@@ -3728,7 +3729,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountry();
 
-        $this->assertNull($model->getCountry());
+        $this->assertNotInstanceOf(Country::class, $model->getCountry());
 
         $testValueForCountry = $model->getCountryWithCreate();
 
@@ -3848,7 +3849,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAircraftID();
 
-        $this->assertNull($model->getAircraftID());
+        $this->assertNotInstanceOf(AircraftID::class, $model->getAircraftID());
 
         $testValueForAircraftID = $model->getAircraftIDWithCreate();
 
@@ -3885,7 +3886,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -3912,7 +3913,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAllowanceChargeReasonCode();
 
-        $this->assertNull($model->getAllowanceChargeReasonCode());
+        $this->assertNotInstanceOf(AllowanceChargeReasonCode::class, $model->getAllowanceChargeReasonCode());
 
         $testValueForAllowanceChargeReasonCode = $model->getAllowanceChargeReasonCodeWithCreate();
 
@@ -4000,7 +4001,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMultiplierFactorNumeric();
 
-        $this->assertNull($model->getMultiplierFactorNumeric());
+        $this->assertNotInstanceOf(MultiplierFactorNumeric::class, $model->getMultiplierFactorNumeric());
 
         $testValueForMultiplierFactorNumeric = $model->getMultiplierFactorNumericWithCreate();
 
@@ -4027,7 +4028,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumeric();
 
-        $this->assertNull($model->getSequenceNumeric());
+        $this->assertNotInstanceOf(SequenceNumeric::class, $model->getSequenceNumeric());
 
         $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
@@ -4043,7 +4044,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -4059,7 +4060,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBaseAmount();
 
-        $this->assertNull($model->getBaseAmount());
+        $this->assertNotInstanceOf(BaseAmount::class, $model->getBaseAmount());
 
         $testValueForBaseAmount = $model->getBaseAmountWithCreate();
 
@@ -4075,7 +4076,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -4091,7 +4092,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -4107,7 +4108,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerUnitAmount();
 
-        $this->assertNull($model->getPerUnitAmount());
+        $this->assertNotInstanceOf(PerUnitAmount::class, $model->getPerUnitAmount());
 
         $testValueForPerUnitAmount = $model->getPerUnitAmountWithCreate();
 
@@ -4195,7 +4196,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxTotal();
 
-        $this->assertNull($model->getTaxTotal());
+        $this->assertNotInstanceOf(TaxTotal::class, $model->getTaxTotal());
 
         $testValueForTaxTotal = $model->getTaxTotalWithCreate();
 
@@ -4453,7 +4454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPresentationPeriod();
 
-        $this->assertNull($model->getPresentationPeriod());
+        $this->assertNotInstanceOf(PresentationPeriod::class, $model->getPresentationPeriod());
 
         $testValueForPresentationPeriod = $model->getPresentationPeriodWithCreate();
 
@@ -4469,7 +4470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAppealInformationParty();
 
-        $this->assertNull($model->getAppealInformationParty());
+        $this->assertNotInstanceOf(AppealInformationParty::class, $model->getAppealInformationParty());
 
         $testValueForAppealInformationParty = $model->getAppealInformationPartyWithCreate();
 
@@ -4485,7 +4486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAppealReceiverParty();
 
-        $this->assertNull($model->getAppealReceiverParty());
+        $this->assertNotInstanceOf(AppealReceiverParty::class, $model->getAppealReceiverParty());
 
         $testValueForAppealReceiverParty = $model->getAppealReceiverPartyWithCreate();
 
@@ -4501,7 +4502,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMediationParty();
 
-        $this->assertNull($model->getMediationParty());
+        $this->assertNotInstanceOf(MediationParty::class, $model->getMediationParty());
 
         $testValueForMediationParty = $model->getMediationPartyWithCreate();
 
@@ -4626,7 +4627,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmbeddedDocumentBinaryObject();
 
-        $this->assertNull($model->getEmbeddedDocumentBinaryObject());
+        $this->assertNotInstanceOf(EmbeddedDocumentBinaryObject::class, $model->getEmbeddedDocumentBinaryObject());
 
         $testValueForEmbeddedDocumentBinaryObject = $model->getEmbeddedDocumentBinaryObjectWithCreate();
 
@@ -4642,7 +4643,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExternalReference();
 
-        $this->assertNull($model->getExternalReference());
+        $this->assertNotInstanceOf(ExternalReference::class, $model->getExternalReference());
 
         $testValueForExternalReference = $model->getExternalReferenceWithCreate();
 
@@ -5050,7 +5051,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAuctionURI();
 
-        $this->assertNull($model->getAuctionURI());
+        $this->assertNotInstanceOf(AuctionURI::class, $model->getAuctionURI());
 
         $testValueForAuctionURI = $model->getAuctionURIWithCreate();
 
@@ -5120,7 +5121,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -5136,7 +5137,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardingCriterionID();
 
-        $this->assertNull($model->getAwardingCriterionID());
+        $this->assertNotInstanceOf(AwardingCriterionID::class, $model->getAwardingCriterionID());
 
         $testValueForAwardingCriterionID = $model->getAwardingCriterionIDWithCreate();
 
@@ -5296,7 +5297,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -5312,7 +5313,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -5410,7 +5411,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -5426,7 +5427,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardingCriterionTypeCode();
 
-        $this->assertNull($model->getAwardingCriterionTypeCode());
+        $this->assertNotInstanceOf(AwardingCriterionTypeCode::class, $model->getAwardingCriterionTypeCode());
 
         $testValueForAwardingCriterionTypeCode = $model->getAwardingCriterionTypeCodeWithCreate();
 
@@ -5514,7 +5515,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWeightNumeric();
 
-        $this->assertNull($model->getWeightNumeric());
+        $this->assertNotInstanceOf(WeightNumeric::class, $model->getWeightNumeric());
 
         $testValueForWeightNumeric = $model->getWeightNumericWithCreate();
 
@@ -5674,7 +5675,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCalculationExpressionCode();
 
-        $this->assertNull($model->getCalculationExpressionCode());
+        $this->assertNotInstanceOf(CalculationExpressionCode::class, $model->getCalculationExpressionCode());
 
         $testValueForCalculationExpressionCode = $model->getCalculationExpressionCodeWithCreate();
 
@@ -5690,7 +5691,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -5706,7 +5707,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -5722,7 +5723,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumAmount();
 
-        $this->assertNull($model->getMinimumAmount());
+        $this->assertNotInstanceOf(MinimumAmount::class, $model->getMinimumAmount());
 
         $testValueForMinimumAmount = $model->getMinimumAmountWithCreate();
 
@@ -5738,7 +5739,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumAmount();
 
-        $this->assertNull($model->getMaximumAmount());
+        $this->assertNotInstanceOf(MaximumAmount::class, $model->getMaximumAmount());
 
         $testValueForMaximumAmount = $model->getMaximumAmountWithCreate();
 
@@ -5919,7 +5920,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWeightingAlgorithmCode();
 
-        $this->assertNull($model->getWeightingAlgorithmCode());
+        $this->assertNotInstanceOf(WeightingAlgorithmCode::class, $model->getWeightingAlgorithmCode());
 
         $testValueForWeightingAlgorithmCode = $model->getWeightingAlgorithmCodeWithCreate();
 
@@ -6515,7 +6516,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -6531,7 +6532,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -6629,7 +6630,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoiceDocumentReference();
 
-        $this->assertNull($model->getInvoiceDocumentReference());
+        $this->assertNotInstanceOf(InvoiceDocumentReference::class, $model->getInvoiceDocumentReference());
 
         $testValueForInvoiceDocumentReference = $model->getInvoiceDocumentReferenceWithCreate();
 
@@ -6645,7 +6646,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSelfBilledInvoiceDocumentReference();
 
-        $this->assertNull($model->getSelfBilledInvoiceDocumentReference());
+        $this->assertNotInstanceOf(SelfBilledInvoiceDocumentReference::class, $model->getSelfBilledInvoiceDocumentReference());
 
         $testValueForSelfBilledInvoiceDocumentReference = $model->getSelfBilledInvoiceDocumentReferenceWithCreate();
 
@@ -6661,7 +6662,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditNoteDocumentReference();
 
-        $this->assertNull($model->getCreditNoteDocumentReference());
+        $this->assertNotInstanceOf(CreditNoteDocumentReference::class, $model->getCreditNoteDocumentReference());
 
         $testValueForCreditNoteDocumentReference = $model->getCreditNoteDocumentReferenceWithCreate();
 
@@ -6677,7 +6678,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSelfBilledCreditNoteDocumentReference();
 
-        $this->assertNull($model->getSelfBilledCreditNoteDocumentReference());
+        $this->assertNotInstanceOf(SelfBilledCreditNoteDocumentReference::class, $model->getSelfBilledCreditNoteDocumentReference());
 
         $testValueForSelfBilledCreditNoteDocumentReference = $model->getSelfBilledCreditNoteDocumentReferenceWithCreate();
 
@@ -6693,7 +6694,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDebitNoteDocumentReference();
 
-        $this->assertNull($model->getDebitNoteDocumentReference());
+        $this->assertNotInstanceOf(DebitNoteDocumentReference::class, $model->getDebitNoteDocumentReference());
 
         $testValueForDebitNoteDocumentReference = $model->getDebitNoteDocumentReferenceWithCreate();
 
@@ -6709,7 +6710,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReminderDocumentReference();
 
-        $this->assertNull($model->getReminderDocumentReference());
+        $this->assertNotInstanceOf(ReminderDocumentReference::class, $model->getReminderDocumentReference());
 
         $testValueForReminderDocumentReference = $model->getReminderDocumentReferenceWithCreate();
 
@@ -6725,7 +6726,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdditionalDocumentReference();
 
-        $this->assertNull($model->getAdditionalDocumentReference());
+        $this->assertNotInstanceOf(AdditionalDocumentReference::class, $model->getAdditionalDocumentReference());
 
         $testValueForAdditionalDocumentReference = $model->getAdditionalDocumentReferenceWithCreate();
 
@@ -6867,7 +6868,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -6883,7 +6884,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -6899,7 +6900,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancialInstitution();
 
-        $this->assertNull($model->getFinancialInstitution());
+        $this->assertNotInstanceOf(FinancialInstitution::class, $model->getFinancialInstitution());
 
         $testValueForFinancialInstitution = $model->getFinancialInstitutionWithCreate();
 
@@ -6915,7 +6916,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddress();
 
-        $this->assertNull($model->getAddress());
+        $this->assertNotInstanceOf(Address::class, $model->getAddress());
 
         $testValueForAddress = $model->getAddressWithCreate();
 
@@ -6963,7 +6964,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -6979,7 +6980,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalAmount();
 
-        $this->assertNull($model->getTotalAmount());
+        $this->assertNotInstanceOf(TotalAmount::class, $model->getTotalAmount());
 
         $testValueForTotalAmount = $model->getTotalAmountWithCreate();
 
@@ -7077,7 +7078,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -7093,7 +7094,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBudgetYearNumeric();
 
-        $this->assertNull($model->getBudgetYearNumeric());
+        $this->assertNotInstanceOf(BudgetYearNumeric::class, $model->getBudgetYearNumeric());
 
         $testValueForBudgetYearNumeric = $model->getBudgetYearNumericWithCreate();
 
@@ -7109,7 +7110,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequiredClassificationScheme();
 
-        $this->assertNull($model->getRequiredClassificationScheme());
+        $this->assertNotInstanceOf(RequiredClassificationScheme::class, $model->getRequiredClassificationScheme());
 
         $testValueForRequiredClassificationScheme = $model->getRequiredClassificationSchemeWithCreate();
 
@@ -7234,7 +7235,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCapabilityTypeCode();
 
-        $this->assertNull($model->getCapabilityTypeCode());
+        $this->assertNotInstanceOf(CapabilityTypeCode::class, $model->getCapabilityTypeCode());
 
         $testValueForCapabilityTypeCode = $model->getCapabilityTypeCodeWithCreate();
 
@@ -7322,7 +7323,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueAmount();
 
-        $this->assertNull($model->getValueAmount());
+        $this->assertNotInstanceOf(ValueAmount::class, $model->getValueAmount());
 
         $testValueForValueAmount = $model->getValueAmountWithCreate();
 
@@ -7338,7 +7339,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueQuantity();
 
-        $this->assertNull($model->getValueQuantity());
+        $this->assertNotInstanceOf(ValueQuantity::class, $model->getValueQuantity());
 
         $testValueForValueQuantity = $model->getValueQuantityWithCreate();
 
@@ -7426,7 +7427,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityPeriod();
 
-        $this->assertNull($model->getValidityPeriod());
+        $this->assertNotInstanceOf(ValidityPeriod::class, $model->getValidityPeriod());
 
         $testValueForValidityPeriod = $model->getValidityPeriodWithCreate();
 
@@ -7463,7 +7464,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrimaryAccountNumberID();
 
-        $this->assertNull($model->getPrimaryAccountNumberID());
+        $this->assertNotInstanceOf(PrimaryAccountNumberID::class, $model->getPrimaryAccountNumberID());
 
         $testValueForPrimaryAccountNumberID = $model->getPrimaryAccountNumberIDWithCreate();
 
@@ -7479,7 +7480,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetworkID();
 
-        $this->assertNull($model->getNetworkID());
+        $this->assertNotInstanceOf(NetworkID::class, $model->getNetworkID());
 
         $testValueForNetworkID = $model->getNetworkIDWithCreate();
 
@@ -7495,7 +7496,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCardTypeCode();
 
-        $this->assertNull($model->getCardTypeCode());
+        $this->assertNotInstanceOf(CardTypeCode::class, $model->getCardTypeCode());
 
         $testValueForCardTypeCode = $model->getCardTypeCodeWithCreate();
 
@@ -7511,7 +7512,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityStartDate();
 
-        $this->assertNull($model->getValidityStartDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValidityStartDate());
 
         // Property ExpiryDate
 
@@ -7522,7 +7523,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpiryDate();
 
-        $this->assertNull($model->getExpiryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getExpiryDate());
 
         // Property IssuerID
 
@@ -7533,7 +7534,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerID();
 
-        $this->assertNull($model->getIssuerID());
+        $this->assertNotInstanceOf(IssuerID::class, $model->getIssuerID());
 
         $testValueForIssuerID = $model->getIssuerIDWithCreate();
 
@@ -7549,7 +7550,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueNumberID();
 
-        $this->assertNull($model->getIssueNumberID());
+        $this->assertNotInstanceOf(IssueNumberID::class, $model->getIssueNumberID());
 
         $testValueForIssueNumberID = $model->getIssueNumberIDWithCreate();
 
@@ -7565,7 +7566,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCV2ID();
 
-        $this->assertNull($model->getCV2ID());
+        $this->assertNotInstanceOf(CV2ID::class, $model->getCV2ID());
 
         $testValueForCV2ID = $model->getCV2IDWithCreate();
 
@@ -7581,7 +7582,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCardChipCode();
 
-        $this->assertNull($model->getCardChipCode());
+        $this->assertNotInstanceOf(CardChipCode::class, $model->getCardChipCode());
 
         $testValueForCardChipCode = $model->getCardChipCodeWithCreate();
 
@@ -7597,7 +7598,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChipApplicationID();
 
-        $this->assertNull($model->getChipApplicationID());
+        $this->assertNotInstanceOf(ChipApplicationID::class, $model->getChipApplicationID());
 
         $testValueForChipApplicationID = $model->getChipApplicationIDWithCreate();
 
@@ -7613,7 +7614,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHolderName();
 
-        $this->assertNull($model->getHolderName());
+        $this->assertNotInstanceOf(HolderName::class, $model->getHolderName());
 
         $testValueForHolderName = $model->getHolderNameWithCreate();
 
@@ -7683,7 +7684,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -7699,7 +7700,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractorCustomerParty();
 
-        $this->assertNull($model->getContractorCustomerParty());
+        $this->assertNotInstanceOf(ContractorCustomerParty::class, $model->getContractorCustomerParty());
 
         $testValueForContractorCustomerParty = $model->getContractorCustomerPartyWithCreate();
 
@@ -7715,7 +7716,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -7731,7 +7732,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -7779,7 +7780,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -7795,7 +7796,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActionCode();
 
-        $this->assertNull($model->getActionCode());
+        $this->assertNotInstanceOf(ActionCode::class, $model->getActionCode());
 
         $testValueForActionCode = $model->getActionCodeWithCreate();
 
@@ -7811,7 +7812,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLifeCycleStatusCode();
 
-        $this->assertNull($model->getLifeCycleStatusCode());
+        $this->assertNotInstanceOf(LifeCycleStatusCode::class, $model->getLifeCycleStatusCode());
 
         $testValueForLifeCycleStatusCode = $model->getLifeCycleStatusCodeWithCreate();
 
@@ -7827,7 +7828,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractSubdivision();
 
-        $this->assertNull($model->getContractSubdivision());
+        $this->assertNotInstanceOf(ContractSubdivision::class, $model->getContractSubdivision());
 
         $testValueForContractSubdivision = $model->getContractSubdivisionWithCreate();
 
@@ -7926,7 +7927,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderableUnit();
 
-        $this->assertNull($model->getOrderableUnit());
+        $this->assertNotInstanceOf(OrderableUnit::class, $model->getOrderableUnit());
 
         $testValueForOrderableUnit = $model->getOrderableUnitWithCreate();
 
@@ -7942,7 +7943,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContentUnitQuantity();
 
-        $this->assertNull($model->getContentUnitQuantity());
+        $this->assertNotInstanceOf(ContentUnitQuantity::class, $model->getContentUnitQuantity());
 
         $testValueForContentUnitQuantity = $model->getContentUnitQuantityWithCreate();
 
@@ -7958,7 +7959,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderQuantityIncrementNumeric();
 
-        $this->assertNull($model->getOrderQuantityIncrementNumeric());
+        $this->assertNotInstanceOf(OrderQuantityIncrementNumeric::class, $model->getOrderQuantityIncrementNumeric());
 
         $testValueForOrderQuantityIncrementNumeric = $model->getOrderQuantityIncrementNumericWithCreate();
 
@@ -7974,7 +7975,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumOrderQuantity();
 
-        $this->assertNull($model->getMinimumOrderQuantity());
+        $this->assertNotInstanceOf(MinimumOrderQuantity::class, $model->getMinimumOrderQuantity());
 
         $testValueForMinimumOrderQuantity = $model->getMinimumOrderQuantityWithCreate();
 
@@ -7990,7 +7991,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumOrderQuantity();
 
-        $this->assertNull($model->getMaximumOrderQuantity());
+        $this->assertNotInstanceOf(MaximumOrderQuantity::class, $model->getMaximumOrderQuantity());
 
         $testValueForMaximumOrderQuantity = $model->getMaximumOrderQuantityWithCreate();
 
@@ -8078,7 +8079,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackLevelCode();
 
-        $this->assertNull($model->getPackLevelCode());
+        $this->assertNotInstanceOf(PackLevelCode::class, $model->getPackLevelCode());
 
         $testValueForPackLevelCode = $model->getPackLevelCodeWithCreate();
 
@@ -8094,7 +8095,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractorCustomerParty();
 
-        $this->assertNull($model->getContractorCustomerParty());
+        $this->assertNotInstanceOf(ContractorCustomerParty::class, $model->getContractorCustomerParty());
 
         $testValueForContractorCustomerParty = $model->getContractorCustomerPartyWithCreate();
 
@@ -8110,7 +8111,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -8126,7 +8127,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyParty();
 
-        $this->assertNull($model->getWarrantyParty());
+        $this->assertNotInstanceOf(WarrantyParty::class, $model->getWarrantyParty());
 
         $testValueForWarrantyParty = $model->getWarrantyPartyWithCreate();
 
@@ -8142,7 +8143,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyValidityPeriod();
 
-        $this->assertNull($model->getWarrantyValidityPeriod());
+        $this->assertNotInstanceOf(WarrantyValidityPeriod::class, $model->getWarrantyValidityPeriod());
 
         $testValueForWarrantyValidityPeriod = $model->getWarrantyValidityPeriodWithCreate();
 
@@ -8158,7 +8159,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineValidityPeriod();
 
-        $this->assertNull($model->getLineValidityPeriod());
+        $this->assertNotInstanceOf(LineValidityPeriod::class, $model->getLineValidityPeriod());
 
         $testValueForLineValidityPeriod = $model->getLineValidityPeriodWithCreate();
 
@@ -8822,7 +8823,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -8910,7 +8911,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallForTendersLineReference();
 
-        $this->assertNull($model->getCallForTendersLineReference());
+        $this->assertNotInstanceOf(CallForTendersLineReference::class, $model->getCallForTendersLineReference());
 
         $testValueForCallForTendersLineReference = $model->getCallForTendersLineReferenceWithCreate();
 
@@ -8926,7 +8927,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallForTendersDocumentReference();
 
-        $this->assertNull($model->getCallForTendersDocumentReference());
+        $this->assertNotInstanceOf(CallForTendersDocumentReference::class, $model->getCallForTendersDocumentReference());
 
         $testValueForCallForTendersDocumentReference = $model->getCallForTendersDocumentReferenceWithCreate();
 
@@ -8963,7 +8964,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -8979,7 +8980,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractorCustomerParty();
 
-        $this->assertNull($model->getContractorCustomerParty());
+        $this->assertNotInstanceOf(ContractorCustomerParty::class, $model->getContractorCustomerParty());
 
         $testValueForContractorCustomerParty = $model->getContractorCustomerPartyWithCreate();
 
@@ -8995,7 +8996,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -9104,7 +9105,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -9120,7 +9121,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -9136,7 +9137,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -9147,7 +9148,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property RevisionDate
 
@@ -9158,7 +9159,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRevisionDate();
 
-        $this->assertNull($model->getRevisionDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRevisionDate());
 
         // Property RevisionTime
 
@@ -9169,7 +9170,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRevisionTime();
 
-        $this->assertNull($model->getRevisionTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRevisionTime());
 
         // (1) Property Note - Test set empty array
 
@@ -9324,7 +9325,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVersionID();
 
-        $this->assertNull($model->getVersionID());
+        $this->assertNotInstanceOf(VersionID::class, $model->getVersionID());
 
         $testValueForVersionID = $model->getVersionIDWithCreate();
 
@@ -9340,7 +9341,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousVersionID();
 
-        $this->assertNull($model->getPreviousVersionID());
+        $this->assertNotInstanceOf(PreviousVersionID::class, $model->getPreviousVersionID());
 
         $testValueForPreviousVersionID = $model->getPreviousVersionIDWithCreate();
 
@@ -9377,7 +9378,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -9393,7 +9394,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractSubdivision();
 
-        $this->assertNull($model->getContractSubdivision());
+        $this->assertNotInstanceOf(ContractSubdivision::class, $model->getContractSubdivision());
 
         $testValueForContractSubdivision = $model->getContractSubdivisionWithCreate();
 
@@ -9481,7 +9482,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineValidityPeriod();
 
-        $this->assertNull($model->getLineValidityPeriod());
+        $this->assertNotInstanceOf(LineValidityPeriod::class, $model->getLineValidityPeriod());
 
         $testValueForLineValidityPeriod = $model->getLineValidityPeriodWithCreate();
 
@@ -9569,7 +9570,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -9628,7 +9629,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceID();
 
-        $this->assertNull($model->getReferenceID());
+        $this->assertNotInstanceOf(ReferenceID::class, $model->getReferenceID());
 
         $testValueForReferenceID = $model->getReferenceIDWithCreate();
 
@@ -9644,7 +9645,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCertificateType();
 
-        $this->assertNull($model->getCertificateType());
+        $this->assertNotInstanceOf(CertificateType1::class, $model->getCertificateType());
 
         $testValueForCertificateType = $model->getCertificateTypeWithCreate();
 
@@ -9660,7 +9661,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetApplicationStatusCode();
 
-        $this->assertNull($model->getApplicationStatusCode());
+        $this->assertNotInstanceOf(ApplicationStatusCode::class, $model->getApplicationStatusCode());
 
         $testValueForApplicationStatusCode = $model->getApplicationStatusCodeWithCreate();
 
@@ -9676,7 +9677,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalJobID();
 
-        $this->assertNull($model->getOriginalJobID());
+        $this->assertNotInstanceOf(OriginalJobID::class, $model->getOriginalJobID());
 
         $testValueForOriginalJobID = $model->getOriginalJobIDWithCreate();
 
@@ -9692,7 +9693,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousJobID();
 
-        $this->assertNull($model->getPreviousJobID());
+        $this->assertNotInstanceOf(PreviousJobID::class, $model->getPreviousJobID());
 
         $testValueForPreviousJobID = $model->getPreviousJobIDWithCreate();
 
@@ -9780,7 +9781,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShipment();
 
-        $this->assertNull($model->getShipment());
+        $this->assertNotInstanceOf(Shipment::class, $model->getShipment());
 
         $testValueForShipment = $model->getShipmentWithCreate();
 
@@ -9868,7 +9869,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreparationParty();
 
-        $this->assertNull($model->getPreparationParty());
+        $this->assertNotInstanceOf(PreparationParty::class, $model->getPreparationParty());
 
         $testValueForPreparationParty = $model->getPreparationPartyWithCreate();
 
@@ -9884,7 +9885,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -9900,7 +9901,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExporterParty();
 
-        $this->assertNull($model->getExporterParty());
+        $this->assertNotInstanceOf(ExporterParty::class, $model->getExporterParty());
 
         $testValueForExporterParty = $model->getExporterPartyWithCreate();
 
@@ -9916,7 +9917,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetImporterParty();
 
-        $this->assertNull($model->getImporterParty());
+        $this->assertNotInstanceOf(ImporterParty::class, $model->getImporterParty());
 
         $testValueForImporterParty = $model->getImporterPartyWithCreate();
 
@@ -9932,7 +9933,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuingCountry();
 
-        $this->assertNull($model->getIssuingCountry());
+        $this->assertNotInstanceOf(IssuingCountry::class, $model->getIssuingCountry());
 
         $testValueForIssuingCountry = $model->getIssuingCountryWithCreate();
 
@@ -10174,7 +10175,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -10190,7 +10191,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCertificateTypeCode();
 
-        $this->assertNull($model->getCertificateTypeCode());
+        $this->assertNotInstanceOf(CertificateTypeCode::class, $model->getCertificateTypeCode());
 
         $testValueForCertificateTypeCode = $model->getCertificateTypeCodeWithCreate();
 
@@ -10206,7 +10207,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCertificateType();
 
-        $this->assertNull($model->getCertificateType());
+        $this->assertNotInstanceOf(CertificateType1::class, $model->getCertificateType());
 
         $testValueForCertificateType = $model->getCertificateTypeWithCreate();
 
@@ -10294,7 +10295,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -10486,7 +10487,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -10502,7 +10503,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCodeValue();
 
-        $this->assertNull($model->getCodeValue());
+        $this->assertNotInstanceOf(CodeValue::class, $model->getCodeValue());
 
         $testValueForCodeValue = $model->getCodeValueWithCreate();
 
@@ -10683,7 +10684,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -10699,7 +10700,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -10715,7 +10716,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLastRevisionDate();
 
-        $this->assertNull($model->getLastRevisionDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLastRevisionDate());
 
         // Property LastRevisionTime
 
@@ -10726,7 +10727,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLastRevisionTime();
 
-        $this->assertNull($model->getLastRevisionTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLastRevisionTime());
 
         // (1) Property Note - Test set empty array
 
@@ -10809,7 +10810,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -10897,7 +10898,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAgencyID();
 
-        $this->assertNull($model->getAgencyID());
+        $this->assertNotInstanceOf(AgencyID::class, $model->getAgencyID());
 
         $testValueForAgencyID = $model->getAgencyIDWithCreate();
 
@@ -10913,7 +10914,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAgencyName();
 
-        $this->assertNull($model->getAgencyName());
+        $this->assertNotInstanceOf(AgencyName::class, $model->getAgencyName());
 
         $testValueForAgencyName = $model->getAgencyNameWithCreate();
 
@@ -10929,7 +10930,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVersionID();
 
-        $this->assertNull($model->getVersionID());
+        $this->assertNotInstanceOf(VersionID::class, $model->getVersionID());
 
         $testValueForVersionID = $model->getVersionIDWithCreate();
 
@@ -10945,7 +10946,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetURI();
 
-        $this->assertNull($model->getURI());
+        $this->assertNotInstanceOf(URI::class, $model->getURI());
 
         $testValueForURI = $model->getURIWithCreate();
 
@@ -10961,7 +10962,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSchemeURI();
 
-        $this->assertNull($model->getSchemeURI());
+        $this->assertNotInstanceOf(SchemeURI::class, $model->getSchemeURI());
 
         $testValueForSchemeURI = $model->getSchemeURIWithCreate();
 
@@ -10977,7 +10978,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLanguageID();
 
-        $this->assertNull($model->getLanguageID());
+        $this->assertNotInstanceOf(LanguageID::class, $model->getLanguageID());
 
         $testValueForLanguageID = $model->getLanguageIDWithCreate();
 
@@ -11097,7 +11098,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -11239,7 +11240,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNatureCode();
 
-        $this->assertNull($model->getNatureCode());
+        $this->assertNotInstanceOf(NatureCode::class, $model->getNatureCode());
 
         $testValueForNatureCode = $model->getNatureCodeWithCreate();
 
@@ -11255,7 +11256,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCargoTypeCode();
 
-        $this->assertNull($model->getCargoTypeCode());
+        $this->assertNotInstanceOf(CargoTypeCode::class, $model->getCargoTypeCode());
 
         $testValueForCargoTypeCode = $model->getCargoTypeCodeWithCreate();
 
@@ -11271,7 +11272,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCommodityCode();
 
-        $this->assertNull($model->getCommodityCode());
+        $this->assertNotInstanceOf(CommodityCode::class, $model->getCommodityCode());
 
         $testValueForCommodityCode = $model->getCommodityCodeWithCreate();
 
@@ -11287,7 +11288,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemClassificationCode();
 
-        $this->assertNull($model->getItemClassificationCode());
+        $this->assertNotInstanceOf(ItemClassificationCode::class, $model->getItemClassificationCode());
 
         $testValueForItemClassificationCode = $model->getItemClassificationCodeWithCreate();
 
@@ -11324,7 +11325,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChannelCode();
 
-        $this->assertNull($model->getChannelCode());
+        $this->assertNotInstanceOf(ChannelCode::class, $model->getChannelCode());
 
         $testValueForChannelCode = $model->getChannelCodeWithCreate();
 
@@ -11340,7 +11341,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChannel();
 
-        $this->assertNull($model->getChannel());
+        $this->assertNotInstanceOf(Channel::class, $model->getChannel());
 
         $testValueForChannel = $model->getChannelWithCreate();
 
@@ -11356,7 +11357,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(Value::class, $model->getValue());
 
         $testValueForValue = $model->getValueWithCreate();
 
@@ -11404,7 +11405,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAnnualAverageAmount();
 
-        $this->assertNull($model->getAnnualAverageAmount());
+        $this->assertNotInstanceOf(AnnualAverageAmount::class, $model->getAnnualAverageAmount());
 
         $testValueForAnnualAverageAmount = $model->getAnnualAverageAmountWithCreate();
 
@@ -11420,7 +11421,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTaskAmount();
 
-        $this->assertNull($model->getTotalTaskAmount());
+        $this->assertNotInstanceOf(TotalTaskAmount::class, $model->getTotalTaskAmount());
 
         $testValueForTotalTaskAmount = $model->getTotalTaskAmountWithCreate();
 
@@ -11436,7 +11437,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPartyCapacityAmount();
 
-        $this->assertNull($model->getPartyCapacityAmount());
+        $this->assertNotInstanceOf(PartyCapacityAmount::class, $model->getPartyCapacityAmount());
 
         $testValueForPartyCapacityAmount = $model->getPartyCapacityAmountWithCreate();
 
@@ -11596,7 +11597,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -11612,7 +11613,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRecipientCustomerParty();
 
-        $this->assertNull($model->getRecipientCustomerParty());
+        $this->assertNotInstanceOf(RecipientCustomerParty::class, $model->getRecipientCustomerParty());
 
         $testValueForRecipientCustomerParty = $model->getRecipientCustomerPartyWithCreate();
 
@@ -11660,7 +11661,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAttributeID();
 
-        $this->assertNull($model->getAttributeID());
+        $this->assertNotInstanceOf(AttributeID::class, $model->getAttributeID());
 
         $testValueForAttributeID = $model->getAttributeIDWithCreate();
 
@@ -11676,7 +11677,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeasure();
 
-        $this->assertNull($model->getMeasure());
+        $this->assertNotInstanceOf(Measure::class, $model->getMeasure());
 
         $testValueForMeasure = $model->getMeasureWithCreate();
 
@@ -11764,7 +11765,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumMeasure();
 
-        $this->assertNull($model->getMinimumMeasure());
+        $this->assertNotInstanceOf(MinimumMeasure::class, $model->getMinimumMeasure());
 
         $testValueForMinimumMeasure = $model->getMinimumMeasureWithCreate();
 
@@ -11780,7 +11781,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumMeasure();
 
-        $this->assertNull($model->getMaximumMeasure());
+        $this->assertNotInstanceOf(MaximumMeasure::class, $model->getMaximumMeasure());
 
         $testValueForMaximumMeasure = $model->getMaximumMeasureWithCreate();
 
@@ -11828,7 +11829,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -11844,7 +11845,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCarrierAssignedID();
 
-        $this->assertNull($model->getCarrierAssignedID());
+        $this->assertNotInstanceOf(CarrierAssignedID::class, $model->getCarrierAssignedID());
 
         $testValueForCarrierAssignedID = $model->getCarrierAssignedIDWithCreate();
 
@@ -11860,7 +11861,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsigneeAssignedID();
 
-        $this->assertNull($model->getConsigneeAssignedID());
+        $this->assertNotInstanceOf(ConsigneeAssignedID::class, $model->getConsigneeAssignedID());
 
         $testValueForConsigneeAssignedID = $model->getConsigneeAssignedIDWithCreate();
 
@@ -11876,7 +11877,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsignorAssignedID();
 
-        $this->assertNull($model->getConsignorAssignedID());
+        $this->assertNotInstanceOf(ConsignorAssignedID::class, $model->getConsignorAssignedID());
 
         $testValueForConsignorAssignedID = $model->getConsignorAssignedIDWithCreate();
 
@@ -11892,7 +11893,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreightForwarderAssignedID();
 
-        $this->assertNull($model->getFreightForwarderAssignedID());
+        $this->assertNotInstanceOf(FreightForwarderAssignedID::class, $model->getFreightForwarderAssignedID());
 
         $testValueForFreightForwarderAssignedID = $model->getFreightForwarderAssignedIDWithCreate();
 
@@ -11908,7 +11909,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBrokerAssignedID();
 
-        $this->assertNull($model->getBrokerAssignedID());
+        $this->assertNotInstanceOf(BrokerAssignedID::class, $model->getBrokerAssignedID());
 
         $testValueForBrokerAssignedID = $model->getBrokerAssignedIDWithCreate();
 
@@ -11924,7 +11925,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractedCarrierAssignedID();
 
-        $this->assertNull($model->getContractedCarrierAssignedID());
+        $this->assertNotInstanceOf(ContractedCarrierAssignedID::class, $model->getContractedCarrierAssignedID());
 
         $testValueForContractedCarrierAssignedID = $model->getContractedCarrierAssignedIDWithCreate();
 
@@ -11940,7 +11941,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformingCarrierAssignedID();
 
-        $this->assertNull($model->getPerformingCarrierAssignedID());
+        $this->assertNotInstanceOf(PerformingCarrierAssignedID::class, $model->getPerformingCarrierAssignedID());
 
         $testValueForPerformingCarrierAssignedID = $model->getPerformingCarrierAssignedIDWithCreate();
 
@@ -12028,7 +12029,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalInvoiceAmount();
 
-        $this->assertNull($model->getTotalInvoiceAmount());
+        $this->assertNotInstanceOf(TotalInvoiceAmount::class, $model->getTotalInvoiceAmount());
 
         $testValueForTotalInvoiceAmount = $model->getTotalInvoiceAmountWithCreate();
 
@@ -12044,7 +12045,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredCustomsValueAmount();
 
-        $this->assertNull($model->getDeclaredCustomsValueAmount());
+        $this->assertNotInstanceOf(DeclaredCustomsValueAmount::class, $model->getDeclaredCustomsValueAmount());
 
         $testValueForDeclaredCustomsValueAmount = $model->getDeclaredCustomsValueAmountWithCreate();
 
@@ -12132,7 +12133,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTariffCode();
 
-        $this->assertNull($model->getTariffCode());
+        $this->assertNotInstanceOf(TariffCode::class, $model->getTariffCode());
 
         $testValueForTariffCode = $model->getTariffCodeWithCreate();
 
@@ -12148,7 +12149,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInsurancePremiumAmount();
 
-        $this->assertNull($model->getInsurancePremiumAmount());
+        $this->assertNotInstanceOf(InsurancePremiumAmount::class, $model->getInsurancePremiumAmount());
 
         $testValueForInsurancePremiumAmount = $model->getInsurancePremiumAmountWithCreate();
 
@@ -12164,7 +12165,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossWeightMeasure();
 
-        $this->assertNull($model->getGrossWeightMeasure());
+        $this->assertNotInstanceOf(GrossWeightMeasure::class, $model->getGrossWeightMeasure());
 
         $testValueForGrossWeightMeasure = $model->getGrossWeightMeasureWithCreate();
 
@@ -12180,7 +12181,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetWeightMeasure();
 
-        $this->assertNull($model->getNetWeightMeasure());
+        $this->assertNotInstanceOf(NetWeightMeasure::class, $model->getNetWeightMeasure());
 
         $testValueForNetWeightMeasure = $model->getNetWeightMeasureWithCreate();
 
@@ -12196,7 +12197,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetNetWeightMeasure();
 
-        $this->assertNull($model->getNetNetWeightMeasure());
+        $this->assertNotInstanceOf(NetNetWeightMeasure::class, $model->getNetNetWeightMeasure());
 
         $testValueForNetNetWeightMeasure = $model->getNetNetWeightMeasureWithCreate();
 
@@ -12212,7 +12213,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChargeableWeightMeasure();
 
-        $this->assertNull($model->getChargeableWeightMeasure());
+        $this->assertNotInstanceOf(ChargeableWeightMeasure::class, $model->getChargeableWeightMeasure());
 
         $testValueForChargeableWeightMeasure = $model->getChargeableWeightMeasureWithCreate();
 
@@ -12228,7 +12229,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossVolumeMeasure();
 
-        $this->assertNull($model->getGrossVolumeMeasure());
+        $this->assertNotInstanceOf(GrossVolumeMeasure::class, $model->getGrossVolumeMeasure());
 
         $testValueForGrossVolumeMeasure = $model->getGrossVolumeMeasureWithCreate();
 
@@ -12244,7 +12245,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetVolumeMeasure();
 
-        $this->assertNull($model->getNetVolumeMeasure());
+        $this->assertNotInstanceOf(NetVolumeMeasure::class, $model->getNetVolumeMeasure());
 
         $testValueForNetVolumeMeasure = $model->getNetVolumeMeasureWithCreate();
 
@@ -12260,7 +12261,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingLengthMeasure();
 
-        $this->assertNull($model->getLoadingLengthMeasure());
+        $this->assertNotInstanceOf(LoadingLengthMeasure::class, $model->getLoadingLengthMeasure());
 
         $testValueForLoadingLengthMeasure = $model->getLoadingLengthMeasureWithCreate();
 
@@ -12735,7 +12736,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceID();
 
-        $this->assertNull($model->getSequenceID());
+        $this->assertNotInstanceOf(SequenceID::class, $model->getSequenceID());
 
         $testValueForSequenceID = $model->getSequenceIDWithCreate();
 
@@ -12751,7 +12752,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShippingPriorityLevelCode();
 
-        $this->assertNull($model->getShippingPriorityLevelCode());
+        $this->assertNotInstanceOf(ShippingPriorityLevelCode::class, $model->getShippingPriorityLevelCode());
 
         $testValueForShippingPriorityLevelCode = $model->getShippingPriorityLevelCodeWithCreate();
 
@@ -12767,7 +12768,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHandlingCode();
 
-        $this->assertNull($model->getHandlingCode());
+        $this->assertNotInstanceOf(HandlingCode::class, $model->getHandlingCode());
 
         $testValueForHandlingCode = $model->getHandlingCodeWithCreate();
 
@@ -12927,7 +12928,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalGoodsItemQuantity();
 
-        $this->assertNull($model->getTotalGoodsItemQuantity());
+        $this->assertNotInstanceOf(TotalGoodsItemQuantity::class, $model->getTotalGoodsItemQuantity());
 
         $testValueForTotalGoodsItemQuantity = $model->getTotalGoodsItemQuantityWithCreate();
 
@@ -12943,7 +12944,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTransportHandlingUnitQuantity();
 
-        $this->assertNull($model->getTotalTransportHandlingUnitQuantity());
+        $this->assertNotInstanceOf(TotalTransportHandlingUnitQuantity::class, $model->getTotalTransportHandlingUnitQuantity());
 
         $testValueForTotalTransportHandlingUnitQuantity = $model->getTotalTransportHandlingUnitQuantityWithCreate();
 
@@ -12959,7 +12960,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInsuranceValueAmount();
 
-        $this->assertNull($model->getInsuranceValueAmount());
+        $this->assertNotInstanceOf(InsuranceValueAmount::class, $model->getInsuranceValueAmount());
 
         $testValueForInsuranceValueAmount = $model->getInsuranceValueAmountWithCreate();
 
@@ -12975,7 +12976,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredForCarriageValueAmount();
 
-        $this->assertNull($model->getDeclaredForCarriageValueAmount());
+        $this->assertNotInstanceOf(DeclaredForCarriageValueAmount::class, $model->getDeclaredForCarriageValueAmount());
 
         $testValueForDeclaredForCarriageValueAmount = $model->getDeclaredForCarriageValueAmountWithCreate();
 
@@ -12991,7 +12992,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredStatisticsValueAmount();
 
-        $this->assertNull($model->getDeclaredStatisticsValueAmount());
+        $this->assertNotInstanceOf(DeclaredStatisticsValueAmount::class, $model->getDeclaredStatisticsValueAmount());
 
         $testValueForDeclaredStatisticsValueAmount = $model->getDeclaredStatisticsValueAmountWithCreate();
 
@@ -13007,7 +13008,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreeOnBoardValueAmount();
 
-        $this->assertNull($model->getFreeOnBoardValueAmount());
+        $this->assertNotInstanceOf(FreeOnBoardValueAmount::class, $model->getFreeOnBoardValueAmount());
 
         $testValueForFreeOnBoardValueAmount = $model->getFreeOnBoardValueAmountWithCreate();
 
@@ -13178,7 +13179,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsignmentQuantity();
 
-        $this->assertNull($model->getConsignmentQuantity());
+        $this->assertNotInstanceOf(ConsignmentQuantity::class, $model->getConsignmentQuantity());
 
         $testValueForConsignmentQuantity = $model->getConsignmentQuantityWithCreate();
 
@@ -13277,7 +13278,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingSequenceID();
 
-        $this->assertNull($model->getLoadingSequenceID());
+        $this->assertNotInstanceOf(LoadingSequenceID::class, $model->getLoadingSequenceID());
 
         $testValueForLoadingSequenceID = $model->getLoadingSequenceIDWithCreate();
 
@@ -13293,7 +13294,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChildConsignmentQuantity();
 
-        $this->assertNull($model->getChildConsignmentQuantity());
+        $this->assertNotInstanceOf(ChildConsignmentQuantity::class, $model->getChildConsignmentQuantity());
 
         $testValueForChildConsignmentQuantity = $model->getChildConsignmentQuantityWithCreate();
 
@@ -13309,7 +13310,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalPackagesQuantity();
 
-        $this->assertNull($model->getTotalPackagesQuantity());
+        $this->assertNotInstanceOf(TotalPackagesQuantity::class, $model->getTotalPackagesQuantity());
 
         $testValueForTotalPackagesQuantity = $model->getTotalPackagesQuantityWithCreate();
 
@@ -13469,7 +13470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedPickupTransportEvent();
 
-        $this->assertNull($model->getRequestedPickupTransportEvent());
+        $this->assertNotInstanceOf(RequestedPickupTransportEvent::class, $model->getRequestedPickupTransportEvent());
 
         $testValueForRequestedPickupTransportEvent = $model->getRequestedPickupTransportEventWithCreate();
 
@@ -13485,7 +13486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDeliveryTransportEvent();
 
-        $this->assertNull($model->getRequestedDeliveryTransportEvent());
+        $this->assertNotInstanceOf(RequestedDeliveryTransportEvent::class, $model->getRequestedDeliveryTransportEvent());
 
         $testValueForRequestedDeliveryTransportEvent = $model->getRequestedDeliveryTransportEventWithCreate();
 
@@ -13501,7 +13502,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedPickupTransportEvent();
 
-        $this->assertNull($model->getPlannedPickupTransportEvent());
+        $this->assertNotInstanceOf(PlannedPickupTransportEvent::class, $model->getPlannedPickupTransportEvent());
 
         $testValueForPlannedPickupTransportEvent = $model->getPlannedPickupTransportEventWithCreate();
 
@@ -13517,7 +13518,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedDeliveryTransportEvent();
 
-        $this->assertNull($model->getPlannedDeliveryTransportEvent());
+        $this->assertNotInstanceOf(PlannedDeliveryTransportEvent::class, $model->getPlannedDeliveryTransportEvent());
 
         $testValueForPlannedDeliveryTransportEvent = $model->getPlannedDeliveryTransportEventWithCreate();
 
@@ -13677,7 +13678,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsigneeParty();
 
-        $this->assertNull($model->getConsigneeParty());
+        $this->assertNotInstanceOf(ConsigneeParty::class, $model->getConsigneeParty());
 
         $testValueForConsigneeParty = $model->getConsigneePartyWithCreate();
 
@@ -13693,7 +13694,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExporterParty();
 
-        $this->assertNull($model->getExporterParty());
+        $this->assertNotInstanceOf(ExporterParty::class, $model->getExporterParty());
 
         $testValueForExporterParty = $model->getExporterPartyWithCreate();
 
@@ -13709,7 +13710,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsignorParty();
 
-        $this->assertNull($model->getConsignorParty());
+        $this->assertNotInstanceOf(ConsignorParty::class, $model->getConsignorParty());
 
         $testValueForConsignorParty = $model->getConsignorPartyWithCreate();
 
@@ -13725,7 +13726,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetImporterParty();
 
-        $this->assertNull($model->getImporterParty());
+        $this->assertNotInstanceOf(ImporterParty::class, $model->getImporterParty());
 
         $testValueForImporterParty = $model->getImporterPartyWithCreate();
 
@@ -13741,7 +13742,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCarrierParty();
 
-        $this->assertNull($model->getCarrierParty());
+        $this->assertNotInstanceOf(CarrierParty::class, $model->getCarrierParty());
 
         $testValueForCarrierParty = $model->getCarrierPartyWithCreate();
 
@@ -13757,7 +13758,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreightForwarderParty();
 
-        $this->assertNull($model->getFreightForwarderParty());
+        $this->assertNotInstanceOf(FreightForwarderParty::class, $model->getFreightForwarderParty());
 
         $testValueForFreightForwarderParty = $model->getFreightForwarderPartyWithCreate();
 
@@ -13773,7 +13774,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNotifyParty();
 
-        $this->assertNull($model->getNotifyParty());
+        $this->assertNotInstanceOf(NotifyParty::class, $model->getNotifyParty());
 
         $testValueForNotifyParty = $model->getNotifyPartyWithCreate();
 
@@ -13789,7 +13790,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalDespatchParty();
 
-        $this->assertNull($model->getOriginalDespatchParty());
+        $this->assertNotInstanceOf(OriginalDespatchParty::class, $model->getOriginalDespatchParty());
 
         $testValueForOriginalDespatchParty = $model->getOriginalDespatchPartyWithCreate();
 
@@ -13805,7 +13806,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinalDeliveryParty();
 
-        $this->assertNull($model->getFinalDeliveryParty());
+        $this->assertNotInstanceOf(FinalDeliveryParty::class, $model->getFinalDeliveryParty());
 
         $testValueForFinalDeliveryParty = $model->getFinalDeliveryPartyWithCreate();
 
@@ -13821,7 +13822,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformingCarrierParty();
 
-        $this->assertNull($model->getPerformingCarrierParty());
+        $this->assertNotInstanceOf(PerformingCarrierParty::class, $model->getPerformingCarrierParty());
 
         $testValueForPerformingCarrierParty = $model->getPerformingCarrierPartyWithCreate();
 
@@ -13837,7 +13838,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubstituteCarrierParty();
 
-        $this->assertNull($model->getSubstituteCarrierParty());
+        $this->assertNotInstanceOf(SubstituteCarrierParty::class, $model->getSubstituteCarrierParty());
 
         $testValueForSubstituteCarrierParty = $model->getSubstituteCarrierPartyWithCreate();
 
@@ -13853,7 +13854,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLogisticsOperatorParty();
 
-        $this->assertNull($model->getLogisticsOperatorParty());
+        $this->assertNotInstanceOf(LogisticsOperatorParty::class, $model->getLogisticsOperatorParty());
 
         $testValueForLogisticsOperatorParty = $model->getLogisticsOperatorPartyWithCreate();
 
@@ -13869,7 +13870,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportAdvisorParty();
 
-        $this->assertNull($model->getTransportAdvisorParty());
+        $this->assertNotInstanceOf(TransportAdvisorParty::class, $model->getTransportAdvisorParty());
 
         $testValueForTransportAdvisorParty = $model->getTransportAdvisorPartyWithCreate();
 
@@ -13885,7 +13886,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHazardousItemNotificationParty();
 
-        $this->assertNull($model->getHazardousItemNotificationParty());
+        $this->assertNotInstanceOf(HazardousItemNotificationParty::class, $model->getHazardousItemNotificationParty());
 
         $testValueForHazardousItemNotificationParty = $model->getHazardousItemNotificationPartyWithCreate();
 
@@ -13901,7 +13902,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInsuranceParty();
 
-        $this->assertNull($model->getInsuranceParty());
+        $this->assertNotInstanceOf(InsuranceParty::class, $model->getInsuranceParty());
 
         $testValueForInsuranceParty = $model->getInsurancePartyWithCreate();
 
@@ -13917,7 +13918,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMortgageHolderParty();
 
-        $this->assertNull($model->getMortgageHolderParty());
+        $this->assertNotInstanceOf(MortgageHolderParty::class, $model->getMortgageHolderParty());
 
         $testValueForMortgageHolderParty = $model->getMortgageHolderPartyWithCreate();
 
@@ -13933,7 +13934,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBillOfLadingHolderParty();
 
-        $this->assertNull($model->getBillOfLadingHolderParty());
+        $this->assertNotInstanceOf(BillOfLadingHolderParty::class, $model->getBillOfLadingHolderParty());
 
         $testValueForBillOfLadingHolderParty = $model->getBillOfLadingHolderPartyWithCreate();
 
@@ -13949,7 +13950,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalDepartureCountry();
 
-        $this->assertNull($model->getOriginalDepartureCountry());
+        $this->assertNotInstanceOf(OriginalDepartureCountry::class, $model->getOriginalDepartureCountry());
 
         $testValueForOriginalDepartureCountry = $model->getOriginalDepartureCountryWithCreate();
 
@@ -13965,7 +13966,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinalDestinationCountry();
 
-        $this->assertNull($model->getFinalDestinationCountry());
+        $this->assertNotInstanceOf(FinalDestinationCountry::class, $model->getFinalDestinationCountry());
 
         $testValueForFinalDestinationCountry = $model->getFinalDestinationCountryWithCreate();
 
@@ -14053,7 +14054,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportContract();
 
-        $this->assertNull($model->getTransportContract());
+        $this->assertNotInstanceOf(TransportContract::class, $model->getTransportContract());
 
         $testValueForTransportContract = $model->getTransportContractWithCreate();
 
@@ -14141,7 +14142,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalDespatchTransportationService();
 
-        $this->assertNull($model->getOriginalDespatchTransportationService());
+        $this->assertNotInstanceOf(OriginalDespatchTransportationService::class, $model->getOriginalDespatchTransportationService());
 
         $testValueForOriginalDespatchTransportationService = $model->getOriginalDespatchTransportationServiceWithCreate();
 
@@ -14157,7 +14158,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinalDeliveryTransportationService();
 
-        $this->assertNull($model->getFinalDeliveryTransportationService());
+        $this->assertNotInstanceOf(FinalDeliveryTransportationService::class, $model->getFinalDeliveryTransportationService());
 
         $testValueForFinalDeliveryTransportationService = $model->getFinalDeliveryTransportationServiceWithCreate();
 
@@ -14173,7 +14174,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryTerms();
 
-        $this->assertNull($model->getDeliveryTerms());
+        $this->assertNotInstanceOf(DeliveryTerms::class, $model->getDeliveryTerms());
 
         $testValueForDeliveryTerms = $model->getDeliveryTermsWithCreate();
 
@@ -14189,7 +14190,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentTerms();
 
-        $this->assertNull($model->getPaymentTerms());
+        $this->assertNotInstanceOf(PaymentTerms::class, $model->getPaymentTerms());
 
         $testValueForPaymentTerms = $model->getPaymentTermsWithCreate();
 
@@ -14205,7 +14206,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCollectPaymentTerms();
 
-        $this->assertNull($model->getCollectPaymentTerms());
+        $this->assertNotInstanceOf(CollectPaymentTerms::class, $model->getCollectPaymentTerms());
 
         $testValueForCollectPaymentTerms = $model->getCollectPaymentTermsWithCreate();
 
@@ -14221,7 +14222,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDisbursementPaymentTerms();
 
-        $this->assertNull($model->getDisbursementPaymentTerms());
+        $this->assertNotInstanceOf(DisbursementPaymentTerms::class, $model->getDisbursementPaymentTerms());
 
         $testValueForDisbursementPaymentTerms = $model->getDisbursementPaymentTermsWithCreate();
 
@@ -14237,7 +14238,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrepaidPaymentTerms();
 
-        $this->assertNull($model->getPrepaidPaymentTerms());
+        $this->assertNotInstanceOf(PrepaidPaymentTerms::class, $model->getPrepaidPaymentTerms());
 
         $testValueForPrepaidPaymentTerms = $model->getPrepaidPaymentTermsWithCreate();
 
@@ -14685,7 +14686,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFirstArrivalPortLocation();
 
-        $this->assertNull($model->getFirstArrivalPortLocation());
+        $this->assertNotInstanceOf(FirstArrivalPortLocation::class, $model->getFirstArrivalPortLocation());
 
         $testValueForFirstArrivalPortLocation = $model->getFirstArrivalPortLocationWithCreate();
 
@@ -14701,7 +14702,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLastExitPortLocation();
 
-        $this->assertNull($model->getLastExitPortLocation());
+        $this->assertNotInstanceOf(LastExitPortLocation::class, $model->getLastExitPortLocation());
 
         $testValueForLastExitPortLocation = $model->getLastExitPortLocationWithCreate();
 
@@ -14782,7 +14783,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAverageAmount();
 
-        $this->assertNull($model->getAverageAmount());
+        $this->assertNotInstanceOf(AverageAmount::class, $model->getAverageAmount());
 
         $testValueForAverageAmount = $model->getAverageAmountWithCreate();
 
@@ -14891,7 +14892,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorrectionType();
 
-        $this->assertNull($model->getCorrectionType());
+        $this->assertNotInstanceOf(CorrectionType::class, $model->getCorrectionType());
 
         $testValueForCorrectionType = $model->getCorrectionTypeWithCreate();
 
@@ -14907,7 +14908,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorrectionTypeCode();
 
-        $this->assertNull($model->getCorrectionTypeCode());
+        $this->assertNotInstanceOf(CorrectionTypeCode::class, $model->getCorrectionTypeCode());
 
         $testValueForCorrectionTypeCode = $model->getCorrectionTypeCodeWithCreate();
 
@@ -14923,7 +14924,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterNumber();
 
-        $this->assertNull($model->getMeterNumber());
+        $this->assertNotInstanceOf(MeterNumber::class, $model->getMeterNumber());
 
         $testValueForMeterNumber = $model->getMeterNumberWithCreate();
 
@@ -14939,7 +14940,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGasPressureQuantity();
 
-        $this->assertNull($model->getGasPressureQuantity());
+        $this->assertNotInstanceOf(GasPressureQuantity::class, $model->getGasPressureQuantity());
 
         $testValueForGasPressureQuantity = $model->getGasPressureQuantityWithCreate();
 
@@ -14955,7 +14956,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualTemperatureReductionQuantity();
 
-        $this->assertNull($model->getActualTemperatureReductionQuantity());
+        $this->assertNotInstanceOf(ActualTemperatureReductionQuantity::class, $model->getActualTemperatureReductionQuantity());
 
         $testValueForActualTemperatureReductionQuantity = $model->getActualTemperatureReductionQuantityWithCreate();
 
@@ -14971,7 +14972,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNormalTemperatureReductionQuantity();
 
-        $this->assertNull($model->getNormalTemperatureReductionQuantity());
+        $this->assertNotInstanceOf(NormalTemperatureReductionQuantity::class, $model->getNormalTemperatureReductionQuantity());
 
         $testValueForNormalTemperatureReductionQuantity = $model->getNormalTemperatureReductionQuantityWithCreate();
 
@@ -14987,7 +14988,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDifferenceTemperatureReductionQuantity();
 
-        $this->assertNull($model->getDifferenceTemperatureReductionQuantity());
+        $this->assertNotInstanceOf(DifferenceTemperatureReductionQuantity::class, $model->getDifferenceTemperatureReductionQuantity());
 
         $testValueForDifferenceTemperatureReductionQuantity = $model->getDifferenceTemperatureReductionQuantityWithCreate();
 
@@ -15075,7 +15076,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorrectionUnitAmount();
 
-        $this->assertNull($model->getCorrectionUnitAmount());
+        $this->assertNotInstanceOf(CorrectionUnitAmount::class, $model->getCorrectionUnitAmount());
 
         $testValueForCorrectionUnitAmount = $model->getCorrectionUnitAmountWithCreate();
 
@@ -15091,7 +15092,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionEnergyQuantity();
 
-        $this->assertNull($model->getConsumptionEnergyQuantity());
+        $this->assertNotInstanceOf(ConsumptionEnergyQuantity::class, $model->getConsumptionEnergyQuantity());
 
         $testValueForConsumptionEnergyQuantity = $model->getConsumptionEnergyQuantityWithCreate();
 
@@ -15107,7 +15108,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionWaterQuantity();
 
-        $this->assertNull($model->getConsumptionWaterQuantity());
+        $this->assertNotInstanceOf(ConsumptionWaterQuantity::class, $model->getConsumptionWaterQuantity());
 
         $testValueForConsumptionWaterQuantity = $model->getConsumptionWaterQuantityWithCreate();
 
@@ -15123,7 +15124,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorrectionAmount();
 
-        $this->assertNull($model->getCorrectionAmount());
+        $this->assertNotInstanceOf(CorrectionAmount::class, $model->getCorrectionAmount());
 
         $testValueForCorrectionAmount = $model->getCorrectionAmountWithCreate();
 
@@ -15160,7 +15161,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterNumber();
 
-        $this->assertNull($model->getMeterNumber());
+        $this->assertNotInstanceOf(MeterNumber::class, $model->getMeterNumber());
 
         $testValueForMeterNumber = $model->getMeterNumberWithCreate();
 
@@ -15176,7 +15177,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -15192,7 +15193,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -15208,7 +15209,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionLevelCode();
 
-        $this->assertNull($model->getConsumptionLevelCode());
+        $this->assertNotInstanceOf(ConsumptionLevelCode::class, $model->getConsumptionLevelCode());
 
         $testValueForConsumptionLevelCode = $model->getConsumptionLevelCodeWithCreate();
 
@@ -15224,7 +15225,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionLevel();
 
-        $this->assertNull($model->getConsumptionLevel());
+        $this->assertNotInstanceOf(ConsumptionLevel::class, $model->getConsumptionLevel());
 
         $testValueForConsumptionLevel = $model->getConsumptionLevelWithCreate();
 
@@ -15312,7 +15313,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -15349,7 +15350,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -15365,7 +15366,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParentDocumentLineReferenceID();
 
-        $this->assertNull($model->getParentDocumentLineReferenceID());
+        $this->assertNotInstanceOf(ParentDocumentLineReferenceID::class, $model->getParentDocumentLineReferenceID());
 
         $testValueForParentDocumentLineReferenceID = $model->getParentDocumentLineReferenceIDWithCreate();
 
@@ -15381,7 +15382,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoicedQuantity();
 
-        $this->assertNull($model->getInvoicedQuantity());
+        $this->assertNotInstanceOf(InvoicedQuantity::class, $model->getInvoicedQuantity());
 
         $testValueForInvoicedQuantity = $model->getInvoicedQuantityWithCreate();
 
@@ -15397,7 +15398,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -15413,7 +15414,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -15645,7 +15646,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUtilityItem();
 
-        $this->assertNull($model->getUtilityItem());
+        $this->assertNotInstanceOf(UtilityItem::class, $model->getUtilityItem());
 
         $testValueForUtilityItem = $model->getUtilityItemWithCreate();
 
@@ -15661,7 +15662,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -15677,7 +15678,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUnstructuredPrice();
 
-        $this->assertNull($model->getUnstructuredPrice());
+        $this->assertNotInstanceOf(UnstructuredPrice::class, $model->getUnstructuredPrice());
 
         $testValueForUnstructuredPrice = $model->getUnstructuredPriceWithCreate();
 
@@ -15714,7 +15715,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -15802,7 +15803,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberID();
 
-        $this->assertNull($model->getSubscriberID());
+        $this->assertNotInstanceOf(SubscriberID::class, $model->getSubscriberID());
 
         $testValueForSubscriberID = $model->getSubscriberIDWithCreate();
 
@@ -15818,7 +15819,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberType();
 
-        $this->assertNull($model->getSubscriberType());
+        $this->assertNotInstanceOf(SubscriberType::class, $model->getSubscriberType());
 
         $testValueForSubscriberType = $model->getSubscriberTypeWithCreate();
 
@@ -15834,7 +15835,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberTypeCode();
 
-        $this->assertNull($model->getSubscriberTypeCode());
+        $this->assertNotInstanceOf(SubscriberTypeCode::class, $model->getSubscriberTypeCode());
 
         $testValueForSubscriberTypeCode = $model->getSubscriberTypeCodeWithCreate();
 
@@ -15850,7 +15851,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalDeliveredQuantity();
 
-        $this->assertNull($model->getTotalDeliveredQuantity());
+        $this->assertNotInstanceOf(TotalDeliveredQuantity::class, $model->getTotalDeliveredQuantity());
 
         $testValueForTotalDeliveredQuantity = $model->getTotalDeliveredQuantityWithCreate();
 
@@ -15866,7 +15867,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddress();
 
-        $this->assertNull($model->getAddress());
+        $this->assertNotInstanceOf(Address::class, $model->getAddress());
 
         $testValueForAddress = $model->getAddressWithCreate();
 
@@ -15882,7 +15883,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWebSiteAccess();
 
-        $this->assertNull($model->getWebSiteAccess());
+        $this->assertNotInstanceOf(WebSiteAccess::class, $model->getWebSiteAccess());
 
         $testValueForWebSiteAccess = $model->getWebSiteAccessWithCreate();
 
@@ -16002,7 +16003,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionReportID();
 
-        $this->assertNull($model->getConsumptionReportID());
+        $this->assertNotInstanceOf(ConsumptionReportID::class, $model->getConsumptionReportID());
 
         $testValueForConsumptionReportID = $model->getConsumptionReportIDWithCreate();
 
@@ -16018,7 +16019,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionType();
 
-        $this->assertNull($model->getConsumptionType());
+        $this->assertNotInstanceOf(ConsumptionType1::class, $model->getConsumptionType());
 
         $testValueForConsumptionType = $model->getConsumptionTypeWithCreate();
 
@@ -16034,7 +16035,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionTypeCode();
 
-        $this->assertNull($model->getConsumptionTypeCode());
+        $this->assertNotInstanceOf(ConsumptionTypeCode::class, $model->getConsumptionTypeCode());
 
         $testValueForConsumptionTypeCode = $model->getConsumptionTypeCodeWithCreate();
 
@@ -16050,7 +16051,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalConsumedQuantity();
 
-        $this->assertNull($model->getTotalConsumedQuantity());
+        $this->assertNotInstanceOf(TotalConsumedQuantity::class, $model->getTotalConsumedQuantity());
 
         $testValueForTotalConsumedQuantity = $model->getTotalConsumedQuantityWithCreate();
 
@@ -16066,7 +16067,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -16092,7 +16093,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -16108,7 +16109,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionType();
 
-        $this->assertNull($model->getConsumptionType());
+        $this->assertNotInstanceOf(ConsumptionType1::class, $model->getConsumptionType());
 
         $testValueForConsumptionType = $model->getConsumptionTypeWithCreate();
 
@@ -16124,7 +16125,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionTypeCode();
 
-        $this->assertNull($model->getConsumptionTypeCode());
+        $this->assertNotInstanceOf(ConsumptionTypeCode::class, $model->getConsumptionTypeCode());
 
         $testValueForConsumptionTypeCode = $model->getConsumptionTypeCodeWithCreate();
 
@@ -16212,7 +16213,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalConsumedQuantity();
 
-        $this->assertNull($model->getTotalConsumedQuantity());
+        $this->assertNotInstanceOf(TotalConsumedQuantity::class, $model->getTotalConsumedQuantity());
 
         $testValueForTotalConsumedQuantity = $model->getTotalConsumedQuantityWithCreate();
 
@@ -16228,7 +16229,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBasicConsumedQuantity();
 
-        $this->assertNull($model->getBasicConsumedQuantity());
+        $this->assertNotInstanceOf(BasicConsumedQuantity::class, $model->getBasicConsumedQuantity());
 
         $testValueForBasicConsumedQuantity = $model->getBasicConsumedQuantityWithCreate();
 
@@ -16244,7 +16245,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResidentOccupantsNumeric();
 
-        $this->assertNull($model->getResidentOccupantsNumeric());
+        $this->assertNotInstanceOf(ResidentOccupantsNumeric::class, $model->getResidentOccupantsNumeric());
 
         $testValueForResidentOccupantsNumeric = $model->getResidentOccupantsNumericWithCreate();
 
@@ -16260,7 +16261,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumersEnergyLevelCode();
 
-        $this->assertNull($model->getConsumersEnergyLevelCode());
+        $this->assertNotInstanceOf(ConsumersEnergyLevelCode::class, $model->getConsumersEnergyLevelCode());
 
         $testValueForConsumersEnergyLevelCode = $model->getConsumersEnergyLevelCodeWithCreate();
 
@@ -16276,7 +16277,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumersEnergyLevel();
 
-        $this->assertNull($model->getConsumersEnergyLevel());
+        $this->assertNotInstanceOf(ConsumersEnergyLevel::class, $model->getConsumersEnergyLevel());
 
         $testValueForConsumersEnergyLevel = $model->getConsumersEnergyLevelWithCreate();
 
@@ -16292,7 +16293,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResidenceType();
 
-        $this->assertNull($model->getResidenceType());
+        $this->assertNotInstanceOf(ResidenceType::class, $model->getResidenceType());
 
         $testValueForResidenceType = $model->getResidenceTypeWithCreate();
 
@@ -16308,7 +16309,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResidenceTypeCode();
 
-        $this->assertNull($model->getResidenceTypeCode());
+        $this->assertNotInstanceOf(ResidenceTypeCode::class, $model->getResidenceTypeCode());
 
         $testValueForResidenceTypeCode = $model->getResidenceTypeCodeWithCreate();
 
@@ -16324,7 +16325,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHeatingType();
 
-        $this->assertNull($model->getHeatingType());
+        $this->assertNotInstanceOf(HeatingType::class, $model->getHeatingType());
 
         $testValueForHeatingType = $model->getHeatingTypeWithCreate();
 
@@ -16340,7 +16341,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHeatingTypeCode();
 
-        $this->assertNull($model->getHeatingTypeCode());
+        $this->assertNotInstanceOf(HeatingTypeCode::class, $model->getHeatingTypeCode());
 
         $testValueForHeatingTypeCode = $model->getHeatingTypeCodeWithCreate();
 
@@ -16356,7 +16357,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -16372,7 +16373,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGuidanceDocumentReference();
 
-        $this->assertNull($model->getGuidanceDocumentReference());
+        $this->assertNotInstanceOf(GuidanceDocumentReference::class, $model->getGuidanceDocumentReference());
 
         $testValueForGuidanceDocumentReference = $model->getGuidanceDocumentReferenceWithCreate();
 
@@ -16388,7 +16389,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentReference();
 
-        $this->assertNull($model->getDocumentReference());
+        $this->assertNotInstanceOf(DocumentReference::class, $model->getDocumentReference());
 
         $testValueForDocumentReference = $model->getDocumentReferenceWithCreate();
 
@@ -16558,7 +16559,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUtilityStatementTypeCode();
 
-        $this->assertNull($model->getUtilityStatementTypeCode());
+        $this->assertNotInstanceOf(UtilityStatementTypeCode::class, $model->getUtilityStatementTypeCode());
 
         $testValueForUtilityStatementTypeCode = $model->getUtilityStatementTypeCodeWithCreate();
 
@@ -16574,7 +16575,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMainPeriod();
 
-        $this->assertNull($model->getMainPeriod());
+        $this->assertNotInstanceOf(MainPeriod::class, $model->getMainPeriod());
 
         $testValueForMainPeriod = $model->getMainPeriodWithCreate();
 
@@ -16734,7 +16735,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEnergyWaterSupply();
 
-        $this->assertNull($model->getEnergyWaterSupply());
+        $this->assertNotInstanceOf(EnergyWaterSupply::class, $model->getEnergyWaterSupply());
 
         $testValueForEnergyWaterSupply = $model->getEnergyWaterSupplyWithCreate();
 
@@ -16750,7 +16751,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsSupply();
 
-        $this->assertNull($model->getTelecommunicationsSupply());
+        $this->assertNotInstanceOf(TelecommunicationsSupply::class, $model->getTelecommunicationsSupply());
 
         $testValueForTelecommunicationsSupply = $model->getTelecommunicationsSupplyWithCreate();
 
@@ -16766,7 +16767,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalMonetaryTotal();
 
-        $this->assertNull($model->getLegalMonetaryTotal());
+        $this->assertNotInstanceOf(LegalMonetaryTotal::class, $model->getLegalMonetaryTotal());
 
         $testValueForLegalMonetaryTotal = $model->getLegalMonetaryTotalWithCreate();
 
@@ -16814,7 +16815,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -16830,7 +16831,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -16846,7 +16847,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelephone();
 
-        $this->assertNull($model->getTelephone());
+        $this->assertNotInstanceOf(Telephone::class, $model->getTelephone());
 
         $testValueForTelephone = $model->getTelephoneWithCreate();
 
@@ -16862,7 +16863,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelefax();
 
-        $this->assertNull($model->getTelefax());
+        $this->assertNotInstanceOf(Telefax::class, $model->getTelefax());
 
         $testValueForTelefax = $model->getTelefaxWithCreate();
 
@@ -16878,7 +16879,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetElectronicMail();
 
-        $this->assertNull($model->getElectronicMail());
+        $this->assertNotInstanceOf(ElectronicMail::class, $model->getElectronicMail());
 
         $testValueForElectronicMail = $model->getElectronicMailWithCreate();
 
@@ -17219,7 +17220,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExecutionRequirementCode();
 
-        $this->assertNull($model->getExecutionRequirementCode());
+        $this->assertNotInstanceOf(ExecutionRequirementCode::class, $model->getExecutionRequirementCode());
 
         $testValueForExecutionRequirementCode = $model->getExecutionRequirementCodeWithCreate();
 
@@ -17400,7 +17401,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumNumberNumeric();
 
-        $this->assertNull($model->getMinimumNumberNumeric());
+        $this->assertNotInstanceOf(MinimumNumberNumeric::class, $model->getMinimumNumberNumeric());
 
         $testValueForMinimumNumberNumeric = $model->getMinimumNumberNumericWithCreate();
 
@@ -17416,7 +17417,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumNumberNumeric();
 
-        $this->assertNull($model->getMaximumNumberNumeric());
+        $this->assertNotInstanceOf(MaximumNumberNumeric::class, $model->getMaximumNumberNumeric());
 
         $testValueForMaximumNumberNumeric = $model->getMaximumNumberNumericWithCreate();
 
@@ -17432,7 +17433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOptionValidityPeriod();
 
-        $this->assertNull($model->getOptionValidityPeriod());
+        $this->assertNotInstanceOf(OptionValidityPeriod::class, $model->getOptionValidityPeriod());
 
         $testValueForOptionValidityPeriod = $model->getOptionValidityPeriodWithCreate();
 
@@ -17552,7 +17553,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActivityTypeCode();
 
-        $this->assertNull($model->getActivityTypeCode());
+        $this->assertNotInstanceOf(ActivityTypeCode::class, $model->getActivityTypeCode());
 
         $testValueForActivityTypeCode = $model->getActivityTypeCodeWithCreate();
 
@@ -17568,7 +17569,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActivityType();
 
-        $this->assertNull($model->getActivityType());
+        $this->assertNotInstanceOf(ActivityType::class, $model->getActivityType());
 
         $testValueForActivityType = $model->getActivityTypeWithCreate();
 
@@ -17605,7 +17606,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerProfileURI();
 
-        $this->assertNull($model->getBuyerProfileURI());
+        $this->assertNotInstanceOf(BuyerProfileURI::class, $model->getBuyerProfileURI());
 
         $testValueForBuyerProfileURI = $model->getBuyerProfileURIWithCreate();
 
@@ -17765,7 +17766,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -17791,7 +17792,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPartyTypeCode();
 
-        $this->assertNull($model->getPartyTypeCode());
+        $this->assertNotInstanceOf(PartyTypeCode::class, $model->getPartyTypeCode());
 
         $testValueForPartyTypeCode = $model->getPartyTypeCodeWithCreate();
 
@@ -17807,7 +17808,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPartyType();
 
-        $this->assertNull($model->getPartyType());
+        $this->assertNotInstanceOf(PartyType1::class, $model->getPartyType());
 
         $testValueForPartyType = $model->getPartyTypeWithCreate();
 
@@ -17855,7 +17856,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -17871,7 +17872,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -17882,7 +17883,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property NominationDate
 
@@ -17893,7 +17894,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNominationDate();
 
-        $this->assertNull($model->getNominationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getNominationDate());
 
         // Property NominationTime
 
@@ -17904,7 +17905,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNominationTime();
 
-        $this->assertNull($model->getNominationTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getNominationTime());
 
         // Property ContractTypeCode
 
@@ -17915,7 +17916,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractTypeCode();
 
-        $this->assertNull($model->getContractTypeCode());
+        $this->assertNotInstanceOf(ContractTypeCode::class, $model->getContractTypeCode());
 
         $testValueForContractTypeCode = $model->getContractTypeCodeWithCreate();
 
@@ -17931,7 +17932,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractType();
 
-        $this->assertNull($model->getContractType());
+        $this->assertNotInstanceOf(ContractType1::class, $model->getContractType());
 
         $testValueForContractType = $model->getContractTypeWithCreate();
 
@@ -18019,7 +18020,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVersionID();
 
-        $this->assertNull($model->getVersionID());
+        $this->assertNotInstanceOf(VersionID::class, $model->getVersionID());
 
         $testValueForVersionID = $model->getVersionIDWithCreate();
 
@@ -18107,7 +18108,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityPeriod();
 
-        $this->assertNull($model->getValidityPeriod());
+        $this->assertNotInstanceOf(ValidityPeriod::class, $model->getValidityPeriod());
 
         $testValueForValidityPeriod = $model->getValidityPeriodWithCreate();
 
@@ -18195,7 +18196,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNominationPeriod();
 
-        $this->assertNull($model->getNominationPeriod());
+        $this->assertNotInstanceOf(NominationPeriod::class, $model->getNominationPeriod());
 
         $testValueForNominationPeriod = $model->getNominationPeriodWithCreate();
 
@@ -18211,7 +18212,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractualDelivery();
 
-        $this->assertNull($model->getContractualDelivery());
+        $this->assertNotInstanceOf(ContractualDelivery::class, $model->getContractualDelivery());
 
         $testValueForContractualDelivery = $model->getContractualDeliveryWithCreate();
 
@@ -18270,7 +18271,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -18286,7 +18287,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -18302,7 +18303,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorporateRegistrationTypeCode();
 
-        $this->assertNull($model->getCorporateRegistrationTypeCode());
+        $this->assertNotInstanceOf(CorporateRegistrationTypeCode::class, $model->getCorporateRegistrationTypeCode());
 
         $testValueForCorporateRegistrationTypeCode = $model->getCorporateRegistrationTypeCodeWithCreate();
 
@@ -18411,7 +18412,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIdentificationCode();
 
-        $this->assertNull($model->getIdentificationCode());
+        $this->assertNotInstanceOf(IdentificationCode::class, $model->getIdentificationCode());
 
         $testValueForIdentificationCode = $model->getIdentificationCodeWithCreate();
 
@@ -18427,7 +18428,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -18464,7 +18465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountID();
 
-        $this->assertNull($model->getAccountID());
+        $this->assertNotInstanceOf(AccountID::class, $model->getAccountID());
 
         $testValueForAccountID = $model->getAccountIDWithCreate();
 
@@ -18512,7 +18513,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -18528,7 +18529,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -18616,7 +18617,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditedQuantity();
 
-        $this->assertNull($model->getCreditedQuantity());
+        $this->assertNotInstanceOf(CreditedQuantity::class, $model->getCreditedQuantity());
 
         $testValueForCreditedQuantity = $model->getCreditedQuantityWithCreate();
 
@@ -18632,7 +18633,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -18648,7 +18649,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxPointDate();
 
-        $this->assertNull($model->getTaxPointDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getTaxPointDate());
 
         // Property AccountingCostCode
 
@@ -18659,7 +18660,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -18675,7 +18676,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -18691,7 +18692,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -19222,7 +19223,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingReference();
 
-        $this->assertNull($model->getPricingReference());
+        $this->assertNotInstanceOf(PricingReference::class, $model->getPricingReference());
 
         $testValueForPricingReference = $model->getPricingReferenceWithCreate();
 
@@ -19238,7 +19239,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginatorParty();
 
-        $this->assertNull($model->getOriginatorParty());
+        $this->assertNotInstanceOf(OriginatorParty::class, $model->getOriginatorParty());
 
         $testValueForOriginatorParty = $model->getOriginatorPartyWithCreate();
 
@@ -19542,7 +19543,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -19558,7 +19559,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -19718,7 +19719,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemPriceExtension();
 
-        $this->assertNull($model->getItemPriceExtension());
+        $this->assertNotInstanceOf(ItemPriceExtension::class, $model->getItemPriceExtension());
 
         $testValueForItemPriceExtension = $model->getItemPriceExtensionWithCreate();
 
@@ -19777,7 +19778,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomerAssignedAccountID();
 
-        $this->assertNull($model->getCustomerAssignedAccountID());
+        $this->assertNotInstanceOf(CustomerAssignedAccountID::class, $model->getCustomerAssignedAccountID());
 
         $testValueForCustomerAssignedAccountID = $model->getCustomerAssignedAccountIDWithCreate();
 
@@ -19793,7 +19794,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplierAssignedAccountID();
 
-        $this->assertNull($model->getSupplierAssignedAccountID());
+        $this->assertNotInstanceOf(SupplierAssignedAccountID::class, $model->getSupplierAssignedAccountID());
 
         $testValueForSupplierAssignedAccountID = $model->getSupplierAssignedAccountIDWithCreate();
 
@@ -19881,7 +19882,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -19897,7 +19898,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryContact();
 
-        $this->assertNull($model->getDeliveryContact());
+        $this->assertNotInstanceOf(DeliveryContact::class, $model->getDeliveryContact());
 
         $testValueForDeliveryContact = $model->getDeliveryContactWithCreate();
 
@@ -19913,7 +19914,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingContact();
 
-        $this->assertNull($model->getAccountingContact());
+        $this->assertNotInstanceOf(AccountingContact::class, $model->getAccountingContact());
 
         $testValueForAccountingContact = $model->getAccountingContactWithCreate();
 
@@ -19929,7 +19930,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerContact();
 
-        $this->assertNull($model->getBuyerContact());
+        $this->assertNotInstanceOf(BuyerContact::class, $model->getBuyerContact());
 
         $testValueForBuyerContact = $model->getBuyerContactWithCreate();
 
@@ -19977,7 +19978,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -19993,7 +19994,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -20041,7 +20042,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -20057,7 +20058,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -20145,7 +20146,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDebitedQuantity();
 
-        $this->assertNull($model->getDebitedQuantity());
+        $this->assertNotInstanceOf(DebitedQuantity::class, $model->getDebitedQuantity());
 
         $testValueForDebitedQuantity = $model->getDebitedQuantityWithCreate();
 
@@ -20161,7 +20162,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -20177,7 +20178,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxPointDate();
 
-        $this->assertNull($model->getTaxPointDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getTaxPointDate());
 
         // Property AccountingCostCode
 
@@ -20188,7 +20189,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -20204,7 +20205,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -20220,7 +20221,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -20596,7 +20597,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingReference();
 
-        $this->assertNull($model->getPricingReference());
+        $this->assertNotInstanceOf(PricingReference::class, $model->getPricingReference());
 
         $testValueForPricingReference = $model->getPricingReferenceWithCreate();
 
@@ -20828,7 +20829,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -20844,7 +20845,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -21025,7 +21026,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclarationTypeCode();
 
-        $this->assertNull($model->getDeclarationTypeCode());
+        $this->assertNotInstanceOf(DeclarationTypeCode::class, $model->getDeclarationTypeCode());
 
         $testValueForDeclarationTypeCode = $model->getDeclarationTypeCodeWithCreate();
 
@@ -21305,7 +21306,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -21393,7 +21394,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLossRiskResponsibilityCode();
 
-        $this->assertNull($model->getLossRiskResponsibilityCode());
+        $this->assertNotInstanceOf(LossRiskResponsibilityCode::class, $model->getLossRiskResponsibilityCode());
 
         $testValueForLossRiskResponsibilityCode = $model->getLossRiskResponsibilityCodeWithCreate();
 
@@ -21481,7 +21482,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -21497,7 +21498,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryLocation();
 
-        $this->assertNull($model->getDeliveryLocation());
+        $this->assertNotInstanceOf(DeliveryLocation::class, $model->getDeliveryLocation());
 
         $testValueForDeliveryLocation = $model->getDeliveryLocationWithCreate();
 
@@ -21513,7 +21514,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAllowanceCharge();
 
-        $this->assertNull($model->getAllowanceCharge());
+        $this->assertNotInstanceOf(AllowanceCharge::class, $model->getAllowanceCharge());
 
         $testValueForAllowanceCharge = $model->getAllowanceChargeWithCreate();
 
@@ -21550,7 +21551,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -21566,7 +21567,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -21582,7 +21583,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -21598,7 +21599,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -21614,7 +21615,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDeliveryDate();
 
-        $this->assertNull($model->getActualDeliveryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualDeliveryDate());
 
         // Property ActualDeliveryTime
 
@@ -21625,7 +21626,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDeliveryTime();
 
-        $this->assertNull($model->getActualDeliveryTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualDeliveryTime());
 
         // Property LatestDeliveryDate
 
@@ -21636,7 +21637,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestDeliveryDate();
 
-        $this->assertNull($model->getLatestDeliveryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestDeliveryDate());
 
         // Property DeliveryDate
 
@@ -21649,7 +21650,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestDeliveryTime();
 
-        $this->assertNull($model->getLatestDeliveryTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestDeliveryTime());
 
         // Property DeliveryTime
 
@@ -21662,7 +21663,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReleaseID();
 
-        $this->assertNull($model->getReleaseID());
+        $this->assertNotInstanceOf(ReleaseID::class, $model->getReleaseID());
 
         $testValueForReleaseID = $model->getReleaseIDWithCreate();
 
@@ -21678,7 +21679,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTrackingID();
 
-        $this->assertNull($model->getTrackingID());
+        $this->assertNotInstanceOf(TrackingID::class, $model->getTrackingID());
 
         $testValueForTrackingID = $model->getTrackingIDWithCreate();
 
@@ -21694,7 +21695,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryAddress();
 
-        $this->assertNull($model->getDeliveryAddress());
+        $this->assertNotInstanceOf(DeliveryAddress::class, $model->getDeliveryAddress());
 
         $testValueForDeliveryAddress = $model->getDeliveryAddressWithCreate();
 
@@ -21710,7 +21711,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryLocation();
 
-        $this->assertNull($model->getDeliveryLocation());
+        $this->assertNotInstanceOf(DeliveryLocation::class, $model->getDeliveryLocation());
 
         $testValueForDeliveryLocation = $model->getDeliveryLocationWithCreate();
 
@@ -21726,7 +21727,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAlternativeDeliveryLocation();
 
-        $this->assertNull($model->getAlternativeDeliveryLocation());
+        $this->assertNotInstanceOf(AlternativeDeliveryLocation::class, $model->getAlternativeDeliveryLocation());
 
         $testValueForAlternativeDeliveryLocation = $model->getAlternativeDeliveryLocationWithCreate();
 
@@ -21742,7 +21743,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDeliveryPeriod();
 
-        $this->assertNull($model->getRequestedDeliveryPeriod());
+        $this->assertNotInstanceOf(RequestedDeliveryPeriod::class, $model->getRequestedDeliveryPeriod());
 
         $testValueForRequestedDeliveryPeriod = $model->getRequestedDeliveryPeriodWithCreate();
 
@@ -21758,7 +21759,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPromisedDeliveryPeriod();
 
-        $this->assertNull($model->getPromisedDeliveryPeriod());
+        $this->assertNotInstanceOf(PromisedDeliveryPeriod::class, $model->getPromisedDeliveryPeriod());
 
         $testValueForPromisedDeliveryPeriod = $model->getPromisedDeliveryPeriodWithCreate();
 
@@ -21774,7 +21775,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDeliveryPeriod();
 
-        $this->assertNull($model->getEstimatedDeliveryPeriod());
+        $this->assertNotInstanceOf(EstimatedDeliveryPeriod::class, $model->getEstimatedDeliveryPeriod());
 
         $testValueForEstimatedDeliveryPeriod = $model->getEstimatedDeliveryPeriodWithCreate();
 
@@ -21790,7 +21791,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCarrierParty();
 
-        $this->assertNull($model->getCarrierParty());
+        $this->assertNotInstanceOf(CarrierParty::class, $model->getCarrierParty());
 
         $testValueForCarrierParty = $model->getCarrierPartyWithCreate();
 
@@ -21806,7 +21807,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryParty();
 
-        $this->assertNull($model->getDeliveryParty());
+        $this->assertNotInstanceOf(DeliveryParty::class, $model->getDeliveryParty());
 
         $testValueForDeliveryParty = $model->getDeliveryPartyWithCreate();
 
@@ -21894,7 +21895,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatch();
 
-        $this->assertNull($model->getDespatch());
+        $this->assertNotInstanceOf(Despatch::class, $model->getDespatch());
 
         $testValueForDespatch = $model->getDespatchWithCreate();
 
@@ -21982,7 +21983,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumDeliveryUnit();
 
-        $this->assertNull($model->getMinimumDeliveryUnit());
+        $this->assertNotInstanceOf(MinimumDeliveryUnit::class, $model->getMinimumDeliveryUnit());
 
         $testValueForMinimumDeliveryUnit = $model->getMinimumDeliveryUnitWithCreate();
 
@@ -21998,7 +21999,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumDeliveryUnit();
 
-        $this->assertNull($model->getMaximumDeliveryUnit());
+        $this->assertNotInstanceOf(MaximumDeliveryUnit::class, $model->getMaximumDeliveryUnit());
 
         $testValueForMaximumDeliveryUnit = $model->getMaximumDeliveryUnitWithCreate();
 
@@ -22014,7 +22015,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShipment();
 
-        $this->assertNull($model->getShipment());
+        $this->assertNotInstanceOf(Shipment::class, $model->getShipment());
 
         $testValueForShipment = $model->getShipmentWithCreate();
 
@@ -22051,7 +22052,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBatchQuantity();
 
-        $this->assertNull($model->getBatchQuantity());
+        $this->assertNotInstanceOf(BatchQuantity::class, $model->getBatchQuantity());
 
         $testValueForBatchQuantity = $model->getBatchQuantityWithCreate();
 
@@ -22067,7 +22068,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumerUnitQuantity();
 
-        $this->assertNull($model->getConsumerUnitQuantity());
+        $this->assertNotInstanceOf(ConsumerUnitQuantity::class, $model->getConsumerUnitQuantity());
 
         $testValueForConsumerUnitQuantity = $model->getConsumerUnitQuantityWithCreate();
 
@@ -22126,7 +22127,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPercent();
 
-        $this->assertNull($model->getPercent());
+        $this->assertNotInstanceOf(Percent::class, $model->getPercent());
 
         $testValueForPercent = $model->getPercentWithCreate();
 
@@ -22142,7 +22143,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocationAddress();
 
-        $this->assertNull($model->getLocationAddress());
+        $this->assertNotInstanceOf(LocationAddress::class, $model->getLocationAddress());
 
         $testValueForLocationAddress = $model->getLocationAddressWithCreate();
 
@@ -22158,7 +22159,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDependentLineReference();
 
-        $this->assertNull($model->getDependentLineReference());
+        $this->assertNotInstanceOf(DependentLineReference::class, $model->getDependentLineReference());
 
         $testValueForDependentLineReference = $model->getDependentLineReferenceWithCreate();
 
@@ -22250,7 +22251,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -22266,7 +22267,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -22354,7 +22355,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineStatusCode();
 
-        $this->assertNull($model->getLineStatusCode());
+        $this->assertNotInstanceOf(LineStatusCode::class, $model->getLineStatusCode());
 
         $testValueForLineStatusCode = $model->getLineStatusCodeWithCreate();
 
@@ -22370,7 +22371,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveredQuantity();
 
-        $this->assertNull($model->getDeliveredQuantity());
+        $this->assertNotInstanceOf(DeliveredQuantity::class, $model->getDeliveredQuantity());
 
         $testValueForDeliveredQuantity = $model->getDeliveredQuantityWithCreate();
 
@@ -22386,7 +22387,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBackorderQuantity();
 
-        $this->assertNull($model->getBackorderQuantity());
+        $this->assertNotInstanceOf(BackorderQuantity::class, $model->getBackorderQuantity());
 
         $testValueForBackorderQuantity = $model->getBackorderQuantityWithCreate();
 
@@ -22474,7 +22475,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOutstandingQuantity();
 
-        $this->assertNull($model->getOutstandingQuantity());
+        $this->assertNotInstanceOf(OutstandingQuantity::class, $model->getOutstandingQuantity());
 
         $testValueForOutstandingQuantity = $model->getOutstandingQuantityWithCreate();
 
@@ -22562,7 +22563,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOversupplyQuantity();
 
-        $this->assertNull($model->getOversupplyQuantity());
+        $this->assertNotInstanceOf(OversupplyQuantity::class, $model->getOversupplyQuantity());
 
         $testValueForOversupplyQuantity = $model->getOversupplyQuantityWithCreate();
 
@@ -22722,7 +22723,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -22853,7 +22854,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -22869,7 +22870,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDespatchDate();
 
-        $this->assertNull($model->getRequestedDespatchDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRequestedDespatchDate());
 
         // Property RequestedDespatchTime
 
@@ -22880,7 +22881,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDespatchTime();
 
-        $this->assertNull($model->getRequestedDespatchTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRequestedDespatchTime());
 
         // Property EstimatedDespatchDate
 
@@ -22891,7 +22892,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDespatchDate();
 
-        $this->assertNull($model->getEstimatedDespatchDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEstimatedDespatchDate());
 
         // Property EstimatedDespatchTime
 
@@ -22902,7 +22903,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDespatchTime();
 
-        $this->assertNull($model->getEstimatedDespatchTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEstimatedDespatchTime());
 
         // Property ActualDespatchDate
 
@@ -22913,7 +22914,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDespatchDate();
 
-        $this->assertNull($model->getActualDespatchDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualDespatchDate());
 
         // Property ActualDespatchTime
 
@@ -22924,7 +22925,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDespatchTime();
 
-        $this->assertNull($model->getActualDespatchTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualDespatchTime());
 
         // Property GuaranteedDespatchDate
 
@@ -22935,7 +22936,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGuaranteedDespatchDate();
 
-        $this->assertNull($model->getGuaranteedDespatchDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getGuaranteedDespatchDate());
 
         // Property GuaranteedDespatchTime
 
@@ -22946,7 +22947,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGuaranteedDespatchTime();
 
-        $this->assertNull($model->getGuaranteedDespatchTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getGuaranteedDespatchTime());
 
         // Property ReleaseID
 
@@ -22957,7 +22958,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReleaseID();
 
-        $this->assertNull($model->getReleaseID());
+        $this->assertNotInstanceOf(ReleaseID::class, $model->getReleaseID());
 
         $testValueForReleaseID = $model->getReleaseIDWithCreate();
 
@@ -23045,7 +23046,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatchAddress();
 
-        $this->assertNull($model->getDespatchAddress());
+        $this->assertNotInstanceOf(DespatchAddress::class, $model->getDespatchAddress());
 
         $testValueForDespatchAddress = $model->getDespatchAddressWithCreate();
 
@@ -23061,7 +23062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatchLocation();
 
-        $this->assertNull($model->getDespatchLocation());
+        $this->assertNotInstanceOf(DespatchLocation::class, $model->getDespatchLocation());
 
         $testValueForDespatchLocation = $model->getDespatchLocationWithCreate();
 
@@ -23077,7 +23078,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatchParty();
 
-        $this->assertNull($model->getDespatchParty());
+        $this->assertNotInstanceOf(DespatchParty::class, $model->getDespatchParty());
 
         $testValueForDespatchParty = $model->getDespatchPartyWithCreate();
 
@@ -23093,7 +23094,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCarrierParty();
 
-        $this->assertNull($model->getCarrierParty());
+        $this->assertNotInstanceOf(CarrierParty::class, $model->getCarrierParty());
 
         $testValueForCarrierParty = $model->getCarrierPartyWithCreate();
 
@@ -23181,7 +23182,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContact();
 
-        $this->assertNull($model->getContact());
+        $this->assertNotInstanceOf(Contact::class, $model->getContact());
 
         $testValueForContact = $model->getContactWithCreate();
 
@@ -23197,7 +23198,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDespatchPeriod();
 
-        $this->assertNull($model->getEstimatedDespatchPeriod());
+        $this->assertNotInstanceOf(EstimatedDespatchPeriod::class, $model->getEstimatedDespatchPeriod());
 
         $testValueForEstimatedDespatchPeriod = $model->getEstimatedDespatchPeriodWithCreate();
 
@@ -23213,7 +23214,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDespatchPeriod();
 
-        $this->assertNull($model->getRequestedDespatchPeriod());
+        $this->assertNotInstanceOf(RequestedDespatchPeriod::class, $model->getRequestedDespatchPeriod());
 
         $testValueForRequestedDespatchPeriod = $model->getRequestedDespatchPeriodWithCreate();
 
@@ -23283,7 +23284,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAttributeID();
 
-        $this->assertNull($model->getAttributeID());
+        $this->assertNotInstanceOf(AttributeID::class, $model->getAttributeID());
 
         $testValueForAttributeID = $model->getAttributeIDWithCreate();
 
@@ -23299,7 +23300,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeasure();
 
-        $this->assertNull($model->getMeasure());
+        $this->assertNotInstanceOf(Measure::class, $model->getMeasure());
 
         $testValueForMeasure = $model->getMeasureWithCreate();
 
@@ -23387,7 +23388,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumMeasure();
 
-        $this->assertNull($model->getMinimumMeasure());
+        $this->assertNotInstanceOf(MinimumMeasure::class, $model->getMinimumMeasure());
 
         $testValueForMinimumMeasure = $model->getMinimumMeasureWithCreate();
 
@@ -23403,7 +23404,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumMeasure();
 
-        $this->assertNull($model->getMaximumMeasure());
+        $this->assertNotInstanceOf(MaximumMeasure::class, $model->getMaximumMeasure());
 
         $testValueForMaximumMeasure = $model->getMaximumMeasureWithCreate();
 
@@ -23484,7 +23485,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrintQualifier();
 
-        $this->assertNull($model->getPrintQualifier());
+        $this->assertNotInstanceOf(PrintQualifier::class, $model->getPrintQualifier());
 
         $testValueForPrintQualifier = $model->getPrintQualifierWithCreate();
 
@@ -23500,7 +23501,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumCopiesNumeric();
 
-        $this->assertNull($model->getMaximumCopiesNumeric());
+        $this->assertNotInstanceOf(MaximumCopiesNumeric::class, $model->getMaximumCopiesNumeric());
 
         $testValueForMaximumCopiesNumeric = $model->getMaximumCopiesNumericWithCreate();
 
@@ -23516,7 +23517,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -23564,7 +23565,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -23591,7 +23592,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -23607,7 +23608,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -23618,7 +23619,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property DocumentTypeCode
 
@@ -23629,7 +23630,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentTypeCode();
 
-        $this->assertNull($model->getDocumentTypeCode());
+        $this->assertNotInstanceOf(DocumentTypeCode::class, $model->getDocumentTypeCode());
 
         $testValueForDocumentTypeCode = $model->getDocumentTypeCodeWithCreate();
 
@@ -23645,7 +23646,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentType();
 
-        $this->assertNull($model->getDocumentType());
+        $this->assertNotInstanceOf(DocumentType::class, $model->getDocumentType());
 
         $testValueForDocumentType = $model->getDocumentTypeWithCreate();
 
@@ -23733,7 +23734,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLanguageID();
 
-        $this->assertNull($model->getLanguageID());
+        $this->assertNotInstanceOf(LanguageID::class, $model->getLanguageID());
 
         $testValueForLanguageID = $model->getLanguageIDWithCreate();
 
@@ -23749,7 +23750,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocaleCode();
 
-        $this->assertNull($model->getLocaleCode());
+        $this->assertNotInstanceOf(LocaleCode::class, $model->getLocaleCode());
 
         $testValueForLocaleCode = $model->getLocaleCodeWithCreate();
 
@@ -23765,7 +23766,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVersionID();
 
-        $this->assertNull($model->getVersionID());
+        $this->assertNotInstanceOf(VersionID::class, $model->getVersionID());
 
         $testValueForVersionID = $model->getVersionIDWithCreate();
 
@@ -23781,7 +23782,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentStatusCode();
 
-        $this->assertNull($model->getDocumentStatusCode());
+        $this->assertNotInstanceOf(DocumentStatusCode::class, $model->getDocumentStatusCode());
 
         $testValueForDocumentStatusCode = $model->getDocumentStatusCodeWithCreate();
 
@@ -23869,7 +23870,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAttachment();
 
-        $this->assertNull($model->getAttachment());
+        $this->assertNotInstanceOf(Attachment::class, $model->getAttachment());
 
         $testValueForAttachment = $model->getAttachmentWithCreate();
 
@@ -23885,7 +23886,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityPeriod();
 
-        $this->assertNull($model->getValidityPeriod());
+        $this->assertNotInstanceOf(ValidityPeriod::class, $model->getValidityPeriod());
 
         $testValueForValidityPeriod = $model->getValidityPeriodWithCreate();
 
@@ -23901,7 +23902,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -23917,7 +23918,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResultOfVerification();
 
-        $this->assertNull($model->getResultOfVerification());
+        $this->assertNotInstanceOf(ResultOfVerification::class, $model->getResultOfVerification());
 
         $testValueForResultOfVerification = $model->getResultOfVerificationWithCreate();
 
@@ -23954,7 +23955,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResponse();
 
-        $this->assertNull($model->getResponse());
+        $this->assertNotInstanceOf(Response::class, $model->getResponse());
 
         $testValueForResponse = $model->getResponseWithCreate();
 
@@ -24042,7 +24043,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -24058,7 +24059,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRecipientParty();
 
-        $this->assertNull($model->getRecipientParty());
+        $this->assertNotInstanceOf(RecipientParty::class, $model->getRecipientParty());
 
         $testValueForRecipientParty = $model->getRecipientPartyWithCreate();
 
@@ -24211,7 +24212,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -24227,7 +24228,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDuty();
 
-        $this->assertNull($model->getDuty());
+        $this->assertNotInstanceOf(Duty1::class, $model->getDuty());
 
         $testValueForDuty = $model->getDutyWithCreate();
 
@@ -24243,7 +24244,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDutyCode();
 
-        $this->assertNull($model->getDutyCode());
+        $this->assertNotInstanceOf(DutyCode::class, $model->getDutyCode());
 
         $testValueForDutyCode = $model->getDutyCodeWithCreate();
 
@@ -24259,7 +24260,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxCategory();
 
-        $this->assertNull($model->getTaxCategory());
+        $this->assertNotInstanceOf(TaxCategory::class, $model->getTaxCategory());
 
         $testValueForTaxCategory = $model->getTaxCategoryWithCreate();
 
@@ -24296,7 +24297,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoleCode();
 
-        $this->assertNull($model->getRoleCode());
+        $this->assertNotInstanceOf(RoleCode::class, $model->getRoleCode());
 
         $testValueForRoleCode = $model->getRoleCodeWithCreate();
 
@@ -24477,7 +24478,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpectedQuantity();
 
-        $this->assertNull($model->getExpectedQuantity());
+        $this->assertNotInstanceOf(ExpectedQuantity::class, $model->getExpectedQuantity());
 
         $testValueForExpectedQuantity = $model->getExpectedQuantityWithCreate();
 
@@ -24493,7 +24494,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -24509,7 +24510,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -24651,7 +24652,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCalculationMethodCode();
 
-        $this->assertNull($model->getCalculationMethodCode());
+        $this->assertNotInstanceOf(CalculationMethodCode::class, $model->getCalculationMethodCode());
 
         $testValueForCalculationMethodCode = $model->getCalculationMethodCodeWithCreate();
 
@@ -24667,7 +24668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFullnessIndicationCode();
 
-        $this->assertNull($model->getFullnessIndicationCode());
+        $this->assertNotInstanceOf(FullnessIndicationCode::class, $model->getFullnessIndicationCode());
 
         $testValueForFullnessIndicationCode = $model->getFullnessIndicationCodeWithCreate();
 
@@ -24683,7 +24684,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeasurementFromLocation();
 
-        $this->assertNull($model->getMeasurementFromLocation());
+        $this->assertNotInstanceOf(MeasurementFromLocation::class, $model->getMeasurementFromLocation());
 
         $testValueForMeasurementFromLocation = $model->getMeasurementFromLocationWithCreate();
 
@@ -24699,7 +24700,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeasurementToLocation();
 
-        $this->assertNull($model->getMeasurementToLocation());
+        $this->assertNotInstanceOf(MeasurementToLocation::class, $model->getMeasurementToLocation());
 
         $testValueForMeasurementToLocation = $model->getMeasurementToLocationWithCreate();
 
@@ -24747,7 +24748,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentID();
 
-        $this->assertNull($model->getDocumentID());
+        $this->assertNotInstanceOf(DocumentID::class, $model->getDocumentID());
 
         $testValueForDocumentID = $model->getDocumentIDWithCreate();
 
@@ -24763,7 +24764,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetApprovalStatus();
 
-        $this->assertNull($model->getApprovalStatus());
+        $this->assertNotInstanceOf(ApprovalStatus::class, $model->getApprovalStatus());
 
         $testValueForApprovalStatus = $model->getApprovalStatusWithCreate();
 
@@ -24851,7 +24852,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEndorserParty();
 
-        $this->assertNull($model->getEndorserParty());
+        $this->assertNotInstanceOf(EndorserParty::class, $model->getEndorserParty());
 
         $testValueForEndorserParty = $model->getEndorserPartyWithCreate();
 
@@ -24960,7 +24961,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoleCode();
 
-        $this->assertNull($model->getRoleCode());
+        $this->assertNotInstanceOf(RoleCode::class, $model->getRoleCode());
 
         $testValueForRoleCode = $model->getRoleCodeWithCreate();
 
@@ -24976,7 +24977,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumeric();
 
-        $this->assertNull($model->getSequenceNumeric());
+        $this->assertNotInstanceOf(SequenceNumeric::class, $model->getSequenceNumeric());
 
         $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
@@ -24992,7 +24993,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -25008,7 +25009,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignatoryContact();
 
-        $this->assertNull($model->getSignatoryContact());
+        $this->assertNotInstanceOf(SignatoryContact::class, $model->getSignatoryContact());
 
         $testValueForSignatoryContact = $model->getSignatoryContactWithCreate();
 
@@ -25045,7 +25046,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxEnergyAmount();
 
-        $this->assertNull($model->getTaxEnergyAmount());
+        $this->assertNotInstanceOf(TaxEnergyAmount::class, $model->getTaxEnergyAmount());
 
         $testValueForTaxEnergyAmount = $model->getTaxEnergyAmountWithCreate();
 
@@ -25061,7 +25062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxEnergyOnAccountAmount();
 
-        $this->assertNull($model->getTaxEnergyOnAccountAmount());
+        $this->assertNotInstanceOf(TaxEnergyOnAccountAmount::class, $model->getTaxEnergyOnAccountAmount());
 
         $testValueForTaxEnergyOnAccountAmount = $model->getTaxEnergyOnAccountAmountWithCreate();
 
@@ -25077,7 +25078,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxEnergyBalanceAmount();
 
-        $this->assertNull($model->getTaxEnergyBalanceAmount());
+        $this->assertNotInstanceOf(TaxEnergyBalanceAmount::class, $model->getTaxEnergyBalanceAmount());
 
         $testValueForTaxEnergyBalanceAmount = $model->getTaxEnergyBalanceAmountWithCreate();
 
@@ -25093,7 +25094,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxScheme();
 
-        $this->assertNull($model->getTaxScheme());
+        $this->assertNotInstanceOf(TaxScheme::class, $model->getTaxScheme());
 
         $testValueForTaxScheme = $model->getTaxSchemeWithCreate();
 
@@ -25450,7 +25451,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEnvironmentalEmissionTypeCode();
 
-        $this->assertNull($model->getEnvironmentalEmissionTypeCode());
+        $this->assertNotInstanceOf(EnvironmentalEmissionTypeCode::class, $model->getEnvironmentalEmissionTypeCode());
 
         $testValueForEnvironmentalEmissionTypeCode = $model->getEnvironmentalEmissionTypeCodeWithCreate();
 
@@ -25466,7 +25467,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueMeasure();
 
-        $this->assertNull($model->getValueMeasure());
+        $this->assertNotInstanceOf(ValueMeasure::class, $model->getValueMeasure());
 
         $testValueForValueMeasure = $model->getValueMeasureWithCreate();
 
@@ -25724,7 +25725,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEvaluationCriterionTypeCode();
 
-        $this->assertNull($model->getEvaluationCriterionTypeCode());
+        $this->assertNotInstanceOf(EvaluationCriterionTypeCode::class, $model->getEvaluationCriterionTypeCode());
 
         $testValueForEvaluationCriterionTypeCode = $model->getEvaluationCriterionTypeCodeWithCreate();
 
@@ -25812,7 +25813,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetThresholdAmount();
 
-        $this->assertNull($model->getThresholdAmount());
+        $this->assertNotInstanceOf(ThresholdAmount::class, $model->getThresholdAmount());
 
         $testValueForThresholdAmount = $model->getThresholdAmountWithCreate();
 
@@ -25828,7 +25829,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetThresholdQuantity();
 
-        $this->assertNull($model->getThresholdQuantity());
+        $this->assertNotInstanceOf(ThresholdQuantity::class, $model->getThresholdQuantity());
 
         $testValueForThresholdQuantity = $model->getThresholdQuantityWithCreate();
 
@@ -25844,7 +25845,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpressionCode();
 
-        $this->assertNull($model->getExpressionCode());
+        $this->assertNotInstanceOf(ExpressionCode::class, $model->getExpressionCode());
 
         $testValueForExpressionCode = $model->getExpressionCodeWithCreate();
 
@@ -25932,7 +25933,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDurationPeriod();
 
-        $this->assertNull($model->getDurationPeriod());
+        $this->assertNotInstanceOf(DurationPeriod::class, $model->getDurationPeriod());
 
         $testValueForDurationPeriod = $model->getDurationPeriodWithCreate();
 
@@ -26052,7 +26053,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComment();
 
-        $this->assertNull($model->getComment());
+        $this->assertNotInstanceOf(Comment::class, $model->getComment());
 
         $testValueForComment = $model->getCommentWithCreate();
 
@@ -26068,7 +26069,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -26079,7 +26080,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
     }
 
     /**
@@ -26111,7 +26112,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineNumberNumeric();
 
-        $this->assertNull($model->getLineNumberNumeric());
+        $this->assertNotInstanceOf(LineNumberNumeric::class, $model->getLineNumberNumeric());
 
         $testValueForLineNumberNumeric = $model->getLineNumberNumericWithCreate();
 
@@ -26127,7 +26128,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParticipatingLocationsLocation();
 
-        $this->assertNull($model->getParticipatingLocationsLocation());
+        $this->assertNotInstanceOf(ParticipatingLocationsLocation::class, $model->getParticipatingLocationsLocation());
 
         $testValueForParticipatingLocationsLocation = $model->getParticipatingLocationsLocationWithCreate();
 
@@ -26215,7 +26216,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyItem();
 
-        $this->assertNull($model->getSupplyItem());
+        $this->assertNotInstanceOf(SupplyItem::class, $model->getSupplyItem());
 
         $testValueForSupplyItem = $model->getSupplyItemWithCreate();
 
@@ -26263,7 +26264,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumerIncentiveTacticTypeCode();
 
-        $this->assertNull($model->getConsumerIncentiveTacticTypeCode());
+        $this->assertNotInstanceOf(ConsumerIncentiveTacticTypeCode::class, $model->getConsumerIncentiveTacticTypeCode());
 
         $testValueForConsumerIncentiveTacticTypeCode = $model->getConsumerIncentiveTacticTypeCodeWithCreate();
 
@@ -26279,7 +26280,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDisplayTacticTypeCode();
 
-        $this->assertNull($model->getDisplayTacticTypeCode());
+        $this->assertNotInstanceOf(DisplayTacticTypeCode::class, $model->getDisplayTacticTypeCode());
 
         $testValueForDisplayTacticTypeCode = $model->getDisplayTacticTypeCodeWithCreate();
 
@@ -26295,7 +26296,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFeatureTacticTypeCode();
 
-        $this->assertNull($model->getFeatureTacticTypeCode());
+        $this->assertNotInstanceOf(FeatureTacticTypeCode::class, $model->getFeatureTacticTypeCode());
 
         $testValueForFeatureTacticTypeCode = $model->getFeatureTacticTypeCodeWithCreate();
 
@@ -26311,7 +26312,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTradeItemPackingLabelingTypeCode();
 
-        $this->assertNull($model->getTradeItemPackingLabelingTypeCode());
+        $this->assertNotInstanceOf(TradeItemPackingLabelingTypeCode::class, $model->getTradeItemPackingLabelingTypeCode());
 
         $testValueForTradeItemPackingLabelingTypeCode = $model->getTradeItemPackingLabelingTypeCodeWithCreate();
 
@@ -26337,7 +26338,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComment();
 
-        $this->assertNull($model->getComment());
+        $this->assertNotInstanceOf(Comment::class, $model->getComment());
 
         $testValueForComment = $model->getCommentWithCreate();
 
@@ -26353,7 +26354,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -26369,7 +26370,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEventTacticEnumeration();
 
-        $this->assertNull($model->getEventTacticEnumeration());
+        $this->assertNotInstanceOf(EventTacticEnumeration::class, $model->getEventTacticEnumeration());
 
         $testValueForEventTacticEnumeration = $model->getEventTacticEnumerationWithCreate();
 
@@ -26385,7 +26386,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -26411,7 +26412,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIdentificationID();
 
-        $this->assertNull($model->getIdentificationID());
+        $this->assertNotInstanceOf(IdentificationID::class, $model->getIdentificationID());
 
         $testValueForIdentificationID = $model->getIdentificationIDWithCreate();
 
@@ -26427,7 +26428,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOccurrenceDate();
 
-        $this->assertNull($model->getOccurrenceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getOccurrenceDate());
 
         // Property OccurrenceTime
 
@@ -26438,7 +26439,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOccurrenceTime();
 
-        $this->assertNull($model->getOccurrenceTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getOccurrenceTime());
 
         // Property TypeCode
 
@@ -26449,7 +26450,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTypeCode();
 
-        $this->assertNull($model->getTypeCode());
+        $this->assertNotInstanceOf(TypeCode::class, $model->getTypeCode());
 
         $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
@@ -26692,7 +26693,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOccurenceLocation();
 
-        $this->assertNull($model->getOccurenceLocation());
+        $this->assertNotInstanceOf(OccurenceLocation::class, $model->getOccurenceLocation());
 
         $testValueForOccurenceLocation = $model->getOccurenceLocationWithCreate();
 
@@ -26762,7 +26763,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -26788,7 +26789,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -26804,7 +26805,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEvidenceTypeCode();
 
-        $this->assertNull($model->getEvidenceTypeCode());
+        $this->assertNotInstanceOf(EvidenceTypeCode::class, $model->getEvidenceTypeCode());
 
         $testValueForEvidenceTypeCode = $model->getEvidenceTypeCodeWithCreate();
 
@@ -26964,7 +26965,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEvidenceIssuingParty();
 
-        $this->assertNull($model->getEvidenceIssuingParty());
+        $this->assertNotInstanceOf(EvidenceIssuingParty::class, $model->getEvidenceIssuingParty());
 
         $testValueForEvidenceIssuingParty = $model->getEvidenceIssuingPartyWithCreate();
 
@@ -26980,7 +26981,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentReference();
 
-        $this->assertNull($model->getDocumentReference());
+        $this->assertNotInstanceOf(DocumentReference::class, $model->getDocumentReference());
 
         $testValueForDocumentReference = $model->getDocumentReferenceWithCreate();
 
@@ -26996,7 +26997,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLanguage();
 
-        $this->assertNull($model->getLanguage());
+        $this->assertNotInstanceOf(Language::class, $model->getLanguage());
 
         $testValueForLanguage = $model->getLanguageWithCreate();
 
@@ -27044,7 +27045,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -27132,7 +27133,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetThresholdValueComparisonCode();
 
-        $this->assertNull($model->getThresholdValueComparisonCode());
+        $this->assertNotInstanceOf(ThresholdValueComparisonCode::class, $model->getThresholdValueComparisonCode());
 
         $testValueForThresholdValueComparisonCode = $model->getThresholdValueComparisonCodeWithCreate();
 
@@ -27148,7 +27149,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetThresholdQuantity();
 
-        $this->assertNull($model->getThresholdQuantity());
+        $this->assertNotInstanceOf(ThresholdQuantity::class, $model->getThresholdQuantity());
 
         $testValueForThresholdQuantity = $model->getThresholdQuantityWithCreate();
 
@@ -27164,7 +27165,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExceptionStatusCode();
 
-        $this->assertNull($model->getExceptionStatusCode());
+        $this->assertNotInstanceOf(ExceptionStatusCode::class, $model->getExceptionStatusCode());
 
         $testValueForExceptionStatusCode = $model->getExceptionStatusCodeWithCreate();
 
@@ -27180,7 +27181,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCollaborationPriorityCode();
 
-        $this->assertNull($model->getCollaborationPriorityCode());
+        $this->assertNotInstanceOf(CollaborationPriorityCode::class, $model->getCollaborationPriorityCode());
 
         $testValueForCollaborationPriorityCode = $model->getCollaborationPriorityCodeWithCreate();
 
@@ -27196,7 +27197,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExceptionResolutionCode();
 
-        $this->assertNull($model->getExceptionResolutionCode());
+        $this->assertNotInstanceOf(ExceptionResolutionCode::class, $model->getExceptionResolutionCode());
 
         $testValueForExceptionResolutionCode = $model->getExceptionResolutionCodeWithCreate();
 
@@ -27212,7 +27213,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyChainActivityTypeCode();
 
-        $this->assertNull($model->getSupplyChainActivityTypeCode());
+        $this->assertNotInstanceOf(SupplyChainActivityTypeCode::class, $model->getSupplyChainActivityTypeCode());
 
         $testValueForSupplyChainActivityTypeCode = $model->getSupplyChainActivityTypeCodeWithCreate();
 
@@ -27228,7 +27229,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformanceMetricTypeCode();
 
-        $this->assertNull($model->getPerformanceMetricTypeCode());
+        $this->assertNotInstanceOf(PerformanceMetricTypeCode::class, $model->getPerformanceMetricTypeCode());
 
         $testValueForPerformanceMetricTypeCode = $model->getPerformanceMetricTypeCodeWithCreate();
 
@@ -27244,7 +27245,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEffectivePeriod();
 
-        $this->assertNull($model->getEffectivePeriod());
+        $this->assertNotInstanceOf(EffectivePeriod::class, $model->getEffectivePeriod());
 
         $testValueForEffectivePeriod = $model->getEffectivePeriodWithCreate();
 
@@ -27332,7 +27333,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastExceptionCriterionLine();
 
-        $this->assertNull($model->getForecastExceptionCriterionLine());
+        $this->assertNotInstanceOf(ForecastExceptionCriterionLine::class, $model->getForecastExceptionCriterionLine());
 
         $testValueForForecastExceptionCriterionLine = $model->getForecastExceptionCriterionLineWithCreate();
 
@@ -27369,7 +27370,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -27529,7 +27530,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExceptionStatusCode();
 
-        $this->assertNull($model->getExceptionStatusCode());
+        $this->assertNotInstanceOf(ExceptionStatusCode::class, $model->getExceptionStatusCode());
 
         $testValueForExceptionStatusCode = $model->getExceptionStatusCodeWithCreate();
 
@@ -27545,7 +27546,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCollaborationPriorityCode();
 
-        $this->assertNull($model->getCollaborationPriorityCode());
+        $this->assertNotInstanceOf(CollaborationPriorityCode::class, $model->getCollaborationPriorityCode());
 
         $testValueForCollaborationPriorityCode = $model->getCollaborationPriorityCodeWithCreate();
 
@@ -27561,7 +27562,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResolutionCode();
 
-        $this->assertNull($model->getResolutionCode());
+        $this->assertNotInstanceOf(ResolutionCode::class, $model->getResolutionCode());
 
         $testValueForResolutionCode = $model->getResolutionCodeWithCreate();
 
@@ -27577,7 +27578,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComparedValueMeasure();
 
-        $this->assertNull($model->getComparedValueMeasure());
+        $this->assertNotInstanceOf(ComparedValueMeasure::class, $model->getComparedValueMeasure());
 
         $testValueForComparedValueMeasure = $model->getComparedValueMeasureWithCreate();
 
@@ -27593,7 +27594,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSourceValueMeasure();
 
-        $this->assertNull($model->getSourceValueMeasure());
+        $this->assertNotInstanceOf(SourceValueMeasure::class, $model->getSourceValueMeasure());
 
         $testValueForSourceValueMeasure = $model->getSourceValueMeasureWithCreate();
 
@@ -27609,7 +27610,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVarianceQuantity();
 
-        $this->assertNull($model->getVarianceQuantity());
+        $this->assertNotInstanceOf(VarianceQuantity::class, $model->getVarianceQuantity());
 
         $testValueForVarianceQuantity = $model->getVarianceQuantityWithCreate();
 
@@ -27625,7 +27626,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyChainActivityTypeCode();
 
-        $this->assertNull($model->getSupplyChainActivityTypeCode());
+        $this->assertNotInstanceOf(SupplyChainActivityTypeCode::class, $model->getSupplyChainActivityTypeCode());
 
         $testValueForSupplyChainActivityTypeCode = $model->getSupplyChainActivityTypeCodeWithCreate();
 
@@ -27641,7 +27642,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformanceMetricTypeCode();
 
-        $this->assertNull($model->getPerformanceMetricTypeCode());
+        $this->assertNotInstanceOf(PerformanceMetricTypeCode::class, $model->getPerformanceMetricTypeCode());
 
         $testValueForPerformanceMetricTypeCode = $model->getPerformanceMetricTypeCodeWithCreate();
 
@@ -27657,7 +27658,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExceptionObservationPeriod();
 
-        $this->assertNull($model->getExceptionObservationPeriod());
+        $this->assertNotInstanceOf(ExceptionObservationPeriod::class, $model->getExceptionObservationPeriod());
 
         $testValueForExceptionObservationPeriod = $model->getExceptionObservationPeriodWithCreate();
 
@@ -27745,7 +27746,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastException();
 
-        $this->assertNull($model->getForecastException());
+        $this->assertNotInstanceOf(ForecastException::class, $model->getForecastException());
 
         $testValueForForecastException = $model->getForecastExceptionWithCreate();
 
@@ -27761,7 +27762,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyItem();
 
-        $this->assertNull($model->getSupplyItem());
+        $this->assertNotInstanceOf(SupplyItem::class, $model->getSupplyItem());
 
         $testValueForSupplyItem = $model->getSupplyItemWithCreate();
 
@@ -27809,7 +27810,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSourceCurrencyCode();
 
-        $this->assertNull($model->getSourceCurrencyCode());
+        $this->assertNotInstanceOf(SourceCurrencyCode::class, $model->getSourceCurrencyCode());
 
         $testValueForSourceCurrencyCode = $model->getSourceCurrencyCodeWithCreate();
 
@@ -27825,7 +27826,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSourceCurrencyBaseRate();
 
-        $this->assertNull($model->getSourceCurrencyBaseRate());
+        $this->assertNotInstanceOf(SourceCurrencyBaseRate::class, $model->getSourceCurrencyBaseRate());
 
         $testValueForSourceCurrencyBaseRate = $model->getSourceCurrencyBaseRateWithCreate();
 
@@ -27841,7 +27842,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTargetCurrencyCode();
 
-        $this->assertNull($model->getTargetCurrencyCode());
+        $this->assertNotInstanceOf(TargetCurrencyCode::class, $model->getTargetCurrencyCode());
 
         $testValueForTargetCurrencyCode = $model->getTargetCurrencyCodeWithCreate();
 
@@ -27857,7 +27858,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTargetCurrencyBaseRate();
 
-        $this->assertNull($model->getTargetCurrencyBaseRate());
+        $this->assertNotInstanceOf(TargetCurrencyBaseRate::class, $model->getTargetCurrencyBaseRate());
 
         $testValueForTargetCurrencyBaseRate = $model->getTargetCurrencyBaseRateWithCreate();
 
@@ -27873,7 +27874,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExchangeMarketID();
 
-        $this->assertNull($model->getExchangeMarketID());
+        $this->assertNotInstanceOf(ExchangeMarketID::class, $model->getExchangeMarketID());
 
         $testValueForExchangeMarketID = $model->getExchangeMarketIDWithCreate();
 
@@ -27889,7 +27890,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCalculationRate();
 
-        $this->assertNull($model->getCalculationRate());
+        $this->assertNotInstanceOf(CalculationRate::class, $model->getCalculationRate());
 
         $testValueForCalculationRate = $model->getCalculationRateWithCreate();
 
@@ -27905,7 +27906,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMathematicOperatorCode();
 
-        $this->assertNull($model->getMathematicOperatorCode());
+        $this->assertNotInstanceOf(MathematicOperatorCode::class, $model->getMathematicOperatorCode());
 
         $testValueForMathematicOperatorCode = $model->getMathematicOperatorCodeWithCreate();
 
@@ -27921,7 +27922,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDate();
 
-        $this->assertNull($model->getDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getDate());
 
         // Property ForeignExchangeContract
 
@@ -27932,7 +27933,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForeignExchangeContract();
 
-        $this->assertNull($model->getForeignExchangeContract());
+        $this->assertNotInstanceOf(ForeignExchangeContract::class, $model->getForeignExchangeContract());
 
         $testValueForForeignExchangeContract = $model->getForeignExchangeContractWithCreate();
 
@@ -28002,7 +28003,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetURI();
 
-        $this->assertNull($model->getURI());
+        $this->assertNotInstanceOf(URI::class, $model->getURI());
 
         $testValueForURI = $model->getURIWithCreate();
 
@@ -28018,7 +28019,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentHash();
 
-        $this->assertNull($model->getDocumentHash());
+        $this->assertNotInstanceOf(DocumentHash::class, $model->getDocumentHash());
 
         $testValueForDocumentHash = $model->getDocumentHashWithCreate();
 
@@ -28034,7 +28035,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHashAlgorithmMethod();
 
-        $this->assertNull($model->getHashAlgorithmMethod());
+        $this->assertNotInstanceOf(HashAlgorithmMethod::class, $model->getHashAlgorithmMethod());
 
         $testValueForHashAlgorithmMethod = $model->getHashAlgorithmMethodWithCreate();
 
@@ -28050,7 +28051,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpiryDate();
 
-        $this->assertNull($model->getExpiryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getExpiryDate());
 
         // Property ExpiryTime
 
@@ -28061,7 +28062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpiryTime();
 
-        $this->assertNull($model->getExpiryTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getExpiryTime());
 
         // Property MimeCode
 
@@ -28072,7 +28073,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMimeCode();
 
-        $this->assertNull($model->getMimeCode());
+        $this->assertNotInstanceOf(MimeCode::class, $model->getMimeCode());
 
         $testValueForMimeCode = $model->getMimeCodeWithCreate();
 
@@ -28088,7 +28089,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFormatCode();
 
-        $this->assertNull($model->getFormatCode());
+        $this->assertNotInstanceOf(FormatCode::class, $model->getFormatCode());
 
         $testValueForFormatCode = $model->getFormatCodeWithCreate();
 
@@ -28104,7 +28105,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEncodingCode();
 
-        $this->assertNull($model->getEncodingCode());
+        $this->assertNotInstanceOf(EncodingCode::class, $model->getEncodingCode());
 
         $testValueForEncodingCode = $model->getEncodingCodeWithCreate();
 
@@ -28120,7 +28121,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCharacterSetCode();
 
-        $this->assertNull($model->getCharacterSetCode());
+        $this->assertNotInstanceOf(CharacterSetCode::class, $model->getCharacterSetCode());
 
         $testValueForCharacterSetCode = $model->getCharacterSetCodeWithCreate();
 
@@ -28136,7 +28137,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFileName();
 
-        $this->assertNull($model->getFileName());
+        $this->assertNotInstanceOf(FileName::class, $model->getFileName());
 
         $testValueForFileName = $model->getFileNameWithCreate();
 
@@ -28300,7 +28301,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -28316,7 +28317,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -28332,7 +28333,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAliasName();
 
-        $this->assertNull($model->getAliasName());
+        $this->assertNotInstanceOf(AliasName::class, $model->getAliasName());
 
         $testValueForAliasName = $model->getAliasNameWithCreate();
 
@@ -28348,7 +28349,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountTypeCode();
 
-        $this->assertNull($model->getAccountTypeCode());
+        $this->assertNotInstanceOf(AccountTypeCode::class, $model->getAccountTypeCode());
 
         $testValueForAccountTypeCode = $model->getAccountTypeCodeWithCreate();
 
@@ -28364,7 +28365,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountFormatCode();
 
-        $this->assertNull($model->getAccountFormatCode());
+        $this->assertNotInstanceOf(AccountFormatCode::class, $model->getAccountFormatCode());
 
         $testValueForAccountFormatCode = $model->getAccountFormatCodeWithCreate();
 
@@ -28380,7 +28381,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCurrencyCode();
 
-        $this->assertNull($model->getCurrencyCode());
+        $this->assertNotInstanceOf(CurrencyCode::class, $model->getCurrencyCode());
 
         $testValueForCurrencyCode = $model->getCurrencyCodeWithCreate();
 
@@ -28468,7 +28469,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancialInstitutionBranch();
 
-        $this->assertNull($model->getFinancialInstitutionBranch());
+        $this->assertNotInstanceOf(FinancialInstitutionBranch::class, $model->getFinancialInstitutionBranch());
 
         $testValueForFinancialInstitutionBranch = $model->getFinancialInstitutionBranchWithCreate();
 
@@ -28484,7 +28485,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountry();
 
-        $this->assertNull($model->getCountry());
+        $this->assertNotInstanceOf(Country::class, $model->getCountry());
 
         $testValueForCountry = $model->getCountryWithCreate();
 
@@ -28543,7 +28544,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGuaranteeTypeCode();
 
-        $this->assertNull($model->getGuaranteeTypeCode());
+        $this->assertNotInstanceOf(GuaranteeTypeCode::class, $model->getGuaranteeTypeCode());
 
         $testValueForGuaranteeTypeCode = $model->getGuaranteeTypeCodeWithCreate();
 
@@ -28631,7 +28632,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLiabilityAmount();
 
-        $this->assertNull($model->getLiabilityAmount());
+        $this->assertNotInstanceOf(LiabilityAmount::class, $model->getLiabilityAmount());
 
         $testValueForLiabilityAmount = $model->getLiabilityAmountWithCreate();
 
@@ -28647,7 +28648,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmountRate();
 
-        $this->assertNull($model->getAmountRate());
+        $this->assertNotInstanceOf(AmountRate::class, $model->getAmountRate());
 
         $testValueForAmountRate = $model->getAmountRateWithCreate();
 
@@ -28663,7 +28664,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConstitutionPeriod();
 
-        $this->assertNull($model->getConstitutionPeriod());
+        $this->assertNotInstanceOf(ConstitutionPeriod::class, $model->getConstitutionPeriod());
 
         $testValueForConstitutionPeriod = $model->getConstitutionPeriodWithCreate();
 
@@ -28711,7 +28712,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -28727,7 +28728,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -28743,7 +28744,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddress();
 
-        $this->assertNull($model->getAddress());
+        $this->assertNotInstanceOf(Address::class, $model->getAddress());
 
         $testValueForAddress = $model->getAddressWithCreate();
 
@@ -28857,7 +28858,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastPurposeCode();
 
-        $this->assertNull($model->getForecastPurposeCode());
+        $this->assertNotInstanceOf(ForecastPurposeCode::class, $model->getForecastPurposeCode());
 
         $testValueForForecastPurposeCode = $model->getForecastPurposeCodeWithCreate();
 
@@ -28873,7 +28874,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastTypeCode();
 
-        $this->assertNull($model->getForecastTypeCode());
+        $this->assertNotInstanceOf(ForecastTypeCode::class, $model->getForecastTypeCode());
 
         $testValueForForecastTypeCode = $model->getForecastTypeCodeWithCreate();
 
@@ -28889,7 +28890,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComparisonDataSourceCode();
 
-        $this->assertNull($model->getComparisonDataSourceCode());
+        $this->assertNotInstanceOf(ComparisonDataSourceCode::class, $model->getComparisonDataSourceCode());
 
         $testValueForComparisonDataSourceCode = $model->getComparisonDataSourceCodeWithCreate();
 
@@ -28905,7 +28906,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDataSourceCode();
 
-        $this->assertNull($model->getDataSourceCode());
+        $this->assertNotInstanceOf(DataSourceCode::class, $model->getDataSourceCode());
 
         $testValueForDataSourceCode = $model->getDataSourceCodeWithCreate();
 
@@ -28921,7 +28922,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimeDeltaDaysQuantity();
 
-        $this->assertNull($model->getTimeDeltaDaysQuantity());
+        $this->assertNotInstanceOf(TimeDeltaDaysQuantity::class, $model->getTimeDeltaDaysQuantity());
 
         $testValueForTimeDeltaDaysQuantity = $model->getTimeDeltaDaysQuantityWithCreate();
 
@@ -28947,7 +28948,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastPurposeCode();
 
-        $this->assertNull($model->getForecastPurposeCode());
+        $this->assertNotInstanceOf(ForecastPurposeCode::class, $model->getForecastPurposeCode());
 
         $testValueForForecastPurposeCode = $model->getForecastPurposeCodeWithCreate();
 
@@ -28963,7 +28964,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastTypeCode();
 
-        $this->assertNull($model->getForecastTypeCode());
+        $this->assertNotInstanceOf(ForecastTypeCode::class, $model->getForecastTypeCode());
 
         $testValueForForecastTypeCode = $model->getForecastTypeCodeWithCreate();
 
@@ -28979,7 +28980,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -28990,7 +28991,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property DataSourceCode
 
@@ -29001,7 +29002,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDataSourceCode();
 
-        $this->assertNull($model->getDataSourceCode());
+        $this->assertNotInstanceOf(DataSourceCode::class, $model->getDataSourceCode());
 
         $testValueForDataSourceCode = $model->getDataSourceCodeWithCreate();
 
@@ -29017,7 +29018,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComparisonDataCode();
 
-        $this->assertNull($model->getComparisonDataCode());
+        $this->assertNotInstanceOf(ComparisonDataCode::class, $model->getComparisonDataCode());
 
         $testValueForComparisonDataCode = $model->getComparisonDataCodeWithCreate();
 
@@ -29033,7 +29034,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComparisonForecastIssueTime();
 
-        $this->assertNull($model->getComparisonForecastIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getComparisonForecastIssueTime());
 
         // Property ComparisonForecastIssueDate
 
@@ -29044,7 +29045,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetComparisonForecastIssueDate();
 
-        $this->assertNull($model->getComparisonForecastIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getComparisonForecastIssueDate());
     }
 
     /**
@@ -29076,7 +29077,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -29175,7 +29176,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastTypeCode();
 
-        $this->assertNull($model->getForecastTypeCode());
+        $this->assertNotInstanceOf(ForecastTypeCode::class, $model->getForecastTypeCode());
 
         $testValueForForecastTypeCode = $model->getForecastTypeCodeWithCreate();
 
@@ -29191,7 +29192,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastPeriod();
 
-        $this->assertNull($model->getForecastPeriod());
+        $this->assertNotInstanceOf(ForecastPeriod::class, $model->getForecastPeriod());
 
         $testValueForForecastPeriod = $model->getForecastPeriodWithCreate();
 
@@ -29207,7 +29208,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSalesItem();
 
-        $this->assertNull($model->getSalesItem());
+        $this->assertNotInstanceOf(SalesItem::class, $model->getSalesItem());
 
         $testValueForSalesItem = $model->getSalesItemWithCreate();
 
@@ -29255,7 +29256,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -29415,7 +29416,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRevisedForecastLineID();
 
-        $this->assertNull($model->getRevisedForecastLineID());
+        $this->assertNotInstanceOf(RevisedForecastLineID::class, $model->getRevisedForecastLineID());
 
         $testValueForRevisedForecastLineID = $model->getRevisedForecastLineIDWithCreate();
 
@@ -29431,7 +29432,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSourceForecastIssueDate();
 
-        $this->assertNull($model->getSourceForecastIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getSourceForecastIssueDate());
 
         // Property SourceForecastIssueTime
 
@@ -29442,7 +29443,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSourceForecastIssueTime();
 
-        $this->assertNull($model->getSourceForecastIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getSourceForecastIssueTime());
 
         // Property AdjustmentReasonCode
 
@@ -29453,7 +29454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdjustmentReasonCode();
 
-        $this->assertNull($model->getAdjustmentReasonCode());
+        $this->assertNotInstanceOf(AdjustmentReasonCode::class, $model->getAdjustmentReasonCode());
 
         $testValueForAdjustmentReasonCode = $model->getAdjustmentReasonCodeWithCreate();
 
@@ -29469,7 +29470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastPeriod();
 
-        $this->assertNull($model->getForecastPeriod());
+        $this->assertNotInstanceOf(ForecastPeriod::class, $model->getForecastPeriod());
 
         $testValueForForecastPeriod = $model->getForecastPeriodWithCreate();
 
@@ -29485,7 +29486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSalesItem();
 
-        $this->assertNull($model->getSalesItem());
+        $this->assertNotInstanceOf(SalesItem::class, $model->getSalesItem());
 
         $testValueForSalesItem = $model->getSalesItemWithCreate();
 
@@ -29533,7 +29534,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpectedOperatorQuantity();
 
-        $this->assertNull($model->getExpectedOperatorQuantity());
+        $this->assertNotInstanceOf(ExpectedOperatorQuantity::class, $model->getExpectedOperatorQuantity());
 
         $testValueForExpectedOperatorQuantity = $model->getExpectedOperatorQuantityWithCreate();
 
@@ -29549,7 +29550,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumOperatorQuantity();
 
-        $this->assertNull($model->getMaximumOperatorQuantity());
+        $this->assertNotInstanceOf(MaximumOperatorQuantity::class, $model->getMaximumOperatorQuantity());
 
         $testValueForMaximumOperatorQuantity = $model->getMaximumOperatorQuantityWithCreate();
 
@@ -29709,7 +29710,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDurationPeriod();
 
-        $this->assertNull($model->getDurationPeriod());
+        $this->assertNotInstanceOf(DurationPeriod::class, $model->getDurationPeriod());
 
         $testValueForDurationPeriod = $model->getDurationPeriodWithCreate();
 
@@ -29884,7 +29885,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -29900,7 +29901,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -29998,7 +29999,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -30014,7 +30015,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumberID();
 
-        $this->assertNull($model->getSequenceNumberID());
+        $this->assertNotInstanceOf(SequenceNumberID::class, $model->getSequenceNumberID());
 
         $testValueForSequenceNumberID = $model->getSequenceNumberIDWithCreate();
 
@@ -30113,7 +30114,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredCustomsValueAmount();
 
-        $this->assertNull($model->getDeclaredCustomsValueAmount());
+        $this->assertNotInstanceOf(DeclaredCustomsValueAmount::class, $model->getDeclaredCustomsValueAmount());
 
         $testValueForDeclaredCustomsValueAmount = $model->getDeclaredCustomsValueAmountWithCreate();
 
@@ -30129,7 +30130,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredForCarriageValueAmount();
 
-        $this->assertNull($model->getDeclaredForCarriageValueAmount());
+        $this->assertNotInstanceOf(DeclaredForCarriageValueAmount::class, $model->getDeclaredForCarriageValueAmount());
 
         $testValueForDeclaredForCarriageValueAmount = $model->getDeclaredForCarriageValueAmountWithCreate();
 
@@ -30145,7 +30146,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredStatisticsValueAmount();
 
-        $this->assertNull($model->getDeclaredStatisticsValueAmount());
+        $this->assertNotInstanceOf(DeclaredStatisticsValueAmount::class, $model->getDeclaredStatisticsValueAmount());
 
         $testValueForDeclaredStatisticsValueAmount = $model->getDeclaredStatisticsValueAmountWithCreate();
 
@@ -30161,7 +30162,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreeOnBoardValueAmount();
 
-        $this->assertNull($model->getFreeOnBoardValueAmount());
+        $this->assertNotInstanceOf(FreeOnBoardValueAmount::class, $model->getFreeOnBoardValueAmount());
 
         $testValueForFreeOnBoardValueAmount = $model->getFreeOnBoardValueAmountWithCreate();
 
@@ -30177,7 +30178,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInsuranceValueAmount();
 
-        $this->assertNull($model->getInsuranceValueAmount());
+        $this->assertNotInstanceOf(InsuranceValueAmount::class, $model->getInsuranceValueAmount());
 
         $testValueForInsuranceValueAmount = $model->getInsuranceValueAmountWithCreate();
 
@@ -30193,7 +30194,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueAmount();
 
-        $this->assertNull($model->getValueAmount());
+        $this->assertNotInstanceOf(ValueAmount::class, $model->getValueAmount());
 
         $testValueForValueAmount = $model->getValueAmountWithCreate();
 
@@ -30209,7 +30210,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossWeightMeasure();
 
-        $this->assertNull($model->getGrossWeightMeasure());
+        $this->assertNotInstanceOf(GrossWeightMeasure::class, $model->getGrossWeightMeasure());
 
         $testValueForGrossWeightMeasure = $model->getGrossWeightMeasureWithCreate();
 
@@ -30225,7 +30226,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetWeightMeasure();
 
-        $this->assertNull($model->getNetWeightMeasure());
+        $this->assertNotInstanceOf(NetWeightMeasure::class, $model->getNetWeightMeasure());
 
         $testValueForNetWeightMeasure = $model->getNetWeightMeasureWithCreate();
 
@@ -30241,7 +30242,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetNetWeightMeasure();
 
-        $this->assertNull($model->getNetNetWeightMeasure());
+        $this->assertNotInstanceOf(NetNetWeightMeasure::class, $model->getNetNetWeightMeasure());
 
         $testValueForNetNetWeightMeasure = $model->getNetNetWeightMeasureWithCreate();
 
@@ -30257,7 +30258,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChargeableWeightMeasure();
 
-        $this->assertNull($model->getChargeableWeightMeasure());
+        $this->assertNotInstanceOf(ChargeableWeightMeasure::class, $model->getChargeableWeightMeasure());
 
         $testValueForChargeableWeightMeasure = $model->getChargeableWeightMeasureWithCreate();
 
@@ -30273,7 +30274,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossVolumeMeasure();
 
-        $this->assertNull($model->getGrossVolumeMeasure());
+        $this->assertNotInstanceOf(GrossVolumeMeasure::class, $model->getGrossVolumeMeasure());
 
         $testValueForGrossVolumeMeasure = $model->getGrossVolumeMeasureWithCreate();
 
@@ -30289,7 +30290,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetVolumeMeasure();
 
-        $this->assertNull($model->getNetVolumeMeasure());
+        $this->assertNotInstanceOf(NetVolumeMeasure::class, $model->getNetVolumeMeasure());
 
         $testValueForNetVolumeMeasure = $model->getNetVolumeMeasureWithCreate();
 
@@ -30305,7 +30306,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -30321,7 +30322,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreferenceCriterionCode();
 
-        $this->assertNull($model->getPreferenceCriterionCode());
+        $this->assertNotInstanceOf(PreferenceCriterionCode::class, $model->getPreferenceCriterionCode());
 
         $testValueForPreferenceCriterionCode = $model->getPreferenceCriterionCodeWithCreate();
 
@@ -30337,7 +30338,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequiredCustomsID();
 
-        $this->assertNull($model->getRequiredCustomsID());
+        $this->assertNotInstanceOf(RequiredCustomsID::class, $model->getRequiredCustomsID());
 
         $testValueForRequiredCustomsID = $model->getRequiredCustomsIDWithCreate();
 
@@ -30353,7 +30354,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomsStatusCode();
 
-        $this->assertNull($model->getCustomsStatusCode());
+        $this->assertNotInstanceOf(CustomsStatusCode::class, $model->getCustomsStatusCode());
 
         $testValueForCustomsStatusCode = $model->getCustomsStatusCodeWithCreate();
 
@@ -30369,7 +30370,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomsTariffQuantity();
 
-        $this->assertNull($model->getCustomsTariffQuantity());
+        $this->assertNotInstanceOf(CustomsTariffQuantity::class, $model->getCustomsTariffQuantity());
 
         $testValueForCustomsTariffQuantity = $model->getCustomsTariffQuantityWithCreate();
 
@@ -30396,7 +30397,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChargeableQuantity();
 
-        $this->assertNull($model->getChargeableQuantity());
+        $this->assertNotInstanceOf(ChargeableQuantity::class, $model->getChargeableQuantity());
 
         $testValueForChargeableQuantity = $model->getChargeableQuantityWithCreate();
 
@@ -30412,7 +30413,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReturnableQuantity();
 
-        $this->assertNull($model->getReturnableQuantity());
+        $this->assertNotInstanceOf(ReturnableQuantity::class, $model->getReturnableQuantity());
 
         $testValueForReturnableQuantity = $model->getReturnableQuantityWithCreate();
 
@@ -30428,7 +30429,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTraceID();
 
-        $this->assertNull($model->getTraceID());
+        $this->assertNotInstanceOf(TraceID::class, $model->getTraceID());
 
         $testValueForTraceID = $model->getTraceIDWithCreate();
 
@@ -30876,7 +30877,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginAddress();
 
-        $this->assertNull($model->getOriginAddress());
+        $this->assertNotInstanceOf(OriginAddress::class, $model->getOriginAddress());
 
         $testValueForOriginAddress = $model->getOriginAddressWithCreate();
 
@@ -30892,7 +30893,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDelivery();
 
-        $this->assertNull($model->getDelivery());
+        $this->assertNotInstanceOf(Delivery::class, $model->getDelivery());
 
         $testValueForDelivery = $model->getDeliveryWithCreate();
 
@@ -30908,7 +30909,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPickup();
 
-        $this->assertNull($model->getPickup());
+        $this->assertNotInstanceOf(Pickup::class, $model->getPickup());
 
         $testValueForPickup = $model->getPickupWithCreate();
 
@@ -30924,7 +30925,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatch();
 
-        $this->assertNull($model->getDespatch());
+        $this->assertNotInstanceOf(Despatch::class, $model->getDespatch());
 
         $testValueForDespatch = $model->getDespatchWithCreate();
 
@@ -31084,7 +31085,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShipmentDocumentReference();
 
-        $this->assertNull($model->getShipmentDocumentReference());
+        $this->assertNotInstanceOf(ShipmentDocumentReference::class, $model->getShipmentDocumentReference());
 
         $testValueForShipmentDocumentReference = $model->getShipmentDocumentReferenceWithCreate();
 
@@ -31100,7 +31101,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumTemperature();
 
-        $this->assertNull($model->getMinimumTemperature());
+        $this->assertNotInstanceOf(MinimumTemperature::class, $model->getMinimumTemperature());
 
         $testValueForMinimumTemperature = $model->getMinimumTemperatureWithCreate();
 
@@ -31116,7 +31117,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumTemperature();
 
-        $this->assertNull($model->getMaximumTemperature());
+        $this->assertNotInstanceOf(MaximumTemperature::class, $model->getMaximumTemperature());
 
         $testValueForMaximumTemperature = $model->getMaximumTemperatureWithCreate();
 
@@ -31219,7 +31220,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportEmergencyCardCode();
 
-        $this->assertNull($model->getTransportEmergencyCardCode());
+        $this->assertNotInstanceOf(TransportEmergencyCardCode::class, $model->getTransportEmergencyCardCode());
 
         $testValueForTransportEmergencyCardCode = $model->getTransportEmergencyCardCodeWithCreate();
 
@@ -31235,7 +31236,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackingCriteriaCode();
 
-        $this->assertNull($model->getPackingCriteriaCode());
+        $this->assertNotInstanceOf(PackingCriteriaCode::class, $model->getPackingCriteriaCode());
 
         $testValueForPackingCriteriaCode = $model->getPackingCriteriaCodeWithCreate();
 
@@ -31251,7 +31252,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHazardousRegulationCode();
 
-        $this->assertNull($model->getHazardousRegulationCode());
+        $this->assertNotInstanceOf(HazardousRegulationCode::class, $model->getHazardousRegulationCode());
 
         $testValueForHazardousRegulationCode = $model->getHazardousRegulationCodeWithCreate();
 
@@ -31267,7 +31268,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInhalationToxicityZoneCode();
 
-        $this->assertNull($model->getInhalationToxicityZoneCode());
+        $this->assertNotInstanceOf(InhalationToxicityZoneCode::class, $model->getInhalationToxicityZoneCode());
 
         $testValueForInhalationToxicityZoneCode = $model->getInhalationToxicityZoneCodeWithCreate();
 
@@ -31283,7 +31284,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportAuthorizationCode();
 
-        $this->assertNull($model->getTransportAuthorizationCode());
+        $this->assertNotInstanceOf(TransportAuthorizationCode::class, $model->getTransportAuthorizationCode());
 
         $testValueForTransportAuthorizationCode = $model->getTransportAuthorizationCodeWithCreate();
 
@@ -31299,7 +31300,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumTemperature();
 
-        $this->assertNull($model->getMaximumTemperature());
+        $this->assertNotInstanceOf(MaximumTemperature::class, $model->getMaximumTemperature());
 
         $testValueForMaximumTemperature = $model->getMaximumTemperatureWithCreate();
 
@@ -31315,7 +31316,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumTemperature();
 
-        $this->assertNull($model->getMinimumTemperature());
+        $this->assertNotInstanceOf(MinimumTemperature::class, $model->getMinimumTemperature());
 
         $testValueForMinimumTemperature = $model->getMinimumTemperatureWithCreate();
 
@@ -31363,7 +31364,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -31379,7 +31380,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlacardNotation();
 
-        $this->assertNull($model->getPlacardNotation());
+        $this->assertNotInstanceOf(PlacardNotation::class, $model->getPlacardNotation());
 
         $testValueForPlacardNotation = $model->getPlacardNotationWithCreate();
 
@@ -31395,7 +31396,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlacardEndorsement();
 
-        $this->assertNull($model->getPlacardEndorsement());
+        $this->assertNotInstanceOf(PlacardEndorsement::class, $model->getPlacardEndorsement());
 
         $testValueForPlacardEndorsement = $model->getPlacardEndorsementWithCreate();
 
@@ -31483,7 +31484,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUNDGCode();
 
-        $this->assertNull($model->getUNDGCode());
+        $this->assertNotInstanceOf(UNDGCode::class, $model->getUNDGCode());
 
         $testValueForUNDGCode = $model->getUNDGCodeWithCreate();
 
@@ -31499,7 +31500,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmergencyProceduresCode();
 
-        $this->assertNull($model->getEmergencyProceduresCode());
+        $this->assertNotInstanceOf(EmergencyProceduresCode::class, $model->getEmergencyProceduresCode());
 
         $testValueForEmergencyProceduresCode = $model->getEmergencyProceduresCodeWithCreate();
 
@@ -31515,7 +31516,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMedicalFirstAidGuideCode();
 
-        $this->assertNull($model->getMedicalFirstAidGuideCode());
+        $this->assertNotInstanceOf(MedicalFirstAidGuideCode::class, $model->getMedicalFirstAidGuideCode());
 
         $testValueForMedicalFirstAidGuideCode = $model->getMedicalFirstAidGuideCodeWithCreate();
 
@@ -31531,7 +31532,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTechnicalName();
 
-        $this->assertNull($model->getTechnicalName());
+        $this->assertNotInstanceOf(TechnicalName::class, $model->getTechnicalName());
 
         $testValueForTechnicalName = $model->getTechnicalNameWithCreate();
 
@@ -31547,7 +31548,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCategoryName();
 
-        $this->assertNull($model->getCategoryName());
+        $this->assertNotInstanceOf(CategoryName::class, $model->getCategoryName());
 
         $testValueForCategoryName = $model->getCategoryNameWithCreate();
 
@@ -31563,7 +31564,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHazardousCategoryCode();
 
-        $this->assertNull($model->getHazardousCategoryCode());
+        $this->assertNotInstanceOf(HazardousCategoryCode::class, $model->getHazardousCategoryCode());
 
         $testValueForHazardousCategoryCode = $model->getHazardousCategoryCodeWithCreate();
 
@@ -31579,7 +31580,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUpperOrangeHazardPlacardID();
 
-        $this->assertNull($model->getUpperOrangeHazardPlacardID());
+        $this->assertNotInstanceOf(UpperOrangeHazardPlacardID::class, $model->getUpperOrangeHazardPlacardID());
 
         $testValueForUpperOrangeHazardPlacardID = $model->getUpperOrangeHazardPlacardIDWithCreate();
 
@@ -31595,7 +31596,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLowerOrangeHazardPlacardID();
 
-        $this->assertNull($model->getLowerOrangeHazardPlacardID());
+        $this->assertNotInstanceOf(LowerOrangeHazardPlacardID::class, $model->getLowerOrangeHazardPlacardID());
 
         $testValueForLowerOrangeHazardPlacardID = $model->getLowerOrangeHazardPlacardIDWithCreate();
 
@@ -31611,7 +31612,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMarkingID();
 
-        $this->assertNull($model->getMarkingID());
+        $this->assertNotInstanceOf(MarkingID::class, $model->getMarkingID());
 
         $testValueForMarkingID = $model->getMarkingIDWithCreate();
 
@@ -31627,7 +31628,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHazardClassID();
 
-        $this->assertNull($model->getHazardClassID());
+        $this->assertNotInstanceOf(HazardClassID::class, $model->getHazardClassID());
 
         $testValueForHazardClassID = $model->getHazardClassIDWithCreate();
 
@@ -31643,7 +31644,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetWeightMeasure();
 
-        $this->assertNull($model->getNetWeightMeasure());
+        $this->assertNotInstanceOf(NetWeightMeasure::class, $model->getNetWeightMeasure());
 
         $testValueForNetWeightMeasure = $model->getNetWeightMeasureWithCreate();
 
@@ -31659,7 +31660,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetVolumeMeasure();
 
-        $this->assertNull($model->getNetVolumeMeasure());
+        $this->assertNotInstanceOf(NetVolumeMeasure::class, $model->getNetVolumeMeasure());
 
         $testValueForNetVolumeMeasure = $model->getNetVolumeMeasureWithCreate();
 
@@ -31675,7 +31676,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -31691,7 +31692,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContactParty();
 
-        $this->assertNull($model->getContactParty());
+        $this->assertNotInstanceOf(ContactParty::class, $model->getContactParty());
 
         $testValueForContactParty = $model->getContactPartyWithCreate();
 
@@ -31851,7 +31852,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmergencyTemperature();
 
-        $this->assertNull($model->getEmergencyTemperature());
+        $this->assertNotInstanceOf(EmergencyTemperature::class, $model->getEmergencyTemperature());
 
         $testValueForEmergencyTemperature = $model->getEmergencyTemperatureWithCreate();
 
@@ -31867,7 +31868,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFlashpointTemperature();
 
-        $this->assertNull($model->getFlashpointTemperature());
+        $this->assertNotInstanceOf(FlashpointTemperature::class, $model->getFlashpointTemperature());
 
         $testValueForFlashpointTemperature = $model->getFlashpointTemperatureWithCreate();
 
@@ -31998,7 +31999,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetImmobilizationCertificateID();
 
-        $this->assertNull($model->getImmobilizationCertificateID());
+        $this->assertNotInstanceOf(ImmobilizationCertificateID::class, $model->getImmobilizationCertificateID());
 
         $testValueForImmobilizationCertificateID = $model->getImmobilizationCertificateIDWithCreate();
 
@@ -32014,7 +32015,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSecurityID();
 
-        $this->assertNull($model->getSecurityID());
+        $this->assertNotInstanceOf(SecurityID::class, $model->getSecurityID());
 
         $testValueForSecurityID = $model->getSecurityIDWithCreate();
 
@@ -32030,7 +32031,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property FaceValueAmount
 
@@ -32041,7 +32042,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFaceValueAmount();
 
-        $this->assertNull($model->getFaceValueAmount());
+        $this->assertNotInstanceOf(FaceValueAmount::class, $model->getFaceValueAmount());
 
         $testValueForFaceValueAmount = $model->getFaceValueAmountWithCreate();
 
@@ -32057,7 +32058,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMarketValueAmount();
 
-        $this->assertNull($model->getMarketValueAmount());
+        $this->assertNotInstanceOf(MarketValueAmount::class, $model->getMarketValueAmount());
 
         $testValueForMarketValueAmount = $model->getMarketValueAmountWithCreate();
 
@@ -32073,7 +32074,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSharesNumberQuantity();
 
-        $this->assertNull($model->getSharesNumberQuantity());
+        $this->assertNotInstanceOf(SharesNumberQuantity::class, $model->getSharesNumberQuantity());
 
         $testValueForSharesNumberQuantity = $model->getSharesNumberQuantityWithCreate();
 
@@ -32089,7 +32090,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -32148,7 +32149,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -32236,7 +32237,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -32252,7 +32253,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetManufacturerParty();
 
-        $this->assertNull($model->getManufacturerParty());
+        $this->assertNotInstanceOf(ManufacturerParty::class, $model->getManufacturerParty());
 
         $testValueForManufacturerParty = $model->getManufacturerPartyWithCreate();
 
@@ -32268,7 +32269,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -32382,7 +32383,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -32470,7 +32471,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -32486,7 +32487,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInventoryValueAmount();
 
-        $this->assertNull($model->getInventoryValueAmount());
+        $this->assertNotInstanceOf(InventoryValueAmount::class, $model->getInventoryValueAmount());
 
         $testValueForInventoryValueAmount = $model->getInventoryValueAmountWithCreate();
 
@@ -32502,7 +32503,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAvailabilityDate();
 
-        $this->assertNull($model->getAvailabilityDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getAvailabilityDate());
 
         // Property AvailabilityStatusCode
 
@@ -32513,7 +32514,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAvailabilityStatusCode();
 
-        $this->assertNull($model->getAvailabilityStatusCode());
+        $this->assertNotInstanceOf(AvailabilityStatusCode::class, $model->getAvailabilityStatusCode());
 
         $testValueForAvailabilityStatusCode = $model->getAvailabilityStatusCodeWithCreate();
 
@@ -32529,7 +32530,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -32545,7 +32546,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInventoryLocation();
 
-        $this->assertNull($model->getInventoryLocation());
+        $this->assertNotInstanceOf(InventoryLocation::class, $model->getInventoryLocation());
 
         $testValueForInventoryLocation = $model->getInventoryLocationWithCreate();
 
@@ -32604,7 +32605,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -32620,7 +32621,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -32708,7 +32709,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoicedQuantity();
 
-        $this->assertNull($model->getInvoicedQuantity());
+        $this->assertNotInstanceOf(InvoicedQuantity::class, $model->getInvoicedQuantity());
 
         $testValueForInvoicedQuantity = $model->getInvoicedQuantityWithCreate();
 
@@ -32724,7 +32725,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -32740,7 +32741,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxPointDate();
 
-        $this->assertNull($model->getTaxPointDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getTaxPointDate());
 
         // Property AccountingCostCode
 
@@ -32751,7 +32752,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -32767,7 +32768,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -32783,7 +32784,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -33242,7 +33243,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingReference();
 
-        $this->assertNull($model->getPricingReference());
+        $this->assertNotInstanceOf(PricingReference::class, $model->getPricingReference());
 
         $testValueForPricingReference = $model->getPricingReferenceWithCreate();
 
@@ -33258,7 +33259,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginatorParty();
 
-        $this->assertNull($model->getOriginatorParty());
+        $this->assertNotInstanceOf(OriginatorParty::class, $model->getOriginatorParty());
 
         $testValueForOriginatorParty = $model->getOriginatorPartyWithCreate();
 
@@ -33634,7 +33635,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -33650,7 +33651,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -33666,7 +33667,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryTerms();
 
-        $this->assertNull($model->getDeliveryTerms());
+        $this->assertNotInstanceOf(DeliveryTerms::class, $model->getDeliveryTerms());
 
         $testValueForDeliveryTerms = $model->getDeliveryTermsWithCreate();
 
@@ -33754,7 +33755,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemPriceExtension();
 
-        $this->assertNull($model->getItemPriceExtension());
+        $this->assertNotInstanceOf(ItemPriceExtension::class, $model->getItemPriceExtension());
 
         $testValueForItemPriceExtension = $model->getItemPriceExtensionWithCreate();
 
@@ -33846,7 +33847,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceAmount();
 
-        $this->assertNull($model->getPriceAmount());
+        $this->assertNotInstanceOf(PriceAmount::class, $model->getPriceAmount());
 
         $testValueForPriceAmount = $model->getPriceAmountWithCreate();
 
@@ -33862,7 +33863,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -33899,7 +33900,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -33915,7 +33916,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtendedID();
 
-        $this->assertNull($model->getExtendedID());
+        $this->assertNotInstanceOf(ExtendedID::class, $model->getExtendedID());
 
         $testValueForExtendedID = $model->getExtendedIDWithCreate();
 
@@ -33931,7 +33932,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBarcodeSymbologyID();
 
-        $this->assertNull($model->getBarcodeSymbologyID());
+        $this->assertNotInstanceOf(BarcodeSymbologyID::class, $model->getBarcodeSymbologyID());
 
         $testValueForBarcodeSymbologyID = $model->getBarcodeSymbologyIDWithCreate();
 
@@ -34091,7 +34092,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssuerParty();
 
-        $this->assertNull($model->getIssuerParty());
+        $this->assertNotInstanceOf(IssuerParty::class, $model->getIssuerParty());
 
         $testValueForIssuerParty = $model->getIssuerPartyWithCreate();
 
@@ -34128,7 +34129,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimeFrequencyCode();
 
-        $this->assertNull($model->getTimeFrequencyCode());
+        $this->assertNotInstanceOf(TimeFrequencyCode::class, $model->getTimeFrequencyCode());
 
         $testValueForTimeFrequencyCode = $model->getTimeFrequencyCodeWithCreate();
 
@@ -34144,7 +34145,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplyChainActivityTypeCode();
 
-        $this->assertNull($model->getSupplyChainActivityTypeCode());
+        $this->assertNotInstanceOf(SupplyChainActivityTypeCode::class, $model->getSupplyChainActivityTypeCode());
 
         $testValueForSupplyChainActivityTypeCode = $model->getSupplyChainActivityTypeCodeWithCreate();
 
@@ -34160,7 +34161,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastTypeCode();
 
-        $this->assertNull($model->getForecastTypeCode());
+        $this->assertNotInstanceOf(ForecastTypeCode::class, $model->getForecastTypeCode());
 
         $testValueForForecastTypeCode = $model->getForecastTypeCodeWithCreate();
 
@@ -34176,7 +34177,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformanceMetricTypeCode();
 
-        $this->assertNull($model->getPerformanceMetricTypeCode());
+        $this->assertNotInstanceOf(PerformanceMetricTypeCode::class, $model->getPerformanceMetricTypeCode());
 
         $testValueForPerformanceMetricTypeCode = $model->getPerformanceMetricTypeCodeWithCreate();
 
@@ -34357,7 +34358,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProductTraceID();
 
-        $this->assertNull($model->getProductTraceID());
+        $this->assertNotInstanceOf(ProductTraceID::class, $model->getProductTraceID());
 
         $testValueForProductTraceID = $model->getProductTraceIDWithCreate();
 
@@ -34373,7 +34374,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetManufactureDate();
 
-        $this->assertNull($model->getManufactureDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getManufactureDate());
 
         // Property ManufactureTime
 
@@ -34384,7 +34385,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetManufactureTime();
 
-        $this->assertNull($model->getManufactureTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getManufactureTime());
 
         // Property BestBeforeDate
 
@@ -34395,7 +34396,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBestBeforeDate();
 
-        $this->assertNull($model->getBestBeforeDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getBestBeforeDate());
 
         // Property RegistrationID
 
@@ -34406,7 +34407,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationID();
 
-        $this->assertNull($model->getRegistrationID());
+        $this->assertNotInstanceOf(RegistrationID::class, $model->getRegistrationID());
 
         $testValueForRegistrationID = $model->getRegistrationIDWithCreate();
 
@@ -34422,7 +34423,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSerialID();
 
-        $this->assertNull($model->getSerialID());
+        $this->assertNotInstanceOf(SerialID::class, $model->getSerialID());
 
         $testValueForSerialID = $model->getSerialIDWithCreate();
 
@@ -34510,7 +34511,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLotIdentification();
 
-        $this->assertNull($model->getLotIdentification());
+        $this->assertNotInstanceOf(LotIdentification::class, $model->getLotIdentification());
 
         $testValueForLotIdentification = $model->getLotIdentificationWithCreate();
 
@@ -34547,7 +34548,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLeadTimeMeasure();
 
-        $this->assertNull($model->getLeadTimeMeasure());
+        $this->assertNotInstanceOf(LeadTimeMeasure::class, $model->getLeadTimeMeasure());
 
         $testValueForLeadTimeMeasure = $model->getLeadTimeMeasureWithCreate();
 
@@ -34563,7 +34564,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -34579,7 +34580,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -34750,7 +34751,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -34910,7 +34911,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackage();
 
-        $this->assertNull($model->getPackage());
+        $this->assertNotInstanceOf(Package::class, $model->getPackage());
 
         $testValueForPackage = $model->getPackageWithCreate();
 
@@ -34998,7 +34999,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDependentPriceReference();
 
-        $this->assertNull($model->getDependentPriceReference());
+        $this->assertNotInstanceOf(DependentPriceReference::class, $model->getDependentPriceReference());
 
         $testValueForDependentPriceReference = $model->getDependentPriceReferenceWithCreate();
 
@@ -35035,7 +35036,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFrozenPeriodDaysNumeric();
 
-        $this->assertNull($model->getFrozenPeriodDaysNumeric());
+        $this->assertNotInstanceOf(FrozenPeriodDaysNumeric::class, $model->getFrozenPeriodDaysNumeric());
 
         $testValueForFrozenPeriodDaysNumeric = $model->getFrozenPeriodDaysNumericWithCreate();
 
@@ -35051,7 +35052,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumInventoryQuantity();
 
-        $this->assertNull($model->getMinimumInventoryQuantity());
+        $this->assertNotInstanceOf(MinimumInventoryQuantity::class, $model->getMinimumInventoryQuantity());
 
         $testValueForMinimumInventoryQuantity = $model->getMinimumInventoryQuantityWithCreate();
 
@@ -35067,7 +35068,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMultipleOrderQuantity();
 
-        $this->assertNull($model->getMultipleOrderQuantity());
+        $this->assertNotInstanceOf(MultipleOrderQuantity::class, $model->getMultipleOrderQuantity());
 
         $testValueForMultipleOrderQuantity = $model->getMultipleOrderQuantityWithCreate();
 
@@ -35083,7 +35084,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderIntervalDaysNumeric();
 
-        $this->assertNull($model->getOrderIntervalDaysNumeric());
+        $this->assertNotInstanceOf(OrderIntervalDaysNumeric::class, $model->getOrderIntervalDaysNumeric());
 
         $testValueForOrderIntervalDaysNumeric = $model->getOrderIntervalDaysNumericWithCreate();
 
@@ -35171,7 +35172,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTargetServicePercent();
 
-        $this->assertNull($model->getTargetServicePercent());
+        $this->assertNotInstanceOf(TargetServicePercent::class, $model->getTargetServicePercent());
 
         $testValueForTargetServicePercent = $model->getTargetServicePercentWithCreate();
 
@@ -35187,7 +35188,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTargetInventoryQuantity();
 
-        $this->assertNull($model->getTargetInventoryQuantity());
+        $this->assertNotInstanceOf(TargetInventoryQuantity::class, $model->getTargetInventoryQuantity());
 
         $testValueForTargetInventoryQuantity = $model->getTargetInventoryQuantityWithCreate();
 
@@ -35203,7 +35204,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEffectivePeriod();
 
-        $this->assertNull($model->getEffectivePeriod());
+        $this->assertNotInstanceOf(EffectivePeriod::class, $model->getEffectivePeriod());
 
         $testValueForEffectivePeriod = $model->getEffectivePeriodWithCreate();
 
@@ -35219,7 +35220,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -35235,7 +35236,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemLocationQuantity();
 
-        $this->assertNull($model->getItemLocationQuantity());
+        $this->assertNotInstanceOf(ItemLocationQuantity::class, $model->getItemLocationQuantity());
 
         $testValueForItemLocationQuantity = $model->getItemLocationQuantityWithCreate();
 
@@ -35294,7 +35295,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -35310,7 +35311,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -35326,7 +35327,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetImportanceCode();
 
-        $this->assertNull($model->getImportanceCode());
+        $this->assertNotInstanceOf(ImportanceCode::class, $model->getImportanceCode());
 
         $testValueForImportanceCode = $model->getImportanceCodeWithCreate();
 
@@ -35363,7 +35364,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumValue();
 
-        $this->assertNull($model->getMinimumValue());
+        $this->assertNotInstanceOf(MinimumValue::class, $model->getMinimumValue());
 
         $testValueForMinimumValue = $model->getMinimumValueWithCreate();
 
@@ -35379,7 +35380,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumValue();
 
-        $this->assertNull($model->getMaximumValue());
+        $this->assertNotInstanceOf(MaximumValue::class, $model->getMaximumValue());
 
         $testValueForMaximumValue = $model->getMaximumValueWithCreate();
 
@@ -35405,7 +35406,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -35421,7 +35422,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -35437,7 +35438,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNameCode();
 
-        $this->assertNull($model->getNameCode());
+        $this->assertNotInstanceOf(NameCode::class, $model->getNameCode());
 
         $testValueForNameCode = $model->getNameCodeWithCreate();
 
@@ -35453,7 +35454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTestMethod();
 
-        $this->assertNull($model->getTestMethod());
+        $this->assertNotInstanceOf(TestMethod::class, $model->getTestMethod());
 
         $testValueForTestMethod = $model->getTestMethodWithCreate();
 
@@ -35469,7 +35470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(Value::class, $model->getValue());
 
         $testValueForValue = $model->getValueWithCreate();
 
@@ -35485,7 +35486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueQuantity();
 
-        $this->assertNull($model->getValueQuantity());
+        $this->assertNotInstanceOf(ValueQuantity::class, $model->getValueQuantity());
 
         $testValueForValueQuantity = $model->getValueQuantityWithCreate();
 
@@ -35573,7 +35574,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetImportanceCode();
 
-        $this->assertNull($model->getImportanceCode());
+        $this->assertNotInstanceOf(ImportanceCode::class, $model->getImportanceCode());
 
         $testValueForImportanceCode = $model->getImportanceCodeWithCreate();
 
@@ -35661,7 +35662,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUsabilityPeriod();
 
-        $this->assertNull($model->getUsabilityPeriod());
+        $this->assertNotInstanceOf(UsabilityPeriod::class, $model->getUsabilityPeriod());
 
         $testValueForUsabilityPeriod = $model->getUsabilityPeriodWithCreate();
 
@@ -35749,7 +35750,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRangeDimension();
 
-        $this->assertNull($model->getRangeDimension());
+        $this->assertNotInstanceOf(RangeDimension::class, $model->getRangeDimension());
 
         $testValueForRangeDimension = $model->getRangeDimensionWithCreate();
 
@@ -35765,7 +35766,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemPropertyRange();
 
-        $this->assertNull($model->getItemPropertyRange());
+        $this->assertNotInstanceOf(ItemPropertyRange::class, $model->getItemPropertyRange());
 
         $testValueForItemPropertyRange = $model->getItemPropertyRangeWithCreate();
 
@@ -35874,7 +35875,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackQuantity();
 
-        $this->assertNull($model->getPackQuantity());
+        $this->assertNotInstanceOf(PackQuantity::class, $model->getPackQuantity());
 
         $testValueForPackQuantity = $model->getPackQuantityWithCreate();
 
@@ -35890,7 +35891,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackSizeNumeric();
 
-        $this->assertNull($model->getPackSizeNumeric());
+        $this->assertNotInstanceOf(PackSizeNumeric::class, $model->getPackSizeNumeric());
 
         $testValueForPackSizeNumeric = $model->getPackSizeNumericWithCreate();
 
@@ -35917,7 +35918,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -36232,7 +36233,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyersItemIdentification();
 
-        $this->assertNull($model->getBuyersItemIdentification());
+        $this->assertNotInstanceOf(BuyersItemIdentification::class, $model->getBuyersItemIdentification());
 
         $testValueForBuyersItemIdentification = $model->getBuyersItemIdentificationWithCreate();
 
@@ -36248,7 +36249,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellersItemIdentification();
 
-        $this->assertNull($model->getSellersItemIdentification());
+        $this->assertNotInstanceOf(SellersItemIdentification::class, $model->getSellersItemIdentification());
 
         $testValueForSellersItemIdentification = $model->getSellersItemIdentificationWithCreate();
 
@@ -36336,7 +36337,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStandardItemIdentification();
 
-        $this->assertNull($model->getStandardItemIdentification());
+        $this->assertNotInstanceOf(StandardItemIdentification::class, $model->getStandardItemIdentification());
 
         $testValueForStandardItemIdentification = $model->getStandardItemIdentificationWithCreate();
 
@@ -36352,7 +36353,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCatalogueItemIdentification();
 
-        $this->assertNull($model->getCatalogueItemIdentification());
+        $this->assertNotInstanceOf(CatalogueItemIdentification::class, $model->getCatalogueItemIdentification());
 
         $testValueForCatalogueItemIdentification = $model->getCatalogueItemIdentificationWithCreate();
 
@@ -36440,7 +36441,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCatalogueDocumentReference();
 
-        $this->assertNull($model->getCatalogueDocumentReference());
+        $this->assertNotInstanceOf(CatalogueDocumentReference::class, $model->getCatalogueDocumentReference());
 
         $testValueForCatalogueDocumentReference = $model->getCatalogueDocumentReferenceWithCreate();
 
@@ -36528,7 +36529,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginCountry();
 
-        $this->assertNull($model->getOriginCountry());
+        $this->assertNotInstanceOf(OriginCountry::class, $model->getOriginCountry());
 
         $testValueForOriginCountry = $model->getOriginCountryWithCreate();
 
@@ -36976,7 +36977,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInformationContentProviderParty();
 
-        $this->assertNull($model->getInformationContentProviderParty());
+        $this->assertNotInstanceOf(InformationContentProviderParty::class, $model->getInformationContentProviderParty());
 
         $testValueForInformationContentProviderParty = $model->getInformationContentProviderPartyWithCreate();
 
@@ -37323,7 +37324,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -37339,7 +37340,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -37355,7 +37356,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocaleCode();
 
-        $this->assertNull($model->getLocaleCode());
+        $this->assertNotInstanceOf(LocaleCode::class, $model->getLocaleCode());
 
         $testValueForLocaleCode = $model->getLocaleCodeWithCreate();
 
@@ -37425,7 +37426,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -37441,7 +37442,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSalesOrderID();
 
-        $this->assertNull($model->getSalesOrderID());
+        $this->assertNotInstanceOf(SalesOrderID::class, $model->getSalesOrderID());
 
         $testValueForSalesOrderID = $model->getSalesOrderIDWithCreate();
 
@@ -37457,7 +37458,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -37545,7 +37546,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineStatusCode();
 
-        $this->assertNull($model->getLineStatusCode());
+        $this->assertNotInstanceOf(LineStatusCode::class, $model->getLineStatusCode());
 
         $testValueForLineStatusCode = $model->getLineStatusCodeWithCreate();
 
@@ -37561,7 +37562,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -37577,7 +37578,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -37593,7 +37594,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTaxAmount();
 
-        $this->assertNull($model->getTotalTaxAmount());
+        $this->assertNotInstanceOf(TotalTaxAmount::class, $model->getTotalTaxAmount());
 
         $testValueForTotalTaxAmount = $model->getTotalTaxAmountWithCreate();
 
@@ -37609,7 +37610,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -37625,7 +37626,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -37641,7 +37642,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumBackorderQuantity();
 
-        $this->assertNull($model->getMinimumBackorderQuantity());
+        $this->assertNotInstanceOf(MinimumBackorderQuantity::class, $model->getMinimumBackorderQuantity());
 
         $testValueForMinimumBackorderQuantity = $model->getMinimumBackorderQuantityWithCreate();
 
@@ -37657,7 +37658,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumBackorderQuantity();
 
-        $this->assertNull($model->getMaximumBackorderQuantity());
+        $this->assertNotInstanceOf(MaximumBackorderQuantity::class, $model->getMaximumBackorderQuantity());
 
         $testValueForMaximumBackorderQuantity = $model->getMaximumBackorderQuantityWithCreate();
 
@@ -37673,7 +37674,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInspectionMethodCode();
 
-        $this->assertNull($model->getInspectionMethodCode());
+        $this->assertNotInstanceOf(InspectionMethodCode::class, $model->getInspectionMethodCode());
 
         $testValueForInspectionMethodCode = $model->getInspectionMethodCodeWithCreate();
 
@@ -37711,7 +37712,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -37727,7 +37728,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -37887,7 +37888,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryTerms();
 
-        $this->assertNull($model->getDeliveryTerms());
+        $this->assertNotInstanceOf(DeliveryTerms::class, $model->getDeliveryTerms());
 
         $testValueForDeliveryTerms = $model->getDeliveryTermsWithCreate();
 
@@ -37903,7 +37904,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginatorParty();
 
-        $this->assertNull($model->getOriginatorParty());
+        $this->assertNotInstanceOf(OriginatorParty::class, $model->getOriginatorParty());
 
         $testValueForOriginatorParty = $model->getOriginatorPartyWithCreate();
 
@@ -37991,7 +37992,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingReference();
 
-        $this->assertNull($model->getPricingReference());
+        $this->assertNotInstanceOf(PricingReference::class, $model->getPricingReference());
 
         $testValueForPricingReference = $model->getPricingReferenceWithCreate();
 
@@ -38079,7 +38080,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -38095,7 +38096,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -38183,7 +38184,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyValidityPeriod();
 
-        $this->assertNull($model->getWarrantyValidityPeriod());
+        $this->assertNotInstanceOf(WarrantyValidityPeriod::class, $model->getWarrantyValidityPeriod());
 
         $testValueForWarrantyValidityPeriod = $model->getWarrantyValidityPeriodWithCreate();
 
@@ -38199,7 +38200,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyParty();
 
-        $this->assertNull($model->getWarrantyParty());
+        $this->assertNotInstanceOf(WarrantyParty::class, $model->getWarrantyParty());
 
         $testValueForWarrantyParty = $model->getWarrantyPartyWithCreate();
 
@@ -38287,7 +38288,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItemPriceExtension();
 
-        $this->assertNull($model->getItemPriceExtension());
+        $this->assertNotInstanceOf(ItemPriceExtension::class, $model->getItemPriceExtension());
 
         $testValueForItemPriceExtension = $model->getItemPriceExtensionWithCreate();
 
@@ -38396,7 +38397,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineID();
 
-        $this->assertNull($model->getLineID());
+        $this->assertNotInstanceOf(LineID::class, $model->getLineID());
 
         $testValueForLineID = $model->getLineIDWithCreate();
 
@@ -38412,7 +38413,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -38428,7 +38429,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineStatusCode();
 
-        $this->assertNull($model->getLineStatusCode());
+        $this->assertNotInstanceOf(LineStatusCode::class, $model->getLineStatusCode());
 
         $testValueForLineStatusCode = $model->getLineStatusCodeWithCreate();
 
@@ -38444,7 +38445,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentReference();
 
-        $this->assertNull($model->getDocumentReference());
+        $this->assertNotInstanceOf(DocumentReference::class, $model->getDocumentReference());
 
         $testValueForDocumentReference = $model->getDocumentReferenceWithCreate();
 
@@ -38481,7 +38482,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineReference();
 
-        $this->assertNull($model->getLineReference());
+        $this->assertNotInstanceOf(LineReference::class, $model->getLineReference());
 
         $testValueForLineReference = $model->getLineReferenceWithCreate();
 
@@ -38667,7 +38668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCoordinateSystemCode();
 
-        $this->assertNull($model->getCoordinateSystemCode());
+        $this->assertNotInstanceOf(CoordinateSystemCode::class, $model->getCoordinateSystemCode());
 
         $testValueForCoordinateSystemCode = $model->getCoordinateSystemCodeWithCreate();
 
@@ -38683,7 +38684,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatitudeDegreesMeasure();
 
-        $this->assertNull($model->getLatitudeDegreesMeasure());
+        $this->assertNotInstanceOf(LatitudeDegreesMeasure::class, $model->getLatitudeDegreesMeasure());
 
         $testValueForLatitudeDegreesMeasure = $model->getLatitudeDegreesMeasureWithCreate();
 
@@ -38699,7 +38700,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatitudeMinutesMeasure();
 
-        $this->assertNull($model->getLatitudeMinutesMeasure());
+        $this->assertNotInstanceOf(LatitudeMinutesMeasure::class, $model->getLatitudeMinutesMeasure());
 
         $testValueForLatitudeMinutesMeasure = $model->getLatitudeMinutesMeasureWithCreate();
 
@@ -38715,7 +38716,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatitudeDirectionCode();
 
-        $this->assertNull($model->getLatitudeDirectionCode());
+        $this->assertNotInstanceOf(LatitudeDirectionCode::class, $model->getLatitudeDirectionCode());
 
         $testValueForLatitudeDirectionCode = $model->getLatitudeDirectionCodeWithCreate();
 
@@ -38731,7 +38732,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLongitudeDegreesMeasure();
 
-        $this->assertNull($model->getLongitudeDegreesMeasure());
+        $this->assertNotInstanceOf(LongitudeDegreesMeasure::class, $model->getLongitudeDegreesMeasure());
 
         $testValueForLongitudeDegreesMeasure = $model->getLongitudeDegreesMeasureWithCreate();
 
@@ -38747,7 +38748,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLongitudeMinutesMeasure();
 
-        $this->assertNull($model->getLongitudeMinutesMeasure());
+        $this->assertNotInstanceOf(LongitudeMinutesMeasure::class, $model->getLongitudeMinutesMeasure());
 
         $testValueForLongitudeMinutesMeasure = $model->getLongitudeMinutesMeasureWithCreate();
 
@@ -38763,7 +38764,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLongitudeDirectionCode();
 
-        $this->assertNull($model->getLongitudeDirectionCode());
+        $this->assertNotInstanceOf(LongitudeDirectionCode::class, $model->getLongitudeDirectionCode());
 
         $testValueForLongitudeDirectionCode = $model->getLongitudeDirectionCodeWithCreate();
 
@@ -38779,7 +38780,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAltitudeMeasure();
 
-        $this->assertNull($model->getAltitudeMeasure());
+        $this->assertNotInstanceOf(AltitudeMeasure::class, $model->getAltitudeMeasure());
 
         $testValueForAltitudeMeasure = $model->getAltitudeMeasureWithCreate();
 
@@ -38805,7 +38806,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -38965,7 +38966,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountrySubentity();
 
-        $this->assertNull($model->getCountrySubentity());
+        $this->assertNotInstanceOf(CountrySubentity::class, $model->getCountrySubentity());
 
         $testValueForCountrySubentity = $model->getCountrySubentityWithCreate();
 
@@ -38981,7 +38982,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountrySubentityCode();
 
-        $this->assertNull($model->getCountrySubentityCode());
+        $this->assertNotInstanceOf(CountrySubentityCode::class, $model->getCountrySubentityCode());
 
         $testValueForCountrySubentityCode = $model->getCountrySubentityCodeWithCreate();
 
@@ -38997,7 +38998,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocationTypeCode();
 
-        $this->assertNull($model->getLocationTypeCode());
+        $this->assertNotInstanceOf(LocationTypeCode::class, $model->getLocationTypeCode());
 
         $testValueForLocationTypeCode = $model->getLocationTypeCodeWithCreate();
 
@@ -39013,7 +39014,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInformationURI();
 
-        $this->assertNull($model->getInformationURI());
+        $this->assertNotInstanceOf(InformationURI::class, $model->getInformationURI());
 
         $testValueForInformationURI = $model->getInformationURIWithCreate();
 
@@ -39029,7 +39030,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -39117,7 +39118,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAddress();
 
-        $this->assertNull($model->getAddress());
+        $this->assertNotInstanceOf(Address::class, $model->getAddress());
 
         $testValueForAddress = $model->getAddressWithCreate();
 
@@ -39309,7 +39310,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLotNumberID();
 
-        $this->assertNull($model->getLotNumberID());
+        $this->assertNotInstanceOf(LotNumberID::class, $model->getLotNumberID());
 
         $testValueForLotNumberID = $model->getLotNumberIDWithCreate();
 
@@ -39325,7 +39326,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpiryDate();
 
-        $this->assertNull($model->getExpiryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getExpiryDate());
 
         // (1) Property AdditionalItemProperty - Test set empty array
 
@@ -39528,7 +39529,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVesselID();
 
-        $this->assertNull($model->getVesselID());
+        $this->assertNotInstanceOf(VesselID::class, $model->getVesselID());
 
         $testValueForVesselID = $model->getVesselIDWithCreate();
 
@@ -39544,7 +39545,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVesselName();
 
-        $this->assertNull($model->getVesselName());
+        $this->assertNotInstanceOf(VesselName::class, $model->getVesselName());
 
         $testValueForVesselName = $model->getVesselNameWithCreate();
 
@@ -39560,7 +39561,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRadioCallSignID();
 
-        $this->assertNull($model->getRadioCallSignID());
+        $this->assertNotInstanceOf(RadioCallSignID::class, $model->getRadioCallSignID());
 
         $testValueForRadioCallSignID = $model->getRadioCallSignIDWithCreate();
 
@@ -39648,7 +39649,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossTonnageMeasure();
 
-        $this->assertNull($model->getGrossTonnageMeasure());
+        $this->assertNotInstanceOf(GrossTonnageMeasure::class, $model->getGrossTonnageMeasure());
 
         $testValueForGrossTonnageMeasure = $model->getGrossTonnageMeasureWithCreate();
 
@@ -39664,7 +39665,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetTonnageMeasure();
 
-        $this->assertNull($model->getNetTonnageMeasure());
+        $this->assertNotInstanceOf(NetTonnageMeasure::class, $model->getNetTonnageMeasure());
 
         $testValueForNetTonnageMeasure = $model->getNetTonnageMeasureWithCreate();
 
@@ -39680,7 +39681,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistryCertificateDocumentReference();
 
-        $this->assertNull($model->getRegistryCertificateDocumentReference());
+        $this->assertNotInstanceOf(RegistryCertificateDocumentReference::class, $model->getRegistryCertificateDocumentReference());
 
         $testValueForRegistryCertificateDocumentReference = $model->getRegistryCertificateDocumentReferenceWithCreate();
 
@@ -39696,7 +39697,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistryPortLocation();
 
-        $this->assertNull($model->getRegistryPortLocation());
+        $this->assertNotInstanceOf(RegistryPortLocation::class, $model->getRegistryPortLocation());
 
         $testValueForRegistryPortLocation = $model->getRegistryPortLocationWithCreate();
 
@@ -39821,7 +39822,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -39837,7 +39838,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNameCode();
 
-        $this->assertNull($model->getNameCode());
+        $this->assertNotInstanceOf(NameCode::class, $model->getNameCode());
 
         $testValueForNameCode = $model->getNameCodeWithCreate();
 
@@ -39853,7 +39854,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(Value::class, $model->getValue());
 
         $testValueForValue = $model->getValueWithCreate();
 
@@ -39869,7 +39870,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueQuantity();
 
-        $this->assertNull($model->getValueQuantity());
+        $this->assertNotInstanceOf(ValueQuantity::class, $model->getValueQuantity());
 
         $testValueForValueQuantity = $model->getValueQuantityWithCreate();
 
@@ -39978,7 +39979,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -39994,7 +39995,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterReadingType();
 
-        $this->assertNull($model->getMeterReadingType());
+        $this->assertNotInstanceOf(MeterReadingType1::class, $model->getMeterReadingType());
 
         $testValueForMeterReadingType = $model->getMeterReadingTypeWithCreate();
 
@@ -40010,7 +40011,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterReadingTypeCode();
 
-        $this->assertNull($model->getMeterReadingTypeCode());
+        $this->assertNotInstanceOf(MeterReadingTypeCode::class, $model->getMeterReadingTypeCode());
 
         $testValueForMeterReadingTypeCode = $model->getMeterReadingTypeCodeWithCreate();
 
@@ -40026,7 +40027,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousMeterReadingDate();
 
-        $this->assertNull($model->getPreviousMeterReadingDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getPreviousMeterReadingDate());
 
         // Property PreviousMeterQuantity
 
@@ -40037,7 +40038,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousMeterQuantity();
 
-        $this->assertNull($model->getPreviousMeterQuantity());
+        $this->assertNotInstanceOf(PreviousMeterQuantity::class, $model->getPreviousMeterQuantity());
 
         $testValueForPreviousMeterQuantity = $model->getPreviousMeterQuantityWithCreate();
 
@@ -40053,7 +40054,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestMeterReadingDate();
 
-        $this->assertNull($model->getLatestMeterReadingDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestMeterReadingDate());
 
         // Property MeterReadingDate
 
@@ -40066,7 +40067,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestMeterQuantity();
 
-        $this->assertNull($model->getLatestMeterQuantity());
+        $this->assertNotInstanceOf(LatestMeterQuantity::class, $model->getLatestMeterQuantity());
 
         $testValueForLatestMeterQuantity = $model->getLatestMeterQuantityWithCreate();
 
@@ -40086,7 +40087,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousMeterReadingMethod();
 
-        $this->assertNull($model->getPreviousMeterReadingMethod());
+        $this->assertNotInstanceOf(PreviousMeterReadingMethod::class, $model->getPreviousMeterReadingMethod());
 
         $testValueForPreviousMeterReadingMethod = $model->getPreviousMeterReadingMethodWithCreate();
 
@@ -40102,7 +40103,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousMeterReadingMethodCode();
 
-        $this->assertNull($model->getPreviousMeterReadingMethodCode());
+        $this->assertNotInstanceOf(PreviousMeterReadingMethodCode::class, $model->getPreviousMeterReadingMethodCode());
 
         $testValueForPreviousMeterReadingMethodCode = $model->getPreviousMeterReadingMethodCodeWithCreate();
 
@@ -40118,7 +40119,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestMeterReadingMethod();
 
-        $this->assertNull($model->getLatestMeterReadingMethod());
+        $this->assertNotInstanceOf(LatestMeterReadingMethod::class, $model->getLatestMeterReadingMethod());
 
         $testValueForLatestMeterReadingMethod = $model->getLatestMeterReadingMethodWithCreate();
 
@@ -40138,7 +40139,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestMeterReadingMethodCode();
 
-        $this->assertNull($model->getLatestMeterReadingMethodCode());
+        $this->assertNotInstanceOf(LatestMeterReadingMethodCode::class, $model->getLatestMeterReadingMethodCode());
 
         $testValueForLatestMeterReadingMethodCode = $model->getLatestMeterReadingMethodCodeWithCreate();
 
@@ -40230,7 +40231,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveredQuantity();
 
-        $this->assertNull($model->getDeliveredQuantity());
+        $this->assertNotInstanceOf(DeliveredQuantity::class, $model->getDeliveredQuantity());
 
         $testValueForDeliveredQuantity = $model->getDeliveredQuantityWithCreate();
 
@@ -40256,7 +40257,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterNumber();
 
-        $this->assertNull($model->getMeterNumber());
+        $this->assertNotInstanceOf(MeterNumber::class, $model->getMeterNumber());
 
         $testValueForMeterNumber = $model->getMeterNumberWithCreate();
 
@@ -40272,7 +40273,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterName();
 
-        $this->assertNull($model->getMeterName());
+        $this->assertNotInstanceOf(MeterName::class, $model->getMeterName());
 
         $testValueForMeterName = $model->getMeterNameWithCreate();
 
@@ -40288,7 +40289,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterConstant();
 
-        $this->assertNull($model->getMeterConstant());
+        $this->assertNotInstanceOf(MeterConstant::class, $model->getMeterConstant());
 
         $testValueForMeterConstant = $model->getMeterConstantWithCreate();
 
@@ -40304,7 +40305,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeterConstantCode();
 
-        $this->assertNull($model->getMeterConstantCode());
+        $this->assertNotInstanceOf(MeterConstantCode::class, $model->getMeterConstantCode());
 
         $testValueForMeterConstantCode = $model->getMeterConstantCodeWithCreate();
 
@@ -40320,7 +40321,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalDeliveredQuantity();
 
-        $this->assertNull($model->getTotalDeliveredQuantity());
+        $this->assertNotInstanceOf(TotalDeliveredQuantity::class, $model->getTotalDeliveredQuantity());
 
         $testValueForTotalDeliveredQuantity = $model->getTotalDeliveredQuantityWithCreate();
 
@@ -40534,7 +40535,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMiscellaneousEventTypeCode();
 
-        $this->assertNull($model->getMiscellaneousEventTypeCode());
+        $this->assertNotInstanceOf(MiscellaneousEventTypeCode::class, $model->getMiscellaneousEventTypeCode());
 
         $testValueForMiscellaneousEventTypeCode = $model->getMiscellaneousEventTypeCodeWithCreate();
 
@@ -40643,7 +40644,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -40659,7 +40660,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxExclusiveAmount();
 
-        $this->assertNull($model->getTaxExclusiveAmount());
+        $this->assertNotInstanceOf(TaxExclusiveAmount::class, $model->getTaxExclusiveAmount());
 
         $testValueForTaxExclusiveAmount = $model->getTaxExclusiveAmountWithCreate();
 
@@ -40675,7 +40676,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxInclusiveAmount();
 
-        $this->assertNull($model->getTaxInclusiveAmount());
+        $this->assertNotInstanceOf(TaxInclusiveAmount::class, $model->getTaxInclusiveAmount());
 
         $testValueForTaxInclusiveAmount = $model->getTaxInclusiveAmountWithCreate();
 
@@ -40691,7 +40692,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAllowanceTotalAmount();
 
-        $this->assertNull($model->getAllowanceTotalAmount());
+        $this->assertNotInstanceOf(AllowanceTotalAmount::class, $model->getAllowanceTotalAmount());
 
         $testValueForAllowanceTotalAmount = $model->getAllowanceTotalAmountWithCreate();
 
@@ -40707,7 +40708,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetChargeTotalAmount();
 
-        $this->assertNull($model->getChargeTotalAmount());
+        $this->assertNotInstanceOf(ChargeTotalAmount::class, $model->getChargeTotalAmount());
 
         $testValueForChargeTotalAmount = $model->getChargeTotalAmountWithCreate();
 
@@ -40723,7 +40724,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrepaidAmount();
 
-        $this->assertNull($model->getPrepaidAmount());
+        $this->assertNotInstanceOf(PrepaidAmount::class, $model->getPrepaidAmount());
 
         $testValueForPrepaidAmount = $model->getPrepaidAmountWithCreate();
 
@@ -40739,7 +40740,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayableRoundingAmount();
 
-        $this->assertNull($model->getPayableRoundingAmount());
+        $this->assertNotInstanceOf(PayableRoundingAmount::class, $model->getPayableRoundingAmount());
 
         $testValueForPayableRoundingAmount = $model->getPayableRoundingAmountWithCreate();
 
@@ -40755,7 +40756,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayableAmount();
 
-        $this->assertNull($model->getPayableAmount());
+        $this->assertNotInstanceOf(PayableAmount::class, $model->getPayableAmount());
 
         $testValueForPayableAmount = $model->getPayableAmountWithCreate();
 
@@ -40771,7 +40772,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayableAlternativeAmount();
 
-        $this->assertNull($model->getPayableAlternativeAmount());
+        $this->assertNotInstanceOf(PayableAlternativeAmount::class, $model->getPayableAlternativeAmount());
 
         $testValueForPayableAlternativeAmount = $model->getPayableAlternativeAmountWithCreate();
 
@@ -40874,7 +40875,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNotificationTypeCode();
 
-        $this->assertNull($model->getNotificationTypeCode());
+        $this->assertNotInstanceOf(NotificationTypeCode::class, $model->getNotificationTypeCode());
 
         $testValueForNotificationTypeCode = $model->getNotificationTypeCodeWithCreate();
 
@@ -40890,7 +40891,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPostEventNotificationDurationMeasure();
 
-        $this->assertNull($model->getPostEventNotificationDurationMeasure());
+        $this->assertNotInstanceOf(PostEventNotificationDurationMeasure::class, $model->getPostEventNotificationDurationMeasure());
 
         $testValueForPostEventNotificationDurationMeasure = $model->getPostEventNotificationDurationMeasureWithCreate();
 
@@ -40906,7 +40907,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreEventNotificationDurationMeasure();
 
-        $this->assertNull($model->getPreEventNotificationDurationMeasure());
+        $this->assertNotInstanceOf(PreEventNotificationDurationMeasure::class, $model->getPreEventNotificationDurationMeasure());
 
         $testValueForPreEventNotificationDurationMeasure = $model->getPreEventNotificationDurationMeasureWithCreate();
 
@@ -41192,7 +41193,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedConsumedQuantity();
 
-        $this->assertNull($model->getEstimatedConsumedQuantity());
+        $this->assertNotInstanceOf(EstimatedConsumedQuantity::class, $model->getEstimatedConsumedQuantity());
 
         $testValueForEstimatedConsumedQuantity = $model->getEstimatedConsumedQuantityWithCreate();
 
@@ -41439,7 +41440,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShipment();
 
-        $this->assertNull($model->getShipment());
+        $this->assertNotInstanceOf(Shipment::class, $model->getShipment());
 
         $testValueForShipment = $model->getShipmentWithCreate();
 
@@ -41559,7 +41560,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineID();
 
-        $this->assertNull($model->getLineID());
+        $this->assertNotInstanceOf(LineID::class, $model->getLineID());
 
         $testValueForLineID = $model->getLineIDWithCreate();
 
@@ -41575,7 +41576,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSalesOrderLineID();
 
-        $this->assertNull($model->getSalesOrderLineID());
+        $this->assertNotInstanceOf(SalesOrderLineID::class, $model->getSalesOrderLineID());
 
         $testValueForSalesOrderLineID = $model->getSalesOrderLineIDWithCreate();
 
@@ -41591,7 +41592,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -41607,7 +41608,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineStatusCode();
 
-        $this->assertNull($model->getLineStatusCode());
+        $this->assertNotInstanceOf(LineStatusCode::class, $model->getLineStatusCode());
 
         $testValueForLineStatusCode = $model->getLineStatusCodeWithCreate();
 
@@ -41623,7 +41624,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderReference();
 
-        $this->assertNull($model->getOrderReference());
+        $this->assertNotInstanceOf(OrderReference::class, $model->getOrderReference());
 
         $testValueForOrderReference = $model->getOrderReferenceWithCreate();
 
@@ -41649,7 +41650,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubstitutionStatusCode();
 
-        $this->assertNull($model->getSubstitutionStatusCode());
+        $this->assertNotInstanceOf(SubstitutionStatusCode::class, $model->getSubstitutionStatusCode());
 
         $testValueForSubstitutionStatusCode = $model->getSubstitutionStatusCodeWithCreate();
 
@@ -41737,7 +41738,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineItem();
 
-        $this->assertNull($model->getLineItem());
+        $this->assertNotInstanceOf(LineItem::class, $model->getLineItem());
 
         $testValueForLineItem = $model->getLineItemWithCreate();
 
@@ -41969,7 +41970,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCatalogueLineReference();
 
-        $this->assertNull($model->getCatalogueLineReference());
+        $this->assertNotInstanceOf(CatalogueLineReference::class, $model->getCatalogueLineReference());
 
         $testValueForCatalogueLineReference = $model->getCatalogueLineReferenceWithCreate();
 
@@ -41985,7 +41986,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuotationLineReference();
 
-        $this->assertNull($model->getQuotationLineReference());
+        $this->assertNotInstanceOf(QuotationLineReference::class, $model->getQuotationLineReference());
 
         $testValueForQuotationLineReference = $model->getQuotationLineReferenceWithCreate();
 
@@ -42166,7 +42167,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -42182,7 +42183,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSalesOrderID();
 
-        $this->assertNull($model->getSalesOrderID());
+        $this->assertNotInstanceOf(SalesOrderID::class, $model->getSalesOrderID());
 
         $testValueForSalesOrderID = $model->getSalesOrderIDWithCreate();
 
@@ -42209,7 +42210,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -42225,7 +42226,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -42236,7 +42237,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property CustomerReference
 
@@ -42247,7 +42248,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomerReference();
 
-        $this->assertNull($model->getCustomerReference());
+        $this->assertNotInstanceOf(CustomerReference::class, $model->getCustomerReference());
 
         $testValueForCustomerReference = $model->getCustomerReferenceWithCreate();
 
@@ -42263,7 +42264,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderTypeCode();
 
-        $this->assertNull($model->getOrderTypeCode());
+        $this->assertNotInstanceOf(OrderTypeCode::class, $model->getOrderTypeCode());
 
         $testValueForOrderTypeCode = $model->getOrderTypeCodeWithCreate();
 
@@ -42279,7 +42280,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentReference();
 
-        $this->assertNull($model->getDocumentReference());
+        $this->assertNotInstanceOf(DocumentReference::class, $model->getDocumentReference());
 
         $testValueForDocumentReference = $model->getDocumentReferenceWithCreate();
 
@@ -42459,7 +42460,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -42475,7 +42476,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -42502,7 +42503,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackageLevelCode();
 
-        $this->assertNull($model->getPackageLevelCode());
+        $this->assertNotInstanceOf(PackageLevelCode::class, $model->getPackageLevelCode());
 
         $testValueForPackageLevelCode = $model->getPackageLevelCodeWithCreate();
 
@@ -42518,7 +42519,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackagingTypeCode();
 
-        $this->assertNull($model->getPackagingTypeCode());
+        $this->assertNotInstanceOf(PackagingTypeCode::class, $model->getPackagingTypeCode());
 
         $testValueForPackagingTypeCode = $model->getPackagingTypeCodeWithCreate();
 
@@ -42606,7 +42607,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTraceID();
 
-        $this->assertNull($model->getTraceID());
+        $this->assertNotInstanceOf(TraceID::class, $model->getTraceID());
 
         $testValueForTraceID = $model->getTraceIDWithCreate();
 
@@ -42694,7 +42695,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContainingTransportEquipment();
 
-        $this->assertNull($model->getContainingTransportEquipment());
+        $this->assertNotInstanceOf(ContainingTransportEquipment::class, $model->getContainingTransportEquipment());
 
         $testValueForContainingTransportEquipment = $model->getContainingTransportEquipmentWithCreate();
 
@@ -42926,7 +42927,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDelivery();
 
-        $this->assertNull($model->getDelivery());
+        $this->assertNotInstanceOf(Delivery::class, $model->getDelivery());
 
         $testValueForDelivery = $model->getDeliveryWithCreate();
 
@@ -42942,7 +42943,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPickup();
 
-        $this->assertNull($model->getPickup());
+        $this->assertNotInstanceOf(Pickup::class, $model->getPickup());
 
         $testValueForPickup = $model->getPickupWithCreate();
 
@@ -42958,7 +42959,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatch();
 
-        $this->assertNull($model->getDespatch());
+        $this->assertNotInstanceOf(Despatch::class, $model->getDespatch());
 
         $testValueForDespatch = $model->getDespatchWithCreate();
 
@@ -43061,7 +43062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -43098,7 +43099,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationName();
 
-        $this->assertNull($model->getRegistrationName());
+        $this->assertNotInstanceOf(RegistrationName::class, $model->getRegistrationName());
 
         $testValueForRegistrationName = $model->getRegistrationNameWithCreate();
 
@@ -43114,7 +43115,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyID();
 
-        $this->assertNull($model->getCompanyID());
+        $this->assertNotInstanceOf(CompanyID::class, $model->getCompanyID());
 
         $testValueForCompanyID = $model->getCompanyIDWithCreate();
 
@@ -43130,7 +43131,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationDate();
 
-        $this->assertNull($model->getRegistrationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRegistrationDate());
 
         // Property RegistrationExpirationDate
 
@@ -43141,7 +43142,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationExpirationDate();
 
-        $this->assertNull($model->getRegistrationExpirationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRegistrationExpirationDate());
 
         // Property CompanyLegalFormCode
 
@@ -43152,7 +43153,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyLegalFormCode();
 
-        $this->assertNull($model->getCompanyLegalFormCode());
+        $this->assertNotInstanceOf(CompanyLegalFormCode::class, $model->getCompanyLegalFormCode());
 
         $testValueForCompanyLegalFormCode = $model->getCompanyLegalFormCodeWithCreate();
 
@@ -43168,7 +43169,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyLegalForm();
 
-        $this->assertNull($model->getCompanyLegalForm());
+        $this->assertNotInstanceOf(CompanyLegalForm::class, $model->getCompanyLegalForm());
 
         $testValueForCompanyLegalForm = $model->getCompanyLegalFormWithCreate();
 
@@ -43195,7 +43196,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyLiquidationStatusCode();
 
-        $this->assertNull($model->getCompanyLiquidationStatusCode());
+        $this->assertNotInstanceOf(CompanyLiquidationStatusCode::class, $model->getCompanyLiquidationStatusCode());
 
         $testValueForCompanyLiquidationStatusCode = $model->getCompanyLiquidationStatusCodeWithCreate();
 
@@ -43211,7 +43212,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorporateStockAmount();
 
-        $this->assertNull($model->getCorporateStockAmount());
+        $this->assertNotInstanceOf(CorporateStockAmount::class, $model->getCorporateStockAmount());
 
         $testValueForCorporateStockAmount = $model->getCorporateStockAmountWithCreate();
 
@@ -43238,7 +43239,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationAddress();
 
-        $this->assertNull($model->getRegistrationAddress());
+        $this->assertNotInstanceOf(RegistrationAddress::class, $model->getRegistrationAddress());
 
         $testValueForRegistrationAddress = $model->getRegistrationAddressWithCreate();
 
@@ -43254,7 +43255,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCorporateRegistrationScheme();
 
-        $this->assertNull($model->getCorporateRegistrationScheme());
+        $this->assertNotInstanceOf(CorporateRegistrationScheme::class, $model->getCorporateRegistrationScheme());
 
         $testValueForCorporateRegistrationScheme = $model->getCorporateRegistrationSchemeWithCreate();
 
@@ -43270,7 +43271,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHeadOfficeParty();
 
-        $this->assertNull($model->getHeadOfficeParty());
+        $this->assertNotInstanceOf(HeadOfficeParty::class, $model->getHeadOfficeParty());
 
         $testValueForHeadOfficeParty = $model->getHeadOfficePartyWithCreate();
 
@@ -43379,7 +43380,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -43416,7 +43417,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationName();
 
-        $this->assertNull($model->getRegistrationName());
+        $this->assertNotInstanceOf(RegistrationName::class, $model->getRegistrationName());
 
         $testValueForRegistrationName = $model->getRegistrationNameWithCreate();
 
@@ -43432,7 +43433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyID();
 
-        $this->assertNull($model->getCompanyID());
+        $this->assertNotInstanceOf(CompanyID::class, $model->getCompanyID());
 
         $testValueForCompanyID = $model->getCompanyIDWithCreate();
 
@@ -43448,7 +43449,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxLevelCode();
 
-        $this->assertNull($model->getTaxLevelCode());
+        $this->assertNotInstanceOf(TaxLevelCode::class, $model->getTaxLevelCode());
 
         $testValueForTaxLevelCode = $model->getTaxLevelCodeWithCreate();
 
@@ -43464,7 +43465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExemptionReasonCode();
 
-        $this->assertNull($model->getExemptionReasonCode());
+        $this->assertNotInstanceOf(ExemptionReasonCode::class, $model->getExemptionReasonCode());
 
         $testValueForExemptionReasonCode = $model->getExemptionReasonCodeWithCreate();
 
@@ -43552,7 +43553,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationAddress();
 
-        $this->assertNull($model->getRegistrationAddress());
+        $this->assertNotInstanceOf(RegistrationAddress::class, $model->getRegistrationAddress());
 
         $testValueForRegistrationAddress = $model->getRegistrationAddressWithCreate();
 
@@ -43568,7 +43569,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxScheme();
 
-        $this->assertNull($model->getTaxScheme());
+        $this->assertNotInstanceOf(TaxScheme::class, $model->getTaxScheme());
 
         $testValueForTaxScheme = $model->getTaxSchemeWithCreate();
 
@@ -43616,7 +43617,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWebsiteURI();
 
-        $this->assertNull($model->getWebsiteURI());
+        $this->assertNotInstanceOf(WebsiteURI::class, $model->getWebsiteURI());
 
         $testValueForWebsiteURI = $model->getWebsiteURIWithCreate();
 
@@ -43632,7 +43633,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLogoReferenceID();
 
-        $this->assertNull($model->getLogoReferenceID());
+        $this->assertNotInstanceOf(LogoReferenceID::class, $model->getLogoReferenceID());
 
         $testValueForLogoReferenceID = $model->getLogoReferenceIDWithCreate();
 
@@ -43648,7 +43649,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEndpointID();
 
-        $this->assertNull($model->getEndpointID());
+        $this->assertNotInstanceOf(EndpointID::class, $model->getEndpointID());
 
         $testValueForEndpointID = $model->getEndpointIDWithCreate();
 
@@ -43664,7 +43665,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIndustryClassificationCode();
 
-        $this->assertNull($model->getIndustryClassificationCode());
+        $this->assertNotInstanceOf(IndustryClassificationCode::class, $model->getIndustryClassificationCode());
 
         $testValueForIndustryClassificationCode = $model->getIndustryClassificationCodeWithCreate();
 
@@ -43824,7 +43825,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLanguage();
 
-        $this->assertNull($model->getLanguage());
+        $this->assertNotInstanceOf(Language::class, $model->getLanguage());
 
         $testValueForLanguage = $model->getLanguageWithCreate();
 
@@ -43840,7 +43841,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPostalAddress();
 
-        $this->assertNull($model->getPostalAddress());
+        $this->assertNotInstanceOf(PostalAddress::class, $model->getPostalAddress());
 
         $testValueForPostalAddress = $model->getPostalAddressWithCreate();
 
@@ -43856,7 +43857,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPhysicalLocation();
 
-        $this->assertNull($model->getPhysicalLocation());
+        $this->assertNotInstanceOf(PhysicalLocation::class, $model->getPhysicalLocation());
 
         $testValueForPhysicalLocation = $model->getPhysicalLocationWithCreate();
 
@@ -44016,7 +44017,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContact();
 
-        $this->assertNull($model->getContact());
+        $this->assertNotInstanceOf(Contact::class, $model->getContact());
 
         $testValueForContact = $model->getContactWithCreate();
 
@@ -44104,7 +44105,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAgentParty();
 
-        $this->assertNull($model->getAgentParty());
+        $this->assertNotInstanceOf(AgentParty::class, $model->getAgentParty());
 
         $testValueForAgentParty = $model->getAgentPartyWithCreate();
 
@@ -44264,7 +44265,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancialAccount();
 
-        $this->assertNull($model->getFinancialAccount());
+        $this->assertNotInstanceOf(FinancialAccount::class, $model->getFinancialAccount());
 
         $testValueForFinancialAccount = $model->getFinancialAccountWithCreate();
 
@@ -44389,7 +44390,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -44405,7 +44406,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMandateTypeCode();
 
-        $this->assertNull($model->getMandateTypeCode());
+        $this->assertNotInstanceOf(MandateTypeCode::class, $model->getMandateTypeCode());
 
         $testValueForMandateTypeCode = $model->getMandateTypeCodeWithCreate();
 
@@ -44421,7 +44422,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumPaymentInstructionsNumeric();
 
-        $this->assertNull($model->getMaximumPaymentInstructionsNumeric());
+        $this->assertNotInstanceOf(MaximumPaymentInstructionsNumeric::class, $model->getMaximumPaymentInstructionsNumeric());
 
         $testValueForMaximumPaymentInstructionsNumeric = $model->getMaximumPaymentInstructionsNumericWithCreate();
 
@@ -44437,7 +44438,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumPaidAmount();
 
-        $this->assertNull($model->getMaximumPaidAmount());
+        $this->assertNotInstanceOf(MaximumPaidAmount::class, $model->getMaximumPaidAmount());
 
         $testValueForMaximumPaidAmount = $model->getMaximumPaidAmountWithCreate();
 
@@ -44453,7 +44454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignatureID();
 
-        $this->assertNull($model->getSignatureID());
+        $this->assertNotInstanceOf(SignatureID::class, $model->getSignatureID());
 
         $testValueForSignatureID = $model->getSignatureIDWithCreate();
 
@@ -44469,7 +44470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayerParty();
 
-        $this->assertNull($model->getPayerParty());
+        $this->assertNotInstanceOf(PayerParty::class, $model->getPayerParty());
 
         $testValueForPayerParty = $model->getPayerPartyWithCreate();
 
@@ -44485,7 +44486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayerFinancialAccount();
 
-        $this->assertNull($model->getPayerFinancialAccount());
+        $this->assertNotInstanceOf(PayerFinancialAccount::class, $model->getPayerFinancialAccount());
 
         $testValueForPayerFinancialAccount = $model->getPayerFinancialAccountWithCreate();
 
@@ -44501,7 +44502,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityPeriod();
 
-        $this->assertNull($model->getValidityPeriod());
+        $this->assertNotInstanceOf(ValidityPeriod::class, $model->getValidityPeriod());
 
         $testValueForValidityPeriod = $model->getValidityPeriodWithCreate();
 
@@ -44517,7 +44518,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentReversalPeriod();
 
-        $this->assertNull($model->getPaymentReversalPeriod());
+        $this->assertNotInstanceOf(PaymentReversalPeriod::class, $model->getPaymentReversalPeriod());
 
         $testValueForPaymentReversalPeriod = $model->getPaymentReversalPeriodWithCreate();
 
@@ -44626,7 +44627,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -44642,7 +44643,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentMeansCode();
 
-        $this->assertNull($model->getPaymentMeansCode());
+        $this->assertNotInstanceOf(PaymentMeansCode::class, $model->getPaymentMeansCode());
 
         $testValueForPaymentMeansCode = $model->getPaymentMeansCodeWithCreate();
 
@@ -44658,7 +44659,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentDueDate();
 
-        $this->assertNull($model->getPaymentDueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getPaymentDueDate());
 
         // Property PaymentChannelCode
 
@@ -44669,7 +44670,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentChannelCode();
 
-        $this->assertNull($model->getPaymentChannelCode());
+        $this->assertNotInstanceOf(PaymentChannelCode::class, $model->getPaymentChannelCode());
 
         $testValueForPaymentChannelCode = $model->getPaymentChannelCodeWithCreate();
 
@@ -44685,7 +44686,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInstructionID();
 
-        $this->assertNull($model->getInstructionID());
+        $this->assertNotInstanceOf(InstructionID::class, $model->getInstructionID());
 
         $testValueForInstructionID = $model->getInstructionIDWithCreate();
 
@@ -44845,7 +44846,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCardAccount();
 
-        $this->assertNull($model->getCardAccount());
+        $this->assertNotInstanceOf(CardAccount::class, $model->getCardAccount());
 
         $testValueForCardAccount = $model->getCardAccountWithCreate();
 
@@ -44861,7 +44862,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayerFinancialAccount();
 
-        $this->assertNull($model->getPayerFinancialAccount());
+        $this->assertNotInstanceOf(PayerFinancialAccount::class, $model->getPayerFinancialAccount());
 
         $testValueForPayerFinancialAccount = $model->getPayerFinancialAccountWithCreate();
 
@@ -44877,7 +44878,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayeeFinancialAccount();
 
-        $this->assertNull($model->getPayeeFinancialAccount());
+        $this->assertNotInstanceOf(PayeeFinancialAccount::class, $model->getPayeeFinancialAccount());
 
         $testValueForPayeeFinancialAccount = $model->getPayeeFinancialAccountWithCreate();
 
@@ -44893,7 +44894,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditAccount();
 
-        $this->assertNull($model->getCreditAccount());
+        $this->assertNotInstanceOf(CreditAccount::class, $model->getCreditAccount());
 
         $testValueForCreditAccount = $model->getCreditAccountWithCreate();
 
@@ -44909,7 +44910,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentMandate();
 
-        $this->assertNull($model->getPaymentMandate());
+        $this->assertNotInstanceOf(PaymentMandate::class, $model->getPaymentMandate());
 
         $testValueForPaymentMandate = $model->getPaymentMandateWithCreate();
 
@@ -44925,7 +44926,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTradeFinancing();
 
-        $this->assertNull($model->getTradeFinancing());
+        $this->assertNotInstanceOf(TradeFinancing::class, $model->getTradeFinancing());
 
         $testValueForTradeFinancing = $model->getTradeFinancingWithCreate();
 
@@ -44973,7 +44974,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -45061,7 +45062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrepaidPaymentReferenceID();
 
-        $this->assertNull($model->getPrepaidPaymentReferenceID());
+        $this->assertNotInstanceOf(PrepaidPaymentReferenceID::class, $model->getPrepaidPaymentReferenceID());
 
         $testValueForPrepaidPaymentReferenceID = $model->getPrepaidPaymentReferenceIDWithCreate();
 
@@ -45149,7 +45150,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceEventCode();
 
-        $this->assertNull($model->getReferenceEventCode());
+        $this->assertNotInstanceOf(ReferenceEventCode::class, $model->getReferenceEventCode());
 
         $testValueForReferenceEventCode = $model->getReferenceEventCodeWithCreate();
 
@@ -45165,7 +45166,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSettlementDiscountPercent();
 
-        $this->assertNull($model->getSettlementDiscountPercent());
+        $this->assertNotInstanceOf(SettlementDiscountPercent::class, $model->getSettlementDiscountPercent());
 
         $testValueForSettlementDiscountPercent = $model->getSettlementDiscountPercentWithCreate();
 
@@ -45181,7 +45182,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPenaltySurchargePercent();
 
-        $this->assertNull($model->getPenaltySurchargePercent());
+        $this->assertNotInstanceOf(PenaltySurchargePercent::class, $model->getPenaltySurchargePercent());
 
         $testValueForPenaltySurchargePercent = $model->getPenaltySurchargePercentWithCreate();
 
@@ -45197,7 +45198,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPercent();
 
-        $this->assertNull($model->getPaymentPercent());
+        $this->assertNotInstanceOf(PaymentPercent::class, $model->getPaymentPercent());
 
         $testValueForPaymentPercent = $model->getPaymentPercentWithCreate();
 
@@ -45213,7 +45214,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -45229,7 +45230,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSettlementDiscountAmount();
 
-        $this->assertNull($model->getSettlementDiscountAmount());
+        $this->assertNotInstanceOf(SettlementDiscountAmount::class, $model->getSettlementDiscountAmount());
 
         $testValueForSettlementDiscountAmount = $model->getSettlementDiscountAmountWithCreate();
 
@@ -45245,7 +45246,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPenaltyAmount();
 
-        $this->assertNull($model->getPenaltyAmount());
+        $this->assertNotInstanceOf(PenaltyAmount::class, $model->getPenaltyAmount());
 
         $testValueForPenaltyAmount = $model->getPenaltyAmountWithCreate();
 
@@ -45261,7 +45262,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentTermsDetailsURI();
 
-        $this->assertNull($model->getPaymentTermsDetailsURI());
+        $this->assertNotInstanceOf(PaymentTermsDetailsURI::class, $model->getPaymentTermsDetailsURI());
 
         $testValueForPaymentTermsDetailsURI = $model->getPaymentTermsDetailsURIWithCreate();
 
@@ -45277,7 +45278,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentDueDate();
 
-        $this->assertNull($model->getPaymentDueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getPaymentDueDate());
 
         // Property InstallmentDueDate
 
@@ -45288,7 +45289,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInstallmentDueDate();
 
-        $this->assertNull($model->getInstallmentDueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getInstallmentDueDate());
 
         // Property InvoicingPartyReference
 
@@ -45299,7 +45300,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoicingPartyReference();
 
-        $this->assertNull($model->getInvoicingPartyReference());
+        $this->assertNotInstanceOf(InvoicingPartyReference::class, $model->getInvoicingPartyReference());
 
         $testValueForInvoicingPartyReference = $model->getInvoicingPartyReferenceWithCreate();
 
@@ -45315,7 +45316,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSettlementPeriod();
 
-        $this->assertNull($model->getSettlementPeriod());
+        $this->assertNotInstanceOf(SettlementPeriod::class, $model->getSettlementPeriod());
 
         $testValueForSettlementPeriod = $model->getSettlementPeriodWithCreate();
 
@@ -45331,7 +45332,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPenaltyPeriod();
 
-        $this->assertNull($model->getPenaltyPeriod());
+        $this->assertNotInstanceOf(PenaltyPeriod::class, $model->getPenaltyPeriod());
 
         $testValueForPenaltyPeriod = $model->getPenaltyPeriodWithCreate();
 
@@ -45347,7 +45348,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExchangeRate();
 
-        $this->assertNull($model->getExchangeRate());
+        $this->assertNotInstanceOf(ExchangeRate::class, $model->getExchangeRate());
 
         $testValueForExchangeRate = $model->getExchangeRateWithCreate();
 
@@ -45363,7 +45364,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidityPeriod();
 
-        $this->assertNull($model->getValidityPeriod());
+        $this->assertNotInstanceOf(ValidityPeriod::class, $model->getValidityPeriod());
 
         $testValueForValidityPeriod = $model->getValidityPeriodWithCreate();
 
@@ -45389,7 +45390,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -45405,7 +45406,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaidAmount();
 
-        $this->assertNull($model->getPaidAmount());
+        $this->assertNotInstanceOf(PaidAmount::class, $model->getPaidAmount());
 
         $testValueForPaidAmount = $model->getPaidAmountWithCreate();
 
@@ -45421,7 +45422,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedDate();
 
-        $this->assertNull($model->getReceivedDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReceivedDate());
 
         // Property PaidDate
 
@@ -45432,7 +45433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaidDate();
 
-        $this->assertNull($model->getPaidDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getPaidDate());
 
         // Property PaidTime
 
@@ -45443,7 +45444,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaidTime();
 
-        $this->assertNull($model->getPaidTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getPaidTime());
 
         // Property InstructionID
 
@@ -45454,7 +45455,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInstructionID();
 
-        $this->assertNull($model->getInstructionID());
+        $this->assertNotInstanceOf(InstructionID::class, $model->getInstructionID());
 
         $testValueForInstructionID = $model->getInstructionIDWithCreate();
 
@@ -45524,7 +45525,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -45612,7 +45613,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformanceValueQuantity();
 
-        $this->assertNull($model->getPerformanceValueQuantity());
+        $this->assertNotInstanceOf(PerformanceValueQuantity::class, $model->getPerformanceValueQuantity());
 
         $testValueForPerformanceValueQuantity = $model->getPerformanceValueQuantityWithCreate();
 
@@ -45628,7 +45629,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerformanceMetricTypeCode();
 
-        $this->assertNull($model->getPerformanceMetricTypeCode());
+        $this->assertNotInstanceOf(PerformanceMetricTypeCode::class, $model->getPerformanceMetricTypeCode());
 
         $testValueForPerformanceMetricTypeCode = $model->getPerformanceMetricTypeCodeWithCreate();
 
@@ -45644,7 +45645,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -45660,7 +45661,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -45708,7 +45709,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStartDate();
 
-        $this->assertNull($model->getStartDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getStartDate());
 
         // Property StartTime
 
@@ -45719,7 +45720,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStartTime();
 
-        $this->assertNull($model->getStartTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getStartTime());
 
         // Property EndDate
 
@@ -45730,7 +45731,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEndDate();
 
-        $this->assertNull($model->getEndDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEndDate());
 
         // Property EndTime
 
@@ -45741,7 +45742,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEndTime();
 
-        $this->assertNull($model->getEndTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEndTime());
 
         // Property DurationMeasure
 
@@ -45752,7 +45753,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDurationMeasure();
 
-        $this->assertNull($model->getDurationMeasure());
+        $this->assertNotInstanceOf(DurationMeasure::class, $model->getDurationMeasure());
 
         $testValueForDurationMeasure = $model->getDurationMeasureWithCreate();
 
@@ -45933,7 +45934,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -45949,7 +45950,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFirstName();
 
-        $this->assertNull($model->getFirstName());
+        $this->assertNotInstanceOf(FirstName::class, $model->getFirstName());
 
         $testValueForFirstName = $model->getFirstNameWithCreate();
 
@@ -45965,7 +45966,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFamilyName();
 
-        $this->assertNull($model->getFamilyName());
+        $this->assertNotInstanceOf(FamilyName::class, $model->getFamilyName());
 
         $testValueForFamilyName = $model->getFamilyNameWithCreate();
 
@@ -45981,7 +45982,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTitle();
 
-        $this->assertNull($model->getTitle());
+        $this->assertNotInstanceOf(Title::class, $model->getTitle());
 
         $testValueForTitle = $model->getTitleWithCreate();
 
@@ -45997,7 +45998,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMiddleName();
 
-        $this->assertNull($model->getMiddleName());
+        $this->assertNotInstanceOf(MiddleName::class, $model->getMiddleName());
 
         $testValueForMiddleName = $model->getMiddleNameWithCreate();
 
@@ -46013,7 +46014,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOtherName();
 
-        $this->assertNull($model->getOtherName());
+        $this->assertNotInstanceOf(OtherName::class, $model->getOtherName());
 
         $testValueForOtherName = $model->getOtherNameWithCreate();
 
@@ -46029,7 +46030,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNameSuffix();
 
-        $this->assertNull($model->getNameSuffix());
+        $this->assertNotInstanceOf(NameSuffix::class, $model->getNameSuffix());
 
         $testValueForNameSuffix = $model->getNameSuffixWithCreate();
 
@@ -46045,7 +46046,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetJobTitle();
 
-        $this->assertNull($model->getJobTitle());
+        $this->assertNotInstanceOf(JobTitle::class, $model->getJobTitle());
 
         $testValueForJobTitle = $model->getJobTitleWithCreate();
 
@@ -46061,7 +46062,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNationalityID();
 
-        $this->assertNull($model->getNationalityID());
+        $this->assertNotInstanceOf(NationalityID::class, $model->getNationalityID());
 
         $testValueForNationalityID = $model->getNationalityIDWithCreate();
 
@@ -46077,7 +46078,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGenderCode();
 
-        $this->assertNull($model->getGenderCode());
+        $this->assertNotInstanceOf(GenderCode::class, $model->getGenderCode());
 
         $testValueForGenderCode = $model->getGenderCodeWithCreate();
 
@@ -46093,7 +46094,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBirthDate();
 
-        $this->assertNull($model->getBirthDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getBirthDate());
 
         // Property BirthplaceName
 
@@ -46104,7 +46105,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBirthplaceName();
 
-        $this->assertNull($model->getBirthplaceName());
+        $this->assertNotInstanceOf(BirthplaceName::class, $model->getBirthplaceName());
 
         $testValueForBirthplaceName = $model->getBirthplaceNameWithCreate();
 
@@ -46120,7 +46121,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrganizationDepartment();
 
-        $this->assertNull($model->getOrganizationDepartment());
+        $this->assertNotInstanceOf(OrganizationDepartment::class, $model->getOrganizationDepartment());
 
         $testValueForOrganizationDepartment = $model->getOrganizationDepartmentWithCreate();
 
@@ -46136,7 +46137,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContact();
 
-        $this->assertNull($model->getContact());
+        $this->assertNotInstanceOf(Contact::class, $model->getContact());
 
         $testValueForContact = $model->getContactWithCreate();
 
@@ -46152,7 +46153,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancialAccount();
 
-        $this->assertNull($model->getFinancialAccount());
+        $this->assertNotInstanceOf(FinancialAccount::class, $model->getFinancialAccount());
 
         $testValueForFinancialAccount = $model->getFinancialAccountWithCreate();
 
@@ -46240,7 +46241,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResidenceAddress();
 
-        $this->assertNull($model->getResidenceAddress());
+        $this->assertNotInstanceOf(ResidenceAddress::class, $model->getResidenceAddress());
 
         $testValueForResidenceAddress = $model->getResidenceAddressWithCreate();
 
@@ -46277,7 +46278,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAttributeID();
 
-        $this->assertNull($model->getAttributeID());
+        $this->assertNotInstanceOf(AttributeID::class, $model->getAttributeID());
 
         $testValueForAttributeID = $model->getAttributeIDWithCreate();
 
@@ -46293,7 +46294,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPositionCode();
 
-        $this->assertNull($model->getPositionCode());
+        $this->assertNotInstanceOf(PositionCode::class, $model->getPositionCode());
 
         $testValueForPositionCode = $model->getPositionCodeWithCreate();
 
@@ -46309,7 +46310,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDescriptionCode();
 
-        $this->assertNull($model->getDescriptionCode());
+        $this->assertNotInstanceOf(DescriptionCode::class, $model->getDescriptionCode());
 
         $testValueForDescriptionCode = $model->getDescriptionCodeWithCreate();
 
@@ -46462,7 +46463,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -46478,7 +46479,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualPickupDate();
 
-        $this->assertNull($model->getActualPickupDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualPickupDate());
 
         // Property ActualPickupTime
 
@@ -46489,7 +46490,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualPickupTime();
 
-        $this->assertNull($model->getActualPickupTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getActualPickupTime());
 
         // Property EarliestPickupDate
 
@@ -46500,7 +46501,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEarliestPickupDate();
 
-        $this->assertNull($model->getEarliestPickupDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEarliestPickupDate());
 
         // Property EarliestPickupTime
 
@@ -46511,7 +46512,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEarliestPickupTime();
 
-        $this->assertNull($model->getEarliestPickupTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEarliestPickupTime());
 
         // Property LatestPickupDate
 
@@ -46522,7 +46523,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestPickupDate();
 
-        $this->assertNull($model->getLatestPickupDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestPickupDate());
 
         // Property PickupDate
 
@@ -46535,7 +46536,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestPickupTime();
 
-        $this->assertNull($model->getLatestPickupTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestPickupTime());
 
         // Property PickupTime
 
@@ -46548,7 +46549,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPickupLocation();
 
-        $this->assertNull($model->getPickupLocation());
+        $this->assertNotInstanceOf(PickupLocation::class, $model->getPickupLocation());
 
         $testValueForPickupLocation = $model->getPickupLocationWithCreate();
 
@@ -46564,7 +46565,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPickupParty();
 
-        $this->assertNull($model->getPickupParty());
+        $this->assertNotInstanceOf(PickupParty::class, $model->getPickupParty());
 
         $testValueForPickupParty = $model->getPickupPartyWithCreate();
 
@@ -46689,7 +46690,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -46705,7 +46706,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -46716,7 +46717,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // (1) Property Description - Test set empty array
 
@@ -46799,7 +46800,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNotaryParty();
 
-        $this->assertNull($model->getNotaryParty());
+        $this->assertNotInstanceOf(NotaryParty::class, $model->getNotaryParty());
 
         $testValueForNotaryParty = $model->getNotaryPartyWithCreate();
 
@@ -46815,7 +46816,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAgentParty();
 
-        $this->assertNull($model->getAgentParty());
+        $this->assertNotInstanceOf(AgentParty::class, $model->getAgentParty());
 
         $testValueForAgentParty = $model->getAgentPartyWithCreate();
 
@@ -47095,7 +47096,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -47204,7 +47205,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -47220,7 +47221,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStatusCode();
 
-        $this->assertNull($model->getStatusCode());
+        $this->assertNotInstanceOf(StatusCode::class, $model->getStatusCode());
 
         $testValueForStatusCode = $model->getStatusCodeWithCreate();
 
@@ -47308,7 +47309,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousPriceList();
 
-        $this->assertNull($model->getPreviousPriceList());
+        $this->assertNotInstanceOf(PreviousPriceList::class, $model->getPreviousPriceList());
 
         $testValueForPreviousPriceList = $model->getPreviousPriceListWithCreate();
 
@@ -47334,7 +47335,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceAmount();
 
-        $this->assertNull($model->getPriceAmount());
+        $this->assertNotInstanceOf(PriceAmount::class, $model->getPriceAmount());
 
         $testValueForPriceAmount = $model->getPriceAmountWithCreate();
 
@@ -47350,7 +47351,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBaseQuantity();
 
-        $this->assertNull($model->getBaseQuantity());
+        $this->assertNotInstanceOf(BaseQuantity::class, $model->getBaseQuantity());
 
         $testValueForBaseQuantity = $model->getBaseQuantityWithCreate();
 
@@ -47438,7 +47439,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceTypeCode();
 
-        $this->assertNull($model->getPriceTypeCode());
+        $this->assertNotInstanceOf(PriceTypeCode::class, $model->getPriceTypeCode());
 
         $testValueForPriceTypeCode = $model->getPriceTypeCodeWithCreate();
 
@@ -47454,7 +47455,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceType();
 
-        $this->assertNull($model->getPriceType());
+        $this->assertNotInstanceOf(PriceType1::class, $model->getPriceType());
 
         $testValueForPriceType = $model->getPriceTypeWithCreate();
 
@@ -47470,7 +47471,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderableUnitFactorRate();
 
-        $this->assertNull($model->getOrderableUnitFactorRate());
+        $this->assertNotInstanceOf(OrderableUnitFactorRate::class, $model->getOrderableUnitFactorRate());
 
         $testValueForOrderableUnitFactorRate = $model->getOrderableUnitFactorRateWithCreate();
 
@@ -47558,7 +47559,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceList();
 
-        $this->assertNull($model->getPriceList());
+        $this->assertNotInstanceOf(PriceList::class, $model->getPriceList());
 
         $testValueForPriceList = $model->getPriceListWithCreate();
 
@@ -47646,7 +47647,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingExchangeRate();
 
-        $this->assertNull($model->getPricingExchangeRate());
+        $this->assertNotInstanceOf(PricingExchangeRate::class, $model->getPricingExchangeRate());
 
         $testValueForPricingExchangeRate = $model->getPricingExchangeRateWithCreate();
 
@@ -47694,7 +47695,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalItemLocationQuantity();
 
-        $this->assertNull($model->getOriginalItemLocationQuantity());
+        $this->assertNotInstanceOf(OriginalItemLocationQuantity::class, $model->getOriginalItemLocationQuantity());
 
         $testValueForOriginalItemLocationQuantity = $model->getOriginalItemLocationQuantityWithCreate();
 
@@ -47803,7 +47804,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPreviousCancellationReasonCode();
 
-        $this->assertNull($model->getPreviousCancellationReasonCode());
+        $this->assertNotInstanceOf(PreviousCancellationReasonCode::class, $model->getPreviousCancellationReasonCode());
 
         $testValueForPreviousCancellationReasonCode = $model->getPreviousCancellationReasonCodeWithCreate();
 
@@ -47819,7 +47820,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcessReasonCode();
 
-        $this->assertNull($model->getProcessReasonCode());
+        $this->assertNotInstanceOf(ProcessReasonCode::class, $model->getProcessReasonCode());
 
         $testValueForProcessReasonCode = $model->getProcessReasonCodeWithCreate();
 
@@ -48022,7 +48023,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -48038,7 +48039,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderingTerms();
 
-        $this->assertNull($model->getTenderingTerms());
+        $this->assertNotInstanceOf(TenderingTerms::class, $model->getTenderingTerms());
 
         $testValueForTenderingTerms = $model->getTenderingTermsWithCreate();
 
@@ -48054,7 +48055,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementProject();
 
-        $this->assertNull($model->getProcurementProject());
+        $this->assertNotInstanceOf(ProcurementProject::class, $model->getProcurementProject());
 
         $testValueForProcurementProject = $model->getProcurementProjectWithCreate();
 
@@ -48080,7 +48081,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -48240,7 +48241,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementTypeCode();
 
-        $this->assertNull($model->getProcurementTypeCode());
+        $this->assertNotInstanceOf(ProcurementTypeCode::class, $model->getProcurementTypeCode());
 
         $testValueForProcurementTypeCode = $model->getProcurementTypeCodeWithCreate();
 
@@ -48256,7 +48257,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementSubTypeCode();
 
-        $this->assertNull($model->getProcurementSubTypeCode());
+        $this->assertNotInstanceOf(ProcurementSubTypeCode::class, $model->getProcurementSubTypeCode());
 
         $testValueForProcurementSubTypeCode = $model->getProcurementSubTypeCodeWithCreate();
 
@@ -48272,7 +48273,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQualityControlCode();
 
-        $this->assertNull($model->getQualityControlCode());
+        $this->assertNotInstanceOf(QualityControlCode::class, $model->getQualityControlCode());
 
         $testValueForQualityControlCode = $model->getQualityControlCodeWithCreate();
 
@@ -48288,7 +48289,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequiredFeeAmount();
 
-        $this->assertNull($model->getRequiredFeeAmount());
+        $this->assertNotInstanceOf(RequiredFeeAmount::class, $model->getRequiredFeeAmount());
 
         $testValueForRequiredFeeAmount = $model->getRequiredFeeAmountWithCreate();
 
@@ -48376,7 +48377,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDeliveryDate();
 
-        $this->assertNull($model->getRequestedDeliveryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRequestedDeliveryDate());
 
         // Property EstimatedOverallContractQuantity
 
@@ -48387,7 +48388,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedOverallContractQuantity();
 
-        $this->assertNull($model->getEstimatedOverallContractQuantity());
+        $this->assertNotInstanceOf(EstimatedOverallContractQuantity::class, $model->getEstimatedOverallContractQuantity());
 
         $testValueForEstimatedOverallContractQuantity = $model->getEstimatedOverallContractQuantityWithCreate();
 
@@ -48475,7 +48476,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedTenderTotal();
 
-        $this->assertNull($model->getRequestedTenderTotal());
+        $this->assertNotInstanceOf(RequestedTenderTotal::class, $model->getRequestedTenderTotal());
 
         $testValueForRequestedTenderTotal = $model->getRequestedTenderTotalWithCreate();
 
@@ -48491,7 +48492,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMainCommodityClassification();
 
-        $this->assertNull($model->getMainCommodityClassification());
+        $this->assertNotInstanceOf(MainCommodityClassification::class, $model->getMainCommodityClassification());
 
         $testValueForMainCommodityClassification = $model->getMainCommodityClassificationWithCreate();
 
@@ -48651,7 +48652,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedPeriod();
 
-        $this->assertNull($model->getPlannedPeriod());
+        $this->assertNotInstanceOf(PlannedPeriod::class, $model->getPlannedPeriod());
 
         $testValueForPlannedPeriod = $model->getPlannedPeriodWithCreate();
 
@@ -48667,7 +48668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractExtension();
 
-        $this->assertNull($model->getContractExtension());
+        $this->assertNotInstanceOf(ContractExtension::class, $model->getContractExtension());
 
         $testValueForContractExtension = $model->getContractExtensionWithCreate();
 
@@ -48776,7 +48777,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -48792,7 +48793,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -48808,7 +48809,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // (1) Property WorkPhaseReference - Test set empty array
 
@@ -48934,7 +48935,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -48950,7 +48951,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEventLineItem();
 
-        $this->assertNull($model->getEventLineItem());
+        $this->assertNotInstanceOf(EventLineItem::class, $model->getEventLineItem());
 
         $testValueForEventLineItem = $model->getEventLineItemWithCreate();
 
@@ -48976,7 +48977,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPromotionalEventTypeCode();
 
-        $this->assertNull($model->getPromotionalEventTypeCode());
+        $this->assertNotInstanceOf(PromotionalEventTypeCode::class, $model->getPromotionalEventTypeCode());
 
         $testValueForPromotionalEventTypeCode = $model->getPromotionalEventTypeCodeWithCreate();
 
@@ -48992,7 +48993,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubmissionDate();
 
-        $this->assertNull($model->getSubmissionDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getSubmissionDate());
 
         // Property FirstShipmentAvailibilityDate
 
@@ -49003,7 +49004,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFirstShipmentAvailibilityDate();
 
-        $this->assertNull($model->getFirstShipmentAvailibilityDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getFirstShipmentAvailibilityDate());
 
         // Property LatestProposalAcceptanceDate
 
@@ -49014,7 +49015,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestProposalAcceptanceDate();
 
-        $this->assertNull($model->getLatestProposalAcceptanceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestProposalAcceptanceDate());
 
         // Property ProposalAcceptanceDate
 
@@ -49120,7 +49121,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSpecificationID();
 
-        $this->assertNull($model->getSpecificationID());
+        $this->assertNotInstanceOf(SpecificationID::class, $model->getSpecificationID());
 
         $testValueForSpecificationID = $model->getSpecificationIDWithCreate();
 
@@ -49312,7 +49313,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdmissionCode();
 
-        $this->assertNull($model->getAdmissionCode());
+        $this->assertNotInstanceOf(AdmissionCode::class, $model->getAdmissionCode());
 
         $testValueForAdmissionCode = $model->getAdmissionCodeWithCreate();
 
@@ -49472,7 +49473,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResolutionDate();
 
-        $this->assertNull($model->getResolutionDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getResolutionDate());
 
         // Property ResolutionTime
 
@@ -49483,7 +49484,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResolutionTime();
 
-        $this->assertNull($model->getResolutionTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getResolutionTime());
 
         // Property ProcurementProjectLot
 
@@ -49494,7 +49495,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementProjectLot();
 
-        $this->assertNull($model->getProcurementProjectLot());
+        $this->assertNotInstanceOf(ProcurementProjectLot::class, $model->getProcurementProjectLot());
 
         $testValueForProcurementProjectLot = $model->getProcurementProjectLotWithCreate();
 
@@ -49531,7 +49532,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParticipationPercent();
 
-        $this->assertNull($model->getParticipationPercent());
+        $this->assertNotInstanceOf(ParticipationPercent::class, $model->getParticipationPercent());
 
         $testValueForParticipationPercent = $model->getParticipationPercentWithCreate();
 
@@ -49619,7 +49620,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOperatingYearsQuantity();
 
-        $this->assertNull($model->getOperatingYearsQuantity());
+        $this->assertNotInstanceOf(OperatingYearsQuantity::class, $model->getOperatingYearsQuantity());
 
         $testValueForOperatingYearsQuantity = $model->getOperatingYearsQuantityWithCreate();
 
@@ -49635,7 +49636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmployeeQuantity();
 
-        $this->assertNull($model->getEmployeeQuantity());
+        $this->assertNotInstanceOf(EmployeeQuantity::class, $model->getEmployeeQuantity());
 
         $testValueForEmployeeQuantity = $model->getEmployeeQuantityWithCreate();
 
@@ -49651,7 +49652,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBusinessClassificationEvidenceID();
 
-        $this->assertNull($model->getBusinessClassificationEvidenceID());
+        $this->assertNotInstanceOf(BusinessClassificationEvidenceID::class, $model->getBusinessClassificationEvidenceID());
 
         $testValueForBusinessClassificationEvidenceID = $model->getBusinessClassificationEvidenceIDWithCreate();
 
@@ -49667,7 +49668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBusinessIdentityEvidenceID();
 
-        $this->assertNull($model->getBusinessIdentityEvidenceID());
+        $this->assertNotInstanceOf(BusinessIdentityEvidenceID::class, $model->getBusinessIdentityEvidenceID());
 
         $testValueForBusinessIdentityEvidenceID = $model->getBusinessIdentityEvidenceIDWithCreate();
 
@@ -49683,7 +49684,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTendererRoleCode();
 
-        $this->assertNull($model->getTendererRoleCode());
+        $this->assertNotInstanceOf(TendererRoleCode::class, $model->getTendererRoleCode());
 
         $testValueForTendererRoleCode = $model->getTendererRoleCodeWithCreate();
 
@@ -49699,7 +49700,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBusinessClassificationScheme();
 
-        $this->assertNull($model->getBusinessClassificationScheme());
+        $this->assertNotInstanceOf(BusinessClassificationScheme::class, $model->getBusinessClassificationScheme());
 
         $testValueForBusinessClassificationScheme = $model->getBusinessClassificationSchemeWithCreate();
 
@@ -50003,7 +50004,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -50019,7 +50020,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEconomicOperatorRole();
 
-        $this->assertNull($model->getEconomicOperatorRole());
+        $this->assertNotInstanceOf(EconomicOperatorRole::class, $model->getEconomicOperatorRole());
 
         $testValueForEconomicOperatorRole = $model->getEconomicOperatorRoleWithCreate();
 
@@ -50089,7 +50090,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -50177,7 +50178,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -50193,7 +50194,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -50209,7 +50210,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTaxAmount();
 
-        $this->assertNull($model->getTotalTaxAmount());
+        $this->assertNotInstanceOf(TotalTaxAmount::class, $model->getTotalTaxAmount());
 
         $testValueForTotalTaxAmount = $model->getTotalTaxAmountWithCreate();
 
@@ -50225,7 +50226,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestForQuotationLineID();
 
-        $this->assertNull($model->getRequestForQuotationLineID());
+        $this->assertNotInstanceOf(RequestForQuotationLineID::class, $model->getRequestForQuotationLineID());
 
         $testValueForRequestForQuotationLineID = $model->getRequestForQuotationLineIDWithCreate();
 
@@ -50313,7 +50314,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineItem();
 
-        $this->assertNull($model->getLineItem());
+        $this->assertNotInstanceOf(LineItem::class, $model->getLineItem());
 
         $testValueForLineItem = $model->getLineItemWithCreate();
 
@@ -50473,7 +50474,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestLineReference();
 
-        $this->assertNull($model->getRequestLineReference());
+        $this->assertNotInstanceOf(RequestLineReference::class, $model->getRequestLineReference());
 
         $testValueForRequestLineReference = $model->getRequestLineReferenceWithCreate();
 
@@ -50521,7 +50522,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTrainID();
 
-        $this->assertNull($model->getTrainID());
+        $this->assertNotInstanceOf(TrainID::class, $model->getTrainID());
 
         $testValueForTrainID = $model->getTrainIDWithCreate();
 
@@ -50537,7 +50538,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRailCarID();
 
-        $this->assertNull($model->getRailCarID());
+        $this->assertNotInstanceOf(RailCarID::class, $model->getRailCarID());
 
         $testValueForRailCarID = $model->getRailCarIDWithCreate();
 
@@ -50618,7 +50619,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -50634,7 +50635,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -50722,7 +50723,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedQuantity();
 
-        $this->assertNull($model->getReceivedQuantity());
+        $this->assertNotInstanceOf(ReceivedQuantity::class, $model->getReceivedQuantity());
 
         $testValueForReceivedQuantity = $model->getReceivedQuantityWithCreate();
 
@@ -50738,7 +50739,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShortQuantity();
 
-        $this->assertNull($model->getShortQuantity());
+        $this->assertNotInstanceOf(ShortQuantity::class, $model->getShortQuantity());
 
         $testValueForShortQuantity = $model->getShortQuantityWithCreate();
 
@@ -50754,7 +50755,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShortageActionCode();
 
-        $this->assertNull($model->getShortageActionCode());
+        $this->assertNotInstanceOf(ShortageActionCode::class, $model->getShortageActionCode());
 
         $testValueForShortageActionCode = $model->getShortageActionCodeWithCreate();
 
@@ -50770,7 +50771,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRejectedQuantity();
 
-        $this->assertNull($model->getRejectedQuantity());
+        $this->assertNotInstanceOf(RejectedQuantity::class, $model->getRejectedQuantity());
 
         $testValueForRejectedQuantity = $model->getRejectedQuantityWithCreate();
 
@@ -50786,7 +50787,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRejectReasonCode();
 
-        $this->assertNull($model->getRejectReasonCode());
+        $this->assertNotInstanceOf(RejectReasonCode::class, $model->getRejectReasonCode());
 
         $testValueForRejectReasonCode = $model->getRejectReasonCodeWithCreate();
 
@@ -50874,7 +50875,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRejectActionCode();
 
-        $this->assertNull($model->getRejectActionCode());
+        $this->assertNotInstanceOf(RejectActionCode::class, $model->getRejectActionCode());
 
         $testValueForRejectActionCode = $model->getRejectActionCodeWithCreate();
 
@@ -50890,7 +50891,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantityDiscrepancyCode();
 
-        $this->assertNull($model->getQuantityDiscrepancyCode());
+        $this->assertNotInstanceOf(QuantityDiscrepancyCode::class, $model->getQuantityDiscrepancyCode());
 
         $testValueForQuantityDiscrepancyCode = $model->getQuantityDiscrepancyCodeWithCreate();
 
@@ -50906,7 +50907,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOversupplyQuantity();
 
-        $this->assertNull($model->getOversupplyQuantity());
+        $this->assertNotInstanceOf(OversupplyQuantity::class, $model->getOversupplyQuantity());
 
         $testValueForOversupplyQuantity = $model->getOversupplyQuantityWithCreate();
 
@@ -50922,7 +50923,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedDate();
 
-        $this->assertNull($model->getReceivedDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReceivedDate());
 
         // Property TimingComplaintCode
 
@@ -50933,7 +50934,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimingComplaintCode();
 
-        $this->assertNull($model->getTimingComplaintCode());
+        $this->assertNotInstanceOf(TimingComplaintCode::class, $model->getTimingComplaintCode());
 
         $testValueForTimingComplaintCode = $model->getTimingComplaintCodeWithCreate();
 
@@ -50949,7 +50950,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimingComplaint();
 
-        $this->assertNull($model->getTimingComplaint());
+        $this->assertNotInstanceOf(TimingComplaint::class, $model->getTimingComplaint());
 
         $testValueForTimingComplaint = $model->getTimingComplaintWithCreate();
 
@@ -50965,7 +50966,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderLineReference();
 
-        $this->assertNull($model->getOrderLineReference());
+        $this->assertNotInstanceOf(OrderLineReference::class, $model->getOrderLineReference());
 
         $testValueForOrderLineReference = $model->getOrderLineReferenceWithCreate();
 
@@ -51444,7 +51445,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -51460,7 +51461,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalReference();
 
-        $this->assertNull($model->getLegalReference());
+        $this->assertNotInstanceOf(LegalReference::class, $model->getLegalReference());
 
         $testValueForLegalReference = $model->getLegalReferenceWithCreate();
 
@@ -51476,7 +51477,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOntologyURI();
 
-        $this->assertNull($model->getOntologyURI());
+        $this->assertNotInstanceOf(OntologyURI::class, $model->getOntologyURI());
 
         $testValueForOntologyURI = $model->getOntologyURIWithCreate();
 
@@ -51524,7 +51525,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -51540,7 +51541,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -51660,7 +51661,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -51748,7 +51749,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -51775,7 +51776,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDebitLineAmount();
 
-        $this->assertNull($model->getDebitLineAmount());
+        $this->assertNotInstanceOf(DebitLineAmount::class, $model->getDebitLineAmount());
 
         $testValueForDebitLineAmount = $model->getDebitLineAmountWithCreate();
 
@@ -51791,7 +51792,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditLineAmount();
 
-        $this->assertNull($model->getCreditLineAmount());
+        $this->assertNotInstanceOf(CreditLineAmount::class, $model->getCreditLineAmount());
 
         $testValueForCreditLineAmount = $model->getCreditLineAmountWithCreate();
 
@@ -51807,7 +51808,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -51823,7 +51824,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -51839,7 +51840,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPenaltySurchargePercent();
 
-        $this->assertNull($model->getPenaltySurchargePercent());
+        $this->assertNotInstanceOf(PenaltySurchargePercent::class, $model->getPenaltySurchargePercent());
 
         $testValueForPenaltySurchargePercent = $model->getPenaltySurchargePercentWithCreate();
 
@@ -51855,7 +51856,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -51871,7 +51872,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -52031,7 +52032,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExchangeRate();
 
-        $this->assertNull($model->getExchangeRate());
+        $this->assertNotInstanceOf(ExchangeRate::class, $model->getExchangeRate());
 
         $testValueForExchangeRate = $model->getExchangeRateWithCreate();
 
@@ -52079,7 +52080,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -52167,7 +52168,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -52183,7 +52184,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDebitLineAmount();
 
-        $this->assertNull($model->getDebitLineAmount());
+        $this->assertNotInstanceOf(DebitLineAmount::class, $model->getDebitLineAmount());
 
         $testValueForDebitLineAmount = $model->getDebitLineAmountWithCreate();
 
@@ -52199,7 +52200,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditLineAmount();
 
-        $this->assertNull($model->getCreditLineAmount());
+        $this->assertNotInstanceOf(CreditLineAmount::class, $model->getCreditLineAmount());
 
         $testValueForCreditLineAmount = $model->getCreditLineAmountWithCreate();
 
@@ -52215,7 +52216,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBalanceAmount();
 
-        $this->assertNull($model->getBalanceAmount());
+        $this->assertNotInstanceOf(BalanceAmount::class, $model->getBalanceAmount());
 
         $testValueForBalanceAmount = $model->getBalanceAmountWithCreate();
 
@@ -52231,7 +52232,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -52247,7 +52248,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoicingPartyReference();
 
-        $this->assertNull($model->getInvoicingPartyReference());
+        $this->assertNotInstanceOf(InvoicingPartyReference::class, $model->getInvoicingPartyReference());
 
         $testValueForInvoicingPartyReference = $model->getInvoicingPartyReferenceWithCreate();
 
@@ -52263,7 +52264,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingSupplierParty();
 
-        $this->assertNull($model->getAccountingSupplierParty());
+        $this->assertNotInstanceOf(AccountingSupplierParty::class, $model->getAccountingSupplierParty());
 
         $testValueForAccountingSupplierParty = $model->getAccountingSupplierPartyWithCreate();
 
@@ -52279,7 +52280,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCustomerParty();
 
-        $this->assertNull($model->getAccountingCustomerParty());
+        $this->assertNotInstanceOf(AccountingCustomerParty::class, $model->getAccountingCustomerParty());
 
         $testValueForAccountingCustomerParty = $model->getAccountingCustomerPartyWithCreate();
 
@@ -52295,7 +52296,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerCustomerParty();
 
-        $this->assertNull($model->getBuyerCustomerParty());
+        $this->assertNotInstanceOf(BuyerCustomerParty::class, $model->getBuyerCustomerParty());
 
         $testValueForBuyerCustomerParty = $model->getBuyerCustomerPartyWithCreate();
 
@@ -52311,7 +52312,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -52327,7 +52328,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginatorCustomerParty();
 
-        $this->assertNull($model->getOriginatorCustomerParty());
+        $this->assertNotInstanceOf(OriginatorCustomerParty::class, $model->getOriginatorCustomerParty());
 
         $testValueForOriginatorCustomerParty = $model->getOriginatorCustomerPartyWithCreate();
 
@@ -52343,7 +52344,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayeeParty();
 
-        $this->assertNull($model->getPayeeParty());
+        $this->assertNotInstanceOf(PayeeParty::class, $model->getPayeeParty());
 
         $testValueForPayeeParty = $model->getPayeePartyWithCreate();
 
@@ -52575,7 +52576,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExchangeRate();
 
-        $this->assertNull($model->getExchangeRate());
+        $this->assertNotInstanceOf(ExchangeRate::class, $model->getExchangeRate());
 
         $testValueForExchangeRate = $model->getExchangeRateWithCreate();
 
@@ -52612,7 +52613,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -52628,7 +52629,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -52863,7 +52864,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedOverallContractAmount();
 
-        $this->assertNull($model->getEstimatedOverallContractAmount());
+        $this->assertNotInstanceOf(EstimatedOverallContractAmount::class, $model->getEstimatedOverallContractAmount());
 
         $testValueForEstimatedOverallContractAmount = $model->getEstimatedOverallContractAmountWithCreate();
 
@@ -52879,7 +52880,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalAmount();
 
-        $this->assertNull($model->getTotalAmount());
+        $this->assertNotInstanceOf(TotalAmount::class, $model->getTotalAmount());
 
         $testValueForTotalAmount = $model->getTotalAmountWithCreate();
 
@@ -52906,7 +52907,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumAmount();
 
-        $this->assertNull($model->getMinimumAmount());
+        $this->assertNotInstanceOf(MinimumAmount::class, $model->getMinimumAmount());
 
         $testValueForMinimumAmount = $model->getMinimumAmountWithCreate();
 
@@ -52922,7 +52923,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumAmount();
 
-        $this->assertNull($model->getMaximumAmount());
+        $this->assertNotInstanceOf(MaximumAmount::class, $model->getMaximumAmount());
 
         $testValueForMaximumAmount = $model->getMaximumAmountWithCreate();
 
@@ -53010,7 +53011,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAverageSubsequentContractAmount();
 
-        $this->assertNull($model->getAverageSubsequentContractAmount());
+        $this->assertNotInstanceOf(AverageSubsequentContractAmount::class, $model->getAverageSubsequentContractAmount());
 
         $testValueForAverageSubsequentContractAmount = $model->getAverageSubsequentContractAmountWithCreate();
 
@@ -53152,7 +53153,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -53168,7 +53169,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -53267,7 +53268,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrivacyCode();
 
-        $this->assertNull($model->getPrivacyCode());
+        $this->assertNotInstanceOf(PrivacyCode::class, $model->getPrivacyCode());
 
         $testValueForPrivacyCode = $model->getPrivacyCodeWithCreate();
 
@@ -53283,7 +53284,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSecurityClassificationCode();
 
-        $this->assertNull($model->getSecurityClassificationCode());
+        $this->assertNotInstanceOf(SecurityClassificationCode::class, $model->getSecurityClassificationCode());
 
         $testValueForSecurityClassificationCode = $model->getSecurityClassificationCodeWithCreate();
 
@@ -53371,7 +53372,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineItem();
 
-        $this->assertNull($model->getLineItem());
+        $this->assertNotInstanceOf(LineItem::class, $model->getLineItem());
 
         $testValueForLineItem = $model->getLineItemWithCreate();
 
@@ -53408,7 +53409,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -53424,7 +53425,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -53512,7 +53513,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -53528,7 +53529,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumQuantity();
 
-        $this->assertNull($model->getMinimumQuantity());
+        $this->assertNotInstanceOf(MinimumQuantity::class, $model->getMinimumQuantity());
 
         $testValueForMinimumQuantity = $model->getMinimumQuantityWithCreate();
 
@@ -53544,7 +53545,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumQuantity();
 
-        $this->assertNull($model->getMaximumQuantity());
+        $this->assertNotInstanceOf(MaximumQuantity::class, $model->getMaximumQuantity());
 
         $testValueForMaximumQuantity = $model->getMaximumQuantityWithCreate();
 
@@ -53571,7 +53572,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumAmount();
 
-        $this->assertNull($model->getMinimumAmount());
+        $this->assertNotInstanceOf(MinimumAmount::class, $model->getMinimumAmount());
 
         $testValueForMinimumAmount = $model->getMinimumAmountWithCreate();
 
@@ -53587,7 +53588,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumAmount();
 
-        $this->assertNull($model->getMaximumAmount());
+        $this->assertNotInstanceOf(MaximumAmount::class, $model->getMaximumAmount());
 
         $testValueForMaximumAmount = $model->getMaximumAmountWithCreate();
 
@@ -53603,7 +53604,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedAmount();
 
-        $this->assertNull($model->getEstimatedAmount());
+        $this->assertNotInstanceOf(EstimatedAmount::class, $model->getEstimatedAmount());
 
         $testValueForEstimatedAmount = $model->getEstimatedAmountWithCreate();
 
@@ -53835,7 +53836,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyValidityPeriod();
 
-        $this->assertNull($model->getWarrantyValidityPeriod());
+        $this->assertNotInstanceOf(WarrantyValidityPeriod::class, $model->getWarrantyValidityPeriod());
 
         $testValueForWarrantyValidityPeriod = $model->getWarrantyValidityPeriodWithCreate();
 
@@ -53851,7 +53852,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -54048,7 +54049,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceID();
 
-        $this->assertNull($model->getReferenceID());
+        $this->assertNotInstanceOf(ReferenceID::class, $model->getReferenceID());
 
         $testValueForReferenceID = $model->getReferenceIDWithCreate();
 
@@ -54064,7 +54065,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResponseCode();
 
-        $this->assertNull($model->getResponseCode());
+        $this->assertNotInstanceOf(ResponseCode::class, $model->getResponseCode());
 
         $testValueForResponseCode = $model->getResponseCodeWithCreate();
 
@@ -54152,7 +54153,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEffectiveDate();
 
-        $this->assertNull($model->getEffectiveDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEffectiveDate());
 
         // Property EffectiveTime
 
@@ -54163,7 +54164,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEffectiveTime();
 
-        $this->assertNull($model->getEffectiveTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEffectiveTime());
 
         // (1) Property Status - Test set empty array
 
@@ -54278,7 +54279,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidatorID();
 
-        $this->assertNull($model->getValidatorID());
+        $this->assertNotInstanceOf(ValidatorID::class, $model->getValidatorID());
 
         $testValueForValidatorID = $model->getValidatorIDWithCreate();
 
@@ -54294,7 +54295,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidationResultCode();
 
-        $this->assertNull($model->getValidationResultCode());
+        $this->assertNotInstanceOf(ValidationResultCode::class, $model->getValidationResultCode());
 
         $testValueForValidationResultCode = $model->getValidationResultCodeWithCreate();
 
@@ -54310,7 +54311,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidationDate();
 
-        $this->assertNull($model->getValidationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValidationDate());
 
         // Property ValidationTime
 
@@ -54321,7 +54322,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidationTime();
 
-        $this->assertNull($model->getValidationTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValidationTime());
 
         // Property ValidateProcess
 
@@ -54332,7 +54333,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidateProcess();
 
-        $this->assertNull($model->getValidateProcess());
+        $this->assertNotInstanceOf(ValidateProcess::class, $model->getValidateProcess());
 
         $testValueForValidateProcess = $model->getValidateProcessWithCreate();
 
@@ -54348,7 +54349,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidateTool();
 
-        $this->assertNull($model->getValidateTool());
+        $this->assertNotInstanceOf(ValidateTool::class, $model->getValidateTool());
 
         $testValueForValidateTool = $model->getValidateToolWithCreate();
 
@@ -54364,7 +54365,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidateToolVersion();
 
-        $this->assertNull($model->getValidateToolVersion());
+        $this->assertNotInstanceOf(ValidateToolVersion::class, $model->getValidateToolVersion());
 
         $testValueForValidateToolVersion = $model->getValidateToolVersionWithCreate();
 
@@ -54380,7 +54381,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignatoryParty();
 
-        $this->assertNull($model->getSignatoryParty());
+        $this->assertNotInstanceOf(SignatoryParty::class, $model->getSignatoryParty());
 
         $testValueForSignatoryParty = $model->getSignatoryPartyWithCreate();
 
@@ -54428,7 +54429,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -54444,7 +54445,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastPurposeCode();
 
-        $this->assertNull($model->getForecastPurposeCode());
+        $this->assertNotInstanceOf(ForecastPurposeCode::class, $model->getForecastPurposeCode());
 
         $testValueForForecastPurposeCode = $model->getForecastPurposeCodeWithCreate();
 
@@ -54460,7 +54461,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetForecastTypeCode();
 
-        $this->assertNull($model->getForecastTypeCode());
+        $this->assertNotInstanceOf(ForecastTypeCode::class, $model->getForecastTypeCode());
 
         $testValueForForecastTypeCode = $model->getForecastTypeCodeWithCreate();
 
@@ -54476,7 +54477,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPeriod();
 
-        $this->assertNull($model->getPeriod());
+        $this->assertNotInstanceOf(Period::class, $model->getPeriod());
 
         $testValueForPeriod = $model->getPeriodWithCreate();
 
@@ -54524,7 +54525,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLicensePlateID();
 
-        $this->assertNull($model->getLicensePlateID());
+        $this->assertNotInstanceOf(LicensePlateID::class, $model->getLicensePlateID());
 
         $testValueForLicensePlateID = $model->getLicensePlateIDWithCreate();
 
@@ -54561,7 +54562,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -54793,7 +54794,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -54841,7 +54842,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -54857,7 +54858,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlacardNotation();
 
-        $this->assertNull($model->getPlacardNotation());
+        $this->assertNotInstanceOf(PlacardNotation::class, $model->getPlacardNotation());
 
         $testValueForPlacardNotation = $model->getPlacardNotationWithCreate();
 
@@ -54873,7 +54874,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlacardEndorsement();
 
-        $this->assertNull($model->getPlacardEndorsement());
+        $this->assertNotInstanceOf(PlacardEndorsement::class, $model->getPlacardEndorsement());
 
         $testValueForPlacardEndorsement = $model->getPlacardEndorsementWithCreate();
 
@@ -54889,7 +54890,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmergencyProceduresCode();
 
-        $this->assertNull($model->getEmergencyProceduresCode());
+        $this->assertNotInstanceOf(EmergencyProceduresCode::class, $model->getEmergencyProceduresCode());
 
         $testValueForEmergencyProceduresCode = $model->getEmergencyProceduresCodeWithCreate();
 
@@ -55130,7 +55131,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWeekDayCode();
 
-        $this->assertNull($model->getWeekDayCode());
+        $this->assertNotInstanceOf(WeekDayCode::class, $model->getWeekDayCode());
 
         $testValueForWeekDayCode = $model->getWeekDayCodeWithCreate();
 
@@ -55167,7 +55168,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -55183,7 +55184,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetServiceTypeCode();
 
-        $this->assertNull($model->getServiceTypeCode());
+        $this->assertNotInstanceOf(ServiceTypeCode::class, $model->getServiceTypeCode());
 
         $testValueForServiceTypeCode = $model->getServiceTypeCodeWithCreate();
 
@@ -55271,7 +55272,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -55287,7 +55288,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerContact();
 
-        $this->assertNull($model->getSellerContact());
+        $this->assertNotInstanceOf(SellerContact::class, $model->getSellerContact());
 
         $testValueForSellerContact = $model->getSellerContactWithCreate();
 
@@ -55346,7 +55347,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPartecipationPercent();
 
-        $this->assertNull($model->getPartecipationPercent());
+        $this->assertNotInstanceOf(PartecipationPercent::class, $model->getPartecipationPercent());
 
         $testValueForPartecipationPercent = $model->getPartecipationPercentWithCreate();
 
@@ -55362,7 +55363,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -55421,7 +55422,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -55437,7 +55438,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportModeCode();
 
-        $this->assertNull($model->getTransportModeCode());
+        $this->assertNotInstanceOf(TransportModeCode::class, $model->getTransportModeCode());
 
         $testValueForTransportModeCode = $model->getTransportModeCodeWithCreate();
 
@@ -55453,7 +55454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportMeansTypeCode();
 
-        $this->assertNull($model->getTransportMeansTypeCode());
+        $this->assertNotInstanceOf(TransportMeansTypeCode::class, $model->getTransportMeansTypeCode());
 
         $testValueForTransportMeansTypeCode = $model->getTransportMeansTypeCodeWithCreate();
 
@@ -55469,7 +55470,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransitDirectionCode();
 
-        $this->assertNull($model->getTransitDirectionCode());
+        $this->assertNotInstanceOf(TransitDirectionCode::class, $model->getTransitDirectionCode());
 
         $testValueForTransitDirectionCode = $model->getTransitDirectionCodeWithCreate();
 
@@ -55507,7 +55508,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDeliveryDate();
 
-        $this->assertNull($model->getEstimatedDeliveryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEstimatedDeliveryDate());
 
         // Property EstimatedDeliveryTime
 
@@ -55518,7 +55519,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDeliveryTime();
 
-        $this->assertNull($model->getEstimatedDeliveryTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEstimatedDeliveryTime());
 
         // Property RequiredDeliveryDate
 
@@ -55529,7 +55530,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequiredDeliveryDate();
 
-        $this->assertNull($model->getRequiredDeliveryDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRequiredDeliveryDate());
 
         // Property RequiredDeliveryTime
 
@@ -55540,7 +55541,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequiredDeliveryTime();
 
-        $this->assertNull($model->getRequiredDeliveryTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getRequiredDeliveryTime());
 
         // Property LoadingSequenceID
 
@@ -55551,7 +55552,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingSequenceID();
 
-        $this->assertNull($model->getLoadingSequenceID());
+        $this->assertNotInstanceOf(LoadingSequenceID::class, $model->getLoadingSequenceID());
 
         $testValueForLoadingSequenceID = $model->getLoadingSequenceIDWithCreate();
 
@@ -55567,7 +55568,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSuccessiveSequenceID();
 
-        $this->assertNull($model->getSuccessiveSequenceID());
+        $this->assertNotInstanceOf(SuccessiveSequenceID::class, $model->getSuccessiveSequenceID());
 
         $testValueForSuccessiveSequenceID = $model->getSuccessiveSequenceIDWithCreate();
 
@@ -55727,7 +55728,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCrewQuantity();
 
-        $this->assertNull($model->getCrewQuantity());
+        $this->assertNotInstanceOf(CrewQuantity::class, $model->getCrewQuantity());
 
         $testValueForCrewQuantity = $model->getCrewQuantityWithCreate();
 
@@ -55743,7 +55744,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPassengerQuantity();
 
-        $this->assertNull($model->getPassengerQuantity());
+        $this->assertNotInstanceOf(PassengerQuantity::class, $model->getPassengerQuantity());
 
         $testValueForPassengerQuantity = $model->getPassengerQuantityWithCreate();
 
@@ -55759,7 +55760,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransitPeriod();
 
-        $this->assertNull($model->getTransitPeriod());
+        $this->assertNotInstanceOf(TransitPeriod::class, $model->getTransitPeriod());
 
         $testValueForTransitPeriod = $model->getTransitPeriodWithCreate();
 
@@ -55847,7 +55848,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportMeans();
 
-        $this->assertNull($model->getTransportMeans());
+        $this->assertNotInstanceOf(TransportMeans::class, $model->getTransportMeans());
 
         $testValueForTransportMeans = $model->getTransportMeansWithCreate();
 
@@ -55863,7 +55864,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingPortLocation();
 
-        $this->assertNull($model->getLoadingPortLocation());
+        $this->assertNotInstanceOf(LoadingPortLocation::class, $model->getLoadingPortLocation());
 
         $testValueForLoadingPortLocation = $model->getLoadingPortLocationWithCreate();
 
@@ -55879,7 +55880,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUnloadingPortLocation();
 
-        $this->assertNull($model->getUnloadingPortLocation());
+        $this->assertNotInstanceOf(UnloadingPortLocation::class, $model->getUnloadingPortLocation());
 
         $testValueForUnloadingPortLocation = $model->getUnloadingPortLocationWithCreate();
 
@@ -55895,7 +55896,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransshipPortLocation();
 
-        $this->assertNull($model->getTransshipPortLocation());
+        $this->assertNotInstanceOf(TransshipPortLocation::class, $model->getTransshipPortLocation());
 
         $testValueForTransshipPortLocation = $model->getTransshipPortLocationWithCreate();
 
@@ -55911,7 +55912,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingTransportEvent();
 
-        $this->assertNull($model->getLoadingTransportEvent());
+        $this->assertNotInstanceOf(LoadingTransportEvent::class, $model->getLoadingTransportEvent());
 
         $testValueForLoadingTransportEvent = $model->getLoadingTransportEventWithCreate();
 
@@ -55927,7 +55928,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExaminationTransportEvent();
 
-        $this->assertNull($model->getExaminationTransportEvent());
+        $this->assertNotInstanceOf(ExaminationTransportEvent::class, $model->getExaminationTransportEvent());
 
         $testValueForExaminationTransportEvent = $model->getExaminationTransportEventWithCreate();
 
@@ -55943,7 +55944,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAvailabilityTransportEvent();
 
-        $this->assertNull($model->getAvailabilityTransportEvent());
+        $this->assertNotInstanceOf(AvailabilityTransportEvent::class, $model->getAvailabilityTransportEvent());
 
         $testValueForAvailabilityTransportEvent = $model->getAvailabilityTransportEventWithCreate();
 
@@ -55959,7 +55960,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExportationTransportEvent();
 
-        $this->assertNull($model->getExportationTransportEvent());
+        $this->assertNotInstanceOf(ExportationTransportEvent::class, $model->getExportationTransportEvent());
 
         $testValueForExportationTransportEvent = $model->getExportationTransportEventWithCreate();
 
@@ -55975,7 +55976,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDischargeTransportEvent();
 
-        $this->assertNull($model->getDischargeTransportEvent());
+        $this->assertNotInstanceOf(DischargeTransportEvent::class, $model->getDischargeTransportEvent());
 
         $testValueForDischargeTransportEvent = $model->getDischargeTransportEventWithCreate();
 
@@ -55991,7 +55992,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarehousingTransportEvent();
 
-        $this->assertNull($model->getWarehousingTransportEvent());
+        $this->assertNotInstanceOf(WarehousingTransportEvent::class, $model->getWarehousingTransportEvent());
 
         $testValueForWarehousingTransportEvent = $model->getWarehousingTransportEventWithCreate();
 
@@ -56007,7 +56008,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTakeoverTransportEvent();
 
-        $this->assertNull($model->getTakeoverTransportEvent());
+        $this->assertNotInstanceOf(TakeoverTransportEvent::class, $model->getTakeoverTransportEvent());
 
         $testValueForTakeoverTransportEvent = $model->getTakeoverTransportEventWithCreate();
 
@@ -56023,7 +56024,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOptionalTakeoverTransportEvent();
 
-        $this->assertNull($model->getOptionalTakeoverTransportEvent());
+        $this->assertNotInstanceOf(OptionalTakeoverTransportEvent::class, $model->getOptionalTakeoverTransportEvent());
 
         $testValueForOptionalTakeoverTransportEvent = $model->getOptionalTakeoverTransportEventWithCreate();
 
@@ -56039,7 +56040,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDropoffTransportEvent();
 
-        $this->assertNull($model->getDropoffTransportEvent());
+        $this->assertNotInstanceOf(DropoffTransportEvent::class, $model->getDropoffTransportEvent());
 
         $testValueForDropoffTransportEvent = $model->getDropoffTransportEventWithCreate();
 
@@ -56055,7 +56056,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualPickupTransportEvent();
 
-        $this->assertNull($model->getActualPickupTransportEvent());
+        $this->assertNotInstanceOf(ActualPickupTransportEvent::class, $model->getActualPickupTransportEvent());
 
         $testValueForActualPickupTransportEvent = $model->getActualPickupTransportEventWithCreate();
 
@@ -56071,7 +56072,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryTransportEvent();
 
-        $this->assertNull($model->getDeliveryTransportEvent());
+        $this->assertNotInstanceOf(DeliveryTransportEvent::class, $model->getDeliveryTransportEvent());
 
         $testValueForDeliveryTransportEvent = $model->getDeliveryTransportEventWithCreate();
 
@@ -56087,7 +56088,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceiptTransportEvent();
 
-        $this->assertNull($model->getReceiptTransportEvent());
+        $this->assertNotInstanceOf(ReceiptTransportEvent::class, $model->getReceiptTransportEvent());
 
         $testValueForReceiptTransportEvent = $model->getReceiptTransportEventWithCreate();
 
@@ -56103,7 +56104,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStorageTransportEvent();
 
-        $this->assertNull($model->getStorageTransportEvent());
+        $this->assertNotInstanceOf(StorageTransportEvent::class, $model->getStorageTransportEvent());
 
         $testValueForStorageTransportEvent = $model->getStorageTransportEventWithCreate();
 
@@ -56119,7 +56120,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAcceptanceTransportEvent();
 
-        $this->assertNull($model->getAcceptanceTransportEvent());
+        $this->assertNotInstanceOf(AcceptanceTransportEvent::class, $model->getAcceptanceTransportEvent());
 
         $testValueForAcceptanceTransportEvent = $model->getAcceptanceTransportEventWithCreate();
 
@@ -56135,7 +56136,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTerminalOperatorParty();
 
-        $this->assertNull($model->getTerminalOperatorParty());
+        $this->assertNotInstanceOf(TerminalOperatorParty::class, $model->getTerminalOperatorParty());
 
         $testValueForTerminalOperatorParty = $model->getTerminalOperatorPartyWithCreate();
 
@@ -56151,7 +56152,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomsAgentParty();
 
-        $this->assertNull($model->getCustomsAgentParty());
+        $this->assertNotInstanceOf(CustomsAgentParty::class, $model->getCustomsAgentParty());
 
         $testValueForCustomsAgentParty = $model->getCustomsAgentPartyWithCreate();
 
@@ -56167,7 +56168,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedTransitPeriod();
 
-        $this->assertNull($model->getEstimatedTransitPeriod());
+        $this->assertNotInstanceOf(EstimatedTransitPeriod::class, $model->getEstimatedTransitPeriod());
 
         $testValueForEstimatedTransitPeriod = $model->getEstimatedTransitPeriodWithCreate();
 
@@ -56255,7 +56256,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreightChargeLocation();
 
-        $this->assertNull($model->getFreightChargeLocation());
+        $this->assertNotInstanceOf(FreightChargeLocation::class, $model->getFreightChargeLocation());
 
         $testValueForFreightChargeLocation = $model->getFreightChargeLocationWithCreate();
 
@@ -56343,7 +56344,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedDepartureTransportEvent();
 
-        $this->assertNull($model->getRequestedDepartureTransportEvent());
+        $this->assertNotInstanceOf(RequestedDepartureTransportEvent::class, $model->getRequestedDepartureTransportEvent());
 
         $testValueForRequestedDepartureTransportEvent = $model->getRequestedDepartureTransportEventWithCreate();
 
@@ -56359,7 +56360,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRequestedArrivalTransportEvent();
 
-        $this->assertNull($model->getRequestedArrivalTransportEvent());
+        $this->assertNotInstanceOf(RequestedArrivalTransportEvent::class, $model->getRequestedArrivalTransportEvent());
 
         $testValueForRequestedArrivalTransportEvent = $model->getRequestedArrivalTransportEventWithCreate();
 
@@ -56447,7 +56448,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedDepartureTransportEvent();
 
-        $this->assertNull($model->getPlannedDepartureTransportEvent());
+        $this->assertNotInstanceOf(PlannedDepartureTransportEvent::class, $model->getPlannedDepartureTransportEvent());
 
         $testValueForPlannedDepartureTransportEvent = $model->getPlannedDepartureTransportEventWithCreate();
 
@@ -56463,7 +56464,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedArrivalTransportEvent();
 
-        $this->assertNull($model->getPlannedArrivalTransportEvent());
+        $this->assertNotInstanceOf(PlannedArrivalTransportEvent::class, $model->getPlannedArrivalTransportEvent());
 
         $testValueForPlannedArrivalTransportEvent = $model->getPlannedArrivalTransportEventWithCreate();
 
@@ -56551,7 +56552,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDepartureTransportEvent();
 
-        $this->assertNull($model->getActualDepartureTransportEvent());
+        $this->assertNotInstanceOf(ActualDepartureTransportEvent::class, $model->getActualDepartureTransportEvent());
 
         $testValueForActualDepartureTransportEvent = $model->getActualDepartureTransportEventWithCreate();
 
@@ -56567,7 +56568,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualWaypointTransportEvent();
 
-        $this->assertNull($model->getActualWaypointTransportEvent());
+        $this->assertNotInstanceOf(ActualWaypointTransportEvent::class, $model->getActualWaypointTransportEvent());
 
         $testValueForActualWaypointTransportEvent = $model->getActualWaypointTransportEventWithCreate();
 
@@ -56583,7 +56584,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualArrivalTransportEvent();
 
-        $this->assertNull($model->getActualArrivalTransportEvent());
+        $this->assertNotInstanceOf(ActualArrivalTransportEvent::class, $model->getActualArrivalTransportEvent());
 
         $testValueForActualArrivalTransportEvent = $model->getActualArrivalTransportEventWithCreate();
 
@@ -56671,7 +56672,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDepartureTransportEvent();
 
-        $this->assertNull($model->getEstimatedDepartureTransportEvent());
+        $this->assertNotInstanceOf(EstimatedDepartureTransportEvent::class, $model->getEstimatedDepartureTransportEvent());
 
         $testValueForEstimatedDepartureTransportEvent = $model->getEstimatedDepartureTransportEventWithCreate();
 
@@ -56687,7 +56688,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedArrivalTransportEvent();
 
-        $this->assertNull($model->getEstimatedArrivalTransportEvent());
+        $this->assertNotInstanceOf(EstimatedArrivalTransportEvent::class, $model->getEstimatedArrivalTransportEvent());
 
         $testValueForEstimatedArrivalTransportEvent = $model->getEstimatedArrivalTransportEventWithCreate();
 
@@ -56847,7 +56848,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReportingPerson();
 
-        $this->assertNull($model->getReportingPerson());
+        $this->assertNotInstanceOf(ReportingPerson::class, $model->getReportingPerson());
 
         $testValueForReportingPerson = $model->getReportingPersonWithCreate();
 
@@ -56935,7 +56936,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSecurityOfficerPerson();
 
-        $this->assertNull($model->getSecurityOfficerPerson());
+        $this->assertNotInstanceOf(SecurityOfficerPerson::class, $model->getSecurityOfficerPerson());
 
         $testValueForSecurityOfficerPerson = $model->getSecurityOfficerPersonWithCreate();
 
@@ -56951,7 +56952,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMasterPerson();
 
-        $this->assertNull($model->getMasterPerson());
+        $this->assertNotInstanceOf(MasterPerson::class, $model->getMasterPerson());
 
         $testValueForMasterPerson = $model->getMasterPersonWithCreate();
 
@@ -56967,7 +56968,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShipsSurgeonPerson();
 
-        $this->assertNull($model->getShipsSurgeonPerson());
+        $this->assertNotInstanceOf(ShipsSurgeonPerson::class, $model->getShipsSurgeonPerson());
 
         $testValueForShipsSurgeonPerson = $model->getShipsSurgeonPersonWithCreate();
 
@@ -56993,7 +56994,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -57009,7 +57010,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetShippingPriorityLevelCode();
 
-        $this->assertNull($model->getShippingPriorityLevelCode());
+        $this->assertNotInstanceOf(ShippingPriorityLevelCode::class, $model->getShippingPriorityLevelCode());
 
         $testValueForShippingPriorityLevelCode = $model->getShippingPriorityLevelCodeWithCreate();
 
@@ -57025,7 +57026,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHandlingCode();
 
-        $this->assertNull($model->getHandlingCode());
+        $this->assertNotInstanceOf(HandlingCode::class, $model->getHandlingCode());
 
         $testValueForHandlingCode = $model->getHandlingCodeWithCreate();
 
@@ -57185,7 +57186,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossWeightMeasure();
 
-        $this->assertNull($model->getGrossWeightMeasure());
+        $this->assertNotInstanceOf(GrossWeightMeasure::class, $model->getGrossWeightMeasure());
 
         $testValueForGrossWeightMeasure = $model->getGrossWeightMeasureWithCreate();
 
@@ -57201,7 +57202,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetWeightMeasure();
 
-        $this->assertNull($model->getNetWeightMeasure());
+        $this->assertNotInstanceOf(NetWeightMeasure::class, $model->getNetWeightMeasure());
 
         $testValueForNetWeightMeasure = $model->getNetWeightMeasureWithCreate();
 
@@ -57217,7 +57218,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetNetWeightMeasure();
 
-        $this->assertNull($model->getNetNetWeightMeasure());
+        $this->assertNotInstanceOf(NetNetWeightMeasure::class, $model->getNetNetWeightMeasure());
 
         $testValueForNetNetWeightMeasure = $model->getNetNetWeightMeasureWithCreate();
 
@@ -57233,7 +57234,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossVolumeMeasure();
 
-        $this->assertNull($model->getGrossVolumeMeasure());
+        $this->assertNotInstanceOf(GrossVolumeMeasure::class, $model->getGrossVolumeMeasure());
 
         $testValueForGrossVolumeMeasure = $model->getGrossVolumeMeasureWithCreate();
 
@@ -57249,7 +57250,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNetVolumeMeasure();
 
-        $this->assertNull($model->getNetVolumeMeasure());
+        $this->assertNotInstanceOf(NetVolumeMeasure::class, $model->getNetVolumeMeasure());
 
         $testValueForNetVolumeMeasure = $model->getNetVolumeMeasureWithCreate();
 
@@ -57265,7 +57266,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalGoodsItemQuantity();
 
-        $this->assertNull($model->getTotalGoodsItemQuantity());
+        $this->assertNotInstanceOf(TotalGoodsItemQuantity::class, $model->getTotalGoodsItemQuantity());
 
         $testValueForTotalGoodsItemQuantity = $model->getTotalGoodsItemQuantityWithCreate();
 
@@ -57281,7 +57282,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTransportHandlingUnitQuantity();
 
-        $this->assertNull($model->getTotalTransportHandlingUnitQuantity());
+        $this->assertNotInstanceOf(TotalTransportHandlingUnitQuantity::class, $model->getTotalTransportHandlingUnitQuantity());
 
         $testValueForTotalTransportHandlingUnitQuantity = $model->getTotalTransportHandlingUnitQuantityWithCreate();
 
@@ -57297,7 +57298,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInsuranceValueAmount();
 
-        $this->assertNull($model->getInsuranceValueAmount());
+        $this->assertNotInstanceOf(InsuranceValueAmount::class, $model->getInsuranceValueAmount());
 
         $testValueForInsuranceValueAmount = $model->getInsuranceValueAmountWithCreate();
 
@@ -57313,7 +57314,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredCustomsValueAmount();
 
-        $this->assertNull($model->getDeclaredCustomsValueAmount());
+        $this->assertNotInstanceOf(DeclaredCustomsValueAmount::class, $model->getDeclaredCustomsValueAmount());
 
         $testValueForDeclaredCustomsValueAmount = $model->getDeclaredCustomsValueAmountWithCreate();
 
@@ -57329,7 +57330,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredForCarriageValueAmount();
 
-        $this->assertNull($model->getDeclaredForCarriageValueAmount());
+        $this->assertNotInstanceOf(DeclaredForCarriageValueAmount::class, $model->getDeclaredForCarriageValueAmount());
 
         $testValueForDeclaredForCarriageValueAmount = $model->getDeclaredForCarriageValueAmountWithCreate();
 
@@ -57345,7 +57346,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeclaredStatisticsValueAmount();
 
-        $this->assertNull($model->getDeclaredStatisticsValueAmount());
+        $this->assertNotInstanceOf(DeclaredStatisticsValueAmount::class, $model->getDeclaredStatisticsValueAmount());
 
         $testValueForDeclaredStatisticsValueAmount = $model->getDeclaredStatisticsValueAmountWithCreate();
 
@@ -57361,7 +57362,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreeOnBoardValueAmount();
 
-        $this->assertNull($model->getFreeOnBoardValueAmount());
+        $this->assertNotInstanceOf(FreeOnBoardValueAmount::class, $model->getFreeOnBoardValueAmount());
 
         $testValueForFreeOnBoardValueAmount = $model->getFreeOnBoardValueAmountWithCreate();
 
@@ -57532,7 +57533,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsignmentQuantity();
 
-        $this->assertNull($model->getConsignmentQuantity());
+        $this->assertNotInstanceOf(ConsignmentQuantity::class, $model->getConsignmentQuantity());
 
         $testValueForConsignmentQuantity = $model->getConsignmentQuantityWithCreate();
 
@@ -57764,7 +57765,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDelivery();
 
-        $this->assertNull($model->getDelivery());
+        $this->assertNotInstanceOf(Delivery::class, $model->getDelivery());
 
         $testValueForDelivery = $model->getDeliveryWithCreate();
 
@@ -57852,7 +57853,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReturnAddress();
 
-        $this->assertNull($model->getReturnAddress());
+        $this->assertNotInstanceOf(ReturnAddress::class, $model->getReturnAddress());
 
         $testValueForReturnAddress = $model->getReturnAddressWithCreate();
 
@@ -57868,7 +57869,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginAddress();
 
-        $this->assertNull($model->getOriginAddress());
+        $this->assertNotInstanceOf(OriginAddress::class, $model->getOriginAddress());
 
         $testValueForOriginAddress = $model->getOriginAddressWithCreate();
 
@@ -57884,7 +57885,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFirstArrivalPortLocation();
 
-        $this->assertNull($model->getFirstArrivalPortLocation());
+        $this->assertNotInstanceOf(FirstArrivalPortLocation::class, $model->getFirstArrivalPortLocation());
 
         $testValueForFirstArrivalPortLocation = $model->getFirstArrivalPortLocationWithCreate();
 
@@ -57900,7 +57901,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLastExitPortLocation();
 
-        $this->assertNull($model->getLastExitPortLocation());
+        $this->assertNotInstanceOf(LastExitPortLocation::class, $model->getLastExitPortLocation());
 
         $testValueForLastExitPortLocation = $model->getLastExitPortLocationWithCreate();
 
@@ -57916,7 +57917,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExportCountry();
 
-        $this->assertNull($model->getExportCountry());
+        $this->assertNotInstanceOf(ExportCountry::class, $model->getExportCountry());
 
         $testValueForExportCountry = $model->getExportCountryWithCreate();
 
@@ -58058,7 +58059,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -58146,7 +58147,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidationDate();
 
-        $this->assertNull($model->getValidationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValidationDate());
 
         // Property ValidationTime
 
@@ -58157,7 +58158,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidationTime();
 
-        $this->assertNull($model->getValidationTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValidationTime());
 
         // Property ValidatorID
 
@@ -58168,7 +58169,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValidatorID();
 
-        $this->assertNull($model->getValidatorID());
+        $this->assertNotInstanceOf(ValidatorID::class, $model->getValidatorID());
 
         $testValueForValidatorID = $model->getValidatorIDWithCreate();
 
@@ -58184,7 +58185,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCanonicalizationMethod();
 
-        $this->assertNull($model->getCanonicalizationMethod());
+        $this->assertNotInstanceOf(CanonicalizationMethod::class, $model->getCanonicalizationMethod());
 
         $testValueForCanonicalizationMethod = $model->getCanonicalizationMethodWithCreate();
 
@@ -58200,7 +58201,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignatureMethod();
 
-        $this->assertNull($model->getSignatureMethod());
+        $this->assertNotInstanceOf(SignatureMethod::class, $model->getSignatureMethod());
 
         $testValueForSignatureMethod = $model->getSignatureMethodWithCreate();
 
@@ -58216,7 +58217,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignatoryParty();
 
-        $this->assertNull($model->getSignatoryParty());
+        $this->assertNotInstanceOf(SignatoryParty::class, $model->getSignatoryParty());
 
         $testValueForSignatoryParty = $model->getSignatoryPartyWithCreate();
 
@@ -58232,7 +58233,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDigitalSignatureAttachment();
 
-        $this->assertNull($model->getDigitalSignatureAttachment());
+        $this->assertNotInstanceOf(DigitalSignatureAttachment::class, $model->getDigitalSignatureAttachment());
 
         $testValueForDigitalSignatureAttachment = $model->getDigitalSignatureAttachmentWithCreate();
 
@@ -58248,7 +58249,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalDocumentReference();
 
-        $this->assertNull($model->getOriginalDocumentReference());
+        $this->assertNotInstanceOf(OriginalDocumentReference::class, $model->getOriginalDocumentReference());
 
         $testValueForOriginalDocumentReference = $model->getOriginalDocumentReferenceWithCreate();
 
@@ -58340,7 +58341,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -58428,7 +58429,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -58455,7 +58456,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDebitLineAmount();
 
-        $this->assertNull($model->getDebitLineAmount());
+        $this->assertNotInstanceOf(DebitLineAmount::class, $model->getDebitLineAmount());
 
         $testValueForDebitLineAmount = $model->getDebitLineAmountWithCreate();
 
@@ -58471,7 +58472,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditLineAmount();
 
-        $this->assertNull($model->getCreditLineAmount());
+        $this->assertNotInstanceOf(CreditLineAmount::class, $model->getCreditLineAmount());
 
         $testValueForCreditLineAmount = $model->getCreditLineAmountWithCreate();
 
@@ -58487,7 +58488,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBalanceAmount();
 
-        $this->assertNull($model->getBalanceAmount());
+        $this->assertNotInstanceOf(BalanceAmount::class, $model->getBalanceAmount());
 
         $testValueForBalanceAmount = $model->getBalanceAmountWithCreate();
 
@@ -58503,7 +58504,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentPurposeCode();
 
-        $this->assertNull($model->getPaymentPurposeCode());
+        $this->assertNotInstanceOf(PaymentPurposeCode::class, $model->getPaymentPurposeCode());
 
         $testValueForPaymentPurposeCode = $model->getPaymentPurposeCodeWithCreate();
 
@@ -58519,7 +58520,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentMeans();
 
-        $this->assertNull($model->getPaymentMeans());
+        $this->assertNotInstanceOf(PaymentMeans::class, $model->getPaymentMeans());
 
         $testValueForPaymentMeans = $model->getPaymentMeansWithCreate();
 
@@ -58607,7 +58608,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerCustomerParty();
 
-        $this->assertNull($model->getBuyerCustomerParty());
+        $this->assertNotInstanceOf(BuyerCustomerParty::class, $model->getBuyerCustomerParty());
 
         $testValueForBuyerCustomerParty = $model->getBuyerCustomerPartyWithCreate();
 
@@ -58623,7 +58624,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -58639,7 +58640,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginatorCustomerParty();
 
-        $this->assertNull($model->getOriginatorCustomerParty());
+        $this->assertNotInstanceOf(OriginatorCustomerParty::class, $model->getOriginatorCustomerParty());
 
         $testValueForOriginatorCustomerParty = $model->getOriginatorCustomerPartyWithCreate();
 
@@ -58655,7 +58656,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCustomerParty();
 
-        $this->assertNull($model->getAccountingCustomerParty());
+        $this->assertNotInstanceOf(AccountingCustomerParty::class, $model->getAccountingCustomerParty());
 
         $testValueForAccountingCustomerParty = $model->getAccountingCustomerPartyWithCreate();
 
@@ -58671,7 +58672,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingSupplierParty();
 
-        $this->assertNull($model->getAccountingSupplierParty());
+        $this->assertNotInstanceOf(AccountingSupplierParty::class, $model->getAccountingSupplierParty());
 
         $testValueForAccountingSupplierParty = $model->getAccountingSupplierPartyWithCreate();
 
@@ -58687,7 +58688,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayeeParty();
 
-        $this->assertNull($model->getPayeeParty());
+        $this->assertNotInstanceOf(PayeeParty::class, $model->getPayeeParty());
 
         $testValueForPayeeParty = $model->getPayeePartyWithCreate();
 
@@ -58919,7 +58920,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExchangeRate();
 
-        $this->assertNull($model->getExchangeRate());
+        $this->assertNotInstanceOf(ExchangeRate::class, $model->getExchangeRate());
 
         $testValueForExchangeRate = $model->getExchangeRateWithCreate();
 
@@ -59133,7 +59134,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConditionCode();
 
-        $this->assertNull($model->getConditionCode());
+        $this->assertNotInstanceOf(ConditionCode::class, $model->getConditionCode());
 
         $testValueForConditionCode = $model->getConditionCodeWithCreate();
 
@@ -59149,7 +59150,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceDate();
 
-        $this->assertNull($model->getReferenceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReferenceDate());
 
         // Property ReferenceTime
 
@@ -59160,7 +59161,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceTime();
 
-        $this->assertNull($model->getReferenceTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReferenceTime());
 
         // (1) Property Description - Test set empty array
 
@@ -59243,7 +59244,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStatusReasonCode();
 
-        $this->assertNull($model->getStatusReasonCode());
+        $this->assertNotInstanceOf(StatusReasonCode::class, $model->getStatusReasonCode());
 
         $testValueForStatusReasonCode = $model->getStatusReasonCodeWithCreate();
 
@@ -59331,7 +59332,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceID();
 
-        $this->assertNull($model->getSequenceID());
+        $this->assertNotInstanceOf(SequenceID::class, $model->getSequenceID());
 
         $testValueForSequenceID = $model->getSequenceIDWithCreate();
 
@@ -59430,7 +59431,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPercent();
 
-        $this->assertNull($model->getPercent());
+        $this->assertNotInstanceOf(Percent::class, $model->getPercent());
 
         $testValueForPercent = $model->getPercentWithCreate();
 
@@ -59446,7 +59447,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReliabilityPercent();
 
-        $this->assertNull($model->getReliabilityPercent());
+        $this->assertNotInstanceOf(ReliabilityPercent::class, $model->getReliabilityPercent());
 
         $testValueForReliabilityPercent = $model->getReliabilityPercentWithCreate();
 
@@ -59555,7 +59556,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -59643,7 +59644,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -59659,7 +59660,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValueAmount();
 
-        $this->assertNull($model->getValueAmount());
+        $this->assertNotInstanceOf(ValueAmount::class, $model->getValueAmount());
 
         $testValueForValueAmount = $model->getValueAmountWithCreate();
 
@@ -59675,7 +59676,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAvailabilityDate();
 
-        $this->assertNull($model->getAvailabilityDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getAvailabilityDate());
 
         // Property AvailabilityStatusCode
 
@@ -59686,7 +59687,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAvailabilityStatusCode();
 
-        $this->assertNull($model->getAvailabilityStatusCode());
+        $this->assertNotInstanceOf(AvailabilityStatusCode::class, $model->getAvailabilityStatusCode());
 
         $testValueForAvailabilityStatusCode = $model->getAvailabilityStatusCodeWithCreate();
 
@@ -59702,7 +59703,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -59761,7 +59762,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocationID();
 
-        $this->assertNull($model->getLocationID());
+        $this->assertNotInstanceOf(LocationID::class, $model->getLocationID());
 
         $testValueForLocationID = $model->getLocationIDWithCreate();
 
@@ -59953,7 +59954,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRate();
 
-        $this->assertNull($model->getRate());
+        $this->assertNotInstanceOf(Rate::class, $model->getRate());
 
         $testValueForRate = $model->getRateWithCreate();
 
@@ -60052,7 +60053,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAmount();
 
-        $this->assertNull($model->getAmount());
+        $this->assertNotInstanceOf(Amount::class, $model->getAmount());
 
         $testValueForAmount = $model->getAmountWithCreate();
 
@@ -60068,7 +60069,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubcontractingConditionsCode();
 
-        $this->assertNull($model->getSubcontractingConditionsCode());
+        $this->assertNotInstanceOf(SubcontractingConditionsCode::class, $model->getSubcontractingConditionsCode());
 
         $testValueForSubcontractingConditionsCode = $model->getSubcontractingConditionsCodeWithCreate();
 
@@ -60084,7 +60085,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumPercent();
 
-        $this->assertNull($model->getMaximumPercent());
+        $this->assertNotInstanceOf(MaximumPercent::class, $model->getMaximumPercent());
 
         $testValueForMaximumPercent = $model->getMaximumPercentWithCreate();
 
@@ -60100,7 +60101,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumPercent();
 
-        $this->assertNull($model->getMinimumPercent());
+        $this->assertNotInstanceOf(MinimumPercent::class, $model->getMinimumPercent());
 
         $testValueForMinimumPercent = $model->getMinimumPercentWithCreate();
 
@@ -60214,7 +60215,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionID();
 
-        $this->assertNull($model->getConsumptionID());
+        $this->assertNotInstanceOf(ConsumptionID::class, $model->getConsumptionID());
 
         $testValueForConsumptionID = $model->getConsumptionIDWithCreate();
 
@@ -60230,7 +60231,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSpecificationTypeCode();
 
-        $this->assertNull($model->getSpecificationTypeCode());
+        $this->assertNotInstanceOf(SpecificationTypeCode::class, $model->getSpecificationTypeCode());
 
         $testValueForSpecificationTypeCode = $model->getSpecificationTypeCodeWithCreate();
 
@@ -60318,7 +60319,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalMeteredQuantity();
 
-        $this->assertNull($model->getTotalMeteredQuantity());
+        $this->assertNotInstanceOf(TotalMeteredQuantity::class, $model->getTotalMeteredQuantity());
 
         $testValueForTotalMeteredQuantity = $model->getTotalMeteredQuantityWithCreate();
 
@@ -60334,7 +60335,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberParty();
 
-        $this->assertNull($model->getSubscriberParty());
+        $this->assertNotInstanceOf(SubscriberParty::class, $model->getSubscriberParty());
 
         $testValueForSubscriberParty = $model->getSubscriberPartyWithCreate();
 
@@ -60350,7 +60351,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUtilityConsumptionPoint();
 
-        $this->assertNull($model->getUtilityConsumptionPoint());
+        $this->assertNotInstanceOf(UtilityConsumptionPoint::class, $model->getUtilityConsumptionPoint());
 
         $testValueForUtilityConsumptionPoint = $model->getUtilityConsumptionPointWithCreate();
 
@@ -60438,7 +60439,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumption();
 
-        $this->assertNull($model->getConsumption());
+        $this->assertNotInstanceOf(Consumption::class, $model->getConsumption());
 
         $testValueForConsumption = $model->getConsumptionWithCreate();
 
@@ -60685,7 +60686,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUtilitySupplierParty();
 
-        $this->assertNull($model->getUtilitySupplierParty());
+        $this->assertNotInstanceOf(UtilitySupplierParty::class, $model->getUtilitySupplierParty());
 
         $testValueForUtilitySupplierParty = $model->getUtilitySupplierPartyWithCreate();
 
@@ -60701,7 +60702,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUtilityCustomerParty();
 
-        $this->assertNull($model->getUtilityCustomerParty());
+        $this->assertNotInstanceOf(UtilityCustomerParty::class, $model->getUtilityCustomerParty());
 
         $testValueForUtilityCustomerParty = $model->getUtilityCustomerPartyWithCreate();
 
@@ -60717,7 +60718,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumption();
 
-        $this->assertNull($model->getConsumption());
+        $this->assertNotInstanceOf(Consumption::class, $model->getConsumption());
 
         $testValueForConsumption = $model->getConsumptionWithCreate();
 
@@ -60733,7 +60734,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContract();
 
-        $this->assertNull($model->getContract());
+        $this->assertNotInstanceOf(Contract::class, $model->getContract());
 
         $testValueForContract = $model->getContractWithCreate();
 
@@ -60842,7 +60843,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomerAssignedAccountID();
 
-        $this->assertNull($model->getCustomerAssignedAccountID());
+        $this->assertNotInstanceOf(CustomerAssignedAccountID::class, $model->getCustomerAssignedAccountID());
 
         $testValueForCustomerAssignedAccountID = $model->getCustomerAssignedAccountIDWithCreate();
 
@@ -60930,7 +60931,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDataSendingCapability();
 
-        $this->assertNull($model->getDataSendingCapability());
+        $this->assertNotInstanceOf(DataSendingCapability::class, $model->getDataSendingCapability());
 
         $testValueForDataSendingCapability = $model->getDataSendingCapabilityWithCreate();
 
@@ -60946,7 +60947,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -60962,7 +60963,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatchContact();
 
-        $this->assertNull($model->getDespatchContact());
+        $this->assertNotInstanceOf(DespatchContact::class, $model->getDespatchContact());
 
         $testValueForDespatchContact = $model->getDespatchContactWithCreate();
 
@@ -60978,7 +60979,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingContact();
 
-        $this->assertNull($model->getAccountingContact());
+        $this->assertNotInstanceOf(AccountingContact::class, $model->getAccountingContact());
 
         $testValueForAccountingContact = $model->getAccountingContactWithCreate();
 
@@ -60994,7 +60995,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerContact();
 
-        $this->assertNull($model->getSellerContact());
+        $this->assertNotInstanceOf(SellerContact::class, $model->getSellerContact());
 
         $testValueForSellerContact = $model->getSellerContactWithCreate();
 
@@ -61097,7 +61098,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -61113,7 +61114,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -61129,7 +61130,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPercent();
 
-        $this->assertNull($model->getPercent());
+        $this->assertNotInstanceOf(Percent::class, $model->getPercent());
 
         $testValueForPercent = $model->getPercentWithCreate();
 
@@ -61145,7 +61146,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBaseUnitMeasure();
 
-        $this->assertNull($model->getBaseUnitMeasure());
+        $this->assertNotInstanceOf(BaseUnitMeasure::class, $model->getBaseUnitMeasure());
 
         $testValueForBaseUnitMeasure = $model->getBaseUnitMeasureWithCreate();
 
@@ -61161,7 +61162,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerUnitAmount();
 
-        $this->assertNull($model->getPerUnitAmount());
+        $this->assertNotInstanceOf(PerUnitAmount::class, $model->getPerUnitAmount());
 
         $testValueForPerUnitAmount = $model->getPerUnitAmountWithCreate();
 
@@ -61177,7 +61178,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxExemptionReasonCode();
 
-        $this->assertNull($model->getTaxExemptionReasonCode());
+        $this->assertNotInstanceOf(TaxExemptionReasonCode::class, $model->getTaxExemptionReasonCode());
 
         $testValueForTaxExemptionReasonCode = $model->getTaxExemptionReasonCodeWithCreate();
 
@@ -61265,7 +61266,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTierRange();
 
-        $this->assertNull($model->getTierRange());
+        $this->assertNotInstanceOf(TierRange::class, $model->getTierRange());
 
         $testValueForTierRange = $model->getTierRangeWithCreate();
 
@@ -61281,7 +61282,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTierRatePercent();
 
-        $this->assertNull($model->getTierRatePercent());
+        $this->assertNotInstanceOf(TierRatePercent::class, $model->getTierRatePercent());
 
         $testValueForTierRatePercent = $model->getTierRatePercentWithCreate();
 
@@ -61297,7 +61298,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxScheme();
 
-        $this->assertNull($model->getTaxScheme());
+        $this->assertNotInstanceOf(TaxScheme::class, $model->getTaxScheme());
 
         $testValueForTaxScheme = $model->getTaxSchemeWithCreate();
 
@@ -61378,7 +61379,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -61394,7 +61395,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -61410,7 +61411,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxTypeCode();
 
-        $this->assertNull($model->getTaxTypeCode());
+        $this->assertNotInstanceOf(TaxTypeCode::class, $model->getTaxTypeCode());
 
         $testValueForTaxTypeCode = $model->getTaxTypeCodeWithCreate();
 
@@ -61426,7 +61427,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCurrencyCode();
 
-        $this->assertNull($model->getCurrencyCode());
+        $this->assertNotInstanceOf(CurrencyCode::class, $model->getCurrencyCode());
 
         $testValueForCurrencyCode = $model->getCurrencyCodeWithCreate();
 
@@ -61535,7 +61536,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxableAmount();
 
-        $this->assertNull($model->getTaxableAmount());
+        $this->assertNotInstanceOf(TaxableAmount::class, $model->getTaxableAmount());
 
         $testValueForTaxableAmount = $model->getTaxableAmountWithCreate();
 
@@ -61551,7 +61552,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxAmount();
 
-        $this->assertNull($model->getTaxAmount());
+        $this->assertNotInstanceOf(TaxAmount::class, $model->getTaxAmount());
 
         $testValueForTaxAmount = $model->getTaxAmountWithCreate();
 
@@ -61567,7 +61568,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCalculationSequenceNumeric();
 
-        $this->assertNull($model->getCalculationSequenceNumeric());
+        $this->assertNotInstanceOf(CalculationSequenceNumeric::class, $model->getCalculationSequenceNumeric());
 
         $testValueForCalculationSequenceNumeric = $model->getCalculationSequenceNumericWithCreate();
 
@@ -61583,7 +61584,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransactionCurrencyTaxAmount();
 
-        $this->assertNull($model->getTransactionCurrencyTaxAmount());
+        $this->assertNotInstanceOf(TransactionCurrencyTaxAmount::class, $model->getTransactionCurrencyTaxAmount());
 
         $testValueForTransactionCurrencyTaxAmount = $model->getTransactionCurrencyTaxAmountWithCreate();
 
@@ -61599,7 +61600,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPercent();
 
-        $this->assertNull($model->getPercent());
+        $this->assertNotInstanceOf(Percent::class, $model->getPercent());
 
         $testValueForPercent = $model->getPercentWithCreate();
 
@@ -61615,7 +61616,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBaseUnitMeasure();
 
-        $this->assertNull($model->getBaseUnitMeasure());
+        $this->assertNotInstanceOf(BaseUnitMeasure::class, $model->getBaseUnitMeasure());
 
         $testValueForBaseUnitMeasure = $model->getBaseUnitMeasureWithCreate();
 
@@ -61631,7 +61632,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPerUnitAmount();
 
-        $this->assertNull($model->getPerUnitAmount());
+        $this->assertNotInstanceOf(PerUnitAmount::class, $model->getPerUnitAmount());
 
         $testValueForPerUnitAmount = $model->getPerUnitAmountWithCreate();
 
@@ -61647,7 +61648,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTierRange();
 
-        $this->assertNull($model->getTierRange());
+        $this->assertNotInstanceOf(TierRange::class, $model->getTierRange());
 
         $testValueForTierRange = $model->getTierRangeWithCreate();
 
@@ -61663,7 +61664,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTierRatePercent();
 
-        $this->assertNull($model->getTierRatePercent());
+        $this->assertNotInstanceOf(TierRatePercent::class, $model->getTierRatePercent());
 
         $testValueForTierRatePercent = $model->getTierRatePercentWithCreate();
 
@@ -61679,7 +61680,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxCategory();
 
-        $this->assertNull($model->getTaxCategory());
+        $this->assertNotInstanceOf(TaxCategory::class, $model->getTaxCategory());
 
         $testValueForTaxCategory = $model->getTaxCategoryWithCreate();
 
@@ -61716,7 +61717,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxAmount();
 
-        $this->assertNull($model->getTaxAmount());
+        $this->assertNotInstanceOf(TaxAmount::class, $model->getTaxAmount());
 
         $testValueForTaxAmount = $model->getTaxAmountWithCreate();
 
@@ -61732,7 +61733,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoundingAmount();
 
-        $this->assertNull($model->getRoundingAmount());
+        $this->assertNotInstanceOf(RoundingAmount::class, $model->getRoundingAmount());
 
         $testValueForRoundingAmount = $model->getRoundingAmountWithCreate();
 
@@ -61907,7 +61908,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -61923,7 +61924,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallDate();
 
-        $this->assertNull($model->getCallDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getCallDate());
 
         // Property CallTime
 
@@ -61934,7 +61935,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallTime();
 
-        $this->assertNull($model->getCallTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getCallTime());
 
         // Property ServiceNumberCalled
 
@@ -61945,7 +61946,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetServiceNumberCalled();
 
-        $this->assertNull($model->getServiceNumberCalled());
+        $this->assertNotInstanceOf(ServiceNumberCalled::class, $model->getServiceNumberCalled());
 
         $testValueForServiceNumberCalled = $model->getServiceNumberCalledWithCreate();
 
@@ -61961,7 +61962,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsServiceCategory();
 
-        $this->assertNull($model->getTelecommunicationsServiceCategory());
+        $this->assertNotInstanceOf(TelecommunicationsServiceCategory::class, $model->getTelecommunicationsServiceCategory());
 
         $testValueForTelecommunicationsServiceCategory = $model->getTelecommunicationsServiceCategoryWithCreate();
 
@@ -61977,7 +61978,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsServiceCategoryCode();
 
-        $this->assertNull($model->getTelecommunicationsServiceCategoryCode());
+        $this->assertNotInstanceOf(TelecommunicationsServiceCategoryCode::class, $model->getTelecommunicationsServiceCategoryCode());
 
         $testValueForTelecommunicationsServiceCategoryCode = $model->getTelecommunicationsServiceCategoryCodeWithCreate();
 
@@ -61993,7 +61994,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMovieTitle();
 
-        $this->assertNull($model->getMovieTitle());
+        $this->assertNotInstanceOf(MovieTitle::class, $model->getMovieTitle());
 
         $testValueForMovieTitle = $model->getMovieTitleWithCreate();
 
@@ -62009,7 +62010,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoamingPartnerName();
 
-        $this->assertNull($model->getRoamingPartnerName());
+        $this->assertNotInstanceOf(RoamingPartnerName::class, $model->getRoamingPartnerName());
 
         $testValueForRoamingPartnerName = $model->getRoamingPartnerNameWithCreate();
 
@@ -62025,7 +62026,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayPerView();
 
-        $this->assertNull($model->getPayPerView());
+        $this->assertNotInstanceOf(PayPerView::class, $model->getPayPerView());
 
         $testValueForPayPerView = $model->getPayPerViewWithCreate();
 
@@ -62041,7 +62042,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -62057,7 +62058,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsServiceCall();
 
-        $this->assertNull($model->getTelecommunicationsServiceCall());
+        $this->assertNotInstanceOf(TelecommunicationsServiceCall::class, $model->getTelecommunicationsServiceCall());
 
         $testValueForTelecommunicationsServiceCall = $model->getTelecommunicationsServiceCallWithCreate();
 
@@ -62073,7 +62074,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsServiceCallCode();
 
-        $this->assertNull($model->getTelecommunicationsServiceCallCode());
+        $this->assertNotInstanceOf(TelecommunicationsServiceCallCode::class, $model->getTelecommunicationsServiceCallCode());
 
         $testValueForTelecommunicationsServiceCallCode = $model->getTelecommunicationsServiceCallCodeWithCreate();
 
@@ -62089,7 +62090,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallBaseAmount();
 
-        $this->assertNull($model->getCallBaseAmount());
+        $this->assertNotInstanceOf(CallBaseAmount::class, $model->getCallBaseAmount());
 
         $testValueForCallBaseAmount = $model->getCallBaseAmountWithCreate();
 
@@ -62105,7 +62106,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallExtensionAmount();
 
-        $this->assertNull($model->getCallExtensionAmount());
+        $this->assertNotInstanceOf(CallExtensionAmount::class, $model->getCallExtensionAmount());
 
         $testValueForCallExtensionAmount = $model->getCallExtensionAmountWithCreate();
 
@@ -62121,7 +62122,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrice();
 
-        $this->assertNull($model->getPrice());
+        $this->assertNotInstanceOf(Price::class, $model->getPrice());
 
         $testValueForPrice = $model->getPriceWithCreate();
 
@@ -62137,7 +62138,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCountry();
 
-        $this->assertNull($model->getCountry());
+        $this->assertNotInstanceOf(Country::class, $model->getCountry());
 
         $testValueForCountry = $model->getCountryWithCreate();
 
@@ -62545,7 +62546,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -62561,7 +62562,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPhoneNumber();
 
-        $this->assertNull($model->getPhoneNumber());
+        $this->assertNotInstanceOf(PhoneNumber::class, $model->getPhoneNumber());
 
         $testValueForPhoneNumber = $model->getPhoneNumberWithCreate();
 
@@ -62649,7 +62650,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -62963,7 +62964,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsSupplyType();
 
-        $this->assertNull($model->getTelecommunicationsSupplyType());
+        $this->assertNotInstanceOf(TelecommunicationsSupplyType1::class, $model->getTelecommunicationsSupplyType());
 
         $testValueForTelecommunicationsSupplyType = $model->getTelecommunicationsSupplyTypeWithCreate();
 
@@ -62979,7 +62980,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTelecommunicationsSupplyTypeCode();
 
-        $this->assertNull($model->getTelecommunicationsSupplyTypeCode());
+        $this->assertNotInstanceOf(TelecommunicationsSupplyTypeCode::class, $model->getTelecommunicationsSupplyTypeCode());
 
         $testValueForTelecommunicationsSupplyTypeCode = $model->getTelecommunicationsSupplyTypeCodeWithCreate();
 
@@ -62995,7 +62996,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPrivacyCode();
 
-        $this->assertNull($model->getPrivacyCode());
+        $this->assertNotInstanceOf(PrivacyCode::class, $model->getPrivacyCode());
 
         $testValueForPrivacyCode = $model->getPrivacyCodeWithCreate();
 
@@ -63083,7 +63084,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalAmount();
 
-        $this->assertNull($model->getTotalAmount());
+        $this->assertNotInstanceOf(TotalAmount::class, $model->getTotalAmount());
 
         $testValueForTotalAmount = $model->getTotalAmountWithCreate();
 
@@ -63192,7 +63193,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAttributeID();
 
-        $this->assertNull($model->getAttributeID());
+        $this->assertNotInstanceOf(AttributeID::class, $model->getAttributeID());
 
         $testValueForAttributeID = $model->getAttributeIDWithCreate();
 
@@ -63208,7 +63209,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMeasure();
 
-        $this->assertNull($model->getMeasure());
+        $this->assertNotInstanceOf(Measure::class, $model->getMeasure());
 
         $testValueForMeasure = $model->getMeasureWithCreate();
 
@@ -63339,7 +63340,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetVariantID();
 
-        $this->assertNull($model->getVariantID());
+        $this->assertNotInstanceOf(VariantID::class, $model->getVariantID());
 
         $testValueForVariantID = $model->getVariantIDWithCreate();
 
@@ -63355,7 +63356,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFeeAmount();
 
-        $this->assertNull($model->getFeeAmount());
+        $this->assertNotInstanceOf(FeeAmount::class, $model->getFeeAmount());
 
         $testValueForFeeAmount = $model->getFeeAmountWithCreate();
 
@@ -63443,7 +63444,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderEnvelopeID();
 
-        $this->assertNull($model->getTenderEnvelopeID());
+        $this->assertNotInstanceOf(TenderEnvelopeID::class, $model->getTenderEnvelopeID());
 
         $testValueForTenderEnvelopeID = $model->getTenderEnvelopeIDWithCreate();
 
@@ -63459,7 +63460,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderEnvelopeTypeCode();
 
-        $this->assertNull($model->getTenderEnvelopeTypeCode());
+        $this->assertNotInstanceOf(TenderEnvelopeTypeCode::class, $model->getTenderEnvelopeTypeCode());
 
         $testValueForTenderEnvelopeTypeCode = $model->getTenderEnvelopeTypeCodeWithCreate();
 
@@ -63475,7 +63476,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementProjectLot();
 
-        $this->assertNull($model->getProcurementProjectLot());
+        $this->assertNotInstanceOf(ProcurementProjectLot::class, $model->getProcurementProjectLot());
 
         $testValueForProcurementProjectLot = $model->getProcurementProjectLotWithCreate();
 
@@ -63635,7 +63636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalMonetaryTotal();
 
-        $this->assertNull($model->getLegalMonetaryTotal());
+        $this->assertNotInstanceOf(LegalMonetaryTotal::class, $model->getLegalMonetaryTotal());
 
         $testValueForLegalMonetaryTotal = $model->getLegalMonetaryTotalWithCreate();
 
@@ -63899,7 +63900,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMainQualifyingParty();
 
-        $this->assertNull($model->getMainQualifyingParty());
+        $this->assertNotInstanceOf(MainQualifyingParty::class, $model->getMainQualifyingParty());
 
         $testValueForMainQualifyingParty = $model->getMainQualifyingPartyWithCreate();
 
@@ -64019,7 +64020,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyLegalFormCode();
 
-        $this->assertNull($model->getCompanyLegalFormCode());
+        $this->assertNotInstanceOf(CompanyLegalFormCode::class, $model->getCompanyLegalFormCode());
 
         $testValueForCompanyLegalFormCode = $model->getCompanyLegalFormCodeWithCreate();
 
@@ -64035,7 +64036,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCompanyLegalForm();
 
-        $this->assertNull($model->getCompanyLegalForm());
+        $this->assertNotInstanceOf(CompanyLegalForm::class, $model->getCompanyLegalForm());
 
         $testValueForCompanyLegalForm = $model->getCompanyLegalFormWithCreate();
 
@@ -64123,7 +64124,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOperatingYearsQuantity();
 
-        $this->assertNull($model->getOperatingYearsQuantity());
+        $this->assertNotInstanceOf(OperatingYearsQuantity::class, $model->getOperatingYearsQuantity());
 
         $testValueForOperatingYearsQuantity = $model->getOperatingYearsQuantityWithCreate();
 
@@ -64139,7 +64140,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmployeeQuantity();
 
-        $this->assertNull($model->getEmployeeQuantity());
+        $this->assertNotInstanceOf(EmployeeQuantity::class, $model->getEmployeeQuantity());
 
         $testValueForEmployeeQuantity = $model->getEmployeeQuantityWithCreate();
 
@@ -64680,7 +64681,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTendererRequirementTypeCode();
 
-        $this->assertNull($model->getTendererRequirementTypeCode());
+        $this->assertNotInstanceOf(TendererRequirementTypeCode::class, $model->getTendererRequirementTypeCode());
 
         $testValueForTendererRequirementTypeCode = $model->getTendererRequirementTypeCodeWithCreate();
 
@@ -64768,7 +64769,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalReference();
 
-        $this->assertNull($model->getLegalReference());
+        $this->assertNotInstanceOf(LegalReference::class, $model->getLegalReference());
 
         $testValueForLegalReference = $model->getLegalReferenceWithCreate();
 
@@ -64888,7 +64889,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -64904,7 +64905,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOriginalContractingSystemID();
 
-        $this->assertNull($model->getOriginalContractingSystemID());
+        $this->assertNotInstanceOf(OriginalContractingSystemID::class, $model->getOriginalContractingSystemID());
 
         $testValueForOriginalContractingSystemID = $model->getOriginalContractingSystemIDWithCreate();
 
@@ -65064,7 +65065,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcedureCode();
 
-        $this->assertNull($model->getProcedureCode());
+        $this->assertNotInstanceOf(ProcedureCode::class, $model->getProcedureCode());
 
         $testValueForProcedureCode = $model->getProcedureCodeWithCreate();
 
@@ -65080,7 +65081,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUrgencyCode();
 
-        $this->assertNull($model->getUrgencyCode());
+        $this->assertNotInstanceOf(UrgencyCode::class, $model->getUrgencyCode());
 
         $testValueForUrgencyCode = $model->getUrgencyCodeWithCreate();
 
@@ -65096,7 +65097,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExpenseCode();
 
-        $this->assertNull($model->getExpenseCode());
+        $this->assertNotInstanceOf(ExpenseCode::class, $model->getExpenseCode());
 
         $testValueForExpenseCode = $model->getExpenseCodeWithCreate();
 
@@ -65112,7 +65113,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPartPresentationCode();
 
-        $this->assertNull($model->getPartPresentationCode());
+        $this->assertNotInstanceOf(PartPresentationCode::class, $model->getPartPresentationCode());
 
         $testValueForPartPresentationCode = $model->getPartPresentationCodeWithCreate();
 
@@ -65128,7 +65129,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractingSystemCode();
 
-        $this->assertNull($model->getContractingSystemCode());
+        $this->assertNotInstanceOf(ContractingSystemCode::class, $model->getContractingSystemCode());
 
         $testValueForContractingSystemCode = $model->getContractingSystemCodeWithCreate();
 
@@ -65144,7 +65145,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubmissionMethodCode();
 
-        $this->assertNull($model->getSubmissionMethodCode());
+        $this->assertNotInstanceOf(SubmissionMethodCode::class, $model->getSubmissionMethodCode());
 
         $testValueForSubmissionMethodCode = $model->getSubmissionMethodCodeWithCreate();
 
@@ -65182,7 +65183,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentAvailabilityPeriod();
 
-        $this->assertNull($model->getDocumentAvailabilityPeriod());
+        $this->assertNotInstanceOf(DocumentAvailabilityPeriod::class, $model->getDocumentAvailabilityPeriod());
 
         $testValueForDocumentAvailabilityPeriod = $model->getDocumentAvailabilityPeriodWithCreate();
 
@@ -65198,7 +65199,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderSubmissionDeadlinePeriod();
 
-        $this->assertNull($model->getTenderSubmissionDeadlinePeriod());
+        $this->assertNotInstanceOf(TenderSubmissionDeadlinePeriod::class, $model->getTenderSubmissionDeadlinePeriod());
 
         $testValueForTenderSubmissionDeadlinePeriod = $model->getTenderSubmissionDeadlinePeriodWithCreate();
 
@@ -65214,7 +65215,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvitationSubmissionPeriod();
 
-        $this->assertNull($model->getInvitationSubmissionPeriod());
+        $this->assertNotInstanceOf(InvitationSubmissionPeriod::class, $model->getInvitationSubmissionPeriod());
 
         $testValueForInvitationSubmissionPeriod = $model->getInvitationSubmissionPeriodWithCreate();
 
@@ -65230,7 +65231,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParticipationRequestReceptionPeriod();
 
-        $this->assertNull($model->getParticipationRequestReceptionPeriod());
+        $this->assertNotInstanceOf(ParticipationRequestReceptionPeriod::class, $model->getParticipationRequestReceptionPeriod());
 
         $testValueForParticipationRequestReceptionPeriod = $model->getParticipationRequestReceptionPeriodWithCreate();
 
@@ -65462,7 +65463,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEconomicOperatorShortList();
 
-        $this->assertNull($model->getEconomicOperatorShortList());
+        $this->assertNotInstanceOf(EconomicOperatorShortList::class, $model->getEconomicOperatorShortList());
 
         $testValueForEconomicOperatorShortList = $model->getEconomicOperatorShortListWithCreate();
 
@@ -65550,7 +65551,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAuctionTerms();
 
-        $this->assertNull($model->getAuctionTerms());
+        $this->assertNotInstanceOf(AuctionTerms::class, $model->getAuctionTerms());
 
         $testValueForAuctionTerms = $model->getAuctionTermsWithCreate();
 
@@ -65566,7 +65567,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFrameworkAgreement();
 
-        $this->assertNull($model->getFrameworkAgreement());
+        $this->assertNotInstanceOf(FrameworkAgreement::class, $model->getFrameworkAgreement());
 
         $testValueForFrameworkAgreement = $model->getFrameworkAgreementWithCreate();
 
@@ -65603,7 +65604,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardingMethodTypeCode();
 
-        $this->assertNull($model->getAwardingMethodTypeCode());
+        $this->assertNotInstanceOf(AwardingMethodTypeCode::class, $model->getAwardingMethodTypeCode());
 
         $testValueForAwardingMethodTypeCode = $model->getAwardingMethodTypeCodeWithCreate();
 
@@ -65619,7 +65620,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceEvaluationCode();
 
-        $this->assertNull($model->getPriceEvaluationCode());
+        $this->assertNotInstanceOf(PriceEvaluationCode::class, $model->getPriceEvaluationCode());
 
         $testValueForPriceEvaluationCode = $model->getPriceEvaluationCodeWithCreate();
 
@@ -65635,7 +65636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumVariantQuantity();
 
-        $this->assertNull($model->getMaximumVariantQuantity());
+        $this->assertNotInstanceOf(MaximumVariantQuantity::class, $model->getMaximumVariantQuantity());
 
         $testValueForMaximumVariantQuantity = $model->getMaximumVariantQuantityWithCreate();
 
@@ -65806,7 +65807,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFundingProgramCode();
 
-        $this->assertNull($model->getFundingProgramCode());
+        $this->assertNotInstanceOf(FundingProgramCode::class, $model->getFundingProgramCode());
 
         $testValueForFundingProgramCode = $model->getFundingProgramCodeWithCreate();
 
@@ -65894,7 +65895,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumAdvertisementAmount();
 
-        $this->assertNull($model->getMaximumAdvertisementAmount());
+        $this->assertNotInstanceOf(MaximumAdvertisementAmount::class, $model->getMaximumAdvertisementAmount());
 
         $testValueForMaximumAdvertisementAmount = $model->getMaximumAdvertisementAmountWithCreate();
 
@@ -65982,7 +65983,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentFrequencyCode();
 
-        $this->assertNull($model->getPaymentFrequencyCode());
+        $this->assertNotInstanceOf(PaymentFrequencyCode::class, $model->getPaymentFrequencyCode());
 
         $testValueForPaymentFrequencyCode = $model->getPaymentFrequencyCodeWithCreate();
 
@@ -65998,7 +65999,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEconomicOperatorRegistryURI();
 
-        $this->assertNull($model->getEconomicOperatorRegistryURI());
+        $this->assertNotInstanceOf(EconomicOperatorRegistryURI::class, $model->getEconomicOperatorRegistryURI());
 
         $testValueForEconomicOperatorRegistryURI = $model->getEconomicOperatorRegistryURIWithCreate();
 
@@ -66108,7 +66109,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLatestSecurityClearanceDate();
 
-        $this->assertNull($model->getLatestSecurityClearanceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getLatestSecurityClearanceDate());
 
         // Property SecurityClearanceDate
 
@@ -66121,7 +66122,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentationFeeAmount();
 
-        $this->assertNull($model->getDocumentationFeeAmount());
+        $this->assertNotInstanceOf(DocumentationFeeAmount::class, $model->getDocumentationFeeAmount());
 
         $testValueForDocumentationFeeAmount = $model->getDocumentationFeeAmountWithCreate();
 
@@ -66281,7 +66282,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProcurementLegislationDocumentReference();
 
-        $this->assertNull($model->getProcurementLegislationDocumentReference());
+        $this->assertNotInstanceOf(ProcurementLegislationDocumentReference::class, $model->getProcurementLegislationDocumentReference());
 
         $testValueForProcurementLegislationDocumentReference = $model->getProcurementLegislationDocumentReferenceWithCreate();
 
@@ -66297,7 +66298,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFiscalLegislationDocumentReference();
 
-        $this->assertNull($model->getFiscalLegislationDocumentReference());
+        $this->assertNotInstanceOf(FiscalLegislationDocumentReference::class, $model->getFiscalLegislationDocumentReference());
 
         $testValueForFiscalLegislationDocumentReference = $model->getFiscalLegislationDocumentReferenceWithCreate();
 
@@ -66313,7 +66314,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEnvironmentalLegislationDocumentReference();
 
-        $this->assertNull($model->getEnvironmentalLegislationDocumentReference());
+        $this->assertNotInstanceOf(EnvironmentalLegislationDocumentReference::class, $model->getEnvironmentalLegislationDocumentReference());
 
         $testValueForEnvironmentalLegislationDocumentReference = $model->getEnvironmentalLegislationDocumentReferenceWithCreate();
 
@@ -66329,7 +66330,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEmploymentLegislationDocumentReference();
 
-        $this->assertNull($model->getEmploymentLegislationDocumentReference());
+        $this->assertNotInstanceOf(EmploymentLegislationDocumentReference::class, $model->getEmploymentLegislationDocumentReference());
 
         $testValueForEmploymentLegislationDocumentReference = $model->getEmploymentLegislationDocumentReferenceWithCreate();
 
@@ -66417,7 +66418,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallForTendersDocumentReference();
 
-        $this->assertNull($model->getCallForTendersDocumentReference());
+        $this->assertNotInstanceOf(CallForTendersDocumentReference::class, $model->getCallForTendersDocumentReference());
 
         $testValueForCallForTendersDocumentReference = $model->getCallForTendersDocumentReferenceWithCreate();
 
@@ -66433,7 +66434,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyValidityPeriod();
 
-        $this->assertNull($model->getWarrantyValidityPeriod());
+        $this->assertNotInstanceOf(WarrantyValidityPeriod::class, $model->getWarrantyValidityPeriod());
 
         $testValueForWarrantyValidityPeriod = $model->getWarrantyValidityPeriodWithCreate();
 
@@ -66809,7 +66810,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardingTerms();
 
-        $this->assertNull($model->getAwardingTerms());
+        $this->assertNotInstanceOf(AwardingTerms::class, $model->getAwardingTerms());
 
         $testValueForAwardingTerms = $model->getAwardingTermsWithCreate();
 
@@ -66825,7 +66826,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdditionalInformationParty();
 
-        $this->assertNull($model->getAdditionalInformationParty());
+        $this->assertNotInstanceOf(AdditionalInformationParty::class, $model->getAdditionalInformationParty());
 
         $testValueForAdditionalInformationParty = $model->getAdditionalInformationPartyWithCreate();
 
@@ -66841,7 +66842,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentProviderParty();
 
-        $this->assertNull($model->getDocumentProviderParty());
+        $this->assertNotInstanceOf(DocumentProviderParty::class, $model->getDocumentProviderParty());
 
         $testValueForDocumentProviderParty = $model->getDocumentProviderPartyWithCreate();
 
@@ -66857,7 +66858,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderRecipientParty();
 
-        $this->assertNull($model->getTenderRecipientParty());
+        $this->assertNotInstanceOf(TenderRecipientParty::class, $model->getTenderRecipientParty());
 
         $testValueForTenderRecipientParty = $model->getTenderRecipientPartyWithCreate();
 
@@ -66873,7 +66874,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractResponsibleParty();
 
-        $this->assertNull($model->getContractResponsibleParty());
+        $this->assertNotInstanceOf(ContractResponsibleParty::class, $model->getContractResponsibleParty());
 
         $testValueForContractResponsibleParty = $model->getContractResponsiblePartyWithCreate();
 
@@ -66961,7 +66962,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderValidityPeriod();
 
-        $this->assertNull($model->getTenderValidityPeriod());
+        $this->assertNotInstanceOf(TenderValidityPeriod::class, $model->getTenderValidityPeriod());
 
         $testValueForTenderValidityPeriod = $model->getTenderValidityPeriodWithCreate();
 
@@ -66977,7 +66978,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractAcceptancePeriod();
 
-        $this->assertNull($model->getContractAcceptancePeriod());
+        $this->assertNotInstanceOf(ContractAcceptancePeriod::class, $model->getContractAcceptancePeriod());
 
         $testValueForContractAcceptancePeriod = $model->getContractAcceptancePeriodWithCreate();
 
@@ -66993,7 +66994,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAppealTerms();
 
-        $this->assertNull($model->getAppealTerms());
+        $this->assertNotInstanceOf(AppealTerms::class, $model->getAppealTerms());
 
         $testValueForAppealTerms = $model->getAppealTermsWithCreate();
 
@@ -67153,7 +67154,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReplacedNoticeDocumentReference();
 
-        $this->assertNull($model->getReplacedNoticeDocumentReference());
+        $this->assertNotInstanceOf(ReplacedNoticeDocumentReference::class, $model->getReplacedNoticeDocumentReference());
 
         $testValueForReplacedNoticeDocumentReference = $model->getReplacedNoticeDocumentReferenceWithCreate();
 
@@ -67190,7 +67191,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -67278,7 +67279,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetQuantity();
 
-        $this->assertNull($model->getQuantity());
+        $this->assertNotInstanceOf(Quantity::class, $model->getQuantity());
 
         $testValueForQuantity = $model->getQuantityWithCreate();
 
@@ -67294,7 +67295,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineExtensionAmount();
 
-        $this->assertNull($model->getLineExtensionAmount());
+        $this->assertNotInstanceOf(LineExtensionAmount::class, $model->getLineExtensionAmount());
 
         $testValueForLineExtensionAmount = $model->getLineExtensionAmountWithCreate();
 
@@ -67310,7 +67311,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalTaxAmount();
 
-        $this->assertNull($model->getTotalTaxAmount());
+        $this->assertNotInstanceOf(TotalTaxAmount::class, $model->getTotalTaxAmount());
 
         $testValueForTotalTaxAmount = $model->getTotalTaxAmountWithCreate();
 
@@ -67326,7 +67327,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderableUnit();
 
-        $this->assertNull($model->getOrderableUnit());
+        $this->assertNotInstanceOf(OrderableUnit::class, $model->getOrderableUnit());
 
         $testValueForOrderableUnit = $model->getOrderableUnitWithCreate();
 
@@ -67342,7 +67343,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContentUnitQuantity();
 
-        $this->assertNull($model->getContentUnitQuantity());
+        $this->assertNotInstanceOf(ContentUnitQuantity::class, $model->getContentUnitQuantity());
 
         $testValueForContentUnitQuantity = $model->getContentUnitQuantityWithCreate();
 
@@ -67358,7 +67359,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderQuantityIncrementNumeric();
 
-        $this->assertNull($model->getOrderQuantityIncrementNumeric());
+        $this->assertNotInstanceOf(OrderQuantityIncrementNumeric::class, $model->getOrderQuantityIncrementNumeric());
 
         $testValueForOrderQuantityIncrementNumeric = $model->getOrderQuantityIncrementNumericWithCreate();
 
@@ -67374,7 +67375,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumOrderQuantity();
 
-        $this->assertNull($model->getMinimumOrderQuantity());
+        $this->assertNotInstanceOf(MinimumOrderQuantity::class, $model->getMinimumOrderQuantity());
 
         $testValueForMinimumOrderQuantity = $model->getMinimumOrderQuantityWithCreate();
 
@@ -67390,7 +67391,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumOrderQuantity();
 
-        $this->assertNull($model->getMaximumOrderQuantity());
+        $this->assertNotInstanceOf(MaximumOrderQuantity::class, $model->getMaximumOrderQuantity());
 
         $testValueForMaximumOrderQuantity = $model->getMaximumOrderQuantityWithCreate();
 
@@ -67478,7 +67479,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackLevelCode();
 
-        $this->assertNull($model->getPackLevelCode());
+        $this->assertNotInstanceOf(PackLevelCode::class, $model->getPackLevelCode());
 
         $testValueForPackLevelCode = $model->getPackLevelCodeWithCreate();
 
@@ -67566,7 +67567,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetItem();
 
-        $this->assertNull($model->getItem());
+        $this->assertNotInstanceOf(Item::class, $model->getItem());
 
         $testValueForItem = $model->getItemWithCreate();
 
@@ -67726,7 +67727,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyParty();
 
-        $this->assertNull($model->getWarrantyParty());
+        $this->assertNotInstanceOf(WarrantyParty::class, $model->getWarrantyParty());
 
         $testValueForWarrantyParty = $model->getWarrantyPartyWithCreate();
 
@@ -67742,7 +67743,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWarrantyValidityPeriod();
 
-        $this->assertNull($model->getWarrantyValidityPeriod());
+        $this->assertNotInstanceOf(WarrantyValidityPeriod::class, $model->getWarrantyValidityPeriod());
 
         $testValueForWarrantyValidityPeriod = $model->getWarrantyValidityPeriodWithCreate();
 
@@ -67830,7 +67831,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallForTendersLineReference();
 
-        $this->assertNull($model->getCallForTendersLineReference());
+        $this->assertNotInstanceOf(CallForTendersLineReference::class, $model->getCallForTendersLineReference());
 
         $testValueForCallForTendersLineReference = $model->getCallForTendersLineReferenceWithCreate();
 
@@ -67846,7 +67847,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCallForTendersDocumentReference();
 
-        $this->assertNull($model->getCallForTendersDocumentReference());
+        $this->assertNotInstanceOf(CallForTendersDocumentReference::class, $model->getCallForTendersDocumentReference());
 
         $testValueForCallForTendersDocumentReference = $model->getCallForTendersDocumentReferenceWithCreate();
 
@@ -67883,7 +67884,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderEnvelopeID();
 
-        $this->assertNull($model->getTenderEnvelopeID());
+        $this->assertNotInstanceOf(TenderEnvelopeID::class, $model->getTenderEnvelopeID());
 
         $testValueForTenderEnvelopeID = $model->getTenderEnvelopeIDWithCreate();
 
@@ -67899,7 +67900,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderEnvelopeTypeCode();
 
-        $this->assertNull($model->getTenderEnvelopeTypeCode());
+        $this->assertNotInstanceOf(TenderEnvelopeTypeCode::class, $model->getTenderEnvelopeTypeCode());
 
         $testValueForTenderEnvelopeTypeCode = $model->getTenderEnvelopeTypeCodeWithCreate();
 
@@ -67987,7 +67988,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOpenTenderID();
 
-        $this->assertNull($model->getOpenTenderID());
+        $this->assertNotInstanceOf(OpenTenderID::class, $model->getOpenTenderID());
 
         $testValueForOpenTenderID = $model->getOpenTenderIDWithCreate();
 
@@ -68179,7 +68180,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -68267,7 +68268,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTemplateDocumentReference();
 
-        $this->assertNull($model->getTemplateDocumentReference());
+        $this->assertNotInstanceOf(TemplateDocumentReference::class, $model->getTemplateDocumentReference());
 
         $testValueForTemplateDocumentReference = $model->getTemplateDocumentReferenceWithCreate();
 
@@ -68304,7 +68305,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTenderResultCode();
 
-        $this->assertNull($model->getTenderResultCode());
+        $this->assertNotInstanceOf(TenderResultCode::class, $model->getTenderResultCode());
 
         $testValueForTenderResultCode = $model->getTenderResultCodeWithCreate();
 
@@ -68392,7 +68393,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAdvertisementAmount();
 
-        $this->assertNull($model->getAdvertisementAmount());
+        $this->assertNotInstanceOf(AdvertisementAmount::class, $model->getAdvertisementAmount());
 
         $testValueForAdvertisementAmount = $model->getAdvertisementAmountWithCreate();
 
@@ -68408,7 +68409,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardDate();
 
-        $this->assertNull($model->getAwardDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getAwardDate());
 
         // Property AwardTime
 
@@ -68419,7 +68420,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardTime();
 
-        $this->assertNull($model->getAwardTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getAwardTime());
 
         // Property ReceivedTenderQuantity
 
@@ -68430,7 +68431,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedTenderQuantity();
 
-        $this->assertNull($model->getReceivedTenderQuantity());
+        $this->assertNotInstanceOf(ReceivedTenderQuantity::class, $model->getReceivedTenderQuantity());
 
         $testValueForReceivedTenderQuantity = $model->getReceivedTenderQuantityWithCreate();
 
@@ -68446,7 +68447,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLowerTenderAmount();
 
-        $this->assertNull($model->getLowerTenderAmount());
+        $this->assertNotInstanceOf(LowerTenderAmount::class, $model->getLowerTenderAmount());
 
         $testValueForLowerTenderAmount = $model->getLowerTenderAmountWithCreate();
 
@@ -68462,7 +68463,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHigherTenderAmount();
 
-        $this->assertNull($model->getHigherTenderAmount());
+        $this->assertNotInstanceOf(HigherTenderAmount::class, $model->getHigherTenderAmount());
 
         $testValueForHigherTenderAmount = $model->getHigherTenderAmountWithCreate();
 
@@ -68478,7 +68479,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStartDate();
 
-        $this->assertNull($model->getStartDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getStartDate());
 
         // Property ReceivedElectronicTenderQuantity
 
@@ -68489,7 +68490,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedElectronicTenderQuantity();
 
-        $this->assertNull($model->getReceivedElectronicTenderQuantity());
+        $this->assertNotInstanceOf(ReceivedElectronicTenderQuantity::class, $model->getReceivedElectronicTenderQuantity());
 
         $testValueForReceivedElectronicTenderQuantity = $model->getReceivedElectronicTenderQuantityWithCreate();
 
@@ -68505,7 +68506,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReceivedForeignTenderQuantity();
 
-        $this->assertNull($model->getReceivedForeignTenderQuantity());
+        $this->assertNotInstanceOf(ReceivedForeignTenderQuantity::class, $model->getReceivedForeignTenderQuantity());
 
         $testValueForReceivedForeignTenderQuantity = $model->getReceivedForeignTenderQuantityWithCreate();
 
@@ -68521,7 +68522,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContract();
 
-        $this->assertNull($model->getContract());
+        $this->assertNotInstanceOf(Contract::class, $model->getContract());
 
         $testValueForContract = $model->getContractWithCreate();
 
@@ -68537,7 +68538,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAwardedTenderedProject();
 
-        $this->assertNull($model->getAwardedTenderedProject());
+        $this->assertNotInstanceOf(AwardedTenderedProject::class, $model->getAwardedTenderedProject());
 
         $testValueForAwardedTenderedProject = $model->getAwardedTenderedProjectWithCreate();
 
@@ -68553,7 +68554,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractFormalizationPeriod();
 
-        $this->assertNull($model->getContractFormalizationPeriod());
+        $this->assertNotInstanceOf(ContractFormalizationPeriod::class, $model->getContractFormalizationPeriod());
 
         $testValueForContractFormalizationPeriod = $model->getContractFormalizationPeriodWithCreate();
 
@@ -68800,7 +68801,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -68816,7 +68817,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancingInstrumentCode();
 
-        $this->assertNull($model->getFinancingInstrumentCode());
+        $this->assertNotInstanceOf(FinancingInstrumentCode::class, $model->getFinancingInstrumentCode());
 
         $testValueForFinancingInstrumentCode = $model->getFinancingInstrumentCodeWithCreate();
 
@@ -68832,7 +68833,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContractDocumentReference();
 
-        $this->assertNull($model->getContractDocumentReference());
+        $this->assertNotInstanceOf(ContractDocumentReference::class, $model->getContractDocumentReference());
 
         $testValueForContractDocumentReference = $model->getContractDocumentReferenceWithCreate();
 
@@ -68920,7 +68921,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancingParty();
 
-        $this->assertNull($model->getFinancingParty());
+        $this->assertNotInstanceOf(FinancingParty::class, $model->getFinancingParty());
 
         $testValueForFinancingParty = $model->getFinancingPartyWithCreate();
 
@@ -68936,7 +68937,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFinancingFinancialAccount();
 
-        $this->assertNull($model->getFinancingFinancialAccount());
+        $this->assertNotInstanceOf(FinancingFinancialAccount::class, $model->getFinancingFinancialAccount());
 
         $testValueForFinancingFinancialAccount = $model->getFinancingFinancialAccountWithCreate();
 
@@ -69117,7 +69118,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReference();
 
-        $this->assertNull($model->getReference());
+        $this->assertNotInstanceOf(Reference::class, $model->getReference());
 
         $testValueForReference = $model->getReferenceWithCreate();
 
@@ -69133,7 +69134,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetApplicableAddress();
 
-        $this->assertNull($model->getApplicableAddress());
+        $this->assertNotInstanceOf(ApplicableAddress::class, $model->getApplicableAddress());
 
         $testValueForApplicableAddress = $model->getApplicableAddressWithCreate();
 
@@ -69170,7 +69171,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -69186,7 +69187,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActionCode();
 
-        $this->assertNull($model->getActionCode());
+        $this->assertNotInstanceOf(ActionCode::class, $model->getActionCode());
 
         $testValueForActionCode = $model->getActionCodeWithCreate();
 
@@ -69400,7 +69401,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumeric();
 
-        $this->assertNull($model->getSequenceNumeric());
+        $this->assertNotInstanceOf(SequenceNumeric::class, $model->getSequenceNumeric());
 
         $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
@@ -69416,7 +69417,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportExecutionPlanReferenceID();
 
-        $this->assertNull($model->getTransportExecutionPlanReferenceID());
+        $this->assertNotInstanceOf(TransportExecutionPlanReferenceID::class, $model->getTransportExecutionPlanReferenceID());
 
         $testValueForTransportExecutionPlanReferenceID = $model->getTransportExecutionPlanReferenceIDWithCreate();
 
@@ -69432,7 +69433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportationService();
 
-        $this->assertNull($model->getTransportationService());
+        $this->assertNotInstanceOf(TransportationService::class, $model->getTransportationService());
 
         $testValueForTransportationService = $model->getTransportationServiceWithCreate();
 
@@ -69448,7 +69449,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportServiceProviderParty();
 
-        $this->assertNull($model->getTransportServiceProviderParty());
+        $this->assertNotInstanceOf(TransportServiceProviderParty::class, $model->getTransportServiceProviderParty());
 
         $testValueForTransportServiceProviderParty = $model->getTransportServiceProviderPartyWithCreate();
 
@@ -69464,7 +69465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferencedConsignment();
 
-        $this->assertNull($model->getReferencedConsignment());
+        $this->assertNotInstanceOf(ReferencedConsignment::class, $model->getReferencedConsignment());
 
         $testValueForReferencedConsignment = $model->getReferencedConsignmentWithCreate();
 
@@ -69573,7 +69574,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportServiceCode();
 
-        $this->assertNull($model->getTransportServiceCode());
+        $this->assertNotInstanceOf(TransportServiceCode::class, $model->getTransportServiceCode());
 
         $testValueForTransportServiceCode = $model->getTransportServiceCodeWithCreate();
 
@@ -69589,7 +69590,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTariffClassCode();
 
-        $this->assertNull($model->getTariffClassCode());
+        $this->assertNotInstanceOf(TariffClassCode::class, $model->getTariffClassCode());
 
         $testValueForTariffClassCode = $model->getTariffClassCodeWithCreate();
 
@@ -69605,7 +69606,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriority();
 
-        $this->assertNull($model->getPriority());
+        $this->assertNotInstanceOf(Priority::class, $model->getPriority());
 
         $testValueForPriority = $model->getPriorityWithCreate();
 
@@ -69621,7 +69622,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFreightRateClassCode();
 
-        $this->assertNull($model->getFreightRateClassCode());
+        $this->assertNotInstanceOf(FreightRateClassCode::class, $model->getFreightRateClassCode());
 
         $testValueForFreightRateClassCode = $model->getFreightRateClassCodeWithCreate();
 
@@ -69709,7 +69710,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportationServiceDetailsURI();
 
-        $this->assertNull($model->getTransportationServiceDetailsURI());
+        $this->assertNotInstanceOf(TransportationServiceDetailsURI::class, $model->getTransportationServiceDetailsURI());
 
         $testValueForTransportationServiceDetailsURI = $model->getTransportationServiceDetailsURIWithCreate();
 
@@ -69725,7 +69726,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNominationDate();
 
-        $this->assertNull($model->getNominationDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getNominationDate());
 
         // Property NominationTime
 
@@ -69736,7 +69737,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetNominationTime();
 
-        $this->assertNull($model->getNominationTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getNominationTime());
 
         // Property Name
 
@@ -69747,7 +69748,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -69763,7 +69764,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumeric();
 
-        $this->assertNull($model->getSequenceNumeric());
+        $this->assertNotInstanceOf(SequenceNumeric::class, $model->getSequenceNumeric());
 
         $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
@@ -70211,7 +70212,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalCapacityDimension();
 
-        $this->assertNull($model->getTotalCapacityDimension());
+        $this->assertNotInstanceOf(TotalCapacityDimension::class, $model->getTotalCapacityDimension());
 
         $testValueForTotalCapacityDimension = $model->getTotalCapacityDimensionWithCreate();
 
@@ -70371,7 +70372,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetResponsibleTransportServiceProviderParty();
 
-        $this->assertNull($model->getResponsibleTransportServiceProviderParty());
+        $this->assertNotInstanceOf(ResponsibleTransportServiceProviderParty::class, $model->getResponsibleTransportServiceProviderParty());
 
         $testValueForResponsibleTransportServiceProviderParty = $model->getResponsibleTransportServiceProviderPartyWithCreate();
 
@@ -70459,7 +70460,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDurationPeriod();
 
-        $this->assertNull($model->getEstimatedDurationPeriod());
+        $this->assertNotInstanceOf(EstimatedDurationPeriod::class, $model->getEstimatedDurationPeriod());
 
         $testValueForEstimatedDurationPeriod = $model->getEstimatedDurationPeriodWithCreate();
 
@@ -70601,7 +70602,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -70617,7 +70618,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSealIssuerTypeCode();
 
-        $this->assertNull($model->getSealIssuerTypeCode());
+        $this->assertNotInstanceOf(SealIssuerTypeCode::class, $model->getSealIssuerTypeCode());
 
         $testValueForSealIssuerTypeCode = $model->getSealIssuerTypeCodeWithCreate();
 
@@ -70633,7 +70634,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCondition();
 
-        $this->assertNull($model->getCondition());
+        $this->assertNotInstanceOf(Condition1::class, $model->getCondition());
 
         $testValueForCondition = $model->getConditionWithCreate();
 
@@ -70649,7 +70650,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSealStatusCode();
 
-        $this->assertNull($model->getSealStatusCode());
+        $this->assertNotInstanceOf(SealStatusCode::class, $model->getSealStatusCode());
 
         $testValueForSealStatusCode = $model->getSealStatusCodeWithCreate();
 
@@ -70665,7 +70666,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSealingPartyType();
 
-        $this->assertNull($model->getSealingPartyType());
+        $this->assertNotInstanceOf(SealingPartyType::class, $model->getSealingPartyType());
 
         $testValueForSealingPartyType = $model->getSealingPartyTypeWithCreate();
 
@@ -70691,7 +70692,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -70779,7 +70780,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportEquipmentTypeCode();
 
-        $this->assertNull($model->getTransportEquipmentTypeCode());
+        $this->assertNotInstanceOf(TransportEquipmentTypeCode::class, $model->getTransportEquipmentTypeCode());
 
         $testValueForTransportEquipmentTypeCode = $model->getTransportEquipmentTypeCodeWithCreate();
 
@@ -70795,7 +70796,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProviderTypeCode();
 
-        $this->assertNull($model->getProviderTypeCode());
+        $this->assertNotInstanceOf(ProviderTypeCode::class, $model->getProviderTypeCode());
 
         $testValueForProviderTypeCode = $model->getProviderTypeCodeWithCreate();
 
@@ -70811,7 +70812,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOwnerTypeCode();
 
-        $this->assertNull($model->getOwnerTypeCode());
+        $this->assertNotInstanceOf(OwnerTypeCode::class, $model->getOwnerTypeCode());
 
         $testValueForOwnerTypeCode = $model->getOwnerTypeCodeWithCreate();
 
@@ -70827,7 +70828,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSizeTypeCode();
 
-        $this->assertNull($model->getSizeTypeCode());
+        $this->assertNotInstanceOf(SizeTypeCode::class, $model->getSizeTypeCode());
 
         $testValueForSizeTypeCode = $model->getSizeTypeCodeWithCreate();
 
@@ -70843,7 +70844,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDispositionCode();
 
-        $this->assertNull($model->getDispositionCode());
+        $this->assertNotInstanceOf(DispositionCode::class, $model->getDispositionCode());
 
         $testValueForDispositionCode = $model->getDispositionCodeWithCreate();
 
@@ -70859,7 +70860,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFullnessIndicationCode();
 
-        $this->assertNull($model->getFullnessIndicationCode());
+        $this->assertNotInstanceOf(FullnessIndicationCode::class, $model->getFullnessIndicationCode());
 
         $testValueForFullnessIndicationCode = $model->getFullnessIndicationCodeWithCreate();
 
@@ -70980,7 +70981,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAirFlowPercent();
 
-        $this->assertNull($model->getAirFlowPercent());
+        $this->assertNotInstanceOf(AirFlowPercent::class, $model->getAirFlowPercent());
 
         $testValueForAirFlowPercent = $model->getAirFlowPercentWithCreate();
 
@@ -70996,7 +70997,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHumidityPercent();
 
-        $this->assertNull($model->getHumidityPercent());
+        $this->assertNotInstanceOf(HumidityPercent::class, $model->getHumidityPercent());
 
         $testValueForHumidityPercent = $model->getHumidityPercentWithCreate();
 
@@ -71056,7 +71057,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCharacteristics();
 
-        $this->assertNull($model->getCharacteristics());
+        $this->assertNotInstanceOf(Characteristics::class, $model->getCharacteristics());
 
         $testValueForCharacteristics = $model->getCharacteristicsWithCreate();
 
@@ -71288,7 +71289,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossWeightMeasure();
 
-        $this->assertNull($model->getGrossWeightMeasure());
+        $this->assertNotInstanceOf(GrossWeightMeasure::class, $model->getGrossWeightMeasure());
 
         $testValueForGrossWeightMeasure = $model->getGrossWeightMeasureWithCreate();
 
@@ -71304,7 +71305,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetGrossVolumeMeasure();
 
-        $this->assertNull($model->getGrossVolumeMeasure());
+        $this->assertNotInstanceOf(GrossVolumeMeasure::class, $model->getGrossVolumeMeasure());
 
         $testValueForGrossVolumeMeasure = $model->getGrossVolumeMeasureWithCreate();
 
@@ -71320,7 +71321,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTareWeightMeasure();
 
-        $this->assertNull($model->getTareWeightMeasure());
+        $this->assertNotInstanceOf(TareWeightMeasure::class, $model->getTareWeightMeasure());
 
         $testValueForTareWeightMeasure = $model->getTareWeightMeasureWithCreate();
 
@@ -71336,7 +71337,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTrackingDeviceCode();
 
-        $this->assertNull($model->getTrackingDeviceCode());
+        $this->assertNotInstanceOf(TrackingDeviceCode::class, $model->getTrackingDeviceCode());
 
         $testValueForTrackingDeviceCode = $model->getTrackingDeviceCodeWithCreate();
 
@@ -71363,7 +71364,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTraceID();
 
-        $this->assertNull($model->getTraceID());
+        $this->assertNotInstanceOf(TraceID::class, $model->getTraceID());
 
         $testValueForTraceID = $model->getTraceIDWithCreate();
 
@@ -71523,7 +71524,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumTemperature();
 
-        $this->assertNull($model->getMinimumTemperature());
+        $this->assertNotInstanceOf(MinimumTemperature::class, $model->getMinimumTemperature());
 
         $testValueForMinimumTemperature = $model->getMinimumTemperatureWithCreate();
 
@@ -71539,7 +71540,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumTemperature();
 
-        $this->assertNull($model->getMaximumTemperature());
+        $this->assertNotInstanceOf(MaximumTemperature::class, $model->getMaximumTemperature());
 
         $testValueForMaximumTemperature = $model->getMaximumTemperatureWithCreate();
 
@@ -71555,7 +71556,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProviderParty();
 
-        $this->assertNull($model->getProviderParty());
+        $this->assertNotInstanceOf(ProviderParty::class, $model->getProviderParty());
 
         $testValueForProviderParty = $model->getProviderPartyWithCreate();
 
@@ -71571,7 +71572,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingProofParty();
 
-        $this->assertNull($model->getLoadingProofParty());
+        $this->assertNotInstanceOf(LoadingProofParty::class, $model->getLoadingProofParty());
 
         $testValueForLoadingProofParty = $model->getLoadingProofPartyWithCreate();
 
@@ -71587,7 +71588,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSupplierParty();
 
-        $this->assertNull($model->getSupplierParty());
+        $this->assertNotInstanceOf(SupplierParty::class, $model->getSupplierParty());
 
         $testValueForSupplierParty = $model->getSupplierPartyWithCreate();
 
@@ -71603,7 +71604,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOwnerParty();
 
-        $this->assertNull($model->getOwnerParty());
+        $this->assertNotInstanceOf(OwnerParty::class, $model->getOwnerParty());
 
         $testValueForOwnerParty = $model->getOwnerPartyWithCreate();
 
@@ -71619,7 +71620,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOperatingParty();
 
-        $this->assertNull($model->getOperatingParty());
+        $this->assertNotInstanceOf(OperatingParty::class, $model->getOperatingParty());
 
         $testValueForOperatingParty = $model->getOperatingPartyWithCreate();
 
@@ -71635,7 +71636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLoadingLocation();
 
-        $this->assertNull($model->getLoadingLocation());
+        $this->assertNotInstanceOf(LoadingLocation::class, $model->getLoadingLocation());
 
         $testValueForLoadingLocation = $model->getLoadingLocationWithCreate();
 
@@ -71651,7 +71652,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUnloadingLocation();
 
-        $this->assertNull($model->getUnloadingLocation());
+        $this->assertNotInstanceOf(UnloadingLocation::class, $model->getUnloadingLocation());
 
         $testValueForUnloadingLocation = $model->getUnloadingLocationWithCreate();
 
@@ -71667,7 +71668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStorageLocation();
 
-        $this->assertNull($model->getStorageLocation());
+        $this->assertNotInstanceOf(StorageLocation::class, $model->getStorageLocation());
 
         $testValueForStorageLocation = $model->getStorageLocationWithCreate();
 
@@ -72187,7 +72188,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetApplicableTransportMeans();
 
-        $this->assertNull($model->getApplicableTransportMeans());
+        $this->assertNotInstanceOf(ApplicableTransportMeans::class, $model->getApplicableTransportMeans());
 
         $testValueForApplicableTransportMeans = $model->getApplicableTransportMeansWithCreate();
 
@@ -72635,7 +72636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDelivery();
 
-        $this->assertNull($model->getDelivery());
+        $this->assertNotInstanceOf(Delivery::class, $model->getDelivery());
 
         $testValueForDelivery = $model->getDeliveryWithCreate();
 
@@ -72651,7 +72652,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPickup();
 
-        $this->assertNull($model->getPickup());
+        $this->assertNotInstanceOf(Pickup::class, $model->getPickup());
 
         $testValueForPickup = $model->getPickupWithCreate();
 
@@ -72667,7 +72668,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDespatch();
 
-        $this->assertNull($model->getDespatch());
+        $this->assertNotInstanceOf(Despatch::class, $model->getDespatch());
 
         $testValueForDespatch = $model->getDespatchWithCreate();
 
@@ -72992,7 +72993,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIdentificationID();
 
-        $this->assertNull($model->getIdentificationID());
+        $this->assertNotInstanceOf(IdentificationID::class, $model->getIdentificationID());
 
         $testValueForIdentificationID = $model->getIdentificationIDWithCreate();
 
@@ -73008,7 +73009,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOccurrenceDate();
 
-        $this->assertNull($model->getOccurrenceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getOccurrenceDate());
 
         // Property OccurrenceTime
 
@@ -73019,7 +73020,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOccurrenceTime();
 
-        $this->assertNull($model->getOccurrenceTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getOccurrenceTime());
 
         // Property TransportEventTypeCode
 
@@ -73030,7 +73031,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportEventTypeCode();
 
-        $this->assertNull($model->getTransportEventTypeCode());
+        $this->assertNotInstanceOf(TransportEventTypeCode::class, $model->getTransportEventTypeCode());
 
         $testValueForTransportEventTypeCode = $model->getTransportEventTypeCodeWithCreate();
 
@@ -73129,7 +73130,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReportedShipment();
 
-        $this->assertNull($model->getReportedShipment());
+        $this->assertNotInstanceOf(ReportedShipment::class, $model->getReportedShipment());
 
         $testValueForReportedShipment = $model->getReportedShipmentWithCreate();
 
@@ -73289,7 +73290,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLocation();
 
-        $this->assertNull($model->getLocation());
+        $this->assertNotInstanceOf(Location::class, $model->getLocation());
 
         $testValueForLocation = $model->getLocationWithCreate();
 
@@ -73305,7 +73306,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSignature();
 
-        $this->assertNull($model->getSignature());
+        $this->assertNotInstanceOf(Signature::class, $model->getSignature());
 
         $testValueForSignature = $model->getSignatureWithCreate();
 
@@ -73796,7 +73797,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBonusPaymentTerms();
 
-        $this->assertNull($model->getBonusPaymentTerms());
+        $this->assertNotInstanceOf(BonusPaymentTerms::class, $model->getBonusPaymentTerms());
 
         $testValueForBonusPaymentTerms = $model->getBonusPaymentTermsWithCreate();
 
@@ -73812,7 +73813,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCommissionPaymentTerms();
 
-        $this->assertNull($model->getCommissionPaymentTerms());
+        $this->assertNotInstanceOf(CommissionPaymentTerms::class, $model->getCommissionPaymentTerms());
 
         $testValueForCommissionPaymentTerms = $model->getCommissionPaymentTermsWithCreate();
 
@@ -73828,7 +73829,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPenaltyPaymentTerms();
 
-        $this->assertNull($model->getPenaltyPaymentTerms());
+        $this->assertNotInstanceOf(PenaltyPaymentTerms::class, $model->getPenaltyPaymentTerms());
 
         $testValueForPenaltyPaymentTerms = $model->getPenaltyPaymentTermsWithCreate();
 
@@ -73988,7 +73989,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetServiceChargePaymentTerms();
 
-        $this->assertNull($model->getServiceChargePaymentTerms());
+        $this->assertNotInstanceOf(ServiceChargePaymentTerms::class, $model->getServiceChargePaymentTerms());
 
         $testValueForServiceChargePaymentTerms = $model->getServiceChargePaymentTermsWithCreate();
 
@@ -74025,7 +74026,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -74041,7 +74042,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportHandlingUnitTypeCode();
 
-        $this->assertNull($model->getTransportHandlingUnitTypeCode());
+        $this->assertNotInstanceOf(TransportHandlingUnitTypeCode::class, $model->getTransportHandlingUnitTypeCode());
 
         $testValueForTransportHandlingUnitTypeCode = $model->getTransportHandlingUnitTypeCodeWithCreate();
 
@@ -74057,7 +74058,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetHandlingCode();
 
-        $this->assertNull($model->getHandlingCode());
+        $this->assertNotInstanceOf(HandlingCode::class, $model->getHandlingCode());
 
         $testValueForHandlingCode = $model->getHandlingCodeWithCreate();
 
@@ -74156,7 +74157,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalGoodsItemQuantity();
 
-        $this->assertNull($model->getTotalGoodsItemQuantity());
+        $this->assertNotInstanceOf(TotalGoodsItemQuantity::class, $model->getTotalGoodsItemQuantity());
 
         $testValueForTotalGoodsItemQuantity = $model->getTotalGoodsItemQuantityWithCreate();
 
@@ -74172,7 +74173,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTotalPackageQuantity();
 
-        $this->assertNull($model->getTotalPackageQuantity());
+        $this->assertNotInstanceOf(TotalPackageQuantity::class, $model->getTotalPackageQuantity());
 
         $testValueForTotalPackageQuantity = $model->getTotalPackageQuantityWithCreate();
 
@@ -74332,7 +74333,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTraceID();
 
-        $this->assertNull($model->getTraceID());
+        $this->assertNotInstanceOf(TraceID::class, $model->getTraceID());
 
         $testValueForTraceID = $model->getTraceIDWithCreate();
 
@@ -74852,7 +74853,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMinimumTemperature();
 
-        $this->assertNull($model->getMinimumTemperature());
+        $this->assertNotInstanceOf(MinimumTemperature::class, $model->getMinimumTemperature());
 
         $testValueForMinimumTemperature = $model->getMinimumTemperatureWithCreate();
 
@@ -74868,7 +74869,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaximumTemperature();
 
-        $this->assertNull($model->getMaximumTemperature());
+        $this->assertNotInstanceOf(MaximumTemperature::class, $model->getMaximumTemperature());
 
         $testValueForMaximumTemperature = $model->getMaximumTemperatureWithCreate();
 
@@ -74956,7 +74957,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetFloorSpaceMeasurementDimension();
 
-        $this->assertNull($model->getFloorSpaceMeasurementDimension());
+        $this->assertNotInstanceOf(FloorSpaceMeasurementDimension::class, $model->getFloorSpaceMeasurementDimension());
 
         $testValueForFloorSpaceMeasurementDimension = $model->getFloorSpaceMeasurementDimensionWithCreate();
 
@@ -74972,7 +74973,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPalletSpaceMeasurementDimension();
 
-        $this->assertNull($model->getPalletSpaceMeasurementDimension());
+        $this->assertNotInstanceOf(PalletSpaceMeasurementDimension::class, $model->getPalletSpaceMeasurementDimension());
 
         $testValueForPalletSpaceMeasurementDimension = $model->getPalletSpaceMeasurementDimensionWithCreate();
 
@@ -75369,7 +75370,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetJourneyID();
 
-        $this->assertNull($model->getJourneyID());
+        $this->assertNotInstanceOf(JourneyID::class, $model->getJourneyID());
 
         $testValueForJourneyID = $model->getJourneyIDWithCreate();
 
@@ -75385,7 +75386,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRegistrationNationalityID();
 
-        $this->assertNull($model->getRegistrationNationalityID());
+        $this->assertNotInstanceOf(RegistrationNationalityID::class, $model->getRegistrationNationalityID());
 
         $testValueForRegistrationNationalityID = $model->getRegistrationNationalityIDWithCreate();
 
@@ -75473,7 +75474,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDirectionCode();
 
-        $this->assertNull($model->getDirectionCode());
+        $this->assertNotInstanceOf(DirectionCode::class, $model->getDirectionCode());
 
         $testValueForDirectionCode = $model->getDirectionCodeWithCreate();
 
@@ -75489,7 +75490,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTransportMeansTypeCode();
 
-        $this->assertNull($model->getTransportMeansTypeCode());
+        $this->assertNotInstanceOf(TransportMeansTypeCode::class, $model->getTransportMeansTypeCode());
 
         $testValueForTransportMeansTypeCode = $model->getTransportMeansTypeCodeWithCreate();
 
@@ -75505,7 +75506,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTradeServiceCode();
 
-        $this->assertNull($model->getTradeServiceCode());
+        $this->assertNotInstanceOf(TradeServiceCode::class, $model->getTradeServiceCode());
 
         $testValueForTradeServiceCode = $model->getTradeServiceCodeWithCreate();
 
@@ -75521,7 +75522,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStowage();
 
-        $this->assertNull($model->getStowage());
+        $this->assertNotInstanceOf(Stowage::class, $model->getStowage());
 
         $testValueForStowage = $model->getStowageWithCreate();
 
@@ -75537,7 +75538,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAirTransport();
 
-        $this->assertNull($model->getAirTransport());
+        $this->assertNotInstanceOf(AirTransport::class, $model->getAirTransport());
 
         $testValueForAirTransport = $model->getAirTransportWithCreate();
 
@@ -75553,7 +75554,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRoadTransport();
 
-        $this->assertNull($model->getRoadTransport());
+        $this->assertNotInstanceOf(RoadTransport::class, $model->getRoadTransport());
 
         $testValueForRoadTransport = $model->getRoadTransportWithCreate();
 
@@ -75569,7 +75570,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRailTransport();
 
-        $this->assertNull($model->getRailTransport());
+        $this->assertNotInstanceOf(RailTransport::class, $model->getRailTransport());
 
         $testValueForRailTransport = $model->getRailTransportWithCreate();
 
@@ -75585,7 +75586,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetMaritimeTransport();
 
-        $this->assertNull($model->getMaritimeTransport());
+        $this->assertNotInstanceOf(MaritimeTransport::class, $model->getMaritimeTransport());
 
         $testValueForMaritimeTransport = $model->getMaritimeTransportWithCreate();
 
@@ -75601,7 +75602,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOwnerParty();
 
-        $this->assertNull($model->getOwnerParty());
+        $this->assertNotInstanceOf(OwnerParty::class, $model->getOwnerParty());
 
         $testValueForOwnerParty = $model->getOwnerPartyWithCreate();
 
@@ -75721,7 +75722,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSequenceNumeric();
 
-        $this->assertNull($model->getSequenceNumeric());
+        $this->assertNotInstanceOf(SequenceNumeric::class, $model->getSequenceNumeric());
 
         $testValueForSequenceNumeric = $model->getSequenceNumericWithCreate();
 
@@ -75737,7 +75738,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceDate();
 
-        $this->assertNull($model->getReferenceDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReferenceDate());
 
         // Property ReferenceTime
 
@@ -75748,7 +75749,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReferenceTime();
 
-        $this->assertNull($model->getReferenceTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getReferenceTime());
 
         // Property ReliabilityPercent
 
@@ -75759,7 +75760,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetReliabilityPercent();
 
-        $this->assertNull($model->getReliabilityPercent());
+        $this->assertNotInstanceOf(ReliabilityPercent::class, $model->getReliabilityPercent());
 
         $testValueForReliabilityPercent = $model->getReliabilityPercentWithCreate();
 
@@ -75847,7 +75848,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStatusLocation();
 
-        $this->assertNull($model->getStatusLocation());
+        $this->assertNotInstanceOf(StatusLocation::class, $model->getStatusLocation());
 
         $testValueForStatusLocation = $model->getStatusLocationWithCreate();
 
@@ -75863,7 +75864,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualArrivalTransportEvent();
 
-        $this->assertNull($model->getActualArrivalTransportEvent());
+        $this->assertNotInstanceOf(ActualArrivalTransportEvent::class, $model->getActualArrivalTransportEvent());
 
         $testValueForActualArrivalTransportEvent = $model->getActualArrivalTransportEventWithCreate();
 
@@ -75879,7 +75880,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetActualDepartureTransportEvent();
 
-        $this->assertNull($model->getActualDepartureTransportEvent());
+        $this->assertNotInstanceOf(ActualDepartureTransportEvent::class, $model->getActualDepartureTransportEvent());
 
         $testValueForActualDepartureTransportEvent = $model->getActualDepartureTransportEventWithCreate();
 
@@ -75895,7 +75896,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedDepartureTransportEvent();
 
-        $this->assertNull($model->getEstimatedDepartureTransportEvent());
+        $this->assertNotInstanceOf(EstimatedDepartureTransportEvent::class, $model->getEstimatedDepartureTransportEvent());
 
         $testValueForEstimatedDepartureTransportEvent = $model->getEstimatedDepartureTransportEventWithCreate();
 
@@ -75911,7 +75912,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEstimatedArrivalTransportEvent();
 
-        $this->assertNull($model->getEstimatedArrivalTransportEvent());
+        $this->assertNotInstanceOf(EstimatedArrivalTransportEvent::class, $model->getEstimatedArrivalTransportEvent());
 
         $testValueForEstimatedArrivalTransportEvent = $model->getEstimatedArrivalTransportEventWithCreate();
 
@@ -75927,7 +75928,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedDepartureTransportEvent();
 
-        $this->assertNull($model->getPlannedDepartureTransportEvent());
+        $this->assertNotInstanceOf(PlannedDepartureTransportEvent::class, $model->getPlannedDepartureTransportEvent());
 
         $testValueForPlannedDepartureTransportEvent = $model->getPlannedDepartureTransportEventWithCreate();
 
@@ -75943,7 +75944,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPlannedArrivalTransportEvent();
 
-        $this->assertNull($model->getPlannedArrivalTransportEvent());
+        $this->assertNotInstanceOf(PlannedArrivalTransportEvent::class, $model->getPlannedArrivalTransportEvent());
 
         $testValueForPlannedArrivalTransportEvent = $model->getPlannedArrivalTransportEventWithCreate();
 
@@ -76090,7 +76091,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPriceAmount();
 
-        $this->assertNull($model->getPriceAmount());
+        $this->assertNotInstanceOf(PriceAmount::class, $model->getPriceAmount());
 
         $testValueForPriceAmount = $model->getPriceAmountWithCreate();
 
@@ -76106,7 +76107,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTimeAmount();
 
-        $this->assertNull($model->getTimeAmount());
+        $this->assertNotInstanceOf(TimeAmount::class, $model->getTimeAmount());
 
         $testValueForTimeAmount = $model->getTimeAmountWithCreate();
 
@@ -76220,7 +76221,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -76236,7 +76237,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberID();
 
-        $this->assertNull($model->getSubscriberID());
+        $this->assertNotInstanceOf(SubscriberID::class, $model->getSubscriberID());
 
         $testValueForSubscriberID = $model->getSubscriberIDWithCreate();
 
@@ -76252,7 +76253,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberType();
 
-        $this->assertNull($model->getSubscriberType());
+        $this->assertNotInstanceOf(SubscriberType::class, $model->getSubscriberType());
 
         $testValueForSubscriberType = $model->getSubscriberTypeWithCreate();
 
@@ -76268,7 +76269,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSubscriberTypeCode();
 
-        $this->assertNull($model->getSubscriberTypeCode());
+        $this->assertNotInstanceOf(SubscriberTypeCode::class, $model->getSubscriberTypeCode());
 
         $testValueForSubscriberTypeCode = $model->getSubscriberTypeCodeWithCreate();
 
@@ -76356,7 +76357,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackQuantity();
 
-        $this->assertNull($model->getPackQuantity());
+        $this->assertNotInstanceOf(PackQuantity::class, $model->getPackQuantity());
 
         $testValueForPackQuantity = $model->getPackQuantityWithCreate();
 
@@ -76372,7 +76373,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPackSizeNumeric();
 
-        $this->assertNull($model->getPackSizeNumeric());
+        $this->assertNotInstanceOf(PackSizeNumeric::class, $model->getPackSizeNumeric());
 
         $testValueForPackSizeNumeric = $model->getPackSizeNumericWithCreate();
 
@@ -76388,7 +76389,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionType();
 
-        $this->assertNull($model->getConsumptionType());
+        $this->assertNotInstanceOf(ConsumptionType1::class, $model->getConsumptionType());
 
         $testValueForConsumptionType = $model->getConsumptionTypeWithCreate();
 
@@ -76404,7 +76405,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetConsumptionTypeCode();
 
-        $this->assertNull($model->getConsumptionTypeCode());
+        $this->assertNotInstanceOf(ConsumptionTypeCode::class, $model->getConsumptionTypeCode());
 
         $testValueForConsumptionTypeCode = $model->getConsumptionTypeCodeWithCreate();
 
@@ -76420,7 +76421,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCurrentChargeType();
 
-        $this->assertNull($model->getCurrentChargeType());
+        $this->assertNotInstanceOf(CurrentChargeType::class, $model->getCurrentChargeType());
 
         $testValueForCurrentChargeType = $model->getCurrentChargeTypeWithCreate();
 
@@ -76436,7 +76437,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCurrentChargeTypeCode();
 
-        $this->assertNull($model->getCurrentChargeTypeCode());
+        $this->assertNotInstanceOf(CurrentChargeTypeCode::class, $model->getCurrentChargeTypeCode());
 
         $testValueForCurrentChargeTypeCode = $model->getCurrentChargeTypeCodeWithCreate();
 
@@ -76452,7 +76453,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOneTimeChargeType();
 
-        $this->assertNull($model->getOneTimeChargeType());
+        $this->assertNotInstanceOf(OneTimeChargeType::class, $model->getOneTimeChargeType());
 
         $testValueForOneTimeChargeType = $model->getOneTimeChargeTypeWithCreate();
 
@@ -76468,7 +76469,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOneTimeChargeTypeCode();
 
-        $this->assertNull($model->getOneTimeChargeTypeCode());
+        $this->assertNotInstanceOf(OneTimeChargeTypeCode::class, $model->getOneTimeChargeTypeCode());
 
         $testValueForOneTimeChargeTypeCode = $model->getOneTimeChargeTypeCodeWithCreate();
 
@@ -76484,7 +76485,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxCategory();
 
-        $this->assertNull($model->getTaxCategory());
+        $this->assertNotInstanceOf(TaxCategory::class, $model->getTaxCategory());
 
         $testValueForTaxCategory = $model->getTaxCategoryWithCreate();
 
@@ -76500,7 +76501,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetContract();
 
-        $this->assertNull($model->getContract());
+        $this->assertNotInstanceOf(Contract::class, $model->getContract());
 
         $testValueForContract = $model->getContractWithCreate();
 
@@ -76603,7 +76604,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetURI();
 
-        $this->assertNull($model->getURI());
+        $this->assertNotInstanceOf(URI::class, $model->getURI());
 
         $testValueForURI = $model->getURIWithCreate();
 
@@ -76619,7 +76620,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPassword();
 
-        $this->assertNull($model->getPassword());
+        $this->assertNotInstanceOf(Password::class, $model->getPassword());
 
         $testValueForPassword = $model->getPasswordWithCreate();
 
@@ -76635,7 +76636,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLogin();
 
-        $this->assertNull($model->getLogin());
+        $this->assertNotInstanceOf(Login::class, $model->getLogin());
 
         $testValueForLogin = $model->getLoginWithCreate();
 
@@ -76672,7 +76673,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetRank();
 
-        $this->assertNull($model->getRank());
+        $this->assertNotInstanceOf(Rank::class, $model->getRank());
 
         $testValueForRank = $model->getRankWithCreate();
 
@@ -76688,7 +76689,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetParty();
 
-        $this->assertNull($model->getParty());
+        $this->assertNotInstanceOf(Party::class, $model->getParty());
 
         $testValueForParty = $model->getPartyWithCreate();
 
@@ -76758,7 +76759,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -76774,7 +76775,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetWorkPhaseCode();
 
-        $this->assertNull($model->getWorkPhaseCode());
+        $this->assertNotInstanceOf(WorkPhaseCode::class, $model->getWorkPhaseCode());
 
         $testValueForWorkPhaseCode = $model->getWorkPhaseCodeWithCreate();
 
@@ -76862,7 +76863,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProgressPercent();
 
-        $this->assertNull($model->getProgressPercent());
+        $this->assertNotInstanceOf(ProgressPercent::class, $model->getProgressPercent());
 
         $testValueForProgressPercent = $model->getProgressPercentWithCreate();
 
@@ -76878,7 +76879,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetStartDate();
 
-        $this->assertNull($model->getStartDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getStartDate());
 
         // Property EndDate
 
@@ -76889,7 +76890,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetEndDate();
 
-        $this->assertNull($model->getEndDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getEndDate());
 
         // (1) Property WorkOrderDocumentReference - Test set empty array
 
@@ -77222,7 +77223,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77243,7 +77244,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77264,7 +77265,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77285,7 +77286,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77306,7 +77307,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77327,7 +77328,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77348,7 +77349,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77369,7 +77370,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77390,7 +77391,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77411,7 +77412,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77432,7 +77433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -77453,7 +77454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78106,7 +78107,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78127,7 +78128,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78256,7 +78257,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78277,7 +78278,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78364,7 +78365,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78385,7 +78386,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78494,7 +78495,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78515,7 +78516,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78860,7 +78861,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78881,7 +78882,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78944,7 +78945,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -78965,7 +78966,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -79424,7 +79425,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -79445,7 +79446,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -79488,7 +79489,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -79509,7 +79510,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -80426,7 +80427,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -80447,7 +80448,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -80468,7 +80469,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -80489,7 +80490,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -81972,7 +81973,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -81993,7 +81994,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82652,7 +82653,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82673,7 +82674,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82760,7 +82761,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82781,7 +82782,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82802,7 +82803,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82823,7 +82824,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82866,7 +82867,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82887,7 +82888,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82908,7 +82909,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -82929,7 +82930,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83082,7 +83083,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83103,7 +83104,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83146,7 +83147,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83167,7 +83168,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83254,7 +83255,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83275,7 +83276,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83296,7 +83297,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83317,7 +83318,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83338,7 +83339,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83359,7 +83360,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83380,7 +83381,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83401,7 +83402,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83730,7 +83731,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83751,7 +83752,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83772,7 +83773,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -83793,7 +83794,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84078,7 +84079,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84099,7 +84100,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84768,7 +84769,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84789,7 +84790,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84810,7 +84811,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -84831,7 +84832,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85548,7 +85549,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85569,7 +85570,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85788,7 +85789,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85809,7 +85810,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85874,7 +85875,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -85895,7 +85896,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86112,7 +86113,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86133,7 +86134,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86154,7 +86155,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86175,7 +86176,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86196,7 +86197,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86217,7 +86218,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86238,7 +86239,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86259,7 +86260,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86302,7 +86303,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86323,7 +86324,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86388,7 +86389,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86409,7 +86410,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86430,7 +86431,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86451,7 +86452,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86472,7 +86473,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86493,7 +86494,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86514,7 +86515,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -86535,7 +86536,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -87388,7 +87389,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -87409,7 +87410,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -87430,7 +87431,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -87451,7 +87452,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88810,7 +88811,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88831,7 +88832,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88852,7 +88853,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88873,7 +88874,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88960,7 +88961,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -88981,7 +88982,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89002,7 +89003,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89023,7 +89024,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89850,7 +89851,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89871,7 +89872,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89892,7 +89893,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -89913,7 +89914,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -90416,7 +90417,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -90437,7 +90438,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -90920,7 +90921,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -90941,7 +90942,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -91352,7 +91353,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -91373,7 +91374,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92356,7 +92357,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92377,7 +92378,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92497,7 +92498,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92518,7 +92519,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92605,7 +92606,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92626,7 +92627,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92764,7 +92765,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92785,7 +92786,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92806,7 +92807,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92827,7 +92828,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92848,7 +92849,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92869,7 +92870,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92890,7 +92891,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -92911,7 +92912,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93284,7 +93285,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93305,7 +93306,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93326,7 +93327,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93347,7 +93348,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93368,7 +93369,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93389,7 +93390,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93432,7 +93433,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93453,7 +93454,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93560,7 +93561,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93581,7 +93582,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93602,7 +93603,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93623,7 +93624,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93765,7 +93766,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93786,7 +93787,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93807,7 +93808,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93828,7 +93829,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93882,7 +93883,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93903,7 +93904,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93924,7 +93925,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -93945,7 +93946,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -94138,7 +94139,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -94159,7 +94160,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -94202,7 +94203,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -94223,7 +94224,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95100,7 +95101,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95121,7 +95122,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95142,7 +95143,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95163,7 +95164,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95422,7 +95423,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95443,7 +95444,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95464,7 +95465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95485,7 +95486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95680,7 +95681,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95701,7 +95702,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95722,7 +95723,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -95743,7 +95744,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -96464,7 +96465,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -96485,7 +96486,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98458,7 +98459,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98479,7 +98480,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98522,7 +98523,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98543,7 +98544,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98586,7 +98587,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -98607,7 +98608,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -99084,7 +99085,7 @@ final class UblModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99095,7 +99096,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-CurrencyIDValue';
         $model->setCurrencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getCurrencyID());
+        $this->assertSame($testValue, $model->getCurrencyID());
 
         $model->unsetCurrencyID();
 
@@ -99106,7 +99107,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-CurrencyCodeListVersionIDValue';
         $model->setCurrencyCodeListVersionID($testValue);
 
-        $this->assertEquals($testValue, $model->getCurrencyCodeListVersionID());
+        $this->assertSame($testValue, $model->getCurrencyCodeListVersionID());
 
         $model->unsetCurrencyCodeListVersionID();
 
@@ -99127,7 +99128,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99138,7 +99139,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -99149,7 +99150,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 
@@ -99160,7 +99161,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-EncodingCodeValue';
         $model->setEncodingCode($testValue);
 
-        $this->assertEquals($testValue, $model->getEncodingCode());
+        $this->assertSame($testValue, $model->getEncodingCode());
 
         $model->unsetEncodingCode();
 
@@ -99171,7 +99172,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-CharacterSetCodeValue';
         $model->setCharacterSetCode($testValue);
 
-        $this->assertEquals($testValue, $model->getCharacterSetCode());
+        $this->assertSame($testValue, $model->getCharacterSetCode());
 
         $model->unsetCharacterSetCode();
 
@@ -99182,7 +99183,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UriValue';
         $model->setUri($testValue);
 
-        $this->assertEquals($testValue, $model->getUri());
+        $this->assertSame($testValue, $model->getUri());
 
         $model->unsetUri();
 
@@ -99193,7 +99194,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-FilenameValue';
         $model->setFilename($testValue);
 
-        $this->assertEquals($testValue, $model->getFilename());
+        $this->assertSame($testValue, $model->getFilename());
 
         $model->unsetFilename();
 
@@ -99214,7 +99215,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99225,7 +99226,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListIDValue';
         $model->setListID($testValue);
 
-        $this->assertEquals($testValue, $model->getListID());
+        $this->assertSame($testValue, $model->getListID());
 
         $model->unsetListID();
 
@@ -99236,7 +99237,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListAgencyIDValue';
         $model->setListAgencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getListAgencyID());
+        $this->assertSame($testValue, $model->getListAgencyID());
 
         $model->unsetListAgencyID();
 
@@ -99247,7 +99248,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListAgencyNameValue';
         $model->setListAgencyName($testValue);
 
-        $this->assertEquals($testValue, $model->getListAgencyName());
+        $this->assertSame($testValue, $model->getListAgencyName());
 
         $model->unsetListAgencyName();
 
@@ -99258,7 +99259,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListNameValue';
         $model->setListName($testValue);
 
-        $this->assertEquals($testValue, $model->getListName());
+        $this->assertSame($testValue, $model->getListName());
 
         $model->unsetListName();
 
@@ -99269,7 +99270,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListVersionIDValue';
         $model->setListVersionID($testValue);
 
-        $this->assertEquals($testValue, $model->getListVersionID());
+        $this->assertSame($testValue, $model->getListVersionID());
 
         $model->unsetListVersionID();
 
@@ -99280,7 +99281,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-NameValue';
         $model->setName($testValue);
 
-        $this->assertEquals($testValue, $model->getName());
+        $this->assertSame($testValue, $model->getName());
 
         $model->unsetName();
 
@@ -99291,7 +99292,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-LanguageIDValue';
         $model->setLanguageID($testValue);
 
-        $this->assertEquals($testValue, $model->getLanguageID());
+        $this->assertSame($testValue, $model->getLanguageID());
 
         $model->unsetLanguageID();
 
@@ -99302,7 +99303,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListURIValue';
         $model->setListURI($testValue);
 
-        $this->assertEquals($testValue, $model->getListURI());
+        $this->assertSame($testValue, $model->getListURI());
 
         $model->unsetListURI();
 
@@ -99313,7 +99314,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ListSchemeURIValue';
         $model->setListSchemeURI($testValue);
 
-        $this->assertEquals($testValue, $model->getListSchemeURI());
+        $this->assertSame($testValue, $model->getListSchemeURI());
 
         $model->unsetListSchemeURI();
 
@@ -99334,7 +99335,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99345,7 +99346,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -99366,7 +99367,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99377,7 +99378,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeIDValue';
         $model->setSchemeID($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeID());
+        $this->assertSame($testValue, $model->getSchemeID());
 
         $model->unsetSchemeID();
 
@@ -99388,7 +99389,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeNameValue';
         $model->setSchemeName($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeName());
+        $this->assertSame($testValue, $model->getSchemeName());
 
         $model->unsetSchemeName();
 
@@ -99399,7 +99400,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeAgencyIDValue';
         $model->setSchemeAgencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeAgencyID());
+        $this->assertSame($testValue, $model->getSchemeAgencyID());
 
         $model->unsetSchemeAgencyID();
 
@@ -99410,7 +99411,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeAgencyNameValue';
         $model->setSchemeAgencyName($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeAgencyName());
+        $this->assertSame($testValue, $model->getSchemeAgencyName());
 
         $model->unsetSchemeAgencyName();
 
@@ -99421,7 +99422,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeVersionIDValue';
         $model->setSchemeVersionID($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeVersionID());
+        $this->assertSame($testValue, $model->getSchemeVersionID());
 
         $model->unsetSchemeVersionID();
 
@@ -99432,7 +99433,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeDataURIValue';
         $model->setSchemeDataURI($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeDataURI());
+        $this->assertSame($testValue, $model->getSchemeDataURI());
 
         $model->unsetSchemeDataURI();
 
@@ -99443,7 +99444,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-SchemeURIValue';
         $model->setSchemeURI($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeURI());
+        $this->assertSame($testValue, $model->getSchemeURI());
 
         $model->unsetSchemeURI();
 
@@ -99464,7 +99465,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99475,7 +99476,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -99496,7 +99497,7 @@ final class UblModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99507,7 +99508,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeValue';
         $model->setUnitCode($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCode());
+        $this->assertSame($testValue, $model->getUnitCode());
 
         $model->unsetUnitCode();
 
@@ -99518,7 +99519,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeListVersionIDValue';
         $model->setUnitCodeListVersionID($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCodeListVersionID());
+        $this->assertSame($testValue, $model->getUnitCodeListVersionID());
 
         $model->unsetUnitCodeListVersionID();
 
@@ -99539,7 +99540,7 @@ final class UblModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99550,7 +99551,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -99571,7 +99572,7 @@ final class UblModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99582,7 +99583,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeValue';
         $model->setUnitCode($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCode());
+        $this->assertSame($testValue, $model->getUnitCode());
 
         $model->unsetUnitCode();
 
@@ -99593,7 +99594,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeListIDValue';
         $model->setUnitCodeListID($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCodeListID());
+        $this->assertSame($testValue, $model->getUnitCodeListID());
 
         $model->unsetUnitCodeListID();
 
@@ -99604,7 +99605,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeListAgencyIDValue';
         $model->setUnitCodeListAgencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCodeListAgencyID());
+        $this->assertSame($testValue, $model->getUnitCodeListAgencyID());
 
         $model->unsetUnitCodeListAgencyID();
 
@@ -99615,7 +99616,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeListAgencyNameValue';
         $model->setUnitCodeListAgencyName($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCodeListAgencyName());
+        $this->assertSame($testValue, $model->getUnitCodeListAgencyName());
 
         $model->unsetUnitCodeListAgencyName();
 
@@ -99636,7 +99637,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -99647,7 +99648,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-LanguageIDValue';
         $model->setLanguageID($testValue);
 
-        $this->assertEquals($testValue, $model->getLanguageID());
+        $this->assertSame($testValue, $model->getLanguageID());
 
         $model->unsetLanguageID();
 
@@ -99658,7 +99659,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-LanguageLocaleIDValue';
         $model->setLanguageLocaleID($testValue);
 
-        $this->assertEquals($testValue, $model->getLanguageLocaleID());
+        $this->assertSame($testValue, $model->getLanguageLocaleID());
 
         $model->unsetLanguageLocaleID();
 
@@ -99962,7 +99963,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -99978,7 +99979,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(Name::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -99994,7 +99995,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionAgencyID();
 
-        $this->assertNull($model->getExtensionAgencyID());
+        $this->assertNotInstanceOf(ExtensionAgencyID::class, $model->getExtensionAgencyID());
 
         $testValueForExtensionAgencyID = $model->getExtensionAgencyIDWithCreate();
 
@@ -100010,7 +100011,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionAgencyName();
 
-        $this->assertNull($model->getExtensionAgencyName());
+        $this->assertNotInstanceOf(ExtensionAgencyName::class, $model->getExtensionAgencyName());
 
         $testValueForExtensionAgencyName = $model->getExtensionAgencyNameWithCreate();
 
@@ -100026,7 +100027,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionVersionID();
 
-        $this->assertNull($model->getExtensionVersionID());
+        $this->assertNotInstanceOf(ExtensionVersionID::class, $model->getExtensionVersionID());
 
         $testValueForExtensionVersionID = $model->getExtensionVersionIDWithCreate();
 
@@ -100042,7 +100043,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionAgencyURI();
 
-        $this->assertNull($model->getExtensionAgencyURI());
+        $this->assertNotInstanceOf(ExtensionAgencyURI::class, $model->getExtensionAgencyURI());
 
         $testValueForExtensionAgencyURI = $model->getExtensionAgencyURIWithCreate();
 
@@ -100058,7 +100059,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionURI();
 
-        $this->assertNull($model->getExtensionURI());
+        $this->assertNotInstanceOf(ExtensionURI::class, $model->getExtensionURI());
 
         $testValueForExtensionURI = $model->getExtensionURIWithCreate();
 
@@ -100074,7 +100075,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionReasonCode();
 
-        $this->assertNull($model->getExtensionReasonCode());
+        $this->assertNotInstanceOf(ExtensionReasonCode::class, $model->getExtensionReasonCode());
 
         $testValueForExtensionReasonCode = $model->getExtensionReasonCodeWithCreate();
 
@@ -100090,7 +100091,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionReason();
 
-        $this->assertNull($model->getExtensionReason());
+        $this->assertNotInstanceOf(ExtensionReason::class, $model->getExtensionReason());
 
         $testValueForExtensionReason = $model->getExtensionReasonWithCreate();
 
@@ -100106,7 +100107,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetExtensionContent();
 
-        $this->assertNull($model->getExtensionContent());
+        $this->assertNotInstanceOf(ExtensionContent::class, $model->getExtensionContent());
 
         $testValueForExtensionContent = $model->getExtensionContentWithCreate();
 
@@ -100215,7 +100216,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUBLVersionID();
 
-        $this->assertNull($model->getUBLVersionID());
+        $this->assertNotInstanceOf(UBLVersionID::class, $model->getUBLVersionID());
 
         $testValueForUBLVersionID = $model->getUBLVersionIDWithCreate();
 
@@ -100231,7 +100232,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomizationID();
 
-        $this->assertNull($model->getCustomizationID());
+        $this->assertNotInstanceOf(CustomizationID::class, $model->getCustomizationID());
 
         $testValueForCustomizationID = $model->getCustomizationIDWithCreate();
 
@@ -100247,7 +100248,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProfileID();
 
-        $this->assertNull($model->getProfileID());
+        $this->assertNotInstanceOf(ProfileID::class, $model->getProfileID());
 
         $testValueForProfileID = $model->getProfileIDWithCreate();
 
@@ -100263,7 +100264,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProfileExecutionID();
 
-        $this->assertNull($model->getProfileExecutionID());
+        $this->assertNotInstanceOf(ProfileExecutionID::class, $model->getProfileExecutionID());
 
         $testValueForProfileExecutionID = $model->getProfileExecutionIDWithCreate();
 
@@ -100279,7 +100280,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -100306,7 +100307,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -100322,7 +100323,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -100333,7 +100334,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property TaxPointDate
 
@@ -100344,7 +100345,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxPointDate();
 
-        $this->assertNull($model->getTaxPointDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getTaxPointDate());
 
         // Property CreditNoteTypeCode
 
@@ -100355,7 +100356,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCreditNoteTypeCode();
 
-        $this->assertNull($model->getCreditNoteTypeCode());
+        $this->assertNotInstanceOf(CreditNoteTypeCode::class, $model->getCreditNoteTypeCode());
 
         $testValueForCreditNoteTypeCode = $model->getCreditNoteTypeCodeWithCreate();
 
@@ -100443,7 +100444,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentCurrencyCode();
 
-        $this->assertNull($model->getDocumentCurrencyCode());
+        $this->assertNotInstanceOf(DocumentCurrencyCode::class, $model->getDocumentCurrencyCode());
 
         $testValueForDocumentCurrencyCode = $model->getDocumentCurrencyCodeWithCreate();
 
@@ -100459,7 +100460,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxCurrencyCode();
 
-        $this->assertNull($model->getTaxCurrencyCode());
+        $this->assertNotInstanceOf(TaxCurrencyCode::class, $model->getTaxCurrencyCode());
 
         $testValueForTaxCurrencyCode = $model->getTaxCurrencyCodeWithCreate();
 
@@ -100475,7 +100476,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingCurrencyCode();
 
-        $this->assertNull($model->getPricingCurrencyCode());
+        $this->assertNotInstanceOf(PricingCurrencyCode::class, $model->getPricingCurrencyCode());
 
         $testValueForPricingCurrencyCode = $model->getPricingCurrencyCodeWithCreate();
 
@@ -100491,7 +100492,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentCurrencyCode();
 
-        $this->assertNull($model->getPaymentCurrencyCode());
+        $this->assertNotInstanceOf(PaymentCurrencyCode::class, $model->getPaymentCurrencyCode());
 
         $testValueForPaymentCurrencyCode = $model->getPaymentCurrencyCodeWithCreate();
 
@@ -100507,7 +100508,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentAlternativeCurrencyCode();
 
-        $this->assertNull($model->getPaymentAlternativeCurrencyCode());
+        $this->assertNotInstanceOf(PaymentAlternativeCurrencyCode::class, $model->getPaymentAlternativeCurrencyCode());
 
         $testValueForPaymentAlternativeCurrencyCode = $model->getPaymentAlternativeCurrencyCodeWithCreate();
 
@@ -100523,7 +100524,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -100539,7 +100540,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -100555,7 +100556,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineCountNumeric();
 
-        $this->assertNull($model->getLineCountNumeric());
+        $this->assertNotInstanceOf(LineCountNumeric::class, $model->getLineCountNumeric());
 
         $testValueForLineCountNumeric = $model->getLineCountNumericWithCreate();
 
@@ -100571,7 +100572,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerReference();
 
-        $this->assertNull($model->getBuyerReference());
+        $this->assertNotInstanceOf(BuyerReference::class, $model->getBuyerReference());
 
         $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
@@ -100731,7 +100732,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderReference();
 
-        $this->assertNull($model->getOrderReference());
+        $this->assertNotInstanceOf(OrderReference::class, $model->getOrderReference());
 
         $testValueForOrderReference = $model->getOrderReferenceWithCreate();
 
@@ -101323,7 +101324,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingSupplierParty();
 
-        $this->assertNull($model->getAccountingSupplierParty());
+        $this->assertNotInstanceOf(AccountingSupplierParty::class, $model->getAccountingSupplierParty());
 
         $testValueForAccountingSupplierParty = $model->getAccountingSupplierPartyWithCreate();
 
@@ -101339,7 +101340,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCustomerParty();
 
-        $this->assertNull($model->getAccountingCustomerParty());
+        $this->assertNotInstanceOf(AccountingCustomerParty::class, $model->getAccountingCustomerParty());
 
         $testValueForAccountingCustomerParty = $model->getAccountingCustomerPartyWithCreate();
 
@@ -101355,7 +101356,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayeeParty();
 
-        $this->assertNull($model->getPayeeParty());
+        $this->assertNotInstanceOf(PayeeParty::class, $model->getPayeeParty());
 
         $testValueForPayeeParty = $model->getPayeePartyWithCreate();
 
@@ -101371,7 +101372,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerCustomerParty();
 
-        $this->assertNull($model->getBuyerCustomerParty());
+        $this->assertNotInstanceOf(BuyerCustomerParty::class, $model->getBuyerCustomerParty());
 
         $testValueForBuyerCustomerParty = $model->getBuyerCustomerPartyWithCreate();
 
@@ -101387,7 +101388,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -101403,7 +101404,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxRepresentativeParty();
 
-        $this->assertNull($model->getTaxRepresentativeParty());
+        $this->assertNotInstanceOf(TaxRepresentativeParty::class, $model->getTaxRepresentativeParty());
 
         $testValueForTaxRepresentativeParty = $model->getTaxRepresentativePartyWithCreate();
 
@@ -101707,7 +101708,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxExchangeRate();
 
-        $this->assertNull($model->getTaxExchangeRate());
+        $this->assertNotInstanceOf(TaxExchangeRate::class, $model->getTaxExchangeRate());
 
         $testValueForTaxExchangeRate = $model->getTaxExchangeRateWithCreate();
 
@@ -101723,7 +101724,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingExchangeRate();
 
-        $this->assertNull($model->getPricingExchangeRate());
+        $this->assertNotInstanceOf(PricingExchangeRate::class, $model->getPricingExchangeRate());
 
         $testValueForPricingExchangeRate = $model->getPricingExchangeRateWithCreate();
 
@@ -101739,7 +101740,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentExchangeRate();
 
-        $this->assertNull($model->getPaymentExchangeRate());
+        $this->assertNotInstanceOf(PaymentExchangeRate::class, $model->getPaymentExchangeRate());
 
         $testValueForPaymentExchangeRate = $model->getPaymentExchangeRateWithCreate();
 
@@ -101755,7 +101756,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentAlternativeExchangeRate();
 
-        $this->assertNull($model->getPaymentAlternativeExchangeRate());
+        $this->assertNotInstanceOf(PaymentAlternativeExchangeRate::class, $model->getPaymentAlternativeExchangeRate());
 
         $testValueForPaymentAlternativeExchangeRate = $model->getPaymentAlternativeExchangeRateWithCreate();
 
@@ -101915,7 +101916,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalMonetaryTotal();
 
-        $this->assertNull($model->getLegalMonetaryTotal());
+        $this->assertNotInstanceOf(LegalMonetaryTotal::class, $model->getLegalMonetaryTotal());
 
         $testValueForLegalMonetaryTotal = $model->getLegalMonetaryTotalWithCreate();
 
@@ -102096,7 +102097,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUBLVersionID();
 
-        $this->assertNull($model->getUBLVersionID());
+        $this->assertNotInstanceOf(UBLVersionID::class, $model->getUBLVersionID());
 
         $testValueForUBLVersionID = $model->getUBLVersionIDWithCreate();
 
@@ -102112,7 +102113,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetCustomizationID();
 
-        $this->assertNull($model->getCustomizationID());
+        $this->assertNotInstanceOf(CustomizationID::class, $model->getCustomizationID());
 
         $testValueForCustomizationID = $model->getCustomizationIDWithCreate();
 
@@ -102128,7 +102129,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProfileID();
 
-        $this->assertNull($model->getProfileID());
+        $this->assertNotInstanceOf(ProfileID::class, $model->getProfileID());
 
         $testValueForProfileID = $model->getProfileIDWithCreate();
 
@@ -102144,7 +102145,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetProfileExecutionID();
 
-        $this->assertNull($model->getProfileExecutionID());
+        $this->assertNotInstanceOf(ProfileExecutionID::class, $model->getProfileExecutionID());
 
         $testValueForProfileExecutionID = $model->getProfileExecutionIDWithCreate();
 
@@ -102160,7 +102161,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(ID::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -102187,7 +102188,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetUUID();
 
-        $this->assertNull($model->getUUID());
+        $this->assertNotInstanceOf(UUID::class, $model->getUUID());
 
         $testValueForUUID = $model->getUUIDWithCreate();
 
@@ -102203,7 +102204,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueDate();
 
-        $this->assertNull($model->getIssueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueDate());
 
         // Property IssueTime
 
@@ -102214,7 +102215,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetIssueTime();
 
-        $this->assertNull($model->getIssueTime());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getIssueTime());
 
         // Property DueDate
 
@@ -102225,7 +102226,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDueDate();
 
-        $this->assertNull($model->getDueDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getDueDate());
 
         // Property InvoiceTypeCode
 
@@ -102236,7 +102237,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetInvoiceTypeCode();
 
-        $this->assertNull($model->getInvoiceTypeCode());
+        $this->assertNotInstanceOf(InvoiceTypeCode::class, $model->getInvoiceTypeCode());
 
         $testValueForInvoiceTypeCode = $model->getInvoiceTypeCodeWithCreate();
 
@@ -102324,7 +102325,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxPointDate();
 
-        $this->assertNull($model->getTaxPointDate());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getTaxPointDate());
 
         // Property DocumentCurrencyCode
 
@@ -102335,7 +102336,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDocumentCurrencyCode();
 
-        $this->assertNull($model->getDocumentCurrencyCode());
+        $this->assertNotInstanceOf(DocumentCurrencyCode::class, $model->getDocumentCurrencyCode());
 
         $testValueForDocumentCurrencyCode = $model->getDocumentCurrencyCodeWithCreate();
 
@@ -102351,7 +102352,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxCurrencyCode();
 
-        $this->assertNull($model->getTaxCurrencyCode());
+        $this->assertNotInstanceOf(TaxCurrencyCode::class, $model->getTaxCurrencyCode());
 
         $testValueForTaxCurrencyCode = $model->getTaxCurrencyCodeWithCreate();
 
@@ -102367,7 +102368,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingCurrencyCode();
 
-        $this->assertNull($model->getPricingCurrencyCode());
+        $this->assertNotInstanceOf(PricingCurrencyCode::class, $model->getPricingCurrencyCode());
 
         $testValueForPricingCurrencyCode = $model->getPricingCurrencyCodeWithCreate();
 
@@ -102383,7 +102384,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentCurrencyCode();
 
-        $this->assertNull($model->getPaymentCurrencyCode());
+        $this->assertNotInstanceOf(PaymentCurrencyCode::class, $model->getPaymentCurrencyCode());
 
         $testValueForPaymentCurrencyCode = $model->getPaymentCurrencyCodeWithCreate();
 
@@ -102399,7 +102400,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentAlternativeCurrencyCode();
 
-        $this->assertNull($model->getPaymentAlternativeCurrencyCode());
+        $this->assertNotInstanceOf(PaymentAlternativeCurrencyCode::class, $model->getPaymentAlternativeCurrencyCode());
 
         $testValueForPaymentAlternativeCurrencyCode = $model->getPaymentAlternativeCurrencyCodeWithCreate();
 
@@ -102415,7 +102416,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCostCode();
 
-        $this->assertNull($model->getAccountingCostCode());
+        $this->assertNotInstanceOf(AccountingCostCode::class, $model->getAccountingCostCode());
 
         $testValueForAccountingCostCode = $model->getAccountingCostCodeWithCreate();
 
@@ -102431,7 +102432,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCost();
 
-        $this->assertNull($model->getAccountingCost());
+        $this->assertNotInstanceOf(AccountingCost::class, $model->getAccountingCost());
 
         $testValueForAccountingCost = $model->getAccountingCostWithCreate();
 
@@ -102447,7 +102448,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLineCountNumeric();
 
-        $this->assertNull($model->getLineCountNumeric());
+        $this->assertNotInstanceOf(LineCountNumeric::class, $model->getLineCountNumeric());
 
         $testValueForLineCountNumeric = $model->getLineCountNumericWithCreate();
 
@@ -102463,7 +102464,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerReference();
 
-        $this->assertNull($model->getBuyerReference());
+        $this->assertNotInstanceOf(BuyerReference::class, $model->getBuyerReference());
 
         $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
@@ -102551,7 +102552,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetOrderReference();
 
-        $this->assertNull($model->getOrderReference());
+        $this->assertNotInstanceOf(OrderReference::class, $model->getOrderReference());
 
         $testValueForOrderReference = $model->getOrderReferenceWithCreate();
 
@@ -103215,7 +103216,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingSupplierParty();
 
-        $this->assertNull($model->getAccountingSupplierParty());
+        $this->assertNotInstanceOf(AccountingSupplierParty::class, $model->getAccountingSupplierParty());
 
         $testValueForAccountingSupplierParty = $model->getAccountingSupplierPartyWithCreate();
 
@@ -103231,7 +103232,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetAccountingCustomerParty();
 
-        $this->assertNull($model->getAccountingCustomerParty());
+        $this->assertNotInstanceOf(AccountingCustomerParty::class, $model->getAccountingCustomerParty());
 
         $testValueForAccountingCustomerParty = $model->getAccountingCustomerPartyWithCreate();
 
@@ -103247,7 +103248,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPayeeParty();
 
-        $this->assertNull($model->getPayeeParty());
+        $this->assertNotInstanceOf(PayeeParty::class, $model->getPayeeParty());
 
         $testValueForPayeeParty = $model->getPayeePartyWithCreate();
 
@@ -103263,7 +103264,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetBuyerCustomerParty();
 
-        $this->assertNull($model->getBuyerCustomerParty());
+        $this->assertNotInstanceOf(BuyerCustomerParty::class, $model->getBuyerCustomerParty());
 
         $testValueForBuyerCustomerParty = $model->getBuyerCustomerPartyWithCreate();
 
@@ -103279,7 +103280,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetSellerSupplierParty();
 
-        $this->assertNull($model->getSellerSupplierParty());
+        $this->assertNotInstanceOf(SellerSupplierParty::class, $model->getSellerSupplierParty());
 
         $testValueForSellerSupplierParty = $model->getSellerSupplierPartyWithCreate();
 
@@ -103295,7 +103296,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxRepresentativeParty();
 
-        $this->assertNull($model->getTaxRepresentativeParty());
+        $this->assertNotInstanceOf(TaxRepresentativeParty::class, $model->getTaxRepresentativeParty());
 
         $testValueForTaxRepresentativeParty = $model->getTaxRepresentativePartyWithCreate();
 
@@ -103383,7 +103384,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetDeliveryTerms();
 
-        $this->assertNull($model->getDeliveryTerms());
+        $this->assertNotInstanceOf(DeliveryTerms::class, $model->getDeliveryTerms());
 
         $testValueForDeliveryTerms = $model->getDeliveryTermsWithCreate();
 
@@ -103687,7 +103688,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetTaxExchangeRate();
 
-        $this->assertNull($model->getTaxExchangeRate());
+        $this->assertNotInstanceOf(TaxExchangeRate::class, $model->getTaxExchangeRate());
 
         $testValueForTaxExchangeRate = $model->getTaxExchangeRateWithCreate();
 
@@ -103703,7 +103704,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPricingExchangeRate();
 
-        $this->assertNull($model->getPricingExchangeRate());
+        $this->assertNotInstanceOf(PricingExchangeRate::class, $model->getPricingExchangeRate());
 
         $testValueForPricingExchangeRate = $model->getPricingExchangeRateWithCreate();
 
@@ -103719,7 +103720,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentExchangeRate();
 
-        $this->assertNull($model->getPaymentExchangeRate());
+        $this->assertNotInstanceOf(PaymentExchangeRate::class, $model->getPaymentExchangeRate());
 
         $testValueForPaymentExchangeRate = $model->getPaymentExchangeRateWithCreate();
 
@@ -103735,7 +103736,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetPaymentAlternativeExchangeRate();
 
-        $this->assertNull($model->getPaymentAlternativeExchangeRate());
+        $this->assertNotInstanceOf(PaymentAlternativeExchangeRate::class, $model->getPaymentAlternativeExchangeRate());
 
         $testValueForPaymentAlternativeExchangeRate = $model->getPaymentAlternativeExchangeRateWithCreate();
 
@@ -103897,7 +103898,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetLegalMonetaryTotal();
 
-        $this->assertNull($model->getLegalMonetaryTotal());
+        $this->assertNotInstanceOf(LegalMonetaryTotal::class, $model->getLegalMonetaryTotal());
 
         $testValueForLegalMonetaryTotal = $model->getLegalMonetaryTotalWithCreate();
 
@@ -104006,7 +104007,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-CurrencyIDValue';
         $model->setCurrencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getCurrencyID());
+        $this->assertSame($testValue, $model->getCurrencyID());
 
         $model->unsetCurrencyID();
 
@@ -104027,7 +104028,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 
@@ -104063,7 +104064,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTime::class, $model->getValue());
 
         $testValueForValue = $model->getValueWithCreate();
 
@@ -104089,7 +104090,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -104106,7 +104107,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 
@@ -104159,7 +104160,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-UnitCodeValue';
         $model->setUnitCode($testValue);
 
-        $this->assertEquals($testValue, $model->getUnitCode());
+        $this->assertSame($testValue, $model->getUnitCode());
 
         $model->unsetUnitCode();
 
@@ -104213,7 +104214,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 
@@ -104256,7 +104257,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 
@@ -104292,7 +104293,7 @@ final class UblModelTest extends TestCase
 
         $model->unsetValue();
 
-        $this->assertNull($model->getValue());
+        $this->assertNotInstanceOf(DateTimeInterface::class, $model->getValue());
     }
 
     /**
@@ -104320,7 +104321,7 @@ final class UblModelTest extends TestCase
         $testValue = 'dummy-MimeCodeValue';
         $model->setMimeCode($testValue);
 
-        $this->assertEquals($testValue, $model->getMimeCode());
+        $this->assertSame($testValue, $model->getMimeCode());
 
         $model->unsetMimeCode();
 

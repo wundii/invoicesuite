@@ -45,7 +45,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -66,7 +66,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -87,7 +87,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -112,7 +112,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -138,7 +138,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetBusinessProcessSpecifiedDocumentContextParameter();
 
-        $this->assertNull($model->getBusinessProcessSpecifiedDocumentContextParameter());
+        $this->assertNotInstanceOf(DocumentContextParameterType::class, $model->getBusinessProcessSpecifiedDocumentContextParameter());
 
         $testValueForBusinessProcessSpecifiedDocumentContextParameter = $model->getBusinessProcessSpecifiedDocumentContextParameterWithCreate();
 
@@ -154,7 +154,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetGuidelineSpecifiedDocumentContextParameter();
 
-        $this->assertNull($model->getGuidelineSpecifiedDocumentContextParameter());
+        $this->assertNotInstanceOf(DocumentContextParameterType::class, $model->getGuidelineSpecifiedDocumentContextParameter());
 
         $testValueForGuidelineSpecifiedDocumentContextParameter = $model->getGuidelineSpecifiedDocumentContextParameterWithCreate();
 
@@ -180,7 +180,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -196,7 +196,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetTypeCode();
 
-        $this->assertNull($model->getTypeCode());
+        $this->assertNotInstanceOf(DocumentCodeType::class, $model->getTypeCode());
 
         $testValueForTypeCode = $model->getTypeCodeWithCreate();
 
@@ -212,7 +212,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetIssueDateTime();
 
-        $this->assertNull($model->getIssueDateTime());
+        $this->assertNotInstanceOf(DateTimeType::class, $model->getIssueDateTime());
 
         $testValueForIssueDateTime = $model->getIssueDateTimeWithCreate();
 
@@ -238,7 +238,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetBuyerReference();
 
-        $this->assertNull($model->getBuyerReference());
+        $this->assertNotInstanceOf(TextType::class, $model->getBuyerReference());
 
         $testValueForBuyerReference = $model->getBuyerReferenceWithCreate();
 
@@ -254,7 +254,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetSellerTradeParty();
 
-        $this->assertNull($model->getSellerTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getSellerTradeParty());
 
         $testValueForSellerTradeParty = $model->getSellerTradePartyWithCreate();
 
@@ -270,7 +270,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetBuyerTradeParty();
 
-        $this->assertNull($model->getBuyerTradeParty());
+        $this->assertNotInstanceOf(TradePartyType::class, $model->getBuyerTradeParty());
 
         $testValueForBuyerTradeParty = $model->getBuyerTradePartyWithCreate();
 
@@ -286,7 +286,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetBuyerOrderReferencedDocument();
 
-        $this->assertNull($model->getBuyerOrderReferencedDocument());
+        $this->assertNotInstanceOf(ReferencedDocumentType::class, $model->getBuyerOrderReferencedDocument());
 
         $testValueForBuyerOrderReferencedDocument = $model->getBuyerOrderReferencedDocumentWithCreate();
 
@@ -322,7 +322,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetInvoiceCurrencyCode();
 
-        $this->assertNull($model->getInvoiceCurrencyCode());
+        $this->assertNotInstanceOf(CurrencyCodeType::class, $model->getInvoiceCurrencyCode());
 
         $testValueForInvoiceCurrencyCode = $model->getInvoiceCurrencyCodeWithCreate();
 
@@ -338,7 +338,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetSpecifiedTradeSettlementHeaderMonetarySummation();
 
-        $this->assertNull($model->getSpecifiedTradeSettlementHeaderMonetarySummation());
+        $this->assertNotInstanceOf(TradeSettlementHeaderMonetarySummationType::class, $model->getSpecifiedTradeSettlementHeaderMonetarySummation());
 
         $testValueForSpecifiedTradeSettlementHeaderMonetarySummation = $model->getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate();
 
@@ -364,7 +364,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -390,7 +390,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetIssuerAssignedID();
 
-        $this->assertNull($model->getIssuerAssignedID());
+        $this->assertNotInstanceOf(IDType::class, $model->getIssuerAssignedID());
 
         $testValueForIssuerAssignedID = $model->getIssuerAssignedIDWithCreate();
 
@@ -416,7 +416,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeAgreement();
 
-        $this->assertNull($model->getApplicableHeaderTradeAgreement());
+        $this->assertNotInstanceOf(HeaderTradeAgreementType::class, $model->getApplicableHeaderTradeAgreement());
 
         $testValueForApplicableHeaderTradeAgreement = $model->getApplicableHeaderTradeAgreementWithCreate();
 
@@ -432,7 +432,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeDelivery();
 
-        $this->assertNull($model->getApplicableHeaderTradeDelivery());
+        $this->assertNotInstanceOf(HeaderTradeDeliveryType::class, $model->getApplicableHeaderTradeDelivery());
 
         $testValueForApplicableHeaderTradeDelivery = $model->getApplicableHeaderTradeDeliveryWithCreate();
 
@@ -448,7 +448,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetApplicableHeaderTradeSettlement();
 
-        $this->assertNull($model->getApplicableHeaderTradeSettlement());
+        $this->assertNotInstanceOf(HeaderTradeSettlementType::class, $model->getApplicableHeaderTradeSettlement());
 
         $testValueForApplicableHeaderTradeSettlement = $model->getApplicableHeaderTradeSettlementWithCreate();
 
@@ -474,7 +474,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetID();
 
-        $this->assertNull($model->getID());
+        $this->assertNotInstanceOf(IDType::class, $model->getID());
 
         $testValueForID = $model->getIDWithCreate();
 
@@ -500,7 +500,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetCountryID();
 
-        $this->assertNull($model->getCountryID());
+        $this->assertNotInstanceOf(CountryIDType::class, $model->getCountryID());
 
         $testValueForCountryID = $model->getCountryIDWithCreate();
 
@@ -526,7 +526,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetName();
 
-        $this->assertNull($model->getName());
+        $this->assertNotInstanceOf(TextType::class, $model->getName());
 
         $testValueForName = $model->getNameWithCreate();
 
@@ -542,7 +542,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetSpecifiedLegalOrganization();
 
-        $this->assertNull($model->getSpecifiedLegalOrganization());
+        $this->assertNotInstanceOf(LegalOrganizationType::class, $model->getSpecifiedLegalOrganization());
 
         $testValueForSpecifiedLegalOrganization = $model->getSpecifiedLegalOrganizationWithCreate();
 
@@ -558,7 +558,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetPostalTradeAddress();
 
-        $this->assertNull($model->getPostalTradeAddress());
+        $this->assertNotInstanceOf(TradeAddressType::class, $model->getPostalTradeAddress());
 
         $testValueForPostalTradeAddress = $model->getPostalTradeAddressWithCreate();
 
@@ -648,7 +648,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetTaxBasisTotalAmount();
 
-        $this->assertNull($model->getTaxBasisTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getTaxBasisTotalAmount());
 
         $testValueForTaxBasisTotalAmount = $model->getTaxBasisTotalAmountWithCreate();
 
@@ -728,7 +728,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetGrandTotalAmount();
 
-        $this->assertNull($model->getGrandTotalAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getGrandTotalAmount());
 
         $testValueForGrandTotalAmount = $model->getGrandTotalAmountWithCreate();
 
@@ -744,7 +744,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetDuePayableAmount();
 
-        $this->assertNull($model->getDuePayableAmount());
+        $this->assertNotInstanceOf(AmountType::class, $model->getDuePayableAmount());
 
         $testValueForDuePayableAmount = $model->getDuePayableAmountWithCreate();
 
@@ -781,7 +781,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetExchangedDocumentContext();
 
-        $this->assertNull($model->getExchangedDocumentContext());
+        $this->assertNotInstanceOf(ExchangedDocumentContextType::class, $model->getExchangedDocumentContext());
 
         $testValueForExchangedDocumentContext = $model->getExchangedDocumentContextWithCreate();
 
@@ -797,7 +797,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetExchangedDocument();
 
-        $this->assertNull($model->getExchangedDocument());
+        $this->assertNotInstanceOf(ExchangedDocumentType::class, $model->getExchangedDocument());
 
         $testValueForExchangedDocument = $model->getExchangedDocumentWithCreate();
 
@@ -813,7 +813,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetSupplyChainTradeTransaction();
 
-        $this->assertNull($model->getSupplyChainTradeTransaction());
+        $this->assertNotInstanceOf(SupplyChainTradeTransactionType::class, $model->getSupplyChainTradeTransaction());
 
         $testValueForSupplyChainTradeTransaction = $model->getSupplyChainTradeTransactionWithCreate();
 
@@ -835,7 +835,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 1.23;
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -846,7 +846,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-CurrencyIDValue';
         $model->setCurrencyID($testValue);
 
-        $this->assertEquals($testValue, $model->getCurrencyID());
+        $this->assertSame($testValue, $model->getCurrencyID());
 
         $model->unsetCurrencyID();
 
@@ -867,7 +867,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -878,7 +878,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-FormatValue';
         $model->setFormat($testValue);
 
-        $this->assertEquals($testValue, $model->getFormat());
+        $this->assertSame($testValue, $model->getFormat());
 
         $model->unsetFormat();
 
@@ -903,7 +903,7 @@ final class ZffxMinimumModelTest extends TestCase
 
         $model->unsetDateTimeString();
 
-        $this->assertNull($model->getDateTimeString());
+        $this->assertNotInstanceOf(DateTimeStringAType::class, $model->getDateTimeString());
 
         $testValueForDateTimeString = $model->getDateTimeStringWithCreate();
 
@@ -925,7 +925,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 
@@ -936,7 +936,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-SchemeIDValue';
         $model->setSchemeID($testValue);
 
-        $this->assertEquals($testValue, $model->getSchemeID());
+        $this->assertSame($testValue, $model->getSchemeID());
 
         $model->unsetSchemeID();
 
@@ -957,7 +957,7 @@ final class ZffxMinimumModelTest extends TestCase
         $testValue = 'dummy-ValueValue';
         $model->setValue($testValue);
 
-        $this->assertEquals($testValue, $model->getValue());
+        $this->assertSame($testValue, $model->getValue());
 
         $model->unsetValue();
 

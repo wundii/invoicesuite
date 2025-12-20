@@ -5161,7 +5161,7 @@ final class XRechnungUBLBuilderTest extends TestCase
         $this->disableRenderXmlContent();
 
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value);
-        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0, 'paymentref');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:PaymentMeans/cbc:PaymentID', 0);
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:ID', 0, 'iban');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cbc:Name', 0, 'accountname');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:PaymentMeans/cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID', 0, 'bic');
@@ -5865,7 +5865,7 @@ final class XRechnungUBLBuilderTest extends TestCase
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0, '9.00');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0, '10.00');
         $this->assertXPathValueWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0, '8.00');
-        $this->assertXPathValueWithIndex('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', 1, '6.00');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', 1); // No Tax Currency present
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);
@@ -5940,7 +5940,7 @@ final class XRechnungUBLBuilderTest extends TestCase
         $this->assertXPathValueWithIndexAndNotWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PrepaidAmount', 0, '9.00', 'currencyID');
         $this->assertXPathValueWithIndexAndNotWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount', 0, '10.00', 'currencyID');
         $this->assertXPathValueWithIndexAndNotWithAttribute('/ns:Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount', 0, '8.00', 'currencyID');
-        $this->assertXPathValueWithIndexAndNotWithAttribute('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', 1, '6.00', 'currencyID');
+        $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:TaxTotal/cbc:TaxAmount', 1); // No Tax Currency present
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:LineExtensionAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount', 1);
         $this->assertXPathNotExistsWithIndex('/ns:Invoice/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount', 1);

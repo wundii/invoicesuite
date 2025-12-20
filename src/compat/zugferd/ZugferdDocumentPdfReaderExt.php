@@ -63,20 +63,14 @@ class ZugferdDocumentPdfReaderExt
     private const ATTACHMENT_TYPE_ADDITIONAL = 1;
 
     /**
-     * Internal PDF document reader
-     *
-     * @var InvoiceSuitePdfDocumentReader
-     */
-    protected InvoiceSuitePdfDocumentReader $pdfDocumentReader;
-
-    /**
      * (Hidden) Constructor
      */
     final protected function __construct(
-        InvoiceSuitePdfDocumentReader $pdfDocumentReader
-    ) {
-        $this->pdfDocumentReader = $pdfDocumentReader;
-    }
+        /**
+         * Internal PDF document reader
+         */
+        protected InvoiceSuitePdfDocumentReader $pdfDocumentReader
+    ) {}
 
     /**
      * Load a PDF file

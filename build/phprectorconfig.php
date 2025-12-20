@@ -2,47 +2,52 @@
 
 declare(strict_types=1);
 
+use Rector\Caching\ValueObject\Storage\FileCacheStorage;
+use Rector\CodeQuality\Rector\Class_\ConvertStaticToSelfRector;
+use Rector\CodeQuality\Rector\New_\NewStaticToNewSelfRector;
 use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessVarTagRector;
-use Rector\PHPUnit\Set\PHPUnitSetList;
-use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
+use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/../src',
         __DIR__ . '/../tests/testcases',
     ])
+    ->withPhpVersion(PhpVersion::PHP_81)
+    ->withPhpSets(php81: true)
+    ->withPreparedSets(
+        deadCode: true,
+        codeQuality: true,
+        codingStyle: true,
+        instanceOf: true,
+        phpunitCodeQuality: true
+    )
+    ->withComposerBased(phpunit: true)
     ->withSkip([
         RemoveUselessParamTagRector::class,
         RemoveUselessReturnTagRector::class,
         RemoveUselessVarTagRector::class,
-    ])
-    ->withSets([
-        SetList::PHP_81,
-        SetList::DEAD_CODE,
-        SetList::CODE_QUALITY,
-        SetList::CODING_STYLE,
-        SetList::INSTANCEOF,
-        SetList::PRIVATIZATION,
-        PHPUnitSetList::PHPUNIT_90,
-        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+        ConvertStaticToSelfRector::class,
+        NewStaticToNewSelfRector::class,
     ])
     ->withConfiguredRule(EncapsedStringsToSprintfRector::class, [
         'always' => true,
     ])
     ->withRules([
-        //RenamePropertyToMatchTypeRector::class,
-        //RenameParamToMatchTypeRector::class,
-        //RenameVariableToMatchNewTypeRector::class,
         DeclareStrictTypesRector::class,
     ])
     ->withImportNames(
         importShortClasses: true,
         removeUnusedImports: true
+    )
+    ->withCache(
+        cacheClass: FileCacheStorage::class,
+        cacheDirectory: __DIR__ . '/rector'
     )
     ->withoutParallel()
     ->withTypeCoverageLevel(0);

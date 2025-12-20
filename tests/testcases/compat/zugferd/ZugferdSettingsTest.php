@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use horstoeko\invoicesuite\tests\TestCase;
@@ -7,7 +9,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\zugferd\ZugferdSettings;
 
-class ZugferdSettingsTest extends TestCase
+final class ZugferdSettingsTest extends TestCase
 {
     /**
      * {@inheritDoc}

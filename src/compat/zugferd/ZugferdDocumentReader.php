@@ -43,13 +43,6 @@ class ZugferdDocumentReader
     use HandlesSafeInvoking;
 
     /**
-     * Internal document reader
-     *
-     * @var InvoiceSuiteDocumentReader
-     */
-    protected InvoiceSuiteDocumentReader $documentReader;
-
-    /**
      * @var string
      */
     protected $binarydatadirectory = '';
@@ -60,10 +53,12 @@ class ZugferdDocumentReader
      * @param  InvoiceSuiteDocumentReader $documentReader
      * @return void
      */
-    final protected function __construct(InvoiceSuiteDocumentReader $documentReader)
-    {
-        $this->documentReader = $documentReader;
-    }
+    final protected function __construct(
+        /**
+         * Internal document reader
+         */
+        protected InvoiceSuiteDocumentReader $documentReader
+    ) {}
 
     /**
      * Dynamically pass missing methods to the internal reader
@@ -140,7 +135,7 @@ class ZugferdDocumentReader
     {
         $providerId = $this->documentReader->getCurrentDocumentFormatProvider()->getUniqueId();
 
-        foreach (ZugferdProfiles::PROFILEDEF as $profileId => $profileDef) {
+        foreach (ZugferdProfiles::PROFILEDEF as $profileDef) {
             if ($profileDef['invoicesuiteproviderid'] == $providerId) {
                 return $profileDef;
             }
@@ -5158,7 +5153,7 @@ class ZugferdDocumentReader
             return $this;
         }
 
-        if ($newInvoiceSuiteAttachment->isBinaryAttachment() !== false) {
+        if ($newInvoiceSuiteAttachment->isBinaryAttachment()) {
             // @phpstan-ignore paramOut.type
             $binaryDataFilename = $newInvoiceSuiteAttachment->getFilename();
             $binarydata = $newInvoiceSuiteAttachment->getRawContent();
@@ -5173,7 +5168,7 @@ class ZugferdDocumentReader
             }
         }
 
-        if ($newInvoiceSuiteAttachment->isUrlAttachment() !== false) {
+        if ($newInvoiceSuiteAttachment->isUrlAttachment()) {
             $uriId = $newInvoiceSuiteAttachment->getRawContent();
         }
 

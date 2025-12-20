@@ -84,7 +84,7 @@ trait HandlesSafeInvoking
         $methods = explode('.', $methods);
 
         foreach ($methods as $index => $method) {
-            if ($index == count($methods) - 1) {
+            if ($index === count($methods) - 1) {
                 $this->safeInvokeTryCall($instance, $method, $value);
             } else {
                 $instance = $this->safeInvokeTryCallAndReturn($instance, $method);

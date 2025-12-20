@@ -349,9 +349,7 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
         return array_values(
             array_filter(
                 $this->messageBagItems,
-                static function (InvoiceSuiteMessageBagItem $messageBagItem) use ($severity): bool {
-                    return $messageBagItem->getMessageSeverity() === $severity;
-                }
+                static fn (InvoiceSuiteMessageBagItem $messageBagItem): bool => $messageBagItem->getMessageSeverity() === $severity
             )
         );
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace horstoeko\invoicesuite\tests\testcases\compat\zugferd;
 
 use Exception;
@@ -10,7 +12,7 @@ use horstoeko\zugferd\ZugferdProfiles;
 use SimpleXMLElement;
 use Throwable;
 
-class ZugferdProfileResolverTest extends TestCase
+final class ZugferdProfileResolverTest extends TestCase
 {
     public function testResolveEn16931()
     {
@@ -278,7 +280,7 @@ class ZugferdProfileResolverTest extends TestCase
         try {
             libxml_clear_errors();
             $xmldocument = new SimpleXMLElement($this->deliverStringWhichIsNotXml());
-        } catch (Throwable $throwable) {
+        } catch (Throwable) {
             // Do nothing
         } finally {
             libxml_use_internal_errors($prevUseInternalErrors);
