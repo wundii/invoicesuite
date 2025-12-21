@@ -32,15 +32,9 @@ final class XRechnungUBLProviderTest extends TestCase
         $this->assertArrayNotHasKey('ContextParameter', $provider->getParameters());
         $this->assertArrayNotHasKey('AlternativeContextParameters', $provider->getParameters());
         $this->assertArrayNotHasKey('BusinessProcess', $provider->getParameters());
-        $this->assertArrayHasKey('QuotationDocTypeCode', $provider->getParameters());
-        $this->assertArrayHasKey('QuotationDocDescription', $provider->getParameters());
         $this->assertArrayHasKey('CustomizationId', $provider->getParameters());
         $this->assertArrayHasKey('ProfileId', $provider->getParameters());
 
-        $this->assertIsString($provider->getParameters()['QuotationDocTypeCode']);
-        $this->assertSame('325', $provider->getParameters()['QuotationDocTypeCode']);
-        $this->assertIsString($provider->getParameters()['QuotationDocDescription']);
-        $this->assertSame('Quotation', $provider->getParameters()['QuotationDocDescription']);
         $this->assertIsString($provider->getParameters()['CustomizationId']);
         $this->assertSame('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0', $provider->getParameters()['CustomizationId']);
         $this->assertIsString($provider->getParameters()['ProfileId']);

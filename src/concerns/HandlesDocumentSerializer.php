@@ -49,7 +49,7 @@ trait HandlesDocumentSerializer
         if (InvoiceSuiteSettings::hasSerializerCacheDirectory()) {
             $this->documentSerializerBuilder->setCacheDir(InvoiceSuiteSettings::getSerializerCacheDirectory());
         } else {
-            $this->documentSerializerBuilder->setCacheDir(InvoiceSuitePathUtils::combineAllPaths(sys_get_temp_dir(), 'jms'));
+            $this->documentSerializerBuilder->setCacheDir(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', 'cache', 'jms'));
         }
 
         $this->documentSerializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry): void {

@@ -149,5 +149,13 @@ class InvoiceSuiteClassFinder
                 unlink($file);
             }
         }
+
+        $files = glob(__DIR__.'/../cache/jms/**/*.*', GLOB_BRACE);
+
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
     }
 }

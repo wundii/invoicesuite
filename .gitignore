@@ -113,3 +113,4 @@ phpstan.json
 phpstan.txt
 
 /build/rector
+/src/cache/

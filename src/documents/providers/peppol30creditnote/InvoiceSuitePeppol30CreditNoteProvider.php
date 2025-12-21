@@ -9,22 +9,22 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\peppol30invoice;
+namespace horstoeko\invoicesuite\documents\providers\peppol30creditnote;
 
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
 use Throwable;
 
-class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
+class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
-        return 'peppol30invoice';
+        return 'peppol30creditnote';
     }
 
     /**
@@ -32,7 +32,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
      */
     public function getDescription(): string
     {
-        return 'Peppol BIS Billing 3.0 - May 2025 Release (Invoice)';
+        return 'Peppol BIS Billing 3.0 - May 2025 Release (Credit Note)';
     }
 
     /**
@@ -60,7 +60,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuitePeppol30InvoiceSerializerHandler::class,
+            InvoiceSuitePeppol30CreditNoteSerializerHandler::class,
         ];
     }
 
@@ -100,10 +100,10 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
             $contentDomDocument = new DOMDocument();
             $contentDomDocument->loadXML($serializedContent);
             $contentDomXPath = new DOMXPath($contentDomDocument);
-            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
+            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2');
             $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
+            $contentQuery = sprintf("//inv:CreditNote/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
@@ -115,7 +115,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
                 return false;
             }
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
+            $contentQuery = sprintf("//inv:CreditNote/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
@@ -139,7 +139,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
      */
     public function getRootClassName(): string
     {
-        return Invoice::class;
+        return CreditNote::class;
     }
 
     /**
@@ -147,7 +147,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuitePeppol30InvoiceProviderReader::class;
+        return InvoiceSuitePeppol30CreditNoteProviderReader::class;
     }
 
     /**
@@ -155,7 +155,7 @@ class InvoiceSuitePeppol30InvoiceProvider extends InvoiceSuiteAbstractDocumentFo
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuitePeppol30InvoiceProviderBuilder::class;
+        return InvoiceSuitePeppol30CreditNoteProviderBuilder::class;
     }
 
     /**

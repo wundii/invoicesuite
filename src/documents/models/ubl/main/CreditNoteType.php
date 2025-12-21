@@ -3883,6 +3883,23 @@ class CreditNoteType
     }
 
     /**
+     * @param  int           $index
+     * @return null|TaxTotal
+     */
+    public function getTaxTotalAtIndex(int $index): ?TaxTotal
+    {
+        if (!is_array($this->taxTotal)) {
+            return null;
+        }
+
+        if (!array_key_exists($index, $this->taxTotal)) {
+            return null;
+        }
+
+        return $this->taxTotal[$index];
+    }
+
+    /**
      * @param  null|array<TaxTotal> $taxTotal
      * @return static
      */
@@ -3962,6 +3979,42 @@ class CreditNoteType
         $this->addTotaxTotal($taxTotal = new TaxTotal());
 
         return $taxTotal;
+    }
+
+    /**
+     * @param  int      $index
+     * @return TaxTotal
+     */
+    public function addToTaxTotalWithCreateAtIndex(int $index): TaxTotal
+    {
+        if (!is_array($this->taxTotal)) {
+            $this->taxTotal = [];
+        }
+
+        if (!array_key_exists($index, $this->taxTotal)) {
+            $this->taxTotal[$index] = new TaxTotal();
+        }
+
+        return $this->taxTotal[$index];
+    }
+
+    /**
+     * @param  int    $index
+     * @return static
+     */
+    public function unsetTaxTotalAtIndex(int $index): static
+    {
+        if (!is_array($this->taxTotal)) {
+            return $this;
+        }
+
+        if (!array_key_exists($index, $this->taxTotal)) {
+            return $this;
+        }
+
+        unset($this->taxTotal[$index]);
+
+        return $this;
     }
 
     /**
