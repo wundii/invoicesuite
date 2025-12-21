@@ -10310,42 +10310,6 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
     }
 
     /**
-     * Get all tax representative IDs
-     *
-     * @return array<PartyIdentification>
-     */
-    private function resolveDocumentTaxRepresentativeIds(): array
-    {
-        return
-            array_values(
-                array_filter(
-                    InvoiceSuiteArrayUtils::ensure(
-                        $this->getUblRootObject()->getTaxRepresentativeParty()?->getPartyIdentification() ?? []
-                    ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') === ''
-                )
-            );
-    }
-
-    /**
-     * Get all tax representative global IDs
-     *
-     * @return array<PartyIdentification>
-     */
-    private function resolveDocumentTaxRepresentativeGlobalIds(): array
-    {
-        return
-            array_values(
-                array_filter(
-                    InvoiceSuiteArrayUtils::ensure(
-                        $this->getUblRootObject()->getTaxRepresentativeParty()?->getPartyIdentification() ?? []
-                    ),
-                    static fn (PartyIdentificationType $partyIdentification) => ($partyIdentification->getID()?->getSchemeID() ?? '') !== ''
-                )
-            );
-    }
-
-    /**
      * Get all buyer/customer IDs
      *
      * @return array<PartyIdentification>
