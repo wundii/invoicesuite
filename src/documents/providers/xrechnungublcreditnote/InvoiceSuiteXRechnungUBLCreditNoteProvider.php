@@ -9,22 +9,22 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite\documents\providers\xrechnungublinvoice;
+namespace horstoeko\invoicesuite\documents\providers\xrechnungublcreditnote;
 
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
+use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
 use Throwable;
 
-class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
+class InvoiceSuiteXRechnungUBLCreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
     /**
      * {@inheritDoc}
      */
     public function getUniqueId(): string
     {
-        return 'xrechnungublinvoice';
+        return 'xrechnungublcreditnote';
     }
 
     /**
@@ -62,7 +62,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
     public function getSerializerHandlers(): array
     {
         return [
-            InvoiceSuiteXRechnungUBLInvoiceSerializerHandler::class,
+            InvoiceSuiteXRechnungUBLCreditNoteSerializerHandler::class,
         ];
     }
 
@@ -102,10 +102,10 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
             $contentDomDocument = new DOMDocument();
             $contentDomDocument->loadXML($serializedContent);
             $contentDomXPath = new DOMXPath($contentDomDocument);
-            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
+            $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2');
             $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
+            $contentQuery = sprintf("//inv:CreditNote/cbc:CustomizationID[text()='%s']", $this->getFormatProviderParameterValue('CustomizationId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
@@ -117,7 +117,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
                 return false;
             }
 
-            $contentQuery = sprintf("//inv:Invoice/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
+            $contentQuery = sprintf("//inv:CreditNote/cbc:ProfileID[text()='%s']", $this->getFormatProviderParameterValue('ProfileId', ''));
 
             $contentEntries = $contentDomXPath->query($contentQuery);
 
@@ -141,7 +141,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
      */
     public function getRootClassName(): string
     {
-        return Invoice::class;
+        return CreditNote::class;
     }
 
     /**
@@ -149,7 +149,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
      */
     public function getReaderClassName(): string
     {
-        return InvoiceSuiteXRechnungUBLInvoiceProviderReader::class;
+        return InvoiceSuiteXRechnungUBLCreditNoteProviderReader::class;
     }
 
     /**
@@ -157,7 +157,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
      */
     public function getBuilderClassName(): string
     {
-        return InvoiceSuiteXRechnungUBLInvoiceProviderBuilder::class;
+        return InvoiceSuiteXRechnungUBLCreditNoteProviderBuilder::class;
     }
 
     /**
