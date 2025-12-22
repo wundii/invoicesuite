@@ -39,7 +39,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$creationMode = 9; // 0 = XRechnung UBL Invoice, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic, 5 = ZF/FX Minimum, 6 = XRechnung, 7 = Peppol 3.0 Invoice, 8 = Peppol 3.0 Credit Note, 9 = XRechnung UBL Credit Note
+$creationMode = 2; // 0 = XRechnung UBL Invoice, 1 ZF/FX Extended, 2 = ZF/FX Comfort, 3 = ZF/FX BasicWL, 4 = ZF/FX Basic, 5 = ZF/FX Minimum, 6 = XRechnung, 7 = Peppol 3.0 Invoice, 8 = Peppol 3.0 Credit Note, 9 = XRechnung UBL Credit Note
 
 if ($creationMode === 0) {
     $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublinvoice');
@@ -90,6 +90,7 @@ $documentDTO
     ->addNote(new InvoiceSuiteNoteDTO("Some other content", "CC99", "SC99"))
     ->addBillingPeriod(new InvoiceSuiteDateRangeDTO(new DateTime("first day of this month"), new DateTime("last day of this month"), "Some Description"))
     ->addBuyerReference(new InvoiceSuiteIdDTO('LEITWEGID'))
+    ->addSellerOrderReference(new InvoiceSuiteReferenceDocumentDTO('SO-1', new DateTime()))
     ->setSellerParty(
         (new InvoiceSuitePartyDTO())
             ->addName("Lieferant GmbH")
@@ -330,10 +331,6 @@ $documentDTO
     ->addSummation(
         (new InvoiceSuiteSummationDTO(100, 10, 20, 90, 90 * 0.19, 50, 107.1, 100.0, 7.10, 0.0))
     );
-
-$position = new InvoiceSuiteDocumentPositionDTO('1', null, null, 'GROUP');
-
-$documentDTO->addPosition($position);
 
 $position = new InvoiceSuiteDocumentPositionDTO('1.1', '1', '0815', 'DETAIL');
 
