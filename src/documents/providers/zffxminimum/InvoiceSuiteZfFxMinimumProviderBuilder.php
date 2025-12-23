@@ -1606,13 +1606,11 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
             return $this;
         }
 
-        $buyerOrderReference = $this
+        $this
             ->getCrossIndustryRootObject()
             ->getSupplyChainTradeTransactionWithCreate()
             ->getApplicableHeaderTradeAgreementWithCreate()
-            ->getBuyerOrderReferencedDocumentWithCreate();
-
-        $buyerOrderReference
+            ->getBuyerOrderReferencedDocumentWithCreate()
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
