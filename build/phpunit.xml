@@ -116,6 +116,8 @@
             <file>../tests/testcases/documentcases/ZfFxComfortDocumentBuilderDTOTest.php</file>
             <file>../tests/testcases/documentcases/ZfFxExtendedDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentcases/ZfFxExtendedDocumentBuilderDTOTest.php</file>
+            <file>../tests/testcases/documentcases/XRechnungCIIDocumentBuilderTest.php</file>
+            <file>../tests/testcases/documentcases/XRechnungCIIDocumentBuilderDTOTest.php</file>
         </testsuite>
         <testsuite name="pdf">
             <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>
