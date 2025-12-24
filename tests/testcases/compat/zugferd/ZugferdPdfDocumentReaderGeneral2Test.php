@@ -101,7 +101,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
 
     public function testAdditionalAttachments(): void
     {
-        $this->markTestSkipped('Error from another library');
+        //$this->markTestSkipped('Error from another library');
 
         $filename = __DIR__.'/../../../assets/03_zugferdpdfdocumentreader_4.pdf';
 
@@ -121,7 +121,7 @@ final class ZugferdPdfDocumentReaderGeneral2Test extends TestCase
 
     public function testInvoiceDocumentAndAttachmentsNoStatic(): void
     {
-        $this->markTestSkipped('Error from another library');
+        //$this->markTestSkipped('Error from another library');
 
         $pdfReaderExt = ZugferdDocumentPdfReaderExt::fromFile(__DIR__.'/../../../assets/03_zugferdpdfdocumentreader_4.pdf');
 
