@@ -29,6 +29,13 @@ trait HandlesXmlTests
     protected $renderingOfXmlDisabled = false;
 
     /**
+     * Custom namespaces
+     *
+     * @var array<string,string>
+     */
+    protected $customXmlNamespaces = [];
+
+    /**
      * {@inheritDoc}
      */
     protected function setUp(): void
@@ -277,6 +284,21 @@ trait HandlesXmlTests
         foreach ($ns as $prefix => $uri) {
             $xml->registerXPathNamespace($prefix !== '' ? $prefix : 'ns', $uri);
         }
+        foreach ($this->customXmlNamespaces as $prefix => $uri) {
+            $xml->registerXPathNamespace($prefix, $uri);
+        }
+    }
+
+    /**
+     * Register a custom namespace
+     *
+     * @param  string $prefix
+     * @param  string $uri
+     * @return void
+     */
+    private function registerCustomNamespace(string $prefix, string $uri): void
+    {
+        $this->customXmlNamespaces[$prefix] = $uri;
     }
 
     /**

@@ -9,7 +9,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 // Create (Remote-) Validator
 
-$reader = InvoiceSuiteDocumentReader::createFromFile(InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_cii_simple_dto.xml"));
+$reader = InvoiceSuiteDocumentReader::createFromFile(InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml"));
 $reader->convertToDTO($dto);
 
 $builder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublinvoice');
