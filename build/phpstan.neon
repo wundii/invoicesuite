@@ -9,9 +9,12 @@ parameters:
     treatPhpDocTypesAsCertain: false
     phpVersion: 80400
     exceptions:
+        implicitThrows: false
         check:
             missingCheckedExceptionInThrows: true
             tooWideThrowType: true
+        uncheckedExceptionClasses: []
+        uncheckedExceptionRegexes: []
     parallel:
         jobSize: 20
         maximumNumberOfProcesses: 1
