@@ -116,3 +116,5 @@ phpstan.txt
 /build/rector
 /build/rector-throws/rector
 /src/cache/
+
+!/assets/logo.png

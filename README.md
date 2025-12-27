@@ -1,4 +1,7 @@
-# Title
+<!-- omit in toc -->
+# horstoeko/invoicesuite
+
+![InvoiceSuite Logo](assets/logo.png)
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/horstoeko/invoicesuite.svg?style=plastic)](https://packagist.org/packages/horstoeko/invoicesuite)
 [![PHP version](https://img.shields.io/packagist/php-v/horstoeko/invoicesuite.svg?style=plastic)](https://packagist.org/packages/horstoeko/invoicesuite)
@@ -7,9 +10,13 @@
 [![Build Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.ci.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.ci.yml)
 [![Release Status](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml/badge.svg)](https://github.com/horstoeko/invoicesuite/actions/workflows/build.release.yml)
 
+<!-- omit in toc -->
 ## Table of Contents
 
-- [Title](#title)
+- [License](#license)
+- [Overview](#overview)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
 
 ## License
 
@@ -17,24 +24,27 @@ The code in this project is provided under the [MIT](https://opensource.org/lice
 
 ## Overview
 
+InvoiceSuite is a multi-format library for electronic invoices with the goal of supporting as many formats and real-world variants as possible — from international standards to country-specific profiles. This includes German formats such as ZUGFeRD (and Factur-X, which is closely aligned with it) as well as XRechnung, with XRechnung explicitly supported in UBL syntax. The library also aims to cover interoperability ecosystems such as Peppol.
+
+InvoiceSuite is designed to be extensible: if you follow the defined conventions and interfaces, you can add your own formats, profiles, or converters independently, without having to bend or modify the core.
+
 ## Dependencies
 
-This package makes use of
+This package makes use of...
+
+- [jms/serializer](http://jmsyst.com/libs/serializer)
+- [setasign/fpdf](https://github.com/Setasign/FPDF)
+- [setasign/fpdi](https://github.com/Setasign/FPDI).
+- [prinsfrank/pdfparser](https://github.com/PrinsFrank/pdfparser)
+
+... and Optionally of...
+
+- [smalot/pdfparser](https://github.com/smalot/pdfparser)
 
 ## Installation
 
-There is one recommended way to install `horstoeko/invoicesuite` via [Composer](https://getcomposer.org/):
+There is one recommended way to install `horstoeko/invoicesuite`
 
-* adding the dependency to your ``composer.json`` file:
-
-```js
-  "require": {
-      ..
-      "horstoeko/invoicesuite":"^1",
-      ..
-  },
+```bash
+composer require "horstoeko/invoicesuite"
 ```
-
-## Usage
-
-For detailed eplanation you may have a look in the [examples](https://github.com/horstoeko/invoicesuite/tree/master/examples) of this package and the documentation attached to every release.
