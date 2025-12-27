@@ -104,7 +104,7 @@ class InvoiceSuiteZfFxBasicWlProvider extends InvoiceSuiteAbstractDocumentFormat
         try {
             $contentDomDocument = new DOMDocument();
 
-            if (true !== $contentDomDocument->loadXML($serializedContent)) {
+            if (!$contentDomDocument->loadXML($serializedContent)) {
                 return false;
             }
 

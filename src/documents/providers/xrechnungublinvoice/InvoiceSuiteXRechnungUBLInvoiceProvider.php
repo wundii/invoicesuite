@@ -102,7 +102,7 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
         try {
             $contentDomDocument = new DOMDocument();
 
-            if (true !== $contentDomDocument->loadXML($serializedContent)) {
+            if (!$contentDomDocument->loadXML($serializedContent)) {
                 return false;
             }
 
