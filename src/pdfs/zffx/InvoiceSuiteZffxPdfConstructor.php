@@ -19,7 +19,10 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use Random\RandomException;
+use setasign\Fpdi\PdfParser\PdfParserException;
 use setasign\Fpdi\PdfParser\StreamReader as PdfStreamReader;
+use setasign\Fpdi\PdfReader\PdfReaderException;
 
 /**
  * Class representing the basics for a ZUGFeRD/Factor-X PDF document constructor
@@ -60,6 +63,10 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
      * Generate the final PDF
      *
      * @return static
+     *
+     * @throws PdfParserException
+     * @throws PdfReaderException
+     * @throws RandomException
      */
     protected function generatePdfDocument(): static
     {

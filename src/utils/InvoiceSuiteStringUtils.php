@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\utils;
 
 use horstoeko\stringmanagement\StringUtils;
+use Random\RandomException;
 
 /**
  * class representing string utilities
@@ -79,6 +80,8 @@ class InvoiceSuiteStringUtils
      *
      * @param  bool   $useOpenSsl Use OpenSSL-Framework. Default is true
      * @return string
+     *
+     * @throws RandomException
      */
     public static function createGuid(bool $useOpenSsl = true): string
     {

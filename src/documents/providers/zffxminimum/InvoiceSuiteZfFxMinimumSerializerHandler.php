@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\zffxminimum;
 
+use DOMException;
 use DOMText;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use JMS\Serializer\GraphNavigator;
@@ -42,6 +43,8 @@ class InvoiceSuiteZfFxMinimumSerializerHandler implements SubscribingHandlerInte
      *
      * @param XmlSerializationVisitor $visitor
      * @param mixed                   $data
+     *
+     * @throws DOMException
      */
     public function serializeAmountType(XmlSerializationVisitor $visitor, $data): DOMText
     {

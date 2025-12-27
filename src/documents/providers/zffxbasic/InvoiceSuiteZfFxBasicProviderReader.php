@@ -66,6 +66,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use ValueError;
 
 class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
@@ -76,6 +77,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @return static
      *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
+     *
+     * @throws ValueError
      */
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
@@ -2633,6 +2636,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @return static
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
+     *
+     * @throws ValueError
      */
     public function getDocumentDate(
         ?DateTimeInterface &$newDocumentDate
@@ -2836,6 +2841,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @phpstan-param-out DateTimeInterface|null $newStartDate
      * @phpstan-param-out DateTimeInterface|null $newEndDate
      * @phpstan-param-out string $newDescription
+     *
+     * @throws ValueError
      */
     public function getDocumentBillingPeriod(
         ?DateTimeInterface &$newStartDate,
@@ -3222,6 +3229,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      * @phpstan-param-out string $newTypeCode
+     *
+     * @throws ValueError
      */
     public function getDocumentInvoiceReference(
         ?string &$newReferenceNumber,
@@ -3475,6 +3484,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @return static
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
+     *
+     * @throws ValueError
      */
     public function getDocumentSupplyChainEvent(
         ?DateTimeInterface &$newDate
@@ -7459,6 +7470,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      *
      * @phpstan-param-out string $newDescription
      * @phpstan-param-out string $newMandate
+     *
+     * @throws ValueError
      */
     public function getDocumentPaymentTerm(
         ?string &$newDescription,
@@ -9683,6 +9696,8 @@ class InvoiceSuiteZfFxBasicProviderReader extends InvoiceSuiteAbstractDocumentFo
      * @phpstan-param-out DateTimeInterface|null $newStartDate
      * @phpstan-param-out DateTimeInterface|null $newEndDate
      * @phpstan-param-out string $newDescription
+     *
+     * @throws ValueError
      */
     public function getDocumentPositionBillingPeriod(
         ?DateTimeInterface &$newStartDate,

@@ -6,7 +6,6 @@ namespace horstoeko\invoicesuite\utils;
 
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\stringmanagement\FileUtils;
-use Throwable;
 
 /**
  * Class representing some string utilities for files
@@ -34,11 +33,7 @@ class InvoiceSuiteFileUtils extends FileUtils
             return false;
         }
 
-        try {
-            return is_file($filenameOrContent) && is_readable($filenameOrContent);
-        } catch (Throwable) {
-            return false;
-        }
+        return is_file($filenameOrContent) && is_readable($filenameOrContent);
     }
 
     /**
@@ -46,6 +41,8 @@ class InvoiceSuiteFileUtils extends FileUtils
      *
      * @param  string $filenameOrContent
      * @return string
+     *
+     * @throws InvoiceSuiteFileNotReadableException
      */
     public static function getContentFromFileOrString(string $filenameOrContent): string
     {

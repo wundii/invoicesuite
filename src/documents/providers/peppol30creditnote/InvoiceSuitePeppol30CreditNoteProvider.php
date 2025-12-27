@@ -15,7 +15,6 @@ use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\ubl\main\CreditNote;
-use Throwable;
 
 class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -98,7 +97,11 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
 
         try {
             $contentDomDocument = new DOMDocument();
-            $contentDomDocument->loadXML($serializedContent);
+
+            if ($contentDomDocument->loadXML($serializedContent) !== true) {
+                return false;
+            }
+
             $contentDomXPath = new DOMXPath($contentDomDocument);
             $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2');
             $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
@@ -124,14 +127,10 @@ class InvoiceSuitePeppol30CreditNoteProvider extends InvoiceSuiteAbstractDocumen
             }
 
             return $contentEntries->length === 1;
-        } catch (Throwable) {
-            // Do nothing
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);
         }
-
-        return false;
     }
 
     /**

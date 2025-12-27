@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
+use JMS\Serializer\Exception\RuntimeException;
 use JMS\Serializer\SerializationContext;
 
 /**
@@ -50,6 +51,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content as XML string
      *
      * @return string
+     *
+     * @throws RuntimeException
      */
     public function getContentAsXml(): string
     {
@@ -60,6 +63,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content as JSON string
      *
      * @return string
+     *
+     * @throws RuntimeException
      */
     public function getContentAsJson(): string
     {
@@ -71,6 +76,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      *
      * @param  string $tofile
      * @return void
+     *
+     * @throws RuntimeException
      */
     public function saveAsXmlFile(string $tofile): void
     {
@@ -82,6 +89,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      *
      * @param  string $tofile
      * @return void
+     *
+     * @throws RuntimeException
      */
     public function saveAsJsonFile(string $tofile): void
     {
@@ -4560,6 +4569,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatBuilder
      * Get the content by type
      *
      * @return string
+     *
+     * @throws RuntimeException
      */
     protected function getContentByType(string $contentType): string
     {

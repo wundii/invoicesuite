@@ -19,7 +19,9 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\pdfs\abstracts\InvoiceSuiteAbstractPdfConstructor;
+use JMS\Serializer\Exception\RuntimeException;
 
 /**
  * Class representing the PDF document builder
@@ -56,6 +58,11 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @param  string                      $fromPdfFilename
      * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAndPdfFile(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfFilename): static
     {
@@ -78,6 +85,9 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @param  string                      $fromPdfContent
      * @return static
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      */
     public static function createFromDocumentBuilderAndPdfContent(InvoiceSuiteDocumentBuilder $fromDocumentBuilder, string $fromPdfContent): static
     {
@@ -90,6 +100,10 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  string $fromDocumentContent
      * @param  string $fromPdfFilename
      * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromDocumentContentAndPdfFile(string $fromDocumentContent, string $fromPdfFilename): static
     {
@@ -112,6 +126,8 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  string $fromDocumentContent
      * @param  string $fromPdfContent
      * @return static
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     public static function createFromDocumentContentAndPdfContent(string $fromDocumentContent, string $fromPdfContent): static
     {
@@ -250,6 +266,11 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  string $newDisplayName
      * @param  string $newRelationshipType
      * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      */
     public function addAdditionalDocumentByRealFile(string $newFullFilename, string $newDisplayName = '', string $newRelationshipType = ''): static
     {
@@ -266,6 +287,9 @@ class InvoiceSuitePdfDocumentBuilder
      * @param  string $newDisplayName
      * @param  string $newRelationshipType
      * @return static
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws InvoiceSuiteUnknownContentException
      */
     public function addAdditionalDocumentByContent(string $newContent, string $newFilename, string $newDisplayName = '', string $newRelationshipType = ''): static
     {
@@ -465,6 +489,9 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @param  InvoiceSuiteDocumentBuilder $fromDocumentBuilder
      * @return static
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws RuntimeException
      */
     protected function setDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
@@ -488,6 +515,8 @@ class InvoiceSuitePdfDocumentBuilder
      *
      * @param  string $fromDocumentContent
      * @return static
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
      */
     protected function setDocumentContent(string $fromDocumentContent): static
     {

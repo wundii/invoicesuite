@@ -55,6 +55,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteDateTimeUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use ValueError;
 
 class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
@@ -65,6 +66,8 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      * @return static
      *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
+     *
+     * @throws ValueError
      */
     public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
@@ -2622,6 +2625,8 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
      * @return static
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
+     *
+     * @throws ValueError
      */
     public function getDocumentDate(
         ?DateTimeInterface &$newDocumentDate

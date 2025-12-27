@@ -11,7 +11,13 @@ declare(strict_types=1);
 
 namespace horstoeko\zugferd;
 
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
+use JMS\Serializer\Exception\RuntimeException;
+use PrinsFrank\PdfParser\Exception\PdfParserException;
 
 /**
  * Class representing the extended document reader for incoming PDF/A-Documents with
@@ -65,6 +71,13 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string $pdfFilename Contains a full-qualified filename which must exist and must be readable
      * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function fromFile(string $pdfFilename): static
     {
@@ -76,6 +89,11 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string $pdfContent Contains the raw data of a PDF
      * @return static
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function fromContent(string $pdfContent): static
     {
@@ -87,6 +105,13 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string                $pdfFilename
      * @return ZugferdDocumentReader
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function readAndGuessFromFile(string $pdfFilename): ZugferdDocumentReader
     {
@@ -98,6 +123,11 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string                $pdfContent Contains the raw data of a PDF
      * @return ZugferdDocumentReader
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function readAndGuessFromContent(string $pdfContent): ZugferdDocumentReader
     {
@@ -109,6 +139,13 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string $pdfFilename Contains a full-qualified filename which must exist and must be readable
      * @return string
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function getInvoiceDocumentContentFromFile(string $pdfFilename): string
     {
@@ -120,6 +157,11 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string $pdfContent Contains the raw data of a PDF
      * @return string
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function getInvoiceDocumentContentFromContent(string $pdfContent): string
     {
@@ -131,6 +173,13 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string                                                                            $pdfFilename Contains a full-qualified filename which must exist and must be readable
      * @return array<int, array{type: int, content: string, filename: string, mimetype: string}>
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function getAdditionalDocumentContentsFromFile(string $pdfFilename): array
     {
@@ -142,6 +191,11 @@ class ZugferdDocumentPdfReaderExt
      *
      * @param  string                                                                            $pdfContent Contains the raw data of a PDF
      * @return array<int, array{type: int, content: string, filename: string, mimetype: string}>
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws PdfParserException
+     * @throws RuntimeException
      */
     public static function getAdditionalDocumentContentsFromContent(string $pdfContent): array
     {
@@ -152,6 +206,10 @@ class ZugferdDocumentPdfReaderExt
      * Returns an instance of ZugferdDocumentReader by a valid invoice attachment
      *
      * @return ZugferdDocumentReader
+     *
+     * @throws InvoiceSuiteFormatProviderNotFoundException
+     * @throws InvoiceSuiteUnknownContentException
+     * @throws RuntimeException
      */
     public function resolveInvoiceDocumentReader(): ZugferdDocumentReader
     {

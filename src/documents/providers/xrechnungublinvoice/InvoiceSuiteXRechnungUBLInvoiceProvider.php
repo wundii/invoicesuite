@@ -16,7 +16,6 @@ use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\models\ubl\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
-use Throwable;
 
 class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -102,7 +101,11 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
 
         try {
             $contentDomDocument = new DOMDocument();
-            $contentDomDocument->loadXML($serializedContent);
+
+            if ($contentDomDocument->loadXML($serializedContent) !== true) {
+                return false;
+            }
+
             $contentDomXPath = new DOMXPath($contentDomDocument);
             $contentDomXPath->registerNamespace('inv', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
             $contentDomXPath->registerNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
@@ -145,14 +148,10 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
             }
 
             return $contentEntries->length === 1;
-        } catch (Throwable) {
-            // Do nothing
         } finally {
             libxml_clear_errors();
             libxml_use_internal_errors($prevUseInternalErrors);
         }
-
-        return false;
     }
 
     /**

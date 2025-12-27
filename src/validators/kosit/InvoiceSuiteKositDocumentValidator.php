@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\validators\kosit;
 
 use DOMDocument;
 use DOMXPath;
+use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
@@ -21,6 +22,8 @@ use horstoeko\invoicesuite\validators\abstracts\InvoiceSuiteAbstractDocumentVali
 use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\Process;
 use Throwable;
+use TypeError;
+use ValueError;
 use ZipArchive;
 
 /**
@@ -313,6 +316,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * The validation entry point
      *
      * @return static
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     protected function doValidate(): static
     {
@@ -439,6 +446,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check Requirements
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirements(): bool
     {
@@ -457,6 +466,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check general requirements (common for local and remote validation)
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsGeneral(): bool
     {
@@ -473,6 +484,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Check requirements for usage on a local installation
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsLocal(): bool
     {
@@ -502,6 +515,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * in daemon mode
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function checkRequirementsRemote(): bool
     {
@@ -568,6 +583,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Download required files
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function downloadRequiredFiles(): bool
     {
@@ -594,6 +611,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Unpack required files
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFiles(): bool
     {
@@ -624,6 +643,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @param  string $filename
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function unpackRequiredFile(string $filename): bool
     {
@@ -670,6 +691,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     private function performValidation(): bool
     {
@@ -684,6 +709,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application locally
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     private function performValidationLocal(): bool
     {
@@ -723,6 +752,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * Runs the validator java application on the remote host
      *
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function performValidationRemote(): bool
     {
@@ -776,6 +807,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * to messagebag
      *
      * @return void
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     private function parseValidatorXmlReportByFile(): void
     {
@@ -801,6 +836,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @param  string $xmlContent
      * @return void
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     private function parseValidatorXmlReportByContent(string $xmlContent): void
     {
@@ -820,6 +859,10 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      *
      * @param  DOMDocument $domDocument
      * @return void
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
+     * @throws TypeError
+     * @throws ValueError
      */
     private function parseValidatorXmlReportByDomDocument(DOMDocument $domDocument): void
     {
@@ -911,6 +954,8 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * @param  array<int,string> $command
      * @param  string            $workingdirectory
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runValidationApplication(array $command, string $workingdirectory): bool
     {
@@ -957,17 +1002,25 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
      * @param  string $toFilePath
      * @param  bool   $forceOverwrite
      * @return bool
+     *
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     private function runFileDownload(string $url, string $toFilePath, bool $forceOverwrite = false): bool
     {
-        try {
-            if (file_exists($toFilePath) && !$forceOverwrite) {
-                return true;
-            }
+        if (file_exists($toFilePath) && !$forceOverwrite) {
+            return true;
+        }
 
-            file_put_contents($toFilePath, file_get_contents($url));
-        } catch (Throwable $throwable) {
-            $this->addErrorMessageToMessageBag($throwable->getMessage());
+        $downloadedContent = file_get_contents($url);
+
+        if ($downloadedContent === false) {
+            $this->addErrorMessageToMessageBag(sprintf('Failed to download contents from %s', $url));
+
+            return false;
+        }
+
+        if (file_put_contents($toFilePath, $downloadedContent) === false) {
+            $this->addErrorMessageToMessageBag('Failed to save downloaded content');
 
             return false;
         }

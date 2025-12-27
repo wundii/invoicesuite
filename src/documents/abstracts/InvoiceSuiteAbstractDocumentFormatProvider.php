@@ -248,6 +248,8 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      *
      * @param  string $parameterName
      * @return mixed
+     *
+     * @throws InvoiceSuiteUnknownProviderParameterException
      */
     public function getFormatProviderRequiredParameterValue(string $parameterName)
     {

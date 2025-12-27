@@ -34,6 +34,10 @@ trait HandlesCallForwarding
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
+     *
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      */
     protected function forwardCallTo($object, $method, $parameters)
     {
@@ -64,6 +68,10 @@ trait HandlesCallForwarding
      * @param  string       $method
      * @param  array<mixed> $parameters
      * @return mixed
+     *
+     * @throws BadMethodCallException
+     * @throws Error
+     * @throws InvoiceSuiteBadMethodCallException
      */
     protected function forwardCallWithCheckTo($object, $method, $parameters)
     {

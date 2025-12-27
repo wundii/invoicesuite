@@ -52,6 +52,10 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
      *
      * @param  string $pdfFilename
      * @return static
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws PdfParserException
      */
     public static function fromFile(string $pdfFilename): static
     {
@@ -73,6 +77,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
      *
      * @param  string $pdfContent
      * @return static
+     *
+     * @throws PdfParserException
      */
     public static function fromContent(string $pdfContent): static
     {
@@ -129,6 +135,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
      * @param  mixed $offset
      * @param  mixed $value
      * @return void
+     *
+     * @throws LogicException
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
@@ -140,6 +148,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
      *
      * @param  mixed $offset
      * @return void
+     *
+     * @throws LogicException
      */
     public function offsetUnset(mixed $offset): void
     {
@@ -181,6 +191,8 @@ class InvoiceSuitePdfExtractor implements IteratorAggregate, Countable, ArrayAcc
      *
      * @param  string $pdfContent
      * @return static
+     *
+     * @throws PdfParserException
      */
     protected function collectAttachmentsFromPdfContent(string $pdfContent): static
     {

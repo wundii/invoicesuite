@@ -2,7 +2,6 @@
 
 use horstoeko\zugferd\ZugferdDocumentPdfMerger;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
-use horstoeko\invoicesuite\InvoiceSuitePdfDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentBuilder;
 use horstoeko\zugferd\ZugferdDocumentPdfBuilder;
 use horstoeko\zugferd\ZugferdProfiles;
