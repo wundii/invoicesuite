@@ -21,8 +21,8 @@ return RectorConfig::configure()
     ->withSkipPath(
         __DIR__ . '/../src/pdfs/zffx/InvoiceSuiteZffxPdfWriter.php',
     )
-    ->withPhpVersion(PhpVersion::PHP_81)
-    ->withPhpSets(php81: true)
+    ->withPhpVersion(PhpVersion::PHP_82)
+    ->withPhpSets(php82: true)
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,
