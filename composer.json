@@ -34,9 +34,6 @@
     "conflict": {
         "horstoeko/zugferd": "*"
     },
-    "replace": {
-        "horstoeko/zugferd": "*"
-    },
     "require": {
         "php": ">=8.2",
         "ext-simplexml": "*",
@@ -91,23 +88,13 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpunit --configuration ./build/phpunit.xml --testsuite compat --no-coverage"
         ],
-        "phpcs": "@phpcs12",
-        "phpcs12": [
-            "Composer\\Config::disableProcessTimeout",
-            "@phpcsfixer:dryrun"
-        ],
-        "phpcbf": "@phpcbf12",
-        "phpcbf12": [
-            "Composer\\Config::disableProcessTimeout",
-            "@phpcsfixer:run"
-        ],
-        "phpstan": "@phpstan12",
-        "phpstan12": [
+        "phpstan:run": "@phpstan12:run",
+        "phpstan12:run": [
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpstan analyze -c ./build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G"
         ],
-        "phpstancache": "@phpstan12cache",
-        "phpstan12cache": [
+        "phpstan:clearcache": "@phpstan12:clearcache",
+        "phpstan12:clearcache": [
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/phpstan clear-result-cache"
         ],
@@ -127,17 +114,17 @@
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/php-cs-fixer fix --config=./build/phpcsfixer.php"
         ],
-        "lint": [
+        "lint:run": [
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/parallel-lint src tests"
         ],
-        "checkstyle": [
+        "checkstyle:run": [
             "Composer\\Config::disableProcessTimeout",
-            "@lint",
+            "@lint:run",
             "@phpcsfixer:dryrun",
-            "@phpstan"
+            "@phpstan:run"
         ],
-        "generatedto": [
+        "generatedto:run": [
             "Composer\\Config::disableProcessTimeout",
             "@php ./make/gendto2.php",
             "@phpcsfixer:run"
