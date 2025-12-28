@@ -50,6 +50,7 @@ final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $this->assertNotInstanceOf(InvoiceSuiteQuantityDTO::class, $invoiceSuiteDocumentPositionDTO->getQuantityBilled());
         $this->assertNotInstanceOf(InvoiceSuiteQuantityDTO::class, $invoiceSuiteDocumentPositionDTO->getQuantityChargeFree());
         $this->assertNotInstanceOf(InvoiceSuiteQuantityDTO::class, $invoiceSuiteDocumentPositionDTO->getQuantityPackage());
+        $this->assertNotInstanceOf(InvoiceSuiteQuantityDTO::class, $invoiceSuiteDocumentPositionDTO->getQuantityPerPackage());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentPositionDTO->getShipToParty());
         $this->assertNotInstanceOf(InvoiceSuitePartyDTO::class, $invoiceSuiteDocumentPositionDTO->getUltimateShipToParty());
         $this->assertSame([], $invoiceSuiteDocumentPositionDTO->getSupplyChainEvents());
@@ -256,6 +257,15 @@ final class InvoiceSuiteDocumentPositionDTOTest extends TestCase
         $invoiceSuiteDocumentPositionDTO->setQuantityPackage($quantityPackageValue);
 
         $this->assertSame($quantityPackageValue, $invoiceSuiteDocumentPositionDTO->getQuantityPackage());
+    }
+
+    public function testQuantityPerPackageGetterAndSetter(): void
+    {
+        $invoiceSuiteDocumentPositionDTO = new InvoiceSuiteDocumentPositionDTO();
+        $quantityPerPackageValue = new InvoiceSuiteQuantityDTO();
+        $invoiceSuiteDocumentPositionDTO->setQuantityPerPackage($quantityPerPackageValue);
+
+        $this->assertSame($quantityPerPackageValue, $invoiceSuiteDocumentPositionDTO->getQuantityPerPackage());
     }
 
     public function testShipToPartyGetterAndSetter(): void

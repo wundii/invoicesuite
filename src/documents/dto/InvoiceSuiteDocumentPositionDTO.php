@@ -179,6 +179,13 @@ class InvoiceSuiteDocumentPositionDTO
     protected ?InvoiceSuiteQuantityDTO $quantityPackage = null;
 
     /**
+     * The per-package quantity
+     *
+     * @var null|InvoiceSuiteQuantityDTO
+     */
+    protected ?InvoiceSuiteQuantityDTO $quantityPerPackage = null;
+
+    /**
      * The Ship-To Party
      *
      * @var null|InvoiceSuitePartyDTO
@@ -259,6 +266,7 @@ class InvoiceSuiteDocumentPositionDTO
      * @param null|InvoiceSuiteQuantityDTO                   $quantityBilled                  The billed quantity
      * @param null|InvoiceSuiteQuantityDTO                   $quantityChargeFree              The charge-free quantity
      * @param null|InvoiceSuiteQuantityDTO                   $quantityPackage                 The package quantity
+     * @param null|InvoiceSuiteQuantityDTO                   $quantityPerPackage              The per-package quantity
      * @param null|InvoiceSuitePartyDTO                      $shipToParty                     The Ship-To Party
      * @param null|InvoiceSuitePartyDTO                      $ultimateShipToParty             The Ultimate Ship-To Party
      * @param array<DateTimeInterface>                       $supplyChainEvents               The date of the delivery
@@ -291,6 +299,7 @@ class InvoiceSuiteDocumentPositionDTO
         ?InvoiceSuiteQuantityDTO $quantityBilled = null,
         ?InvoiceSuiteQuantityDTO $quantityChargeFree = null,
         ?InvoiceSuiteQuantityDTO $quantityPackage = null,
+        ?InvoiceSuiteQuantityDTO $quantityPerPackage = null,
         ?InvoiceSuitePartyDTO $shipToParty = null,
         ?InvoiceSuitePartyDTO $ultimateShipToParty = null,
         array $supplyChainEvents = [],
@@ -322,6 +331,7 @@ class InvoiceSuiteDocumentPositionDTO
         $this->setQuantityBilled($quantityBilled);
         $this->setQuantityChargeFree($quantityChargeFree);
         $this->setQuantityPackage($quantityPackage);
+        $this->setQuantityPerPackage($quantityPerPackage);
         $this->setShipToParty($shipToParty);
         $this->setUltimateShipToParty($ultimateShipToParty);
         $this->setSupplyChainEvents($supplyChainEvents);
@@ -2286,6 +2296,29 @@ class InvoiceSuiteDocumentPositionDTO
     public function setQuantityPackage(?InvoiceSuiteQuantityDTO $quantityPackage): static
     {
         $this->quantityPackage = $quantityPackage;
+
+        return $this;
+    }
+
+    /**
+     * Returns the per-package quantity
+     *
+     * @return null|InvoiceSuiteQuantityDTO
+     */
+    public function getQuantityPerPackage(): ?InvoiceSuiteQuantityDTO
+    {
+        return $this->quantityPerPackage;
+    }
+
+    /**
+     * Sets the per-package quantity
+     *
+     * @param  null|InvoiceSuiteQuantityDTO $quantityPerPackage The per-package quantity
+     * @return static
+     */
+    public function setQuantityPerPackage(?InvoiceSuiteQuantityDTO $quantityPerPackage): static
+    {
+        $this->quantityPerPackage = $quantityPerPackage;
 
         return $this;
     }
