@@ -79,6 +79,12 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
         );
         static::$document->addDocumentSellerTaxRegistration('FC', '201/113/40209');
         static::$document->addDocumentSellerTaxRegistration('VA', 'DE123456789');
+        static::$document->setDocumentSellerCommunication('EM', 'user@lieferant.de');
+        static::$document->setDocumentSellerContact(
+            newPersonName: 'Hans Meyer',
+            newPhoneNumber: '0800-12345678',
+            newEmailAddress: 'hm@lieferant.de'
+        );
 
         static::$document->setDocumentBuyerId('GE2020211');
         static::$document->setDocumentBuyerName('Kunden AG Mitte');
@@ -88,6 +94,7 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
             newCity: 'Frankfurt',
             newCountryId: 'DE'
         );
+        static::$document->setDocumentBuyerCommunication('EM', 'user@kunde.de');
 
         static::$document->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20241114'));
 
@@ -106,7 +113,15 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
             newTaxPercent: 19.00
         );
 
-        static::$document->addDocumentPaymentTerm('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
+        static::$document->addDocumentPaymentTerm('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024', null, 'z3237167126');
+
+        static::$document->setDocumentPaymentMean(
+            newTypeCode: '59',
+            newBuyerIban: 'DE02120300000000202051',
+            newMandate: 'z3237167126'
+        );
+
+        static::$document->setDocumentPaymentCreditorReferenceID('94467863782647362');
 
         static::$document->setDocumentSummation(
             newNetAmount: 473.00,
@@ -193,7 +208,7 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
 
         // Vendor
 
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 0);
+        $this->assertXPathValueWithIndexAndAttribute('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 0, 'user@lieferant.de', 'schemeID', 'EM');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cbc:EndpointID', 1);
 
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyName/cbc:Name', 0);
@@ -201,7 +216,8 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 0, '549910');
         $this->assertXPathValueWithIndexAndAttribute('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 1, '4000001123452', 'schemeID', '0088');
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 2);
+        $this->assertXPathValueWithIndexAndAttribute('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 2, '94467863782647362', 'schemeID', 'SEPA');
+        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID', 3);
 
         $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 0, 'Lieferantenstraße 20');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName', 1);
@@ -234,10 +250,10 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
         $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 0, 'Lieferant GmbH');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName', 1);
 
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 0);
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 0);
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 0, 'Hans Meyer');
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 0, '0800-12345678');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telefax', 0);
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 0);
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail', 0, 'hm@lieferant.de');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Name', 1);
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone', 1);
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telefax', 1);
@@ -245,7 +261,7 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
 
         // Customer
 
-        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 0);
+        $this->assertXPathValueWithIndexAndAttribute('//ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 0, 'user@kunde.de', 'schemeID', 'EM');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cbc:EndpointID', 1);
 
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name', 0);
@@ -303,6 +319,13 @@ final class XRechnungUBLInvoiceDocumentBuilderTest extends TestCase
 
         $this->assertXPathValueWithIndex('//ubl:Invoice/cac:PaymentTerms/cbc:Note', 0, 'Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
         $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:PaymentTerms/cbc:Note', 1);
+
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 0, '59');
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 0, 'z3237167126');
+        $this->assertXPathValueWithIndex('//ubl:Invoice/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 0, 'DE02120300000000202051');
+        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:PaymentMeans/cbc:PaymentMeansCode', 1);
+        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:PaymentMeans/cac:PaymentMandate/cbc:ID', 1);
+        $this->assertXPathNotExistsWithIndex('//ubl:Invoice/cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID', 1);
 
         // Tax
 
