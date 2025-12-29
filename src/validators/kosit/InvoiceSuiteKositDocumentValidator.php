@@ -877,6 +877,7 @@ class InvoiceSuiteKositDocumentValidator extends InvoiceSuiteAbstractDocumentVal
         $resultAreas = [
             'val-xsd',
             'val-sch.1',
+            'val-sch.2',
             'val-xml',
         ];
 
