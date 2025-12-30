@@ -17,6 +17,7 @@ use Error;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
+use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
@@ -39,6 +40,7 @@ class InvoiceSuiteDocumentReader
     use HandlesCallForwarding;
     use HandlesCurrentDocumentFormatProvider;
     use HandlesDocumentFormatProviders;
+    use HandlesRawContents;
 
     /**
      * Constructor (hidden)
@@ -64,6 +66,8 @@ class InvoiceSuiteDocumentReader
         }
 
         $formatProvider = reset($formatProviders);
+
+        $this->setRawDocumentContent($fromContent);
 
         $this->setCurrentDocumentFormatProvider($formatProvider);
         $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($fromContent);
@@ -141,6 +145,16 @@ class InvoiceSuiteDocumentReader
         return InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
             $this->getCurrentDocumentFormatProvider()->getUniqueId()
         )->createFromDTO($dto);
+    }
+
+    /**
+     * Returns the original serialized content which was used
+     *
+     * @return string
+     */
+    public function getOriginalDocumentContent(): string
+    {
+        return $this->getRawDocumentContent();
     }
 
     /**
