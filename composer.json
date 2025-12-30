@@ -52,7 +52,7 @@
         "friendsofphp/php-cs-fixer": "^3",
         "goetas-webservices/xsd2php": "^0",
         "nette/php-generator": "*",
-        "nikic/php-parser": "^5.4",
+        "nikic/php-parser": "^5",
         "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpdocumentor/reflection-docblock": "^5",
         "phpstan/phpstan": "^1|^2",
