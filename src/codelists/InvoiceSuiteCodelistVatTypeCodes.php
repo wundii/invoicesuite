@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * This file is a part of horstoeko/invoicesuite.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace horstoeko\invoicesuite\codelists;
+
+/**
+ * Class representing list of duty or tax or fee type name code
+ * Name of list: UNTDID 5153 Duty or tax or fee type name code
+ *
+ * @category InvoiceSuite
+ * @author   HorstOeko <horstoeko@erling.com.de>
+ * @license  https://opensource.org/licenses/MIT MIT
+ * @see      https://github.com/horstoeko/invoicesuite
+ * @see      https://www.xrepository.de/details/urn:xoev-de:kosit:codeliste:untdid.5305_3
+ * @see      https://www.xrepository.de/api/xrepository/urn:xoev-de:kosit:codeliste:untdid.5305_3/download/UNTDID_5305_3.json
+ */
+class InvoiceSuiteCodelistVatTypeCodes
+{
+    /**
+     * Value added tax (VAT)
+     *
+     * A tax on domestic or imported goods applied to the value added
+     * at each stage in the production/distribution cycle.
+     */
+    public const VALUE_ADDED_TAX = 'VAT';
+}
