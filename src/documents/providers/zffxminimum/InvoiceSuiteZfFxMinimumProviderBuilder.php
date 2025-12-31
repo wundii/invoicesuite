@@ -3385,11 +3385,7 @@ class InvoiceSuiteZfFxMinimumProviderBuilder extends InvoiceSuiteAbstractDocumen
     public function addDocumentShipToName(
         ?string $newName = null
     ): static {
-        if (InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
-            return $this;
-        }
-
-        $this->setDocumentShipToName($newName);
+        // Nothing here...
 
         return $this;
     }
