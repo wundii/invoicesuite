@@ -33,7 +33,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $property = $this->getPrivatePropertyFromObject($messageBag, 'messageBagItems');
@@ -64,7 +64,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->assertTrue($messageBag->hasMessages());
@@ -86,18 +86,21 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame('info', $messageBag->getInfoMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTimeImmutable::class, $messageBag->getInfoMessages()[0]->getMessageTimestamp());
         $this->assertSame((new DateTime())->format('Ymd'), $messageBag->getInfoMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getInfoMessages()[0]->getMessageAdditionalData());
 
         $this->assertSame('message-2', $messageBag->getWarningMessages()[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $messageBag->getWarningMessages()[0]->getMessageSeverity());
         $this->assertSame('warning', $messageBag->getWarningMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getWarningMessages()[0]->getMessageTimestamp());
         $this->assertSame('19700101', $messageBag->getWarningMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getWarningMessages()[0]->getMessageAdditionalData());
 
         $this->assertSame('message-3', $messageBag->getErrorMessages()[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $messageBag->getErrorMessages()[0]->getMessageSeverity());
         $this->assertSame('error', $messageBag->getErrorMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getErrorMessages()[0]->getMessageTimestamp());
         $this->assertSame('19700102', $messageBag->getErrorMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $messageBag->getErrorMessages()[0]->getMessageAdditionalData());
     }
 
     public function testInvoiceSuiteMessageBagAdders(): void
@@ -111,7 +114,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
 
         $messageBag->addNewMessage('message-1');
         $messageBag->addNewMessage('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700104'));
-        $messageBag->addNewMessage('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700105'));
+        $messageBag->addNewMessage('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700105'), ['key' => 'value']);
 
         $this->assertTrue($messageBag->hasMessages());
         $this->assertTrue($messageBag->hasInfoMessages());
@@ -132,22 +135,25 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame('info', $messageBag->getInfoMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTimeImmutable::class, $messageBag->getInfoMessages()[0]->getMessageTimestamp());
         $this->assertSame((new DateTime())->format('Ymd'), $messageBag->getInfoMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getInfoMessages()[0]->getMessageAdditionalData());
 
         $this->assertSame('message-2', $messageBag->getWarningMessages()[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $messageBag->getWarningMessages()[0]->getMessageSeverity());
         $this->assertSame('warning', $messageBag->getWarningMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getWarningMessages()[0]->getMessageTimestamp());
         $this->assertSame('19700104', $messageBag->getWarningMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getWarningMessages()[0]->getMessageAdditionalData());
 
         $this->assertSame('message-3', $messageBag->getErrorMessages()[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $messageBag->getErrorMessages()[0]->getMessageSeverity());
         $this->assertSame('error', $messageBag->getErrorMessages()[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getErrorMessages()[0]->getMessageTimestamp());
         $this->assertSame('19700105', $messageBag->getErrorMessages()[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $messageBag->getErrorMessages()[0]->getMessageAdditionalData());
 
         $messageBag->addNewMessage('message-1a');
         $messageBag->addNewMessage('message-2a', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700110'));
-        $messageBag->addNewMessage('message-3a', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700111'));
+        $messageBag->addNewMessage('message-3a', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700111'), ['key' => 'value']);
 
         $this->assertTrue($messageBag->hasMessages());
         $this->assertTrue($messageBag->hasInfoMessages());
@@ -171,18 +177,21 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame('info', $messageBag->getInfoMessages()[1]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTimeImmutable::class, $messageBag->getInfoMessages()[1]->getMessageTimestamp());
         $this->assertSame((new DateTime())->format('Ymd'), $messageBag->getInfoMessages()[1]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getInfoMessages()[1]->getMessageAdditionalData());
 
         $this->assertSame('message-2a', $messageBag->getWarningMessages()[1]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $messageBag->getWarningMessages()[1]->getMessageSeverity());
         $this->assertSame('warning', $messageBag->getWarningMessages()[1]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getWarningMessages()[1]->getMessageTimestamp());
         $this->assertSame('19700110', $messageBag->getWarningMessages()[1]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag->getWarningMessages()[1]->getMessageAdditionalData());
 
         $this->assertSame('message-3a', $messageBag->getErrorMessages()[1]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $messageBag->getErrorMessages()[1]->getMessageSeverity());
         $this->assertSame('error', $messageBag->getErrorMessages()[1]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag->getErrorMessages()[1]->getMessageTimestamp());
         $this->assertSame('19700111', $messageBag->getErrorMessages()[1]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $messageBag->getErrorMessages()[1]->getMessageAdditionalData());
     }
 
     public function testInvoiceSuiteMessageBagArrayAccess(): void
@@ -190,7 +199,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->assertCount(3, $messageBag);
@@ -208,18 +217,21 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertSame('info', $messageBag[0]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTimeImmutable::class, $messageBag[0]->getMessageTimestamp());
         $this->assertSame((new DateTime())->format('Ymd'), $messageBag[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag[0]->getMessageAdditionalData());
 
         $this->assertSame('message-2', $messageBag[1]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $messageBag[1]->getMessageSeverity());
         $this->assertSame('warning', $messageBag[1]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag[1]->getMessageTimestamp());
         $this->assertSame('19700101', $messageBag[1]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $messageBag[1]->getMessageAdditionalData());
 
         $this->assertSame('message-3', $messageBag[2]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $messageBag[2]->getMessageSeverity());
         $this->assertSame('error', $messageBag[2]->getMessageSeverityValue());
         $this->assertInstanceOf(DateTime::class, $messageBag[2]->getMessageTimestamp());
         $this->assertSame('19700102', $messageBag[2]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $messageBag[2]->getMessageAdditionalData());
 
         $this->assertContainsOnlyInstancesOf(InvoiceSuiteMessageBagItem::class, $messageBag);
     }
@@ -229,7 +241,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
@@ -243,7 +255,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->expectException(InvoiceSuiteInvalidArgumentException::class);
@@ -257,7 +269,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->expectException(LogicException::class);
@@ -271,7 +283,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->expectException(LogicException::class);
@@ -317,7 +329,7 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $messageBag = new InvoiceSuiteMessageBag([
             new InvoiceSuiteMessageBagItem('message-1'),
             new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('Ynd', '19700101')),
-            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('Ynd', '19700102'), ['key' => 'value']),
         ]);
 
         $this->assertTrue($messageBag->hasMessages());
@@ -349,5 +361,43 @@ final class InvoiceSuiteMessageBagTest extends TestCase
         $this->assertArrayNotHasKey(1, $messageBag->getWarningMessages());
         $this->assertArrayNotHasKey(0, $messageBag->getErrorMessages());
         $this->assertArrayNotHasKey(1, $messageBag->getErrorMessages());
+    }
+
+    public function testJsonSerialize(): void
+    {
+        $messageBag = new InvoiceSuiteMessageBag([
+            new InvoiceSuiteMessageBagItem('message-1', newMessageTimestamp: DateTime::createFromFormat('YndHis', '19700101223344')),
+            new InvoiceSuiteMessageBagItem('message-2', InvoiceSuiteMessageSeverity::WARNING, DateTime::createFromFormat('YndHis', '19700102223344')),
+            new InvoiceSuiteMessageBagItem('message-3', InvoiceSuiteMessageSeverity::ERROR, DateTime::createFromFormat('YndHis', '19700103223344'), ['key' => 'value']),
+        ]);
+
+        $jsonEncoded = json_encode($messageBag, JSON_PRETTY_PRINT);
+
+        $jsonEncodedExpected = <<<'JSON_WRAP'
+        [
+            {
+                "messageContent": "message-1",
+                "messageSeverity": "info",
+                "messageTimestap": "1970-01-01T22:33:44+00:00",
+                "messageAdditionalData": []
+            },
+            {
+                "messageContent": "message-2",
+                "messageSeverity": "warning",
+                "messageTimestap": "1970-01-02T22:33:44+00:00",
+                "messageAdditionalData": []
+            },
+            {
+                "messageContent": "message-3",
+                "messageSeverity": "error",
+                "messageTimestap": "1970-01-03T22:33:44+00:00",
+                "messageAdditionalData": {
+                    "key": "value"
+                }
+            }
+        ]
+        JSON_WRAP;
+
+        $this->assertSame($jsonEncodedExpected, $jsonEncoded);
     }
 }

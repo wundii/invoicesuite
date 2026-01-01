@@ -88,9 +88,10 @@ trait HandlesMessageBag
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                           $newMessageContent   the message text
-     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
-     * @param  null|DateTimeInterface           $newMessageTimestamp the timestamp (default now)
+     * @param  string                           $newMessageContent        the message text
+     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity       the message severity (default INFO)
+     * @param  null|DateTimeInterface           $newMessageTimestamp      the timestamp (default now)
+     * @param  null|array<array-key, mixed>     $newMessageAdditionalData the additional data (default empty array)
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
@@ -98,9 +99,15 @@ trait HandlesMessageBag
     public function addMessageToMessageBag(
         string $newMessageContent,
         ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ): static {
-        $this->getMessageBag()->addNewMessage($newMessageContent, $newMessageSeverity, $newMessageTimestamp);
+        $this->getMessageBag()->addNewMessage(
+            $newMessageContent,
+            $newMessageSeverity,
+            $newMessageTimestamp,
+            $newMessageAdditionalData
+        );
 
         return $this;
     }
@@ -110,17 +117,24 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                 $newMessageContent
-     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @param  string                       $newMessageContent
+     * @param  null|DateTimeInterface       $newMessageTimestamp
+     * @param  null|array<array-key, mixed> $newMessageAdditionalData the additional data (default empty array)
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addInfoMessageToMessageBag(
         string $newMessageContent,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ): static {
-        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::INFO, $newMessageTimestamp);
+        $this->getMessageBag()->addNewMessage(
+            $newMessageContent,
+            InvoiceSuiteMessageSeverity::INFO,
+            $newMessageTimestamp,
+            $newMessageAdditionalData
+        );
 
         return $this;
     }
@@ -130,17 +144,24 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                 $newMessageContent
-     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @param  string                       $newMessageContent
+     * @param  null|DateTimeInterface       $newMessageTimestamp
+     * @param  null|array<array-key, mixed> $newMessageAdditionalData the additional data (default empty array)
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addWarningMessageToMessageBag(
         string $newMessageContent,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ): static {
-        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::WARNING, $newMessageTimestamp);
+        $this->getMessageBag()->addNewMessage(
+            $newMessageContent,
+            InvoiceSuiteMessageSeverity::WARNING,
+            $newMessageTimestamp,
+            $newMessageAdditionalData
+        );
 
         return $this;
     }
@@ -150,17 +171,24 @@ trait HandlesMessageBag
      *
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                 $newMessageContent
-     * @param  null|DateTimeInterface $newMessageTimestamp
+     * @param  string                       $newMessageContent
+     * @param  null|DateTimeInterface       $newMessageTimestamp
+     * @param  null|array<array-key, mixed> $newMessageAdditionalData the additional data (default empty array)
      * @return static
      *
      * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addErrorMessageToMessageBag(
         string $newMessageContent,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ): static {
-        $this->getMessageBag()->addNewMessage($newMessageContent, InvoiceSuiteMessageSeverity::ERROR, $newMessageTimestamp);
+        $this->getMessageBag()->addNewMessage(
+            $newMessageContent,
+            InvoiceSuiteMessageSeverity::ERROR,
+            $newMessageTimestamp,
+            $newMessageAdditionalData
+        );
 
         return $this;
     }

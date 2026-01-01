@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\utils;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use JsonSerializable;
 
 /**
  * Class representing an entry for the message bag.
@@ -22,7 +23,7 @@ use DateTimeInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-final class InvoiceSuiteMessageBagItem
+final class InvoiceSuiteMessageBagItem implements JsonSerializable
 {
     /**
      * The message text.
@@ -46,24 +47,47 @@ final class InvoiceSuiteMessageBagItem
     private DateTimeInterface $messageTimestamp;
 
     /**
+     * Additional information (data)
+     *
+     * @var array<array-key, mixed>
+     */
+    private array $messageAdditionalData = [];
+
+    /**
      * Constructor.
      *
      * If no severity is given, INFO is used.
      * If no timestamp is given, the current datetime is used.
      *
-     * @param string                           $newMessageContent   the message text
-     * @param null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
-     * @param null|DateTimeInterface           $newMessageTimestamp the message timestamp (default now)
+     * @param string                           $newMessageContent        the message text
+     * @param null|InvoiceSuiteMessageSeverity $newMessageSeverity       the message severity (default INFO)
+     * @param null|DateTimeInterface           $newMessageTimestamp      the message timestamp (default now)
+     * @param null|array<array-key, mixed>     $newMessageAdditionalData the additional data (default empty arra)
      */
     public function __construct(
         string $newMessageContent,
         ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ) {
         $this
             ->setMessageContent($newMessageContent)
             ->setMessageSeverity($newMessageSeverity ?? InvoiceSuiteMessageSeverity::INFO)
-            ->setMessageTimestamp($newMessageTimestamp ?? new DateTimeImmutable());
+            ->setMessageTimestamp($newMessageTimestamp ?? new DateTimeImmutable())
+            ->setMessageAdditionalData($newMessageAdditionalData ?? []);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'messageContent' => $this->messageContent,
+            'messageSeverity' => $this->messageSeverity->value,
+            'messageTimestap' => $this->messageTimestamp->format('c'),
+            'messageAdditionalData' => $this->messageAdditionalData,
+        ];
     }
 
     /**
@@ -131,6 +155,29 @@ final class InvoiceSuiteMessageBagItem
     public function setMessageTimestamp(DateTimeInterface $newMessageTimestamp): static
     {
         $this->messageTimestamp = $newMessageTimestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get additional data
+     *
+     * @return array<array-key, mixed>
+     */
+    public function getMessageAdditionalData(): array
+    {
+        return $this->messageAdditionalData;
+    }
+
+    /**
+     * Set additional data
+     *
+     * @param  array<array-key, mixed> $newMessageAdditionalData Additional data related to this message
+     * @return static                  returns the current instance for fluent calls
+     */
+    public function setMessageAdditionalData(array $newMessageAdditionalData): static
+    {
+        $this->messageAdditionalData = $newMessageAdditionalData;
 
         return $this;
     }

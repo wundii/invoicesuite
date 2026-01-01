@@ -50,6 +50,7 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('Message 1', $this->messageBag[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::INFO, $this->messageBag[0]->getMessageSeverity());
         $this->assertSame('19700101', $this->messageBag[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $this->messageBag[0]->getMessageAdditionalData());
 
         // addMessageToMessageBag
 
@@ -72,6 +73,8 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame(InvoiceSuiteMessageSeverity::INFO, $this->messageBag[1]->getMessageSeverity());
         $this->assertSame('19700101', $this->messageBag[0]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700102', $this->messageBag[1]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $this->messageBag[0]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[1]->getMessageAdditionalData());
 
         // addInfoMessageToMessageBag
 
@@ -98,6 +101,9 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700101', $this->messageBag[0]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700102', $this->messageBag[1]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700103', $this->messageBag[2]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $this->messageBag[0]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[1]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[2]->getMessageAdditionalData());
 
         // addWarningMessageToMessageBag
 
@@ -129,12 +135,17 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700102', $this->messageBag[1]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700103', $this->messageBag[2]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700104', $this->messageBag[3]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $this->messageBag[0]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[1]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[2]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[3]->getMessageAdditionalData());
 
         // addErrorMessageToMessageBag
 
         $this->addErrorMessageToMessageBag(
             'Message 5',
-            DateTime::createFromFormat('Ymd', '19700105')
+            DateTime::createFromFormat('Ymd', '19700105'),
+            ['key' => 'value']
         );
 
         $this->assertCount(5, $this->messageBag);
@@ -165,6 +176,11 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700103', $this->messageBag[2]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700104', $this->messageBag[3]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700105', $this->messageBag[4]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $this->messageBag[0]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[1]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[2]->getMessageAdditionalData());
+        $this->assertSame([], $this->messageBag[3]->getMessageAdditionalData());
+        $this->assertSame(['key' => 'value'], $this->messageBag[4]->getMessageAdditionalData());
 
         // hasMessagesInMessageBag
 
@@ -224,6 +240,9 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700101', $infoMessages[0]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700102', $infoMessages[1]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700103', $infoMessages[2]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $infoMessages[0]->getMessageAdditionalData());
+        $this->assertSame([], $infoMessages[1]->getMessageAdditionalData());
+        $this->assertSame([], $infoMessages[2]->getMessageAdditionalData());
 
         $warningMessages = $this->getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING);
 
@@ -233,6 +252,7 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('Message 4', $warningMessages[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $warningMessages[0]->getMessageSeverity());
         $this->assertSame('19700104', $warningMessages[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $warningMessages[0]->getMessageAdditionalData());
 
         $errorMessages = $this->getMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR);
 
@@ -242,6 +262,7 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('Message 5', $errorMessages[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $errorMessages[0]->getMessageSeverity());
         $this->assertSame('19700105', $errorMessages[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $errorMessages[0]->getMessageAdditionalData());
 
         // getInfoMessagesInMessageBag
 
@@ -261,6 +282,9 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('19700101', $infoMessages[0]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700102', $infoMessages[1]->getMessageTimestamp()->format('Ymd'));
         $this->assertSame('19700103', $infoMessages[2]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $infoMessages[0]->getMessageAdditionalData());
+        $this->assertSame([], $infoMessages[1]->getMessageAdditionalData());
+        $this->assertSame([], $infoMessages[2]->getMessageAdditionalData());
 
         // getWarningMessagesInMessageBag
 
@@ -272,6 +296,7 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('Message 4', $warningMessages[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::WARNING, $warningMessages[0]->getMessageSeverity());
         $this->assertSame('19700104', $warningMessages[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame([], $warningMessages[0]->getMessageAdditionalData());
 
         // getErrorMessagesInMessageBag
 
@@ -283,6 +308,7 @@ final class HandlesMessageBagTest extends TestCase
         $this->assertSame('Message 5', $errorMessages[0]->getMessageContent());
         $this->assertSame(InvoiceSuiteMessageSeverity::ERROR, $errorMessages[0]->getMessageSeverity());
         $this->assertSame('19700105', $errorMessages[0]->getMessageTimestamp()->format('Ymd'));
+        $this->assertSame(['key' => 'value'], $errorMessages[0]->getMessageAdditionalData());
 
         // clearMessageBag
 

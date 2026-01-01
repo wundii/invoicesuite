@@ -17,6 +17,7 @@ use Countable;
 use DateTimeInterface;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use IteratorAggregate;
+use JsonSerializable;
 use LogicException;
 use Traversable;
 
@@ -31,7 +32,7 @@ use Traversable;
  * @implements ArrayAccess<int, InvoiceSuiteMessageBagItem>
  * @implements IteratorAggregate<int, InvoiceSuiteMessageBagItem>
  */
-class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countable
+class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countable, JsonSerializable
 {
     /**
      * Stored message items.
@@ -51,6 +52,14 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
     public function __construct(array $newMessageBagItems = [])
     {
         $this->addMessages($newMessageBagItems);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize(): mixed
+    {
+        return $this->messageBagItems;
     }
 
     /**
@@ -108,18 +117,20 @@ class InvoiceSuiteMessageBag implements ArrayAccess, IteratorAggregate, Countabl
      * If severity is not given, INFO is used.
      * If timestamp is not given, the current datetime is used.
      *
-     * @param  string                           $newMessageContent   the message text
-     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity  the message severity (default INFO)
-     * @param  null|DateTimeInterface           $newMessageTimestamp the message timestamp (default now)
+     * @param  string                           $newMessageContent        the message text
+     * @param  null|InvoiceSuiteMessageSeverity $newMessageSeverity       the message severity (default INFO)
+     * @param  null|DateTimeInterface           $newMessageTimestamp      the message timestamp (default now)
+     * @param  null|array<array-key, mixed>     $newMessageAdditionalData the additional data (default empty array)
      * @return static
      */
     public function addNewMessage(
         string $newMessageContent,
         ?InvoiceSuiteMessageSeverity $newMessageSeverity = null,
-        ?DateTimeInterface $newMessageTimestamp = null
+        ?DateTimeInterface $newMessageTimestamp = null,
+        ?array $newMessageAdditionalData = null
     ): static {
         return $this->add(
-            new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp)
+            new InvoiceSuiteMessageBagItem($newMessageContent, $newMessageSeverity, $newMessageTimestamp, $newMessageAdditionalData)
         );
     }
 
