@@ -105,6 +105,16 @@ abstract class InvoiceSuiteAbstractDocumentValidator
     }
 
     /**
+     * Returns the original serialized content which was used
+     *
+     * @return string
+     */
+    public function getOriginalDocumentContent(): string
+    {
+        return $this->getRawDocumentContent();
+    }
+
+    /**
      * Main validation method. Checks for non-empty content
      *
      * @return static
