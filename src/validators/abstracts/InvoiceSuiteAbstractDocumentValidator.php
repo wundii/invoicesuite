@@ -17,6 +17,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use JMS\Serializer\Exception\RuntimeException;
 
 /**
@@ -65,6 +66,17 @@ abstract class InvoiceSuiteAbstractDocumentValidator
         }
 
         return static::createFromContent($rawDocumentContent);
+    }
+
+    /**
+     * Create a validator instance by the XML content of a given InvoiceSuiteDocumentReader
+     *
+     * @param  InvoiceSuiteDocumentReader $fromDocumentReader
+     * @return static
+     */
+    public static function createFromDocumentReader(InvoiceSuiteDocumentReader $fromDocumentReader): static
+    {
+        return static::createFromContent($fromDocumentReader->getOriginalDocumentContent());
     }
 
     /**
