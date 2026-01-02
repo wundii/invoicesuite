@@ -13,6 +13,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
+use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class ZfFxComfortDocumentBuilderTest extends TestCase
@@ -311,6 +312,31 @@ final class ZfFxComfortDocumentBuilderTest extends TestCase
         static::$document->saveContentToFile($this->getStoreFilename());
 
         $this->assertFileExists($this->getStoreFilename());
+    }
+
+    public function testMessageBag(): void
+    {
+        $this->assertTrue(static::$document->hasMessagesInMessageBag());
+
+        $this->assertTrue(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertFalse(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertFalse(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
+
+        $this->assertTrue(static::$document->hasInfoMessagesInMessageBag());
+        $this->assertFalse(static::$document->hasWarningMessagesInMessageBag());
+        $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
+
+        $this->assertSame(94, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
+
+        $this->assertSame(94, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(0, static::$document->countWarningMessagesInMessageBag());
+        $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
+
+        $this->assertArrayHasKey(0, static::$document->getInfoMessagesInMessageBag());
+        $this->assertArrayNotHasKey(0, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
 
     private function getStoreFilename(): string

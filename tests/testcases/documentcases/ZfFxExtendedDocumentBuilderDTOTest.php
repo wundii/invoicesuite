@@ -36,6 +36,7 @@ use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
+use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
@@ -800,6 +801,46 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         static::$document->saveContentToFile($this->getStoreFilename());
 
         $this->assertFileExists($this->getStoreFilename());
+    }
+
+    public function testMessageBag(): void
+    {
+        $this->assertTrue(static::$document->hasMessagesInMessageBag());
+
+        $this->assertTrue(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertTrue(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertFalse(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
+
+        $this->assertTrue(static::$document->hasInfoMessagesInMessageBag());
+        $this->assertTrue(static::$document->hasWarningMessagesInMessageBag());
+        $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
+
+        $this->assertSame(210, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(4, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
+
+        $this->assertSame(210, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(4, static::$document->countWarningMessagesInMessageBag());
+        $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
+
+        $this->assertArrayHasKey(0, static::$document->getInfoMessagesInMessageBag());
+        $this->assertArrayHasKey(0, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayHasKey(1, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayHasKey(2, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayHasKey(3, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
+        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['status']);
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder::setDocumentLanguage', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
+        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData());
+        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData()['status']);
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder::setDocumentCompleteDate', static::$document->getWarningMessagesInMessageBag()[1]->getMessageContent());
+        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData());
+        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData()['status']);
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder::setDocumentTaxCurrency', static::$document->getWarningMessagesInMessageBag()[2]->getMessageContent());
+        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData());
+        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData()['status']);
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder::setDocumentIsCopy', static::$document->getWarningMessagesInMessageBag()[3]->getMessageContent());
+        $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
 
     private function getStoreFilename(): string
