@@ -19,9 +19,7 @@ $filesToValidate = [
 ];
 
 foreach ($filesToValidate as $fileIndex => $fileToValidate) {
-    $contents = file_get_contents($fileToValidate);
-
-    $validator = InvoiceSuiteKositDocumentValidator::createFromContent($contents);
+    $validator = InvoiceSuiteKositDocumentValidator::createFromFile($fileToValidate);
     $validator->enableRemoteMode();
     $validator->setRemoteModeHost('192.168.1.83');
     $validator->setRemoteModePort(8081);
