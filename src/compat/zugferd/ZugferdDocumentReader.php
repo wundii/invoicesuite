@@ -577,7 +577,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the seller's tax information.
      *
-     * @param  null|array<string,string> $taxReg __BT-31/BT-32, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  null|array<string,string> $taxReg __BT-31/BT-32, From MINIMUM__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
      * @phpstan-param-out array<string,string> $taxReg
@@ -825,7 +825,7 @@ class ZugferdDocumentReader extends ZugferdDocument
     /**
      * Get detailed information on the buyer's tax information.
      *
-     * @param  null|array<string,string> $taxReg _BT-48, From MINIMUM/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
+     * @param  null|array<string,string> $taxReg _BT-48, From BASIC WL/EN 16931__ Array of tax numbers indexed by the schemeid (VA, FC, etc.)
      * @return static
      *
      * @phpstan-param-out array<string,string> $taxReg

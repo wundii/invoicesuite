@@ -2584,8 +2584,8 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Set the Tax Registration of the seller/supplier party
      *
-     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $newTaxRegistrationId   __BT-31/BT-32, From MINIMUM/EN 16931__ Tax identification number
+     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-31/BT-32, From MINIMUM__ Tax identification number
      * @return static
      */
     public function setDocumentSellerTaxRegistration(
@@ -2617,8 +2617,8 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Add an Tax Registration to the seller/supplier party
      *
-     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $newTaxRegistrationId   __BT-31/BT-32, From MINIMUM/EN 16931__ Tax identification number
+     * @param  null|string $newTaxRegistrationType __BT-31-0/BT-32-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-31/BT-32, From MINIMUM__ Tax identification number
      * @return static
      */
     public function addDocumentSellerTaxRegistration(
@@ -3152,8 +3152,8 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Set the Tax Registration of the buyer/customer party
      *
-     * @param  null|string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number
+     * @param  null|string $newTaxRegistrationType __BT-48-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-48, From BASIC WL__ Tax identification number
      * @return static
      */
     public function setDocumentBuyerTaxRegistration(
@@ -3187,8 +3187,8 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Add an Tax Registration to the buyer/customer party
      *
-     * @param  null|string $newTaxRegistrationType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $newTaxRegistrationId   __BT-48, From MINIMUM__ Tax identification number
+     * @param  null|string $newTaxRegistrationType __BT-48-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $newTaxRegistrationId   __BT-48, From BASIC WL__ Tax identification number
      * @return static
      */
     public function addDocumentBuyerTaxRegistration(
@@ -6634,7 +6634,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
      * @param  null|string $newBuyerIban           __BT-91, From BASIC WL__ Identifier of the account to be debited
      * @param  null|string $newPayeeIban           __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName    __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName    __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId  __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -6696,7 +6696,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * @param  null|string $newFinancialCardHolder __BT-88, From EN 16931__ Name of the payment card holder
      * @param  null|string $newBuyerIban           __BT-91, From BASIC WL__ Identifier of the account to be debited
      * @param  null|string $newPayeeIban           __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName    __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName    __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId  __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic            __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference    __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -6781,7 +6781,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Set Payment mean (as SEPA credit transfer, German: Überweisung)
      *
      * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName   __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -6814,7 +6814,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Add Payment mean (as SEPA credit transfer, German: Überweisung)
      *
      * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName   __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -6847,7 +6847,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Set Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
      * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName   __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -6880,7 +6880,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * Add Payment mean (as non-SEPA credit transfer, German: Überweisung)
      *
      * @param  null|string $newPayeeIban          __BT-84, From BASIC WL__ Payment account identifier
-     * @param  null|string $newPayeeAccountName   __BT-85, From BASIC WL__ Name of the payment account
+     * @param  null|string $newPayeeAccountName   __BT-85, From EN 16931__ Name of the payment account
      * @param  null|string $newPayeeProprietaryId __BT-84-0, From BASIC WL__ National account number (not for SEPA)
      * @param  null|string $newPayeeBic           __BT-86, From EN 16931__ Identifier of the payment service provider
      * @param  null|string $newPaymentReference   __BT-83, From BASIC WL__ Text value used to link the payment to the invoice issued by the seller
@@ -7746,10 +7746,10 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
      * @param  null|float $newNetAmount           __BT-106, From BASIC WL__ Sum of the net amounts of all invoice lines
      * @param  null|float $newChargeTotalAmount   __BT-108, From BASIC WL__ Sum of the charges
      * @param  null|float $newDiscountTotalAmount __BT-107, From BASIC WL__ Sum of the discounts
-     * @param  null|float $newTaxBasisAmount      __BT-109, From BASIC WL__ Total invoice amount excluding sales tax
-     * @param  null|float $newTaxTotalAmount      __BT-110, From BASIC WL__ Total amount of the invoice sales tax (in the invoice currency)
+     * @param  null|float $newTaxBasisAmount      __BT-109, From MINIMUM__ Total invoice amount excluding sales tax
+     * @param  null|float $newTaxTotalAmount      __BT-110, From MINIMUM__ Total amount of the invoice sales tax (in the invoice currency)
      * @param  null|float $newTaxTotalAmount2     __BT-111, From BASIC WL__ Total amount of the invoice sales tax (in the ledger currency)
-     * @param  null|float $newGrossAmount         __BT-112, From BASIC WL__ Total invoice amount including sales tax
+     * @param  null|float $newGrossAmount         __BT-112, From MINIMUM__ Total invoice amount including sales tax
      * @param  null|float $newDueAmount           __BT-115,  From MINIMUM__ Payment amount due
      * @param  null|float $newPrepaidAmount       __BT-113, From BASIC WL__ Prepayment amount
      * @param  null|float $newRoungingAmount      __BT-114, From EN16931__ Rounding amount
@@ -9580,7 +9580,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Set Document position Allowance/Charge
      *
-     * @param  null|bool   $newChargeIndicator           __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|bool   $newChargeIndicator           __BG-27-0/BG-28-0, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      * @param  null|float  $newAllowanceChargeAmount     __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
      * @param  null|float  $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
      * @param  null|string $newAllowanceChargeReason     __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount
@@ -9608,7 +9608,7 @@ class InvoiceSuiteZfFxBasicWlProviderBuilder extends InvoiceSuiteAbstractDocumen
     /**
      * Add Document position Allowance/Charge
      *
-     * @param  null|bool   $newChargeIndicator           __BT-27-1/BT-28-1, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
+     * @param  null|bool   $newChargeIndicator           __BG-27-0/BG-28-0, From BASIC__ Switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
      * @param  null|float  $newAllowanceChargeAmount     __BT-136/BT-141, From BASIC__ Amount of the surcharge or discount
      * @param  null|float  $newAllowanceChargeBaseAmount __BT-137, From EN 16931__ The base amount that may be used in conjunction with the percentage of the surcharge or discount
      * @param  null|string $newAllowanceChargeReason     __BT-139/BT-144, From BASIC__ Reason given in text form for the surcharge or discount

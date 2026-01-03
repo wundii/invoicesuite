@@ -629,8 +629,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add detailed information on the seller's tax information
      *
-     * @param  null|string $taxRegType __BT-31-0, From MINIMUM/EN 16931__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $taxRegId   __BT-31, From MINIMUM/EN 16931__ Tax identification number
+     * @param  null|string $taxRegType __BT-31-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $taxRegId   __BT-31, From MINIMUM__ Tax identification number
      * @return static
      */
     public function addDocumentSellerTaxRegistration(
@@ -864,8 +864,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add a Tax Registration to the buyer/customer party
      *
-     * @param  null|string $taxRegType __BT-48-0, From MINIMUM__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
-     * @param  null|string $taxRegId   __BT-48, From MINIMUM__ Tax identification number
+     * @param  null|string $taxRegType __BT-48-0, From BASIC WL__ Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
+     * @param  null|string $taxRegId   __BT-48, From BASIC WL__ Tax identification number
      * @return static
      */
     public function addDocumentBuyerTaxRegistration(
@@ -883,7 +883,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add information about the buyers's VAT Registration Number (Umsatzsteueridentnummer)
      *
-     * @param  null|string $vatRegNo __BT-48, From MINIMUM__ VAT Registration Number (Umsatzsteueridentnummer)
+     * @param  null|string $vatRegNo __BT-48, From BASIC WL__ VAT Registration Number (Umsatzsteueridentnummer)
      * @return static
      */
     public function addDocumentBuyerVATRegistrationNumber(
@@ -898,7 +898,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add information about the buyer's Tax Number (Steuernummer)
      *
-     * @param  null|string $taxNo __BT-48, From MINIMUM__ Tax Number (Steuernummer)
+     * @param  null|string $taxNo __BT-48, From BASIC WL__ Tax Number (Steuernummer)
      * @return static
      */
     public function addDocumentBuyerTaxNumber(

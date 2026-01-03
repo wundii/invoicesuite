@@ -468,8 +468,8 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      * seller. Sales tax number with a prefixed country code. A supplier registered as subject to VAT must provide his sales tax
      * identification number, unless he uses a tax agent.
      *
-     * @param  string                 $no       __BT-31/BT-32, From MINIMUM/EN 16931__ Tax number of the seller or sales tax identification number of the seller
-     * @param  string                 $schemeID __BT-31-0/BT-32-0, From MINIMUM/EN 16931__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
+     * @param  string                 $no       __BT-31/BT-32, From MINIMUM__ Tax number of the seller or sales tax identification number of the seller
+     * @param  string                 $schemeID __BT-31-0/BT-32-0, From MINIMUM__ Type of tax number of the seller (FC = Tax number, VA = Sales tax identification number)
      * @return ZugferdQuickDescriptor
      */
     public function doAddSellerTaxRegistration(string $no, string $schemeID): self
