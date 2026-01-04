@@ -269,6 +269,74 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
     }
 
     /**
+     * Returns the integer-typed parameter value for the requested parameter
+     *
+     * @param  string $parameterName
+     * @param  int    $defaultValue
+     * @return int
+     */
+    public function getFormatProviderParameterValueInt(string $parameterName, int $defaultValue): int
+    {
+        if (!$this->hasFormatProviderParameter($parameterName)) {
+            return $defaultValue;
+        }
+
+        return (int) $this->getParameters()[$parameterName];
+    }
+
+    /**
+     * Returns the integer-typed parameter value for the requested parameter. If the parameter does not exist an
+     * InvoiceSuiteUnknownProviderParameterException is thrown
+     *
+     * @param  string $parameterName
+     * @return int
+     *
+     * @throws InvoiceSuiteUnknownProviderParameterException
+     */
+    public function getFormatProviderRequiredParameterValueInt(string $parameterName): int
+    {
+        if (!$this->hasFormatProviderParameter($parameterName)) {
+            throw new InvoiceSuiteUnknownProviderParameterException($parameterName);
+        }
+
+        return (int) $this->getParameters()[$parameterName];
+    }
+
+    /**
+     * Returns the boolean-typed parameter value for the requested parameter
+     *
+     * @param  string $parameterName
+     * @param  bool   $defaultValue
+     * @return bool
+     */
+    public function getFormatProviderParameterValueBool(string $parameterName, bool $defaultValue): bool
+    {
+        if (!$this->hasFormatProviderParameter($parameterName)) {
+            return $defaultValue;
+        }
+
+        return (bool) $this->getParameters()[$parameterName];
+    }
+
+    /**
+     * Returns the integer-typed parameter value for the requested parameter. If the parameter does not exist an
+     * InvoiceSuiteUnknownProviderParameterException is thrown
+     *
+     * @param  string $parameterName
+     * @return bool
+     *
+     * @throws InvoiceSuiteUnknownProviderParameterException
+     */
+    public function getFormatProviderRequiredParameterValueBool(string $parameterName): bool
+    {
+        if (!$this->hasFormatProviderParameter($parameterName)) {
+            throw new InvoiceSuiteUnknownProviderParameterException($parameterName);
+        }
+
+        return (bool) $this->getParameters()[$parameterName];
+    }
+
+    /**
      * Returns true if the given filename is a valid PDF attachment filename
      *
      * @param  string $filename

@@ -96,4 +96,28 @@ trait HandlesCurrentDocumentFormatProvider
     {
         return $this->currentDocumentFormatProvider->getFormatProviderParameterValue($parameterName, $defaultValue);
     }
+
+    /**
+     * Returns the integer-typed parameter value for the request parameter for the requested format provider
+     *
+     * @param  string $parameterName
+     * @param  int    $defaultValue
+     * @return int
+     */
+    public function getCurrentDocumentFormatProviderParameterValueInt(string $parameterName, int $defaultValue): int
+    {
+        return $this->currentDocumentFormatProvider->getFormatProviderParameterValueInt($parameterName, $defaultValue);
+    }
+
+    /**
+     * Returns the integer-typed parameter value for the request parameter for the requested format provider
+     *
+     * @param  string $parameterName
+     * @param  bool   $defaultValue
+     * @return bool
+     */
+    public function getCurrentDocumentFormatProviderParameterValueBool(string $parameterName, bool $defaultValue): bool
+    {
+        return $this->currentDocumentFormatProvider->getFormatProviderParameterValueBool($parameterName, $defaultValue);
+    }
 }

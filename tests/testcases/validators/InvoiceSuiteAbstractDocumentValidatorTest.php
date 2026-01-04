@@ -22,7 +22,7 @@ final class InvoiceSuiteAbstractDocumentValidatorTest extends TestCase
         parent::setUpBeforeClass();
 
         $factory = Closure::bind(
-            static fn(string $rawDocumentContent): InvoiceSuiteAbstractDocumentValidator => new class($rawDocumentContent) extends InvoiceSuiteAbstractDocumentValidator {
+            static fn (string $rawDocumentContent): InvoiceSuiteAbstractDocumentValidator => new class($rawDocumentContent) extends InvoiceSuiteAbstractDocumentValidator {
                 public int $initializeCallCount = 0;
 
                 public int $doValidateCallCount = 0;
