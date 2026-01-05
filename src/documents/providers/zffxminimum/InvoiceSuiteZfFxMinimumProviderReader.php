@@ -7752,11 +7752,14 @@ class InvoiceSuiteZfFxMinimumProviderReader extends InvoiceSuiteAbstractDocument
 
         $documentSummation = $this->getCrossIndustryRootObject()->getSupplyChainTradeTransaction()?->getApplicableHeaderTradeSettlement()?->getSpecifiedTradeSettlementHeaderMonetarySummation();
 
+        $taxTotalAmounts = $documentSummation?->getTaxTotalAmount() ?? [];
+        $taxTotalAmount = reset($taxTotalAmounts);
+
         $newNetAmount = 0.0;
         $newChargeTotalAmount = 0.0;
         $newDiscountTotalAmount = 0.0;
         $newTaxBasisAmount = $documentSummation?->getTaxBasisTotalAmount()?->getValue() ?? 0.0;
-        $newTaxTotalAmount = 0.0;
+        $newTaxTotalAmount = false !== $taxTotalAmount ? ($taxTotalAmount->getValue() ?? 0.0) : 0.0;
         $newTaxTotalAmount2 = 0.0;
         $newGrossAmount = $documentSummation?->getGrandTotalAmount()?->getValue() ?? 0.0;
         $newDueAmount = $documentSummation?->getDuePayableAmount()?->getValue() ?? 0.0;

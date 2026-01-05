@@ -1667,7 +1667,7 @@ final class ZfFxMinimumProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(0.00, $newChargeTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $newDiscountTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(4.00, $newTaxBasisAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.00, $newTaxTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(5.00, $newTaxTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $newTaxTotalAmount2, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(7.00, $newGrossAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(8.00, $newDueAmount, PHP_FLOAT_EPSILON);
