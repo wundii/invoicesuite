@@ -1693,10 +1693,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $note->getContentWithCreate()->setValue($newContent);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContentCode])) {
-                $note->getContentCodeWithCreate()->setValue($newContentCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newContentCode])) {
+            $note->getContentCodeWithCreate()->setValue($newContentCode);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubjectCode])) {
@@ -1755,12 +1753,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->setValue($newEndDate->format('Ymd'))
             ->setFormat('102');
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-                $billingPeriod
-                    ->getDescriptionWithCreate()
-                    ->setValue($newDescription);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $billingPeriod
+                ->getDescriptionWithCreate()
+                ->setValue($newDescription);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -1869,10 +1865,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
-                $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
+            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -1917,14 +1911,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $sellerOrderReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $sellerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -1997,14 +1989,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $buyerOrderReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $buyerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -2155,14 +2145,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $contractReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $contractReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -2290,14 +2278,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getTypeCodeWithCreate()
             ->setValue($newTypeCode);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $additionalReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $additionalReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newReferenceTypeCode)) {
@@ -2406,12 +2392,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
-                $invoiceReference
-                    ->getTypeCodeWithCreate()
-                    ->setValue($newTypeCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTypeCode)) {
+            $invoiceReference
+                ->getTypeCodeWithCreate()
+                ->setValue($newTypeCode);
         }
 
         if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
@@ -2614,14 +2598,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $despatchAdviceReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $despatchAdviceReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -2694,14 +2676,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getIssuerAssignedIDWithCreate()
             ->setValue($newReferenceNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
-                $receivingAdviceReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newReferenceDate)) {
+            $receivingAdviceReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -3243,40 +3223,28 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountryIDWithCreate()->setValue($newCountryId);
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine1])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineOneWithCreate()->setValue($newAddressLine1);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine2])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineTwoWithCreate()->setValue($newAddressLine2);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newAddressLine3])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getLineThreeWithCreate()->setValue($newAddressLine3);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newPostcode])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getPostcodeCodeWithCreate()->setValue($newPostcode);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newCity])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getCityNameWithCreate()->setValue($newCity);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
-                $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newSubDivision])) {
+            $sellerTradeParty->getPostalTradeAddressWithCreate()->getCountrySubDivisionNameWithCreate()->setValue($newSubDivision);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -3374,10 +3342,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             }
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
-                $sellerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $sellerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -3533,10 +3499,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $sellerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
-                $sellerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $sellerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
@@ -4047,10 +4011,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             }
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
-                $buyerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $buyerTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -4206,10 +4168,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $buyerTradeContact->getTelephoneUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newPhoneNumber);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
-                $buyerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newFaxNumber])) {
+            $buyerTradeContact->getFaxUniversalCommunicationWithCreate()->getCompleteNumberWithCreate()->setValue($newFaxNumber);
         }
 
         if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newEmailAddress])) {
@@ -9392,10 +9352,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             }
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
-                $payeeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::allIsNullOrEmpty([$newName])) {
+            $payeeTradeParty->getSpecifiedLegalOrganizationWithCreate()->getTradingBusinessNameWithCreate()->setValue($newName);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -9733,25 +9691,21 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $paymentMean->getTypeCodeWithCreate()->setValue($newTypeCode);
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
-                $paymentMean->getInformationWithCreate()->setValue($newName);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $paymentMean->getInformationWithCreate()->setValue($newName);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardId])) {
+            $paymentMean
+                ->getApplicableTradeSettlementFinancialCardWithCreate()
+                ->getIDWithCreate()
+                ->setValue($newFinancialCardId);
+
+            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardHolder])) {
                 $paymentMean
                     ->getApplicableTradeSettlementFinancialCardWithCreate()
-                    ->getIDWithCreate()
-                    ->setValue($newFinancialCardId);
-
-                if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newFinancialCardHolder])) {
-                    $paymentMean
-                        ->getApplicableTradeSettlementFinancialCardWithCreate()
-                        ->getCardholderNameWithCreate()
-                        ->setValue($newFinancialCardHolder);
-                }
+                    ->getCardholderNameWithCreate()
+                    ->setValue($newFinancialCardHolder);
             }
         }
 
@@ -9768,13 +9722,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 ->getIBANIDWithCreate()
                 ->setValue($newPayeeIban);
 
-            if ($this->supportsAtLeastEn16931()) {
-                if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeAccountName])) {
-                    $paymentMean
-                        ->getPayeePartyCreditorFinancialAccountWithCreate()
-                        ->getAccountNameWithCreate()
-                        ->setValue($newPayeeAccountName);
-                }
+            if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeAccountName])) {
+                $paymentMean
+                    ->getPayeePartyCreditorFinancialAccountWithCreate()
+                    ->getAccountNameWithCreate()
+                    ->setValue($newPayeeAccountName);
             }
 
             if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeProprietaryId])) {
@@ -9784,13 +9736,11 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     ->setValue($newPayeeProprietaryId);
             }
 
-            if ($this->supportsAtLeastEn16931()) {
-                if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeBic])) {
-                    $paymentMean
-                        ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
-                        ->getBICIDWithCreate()
-                        ->setValue($newPayeeBic);
-                }
+            if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPayeeBic])) {
+                $paymentMean
+                    ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
+                    ->getBICIDWithCreate()
+                    ->setValue($newPayeeBic);
             }
         }
 
@@ -10708,14 +10658,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $applicableTradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newTaxDueDate)) {
-                $applicableTradeTax
-                    ->getTaxPointDateWithCreate()
-                    ->getDateStringWithCreate()
-                    ->setValue($newTaxDueDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteDateTimeUtils::datetimeIsNullOrEmpty($newTaxDueDate)) {
+            $applicableTradeTax
+                ->getTaxPointDateWithCreate()
+                ->getDateStringWithCreate()
+                ->setValue($newTaxDueDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newTaxDueCode)) {
@@ -11107,36 +11055,26 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $summation->getLineTotalAmountWithCreate()->setValue($newNetAmount);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newChargeTotalAmount)) {
-                $summation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newChargeTotalAmount)) {
+            $summation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountTotalAmount)) {
-                $summation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newDiscountTotalAmount)) {
+            $summation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
         }
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPrepaidAmount)) {
-                $summation->getTotalPrepaidAmountWithCreate()->setValue($newPrepaidAmount);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newPrepaidAmount)) {
+            $summation->getTotalPrepaidAmountWithCreate()->setValue($newPrepaidAmount);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
-                $summation->getRoundingAmountWithCreate()->setValue($newRoungingAmount);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newRoungingAmount)) {
+            $summation->getRoundingAmountWithCreate()->setValue($newRoungingAmount);
         }
 
         $summation->clearTaxTotalAmount()->addToTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount);
 
-        if ($this->supportsAtLeastBasicWl()) {
-            if (!InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
-                $summation->addToTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount2);
-            }
+        if ($this->supportsAtLeastBasicWl() && !InvoiceSuiteFloatUtils::floatIsNullOrEmpty($newTaxTotalAmount2)) {
+            $summation->addToTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount2);
         }
 
         $this->updateCurrencies();
@@ -11181,28 +11119,22 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->getLineIDWithCreate()
             ->setValue($newPositionId);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newParentPositionId)) {
-                $positionLineDocument
-                    ->getParentLineIDWithCreate()
-                    ->setValue($newParentPositionId);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newParentPositionId)) {
+            $positionLineDocument
+                ->getParentLineIDWithCreate()
+                ->setValue($newParentPositionId);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusCode)) {
-                $positionLineDocument
-                    ->getLineStatusCodeWithCreate()
-                    ->setValue($newLineStatusCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusCode)) {
+            $positionLineDocument
+                ->getLineStatusCodeWithCreate()
+                ->setValue($newLineStatusCode);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusReasonCode)) {
-                $positionLineDocument
-                    ->getLineStatusReasonCodeWithCreate()
-                    ->setValue($newLineStatusReasonCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newLineStatusReasonCode)) {
+            $positionLineDocument
+                ->getLineStatusReasonCodeWithCreate()
+                ->setValue($newLineStatusReasonCode);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11292,16 +11224,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $positionNote->getContentWithCreate()->setValue($newContent);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newContentCode)) {
-                $positionNote->getContentCodeWithCreate()->setValue($newContentCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newContentCode)) {
+            $positionNote->getContentCodeWithCreate()->setValue($newContentCode);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubjectCode)) {
-                $positionNote->getSubjectCodeWithCreate()->setValue($newSubjectCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newSubjectCode)) {
+            $positionNote->getSubjectCodeWithCreate()->setValue($newSubjectCode);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11366,68 +11294,48 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $positionProduct->getNameWithCreate()->setValue($newProductName);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductId])) {
-                $positionProduct->getIDWithCreate()->setValue($newProductId);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductId])) {
+            $positionProduct->getIDWithCreate()->setValue($newProductId);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductDescription])) {
-                $positionProduct->getDescriptionWithCreate()->setValue($newProductDescription);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductDescription])) {
+            $positionProduct->getDescriptionWithCreate()->setValue($newProductDescription);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductSellerId])) {
-                $positionProduct->getSellerAssignedIDWithCreate()->setValue($newProductSellerId);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductSellerId])) {
+            $positionProduct->getSellerAssignedIDWithCreate()->setValue($newProductSellerId);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBuyerId])) {
-                $positionProduct->getBuyerAssignedIDWithCreate()->setValue($newProductBuyerId);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBuyerId])) {
+            $positionProduct->getBuyerAssignedIDWithCreate()->setValue($newProductBuyerId);
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductGlobalIdType, $newProductGlobalId])) {
             $positionProduct->getGlobalIDWithCreate()->setValue($newProductGlobalId)->setSchemeID($newProductGlobalIdType);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductIndustryId])) {
-                $positionProduct->getIndustryAssignedIDWithCreate()->setValue($newProductIndustryId);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductIndustryId])) {
+            $positionProduct->getIndustryAssignedIDWithCreate()->setValue($newProductIndustryId);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelId])) {
-                $positionProduct->getModelIDWithCreate()->setValue($newProductModelId);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelId])) {
+            $positionProduct->getModelIDWithCreate()->setValue($newProductModelId);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBatchId])) {
-                $positionProduct->addOnceToBatchIDWithCreate()->setValue($newProductBatchId);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBatchId])) {
+            $positionProduct->addOnceToBatchIDWithCreate()->setValue($newProductBatchId);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBrandName])) {
-                $positionProduct->getBrandNameWithCreate()->setValue($newProductBrandName);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductBrandName])) {
+            $positionProduct->getBrandNameWithCreate()->setValue($newProductBrandName);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelName])) {
-                $positionProduct->getModelNameWithCreate()->setValue($newProductModelName);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductModelName])) {
+            $positionProduct->getModelNameWithCreate()->setValue($newProductModelName);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductOriginTradeCountry)) {
-                $positionProduct->getOriginTradeCountryWithCreate()->getIDWithCreate()->setValue($newProductOriginTradeCountry);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductOriginTradeCountry)) {
+            $positionProduct->getOriginTradeCountryWithCreate()->getIDWithCreate()->setValue($newProductOriginTradeCountry);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11528,22 +11436,15 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         $positionProductCharacteristic->getDescriptionWithCreate()->setValue($newProductCharacteristicDescription);
         $positionProductCharacteristic->getValueWithCreate()->setValue($newProductCharacteristicValue);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicType])) {
-                $positionProductCharacteristic->getTypeCodeWithCreate()->setValue($newProductCharacteristicType);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicType])) {
+            $positionProductCharacteristic->getTypeCodeWithCreate()->setValue($newProductCharacteristicType);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (
-                !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureUnit])
-                && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue])
-            ) {
-                $positionProductCharacteristic
-                    ->getValueMeasureWithCreate()
-                    ->setValue($newProductCharacteristicMeasureValue)
-                    ->setUnitCode($newProductCharacteristicMeasureUnit);
-            }
+        if ($this->supportsAtLeastExtended() && (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureUnit]) && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newProductCharacteristicMeasureValue]))) {
+            $positionProductCharacteristic
+                ->getValueMeasureWithCreate()
+                ->setValue($newProductCharacteristicMeasureValue)
+                ->setUnitCode($newProductCharacteristicMeasureUnit);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11642,10 +11543,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->setListID($newProductClassificationListId)
             ->setListVersionID($newProductClassificationListVersionId);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductClassificationCodeClassname)) {
-                $positionProductClassification->getClassNameWithCreate()->setValue($newProductClassificationCodeClassname);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductClassificationCodeClassname)) {
+            $positionProductClassification->getClassNameWithCreate()->setValue($newProductClassificationCodeClassname);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -11932,20 +11831,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $buyerOrderReference->getLineIDWithCreate()->setValue($newReferenceLineNumber);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
-                $buyerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newReferenceNumber])) {
+            $buyerOrderReference->getIssuerAssignedIDWithCreate()->setValue($newReferenceNumber);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
-                $buyerOrderReference
-                    ->getFormattedIssueDateTimeWithCreate()
-                    ->getDateTimeStringWithCreate()
-                    ->setValue($newReferenceDate->format('Ymd'))
-                    ->setFormat('102');
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteDateTimeUtils::oneIsNullOrEmpty([$newReferenceDate])) {
+            $buyerOrderReference
+                ->getFormattedIssueDateTimeWithCreate()
+                ->getDateTimeStringWithCreate()
+                ->setValue($newReferenceDate->format('Ymd'))
+                ->setFormat('102');
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -12989,28 +12884,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         $allowanceCharge->getActualAmountWithCreate()->setValue($newGrossPriceAllowanceChargeAmount);
         $allowanceCharge->getChargeIndicatorWithCreate()->setIndicator($newIsCharge);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargePercent])) {
-                $allowanceCharge->getCalculationPercentWithCreate()->setValue($newGrossPriceAllowanceChargePercent);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargePercent])) {
+            $allowanceCharge->getCalculationPercentWithCreate()->setValue($newGrossPriceAllowanceChargePercent);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeBasisAmount])) {
-                $allowanceCharge->getBasisAmountWithCreate()->setValue($newGrossPriceAllowanceChargeBasisAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeBasisAmount])) {
+            $allowanceCharge->getBasisAmountWithCreate()->setValue($newGrossPriceAllowanceChargeBasisAmount);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeReason])) {
-                $allowanceCharge->getReasonWithCreate()->setValue($newGrossPriceAllowanceChargeReason);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeReason])) {
+            $allowanceCharge->getReasonWithCreate()->setValue($newGrossPriceAllowanceChargeReason);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeReasonCode])) {
-                $allowanceCharge->getReasonCodeWithCreate()->setValue($newGrossPriceAllowanceChargeReasonCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newGrossPriceAllowanceChargeReasonCode])) {
+            $allowanceCharge->getReasonCodeWithCreate()->setValue($newGrossPriceAllowanceChargeReasonCode);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -13190,43 +13077,28 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->setValue($newQuantity)
             ->setUnitCode($newQuantityUnit);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (
-                !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeFreeQuantity])
-                || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newChargeFreeQuantityUnit])
-            ) {
-                $latestPosition
-                    ->getSpecifiedLineTradeDeliveryWithCreate()
-                    ->getChargeFreeQuantityWithCreate()
-                    ->setValue($newChargeFreeQuantity)
-                    ->setUnitCode($newChargeFreeQuantityUnit);
-            }
+        if ($this->supportsAtLeastExtended() && (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeFreeQuantity]) || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newChargeFreeQuantityUnit]))) {
+            $latestPosition
+                ->getSpecifiedLineTradeDeliveryWithCreate()
+                ->getChargeFreeQuantityWithCreate()
+                ->setValue($newChargeFreeQuantity)
+                ->setUnitCode($newChargeFreeQuantityUnit);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (
-                !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPackageQuantity])
-                || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPackageQuantityUnit])
-            ) {
-                $latestPosition
-                    ->getSpecifiedLineTradeDeliveryWithCreate()
-                    ->getPackageQuantityWithCreate()
-                    ->setValue($newPackageQuantity)
-                    ->setUnitCode($newPackageQuantityUnit);
-            }
+        if ($this->supportsAtLeastExtended() && (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPackageQuantity]) || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPackageQuantityUnit]))) {
+            $latestPosition
+                ->getSpecifiedLineTradeDeliveryWithCreate()
+                ->getPackageQuantityWithCreate()
+                ->setValue($newPackageQuantity)
+                ->setUnitCode($newPackageQuantityUnit);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (
-                !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPerPackageUnitQuantity])
-                || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPerPackageUnitQuantityUnit])
-            ) {
-                $latestPosition
-                    ->getSpecifiedLineTradeDeliveryWithCreate()
-                    ->getPerPackageUnitQuantityWithCreate()
-                    ->setValue($newPerPackageUnitQuantity)
-                    ->setUnitCode($newPerPackageUnitQuantityUnit);
-            }
+        if ($this->supportsAtLeastExtended() && (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newPerPackageUnitQuantity]) || !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newPerPackageUnitQuantityUnit]))) {
+            $latestPosition
+                ->getSpecifiedLineTradeDeliveryWithCreate()
+                ->getPerPackageUnitQuantityWithCreate()
+                ->setValue($newPerPackageUnitQuantity)
+                ->setUnitCode($newPerPackageUnitQuantityUnit);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -14677,12 +14549,10 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             ->setValue($newEndDate->format('Ymd'))
             ->setFormat('102');
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
-                $billingPeriod
-                    ->getDescriptionWithCreate()
-                    ->setValue($newDescription);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newDescription)) {
+            $billingPeriod
+                ->getDescriptionWithCreate()
+                ->setValue($newDescription);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -14825,22 +14695,16 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         $tradeTax->getTypeCodeWithCreate()->setValue($newTaxType);
         $tradeTax->getRateApplicablePercentWithCreate()->setValue($newTaxPercent);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount])) {
-                $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxAmount])) {
+            $tradeTax->getCalculatedAmountWithCreate()->setValue($newTaxAmount);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
-                $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReason])) {
+            $tradeTax->getExemptionReasonWithCreate()->setValue($newExemptionReason);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
-                $tradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newExemptionReasonCode])) {
+            $tradeTax->getExemptionReasonCodeWithCreate()->setValue($newExemptionReasonCode);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -14937,16 +14801,12 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         $allowanceCharge->getChargeIndicatorWithCreate()->setIndicator($newChargeIndicator);
         $allowanceCharge->getActualAmountWithCreate()->setValue($newAllowanceChargeAmount);
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeBaseAmount])) {
-                $allowanceCharge->getBasisAmountWithCreate()->setValue($newAllowanceChargeBaseAmount);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargeBaseAmount])) {
+            $allowanceCharge->getBasisAmountWithCreate()->setValue($newAllowanceChargeBaseAmount);
         }
 
-        if ($this->supportsAtLeastEn16931()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargePercent])) {
-                $allowanceCharge->getCalculationPercentWithCreate()->setValue($newAllowanceChargePercent);
-            }
+        if ($this->supportsAtLeastEn16931() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newAllowanceChargePercent])) {
+            $allowanceCharge->getCalculationPercentWithCreate()->setValue($newAllowanceChargePercent);
         }
 
         if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newAllowanceChargeReason])) {
@@ -15005,28 +14865,20 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $positionSummation->getLineTotalAmountWithCreate()->setValue($newNetAmount);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeTotalAmount])) {
-                $positionSummation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newChargeTotalAmount])) {
+            $positionSummation->getChargeTotalAmountWithCreate()->setValue($newChargeTotalAmount);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newDiscountTotalAmount])) {
-                $positionSummation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newDiscountTotalAmount])) {
+            $positionSummation->getAllowanceTotalAmountWithCreate()->setValue($newDiscountTotalAmount);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxTotalAmount])) {
-                $positionSummation->getTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newTaxTotalAmount])) {
+            $positionSummation->getTaxTotalAmountWithCreate()->setValue($newTaxTotalAmount);
         }
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossAmount])) {
-                $positionSummation->getGrandTotalAmountWithCreate()->setValue($newGrossAmount);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteFloatUtils::oneIsNullOrEmpty([$newGrossAmount])) {
+            $positionSummation->getGrandTotalAmountWithCreate()->setValue($newGrossAmount);
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -15069,10 +14921,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
 
         $tradeAccountingAccount->getIDWithCreate()->setValue($newAccountId);
 
-        if ($this->supportsAtLeastExtended()) {
-            if (!InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
-                $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
-            }
+        if ($this->supportsAtLeastExtended() && !InvoiceSuiteStringUtils::oneIsNullOrEmpty([$newType])) {
+            $tradeAccountingAccount->getTypeCodeWithCreate()->setValue($newType);
         }
 
         $this->traceMethodExit(__METHOD__);
