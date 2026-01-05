@@ -13,14 +13,11 @@ on:
 env:
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0.zip
   VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-07-10/validator-configuration-xrechnung_3.0.2_2025-07-10.zip
-  VALIDATORSCENARIOURL2: https://github.com/LandrixSoftware/validator-configuration-zugferd/releases/download/validation-configuration-zugferd-2.3.3-20251208/validation-configuration-zugferd-2.3.3-2025-12-08.zip
   VALIDATORPATH: build/validator
   VALIDATORZIPFILENAME: validator.zip
   VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
-  VALIDATORSCENARIOZIPFILENAME2: validator-configuration-2.zip
   VALIDATORJARFILENAME: validator-1.6.0-standalone.jar
   VALIDATORSCENARIOFILENAME: scenarios.xml
-  VALIDATORSCENARIOFILENAME2: scenarios2.xml
   PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
   PHPDOCUMENTORFILENAME: phpDocumentor.phar
   VERAPDFURL: https://software.verapdf.org/rel/verapdf-installer.zip
@@ -102,7 +99,7 @@ jobs:
       - name: Cache Key (Schematron)
         id: hash-validator
         run: |
-          echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }} ${{ env.VALIDATORSCENARIOURL2 }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
+          echo "hash=$(echo '${{ env.VALIDATORURL }} ${{ env.VALIDATORSCENARIOURL }}' | sha256sum | cut -c1-16)" >> $GITHUB_OUTPUT
 
       - name: Cache Application (Schematron)
         id: cache-validator
@@ -116,29 +113,20 @@ jobs:
         run: |
           rm -rf $VALIDATORPATH
           mkdir -p $VALIDATORPATH
-          mkdir -p $VALIDATORPATH/zf
           wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
           wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
-          wget $VALIDATORSCENARIOURL2 -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME2
           unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
           unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
-          unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME2 -d $VALIDATORPATH/zf
-          mv $VALIDATORPATH/zf/$VALIDATORSCENARIOFILENAME $VALIDATORPATH/zf/$VALIDATORSCENARIOFILENAME2
-          rsync -a --ignore-existing --remove-source-files $VALIDATORPATH/zf/ $VALIDATORPATH/
-          rm -rf $VALIDATORPATH/zf
-          rm -f $VALIDATORPATH/$VALIDATORZIPFILENAME
-          rm -f $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
-          rm -f $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME2
 
       - name: Run Tests (Schematron)
         run: |
           set -e
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_comfort_simple.xml
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_comfort_simple_dto.xml
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_xrechnung_cii_simple.xml
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_xrechnung_cii_simple_dto.xml
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_xrechnung_ublinvoice_simple.xml
-          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME2 tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_comfort_simple.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_comfort_simple_dto.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_xrechnung_cii_simple.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_xrechnung_cii_simple_dto.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_xrechnung_ublinvoice_simple.xml
+          java -jar $VALIDATORPATH/$VALIDATORJARFILENAME -r $VALIDATORPATH -s $VALIDATORPATH/$VALIDATORSCENARIOFILENAME tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml
 
       - name: Cache Key (VeraPDF)
         id: hash-verapdf
