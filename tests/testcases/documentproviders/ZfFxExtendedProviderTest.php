@@ -5,31 +5,31 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
 use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceSerializerHandler;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProfiles;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderReader;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxSerializerHandler;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\tests\TestCase;
 
-final class XRechnungCIIInvoiceProviderTest extends TestCase
+final class ZfFxExtendedProviderTest extends TestCase
 {
     public function testGetUniqueId(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
-        $this->assertSame('xrechnungcii', $provider->getUniqueId());
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
+        $this->assertSame('zffxextended', $provider->getUniqueId());
     }
 
     public function testGetDescription(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
         $this->assertNotEmpty($provider->getDescription());
     }
 
     public function testGetParameters(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertArrayHasKey('ContextParameter', $provider->getParameters());
         $this->assertArrayHasKey('AlternativeContextParameters', $provider->getParameters());
@@ -37,71 +37,70 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         $this->assertArrayHasKey('WantsMaximumProfile', $provider->getParameters());
 
         $this->assertIsString($provider->getParameters()['ContextParameter']);
-        $this->assertSame('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0', $provider->getParameters()['ContextParameter']);
+        $this->assertSame('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', $provider->getParameters()['ContextParameter']);
 
         $this->assertIsArray($provider->getParameters()['AlternativeContextParameters']);
-        $this->assertCount(5, $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2', $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0', $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1', $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2', $provider->getParameters()['AlternativeContextParameters']);
-        $this->assertContains('urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3', $provider->getParameters()['AlternativeContextParameters']);
+        $this->assertCount(1, $provider->getParameters()['AlternativeContextParameters']);
+        $this->assertContains('urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended', $provider->getParameters()['AlternativeContextParameters']);
 
         $this->assertIsString($provider->getParameters()['BusinessProcess']);
         $this->assertSame('urn:fdc:peppol.eu:2017:poacc:billing:01:1.0', $provider->getParameters()['BusinessProcess']);
 
         $this->assertArrayHasKey('PdfXmpName', $provider->getParameters());
-        $this->assertSame('XRECHNUNG', $provider->getParameters()['PdfXmpName']);
+        $this->assertSame('EXTENDED', $provider->getParameters()['PdfXmpName']);
         $this->assertArrayHasKey('PdfXmpVersion', $provider->getParameters());
-        $this->assertSame('3.0', $provider->getParameters()['PdfXmpVersion']);
+        $this->assertSame('1.0', $provider->getParameters()['PdfXmpVersion']);
 
         $this->assertIsInt($provider->getParameters()['WantsMaximumProfile']);
-        $this->assertSame(InvoiceSuiteZfFxProfiles::EN16931->value, $provider->getParameters()['WantsMaximumProfile']);
+        $this->assertSame(InvoiceSuiteZfFxProfiles::EXTENDED->value, $provider->getParameters()['WantsMaximumProfile']);
     }
 
     public function testPdfParameters(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertTrue($provider->isPdfSupportAvailable());
-        $this->assertCount(1, $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertCount(4, $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('ZUGFeRD-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('zugferd-invoice.xml', $provider->getAllowedPdfAttachmentFilenames());
+        $this->assertContains('factur-x.xml', $provider->getAllowedPdfAttachmentFilenames());
         $this->assertContains('xrechnung.xml', $provider->getAllowedPdfAttachmentFilenames());
-        $this->assertSame('xrechnung.xml', $provider->getDefaultPdfAttachmentFilename());
+        $this->assertSame('factur-x.xml', $provider->getDefaultPdfAttachmentFilename());
         $this->assertSame(InvoiceSuiteZffxPdfConstructor::class, $provider->getPdfConstructorClassName());
     }
 
     public function testGetSerializerMetadataDirectories(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertEmpty($provider->getSerializerMetadataDirectories());
     }
 
     public function testGetSerializerHandlers(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertCount(1, $provider->getSerializerHandlers());
-        $this->assertContains(InvoiceSuiteXRechnungCIIInvoiceSerializerHandler::class, $provider->getSerializerHandlers());
+        $this->assertContains(InvoiceSuiteZfFxSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
     public function testGetSerializerListeners(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertEmpty($provider->getSerializerListeners());
     }
 
     public function testGetSerializerSubscribers(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertEmpty($provider->getSerializerSubscribers());
     }
 
     public function testGetSerializerGroups(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertCount(1, $provider->getSerializerGroups());
         $this->assertContains('zffx', $provider->getSerializerGroups());
@@ -109,26 +108,7 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
 
     public function testIsSatisfiableBy(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
-
-        $xml = <<<'XML_WRAP'
-        <?xml version="1.0" encoding="UTF-8"?>
-        <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <rsm:ExchangedDocumentContext>
-                <ram:TestIndicator>
-                    <udt:Indicator>true</udt:Indicator>
-                </ram:TestIndicator>
-                <ram:BusinessProcessSpecifiedDocumentContextParameter>
-                    <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
-                </ram:BusinessProcessSpecifiedDocumentContextParameter>
-                <ram:GuidelineSpecifiedDocumentContextParameter>
-                    <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
-                </ram:GuidelineSpecifiedDocumentContextParameter>
-            </rsm:ExchangedDocumentContext>
-        </rsm:CrossIndustryInvoice>
-        XML_WRAP;
-
-        $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>
@@ -147,33 +127,65 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         </rsm:CrossIndustryInvoice>
         XML_WRAP;
 
-        $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
+        $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
 
-        $xml = <<<'XML'
-    Dummy
-    XML;
+        $xml = <<<'XML_WRAP'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <rsm:ExchangedDocumentContext>
+                <ram:TestIndicator>
+                    <udt:Indicator>true</udt:Indicator>
+                </ram:TestIndicator>
+                <ram:BusinessProcessSpecifiedDocumentContextParameter>
+                    <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+                </ram:BusinessProcessSpecifiedDocumentContextParameter>
+                <ram:GuidelineSpecifiedDocumentContextParameter>
+                    <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:zugferd.de:2p0:extended</ram:ID>
+                </ram:GuidelineSpecifiedDocumentContextParameter>
+            </rsm:ExchangedDocumentContext>
+        </rsm:CrossIndustryInvoice>
+        XML_WRAP;
+
+        $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
+
+        $xml = <<<'XML_WRAP'
+        <?xml version="1.0" encoding="UTF-8"?>
+        <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <rsm:ExchangedDocumentContext>
+                <ram:TestIndicator>
+                    <udt:Indicator>true</udt:Indicator>
+                </ram:TestIndicator>
+                <ram:BusinessProcessSpecifiedDocumentContextParameter>
+                    <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+                </ram:BusinessProcessSpecifiedDocumentContextParameter>
+                <ram:GuidelineSpecifiedDocumentContextParameter>
+                    <ram:ID>urn:cen.eu:en16931:2017</ram:ID>
+                </ram:GuidelineSpecifiedDocumentContextParameter>
+            </rsm:ExchangedDocumentContext>
+        </rsm:CrossIndustryInvoice>
+        XML_WRAP;
 
         $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
     }
 
     public function testGetRootClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->assertsame(CrossIndustryInvoice::class, $provider->getRootClassName());
     }
 
     public function testGetReaderClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertsame(InvoiceSuiteXRechnungCIIInvoiceProviderReader::class, $provider->getReaderClassName());
+        $this->assertsame(InvoiceSuiteZfFxProviderReader::class, $provider->getReaderClassName());
     }
 
     public function testGetBuilderClassName(): void
     {
-        $provider = new InvoiceSuiteXRechnungCIIInvoiceProvider();
+        $provider = new InvoiceSuiteZfFxExtendedProvider();
 
-        $this->assertsame(InvoiceSuiteXRechnungCIIInvoiceProviderBuilder::class, $provider->getBuilderClassName());
+        $this->assertsame(InvoiceSuiteZfFxProviderBuilder::class, $provider->getBuilderClassName());
     }
 }

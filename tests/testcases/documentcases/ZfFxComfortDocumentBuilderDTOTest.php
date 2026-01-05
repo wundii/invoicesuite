@@ -375,7 +375,7 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
         $this->assertArrayHasKey(0, static::$document->getWarningMessagesInMessageBag());
         $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
         $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['status']);
-        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxUnifiedProviderBuilder::setDocumentDescription', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderBuilder::setDocumentDescription', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
         $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
 

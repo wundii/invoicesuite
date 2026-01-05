@@ -7,13 +7,13 @@ namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxComfortProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
-final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
+final class ZfFxComfortProviderReaderTest extends TestCase
 {
     /**
      * The reader
@@ -24,13 +24,13 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = new InvoiceSuiteXRechnungCIIInvoiceProviderReader(new InvoiceSuiteXRechnungCIIInvoiceProvider());
+        static::$document = new InvoiceSuiteZfFxProviderReader(new InvoiceSuiteZfFxComfortProvider());
 
         static::$document->deserializeFromContent(
             file_get_contents(
                 InvoiceSuitePathUtils::combinePathWithFile(
                     InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
-                    '02_technical_xml_zffx_xrechnung.xml'
+                    '02_technical_xml_zffx_comfort.xml'
                 )
             )
         );

@@ -6,7 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentSerializer;
-use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxUnifiedExtendedProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\tests\TestCase;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -24,7 +24,7 @@ final class HandlesDocumentSerializerTest extends TestCase
 
     public function testCreateAndInitSerializerByFormatProvider(): void
     {
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
         $this->createAndInitDocumentSerializerByFormatProvider();
         $this->assertInstanceOf(SerializerBuilder::class, $this->documentSerializerBuilder);
         $this->assertInstanceOf(SerializerInterface::class, $this->documentSerializer);

@@ -6,7 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxUnifiedExtendedProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxExtendedProvider;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class HandlesCurrentDocumentFormatProviderTest extends TestCase
@@ -23,15 +23,15 @@ final class HandlesCurrentDocumentFormatProviderTest extends TestCase
     {
         $this->assertNull($this->currentDocumentFormatProvider);
         $this->assertNotInstanceOf(InvoiceSuiteAbstractDocumentFormatProvider::class, $this->getCurrentDocumentFormatProvider());
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
-        $this->assertInstanceOf(InvoiceSuiteZfFxUnifiedExtendedProvider::class, $this->currentDocumentFormatProvider);
-        $this->assertInstanceOf(InvoiceSuiteZfFxUnifiedExtendedProvider::class, $this->getCurrentDocumentFormatProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->currentDocumentFormatProvider);
+        $this->assertInstanceOf(InvoiceSuiteZfFxExtendedProvider::class, $this->getCurrentDocumentFormatProvider());
     }
 
     public function testResolveCurrentFormatProviderParameters(): void
     {
         $this->assertNull($this->currentDocumentFormatProvider);
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
         $this->assertNotEmpty($this->resolveCurrentDocumentFormatProviderParameters());
         $this->assertCount(6, $this->resolveCurrentDocumentFormatProviderParameters());
     }
@@ -39,7 +39,7 @@ final class HandlesCurrentDocumentFormatProviderTest extends TestCase
     public function testHasCurrentFormatProviderParameter(): void
     {
         $this->assertNull($this->currentDocumentFormatProvider);
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
         $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('ContextParameter'));
         $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('AlternativeContextParameters'));
         $this->assertTrue($this->hasCurrentDocumentFormatProviderParameter('BusinessProcess'));
@@ -50,7 +50,7 @@ final class HandlesCurrentDocumentFormatProviderTest extends TestCase
     public function testGetCurrentFormatProviderParameterValue(): void
     {
         $this->assertNull($this->currentDocumentFormatProvider);
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
         $this->assertSame('urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended', $this->getCurrentDocumentFormatProviderParameterValue('ContextParameter', ''));
         $this->assertIsArray($this->getCurrentDocumentFormatProviderParameterValue('AlternativeContextParameters', ''));
         $this->assertNotEmpty($this->getCurrentDocumentFormatProviderParameterValue('AlternativeContextParameters', ''));

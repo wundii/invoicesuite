@@ -6,8 +6,8 @@ namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxUnifiedExtendedProvider;
-use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxUnifiedMinimumProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxExtendedProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxMinimumProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\tests\TestCase;
 
@@ -23,8 +23,8 @@ final class HandlesDocumentFormatProvidersTest extends TestCase
 
     public function testAddAndRemoveFormatProvider(): void
     {
-        $provider1 = new InvoiceSuiteZfFxUnifiedMinimumProvider();
-        $provider2 = new InvoiceSuiteZfFxUnifiedExtendedProvider();
+        $provider1 = new InvoiceSuiteZfFxMinimumProvider();
+        $provider2 = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->registerDocumentFormatProvider($provider1);
         $this->assertCount(1, $this->registeredDocumentFormatProviders);
@@ -53,8 +53,8 @@ final class HandlesDocumentFormatProvidersTest extends TestCase
 
     public function testFindFormatProviderByUniqueId(): void
     {
-        $provider1 = new InvoiceSuiteZfFxUnifiedMinimumProvider();
-        $provider2 = new InvoiceSuiteZfFxUnifiedExtendedProvider();
+        $provider1 = new InvoiceSuiteZfFxMinimumProvider();
+        $provider2 = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->registerDocumentFormatProvider($provider1);
         $this->registerDocumentFormatProvider($provider2);
@@ -65,8 +65,8 @@ final class HandlesDocumentFormatProvidersTest extends TestCase
 
     public function testFindFormatProviderByUniqueIdOrfail(): void
     {
-        $provider1 = new InvoiceSuiteZfFxUnifiedMinimumProvider();
-        $provider2 = new InvoiceSuiteZfFxUnifiedExtendedProvider();
+        $provider1 = new InvoiceSuiteZfFxMinimumProvider();
+        $provider2 = new InvoiceSuiteZfFxExtendedProvider();
 
         $this->registerDocumentFormatProvider($provider1);
         $this->registerDocumentFormatProvider($provider2);

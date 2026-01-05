@@ -7,13 +7,13 @@ namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 use DateTimeInterface;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProvider;
-use horstoeko\invoicesuite\documents\providers\xr\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxBasicProvider;
+use horstoeko\invoicesuite\documents\providers\zffx\InvoiceSuiteZfFxProviderReader;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
-final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
+final class ZfFxBasicProviderReaderTest extends TestCase
 {
     /**
      * The reader
@@ -24,13 +24,13 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        static::$document = new InvoiceSuiteXRechnungCIIInvoiceProviderReader(new InvoiceSuiteXRechnungCIIInvoiceProvider());
+        static::$document = new InvoiceSuiteZfFxProviderReader(new InvoiceSuiteZfFxBasicProvider());
 
         static::$document->deserializeFromContent(
             file_get_contents(
                 InvoiceSuitePathUtils::combinePathWithFile(
                     InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'assets'),
-                    '02_technical_xml_zffx_xrechnung.xml'
+                    '02_technical_xml_zffx_basic.xml'
                 )
             )
         );
@@ -167,18 +167,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentSellerOrderReference(): void
     {
-        $this->assertTrue(static::$document->firstDocumentSellerOrderReference());
+        $this->assertFalse(static::$document->firstDocumentSellerOrderReference());
 
         static::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
 
-        $this->assertSame('SO-1', $newReferenceNumber);
+        $this->assertSame('', $newReferenceNumber);
         $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
 
         $this->assertFalse(static::$document->nextDocumentSellerOrderReference());
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
-        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentBuyerOrderReference(): void
@@ -227,7 +223,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentAdditionalReference(): void
     {
-        $this->assertTrue(static::$document->firstDocumentAdditionalReference());
+        $this->assertFalse(static::$document->firstDocumentAdditionalReference());
 
         static::$document->getDocumentAdditionalReference(
             $newReferenceNumber,
@@ -238,43 +234,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newInvoiceSuiteAttachment
         );
 
-        $this->assertSame('ADD-1', $newReferenceNumber);
+        $this->assertSame('', $newReferenceNumber);
         $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
-        $this->assertSame('typecode', $newTypeCode);
-        $this->assertSame('reftypecode', $newReferenceTypeCode);
-        $this->assertSame('description', $newDescription);
-        $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
-
-        $this->assertTrue(static::$document->nextDocumentAdditionalReference());
-
-        static::$document->getDocumentAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        $this->assertSame('ADD-2', $newReferenceNumber);
-        $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
-        $this->assertSame('typecode2', $newTypeCode);
-        $this->assertSame('reftypecode2', $newReferenceTypeCode);
-        $this->assertSame('description2', $newDescription);
+        $this->assertSame('', $newTypeCode);
+        $this->assertSame('', $newReferenceTypeCode);
+        $this->assertSame('', $newDescription);
         $this->assertNotInstanceOf(InvoiceSuiteAttachment::class, $newInvoiceSuiteAttachment);
 
         $this->assertFalse(static::$document->nextDocumentAdditionalReference());
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentAdditionalReference(
-                $newReferenceNumber,
-                $newReferenceDate,
-                $newTypeCode,
-                $newReferenceTypeCode,
-                $newDescription,
-                $newInvoiceSuiteAttachment
-            );
-        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentInvoiceReference(): void
@@ -304,18 +271,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentProjectReference(): void
     {
-        $this->assertTrue(static::$document->firstDocumentProjectReference());
+        $this->assertFalse(static::$document->firstDocumentProjectReference());
 
         static::$document->getDocumentProjectReference($newReferenceNumber, $newName);
 
-        $this->assertSame('PROJECT-1', $newReferenceNumber);
-        $this->assertSame('Project 1', $newName);
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertSame('', $newName);
 
         $this->assertFalse(static::$document->nextDocumentProjectReference());
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentProjectReference($newReferenceNumber, $newName);
-        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentUltimateCustomerOrderReference(): void
@@ -355,18 +318,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
     public function testFirstNextGetDocumentReceivingAdviceReference(): void
     {
-        $this->assertTrue(static::$document->firstDocumentReceivingAdviceReference());
+        $this->assertFalse(static::$document->firstDocumentReceivingAdviceReference());
 
         static::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
 
-        $this->assertSame('RECADV-1', $newReferenceNumber);
+        $this->assertSame('', $newReferenceNumber);
         $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
 
         $this->assertFalse(static::$document->nextDocumentReceivingAdviceReference());
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
-        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentDeliveryNoteReference(): void
@@ -507,7 +466,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         // Contact
 
-        $this->assertTrue(static::$document->firstDocumentSellerContact());
+        $this->assertFalse(static::$document->firstDocumentSellerContact());
 
         static::$document->getDocumentSellerContact(
             $newPersonName,
@@ -517,11 +476,11 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newEmailAddress
         );
 
-        $this->assertSame('Horst Meier', $newPersonName);
-        $this->assertSame('Buchhaltung', $newDepartmentName);
-        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('', $newPersonName);
+        $this->assertSame('', $newDepartmentName);
+        $this->assertSame('', $newPhoneNumber);
         $this->assertSame('', $newFaxNumber);
-        $this->assertSame('horst.meier@lieferant.de', $newEmailAddress);
+        $this->assertSame('', $newEmailAddress);
 
         $this->assertFalse(static::$document->nextDocumentSellerContact());
 
@@ -660,13 +619,13 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertSame('8884', $newType);
         $this->assertSame('3874837489237', $newId);
-        $this->assertSame('Kunde AG', $newName);
+        $this->assertSame('', $newName);
 
         $this->assertFalse(static::$document->nextDocumentBuyerLegalOrganisation());
 
         // Contact
 
-        $this->assertTrue(static::$document->firstDocumentBuyerContact());
+        $this->assertFalse(static::$document->firstDocumentBuyerContact());
 
         static::$document->getDocumentBuyerContact(
             $newPersonName,
@@ -676,11 +635,11 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newEmailAddress
         );
 
-        $this->assertSame('Horst Meier', $newPersonName);
-        $this->assertSame('Buchhaltung', $newDepartmentName);
-        $this->assertSame('0815-4711', $newPhoneNumber);
+        $this->assertSame('', $newPersonName);
+        $this->assertSame('', $newDepartmentName);
+        $this->assertSame('', $newPhoneNumber);
         $this->assertSame('', $newFaxNumber);
-        $this->assertSame('horst.meier@kunde.de', $newEmailAddress);
+        $this->assertSame('', $newEmailAddress);
 
         $this->assertFalse(static::$document->nextDocumentBuyerContact());
 
@@ -1658,6 +1617,50 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertSame('', $newUri);
 
         $this->assertFalse(static::$document->nextDocumentPayeeCommunication());
+
+        // Finals
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeId($newId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeAddress(
+                $newAddressLine1,
+                $newAddressLine2,
+                $newAddressLine3,
+                $newPostcode,
+                $newCity,
+                $newCountryId,
+                $newSubDivision
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeContact(
+                $newPersonName,
+                $newDepartmentName,
+                $newPhoneNumber,
+                $newFaxNumber,
+                $newEmailAddress
+            );
+        }, '/Undefined (array key|index)/');
+
+        $this->expectNoticeOrWarningExt(static function (): void {
+            static::$document->getDocumentPayeeCommunication($newType, $newUri);
+        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentPaymentMean(): void
@@ -1679,14 +1682,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         );
 
         $this->assertSame('typecode', $newTypeCode);
-        $this->assertSame('name', $newName);
-        $this->assertSame('financialCardId', $newFinancialCardId);
-        $this->assertSame('financialCardHolder', $newFinancialCardHolder);
+        $this->assertSame('', $newName);
+        $this->assertSame('', $newFinancialCardId);
+        $this->assertSame('', $newFinancialCardHolder);
         $this->assertSame('buyeriban', $newBuyerIban);
         $this->assertSame('payeeiban', $newPayeeIban);
-        $this->assertSame('payeeaccountname', $newPayeeAccountName);
+        $this->assertSame('', $newPayeeAccountName);
         $this->assertSame('payeeProprietaryId', $newPayeeProprietaryId);
-        $this->assertSame('payeeBic', $newPayeeBic);
+        $this->assertSame('', $newPayeeBic);
 
         $this->assertTrue(static::$document->nextDocumentPaymentMean());
 
@@ -1705,14 +1708,14 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         );
 
         $this->assertSame('typecode2', $newTypeCode);
-        $this->assertSame('name2', $newName);
-        $this->assertSame('financialCardId2', $newFinancialCardId);
-        $this->assertSame('financialCardHolder2', $newFinancialCardHolder);
+        $this->assertSame('', $newName);
+        $this->assertSame('', $newFinancialCardId);
+        $this->assertSame('', $newFinancialCardHolder);
         $this->assertSame('buyeriban2', $newBuyerIban);
         $this->assertSame('payeeiban2', $newPayeeIban);
-        $this->assertSame('payeeaccountname2', $newPayeeAccountName);
+        $this->assertSame('', $newPayeeAccountName);
         $this->assertSame('payeeProprietaryId2', $newPayeeProprietaryId);
-        $this->assertSame('payeeBic2', $newPayeeBic);
+        $this->assertSame('', $newPayeeBic);
 
         $this->assertFalse(static::$document->nextDocumentPaymentMean());
     }
@@ -1827,7 +1830,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(19.0, $newTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason', $newExemptionReason);
         $this->assertSame('ReasonCode', $newExemptionReasonCode);
-        $this->assertSame('19700101', $newTaxDueDate?->format('Ymd'));
+        $this->assertNotInstanceOf(DateTimeInterface::class, $newTaxDueDate);
         $this->assertSame('DUECODE', $newTaxDueCode);
 
         $this->assertTrue(static::$document->nextDocumentTax());
@@ -1851,7 +1854,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(7.0, $newTaxPercent, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason2', $newExemptionReason);
         $this->assertSame('ReasonCode2', $newExemptionReasonCode);
-        $this->assertSame('19700102', $newTaxDueDate?->format('Ymd'));
+        $this->assertNotInstanceOf(DateTimeInterface::class, $newTaxDueDate);
         $this->assertSame('DUECODE2', $newTaxDueCode);
 
         $this->assertFalse(static::$document->nextDocumentTax());
@@ -1983,7 +1986,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertEqualsWithDelta(7.00, $newGrossAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(8.00, $newDueAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(9.00, $newPrepaidAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(10.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newRoungingAmount, PHP_FLOAT_EPSILON);
     }
 
     public function testFirstNextGetDocumentPosition(): void
@@ -2047,9 +2050,9 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertSame('', $newProductId);
         $this->assertSame('PRODUCTNAME-1', $newProductName);
-        $this->assertSame('PRODUCTDESC-1', $newProductDescription);
-        $this->assertSame('PRODUCTSELLERID-1', $newProductSellerId);
-        $this->assertSame('PRODUCTBUYER-1', $newProductBuyerId);
+        $this->assertSame('', $newProductDescription);
+        $this->assertSame('', $newProductSellerId);
+        $this->assertSame('', $newProductBuyerId);
         $this->assertSame('PRODUCTGLOBALID-1', $newProductGlobalId);
         $this->assertSame('PRODUCTGLOBALIDTYPE-1', $newProductGlobalIdType);
         $this->assertSame('', $newProductIndustryId);
@@ -2057,7 +2060,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         $this->assertSame('', $newProductBatchId);
         $this->assertSame('', $newProductBrandName);
         $this->assertSame('', $newProductModelName);
-        $this->assertSame('PRODUCTCOUNTRY-1', $newProductOriginTradeCountry);
+        $this->assertSame('', $newProductOriginTradeCountry);
 
         // Second position
 
@@ -2070,7 +2073,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(static::$document->firstDocumentPositionProductCharacteristic());
+        $this->assertFalse(static::$document->firstDocumentPositionProductCharacteristic());
 
         static::$document->getDocumentPositionProductCharacteristic(
             $newProductCharacteristicDescription,
@@ -2080,24 +2083,8 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newProductCharacteristicMeasureUnit
         );
 
-        $this->assertSame('PRODUCTCHARACTERISTICDESC-1', $newProductCharacteristicDescription);
-        $this->assertSame('PRODUCTCHARACTERISTICVALUE-1', $newProductCharacteristicValue);
-        $this->assertSame('', $newProductCharacteristicType);
-        $this->assertEqualsWithDelta(0.0, $newProductCharacteristicMeasureValue, PHP_FLOAT_EPSILON);
-        $this->assertSame('', $newProductCharacteristicMeasureUnit);
-
-        $this->assertTrue(static::$document->nextDocumentPositionProductCharacteristic());
-
-        static::$document->getDocumentPositionProductCharacteristic(
-            $newProductCharacteristicDescription,
-            $newProductCharacteristicValue,
-            $newProductCharacteristicType,
-            $newProductCharacteristicMeasureValue,
-            $newProductCharacteristicMeasureUnit
-        );
-
-        $this->assertSame('PRODUCTCHARACTERISTICDESC-2', $newProductCharacteristicDescription);
-        $this->assertSame('PRODUCTCHARACTERISTICVALUE-2', $newProductCharacteristicValue);
+        $this->assertSame('', $newProductCharacteristicDescription);
+        $this->assertSame('', $newProductCharacteristicValue);
         $this->assertSame('', $newProductCharacteristicType);
         $this->assertEqualsWithDelta(0.0, $newProductCharacteristicMeasureValue, PHP_FLOAT_EPSILON);
         $this->assertSame('', $newProductCharacteristicMeasureUnit);
@@ -2115,7 +2102,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(static::$document->firstDocumentPositionProductClassification());
+        $this->assertFalse(static::$document->firstDocumentPositionProductClassification());
 
         static::$document->getDocumentPositionProductClassification(
             $newProductClassificationCode,
@@ -2124,22 +2111,8 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newProductClassificationCodeClassname
         );
 
-        $this->assertSame('PRODUCTCLASSCODE-1', $newProductClassificationCode);
-        $this->assertSame('PRODUCTLISTID-1', $newProductClassificationListId);
-        $this->assertSame('PRODUCTLISTVERSIONID-1', $newProductClassificationListVersionId);
-        $this->assertSame('', $newProductClassificationCodeClassname);
-
-        $this->assertTrue(static::$document->nextDocumentPositionProductClassification());
-
-        static::$document->getDocumentPositionProductClassification(
-            $newProductClassificationCode,
-            $newProductClassificationListId,
-            $newProductClassificationListVersionId,
-            $newProductClassificationCodeClassname
-        );
-
-        $this->assertSame('PRODUCTCLASSCODE-2', $newProductClassificationCode);
-        $this->assertSame('PRODUCTLISTID-2', $newProductClassificationListId);
+        $this->assertSame('', $newProductClassificationCode);
+        $this->assertSame('', $newProductClassificationListId);
         $this->assertSame('', $newProductClassificationListVersionId);
         $this->assertSame('', $newProductClassificationCodeClassname);
 
@@ -2246,7 +2219,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(static::$document->firstDocumentPositionBuyerOrderReference());
+        $this->assertFalse(static::$document->firstDocumentPositionBuyerOrderReference());
 
         static::$document->getDocumentPositionBuyerOrderReference(
             $newReferenceNumber,
@@ -2255,7 +2228,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
         );
 
         $this->assertSame('', $newReferenceNumber);
-        $this->assertSame('10', $newReferenceLineNumber);
+        $this->assertSame('', $newReferenceLineNumber);
         $this->assertNotInstanceOf(DateTimeInterface::class, $newReferenceDate);
 
         $this->assertFalse(static::$document->nextDocumentPositionBuyerOrderReference());
@@ -2481,7 +2454,7 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(static::$document->firstDocumentPositionAdditionalObjectReference());
+        $this->assertFalse(static::$document->firstDocumentPositionAdditionalObjectReference());
 
         static::$document->getDocumentPositionAdditionalObjectReference(
             $newReferenceNumber,
@@ -2489,21 +2462,9 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
             $newReferenceTypeCode
         );
 
-        $this->assertSame('ZZZZZZZZZ', $newReferenceNumber);
-        $this->assertSame('916', $newTypeCode);
-        $this->assertSame('130', $newReferenceTypeCode);
-
-        $this->assertTrue(static::$document->nextDocumentPositionAdditionalObjectReference());
-
-        static::$document->getDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        $this->assertSame('ABCDEF123', $newReferenceNumber);
-        $this->assertSame('50', $newTypeCode);
-        $this->assertSame('130', $newReferenceTypeCode);
+        $this->assertSame('', $newReferenceNumber);
+        $this->assertSame('', $newTypeCode);
+        $this->assertSame('', $newReferenceTypeCode);
 
         $this->assertFalse(static::$document->nextDocumentPositionAdditionalObjectReference());
 
@@ -2961,10 +2922,10 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue($newChargeIndicator);
         $this->assertEqualsWithDelta(10.00, $newAllowanceChargeAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(100.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason', $newAllowanceChargeReason);
         $this->assertSame('ReasonCode', $newAllowanceChargeReasonCode);
-        $this->assertEqualsWithDelta(10.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
         $this->assertTrue(static::$document->nextDocumentPositionAllowanceCharge());
 
@@ -2979,10 +2940,10 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertFalse($newChargeIndicator);
         $this->assertEqualsWithDelta(1.00, $newAllowanceChargeAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(10.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargeBaseAmount, PHP_FLOAT_EPSILON);
         $this->assertSame('Reason2', $newAllowanceChargeReason);
         $this->assertSame('ReasonCode2', $newAllowanceChargeReasonCode);
-        $this->assertEqualsWithDelta(1.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(0.00, $newAllowanceChargePercent, PHP_FLOAT_EPSILON);
 
         $this->assertFalse(static::$document->nextDocumentPositionAllowanceCharge());
 
@@ -3024,12 +2985,12 @@ final class XRechnungCIIInvoiceProviderReaderTest extends TestCase
 
         $this->assertTrue(static::$document->firstDocumentPosition());
 
-        $this->assertTrue(static::$document->firstDocumentPositionPostingReference());
+        $this->assertFalse(static::$document->firstDocumentPositionPostingReference());
 
         static::$document->getDocumentPositionPostingReference($newType, $newAccountId);
 
         $this->assertSame('', $newType);
-        $this->assertSame('PREF-1', $newAccountId);
+        $this->assertSame('', $newAccountId);
 
         $this->assertFalse(static::$document->nextDocumentPositionPostingReference());
 

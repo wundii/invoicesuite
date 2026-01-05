@@ -2,18 +2,6 @@
 
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
-use horstoeko\invoicesuite\documents\providers\xrechnungublinvoice\InvoiceSuiteXRechnungUBLInvoiceProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\xrechnungublinvoice\InvoiceSuiteXRechnungUBLInvoiceProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxbasic\InvoiceSuiteZfFxBasicProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxbasic\InvoiceSuiteZfFxBasicProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxbasicwl\InvoiceSuiteZfFxBasicWlProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxbasicwl\InvoiceSuiteZfFxBasicWlProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxUnifiedExtendedProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxUnifiedExtendedProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteFileUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
@@ -22,8 +10,6 @@ use Nette\PhpGenerator\Printer;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlockFactory;
-use phpDocumentor\Reflection\Exception\PcreException;
-use Webmozart\Assert\InvalidArgumentException;
 
 require __DIR__ . "/../vendor/autoload.php";
 
@@ -671,6 +657,7 @@ BatchMarkDownGenerator::generate([
     InvoiceSuitePdfExtractor::class => dirname(__FILE__) . '/classes/Class-InvoiceSuitePdfExtractor.md',
     InvoiceSuiteDocumentReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentReader.md',
     InvoiceSuiteDocumentBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentBuilder.md',
+    /*
     InvoiceSuiteZfFxUnifiedExtendedProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxUnifiedExtendedProviderBuilder.md',
     InvoiceSuiteZfFxUnifiedExtendedProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxUnifiedExtendedProviderReader.md',
     InvoiceSuiteZfFxComfortProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxComfortProviderBuilder.md',
@@ -683,6 +670,7 @@ BatchMarkDownGenerator::generate([
     InvoiceSuiteZfFxMinimumProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxMinimumProviderReader.md',
     InvoiceSuiteXRechnungUBLInvoiceProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderBuilder.md',
     InvoiceSuiteXRechnungUBLInvoiceProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteUblInvoiceProviderReader.md',
+    */
 ], [
     //'horstoeko\\invoicesuite\\MyClass::myMethodName',
 ]);
