@@ -319,23 +319,23 @@ final class XRechnungCIIDocumentBuilderTest extends TestCase
         $this->assertTrue(static::$document->hasMessagesInMessageBag());
 
         $this->assertTrue(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
-        $this->assertFalse(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertTrue(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertFalse(static::$document->hasMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
         $this->assertTrue(static::$document->hasInfoMessagesInMessageBag());
-        $this->assertFalse(static::$document->hasWarningMessagesInMessageBag());
+        $this->assertTrue(static::$document->hasWarningMessagesInMessageBag());
         $this->assertFalse(static::$document->hasErrorMessagesInMessageBag());
 
-        $this->assertSame(94, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
-        $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
+        $this->assertSame(98, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::INFO));
+        $this->assertSame(1, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::WARNING));
         $this->assertSame(0, static::$document->countMessagesInMessageBagBySeverity(InvoiceSuiteMessageSeverity::ERROR));
 
-        $this->assertSame(94, static::$document->countInfoMessagesInMessageBag());
-        $this->assertSame(0, static::$document->countWarningMessagesInMessageBag());
+        $this->assertSame(98, static::$document->countInfoMessagesInMessageBag());
+        $this->assertSame(1, static::$document->countWarningMessagesInMessageBag());
         $this->assertSame(0, static::$document->countErrorMessagesInMessageBag());
 
         $this->assertArrayHasKey(0, static::$document->getInfoMessagesInMessageBag());
-        $this->assertArrayNotHasKey(0, static::$document->getWarningMessagesInMessageBag());
+        $this->assertArrayHasKey(0, static::$document->getWarningMessagesInMessageBag());
         $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
 

@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentproviders;
 
-use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProvider;
 use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceProviderReader;
 use horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice\InvoiceSuiteXRechnungCIIInvoiceSerializerHandler;
+use horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProfiles;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\tests\TestCase;
 
@@ -33,6 +34,7 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         $this->assertArrayHasKey('ContextParameter', $provider->getParameters());
         $this->assertArrayHasKey('AlternativeContextParameters', $provider->getParameters());
         $this->assertArrayHasKey('BusinessProcess', $provider->getParameters());
+        $this->assertArrayHasKey('WantsMaximumProfile', $provider->getParameters());
 
         $this->assertIsString($provider->getParameters()['ContextParameter']);
         $this->assertSame('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0', $provider->getParameters()['ContextParameter']);
@@ -52,6 +54,9 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         $this->assertSame('XRECHNUNG', $provider->getParameters()['PdfXmpName']);
         $this->assertArrayHasKey('PdfXmpVersion', $provider->getParameters());
         $this->assertSame('3.0', $provider->getParameters()['PdfXmpVersion']);
+
+        $this->assertIsInt($provider->getParameters()['WantsMaximumProfile']);
+        $this->assertSame(InvoiceSuiteZfFxUnifiedProfiles::EN16931->value, $provider->getParameters()['WantsMaximumProfile']);
     }
 
     public function testPdfParameters(): void

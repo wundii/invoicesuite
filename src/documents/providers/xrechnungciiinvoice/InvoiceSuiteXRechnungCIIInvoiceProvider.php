@@ -14,7 +14,8 @@ namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\zffxcomfort\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProfiles;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
@@ -64,6 +65,7 @@ class InvoiceSuiteXRechnungCIIInvoiceProvider extends InvoiceSuiteAbstractDocume
             ],
             'PdfXmpName' => 'XRECHNUNG',
             'PdfXmpVersion' => '3.0',
+            'WantsMaximumProfile' => InvoiceSuiteZfFxUnifiedProfiles::EN16931->value,
         ];
     }
 

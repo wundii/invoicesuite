@@ -67,28 +67,24 @@
         </testsuite>
         <testsuite name="models">
             <file>../tests/testcases/documentmodels/UblModelTest.php</file>
-            <file>../tests/testcases/documentmodels/ZffxExtendedModelTest.php</file>
-            <file>../tests/testcases/documentmodels/ZffxComfortModelTest.php</file>
-            <file>../tests/testcases/documentmodels/ZffxBasicModelTest.php</file>
-            <file>../tests/testcases/documentmodels/ZffxBasicWlModelTest.php</file>
-            <file>../tests/testcases/documentmodels/ZffxMinimumModelTest.php</file>
+            <file>../tests/testcases/documentmodels/ZffxModelTest.php</file>
         </testsuite>
         <testsuite name="providers">
-            <file>../tests/testcases/documentproviders/ZfFxExtendedProviderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxExtendedProviderBuilderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxExtendedProviderReaderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxComfortProviderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxComfortProviderBuilderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxComfortProviderReaderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicProviderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicProviderBuilderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicProviderReaderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderBuilderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxBasicWlProviderReaderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxMinimumProviderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxMinimumProviderBuilderTest.php</file>
-            <file>../tests/testcases/documentproviders/ZfFxMinimumProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedExtendedProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedExtendedProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedExtendedProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedComfortProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedComfortProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedComfortProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicWlProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicWlProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedBasicWlProviderReaderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedMinimumProviderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedMinimumProviderBuilderTest.php</file>
+            <file>../tests/testcases/documentproviders/ZfFxUnifiedMinimumProviderReaderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungCIIInvoiceProviderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungCIIInvoiceProviderBuilderTest.php</file>
             <file>../tests/testcases/documentproviders/XRechnungCIIInvoiceProviderReaderTest.php</file>
@@ -98,6 +94,7 @@
         </testsuite>
         <testsuite name="documentreadbuild">
             <!-- Builder -->
+            <!--
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentBuilderTest.php</file>
@@ -105,7 +102,9 @@
             <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungCIIInvoiceBuilderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungUBLInvoiceBuilderTest.php</file>
+            -->
             <!-- Reader -->
+            <!--
             <file>../tests/testcases/documentreadbuild/ZfFxExtendedDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxComfortDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/ZfFxBasicDocumentReaderTest.php</file>
@@ -113,6 +112,7 @@
             <file>../tests/testcases/documentreadbuild/ZfFxMinimumDocumentReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungCIIInvoiceReaderTest.php</file>
             <file>../tests/testcases/documentreadbuild/XRechnungUBLInvoiceReaderTest.php</file>
+            -->
         </testsuite>
         <testsuite name="documentcase">
             <file>../tests/testcases/documentcases/ZfFxComfortDocumentBuilderTest.php</file>

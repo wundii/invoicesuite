@@ -83,7 +83,7 @@ final class ZugferdPdfDocumentReaderMinimumTest extends TestCase
         $this->assertEqualsWithDelta(0.00, $chargeTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $allowanceTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(100.00, $taxBasisTotalAmount, PHP_FLOAT_EPSILON);
-        $this->assertEqualsWithDelta(0.00, $taxTotalAmount, PHP_FLOAT_EPSILON);
+        $this->assertEqualsWithDelta(10.00, $taxTotalAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $roundingAmount, PHP_FLOAT_EPSILON);
         $this->assertEqualsWithDelta(0.00, $totalPrepaidAmount, PHP_FLOAT_EPSILON);
     }

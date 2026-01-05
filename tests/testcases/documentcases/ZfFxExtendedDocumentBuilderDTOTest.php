@@ -30,7 +30,6 @@ use horstoeko\invoicesuite\documents\dto\InvoiceSuiteServiceChargeDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteSummationDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuitesummationLineDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteTaxDTO;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\tests\TestCase;
@@ -831,16 +830,16 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertArrayHasKey(3, static::$document->getWarningMessagesInMessageBag());
         $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
         $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['status']);
-        $this->assertSame('EXIT '.InvoiceSuiteZfFxExtendedProviderBuilder::class.'::setDocumentLanguage', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProviderBuilder::setDocumentLanguage', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
         $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData());
         $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData()['status']);
-        $this->assertSame('EXIT '.InvoiceSuiteZfFxExtendedProviderBuilder::class.'::setDocumentCompleteDate', static::$document->getWarningMessagesInMessageBag()[1]->getMessageContent());
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProviderBuilder::setDocumentCompleteDate', static::$document->getWarningMessagesInMessageBag()[1]->getMessageContent());
         $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData());
         $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData()['status']);
-        $this->assertSame('EXIT '.InvoiceSuiteZfFxExtendedProviderBuilder::class.'::setDocumentTaxCurrency', static::$document->getWarningMessagesInMessageBag()[2]->getMessageContent());
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProviderBuilder::setDocumentTaxCurrency', static::$document->getWarningMessagesInMessageBag()[2]->getMessageContent());
         $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData());
         $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData()['status']);
-        $this->assertSame('EXIT '.InvoiceSuiteZfFxExtendedProviderBuilder::class.'::setDocumentIsCopy', static::$document->getWarningMessagesInMessageBag()[3]->getMessageContent());
+        $this->assertSame('EXIT horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProviderBuilder::setDocumentIsCopy', static::$document->getWarningMessagesInMessageBag()[3]->getMessageContent());
         $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
 

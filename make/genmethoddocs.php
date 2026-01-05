@@ -10,8 +10,8 @@ use horstoeko\invoicesuite\documents\providers\zffxbasicwl\InvoiceSuiteZfFxBasic
 use horstoeko\invoicesuite\documents\providers\zffxbasicwl\InvoiceSuiteZfFxBasicWlProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderReader;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderBuilder;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProviderReader;
+use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxUnifiedExtendedProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxUnifiedExtendedProviderReader;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderBuilder;
 use horstoeko\invoicesuite\documents\providers\zffxminimum\InvoiceSuiteZfFxMinimumProviderReader;
 use horstoeko\invoicesuite\pdfs\extractor\InvoiceSuitePdfExtractor;
@@ -671,8 +671,8 @@ BatchMarkDownGenerator::generate([
     InvoiceSuitePdfExtractor::class => dirname(__FILE__) . '/classes/Class-InvoiceSuitePdfExtractor.md',
     InvoiceSuiteDocumentReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentReader.md',
     InvoiceSuiteDocumentBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteDocumentBuilder.md',
-    InvoiceSuiteZfFxExtendedProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxExtendedProviderBuilder.md',
-    InvoiceSuiteZfFxExtendedProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxExtendedProviderReader.md',
+    InvoiceSuiteZfFxUnifiedExtendedProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxUnifiedExtendedProviderBuilder.md',
+    InvoiceSuiteZfFxUnifiedExtendedProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxUnifiedExtendedProviderReader.md',
     InvoiceSuiteZfFxComfortProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxComfortProviderBuilder.md',
     InvoiceSuiteZfFxComfortProviderReader::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxComfortProviderReader.md',
     InvoiceSuiteZfFxBasicProviderBuilder::class => dirname(__FILE__) . '/classes/Class-InvoiceSuiteZfFxBasicProviderBuilder.md',

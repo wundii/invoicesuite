@@ -11,6 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 
-use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortSerializerHandler;
+use horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedSerializerHandler;
 
-class InvoiceSuiteXRechnungCIIInvoiceSerializerHandler extends InvoiceSuiteZfFxComfortSerializerHandler {}
+class InvoiceSuiteXRechnungCIIInvoiceSerializerHandler extends InvoiceSuiteZfFxUnifiedSerializerHandler {}

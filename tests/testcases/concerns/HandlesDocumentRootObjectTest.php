@@ -6,8 +6,8 @@ namespace horstoeko\invoicesuite\tests\testcases\concerns;
 
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentRootObject;
-use horstoeko\invoicesuite\documents\models\zffxextended\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\documents\providers\zffxextended\InvoiceSuiteZfFxExtendedProvider;
+use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedExtendedProvider;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class HandlesDocumentRootObjectTest extends TestCase
@@ -23,7 +23,7 @@ final class HandlesDocumentRootObjectTest extends TestCase
 
     public function testCreateAndInitDocumentRootObjectByFormatProvider(): void
     {
-        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxExtendedProvider());
+        $this->setCurrentDocumentFormatProvider(new InvoiceSuiteZfFxUnifiedExtendedProvider());
         $this->createAndInitDocumentRootObjectByFormatProvider();
         $this->assertInstanceOf(CrossIndustryInvoice::class, $this->documentRootObject);
         $this->assertInstanceOf(CrossIndustryInvoice::class, $this->getDocumentRootObject());

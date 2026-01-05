@@ -11,6 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\providers\xrechnungciiinvoice;
 
-use horstoeko\invoicesuite\documents\providers\zffxcomfort\InvoiceSuiteZfFxComfortProviderBuilder;
+use horstoeko\invoicesuite\documents\providers\zffxunified\InvoiceSuiteZfFxUnifiedProviderBuilder;
 
-class InvoiceSuiteXRechnungCIIInvoiceProviderBuilder extends InvoiceSuiteZfFxComfortProviderBuilder {}
+class InvoiceSuiteXRechnungCIIInvoiceProviderBuilder extends InvoiceSuiteZfFxUnifiedProviderBuilder {}
