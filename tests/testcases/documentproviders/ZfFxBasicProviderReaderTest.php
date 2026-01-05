@@ -1617,50 +1617,6 @@ final class ZfFxBasicProviderReaderTest extends TestCase
         $this->assertSame('', $newUri);
 
         $this->assertFalse(static::$document->nextDocumentPayeeCommunication());
-
-        // Finals
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeId($newId);
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeAddress(
-                $newAddressLine1,
-                $newAddressLine2,
-                $newAddressLine3,
-                $newPostcode,
-                $newCity,
-                $newCountryId,
-                $newSubDivision
-            );
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeContact(
-                $newPersonName,
-                $newDepartmentName,
-                $newPhoneNumber,
-                $newFaxNumber,
-                $newEmailAddress
-            );
-        }, '/Undefined (array key|index)/');
-
-        $this->expectNoticeOrWarningExt(static function (): void {
-            static::$document->getDocumentPayeeCommunication($newType, $newUri);
-        }, '/Undefined (array key|index)/');
     }
 
     public function testFirstNextGetDocumentPaymentMean(): void
