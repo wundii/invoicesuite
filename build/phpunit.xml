@@ -127,6 +127,7 @@
             <file>../tests/testcases/documentcases/XRechnungUBLInvoiceDocumentBuilderTest.php</file>
             <file>../tests/testcases/documentcases/XRechnungUBLInvoiceDocumentBuilderDTOTest.php</file>
             <file>../tests/testcases/documentcases/XRechnungUBLCreditNoteDocumentBuilderTest.php</file>
+            <file>../tests/testcases/documentcases/XRechnungUBLCreditNoteDocumentBuilderDTOTest.php</file>
         </testsuite>
         <testsuite name="pdf">
             <file>../tests/testcases/pdf/InvoiceSuitePdfExtractorTest.php</file>

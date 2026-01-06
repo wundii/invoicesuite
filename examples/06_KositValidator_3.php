@@ -17,6 +17,7 @@ $filesToValidate = [
     InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_ublinvoice_simple.xml"),
     InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_ublinvoice_simple_dto.xml"),
     InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_ublcreditnote_simple.xml"),
+    InvoiceSuitePathUtils::combinePathWithFile(__DIR__, "/../tests/assets/00_case_xrechnung_ublcreditnote_simple_dto.xml"),
 ];
 
 foreach ($filesToValidate as $fileIndex => $fileToValidate) {
