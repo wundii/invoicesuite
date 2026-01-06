@@ -2600,10 +2600,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      * @param  null|string                   $refTypeCode        __BT-18-1, From ENN 16931__ The identifier for the identification scheme of the identifier of the item invoiced. If it is not clear to the recipient which scheme is used for the identifier, an identifier of the scheme should be used, which must be selected from UNTDID 1153 in accordance with the code list entries.
      * @param  null|DateTimeInterface        $issueDate          __BT-X-149, From EXTENDED__ Document date
      * @param  null|string                   $binaryDataFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  null|string                   $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
      * @return static
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addDocumentAdditionalReferencedDocument(
         string $issuerAssignedId,
@@ -2612,7 +2614,8 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
         $name = null,
         ?string $refTypeCode = null,
         ?DateTimeInterface $issueDate = null,
-        ?string $binaryDataFilename = null
+        ?string $binaryDataFilename = null,
+        ?string $base64EncodedData = null
     ): static {
         $attachment = null;
 
@@ -2620,8 +2623,12 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
             $attachment = InvoiceSuiteAttachment::fromUrl($uriId);
         }
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataFilename)) {
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataFilename) && InvoiceSuiteStringUtils::stringIsNullOrEmpty($base64EncodedData)) {
             $attachment = InvoiceSuiteAttachment::fromFile($binaryDataFilename);
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($binaryDataFilename) && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($base64EncodedData)) {
+            $attachment = InvoiceSuiteAttachment::fromBase64String($base64EncodedData, $binaryDataFilename);
         }
 
         $name = is_array($name)
@@ -2653,6 +2660,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addDocumentInvoiceSupportingDocumentWithUri(
         string $issuerAssignedId,
@@ -2678,6 +2686,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addDocumentInvoiceSupportingDocumentWithFile(
         string $issuerAssignedId,
@@ -2700,6 +2709,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addDocumentTenderOrLotReferenceDocument(
         string $issuerAssignedId
@@ -2719,6 +2729,7 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function addDocumentInvoicedObjectReferenceDocument(
         string $issuerAssignedId,
@@ -2728,6 +2739,31 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
             issuerAssignedId: $issuerAssignedId,
             typeCode: InvoiceSuiteCodelistDocumentTypes::INVOICING_DATA_SHEET->value,
             refTypeCode: $refTypeCode
+        );
+    }
+
+    /**
+     * Add an invoice supporting additional document reference with an URL which specifies the location where the information can be found
+     * The invoice supporting documents can be used to reference both a document number, which should be known to the recipient, and an embedded file (such as a timesheet as a PDF file).
+     *
+     * @param  string                        $issuerAssignedId   __BT-122, From EN 16931__ Identification of the document supporting the invoice
+     * @param  string                        $attachmentFilename __BT-125, From EN 16931__ Contains a file name of an attachment document embedded as a binary object
+     * @param  string                        $base64EncodedData  __BT-125, From EN 16931__ Contains BASE64-Encoded data an attachment document embedded as a binary object. You must provide $binaryDataFilename
+     * @param  null|array<int,string>|string $name               __BT-123, From EN 16931__ A description of the document, e.g. Hourly billing, usage or consumption report, etc.
+     * @return ZugferdDocumentBuilder
+     *
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
+     */
+    public function addDocumentInvoiceSupportingDocumentWithBase64Data(string $issuerAssignedId, string $attachmentFilename, string $base64EncodedData, $name = null): self
+    {
+        return $this->addDocumentAdditionalReferencedDocument(
+            issuerAssignedId: $issuerAssignedId,
+            typeCode: InvoiceSuiteCodelistDocumentTypes::RELATED_DOCUMENT->value,
+            name: $name,
+            binaryDataFilename: $attachmentFilename,
+            base64EncodedData: $base64EncodedData
         );
     }
 

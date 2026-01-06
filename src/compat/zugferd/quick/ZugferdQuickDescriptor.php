@@ -270,6 +270,7 @@ class ZugferdQuickDescriptor extends ZugferdDocumentBuilder
      *
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
+     * @throws InvoiceSuiteInvalidArgumentException
      */
     public function doAddAdditionalReferencedDocument(string $issuerAssignedID, ?DateTime $issueDateTime = null, ?string $typeCode = null, ?string $name = null, ?string $referenceTypeCode = null, ?string $filename = null): self
     {
