@@ -3851,7 +3851,25 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
+        $this
+            ->getUblRootObject()
+            ->firstDelivery()
+            ?->getDeliveryParty()
+            ?->unsetPartyName();
+
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+
+            return $this;
+        }
+
+        $this
+            ->getUblRootObject()
+            ->addOnceToDeliveryWithCreate()
+            ->getDeliveryPartyWithCreate()
+            ->addOnceToPartyNameWithCreate()
+            ->getNameWithCreate()
+            ->setValue($newName);
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3869,7 +3887,13 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
     ): static {
         $this->traceMethodEnter(__METHOD__);
 
-        // Nothing here...
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)) {
+            $this->traceMethodEarlyExit(__METHOD__, 'stringIsNullOrEmpty', 'InvoiceSuiteStringUtils::stringIsNullOrEmpty($newName)');
+
+            return $this;
+        }
+
+        $this->setDocumentShipToName($newName);
 
         $this->traceMethodExit(__METHOD__);
 

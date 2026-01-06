@@ -3731,28 +3731,28 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Ship To Name');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
 
         static::$document->addDocumentShipToName(null);
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Ship To Name');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
 
         static::$document->addDocumentShipToName('');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Ship To Name');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
 
         static::$document->addDocumentShipToName('Ship To Name 2');
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Ship To Name 2');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
 
         static::$document->setDocumentShipToName(null);
@@ -3773,7 +3773,7 @@ final class XRechnungUBLCreditNoteProviderBuilderTest extends TestCase
 
         $this->disableRenderXmlContent();
 
-        $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0);
+        $this->assertXPathValueWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 0, 'Ship To Name 3');
         $this->assertXPathNotExistsWithIndex('/ns:CreditNote/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name', 1);
     }
 

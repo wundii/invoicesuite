@@ -12,9 +12,6 @@ use horstoeko\invoicesuite\InvoiceSuiteDocumentBuilder;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\tests\TestCase;
 use horstoeko\invoicesuite\tests\traits\HandlesXmlTests;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 
 final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
