@@ -73,7 +73,6 @@ class InvoiceSuiteZffxPdfConstructor extends InvoiceSuiteAbstractPdfConstructor
         // Set deterministic mode
 
         $this->pdfWriter->setDeterministicMode($this->getDeterministicMode());
-        $this->pdfWriter->setLinkCorrectionMode($this->getLinkCorrectionMode());
 
         // Attach the invoice document
 

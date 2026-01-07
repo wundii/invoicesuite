@@ -92,13 +92,6 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     protected $deterministicModeEnabled = false;
 
     /**
-     * Internal flag link correction.
-     *
-     * @var bool
-     */
-    protected $linkCorrectionModeEnabled = false;
-
-    /**
      * Set the PDF version.
      *
      * @param  string $version     contains the PDF version number
@@ -206,17 +199,6 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     public function setDeterministicMode(bool $deterministicModeEnabled): void
     {
         $this->deterministicModeEnabled = $deterministicModeEnabled;
-    }
-
-    /**
-     * Set the status of the link correction mode.
-     *
-     * @param  bool $linkCorrectionModeEnabled
-     * @return void
-     */
-    public function setLinkCorrectionMode(bool $linkCorrectionModeEnabled): void
-    {
-        $this->linkCorrectionModeEnabled = $linkCorrectionModeEnabled;
     }
 
     /**
@@ -502,7 +484,7 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
     }
 
     /**
-     * Optional override for PDF-A/3 conformant links.
+     * Override for PDF-A/3 conformant links.
      *
      * This fixes the following issues:
      * - Fix 1: Annotation dictionaries need /F and should be printable => /F 4
@@ -513,12 +495,6 @@ class InvoiceSuiteZffxPdfWriter extends PdfFpdi
      */
     protected function _putlinks($n)
     {
-        if (false === $this->linkCorrectionModeEnabled) {
-            parent::_putlinks($n);
-
-            return;
-        }
-
         foreach ($this->PageLinks[$n] as $pl) {
             $this->_newobj();
             $rect = sprintf('%.2F %.2F %.2F %.2F', $pl[0], $pl[1], $pl[0] + $pl[2], $pl[1] - $pl[3]);

@@ -72,5 +72,7 @@ final class InvoiceSuitePdfMergerTest extends TestCase
     {
         yield 'case1' => ['00_case_comfort_simple.xml', 'pdf_plain.pdf', '00_case_comfort_simple.pdf'];
         yield 'case2' => ['00_case_extended_simple.xml', 'pdf_plain.pdf', '00_case_extended_simple.pdf'];
+        yield 'case3' => ['00_case_comfort_simple.xml', 'pdf_plain_wl.pdf', '00_case_comfort_simple_wl.pdf'];
+        yield 'case4' => ['00_case_extended_simple.xml', 'pdf_plain_wl.pdf', '00_case_extended_simple_wl.pdf'];
     }
 }
