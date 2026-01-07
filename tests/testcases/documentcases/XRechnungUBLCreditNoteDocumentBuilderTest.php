@@ -39,19 +39,19 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentSellerCommunication('0088', '9482348239847239874');
         static::$document->setDocumentSellerId('99887766');
         static::$document->setDocumentSellerName('SupplierOfficialName Ltd');
-        static::$document->setDocumentSellerLegalOrganisation(newName: 'SupplierTradingName Ltd.', newId: 'GB983294');
+        static::$document->setDocumentSellerLegalOrganisation(newId: 'GB983294', newName: 'SupplierTradingName Ltd.');
         static::$document->setDocumentSellerAddress(
             newAddressLine1: 'Main street 1',
             newAddressLine2: 'Postbox 123',
-            newCity: 'London',
             newPostcode: 'GB 123 EW',
+            newCity: 'London',
             newCountryId: InvoiceSuiteCodelistCountryCodes::VERE_KOEN->value
         );
         static::$document->setDocumentSellerTaxRegistration('VAT', 'GB1232434');
         static::$document->setDocumentSellerContact(
             newPersonName: 'Person Responsible',
-            newEmailAddress: 'user@company.all',
-            newPhoneNumber: '08154711'
+            newPhoneNumber: '08154711',
+            newEmailAddress: 'user@company.all'
         );
 
         static::$document->setDocumentBuyerCommunication('0002', 'FR23342');
@@ -61,8 +61,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentBuyerAddress(
             newAddressLine1: 'Hovedgatan 32',
             newAddressLine2: 'Po box 878',
-            newCity: 'Stockholm',
             newPostcode: '456 34',
+            newCity: 'Stockholm',
             newCountryId: InvoiceSuiteCodelistCountryCodes::SCHWEDEN->value
         );
         static::$document->setDocumentBuyerTaxRegistration('VAT', 'SE4598375937');
@@ -78,8 +78,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentShipToAddress(
             newAddressLine1: 'Delivery street 2',
             newAddressLine2: 'Building 56',
-            newCity: 'Stockholm',
             newPostcode: '21234',
+            newCity: 'Stockholm',
             newCountryId: InvoiceSuiteCodelistCountryCodes::SCHWEDEN->value
         );
         static::$document->setDocumentShipToName('Delivery party Name');
@@ -95,28 +95,28 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
 
         static::$document->setDocumentAllowanceCharge(
             newChargeIndicator: true,
-            newAllowanceChargeReason: 'Insurance',
             newAllowanceChargeAmount: 25.00,
             newTaxCategory: 'S',
+            newTaxType: 'VAT',
             newTaxPercent: 25.0,
-            newTaxType: 'VAT'
+            newAllowanceChargeReason: 'Insurance'
         );
 
         static::$document->setDocumentTax(
-            newBasisAmount: 1325.00,
-            newTaxAmount: 331.25,
             newTaxCategory: 'S',
             newTaxType: 'VAT',
+            newBasisAmount: 1325.00,
+            newTaxAmount: 331.25,
             newTaxPercent: 25.0
         );
 
         static::$document->setDocumentSummation(
             newNetAmount: 1300.00,
-            newTaxBasisAmount: 1325.00,
-            newGrossAmount: 1656.25,
             newChargeTotalAmount: 25.00,
-            newDueAmount: 1656.25,
-            newTaxTotalAmount: 331.25
+            newTaxBasisAmount: 1325.00,
+            newTaxTotalAmount: 331.25,
+            newGrossAmount: 1656.25,
+            newDueAmount: 1656.25
         );
 
         static::$document->addDocumentPosition('1');
@@ -125,8 +125,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentPositionPostingReference(newAccountId: 'Konteringsstreng');
         static::$document->setDocumentPositionBuyerOrderReference(newReferenceLineNumber: '123');
         static::$document->setDocumentPositionProductDetails(
-            newProductDescription: 'Description of item',
             newProductName: 'item name',
+            newProductDescription: 'Description of item',
             newProductGlobalId: '21382183120983',
             newProductGlobalIdType: '0088',
             newProductOriginTradeCountry: 'NO'
@@ -143,8 +143,8 @@ final class XRechnungUBLCreditNoteDocumentBuilderTest extends TestCase
         static::$document->setDocumentPositionSummation(-1500.00);
         static::$document->setDocumentPositionBuyerOrderReference(newReferenceLineNumber: '123');
         static::$document->setDocumentPositionProductDetails(
-            newProductDescription: 'Description 2',
             newProductName: 'item name 2',
+            newProductDescription: 'Description 2',
             newProductGlobalId: '21382183120983',
             newProductGlobalIdType: '0088',
             newProductOriginTradeCountry: 'NO'
