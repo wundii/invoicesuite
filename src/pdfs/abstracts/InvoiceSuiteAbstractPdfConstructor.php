@@ -90,6 +90,13 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     private $deterministicMode = false;
 
     /**
+     * Status of link correction mode
+     *
+     * @var bool
+     */
+    private $linkCorrectionMode = false;
+
+    /**
      * User-defined template for the author-metainformation
      *
      * @var string
@@ -405,6 +412,49 @@ abstract class InvoiceSuiteAbstractPdfConstructor
     public function setDeterministicModeToDisabled(): static
     {
         return $this->setDeterministicMode(false);
+    }
+
+    /**
+     * Get the status of link correction mode
+     *
+     * @return bool
+     */
+    public function getLinkCorrectionMode(): bool
+    {
+        return $this->linkCorrectionMode;
+    }
+
+    /**
+     * Set the status of link correction mode
+     *
+     * @param  bool   $linkCorrectionMode
+     * @return static
+     */
+    public function setLinkCorrectionMode(bool $linkCorrectionMode): static
+    {
+        $this->linkCorrectionMode = $linkCorrectionMode;
+
+        return $this;
+    }
+
+    /**
+     * Enable link correction mode
+     *
+     * @return static
+     */
+    public function setLinkCorrectionModeToEnabled(): static
+    {
+        return $this->setLinkCorrectionMode(true);
+    }
+
+    /**
+     * Disable link correction mode
+     *
+     * @return static
+     */
+    public function setLinkCorrectionModeToDisabled(): static
+    {
+        return $this->setLinkCorrectionMode(false);
     }
 
     /**
