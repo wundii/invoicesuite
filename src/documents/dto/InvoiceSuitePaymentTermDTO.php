@@ -273,6 +273,44 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
+     * Loop over The payment discounts and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstDiscountTerm(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstDiscountTerm($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->discountTerms as $discountTerm) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($discountTerm);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment penalties
      *
      * @return array<InvoiceSuitePaymentTermPenaltyDTO>
@@ -394,6 +432,44 @@ class InvoiceSuitePaymentTermDTO
      */
     public function forEachPenaltyTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->penaltyTerms as $penaltyTerm) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($penaltyTerm);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The payment penalties and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPenaltyTerm(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPenaltyTerm($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->penaltyTerms as $penaltyTerm) {

@@ -602,6 +602,44 @@ class InvoiceSuiteProductDTO
     }
 
     /**
+     * Loop over The product characteristics and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstCharacteristic(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstCharacteristic($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->characteristics as $characteristic) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($characteristic);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the product classification
      *
      * @return array<InvoiceSuiteProductClassificationDTO>
@@ -746,6 +784,44 @@ class InvoiceSuiteProductDTO
     }
 
     /**
+     * Loop over The product classification and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstClassification(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstClassification($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->classifications as $classification) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($classification);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the reference product
      *
      * @return array<InvoiceSuiteReferenceProductDTO>
@@ -870,6 +946,44 @@ class InvoiceSuiteProductDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->referenceProducts as $referenceProduct) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($referenceProduct);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The reference product and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstReferenceProduct(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstReferenceProduct($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->referenceProducts as $referenceProduct) {

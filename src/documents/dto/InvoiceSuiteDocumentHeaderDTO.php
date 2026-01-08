@@ -775,6 +775,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The date of the delivery and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstSupplyChainEvent(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstSupplyChainEvent($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->supplyChainEvents as $supplyChainEvent) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($supplyChainEvent);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the code for the invoice currency
      *
      * @return null|string
@@ -1008,6 +1046,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The notes for this document and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstNote(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstNote($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->notes as $note) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($note);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the start and/or end date of the billing period
      *
      * @return array<InvoiceSuiteDateRangeDTO>
@@ -1132,6 +1208,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->billingPeriods as $billingPeriod) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($billingPeriod);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The start and/or end date of the billing period and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstBillingPeriod(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstBillingPeriod($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->billingPeriods as $billingPeriod) {
@@ -1296,6 +1410,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The posting reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPostingReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPostingReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->postingReferences as $postingReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($postingReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the associated seller's order confirmation
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -1420,6 +1572,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->sellerOrderReferences as $sellerOrderReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($sellerOrderReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The associated seller's order confirmation and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstSellerOrderReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstSellerOrderReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->sellerOrderReferences as $sellerOrderReference) {
@@ -1584,6 +1774,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The associated buyer's order and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstBuyerOrderReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstBuyerOrderReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->buyerOrderReferences as $buyerOrderReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($buyerOrderReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the associated quotation
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -1708,6 +1936,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->quotationReferences as $quotationReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($quotationReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The associated quotation and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstQuotationReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstQuotationReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->quotationReferences as $quotationReference) {
@@ -1872,6 +2138,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The associated contract and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstContractReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstContractReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->contractReferences as $contractReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($contractReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the additional associated document
      *
      * @return array<InvoiceSuiteReferenceDocumentExtDTO>
@@ -1996,6 +2300,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->additionalReferences as $additionalReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($additionalReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The additional associated document and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstAdditionalReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstAdditionalReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->additionalReferences as $additionalReference) {
@@ -2160,6 +2502,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The additional invoice document and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstInvoiceReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstInvoiceReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->invoiceReferences as $invoiceReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($invoiceReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the project reference
      *
      * @return array<InvoiceSuiteProjectDTO>
@@ -2284,6 +2664,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->projectReferences as $projectReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($projectReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The project reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstProjectReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstProjectReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->projectReferences as $projectReference) {
@@ -2449,6 +2867,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The ultimate customer order reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstUltimateCustomerOrderReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstUltimateCustomerOrderReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->ultimateCustomerOrderReferences as $ultimateCustomerOrderReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($ultimateCustomerOrderReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the despatch advice reference
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -2573,6 +3029,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->despatchAdviceReferences as $despatchAdviceReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($despatchAdviceReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The despatch advice reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstDespatchAdviceReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstDespatchAdviceReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->despatchAdviceReferences as $despatchAdviceReference) {
@@ -2737,6 +3231,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The receiving advice reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstReceivingAdviceReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstReceivingAdviceReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->receivingAdviceReferences as $receivingAdviceReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($receivingAdviceReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the delivery note reference
      *
      * @return array<InvoiceSuiteReferenceDocumentDTO>
@@ -2861,6 +3393,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->deliveryNoteReferences as $deliveryNoteReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($deliveryNoteReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The delivery note reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstDeliveryNoteReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstDeliveryNoteReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->deliveryNoteReferences as $deliveryNoteReference) {
@@ -3252,6 +3822,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The payment means and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPaymentMean(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPaymentMean($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->paymentMeans as $paymentMean) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($paymentMean);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment terms
      *
      * @return array<InvoiceSuitePaymentTermDTO>
@@ -3373,6 +3981,44 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function forEachPaymentTerm(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->paymentTerms as $paymentTerm) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($paymentTerm);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The payment terms and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPaymentTerm(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPaymentTerm($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->paymentTerms as $paymentTerm) {
@@ -3537,6 +4183,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The creditor identifier and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstCreditorReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstCreditorReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->creditorReferences as $creditorReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($creditorReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the payment reference
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -3661,6 +4345,44 @@ class InvoiceSuiteDocumentHeaderDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->paymentReferences as $paymentReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($paymentReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The payment reference and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPaymentReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPaymentReference($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->paymentReferences as $paymentReference) {
@@ -3825,6 +4547,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The ID for internal routing (Leitweg ID) and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstBuyerReference(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstBuyerReference($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->buyerReferences as $buyerReference) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($buyerReference);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the Document positions
      *
      * @return array<InvoiceSuiteDocumentPositionDTO>
@@ -3946,6 +4706,44 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function forEachPosition(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->positions as $position) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($position);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The Document positions and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstPosition(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstPosition($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->positions as $position) {
@@ -4110,6 +4908,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over delivery term and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstDeliveryTerm(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstDeliveryTerm($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->deliveryTerms as $deliveryTerm) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($deliveryTerm);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the VAT breakdown
      *
      * @return array<InvoiceSuiteTaxDTO>
@@ -4231,6 +5067,44 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function forEachTax(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->taxes as $tax) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($tax);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The VAT breakdown and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstTax(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstTax($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->taxes as $tax) {
@@ -4395,6 +5269,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The allowances/charges and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstAllowanceCharge(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstAllowanceCharge($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->allowanceCharges as $allowanceCharge) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($allowanceCharge);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the allowances/charges
      *
      * @return array<InvoiceSuiteServiceChargeDTO>
@@ -4539,6 +5451,44 @@ class InvoiceSuiteDocumentHeaderDTO
     }
 
     /**
+     * Loop over The allowances/charges and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstServiceCharge(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstServiceCharge($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->serviceCharges as $serviceCharge) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($serviceCharge);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns the summation
      *
      * @return array<InvoiceSuiteSummationDTO>
@@ -4660,6 +5610,44 @@ class InvoiceSuiteDocumentHeaderDTO
      */
     public function forEachSummation(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->summations as $summation) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($summation);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over The summation and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstSummation(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstSummation($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->summations as $summation) {

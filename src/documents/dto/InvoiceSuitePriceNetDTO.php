@@ -185,4 +185,42 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
 
         return $this;
     }
+
+    /**
+     * Loop over The net price included tax and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstTax(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstTax($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->taxes as $tax) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($tax);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
 }

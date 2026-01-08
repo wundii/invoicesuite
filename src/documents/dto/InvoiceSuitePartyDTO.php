@@ -251,6 +251,44 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Loop over Party names and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstName(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstName($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->names as $name) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($name);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party IDs
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -392,6 +430,44 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Loop over Party IDs and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstId(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstId($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->ids as $id) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($id);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party global IDs
      *
      * @return array<InvoiceSuiteIdDTO>
@@ -513,6 +589,44 @@ class InvoiceSuitePartyDTO
      */
     public function forEachGlobalId(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->globalIds as $globalId) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($globalId);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party global IDs and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstGlobalId(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstGlobalId($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->globalIds as $globalId) {
@@ -677,6 +791,44 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Loop over Party tax registrations and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstTaxRegistration(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstTaxRegistration($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->taxRegistrations as $taxRegistration) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($taxRegistration);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party addresses
      *
      * @return array<InvoiceSuiteAddressDTO>
@@ -798,6 +950,44 @@ class InvoiceSuitePartyDTO
      */
     public function forEachAddress(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->addresses as $address) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($address);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party addresses and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstAddress(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstAddress($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->addresses as $address) {
@@ -962,6 +1152,44 @@ class InvoiceSuitePartyDTO
     }
 
     /**
+     * Loop over Party legal organisations and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstLegalOrganisation(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstLegalOrganisation($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->legalOrganisations as $legalOrganisation) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($legalOrganisation);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
      * Returns party contacts
      *
      * @return array<InvoiceSuiteContactDTO>
@@ -1083,6 +1311,44 @@ class InvoiceSuitePartyDTO
      */
     public function forEachContact(callable $callback, ?callable $callbackElse = null, ?int $limit = null): static
     {
+        $count = 0;
+
+        foreach ($this->contacts as $contact) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($contact);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party contacts and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstContact(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstContact($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->contacts as $contact) {
@@ -1227,6 +1493,44 @@ class InvoiceSuitePartyDTO
         ?callable $callbackElse = null,
         ?int $limit = null,
     ): static {
+        $count = 0;
+
+        foreach ($this->communications as $communication) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($communication);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Loop over Party electronic communications and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstCommunication(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstCommunication($callback, $callbackElse);
+        }
+
         $count = 0;
 
         foreach ($this->communications as $communication) {

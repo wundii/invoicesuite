@@ -188,4 +188,42 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
 
         return $this;
     }
+
+    /**
+     * Loop over The discounts or charges to the gross price and execute callback
+     *
+     * @param  bool          $foreachCondition If this is true all items will be retrieved, otherwise the first item is retrieved
+     * @param  callable      $callback         Callback to execute for each item
+     * @param  null|callable $callbackElse     Callback to execute if no item was found
+     * @param  null|int      $limit            Maximum number of loops
+     * @return static
+     */
+    public function forEachOrFirstAllowanceCharge(
+        bool $foreachCondition,
+        callable $callback,
+        ?callable $callbackElse = null,
+        ?int $limit = null,
+    ): static {
+        if (!$foreachCondition) {
+            return $this->firstAllowanceCharge($callback, $callbackElse);
+        }
+
+        $count = 0;
+
+        foreach ($this->allowanceCharges as $allowanceCharge) {
+            if (null !== $limit && $count >= $limit) {
+                break;
+            }
+
+            ++$count;
+
+            $callback($allowanceCharge);
+        }
+
+        if (0 === $count && !is_null($callbackElse)) {
+            $callbackElse();
+        }
+
+        return $this;
+    }
 }
