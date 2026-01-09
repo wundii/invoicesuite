@@ -111,7 +111,7 @@ class InvoiceSuiteVisualizer
      *
      * @var null|callable(Mpdf, InvoiceSuiteVisualizer): void
      */
-    private $mpdfRuntimeInitCallback;
+    private $mpdfPostInitCallback;
 
     /**
      * Constructor
@@ -359,9 +359,9 @@ class InvoiceSuiteVisualizer
      * @param  callable(Mpdf, InvoiceSuiteVisualizer): void $callback
      * @return static
      */
-    public function setPdfRuntimeInitCallback(callable $callback): static
+    public function setPdfPostInitCallback(callable $callback): static
     {
-        $this->mpdfRuntimeInitCallback = $callback;
+        $this->mpdfPostInitCallback = $callback;
 
         return $this;
     }
@@ -502,8 +502,8 @@ class InvoiceSuiteVisualizer
 
         $pdf = new Mpdf($config);
 
-        if (is_callable($this->mpdfRuntimeInitCallback)) {
-            call_user_func($this->mpdfRuntimeInitCallback, $pdf, $this);
+        if (is_callable($this->mpdfPostInitCallback)) {
+            call_user_func($this->mpdfPostInitCallback, $pdf, $this);
         }
 
         return $pdf;
