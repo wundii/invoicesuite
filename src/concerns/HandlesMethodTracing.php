@@ -64,11 +64,11 @@ trait HandlesMethodTracing
 
         if (0 === strcasecmp($newEvent, 'early_exit')) {
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'event', 'exit');
-            InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'status', 'early_exit');
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'method', $newMethod);
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'reason', $newReason);
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'guard', $newGuard);
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'istrace', 'yes');
+            InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'early_exit', 'yes');
 
             // @phpstan-ignore missingType.checkedException
             $this->addWarningMessageToMessageBag(

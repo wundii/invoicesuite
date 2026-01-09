@@ -374,8 +374,8 @@ final class ZfFxComfortDocumentBuilderDTOTest extends TestCase
 
         $this->assertArrayHasKey(0, static::$document->getInfoMessagesInMessageBag());
         $this->assertArrayHasKey(0, static::$document->getWarningMessagesInMessageBag());
-        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
-        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['status']);
+        $this->assertArrayHasKey('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
+        $this->assertSame('yes', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['early_exit']);
         $this->assertSame('EXIT '.InvoiceSuiteZfFxProviderBuilder::class.'::setDocumentDescription', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
         $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }

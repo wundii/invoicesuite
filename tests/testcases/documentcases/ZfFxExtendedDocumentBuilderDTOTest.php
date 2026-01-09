@@ -829,17 +829,17 @@ final class ZfFxExtendedDocumentBuilderDTOTest extends TestCase
         $this->assertArrayHasKey(1, static::$document->getWarningMessagesInMessageBag());
         $this->assertArrayHasKey(2, static::$document->getWarningMessagesInMessageBag());
         $this->assertArrayHasKey(3, static::$document->getWarningMessagesInMessageBag());
-        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
-        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['status']);
+        $this->assertArrayHasKey('early_exit', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData());
+        $this->assertSame('yes', static::$document->getWarningMessagesInMessageBag()[0]->getMessageAdditionalData()['early_exit']);
         $this->assertSame('EXIT '.InvoiceSuiteZfFxProviderBuilder::class.'::setDocumentLanguage', static::$document->getWarningMessagesInMessageBag()[0]->getMessageContent());
-        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData());
-        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData()['status']);
+        $this->assertArrayHasKey('early_exit', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData());
+        $this->assertSame('yes', static::$document->getWarningMessagesInMessageBag()[1]->getMessageAdditionalData()['early_exit']);
         $this->assertSame('EXIT '.InvoiceSuiteZfFxProviderBuilder::class.'::setDocumentCompleteDate', static::$document->getWarningMessagesInMessageBag()[1]->getMessageContent());
-        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData());
-        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData()['status']);
+        $this->assertArrayHasKey('early_exit', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData());
+        $this->assertSame('yes', static::$document->getWarningMessagesInMessageBag()[2]->getMessageAdditionalData()['early_exit']);
         $this->assertSame('EXIT '.InvoiceSuiteZfFxProviderBuilder::class.'::setDocumentTaxCurrency', static::$document->getWarningMessagesInMessageBag()[2]->getMessageContent());
-        $this->assertArrayHasKey('status', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData());
-        $this->assertSame('early_exit', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData()['status']);
+        $this->assertArrayHasKey('early_exit', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData());
+        $this->assertSame('yes', static::$document->getWarningMessagesInMessageBag()[3]->getMessageAdditionalData()['early_exit']);
         $this->assertSame('EXIT '.InvoiceSuiteZfFxProviderBuilder::class.'::setDocumentIsCopy', static::$document->getWarningMessagesInMessageBag()[3]->getMessageContent());
         $this->assertArrayNotHasKey(0, static::$document->getErrorMessagesInMessageBag());
     }
