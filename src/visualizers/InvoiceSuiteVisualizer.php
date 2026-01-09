@@ -270,7 +270,7 @@ class InvoiceSuiteVisualizer
                     __DIR__,
                     'templates'
                 ),
-                'default.tmpl'
+                'default.php'
             )
         );
 
