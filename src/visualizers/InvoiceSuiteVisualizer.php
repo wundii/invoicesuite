@@ -102,14 +102,14 @@ class InvoiceSuiteVisualizer
     /**
      * A callbacl which is called before MPDF is instanciated. Here is the possibillity to set custom options for MPDF
      *
-     * @var null|callable
+     * @var null|callable(array<string, mixed>, InvoiceSuiteVisualizer): array<string, mixed>
      */
     private $mpdfPreInitCallback;
 
     /**
      * A callbacl which is called after MPDF is instanciated. Here is the possibillity to set custom options for MPDF
      *
-     * @var null|callable
+     * @var null|callable(Mpdf, InvoiceSuiteVisualizer): void
      */
     private $mpdfRuntimeInitCallback;
 
@@ -343,7 +343,7 @@ class InvoiceSuiteVisualizer
     /**
      * Set the callback which is called before the internal instance of the PDF-Engine is instanciated
      *
-     * @param  callable $callback
+     * @param  callable(array<string, mixed>, InvoiceSuiteVisualizer): array<string, mixed> $callback
      * @return static
      */
     public function setPdfPreInitCallback(callable $callback): static
@@ -356,7 +356,7 @@ class InvoiceSuiteVisualizer
     /**
      * Set the callback which is called after the internal instance of the PDF-Engine is instanciated
      *
-     * @param  callable $callback
+     * @param  callable(Mpdf, InvoiceSuiteVisualizer): void $callback
      * @return static
      */
     public function setPdfRuntimeInitCallback(callable $callback): static
@@ -417,9 +417,11 @@ class InvoiceSuiteVisualizer
      */
     protected function internalRenderPdf(string $markup, string $outputDestination, string $toFilename)
     {
-        $this->instanciatePdfEngine()->WriteHTML($markup);
+        $pdfEngine = $this->instanciatePdfEngine();
 
-        return $this->instanciatePdfEngine()->Output($toFilename, $outputDestination);
+        $pdfEngine->WriteHTML($markup);
+
+        return $pdfEngine->Output($toFilename, $outputDestination);
     }
 
     /**
