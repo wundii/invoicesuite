@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx;
 use DOMDocument;
 use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
-use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
@@ -228,7 +228,7 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormat
     public function getXsdFilename(): string
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', 'schemes', 'zffx'),
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'schemes'),
             'minimum.xsd'
         );
     }

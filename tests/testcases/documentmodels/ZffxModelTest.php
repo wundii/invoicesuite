@@ -4,95 +4,95 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\tests\testcases\documentmodels;
 
-use horstoeko\invoicesuite\documents\models\zffx\qdt\AccountingAccountTypeCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\AllowanceChargeReasonCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\ContactTypeCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\CountryIDType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\CurrencyCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\DeliveryTermsCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\DocumentCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\FormattedDateTimeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\FormattedDateTimeType\DateTimeStringAType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\LineStatusCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\PartyRoleCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\PaymentMeansCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\ReferenceCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\TaxCategoryCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\TaxTypeCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\TimeReferenceCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\qdt\TransportModeCodeType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\AdvancePaymentType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\CreditorFinancialAccountType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\CreditorFinancialInstitutionType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\DebtorFinancialAccountType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\DocumentContextParameterType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\DocumentLineDocumentType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ExchangedDocumentContextType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ExchangedDocumentType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeAgreementType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeDeliveryType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeSettlementType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LegalOrganizationType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeAgreementType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeDeliveryType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeSettlementType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LogisticsServiceChargeType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\LogisticsTransportMovementType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\NoteType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ProcuringProjectType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ProductCharacteristicType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ProductClassificationType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ReferencedDocumentType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\ReferencedProductType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\SpecifiedPeriodType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainConsignmentType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainEventType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainTradeLineItemType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainTradeTransactionType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TaxRegistrationType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeAccountingAccountType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeAddressType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeAllowanceChargeType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeContactType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeCountryType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeCurrencyExchangeType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeDeliveryTermsType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradePartyType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentDiscountTermsType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentPenaltyTermsType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentTermsType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradePriceType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeProductInstanceType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeProductType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementFinancialCardType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementHeaderMonetarySummationType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementLineMonetarySummationType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementPaymentMeansType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\TradeTaxType;
-use horstoeko\invoicesuite\documents\models\zffx\ram\UniversalCommunicationType;
-use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
-use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoiceType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\AmountType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\BinaryObjectType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\CodeType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\DateTimeType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\DateTimeType\DateTimeStringAType as DateTimeStringAType1;
-use horstoeko\invoicesuite\documents\models\zffx\udt\DateType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\DateType\DateStringAType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\IDType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\IndicatorType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\MeasureType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\NumericType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\PercentType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\QuantityType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\RateType;
-use horstoeko\invoicesuite\documents\models\zffx\udt\TextType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\AccountingAccountTypeCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\AllowanceChargeReasonCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\ContactTypeCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CountryIDType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DeliveryTermsCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DocumentCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType\DateTimeStringAType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\LineStatusCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PartyRoleCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PaymentMeansCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\ReferenceCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxCategoryCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxTypeCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TimeReferenceCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TransportModeCodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\AdvancePaymentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialAccountType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialInstitutionType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\DebtorFinancialAccountType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentLineDocumentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentContextType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeAgreementType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeDeliveryType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeSettlementType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LegalOrganizationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeAgreementType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeDeliveryType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeSettlementType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsServiceChargeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsTransportMovementType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\NoteType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProcuringProjectType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProductCharacteristicType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProductClassificationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedProductType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SpecifiedPeriodType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainConsignmentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainEventType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeLineItemType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeTransactionType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TaxRegistrationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAccountingAccountType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAddressType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAllowanceChargeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeContactType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeCountryType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeCurrencyExchangeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeDeliveryTermsType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentDiscountTermsType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentPenaltyTermsType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentTermsType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductInstanceType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementFinancialCardType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementHeaderMonetarySummationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementLineMonetarySummationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementPaymentMeansType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeTaxType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoice;
+use horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoiceType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\BinaryObjectType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType\DateTimeStringAType as DateTimeStringAType1;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType\DateStringAType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\IndicatorType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\MeasureType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\NumericType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\RateType;
+use horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType;
 use horstoeko\invoicesuite\tests\TestCase;
 
 final class ZffxModelTest extends TestCase
 {
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\AccountingAccountTypeCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\AccountingAccountTypeCodeType.
      */
     public function testModelsZffxextendedQdtAccountingAccountTypeCodeType(): void
     {
@@ -113,7 +113,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\AllowanceChargeReasonCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\AllowanceChargeReasonCodeType.
      */
     public function testModelsZffxextendedQdtAllowanceChargeReasonCodeType(): void
     {
@@ -134,7 +134,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\ContactTypeCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\ContactTypeCodeType.
      */
     public function testModelsZffxextendedQdtContactTypeCodeType(): void
     {
@@ -155,7 +155,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\CountryIDType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CountryIDType.
      */
     public function testModelsZffxextendedQdtCountryIDType(): void
     {
@@ -176,7 +176,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\CurrencyCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\CurrencyCodeType.
      */
     public function testModelsZffxextendedQdtCurrencyCodeType(): void
     {
@@ -197,7 +197,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\DeliveryTermsCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DeliveryTermsCodeType.
      */
     public function testModelsZffxextendedQdtDeliveryTermsCodeType(): void
     {
@@ -218,7 +218,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\DocumentCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\DocumentCodeType.
      */
     public function testModelsZffxextendedQdtDocumentCodeType(): void
     {
@@ -239,7 +239,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\FormattedDateTimeType\DateTimeStringAType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType\DateTimeStringAType.
      */
     public function testModelsZffxextendedQdtFormatteddatetimetypeDateTimeStringAType(): void
     {
@@ -271,7 +271,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\FormattedDateTimeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\FormattedDateTimeType.
      */
     public function testModelsZffxextendedQdtFormattedDateTimeType(): void
     {
@@ -297,7 +297,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\LineStatusCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\LineStatusCodeType.
      */
     public function testModelsZffxextendedQdtLineStatusCodeType(): void
     {
@@ -318,7 +318,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\PartyRoleCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PartyRoleCodeType.
      */
     public function testModelsZffxextendedQdtPartyRoleCodeType(): void
     {
@@ -339,7 +339,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\PaymentMeansCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\PaymentMeansCodeType.
      */
     public function testModelsZffxextendedQdtPaymentMeansCodeType(): void
     {
@@ -360,7 +360,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\ReferenceCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\ReferenceCodeType.
      */
     public function testModelsZffxextendedQdtReferenceCodeType(): void
     {
@@ -381,7 +381,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\TaxCategoryCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxCategoryCodeType.
      */
     public function testModelsZffxextendedQdtTaxCategoryCodeType(): void
     {
@@ -402,7 +402,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\TaxTypeCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TaxTypeCodeType.
      */
     public function testModelsZffxextendedQdtTaxTypeCodeType(): void
     {
@@ -423,7 +423,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\TimeReferenceCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TimeReferenceCodeType.
      */
     public function testModelsZffxextendedQdtTimeReferenceCodeType(): void
     {
@@ -444,7 +444,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\qdt\TransportModeCodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\qdt\TransportModeCodeType.
      */
     public function testModelsZffxextendedQdtTransportModeCodeType(): void
     {
@@ -465,7 +465,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\AdvancePaymentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\AdvancePaymentType.
      */
     public function testModelsZffxextendedRamAdvancePaymentType(): void
     {
@@ -587,7 +587,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\CreditorFinancialAccountType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialAccountType.
      */
     public function testModelsZffxextendedRamCreditorFinancialAccountType(): void
     {
@@ -645,7 +645,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\CreditorFinancialInstitutionType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\CreditorFinancialInstitutionType.
      */
     public function testModelsZffxextendedRamCreditorFinancialInstitutionType(): void
     {
@@ -671,7 +671,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\DebtorFinancialAccountType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\DebtorFinancialAccountType.
      */
     public function testModelsZffxextendedRamDebtorFinancialAccountType(): void
     {
@@ -697,7 +697,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\DocumentContextParameterType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentContextParameterType.
      */
     public function testModelsZffxextendedRamDocumentContextParameterType(): void
     {
@@ -723,7 +723,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\DocumentLineDocumentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\DocumentLineDocumentType.
      */
     public function testModelsZffxextendedRamDocumentLineDocumentType(): void
     {
@@ -861,7 +861,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ExchangedDocumentContextType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentContextType.
      */
     public function testModelsZffxextendedRamExchangedDocumentContextType(): void
     {
@@ -919,7 +919,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ExchangedDocumentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ExchangedDocumentType.
      */
     public function testModelsZffxextendedRamExchangedDocumentType(): void
     {
@@ -1105,7 +1105,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeAgreementType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeAgreementType.
      */
     public function testModelsZffxextendedRamHeaderTradeAgreementType(): void
     {
@@ -1467,7 +1467,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeDeliveryType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeDeliveryType.
      */
     public function testModelsZffxextendedRamHeaderTradeDeliveryType(): void
     {
@@ -1653,7 +1653,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\HeaderTradeSettlementType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\HeaderTradeSettlementType.
      */
     public function testModelsZffxextendedRamHeaderTradeSettlementType(): void
     {
@@ -2367,7 +2367,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LegalOrganizationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LegalOrganizationType.
      */
     public function testModelsZffxextendedRamLegalOrganizationType(): void
     {
@@ -2425,7 +2425,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeAgreementType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeAgreementType.
      */
     public function testModelsZffxextendedRamLineTradeAgreementType(): void
     {
@@ -2659,7 +2659,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeDeliveryType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeDeliveryType.
      */
     public function testModelsZffxextendedRamLineTradeDeliveryType(): void
     {
@@ -2829,7 +2829,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LineTradeSettlementType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LineTradeSettlementType.
      */
     public function testModelsZffxextendedRamLineTradeSettlementType(): void
     {
@@ -3095,7 +3095,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LogisticsServiceChargeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsServiceChargeType.
      */
     public function testModelsZffxextendedRamLogisticsServiceChargeType(): void
     {
@@ -3201,7 +3201,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\LogisticsTransportMovementType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\LogisticsTransportMovementType.
      */
     public function testModelsZffxextendedRamLogisticsTransportMovementType(): void
     {
@@ -3227,7 +3227,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\NoteType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\NoteType.
      */
     public function testModelsZffxextendedRamNoteType(): void
     {
@@ -3285,7 +3285,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ProcuringProjectType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProcuringProjectType.
      */
     public function testModelsZffxextendedRamProcuringProjectType(): void
     {
@@ -3327,7 +3327,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ProductCharacteristicType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProductCharacteristicType.
      */
     public function testModelsZffxextendedRamProductCharacteristicType(): void
     {
@@ -3401,7 +3401,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ProductClassificationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ProductClassificationType.
      */
     public function testModelsZffxextendedRamProductClassificationType(): void
     {
@@ -3443,7 +3443,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ReferencedDocumentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedDocumentType.
      */
     public function testModelsZffxextendedRamReferencedDocumentType(): void
     {
@@ -3581,7 +3581,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\ReferencedProductType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\ReferencedProductType.
      */
     public function testModelsZffxextendedRamReferencedProductType(): void
     {
@@ -3767,7 +3767,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\SpecifiedPeriodType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\SpecifiedPeriodType.
      */
     public function testModelsZffxextendedRamSpecifiedPeriodType(): void
     {
@@ -3841,7 +3841,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainConsignmentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainConsignmentType.
      */
     public function testModelsZffxextendedRamSupplyChainConsignmentType(): void
     {
@@ -3915,7 +3915,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainEventType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainEventType.
      */
     public function testModelsZffxextendedRamSupplyChainEventType(): void
     {
@@ -3941,7 +3941,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainTradeLineItemType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeLineItemType.
      */
     public function testModelsZffxextendedRamSupplyChainTradeLineItemType(): void
     {
@@ -4031,7 +4031,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\SupplyChainTradeTransactionType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\SupplyChainTradeTransactionType.
      */
     public function testModelsZffxextendedRamSupplyChainTradeTransactionType(): void
     {
@@ -4177,7 +4177,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TaxRegistrationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TaxRegistrationType.
      */
     public function testModelsZffxextendedRamTaxRegistrationType(): void
     {
@@ -4203,7 +4203,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeAccountingAccountType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAccountingAccountType.
      */
     public function testModelsZffxextendedRamTradeAccountingAccountType(): void
     {
@@ -4245,7 +4245,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeAddressType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAddressType.
      */
     public function testModelsZffxextendedRamTradeAddressType(): void
     {
@@ -4367,7 +4367,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeAllowanceChargeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeAllowanceChargeType.
      */
     public function testModelsZffxextendedRamTradeAllowanceChargeType(): void
     {
@@ -4521,7 +4521,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeContactType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeContactType.
      */
     public function testModelsZffxextendedRamTradeContactType(): void
     {
@@ -4627,7 +4627,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeCountryType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeCountryType.
      */
     public function testModelsZffxextendedRamTradeCountryType(): void
     {
@@ -4653,7 +4653,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeCurrencyExchangeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeCurrencyExchangeType.
      */
     public function testModelsZffxextendedRamTradeCurrencyExchangeType(): void
     {
@@ -4727,7 +4727,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeDeliveryTermsType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeDeliveryTermsType.
      */
     public function testModelsZffxextendedRamTradeDeliveryTermsType(): void
     {
@@ -4753,7 +4753,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradePartyType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePartyType.
      */
     public function testModelsZffxextendedRamTradePartyType(): void
     {
@@ -5110,7 +5110,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentDiscountTermsType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentDiscountTermsType.
      */
     public function testModelsZffxextendedRamTradePaymentDiscountTermsType(): void
     {
@@ -5200,7 +5200,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentPenaltyTermsType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentPenaltyTermsType.
      */
     public function testModelsZffxextendedRamTradePaymentPenaltyTermsType(): void
     {
@@ -5290,7 +5290,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradePaymentTermsType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePaymentTermsType.
      */
     public function testModelsZffxextendedRamTradePaymentTermsType(): void
     {
@@ -5412,7 +5412,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradePriceType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradePriceType.
      */
     public function testModelsZffxextendedRamTradePriceType(): void
     {
@@ -5534,7 +5534,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeProductInstanceType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductInstanceType.
      */
     public function testModelsZffxextendedRamTradeProductInstanceType(): void
     {
@@ -5576,7 +5576,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeProductType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeProductType.
      */
     public function testModelsZffxextendedRamTradeProductType(): void
     {
@@ -6082,7 +6082,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementFinancialCardType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementFinancialCardType.
      */
     public function testModelsZffxextendedRamTradeSettlementFinancialCardType(): void
     {
@@ -6124,7 +6124,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementHeaderMonetarySummationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementHeaderMonetarySummationType.
      */
     public function testModelsZffxextendedRamTradeSettlementHeaderMonetarySummationType(): void
     {
@@ -6326,7 +6326,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementLineMonetarySummationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementLineMonetarySummationType.
      */
     public function testModelsZffxextendedRamTradeSettlementLineMonetarySummationType(): void
     {
@@ -6432,7 +6432,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeSettlementPaymentMeansType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeSettlementPaymentMeansType.
      */
     public function testModelsZffxextendedRamTradeSettlementPaymentMeansType(): void
     {
@@ -6538,7 +6538,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\TradeTaxType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\TradeTaxType.
      */
     public function testModelsZffxextendedRamTradeTaxType(): void
     {
@@ -6724,7 +6724,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\ram\UniversalCommunicationType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\ram\UniversalCommunicationType.
      */
     public function testModelsZffxextendedRamUniversalCommunicationType(): void
     {
@@ -6766,7 +6766,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoice.
      */
     public function testModelsZffxextendedRsmCrossIndustryInvoice(): void
     {
@@ -6777,7 +6777,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoiceType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\rsm\CrossIndustryInvoiceType.
      */
     public function testModelsZffxextendedRsmCrossIndustryInvoiceType(): void
     {
@@ -6835,7 +6835,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\AmountType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\AmountType.
      */
     public function testModelsZffxextendedUdtAmountType(): void
     {
@@ -6867,7 +6867,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\BinaryObjectType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\BinaryObjectType.
      */
     public function testModelsZffxextendedUdtBinaryObjectType(): void
     {
@@ -6910,7 +6910,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\CodeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\CodeType.
      */
     public function testModelsZffxextendedUdtCodeType(): void
     {
@@ -6953,7 +6953,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\DateTimeType\DateTimeStringAType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType\DateTimeStringAType.
      */
     public function testModelsZffxextendedUdtDatetimetypeDateTimeStringAType(): void
     {
@@ -6985,7 +6985,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\DateTimeType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateTimeType.
      */
     public function testModelsZffxextendedUdtDateTimeType(): void
     {
@@ -7011,7 +7011,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\DateType\DateStringAType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType\DateStringAType.
      */
     public function testModelsZffxextendedUdtDatetypeDateStringAType(): void
     {
@@ -7043,7 +7043,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\DateType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\DateType.
      */
     public function testModelsZffxextendedUdtDateType(): void
     {
@@ -7069,7 +7069,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\IDType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\IDType.
      */
     public function testModelsZffxextendedUdtIDType(): void
     {
@@ -7101,7 +7101,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\IndicatorType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\IndicatorType.
      */
     public function testModelsZffxextendedUdtIndicatorType(): void
     {
@@ -7122,7 +7122,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\MeasureType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\MeasureType.
      */
     public function testModelsZffxextendedUdtMeasureType(): void
     {
@@ -7154,7 +7154,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\NumericType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\NumericType.
      */
     public function testModelsZffxextendedUdtNumericType(): void
     {
@@ -7175,7 +7175,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\PercentType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\PercentType.
      */
     public function testModelsZffxextendedUdtPercentType(): void
     {
@@ -7196,7 +7196,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\QuantityType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\QuantityType.
      */
     public function testModelsZffxextendedUdtQuantityType(): void
     {
@@ -7228,7 +7228,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\RateType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\RateType.
      */
     public function testModelsZffxextendedUdtRateType(): void
     {
@@ -7249,7 +7249,7 @@ final class ZffxModelTest extends TestCase
     }
 
     /**
-     * Tests methods of \horstoeko\invoicesuite\documents\models\zffx\udt\TextType.
+     * Tests methods of \horstoeko\invoicesuite\documents\providers\zffx\models\udt\TextType.
      */
     public function testModelsZffxextendedUdtTextType(): void
     {
