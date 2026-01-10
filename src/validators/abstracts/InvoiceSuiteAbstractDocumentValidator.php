@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\validators\abstracts;
 
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesMessageBag;
 use horstoeko\invoicesuite\concerns\HandlesRawContents;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
@@ -33,7 +32,6 @@ abstract class InvoiceSuiteAbstractDocumentValidator
 {
     use HandlesMessageBag;
     use HandlesRawContents;
-    use HandlesCurrentDocumentFormatProvider;
 
     /**
      * Constructor (hidden)
@@ -78,11 +76,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      */
     public static function createFromDocumentReader(InvoiceSuiteDocumentReader $fromDocumentReader): static
     {
-        return static::createFromContent(
-            $fromDocumentReader->getOriginalDocumentContent()
-        )->setCurrentDocumentFormatProvider(
-            $fromDocumentReader->getCurrentDocumentFormatProvider()
-        );
+        return static::createFromContent($fromDocumentReader->getOriginalDocumentContent());
     }
 
     /**
@@ -95,11 +89,7 @@ abstract class InvoiceSuiteAbstractDocumentValidator
      */
     public static function createFromDocumentBuilder(InvoiceSuiteDocumentBuilder $fromDocumentBuilder): static
     {
-        return static::createFromContent(
-            $fromDocumentBuilder->getContent()
-        )->setCurrentDocumentFormatProvider(
-            $fromDocumentBuilder->getCurrentDocumentFormatProvider()
-        );
+        return static::createFromContent($fromDocumentBuilder->getContent());
     }
 
     /**
