@@ -15,6 +15,7 @@ use Closure;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownProviderParameterException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
+use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 /**
  * Class representing methods for a document format provider definition
@@ -109,7 +110,7 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * @param  string $serializedContent
      * @return bool
      */
-    abstract public function isSatisfiableBySerializedContent(string $serializedContent): bool;
+    abstract public function getSerializedContentMatchesScheme(string $serializedContent): bool;
 
     /**
      * Returns the classname of the root invoice-object
@@ -166,6 +167,22 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
      * @return string
      */
     abstract public function getXsdFilename(): string;
+
+    /**
+     * Returns true if the content matches the requirements for a format provider, otherwise false
+     * This also checks the supported content type
+     *
+     * @param  string $serializedContent
+     * @return bool
+     */
+    public function getIsSatisfiableBySerializedContent(string $serializedContent): bool
+    {
+        if (InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent) != $this->getContentType()) {
+            return false;
+        }
+
+        return $this->getSerializedContentMatchesScheme($serializedContent);
+    }
 
     /**
      * Create a new reader instance

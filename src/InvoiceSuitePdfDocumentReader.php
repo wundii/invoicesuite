@@ -79,7 +79,7 @@ class InvoiceSuitePdfDocumentReader
                 $this->getRegisteredDocumentFormatProviders(),
                 static fn ($formatProvider) => $formatProvider->isPdfSupportAvailable()
                     && $formatProvider->isValidPdfAttachmentFilename($pdfExtractorAttachment->getAttachmentFilename())
-                    && $formatProvider->isSatisfiableBySerializedContent($pdfExtractorAttachment->getAttachmentContent())
+                    && $formatProvider->getIsSatisfiableBySerializedContent($pdfExtractorAttachment->getAttachmentContent())
             );
 
             if ([] === $formatProviders) {

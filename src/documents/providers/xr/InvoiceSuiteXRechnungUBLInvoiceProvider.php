@@ -17,7 +17,6 @@ use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentForma
 use horstoeko\invoicesuite\documents\models\peppol\main\Invoice;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -104,12 +103,8 @@ class InvoiceSuiteXRechnungUBLInvoiceProvider extends InvoiceSuiteAbstractDocume
     /**
      * {@inheritDoc}
      */
-    public function isSatisfiableBySerializedContent(string $serializedContent): bool
+    public function getSerializedContentMatchesScheme(string $serializedContent): bool
     {
-        if ($this->getContentType() !== InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent)) {
-            return false;
-        }
-
         $prevUseInternalErrors = libxml_use_internal_errors(true);
         libxml_clear_errors();
 

@@ -199,9 +199,7 @@ class InvoiceSuiteXsdDocumentValidator extends InvoiceSuiteAbstractDocumentValid
 
         $formatProviders = array_filter(
             $this->getRegisteredDocumentFormatProviders(),
-            fn ($formatProvider) => (
-                $formatProvider->isSatisfiableBySerializedContent($this->getRawDocumentContent())
-            )
+            fn ($formatProvider) => $formatProvider->getIsSatisfiableBySerializedContent($this->getRawDocumentContent())
         );
 
         if ([] === $formatProviders) {

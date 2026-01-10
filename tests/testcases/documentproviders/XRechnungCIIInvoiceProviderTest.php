@@ -128,7 +128,7 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         </rsm:CrossIndustryInvoice>
         XML_WRAP;
 
-        $this->assertTrue($provider->isSatisfiableBySerializedContent($xml));
+        $this->assertTrue($provider->getIsSatisfiableBySerializedContent($xml));
 
         $xml = <<<'XML_WRAP'
         <?xml version="1.0" encoding="UTF-8"?>
@@ -147,13 +147,13 @@ final class XRechnungCIIInvoiceProviderTest extends TestCase
         </rsm:CrossIndustryInvoice>
         XML_WRAP;
 
-        $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent($xml));
 
         $xml = <<<'XML'
     Dummy
     XML;
 
-        $this->assertFalse($provider->isSatisfiableBySerializedContent($xml));
+        $this->assertFalse($provider->getIsSatisfiableBySerializedContent($xml));
     }
 
     public function testGetRootClassName(): void

@@ -18,7 +18,6 @@ use horstoeko\invoicesuite\documents\models\zffx\rsm\CrossIndustryInvoice;
 use horstoeko\invoicesuite\pdfs\zffx\InvoiceSuiteZffxPdfConstructor;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
-use horstoeko\invoicesuite\utils\InvoiceSuiteContentTypeResolver;
 
 class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormatProvider
 {
@@ -106,12 +105,8 @@ class InvoiceSuiteZfFxMinimumProvider extends InvoiceSuiteAbstractDocumentFormat
     /**
      * {@inheritDoc}
      */
-    public function isSatisfiableBySerializedContent(string $serializedContent): bool
+    public function getSerializedContentMatchesScheme(string $serializedContent): bool
     {
-        if ($this->getContentType() !== InvoiceSuiteContentTypeResolver::resolveContentType($serializedContent)) {
-            return false;
-        }
-
         $prevUseInternalErrors = libxml_use_internal_errors(true);
         libxml_clear_errors();
 
