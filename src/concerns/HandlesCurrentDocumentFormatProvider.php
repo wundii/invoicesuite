@@ -57,11 +57,13 @@ trait HandlesCurrentDocumentFormatProvider
      * Set the requested format provider
      *
      * @param  InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider
-     * @return void
+     * @return static
      */
-    public function setCurrentDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider): void
+    public function setCurrentDocumentFormatProvider(InvoiceSuiteAbstractDocumentFormatProvider $newDocumentFormatProvider): static
     {
         $this->currentDocumentFormatProvider = $newDocumentFormatProvider;
+
+        return $this;
     }
 
     /**
