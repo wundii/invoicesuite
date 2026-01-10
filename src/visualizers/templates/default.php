@@ -329,6 +329,15 @@ $document->getDocumentBuyerAddress($buyeraddressline1, $buyeraddressline2, $buye
                 <?php } ?>
             </tr>
 
+            <?php if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newProductDescription)) { ?>
+                <tr>
+                    <td class="<?php echo $isfirstposition ? ' space' : ''; ?>">&nbsp;</td>
+                    <td colspan="5" class="<?php echo $isfirstposition ? ' space' : ''; ?>">
+                        <?php echo $newProductDescription; ?>
+                    </td>
+                </tr>
+            <?php } ?>
+
             <?php if ($document->firstDocumentPositionGrossPriceAllowanceCharge()) { ?>
                 <?php do { ?>
                 <?php $document->getDocumentPositionGrossPrice($newGrossPrice, $newGrossPriceBasisQuantity, $newGrossPriceBasisQuantityUnit); ?>
