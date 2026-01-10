@@ -230,7 +230,7 @@ class InvoiceSuiteZfFxExtendedProvider extends InvoiceSuiteAbstractDocumentForma
     public function getXsdFilename(): string
     {
         return InvoiceSuitePathUtils::combinePathWithFile(
-            InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'schemes'),
+            InvoiceSuitePathUtils::combineAllPaths(__DIR__, 'xsd'),
             'extended.xsd'
         );
     }
