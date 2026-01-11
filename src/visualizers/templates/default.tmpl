@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\visualizers\templates;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 ?>
@@ -243,7 +243,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
     <?php
     /**
-     * @var InvoiceSuiteAbstractDocumentFormatReader $document
+     * @var InvoiceSuiteDocumentReader $document
      */
     $document->getDocumentNo($documentno);
 $document->getDocumentDate($documentdate);

@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\visualizers\abstracts;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 
 /**
  * Class representing the basics for a renderer
@@ -34,9 +34,9 @@ abstract class InvoiceSuiteVisualizerAbstractRenderer
     /**
      * Render the HTML markup for the document
      *
-     * @param  InvoiceSuiteAbstractDocumentFormatReader $documentReader
-     * @param  string                                   $template
+     * @param  InvoiceSuiteDocumentReader $documentReader
+     * @param  string                     $template
      * @return string
      */
-    abstract public function render(InvoiceSuiteAbstractDocumentFormatReader $documentReader, string $template): string;
+    abstract public function render(InvoiceSuiteDocumentReader $documentReader, string $template): string;
 }

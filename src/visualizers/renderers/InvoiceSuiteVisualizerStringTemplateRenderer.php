@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\visualizers\renderers;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\InvoiceSuiteDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 use horstoeko\invoicesuite\visualizers\abstracts\InvoiceSuiteVisualizerAbstractRenderer;
 
@@ -36,7 +36,7 @@ class InvoiceSuiteVisualizerStringTemplateRenderer extends InvoiceSuiteVisualize
     /**
      * {@inheritDoc}
      */
-    public function render(InvoiceSuiteAbstractDocumentFormatReader $document, string $template): string
+    public function render(InvoiceSuiteDocumentReader $document, string $template): string
     {
         return $template;
     }

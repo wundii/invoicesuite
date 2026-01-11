@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\visualizers;
 
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -42,7 +41,7 @@ class InvoiceSuiteVisualizer
     /**
      * The internal document reaader instance
      *
-     * @var InvoiceSuiteAbstractDocumentFormatReader
+     * @var InvoiceSuiteDocumentReader
      */
     private $documentReader;
 
@@ -113,29 +112,17 @@ class InvoiceSuiteVisualizer
     /**
      * Constructor
      *
-     * @param  InvoiceSuiteAbstractDocumentFormatReader    $documentReader
+     * @param  InvoiceSuiteDocumentReader                  $documentReader
      * @param  null|InvoiceSuiteVisualizerAbstractRenderer $renderer
      * @return void
      */
-    final protected function __construct(InvoiceSuiteAbstractDocumentFormatReader $documentReader, ?InvoiceSuiteVisualizerAbstractRenderer $renderer = null)
+    final protected function __construct(InvoiceSuiteDocumentReader $documentReader, ?InvoiceSuiteVisualizerAbstractRenderer $renderer = null)
     {
         $this->documentReader = $documentReader;
 
         if ($renderer instanceof InvoiceSuiteVisualizerAbstractRenderer) {
             $this->setRenderer($renderer);
         }
-    }
-
-    /**
-     * Factory for creating a visualizer by a InvoiceSuiteAbstractDocumentFormatReader
-     *
-     * @param  InvoiceSuiteAbstractDocumentFormatReader    $documentReader
-     * @param  null|InvoiceSuiteVisualizerAbstractRenderer $renderer
-     * @return static
-     */
-    public static function createFromDocumentProviderReader(InvoiceSuiteAbstractDocumentFormatReader $documentReader, ?InvoiceSuiteVisualizerAbstractRenderer $renderer = null): static
-    {
-        return new static($documentReader, $renderer);
     }
 
     /**
@@ -147,10 +134,7 @@ class InvoiceSuiteVisualizer
      */
     public static function createFromDocumentReader(InvoiceSuiteDocumentReader $documentReader, ?InvoiceSuiteVisualizerAbstractRenderer $renderer = null): static
     {
-        return static::createFromDocumentProviderReader(
-            $documentReader->getCurrentDocumentFormatProvider()->getReader(),
-            $renderer
-        );
+        return new static($documentReader, $renderer);
     }
 
     /**
