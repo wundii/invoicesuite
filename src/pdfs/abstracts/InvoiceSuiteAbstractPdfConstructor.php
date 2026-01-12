@@ -73,7 +73,7 @@ abstract class InvoiceSuiteAbstractPdfConstructor
      *
      * @var string
      */
-    private $documentRelationshipType = 'Data';
+    private $documentRelationshipType = 'Alternative';
 
     /**
      * List which holds the additional attachments
