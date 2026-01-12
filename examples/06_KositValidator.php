@@ -10,7 +10,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 $documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('xrechnungublinvoice');
 $documentBuilder->setDocumentNo('471102');
-$documentBuilder->setDocumentType('381');
+$documentBuilder->setDocumentType('380');
 $documentBuilder->setDocumentDate(DateTime::createFromFormat('Ymd', '20241115'));
 $documentBuilder->addDocumentNote('Rechnung gemäß Bestellung vom 01.11.2024.');
 $documentBuilder->addDocumentNote("Lieferant GmbH\nLieferantenstraße 20\n80333 München\nDeutschland\nGeschäftsführer: Hans Muster\nHandelsregisternummer: H A 123\n", newSubjectCode: 'REG');
@@ -62,6 +62,8 @@ $documentBuilder->setDocumentSellerAddress(
 );
 $documentBuilder->addDocumentSellerTaxRegistration('FC', '201/113/40209');
 $documentBuilder->addDocumentSellerTaxRegistration('VA', 'DE123456789');
+$documentBuilder->addDocumentSellerContact('Hans Meier', '', '+49-800-1234567-0', '+49-800-1234567-1', 'hm@seller.de');
+$documentBuilder->addDocumentSellerCommunication('EM', 'info@seller.de');
 
 $documentBuilder->setDocumentBuyerId('GE2020211');
 $documentBuilder->setDocumentBuyerName('Kunden AG Mitte');
@@ -71,8 +73,11 @@ $documentBuilder->setDocumentBuyerAddress(
     newCity: 'Frankfurt',
     newCountryId: 'DE'
 );
+$documentBuilder->addDocumentBuyerCommunication('EM', 'info@buyer.de');
 
 $documentBuilder->setDocumentSupplyChainEvent(DateTime::createFromFormat('Ymd', '20241114'));
+
+$documentBuilder->setDocumentBuyerReference('0814-4711');
 
 $documentBuilder->addDocumentTax(
     newTaxAmount: 19.25,
@@ -90,6 +95,14 @@ $documentBuilder->addDocumentTax(
 );
 
 $documentBuilder->addDocumentPaymentTerm('Zahlbar innerhalb 30 Tagen netto bis 15.12.2024, 3% Skonto innerhalb 10 Tagen bis 25.11.2024');
+
+$documentBuilder->setDocumentPaymentMean(
+    newTypeCode: '59',
+    newBuyerIban: 'DE02120300000000202051',
+    newMandate: '287982197798127'
+);
+
+$documentBuilder->setDocumentPaymentCreditorReferenceID('94467863782647362');
 
 $documentBuilder->setDocumentSummation(
     newNetAmount: 473.00,
