@@ -70,7 +70,7 @@ final class Allegati
      * @JMS\SerializedName("Attachment")
      * @JMS\XmlElement(cdata=false)
      */
-    private $attachment;
+    private mixed $attachment;
 
     /**
      * @translation-german Name Attachment
