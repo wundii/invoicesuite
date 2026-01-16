@@ -9,6 +9,7 @@ use GoetasWebservices\Xsd\XsdToPhpRuntime\Jms\Handler\XmlSchemaDateHandler;
 use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use JMS\Serializer\EventDispatcher\EventDispatcher;
+use JMS\Serializer\Handler\EnumHandler;
 use JMS\Serializer\Handler\HandlerRegistryInterface;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializerInterface;
@@ -45,6 +46,7 @@ trait HandlesDocumentSerializer
         $this->documentSerializerBuilder->addMetadataDirs($this->getCurrentDocumentFormatProvider()->getSerializerMetadataDirectories());
         $this->documentSerializerBuilder->addDefaultListeners();
         $this->documentSerializerBuilder->addDefaultHandlers();
+        $this->documentSerializerBuilder->enableEnumSupport();
 
         if (InvoiceSuiteSettings::hasSerializerCacheDirectory()) {
             $this->documentSerializerBuilder->setCacheDir(InvoiceSuiteSettings::getSerializerCacheDirectory());
@@ -55,6 +57,7 @@ trait HandlesDocumentSerializer
         $this->documentSerializerBuilder->configureHandlers(function (HandlerRegistryInterface $handlerRegistry): void {
             $handlerRegistry->registerSubscribingHandler(new BaseTypesHandler());
             $handlerRegistry->registerSubscribingHandler(new XmlSchemaDateHandler());
+            $handlerRegistry->registerSubscribingHandler(new EnumHandler());
             foreach ($this->getCurrentDocumentFormatProvider()->getSerializerHandlers() as $handlerClassname) {
                 $handlerRegistry->registerSubscribingHandler(new $handlerClassname());
             }
