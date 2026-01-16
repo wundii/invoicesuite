@@ -18,7 +18,7 @@ final class DatiBollo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\BolloVirtuale")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\BolloVirtuale','value'>")
      * @JMS\Accessor(getter="getBolloVirtuale", setter="setBolloVirtuale")
      * @JMS\SerializedName("BolloVirtuale")
      * @JMS\XmlElement(cdata=false)

@@ -77,7 +77,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SoggettoEmittente")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\SoggettoEmittente','value'>")
      * @JMS\Accessor(getter="getSoggettoEmittente", setter="setSoggettoEmittente")
      * @JMS\SerializedName("SoggettoEmittente")
      * @JMS\XmlElement(cdata=false)

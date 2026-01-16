@@ -18,7 +18,7 @@ final class ScontoMaggiorazione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione','value'>")
      * @JMS\Accessor(getter="getTipo", setter="setTipo")
      * @JMS\SerializedName("Tipo")
      * @JMS\XmlElement(cdata=false)

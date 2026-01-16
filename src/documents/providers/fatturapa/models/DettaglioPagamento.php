@@ -31,7 +31,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento','value'>")
      * @JMS\Accessor(getter="getModalitaPagamento", setter="setModalitaPagamento")
      * @JMS\SerializedName("ModalitaPagamento")
      * @JMS\XmlElement(cdata=false)

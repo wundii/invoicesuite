@@ -31,7 +31,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura','value'>")
      * @JMS\Accessor(getter="getNatura", setter="setNatura")
      * @JMS\SerializedName("Natura")
      * @JMS\XmlElement(cdata=false)
@@ -91,7 +91,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\EsigibilitaIVA','value'>")
      * @JMS\Accessor(getter="getEsigibilitaIVA", setter="setEsigibilitaIVA")
      * @JMS\SerializedName("EsigibilitaIVA")
      * @JMS\XmlElement(cdata=false)

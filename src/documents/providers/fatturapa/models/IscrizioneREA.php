@@ -67,7 +67,7 @@ final class IscrizioneREA
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\StatoLiquidazione")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\StatoLiquidazione','value'>")
      * @JMS\Accessor(getter="getStatoLiquidazione", setter="setStatoLiquidazione")
      * @JMS\SerializedName("StatoLiquidazione")
      * @JMS\XmlElement(cdata=false)

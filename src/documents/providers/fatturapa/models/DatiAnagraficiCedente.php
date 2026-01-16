@@ -103,7 +103,7 @@ final class DatiAnagraficiCedente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\RegimeFiscale','value'>")
      * @JMS\Accessor(getter="getRegimeFiscale", setter="setRegimeFiscale")
      * @JMS\SerializedName("RegimeFiscale")
      * @JMS\XmlElement(cdata=false)

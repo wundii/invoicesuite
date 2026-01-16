@@ -20,7 +20,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoCassa")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoCassa','value'>")
      * @JMS\Accessor(getter="getTipoCassa", setter="setTipoCassa")
      * @JMS\SerializedName("TipoCassa")
      * @JMS\XmlElement(cdata=false)
@@ -80,7 +80,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Ritenuta")
+     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\Ritenuta")
      * @JMS\Accessor(getter="getRitenuta", setter="setRitenuta")
      * @JMS\SerializedName("Ritenuta")
      * @JMS\XmlElement(cdata=false)
@@ -92,7 +92,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\Natura")
+     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\Natura")
      * @JMS\Accessor(getter="getNatura", setter="setNatura")
      * @JMS\SerializedName("Natura")
      * @JMS\XmlElement(cdata=false)

@@ -42,7 +42,7 @@ final class DatiTrasmissione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione")
+     * @JMS\Type("enum<'horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\FormatoTrasmissione','value'>")
      * @JMS\Accessor(getter="getFormatoTrasmissione", setter="setFormatoTrasmissione")
      * @JMS\SerializedName("FormatoTrasmissione")
      * @JMS\XmlElement(cdata=false)
