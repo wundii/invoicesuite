@@ -17,7 +17,7 @@ final class DatiPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\CondizioniPagamento")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\CondizioniPagamento")
      * @JMS\Accessor(getter="getCondizioniPagamento", setter="setCondizioniPagamento")
      * @JMS\SerializedName("CondizioniPagamento")
      * @JMS\XmlElement(cdata=false)
@@ -30,7 +30,7 @@ final class DatiPagamento
      * @var null|array<DettaglioPagamento>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DettaglioPagamento>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioPagamento>")
      * @JMS\Accessor(getter="getDettaglioPagamento", setter="setDettaglioPagamento")
      * @JMS\SerializedName("DettaglioPagamento")
      * @JMS\XmlElement(cdata=false)

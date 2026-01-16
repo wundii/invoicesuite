@@ -33,7 +33,7 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\TipoCessionePrestazione")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\TipoCessionePrestazione")
      * @JMS\Accessor(getter="getTipoCessionePrestazione", setter="setTipoCessionePrestazione")
      * @JMS\SerializedName("TipoCessionePrestazione")
      * @JMS\XmlElement(cdata=false)
@@ -46,7 +46,7 @@ final class DettaglioLinee
      * @var null|array<CodiceArticolo>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\CodiceArticolo>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\CodiceArticolo>")
      * @JMS\Accessor(getter="getCodiceArticolo", setter="setCodiceArticolo")
      * @JMS\SerializedName("CodiceArticolo")
      * @JMS\XmlElement(cdata=false)
@@ -132,7 +132,7 @@ final class DettaglioLinee
      * @var null|array<ScontoMaggiorazione>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\ScontoMaggiorazione>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\ScontoMaggiorazione>")
      * @JMS\Accessor(getter="getScontoMaggiorazione", setter="setScontoMaggiorazione")
      * @JMS\SerializedName("ScontoMaggiorazione")
      * @JMS\XmlElement(cdata=false)
@@ -169,7 +169,7 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\Ritenuta")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\Ritenuta")
      * @JMS\Accessor(getter="getRitenuta", setter="setRitenuta")
      * @JMS\SerializedName("Ritenuta")
      * @JMS\XmlElement(cdata=false)
@@ -181,7 +181,7 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\Natura")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\Natura")
      * @JMS\Accessor(getter="getNatura", setter="setNatura")
      * @JMS\SerializedName("Natura")
      * @JMS\XmlElement(cdata=false)
@@ -206,7 +206,7 @@ final class DettaglioLinee
      * @var null|array<AltriDatiGestionali>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\AltriDatiGestionali>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\AltriDatiGestionali>")
      * @JMS\Accessor(getter="getAltriDatiGestionali", setter="setAltriDatiGestionali")
      * @JMS\SerializedName("AltriDatiGestionali")
      * @JMS\XmlElement(cdata=false)

@@ -16,7 +16,7 @@ final class CessionarioCommittente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiAnagraficiCessionario")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCessionario")
      * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
      * @JMS\SerializedName("DatiAnagrafici")
      * @JMS\XmlElement(cdata=false)
@@ -28,7 +28,7 @@ final class CessionarioCommittente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Indirizzo")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
      * @JMS\Accessor(getter="getSede", setter="setSede")
      * @JMS\SerializedName("Sede")
      * @JMS\XmlElement(cdata=false)
@@ -40,7 +40,7 @@ final class CessionarioCommittente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Indirizzo")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
      * @JMS\Accessor(getter="getStabileOrganizzazione", setter="setStabileOrganizzazione")
      * @JMS\SerializedName("StabileOrganizzazione")
      * @JMS\XmlElement(cdata=false)
@@ -52,7 +52,7 @@ final class CessionarioCommittente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\RappresentanteFiscaleCessionario")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscaleCessionario")
      * @JMS\Accessor(getter="getRappresentanteFiscale", setter="setRappresentanteFiscale")
      * @JMS\SerializedName("RappresentanteFiscale")
      * @JMS\XmlElement(cdata=false)

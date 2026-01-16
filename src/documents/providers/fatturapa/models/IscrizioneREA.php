@@ -55,7 +55,7 @@ final class IscrizioneREA
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\SocioUnico")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\SocioUnico")
      * @JMS\Accessor(getter="getSocioUnico", setter="setSocioUnico")
      * @JMS\SerializedName("SocioUnico")
      * @JMS\XmlElement(cdata=false)
@@ -67,7 +67,7 @@ final class IscrizioneREA
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\StatoLiquidazione")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\StatoLiquidazione")
      * @JMS\Accessor(getter="getStatoLiquidazione", setter="setStatoLiquidazione")
      * @JMS\SerializedName("StatoLiquidazione")
      * @JMS\XmlElement(cdata=false)

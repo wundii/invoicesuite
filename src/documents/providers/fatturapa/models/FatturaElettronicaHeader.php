@@ -17,7 +17,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiTrasmissione")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasmissione")
      * @JMS\Accessor(getter="getDatiTrasmissione", setter="setDatiTrasmissione")
      * @JMS\SerializedName("DatiTrasmissione")
      * @JMS\XmlElement(cdata=false)
@@ -29,7 +29,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\CedentePrestatore")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\CedentePrestatore")
      * @JMS\Accessor(getter="getCedentePrestatore", setter="setCedentePrestatore")
      * @JMS\SerializedName("CedentePrestatore")
      * @JMS\XmlElement(cdata=false)
@@ -41,7 +41,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\RappresentanteFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\RappresentanteFiscale")
      * @JMS\Accessor(getter="getRappresentanteFiscale", setter="setRappresentanteFiscale")
      * @JMS\SerializedName("RappresentanteFiscale")
      * @JMS\XmlElement(cdata=false)
@@ -53,7 +53,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\CessionarioCommittente")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\CessionarioCommittente")
      * @JMS\Accessor(getter="getCessionarioCommittente", setter="setCessionarioCommittente")
      * @JMS\SerializedName("CessionarioCommittente")
      * @JMS\XmlElement(cdata=false)
@@ -65,7 +65,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\TerzoIntermediarioSoggettoEmittente")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\TerzoIntermediarioSoggettoEmittente")
      * @JMS\Accessor(getter="getTerzoIntermediarioOSoggettoEmittente", setter="setTerzoIntermediarioOSoggettoEmittente")
      * @JMS\SerializedName("TerzoIntermediarioOSoggettoEmittente")
      * @JMS\XmlElement(cdata=false)
@@ -77,7 +77,7 @@ final class FatturaElettronicaHeader
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\SoggettoEmittente")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\SoggettoEmittente")
      * @JMS\Accessor(getter="getSoggettoEmittente", setter="setSoggettoEmittente")
      * @JMS\SerializedName("SoggettoEmittente")
      * @JMS\XmlElement(cdata=false)

@@ -17,7 +17,7 @@ final class DatiAnagraficiTerzoIntermediario
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\IdFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
      * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
      * @JMS\SerializedName("IdFiscaleIVA")
      * @JMS\XmlElement(cdata=false)
@@ -41,7 +41,7 @@ final class DatiAnagraficiTerzoIntermediario
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Anagrafica")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica")
      * @JMS\Accessor(getter="getAnagrafica", setter="setAnagrafica")
      * @JMS\SerializedName("Anagrafica")
      * @JMS\XmlElement(cdata=false)

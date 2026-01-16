@@ -17,7 +17,7 @@ final class RappresentanteFiscaleCessionario
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\IdFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
      * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
      * @JMS\SerializedName("IdFiscaleIVA")
      * @JMS\XmlElement(cdata=false)

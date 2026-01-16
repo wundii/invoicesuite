@@ -19,7 +19,7 @@ final class DatiRitenuta
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\TipoRitenuta")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\TipoRitenuta")
      * @JMS\Accessor(getter="getTipoRitenuta", setter="setTipoRitenuta")
      * @JMS\SerializedName("TipoRitenuta")
      * @JMS\XmlElement(cdata=false)
@@ -55,7 +55,7 @@ final class DatiRitenuta
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\CausalePagamento")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\CausalePagamento")
      * @JMS\Accessor(getter="getCausalePagamento", setter="setCausalePagamento")
      * @JMS\SerializedName("CausalePagamento")
      * @JMS\XmlElement(cdata=false)

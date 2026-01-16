@@ -16,7 +16,7 @@ final class TerzoIntermediarioSoggettoEmittente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiAnagraficiTerzoIntermediario")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiTerzoIntermediario")
      * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
      * @JMS\SerializedName("DatiAnagrafici")
      * @JMS\XmlElement(cdata=false)

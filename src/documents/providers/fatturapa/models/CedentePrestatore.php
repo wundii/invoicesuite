@@ -17,7 +17,7 @@ final class CedentePrestatore
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiAnagraficiCedente")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiCedente")
      * @JMS\Accessor(getter="getDatiAnagrafici", setter="setDatiAnagrafici")
      * @JMS\SerializedName("DatiAnagrafici")
      * @JMS\XmlElement(cdata=false)
@@ -29,7 +29,7 @@ final class CedentePrestatore
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Indirizzo")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
      * @JMS\Accessor(getter="getSede", setter="setSede")
      * @JMS\SerializedName("Sede")
      * @JMS\XmlElement(cdata=false)
@@ -41,7 +41,7 @@ final class CedentePrestatore
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Indirizzo")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
      * @JMS\Accessor(getter="getStabileOrganizzazione", setter="setStabileOrganizzazione")
      * @JMS\SerializedName("StabileOrganizzazione")
      * @JMS\XmlElement(cdata=false)
@@ -53,7 +53,7 @@ final class CedentePrestatore
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\IscrizioneREA")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IscrizioneREA")
      * @JMS\Accessor(getter="getIscrizioneREA", setter="setIscrizioneREA")
      * @JMS\SerializedName("IscrizioneREA")
      * @JMS\XmlElement(cdata=false)
@@ -65,7 +65,7 @@ final class CedentePrestatore
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Contatti")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Contatti")
      * @JMS\Accessor(getter="getContatti", setter="setContatti")
      * @JMS\SerializedName("Contatti")
      * @JMS\XmlElement(cdata=false)

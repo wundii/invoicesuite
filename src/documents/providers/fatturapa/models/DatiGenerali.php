@@ -16,7 +16,7 @@ final class DatiGenerali
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiGeneraliDocumento")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGeneraliDocumento")
      * @JMS\Accessor(getter="getDatiGeneraliDocumento", setter="setDatiGeneraliDocumento")
      * @JMS\SerializedName("DatiGeneraliDocumento")
      * @JMS\XmlElement(cdata=false)
@@ -29,7 +29,7 @@ final class DatiGenerali
      * @var null|array<DatiDocumentiCorrelati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDocumentiCorrelati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
      * @JMS\Accessor(getter="getDatiOrdineAcquisto", setter="setDatiOrdineAcquisto")
      * @JMS\SerializedName("DatiOrdineAcquisto")
      * @JMS\XmlElement(cdata=false)
@@ -43,7 +43,7 @@ final class DatiGenerali
      * @var null|array<DatiDocumentiCorrelati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDocumentiCorrelati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
      * @JMS\Accessor(getter="getDatiContratto", setter="setDatiContratto")
      * @JMS\SerializedName("DatiContratto")
      * @JMS\XmlElement(cdata=false)
@@ -57,7 +57,7 @@ final class DatiGenerali
      * @var null|array<DatiDocumentiCorrelati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDocumentiCorrelati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
      * @JMS\Accessor(getter="getDatiConvenzione", setter="setDatiConvenzione")
      * @JMS\SerializedName("DatiConvenzione")
      * @JMS\XmlElement(cdata=false)
@@ -71,7 +71,7 @@ final class DatiGenerali
      * @var null|array<DatiDocumentiCorrelati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDocumentiCorrelati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
      * @JMS\Accessor(getter="getDatiRicezione", setter="setDatiRicezione")
      * @JMS\SerializedName("DatiRicezione")
      * @JMS\XmlElement(cdata=false)
@@ -85,7 +85,7 @@ final class DatiGenerali
      * @var null|array<DatiDocumentiCorrelati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDocumentiCorrelati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDocumentiCorrelati>")
      * @JMS\Accessor(getter="getDatiFattureCollegate", setter="setDatiFattureCollegate")
      * @JMS\SerializedName("DatiFattureCollegate")
      * @JMS\XmlElement(cdata=false)
@@ -99,7 +99,7 @@ final class DatiGenerali
      * @var null|array<DatiSAL>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiSAL>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiSAL>")
      * @JMS\Accessor(getter="getDatiSAL", setter="setDatiSAL")
      * @JMS\SerializedName("DatiSAL")
      * @JMS\XmlElement(cdata=false)
@@ -113,7 +113,7 @@ final class DatiGenerali
      * @var null|array<DatiDDT>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiDDT>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiDDT>")
      * @JMS\Accessor(getter="getDatiDDT", setter="setDatiDDT")
      * @JMS\SerializedName("DatiDDT")
      * @JMS\XmlElement(cdata=false)
@@ -126,7 +126,7 @@ final class DatiGenerali
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiTrasporto")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiTrasporto")
      * @JMS\Accessor(getter="getDatiTrasporto", setter="setDatiTrasporto")
      * @JMS\SerializedName("DatiTrasporto")
      * @JMS\XmlElement(cdata=false)
@@ -138,7 +138,7 @@ final class DatiGenerali
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\FatturaPrincipale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaPrincipale")
      * @JMS\Accessor(getter="getFatturaPrincipale", setter="setFatturaPrincipale")
      * @JMS\SerializedName("FatturaPrincipale")
      * @JMS\XmlElement(cdata=false)

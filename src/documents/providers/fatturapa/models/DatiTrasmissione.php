@@ -18,7 +18,7 @@ final class DatiTrasmissione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\IdFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
      * @JMS\Accessor(getter="getIdTrasmittente", setter="setIdTrasmittente")
      * @JMS\SerializedName("IdTrasmittente")
      * @JMS\XmlElement(cdata=false)
@@ -42,7 +42,7 @@ final class DatiTrasmissione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\FormatoTrasmissione")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\FormatoTrasmissione")
      * @JMS\Accessor(getter="getFormatoTrasmissione", setter="setFormatoTrasmissione")
      * @JMS\SerializedName("FormatoTrasmissione")
      * @JMS\XmlElement(cdata=false)
@@ -66,7 +66,7 @@ final class DatiTrasmissione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\ContattiTrasmittente")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\ContattiTrasmittente")
      * @JMS\Accessor(getter="getContattiTrasmittente", setter="setContattiTrasmittente")
      * @JMS\SerializedName("ContattiTrasmittente")
      * @JMS\XmlElement(cdata=false)

@@ -19,7 +19,7 @@ final class DatiAnagraficiCedente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\IdFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\IdFiscale")
      * @JMS\Accessor(getter="getIdFiscaleIVA", setter="setIdFiscaleIVA")
      * @JMS\SerializedName("IdFiscaleIVA")
      * @JMS\XmlElement(cdata=false)
@@ -43,7 +43,7 @@ final class DatiAnagraficiCedente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Anagrafica")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Anagrafica")
      * @JMS\Accessor(getter="getAnagrafica", setter="setAnagrafica")
      * @JMS\SerializedName("Anagrafica")
      * @JMS\XmlElement(cdata=false)
@@ -103,7 +103,7 @@ final class DatiAnagraficiCedente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\RegimeFiscale")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\RegimeFiscale")
      * @JMS\Accessor(getter="getRegimeFiscale", setter="setRegimeFiscale")
      * @JMS\SerializedName("RegimeFiscale")
      * @JMS\XmlElement(cdata=false)

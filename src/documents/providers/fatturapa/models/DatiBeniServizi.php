@@ -17,7 +17,7 @@ final class DatiBeniServizi
      * @var null|array<DettaglioLinee>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DettaglioLinee>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioLinee>")
      * @JMS\Accessor(getter="getDettaglioLinee", setter="setDettaglioLinee")
      * @JMS\SerializedName("DettaglioLinee")
      * @JMS\XmlElement(cdata=false)
@@ -31,7 +31,7 @@ final class DatiBeniServizi
      * @var null|array<DatiRiepilogo>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiRiepilogo>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiRiepilogo>")
      * @JMS\Accessor(getter="getDatiRiepilogo", setter="setDatiRiepilogo")
      * @JMS\SerializedName("DatiRiepilogo")
      * @JMS\XmlElement(cdata=false)

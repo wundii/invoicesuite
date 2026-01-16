@@ -35,7 +35,7 @@ final class FatturaElettronica
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\FatturaElettronicaHeader")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaHeader")
      * @JMS\Accessor(getter="getFatturaElettronicaHeader", setter="setFatturaElettronicaHeader")
      * @JMS\SerializedName("FatturaElettronicaHeader")
      * @JMS\XmlElement(cdata=false)
@@ -48,7 +48,7 @@ final class FatturaElettronica
      * @var null|array<FatturaElettronicaBody>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\FatturaElettronicaBody>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronicaBody>")
      * @JMS\Accessor(getter="getFatturaElettronicaBody", setter="setFatturaElettronicaBody")
      * @JMS\SerializedName("FatturaElettronicaBody")
      * @JMS\XmlElement(cdata=false)
@@ -73,7 +73,7 @@ final class FatturaElettronica
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Enum\\FormatoTrasmissione")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\\FormatoTrasmissione")
      * @JMS\Accessor(getter="getVersione", setter="setVersione")
      * @JMS\SerializedName("versione")
      * @JMS\XmlAttribute

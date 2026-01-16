@@ -16,7 +16,7 @@ final class FatturaElettronicaBody
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiGenerali")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiGenerali")
      * @JMS\Accessor(getter="getDatiGenerali", setter="setDatiGenerali")
      * @JMS\SerializedName("DatiGenerali")
      * @JMS\XmlElement(cdata=false)
@@ -28,7 +28,7 @@ final class FatturaElettronicaBody
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiBeniServizi")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiBeniServizi")
      * @JMS\Accessor(getter="getDatiBeniServizi", setter="setDatiBeniServizi")
      * @JMS\SerializedName("DatiBeniServizi")
      * @JMS\XmlElement(cdata=false)
@@ -40,7 +40,7 @@ final class FatturaElettronicaBody
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiVeicoli")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiVeicoli")
      * @JMS\Accessor(getter="getDatiVeicoli", setter="setDatiVeicoli")
      * @JMS\SerializedName("DatiVeicoli")
      * @JMS\XmlElement(cdata=false)
@@ -53,7 +53,7 @@ final class FatturaElettronicaBody
      * @var null|array<DatiPagamento>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiPagamento>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento>")
      * @JMS\Accessor(getter="getDatiPagamento", setter="setDatiPagamento")
      * @JMS\SerializedName("DatiPagamento")
      * @JMS\XmlElement(cdata=false)
@@ -67,7 +67,7 @@ final class FatturaElettronicaBody
      * @var null|array<Allegati>
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("array<horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Allegati>")
+     * @JMS\Type("array<horstoeko\invoicesuite\documents\providers\fatturapa\models\Allegati>")
      * @JMS\Accessor(getter="getAllegati", setter="setAllegati")
      * @JMS\SerializedName("Allegati")
      * @JMS\XmlElement(cdata=false)

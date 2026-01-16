@@ -18,7 +18,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\DatiAnagraficiVettore")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiAnagraficiVettore")
      * @JMS\Accessor(getter="getDatiAnagraficiVettore", setter="setDatiAnagraficiVettore")
      * @JMS\SerializedName("DatiAnagraficiVettore")
      * @JMS\XmlElement(cdata=false)
@@ -150,7 +150,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("horstoeko\\invoicesuite\\documents\\providers\\fatturapa\\models\\Indirizzo")
+     * @JMS\Type("horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo")
      * @JMS\Accessor(getter="getIndirizzoResa", setter="setIndirizzoResa")
      * @JMS\SerializedName("IndirizzoResa")
      * @JMS\XmlElement(cdata=false)
