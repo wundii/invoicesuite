@@ -114,7 +114,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\\TH:i:sP\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
      * @JMS\Accessor(getter="getDataOraRitiro", setter="setDataOraRitiro")
      * @JMS\SerializedName("DataOraRitiro")
      * @JMS\XmlElement(cdata=false)
@@ -126,7 +126,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataInizioTrasporto", setter="setDataInizioTrasporto")
      * @JMS\SerializedName("DataInizioTrasporto")
      * @JMS\XmlElement(cdata=false)
@@ -162,7 +162,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\\TH:i:sP\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime")
      * @JMS\Accessor(getter="getDataOraConsegna", setter="setDataOraConsegna")
      * @JMS\SerializedName("DataOraConsegna")
      * @JMS\XmlElement(cdata=false)

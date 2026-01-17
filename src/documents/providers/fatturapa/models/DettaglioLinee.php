@@ -95,7 +95,7 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataInizioPeriodo", setter="setDataInizioPeriodo")
      * @JMS\SerializedName("DataInizioPeriodo")
      * @JMS\XmlElement(cdata=false)
@@ -107,7 +107,7 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataFinePeriodo", setter="setDataFinePeriodo")
      * @JMS\SerializedName("DataFinePeriodo")
      * @JMS\XmlElement(cdata=false)

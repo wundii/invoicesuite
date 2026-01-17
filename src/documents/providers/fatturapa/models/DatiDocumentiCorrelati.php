@@ -44,7 +44,7 @@ final class DatiDocumentiCorrelati
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getData", setter="setData")
      * @JMS\SerializedName("Data")
      * @JMS\XmlElement(cdata=false)

@@ -30,7 +30,7 @@ final class FatturaPrincipale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataFatturaPrincipale", setter="setDataFatturaPrincipale")
      * @JMS\SerializedName("DataFatturaPrincipale")
      * @JMS\XmlElement(cdata=false)

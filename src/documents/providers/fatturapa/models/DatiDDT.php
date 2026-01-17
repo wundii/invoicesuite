@@ -30,7 +30,7 @@ final class DatiDDT
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataDDT", setter="setDataDDT")
      * @JMS\SerializedName("DataDDT")
      * @JMS\XmlElement(cdata=false)

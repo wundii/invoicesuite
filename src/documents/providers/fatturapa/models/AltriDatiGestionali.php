@@ -54,7 +54,7 @@ final class AltriDatiGestionali
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getRiferimentoData", setter="setRiferimentoData")
      * @JMS\SerializedName("RiferimentoData")
      * @JMS\XmlElement(cdata=false)

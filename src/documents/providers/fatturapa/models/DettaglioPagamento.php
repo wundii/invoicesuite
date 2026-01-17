@@ -43,7 +43,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataRiferimentoTerminiPagamento", setter="setDataRiferimentoTerminiPagamento")
      * @JMS\SerializedName("DataRiferimentoTerminiPagamento")
      * @JMS\XmlElement(cdata=false)
@@ -67,7 +67,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataScadenzaPagamento", setter="setDataScadenzaPagamento")
      * @JMS\SerializedName("DataScadenzaPagamento")
      * @JMS\XmlElement(cdata=false)
@@ -223,7 +223,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataLimitePagamentoAnticipato", setter="setDataLimitePagamentoAnticipato")
      * @JMS\SerializedName("DataLimitePagamentoAnticipato")
      * @JMS\XmlElement(cdata=false)
@@ -247,7 +247,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataDecorrenzaPenale", setter="setDataDecorrenzaPenale")
      * @JMS\SerializedName("DataDecorrenzaPenale")
      * @JMS\XmlElement(cdata=false)

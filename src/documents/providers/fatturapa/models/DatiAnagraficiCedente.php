@@ -91,7 +91,7 @@ final class DatiAnagraficiCedente
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("DateTimeImmutable<\'Y-m-d\'>")
+     * @JMS\Type("GoetasWebservices\Xsd\XsdToPhp\XMLSchema\Date")
      * @JMS\Accessor(getter="getDataIscrizioneAlbo", setter="setDataIscrizioneAlbo")
      * @JMS\SerializedName("DataIscrizioneAlbo")
      * @JMS\XmlElement(cdata=false)
