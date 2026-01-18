@@ -71,12 +71,12 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getQuantita", setter="setQuantita")
      * @JMS\SerializedName("Quantita")
      * @JMS\XmlElement(cdata=false)
      */
-    private ?string $quantita = null;
+    private ?float $quantita = null;
 
     /**
      * @translation-german-untranslated

@@ -29,7 +29,7 @@ final class DatiBollo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImportoBollo", setter="setImportoBollo")
      * @JMS\SerializedName("ImportoBollo")
      * @JMS\XmlElement(cdata=false)

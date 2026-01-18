@@ -90,7 +90,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getPesoLordo", setter="setPesoLordo")
      * @JMS\SerializedName("PesoLordo")
      * @JMS\XmlElement(cdata=false)
@@ -102,7 +102,7 @@ final class DatiTrasporto
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getPesoNetto", setter="setPesoNetto")
      * @JMS\SerializedName("PesoNetto")
      * @JMS\XmlElement(cdata=false)

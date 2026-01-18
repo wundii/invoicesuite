@@ -30,7 +30,7 @@ final class DatiRitenuta
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImportoRitenuta", setter="setImportoRitenuta")
      * @JMS\SerializedName("ImportoRitenuta")
      * @JMS\XmlElement(cdata=false)
@@ -42,7 +42,7 @@ final class DatiRitenuta
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getAliquotaRitenuta", setter="setAliquotaRitenuta")
      * @JMS\SerializedName("AliquotaRitenuta")
      * @JMS\XmlElement(cdata=false)

@@ -79,7 +79,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImportoPagamento", setter="setImportoPagamento")
      * @JMS\SerializedName("ImportoPagamento")
      * @JMS\XmlElement(cdata=false)
@@ -211,7 +211,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getScontoPagamentoAnticipato", setter="setScontoPagamentoAnticipato")
      * @JMS\SerializedName("ScontoPagamentoAnticipato")
      * @JMS\XmlElement(cdata=false)
@@ -235,7 +235,7 @@ final class DettaglioPagamento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getPenalitaPagamentiRitardati", setter="setPenalitaPagamentiRitardati")
      * @JMS\SerializedName("PenalitaPagamentiRitardati")
      * @JMS\XmlElement(cdata=false)

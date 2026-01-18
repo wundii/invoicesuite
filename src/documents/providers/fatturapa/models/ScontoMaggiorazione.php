@@ -29,7 +29,7 @@ final class ScontoMaggiorazione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getPercentuale", setter="setPercentuale")
      * @JMS\SerializedName("Percentuale")
      * @JMS\XmlElement(cdata=false)
@@ -41,7 +41,7 @@ final class ScontoMaggiorazione
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImporto", setter="setImporto")
      * @JMS\SerializedName("Importo")
      * @JMS\XmlElement(cdata=false)

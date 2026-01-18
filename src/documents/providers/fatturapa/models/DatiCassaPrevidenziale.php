@@ -32,7 +32,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getAlCassa", setter="setAlCassa")
      * @JMS\SerializedName("AlCassa")
      * @JMS\XmlElement(cdata=false)
@@ -44,7 +44,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImportoContributoCassa", setter="setImportoContributoCassa")
      * @JMS\SerializedName("ImportoContributoCassa")
      * @JMS\XmlElement(cdata=false)
@@ -56,7 +56,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImponibileCassa", setter="setImponibileCassa")
      * @JMS\SerializedName("ImponibileCassa")
      * @JMS\XmlElement(cdata=false)
@@ -68,7 +68,7 @@ final class DatiCassaPrevidenziale
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getAliquotaIVA", setter="setAliquotaIVA")
      * @JMS\SerializedName("AliquotaIVA")
      * @JMS\XmlElement(cdata=false)

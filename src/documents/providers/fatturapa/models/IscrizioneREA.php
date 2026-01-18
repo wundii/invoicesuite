@@ -43,7 +43,7 @@ final class IscrizioneREA
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getCapitaleSociale", setter="setCapitaleSociale")
      * @JMS\SerializedName("CapitaleSociale")
      * @JMS\XmlElement(cdata=false)

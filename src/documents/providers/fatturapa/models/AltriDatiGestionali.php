@@ -42,7 +42,7 @@ final class AltriDatiGestionali
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getRiferimentoNumero", setter="setRiferimentoNumero")
      * @JMS\SerializedName("RiferimentoNumero")
      * @JMS\XmlElement(cdata=false)

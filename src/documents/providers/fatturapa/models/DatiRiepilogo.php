@@ -19,7 +19,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getAliquotaIVA", setter="setAliquotaIVA")
      * @JMS\SerializedName("AliquotaIVA")
      * @JMS\XmlElement(cdata=false)
@@ -43,7 +43,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getSpeseAccessorie", setter="setSpeseAccessorie")
      * @JMS\SerializedName("SpeseAccessorie")
      * @JMS\XmlElement(cdata=false)
@@ -55,7 +55,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getArrotondamento", setter="setArrotondamento")
      * @JMS\SerializedName("Arrotondamento")
      * @JMS\XmlElement(cdata=false)
@@ -67,7 +67,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImponibileImporto", setter="setImponibileImporto")
      * @JMS\SerializedName("ImponibileImporto")
      * @JMS\XmlElement(cdata=false)
@@ -79,7 +79,7 @@ final class DatiRiepilogo
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("float")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImposta", setter="setImposta")
      * @JMS\SerializedName("Imposta")
      * @JMS\XmlElement(cdata=false)
