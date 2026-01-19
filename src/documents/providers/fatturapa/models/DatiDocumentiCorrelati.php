@@ -115,7 +115,7 @@ final class DatiDocumentiCorrelati
      * @param  null|array<int> $riferimentoNumeroLinea
      * @return static
      */
-    public function setRiferimentoNumeroLinea(?int $riferimentoNumeroLinea = null): static
+    public function setRiferimentoNumeroLinea(?array $riferimentoNumeroLinea = null): static
     {
         $this->riferimentoNumeroLinea = $riferimentoNumeroLinea;
 

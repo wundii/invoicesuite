@@ -99,7 +99,7 @@ final class DatiRitenuta
     /**
      * @translation-german Betrag Ritenuta
      *
-     * @return null|float
+     * @return null|string
      */
     public function getImportoRitenuta(): ?float
     {
@@ -109,7 +109,7 @@ final class DatiRitenuta
     /**
      * @translation-german Betrag Ritenuta
      *
-     * @param  null|float $importoRitenuta
+     * @param  null|string $importoRitenuta
      * @return static
      */
     public function setImportoRitenuta(?float $importoRitenuta = null): static
@@ -134,7 +134,7 @@ final class DatiRitenuta
     /**
      * @translation-german Steuersatz Ritenuta
      *
-     * @return null|float
+     * @return null|string
      */
     public function getAliquotaRitenuta(): ?float
     {
@@ -144,7 +144,7 @@ final class DatiRitenuta
     /**
      * @translation-german Steuersatz Ritenuta
      *
-     * @param  null|float $aliquotaRitenuta
+     * @param  null|string $aliquotaRitenuta
      * @return static
      */
     public function setAliquotaRitenuta(?float $aliquotaRitenuta = null): static

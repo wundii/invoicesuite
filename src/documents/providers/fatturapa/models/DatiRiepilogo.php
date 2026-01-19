@@ -113,7 +113,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Steuersatz IVA
      *
-     * @return null|float
+     * @return null|string
      */
     public function getAliquotaIVA(): ?float
     {
@@ -123,7 +123,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Steuersatz IVA
      *
-     * @param  null|float $aliquotaIVA
+     * @param  null|string $aliquotaIVA
      * @return static
      */
     public function setAliquotaIVA(?float $aliquotaIVA = null): static
@@ -183,7 +183,7 @@ final class DatiRiepilogo
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getSpeseAccessorie(): ?float
     {
@@ -193,7 +193,7 @@ final class DatiRiepilogo
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $speseAccessorie
+     * @param  null|string $speseAccessorie
      * @return static
      */
     public function setSpeseAccessorie(?float $speseAccessorie = null): static
@@ -218,7 +218,7 @@ final class DatiRiepilogo
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getArrotondamento(): ?float
     {
@@ -228,7 +228,7 @@ final class DatiRiepilogo
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $arrotondamento
+     * @param  null|string $arrotondamento
      * @return static
      */
     public function setArrotondamento(?float $arrotondamento = null): static
@@ -253,7 +253,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Imponibile Betrag
      *
-     * @return null|float
+     * @return null|string
      */
     public function getImponibileImporto(): ?float
     {
@@ -263,7 +263,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Imponibile Betrag
      *
-     * @param  null|float $imponibileImporto
+     * @param  null|string $imponibileImporto
      * @return static
      */
     public function setImponibileImporto(?float $imponibileImporto = null): static
@@ -288,7 +288,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Steuer
      *
-     * @return null|float
+     * @return null|string
      */
     public function getImposta(): ?float
     {
@@ -298,7 +298,7 @@ final class DatiRiepilogo
     /**
      * @translation-german Steuer
      *
-     * @param  null|float $imposta
+     * @param  null|string $imposta
      * @return static
      */
     public function setImposta(?float $imposta = null): static

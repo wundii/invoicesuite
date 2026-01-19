@@ -122,24 +122,24 @@ final class DatiGeneraliDocumento
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getImportoTotaleDocumento", setter="setImportoTotaleDocumento")
      * @JMS\SerializedName("ImportoTotaleDocumento")
      * @JMS\XmlElement(cdata=false)
      */
-    private ?string $importoTotaleDocumento = null;
+    private ?float $importoTotaleDocumento = null;
 
     /**
      * @translation-german-untranslated
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getArrotondamento", setter="setArrotondamento")
      * @JMS\SerializedName("Arrotondamento")
      * @JMS\XmlElement(cdata=false)
      */
-    private ?string $arrotondamento = null;
+    private ?float $arrotondamento = null;
 
     /**
      * @translation-german Begründung
@@ -690,7 +690,7 @@ final class DatiGeneraliDocumento
     /**
      * @translation-german Betrag Gesamt Documento
      *
-     * @return null|float
+     * @return null|string
      */
     public function getImportoTotaleDocumento(): ?float
     {
@@ -700,7 +700,7 @@ final class DatiGeneraliDocumento
     /**
      * @translation-german Betrag Gesamt Documento
      *
-     * @param  null|float $importoTotaleDocumento
+     * @param  null|string $importoTotaleDocumento
      * @return static
      */
     public function setImportoTotaleDocumento(?float $importoTotaleDocumento = null): static
@@ -725,7 +725,7 @@ final class DatiGeneraliDocumento
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getArrotondamento(): ?float
     {
@@ -735,7 +735,7 @@ final class DatiGeneraliDocumento
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $arrotondamento
+     * @param  null|string $arrotondamento
      * @return static
      */
     public function setArrotondamento(?float $arrotondamento = null): static

@@ -145,24 +145,24 @@ final class DettaglioLinee
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getPrezzoTotale", setter="setPrezzoTotale")
      * @JMS\SerializedName("PrezzoTotale")
      * @JMS\XmlElement(cdata=false)
      */
-    private ?string $prezzoTotale = null;
+    private ?float $prezzoTotale = null;
 
     /**
      * @translation-german Steuersatz IVA
      *
      * @JMS\Expose
      * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
+     * @JMS\Type("fatturapa_decimal<2>")
      * @JMS\Accessor(getter="getAliquotaIVA", setter="setAliquotaIVA")
      * @JMS\SerializedName("AliquotaIVA")
      * @JMS\XmlElement(cdata=false)
      */
-    private ?string $aliquotaIVA = null;
+    private ?float $aliquotaIVA = null;
 
     /**
      * @translation-german-untranslated
@@ -433,7 +433,7 @@ final class DettaglioLinee
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getQuantita(): ?float
     {
@@ -443,7 +443,7 @@ final class DettaglioLinee
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $quantita
+     * @param  null|string $quantita
      * @return static
      */
     public function setQuantita(?float $quantita = null): static
@@ -573,7 +573,7 @@ final class DettaglioLinee
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getPrezzoUnitario(): ?float
     {
@@ -583,7 +583,7 @@ final class DettaglioLinee
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $prezzoUnitario
+     * @param  null|string $prezzoUnitario
      * @return static
      */
     public function setPrezzoUnitario(?float $prezzoUnitario = null): static
@@ -719,7 +719,7 @@ final class DettaglioLinee
     /**
      * @translation-german Prezzo Gesamt
      *
-     * @return null|float
+     * @return null|string
      */
     public function getPrezzoTotale(): ?float
     {
@@ -729,7 +729,7 @@ final class DettaglioLinee
     /**
      * @translation-german Prezzo Gesamt
      *
-     * @param  null|float $prezzoTotale
+     * @param  null|string $prezzoTotale
      * @return static
      */
     public function setPrezzoTotale(?float $prezzoTotale = null): static
@@ -754,7 +754,7 @@ final class DettaglioLinee
     /**
      * @translation-german Steuersatz IVA
      *
-     * @return null|float
+     * @return null|string
      */
     public function getAliquotaIVA(): ?float
     {
@@ -764,7 +764,7 @@ final class DettaglioLinee
     /**
      * @translation-german Steuersatz IVA
      *
-     * @param  null|float $aliquotaIVA
+     * @param  null|string $aliquotaIVA
      * @return static
      */
     public function setAliquotaIVA(?float $aliquotaIVA = null): static

@@ -147,7 +147,7 @@ final class IscrizioneREA
     /**
      * @translation-german-untranslated
      *
-     * @return null|float
+     * @return null|string
      */
     public function getCapitaleSociale(): ?float
     {
@@ -157,7 +157,7 @@ final class IscrizioneREA
     /**
      * @translation-german-untranslated
      *
-     * @param  null|float $capitaleSociale
+     * @param  null|string $capitaleSociale
      * @return static
      */
     public function setCapitaleSociale(?float $capitaleSociale = null): static
