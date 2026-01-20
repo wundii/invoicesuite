@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\providers\fatturapa;
 
 use Closure;
+use DOMDocument;
+use DOMXPath;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
 use horstoeko\invoicesuite\utils\InvoiceSuiteContentType;
@@ -119,6 +121,32 @@ class InvoiceSuiteFatturaPaProvider extends InvoiceSuiteAbstractDocumentFormatPr
      */
     public function getSerializedContentMatchesScheme(string $serializedContent): bool
     {
+        $prevUseInternalErrors = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+
+        try {
+            $contentDomDocument = new DOMDocument();
+
+            if (!$contentDomDocument->loadXML($serializedContent)) {
+                return false;
+            }
+
+            $contentDomXPath = new DOMXPath($contentDomDocument);
+
+            $contentEntries = $contentDomXPath->query('//FatturaElettronica/FatturaElettronicaHeader');
+
+            if (false === $contentEntries) {
+                continue;
+            }
+
+            if (1 === $contentEntries->length) {
+                return true;
+            }
+        } finally {
+            libxml_clear_errors();
+            libxml_use_internal_errors($prevUseInternalErrors);
+        }
+
         return false;
     }
 
