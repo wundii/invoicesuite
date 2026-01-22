@@ -12,6 +12,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * @JMS\XmlNamespace(uri="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2")
  * @JMS\XmlNamespace(uri="http://www.w3.org/2001/XMLSchema-instance", prefix="xsi")
+ * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
  * @JMS\XmlRoot("FatturaElettronica")
  */
 final class FatturaElettronica
