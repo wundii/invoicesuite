@@ -21,14 +21,4 @@ namespace horstoeko\invoicesuite\documents\dto;
  */
 class InvoiceSuiteCommunicationDTO extends InvoiceSuiteIdDTO
 {
-    /**
-     * Constructor
-     *
-     * @param null|string $id     ID
-     * @param null|string $idType Type of the ID
-     */
-    public function __construct(?string $id = null, ?string $idType = null)
-    {
-        parent::__construct($id, $idType);
-    }
 }
