@@ -13,7 +13,7 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\XmlRoot("Object")
  * @JMS\XmlNamespace(uri="http://www.w3.org/2000/09/xmldsig#", prefix="ds")
  */
-class Object extends ObjectType
+class ObjectX extends ObjectType
 {
     use HandlesObjectFlags;
 }

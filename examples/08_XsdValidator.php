@@ -388,7 +388,7 @@ $dtoDocumentHeader->addPosition($dtoDocumentPositionFour);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionFive);
 $dtoDocumentHeader->addPosition($dtoDocumentPositionSix);
 
-$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('zffxextended');
+$documentBuilder = InvoiceSuiteDocumentBuilder::createByProviderUniqueId('fatturapa');
 $documentBuilder->createFromDTO($dtoDocumentHeader);
 
 $validator = InvoiceSuiteXsdDocumentValidator::createFromDocumentBuilder($documentBuilder);

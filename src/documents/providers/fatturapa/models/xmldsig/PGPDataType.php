@@ -43,19 +43,6 @@ class PGPDataType
     /**
      * @translation-german-untranslated
      *
-     * @var null|string
-     * @JMS\Expose
-     * @JMS\Groups({"fatturapa"})
-     * @JMS\Type("string")
-     * @JMS\Accessor(getter="getPGPKeyPacket", setter="setPGPKeyPacket")
-     * @JMS\SerializedName("PGPKeyPacket")
-     * @JMS\XmlElement(cdata=false)
-     */
-    private ?string $pGPKeyPacket = null;
-
-    /**
-     * @translation-german-untranslated
-     *
      * @return null|string
      */
     public function getPGPKeyID(): ?string
@@ -84,41 +71,6 @@ class PGPDataType
     public function unsetPGPKeyID(): static
     {
         $this->pGPKeyID = null;
-
-        return $this;
-    }
-
-    /**
-     * @translation-german-untranslated
-     *
-     * @return null|string
-     */
-    public function getPGPKeyPacket(): ?string
-    {
-        return $this->pGPKeyPacket;
-    }
-
-    /**
-     * @translation-german-untranslated
-     *
-     * @param  string $pGPKeyPacket
-     * @return static
-     */
-    public function setPGPKeyPacket(?string $pGPKeyPacket = null): static
-    {
-        $this->pGPKeyPacket = $pGPKeyPacket;
-
-        return $this;
-    }
-
-    /**
-     * @translation-german-untranslated
-     *
-     * @return static
-     */
-    public function unsetPGPKeyPacket(): static
-    {
-        $this->pGPKeyPacket = null;
 
         return $this;
     }
