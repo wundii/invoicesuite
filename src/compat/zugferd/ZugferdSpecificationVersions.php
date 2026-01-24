@@ -24,12 +24,12 @@ class ZugferdSpecificationVersions
     /**
      * The latest ZUGFeRD version used
      */
-    public const VERSION_ZUGFERD = '2.3.2';
+    public const VERSION_ZUGFERD = '2.4';
 
     /**
      * The latest Factur-X version used
      */
-    public const VERSION_FACTURX = '1.07.2';
+    public const VERSION_FACTURX = '1.08';
 
     /**
      * The latest XRechnung version used
