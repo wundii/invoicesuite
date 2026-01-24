@@ -17,7 +17,7 @@ use Throwable;
  * Class representing an exception for missing a file
  *
  * @category InvoiceSuite
- * @author   D. Erling <horstoeko@erling.com.de>
+ * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */

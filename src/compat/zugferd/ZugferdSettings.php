@@ -18,10 +18,10 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 /**
  * Class representing the general settings
  *
- * @category Zugferd
- * @author   D. Erling <horstoeko@erling.com.de>
+ * @category InvoiceSuite
+ * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
- * @see      https://github.com/horstoeko/zugferd
+ * @see      https://github.com/horstoeko/invoicesuite
  */
 class ZugferdSettings
 {
