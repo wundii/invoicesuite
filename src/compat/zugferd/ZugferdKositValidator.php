@@ -79,8 +79,8 @@ class ZugferdKositValidator
         }
 
         if ($document instanceof ZugferdDocumentReader) {
-            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromContent(
-                $document->getDocumentReaderInstance()->getOriginalDocumentContent()
+            $this->kositValidator = InvoiceSuiteKositDocumentValidator::createFromDocumentReader(
+                $document->getDocumentReaderInstance()
             );
         }
 
