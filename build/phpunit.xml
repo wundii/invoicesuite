@@ -25,6 +25,7 @@
             <file>../tests/testcases/concerns/HandlesMessageBagTest.php</file>
             <file>../tests/testcases/concerns/HandlesRawContentsTest.php</file>
             <file>../tests/testcases/concerns/HandlesSafeInvokingTest.php</file>
+            <file>../tests/testcases/concerns/HandlesKeyValuePairsTest.php</file>
         </testsuite>
         <testsuite name="codelists">
             <file>../tests/testcases/codelists/AllCodelistsEnumsTest.php</file>
