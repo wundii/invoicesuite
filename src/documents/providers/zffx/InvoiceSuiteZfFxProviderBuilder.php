@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\providers\zffx;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
+use horstoeko\invoicesuite\concerns\HandlesKeyValuePairs;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatBuilder;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAddressDTO;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteAllowanceChargeDTO;
@@ -48,6 +49,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormatBuilder
 {
+    use HandlesKeyValuePairs;
     use InvoiceSuiteZfFxChecksProfiles;
 
     /**
@@ -9857,29 +9859,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         }
 
         if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newMandate)) {
-            $paymentTerms = $this
-                ->getCrossIndustryRootObject()
-                ->getSupplyChainTradeTransactionWithCreate()
-                ->getApplicableHeaderTradeSettlementWithCreate()
-                ->getSpecifiedTradePaymentTerms() ?? [];
-
-            $paymentTerms = array_filter($paymentTerms, static fn (TradePaymentTermsType $paymentTerm) => false === $paymentTerm->hasObjectFlag('frompaymentmean'));
-
-            $this
-                ->getCrossIndustryRootObject()
-                ->getSupplyChainTradeTransactionWithCreate()
-                ->getApplicableHeaderTradeSettlementWithCreate()
-                ->setSpecifiedTradePaymentTerms($paymentTerms);
-
-            $paymentTerm = $this
-                ->getCrossIndustryRootObject()
-                ->getSupplyChainTradeTransactionWithCreate()
-                ->getApplicableHeaderTradeSettlementWithCreate()
-                ->addToSpecifiedTradePaymentTermsWithCreate()
-                ->addToObjectFlags('frompaymentmean');
-
-            $paymentTerm->getDescriptionWithCreate()->setValue('Direct Debit');
-            $paymentTerm->getDirectDebitMandateIDWithCreate()->setValue($newMandate);
+            $this->addKeyValuePair('mandantefrompaymentmean', $newMandate);
+            $this->updateMandates();
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -10380,6 +10361,8 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
             $paymentTerm
                 ->getDirectDebitMandateIDWithCreate()
                 ->setValue($newMandate);
+
+            $this->updateMandates();
         }
 
         $this->traceMethodExit(__METHOD__);
@@ -15175,6 +15158,39 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     $taxTotalAmount2->setCurrencyID($taxCurrencyCode);
                 }
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Update Direct Debit Mandate
+     *
+     * @return static
+     */
+    private function updateMandates(): static
+    {
+        if (InvoiceSuiteStringUtils::stringIsNullOrEmpty($this->getKeyValuePair('mandantefrompaymentmean', ''))) {
+            return $this;
+        }
+
+        $paymentTerms = $this
+            ->getCrossIndustryRootObject()
+            ->getSupplyChainTradeTransactionWithCreate()
+            ->getApplicableHeaderTradeSettlementWithCreate()
+            ->getSpecifiedTradePaymentTerms() ?? [];
+
+        $paymentTerms = array_filter(
+            $paymentTerms,
+            static fn (TradePaymentTermsType $paymentTerm) => InvoiceSuiteStringUtils::stringIsNullOrEmpty(
+                $paymentTerm->getDirectDebitMandateID()?->getValue()
+            )
+        );
+
+        foreach ($paymentTerms as $paymentTerm) {
+            $paymentTerm
+                ->getDirectDebitMandateIDWithCreate()
+                ->setValue($this->getKeyValuePair('mandantefrompaymentmean', ''));
         }
 
         return $this;
