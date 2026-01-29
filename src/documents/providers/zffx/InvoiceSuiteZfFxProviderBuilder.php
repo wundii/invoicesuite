@@ -12781,7 +12781,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
      *
      * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
      * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
-     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__ Schema identifier, Type of identifier for an item on which the invoice item is based
      * @return static
      */
     public function setDocumentPositionAdditionalObjectReference(
@@ -12822,7 +12822,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
      *
      * @param  null|string $newReferenceNumber   __BT-128, From EN 16931__ Object identification at the level on position-level
      * @param  null|string $newTypeCode          __BT-128-0, From EN 16931__ Labelling of the object identifier
-     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__Schema identifier, Type of identifier for an item on which the invoice item is based
+     * @param  null|string $newReferenceTypeCode __BT-128-1, From EN 16931__ Schema identifier, Type of identifier for an item on which the invoice item is based
      * @return static
      */
     public function addDocumentPositionAdditionalObjectReference(
