@@ -23,5 +23,3 @@ parameters:
     ignoreErrors:
         -
             identifier: classConstant.internalClass
-        -
-            identifier: trait.unused
