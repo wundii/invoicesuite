@@ -288,7 +288,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
-        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+        if (($allowanceCharge = end($filteredAllowanceCharge)) !== false) {
             $callback($allowanceCharge);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

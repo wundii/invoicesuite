@@ -352,7 +352,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredName = $this->filterName($filterCallback);
 
-        if (($name = reset($filteredName)) !== false) {
+        if (($name = end($filteredName)) !== false) {
             $callback($name);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -604,7 +604,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredId = $this->filterId($filterCallback);
 
-        if (($id = reset($filteredId)) !== false) {
+        if (($id = end($filteredId)) !== false) {
             $callback($id);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -856,7 +856,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredGlobalId = $this->filterGlobalId($filterCallback);
 
-        if (($globalId = reset($filteredGlobalId)) !== false) {
+        if (($globalId = end($filteredGlobalId)) !== false) {
             $callback($globalId);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1108,7 +1108,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredTaxRegistration = $this->filterTaxRegistration($filterCallback);
 
-        if (($taxRegistration = reset($filteredTaxRegistration)) !== false) {
+        if (($taxRegistration = end($filteredTaxRegistration)) !== false) {
             $callback($taxRegistration);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1360,7 +1360,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredAddress = $this->filterAddress($filterCallback);
 
-        if (($address = reset($filteredAddress)) !== false) {
+        if (($address = end($filteredAddress)) !== false) {
             $callback($address);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1612,7 +1612,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredLegalOrganisation = $this->filterLegalOrganisation($filterCallback);
 
-        if (($legalOrganisation = reset($filteredLegalOrganisation)) !== false) {
+        if (($legalOrganisation = end($filteredLegalOrganisation)) !== false) {
             $callback($legalOrganisation);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1864,7 +1864,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredContact = $this->filterContact($filterCallback);
 
-        if (($contact = reset($filteredContact)) !== false) {
+        if (($contact = end($filteredContact)) !== false) {
             $callback($contact);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -2116,7 +2116,7 @@ class InvoiceSuitePartyDTO
     ): static {
         $filteredCommunication = $this->filterCommunication($filterCallback);
 
-        if (($communication = reset($filteredCommunication)) !== false) {
+        if (($communication = end($filteredCommunication)) !== false) {
             $callback($communication);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

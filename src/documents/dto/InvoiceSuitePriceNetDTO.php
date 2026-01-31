@@ -288,7 +288,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
-        if (($tax = reset($filteredTax)) !== false) {
+        if (($tax = end($filteredTax)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

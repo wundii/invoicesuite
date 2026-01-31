@@ -373,7 +373,7 @@ class InvoiceSuitePaymentTermDTO
     ): static {
         $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
 
-        if (($discountTerm = reset($filteredDiscountTerm)) !== false) {
+        if (($discountTerm = end($filteredDiscountTerm)) !== false) {
             $callback($discountTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -625,7 +625,7 @@ class InvoiceSuitePaymentTermDTO
     ): static {
         $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
 
-        if (($penaltyTerm = reset($filteredPenaltyTerm)) !== false) {
+        if (($penaltyTerm = end($filteredPenaltyTerm)) !== false) {
             $callback($penaltyTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

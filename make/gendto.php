@@ -437,7 +437,7 @@ function gendto(array $definitions): void
                 $filterlaster->addParameter('callbackElse')->setType('callable')->setNullable(true)->setDefaultValue(null);
                 $filterlaster->addBody(sprintf('$filtered%1$s = $this->filter%1$s($filterCallback);', ucfirst((string) $propertyLooperName)));
                 $filterlaster->addBody('');
-                $filterlaster->addBody(sprintf('if (($%2$s = reset($filtered%3$s)) !== false) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
+                $filterlaster->addBody(sprintf('if (($%2$s = end($filtered%3$s)) !== false) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
                 $filterlaster->addBody(sprintf('    $callback($%1$s);', $propertyName));
                 $filterlaster->addBody('} elseif (!is_null($callbackElse)) {');
                 $filterlaster->addBody('    $callbackElse();');

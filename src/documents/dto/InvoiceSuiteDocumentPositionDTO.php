@@ -681,7 +681,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredNote = $this->filterNote($filterCallback);
 
-        if (($note = reset($filteredNote)) !== false) {
+        if (($note = end($filteredNote)) !== false) {
             $callback($note);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -957,7 +957,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredSellerOrderReference = $this->filterSellerOrderReference($filterCallback);
 
-        if (($sellerOrderReference = reset($filteredSellerOrderReference)) !== false) {
+        if (($sellerOrderReference = end($filteredSellerOrderReference)) !== false) {
             $callback($sellerOrderReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1209,7 +1209,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredBuyerOrderReference = $this->filterBuyerOrderReference($filterCallback);
 
-        if (($buyerOrderReference = reset($filteredBuyerOrderReference)) !== false) {
+        if (($buyerOrderReference = end($filteredBuyerOrderReference)) !== false) {
             $callback($buyerOrderReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1461,7 +1461,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredQuotationReference = $this->filterQuotationReference($filterCallback);
 
-        if (($quotationReference = reset($filteredQuotationReference)) !== false) {
+        if (($quotationReference = end($filteredQuotationReference)) !== false) {
             $callback($quotationReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1713,7 +1713,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredContractReference = $this->filterContractReference($filterCallback);
 
-        if (($contractReference = reset($filteredContractReference)) !== false) {
+        if (($contractReference = end($filteredContractReference)) !== false) {
             $callback($contractReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1965,7 +1965,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredAdditionalReference = $this->filterAdditionalReference($filterCallback);
 
-        if (($additionalReference = reset($filteredAdditionalReference)) !== false) {
+        if (($additionalReference = end($filteredAdditionalReference)) !== false) {
             $callback($additionalReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -2217,7 +2217,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredUltimateCustomerOrderReference = $this->filterUltimateCustomerOrderReference($filterCallback);
 
-        if (($ultimateCustomerOrderReference = reset($filteredUltimateCustomerOrderReference)) !== false) {
+        if (($ultimateCustomerOrderReference = end($filteredUltimateCustomerOrderReference)) !== false) {
             $callback($ultimateCustomerOrderReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -2469,7 +2469,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredDespatchAdviceReference = $this->filterDespatchAdviceReference($filterCallback);
 
-        if (($despatchAdviceReference = reset($filteredDespatchAdviceReference)) !== false) {
+        if (($despatchAdviceReference = end($filteredDespatchAdviceReference)) !== false) {
             $callback($despatchAdviceReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -2721,7 +2721,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredReceivingAdviceReference = $this->filterReceivingAdviceReference($filterCallback);
 
-        if (($receivingAdviceReference = reset($filteredReceivingAdviceReference)) !== false) {
+        if (($receivingAdviceReference = end($filteredReceivingAdviceReference)) !== false) {
             $callback($receivingAdviceReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -2973,7 +2973,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredDeliveryNoteReference = $this->filterDeliveryNoteReference($filterCallback);
 
-        if (($deliveryNoteReference = reset($filteredDeliveryNoteReference)) !== false) {
+        if (($deliveryNoteReference = end($filteredDeliveryNoteReference)) !== false) {
             $callback($deliveryNoteReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3225,7 +3225,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredInvoiceReference = $this->filterInvoiceReference($filterCallback);
 
-        if (($invoiceReference = reset($filteredInvoiceReference)) !== false) {
+        if (($invoiceReference = end($filteredInvoiceReference)) !== false) {
             $callback($invoiceReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3477,7 +3477,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredAdditionalObjectReference = $this->filterAdditionalObjectReference($filterCallback);
 
-        if (($additionalObjectReference = reset($filteredAdditionalObjectReference)) !== false) {
+        if (($additionalObjectReference = end($filteredAdditionalObjectReference)) !== false) {
             $callback($additionalObjectReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -3921,7 +3921,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredSupplyChainEvent = $this->filterSupplyChainEvent($filterCallback);
 
-        if (($supplyChainEvent = reset($filteredSupplyChainEvent)) !== false) {
+        if (($supplyChainEvent = end($filteredSupplyChainEvent)) !== false) {
             $callback($supplyChainEvent);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -4173,7 +4173,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredBillingPeriod = $this->filterBillingPeriod($filterCallback);
 
-        if (($billingPeriod = reset($filteredBillingPeriod)) !== false) {
+        if (($billingPeriod = end($filteredBillingPeriod)) !== false) {
             $callback($billingPeriod);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -4425,7 +4425,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredPostingReference = $this->filterPostingReference($filterCallback);
 
-        if (($postingReference = reset($filteredPostingReference)) !== false) {
+        if (($postingReference = end($filteredPostingReference)) !== false) {
             $callback($postingReference);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -4677,7 +4677,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
-        if (($tax = reset($filteredTax)) !== false) {
+        if (($tax = end($filteredTax)) !== false) {
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -4929,7 +4929,7 @@ class InvoiceSuiteDocumentPositionDTO
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
-        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+        if (($allowanceCharge = end($filteredAllowanceCharge)) !== false) {
             $callback($allowanceCharge);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

@@ -712,7 +712,7 @@ class InvoiceSuiteProductDTO
     ): static {
         $filteredCharacteristic = $this->filterCharacteristic($filterCallback);
 
-        if (($characteristic = reset($filteredCharacteristic)) !== false) {
+        if (($characteristic = end($filteredCharacteristic)) !== false) {
             $callback($characteristic);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -964,7 +964,7 @@ class InvoiceSuiteProductDTO
     ): static {
         $filteredClassification = $this->filterClassification($filterCallback);
 
-        if (($classification = reset($filteredClassification)) !== false) {
+        if (($classification = end($filteredClassification)) !== false) {
             $callback($classification);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1216,7 +1216,7 @@ class InvoiceSuiteProductDTO
     ): static {
         $filteredReferenceProduct = $this->filterReferenceProduct($filterCallback);
 
-        if (($referenceProduct = reset($filteredReferenceProduct)) !== false) {
+        if (($referenceProduct = end($filteredReferenceProduct)) !== false) {
             $callback($referenceProduct);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
