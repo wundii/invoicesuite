@@ -250,21 +250,22 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     }
 
     /**
-     * Get first filtered The discounts or charges to the gross price
+     * Get first The discounts or charges to the gross price from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredAllowanceCharge(
+    public function filterFirstAllowanceCharge(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
-        if (($allowanceCharge = reset($filteredAllowanceCharge)) !== false) {
+        if ([] !== $filteredAllowanceCharge) {
+            $allowanceCharge = reset($filteredAllowanceCharge);
             $callback($allowanceCharge);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -274,21 +275,22 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     }
 
     /**
-     * Get last filtered The discounts or charges to the gross price
+     * Get last The discounts or charges to the gross price from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredAllowanceCharge(
+    public function filterLastAllowanceCharge(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
-        if (($allowanceCharge = end($filteredAllowanceCharge)) !== false) {
+        if ([] !== $filteredAllowanceCharge) {
+            $allowanceCharge = end($filteredAllowanceCharge);
             $callback($allowanceCharge);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

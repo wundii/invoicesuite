@@ -250,21 +250,22 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     }
 
     /**
-     * Get first filtered The net price included tax
+     * Get first The net price included tax from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredTax(
+    public function filterFirstTax(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
-        if (($tax = reset($filteredTax)) !== false) {
+        if ([] !== $filteredTax) {
+            $tax = reset($filteredTax);
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -274,21 +275,22 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     }
 
     /**
-     * Get last filtered The net price included tax
+     * Get last The net price included tax from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredTax(
+    public function filterLastTax(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
-        if (($tax = end($filteredTax)) !== false) {
+        if ([] !== $filteredTax) {
+            $tax = end($filteredTax);
             $callback($tax);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

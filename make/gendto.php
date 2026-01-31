@@ -410,40 +410,44 @@ function gendto(array $definitions): void
                  * -- Filter First
                  * -------------------
                  */
-                $filterfirster = $class->addMethod(sprintf('firstFiltered%s', ucfirst((string) $propertyFirsterName)));
+                $filterfirster = $class->addMethod(sprintf('filterFirst%s', ucfirst((string) $propertyFirsterName)));
                 $filterfirster->setReturnType('static');
                 $filterfirster->addParameter('filterCallback')->setType('callable');
                 $filterfirster->addParameter('callback')->setType('callable');
                 $filterfirster->addParameter('callbackElse')->setType('callable')->setNullable(true)->setDefaultValue(null);
                 $filterfirster->addBody(sprintf('$filtered%1$s = $this->filter%1$s($filterCallback);', ucfirst((string) $propertyLooperName)));
                 $filterfirster->addBody('');
-                $filterfirster->addBody(sprintf('if (($%2$s = reset($filtered%3$s)) !== false) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
+                $filterfirster->addBody(sprintf('if ($filtered%3$s !== []) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
+                $filterfirster->addBody(sprintf('    $%2$s = reset($filtered%3$s);', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
                 $filterfirster->addBody(sprintf('    $callback($%1$s);', $propertyName));
                 $filterfirster->addBody('} elseif (!is_null($callbackElse)) {');
                 $filterfirster->addBody('    $callbackElse();');
                 $filterfirster->addBody('}');
-                $filterfirster->addBody("\nreturn \$this;");
-                $filterfirster->addComment(sprintf("Get first filtered %1\$s\n\n@param callable \$filterCallback Callback for filtering\n@param callable \$callback Callback to execute if an item was found\n@param callable|null \$callbackElse Callback to execute if no item was found\n@return static", $propertyCaption, basename((string) $propertyType), $propertyName));
+                $filterfirster->addBody('');
+                $filterfirster->addBody('return $this;');
+                $filterfirster->addComment(sprintf("Get first %1\$s from filtered result\n\n@param callable \$filterCallback Callback for filtering\n@param callable \$callback Callback to execute if an item was found\n@param callable|null \$callbackElse Callback to execute if no item was found\n@return static", $propertyCaption, basename((string) $propertyType), $propertyName));
 
                 /**
                  * -------------------
                  * -- Filter Last
                  * -------------------
                  */
-                $filterlaster = $class->addMethod(sprintf('lastFiltered%s', ucfirst((string) $propertyFirsterName)));
+                $filterlaster = $class->addMethod(sprintf('filterLast%s', ucfirst((string) $propertyFirsterName)));
                 $filterlaster->setReturnType('static');
                 $filterlaster->addParameter('filterCallback')->setType('callable');
                 $filterlaster->addParameter('callback')->setType('callable');
                 $filterlaster->addParameter('callbackElse')->setType('callable')->setNullable(true)->setDefaultValue(null);
                 $filterlaster->addBody(sprintf('$filtered%1$s = $this->filter%1$s($filterCallback);', ucfirst((string) $propertyLooperName)));
                 $filterlaster->addBody('');
-                $filterlaster->addBody(sprintf('if (($%2$s = end($filtered%3$s)) !== false) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
+                $filterlaster->addBody(sprintf('if ($filtered%3$s !== []) {', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
+                $filterlaster->addBody(sprintf('    $%2$s = end($filtered%3$s);', $propertyClassPropertyName, $propertyName, ucfirst((string) $propertyLooperName)));
                 $filterlaster->addBody(sprintf('    $callback($%1$s);', $propertyName));
                 $filterlaster->addBody('} elseif (!is_null($callbackElse)) {');
                 $filterlaster->addBody('    $callbackElse();');
                 $filterlaster->addBody('}');
-                $filterlaster->addBody("\nreturn \$this;");
-                $filterlaster->addComment(sprintf("Get last filtered %1\$s\n\n@param callable \$filterCallback Callback for filtering\n@param callable \$callback Callback to execute if an item was found\n@param callable|null \$callbackElse Callback to execute if no item was found\n@return static", $propertyCaption, basename((string) $propertyType), $propertyName));
+                $filterlaster->addBody('');
+                $filterlaster->addBody('return $this;');
+                $filterlaster->addComment(sprintf("Get last %1\$s from filtered result\n\n@param callable \$filterCallback Callback for filtering\n@param callable \$callback Callback to execute if an item was found\n@param callable|null \$callbackElse Callback to execute if no item was found\n@return static", $propertyCaption, basename((string) $propertyType), $propertyName));
             }
         }
 

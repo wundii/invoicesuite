@@ -674,21 +674,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get first filtered The product characteristics
+     * Get first The product characteristics from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredCharacteristic(
+    public function filterFirstCharacteristic(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredCharacteristic = $this->filterCharacteristic($filterCallback);
 
-        if (($characteristic = reset($filteredCharacteristic)) !== false) {
+        if ([] !== $filteredCharacteristic) {
+            $characteristic = reset($filteredCharacteristic);
             $callback($characteristic);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -698,21 +699,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get last filtered The product characteristics
+     * Get last The product characteristics from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredCharacteristic(
+    public function filterLastCharacteristic(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredCharacteristic = $this->filterCharacteristic($filterCallback);
 
-        if (($characteristic = end($filteredCharacteristic)) !== false) {
+        if ([] !== $filteredCharacteristic) {
+            $characteristic = end($filteredCharacteristic);
             $callback($characteristic);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -926,21 +928,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get first filtered The product classification
+     * Get first The product classification from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredClassification(
+    public function filterFirstClassification(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredClassification = $this->filterClassification($filterCallback);
 
-        if (($classification = reset($filteredClassification)) !== false) {
+        if ([] !== $filteredClassification) {
+            $classification = reset($filteredClassification);
             $callback($classification);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -950,21 +953,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get last filtered The product classification
+     * Get last The product classification from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredClassification(
+    public function filterLastClassification(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredClassification = $this->filterClassification($filterCallback);
 
-        if (($classification = end($filteredClassification)) !== false) {
+        if ([] !== $filteredClassification) {
+            $classification = end($filteredClassification);
             $callback($classification);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1178,21 +1182,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get first filtered The reference product
+     * Get first The reference product from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredReferenceProduct(
+    public function filterFirstReferenceProduct(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredReferenceProduct = $this->filterReferenceProduct($filterCallback);
 
-        if (($referenceProduct = reset($filteredReferenceProduct)) !== false) {
+        if ([] !== $filteredReferenceProduct) {
+            $referenceProduct = reset($filteredReferenceProduct);
             $callback($referenceProduct);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -1202,21 +1207,22 @@ class InvoiceSuiteProductDTO
     }
 
     /**
-     * Get last filtered The reference product
+     * Get last The reference product from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredReferenceProduct(
+    public function filterLastReferenceProduct(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredReferenceProduct = $this->filterReferenceProduct($filterCallback);
 
-        if (($referenceProduct = end($filteredReferenceProduct)) !== false) {
+        if ([] !== $filteredReferenceProduct) {
+            $referenceProduct = end($filteredReferenceProduct);
             $callback($referenceProduct);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();

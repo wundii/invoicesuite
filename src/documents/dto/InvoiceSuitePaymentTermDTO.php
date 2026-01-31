@@ -335,21 +335,22 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
-     * Get first filtered The payment discounts
+     * Get first The payment discounts from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredDiscountTerm(
+    public function filterFirstDiscountTerm(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
 
-        if (($discountTerm = reset($filteredDiscountTerm)) !== false) {
+        if ([] !== $filteredDiscountTerm) {
+            $discountTerm = reset($filteredDiscountTerm);
             $callback($discountTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -359,21 +360,22 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
-     * Get last filtered The payment discounts
+     * Get last The payment discounts from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredDiscountTerm(
+    public function filterLastDiscountTerm(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
 
-        if (($discountTerm = end($filteredDiscountTerm)) !== false) {
+        if ([] !== $filteredDiscountTerm) {
+            $discountTerm = end($filteredDiscountTerm);
             $callback($discountTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -587,21 +589,22 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
-     * Get first filtered The payment penalties
+     * Get first The payment penalties from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function firstFilteredPenaltyTerm(
+    public function filterFirstPenaltyTerm(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
 
-        if (($penaltyTerm = reset($filteredPenaltyTerm)) !== false) {
+        if ([] !== $filteredPenaltyTerm) {
+            $penaltyTerm = reset($filteredPenaltyTerm);
             $callback($penaltyTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
@@ -611,21 +614,22 @@ class InvoiceSuitePaymentTermDTO
     }
 
     /**
-     * Get last filtered The payment penalties
+     * Get last The payment penalties from filtered result
      *
      * @param  callable      $filterCallback Callback for filtering
      * @param  callable      $callback       Callback to execute if an item was found
      * @param  null|callable $callbackElse   Callback to execute if no item was found
      * @return static
      */
-    public function lastFilteredPenaltyTerm(
+    public function filterLastPenaltyTerm(
         callable $filterCallback,
         callable $callback,
         ?callable $callbackElse = null,
     ): static {
         $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
 
-        if (($penaltyTerm = end($filteredPenaltyTerm)) !== false) {
+        if ([] !== $filteredPenaltyTerm) {
+            $penaltyTerm = end($filteredPenaltyTerm);
             $callback($penaltyTerm);
         } elseif (!is_null($callbackElse)) {
             $callbackElse();
