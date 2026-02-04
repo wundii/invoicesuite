@@ -159,4 +159,35 @@ class InvoiceSuiteArrayUtils
             $array[] = $value;
         }
     }
+
+    /**
+     * Limit array to n elements
+     *
+     * @param  array<mixed,mixed> $array
+     * @param  int                $limit
+     * @return array<mixed,mixed>
+     */
+    public static function limit(
+        array $array,
+        int $limit
+    ): array {
+        return array_slice($array, 0, $limit);
+    }
+
+    /**
+     * Limit array to n elements if $limitCondition evaluates to true, otherwise
+     * the original array is returned
+     *
+     * @param  bool               $limitCondition
+     * @param  array<mixed,mixed> $array
+     * @param  int                $limit
+     * @return array<mixed,mixed>
+     */
+    public static function limitWhen(
+        bool $limitCondition,
+        array $array,
+        int $limit
+    ): array {
+        return true === $limitCondition ? static::limit($array, $limit) : $array;
+    }
 }
