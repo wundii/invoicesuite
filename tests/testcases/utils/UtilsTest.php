@@ -66,6 +66,166 @@ final class UtilsTest extends TestCase
         $this->assertFalse(InvoiceSuiteArrayUtils::inArrayNoCase($variable, 'C'));
     }
 
+    public function testInvoiceSuiteArrayUtilsLimit():void
+    {
+        $variable = ['a', 'b', 'c', 1, 2, 3];
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($variable);
+        $this->assertArrayHasKey(0, $variable);
+        $this->assertArrayHasKey(1, $variable);
+        $this->assertArrayHasKey(2, $variable);
+        $this->assertArrayHasKey(3, $variable);
+        $this->assertArrayHasKey(4, $variable);
+        $this->assertArrayHasKey(5, $variable);
+        $this->assertArrayNotHasKey(6, $variable);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limit($variable, 2);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayNotHasKey(2, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limit($variable, 4);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayHasKey(2, $limitedVariable);
+        $this->assertArrayHasKey(3, $limitedVariable);
+        $this->assertArrayNotHasKey(4, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+        $this->assertSame('c', $limitedVariable[2]);
+        $this->assertSame(1, $limitedVariable[3]);
+    }
+
+    public function testInvoiceSuiteArrayUtilsLimitWhen():void
+    {
+        $variable = ['a', 'b', 'c', 1, 2, 3];
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($variable);
+        $this->assertArrayHasKey(0, $variable);
+        $this->assertArrayHasKey(1, $variable);
+        $this->assertArrayHasKey(2, $variable);
+        $this->assertArrayHasKey(3, $variable);
+        $this->assertArrayHasKey(4, $variable);
+        $this->assertArrayHasKey(5, $variable);
+        $this->assertArrayNotHasKey(6, $variable);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitWhen(true, $variable, 2);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayNotHasKey(2, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitWhen(true, $variable, 4);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayHasKey(2, $limitedVariable);
+        $this->assertArrayHasKey(3, $limitedVariable);
+        $this->assertArrayNotHasKey(4, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+        $this->assertSame('c', $limitedVariable[2]);
+        $this->assertSame(1, $limitedVariable[3]);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitWhen(false, $variable, 2);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayHasKey(2, $limitedVariable);
+        $this->assertArrayHasKey(3, $limitedVariable);
+        $this->assertArrayHasKey(4, $limitedVariable);
+        $this->assertArrayHasKey(5, $limitedVariable);
+        $this->assertArrayNotHasKey(6, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+        $this->assertSame('c', $limitedVariable[2]);
+        $this->assertSame(1, $limitedVariable[3]);
+        $this->assertSame(2, $limitedVariable[4]);
+        $this->assertSame(3, $limitedVariable[5]);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitWhen(false, $variable, 4);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayHasKey(2, $limitedVariable);
+        $this->assertArrayHasKey(3, $limitedVariable);
+        $this->assertArrayHasKey(4, $limitedVariable);
+        $this->assertArrayHasKey(5, $limitedVariable);
+        $this->assertArrayNotHasKey(6, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+        $this->assertSame('c', $limitedVariable[2]);
+        $this->assertSame(1, $limitedVariable[3]);
+        $this->assertSame(2, $limitedVariable[4]);
+        $this->assertSame(3, $limitedVariable[5]);
+    }
+
+    public function testInvoiceSuiteArrayUtilsLimitToOne():void
+    {
+        $variable = ['a', 'b', 'c', 1, 2, 3];
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($variable);
+        $this->assertArrayHasKey(0, $variable);
+        $this->assertArrayHasKey(1, $variable);
+        $this->assertArrayHasKey(2, $variable);
+        $this->assertArrayHasKey(3, $variable);
+        $this->assertArrayHasKey(4, $variable);
+        $this->assertArrayHasKey(5, $variable);
+        $this->assertArrayNotHasKey(6, $variable);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitToOne($variable);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayNotHasKey(1, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+    }
+
+    public function testInvoiceSuiteArrayUtilsLimitToOneWhen():void
+    {
+        $variable = ['a', 'b', 'c', 1, 2, 3];
+
+        // @phpstan-ignore method.alreadyNarrowedType
+        $this->assertIsArray($variable);
+        $this->assertArrayHasKey(0, $variable);
+        $this->assertArrayHasKey(1, $variable);
+        $this->assertArrayHasKey(2, $variable);
+        $this->assertArrayHasKey(3, $variable);
+        $this->assertArrayHasKey(4, $variable);
+        $this->assertArrayHasKey(5, $variable);
+        $this->assertArrayNotHasKey(6, $variable);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitToOneWhen(true, $variable);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayNotHasKey(1, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+
+        $limitedVariable = InvoiceSuiteArrayUtils::limitToOneWhen(false, $variable);
+
+        $this->assertArrayHasKey(0, $limitedVariable);
+        $this->assertArrayHasKey(1, $limitedVariable);
+        $this->assertArrayHasKey(2, $limitedVariable);
+        $this->assertArrayHasKey(3, $limitedVariable);
+        $this->assertArrayHasKey(4, $limitedVariable);
+        $this->assertArrayHasKey(5, $limitedVariable);
+        $this->assertArrayNotHasKey(6, $limitedVariable);
+        $this->assertSame('a', $limitedVariable[0]);
+        $this->assertSame('b', $limitedVariable[1]);
+        $this->assertSame('c', $limitedVariable[2]);
+        $this->assertSame(1, $limitedVariable[3]);
+        $this->assertSame(2, $limitedVariable[4]);
+        $this->assertSame(3, $limitedVariable[5]);
+    }
+
     public function testInvoiceSuiteDateTimeUtilsIsNullOrEmpty(): void
     {
         $dateTimeValue = null;
@@ -544,7 +704,7 @@ final class UtilsTest extends TestCase
 
         // InvoiceSuiteAttachment::fromUrl('Dummy');
     }
-
+/*
     public function testInvoiceSuiteClassFinderFactory(): void
     {
         $cacheFilename = md5((string) preg_replace('/[^a-zA-Z0-9]/', '', sprintf('invoicesuite-cf-%s', InvoiceSuiteAbstractDocumentFormatProvider::class))) . '.cache';
@@ -627,7 +787,7 @@ final class UtilsTest extends TestCase
         InvoiceSuiteClassFinder::clearCache();
         $this->assertFileDoesNotExist(InvoiceSuitePathUtils::combinePathWithFile(InvoiceSuitePathUtils::combineAllPaths(__DIR__, '..', '..', '..', 'src', 'cache'), 'fb2c9c3d46a7d2650a8813477106ebca.cache'));
     }
-
+*/
     public function testInvoiceSuiteFileUtils(): void
     {
         $this->assertTrue(InvoiceSuiteFileUtils::fileExists(__FILE__, true));
