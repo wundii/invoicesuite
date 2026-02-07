@@ -81,6 +81,17 @@ final class ZfFxMinimumProviderTest extends TestCase
         $this->assertContains(InvoiceSuiteZfFxSerializerHandler::class, $provider->getSerializerHandlers());
     }
 
+    public function testXsdParameters(): void
+    {
+        $provider = new InvoiceSuiteZfFxMinimumProvider();
+
+        $this->assertTrue($provider->getValidationXsdAvailable());
+        $this->assertSame(
+            realpath(__DIR__ . '/../../../src/documents/providers/zffx/xsd/FACTUR-X_MINIMUM.xsd'),
+            realpath($provider->getValidationXsdFilename())
+        );
+    }
+
     public function testGetSerializerListeners(): void
     {
         $provider = new InvoiceSuiteZfFxMinimumProvider();

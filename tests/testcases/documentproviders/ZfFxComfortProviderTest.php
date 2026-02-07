@@ -65,6 +65,17 @@ final class ZfFxComfortProviderTest extends TestCase
         $this->assertSame(InvoiceSuiteZffxPdfConstructor::class, $provider->getPdfConstructorClassName());
     }
 
+    public function testXsdParameters(): void
+    {
+        $provider = new InvoiceSuiteZfFxComfortProvider();
+
+        $this->assertTrue($provider->getValidationXsdAvailable());
+        $this->assertSame(
+            realpath(__DIR__ . '/../../../src/documents/providers/zffx/xsd/FACTUR-X_EN16931.xsd'),
+            realpath($provider->getValidationXsdFilename())
+        );
+    }
+
     public function testGetSerializerMetadataDirectories(): void
     {
         $provider = new InvoiceSuiteZfFxComfortProvider();

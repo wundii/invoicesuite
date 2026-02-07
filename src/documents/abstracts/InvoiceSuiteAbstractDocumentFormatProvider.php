@@ -418,6 +418,10 @@ abstract class InvoiceSuiteAbstractDocumentFormatProvider
             return false;
         }
 
+        if (!file_exists($this->getValidationXsdFilename())) {
+            return false;
+        }
+
         return true;
     }
 }
