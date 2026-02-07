@@ -3507,12 +3507,12 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get an additional associated document
      *
-     * @param  null|string                 $newReferenceNumber        __BT-122, From EN 16931__ Additional document number
+     * @param  null|string                 $newReferenceNumber        __BT-122, BT-17, BT-18, From EN 16931__ Additional document number
      * @param  null|DateTimeInterface      $newReferenceDate          __BT-X-149, From EXTENDED__ Additional document date
-     * @param  null|string                 $newTypeCode               __BT-122-0, From EN 16931__ Additional document type code
+     * @param  null|string                 $newTypeCode               __BT-122-0, BT-17-0, BT-18-0, From EN 16931__ Additional document type code
      * @param  null|string                 $newReferenceTypeCode      __BT-18-1, From EN 16931__ Additional document reference-type code
      * @param  null|string                 $newDescription            __BT-123, From EN 16931__ Additional document description
-     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment __BT-125, From EN 16931__ Additional document attachment
      * @return static
      *
      * @phpstan-param-out string $newReferenceNumber
