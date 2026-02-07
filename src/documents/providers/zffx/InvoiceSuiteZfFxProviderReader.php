@@ -14230,13 +14230,13 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the address of the ultimate Ship-To party from latest position
      *
-     * @param  null|string $newAddressLine1 __BT_X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
-     * @param  null|string $newAddressLine2 __BT_X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param  null|string $newAddressLine3 __BT_X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
-     * @param  null|string $newPostcode     __BT_X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
-     * @param  null|string $newCity         __BT_X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located
-     * @param  null|string $newCountryId    __BT_X-81, From EXTENDED__ Country in which the party's address is located
-     * @param  null|string $newSubDivision  __BT_X-82, From EXTENDED__ Region or federal state in which the party's address is located
+     * @param  null|string $newAddressLine1 __BT-X-77, From EXTENDED__ The main line in the address. This is usually the street name and house number or the post office box.
+     * @param  null|string $newAddressLine2 __BT-X-78, From EXTENDED__ Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newAddressLine3 __BT-X-79, From EXTENDED__ Line 3 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
+     * @param  null|string $newPostcode     __BT-X-76, From EXTENDED__ Zip code of the city or municipality in which the party's address is located
+     * @param  null|string $newCity         __BT-X-80, From EXTENDED__ Name of the city or municipality in which the party's address is located
+     * @param  null|string $newCountryId    __BT-X-81, From EXTENDED__ Country in which the party's address is located
+     * @param  null|string $newSubDivision  __BT-X-82, From EXTENDED__ Region or federal state in which the party's address is located
      * @return static
      *
      * @phpstan-param-out string $newAddressLine1
@@ -14418,11 +14418,11 @@ class InvoiceSuiteZfFxProviderReader extends InvoiceSuiteAbstractDocumentFormatR
     /**
      * Get the contact information of the ultimate Ship-To party from latest position
      *
-     * @param  null|string $newPersonName     __BT_X-72, From EXTENDED__ Name of contact person or department or office for the contact point
-     * @param  null|string $newDepartmentName __BT_X-72-1, From EXTENDED__ Name of the department for the contact point
-     * @param  null|string $newPhoneNumber    __BT_X-73, From EXTENDED__ Telephone number for the contact point
-     * @param  null|string $newFaxNumber      __BT_X-74, From EXTENDED__ Fax number of the contact point
-     * @param  null|string $newEmailAddress   __BT_X-75, From EXTENDED__ E-Mail address of the contact point
+     * @param  null|string $newPersonName     __BT-X-72, From EXTENDED__ Name of contact person or department or office for the contact point
+     * @param  null|string $newDepartmentName __BT-X-72-1, From EXTENDED__ Name of the department for the contact point
+     * @param  null|string $newPhoneNumber    __BT-X-73, From EXTENDED__ Telephone number for the contact point
+     * @param  null|string $newFaxNumber      __BT-X-74, From EXTENDED__ Fax number of the contact point
+     * @param  null|string $newEmailAddress   __BT-X-75, From EXTENDED__ E-Mail address of the contact point
      * @return static
      *
      * @phpstan-param-out string $newPersonName

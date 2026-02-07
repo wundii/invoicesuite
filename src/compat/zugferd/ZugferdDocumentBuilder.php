@@ -4268,13 +4268,13 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Sets the postal address of the Ship-To party on position level.
      *
-     * @param  null|string $lineOne     __BT_X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
-     * @param  null|string $lineTwo     __BT_X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  null|string $lineThree   __BT_X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
-     * @param  null|string $postCode    __BT_X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
-     * @param  null|string $city        __BT_X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
-     * @param  null|string $country     __BT_X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
-     * @param  null|string $subDivision __BT_X-82, From EXTENDED__ The party's state
+     * @param  null|string $lineOne     __BT-X-77, From EXTENDED__ The main line in the party's address. This is usually the street name and house number or the post office box
+     * @param  null|string $lineTwo     __BT-X-78, From EXTENDED__ Line 2 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  null|string $lineThree   __BT-X-79, From EXTENDED__ Line 3 of the party's address. This is an additional address line in an address that can be used to provide additional details in addition to the main line
+     * @param  null|string $postCode    __BT-X-76, From EXTENDED__ Identifier for a group of properties, such as a zip code
+     * @param  null|string $city        __BT-X-80, From EXTENDED__ Usual name of the city or municipality in which the party's address is located
+     * @param  null|string $country     __BT-X-81, From EXTENDED__ Code used to identify the country. If no tax agent is specified, this is the country in which the sales tax is due. The lists of approved countries are maintained by the EN ISO 3166-1 Maintenance Agency “Codes for the representation of names of countries and their subdivisions”
+     * @param  null|string $subDivision __BT-X-82, From EXTENDED__ The party's state
      * @return static
      */
     public function setDocumentPositionUltimateShipToAddress(
@@ -4302,9 +4302,9 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Set legal organisation of the Ship-To party on position level.
      *
-     * @param  null|string $legalOrgId   __BT_X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
-     * @param  null|string $legalOrgType __BT_X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
-     * @param  null|string $legalOrgName __BT_X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
+     * @param  null|string $legalOrgId   __BT-X-70, From EXTENDED__ An identifier issued by an official registrar that identifies the party as a legal entity or legal person. If no identification scheme ($legalorgtype) is provided, it should be known to the buyer or seller party
+     * @param  null|string $legalOrgType __BT-X-70-0, From EXTENDED__ The identifier for the identification scheme of the legal registration of the party. In particular, the following scheme codes are used: 0021 : SWIFT, 0088 : EAN, 0060 : DUNS, 0177 : ODETTE
+     * @param  null|string $legalOrgName __BT-X-71, From EXTENDED__ A name by which the party is known, if different from the party's name (also known as the company name)
      * @return static
      */
     public function setDocumentPositionUltimateShipToLegalOrganisation(
@@ -4324,11 +4324,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Set contact of the Ship-To party on position level.
      *
-     * @param  null|string $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  null|string $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  null|string $contactPhoneNo        __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  null|string $contactFaxNo          __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  null|string $contactEmailAddress   __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  null|string $contactPersonName     __BT-X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  null|string $contactDepartmentName __BT-X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  null|string $contactPhoneNo        __BT-X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  null|string $contactFaxNo          __BT-X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  null|string $contactEmailAddress   __BT-X-75, From EXTENDED__ Detailed information on the party's email address
      * @return static
      */
     public function setDocumentPositionUltimateShipToContact(
@@ -4352,11 +4352,11 @@ class ZugferdDocumentBuilder extends ZugferdDocument implements Stringable
     /**
      * Add an additional contact of the Ship-To party on position level.
      *
-     * @param  null|string $contactPersonName     __BT_X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
-     * @param  null|string $contactDepartmentName __BT_X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
-     * @param  null|string $contactPhoneNo        __BT_X-73, From EXTENDED__ Detailed information on the party's phone number
-     * @param  null|string $contactFaxNo          __BT_X-74, From EXTENDED__ Detailed information on the party's fax number
-     * @param  null|string $contactEmailAddress   __BT_X-75, From EXTENDED__ Detailed information on the party's email address
+     * @param  null|string $contactPersonName     __BT-X-72, From EXTENDED__ Contact point for a legal entity, such as a personal name of the contact person
+     * @param  null|string $contactDepartmentName __BT-X-72-1, From EXTENDED__ Contact point for a legal entity, such as a name of the department or office
+     * @param  null|string $contactPhoneNo        __BT-X-73, From EXTENDED__ Detailed information on the party's phone number
+     * @param  null|string $contactFaxNo          __BT-X-74, From EXTENDED__ Detailed information on the party's fax number
+     * @param  null|string $contactEmailAddress   __BT-X-75, From EXTENDED__ Detailed information on the party's email address
      * @return static
      */
     public function addDocumentPositionUltimateShipToContact(
