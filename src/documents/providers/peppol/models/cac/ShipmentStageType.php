@@ -3991,8 +3991,8 @@ class ShipmentStageType
      * @return static
      */
     public function setShipsSurgeonPerson(
-        ?ShipsSurgeonPerson $shipsSurgeonPerson = null): static
-    {
+        ?ShipsSurgeonPerson $shipsSurgeonPerson = null
+    ): static {
         $this->shipsSurgeonPerson = $shipsSurgeonPerson;
 
         return $this;

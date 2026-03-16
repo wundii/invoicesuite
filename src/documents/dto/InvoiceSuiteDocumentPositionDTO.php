@@ -4989,8 +4989,8 @@ class InvoiceSuiteDocumentPositionDTO
      * @return static
      */
     public function setSummation(
-        ?InvoiceSuitesummationLineDTO $summation): static
-    {
+        ?InvoiceSuitesummationLineDTO $summation
+    ): static {
         $this->summation = $summation;
 
         return $this;

@@ -7068,8 +7068,8 @@ class ConsignmentType
      * @return static
      */
     public function setLastExitPortLocation(
-        ?LastExitPortLocation $lastExitPortLocation = null): static
-    {
+        ?LastExitPortLocation $lastExitPortLocation = null
+    ): static {
         $this->lastExitPortLocation = $lastExitPortLocation;
 
         return $this;
