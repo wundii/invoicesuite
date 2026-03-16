@@ -25,6 +25,7 @@ use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\JsonDeserializationVisitor;
 use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\XmlSerializationVisitor;
+use TypeError;
 
 class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandlerInterface
 {
@@ -50,6 +51,8 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * Get subscribing methods
      *
      * @return array<int, array{direction: int, format: string, type: string, method: string}>
+     *
+     * @throws TypeError
      */
     public static function getSubscribingMethods()
     {
@@ -221,6 +224,7 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeAmountType(
         XmlSerializationVisitor $visitor,
@@ -252,6 +256,7 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeQuantityType(
         XmlSerializationVisitor $visitor,
@@ -304,6 +309,7 @@ class InvoiceSuitePeppol30InvoiceSerializerHandler implements SubscribingHandler
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeMeasureType(
         XmlSerializationVisitor $visitor,

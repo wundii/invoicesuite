@@ -18,6 +18,7 @@ use horstoeko\invoicesuite\InvoiceSuiteSettings;
 use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\XmlSerializationVisitor;
+use TypeError;
 
 class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
 {
@@ -70,6 +71,7 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeAmountType(
         XmlSerializationVisitor $visitor,
@@ -101,6 +103,7 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeQuantityType(
         XmlSerializationVisitor $visitor,
@@ -153,6 +156,7 @@ class InvoiceSuiteZfFxSerializerHandler implements SubscribingHandlerInterface
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeMeasureType(
         XmlSerializationVisitor $visitor,

@@ -25,6 +25,7 @@ use JMS\Serializer\Handler\SubscribingHandlerInterface;
 use JMS\Serializer\JsonDeserializationVisitor;
 use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\XmlSerializationVisitor;
+use TypeError;
 
 class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHandlerInterface
 {
@@ -221,6 +222,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeAmountType(
         XmlSerializationVisitor $visitor,
@@ -252,6 +254,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeQuantityType(
         XmlSerializationVisitor $visitor,
@@ -304,6 +307,7 @@ class InvoiceSuitePeppol30CreditNoteSerializerHandler implements SubscribingHand
      * @param mixed                   $data
      *
      * @throws DOMException
+     * @throws TypeError
      */
     public function serializeMeasureType(
         XmlSerializationVisitor $visitor,
