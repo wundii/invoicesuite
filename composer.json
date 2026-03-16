@@ -126,6 +126,10 @@
             "@phpcsfixer:dryrun",
             "@phpstan:run"
         ],
+        "refactor:run": [
+            "@rector:run",
+            "@phpcsfixer:run"
+        ],
         "generatedto:run": [
             "Composer\\Config::disableProcessTimeout",
             "@php ./make/gendto.php",
