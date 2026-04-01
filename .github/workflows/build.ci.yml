@@ -15,6 +15,7 @@ on:
     types:
       - opened
       - synchronize
+      - reopened
     branches:
       - "master"
   workflow_dispatch:
@@ -36,9 +37,13 @@ env:
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
     runs-on: ${{ matrix.operating-system }}
     strategy:
+      fail-fast: false
       matrix:
         operating-system: ["ubuntu-24.04"]
         phpversion: ["8.2", "8.3", "8.4", "8.5"]

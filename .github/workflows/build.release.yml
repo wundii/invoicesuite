@@ -4,11 +4,6 @@ on:
   push:
     tags:
       - "v*"
-    paths-ignore:
-      - "**.md"
-      - ".github/**"
-      - "examples/**"
-      - "make/**"
 
 env:
   VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0.zip
@@ -27,7 +22,11 @@ env:
 
 jobs:
   build:
-    permissions: write-all
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
+      issues: read
     runs-on: "ubuntu-24.04"
 
     steps:
@@ -216,13 +215,10 @@ jobs:
       - name: Generate Release Notes
         id: changelog
         run: |
-          prev_tag=$(git tag -l --sort=-v:refname | sed -n '2p')
-          curr_tag=$(git tag -l --sort=-v:refname | sed -n '1p')
+          curr_tag="${GITHUB_REF_NAME}"
+          prev_tag=$(git tag -l --sort=-v:refname | grep -Fxv "$curr_tag" | sed -n '1p')
           if [ -z "$prev_tag" ]; then
             prev_tag=$(git rev-list --max-parents=0 HEAD)
-          fi
-          if [ -z "$curr_tag" ]; then
-            curr_tag=$(git rev-parse HEAD)
           fi
           echo "Previous Tag .... $prev_tag"
           echo "Current Tag ..... $curr_tag"
