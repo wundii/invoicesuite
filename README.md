@@ -54,3 +54,17 @@ There is one recommended way to install `horstoeko/invoicesuite`
 ```bash
 composer require "horstoeko/invoicesuite"
 ```
+
+## Documentation
+
+InvoiceSuite is a multi-format library for reading, creating, converting, validating, and embedding electronic invoices in PDF documents. It is built around a provider-based architecture and is designed to support both common European e-invoicing standards and real-world profile variants.
+
+The documentation in the wiki covers the core concepts and the most important workflows:
+
+- [Installation](https://github.com/horstoeko/invoicesuite/wiki/Installation)
+- [Architecture](https://github.com/horstoeko/invoicesuite/wiki/Architecture)
+- [Configuration](https://github.com/horstoeko/invoicesuite/wiki/Configuration)
+- [Creating an electronic invoice document](https://github.com/horstoeko/invoicesuite/wiki/Creating-an-electronic-invoice-document)
+- [Creating an electronic invoice PDF document](https://github.com/horstoeko/invoicesuite/wiki/Creating-an-electronic-invoice-pdf-document)
+- [Reading an electronic invoice document](https://github.com/horstoeko/invoicesuite/wiki/Reading-an-electronic-invoice-document)
+- [Reading an electronic invoice PDF document](https://github.com/horstoeko/invoicesuite/wiki/Reading-an-electronic-invoice-pdf-document)
