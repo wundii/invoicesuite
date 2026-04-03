@@ -236,10 +236,6 @@ jobs:
         run: |
           composer global require --no-interaction --no-progress cyclonedx/cyclonedx-php-composer
 
-      - name: Verify CycloneDX command
-        run: |
-          composer list --raw | grep '^CycloneDX:make-sbom$'
-
       - name: Generate local SBOM
         run: |
           composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=build/dist/sbom.cdx.json
