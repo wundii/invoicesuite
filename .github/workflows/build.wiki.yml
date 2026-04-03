@@ -59,7 +59,11 @@ jobs:
         run: |
           php -f make/genmethoddocs.php
           git clone https://$GH_PAT@github.com/horstoeko/invoicesuite.wiki.git wiki
-          mv make/*.md wiki
+          if compgen -G "make/classes/*.md" > /dev/null; then
+            mv make/classes/*.md wiki/
+          else
+            echo "No method documentation files were generated. Skipping copy step."
+          fi
           cd wiki
           git config user.name "HorstOeko"
           git config user.email "horstoeko@erling.com.de"
