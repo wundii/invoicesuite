@@ -71,16 +71,28 @@ jobs:
           composer licenses --no-dev --format=json > build/supply-chain/composer-licenses.json
           composer licenses --no-dev --format=summary > build/supply-chain/composer-licenses.txt
 
-      - name: Export GitHub dependency graph SBOM
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Allow CycloneDX Composer plugin
         shell: bash
         run: |
-          curl -sSL \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/dependency-graph/sbom" \
-            > build/supply-chain/github-dependency-graph-sbom.spdx.json
+          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
+
+      - name: Install CycloneDX Composer plugin
+        shell: bash
+        run: |
+          composer global require cyclonedx/cyclonedx-php-composer
+
+      - name: Verify CycloneDX command
+        shell: bash
+        run: |
+          composer list | grep CycloneDX
+
+      - name: Generate local CycloneDX SBOM
+        shell: bash
+        run: |
+          composer CycloneDX:make-sbom \
+            --output-format=JSON \
+            --output-file=build/supply-chain/composer-sbom.cdx.json \
+            --omit=dev
 
       - name: Upload supply-chain reports
         if: always()
