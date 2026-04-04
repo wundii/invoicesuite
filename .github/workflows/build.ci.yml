@@ -99,16 +99,33 @@ jobs:
           mkdir build/logs
           mkdir build/dist
           mkdir build/phpdoc
+          mkdir build/phpstan
 
       - name: Run Lint
         run: |
           vendor/bin/parallel-lint src tests
 
+      - name: Cache Key (PHP-CS-Fixer)
+        id: hash-php-cs-fixer
+        run: |
+          echo "hash=$(sha256sum build/phpcsfixer.php | cut -c1-16)" >> $GITHUB_OUTPUT
+
       - name: Cache PHP-CS-Fixer
         uses: actions/cache@v5
         with:
           path: build/.php-cs-fixer.cache
-          key: ${{ runner.os }}-${{ matrix.phpversion }}-php-cs-fixer-${{ hashFiles('build/phpcsfixer.php') }}
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-php-cs-fixer-${{ steps.hash-php-cs-fixer.outputs.hash }}
+
+      - name: Cache Key (PHPStan)
+        id: hash-phpstan
+        run: |
+          echo "hash=$(sha256sum build/phpstan.neon | cut -c1-16)" >> $GITHUB_OUTPUT
+
+      - name: Cache PHPStan
+        uses: actions/cache@v5
+        with:
+          path: build/phpstan
+          key: ${{ runner.os }}-${{ matrix.phpversion }}-phpstan-${{ steps.hash-phpstan.outputs.hash }}
 
       - name: Run PHP-CS-Fixer (dry-run)
         env:
@@ -118,7 +135,7 @@ jobs:
 
       - name: Run PHPStan
         run: |
-          vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
+          php -d sys_temp_dir=$(pwd)/build/phpstan vendor/bin/phpstan analyze -c build/phpstan.neon --autoload-file=vendor/autoload.php --no-interaction --memory-limit 4G --error-format=github
 
       - name: Run Tests (PHPUnit)
         run: |
