@@ -120,6 +120,81 @@ jobs:
         env:
           XDEBUG_MODE: coverage
 
+      - name: Publish Coverage Summary
+        if: always()
+        run: |
+          summary_file="$GITHUB_STEP_SUMMARY"
+          clover_file="build/logs/clover.xml"
+
+          {
+            echo "## Coverage Summary"
+            echo
+          } >> "$summary_file"
+
+          if [ ! -f "$clover_file" ]; then
+            echo "No Clover coverage report found at \`$clover_file\`." >> "$summary_file"
+            exit 0
+          fi
+
+          php /dev/stdin "$clover_file" >> "$summary_file" <<'PHP'
+          <?php
+          $file = $argv[1];
+          $dom = new DOMDocument();
+          libxml_use_internal_errors(true);
+
+          if (!$dom->load($file)) {
+              echo "Coverage report found, but could not be parsed: `{$file}`.\n";
+              exit(0);
+          }
+
+          $metrics = $dom->getElementsByTagName('metrics')->item(0);
+
+          if (!$metrics instanceof DOMElement) {
+              echo "Coverage report found, but does not contain metrics: `{$file}`.\n";
+              exit(0);
+          }
+
+          $getInt = static function (string $name) use ($metrics): int {
+              $value = $metrics->getAttribute($name);
+
+              return $value === '' ? 0 : (int) $value;
+          };
+
+          $formatPercent = static function (int $covered, int $total): string {
+              if ($total === 0) {
+                  return 'n/a';
+              }
+
+              return number_format(($covered / $total) * 100, 2, '.', '') . '%';
+          };
+
+          $statements = $getInt('statements');
+          $coveredStatements = $getInt('coveredstatements');
+          $methods = $getInt('methods');
+          $coveredMethods = $getInt('coveredmethods');
+          $conditionals = $getInt('conditionals');
+          $coveredConditionals = $getInt('coveredconditionals');
+          $elements = $getInt('elements');
+          $coveredElements = $getInt('coveredelements');
+          $classes = $getInt('classes');
+          $files = $getInt('files');
+          $ncloc = $getInt('ncloc');
+
+          echo "| Metric | Covered | Total | Coverage |\n";
+          echo "| --- | ---: | ---: | ---: |\n";
+          echo '| Statements | ' . $coveredStatements . ' | ' . $statements . ' | ' . $formatPercent($coveredStatements, $statements) . " |\n";
+          echo '| Methods | ' . $coveredMethods . ' | ' . $methods . ' | ' . $formatPercent($coveredMethods, $methods) . " |\n";
+          echo '| Conditionals | ' . $coveredConditionals . ' | ' . $conditionals . ' | ' . $formatPercent($coveredConditionals, $conditionals) . " |\n";
+          echo '| Elements | ' . $coveredElements . ' | ' . $elements . ' | ' . $formatPercent($coveredElements, $elements) . " |\n\n";
+          echo '- Classes: ' . $classes . "\n";
+          echo '- Files: ' . $files . "\n";
+          echo '- NCLOC: ' . $ncloc . "\n\n";
+          echo "Coverage reports:\n";
+          echo "- `build/logs/clover.xml`\n";
+          echo "- `build/coverage`\n";
+          echo "- `build/coverage-html`\n";
+          PHP
+
       - name: Cache Key (Schematron)
         id: hash-validator
         run: |
