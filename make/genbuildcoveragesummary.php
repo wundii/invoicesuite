@@ -2,11 +2,89 @@
 
 declare(strict_types=1);
 
-$options = getopt('', ['summary-file:', 'clover-file:', 'crap4j-file:']);
+$options = getopt('', [
+    'summary-file:',
+    'clover-file:',
+    'crap4j-file:',
+    'top-n:',
+    'package-depth:',
+    'min-statements:',
+    'show-best-files:',
+    'warn-project-below:',
+    'warn-file-below:',
+    'warn-zero-files:',
+    'warn-crap-above:',
+]);
 
-$summaryFile = $options['summary-file'] ?? getenv('GITHUB_STEP_SUMMARY') ?: '';
-$cloverFile = $options['clover-file'] ?? 'build/logs/clover.xml';
-$crap4jFile = $options['crap4j-file'] ?? 'build/logs/crap4j.xml';
+$readStringOption = static function (array $options, string $name, string $default): string {
+    $value = $options[$name] ?? null;
+
+    if (!is_string($value) || '' === trim($value)) {
+        return $default;
+    }
+
+    return trim($value);
+};
+
+$readIntOption = static function (array $options, string $name, int $default, int $minimum = 0): int {
+    $value = $options[$name] ?? null;
+
+    if (null === $value || '' === $value) {
+        return $default;
+    }
+
+    if (false === filter_var($value, FILTER_VALIDATE_INT)) {
+        return $default;
+    }
+
+    return max($minimum, (int) $value);
+};
+
+$readFloatOption = static function (array $options, string $name, float $default, float $minimum = 0.0): float {
+    $value = $options[$name] ?? null;
+
+    if (null === $value || '' === $value) {
+        return $default;
+    }
+
+    if (!is_numeric($value)) {
+        return $default;
+    }
+
+    return max($minimum, (float) $value);
+};
+
+$readBoolOption = static function (array $options, string $name, bool $default): bool {
+    $value = $options[$name] ?? null;
+
+    if (null === $value || '' === $value) {
+        return $default;
+    }
+
+    $normalizedValue = strtolower(trim((string) $value));
+
+    if (in_array($normalizedValue, ['1', 'true', 'yes', 'on'], true)) {
+        return true;
+    }
+
+    if (in_array($normalizedValue, ['0', 'false', 'no', 'off'], true)) {
+        return false;
+    }
+
+    return $default;
+};
+
+$summaryFile = $readStringOption($options, 'summary-file', getenv('GITHUB_STEP_SUMMARY') ?: '');
+$cloverFile = $readStringOption($options, 'clover-file', 'build/logs/clover.xml');
+$crap4jFile = $readStringOption($options, 'crap4j-file', 'build/logs/crap4j.xml');
+$topN = $readIntOption($options, 'top-n', 10, 1);
+$packageDepth = $readIntOption($options, 'package-depth', 2, 1);
+$minStatements = $readIntOption($options, 'min-statements', 20, 0);
+$showBestFiles = $readBoolOption($options, 'show-best-files', true);
+$warnProjectBelow = $readFloatOption($options, 'warn-project-below', 80.0, 0.0);
+$warnFileBelow = $readFloatOption($options, 'warn-file-below', 50.0, 0.0);
+$warnZeroFiles = $readIntOption($options, 'warn-zero-files', 1, 0);
+$warnCrapAbove = $readFloatOption($options, 'warn-crap-above', 30.0, 0.0);
 
 if ('' === $summaryFile) {
     fwrite(STDERR, "Missing summary file. Pass --summary-file or set GITHUB_STEP_SUMMARY.\n");
@@ -57,18 +135,23 @@ $toRelativePath = static function (string $path) use ($normalizePath): string {
     return ltrim($path, '/');
 };
 
-$resolvePackage = static function (string $path) use ($toRelativePath): string {
+$resolvePackage = static function (string $path) use ($toRelativePath, $packageDepth): string {
     $path = $toRelativePath($path);
+    $parts = array_values(array_filter(explode('/', $path), static fn (string $part): bool => '' !== $part));
 
-    if (str_starts_with($path, 'src/')) {
-        $parts = explode('/', $path);
-
-        return count($parts) >= 2 ? $parts[0] . '/' . $parts[1] : 'src';
+    if ([] === $parts) {
+        return '(root)';
     }
 
-    $directory = dirname($path);
+    return implode('/', array_slice($parts, 0, $packageDepth));
+};
 
-    return '.' === $directory ? '(root)' : $directory;
+$renderDetailsSection = static function (string $summary, string $content): string {
+    if ('' === trim($content)) {
+        return '';
+    }
+
+    return "<details>\n<summary>{$summary}</summary>\n\n{$content}</details>\n\n";
 };
 
 $append = static function (string $content) use ($summaryFile): void {
@@ -112,15 +195,6 @@ $classes = $getInt($metrics, 'classes');
 $files = $getInt($metrics, 'files');
 $ncloc = $getInt($metrics, 'ncloc');
 
-$output = '';
-$output .= "| Metric | Covered | Total | Coverage |\n";
-$output .= "| --- | ---: | ---: | ---: |\n";
-$output .= '| Statements | ' . $coveredStatements . ' | ' . $statements . ' | ' . $formatPercent($coveredStatements, $statements) . " |\n";
-$output .= '| Methods | ' . $coveredMethods . ' | ' . $methods . ' | ' . $formatPercent($coveredMethods, $methods) . " |\n";
-$output .= '| Conditionals | ' . $coveredConditionals . ' | ' . $conditionals . ' | ' . $formatPercent($coveredConditionals, $conditionals) . " |\n";
-$output .= '| Elements | ' . $coveredElements . ' | ' . $elements . ' | ' . $formatPercent($coveredElements, $elements) . " |\n\n";
-$output .= "### Coverage Distribution\n\n";
-
 $fileRows = [];
 $packageRows = [];
 $zeroCoverageFiles = 0;
@@ -128,6 +202,7 @@ $below50Files = 0;
 $below70Files = 0;
 $below80Files = 0;
 $atLeast90Files = 0;
+$belowWarningFiles = 0;
 
 foreach ($xpath->query('//file') as $fileNode) {
     if (!$fileNode instanceof DOMElement) {
@@ -184,6 +259,10 @@ foreach ($xpath->query('//file') as $fileNode) {
         ++$atLeast90Files;
     }
 
+    if ($coverageRatio < $warnFileBelow) {
+        ++$belowWarningFiles;
+    }
+
     $fileRows[] = [
         'file' => $filePath,
         'statements' => $fileStatements,
@@ -210,87 +289,12 @@ foreach ($xpath->query('//file') as $fileNode) {
     $packageRows[$package]['uncoveredStatements'] += $uncoveredStatements;
 }
 
-$output .= "| Files | Classes | NCLOC | 0% Files | < 50% | < 70% | < 80% | ≥ 90% |\n";
-$output .= "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n";
-$output .= '| ' . $files . ' | ' . $classes . ' | ' . $ncloc . ' | ' . $zeroCoverageFiles . ' | ' . $below50Files . ' | ' . $below70Files . ' | ' . $below80Files . ' | ' . $atLeast90Files . " |\n\n";
-
-if ([] !== $fileRows) {
-    usort(
-        $fileRows,
-        static function (array $left, array $right): int {
-            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['file']]
-                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['file']];
-        }
-    );
-
-    $output .= "### Weakest Files by Statement Coverage\n\n";
-    $output .= "| File | Uncovered | Statements | Coverage |\n";
-    $output .= "| --- | ---: | ---: | ---: |\n";
-
-    foreach (array_slice($fileRows, 0, 10) as $row) {
-        $output .= '| `' . $row['file'] . '` | ' . $row['uncoveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
-    }
-
-    $output .= "\n";
-
-    $largestGaps = $fileRows;
-    usort(
-        $largestGaps,
-        static function (array $left, array $right): int {
-            return [$right['uncoveredStatements'], $left['coverageRatio'], $left['file']]
-                <=> [$left['uncoveredStatements'], $right['coverageRatio'], $right['file']];
-        }
-    );
-
-    $output .= "### Largest Uncovered Statement Gaps\n\n";
-    $output .= "| File | Uncovered | Covered | Statements | Coverage |\n";
-    $output .= "| --- | ---: | ---: | ---: | ---: |\n";
-
-    foreach (array_slice($largestGaps, 0, 10) as $row) {
-        $output .= '| `' . $row['file'] . '` | ' . $row['uncoveredStatements'] . ' | ' . $row['coveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
-    }
-
-    $output .= "\n";
-}
-
-if ([] !== $packageRows) {
-    $packageRows = array_values($packageRows);
-
-    foreach ($packageRows as &$packageRow) {
-        $packageRow['coverageRatio'] = $packageRow['statements'] > 0
-            ? ($packageRow['coveredStatements'] / $packageRow['statements']) * 100
-            : 0.0;
-    }
-    unset($packageRow);
-
-    usort(
-        $packageRows,
-        static function (array $left, array $right): int {
-            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['package']]
-                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['package']];
-        }
-    );
-
-    $output .= "### Package Overview\n\n";
-    $output .= "| Package | Files | Uncovered | Statements | Coverage |\n";
-    $output .= "| --- | ---: | ---: | ---: | ---: |\n";
-
-    foreach ($packageRows as $row) {
-        $output .= '| `' . $row['package'] . '` | ' . $row['files'] . ' | ' . $row['uncoveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
-    }
-
-    $output .= "\n";
-}
-
-$output .= "### CRAP Hotspots\n\n";
-
 $crapDom = $loadXml($crap4jFile);
+$crapRows = [];
+$crapWarningCount = 0;
 
-if (!$crapDom instanceof DOMDocument) {
-    $output .= 'No Crap4J report found at ' . $crap4jFile . ".\n\n";
-} else {
+if ($crapDom instanceof DOMDocument) {
     $crapXpath = new DOMXPath($crapDom);
-    $crapRows = [];
 
     foreach ($crapXpath->query('//method') as $methodNode) {
         if (!$methodNode instanceof DOMElement) {
@@ -318,9 +322,14 @@ if (!$crapDom instanceof DOMDocument) {
         $file = $toRelativePath($methodNode->getAttribute('file'));
         $complexity = $methodNode->getAttribute('complexity');
         $coverage = $methodNode->getAttribute('coverage');
+        $crapValue = (float) $crap;
+
+        if ($crapValue > $warnCrapAbove) {
+            ++$crapWarningCount;
+        }
 
         $crapRows[] = [
-            'crap' => (float) $crap,
+            'crap' => $crapValue,
             'className' => '' !== $className ? $className : '(unknown class)',
             'methodName' => '' !== $methodName ? $methodName : '(unknown method)',
             'file' => '' !== $file ? $file : '(unknown file)',
@@ -328,32 +337,177 @@ if (!$crapDom instanceof DOMDocument) {
             'coverage' => '' !== $coverage ? (float) $coverage : 0.0,
         ];
     }
+}
 
-    if ([] === $crapRows) {
-        $output .= 'No CRAP hotspots found in ' . $crap4jFile . ".\n\n";
-    } else {
+$projectCoverageRatio = $elements > 0 ? ($coveredElements / $elements) * 100 : 0.0;
+$warnings = [];
+
+if ($projectCoverageRatio < $warnProjectBelow) {
+    $warnings[] = 'Project coverage is below ' . $formatPercentValue($warnProjectBelow) . ' (' . $formatPercentValue($projectCoverageRatio) . ').';
+}
+
+if ($warnZeroFiles > 0 && $zeroCoverageFiles >= $warnZeroFiles) {
+    $warnings[] = $zeroCoverageFiles . ' file(s) have 0% statement coverage.';
+}
+
+if ($belowWarningFiles > 0) {
+    $warnings[] = $belowWarningFiles . ' file(s) are below ' . $formatPercentValue($warnFileBelow) . ' statement coverage.';
+}
+
+if ($crapWarningCount > 0) {
+    $warnings[] = $crapWarningCount . ' method(s) exceed CRAP ' . number_format($warnCrapAbove, 2, '.', '') . '.';
+}
+
+$output = '';
+
+if ([] !== $warnings) {
+    $output .= "### Warnings\n\n";
+
+    foreach ($warnings as $warning) {
+        $output .= '- ⚠️ ' . $warning . "\n";
+    }
+
+    $output .= "\n";
+}
+
+$output .= "| Metric | Covered | Total | Coverage |\n";
+$output .= "| --- | ---: | ---: | ---: |\n";
+$output .= '| Statements | ' . $coveredStatements . ' | ' . $statements . ' | ' . $formatPercent($coveredStatements, $statements) . " |\n";
+$output .= '| Methods | ' . $coveredMethods . ' | ' . $methods . ' | ' . $formatPercent($coveredMethods, $methods) . " |\n";
+$output .= '| Conditionals | ' . $coveredConditionals . ' | ' . $conditionals . ' | ' . $formatPercent($coveredConditionals, $conditionals) . " |\n";
+$output .= '| Elements | ' . $coveredElements . ' | ' . $elements . ' | ' . $formatPercent($coveredElements, $elements) . " |\n\n";
+$output .= "### Coverage Distribution\n\n";
+$output .= "| Files | Classes | NCLOC | 0% Files | < 50% | < 70% | < 80% | ≥ 90% |\n";
+$output .= "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n";
+$output .= '| ' . $files . ' | ' . $classes . ' | ' . $ncloc . ' | ' . $zeroCoverageFiles . ' | ' . $below50Files . ' | ' . $below70Files . ' | ' . $below80Files . ' | ' . $atLeast90Files . " |\n\n";
+
+if ([] !== $fileRows) {
+    usort(
+        $fileRows,
+        static function (array $left, array $right): int {
+            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['file']]
+                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['file']];
+        }
+    );
+
+    $weakestFilesContent = '';
+    $weakestFilesContent .= "| File | Uncovered | Statements | Coverage |\n";
+    $weakestFilesContent .= "| --- | ---: | ---: | ---: |\n";
+
+    foreach (array_slice($fileRows, 0, $topN) as $row) {
+        $weakestFilesContent .= '| `' . $row['file'] . '` | ' . $row['uncoveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
+    }
+
+    $output .= $renderDetailsSection('Weakest Files by Statement Coverage', $weakestFilesContent);
+
+    if ($showBestFiles) {
+        $bestFiles = array_values(
+            array_filter(
+                $fileRows,
+                static fn (array $row): bool => $row['statements'] >= $minStatements
+            )
+        );
+
         usort(
-            $crapRows,
+            $bestFiles,
             static function (array $left, array $right): int {
-                return [$right['crap'], $right['complexity'], $left['className'], $left['methodName']]
-                    <=> [$left['crap'], $left['complexity'], $right['className'], $right['methodName']];
+                return [$right['coverageRatio'], $left['uncoveredStatements'], $left['file']]
+                    <=> [$left['coverageRatio'], $right['uncoveredStatements'], $right['file']];
             }
         );
 
-        $output .= "| Class::Method | File | CRAP | Complexity | Coverage |\n";
-        $output .= "| --- | --- | ---: | ---: | ---: |\n";
+        $bestFilesContent = '';
 
-        foreach (array_slice($crapRows, 0, 10) as $row) {
-            $output .= '| `' . $row['className'] . '::' . $row['methodName'] . '` | `' . $row['file'] . '` | ' . number_format($row['crap'], 2, '.', '') . ' | ' . $row['complexity'] . ' | ' . $formatPercentValue($row['coverage']) . " |\n";
+        if ([] === $bestFiles) {
+            $bestFilesContent .= 'No files found with at least ' . $minStatements . " statements.\n";
+        } else {
+            $bestFilesContent .= "| File | Uncovered | Statements | Coverage |\n";
+            $bestFilesContent .= "| --- | ---: | ---: | ---: |\n";
+
+            foreach (array_slice($bestFiles, 0, $topN) as $row) {
+                $bestFilesContent .= '| `' . $row['file'] . '` | ' . $row['uncoveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
+            }
         }
 
-        $output .= "\n";
+        $output .= $renderDetailsSection('Best Covered Files', $bestFilesContent);
+    }
+
+    $largestGaps = $fileRows;
+    usort(
+        $largestGaps,
+        static function (array $left, array $right): int {
+            return [$right['uncoveredStatements'], $left['coverageRatio'], $left['file']]
+                <=> [$left['uncoveredStatements'], $right['coverageRatio'], $right['file']];
+        }
+    );
+
+    $largestGapsContent = '';
+    $largestGapsContent .= "| File | Uncovered | Covered | Statements | Coverage |\n";
+    $largestGapsContent .= "| --- | ---: | ---: | ---: | ---: |\n";
+
+    foreach (array_slice($largestGaps, 0, $topN) as $row) {
+        $largestGapsContent .= '| `' . $row['file'] . '` | ' . $row['uncoveredStatements'] . ' | ' . $row['coveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
+    }
+
+    $output .= $renderDetailsSection('Largest Uncovered Statement Gaps', $largestGapsContent);
+}
+
+if ([] !== $packageRows) {
+    $packageRows = array_values($packageRows);
+
+    foreach ($packageRows as &$packageRow) {
+        $packageRow['coverageRatio'] = $packageRow['statements'] > 0
+            ? ($packageRow['coveredStatements'] / $packageRow['statements']) * 100
+            : 0.0;
+    }
+    unset($packageRow);
+
+    usort(
+        $packageRows,
+        static function (array $left, array $right): int {
+            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['package']]
+                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['package']];
+        }
+    );
+
+    $packageOverviewContent = '';
+    $packageOverviewContent .= "| Package | Files | Uncovered | Statements | Coverage |\n";
+    $packageOverviewContent .= "| --- | ---: | ---: | ---: | ---: |\n";
+
+    foreach ($packageRows as $row) {
+        $packageOverviewContent .= '| `' . $row['package'] . '` | ' . $row['files'] . ' | ' . $row['uncoveredStatements'] . ' | ' . $row['statements'] . ' | ' . $formatPercentValue($row['coverageRatio']) . " |\n";
+    }
+
+    $output .= $renderDetailsSection('Package Overview', $packageOverviewContent);
+}
+
+$crapContent = '';
+
+if (!$crapDom instanceof DOMDocument) {
+    $crapContent .= 'No Crap4J report found at ' . $crap4jFile . ".\n";
+} elseif ([] === $crapRows) {
+    $crapContent .= 'No CRAP hotspots found in ' . $crap4jFile . ".\n";
+} else {
+    usort(
+        $crapRows,
+        static function (array $left, array $right): int {
+            return [$right['crap'], $right['complexity'], $left['className'], $left['methodName']]
+                <=> [$left['crap'], $left['complexity'], $right['className'], $right['methodName']];
+        }
+    );
+
+    $crapContent .= "| Class::Method | File | CRAP | Complexity | Coverage |\n";
+    $crapContent .= "| --- | --- | ---: | ---: | ---: |\n";
+
+    foreach (array_slice($crapRows, 0, $topN) as $row) {
+        $crapContent .= '| `' . $row['className'] . '::' . $row['methodName'] . '` | `' . $row['file'] . '` | ' . number_format($row['crap'], 2, '.', '') . ' | ' . $row['complexity'] . ' | ' . $formatPercentValue($row['coverage']) . " |\n";
     }
 }
 
+$output .= $renderDetailsSection('CRAP Hotspots', $crapContent);
 $output .= "Coverage reports:\n";
-$output .= "- `build/logs/clover.xml`\n";
-$output .= "- `build/logs/crap4j.xml`\n";
+$output .= '- `' . $cloverFile . "`\n";
+$output .= '- `' . $crap4jFile . "`\n";
 $output .= "- `build/coverage`\n";
 $output .= "- `build/coverage-html`\n";
 
