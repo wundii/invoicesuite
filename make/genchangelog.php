@@ -178,7 +178,7 @@ if (!isset($argv[1]) && !isset($argv[2])) {
     echo 'All-argument was presented. Looking for all tags' . PHP_EOL;
     $completeMarkDown = [];
     $allTags = explode("\n", trim(shell_exec('git tag --sort=-creatordate')));
-    //$allTags = array_filter($allTags, static fn ($tag) => false === str_starts_with((string) $tag, 'v0.'));
+    // $allTags = array_filter($allTags, static fn ($tag) => false === str_starts_with((string) $tag, 'v0.'));
 
     if ([] !== $allTags) {
         echo 'Found tags...' . implode(', ', $allTags) . PHP_EOL;
