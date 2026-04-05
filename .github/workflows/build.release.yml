@@ -271,5 +271,5 @@ jobs:
       - name: Make Release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip,build/dist/sbom.cdx.json"
+          artifacts: "build/dist/doc.zip,build/dist/builddoc.zip,build/dist/sbom.json,build/dist/sbom.xml"
           bodyFile: "build/releasenotes.txt"
