@@ -25,12 +25,13 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0.zip
-  VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/release-2025-07-10/validator-configuration-xrechnung_3.0.2_2025-07-10.zip
+  VALIDATORURL: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2.zip
+  VALIDATORURL2: https://github.com/itplr-kosit/validator/releases/download/v1.6.2/validator-1.6.2-standalone.jar
+  VALIDATORSCENARIOURL: https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/download/v2026-01-31/xrechnung-3.0.2-validator-configuration-2026-01-31.zip
   VALIDATORPATH: build/validator
   VALIDATORZIPFILENAME: validator.zip
   VALIDATORSCENARIOZIPFILENAME: validator-configuration.zip
-  VALIDATORJARFILENAME: validator-1.6.0-standalone.jar
+  VALIDATORJARFILENAME: validator-1.6.2-standalone.jar
   VALIDATORSCENARIOFILENAME: scenarios.xml
   PHPDOCUMENTORURL: https://phpdoc.org/phpDocumentor.phar
   PHPDOCUMENTORFILENAME: phpDocumentor.phar
@@ -166,6 +167,7 @@ jobs:
           rm -rf $VALIDATORPATH
           mkdir -p $VALIDATORPATH
           wget $VALIDATORURL -O $VALIDATORPATH/$VALIDATORZIPFILENAME
+          wget $VALIDATORURL2 -O $VALIDATORPATH/$VALIDATORJARFILENAME
           wget $VALIDATORSCENARIOURL -O $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME
           unzip $VALIDATORPATH/$VALIDATORZIPFILENAME -d $VALIDATORPATH
           unzip $VALIDATORPATH/$VALIDATORSCENARIOZIPFILENAME -d $VALIDATORPATH
