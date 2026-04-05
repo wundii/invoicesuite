@@ -13,6 +13,14 @@
             "role": "lead"
         }
     ],
+    "support": {
+		"issues": "https://github.com/horstoeko/invoicesuite/issues",
+		"forum": "https://github.com/horstoeko/invoicesuite/discussions",
+		"source": "https://github.com/horstoeko/invoicesuite",
+		"docs": "https://github.com/horstoeko/invoicesuite/wiki",
+        "wiki": "https://github.com/horstoeko/invoicesuite/wiki",
+		"security": "https://github.com/horstoeko/invoicesuite/blob/master/SECURITY.md"
+    },
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true
@@ -48,8 +56,8 @@
         "prinsfrank/pdfparser": "^2",
         "setasign/fpdf": "^1",
         "setasign/fpdi": "^2.6.4",
-        "symfony/finder": "^5|^6|^7|^8",
-        "symfony/process": "^5.4.46|^6.4.14|^7.1.7|^8"
+        "symfony/finder": "^5 || ^6 || ^7 || ^8",
+        "symfony/process": "^5.4.46 || ^6.4.14 || ^7.1.7 || ^8"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
@@ -58,7 +66,7 @@
         "nikic/php-parser": "^5",
         "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpdocumentor/reflection-docblock": "^5 || ^6",
-        "phpstan/phpstan": "^1|^2",
+        "phpstan/phpstan": "^1 || ^2",
         "phpunit/phpunit": "^9",
         "rector/rector": "*",
         "smalot/pdfparser": "^2.12.3",
