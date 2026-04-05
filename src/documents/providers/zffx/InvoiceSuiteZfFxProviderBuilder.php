@@ -9837,11 +9837,25 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                     ->setValue($newPayeeAccountName);
             }
 
-            if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeProprietaryId)) {
+            if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeBic)) {
+                $paymentMean
+                    ->getPayeeSpecifiedCreditorFinancialInstitutionWithCreate()
+                    ->getBICIDWithCreate()
+                    ->setValue($newPayeeBic);
+            }
+        }
+
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeProprietaryId)) {
+            $paymentMean
+                ->getPayeePartyCreditorFinancialAccountWithCreate()
+                ->getProprietaryIDWithCreate()
+                ->setValue($newPayeeProprietaryId);
+
+            if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeAccountName)) {
                 $paymentMean
                     ->getPayeePartyCreditorFinancialAccountWithCreate()
-                    ->getProprietaryIDWithCreate()
-                    ->setValue($newPayeeProprietaryId);
+                    ->getAccountNameWithCreate()
+                    ->setValue($newPayeeAccountName);
             }
 
             if ($this->supportsAtLeastEn16931() && !InvoiceSuiteStringUtils::stringIsNullOrEmpty($newPayeeBic)) {
