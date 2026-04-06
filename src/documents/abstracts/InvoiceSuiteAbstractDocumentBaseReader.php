@@ -9,341 +9,33 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite;
+namespace horstoeko\invoicesuite\documents\abstracts;
 
-use BadMethodCallException;
 use DateTimeInterface;
-use Error;
-use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use horstoeko\invoicesuite\concerns\HandlesRawContents;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
- * Class representing the document reader
+ * Class representing methods for a reader
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
+abstract class InvoiceSuiteAbstractDocumentBaseReader
 {
-    use HandlesCallForwarding;
-    use HandlesCurrentDocumentFormatProvider;
-    use HandlesDocumentFormatProviders;
-    use HandlesRawContents;
-
-    /**
-     * Constructor (hidden)
-     *
-     * @param string $fromContent
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
-     */
-    final protected function __construct(
-        string $fromContent
-    ) {
-        $this->resolveAvailableDocumentFormatProviders();
-
-        $formatProviders = array_filter(
-            $this->getRegisteredDocumentFormatProviders(),
-            static fn ($formatProvider) => $formatProvider->getIsSatisfiableBySerializedContent($fromContent)
-        );
-
-        if ([] === $formatProviders) {
-            throw new InvoiceSuiteFormatProviderNotFoundException('unknown');
-        }
-
-        $formatProvider = reset($formatProviders);
-
-        $this->setRawDocumentContent($fromContent);
-
-        $this->setCurrentDocumentFormatProvider($formatProvider);
-        $this->getCurrentDocumentFormatProvider()->getReader()->deserializeFromContent($fromContent);
-    }
-
-    /**
-     * Dynamically pass missing methods to the reader provided by format provider
-     *
-     * @param  string       $method
-     * @param  array<mixed> $parameters
-     * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
-     */
-    public function __call(
-        $method,
-        $parameters
-    ) {
-        return $this->forwardCallWithCheckTo($this->getCurrentDocumentFormatProvider()->getReader(), $method, $parameters);
-    }
-
-    /**
-     * Create reader by file
-     *
-     * @param  string $fromFile
-     * @return static
-     *
-     * @throws InvoiceSuiteFileNotFoundException
-     * @throws InvoiceSuiteFileNotReadableException
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
-     */
-    public static function createFromFile(
-        string $fromFile
-    ): static {
-        if (!file_exists($fromFile)) {
-            throw new InvoiceSuiteFileNotFoundException($fromFile);
-        }
-
-        $fromContent = file_get_contents($fromFile);
-
-        if (false === $fromContent) {
-            throw new InvoiceSuiteFileNotReadableException($fromFile);
-        }
-
-        return static::createFromContent($fromContent);
-    }
-
-    /**
-     * Create reader by content
-     *
-     * @param  string $fromContent
-     * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
-     */
-    public static function createFromContent(
-        string $fromContent
-    ): static {
-        return new static($fromContent);
-    }
-
-    /**
-     * Copy Reader to a Builder instance
-     *
-     * @return InvoiceSuiteDocumentBuilder
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     */
-    public function copyToBuilder(): InvoiceSuiteDocumentBuilder
-    {
-        $this->convertToDTO($dto);
-
-        return InvoiceSuiteDocumentBuilder::createByProviderUniqueId(
-            $this->getCurrentDocumentFormatProvider()->getUniqueId()
-        )->createFromDTO($dto);
-    }
-
-    /**
-     * Returns the original serialized content which was used
-     *
-     * @return string
-     */
-    public function getOriginalDocumentContent(): string
-    {
-        return $this->getRawDocumentContent();
-    }
-
-    /**
-     * Check if any messages exist in the internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->hasMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any messages with the given severity exist in internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity $filterSeverity
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): bool {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->hasMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Check if any INFO messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasInfoMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->hasInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any WARNING messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasWarningMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->hasWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any ERROR messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasErrorMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->hasErrorMessagesInMessageBag();
-    }
-
-    /**
-     * Count messages by severity in internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity $filterSeverity
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): int {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->countMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Count INFO messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countInfoMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->countInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Count WARNING messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countWarningMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->countWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Count ERROR messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countErrorMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->countErrorMessagesInMessageBag();
-    }
-
-    /**
-     * Get messages by severity from internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity            $filterSeverity
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): array {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->getMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Get INFO messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getInfoMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->getInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Get WARNING messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getWarningMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->getWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Get ERROR messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getErrorMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->getErrorMessagesInMessageBag();
-    }
-
     /**
      * Create a DTO from this document
      *
      * @param  null|InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
      *
-     * @param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
-     *
      * @phpstan-param-out InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
      */
-    public function convertToDTO(
+    abstract public function convertToDTO(
         ?InvoiceSuiteDocumentHeaderDTO &$newDocumentDTO
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->convertToDTO($newDocumentDTO);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document number (e.g. invoice number)
@@ -353,13 +45,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentNo
      */
-    public function getDocumentNo(
+    abstract public function getDocumentNo(
         ?string &$newDocumentNo
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentNo($newDocumentNo);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document type code
@@ -369,13 +57,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentType
      */
-    public function getDocumentType(
+    abstract public function getDocumentType(
         ?string &$newDocumentType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentType($newDocumentType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document description
@@ -385,13 +69,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentDescription
      */
-    public function getDocumentDescription(
+    abstract public function getDocumentDescription(
         ?string &$newDocumentDescription
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDescription($newDocumentDescription);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document language
@@ -401,13 +81,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentLanguage
      */
-    public function getDocumentLanguage(
+    abstract public function getDocumentLanguage(
         ?string &$newDocumentLanguage
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentLanguage($newDocumentLanguage);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document date (e.g. invoice date)
@@ -417,13 +93,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out DateTimeInterface|null $newDocumentDate
      */
-    public function getDocumentDate(
+    abstract public function getDocumentDate(
         ?DateTimeInterface &$newDocumentDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDate($newDocumentDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document period
@@ -433,13 +105,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out DateTimeInterface|null $newCompleteDate
      */
-    public function getDocumentCompleteDate(
+    abstract public function getDocumentCompleteDate(
         ?DateTimeInterface &$newCompleteDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentCompleteDate($newCompleteDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document currency
@@ -449,13 +117,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentCurrency
      */
-    public function getDocumentCurrency(
+    abstract public function getDocumentCurrency(
         ?string &$newDocumentCurrency
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentCurrency($newDocumentCurrency);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the document tax currency
@@ -465,13 +129,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newDocumentTaxCurrency
      */
-    public function getDocumentTaxCurrency(
+    abstract public function getDocumentTaxCurrency(
         ?string &$newDocumentTaxCurrency
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxCurrency($newDocumentTaxCurrency);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the status of the copy indicator
@@ -481,13 +141,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out boolean $newDocumentIsCopy
      */
-    public function getDocumentIsCopy(
+    abstract public function getDocumentIsCopy(
         ?bool &$newDocumentIsCopy
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentIsCopy($newDocumentIsCopy);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Gets the status of the test indicator
@@ -497,33 +153,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out boolean $newDocumentIsTest
      */
-    public function getDocumentIsTest(
+    abstract public function getDocumentIsTest(
         ?bool &$newDocumentIsTest
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentIsTest($newDocumentIsTest);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first document of the document
      *
      * @return bool
      */
-    public function firstDocumentNote(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentNote();
-    }
+    abstract public function firstDocumentNote(): bool;
 
     /**
      * Go to the next document of the document
      *
      * @return bool
      */
-    public function nextDocumentNote(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentNote();
-    }
+    abstract public function nextDocumentNote(): bool;
 
     /**
      * Get a note to the document.
@@ -537,35 +183,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newContentCode
      * @phpstan-param-out string $newSubjectCode
      */
-    public function getDocumentNote(
+    abstract public function getDocumentNote(
         ?string &$newContent,
         ?string &$newContentCode,
         ?string &$newSubjectCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentNote($newContent, $newContentCode, $newSubjectCode);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first billing period
      *
      * @return bool
      */
-    public function firstDocumentBillingPeriod(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBillingPeriod();
-    }
+    abstract public function firstDocumentBillingPeriod(): bool;
 
     /**
      * Go to the next billing period
      *
      * @return bool
      */
-    public function nextDocumentBillingPeriod(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBillingPeriod();
-    }
+    abstract public function nextDocumentBillingPeriod(): bool;
 
     /**
      * Get the start and/or end date of the billing period
@@ -579,35 +215,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out DateTimeInterface|null $newEndDate
      * @phpstan-param-out string $newDescription
      */
-    public function getDocumentBillingPeriod(
+    abstract public function getDocumentBillingPeriod(
         ?DateTimeInterface &$newStartDate,
         ?DateTimeInterface &$newEndDate,
         ?string &$newDescription,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first posting reference
      *
      * @return bool
      */
-    public function firstDocumentPostingReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPostingReference();
-    }
+    abstract public function firstDocumentPostingReference(): bool;
 
     /**
      * Go to the next posting reference
      *
      * @return bool
      */
-    public function nextDocumentPostingReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPostingReference();
-    }
+    abstract public function nextDocumentPostingReference(): bool;
 
     /**
      * Get a posting reference
@@ -619,34 +245,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newAccountId
      */
-    public function getDocumentPostingReference(
+    abstract public function getDocumentPostingReference(
         ?string &$newType,
         ?string &$newAccountId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPostingReference($newType, $newAccountId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated seller's order confirmation
      *
      * @return bool
      */
-    public function firstDocumentSellerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerOrderReference();
-    }
+    abstract public function firstDocumentSellerOrderReference(): bool;
 
     /**
      * Go to the next associated seller's order confirmation
      *
      * @return bool
      */
-    public function nextDocumentSellerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerOrderReference();
-    }
+    abstract public function nextDocumentSellerOrderReference(): bool;
 
     /**
      * Get the associated seller's order confirmation.
@@ -658,34 +274,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentSellerOrderReference(
+    abstract public function getDocumentSellerOrderReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated buyer's order confirmation
      *
      * @return bool
      */
-    public function firstDocumentBuyerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerOrderReference();
-    }
+    abstract public function firstDocumentBuyerOrderReference(): bool;
 
     /**
      * Go to the next associated buyer's order confirmation
      *
      * @return bool
      */
-    public function nextDocumentBuyerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerOrderReference();
-    }
+    abstract public function nextDocumentBuyerOrderReference(): bool;
 
     /**
      * Get the associated buyer's order confirmation.
@@ -697,34 +303,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentBuyerOrderReference(
+    abstract public function getDocumentBuyerOrderReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated quotation
      *
      * @return bool
      */
-    public function firstDocumentQuotationReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentQuotationReference();
-    }
+    abstract public function firstDocumentQuotationReference(): bool;
 
     /**
      * Go to the next associated quotation
      *
      * @return bool
      */
-    public function nextDocumentQuotationReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentQuotationReference();
-    }
+    abstract public function nextDocumentQuotationReference(): bool;
 
     /**
      * Get the associated quotation
@@ -736,34 +332,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentQuotationReference(
+    abstract public function getDocumentQuotationReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated contract
      *
      * @return bool
      */
-    public function firstDocumentContractReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentContractReference();
-    }
+    abstract public function firstDocumentContractReference(): bool;
 
     /**
      * Go to the next associated contract
      *
      * @return bool
      */
-    public function nextDocumentContractReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentContractReference();
-    }
+    abstract public function nextDocumentContractReference(): bool;
 
     /**
      * Get the associated contract
@@ -775,34 +361,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentContractReference(
+    abstract public function getDocumentContractReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentContractReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional associated document
      *
      * @return bool
      */
-    public function firstDocumentAdditionalReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentAdditionalReference();
-    }
+    abstract public function firstDocumentAdditionalReference(): bool;
 
     /**
      * Go to the next additional associated document
      *
      * @return bool
      */
-    public function nextDocumentAdditionalReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentAdditionalReference();
-    }
+    abstract public function nextDocumentAdditionalReference(): bool;
 
     /**
      * Get an additional associated document
@@ -822,45 +398,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newDescription
      * @phpstan-param-out InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment
      */
-    public function getDocumentAdditionalReference(
+    abstract public function getDocumentAdditionalReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode,
         ?string &$newReferenceTypeCode,
         ?string &$newDescription,
         ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional invoice document (reference to preceding invoice)
      *
      * @return bool
      */
-    public function firstDocumentInvoiceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceReference();
-    }
+    abstract public function firstDocumentInvoiceReference(): bool;
 
     /**
      * Go to the next additional invoice document (reference to preceding invoice)
      *
      * @return bool
      */
-    public function nextDocumentInvoiceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceReference();
-    }
+    abstract public function nextDocumentInvoiceReference(): bool;
 
     /**
      * Get an additional invoice document (reference to preceding invoice)
@@ -874,35 +433,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      * @phpstan-param-out string $newTypeCode
      */
-    public function getDocumentInvoiceReference(
+    abstract public function getDocumentInvoiceReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceReference($newReferenceNumber, $newReferenceDate, $newTypeCode);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional project reference
      *
      * @return bool
      */
-    public function firstDocumentProjectReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProjectReference();
-    }
+    abstract public function firstDocumentProjectReference(): bool;
 
     /**
      * Go to the next additional project reference
      *
      * @return bool
      */
-    public function nextDocumentProjectReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProjectReference();
-    }
+    abstract public function nextDocumentProjectReference(): bool;
 
     /**
      * Get an additional project reference
@@ -914,34 +463,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out string $newName
      */
-    public function getDocumentProjectReference(
+    abstract public function getDocumentProjectReference(
         ?string &$newReferenceNumber,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProjectReference($newReferenceNumber, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional ultimate customer order reference
      *
      * @return bool
      */
-    public function firstDocumentUltimateCustomerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateCustomerOrderReference();
-    }
+    abstract public function firstDocumentUltimateCustomerOrderReference(): bool;
 
     /**
      * Go to the next additional ultimate customer order reference
      *
      * @return bool
      */
-    public function nextDocumentUltimateCustomerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateCustomerOrderReference();
-    }
+    abstract public function nextDocumentUltimateCustomerOrderReference(): bool;
 
     /**
      * Get an additional ultimate customer order reference
@@ -953,34 +492,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentUltimateCustomerOrderReference(
+    abstract public function getDocumentUltimateCustomerOrderReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional despatch advice reference
      *
      * @return bool
      */
-    public function firstDocumentDespatchAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentDespatchAdviceReference();
-    }
+    abstract public function firstDocumentDespatchAdviceReference(): bool;
 
     /**
      * Go to the next additional despatch advice reference
      *
      * @return bool
      */
-    public function nextDocumentDespatchAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentDespatchAdviceReference();
-    }
+    abstract public function nextDocumentDespatchAdviceReference(): bool;
 
     /**
      * Get an additional despatch advice reference
@@ -992,34 +521,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentDespatchAdviceReference(
+    abstract public function getDocumentDespatchAdviceReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional receiving advice reference
      *
      * @return bool
      */
-    public function firstDocumentReceivingAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentReceivingAdviceReference();
-    }
+    abstract public function firstDocumentReceivingAdviceReference(): bool;
 
     /**
-     * Go to the next additional receiving advice reference
+     * Go to the next additional Receiving advice reference
      *
      * @return bool
      */
-    public function nextDocumentReceivingAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentReceivingAdviceReference();
-    }
+    abstract public function nextDocumentReceivingAdviceReference(): bool;
 
     /**
      * Get an additional receiving advice reference
@@ -1031,34 +550,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentReceivingAdviceReference(
+    abstract public function getDocumentReceivingAdviceReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional delivery note reference
      *
      * @return bool
      */
-    public function firstDocumentDeliveryNoteReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentDeliveryNoteReference();
-    }
+    abstract public function firstDocumentDeliveryNoteReference(): bool;
 
     /**
      * Go to the next additional delivery note reference
      *
      * @return bool
      */
-    public function nextDocumentDeliveryNoteReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentDeliveryNoteReference();
-    }
+    abstract public function nextDocumentDeliveryNoteReference(): bool;
 
     /**
      * Get an additional delivery note reference
@@ -1070,14 +579,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentDeliveryNoteReference(
+    abstract public function getDocumentDeliveryNoteReference(
         ?string &$newReferenceNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the date of the delivery
@@ -1087,13 +592,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
      */
-    public function getDocumentSupplyChainEvent(
+    abstract public function getDocumentSupplyChainEvent(
         ?DateTimeInterface &$newDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSupplyChainEvent($newDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the identifier assigned by the buyer and used for internal routing
@@ -1103,13 +604,9 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newBuyerReference
      */
-    public function getDocumentBuyerReference(
+    abstract public function getDocumentBuyerReference(
         ?string &$newBuyerReference
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerReference($newBuyerReference);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get information on the delivery conditions
@@ -1119,49 +616,35 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newCode
      */
-    public function getDocumentDeliveryTerms(
+    abstract public function getDocumentDeliveryTerms(
         ?string &$newCode = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentDeliveryTerms($newCode);
-
-        return $this;
-    }
+    ): static;
 
     /**
-     * Get the name of the buyer/customer party
+     * Get the name of the seller/supplier party
      *
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentSellerName(
+    abstract public function getDocumentSellerName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerId();
-    }
+    abstract public function firstDocumentSellerId(): bool;
 
     /**
      * Go to the next ID of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerId();
-    }
+    abstract public function nextDocumentSellerId(): bool;
 
     /**
      * Get the ID of the seller/supplier party
@@ -1171,33 +654,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentSellerId(
+    abstract public function getDocumentSellerId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerGlobalId();
-    }
+    abstract public function firstDocumentSellerGlobalId(): bool;
 
     /**
      * Go to the next global ID of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerGlobalId();
-    }
+    abstract public function nextDocumentSellerGlobalId(): bool;
 
     /**
      * Get the Global ID of the seller/supplier party
@@ -1209,34 +682,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentSellerGlobalId(
+    abstract public function getDocumentSellerGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerTaxRegistration();
-    }
+    abstract public function firstDocumentSellerTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerTaxRegistration();
-    }
+    abstract public function nextDocumentSellerTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the seller/supplier party
@@ -1248,37 +711,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentSellerTaxRegistration(
+    abstract public function getDocumentSellerTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerAddress();
-    }
+    abstract public function firstDocumentSellerAddress(): bool;
 
     /**
      * Go to the next address of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerAddress();
-    }
+    abstract public function nextDocumentSellerAddress(): bool;
 
     /**
-     * Set the address of the seller/supplier party
+     * Get the address of the seller/supplier party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -1297,7 +750,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentSellerAddress(
+    abstract public function getDocumentSellerAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -1305,39 +758,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerLegalOrganisation();
-    }
+    abstract public function firstDocumentSellerLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerLegalOrganisation();
-    }
+    abstract public function nextDocumentSellerLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the seller/supplier party
@@ -1351,35 +786,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentSellerLegalOrganisation(
+    abstract public function getDocumentSellerLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerContact();
-    }
+    abstract public function firstDocumentSellerContact(): bool;
 
     /**
      * Go to the next contact information of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerContact();
-    }
+    abstract public function nextDocumentSellerContact(): bool;
 
     /**
      * Get the contact information of the seller/supplier party
@@ -1397,43 +822,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentSellerContact(
+    abstract public function getDocumentSellerContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the seller/supplier party
      *
      * @return bool
      */
-    public function firstDocumentSellerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentSellerCommunication();
-    }
+    abstract public function firstDocumentSellerCommunication(): bool;
 
     /**
      * Go to the next communication information of the seller/supplier party
      *
      * @return bool
      */
-    public function nextDocumentSellerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentSellerCommunication();
-    }
+    abstract public function nextDocumentSellerCommunication(): bool;
 
     /**
      * Get communication information of the seller/supplier party
@@ -1445,14 +854,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentSellerCommunication(
+    abstract public function getDocumentSellerCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSellerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the buyer/customer party
@@ -1462,33 +867,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerName(
+    abstract public function getDocumentBuyerName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerId();
-    }
+    abstract public function firstDocumentBuyerId(): bool;
 
     /**
      * Go to the next ID of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerId();
-    }
+    abstract public function nextDocumentBuyerId(): bool;
 
     /**
      * Get the ID of the buyer/customer party
@@ -1498,33 +893,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentBuyerId(
+    abstract public function getDocumentBuyerId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerGlobalId();
-    }
+    abstract public function firstDocumentBuyerGlobalId(): bool;
 
     /**
      * Go to the next global ID of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerGlobalId();
-    }
+    abstract public function nextDocumentBuyerGlobalId(): bool;
 
     /**
      * Get the Global ID of the buyer/customer party
@@ -1536,34 +921,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentBuyerGlobalId(
+    abstract public function getDocumentBuyerGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerTaxRegistration();
-    }
+    abstract public function firstDocumentBuyerTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerTaxRegistration();
-    }
+    abstract public function nextDocumentBuyerTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the buyer/customer party
@@ -1575,37 +950,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentBuyerTaxRegistration(
+    abstract public function getDocumentBuyerTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerAddress();
-    }
+    abstract public function firstDocumentBuyerAddress(): bool;
 
     /**
      * Go to the next address of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerAddress();
-    }
+    abstract public function nextDocumentBuyerAddress(): bool;
 
     /**
-     * Set the address of the buyer/customer party
+     * Get the address of the buyer/customer party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -1624,7 +989,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentBuyerAddress(
+    abstract public function getDocumentBuyerAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -1632,39 +997,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerLegalOrganisation();
-    }
+    abstract public function firstDocumentBuyerLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerLegalOrganisation();
-    }
+    abstract public function nextDocumentBuyerLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the buyer/customer party
@@ -1678,35 +1025,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentBuyerLegalOrganisation(
+    abstract public function getDocumentBuyerLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerContact();
-    }
+    abstract public function firstDocumentBuyerContact(): bool;
 
     /**
      * Go to the next contact information of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerContact();
-    }
+    abstract public function nextDocumentBuyerContact(): bool;
 
     /**
      * Get the contact information of the buyer/customer party
@@ -1724,43 +1061,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentBuyerContact(
+    abstract public function getDocumentBuyerContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the buyer/customer party
      *
      * @return bool
      */
-    public function firstDocumentBuyerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentBuyerCommunication();
-    }
+    abstract public function firstDocumentBuyerCommunication(): bool;
 
     /**
      * Go to the next communication information of the buyer/customer party
      *
      * @return bool
      */
-    public function nextDocumentBuyerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentBuyerCommunication();
-    }
+    abstract public function nextDocumentBuyerCommunication(): bool;
 
     /**
      * Get communication information of the buyer/customer party
@@ -1772,14 +1093,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentBuyerCommunication(
+    abstract public function getDocumentBuyerCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentBuyerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the tax representative party
@@ -1789,33 +1106,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentTaxRepresentativeName(
+    abstract public function getDocumentTaxRepresentativeName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeId();
-    }
+    abstract public function firstDocumentTaxRepresentativeId(): bool;
 
     /**
      * Go to the next ID of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeId();
-    }
+    abstract public function nextDocumentTaxRepresentativeId(): bool;
 
     /**
      * Get the ID of the tax representative party
@@ -1825,33 +1132,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentTaxRepresentativeId(
+    abstract public function getDocumentTaxRepresentativeId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeGlobalId();
-    }
+    abstract public function firstDocumentTaxRepresentativeGlobalId(): bool;
 
     /**
      * Go to the next global ID of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeGlobalId();
-    }
+    abstract public function nextDocumentTaxRepresentativeGlobalId(): bool;
 
     /**
      * Get the Global ID of the tax representative party
@@ -1863,34 +1160,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentTaxRepresentativeGlobalId(
+    abstract public function getDocumentTaxRepresentativeGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeTaxRegistration();
-    }
+    abstract public function firstDocumentTaxRepresentativeTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeTaxRegistration();
-    }
+    abstract public function nextDocumentTaxRepresentativeTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the tax representative party
@@ -1902,37 +1189,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentTaxRepresentativeTaxRegistration(
+    abstract public function getDocumentTaxRepresentativeTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeAddress();
-    }
+    abstract public function firstDocumentTaxRepresentativeAddress(): bool;
 
     /**
      * Go to the next address of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeAddress();
-    }
+    abstract public function nextDocumentTaxRepresentativeAddress(): bool;
 
     /**
-     * Set the address of the tax representative party
+     * Get the address of the tax representative party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -1951,7 +1228,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentTaxRepresentativeAddress(
+    abstract public function getDocumentTaxRepresentativeAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -1959,39 +1236,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeLegalOrganisation();
-    }
+    abstract public function firstDocumentTaxRepresentativeLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeLegalOrganisation();
-    }
+    abstract public function nextDocumentTaxRepresentativeLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the tax representative party
@@ -2005,35 +1264,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentTaxRepresentativeLegalOrganisation(
+    abstract public function getDocumentTaxRepresentativeLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeContact();
-    }
+    abstract public function firstDocumentTaxRepresentativeContact(): bool;
 
     /**
      * Go to the next contact information of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeContact();
-    }
+    abstract public function nextDocumentTaxRepresentativeContact(): bool;
 
     /**
      * Get the contact information of the tax representative party
@@ -2051,43 +1300,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentTaxRepresentativeContact(
+    abstract public function getDocumentTaxRepresentativeContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the tax representative party
      *
      * @return bool
      */
-    public function firstDocumentTaxRepresentativeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTaxRepresentativeCommunication();
-    }
+    abstract public function firstDocumentTaxRepresentativeCommunication(): bool;
 
     /**
      * Go to the next communication information of the tax representative party
      *
      * @return bool
      */
-    public function nextDocumentTaxRepresentativeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTaxRepresentativeCommunication();
-    }
+    abstract public function nextDocumentTaxRepresentativeCommunication(): bool;
 
     /**
      * Get communication information of the tax representative party
@@ -2099,14 +1332,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentTaxRepresentativeCommunication(
+    abstract public function getDocumentTaxRepresentativeCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTaxRepresentativeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the product end-user party
@@ -2116,33 +1345,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentProductEndUserName(
+    abstract public function getDocumentProductEndUserName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserId();
-    }
+    abstract public function firstDocumentProductEndUserId(): bool;
 
     /**
      * Go to the next ID of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserId();
-    }
+    abstract public function nextDocumentProductEndUserId(): bool;
 
     /**
      * Get the ID of the product end-user party
@@ -2152,33 +1371,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentProductEndUserId(
+    abstract public function getDocumentProductEndUserId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserGlobalId();
-    }
+    abstract public function firstDocumentProductEndUserGlobalId(): bool;
 
     /**
      * Go to the next global ID of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserGlobalId();
-    }
+    abstract public function nextDocumentProductEndUserGlobalId(): bool;
 
     /**
      * Get the Global ID of the product end-user party
@@ -2190,34 +1399,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentProductEndUserGlobalId(
+    abstract public function getDocumentProductEndUserGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserTaxRegistration();
-    }
+    abstract public function firstDocumentProductEndUserTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserTaxRegistration();
-    }
+    abstract public function nextDocumentProductEndUserTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the product end-user party
@@ -2229,37 +1428,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentProductEndUserTaxRegistration(
+    abstract public function getDocumentProductEndUserTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserAddress();
-    }
+    abstract public function firstDocumentProductEndUserAddress(): bool;
 
     /**
      * Go to the next address of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserAddress();
-    }
+    abstract public function nextDocumentProductEndUserAddress(): bool;
 
     /**
-     * Set the address of the product end-user party
+     * Get the address of the product end-user party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -2278,7 +1467,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentProductEndUserAddress(
+    abstract public function getDocumentProductEndUserAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -2286,39 +1475,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserLegalOrganisation();
-    }
+    abstract public function firstDocumentProductEndUserLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserLegalOrganisation();
-    }
+    abstract public function nextDocumentProductEndUserLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the product end-user party
@@ -2332,35 +1503,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentProductEndUserLegalOrganisation(
+    abstract public function getDocumentProductEndUserLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserContact();
-    }
+    abstract public function firstDocumentProductEndUserContact(): bool;
 
     /**
      * Go to the next contact information of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserContact();
-    }
+    abstract public function nextDocumentProductEndUserContact(): bool;
 
     /**
      * Get the contact information of the product end-user party
@@ -2378,43 +1539,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentProductEndUserContact(
+    abstract public function getDocumentProductEndUserContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the product end-user party
      *
      * @return bool
      */
-    public function firstDocumentProductEndUserCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentProductEndUserCommunication();
-    }
+    abstract public function firstDocumentProductEndUserCommunication(): bool;
 
     /**
      * Go to the next communication information of the product end-user party
      *
      * @return bool
      */
-    public function nextDocumentProductEndUserCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentProductEndUserCommunication();
-    }
+    abstract public function nextDocumentProductEndUserCommunication(): bool;
 
     /**
      * Get communication information of the product end-user party
@@ -2426,14 +1571,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentProductEndUserCommunication(
+    abstract public function getDocumentProductEndUserCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentProductEndUserCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Ship-To party
@@ -2443,33 +1584,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentShipToName(
+    abstract public function getDocumentShipToName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToId();
-    }
+    abstract public function firstDocumentShipToId(): bool;
 
     /**
      * Go to the next ID of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToId();
-    }
+    abstract public function nextDocumentShipToId(): bool;
 
     /**
      * Get the ID of the Ship-To party
@@ -2479,33 +1610,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentShipToId(
+    abstract public function getDocumentShipToId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToGlobalId();
-    }
+    abstract public function firstDocumentShipToGlobalId(): bool;
 
     /**
      * Go to the next global ID of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToGlobalId();
-    }
+    abstract public function nextDocumentShipToGlobalId(): bool;
 
     /**
      * Get the Global ID of the Ship-To party
@@ -2517,34 +1638,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentShipToGlobalId(
+    abstract public function getDocumentShipToGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToTaxRegistration();
-    }
+    abstract public function firstDocumentShipToTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToTaxRegistration();
-    }
+    abstract public function nextDocumentShipToTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the Ship-To party
@@ -2556,37 +1667,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentShipToTaxRegistration(
+    abstract public function getDocumentShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToAddress();
-    }
+    abstract public function firstDocumentShipToAddress(): bool;
 
     /**
      * Go to the next address of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToAddress();
-    }
+    abstract public function nextDocumentShipToAddress(): bool;
 
     /**
-     * Set the address of the Ship-To party
+     * Get the address of the Ship-To party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -2605,7 +1706,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentShipToAddress(
+    abstract public function getDocumentShipToAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -2613,39 +1714,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToLegalOrganisation();
-    }
+    abstract public function firstDocumentShipToLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToLegalOrganisation();
-    }
+    abstract public function nextDocumentShipToLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Ship-To party
@@ -2659,35 +1742,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentShipToLegalOrganisation(
+    abstract public function getDocumentShipToLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToContact();
-    }
+    abstract public function firstDocumentShipToContact(): bool;
 
     /**
      * Go to the next contact information of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToContact();
-    }
+    abstract public function nextDocumentShipToContact(): bool;
 
     /**
      * Get the contact information of the Ship-To party
@@ -2705,43 +1778,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentShipToContact(
+    abstract public function getDocumentShipToContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipToCommunication();
-    }
+    abstract public function firstDocumentShipToCommunication(): bool;
 
     /**
      * Go to the next communication information of the Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipToCommunication();
-    }
+    abstract public function nextDocumentShipToCommunication(): bool;
 
     /**
      * Get communication information of the Ship-To party
@@ -2753,14 +1810,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentShipToCommunication(
+    abstract public function getDocumentShipToCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the ultimate Ship-To party
@@ -2770,33 +1823,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentUltimateShipToName(
+    abstract public function getDocumentUltimateShipToName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToId();
-    }
+    abstract public function firstDocumentUltimateShipToId(): bool;
 
     /**
      * Go to the next ID of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToId();
-    }
+    abstract public function nextDocumentUltimateShipToId(): bool;
 
     /**
      * Get the ID of the ultimate Ship-To party
@@ -2806,33 +1849,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentUltimateShipToId(
+    abstract public function getDocumentUltimateShipToId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToGlobalId();
-    }
+    abstract public function firstDocumentUltimateShipToGlobalId(): bool;
 
     /**
      * Go to the next global ID of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToGlobalId();
-    }
+    abstract public function nextDocumentUltimateShipToGlobalId(): bool;
 
     /**
      * Get the Global ID of the ultimate Ship-To party
@@ -2844,34 +1877,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentUltimateShipToGlobalId(
+    abstract public function getDocumentUltimateShipToGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToTaxRegistration();
-    }
+    abstract public function firstDocumentUltimateShipToTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToTaxRegistration();
-    }
+    abstract public function nextDocumentUltimateShipToTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the ultimate Ship-To party
@@ -2883,37 +1906,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentUltimateShipToTaxRegistration(
+    abstract public function getDocumentUltimateShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToAddress();
-    }
+    abstract public function firstDocumentUltimateShipToAddress(): bool;
 
     /**
      * Go to the next address of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToAddress();
-    }
+    abstract public function nextDocumentUltimateShipToAddress(): bool;
 
     /**
-     * Set the address of the ultimate Ship-To party
+     * Get the address of the ultimate Ship-To party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -2932,7 +1945,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentUltimateShipToAddress(
+    abstract public function getDocumentUltimateShipToAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -2940,39 +1953,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToLegalOrganisation();
-    }
+    abstract public function firstDocumentUltimateShipToLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToLegalOrganisation();
-    }
+    abstract public function nextDocumentUltimateShipToLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the ultimate Ship-To party
@@ -2986,35 +1981,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentUltimateShipToLegalOrganisation(
+    abstract public function getDocumentUltimateShipToLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToContact();
-    }
+    abstract public function firstDocumentUltimateShipToContact(): bool;
 
     /**
      * Go to the next contact information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToContact();
-    }
+    abstract public function nextDocumentUltimateShipToContact(): bool;
 
     /**
      * Get the contact information of the ultimate Ship-To party
@@ -3032,43 +2017,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentUltimateShipToContact(
+    abstract public function getDocumentUltimateShipToContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function firstDocumentUltimateShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentUltimateShipToCommunication();
-    }
+    abstract public function firstDocumentUltimateShipToCommunication(): bool;
 
     /**
      * Go to the next communication information of the ultimate Ship-To party
      *
      * @return bool
      */
-    public function nextDocumentUltimateShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentUltimateShipToCommunication();
-    }
+    abstract public function nextDocumentUltimateShipToCommunication(): bool;
 
     /**
      * Get communication information of the ultimate Ship-To party
@@ -3080,14 +2049,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentUltimateShipToCommunication(
+    abstract public function getDocumentUltimateShipToCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentUltimateShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Ship-From party
@@ -3097,33 +2062,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentShipFromName(
+    abstract public function getDocumentShipFromName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromId();
-    }
+    abstract public function firstDocumentShipFromId(): bool;
 
     /**
      * Go to the next ID of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromId();
-    }
+    abstract public function nextDocumentShipFromId(): bool;
 
     /**
      * Get the ID of the Ship-From party
@@ -3133,33 +2088,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentShipFromId(
+    abstract public function getDocumentShipFromId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromGlobalId();
-    }
+    abstract public function firstDocumentShipFromGlobalId(): bool;
 
     /**
      * Go to the next global ID of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromGlobalId();
-    }
+    abstract public function nextDocumentShipFromGlobalId(): bool;
 
     /**
      * Get the Global ID of the Ship-From party
@@ -3171,34 +2116,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentShipFromGlobalId(
+    abstract public function getDocumentShipFromGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromTaxRegistration();
-    }
+    abstract public function firstDocumentShipFromTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromTaxRegistration();
-    }
+    abstract public function nextDocumentShipFromTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the Ship-From party
@@ -3210,37 +2145,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentShipFromTaxRegistration(
+    abstract public function getDocumentShipFromTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromAddress();
-    }
+    abstract public function firstDocumentShipFromAddress(): bool;
 
     /**
      * Go to the next address of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromAddress();
-    }
+    abstract public function nextDocumentShipFromAddress(): bool;
 
     /**
-     * Set the address of the Ship-From party
+     * Get the address of the Ship-From party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -3259,7 +2184,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentShipFromAddress(
+    abstract public function getDocumentShipFromAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -3267,39 +2192,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromLegalOrganisation();
-    }
+    abstract public function firstDocumentShipFromLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromLegalOrganisation();
-    }
+    abstract public function nextDocumentShipFromLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Ship-From party
@@ -3313,35 +2220,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentShipFromLegalOrganisation(
+    abstract public function getDocumentShipFromLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromContact();
-    }
+    abstract public function firstDocumentShipFromContact(): bool;
 
     /**
      * Go to the next contact information of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromContact();
-    }
+    abstract public function nextDocumentShipFromContact(): bool;
 
     /**
      * Get the contact information of the Ship-From party
@@ -3359,43 +2256,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentShipFromContact(
+    abstract public function getDocumentShipFromContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Ship-From party
      *
      * @return bool
      */
-    public function firstDocumentShipFromCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentShipFromCommunication();
-    }
+    abstract public function firstDocumentShipFromCommunication(): bool;
 
     /**
      * Go to the next communication information of the Ship-From party
      *
      * @return bool
      */
-    public function nextDocumentShipFromCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentShipFromCommunication();
-    }
+    abstract public function nextDocumentShipFromCommunication(): bool;
 
     /**
      * Get communication information of the Ship-From party
@@ -3407,14 +2288,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentShipFromCommunication(
+    abstract public function getDocumentShipFromCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentShipFromCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Invoicer party
@@ -3424,33 +2301,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentInvoicerName(
+    abstract public function getDocumentInvoicerName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerId();
-    }
+    abstract public function firstDocumentInvoicerId(): bool;
 
     /**
      * Go to the next ID of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerId();
-    }
+    abstract public function nextDocumentInvoicerId(): bool;
 
     /**
      * Get the ID of the Invoicer party
@@ -3460,33 +2327,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentInvoicerId(
+    abstract public function getDocumentInvoicerId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerGlobalId();
-    }
+    abstract public function firstDocumentInvoicerGlobalId(): bool;
 
     /**
      * Go to the next global ID of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerGlobalId();
-    }
+    abstract public function nextDocumentInvoicerGlobalId(): bool;
 
     /**
      * Get the Global ID of the Invoicer party
@@ -3498,34 +2355,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentInvoicerGlobalId(
+    abstract public function getDocumentInvoicerGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerTaxRegistration();
-    }
+    abstract public function firstDocumentInvoicerTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerTaxRegistration();
-    }
+    abstract public function nextDocumentInvoicerTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the Invoicer party
@@ -3537,37 +2384,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentInvoicerTaxRegistration(
+    abstract public function getDocumentInvoicerTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerAddress();
-    }
+    abstract public function firstDocumentInvoicerAddress(): bool;
 
     /**
      * Go to the next address of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerAddress();
-    }
+    abstract public function nextDocumentInvoicerAddress(): bool;
 
     /**
-     * Set the address of the Invoicer party
+     * Get the address of the Invoicer party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -3586,7 +2423,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentInvoicerAddress(
+    abstract public function getDocumentInvoicerAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -3594,39 +2431,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerLegalOrganisation();
-    }
+    abstract public function firstDocumentInvoicerLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerLegalOrganisation();
-    }
+    abstract public function nextDocumentInvoicerLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Invoicer party
@@ -3640,35 +2459,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentInvoicerLegalOrganisation(
+    abstract public function getDocumentInvoicerLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerContact();
-    }
+    abstract public function firstDocumentInvoicerContact(): bool;
 
     /**
      * Go to the next contact information of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerContact();
-    }
+    abstract public function nextDocumentInvoicerContact(): bool;
 
     /**
      * Get the contact information of the Invoicer party
@@ -3686,43 +2495,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentInvoicerContact(
+    abstract public function getDocumentInvoicerContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Invoicer party
      *
      * @return bool
      */
-    public function firstDocumentInvoicerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoicerCommunication();
-    }
+    abstract public function firstDocumentInvoicerCommunication(): bool;
 
     /**
      * Go to the next communication information of the Invoicer party
      *
      * @return bool
      */
-    public function nextDocumentInvoicerCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoicerCommunication();
-    }
+    abstract public function nextDocumentInvoicerCommunication(): bool;
 
     /**
      * Get communication information of the Invoicer party
@@ -3734,14 +2527,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentInvoicerCommunication(
+    abstract public function getDocumentInvoicerCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoicerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Invoicee party
@@ -3751,33 +2540,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentInvoiceeName(
+    abstract public function getDocumentInvoiceeName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeId();
-    }
+    abstract public function firstDocumentInvoiceeId(): bool;
 
     /**
      * Go to the next ID of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeId();
-    }
+    abstract public function nextDocumentInvoiceeId(): bool;
 
     /**
      * Get the ID of the Invoicee party
@@ -3787,33 +2566,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentInvoiceeId(
+    abstract public function getDocumentInvoiceeId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeGlobalId();
-    }
+    abstract public function firstDocumentInvoiceeGlobalId(): bool;
 
     /**
      * Go to the next global ID of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeGlobalId();
-    }
+    abstract public function nextDocumentInvoiceeGlobalId(): bool;
 
     /**
      * Get the Global ID of the Invoicee party
@@ -3825,34 +2594,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentInvoiceeGlobalId(
+    abstract public function getDocumentInvoiceeGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeTaxRegistration();
-    }
+    abstract public function firstDocumentInvoiceeTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeTaxRegistration();
-    }
+    abstract public function nextDocumentInvoiceeTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the Invoicee party
@@ -3864,37 +2623,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentInvoiceeTaxRegistration(
+    abstract public function getDocumentInvoiceeTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeAddress();
-    }
+    abstract public function firstDocumentInvoiceeAddress(): bool;
 
     /**
      * Go to the next address of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeAddress();
-    }
+    abstract public function nextDocumentInvoiceeAddress(): bool;
 
     /**
-     * Set the address of the Invoicee party
+     * Get the address of the Invoicee party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -3913,7 +2662,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentInvoiceeAddress(
+    abstract public function getDocumentInvoiceeAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -3921,39 +2670,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeLegalOrganisation();
-    }
+    abstract public function firstDocumentInvoiceeLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeLegalOrganisation();
-    }
+    abstract public function nextDocumentInvoiceeLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Invoicee party
@@ -3967,35 +2698,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentInvoiceeLegalOrganisation(
+    abstract public function getDocumentInvoiceeLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeContact();
-    }
+    abstract public function firstDocumentInvoiceeContact(): bool;
 
     /**
      * Go to the next contact information of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeContact();
-    }
+    abstract public function nextDocumentInvoiceeContact(): bool;
 
     /**
      * Get the contact information of the Invoicee party
@@ -4013,43 +2734,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentInvoiceeContact(
+    abstract public function getDocumentInvoiceeContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Invoicee party
      *
      * @return bool
      */
-    public function firstDocumentInvoiceeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentInvoiceeCommunication();
-    }
+    abstract public function firstDocumentInvoiceeCommunication(): bool;
 
     /**
      * Go to the next communication information of the Invoicee party
      *
      * @return bool
      */
-    public function nextDocumentInvoiceeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentInvoiceeCommunication();
-    }
+    abstract public function nextDocumentInvoiceeCommunication(): bool;
 
     /**
      * Get communication information of the Invoicee party
@@ -4061,14 +2766,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentInvoiceeCommunication(
+    abstract public function getDocumentInvoiceeCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentInvoiceeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Payee party
@@ -4078,33 +2779,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPayeeName(
+    abstract public function getDocumentPayeeName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeId();
-    }
+    abstract public function firstDocumentPayeeId(): bool;
 
     /**
      * Go to the next ID of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeId();
-    }
+    abstract public function nextDocumentPayeeId(): bool;
 
     /**
      * Get the ID of the Payee party
@@ -4114,33 +2805,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentPayeeId(
+    abstract public function getDocumentPayeeId(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first global ID of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeGlobalId();
-    }
+    abstract public function firstDocumentPayeeGlobalId(): bool;
 
     /**
      * Go to the next global ID of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeGlobalId();
-    }
+    abstract public function nextDocumentPayeeGlobalId(): bool;
 
     /**
      * Get the Global ID of the Payee party
@@ -4152,34 +2833,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentPayeeGlobalId(
+    abstract public function getDocumentPayeeGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeTaxRegistration();
-    }
+    abstract public function firstDocumentPayeeTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeTaxRegistration();
-    }
+    abstract public function nextDocumentPayeeTaxRegistration(): bool;
 
     /**
      * Get the Tax Registration of the Payee party
@@ -4191,37 +2862,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentPayeeTaxRegistration(
+    abstract public function getDocumentPayeeTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeAddress();
-    }
+    abstract public function firstDocumentPayeeAddress(): bool;
 
     /**
      * Go to the next address of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeAddress();
-    }
+    abstract public function nextDocumentPayeeAddress(): bool;
 
     /**
-     * Set the address of the Payee party
+     * Get the address of the Payee party
      *
      * @param  null|string $newAddressLine1 The main line in the address. This is usually the street name and house number or the post office box.
      * @param  null|string $newAddressLine2 Line 2 of the address. This is an additional address line in an address that can be used to provide additional details in addition to the main line.
@@ -4240,7 +2901,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentPayeeAddress(
+    abstract public function getDocumentPayeeAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -4248,39 +2909,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeLegalOrganisation();
-    }
+    abstract public function firstDocumentPayeeLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeLegalOrganisation();
-    }
+    abstract public function nextDocumentPayeeLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Payee party
@@ -4294,35 +2937,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPayeeLegalOrganisation(
+    abstract public function getDocumentPayeeLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeContact();
-    }
+    abstract public function firstDocumentPayeeContact(): bool;
 
     /**
      * Go to the next contact information of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeContact();
-    }
+    abstract public function nextDocumentPayeeContact(): bool;
 
     /**
      * Get the contact information of the Payee party
@@ -4340,43 +2973,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentPayeeContact(
+    abstract public function getDocumentPayeeContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Payee party
      *
      * @return bool
      */
-    public function firstDocumentPayeeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPayeeCommunication();
-    }
+    abstract public function firstDocumentPayeeCommunication(): bool;
 
     /**
      * Go to the next communication information of the Payee party
      *
      * @return bool
      */
-    public function nextDocumentPayeeCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPayeeCommunication();
-    }
+    abstract public function nextDocumentPayeeCommunication(): bool;
 
     /**
      * Get communication information of the Payee party
@@ -4388,34 +3005,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentPayeeCommunication(
+    abstract public function getDocumentPayeeCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPayeeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Payment mean
      *
      * @return bool
      */
-    public function firstDocumentPaymentMean(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentMean();
-    }
+    abstract public function firstDocumentPaymentMean(): bool;
 
     /**
      * Go to the next Payment mean
      *
      * @return bool
      */
-    public function nextDocumentPaymentMean(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentMean();
-    }
+    abstract public function nextDocumentPaymentMean(): bool;
 
     /**
      * Get Payment mean
@@ -4445,7 +3052,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newPaymentReference
      * @phpstan-param-out string $newMandate
      */
-    public function getDocumentPaymentMean(
+    abstract public function getDocumentPaymentMean(
         ?string &$newTypeCode,
         ?string &$newName,
         ?string &$newFinancialCardId,
@@ -4457,43 +3064,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newPayeeBic,
         ?string &$newPaymentReference,
         ?string &$newMandate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentMean(
-            $newTypeCode,
-            $newName,
-            $newFinancialCardId,
-            $newFinancialCardHolder,
-            $newBuyerIban,
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference,
-            $newMandate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Unique bank details of the payee or the seller
      *
      * @return bool
      */
-    public function firstDocumentPaymentCreditorReferenceID(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentCreditorReferenceID();
-    }
+    abstract public function firstDocumentPaymentCreditorReferenceID(): bool;
 
     /**
      * Go to the next Unique bank details of the payee or the seller
      *
      * @return bool
      */
-    public function nextDocumentPaymentCreditorReferenceID(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentCreditorReferenceID();
-    }
+    abstract public function nextDocumentPaymentCreditorReferenceID(): bool;
 
     /**
      * Get Unique bank details of the payee or the seller
@@ -4503,111 +3088,80 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentPaymentCreditorReferenceID(
+    abstract public function getDocumentPaymentCreditorReferenceID(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentCreditorReferenceID($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first link to the invoice issued by the seller
      *
      * @return bool
      */
-    public function firstDocumentPaymentReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentReference();
-    }
+    abstract public function firstDocumentPaymentReference(): bool;
 
     /**
      * Go to the next link to the invoice issued by the seller
      *
      * @return bool
      */
-    public function nextDocumentPaymentReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentReference();
-    }
+    abstract public function nextDocumentPaymentReference(): bool;
 
     /**
      * Get a link to the invoice issued by the seller
      *
-     * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
+     * @param  null|string $newId Creditor identifier
      * @return static
      *
      * @phpstan-param-out string $newId
      */
-    public function getDocumentPaymentReference(
+    abstract public function getDocumentPaymentReference(
         ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentReference($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first payment term
      *
      * @return bool
      */
-    public function firstDocumentPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentTerm();
-    }
+    abstract public function firstDocumentPaymentTerm(): bool;
 
     /**
      * Go to the next payment term
      *
      * @return bool
      */
-    public function nextDocumentPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentTerm();
-    }
+    abstract public function nextDocumentPaymentTerm(): bool;
 
     /**
      * Get payment term
      *
      * @param  null|string            $newDescription Text description of the payment terms
      * @param  null|DateTimeInterface $newDueDate     Date by which payment is due
-     * @param  null|string            $newMandate     Mandate
      * @return static
      *
      * @phpstan-param-out string $newDescription
      * @phpstan-param-out null|DateTimeInterface $newDueDate
      * @phpstan-param-out string $newMandate
      */
-    public function getDocumentPaymentTerm(
+    abstract public function getDocumentPaymentTerm(
         ?string &$newDescription,
         ?DateTimeInterface &$newDueDate,
         ?string &$newMandate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentTerm($newDescription, $newDueDate, $newMandate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first payment discount term in latest resolved payment term
      *
      * @return bool
      */
-    public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentDiscountTermsInLastPaymentTerm();
-    }
+    abstract public function firstDocumentPaymentDiscountTermsInLastPaymentTerm(): bool;
 
     /**
      * Go to the last payment discount term in latest resolved payment term
      *
      * @return bool
      */
-    public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentDiscountTermsInLastPaymentTerm();
-    }
+    abstract public function nextDocumentPaymentDiscountTermsInLastPaymentTerm(): bool;
 
     /**
      * Get payment discount terms in latest resolved payment terms
@@ -4626,45 +3180,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newBasePeriod
      * @phpstan-param-out string $newBasePeriodUnit
      */
-    public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
+    abstract public function getDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
         ?float &$newDiscountAmount,
         ?float &$newDiscountPercent,
         ?DateTimeInterface &$newBaseDate,
         ?float &$newBasePeriod,
         ?string &$newBasePeriodUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentDiscountTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newDiscountAmount,
-            $newDiscountPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first payment penalty term in latest resolved payment term
      *
      * @return bool
      */
-    public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPaymentPenaltyTermsInLastPaymentTerm();
-    }
+    abstract public function firstDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool;
 
     /**
      * Go to the last payment penalty term in latest resolved payment term
      *
      * @return bool
      */
-    public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPaymentPenaltyTermsInLastPaymentTerm();
-    }
+    abstract public function nextDocumentPaymentPenaltyTermsInLastPaymentTerm(): bool;
 
     /**
      * Get payment penalty terms in latest resolved payment terms
@@ -4683,45 +3220,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newBasePeriod
      * @phpstan-param-out string $newBasePeriodUnit
      */
-    public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
+    abstract public function getDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float &$newBaseAmount,
         ?float &$newPenaltyAmount,
         ?float &$newPenaltyPercent,
         ?DateTimeInterface &$newBaseDate,
         ?float &$newBasePeriod,
         ?string &$newBasePeriodUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPaymentPenaltyTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newPenaltyAmount,
-            $newPenaltyPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Document Tax Breakdown
      *
      * @return bool
      */
-    public function firstDocumentTax(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentTax();
-    }
+    abstract public function firstDocumentTax(): bool;
 
     /**
      * Go to the next Document Tax Breakdown
      *
      * @return bool
      */
-    public function nextDocumentTax(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentTax();
-    }
+    abstract public function nextDocumentTax(): bool;
 
     /**
      * Get Document Tax Breakdown
@@ -4747,7 +3267,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out DateTimeInterface|null $newTaxDueDate
      * @phpstan-param-out string $newTaxDueCode
      */
-    public function getDocumentTax(
+    abstract public function getDocumentTax(
         ?string &$newTaxCategory,
         ?string &$newTaxType,
         ?float &$newBasisAmount,
@@ -4757,41 +3277,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newExemptionReasonCode,
         ?DateTimeInterface &$newTaxDueDate,
         ?string &$newTaxDueCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newBasisAmount,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode,
-            $newTaxDueDate,
-            $newTaxDueCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Document Allowance/Charge
      *
      * @return bool
      */
-    public function firstDocumentAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentAllowanceCharge();
-    }
+    abstract public function firstDocumentAllowanceCharge(): bool;
 
     /**
      * Go to the next Document Allowance/Charge
      *
      * @return bool
      */
-    public function nextDocumentAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentAllowanceCharge();
-    }
+    abstract public function nextDocumentAllowanceCharge(): bool;
 
     /**
      * Get Document Allowance/Charge
@@ -4817,7 +3317,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newAllowanceChargeReasonCode
      * @phpstan-param-out float $newAllowanceChargePercent
      */
-    public function getDocumentAllowanceCharge(
+    abstract public function getDocumentAllowanceCharge(
         ?bool &$newChargeIndicator,
         ?float &$newAllowanceChargeAmount,
         ?float &$newAllowanceChargeBaseAmount,
@@ -4827,41 +3327,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newAllowanceChargeReason,
         ?string &$newAllowanceChargeReasonCode,
         ?float &$newAllowanceChargePercent
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Document Logistic Service Charge
      *
      * @return bool
      */
-    public function firstDocumentLogisticServiceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentLogisticServiceCharge();
-    }
+    abstract public function firstDocumentLogisticServiceCharge(): bool;
 
     /**
      * Go to the next Document Logistic Service Charge
      *
      * @return bool
      */
-    public function nextDocumentLogisticServiceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentLogisticServiceCharge();
-    }
+    abstract public function nextDocumentLogisticServiceCharge(): bool;
 
     /**
      * Get Document Logistic Service Charge
@@ -4879,23 +3359,13 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxType
      * @phpstan-param-out float $newTaxPercent
      */
-    public function getDocumentLogisticServiceCharge(
+    abstract public function getDocumentLogisticServiceCharge(
         ?float &$newChargeAmount,
         ?string &$newDescription,
         ?string &$newTaxCategory,
         ?string &$newTaxType,
         ?float &$newTaxPercent
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentLogisticServiceCharge(
-            $newChargeAmount,
-            $newDescription,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the document summation
@@ -4922,7 +3392,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newPrepaidAmount
      * @phpstan-param-out float $newRoungingAmount
      */
-    public function getDocumentSummation(
+    abstract public function getDocumentSummation(
         ?float &$newNetAmount,
         ?float &$newChargeTotalAmount,
         ?float &$newDiscountTotalAmount,
@@ -4933,42 +3403,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?float &$newDueAmount,
         ?float &$newPrepaidAmount,
         ?float &$newRoungingAmount
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentSummation(
-            $newNetAmount,
-            $newChargeTotalAmount,
-            $newDiscountTotalAmount,
-            $newTaxBasisAmount,
-            $newTaxTotalAmount,
-            $newTaxTotalAmount2,
-            $newGrossAmount,
-            $newDueAmount,
-            $newPrepaidAmount,
-            $newRoungingAmount
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first document position
      *
      * @return bool
      */
-    public function firstDocumentPosition(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPosition();
-    }
+    abstract public function firstDocumentPosition(): bool;
 
     /**
      * Go to the next document position
      *
      * @return bool
      */
-    public function nextDocumentPosition(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPosition();
-    }
+    abstract public function nextDocumentPosition(): bool;
 
     /**
      * Get position general information
@@ -4984,41 +3433,26 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newLineStatusCode
      * @phpstan-param-out string $newLineStatusReasonCode
      */
-    public function getDocumentPosition(
+    abstract public function getDocumentPosition(
         ?string &$newPositionId,
         ?string &$newParentPositionId,
         ?string &$newLineStatusCode,
         ?string &$newLineStatusReasonCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPosition(
-            $newPositionId,
-            $newParentPositionId,
-            $newLineStatusCode,
-            $newLineStatusReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first text information of the latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionNote(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionNote();
-    }
+    abstract public function firstDocumentPositionNote(): bool;
 
     /**
      * Go to the next text information of the latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionNote(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionNote();
-    }
+    abstract public function nextDocumentPositionNote(): bool;
 
     /**
      * Get text information from latest position
@@ -5032,15 +3466,11 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newContentCode
      * @phpstan-param-out string $newSubjectCode
      */
-    public function getDocumentPositionNote(
+    abstract public function getDocumentPositionNote(
         ?string &$newContent,
         ?string &$newContentCode,
         ?string &$newSubjectCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNote($newContent, $newContentCode, $newSubjectCode);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get product details from latest position
@@ -5074,7 +3504,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newProductModelName
      * @phpstan-param-out string $newProductOriginTradeCountry
      */
-    public function getDocumentPositionProductDetails(
+    abstract public function getDocumentPositionProductDetails(
         ?string &$newProductId,
         ?string &$newProductName,
         ?string &$newProductDescription,
@@ -5088,45 +3518,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newProductBrandName,
         ?string &$newProductModelName,
         ?string &$newProductOriginTradeCountry
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductDetails(
-            $newProductId,
-            $newProductName,
-            $newProductDescription,
-            $newProductSellerId,
-            $newProductBuyerId,
-            $newProductGlobalId,
-            $newProductGlobalIdType,
-            $newProductIndustryId,
-            $newProductModelId,
-            $newProductBatchId,
-            $newProductBrandName,
-            $newProductModelName,
-            $newProductOriginTradeCountry
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first product characteristics from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionProductCharacteristic(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionProductCharacteristic();
-    }
+    abstract public function firstDocumentPositionProductCharacteristic(): bool;
 
     /**
      * Go to the next product characteristics from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionProductCharacteristic(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionProductCharacteristic();
-    }
+    abstract public function nextDocumentPositionProductCharacteristic(): bool;
 
     /**
      * Get product characteristics from latest position
@@ -5144,43 +3550,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newProductCharacteristicMeasureValue
      * @phpstan-param-out string $newProductCharacteristicMeasureUnit
      */
-    public function getDocumentPositionProductCharacteristic(
+    abstract public function getDocumentPositionProductCharacteristic(
         ?string &$newProductCharacteristicDescription,
         ?string &$newProductCharacteristicValue,
         ?string &$newProductCharacteristicType,
         ?float &$newProductCharacteristicMeasureValue,
         ?string &$newProductCharacteristicMeasureUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductCharacteristic(
-            $newProductCharacteristicDescription,
-            $newProductCharacteristicValue,
-            $newProductCharacteristicType,
-            $newProductCharacteristicMeasureValue,
-            $newProductCharacteristicMeasureUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first product classification from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionProductClassification(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionProductClassification();
-    }
+    abstract public function firstDocumentPositionProductClassification(): bool;
 
     /**
      * Go to the next product classification from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionProductClassification(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionProductClassification();
-    }
+    abstract public function nextDocumentPositionProductClassification(): bool;
 
     /**
      * Get product classification from latest position
@@ -5196,41 +3586,26 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newProductClassificationListVersionId
      * @phpstan-param-out string $newProductClassificationCodeClassname
      */
-    public function getDocumentPositionProductClassification(
+    abstract public function getDocumentPositionProductClassification(
         ?string &$newProductClassificationCode,
         ?string &$newProductClassificationListId,
         ?string &$newProductClassificationListVersionId,
         ?string &$newProductClassificationCodeClassname
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionProductClassification(
-            $newProductClassificationCode,
-            $newProductClassificationListId,
-            $newProductClassificationListVersionId,
-            $newProductClassificationCodeClassname
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first referenced product in latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionReferencedProduct(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionReferencedProduct();
-    }
+    abstract public function firstDocumentPositionReferencedProduct(): bool;
 
     /**
      * Go to the next referenced product in latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionReferencedProduct(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionReferencedProduct();
-    }
+    abstract public function nextDocumentPositionReferencedProduct(): bool;
 
     /**
      * Get referenced product from latest position
@@ -5258,7 +3633,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newProductUnitQuantity
      * @phpstan-param-out string $newProductUnitQuantityUnit
      */
-    public function getDocumentPositionReferencedProduct(
+    abstract public function getDocumentPositionReferencedProduct(
         ?string &$newProductId,
         ?string &$newProductName,
         ?string &$newProductDescription,
@@ -5269,42 +3644,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newProductIndustryId,
         ?float &$newProductUnitQuantity,
         ?string &$newProductUnitQuantityUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionReferencedProduct(
-            $newProductId,
-            $newProductName,
-            $newProductDescription,
-            $newProductSellerId,
-            $newProductBuyerId,
-            $newProductGlobalId,
-            $newProductGlobalIdType,
-            $newProductIndustryId,
-            $newProductUnitQuantity,
-            $newProductUnitQuantityUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated seller's order confirmation (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionSellerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionSellerOrderReference();
-    }
+    abstract public function firstDocumentPositionSellerOrderReference(): bool;
 
     /**
      * Go to the next associated seller's order confirmation (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionSellerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionSellerOrderReference();
-    }
+    abstract public function nextDocumentPositionSellerOrderReference(): bool;
 
     /**
      * Get the associated seller's order confirmation (line reference) from latest position
@@ -5318,42 +3672,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionSellerOrderReference(
+    abstract public function getDocumentPositionSellerOrderReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSellerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated buyer's order confirmation (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionBuyerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionBuyerOrderReference();
-    }
+    abstract public function firstDocumentPositionBuyerOrderReference(): bool;
 
     /**
      * Go to the next associated buyer's order confirmation (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionBuyerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionBuyerOrderReference();
-    }
+    abstract public function nextDocumentPositionBuyerOrderReference(): bool;
 
     /**
-     * Get the associated buyer's order confirmation (line reference).
+     * Get the associated buyer's order confirmation (line reference) from latest position
      *
      * @param  null|string            $newReferenceNumber     Buyer's order confirmation number
      * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
@@ -5364,42 +3704,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionBuyerOrderReference(
+    abstract public function getDocumentPositionBuyerOrderReference(
         ?string &$newReferenceNumber = null,
         ?string &$newReferenceLineNumber = null,
         ?DateTimeInterface &$newReferenceDate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionBuyerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
-     * Go to the first associated quotation (line reference)
+     * Go to the first associated quotation (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionQuotationReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionQuotationReference();
-    }
+    abstract public function firstDocumentPositionQuotationReference(): bool;
 
     /**
      * Go to the next associated quotation (line reference)
      *
      * @return bool
      */
-    public function nextDocumentPositionQuotationReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionQuotationReference();
-    }
+    abstract public function nextDocumentPositionQuotationReference(): bool;
 
     /**
-     * Set the associated quotation (line reference).
+     * Get the associated quotation (line reference) from latest position
      *
      * @param  null|string            $newReferenceNumber     Buyer's order confirmation number
      * @param  null|string            $newReferenceLineNumber Buyer's order confirmation line number
@@ -5410,39 +3736,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionQuotationReference(
+    abstract public function getDocumentPositionQuotationReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionQuotationReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first associated contract (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionContractReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionContractReference();
-    }
+    abstract public function firstDocumentPositionContractReference(): bool;
 
     /**
      * Go to the next associated contract (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionContractReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionContractReference();
-    }
+    abstract public function nextDocumentPositionContractReference(): bool;
 
     /**
      * Get the associated contract (line reference) from latest position
@@ -5456,50 +3768,36 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionContractReference(
+    abstract public function getDocumentPositionContractReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionContractReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to first additional associated document (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionAdditionalReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAdditionalReference();
-    }
+    abstract public function firstDocumentPositionAdditionalReference(): bool;
 
     /**
      * Go to next additional associated document (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionAdditionalReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAdditionalReference();
-    }
+    abstract public function nextDocumentPositionAdditionalReference(): bool;
 
     /**
      * Get an additional associated document (line reference) from latest position
      *
-     * @param  null|string                 $newReferenceNumber        Additional document number
-     * @param  null|string                 $newReferenceLineNumber    Additional document line number
-     * @param  null|DateTimeInterface      $newReferenceDate          Additional document date
-     * @param  null|string                 $newTypeCode               Additional document type code
-     * @param  null|string                 $newReferenceTypeCode      Additional document reference-type code
-     * @param  null|string                 $newDescription            Additional document description
-     * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
+     * @param  null|string                 $newReferenceNumber         Additional document number
+     * @param  null|string                 $newReferenceLineNumber     Additional document line number
+     * @param  null|DateTimeInterface      $newReferenceDate           Additional document date
+     * @param  null|string                 $newTypeCode                Additional document type code
+     * @param  null|string                 $newReferenceTypeCode       Additional document reference-type code
+     * @param  null|string                 $newDescription             Additional document description
+     * @param  null|InvoiceSuiteAttachment &$newInvoiceSuiteAttachment Additional document attachment
      * @return static
      *
      * @phpstan-param-out string $newReferenceNumber
@@ -5510,7 +3808,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newDescription
      * @phpstan-param-out InvoiceSuiteAttachment|null $newInvoiceSuiteAttachment
      */
-    public function getDocumentPositionAdditionalReference(
+    abstract public function getDocumentPositionAdditionalReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate,
@@ -5518,39 +3816,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newReferenceTypeCode,
         ?string &$newDescription,
         ?InvoiceSuiteAttachment &$newInvoiceSuiteAttachment
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first an additional ultimate customer order reference (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateCustomerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateCustomerOrderReference();
-    }
+    abstract public function firstDocumentPositionUltimateCustomerOrderReference(): bool;
 
     /**
      * Go to the next an additional ultimate customer order reference (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateCustomerOrderReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateCustomerOrderReference();
-    }
+    abstract public function nextDocumentPositionUltimateCustomerOrderReference(): bool;
 
     /**
      * Get an additional ultimate customer order reference (line reference) from latest position
@@ -5564,39 +3844,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionUltimateCustomerOrderReference(
+    abstract public function getDocumentPositionUltimateCustomerOrderReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateCustomerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional despatch advice reference (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionDespatchAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionDespatchAdviceReference();
-    }
+    abstract public function firstDocumentPositionDespatchAdviceReference(): bool;
 
     /**
      * Go to the next additional despatch advice reference (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionDespatchAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionDespatchAdviceReference();
-    }
+    abstract public function nextDocumentPositionDespatchAdviceReference(): bool;
 
     /**
      * Get an additional despatch advice reference (line reference) from latest position
@@ -5610,39 +3876,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionDespatchAdviceReference(
+    abstract public function getDocumentPositionDespatchAdviceReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionDespatchAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional receiving advice reference (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionReceivingAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionReceivingAdviceReference();
-    }
+    abstract public function firstDocumentPositionReceivingAdviceReference(): bool;
 
     /**
      * Go to the next additional receiving advice reference (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionReceivingAdviceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionReceivingAdviceReference();
-    }
+    abstract public function nextDocumentPositionReceivingAdviceReference(): bool;
 
     /**
      * Get an additional receiving advice reference (line reference) from latest position
@@ -5656,39 +3908,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionReceivingAdviceReference(
+    abstract public function getDocumentPositionReceivingAdviceReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionReceivingAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional delivery note reference (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionDeliveryNoteReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionDeliveryNoteReference();
-    }
+    abstract public function firstDocumentPositionDeliveryNoteReference(): bool;
 
     /**
      * Go to the next additional delivery note reference (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionDeliveryNoteReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionDeliveryNoteReference();
-    }
+    abstract public function nextDocumentPositionDeliveryNoteReference(): bool;
 
     /**
      * Get an additional delivery note reference (line reference) from latest position
@@ -5702,39 +3940,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newReferenceLineNumber
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      */
-    public function getDocumentPositionDeliveryNoteReference(
+    abstract public function getDocumentPositionDeliveryNoteReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionDeliveryNoteReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional invoice document (reference to preceding invoice) (line reference) from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionInvoiceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionInvoiceReference();
-    }
+    abstract public function firstDocumentPositionInvoiceReference(): bool;
 
     /**
      * Go to the next additional invoice document (reference to preceding invoice) (line reference) from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionInvoiceReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionInvoiceReference();
-    }
+    abstract public function nextDocumentPositionInvoiceReference(): bool;
 
     /**
      * Get an additional invoice document (reference to preceding invoice) (line reference) from latest position
@@ -5750,41 +3974,26 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out DateTimeInterface|null $newReferenceDate
      * @phpstan-param-out string $newTypeCode
      */
-    public function getDocumentPositionInvoiceReference(
+    abstract public function getDocumentPositionInvoiceReference(
         ?string &$newReferenceNumber,
         ?string &$newReferenceLineNumber,
         ?DateTimeInterface &$newReferenceDate,
         ?string &$newTypeCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first additional object reference
      *
      * @return bool
      */
-    public function firstDocumentPositionAdditionalObjectReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAdditionalObjectReference();
-    }
+    abstract public function firstDocumentPositionAdditionalObjectReference(): bool;
 
     /**
      * Go to the next additional object reference
      *
      * @return bool
      */
-    public function nextDocumentPositionAdditionalObjectReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAdditionalObjectReference();
-    }
+    abstract public function nextDocumentPositionAdditionalObjectReference(): bool;
 
     /**
      * Get an additional object reference
@@ -5798,29 +4007,18 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTypeCode
      * @phpstan-param-out string $newReferenceTypeCode
      */
-    public function getDocumentPositionAdditionalObjectReference(
+    abstract public function getDocumentPositionAdditionalObjectReference(
         ?string &$newReferenceNumber = null,
         ?string &$newTypeCode = null,
         ?string &$newReferenceTypeCode = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Returns true if a gross price was specified
      *
      * @return bool
      */
-    public function firstDcumentPositionGrossPrice(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDcumentPositionGrossPrice();
-    }
+    abstract public function firstDcumentPositionGrossPrice(): bool;
 
     /**
      * Get the position's gross price from latest position
@@ -5834,39 +4032,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newGrossPriceBasisQuantity
      * @phpstan-param-out string $newGrossPriceBasisQuantityUnit
      */
-    public function getDocumentPositionGrossPrice(
+    abstract public function getDocumentPositionGrossPrice(
         ?float &$newGrossPrice,
         ?float &$newGrossPriceBasisQuantity,
         ?string &$newGrossPriceBasisQuantityUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionGrossPrice(
-            $newGrossPrice,
-            $newGrossPriceBasisQuantity,
-            $newGrossPriceBasisQuantityUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first discount or charge from the gross price from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionGrossPriceAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionGrossPriceAllowanceCharge();
-    }
+    abstract public function firstDocumentPositionGrossPriceAllowanceCharge(): bool;
 
     /**
      * Go to the next discount or charge from the gross price from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionGrossPriceAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionGrossPriceAllowanceCharge();
-    }
+    abstract public function nextDocumentPositionGrossPriceAllowanceCharge(): bool;
 
     /**
      * Get discount or charge from the gross price from latest position
@@ -5886,35 +4070,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGrossPriceAllowanceChargeReason
      * @phpstan-param-out string $newGrossPriceAllowanceChargeReasonCode
      */
-    public function getDocumentPositionGrossPriceAllowanceCharge(
+    abstract public function getDocumentPositionGrossPriceAllowanceCharge(
         ?float &$newGrossPriceAllowanceChargeAmount,
         ?bool &$newIsCharge,
         ?float &$newGrossPriceAllowanceChargePercent,
         ?float &$newGrossPriceAllowanceChargeBasisAmount,
         ?string &$newGrossPriceAllowanceChargeReason,
         ?string &$newGrossPriceAllowanceChargeReasonCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionGrossPriceAllowanceCharge(
-            $newGrossPriceAllowanceChargeAmount,
-            $newIsCharge,
-            $newGrossPriceAllowanceChargePercent,
-            $newGrossPriceAllowanceChargeBasisAmount,
-            $newGrossPriceAllowanceChargeReason,
-            $newGrossPriceAllowanceChargeReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Returns true if a net price was specified
      *
      * @return bool
      */
-    public function firstDocumentPositionNetPrice(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionNetPrice();
-    }
+    abstract public function firstDocumentPositionNetPrice(): bool;
 
     /**
      * Get the position's net price from latest position
@@ -5928,19 +4098,11 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newNetPriceBasisQuantity
      * @phpstan-param-out string $newNetPriceBasisQuantityUnit
      */
-    public function getDocumentPositionNetPrice(
+    abstract public function getDocumentPositionNetPrice(
         ?float &$newNetPrice,
         ?float &$newNetPriceBasisQuantity,
         ?string &$newNetPriceBasisQuantityUnit
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNetPrice(
-            $newNetPrice,
-            $newNetPriceBasisQuantity,
-            $newNetPriceBasisQuantityUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the position's net price included tax from latest position
@@ -5960,25 +4122,14 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newExemptionReason
      * @phpstan-param-out string $newExemptionReasonCode
      */
-    public function getDocumentPositionNetPriceTax(
+    abstract public function getDocumentPositionNetPriceTax(
         ?string &$newTaxCategory,
         ?string &$newTaxType,
         ?float &$newTaxAmount,
         ?float &$newTaxPercent,
         ?string &$newExemptionReason,
         ?string &$newExemptionReasonCode
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionNetPriceTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the position's quantities from latest position
@@ -6002,7 +4153,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newPerPackageUnitQuantity
      * @phpstan-param-out string $newPerPackageUnitQuantityUnit
      */
-    public function getDocumentPositionQuantities(
+    abstract public function getDocumentPositionQuantities(
         ?float &$newQuantity,
         ?string &$newQuantityUnit,
         ?float &$newChargeFreeQuantity,
@@ -6011,20 +4162,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newPackageQuantityUnit,
         ?float &$newPerPackageUnitQuantity,
         ?string &$newPerPackageUnitQuantityUnit,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionQuantities(
-            $newQuantity,
-            $newQuantityUnit,
-            $newChargeFreeQuantity,
-            $newChargeFreeQuantityUnit,
-            $newPackageQuantity,
-            $newPackageQuantityUnit,
-            $newPerPackageUnitQuantity,
-            $newPerPackageUnitQuantityUnit
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the Ship-To party from latest position
@@ -6034,69 +4172,49 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPositionShipToName(
+    abstract public function getDocumentPositionShipToName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToName($newName);
-
-        return $this;
-    }
-
-    /**
-     * Go to the first ID of the Ship-To party
-     *
-     * @return bool
-     */
-    public function firstDocumentPositionShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToId();
-    }
-
-    /**
-     * Go to the next ID of the Ship-To party
-     *
-     * @return bool
-     */
-    public function nextDocumentPositionShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToId();
-    }
-
-    /**
-     * Get the ID of the Ship-To party
-     *
-     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
-     * @return static
-     *
-     * @phpstan-param-out string $newId
-     */
-    public function getDocumentPositionShipToId(
-        ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToGlobalId();
-    }
+    abstract public function firstDocumentPositionShipToId(): bool;
 
     /**
      * Go to the next ID of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToGlobalId();
-    }
+    abstract public function nextDocumentPositionShipToId(): bool;
+
+    /**
+     * Get the ID of the Ship-To party from latest position
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    abstract public function getDocumentPositionShipToId(
+        ?string &$newId
+    ): static;
+
+    /**
+     * Go to the first ID of the Ship-To party from latest position
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentPositionShipToGlobalId(): bool;
+
+    /**
+     * Go to the next ID of the Ship-To party from latest position
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentPositionShipToGlobalId(): bool;
 
     /**
      * Get the Global ID of the Ship-To party from latest position
@@ -6108,37 +4226,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentPositionShipToGlobalId(
+    abstract public function getDocumentPositionShipToGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToTaxRegistration();
-    }
+    abstract public function firstDocumentPositionShipToTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToTaxRegistration();
-    }
+    abstract public function nextDocumentPositionShipToTaxRegistration(): bool;
 
     /**
-     * Get the Tax Registration of the Ship-To party
+     * Get the Tax Registration of the Ship-To party from latest position
      *
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
@@ -6147,37 +4255,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentPositionShipToTaxRegistration(
+    abstract public function getDocumentPositionShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToAddress();
-    }
+    abstract public function firstDocumentPositionShipToAddress(): bool;
 
     /**
      * Go to the first address of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToAddress();
-    }
+    abstract public function nextDocumentPositionShipToAddress(): bool;
 
     /**
      * Get the address of the Ship-To party from latest position
@@ -6199,7 +4294,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentPositionShipToAddress(
+    abstract public function getDocumentPositionShipToAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -6207,39 +4302,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToLegalOrganisation();
-    }
+    abstract public function firstDocumentPositionShipToLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToLegalOrganisation();
-    }
+    abstract public function nextDocumentPositionShipToLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the Ship-To party from latest position
@@ -6253,39 +4330,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPositionShipToLegalOrganisation(
+    abstract public function getDocumentPositionShipToLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToContact();
-    }
+    abstract public function firstDocumentPositionShipToContact(): bool;
 
     /**
      * Go to the next contact information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToContact();
-    }
+    abstract public function nextDocumentPositionShipToContact(): bool;
 
     /**
      * Get the contact information of the Ship-To party from latest position
@@ -6303,43 +4366,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentPositionShipToContact(
+    abstract public function getDocumentPositionShipToContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionShipToCommunication();
-    }
+    abstract public function firstDocumentPositionShipToCommunication(): bool;
 
     /**
      * Go to the next communication information of the Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionShipToCommunication();
-    }
+    abstract public function nextDocumentPositionShipToCommunication(): bool;
 
     /**
      * Get the communication information of the Ship-To party from latest position
@@ -6351,17 +4398,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentPositionShipToCommunication(
+    abstract public function getDocumentPositionShipToCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the name of the ultimate Ship-To party from latest position
@@ -6371,69 +4411,49 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPositionUltimateShipToName(
+    abstract public function getDocumentPositionUltimateShipToName(
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToName($newName);
-
-        return $this;
-    }
-
-    /**
-     * Go to the first ID of the ultimate Ship-To party
-     *
-     * @return bool
-     */
-    public function firstDocumentPositionUltimateShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToId();
-    }
-
-    /**
-     * Go to the next ID of the ultimate Ship-To party
-     *
-     * @return bool
-     */
-    public function nextDocumentPositionUltimateShipToId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToId();
-    }
-
-    /**
-     * Get the ID of the ultimate Ship-To party
-     *
-     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
-     * @return static
-     *
-     * @phpstan-param-out string $newId
-     */
-    public function getDocumentPositionUltimateShipToId(
-        ?string &$newId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first ID of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToGlobalId();
-    }
+    abstract public function firstDocumentPositionUltimateShipToId(): bool;
 
     /**
      * Go to the next ID of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToGlobalId(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToGlobalId();
-    }
+    abstract public function nextDocumentPositionUltimateShipToId(): bool;
+
+    /**
+     * Get the ID of the ultimate Ship-To party from latest position
+     *
+     * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
+     * @return static
+     *
+     * @phpstan-param-out string $newId
+     */
+    abstract public function getDocumentPositionUltimateShipToId(
+        ?string &$newId
+    ): static;
+
+    /**
+     * Go to the first ID of the ultimate Ship-To party from latest position
+     *
+     * @return bool
+     */
+    abstract public function firstDocumentPositionUltimateShipToGlobalId(): bool;
+
+    /**
+     * Go to the next ID of the ultimate Ship-To party from latest position
+     *
+     * @return bool
+     */
+    abstract public function nextDocumentPositionUltimateShipToGlobalId(): bool;
 
     /**
      * Get the Global ID of the ultimate Ship-To party from latest position
@@ -6445,37 +4465,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newGlobalId
      * @phpstan-param-out string $newGlobalIdType
      */
-    public function getDocumentPositionUltimateShipToGlobalId(
+    abstract public function getDocumentPositionUltimateShipToGlobalId(
         ?string &$newGlobalId,
         ?string &$newGlobalIdType
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Tax Registration of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToTaxRegistration();
-    }
+    abstract public function firstDocumentPositionUltimateShipToTaxRegistration(): bool;
 
     /**
      * Go to the next Tax Registration of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToTaxRegistration(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToTaxRegistration();
-    }
+    abstract public function nextDocumentPositionUltimateShipToTaxRegistration(): bool;
 
     /**
-     * Get the Tax Registration of the ultimate Ship-To party
+     * Get the Tax Registration of the ultimate Ship-To party from latest position
      *
      * @param  null|string $newTaxRegistrationType Type of tax identification number of the party (e.g. FC = Tax number or VA = Sales tax identification number).
      * @param  null|string $newTaxRegistrationId   tax identification number
@@ -6484,37 +4494,24 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newTaxRegistrationType
      * @phpstan-param-out string $newTaxRegistrationId
      */
-    public function getDocumentPositionUltimateShipToTaxRegistration(
+    abstract public function getDocumentPositionUltimateShipToTaxRegistration(
         ?string &$newTaxRegistrationType,
         ?string &$newTaxRegistrationId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first address of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToAddress();
-    }
+    abstract public function firstDocumentPositionUltimateShipToAddress(): bool;
 
     /**
      * Go to the first address of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToAddress(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToAddress();
-    }
+    abstract public function nextDocumentPositionUltimateShipToAddress(): bool;
 
     /**
      * Get the address of the ultimate Ship-To party from latest position
@@ -6536,7 +4533,7 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newCountryId
      * @phpstan-param-out string $newSubDivision
      */
-    public function getDocumentPositionUltimateShipToAddress(
+    abstract public function getDocumentPositionUltimateShipToAddress(
         ?string &$newAddressLine1,
         ?string &$newAddressLine2,
         ?string &$newAddressLine3,
@@ -6544,39 +4541,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
         ?string &$newCity,
         ?string &$newCountryId,
         ?string &$newSubDivision
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first the legal information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToLegalOrganisation();
-    }
+    abstract public function firstDocumentPositionUltimateShipToLegalOrganisation(): bool;
 
     /**
      * Go to the next the legal information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToLegalOrganisation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToLegalOrganisation();
-    }
+    abstract public function nextDocumentPositionUltimateShipToLegalOrganisation(): bool;
 
     /**
      * Get the legal information of the ultimate Ship-To party from latest position
@@ -6590,39 +4569,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newId
      * @phpstan-param-out string $newName
      */
-    public function getDocumentPositionUltimateShipToLegalOrganisation(
+    abstract public function getDocumentPositionUltimateShipToLegalOrganisation(
         ?string &$newType,
         ?string &$newId,
         ?string &$newName
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first contact information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToContact();
-    }
+    abstract public function firstDocumentPositionUltimateShipToContact(): bool;
 
     /**
      * Go to the next contact information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToContact(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToContact();
-    }
+    abstract public function nextDocumentPositionUltimateShipToContact(): bool;
 
     /**
      * Get the contact information of the ultimate Ship-To party from latest position
@@ -6640,43 +4605,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newFaxNumber
      * @phpstan-param-out string $newEmailAddress
      */
-    public function getDocumentPositionUltimateShipToContact(
+    abstract public function getDocumentPositionUltimateShipToContact(
         ?string &$newPersonName,
         ?string &$newDepartmentName,
         ?string &$newPhoneNumber,
         ?string &$newFaxNumber,
         ?string &$newEmailAddress
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first communication information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionUltimateShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionUltimateShipToCommunication();
-    }
+    abstract public function firstDocumentPositionUltimateShipToCommunication(): bool;
 
     /**
      * Go to the next communication information of the ultimate Ship-To party from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionUltimateShipToCommunication(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionUltimateShipToCommunication();
-    }
+    abstract public function nextDocumentPositionUltimateShipToCommunication(): bool;
 
     /**
      * Get the communication information of the ultimate Ship-To party from latest position
@@ -6688,17 +4637,10 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newUri
      */
-    public function getDocumentPositionUltimateShipToCommunication(
+    abstract public function getDocumentPositionUltimateShipToCommunication(
         ?string &$newType,
         ?string &$newUri
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionUltimateShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Get the date of the delivery from latest position
@@ -6708,33 +4650,23 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      *
      * @phpstan-param-out DateTimeInterface|null $newDate
      */
-    public function getDocumentPositionSupplyChainEvent(
+    abstract public function getDocumentPositionSupplyChainEvent(
         ?DateTimeInterface &$newDate
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSupplyChainEvent($newDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first billing period
      *
      * @return bool
      */
-    public function firstDocumentPositionBillingPeriod(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionBillingPeriod();
-    }
+    abstract public function firstDocumentPositionBillingPeriod(): bool;
 
     /**
      * Go to the next billing period
      *
      * @return bool
      */
-    public function nextDocumentPositionBillingPeriod(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionBillingPeriod();
-    }
+    abstract public function nextDocumentPositionBillingPeriod(): bool;
 
     /**
      * Get the start and/or end date of the billing period from latest position
@@ -6748,39 +4680,25 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out DateTimeInterface|null $newEndDate
      * @phpstan-param-out string $newDescription
      */
-    public function getDocumentPositionBillingPeriod(
+    abstract public function getDocumentPositionBillingPeriod(
         ?DateTimeInterface &$newStartDate,
         ?DateTimeInterface &$newEndDate,
         ?string &$newDescription,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionBillingPeriod(
-            $newStartDate,
-            $newEndDate,
-            $newDescription
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first position's tax information from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionTax(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionTax();
-    }
+    abstract public function firstDocumentPositionTax(): bool;
 
     /**
      * Go to the next position's tax information from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionTax(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionTax();
-    }
+    abstract public function nextDocumentPositionTax(): bool;
 
     /**
      * Get the position's tax information from latest position
@@ -6800,45 +4718,28 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newExemptionReason
      * @phpstan-param-out string $newExemptionReasonCode
      */
-    public function getDocumentPositionTax(
+    abstract public function getDocumentPositionTax(
         ?string &$newTaxCategory,
         ?string &$newTaxType,
         ?float &$newTaxAmount,
         ?float &$newTaxPercent,
         ?string &$newExemptionReason,
         ?string &$newExemptionReasonCode,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode,
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first Document position Allowance/Charge from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionAllowanceCharge();
-    }
+    abstract public function firstDocumentPositionAllowanceCharge(): bool;
 
     /**
      * Go to the next Document position Allowance/Charge from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionAllowanceCharge(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionAllowanceCharge();
-    }
+    abstract public function nextDocumentPositionAllowanceCharge(): bool;
 
     /**
      * Get Document position Allowance/Charge from latest position
@@ -6858,35 +4759,21 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newAllowanceChargeReasonCode
      * @phpstan-param-out float $newAllowanceChargePercent
      */
-    public function getDocumentPositionAllowanceCharge(
+    abstract public function getDocumentPositionAllowanceCharge(
         ?bool &$newChargeIndicator,
         ?float &$newAllowanceChargeAmount,
         ?float &$newAllowanceChargeBaseAmount,
         ?string &$newAllowanceChargeReason,
         ?string &$newAllowanceChargeReasonCode,
         ?float &$newAllowanceChargePercent
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Returns true if a position summation exists
      *
      * @return bool
      */
-    public function firstDocumentPositionSummation(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionSummation();
-    }
+    abstract public function firstDocumentPositionSummation(): bool;
 
     /**
      * Get the document position summation from latest position
@@ -6904,43 +4791,27 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out float $newTaxTotalAmount
      * @phpstan-param-out float $newGrossAmount
      */
-    public function getDocumentPositionSummation(
+    abstract public function getDocumentPositionSummation(
         ?float &$newNetAmount,
         ?float &$newChargeTotalAmount,
         ?float &$newDiscountTotalAmount,
         ?float &$newTaxTotalAmount,
         ?float &$newGrossAmount
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionSummation(
-            $newNetAmount,
-            $newChargeTotalAmount,
-            $newDiscountTotalAmount,
-            $newTaxTotalAmount,
-            $newGrossAmount
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Go to the first posting reference from latest position
      *
      * @return bool
      */
-    public function firstDocumentPositionPostingReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->firstDocumentPositionPostingReference();
-    }
+    abstract public function firstDocumentPositionPostingReference(): bool;
 
     /**
      * Go to the next posting reference from latest position
      *
      * @return bool
      */
-    public function nextDocumentPositionPostingReference(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getReader()->nextDocumentPositionPostingReference();
-    }
+    abstract public function nextDocumentPositionPostingReference(): bool;
 
     /**
      * Get a position's posting reference from latest position
@@ -6952,15 +4823,8 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
      * @phpstan-param-out string $newType
      * @phpstan-param-out string $newAccountId
      */
-    public function getDocumentPositionPostingReference(
+    abstract public function getDocumentPositionPostingReference(
         ?string &$newType,
         ?string &$newAccountId
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getReader()->getDocumentPositionPostingReference(
-            $newType,
-            $newAccountId
-        );
-
-        return $this;
-    }
+    ): static;
 }

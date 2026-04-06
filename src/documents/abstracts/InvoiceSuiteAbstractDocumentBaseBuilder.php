@@ -9,302 +9,31 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace horstoeko\invoicesuite;
+namespace horstoeko\invoicesuite\documents\abstracts;
 
-use BadMethodCallException;
 use DateTimeInterface;
-use Error;
-use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
-use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
-use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseBuilder;
 use horstoeko\invoicesuite\documents\dto\InvoiceSuiteDocumentHeaderDTO;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteBadMethodCallException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
-use horstoeko\invoicesuite\exceptions\InvoiceSuiteUnknownContentException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageBagItem;
-use horstoeko\invoicesuite\utils\InvoiceSuiteMessageSeverity;
-use JMS\Serializer\Exception\RuntimeException;
 
 /**
- * Class representing the document builder
+ * Class representing methods for a builder
  *
  * @category InvoiceSuite
  * @author   horstoeko <horstoeko@erling.com.de>
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilder
+abstract class InvoiceSuiteAbstractDocumentBaseBuilder
 {
-    use HandlesCallForwarding;
-    use HandlesCurrentDocumentFormatProvider;
-    use HandlesDocumentFormatProviders;
-
-    /**
-     * Constructor (hidden)
-     *
-     * @param  string                      $formatProviderUniqueId
-     * @return InvoiceSuiteDocumentBuilder
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     */
-    final protected function __construct(
-        string $formatProviderUniqueId
-    ) {
-        $this->resolveAvailableDocumentFormatProviders();
-        $this->setCurrentDocumentFormatProvider($this->findDocumentFormatProviderByUniqueIdOrFail($formatProviderUniqueId));
-        $this->getCurrentDocumentFormatProvider()->initBuilder();
-    }
-
-    /**
-     * Dynamically pass missing methods to the builder provided by format provider
-     *
-     * @param  string       $method
-     * @param  array<mixed> $parameters
-     * @return mixed
-     *
-     * @throws BadMethodCallException
-     * @throws Error
-     * @throws InvoiceSuiteBadMethodCallException
-     */
-    public function __call(
-        $method,
-        $parameters
-    ) {
-        return $this->forwardCallWithCheckTo($this->getCurrentDocumentFormatProvider()->getBuilder(), $method, $parameters);
-    }
-
-    /**
-     * Create a new InvoiceDocumentBuilder instance for the given format provider
-     *
-     * @param  string $formatProviderUniqueId
-     * @return static
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     */
-    public static function createByProviderUniqueId(
-        string $formatProviderUniqueId
-    ): static {
-        return new static($formatProviderUniqueId);
-    }
-
-    /**
-     * Get the content as XML string
-     *
-     * @return string
-     *
-     * @throws RuntimeException
-     */
-    public function getContent(): string
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->getContent();
-    }
-
-    /**
-     * Save the XML content to a file
-     *
-     * @param  string $tofile
-     * @return void
-     *
-     * @throws RuntimeException
-     */
-    public function saveContentToFile(
-        string $tofile
-    ): void {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->saveContentToFile($tofile);
-    }
-
-    /**
-     * Copy Builder to a Reader instance
-     *
-     * @return InvoiceSuiteDocumentReader
-     *
-     * @throws InvoiceSuiteFormatProviderNotFoundException
-     * @throws InvoiceSuiteUnknownContentException
-     * @throws RuntimeException
-     */
-    public function copyToReader(): InvoiceSuiteDocumentReader
-    {
-        return InvoiceSuiteDocumentReader::createFromContent($this->getContent());
-    }
-
-    /**
-     * Check if any messages exist in the internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->hasMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any messages with the given severity exist in internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity $filterSeverity
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): bool {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->hasMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Check if any INFO messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasInfoMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->hasInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any WARNING messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasWarningMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->hasWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Check if any ERROR messages exist in internal message bag.
-     *
-     * @return bool
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function hasErrorMessagesInMessageBag(): bool
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->hasErrorMessagesInMessageBag();
-    }
-
-    /**
-     * Count messages by severity in internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity $filterSeverity
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): int {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->countMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Count INFO messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countInfoMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->countInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Count WARNING messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countWarningMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->countWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Count ERROR messages in internal message bag.
-     *
-     * @return int
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function countErrorMessagesInMessageBag(): int
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->countErrorMessagesInMessageBag();
-    }
-
-    /**
-     * Get messages by severity from internal message bag.
-     *
-     * @param  InvoiceSuiteMessageSeverity            $filterSeverity
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getMessagesInMessageBagBySeverity(
-        InvoiceSuiteMessageSeverity $filterSeverity
-    ): array {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->getMessagesInMessageBagBySeverity($filterSeverity);
-    }
-
-    /**
-     * Get INFO messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getInfoMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->getInfoMessagesInMessageBag();
-    }
-
-    /**
-     * Get WARNING messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getWarningMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->getWarningMessagesInMessageBag();
-    }
-
-    /**
-     * Get ERROR messages from internal message bag.
-     *
-     * @return array<int, InvoiceSuiteMessageBagItem>
-     *
-     * @throws InvoiceSuiteInvalidArgumentException
-     */
-    public function getErrorMessagesInMessageBag(): array
-    {
-        return $this->getCurrentDocumentFormatProvider()->getBuilder()->getErrorMessagesInMessageBag();
-    }
-
     /**
      * Create a document by a DTO
      *
      * @param  InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
      * @return static
      */
-    public function createFromDTO(
+    abstract public function createFromDTO(
         InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->createFromDTO($newDocumentDTO);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document number (e.g. invoice number)
@@ -312,13 +41,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentNo The document no issued by the seller
      * @return static
      */
-    public function setDocumentNo(
+    abstract public function setDocumentNo(
         ?string $newDocumentNo = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentNo($newDocumentNo);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document type code
@@ -326,13 +51,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentType The type of the document
      * @return static
      */
-    public function setDocumentType(
+    abstract public function setDocumentType(
         ?string $newDocumentType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentType($newDocumentType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document description
@@ -340,13 +61,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentDescription The documenttype as free text
      * @return static
      */
-    public function setDocumentDescription(
+    abstract public function setDocumentDescription(
         ?string $newDocumentDescription = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDescription($newDocumentDescription);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document language
@@ -354,13 +71,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentLanguage Language indicator. The language code in which the document was written
      * @return static
      */
-    public function setDocumentLanguage(
+    abstract public function setDocumentLanguage(
         ?string $newDocumentLanguage = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentLanguage($newDocumentLanguage);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document date (e.g. invoice date)
@@ -368,13 +81,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newDocumentDate Date of the document. The date when the document was issued by the seller
      * @return static
      */
-    public function setDocumentDate(
+    abstract public function setDocumentDate(
         ?DateTimeInterface $newDocumentDate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDate($newDocumentDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document period
@@ -382,13 +91,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newCompleteDate Contractual due date of the document
      * @return static
      */
-    public function setDocumentCompleteDate(
+    abstract public function setDocumentCompleteDate(
         ?DateTimeInterface $newCompleteDate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentCompleteDate($newCompleteDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document currency
@@ -396,13 +101,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentCurrency Code for the invoice currency
      * @return static
      */
-    public function setDocumentCurrency(
+    abstract public function setDocumentCurrency(
         ?string $newDocumentCurrency = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentCurrency($newDocumentCurrency);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new document tax currency
@@ -410,13 +111,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newDocumentTaxCurrency Code for the tax currency
      * @return static
      */
-    public function setDocumentTaxCurrency(
+    abstract public function setDocumentTaxCurrency(
         ?string $newDocumentTaxCurrency = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxCurrency($newDocumentTaxCurrency);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new status of the copy indicator
@@ -424,13 +121,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|bool $newDocumentIsCopy Indicates that the document is a copy
      * @return static
      */
-    public function setDocumentIsCopy(
+    abstract public function setDocumentIsCopy(
         ?bool $newDocumentIsCopy = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentIsCopy($newDocumentIsCopy);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Sets the new status of the test indicator
@@ -438,13 +131,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|bool $newDocumentIsTest Indicates that the document is a test
      * @return static
      */
-    public function setDocumentIsTest(
+    abstract public function setDocumentIsTest(
         ?bool $newDocumentIsTest = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentIsTest($newDocumentIsTest);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set a note to the document. This clears all added notes
@@ -454,15 +143,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubjectCode Qualification of the free text for the invoice
      * @return static
      */
-    public function setDocumentNote(
+    abstract public function setDocumentNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentNote($newContent, $newContentCode, $newSubjectCode);
-
-        return $this;
-    }
+        ?string $newSubjectCode = null
+    ): static;
 
     /**
      * Add a note to the document
@@ -472,15 +157,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubjectCode Qualification of the free text for the invoice
      * @return static
      */
-    public function addDocumentNote(
+    abstract public function addDocumentNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentNote($newContent, $newContentCode, $newSubjectCode);
-
-        return $this;
-    }
+        ?string $newSubjectCode = null
+    ): static;
 
     /**
      * Set the start and/or end date of the billing period
@@ -490,15 +171,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
      */
-    public function setDocumentBillingPeriod(
+    abstract public function setDocumentBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
-
-        return $this;
-    }
+        ?string $newDescription = null
+    ): static;
 
     /**
      * Add a the start and/or end date of the billing period
@@ -508,15 +185,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
      */
-    public function addDocumentBillingPeriod(
+    abstract public function addDocumentBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBillingPeriod($newStartDate, $newEndDate, $newDescription);
-
-        return $this;
-    }
+        ?string $newDescription = null
+    ): static;
 
     /**
      * Set a posting reference
@@ -525,14 +198,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
      */
-    public function setDocumentPostingReference(
+    abstract public function setDocumentPostingReference(
         ?string $newType = null,
         ?string $newAccountId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPostingReference($newType, $newAccountId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a posting reference
@@ -541,14 +210,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
      */
-    public function addDocumentPostingReference(
+    abstract public function addDocumentPostingReference(
         ?string $newType = null,
         ?string $newAccountId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPostingReference($newType, $newAccountId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the associated seller's order confirmation.
@@ -557,14 +222,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Seller's order confirmation date
      * @return static
      */
-    public function setDocumentSellerOrderReference(
+    abstract public function setDocumentSellerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated seller's order confirmation.
@@ -573,14 +234,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Seller's order confirmation date
      * @return static
      */
-    public function addDocumentSellerOrderReference(
+    abstract public function addDocumentSellerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated buyer's order
@@ -589,14 +246,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Buyer's order date
      * @return static
      */
-    public function setDocumentBuyerOrderReference(
+    abstract public function setDocumentBuyerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated buyer's order
@@ -605,14 +258,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Buyer's order date
      * @return static
      */
-    public function addDocumentBuyerOrderReference(
+    abstract public function addDocumentBuyerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated quotation
@@ -621,14 +270,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   quotation date
      * @return static
      */
-    public function setDocumentQuotationReference(
+    abstract public function setDocumentQuotationReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated quotation
@@ -637,14 +282,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   quotation date
      * @return static
      */
-    public function addDocumentQuotationReference(
+    abstract public function addDocumentQuotationReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentQuotationReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated contract
@@ -653,14 +294,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Contract date
      * @return static
      */
-    public function setDocumentContractReference(
+    abstract public function setDocumentContractReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentContractReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add am associated contract
@@ -669,14 +306,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Contract date
      * @return static
      */
-    public function addDocumentContractReference(
+    abstract public function addDocumentContractReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentContractReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional associated document
@@ -689,25 +322,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
      */
-    public function setDocumentAdditionalReference(
+    abstract public function setDocumentAdditionalReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): static;
 
     /**
      * Add an additional associated document
@@ -720,25 +342,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
      */
-    public function addDocumentAdditionalReference(
+    abstract public function addDocumentAdditionalReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): static;
 
     /**
      * Set an additional invoice document (reference to preceding invoice)
@@ -748,19 +359,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTypeCode        Type code of previous invoice
      * @return static
      */
-    public function setDocumentInvoiceReference(
+    abstract public function setDocumentInvoiceReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-        );
-
-        return $this;
-    }
+        ?string $newTypeCode = null
+    ): static;
 
     /**
      * Add an additional invoice document (reference to preceding invoice)
@@ -770,19 +373,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTypeCode        Type code of previous invoice
      * @return static
      */
-    public function addDocumentInvoiceReference(
+    abstract public function addDocumentInvoiceReference(
         ?string $newReferenceNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceDate,
-            $newTypeCode,
-        );
-
-        return $this;
-    }
+        ?string $newTypeCode = null
+    ): static;
 
     /**
      * Set an additional project reference
@@ -791,14 +386,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName            Project name
      * @return static
      */
-    public function setDocumentProjectReference(
+    abstract public function setDocumentProjectReference(
         ?string $newReferenceNumber = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProjectReference($newReferenceNumber, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an additional project reference
@@ -807,14 +398,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName            Project name
      * @return static
      */
-    public function addDocumentProjectReference(
+    abstract public function addDocumentProjectReference(
         ?string $newReferenceNumber = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProjectReference($newReferenceNumber, $newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set an additional ultimate customer order reference
@@ -823,14 +410,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate
      * @return static
      */
-    public function setDocumentUltimateCustomerOrderReference(
+    abstract public function setDocumentUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional ultimate customer order reference
@@ -839,14 +422,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate
      * @return static
      */
-    public function addDocumentUltimateCustomerOrderReference(
+    abstract public function addDocumentUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateCustomerOrderReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional despatch advice reference
@@ -855,14 +434,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Shipping notification date
      * @return static
      */
-    public function setDocumentDespatchAdviceReference(
+    abstract public function setDocumentDespatchAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional despatch advice reference
@@ -871,14 +446,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Shipping notification date
      * @return static
      */
-    public function addDocumentDespatchAdviceReference(
+    abstract public function addDocumentDespatchAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentDespatchAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional receiving advice reference
@@ -887,14 +458,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Receipt notification date
      * @return static
      */
-    public function setDocumentReceivingAdviceReference(
+    abstract public function setDocumentReceivingAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional receiving advice reference
@@ -903,14 +470,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Receipt notification date
      * @return static
      */
-    public function addDocumentReceivingAdviceReference(
+    abstract public function addDocumentReceivingAdviceReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentReceivingAdviceReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional delivery note
@@ -919,14 +482,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Delivery slip date
      * @return static
      */
-    public function setDocumentDeliveryNoteReference(
+    abstract public function setDocumentDeliveryNoteReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional delivery note
@@ -935,14 +494,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate   Delivery slip date
      * @return static
      */
-    public function addDocumentDeliveryNoteReference(
+    abstract public function addDocumentDeliveryNoteReference(
         ?string $newReferenceNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentDeliveryNoteReference($newReferenceNumber, $newReferenceDate);
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the date of the delivery
@@ -950,13 +505,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newDate Actual delivery date
      * @return static
      */
-    public function setDocumentSupplyChainEvent(
+    abstract public function setDocumentSupplyChainEvent(
         ?DateTimeInterface $newDate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSupplyChainEvent($newDate);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the identifier assigned by the buyer and used for internal routing
@@ -964,13 +515,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newBuyerReference An identifier assigned by the buyer and used for internal routing
      * @return static
      */
-    public function setDocumentBuyerReference(
+    abstract public function setDocumentBuyerReference(
         ?string $newBuyerReference = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerReference($newBuyerReference);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set information on the delivery conditions
@@ -978,13 +525,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newCode The code indicating the type of delivery for these commercial delivery terms. To be selected from the entries in the list UNTDID 4053 + INCOTERMS
      * @return static
      */
-    public function setDocumentDeliveryTerms(
+    abstract public function setDocumentDeliveryTerms(
         ?string $newCode = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentDeliveryTerms($newCode);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the seller/supplier party
@@ -992,13 +535,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentSellerName(
+    abstract public function setDocumentSellerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the seller/supplier party
@@ -1006,13 +545,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentSellerName(
+    abstract public function addDocumentSellerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the seller/supplier party
@@ -1020,13 +555,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentSellerId(
+    abstract public function setDocumentSellerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the seller/supplier party
@@ -1034,13 +565,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentSellerId(
+    abstract public function addDocumentSellerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the seller/supplier party
@@ -1049,14 +576,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentSellerGlobalId(
+    abstract public function setDocumentSellerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the seller/supplier party
@@ -1065,14 +588,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentSellerGlobalId(
+    abstract public function addDocumentSellerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the seller/supplier party
@@ -1081,14 +600,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentSellerTaxRegistration(
+    abstract public function setDocumentSellerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the seller/supplier party
@@ -1097,14 +612,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentSellerTaxRegistration(
+    abstract public function addDocumentSellerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the seller/supplier party
@@ -1118,19 +629,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentSellerAddress(
+    abstract public function setDocumentSellerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the seller/supplier party
@@ -1144,19 +651,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentSellerAddress(
+    abstract public function addDocumentSellerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the seller/supplier party
@@ -1166,15 +669,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentSellerLegalOrganisation(
+    abstract public function setDocumentSellerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the seller/supplier party
@@ -1184,15 +683,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentSellerLegalOrganisation(
+    abstract public function addDocumentSellerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the seller/supplier party
@@ -1204,17 +699,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentSellerContact(
+    abstract public function setDocumentSellerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the seller/supplier party
@@ -1226,17 +717,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentSellerContact(
+    abstract public function addDocumentSellerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the seller/supplier party
@@ -1245,14 +732,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentSellerCommunication(
+    abstract public function setDocumentSellerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSellerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add communication information of the seller/supplier party
@@ -1261,14 +744,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentSellerCommunication(
+    abstract public function addDocumentSellerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentSellerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the buyer/customer party
@@ -1276,13 +755,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentBuyerName(
+    abstract public function setDocumentBuyerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the buyer/customer party
@@ -1290,13 +765,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentBuyerName(
+    abstract public function addDocumentBuyerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the buyer/customer party
@@ -1304,13 +775,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentBuyerId(
+    abstract public function setDocumentBuyerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the buyer/customer party
@@ -1318,13 +785,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentBuyerId(
+    abstract public function addDocumentBuyerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the buyer/customer party
@@ -1333,14 +796,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentBuyerGlobalId(
+    abstract public function setDocumentBuyerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the buyer/customer party
@@ -1349,14 +808,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentBuyerGlobalId(
+    abstract public function addDocumentBuyerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the buyer/customer party
@@ -1365,14 +820,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentBuyerTaxRegistration(
+    abstract public function setDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the buyer/customer party
@@ -1381,14 +832,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentBuyerTaxRegistration(
+    abstract public function addDocumentBuyerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the buyer/customer party
@@ -1402,19 +849,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentBuyerAddress(
+    abstract public function setDocumentBuyerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the buyer/customer party
@@ -1428,7 +871,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentBuyerAddress(
+    abstract public function addDocumentBuyerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
@@ -1436,11 +879,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newCity = null,
         ?string $newCountryId = null,
         ?string $newSubDivision = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the legal information of the buyer/customer party
@@ -1450,15 +889,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentBuyerLegalOrganisation(
+    abstract public function setDocumentBuyerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the buyer/customer party
@@ -1468,15 +903,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentBuyerLegalOrganisation(
+    abstract public function addDocumentBuyerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the buyer/customer party
@@ -1488,17 +919,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress
      * @return static
      */
-    public function setDocumentBuyerContact(
+    abstract public function setDocumentBuyerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the buyer/customer party
@@ -1510,17 +937,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentBuyerContact(
+    abstract public function addDocumentBuyerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the buyer/customer party
@@ -1529,14 +952,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentBuyerCommunication(
+    abstract public function setDocumentBuyerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentBuyerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the buyer/customer party
@@ -1545,14 +964,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentBuyerCommunication(
+    abstract public function addDocumentBuyerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentBuyerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the tax representative party
@@ -1560,13 +975,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentTaxRepresentativeName(
+    abstract public function setDocumentTaxRepresentativeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the tax representative party
@@ -1574,13 +985,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentTaxRepresentativeName(
+    abstract public function addDocumentTaxRepresentativeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the tax representative party
@@ -1588,13 +995,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentTaxRepresentativeId(
+    abstract public function setDocumentTaxRepresentativeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the tax representative party
@@ -1602,13 +1005,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentTaxRepresentativeId(
+    abstract public function addDocumentTaxRepresentativeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the tax representative party
@@ -1617,14 +1016,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentTaxRepresentativeGlobalId(
+    abstract public function setDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Add an ID to the tax representative party
@@ -1633,14 +1028,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentTaxRepresentativeGlobalId(
+    abstract public function addDocumentTaxRepresentativeGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Set the Tax Registration of the tax representative party
@@ -1649,14 +1040,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentTaxRepresentativeTaxRegistration(
+    abstract public function setDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the tax representative party
@@ -1665,14 +1052,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentTaxRepresentativeTaxRegistration(
+    abstract public function addDocumentTaxRepresentativeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the tax representative party
@@ -1686,19 +1069,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentTaxRepresentativeAddress(
+    abstract public function setDocumentTaxRepresentativeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the tax representative party
@@ -1712,19 +1091,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentTaxRepresentativeAddress(
+    abstract public function addDocumentTaxRepresentativeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the tax representative party
@@ -1734,15 +1109,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentTaxRepresentativeLegalOrganisation(
+    abstract public function setDocumentTaxRepresentativeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the tax representative party
@@ -1752,15 +1123,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentTaxRepresentativeLegalOrganisation(
+    abstract public function addDocumentTaxRepresentativeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the tax representative party
@@ -1772,17 +1139,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentTaxRepresentativeContact(
+    abstract public function setDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the tax representative party
@@ -1794,17 +1157,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentTaxRepresentativeContact(
+    abstract public function addDocumentTaxRepresentativeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the tax representative party
@@ -1813,14 +1172,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentTaxRepresentativeCommunication(
+    abstract public function setDocumentTaxRepresentativeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTaxRepresentativeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the tax representative party
@@ -1829,14 +1184,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentTaxRepresentativeCommunication(
+    abstract public function addDocumentTaxRepresentativeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTaxRepresentativeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the product end-user party
@@ -1844,13 +1195,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentProductEndUserName(
+    abstract public function setDocumentProductEndUserName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the product end-user party
@@ -1858,13 +1205,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentProductEndUserName(
+    abstract public function addDocumentProductEndUserName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the product end-user party
@@ -1872,13 +1215,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentProductEndUserId(
+    abstract public function setDocumentProductEndUserId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the product end-user party
@@ -1886,13 +1225,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentProductEndUserId(
+    abstract public function addDocumentProductEndUserId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the product end-user party
@@ -1901,14 +1236,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentProductEndUserGlobalId(
+    abstract public function setDocumentProductEndUserGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Add an ID to the product end-user party
@@ -1917,14 +1248,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentProductEndUserGlobalId(
+    abstract public function addDocumentProductEndUserGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Set the Tax Registration of the product end-user party
@@ -1933,14 +1260,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentProductEndUserTaxRegistration(
+    abstract public function setDocumentProductEndUserTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the product end-user party
@@ -1949,14 +1272,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentProductEndUserTaxRegistration(
+    abstract public function addDocumentProductEndUserTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the product end-user party
@@ -1970,19 +1289,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentProductEndUserAddress(
+    abstract public function setDocumentProductEndUserAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the product end-user party
@@ -1996,19 +1311,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentProductEndUserAddress(
+    abstract public function addDocumentProductEndUserAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the product end-user party
@@ -2018,15 +1329,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentProductEndUserLegalOrganisation(
+    abstract public function setDocumentProductEndUserLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the product end-user party
@@ -2036,15 +1343,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentProductEndUserLegalOrganisation(
+    abstract public function addDocumentProductEndUserLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the product end-user party
@@ -2056,17 +1359,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentProductEndUserContact(
+    abstract public function setDocumentProductEndUserContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the product end-user party
@@ -2078,17 +1377,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentProductEndUserContact(
+    abstract public function addDocumentProductEndUserContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the product end-user party
@@ -2097,14 +1392,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentProductEndUserCommunication(
+    abstract public function setDocumentProductEndUserCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentProductEndUserCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the product end-user party
@@ -2113,14 +1404,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentProductEndUserCommunication(
+    abstract public function addDocumentProductEndUserCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentProductEndUserCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Ship-To party
@@ -2128,13 +1415,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentShipToName(
+    abstract public function setDocumentShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Ship-To party
@@ -2142,13 +1425,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentShipToName(
+    abstract public function addDocumentShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Ship-To party
@@ -2156,13 +1435,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentShipToId(
+    abstract public function setDocumentShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-To party
@@ -2170,13 +1445,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentShipToId(
+    abstract public function addDocumentShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Ship-To party
@@ -2185,14 +1456,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentShipToGlobalId(
+    abstract public function setDocumentShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-To party
@@ -2201,14 +1468,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentShipToGlobalId(
+    abstract public function addDocumentShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Ship-To party
@@ -2217,14 +1480,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentShipToTaxRegistration(
+    abstract public function setDocumentShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Ship-To party
@@ -2233,14 +1492,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentShipToTaxRegistration(
+    abstract public function addDocumentShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Ship-To party
@@ -2254,19 +1509,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentShipToAddress(
+    abstract public function setDocumentShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the Ship-To party
@@ -2280,19 +1531,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentShipToAddress(
+    abstract public function addDocumentShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the Ship-To party
@@ -2302,15 +1549,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentShipToLegalOrganisation(
+    abstract public function setDocumentShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the Ship-To party
@@ -2320,15 +1563,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentShipToLegalOrganisation(
+    abstract public function addDocumentShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the Ship-To party
@@ -2340,17 +1579,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentShipToContact(
+    abstract public function setDocumentShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the Ship-To party
@@ -2362,17 +1597,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentShipToContact(
+    abstract public function addDocumentShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the Ship-To party
@@ -2381,14 +1612,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentShipToCommunication(
+    abstract public function setDocumentShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the Ship-To party
@@ -2397,14 +1624,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentShipToCommunication(
+    abstract public function addDocumentShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the ultimate Ship-To party
@@ -2412,13 +1635,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentUltimateShipToName(
+    abstract public function setDocumentUltimateShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the ultimate Ship-To party
@@ -2426,13 +1645,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentUltimateShipToName(
+    abstract public function addDocumentUltimateShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the ultimate Ship-To party
@@ -2440,13 +1655,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentUltimateShipToId(
+    abstract public function setDocumentUltimateShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the ultimate Ship-To party
@@ -2454,13 +1665,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentUltimateShipToId(
+    abstract public function addDocumentUltimateShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the ultimate Ship-To party
@@ -2469,14 +1676,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentUltimateShipToGlobalId(
+    abstract public function setDocumentUltimateShipToGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Add an ID to the ultimate Ship-To party
@@ -2485,14 +1688,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentUltimateShipToGlobalId(
+    abstract public function addDocumentUltimateShipToGlobalId(
         ?string $newGlobalId = null,
-        ?string $newGlobalIdType = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+        ?string $newGlobalIdType = null
+    ): static;
 
     /**
      * Set the Tax Registration of the ultimate Ship-To party
@@ -2501,14 +1700,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentUltimateShipToTaxRegistration(
+    abstract public function setDocumentUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the ultimate Ship-To party
@@ -2517,14 +1712,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentUltimateShipToTaxRegistration(
+    abstract public function addDocumentUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the ultimate Ship-To party
@@ -2538,19 +1729,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentUltimateShipToAddress(
+    abstract public function setDocumentUltimateShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the ultimate Ship-To party
@@ -2564,19 +1751,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentUltimateShipToAddress(
+    abstract public function addDocumentUltimateShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the ultimate Ship-To party
@@ -2586,15 +1769,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentUltimateShipToLegalOrganisation(
+    abstract public function setDocumentUltimateShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the ultimate Ship-To party
@@ -2604,15 +1783,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentUltimateShipToLegalOrganisation(
+    abstract public function addDocumentUltimateShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the ultimate Ship-To party
@@ -2624,17 +1799,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentUltimateShipToContact(
+    abstract public function setDocumentUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the ultimate Ship-To party
@@ -2646,17 +1817,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentUltimateShipToContact(
+    abstract public function addDocumentUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the ultimate Ship-To party
@@ -2665,14 +1832,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentUltimateShipToCommunication(
+    abstract public function setDocumentUltimateShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentUltimateShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the ultimate Ship-To party
@@ -2681,14 +1844,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentUltimateShipToCommunication(
+    abstract public function addDocumentUltimateShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentUltimateShipToCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Ship-From party
@@ -2696,13 +1855,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentShipFromName(
+    abstract public function setDocumentShipFromName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Ship-From party
@@ -2710,13 +1865,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentShipFromName(
+    abstract public function addDocumentShipFromName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Ship-From party
@@ -2724,13 +1875,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentShipFromId(
+    abstract public function setDocumentShipFromId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-From party
@@ -2738,13 +1885,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentShipFromId(
+    abstract public function addDocumentShipFromId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Ship-From party
@@ -2753,14 +1896,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentShipFromGlobalId(
+    abstract public function setDocumentShipFromGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-From party
@@ -2769,14 +1908,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentShipFromGlobalId(
+    abstract public function addDocumentShipFromGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Ship-From party
@@ -2785,14 +1920,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentShipFromTaxRegistration(
+    abstract public function setDocumentShipFromTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Ship-From party
@@ -2801,14 +1932,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentShipFromTaxRegistration(
+    abstract public function addDocumentShipFromTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Ship-From party
@@ -2822,19 +1949,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentShipFromAddress(
+    abstract public function setDocumentShipFromAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the Ship-From party
@@ -2848,19 +1971,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentShipFromAddress(
+    abstract public function addDocumentShipFromAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the Ship-From party
@@ -2870,15 +1989,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentShipFromLegalOrganisation(
+    abstract public function setDocumentShipFromLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the Ship-From party
@@ -2888,15 +2003,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentShipFromLegalOrganisation(
+    abstract public function addDocumentShipFromLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the Ship-From party
@@ -2908,17 +2019,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentShipFromContact(
+    abstract public function setDocumentShipFromContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the Ship-From party
@@ -2930,17 +2037,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentShipFromContact(
+    abstract public function addDocumentShipFromContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the Ship-From party
@@ -2949,14 +2052,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentShipFromCommunication(
+    abstract public function setDocumentShipFromCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentShipFromCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the Ship-From party
@@ -2965,14 +2064,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentShipFromCommunication(
+    abstract public function addDocumentShipFromCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentShipFromCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Invoicer party
@@ -2980,13 +2075,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentInvoicerName(
+    abstract public function setDocumentInvoicerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Invoicer party
@@ -2994,13 +2085,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentInvoicerName(
+    abstract public function addDocumentInvoicerName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Invoicer party
@@ -3008,13 +2095,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentInvoicerId(
+    abstract public function setDocumentInvoicerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Invoicer party
@@ -3022,13 +2105,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentInvoicerId(
+    abstract public function addDocumentInvoicerId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Invoicer party
@@ -3037,14 +2116,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentInvoicerGlobalId(
+    abstract public function setDocumentInvoicerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Invoicer party
@@ -3053,14 +2128,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentInvoicerGlobalId(
+    abstract public function addDocumentInvoicerGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Invoicer party
@@ -3069,14 +2140,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentInvoicerTaxRegistration(
+    abstract public function setDocumentInvoicerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Invoicer party
@@ -3085,14 +2152,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentInvoicerTaxRegistration(
+    abstract public function addDocumentInvoicerTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Invoicer party
@@ -3106,19 +2169,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentInvoicerAddress(
+    abstract public function setDocumentInvoicerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the Invoicer party
@@ -3132,19 +2191,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentInvoicerAddress(
+    abstract public function addDocumentInvoicerAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the Invoicer party
@@ -3154,15 +2209,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentInvoicerLegalOrganisation(
+    abstract public function setDocumentInvoicerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the Invoicer party
@@ -3172,15 +2223,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentInvoicerLegalOrganisation(
+    abstract public function addDocumentInvoicerLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the Invoicer party
@@ -3192,17 +2239,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentInvoicerContact(
+    abstract public function setDocumentInvoicerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the Invoicer party
@@ -3214,17 +2257,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentInvoicerContact(
+    abstract public function addDocumentInvoicerContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the Invoicer party
@@ -3233,30 +2272,22 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentInvoicerCommunication(
+    abstract public function setDocumentInvoicerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoicerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
-     * Add communication information of the Invoicer party
+     * Add a communication information of the Invoicer party
      *
      * @param  null|string $newType the type for the party's electronic address
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentInvoicerCommunication(
+    abstract public function addDocumentInvoicerCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoicerCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Invoicee party
@@ -3264,13 +2295,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentInvoiceeName(
+    abstract public function setDocumentInvoiceeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Invoicee party
@@ -3278,13 +2305,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentInvoiceeName(
+    abstract public function addDocumentInvoiceeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Invoicee party
@@ -3292,13 +2315,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentInvoiceeId(
+    abstract public function setDocumentInvoiceeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Invoicee party
@@ -3306,13 +2325,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentInvoiceeId(
+    abstract public function addDocumentInvoiceeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Invoicee party
@@ -3321,14 +2336,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentInvoiceeGlobalId(
+    abstract public function setDocumentInvoiceeGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Invoicee party
@@ -3337,14 +2348,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentInvoiceeGlobalId(
+    abstract public function addDocumentInvoiceeGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Invoicee party
@@ -3353,14 +2360,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentInvoiceeTaxRegistration(
+    abstract public function setDocumentInvoiceeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Invoicee party
@@ -3369,14 +2372,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentInvoiceeTaxRegistration(
+    abstract public function addDocumentInvoiceeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Invoicee party
@@ -3390,19 +2389,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentInvoiceeAddress(
+    abstract public function setDocumentInvoiceeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the Invoicee party
@@ -3416,19 +2411,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentInvoiceeAddress(
+    abstract public function addDocumentInvoiceeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the Invoicee party
@@ -3438,15 +2429,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentInvoiceeLegalOrganisation(
+    abstract public function setDocumentInvoiceeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the Invoicee party
@@ -3456,15 +2443,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentInvoiceeLegalOrganisation(
+    abstract public function addDocumentInvoiceeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the Invoicee party
@@ -3476,17 +2459,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentInvoiceeContact(
+    abstract public function setDocumentInvoiceeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the Invoicee party
@@ -3498,17 +2477,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentInvoiceeContact(
+    abstract public function addDocumentInvoiceeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the Invoicee party
@@ -3517,14 +2492,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentInvoiceeCommunication(
+    abstract public function setDocumentInvoiceeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentInvoiceeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the Invoicee party
@@ -3533,14 +2504,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentInvoiceeCommunication(
+    abstract public function addDocumentInvoiceeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentInvoiceeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Payee party
@@ -3548,13 +2515,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPayeeName(
+    abstract public function setDocumentPayeeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Payee party
@@ -3562,13 +2525,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentPayeeName(
+    abstract public function addDocumentPayeeName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeName($newName);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Payee party
@@ -3576,13 +2535,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentPayeeId(
+    abstract public function setDocumentPayeeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Payee party
@@ -3590,13 +2545,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentPayeeId(
+    abstract public function addDocumentPayeeId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeId($newId);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Payee party
@@ -3605,14 +2556,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentPayeeGlobalId(
+    abstract public function setDocumentPayeeGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Payee party
@@ -3621,14 +2568,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentPayeeGlobalId(
+    abstract public function addDocumentPayeeGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeGlobalId($newGlobalId, $newGlobalIdType);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Payee party
@@ -3637,14 +2580,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentPayeeTaxRegistration(
+    abstract public function setDocumentPayeeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Payee party
@@ -3653,14 +2592,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentPayeeTaxRegistration(
+    abstract public function addDocumentPayeeTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeTaxRegistration($newTaxRegistrationType, $newTaxRegistrationId);
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Payee party
@@ -3674,19 +2609,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentPayeeAddress(
+    abstract public function setDocumentPayeeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Add an address to the Payee party
@@ -3700,19 +2631,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentPayeeAddress(
+    abstract public function addDocumentPayeeAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
         ?string $newPostcode = null,
         ?string $newCity = null,
         ?string $newCountryId = null,
-        ?string $newSubDivision = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeAddress($newAddressLine1, $newAddressLine2, $newAddressLine3, $newPostcode, $newCity, $newCountryId, $newSubDivision);
-
-        return $this;
-    }
+        ?string $newSubDivision = null
+    ): static;
 
     /**
      * Set the legal information of the Payee party
@@ -3722,15 +2649,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentPayeeLegalOrganisation(
+    abstract public function setDocumentPayeeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Add a legal information of the Payee party
@@ -3740,15 +2663,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentPayeeLegalOrganisation(
+    abstract public function addDocumentPayeeLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
-        ?string $newName = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeLegalOrganisation($newType, $newId, $newName);
-
-        return $this;
-    }
+        ?string $newName = null
+    ): static;
 
     /**
      * Set the contact information of the Payee party
@@ -3760,17 +2679,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentPayeeContact(
+    abstract public function setDocumentPayeeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Add contact information of the Payee party
@@ -3782,17 +2697,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentPayeeContact(
+    abstract public function addDocumentPayeeContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
-        ?string $newEmailAddress = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeContact($newPersonName, $newDepartmentName, $newPhoneNumber, $newFaxNumber, $newEmailAddress);
-
-        return $this;
-    }
+        ?string $newEmailAddress = null
+    ): static;
 
     /**
      * Set communication information of the Payee party
@@ -3801,14 +2712,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentPayeeCommunication(
+    abstract public function setDocumentPayeeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPayeeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the Payee party
@@ -3817,14 +2724,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentPayeeCommunication(
+    abstract public function addDocumentPayeeCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPayeeCommunication($newType, $newUri);
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set Payment mean
@@ -3842,7 +2745,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate             Identification of the mandate reference
      * @return static
      */
-    public function setDocumentPaymentMean(
+    abstract public function setDocumentPaymentMean(
         ?string $newTypeCode = null,
         ?string $newName = null,
         ?string $newFinancialCardId = null,
@@ -3853,24 +2756,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMean(
-            $newTypeCode,
-            $newName,
-            $newFinancialCardId,
-            $newFinancialCardHolder,
-            $newBuyerIban,
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Add Payment mean
@@ -3888,7 +2775,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate             Identification of the mandate reference
      * @return static
      */
-    public function addDocumentPaymentMean(
+    abstract public function addDocumentPaymentMean(
         ?string $newTypeCode = null,
         ?string $newName = null,
         ?string $newFinancialCardId = null,
@@ -3899,24 +2786,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
         ?string $newPaymentReference = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMean(
-            $newTypeCode,
-            $newName,
-            $newFinancialCardId,
-            $newFinancialCardHolder,
-            $newBuyerIban,
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Set Payment mean (as SEPA credit transfer, German: Überweisung)
@@ -3928,23 +2799,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newPaymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function setDocumentPaymentMeanAsCreditTransferSepa(
+    abstract public function setDocumentPaymentMeanAsCreditTransferSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsCreditTransferSepa(
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference
-        );
-
-        return $this;
-    }
+        ?string $newPaymentReference = null
+    ): static;
 
     /**
      * Add Payment mean (as SEPA credit transfer, German: Überweisung)
@@ -3956,23 +2817,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newPaymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function addDocumentPaymentMeanAsCreditTransferSepa(
+    abstract public function addDocumentPaymentMeanAsCreditTransferSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsCreditTransferSepa(
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference
-        );
-
-        return $this;
-    }
+        ?string $newPaymentReference = null
+    ): static;
 
     /**
      * Set Payment mean (as non-SEPA credit transfer, German: Überweisung)
@@ -3984,23 +2835,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newPaymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function setDocumentPaymentMeanAsCreditTransferNoSepa(
+    abstract public function setDocumentPaymentMeanAsCreditTransferNoSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsCreditTransferNoSepa(
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference
-        );
-
-        return $this;
-    }
+        ?string $newPaymentReference = null
+    ): static;
 
     /**
      * Add Payment mean (as non-SEPA credit transfer, German: Überweisung)
@@ -4012,23 +2853,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newPaymentReference   Text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function addDocumentPaymentMeanAsCreditTransferNoSepa(
+    abstract public function addDocumentPaymentMeanAsCreditTransferNoSepa(
         ?string $newPayeeIban = null,
         ?string $newPayeeAccountName = null,
         ?string $newPayeeProprietaryId = null,
         ?string $newPayeeBic = null,
-        ?string $newPaymentReference = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsCreditTransferNoSepa(
-            $newPayeeIban,
-            $newPayeeAccountName,
-            $newPayeeProprietaryId,
-            $newPayeeBic,
-            $newPaymentReference
-        );
-
-        return $this;
-    }
+        ?string $newPaymentReference = null
+    ): static;
 
     /**
      * Set Payment mean (as SEPA direct debit, German: Lastschrift)
@@ -4037,17 +2868,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate   Identification of the mandate reference
      * @return static
      */
-    public function setDocumentPaymentMeanAsDirectDebitSepa(
+    abstract public function setDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitSepa(
-            $newBuyerIban,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Add Payment mean (as SEPA direct debit, German: Lastschrift)
@@ -4056,17 +2880,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate   Identification of the mandate reference
      * @return static
      */
-    public function addDocumentPaymentMeanAsDirectDebitSepa(
+    abstract public function addDocumentPaymentMeanAsDirectDebitSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitSepa(
-            $newBuyerIban,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Set Payment mean (as non-SEPA direct debit, German: Lastschrift)
@@ -4075,17 +2892,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate   Identification of the mandate reference
      * @return static
      */
-    public function setDocumentPaymentMeanAsDirectDebitNoSepa(
+    abstract public function setDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsDirectDebitNoSepa(
-            $newBuyerIban,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Add Payment mean (as non SEPA direct debit, German: Lastschrift)
@@ -4094,17 +2904,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newMandate   Identification of the mandate reference
      * @return static
      */
-    public function addDocumentPaymentMeanAsDirectDebitNoSepa(
+    abstract public function addDocumentPaymentMeanAsDirectDebitNoSepa(
         ?string $newBuyerIban = null,
-        ?string $newMandate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsDirectDebitNoSepa(
-            $newBuyerIban,
-            $newMandate
-        );
-
-        return $this;
-    }
+        ?string $newMandate = null
+    ): static;
 
     /**
      * Set Payment mean (as payment card)
@@ -4113,17 +2916,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newFinancialCardHolder Name of the payment card holder
      * @return static
      */
-    public function setDocumentPaymentMeanAsPaymentCard(
+    abstract public function setDocumentPaymentMeanAsPaymentCard(
         ?string $newFinancialCardId = null,
-        ?string $newFinancialCardHolder = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentMeanAsPaymentCard(
-            $newFinancialCardId,
-            $newFinancialCardHolder
-        );
-
-        return $this;
-    }
+        ?string $newFinancialCardHolder = null
+    ): static;
 
     /**
      * Add Payment mean (as payment card)
@@ -4132,17 +2928,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newFinancialCardHolder Name of the payment card holder
      * @return static
      */
-    public function addDocumentPaymentMeanAsPaymentCard(
+    abstract public function addDocumentPaymentMeanAsPaymentCard(
         ?string $newFinancialCardId = null,
-        ?string $newFinancialCardHolder = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentMeanAsPaymentCard(
-            $newFinancialCardId,
-            $newFinancialCardHolder
-        );
-
-        return $this;
-    }
+        ?string $newFinancialCardHolder = null
+    ): static;
 
     /**
      * Set Unique bank details of the payee or the seller
@@ -4150,15 +2939,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId Creditor identifier
      * @return static
      */
-    public function setDocumentPaymentCreditorReferenceID(
+    abstract public function setDocumentPaymentCreditorReferenceID(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentCreditorReferenceID(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add Unique bank details of the payee or the seller
@@ -4166,15 +2949,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId Creditor identifier
      * @return static
      */
-    public function addDocumentPaymentCreditorReferenceID(
+    abstract public function addDocumentPaymentCreditorReferenceID(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentCreditorReferenceID(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set a link to the invoice issued by the seller
@@ -4182,15 +2959,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function setDocumentPaymentReference(
+    abstract public function setDocumentPaymentReference(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentReference(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a link to the invoice issued by the seller
@@ -4198,15 +2969,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId A text value used to link the payment to the invoice issued by the seller
      * @return static
      */
-    public function addDocumentPaymentReference(
+    abstract public function addDocumentPaymentReference(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentReference(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set payment term
@@ -4216,19 +2981,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newMandate     Identification of the mandate reference
      * @return static
      */
-    public function setDocumentPaymentTerm(
+    abstract public function setDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
         ?string $newMandate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentTerm(
-            $newDescription,
-            $newDueDate,
-            $newMandate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add payment term
@@ -4238,19 +2995,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newMandate     Identification of the mandate reference
      * @return static
      */
-    public function addDocumentPaymentTerm(
+    abstract public function addDocumentPaymentTerm(
         ?string $newDescription = null,
         ?DateTimeInterface $newDueDate = null,
         ?string $newMandate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentTerm(
-            $newDescription,
-            $newDueDate,
-            $newMandate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set payment discount terms in last added payment terms
@@ -4263,25 +3012,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newBasePeriodUnit  Maturity period (unit)
      * @return static
      */
-    public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
+    abstract public function setDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
         ?float $newDiscountAmount = null,
         ?float $newDiscountPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentDiscountTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newDiscountAmount,
-            $newDiscountPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+        ?string $newBasePeriodUnit = null
+    ): static;
 
     /**
      * Add payment discount terms in last added payment terms
@@ -4294,25 +3032,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newBasePeriodUnit  Maturity period (unit)
      * @return static
      */
-    public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
+    abstract public function addDocumentPaymentDiscountTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
         ?float $newDiscountAmount = null,
         ?float $newDiscountPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentDiscountTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newDiscountAmount,
-            $newDiscountPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+        ?string $newBasePeriodUnit = null
+    ): static;
 
     /**
      * Set payment penalty terms in last added payment terms
@@ -4325,25 +3052,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newBasePeriodUnit Maturity period (unit)
      * @return static
      */
-    public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
+    abstract public function setDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
         ?float $newPenaltyAmount = null,
         ?float $newPenaltyPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPaymentPenaltyTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newPenaltyAmount,
-            $newPenaltyPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+        ?string $newBasePeriodUnit = null
+    ): static;
 
     /**
      * Add payment penalty terms in last added payment terms
@@ -4356,25 +3072,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newBasePeriodUnit Maturity period (unit)
      * @return static
      */
-    public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
+    abstract public function addDocumentPaymentPenaltyTermsInLastPaymentTerm(
         ?float $newBaseAmount = null,
         ?float $newPenaltyAmount = null,
         ?float $newPenaltyPercent = null,
         ?DateTimeInterface $newBaseDate = null,
         ?float $newBasePeriod = null,
-        ?string $newBasePeriodUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPaymentPenaltyTermsInLastPaymentTerm(
-            $newBaseAmount,
-            $newPenaltyAmount,
-            $newPenaltyPercent,
-            $newBaseDate,
-            $newBasePeriod,
-            $newBasePeriodUnit
-        );
-
-        return $this;
-    }
+        ?string $newBasePeriodUnit = null
+    ): static;
 
     /**
      * Set Document Tax Breakdown
@@ -4390,7 +3095,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTaxDueCode          Code for the date on which tax is due
      * @return static
      */
-    public function setDocumentTax(
+    abstract public function setDocumentTax(
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
         ?float $newBasisAmount = null,
@@ -4399,22 +3104,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
         ?DateTimeInterface $newTaxDueDate = null,
-        ?string $newTaxDueCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newBasisAmount,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode,
-            $newTaxDueDate,
-            $newTaxDueCode
-        );
-
-        return $this;
-    }
+        ?string $newTaxDueCode = null
+    ): static;
 
     /**
      * Add Document Tax Breakdown
@@ -4430,7 +3121,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTaxDueCode          Code for the date on which tax is due
      * @return static
      */
-    public function addDocumentTax(
+    abstract public function addDocumentTax(
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
         ?float $newBasisAmount = null,
@@ -4439,22 +3130,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
         ?DateTimeInterface $newTaxDueDate = null,
-        ?string $newTaxDueCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newBasisAmount,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode,
-            $newTaxDueDate,
-            $newTaxDueCode
-        );
-
-        return $this;
-    }
+        ?string $newTaxDueCode = null
+    ): static;
 
     /**
      * Set Document Allowance/Charge
@@ -4470,7 +3147,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
      */
-    public function setDocumentAllowanceCharge(
+    abstract public function setDocumentAllowanceCharge(
         ?bool $newChargeIndicator = null,
         ?float $newAllowanceChargeAmount = null,
         ?float $newAllowanceChargeBaseAmount = null,
@@ -4479,22 +3156,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?float $newTaxPercent = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+        ?float $newAllowanceChargePercent = null
+    ): static;
 
     /**
      * Add Document Allowance/Charge
@@ -4510,7 +3173,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
      */
-    public function addDocumentAllowanceCharge(
+    abstract public function addDocumentAllowanceCharge(
         ?bool $newChargeIndicator = null,
         ?float $newAllowanceChargeAmount = null,
         ?float $newAllowanceChargeBaseAmount = null,
@@ -4519,22 +3182,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?float $newTaxPercent = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+        ?float $newAllowanceChargePercent = null
+    ): static;
 
     /**
      * Set Document Logistic Service Charge
@@ -4546,23 +3195,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newTaxPercent   Tax Rate (Percentage)
      * @return static
      */
-    public function setDocumentLogisticServiceCharge(
+    abstract public function setDocumentLogisticServiceCharge(
         ?float $newChargeAmount = null,
         ?string $newDescription = null,
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
-        ?float $newTaxPercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentLogisticServiceCharge(
-            $newChargeAmount,
-            $newDescription,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent
-        );
-
-        return $this;
-    }
+        ?float $newTaxPercent = null
+    ): static;
 
     /**
      * Add Document Logistic Service Charge
@@ -4574,35 +3213,20 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newTaxPercent   Tax Rate (Percentage)
      * @return static
      */
-    public function addDocumentLogisticServiceCharge(
+    abstract public function addDocumentLogisticServiceCharge(
         ?float $newChargeAmount = null,
         ?string $newDescription = null,
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
-        ?float $newTaxPercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentLogisticServiceCharge(
-            $newChargeAmount,
-            $newDescription,
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxPercent
-        );
-
-        return $this;
-    }
+        ?float $newTaxPercent = null
+    ): static;
 
     /**
      * Prepare the document-level summation (Sets all values to zero)
      *
      * @return static
      */
-    public function prepareDocumentSummation(): static
-    {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->prepareDocumentSummation();
-
-        return $this;
-    }
+    abstract public function prepareDocumentSummation(): static;
 
     /**
      * Set the document summation
@@ -4618,7 +3242,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float $newRoungingAmount      Rounding amount
      * @return static
      */
-    public function setDocumentSummation(
+    abstract public function setDocumentSummation(
         ?float $newNetAmount = null,
         ?float $newChargeTotalAmount = null,
         ?float $newDiscountTotalAmount = null,
@@ -4628,23 +3252,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?float $newGrossAmount = null,
         ?float $newDueAmount = null,
         ?float $newPrepaidAmount = null,
-        ?float $newRoungingAmount = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentSummation(
-            $newNetAmount,
-            $newChargeTotalAmount,
-            $newDiscountTotalAmount,
-            $newTaxBasisAmount,
-            $newTaxTotalAmount,
-            $newTaxTotalAmount2,
-            $newGrossAmount,
-            $newDueAmount,
-            $newPrepaidAmount,
-            $newRoungingAmount
-        );
-
-        return $this;
-    }
+        ?float $newRoungingAmount = null
+    ): static;
 
     /**
      * Add a new position to document
@@ -4655,21 +3264,12 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newLineStatusReasonCode Type to specify whether the invoice line is
      * @return static
      */
-    public function addDocumentPosition(
+    abstract public function addDocumentPosition(
         ?string $newPositionId = null,
         ?string $newParentPositionId = null,
         ?string $newLineStatusCode = null,
-        ?string $newLineStatusReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPosition(
-            $newPositionId,
-            $newParentPositionId,
-            $newLineStatusCode,
-            $newLineStatusReasonCode
-        );
-
-        return $this;
-    }
+        ?string $newLineStatusReasonCode = null
+    ): static;
 
     /**
      * Set text information to latest added position
@@ -4679,19 +3279,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubjectCode Code for qualifying the free text for the invoice item
      * @return static
      */
-    public function setDocumentPositionNote(
+    abstract public function setDocumentPositionNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionNote(
-            $newContent,
-            $newContentCode,
-            $newSubjectCode
-        );
-
-        return $this;
-    }
+        ?string $newSubjectCode = null
+    ): static;
 
     /**
      * Add text information to latest added position
@@ -4701,19 +3293,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubjectCode Code for qualifying the free text for the invoice item
      * @return static
      */
-    public function addDocumentPositionNote(
+    abstract public function addDocumentPositionNote(
         ?string $newContent = null,
         ?string $newContentCode = null,
-        ?string $newSubjectCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionNote(
-            $newContent,
-            $newContentCode,
-            $newSubjectCode
-        );
-
-        return $this;
-    }
+        ?string $newSubjectCode = null
+    ): static;
 
     /**
      * Add product details to latest added position
@@ -4733,7 +3317,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductOriginTradeCountry Code indicating the country the goods came from
      * @return static
      */
-    public function setDocumentPositionProductDetails(
+    abstract public function setDocumentPositionProductDetails(
         ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
@@ -4746,26 +3330,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newProductBatchId = null,
         ?string $newProductBrandName = null,
         ?string $newProductModelName = null,
-        ?string $newProductOriginTradeCountry = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionProductDetails(
-            $newProductId,
-            $newProductName,
-            $newProductDescription,
-            $newProductSellerId,
-            $newProductBuyerId,
-            $newProductGlobalId,
-            $newProductGlobalIdType,
-            $newProductIndustryId,
-            $newProductModelId,
-            $newProductBatchId,
-            $newProductBrandName,
-            $newProductModelName,
-            $newProductOriginTradeCountry
-        );
-
-        return $this;
-    }
+        ?string $newProductOriginTradeCountry = null
+    ): static;
 
     /**
      * Set product characteristics in latest added position
@@ -4777,23 +3343,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductCharacteristicMeasureUnit  Unit of value of the characteristic
      * @return static
      */
-    public function setDocumentPositionProductCharacteristic(
+    abstract public function setDocumentPositionProductCharacteristic(
         ?string $newProductCharacteristicDescription = null,
         ?string $newProductCharacteristicValue = null,
         ?string $newProductCharacteristicType = null,
         ?float $newProductCharacteristicMeasureValue = null,
-        ?string $newProductCharacteristicMeasureUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionProductCharacteristic(
-            $newProductCharacteristicDescription,
-            $newProductCharacteristicValue,
-            $newProductCharacteristicType,
-            $newProductCharacteristicMeasureValue,
-            $newProductCharacteristicMeasureUnit,
-        );
-
-        return $this;
-    }
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): static;
 
     /**
      * Add product characteristics in latest added position
@@ -4805,23 +3361,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductCharacteristicMeasureUnit  Unit of value of the characteristic
      * @return static
      */
-    public function addDocumentPositionProductCharacteristic(
+    abstract public function addDocumentPositionProductCharacteristic(
         ?string $newProductCharacteristicDescription = null,
         ?string $newProductCharacteristicValue = null,
         ?string $newProductCharacteristicType = null,
         ?float $newProductCharacteristicMeasureValue = null,
-        ?string $newProductCharacteristicMeasureUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionProductCharacteristic(
-            $newProductCharacteristicDescription,
-            $newProductCharacteristicValue,
-            $newProductCharacteristicType,
-            $newProductCharacteristicMeasureValue,
-            $newProductCharacteristicMeasureUnit,
-        );
-
-        return $this;
-    }
+        ?string $newProductCharacteristicMeasureUnit = null
+    ): static;
 
     /**
      * Set product classification in latest added position
@@ -4832,21 +3378,12 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
      * @return static
      */
-    public function setDocumentPositionProductClassification(
+    abstract public function setDocumentPositionProductClassification(
         ?string $newProductClassificationCode = null,
         ?string $newProductClassificationListId = null,
         ?string $newProductClassificationListVersionId = null,
-        ?string $newProductClassificationCodeClassname = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionProductClassification(
-            $newProductClassificationCode,
-            $newProductClassificationListId,
-            $newProductClassificationListVersionId,
-            $newProductClassificationCodeClassname
-        );
-
-        return $this;
-    }
+        ?string $newProductClassificationCodeClassname = null
+    ): static;
 
     /**
      * Add product classification in latest added position
@@ -4857,21 +3394,12 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductClassificationCodeClassname Name with which an article can be classified according to type or quality
      * @return static
      */
-    public function addDocumentPositionProductClassification(
+    abstract public function addDocumentPositionProductClassification(
         ?string $newProductClassificationCode = null,
         ?string $newProductClassificationListId = null,
         ?string $newProductClassificationListVersionId = null,
-        ?string $newProductClassificationCodeClassname = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionProductClassification(
-            $newProductClassificationCode,
-            $newProductClassificationListId,
-            $newProductClassificationListVersionId,
-            $newProductClassificationCodeClassname
-        );
-
-        return $this;
-    }
+        ?string $newProductClassificationCodeClassname = null
+    ): static;
 
     /**
      * Set referenced product in latest added position
@@ -4888,7 +3416,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
      * @return static
      */
-    public function setDocumentPositionReferencedProduct(
+    abstract public function setDocumentPositionReferencedProduct(
         ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
@@ -4898,23 +3426,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newProductGlobalIdType = null,
         ?string $newProductIndustryId = null,
         ?float $newProductUnitQuantity = null,
-        ?string $newProductUnitQuantityUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionReferencedProduct(
-            $newProductId,
-            $newProductName,
-            $newProductDescription,
-            $newProductSellerId,
-            $newProductBuyerId,
-            $newProductGlobalId,
-            $newProductGlobalIdType,
-            $newProductIndustryId,
-            $newProductUnitQuantity,
-            $newProductUnitQuantityUnit
-        );
-
-        return $this;
-    }
+        ?string $newProductUnitQuantityUnit = null
+    ): static;
 
     /**
      * Add referenced product in latest added position
@@ -4931,7 +3444,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newProductUnitQuantityUnit Unit code of the quantity of the referenced product contained
      * @return static
      */
-    public function addDocumentPositionReferencedProduct(
+    abstract public function addDocumentPositionReferencedProduct(
         ?string $newProductId = null,
         ?string $newProductName = null,
         ?string $newProductDescription = null,
@@ -4941,23 +3454,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newProductGlobalIdType = null,
         ?string $newProductIndustryId = null,
         ?float $newProductUnitQuantity = null,
-        ?string $newProductUnitQuantityUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionReferencedProduct(
-            $newProductId,
-            $newProductName,
-            $newProductDescription,
-            $newProductSellerId,
-            $newProductBuyerId,
-            $newProductGlobalId,
-            $newProductGlobalIdType,
-            $newProductIndustryId,
-            $newProductUnitQuantity,
-            $newProductUnitQuantityUnit
-        );
-
-        return $this;
-    }
+        ?string $newProductUnitQuantityUnit = null
+    ): static;
 
     /**
      * Set the associated seller's order confirmation (line reference).
@@ -4967,19 +3465,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Seller's order confirmation date
      * @return static
      */
-    public function setDocumentPositionSellerOrderReference(
+    abstract public function setDocumentPositionSellerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionSellerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated seller's order confirmation (line reference).
@@ -4989,19 +3479,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Seller's order confirmation date
      * @return static
      */
-    public function addDocumentPositionSellerOrderReference(
+    abstract public function addDocumentPositionSellerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionSellerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated buyer's order confirmation (line reference).
@@ -5011,19 +3493,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function setDocumentPositionBuyerOrderReference(
+    abstract public function setDocumentPositionBuyerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionBuyerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated buyer's order confirmation (line reference).
@@ -5033,19 +3507,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function addDocumentPositionBuyerOrderReference(
+    abstract public function addDocumentPositionBuyerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionBuyerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated quotation (line reference).
@@ -5055,19 +3521,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function setDocumentPositionQuotationReference(
+    abstract public function setDocumentPositionQuotationReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionQuotationReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated quotation (line reference).
@@ -5077,19 +3535,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function addDocumentPositionQuotationReference(
+    abstract public function addDocumentPositionQuotationReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionQuotationReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set the associated contract (line reference).
@@ -5099,19 +3549,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function setDocumentPositionContractReference(
+    abstract public function setDocumentPositionContractReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionContractReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an associated contract (line reference).
@@ -5121,19 +3563,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Buyer's order confirmation date
      * @return static
      */
-    public function addDocumentPositionContractReference(
+    abstract public function addDocumentPositionContractReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionContractReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional associated document (line reference)
@@ -5147,27 +3581,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
      */
-    public function setDocumentPositionAdditionalReference(
+    abstract public function setDocumentPositionAdditionalReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): static;
 
     /**
      * Add an additional associated document (line reference)
@@ -5181,27 +3603,15 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|InvoiceSuiteAttachment $newInvoiceSuiteAttachment Additional document attachment
      * @return static
      */
-    public function addDocumentPositionAdditionalReference(
+    abstract public function addDocumentPositionAdditionalReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null,
         ?string $newDescription = null,
-        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionAdditionalReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode,
-            $newReferenceTypeCode,
-            $newDescription,
-            $newInvoiceSuiteAttachment
-        );
-
-        return $this;
-    }
+        ?InvoiceSuiteAttachment $newInvoiceSuiteAttachment = null
+    ): static;
 
     /**
      * Set an additional ultimate customer order reference (line reference)
@@ -5211,19 +3621,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Ultimate customer order date
      * @return static
      */
-    public function setDocumentPositionUltimateCustomerOrderReference(
+    abstract public function setDocumentPositionUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateCustomerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional ultimate customer order reference (line reference)
@@ -5233,19 +3635,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Ultimate customer order date
      * @return static
      */
-    public function addDocumentPositionUltimateCustomerOrderReference(
+    abstract public function addDocumentPositionUltimateCustomerOrderReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateCustomerOrderReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional despatch advice reference
@@ -5255,19 +3649,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Shipping notification date
      * @return static
      */
-    public function setDocumentPositionDespatchAdviceReference(
+    abstract public function setDocumentPositionDespatchAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionDespatchAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional despatch advice reference
@@ -5277,19 +3663,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Shipping notification date
      * @return static
      */
-    public function addDocumentPositionDespatchAdviceReference(
+    abstract public function addDocumentPositionDespatchAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionDespatchAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional receiving advice reference
@@ -5299,19 +3677,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Receipt notification date
      * @return static
      */
-    public function setDocumentPositionReceivingAdviceReference(
+    abstract public function setDocumentPositionReceivingAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionReceivingAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional receiving advice reference
@@ -5321,19 +3691,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Receipt notification date
      * @return static
      */
-    public function addDocumentPositionReceivingAdviceReference(
+    abstract public function addDocumentPositionReceivingAdviceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionReceivingAdviceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional delivery note
@@ -5343,19 +3705,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Delivery slip date
      * @return static
      */
-    public function setDocumentPositionDeliveryNoteReference(
+    abstract public function setDocumentPositionDeliveryNoteReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionDeliveryNoteReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Add an additional delivery note
@@ -5365,19 +3719,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newReferenceDate       Delivery slip date
      * @return static
      */
-    public function addDocumentPositionDeliveryNoteReference(
+    abstract public function addDocumentPositionDeliveryNoteReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
-        ?DateTimeInterface $newReferenceDate = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionDeliveryNoteReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate
-        );
-
-        return $this;
-    }
+        ?DateTimeInterface $newReferenceDate = null
+    ): static;
 
     /**
      * Set an additional invoice document (reference to preceding invoice)
@@ -5388,21 +3734,12 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTypeCode            Type code of previous invoice
      * @return static
      */
-    public function setDocumentPositionInvoiceReference(
+    abstract public function setDocumentPositionInvoiceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
-
-        return $this;
-    }
+        ?string $newTypeCode = null
+    ): static;
 
     /**
      * Add an additional invoice document (reference to preceding invoice)
@@ -5413,21 +3750,12 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newTypeCode            Type code of previous invoice
      * @return static
      */
-    public function addDocumentPositionInvoiceReference(
+    abstract public function addDocumentPositionInvoiceReference(
         ?string $newReferenceNumber = null,
         ?string $newReferenceLineNumber = null,
         ?DateTimeInterface $newReferenceDate = null,
-        ?string $newTypeCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionInvoiceReference(
-            $newReferenceNumber,
-            $newReferenceLineNumber,
-            $newReferenceDate,
-            $newTypeCode
-        );
-
-        return $this;
-    }
+        ?string $newTypeCode = null
+    ): static;
 
     /**
      * Set an additional object reference
@@ -5437,19 +3765,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newReferenceTypeCode Schema identifier, Type of identifier for an item on which the invoice item is based
      * @return static
      */
-    public function setDocumentPositionAdditionalObjectReference(
+    abstract public function setDocumentPositionAdditionalObjectReference(
         ?string $newReferenceNumber = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an additional object reference
@@ -5459,19 +3779,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newReferenceTypeCode Schema identifier, Type of identifier for an item on which the invoice item is based
      * @return static
      */
-    public function addDocumentPositionAdditionalObjectReference(
+    abstract public function addDocumentPositionAdditionalObjectReference(
         ?string $newReferenceNumber = null,
         ?string $newTypeCode = null,
         ?string $newReferenceTypeCode = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionAdditionalObjectReference(
-            $newReferenceNumber,
-            $newTypeCode,
-            $newReferenceTypeCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the position's gross price
@@ -5481,19 +3793,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGrossPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return static
      */
-    public function setDocumentPositionGrossPrice(
+    abstract public function setDocumentPositionGrossPrice(
         ?float $newGrossPrice = null,
         ?float $newGrossPriceBasisQuantity = null,
-        ?string $newGrossPriceBasisQuantityUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionGrossPrice(
-            $newGrossPrice,
-            $newGrossPriceBasisQuantity,
-            $newGrossPriceBasisQuantityUnit
-        );
-
-        return $this;
-    }
+        ?string $newGrossPriceBasisQuantityUnit = null
+    ): static;
 
     /**
      * Set discount or charge to the gross price
@@ -5506,25 +3810,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGrossPriceAllowanceChargeReasonCode  Reason code for discount or charge (free text)
      * @return static
      */
-    public function setDocumentPositionGrossPriceAllowanceCharge(
+    abstract public function setDocumentPositionGrossPriceAllowanceCharge(
         ?float $newGrossPriceAllowanceChargeAmount = null,
         ?bool $newIsCharge = null,
         ?float $newGrossPriceAllowanceChargePercent = null,
         ?float $newGrossPriceAllowanceChargeBasisAmount = null,
         ?string $newGrossPriceAllowanceChargeReason = null,
-        ?string $newGrossPriceAllowanceChargeReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionGrossPriceAllowanceCharge(
-            $newGrossPriceAllowanceChargeAmount,
-            $newIsCharge,
-            $newGrossPriceAllowanceChargePercent,
-            $newGrossPriceAllowanceChargeBasisAmount,
-            $newGrossPriceAllowanceChargeReason,
-            $newGrossPriceAllowanceChargeReasonCode
-        );
-
-        return $this;
-    }
+        ?string $newGrossPriceAllowanceChargeReasonCode = null
+    ): static;
 
     /**
      * Add discount or charge to the gross price
@@ -5537,25 +3830,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGrossPriceAllowanceChargeReasonCode  Reason code for discount or charge (free text)
      * @return static
      */
-    public function addDocumentPositionGrossPriceAllowanceCharge(
+    abstract public function addDocumentPositionGrossPriceAllowanceCharge(
         ?float $newGrossPriceAllowanceChargeAmount = null,
         ?bool $newIsCharge = null,
         ?float $newGrossPriceAllowanceChargePercent = null,
         ?float $newGrossPriceAllowanceChargeBasisAmount = null,
         ?string $newGrossPriceAllowanceChargeReason = null,
-        ?string $newGrossPriceAllowanceChargeReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionGrossPriceAllowanceCharge(
-            $newGrossPriceAllowanceChargeAmount,
-            $newIsCharge,
-            $newGrossPriceAllowanceChargePercent,
-            $newGrossPriceAllowanceChargeBasisAmount,
-            $newGrossPriceAllowanceChargeReason,
-            $newGrossPriceAllowanceChargeReasonCode
-        );
-
-        return $this;
-    }
+        ?string $newGrossPriceAllowanceChargeReasonCode = null
+    ): static;
 
     /**
      * Set the position's net price
@@ -5565,19 +3847,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newNetPriceBasisQuantityUnit Unit code of the number of item units for which the price applies
      * @return static
      */
-    public function setDocumentPositionNetPrice(
+    abstract public function setDocumentPositionNetPrice(
         ?float $newNetPrice = null,
         ?float $newNetPriceBasisQuantity = null,
-        ?string $newNetPriceBasisQuantityUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionNetPrice(
-            $newNetPrice,
-            $newNetPriceBasisQuantity,
-            $newNetPriceBasisQuantityUnit
-        );
-
-        return $this;
-    }
+        ?string $newNetPriceBasisQuantityUnit = null
+    ): static;
 
     /**
      * Set the position's net price included tax
@@ -5590,25 +3864,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return static
      */
-    public function setDocumentPositionNetPriceTax(
+    abstract public function setDocumentPositionNetPriceTax(
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
         ?float $newTaxAmount = null,
         ?float $newTaxPercent = null,
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionNetPriceTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the position's quantities
@@ -5623,7 +3886,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newPerPackageUnitQuantityUnit Per Package unit quantity unit
      * @return static
      */
-    public function setDocumentPositionQuantities(
+    abstract public function setDocumentPositionQuantities(
         ?float $newQuantity = null,
         ?string $newQuantityUnit = null,
         ?float $newChargeFreeQuantity = null,
@@ -5632,20 +3895,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newPackageQuantityUnit = null,
         ?float $newPerPackageUnitQuantity = null,
         ?string $newPerPackageUnitQuantityUnit = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionQuantities(
-            $newQuantity,
-            $newQuantityUnit,
-            $newChargeFreeQuantity,
-            $newChargeFreeQuantityUnit,
-            $newPackageQuantity,
-            $newPackageQuantityUnit,
-            $newPerPackageUnitQuantity,
-            $newPerPackageUnitQuantityUnit,
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the Ship-To party
@@ -5653,15 +3903,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPositionShipToName(
+    abstract public function setDocumentPositionShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToName(
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the Ship-To party
@@ -5669,15 +3913,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentPositionShipToName(
+    abstract public function addDocumentPositionShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToName(
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the Ship-To party
@@ -5685,15 +3923,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentPositionShipToId(
+    abstract public function setDocumentPositionShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToId(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-To party
@@ -5701,15 +3933,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentPositionShipToId(
+    abstract public function addDocumentPositionShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToId(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the Ship-To party
@@ -5718,17 +3944,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentPositionShipToGlobalId(
+    abstract public function setDocumentPositionShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToGlobalId(
-            $newGlobalId,
-            $newGlobalIdType
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the Ship-To party
@@ -5737,17 +3956,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentPositionShipToGlobalId(
+    abstract public function addDocumentPositionShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToGlobalId(
-            $newGlobalId,
-            $newGlobalIdType
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the Ship-To party
@@ -5756,17 +3968,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentPositionShipToTaxRegistration(
+    abstract public function setDocumentPositionShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Add an Tax Registration to the Ship-To party
@@ -5775,17 +3980,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentPositionShipToTaxRegistration(
+    abstract public function addDocumentPositionShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
-        ?string $newTaxRegistrationId = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+        ?string $newTaxRegistrationId = null
+    ): static;
 
     /**
      * Set the address of the Ship-To party
@@ -5799,7 +3997,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentPositionShipToAddress(
+    abstract public function setDocumentPositionShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
@@ -5807,19 +4005,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newCity = null,
         ?string $newCountryId = null,
         ?string $newSubDivision = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an address to the Ship-To party
@@ -5833,7 +4019,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentPositionShipToAddress(
+    abstract public function addDocumentPositionShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
@@ -5841,19 +4027,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newCity = null,
         ?string $newCountryId = null,
         ?string $newSubDivision = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the legal information of the Ship-To party
@@ -5863,19 +4037,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentPositionShipToLegalOrganisation(
+    abstract public function setDocumentPositionShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a legal information of the Ship-To party
@@ -5885,19 +4051,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentPositionShipToLegalOrganisation(
+    abstract public function addDocumentPositionShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the contact information of the Ship-To party
@@ -5909,23 +4067,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentPositionShipToContact(
+    abstract public function setDocumentPositionShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add contact information of the Ship-To party
@@ -5937,23 +4085,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentPositionShipToContact(
+    abstract public function addDocumentPositionShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add communication information of the Ship-To party
@@ -5962,17 +4100,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentPositionShipToCommunication(
+    abstract public function setDocumentPositionShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a communication information of the Ship-To party
@@ -5981,17 +4112,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentPositionShipToCommunication(
+    abstract public function addDocumentPositionShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the name of the ultimate Ship-To party
@@ -5999,15 +4123,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function setDocumentPositionUltimateShipToName(
+    abstract public function setDocumentPositionUltimateShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToName(
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a name of the ultimate Ship-To party
@@ -6015,15 +4133,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName the full formal name under which the party is registered
      * @return static
      */
-    public function addDocumentPositionUltimateShipToName(
+    abstract public function addDocumentPositionUltimateShipToName(
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToName(
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the ID of the ultimate Ship-To party
@@ -6031,15 +4143,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function setDocumentPositionUltimateShipToId(
+    abstract public function setDocumentPositionUltimateShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToId(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the ultimate Ship-To party
@@ -6047,15 +4153,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newId An identifier of the party. In many systems, identification is key information.
      * @return static
      */
-    public function addDocumentPositionUltimateShipToId(
+    abstract public function addDocumentPositionUltimateShipToId(
         ?string $newId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToId(
-            $newId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Global ID of the ultimate Ship-To party
@@ -6064,17 +4164,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function setDocumentPositionUltimateShipToGlobalId(
+    abstract public function setDocumentPositionUltimateShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToGlobalId(
-            $newGlobalId,
-            $newGlobalIdType
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an ID to the ultimate Ship-To party
@@ -6083,17 +4176,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newGlobalIdType type of the global identifier of the party
      * @return static
      */
-    public function addDocumentPositionUltimateShipToGlobalId(
+    abstract public function addDocumentPositionUltimateShipToGlobalId(
         ?string $newGlobalId = null,
         ?string $newGlobalIdType = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToGlobalId(
-            $newGlobalId,
-            $newGlobalIdType
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the Tax Registration of the ultimate Ship-To party
@@ -6102,17 +4188,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function setDocumentPositionUltimateShipToTaxRegistration(
+    abstract public function setDocumentPositionUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add an Tax Registration to the ultimate Ship-To party
@@ -6121,17 +4200,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newTaxRegistrationId   tax identification number
      * @return static
      */
-    public function addDocumentPositionUltimateShipToTaxRegistration(
+    abstract public function addDocumentPositionUltimateShipToTaxRegistration(
         ?string $newTaxRegistrationType = null,
         ?string $newTaxRegistrationId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToTaxRegistration(
-            $newTaxRegistrationType,
-            $newTaxRegistrationId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the address of the ultimate Ship-To party
@@ -6145,7 +4217,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function setDocumentPositionUltimateShipToAddress(
+    abstract public function setDocumentPositionUltimateShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
@@ -6153,19 +4225,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newCity = null,
         ?string $newCountryId = null,
         ?string $newSubDivision = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a address of the ultimate Ship-To party
@@ -6179,7 +4239,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newSubDivision  region or federal state in which the party's address is located
      * @return static
      */
-    public function addDocumentPositionUltimateShipToAddress(
+    abstract public function addDocumentPositionUltimateShipToAddress(
         ?string $newAddressLine1 = null,
         ?string $newAddressLine2 = null,
         ?string $newAddressLine3 = null,
@@ -6187,19 +4247,7 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
         ?string $newCity = null,
         ?string $newCountryId = null,
         ?string $newSubDivision = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToAddress(
-            $newAddressLine1,
-            $newAddressLine2,
-            $newAddressLine3,
-            $newPostcode,
-            $newCity,
-            $newCountryId,
-            $newSubDivision
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the legal information of the ultimate Ship-To party
@@ -6209,19 +4257,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function setDocumentPositionUltimateShipToLegalOrganisation(
+    abstract public function setDocumentPositionUltimateShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a legal information of the ultimate Ship-To party
@@ -6231,19 +4271,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newName name by which the party is known, if different from the party's name
      * @return static
      */
-    public function addDocumentPositionUltimateShipToLegalOrganisation(
+    abstract public function addDocumentPositionUltimateShipToLegalOrganisation(
         ?string $newType = null,
         ?string $newId = null,
         ?string $newName = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToLegalOrganisation(
-            $newType,
-            $newId,
-            $newName
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the contact information of the ultimate Ship-To party
@@ -6255,23 +4287,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function setDocumentPositionUltimateShipToContact(
+    abstract public function setDocumentPositionUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add contact information of the ultimate Ship-To party
@@ -6283,23 +4305,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newEmailAddress   E-Mail address of the contact point
      * @return static
      */
-    public function addDocumentPositionUltimateShipToContact(
+    abstract public function addDocumentPositionUltimateShipToContact(
         ?string $newPersonName = null,
         ?string $newDepartmentName = null,
         ?string $newPhoneNumber = null,
         ?string $newFaxNumber = null,
         ?string $newEmailAddress = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToContact(
-            $newPersonName,
-            $newDepartmentName,
-            $newPhoneNumber,
-            $newFaxNumber,
-            $newEmailAddress
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add communication information of the ultimate Ship-To party
@@ -6308,17 +4320,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function setDocumentPositionUltimateShipToCommunication(
+    abstract public function setDocumentPositionUltimateShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionUltimateShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add communication information of the ultimate Ship-To party
@@ -6327,17 +4332,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newUri  the party's electronic address
      * @return static
      */
-    public function addDocumentPositionUltimateShipToCommunication(
+    abstract public function addDocumentPositionUltimateShipToCommunication(
         ?string $newType = null,
         ?string $newUri = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionUltimateShipToCommunication(
-            $newType,
-            $newUri
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the date of the delivery
@@ -6345,15 +4343,9 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|DateTimeInterface $newDate
      * @return static
      */
-    public function setDocumentPositionSupplyChainEvent(
+    abstract public function setDocumentPositionSupplyChainEvent(
         ?DateTimeInterface $newDate = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionSupplyChainEvent(
-            $newDate
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set the position's start and/or end date of the billing period
@@ -6363,19 +4355,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
      */
-    public function setDocumentPositionBillingPeriod(
+    abstract public function setDocumentPositionBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionBillingPeriod(
-            $newStartDate,
-            $newEndDate,
-            $newDescription
-        );
-
-        return $this;
-    }
+        ?string $newDescription = null
+    ): static;
 
     /**
      * Add a position's start and/or end date of the billing period
@@ -6385,19 +4369,11 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string            $newDescription Further information of the billing period (Obsolete)
      * @return static
      */
-    public function addDocumentPositionBillingPeriod(
+    abstract public function addDocumentPositionBillingPeriod(
         ?DateTimeInterface $newStartDate = null,
         ?DateTimeInterface $newEndDate = null,
-        ?string $newDescription = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionBillingPeriod(
-            $newStartDate,
-            $newEndDate,
-            $newDescription
-        );
-
-        return $this;
-    }
+        ?string $newDescription = null
+    ): static;
 
     /**
      * Set the position's tax information
@@ -6410,25 +4386,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return static
      */
-    public function setDocumentPositionTax(
+    abstract public function setDocumentPositionTax(
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
         ?float $newTaxAmount = null,
         ?float $newTaxPercent = null,
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a position's tax information
@@ -6441,25 +4406,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newExemptionReasonCode Reason for tax exemption (Code)
      * @return static
      */
-    public function addDocumentPositionTax(
+    abstract public function addDocumentPositionTax(
         ?string $newTaxCategory = null,
         ?string $newTaxType = null,
         ?float $newTaxAmount = null,
         ?float $newTaxPercent = null,
         ?string $newExemptionReason = null,
         ?string $newExemptionReasonCode = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionTax(
-            $newTaxCategory,
-            $newTaxType,
-            $newTaxAmount,
-            $newTaxPercent,
-            $newExemptionReason,
-            $newExemptionReasonCode
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Set Document position Allowance/Charge
@@ -6472,25 +4426,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
      */
-    public function setDocumentPositionAllowanceCharge(
+    abstract public function setDocumentPositionAllowanceCharge(
         ?bool $newChargeIndicator = null,
         ?float $newAllowanceChargeAmount = null,
         ?float $newAllowanceChargeBaseAmount = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+        ?float $newAllowanceChargePercent = null
+    ): static;
 
     /**
      * Add Document position Allowance/Charge
@@ -6503,25 +4446,14 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float  $newAllowanceChargePercent    Percentage that may be used, in conjunction with the document level allowance base amount, to calculate the document level allowance or charge amount. To state 20%, use value 20
      * @return static
      */
-    public function addDocumentPositionAllowanceCharge(
+    abstract public function addDocumentPositionAllowanceCharge(
         ?bool $newChargeIndicator = null,
         ?float $newAllowanceChargeAmount = null,
         ?float $newAllowanceChargeBaseAmount = null,
         ?string $newAllowanceChargeReason = null,
         ?string $newAllowanceChargeReasonCode = null,
-        ?float $newAllowanceChargePercent = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionAllowanceCharge(
-            $newChargeIndicator,
-            $newAllowanceChargeAmount,
-            $newAllowanceChargeBaseAmount,
-            $newAllowanceChargeReason,
-            $newAllowanceChargeReasonCode,
-            $newAllowanceChargePercent
-        );
-
-        return $this;
-    }
+        ?float $newAllowanceChargePercent = null
+    ): static;
 
     /**
      * Set the document position summation
@@ -6533,23 +4465,13 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|float $newGrossAmount         Total invoice line amount including sales tax
      * @return static
      */
-    public function setDocumentPositionSummation(
+    abstract public function setDocumentPositionSummation(
         ?float $newNetAmount = null,
         ?float $newChargeTotalAmount = null,
         ?float $newDiscountTotalAmount = null,
         ?float $newTaxTotalAmount = null,
-        ?float $newGrossAmount = null,
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionSummation(
-            $newNetAmount,
-            $newChargeTotalAmount,
-            $newDiscountTotalAmount,
-            $newTaxTotalAmount,
-            $newGrossAmount
-        );
-
-        return $this;
-    }
+        ?float $newGrossAmount = null
+    ): static;
 
     /**
      * Set a position's posting reference
@@ -6558,17 +4480,10 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
      */
-    public function setDocumentPositionPostingReference(
+    abstract public function setDocumentPositionPostingReference(
         ?string $newType = null,
         ?string $newAccountId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->setDocumentPositionPostingReference(
-            $newType,
-            $newAccountId
-        );
-
-        return $this;
-    }
+    ): static;
 
     /**
      * Add a position's posting reference
@@ -6577,15 +4492,8 @@ class InvoiceSuiteDocumentBuilder extends InvoiceSuiteAbstractDocumentBaseBuilde
      * @param  null|string $newAccountId Posting reference of the byuer
      * @return static
      */
-    public function addDocumentPositionPostingReference(
+    abstract public function addDocumentPositionPostingReference(
         ?string $newType = null,
         ?string $newAccountId = null
-    ): static {
-        $this->getCurrentDocumentFormatProvider()->getBuilder()->addDocumentPositionPostingReference(
-            $newType,
-            $newAccountId
-        );
-
-        return $this;
-    }
+    ): static;
 }

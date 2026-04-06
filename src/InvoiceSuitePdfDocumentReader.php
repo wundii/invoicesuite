@@ -14,7 +14,7 @@ namespace horstoeko\invoicesuite;
 use horstoeko\invoicesuite\concerns\HandlesCallForwarding;
 use horstoeko\invoicesuite\concerns\HandlesCurrentDocumentFormatProvider;
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatReader;
+use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentBaseReader;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotFoundException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
@@ -151,9 +151,9 @@ class InvoiceSuitePdfDocumentReader
     /**
      * Returns the document reader
      *
-     * @return InvoiceSuiteAbstractDocumentFormatReader
+     * @return InvoiceSuiteAbstractDocumentBaseReader
      */
-    public function getDocumentReader(): InvoiceSuiteAbstractDocumentFormatReader
+    public function getDocumentReader(): InvoiceSuiteAbstractDocumentBaseReader
     {
         return $this->getCurrentDocumentFormatProvider()->getReader();
     }
