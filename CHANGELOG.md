@@ -1,3 +1,7 @@
+## v0.0.6
+
+:exclamation: _There are 7 internal commit(s)_
+
 ## v0.0.5
 
 ``Previous version v0.0.4``
