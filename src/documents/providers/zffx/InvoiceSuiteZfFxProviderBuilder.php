@@ -582,19 +582,19 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
         $newDocumentDTO
             ->getShipFromParty()
             ?->firstName(
-                fn (string $item) => $this->setDocumentShipfromName($item)
+                fn (string $item) => $this->setDocumentShipFromName($item)
             )
             ?->firstId(
-                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromId($item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipFromId($item->getId())
             )
             ?->forEachGlobalId(
-                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipfromGlobalId($item->getId(), $item->getIdType())
+                fn (InvoiceSuiteIdDTO $item) => $this->addDocumentShipFromGlobalId($item->getId(), $item->getIdType())
             )
             ?->firstTaxRegistration(
-                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipfromTaxRegistration($item->getIdType(), $item->getId())
+                fn (InvoiceSuiteIdDTO $item) => $this->setDocumentShipFromTaxRegistration($item->getIdType(), $item->getId())
             )
             ?->firstAddress(
-                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipfromAddress(
+                fn (InvoiceSuiteAddressDTO $item) => $this->setDocumentShipFromAddress(
                     $item->getAddressLine1(),
                     $item->getAddressLine2(),
                     $item->getAddressLine3(),
@@ -605,14 +605,14 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 )
             )
             ?->firstLegalOrganisation(
-                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipfromLegalOrganisation(
+                fn (InvoiceSuiteOrganisationDTO $item) => $this->setDocumentShipFromLegalOrganisation(
                     $item->getIdType(),
                     $item->getId(),
                     $item->getName()
                 )
             )
             ?->forEachContact(
-                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipfromContact(
+                fn (InvoiceSuiteContactDTO $item) => $this->addDocumentShipFromContact(
                     $item->getPersonName(),
                     $item->getDepartmentName(),
                     $item->getPhoneNumber(),
@@ -621,7 +621,7 @@ class InvoiceSuiteZfFxProviderBuilder extends InvoiceSuiteAbstractDocumentFormat
                 )
             )
             ?->firstCommunication(
-                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipfromCommunication(
+                fn (InvoiceSuiteCommunicationDTO $item) => $this->setDocumentShipFromCommunication(
                     $item->getIdType(),
                     $item->getId()
                 )
