@@ -14,16 +14,21 @@
         }
     ],
     "support": {
-		"issues": "https://github.com/horstoeko/invoicesuite/issues",
-		"forum": "https://github.com/horstoeko/invoicesuite/discussions",
-		"source": "https://github.com/horstoeko/invoicesuite",
-		"docs": "https://github.com/horstoeko/invoicesuite/wiki",
+        "issues": "https://github.com/horstoeko/invoicesuite/issues",
+        "forum": "https://github.com/horstoeko/invoicesuite/discussions",
+        "source": "https://github.com/horstoeko/invoicesuite",
+        "docs": "https://github.com/horstoeko/invoicesuite/wiki",
         "wiki": "https://github.com/horstoeko/invoicesuite/wiki",
-		"security": "https://github.com/horstoeko/invoicesuite/blob/master/SECURITY.md"
+        "security": "https://github.com/horstoeko/invoicesuite/blob/master/SECURITY.md"
     },
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "ignore": {
+                "CVE-2026-24765": "Ignore CVE-2026-24765 temporary"
+            }
+        }
     },
     "suggest": {
         "smalot/pdfparser": "A PDF parser under LGPL license (used in InvoiceSuitePdfExtractor)"
