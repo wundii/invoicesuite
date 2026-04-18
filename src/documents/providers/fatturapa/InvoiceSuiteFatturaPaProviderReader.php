@@ -51,6 +51,9 @@ use horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiPagamento;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\DatiRiepilogo;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioLinee;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\DettaglioPagamento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\ModalitaPagamento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoDocumento;
+use horstoeko\invoicesuite\documents\providers\fatturapa\models\Enum\TipoScontoMaggiorazione;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\FatturaElettronica;
 use horstoeko\invoicesuite\documents\providers\fatturapa\models\Indirizzo;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
@@ -2599,14 +2602,18 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $this->traceMethodEnter(__METHOD__);
 
-        $documentGeneral = $this->getFatturaPaRootObject()
+        $documentType = $this->getFatturaPaRootObject()
             ->getFirstFatturaElettronicaBody()
             ?->getDatiGenerali()
-            ?->getDatiGeneraliDocumento();
+            ?->getDatiGeneraliDocumento()
+            ?->getTipoDocumento();
 
-        $documentType = $documentGeneral?->getTipoDocumento();
-
-        $newDocumentType = $this->resolveDocumentType($documentType?->value);
+        $newDocumentType = match ($documentType) {
+            TipoDocumento::TD01 => '380',
+            TipoDocumento::TD04 => '381',
+            TipoDocumento::TD05 => '383',
+            default => !is_null($documentType) ? $documentType->value : '',
+        };
 
         $this->traceMethodExit(__METHOD__);
 
@@ -3779,7 +3786,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
 
         return InvoiceSuitePointerUtils::hasFirst($addresses, 'documentselleraddress');
@@ -3797,7 +3806,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
 
         return InvoiceSuitePointerUtils::hasNext($addresses, 'documentselleraddress');
@@ -3832,7 +3843,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
         $address = $addresses[InvoiceSuitePointerUtils::getValue('documentselleraddress')] ?? null;
 
@@ -3911,7 +3924,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getContatti();
 
-        /** @var array<Contatti> $contacts */
+        /**
+         * @var array<Contatti> $contacts
+         */
         $contacts = !is_null($contact) ? [$contact] : [];
 
         return InvoiceSuitePointerUtils::hasFirst($contacts, 'documentsellercontact');
@@ -3929,7 +3944,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getContatti();
 
-        /** @var array<Contatti> $contacts */
+        /**
+         * @var array<Contatti> $contacts
+         */
         $contacts = !is_null($contact) ? [$contact] : [];
 
         return InvoiceSuitePointerUtils::hasNext($contacts, 'documentsellercontact');
@@ -3960,7 +3977,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCedentePrestatore()
             ?->getContatti();
 
-        /** @var array<Contatti> $contacts */
+        /**
+         * @var array<Contatti> $contacts
+         */
         $contacts = !is_null($contact) ? [$contact] : [];
         $contact = $contacts[InvoiceSuitePointerUtils::getValue('documentsellercontact')] ?? null;
 
@@ -4145,7 +4164,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -4177,7 +4198,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -4216,7 +4239,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -4249,7 +4274,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCessionarioCommittente()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
 
         return InvoiceSuitePointerUtils::hasFirst($addresses, 'documentbuyeraddress');
@@ -4267,7 +4294,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCessionarioCommittente()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
 
         return InvoiceSuitePointerUtils::hasNext($addresses, 'documentbuyeraddress');
@@ -4302,7 +4331,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getCessionarioCommittente()
             ?->getSede();
 
-        /** @var array<Indirizzo> $addresses */
+        /**
+         * @var array<Indirizzo> $addresses
+         */
         $addresses = !is_null($address) ? [$address] : [];
         $address = $addresses[InvoiceSuitePointerUtils::getValue('documentbuyeraddress')] ?? null;
 
@@ -4590,7 +4621,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -4622,7 +4655,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -4661,7 +4696,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             ?->getDatiAnagrafici()
             ?->getCodiceFiscale();
 
-        /** @var array<array{type:string,id:string}> $taxRegistrations */
+        /**
+         * @var array<array{type:string,id:string}> $taxRegistrations
+         */
         $taxRegistrations = [];
 
         if (!is_null($vatId?->getIdCodice()) && '' !== $vatId->getIdCodice()) {
@@ -7243,7 +7280,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function firstDocumentPaymentMean(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7262,7 +7301,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function nextDocumentPaymentMean(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7306,7 +7347,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $this->traceMethodEnter(__METHOD__);
 
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7338,15 +7381,14 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $paymentDetailData = $paymentDetail['detail'];
         $paymentMode = $paymentDetailData->getModalitaPagamento();
         $paymentIban = $paymentDetailData->getIBAN() ?? '';
-        $isDirectDebitPayment = !is_null($paymentMode)
-            && ('MP19' === $paymentMode->value || 'MP20' === $paymentMode->value);
+        $isDirectDebit = in_array($paymentMode, [ModalitaPagamento::MP19, ModalitaPagamento::MP20], true);
 
         $newTypeCode = !is_null($paymentMode) ? $paymentMode->value : '';
         $newName = $paymentDetailData->getIstitutoFinanziario() ?? '';
         $newFinancialCardId = '';
         $newFinancialCardHolder = $paymentDetailData->getBeneficiario() ?? '';
-        $newBuyerIban = $isDirectDebitPayment ? $paymentIban : '';
-        $newPayeeIban = $isDirectDebitPayment ? '' : $paymentIban;
+        $newBuyerIban = $isDirectDebit ? $paymentIban : '';
+        $newPayeeIban = $isDirectDebit ? '' : $paymentIban;
         $newPayeeAccountName = $paymentDetailData->getBeneficiario() ?? '';
         $newPayeeProprietaryId = '';
         $newPayeeBic = $paymentDetailData->getBIC() ?? '';
@@ -7404,7 +7446,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function firstDocumentPaymentReference(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7427,7 +7471,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function nextDocumentPaymentReference(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7455,7 +7501,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $this->traceMethodEnter(__METHOD__);
 
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7483,7 +7531,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function firstDocumentPaymentTerm(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7506,7 +7556,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function nextDocumentPaymentTerm(): bool
     {
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7537,7 +7589,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $this->traceMethodEnter(__METHOD__);
 
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -7929,7 +7983,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
 
         $hasPaymentAmount = false;
 
-        /** @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails */
+        /**
+         * @var array<array{block:DatiPagamento,detail:DettaglioPagamento}> $paymentDetails
+         */
         $paymentDetails = [];
 
         foreach ($this->getFatturaPaRootObject()->getFirstFatturaElettronicaBody()?->getDatiPagamento() ?? [] as $paymentBlock) {
@@ -9736,7 +9792,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $position = $this->resolveCurrentDocumentPosition();
 
-        /** @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods */
+        /**
+         * @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods
+         */
         $periods = [];
 
         if (!is_null($position) && (!is_null($position->getDataInizioPeriodo()) || !is_null($position->getDataFinePeriodo()))) {
@@ -9755,7 +9813,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $position = $this->resolveCurrentDocumentPosition();
 
-        /** @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods */
+        /**
+         * @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods
+         */
         $periods = [];
 
         if (!is_null($position) && (!is_null($position->getDataInizioPeriodo()) || !is_null($position->getDataFinePeriodo()))) {
@@ -9783,7 +9843,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
 
         $position = $this->resolveCurrentDocumentPosition();
 
-        /** @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods */
+        /**
+         * @var array<array{start:?DateTimeInterface,end:?DateTimeInterface}> $periods
+         */
         $periods = [];
 
         if (!is_null($position) && (!is_null($position->getDataInizioPeriodo()) || !is_null($position->getDataFinePeriodo()))) {
@@ -9810,7 +9872,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $position = $this->resolveCurrentDocumentPosition();
 
-        /** @var array<DettaglioLinee> $taxes */
+        /**
+         * @var array<DettaglioLinee> $taxes
+         */
         $taxes = [];
 
         if (!is_null($position) && (!is_null($position->getAliquotaIVA()) || !is_null($position->getNatura()) || !is_null($position->getPrezzoTotale()))) {
@@ -9829,7 +9893,9 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $position = $this->resolveCurrentDocumentPosition();
 
-        /** @var array<DettaglioLinee> $taxes */
+        /**
+         * @var array<DettaglioLinee> $taxes
+         */
         $taxes = [];
 
         if (!is_null($position) && (!is_null($position->getAliquotaIVA()) || !is_null($position->getNatura()) || !is_null($position->getPrezzoTotale()))) {
@@ -9888,7 +9954,11 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function firstDocumentPositionAllowanceCharge(): bool
     {
-        return false;
+        $position = $this->resolveCurrentDocumentPosition();
+
+        return InvoiceSuitePointerUtils::hasFirst(InvoiceSuiteArrayUtils::ensure(
+            $position?->getScontoMaggiorazione() ?? []
+        ), 'documentpositionallowancecharge');
     }
 
     /**
@@ -9898,7 +9968,11 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function nextDocumentPositionAllowanceCharge(): bool
     {
-        return false;
+        $position = $this->resolveCurrentDocumentPosition();
+
+        return InvoiceSuitePointerUtils::hasNext(InvoiceSuiteArrayUtils::ensure(
+            $position?->getScontoMaggiorazione() ?? []
+        ), 'documentpositionallowancecharge');
     }
 
     /**
@@ -9923,12 +9997,16 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         $this->traceMethodEnter(__METHOD__);
 
-        $newChargeIndicator = false;
-        $newAllowanceChargeAmount = 0.0;
+        $position = $this->resolveCurrentDocumentPosition();
+        $allowanceCharges = InvoiceSuiteArrayUtils::ensure($position?->getScontoMaggiorazione() ?? []);
+        $allowanceCharge = $allowanceCharges[InvoiceSuitePointerUtils::getValue('documentpositionallowancecharge')] ?? null;
+
+        $newChargeIndicator = TipoScontoMaggiorazione::MG === $allowanceCharge?->getTipo();
+        $newAllowanceChargeAmount = $allowanceCharge?->getImporto() ?? 0.0;
         $newAllowanceChargeBaseAmount = 0.0;
         $newAllowanceChargeReason = '';
         $newAllowanceChargeReasonCode = '';
-        $newAllowanceChargePercent = 0.0;
+        $newAllowanceChargePercent = $allowanceCharge?->getPercentuale() ?? 0.0;
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9942,7 +10020,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
      */
     public function firstDocumentPositionSummation(): bool
     {
-        return false;
+        return !is_null($this->resolveCurrentDocumentPosition());
     }
 
     /**
@@ -10099,6 +10177,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
     {
         InvoiceSuitePointerUtils::resetSingle('documentpositionbillingperiod');
         InvoiceSuitePointerUtils::resetSingle('documentpositiontax');
+        InvoiceSuitePointerUtils::resetSingle('documentpositionallowancecharge');
     }
 
     /**
@@ -10116,23 +10195,5 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         );
 
         return $positions[InvoiceSuitePointerUtils::getValue('documentposition')] ?? null;
-    }
-
-    /**
-     * Resolve a FatturaPA document type to the generic document type code used by the DTO layer.
-     *
-     * @param  null|string $documentType
-     * @return string
-     */
-    private function resolveDocumentType(?string $documentType): string
-    {
-        $normalizedDocumentType = strtoupper(trim((string) $documentType));
-
-        return match ($normalizedDocumentType) {
-            'TD01' => '380',
-            'TD04' => '381',
-            'TD05' => '383',
-            default => $normalizedDocumentType,
-        };
     }
 }
