@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
-use JsonSerializable;
-
 /**
  * Class representing a DTO for ...
  *
