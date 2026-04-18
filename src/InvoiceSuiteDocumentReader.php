@@ -346,6 +346,18 @@ class InvoiceSuiteDocumentReader extends InvoiceSuiteAbstractDocumentBaseReader
     }
 
     /**
+     * Get DTO from this document
+     *
+     * @return InvoiceSuiteDocumentHeaderDTO Data-Transfer-Object
+     */
+    public function toDTO(): InvoiceSuiteDocumentHeaderDTO
+    {
+        $this->convertToDTO($dto);
+
+        return $dto;
+    }
+
+    /**
      * Gets the document number (e.g. invoice number)
      *
      * @param  null|string $newDocumentNo The document no issued by the seller
