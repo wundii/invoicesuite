@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JsonSerializable;
+
 /**
  * Class representing a DTO for ...
  *
@@ -19,7 +21,7 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteSummationDTO
+class InvoiceSuiteSummationDTO implements JsonSerializable
 {
     /**
      * The sum of the net amounts of all invoice lines
@@ -115,7 +117,7 @@ class InvoiceSuiteSummationDTO
         ?float $grossAmount = null,
         ?float $dueAmount = null,
         ?float $prepaidAmount = null,
-        ?float $roungingAmount = null,
+        ?float $roungingAmount = null
     ) {
         $this->setNetAmount($netAmount);
         $this->setChargeTotalAmount($chargeTotalAmount);
@@ -127,6 +129,16 @@ class InvoiceSuiteSummationDTO
         $this->setDueAmount($dueAmount);
         $this->setPrepaidAmount($prepaidAmount);
         $this->setRoungingAmount($roungingAmount);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

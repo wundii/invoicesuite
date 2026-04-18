@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePaymentTermDTO
+class InvoiceSuitePaymentTermDTO implements JsonSerializable
 {
     /**
      * The text description of the payment terms
@@ -73,13 +74,23 @@ class InvoiceSuitePaymentTermDTO
         ?DateTimeInterface $dueDate = null,
         array $discountTerms = [],
         array $penaltyTerms = [],
-        ?string $mandate = null,
+        ?string $mandate = null
     ) {
         $this->setDescription($description);
         $this->setDueDate($dueDate);
         $this->setDiscountTerms($discountTerms);
         $this->setPenaltyTerms($penaltyTerms);
         $this->setMandate($mandate);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -263,7 +274,7 @@ class InvoiceSuitePaymentTermDTO
     public function forEachDiscountTerm(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -297,7 +308,7 @@ class InvoiceSuitePaymentTermDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstDiscountTerm($callback, $callbackElse);
@@ -345,7 +356,7 @@ class InvoiceSuitePaymentTermDTO
     public function filterFirstDiscountTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
 
@@ -370,7 +381,7 @@ class InvoiceSuitePaymentTermDTO
     public function filterLastDiscountTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDiscountTerm = $this->filterDiscountTerm($filterCallback);
 
@@ -551,7 +562,7 @@ class InvoiceSuitePaymentTermDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPenaltyTerm($callback, $callbackElse);
@@ -599,7 +610,7 @@ class InvoiceSuitePaymentTermDTO
     public function filterFirstPenaltyTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
 
@@ -624,7 +635,7 @@ class InvoiceSuitePaymentTermDTO
     public function filterLastPenaltyTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPenaltyTerm = $this->filterPenaltyTerm($filterCallback);
 

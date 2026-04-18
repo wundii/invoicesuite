@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteProductClassificationDTO
+class InvoiceSuiteProductClassificationDTO implements JsonSerializable
 {
     /**
      * The classification identifier
@@ -63,12 +64,22 @@ class InvoiceSuiteProductClassificationDTO
         ?string $code = null,
         ?string $name = null,
         ?string $listId = null,
-        ?string $listVersionId = null,
+        ?string $listVersionId = null
     ) {
         $this->setCode($code);
         $this->setName($name);
         $this->setListId($listId);
         $this->setListVersionId($listVersionId);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

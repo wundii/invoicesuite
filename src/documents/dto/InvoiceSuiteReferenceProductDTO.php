@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteReferenceProductDTO
+class InvoiceSuiteReferenceProductDTO implements JsonSerializable
 {
     /**
      * The ID of the product (product id, Order-X interoperable)
@@ -99,7 +100,7 @@ class InvoiceSuiteReferenceProductDTO
         ?string $buyerId = null,
         ?InvoiceSuiteIdDTO $globalId = null,
         ?string $industryId = null,
-        ?InvoiceSuiteQuantityDTO $unitQuantity = null,
+        ?InvoiceSuiteQuantityDTO $unitQuantity = null
     ) {
         $this->setId($id);
         $this->setName($name);
@@ -109,6 +110,16 @@ class InvoiceSuiteReferenceProductDTO
         $this->setGlobalId($globalId);
         $this->setIndustryId($industryId);
         $this->setUnitQuantity($unitQuantity);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

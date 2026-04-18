@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteTaxDTO
+class InvoiceSuiteTaxDTO implements JsonSerializable
 {
     /**
      * The coded description of the tax category
@@ -109,7 +110,7 @@ class InvoiceSuiteTaxDTO
         ?string $exemptionReason = null,
         ?string $exemptionReasonCode = null,
         ?DateTimeInterface $dueDate = null,
-        ?string $dueCode = null,
+        ?string $dueCode = null
     ) {
         $this->setCategory($category);
         $this->setType($type);
@@ -120,6 +121,16 @@ class InvoiceSuiteTaxDTO
         $this->setExemptionReasonCode($exemptionReasonCode);
         $this->setDueDate($dueDate);
         $this->setDueCode($dueCode);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

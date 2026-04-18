@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteProductDTO
+class InvoiceSuiteProductDTO implements JsonSerializable
 {
     /**
      * The ID of the product (product id, Order-X interoperable)
@@ -162,7 +163,7 @@ class InvoiceSuiteProductDTO
         ?string $originTradeCountry = null,
         array $characteristics = [],
         array $classifications = [],
-        array $referenceProducts = [],
+        array $referenceProducts = []
     ) {
         $this->setId($id);
         $this->setName($name);
@@ -179,6 +180,16 @@ class InvoiceSuiteProductDTO
         $this->setCharacteristics($characteristics);
         $this->setClassifications($classifications);
         $this->setReferenceProducts($referenceProducts);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -602,7 +613,7 @@ class InvoiceSuiteProductDTO
     public function forEachCharacteristic(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -636,7 +647,7 @@ class InvoiceSuiteProductDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstCharacteristic($callback, $callbackElse);
@@ -684,7 +695,7 @@ class InvoiceSuiteProductDTO
     public function filterFirstCharacteristic(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCharacteristic = $this->filterCharacteristic($filterCallback);
 
@@ -709,7 +720,7 @@ class InvoiceSuiteProductDTO
     public function filterLastCharacteristic(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCharacteristic = $this->filterCharacteristic($filterCallback);
 
@@ -856,7 +867,7 @@ class InvoiceSuiteProductDTO
     public function forEachClassification(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -890,7 +901,7 @@ class InvoiceSuiteProductDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstClassification($callback, $callbackElse);
@@ -938,7 +949,7 @@ class InvoiceSuiteProductDTO
     public function filterFirstClassification(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredClassification = $this->filterClassification($filterCallback);
 
@@ -963,7 +974,7 @@ class InvoiceSuiteProductDTO
     public function filterLastClassification(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredClassification = $this->filterClassification($filterCallback);
 
@@ -1110,7 +1121,7 @@ class InvoiceSuiteProductDTO
     public function forEachReferenceProduct(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1144,7 +1155,7 @@ class InvoiceSuiteProductDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstReferenceProduct($callback, $callbackElse);
@@ -1192,7 +1203,7 @@ class InvoiceSuiteProductDTO
     public function filterFirstReferenceProduct(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredReferenceProduct = $this->filterReferenceProduct($filterCallback);
 
@@ -1217,7 +1228,7 @@ class InvoiceSuiteProductDTO
     public function filterLastReferenceProduct(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredReferenceProduct = $this->filterReferenceProduct($filterCallback);
 

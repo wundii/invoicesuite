@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteProductCharacteristicDTO
+class InvoiceSuiteProductCharacteristicDTO implements JsonSerializable
 {
     /**
      * The name of the attribute or characteristic ("Colour")
@@ -63,12 +64,22 @@ class InvoiceSuiteProductCharacteristicDTO
         ?string $description = null,
         ?string $value = null,
         ?string $type = null,
-        ?InvoiceSuiteMeasureDTO $valueMeasure = null,
+        ?InvoiceSuiteMeasureDTO $valueMeasure = null
     ) {
         $this->setDescription($description);
         $this->setValue($value);
         $this->setType($type);
         $this->setValueMeasure($valueMeasure);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

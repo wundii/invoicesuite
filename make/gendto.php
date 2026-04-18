@@ -1,10 +1,137 @@
 <?php
 
 use horstoeko\stringmanagement\PathUtils;
+use Nette\PhpGenerator\Closure;
+use Nette\PhpGenerator\GlobalFunction;
+use Nette\PhpGenerator\Helpers;
+use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\PhpFile;
+use Nette\PhpGenerator\PromotedParameter;
+use Nette\PhpGenerator\Property;
+use Nette\PhpGenerator\PropertyAccessMode;
+use Nette\PhpGenerator\PropertyHook;
 use Nette\PhpGenerator\PsrPrinter;
+use Nette\Utils\Strings;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+class MyPsrPrinter extends PsrPrinter
+{
+    protected function printParameters(
+        Closure|GlobalFunction|Method|PropertyHook $function,
+        int $column = 0
+    ): string {
+        return $this->formatParametersAlwaysMultiline($function);
+    }
+
+    private function formatParametersAlwaysMultiline(
+        Closure|GlobalFunction|Method|PropertyHook $function
+    ): string {
+        $params = $function->getParameters();
+
+        if ([] === $params) {
+            return '()';
+        }
+
+        $res = '';
+        $lastParam = end($params);
+
+        foreach ($params as $param) {
+            $param->validate();
+
+            $variadic = !$function instanceof PropertyHook
+                && $function->isVariadic()
+                && $param === $lastParam;
+
+            $attrs = $this->printAttributes($param->getAttributes(), inline: true);
+
+            $res .= $this->printDocComment($param)
+                . ($attrs ? substr($attrs, 0, -1) . "\n" : '')
+                . (
+                    $param instanceof PromotedParameter
+                        ? ($param->isFinal() ? 'final ' : '')
+                            . $this->formatPropertyVisibility($param)
+                            . ($param->isReadOnly() && $param->getType() ? ' readonly' : '')
+                            . ' '
+                        : ''
+                )
+                . ltrim($this->printType($param->getType(), $param->isNullable()) . ' ')
+                . ($param->isReference() ? '&' : '')
+                . ($variadic ? '...' : '')
+                . '$' . $param->getName()
+                . (
+                    $param->hasDefaultValue() && !$variadic
+                        ? ' = ' . $this->dump($param->getDefaultValue())
+                        : ''
+                )
+                . (
+                    $param instanceof PromotedParameter
+                        ? $this->formatHooks($param)
+                        : ''
+                )
+                . ($param === $lastParam ? "\n" : ",\n");
+        }
+
+        return "(\n" . $this->indent($res) . ')';
+    }
+
+    private function formatPropertyVisibility(PromotedParameter|Property $param): string
+    {
+        $get = $param->getVisibility(PropertyAccessMode::Get);
+        $set = $param->getVisibility(PropertyAccessMode::Set);
+
+        return $set
+            ? ($get ? "{$get} {$set}(set)" : "{$set}(set)")
+            : ($get ?? 'public');
+    }
+
+    private function formatHooks(
+        PromotedParameter|Property $property,
+        bool $isInterface = false
+    ): string {
+        $hooks = $property->getHooks();
+
+        if (!$hooks) {
+            return '';
+        }
+
+        $simple = true;
+
+        foreach ($hooks as $type => $hook) {
+            $simple = $simple && ($hook->isAbstract() || $isInterface);
+
+            $hooks[$type] = $this->printDocComment($hook)
+                . $this->printAttributes($hook->getAttributes())
+                . (
+                    $hook->isAbstract() || $isInterface
+                        ? ($hook->getReturnReference() ? '&' : '') . $type . ';'
+                        : ($hook->isFinal() ? 'final ' : '')
+                            . ($hook->getReturnReference() ? '&' : '')
+                            . $type
+                            . ($hook->getParameters() ? $this->printParameters($hook) : '')
+                            . ' '
+                            . (
+                                $hook->isShort()
+                                    ? '=> ' . $hook->getBody() . ';'
+                                    : "{\n" . $this->indent($this->formatFunctionBody($hook)) . '}'
+                            )
+                );
+        }
+
+        return $simple
+            ? ' { ' . implode(' ', $hooks) . ' }'
+            : " {\n" . $this->indent(implode("\n", $hooks)) . "\n}";
+    }
+
+    private function formatFunctionBody(
+        Closure|GlobalFunction|Method|PropertyHook $function
+    ): string {
+        $code = Helpers::simplifyTaggedNames($function->getBody(), $this->namespace);
+        $code = Strings::normalize($code);
+
+        return ltrim(rtrim($code), "\n");
+    }
+}
 
 function gendto(array $definitions): void
 {
@@ -24,6 +151,8 @@ function gendto(array $definitions): void
 
         $namespace = $phpFile->addNamespace($definition['ns']);
 
+        $namespace->addUse('JsonSerializable');
+
         $class = $namespace->addClass($definition['class']);
         $class->addComment(sprintf('Class representing a DTO for %s', $definition['purpose'] ?? '...'));
         $class->addComment('');
@@ -31,11 +160,22 @@ function gendto(array $definitions): void
         $class->addComment('@author   horstoeko <horstoeko@erling.com.de>');
         $class->addComment('@license  https://opensource.org/licenses/MIT MIT');
         $class->addComment('@see      https://github.com/horstoeko/invoicesuite');
+        $class->addImplement('JsonSerializable');
 
         if (isset($definition['extends'])) {
             $namespace->addUse($definition['extends']);
             $class->setExtends($definition['extends']);
         }
+
+        /**
+         * ------------------------------
+         * -- Needs for JsonSerializable
+         * ------------------------------
+         */
+        $jsonSerializeMethod = $class->addMethod('jsonSerialize')->setVisibility('public')->setReturnType('mixed');
+        $jsonSerializeMethod->addComment('Specify data which should be serialized to JSON');
+        $jsonSerializeMethod->addComment("\n\n@return mixed");
+        $jsonSerializeMethod->addBody('return get_object_vars($this);');
 
         /**
          * -------------------
@@ -482,7 +622,7 @@ function gendto(array $definitions): void
          * -- Finish and write PHP file
          * ----------------------------
          */
-        $printer = new PsrPrinter();
+        $printer = new MyPsrPrinter();
         file_put_contents($toFile, $printer->printFile($phpFile));
     }
 }

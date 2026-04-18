@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
+class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO implements JsonSerializable
 {
     /**
      * Organisation Name
@@ -45,6 +46,16 @@ class InvoiceSuiteOrganisationDTO extends InvoiceSuiteIdDTO
         parent::__construct($id, $idType);
 
         $this->setName($name);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

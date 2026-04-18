@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDateRangeDTO
+class InvoiceSuiteDateRangeDTO implements JsonSerializable
 {
     /**
      * Start of the period
@@ -55,11 +56,21 @@ class InvoiceSuiteDateRangeDTO
     public function __construct(
         ?DateTimeInterface $startDate = null,
         ?DateTimeInterface $endDate = null,
-        ?string $description = null,
+        ?string $description = null
     ) {
         $this->setStartDate($startDate);
         $this->setEndDate($endDate);
         $this->setDescription($description);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

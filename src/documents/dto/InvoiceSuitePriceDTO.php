@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JsonSerializable;
+
 /**
  * Class representing a DTO for ...
  *
@@ -19,7 +21,7 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePriceDTO
+class InvoiceSuitePriceDTO implements JsonSerializable
 {
     /**
      * The price value
@@ -47,6 +49,16 @@ class InvoiceSuitePriceDTO
     ) {
         $this->setAmount($amount);
         $this->setPriceQuantity($priceQuantity);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

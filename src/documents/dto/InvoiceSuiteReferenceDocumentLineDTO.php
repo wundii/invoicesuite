@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteReferenceDocumentLineDTO
+class InvoiceSuiteReferenceDocumentLineDTO implements JsonSerializable
 {
     /**
      * Reference number
@@ -55,11 +56,21 @@ class InvoiceSuiteReferenceDocumentLineDTO
     public function __construct(
         ?string $referenceNumber = null,
         ?string $referenceLineNumber = null,
-        ?DateTimeInterface $referenceDate = null,
+        ?DateTimeInterface $referenceDate = null
     ) {
         $this->setReferenceNumber($referenceNumber);
         $this->setReferenceLineNumber($referenceLineNumber);
         $this->setReferenceDate($referenceDate);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

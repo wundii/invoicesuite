@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JsonSerializable;
+
 /**
  * Class representing a DTO for ...
  *
@@ -19,7 +21,7 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePartyDTO
+class InvoiceSuitePartyDTO implements JsonSerializable
 {
     /**
      * Party names
@@ -97,7 +99,7 @@ class InvoiceSuitePartyDTO
         array $addresses = [],
         array $legalOrganisations = [],
         array $contacts = [],
-        array $communications = [],
+        array $communications = []
     ) {
         $this->setNames($names);
         $this->setIds($ids);
@@ -107,6 +109,16 @@ class InvoiceSuitePartyDTO
         $this->setLegalOrganisations($legalOrganisations);
         $this->setContacts($contacts);
         $this->setCommunications($communications);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -276,7 +288,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstName($callback, $callbackElse);
@@ -324,7 +336,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstName(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredName = $this->filterName($filterCallback);
 
@@ -349,7 +361,7 @@ class InvoiceSuitePartyDTO
     public function filterLastName(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredName = $this->filterName($filterCallback);
 
@@ -530,7 +542,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstId($callback, $callbackElse);
@@ -578,7 +590,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstId(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredId = $this->filterId($filterCallback);
 
@@ -784,7 +796,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstGlobalId($callback, $callbackElse);
@@ -832,7 +844,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstGlobalId(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredGlobalId = $this->filterGlobalId($filterCallback);
 
@@ -857,7 +869,7 @@ class InvoiceSuitePartyDTO
     public function filterLastGlobalId(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredGlobalId = $this->filterGlobalId($filterCallback);
 
@@ -1004,7 +1016,7 @@ class InvoiceSuitePartyDTO
     public function forEachTaxRegistration(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1038,7 +1050,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstTaxRegistration($callback, $callbackElse);
@@ -1086,7 +1098,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstTaxRegistration(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTaxRegistration = $this->filterTaxRegistration($filterCallback);
 
@@ -1111,7 +1123,7 @@ class InvoiceSuitePartyDTO
     public function filterLastTaxRegistration(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTaxRegistration = $this->filterTaxRegistration($filterCallback);
 
@@ -1292,7 +1304,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstAddress($callback, $callbackElse);
@@ -1340,7 +1352,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstAddress(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAddress = $this->filterAddress($filterCallback);
 
@@ -1365,7 +1377,7 @@ class InvoiceSuitePartyDTO
     public function filterLastAddress(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAddress = $this->filterAddress($filterCallback);
 
@@ -1512,7 +1524,7 @@ class InvoiceSuitePartyDTO
     public function forEachLegalOrganisation(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1546,7 +1558,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstLegalOrganisation($callback, $callbackElse);
@@ -1594,7 +1606,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstLegalOrganisation(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredLegalOrganisation = $this->filterLegalOrganisation($filterCallback);
 
@@ -1619,7 +1631,7 @@ class InvoiceSuitePartyDTO
     public function filterLastLegalOrganisation(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredLegalOrganisation = $this->filterLegalOrganisation($filterCallback);
 
@@ -1800,7 +1812,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstContact($callback, $callbackElse);
@@ -1848,7 +1860,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstContact(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredContact = $this->filterContact($filterCallback);
 
@@ -1873,7 +1885,7 @@ class InvoiceSuitePartyDTO
     public function filterLastContact(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredContact = $this->filterContact($filterCallback);
 
@@ -2020,7 +2032,7 @@ class InvoiceSuitePartyDTO
     public function forEachCommunication(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -2054,7 +2066,7 @@ class InvoiceSuitePartyDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstCommunication($callback, $callbackElse);
@@ -2102,7 +2114,7 @@ class InvoiceSuitePartyDTO
     public function filterFirstCommunication(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCommunication = $this->filterCommunication($filterCallback);
 
@@ -2127,7 +2139,7 @@ class InvoiceSuitePartyDTO
     public function filterLastCommunication(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCommunication = $this->filterCommunication($filterCallback);
 

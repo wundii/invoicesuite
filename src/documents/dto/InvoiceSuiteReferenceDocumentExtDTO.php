@@ -14,6 +14,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -23,7 +24,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentDTO
+class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentDTO implements JsonSerializable
 {
     /**
      * The additional document type code
@@ -69,7 +70,7 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
         ?string $typeCode = null,
         ?string $referenceTypeCode = null,
         ?string $description = null,
-        ?InvoiceSuiteAttachment $attachment = null,
+        ?InvoiceSuiteAttachment $attachment = null
     ) {
         parent::__construct($referenceNumber, $referenceDate);
 
@@ -77,6 +78,16 @@ class InvoiceSuiteReferenceDocumentExtDTO extends InvoiceSuiteReferenceDocumentD
         $this->setReferenceTypeCode($referenceTypeCode);
         $this->setDescription($description);
         $this->setAttachment($attachment);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

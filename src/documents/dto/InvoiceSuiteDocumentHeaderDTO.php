@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteDocumentHeaderDTO
+class InvoiceSuiteDocumentHeaderDTO implements JsonSerializable
 {
     /**
      * The document number issued by the seller
@@ -442,7 +443,7 @@ class InvoiceSuiteDocumentHeaderDTO
         array $taxes = [],
         array $allowanceCharges = [],
         array $serviceCharges = [],
-        array $summations = [],
+        array $summations = []
     ) {
         $this->setNumber($number);
         $this->setType($type);
@@ -490,6 +491,16 @@ class InvoiceSuiteDocumentHeaderDTO
         $this->setAllowanceCharges($allowanceCharges);
         $this->setServiceCharges($serviceCharges);
         $this->setSummations($summations);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -769,7 +780,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachSupplyChainEvent(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -803,7 +814,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstSupplyChainEvent($callback, $callbackElse);
@@ -851,7 +862,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstSupplyChainEvent(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSupplyChainEvent = $this->filterSupplyChainEvent($filterCallback);
 
@@ -876,7 +887,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastSupplyChainEvent(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSupplyChainEvent = $this->filterSupplyChainEvent($filterCallback);
 
@@ -1153,7 +1164,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstNote($callback, $callbackElse);
@@ -1201,7 +1212,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstNote(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredNote = $this->filterNote($filterCallback);
 
@@ -1226,7 +1237,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastNote(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredNote = $this->filterNote($filterCallback);
 
@@ -1373,7 +1384,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachBillingPeriod(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1407,7 +1418,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstBillingPeriod($callback, $callbackElse);
@@ -1455,7 +1466,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstBillingPeriod(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBillingPeriod = $this->filterBillingPeriod($filterCallback);
 
@@ -1480,7 +1491,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastBillingPeriod(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBillingPeriod = $this->filterBillingPeriod($filterCallback);
 
@@ -1627,7 +1638,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachPostingReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1661,7 +1672,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPostingReference($callback, $callbackElse);
@@ -1709,7 +1720,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstPostingReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPostingReference = $this->filterPostingReference($filterCallback);
 
@@ -1734,7 +1745,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastPostingReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPostingReference = $this->filterPostingReference($filterCallback);
 
@@ -1881,7 +1892,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachSellerOrderReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -1915,7 +1926,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstSellerOrderReference($callback, $callbackElse);
@@ -1963,7 +1974,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstSellerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSellerOrderReference = $this->filterSellerOrderReference($filterCallback);
 
@@ -1988,7 +1999,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastSellerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSellerOrderReference = $this->filterSellerOrderReference($filterCallback);
 
@@ -2135,7 +2146,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachBuyerOrderReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -2169,7 +2180,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstBuyerOrderReference($callback, $callbackElse);
@@ -2217,7 +2228,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstBuyerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBuyerOrderReference = $this->filterBuyerOrderReference($filterCallback);
 
@@ -2242,7 +2253,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastBuyerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBuyerOrderReference = $this->filterBuyerOrderReference($filterCallback);
 
@@ -2389,7 +2400,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachQuotationReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -2423,7 +2434,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstQuotationReference($callback, $callbackElse);
@@ -2471,7 +2482,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstQuotationReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredQuotationReference = $this->filterQuotationReference($filterCallback);
 
@@ -2496,7 +2507,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastQuotationReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredQuotationReference = $this->filterQuotationReference($filterCallback);
 
@@ -2643,7 +2654,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachContractReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -2677,7 +2688,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstContractReference($callback, $callbackElse);
@@ -2725,7 +2736,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstContractReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredContractReference = $this->filterContractReference($filterCallback);
 
@@ -2750,7 +2761,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastContractReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredContractReference = $this->filterContractReference($filterCallback);
 
@@ -2897,7 +2908,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachAdditionalReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -2931,7 +2942,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstAdditionalReference($callback, $callbackElse);
@@ -2979,7 +2990,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstAdditionalReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAdditionalReference = $this->filterAdditionalReference($filterCallback);
 
@@ -3004,7 +3015,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastAdditionalReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAdditionalReference = $this->filterAdditionalReference($filterCallback);
 
@@ -3151,7 +3162,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachInvoiceReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -3185,7 +3196,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstInvoiceReference($callback, $callbackElse);
@@ -3233,7 +3244,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstInvoiceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredInvoiceReference = $this->filterInvoiceReference($filterCallback);
 
@@ -3258,7 +3269,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastInvoiceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredInvoiceReference = $this->filterInvoiceReference($filterCallback);
 
@@ -3405,7 +3416,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachProjectReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -3439,7 +3450,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstProjectReference($callback, $callbackElse);
@@ -3487,7 +3498,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstProjectReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredProjectReference = $this->filterProjectReference($filterCallback);
 
@@ -3512,7 +3523,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastProjectReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredProjectReference = $this->filterProjectReference($filterCallback);
 
@@ -3557,7 +3568,7 @@ class InvoiceSuiteDocumentHeaderDTO
      * @return static
      */
     public function addUltimateCustomerOrderReference(
-        ?InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference,
+        ?InvoiceSuiteReferenceDocumentDTO $ultimateCustomerOrderReference
     ): static {
         if (is_null($ultimateCustomerOrderReference)) {
             return $this;
@@ -3659,7 +3670,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachUltimateCustomerOrderReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -3693,7 +3704,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstUltimateCustomerOrderReference($callback, $callbackElse);
@@ -3741,7 +3752,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstUltimateCustomerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredUltimateCustomerOrderReference = $this->filterUltimateCustomerOrderReference($filterCallback);
 
@@ -3766,7 +3777,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastUltimateCustomerOrderReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredUltimateCustomerOrderReference = $this->filterUltimateCustomerOrderReference($filterCallback);
 
@@ -3913,7 +3924,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachDespatchAdviceReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -3947,7 +3958,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstDespatchAdviceReference($callback, $callbackElse);
@@ -3995,7 +4006,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstDespatchAdviceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDespatchAdviceReference = $this->filterDespatchAdviceReference($filterCallback);
 
@@ -4020,7 +4031,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastDespatchAdviceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDespatchAdviceReference = $this->filterDespatchAdviceReference($filterCallback);
 
@@ -4167,7 +4178,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachReceivingAdviceReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -4201,7 +4212,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstReceivingAdviceReference($callback, $callbackElse);
@@ -4249,7 +4260,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstReceivingAdviceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredReceivingAdviceReference = $this->filterReceivingAdviceReference($filterCallback);
 
@@ -4274,7 +4285,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastReceivingAdviceReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredReceivingAdviceReference = $this->filterReceivingAdviceReference($filterCallback);
 
@@ -4421,7 +4432,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachDeliveryNoteReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -4455,7 +4466,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstDeliveryNoteReference($callback, $callbackElse);
@@ -4503,7 +4514,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstDeliveryNoteReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDeliveryNoteReference = $this->filterDeliveryNoteReference($filterCallback);
 
@@ -4528,7 +4539,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastDeliveryNoteReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDeliveryNoteReference = $this->filterDeliveryNoteReference($filterCallback);
 
@@ -4949,7 +4960,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPaymentMean($callback, $callbackElse);
@@ -4997,7 +5008,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstPaymentMean(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentMean = $this->filterPaymentMean($filterCallback);
 
@@ -5022,7 +5033,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastPaymentMean(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentMean = $this->filterPaymentMean($filterCallback);
 
@@ -5203,7 +5214,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPaymentTerm($callback, $callbackElse);
@@ -5251,7 +5262,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstPaymentTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentTerm = $this->filterPaymentTerm($filterCallback);
 
@@ -5276,7 +5287,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastPaymentTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentTerm = $this->filterPaymentTerm($filterCallback);
 
@@ -5423,7 +5434,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachCreditorReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -5457,7 +5468,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstCreditorReference($callback, $callbackElse);
@@ -5505,7 +5516,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstCreditorReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCreditorReference = $this->filterCreditorReference($filterCallback);
 
@@ -5530,7 +5541,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastCreditorReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredCreditorReference = $this->filterCreditorReference($filterCallback);
 
@@ -5677,7 +5688,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachPaymentReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -5711,7 +5722,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPaymentReference($callback, $callbackElse);
@@ -5759,7 +5770,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstPaymentReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentReference = $this->filterPaymentReference($filterCallback);
 
@@ -5784,7 +5795,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastPaymentReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPaymentReference = $this->filterPaymentReference($filterCallback);
 
@@ -5931,7 +5942,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachBuyerReference(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -5965,7 +5976,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstBuyerReference($callback, $callbackElse);
@@ -6013,7 +6024,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstBuyerReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBuyerReference = $this->filterBuyerReference($filterCallback);
 
@@ -6038,7 +6049,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastBuyerReference(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredBuyerReference = $this->filterBuyerReference($filterCallback);
 
@@ -6219,7 +6230,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstPosition($callback, $callbackElse);
@@ -6267,7 +6278,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstPosition(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPosition = $this->filterPosition($filterCallback);
 
@@ -6292,7 +6303,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastPosition(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredPosition = $this->filterPosition($filterCallback);
 
@@ -6439,7 +6450,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachDeliveryTerm(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -6473,7 +6484,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstDeliveryTerm($callback, $callbackElse);
@@ -6521,7 +6532,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstDeliveryTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDeliveryTerm = $this->filterDeliveryTerm($filterCallback);
 
@@ -6546,7 +6557,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastDeliveryTerm(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredDeliveryTerm = $this->filterDeliveryTerm($filterCallback);
 
@@ -6727,7 +6738,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstTax($callback, $callbackElse);
@@ -6775,7 +6786,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstTax(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
@@ -6800,7 +6811,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastTax(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
@@ -6947,7 +6958,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachAllowanceCharge(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -6981,7 +6992,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstAllowanceCharge($callback, $callbackElse);
@@ -7029,7 +7040,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstAllowanceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
@@ -7054,7 +7065,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastAllowanceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
@@ -7201,7 +7212,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function forEachServiceCharge(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -7235,7 +7246,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstServiceCharge($callback, $callbackElse);
@@ -7283,7 +7294,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstServiceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredServiceCharge = $this->filterServiceCharge($filterCallback);
 
@@ -7308,7 +7319,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastServiceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredServiceCharge = $this->filterServiceCharge($filterCallback);
 
@@ -7489,7 +7500,7 @@ class InvoiceSuiteDocumentHeaderDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstSummation($callback, $callbackElse);
@@ -7537,7 +7548,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterFirstSummation(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSummation = $this->filterSummation($filterCallback);
 
@@ -7562,7 +7573,7 @@ class InvoiceSuiteDocumentHeaderDTO
     public function filterLastSummation(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredSummation = $this->filterSummation($filterCallback);
 

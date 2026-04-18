@@ -13,6 +13,7 @@ namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\codelists\InvoiceSuiteCodelistPaymentMeans;
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -22,7 +23,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePaymentMeanDTO
+class InvoiceSuitePaymentMeanDTO implements JsonSerializable
 {
     /**
      * The expected or used means of payment expressed as a code
@@ -127,7 +128,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
         ?string $paymentReference = null,
-        ?string $mandate = null,
+        ?string $mandate = null
     ) {
         $this->setTypeCode($typeCode);
         $this->setName($name);
@@ -140,6 +141,16 @@ class InvoiceSuitePaymentMeanDTO
         $this->setPayeeBic($payeeBic);
         $this->setPaymentReference($paymentReference);
         $this->setMandate($mandate);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -421,7 +432,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeAccountName = null,
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
-        ?string $paymentReference = null,
+        ?string $paymentReference = null
     ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_58->value,
@@ -448,7 +459,7 @@ class InvoiceSuitePaymentMeanDTO
         ?string $payeeAccountName = null,
         ?string $payeeProprietaryId = null,
         ?string $payeeBic = null,
-        ?string $paymentReference = null,
+        ?string $paymentReference = null
     ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_30->value,
@@ -505,7 +516,7 @@ class InvoiceSuitePaymentMeanDTO
      */
     public static function createAsPaymentCardPayment(
         ?string $financialCardId = null,
-        ?string $financialCardHolder = null,
+        ?string $financialCardHolder = null
     ): self {
         return new self(
             typeCode: InvoiceSuiteCodelistPaymentMeans::UNTDID_4461_48->value,

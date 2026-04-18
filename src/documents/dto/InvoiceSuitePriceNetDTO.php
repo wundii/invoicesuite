@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JsonSerializable;
+
 /**
  * Class representing a DTO for ...
  *
@@ -19,7 +21,7 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
+class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO implements JsonSerializable
 {
     /**
      * The net price included tax
@@ -38,11 +40,21 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     public function __construct(
         ?float $amount = null,
         ?InvoiceSuiteQuantityDTO $priceQuantity = null,
-        array $taxes = [],
+        array $taxes = []
     ) {
         parent::__construct($amount, $priceQuantity);
 
         $this->setTaxes($taxes);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -212,7 +224,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstTax($callback, $callbackElse);
@@ -260,7 +272,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     public function filterFirstTax(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 
@@ -285,7 +297,7 @@ class InvoiceSuitePriceNetDTO extends InvoiceSuitePriceDTO
     public function filterLastTax(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredTax = $this->filterTax($filterCallback);
 

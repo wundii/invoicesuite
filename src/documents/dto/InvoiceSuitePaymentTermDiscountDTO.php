@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use DateTimeInterface;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use DateTimeInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePaymentTermDiscountDTO
+class InvoiceSuitePaymentTermDiscountDTO implements JsonSerializable
 {
     /**
      * The base amount of the payment discount
@@ -72,13 +73,23 @@ class InvoiceSuitePaymentTermDiscountDTO
         ?float $discountAmount = null,
         ?float $discountPercent = null,
         ?DateTimeInterface $baseDate = null,
-        ?InvoiceSuitePeriodDTO $period = null,
+        ?InvoiceSuitePeriodDTO $period = null
     ) {
         $this->setBaseAmount($baseAmount);
         $this->setDiscountAmount($discountAmount);
         $this->setDiscountPercent($discountPercent);
         $this->setBaseDate($baseDate);
         $this->setPeriod($period);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**

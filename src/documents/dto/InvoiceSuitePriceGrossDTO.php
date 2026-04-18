@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace horstoeko\invoicesuite\documents\dto;
 
+use JsonSerializable;
+
 /**
  * Class representing a DTO for ...
  *
@@ -19,7 +21,7 @@ namespace horstoeko\invoicesuite\documents\dto;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
+class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO implements JsonSerializable
 {
     /**
      * The discounts or charges to the gross price
@@ -38,11 +40,21 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     public function __construct(
         ?float $amount = null,
         ?InvoiceSuiteQuantityDTO $priceQuantity = null,
-        array $allowanceCharges = [],
+        array $allowanceCharges = []
     ) {
         parent::__construct($amount, $priceQuantity);
 
         $this->setAllowanceCharges($allowanceCharges);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
@@ -178,7 +190,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     public function forEachAllowanceCharge(
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         $count = 0;
 
@@ -212,7 +224,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
         bool $foreachCondition,
         callable $callback,
         ?callable $callbackElse = null,
-        ?int $limit = null,
+        ?int $limit = null
     ): static {
         if (!$foreachCondition) {
             return $this->firstAllowanceCharge($callback, $callbackElse);
@@ -260,7 +272,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     public function filterFirstAllowanceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 
@@ -285,7 +297,7 @@ class InvoiceSuitePriceGrossDTO extends InvoiceSuitePriceDTO
     public function filterLastAllowanceCharge(
         callable $filterCallback,
         callable $callback,
-        ?callable $callbackElse = null,
+        ?callable $callbackElse = null
     ): static {
         $filteredAllowanceCharge = $this->filterAllowanceCharge($filterCallback);
 

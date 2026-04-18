@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\documents\dto;
 
 use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
+use JsonSerializable;
 
 /**
  * Class representing a DTO for ...
@@ -21,7 +22,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteAllowanceChargeDTO
+class InvoiceSuiteAllowanceChargeDTO implements JsonSerializable
 {
     /**
      * The switch that indicates whether the following data refer to an surcharge or a discount, true means that this an charge
@@ -108,7 +109,7 @@ class InvoiceSuiteAllowanceChargeDTO
         ?string $taxType = null,
         ?float $taxPercent = null,
         ?string $reason = null,
-        ?string $reasonCode = null,
+        ?string $reasonCode = null
     ) {
         $this->setChargeIndicator($chargeIndicator);
         $this->setAmount($amount);
@@ -119,6 +120,16 @@ class InvoiceSuiteAllowanceChargeDTO
         $this->setTaxPercent($taxPercent);
         $this->setReason($reason);
         $this->setReasonCode($reasonCode);
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     *
+     * @return mixed
+     */
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 
     /**
