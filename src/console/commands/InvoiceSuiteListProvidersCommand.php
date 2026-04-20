@@ -12,11 +12,7 @@ declare(strict_types=1);
 namespace horstoeko\invoicesuite\console\commands;
 
 use horstoeko\invoicesuite\concerns\HandlesDocumentFormatProviders;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
-use Symfony\Component\Console\Helper\Table;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class representing a console command that lists all available document format providers
@@ -26,7 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @license  https://opensource.org/licenses/MIT MIT
  * @see      https://github.com/horstoeko/invoicesuite
  */
-class InvoiceSuiteListProvidersCommand extends Command
+class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
 {
     use HandlesDocumentFormatProviders;
 
@@ -46,29 +42,24 @@ class InvoiceSuiteListProvidersCommand extends Command
     /**
      * Execute command
      *
-     * @param  InputInterface  $input
-     * @param  OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function handle(): int
     {
         $this->resolveAvailableDocumentFormatProviders();
 
-        $table = new Table($output);
-        $table->setStyle('box');
-        $table->setHeaders(['Provider', 'Description', 'Content-Type', 'PDF', 'XSD']);
-
-        foreach ($this->getRegisteredDocumentFormatProviders() as $provider) {
-            $table->addRow([
-                $provider->getUniqueId(),
-                substr($provider->getDescription(), 0, 40),
+        $rowsToOutput = array_map(
+            static fn ($provider) => [
+                mb_strimwidth($provider->getUniqueId(), 0, 30, '...'),
+                mb_strimwidth($provider->getDescription(), 0, 60, '...'),
                 $provider->getContentType()->value,
                 $provider->getIsPdfSupportAvailable() ? 'yes' : 'no',
                 $provider->getValidationXsdAvailable() ? 'yes' : 'no',
-            ]);
-        }
+            ],
+            $this->getRegisteredDocumentFormatProviders()
+        );
 
-        $table->render();
+        $this->outputTable(['Provider', 'Description', 'Content-Type', 'PDF', 'XSD'], $rowsToOutput);
 
         return self::SUCCESS;
     }
