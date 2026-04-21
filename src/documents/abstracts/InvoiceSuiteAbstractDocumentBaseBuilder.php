@@ -36,6 +36,20 @@ abstract class InvoiceSuiteAbstractDocumentBaseBuilder
     ): static;
 
     /**
+     * Create a document by a DTO
+     *
+     * Alias for createFromDTO
+     *
+     * @param  InvoiceSuiteDocumentHeaderDTO $newDocumentDTO Data-Transfer-Object
+     * @return static
+     */
+    public function fromDTO(
+        InvoiceSuiteDocumentHeaderDTO $newDocumentDTO
+    ): static {
+        return $this->createFromDTO($newDocumentDTO);
+    }
+
+    /**
      * Sets the new document number (e.g. invoice number)
      *
      * @param  null|string $newDocumentNo The document no issued by the seller

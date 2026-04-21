@@ -125,7 +125,6 @@ return (new Config())
             ],
             'no_useless_return' => true,
             'no_useless_else' => true,
-            'yoda_style' => false,
             'no_superfluous_phpdoc_tags' => false,
             'no_empty_phpdoc' => false,
             'global_namespace_import' => [
@@ -153,6 +152,7 @@ return (new Config())
             ],
             'lowercase_cast' => true,
             'short_scalar_cast' => true,
-            'cast_spaces' => ['space' => 'single']
+            'cast_spaces' => ['space' => 'single'],
+            'phpdoc_to_comment' => false
         ]
     );
