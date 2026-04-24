@@ -21,7 +21,6 @@ use horstoeko\invoicesuite\InvoiceSuitePdfDocumentReader;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use PrinsFrank\PdfParser\Exception\PdfParserException;
 use RuntimeException;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
 use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Input\InputArgument;
@@ -42,7 +41,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      *
      * @return void
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -57,7 +56,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      *
      * @return int
      *
-     * @throws InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      * @throws InvoiceSuiteFileNotFoundException
      * @throws InvoiceSuiteFileNotReadableException
      * @throws InvoiceSuiteFormatProviderNotFoundException
