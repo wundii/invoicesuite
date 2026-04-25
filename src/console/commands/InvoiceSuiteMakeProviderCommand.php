@@ -57,7 +57,7 @@ class InvoiceSuiteMakeProviderCommand extends InvoiceSuiteAbstractCommand
     protected function handle(): int
     {
         $inpArgNamespace = $this->getRequiredStringArgument('namespace');
-        $inpArgDirectory = $this->getDirectoryArgument('directory');
+        $inpArgDirectory = $this->getTargetDirectoryArgument('directory');
         $inpArgProviderClassName = $this->getRequiredStringArgument('provider-class');
 
         $inpOptionProviderUniqueId = $this->getStringOption('unique-id', strtolower($inpArgProviderClassName));

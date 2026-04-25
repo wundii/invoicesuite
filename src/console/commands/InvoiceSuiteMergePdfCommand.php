@@ -61,16 +61,12 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $xmlFilename = $this->getFileArgument('xml-file');
-        $pdfFilename = $this->getFileArgument('pdf-file');
-        $outputFilename = $this->getRequiredStringArgument('output-file');
-        $forceOverwrite = $this->getBoolOption('force');
+        $xmlFilename = $this->getSourceFileArgument('xml-file');
+        $pdfFilename = $this->getSourceFileArgument('pdf-file');
+        $outputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
 
-        $this
-            ->ensureIsXmlFile($xmlFilename)
-            ->ensureIsPdfFile($pdfFilename)
-            ->ensureTargetFileDirectoryExists($outputFilename)
-            ->ensureTargetFileCanBeCreated($outputFilename, $forceOverwrite);
+        $this->ensureIsXmlFile($xmlFilename);
+        $this->ensureIsPdfFile($pdfFilename);
 
         InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
             InvoiceSuiteFileUtils::getContentFromFileOrString($xmlFilename),

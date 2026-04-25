@@ -257,7 +257,7 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getDirectoryArgument(string $name): string
+    protected function getTargetDirectoryArgument(string $name): string
     {
         return $this->ensureDirectoryExists($this->getStringArgument($name));
     }
@@ -271,13 +271,13 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws ConsoleInvalidArgumentException
      * @throws RuntimeException
      */
-    protected function getDirectoryOption(string $name): string
+    protected function getTargetDirectoryOption(string $name): string
     {
         return $this->ensureDirectoryExists($this->getStringOption($name));
     }
 
     /**
-     * Get file argument. File must not be empty and must exist
+     * Get input file argument. File must not be empty and must exist
      *
      * @param  string $name
      * @return string
@@ -287,13 +287,13 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getFileArgument(string $name): string
+    protected function getSourceFileArgument(string $name): string
     {
         return $this->ensureFileExists($this->getStringArgument($name));
     }
 
     /**
-     * Get file option. File must not be empty and must exist
+     * Get input file option. File must not be empty and must exist
      *
      * @param  string $name
      * @return string
@@ -303,9 +303,49 @@ abstract class InvoiceSuiteAbstractCommand extends Command
      * @throws InvoiceSuiteFileNotReadableException
      * @throws RuntimeException
      */
-    protected function getFileOption(string $name): string
+    protected function getSourceFileOption(string $name): string
     {
         return $this->ensureFileExists($this->getStringOption($name));
+    }
+
+    /**
+     * Get output file argument. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @param  bool   $forceOverwrite
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getTargetFileArgument(string $name, bool $forceOverwrite = false): string
+    {
+        $this->ensureTargetFileDirectoryExists($this->getStringArgument($name));
+        $this->ensureTargetFileCanBeCreated($this->getStringArgument($name), $forceOverwrite);
+
+        return $this->getStringArgument($name);
+    }
+
+    /**
+     * Get output file option. File must not be empty and must exist
+     *
+     * @param  string $name
+     * @param  bool   $forceOverwrite
+     * @return string
+     *
+     * @throws ConsoleInvalidArgumentException
+     * @throws InvoiceSuiteFileNotFoundException
+     * @throws InvoiceSuiteFileNotReadableException
+     * @throws RuntimeException
+     */
+    protected function getTargetFileOption(string $name, bool $forceOverwrite = false): string
+    {
+        $this->ensureTargetFileDirectoryExists($this->getStringOption($name));
+        $this->ensureTargetFileCanBeCreated($this->getStringOption($name), $forceOverwrite);
+
+        return $this->getStringOption($name);
     }
 
     /**
