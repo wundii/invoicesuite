@@ -69,7 +69,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $inpArgInputFilename = $this->getSourceXmlFileArgument('input-file');
+        $inpArgInputFilename = $this->getSourceXmlOrJsonFileArgument('input-file');
         $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
         $inpOptionFormat = $this->getStringOption('format', 'pdf');
         $inpOptionTemplate = $this->getStringOption('template');
