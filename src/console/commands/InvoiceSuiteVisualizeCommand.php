@@ -69,34 +69,34 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $inputFilename = $this->getSourceXmlFileArgument('input-file');
-        $outputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
-        $outputFormat = InvoiceSuiteStringUtils::lower($this->getStringOption('format', 'pdf'));
+        $inpArgInputFilename = $this->getSourceXmlFileArgument('input-file');
+        $inpArgOutputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
+        $inpOptionFormat = InvoiceSuiteStringUtils::lower($this->getStringOption('format', 'pdf'));
+        $inpOptionTemplate = $this->getStringOption('template');
 
-        if (!InvoiceSuiteArrayUtils::inArrayNoCase(['pdf', 'html'], $outputFormat)) {
-            throw new InvoiceSuiteInvalidArgumentException(sprintf('Invalid option value for format "%s"', $outputFormat));
+        if (!InvoiceSuiteArrayUtils::inArrayNoCase(['pdf', 'html'], $inpOptionFormat)) {
+            throw new InvoiceSuiteInvalidArgumentException(sprintf('Invalid option value for format "%s"', $inpOptionFormat));
         }
 
-        $visualizer = InvoiceSuiteVisualizer::createFromFile($inputFilename);
-        $templateFilename = $this->getStringOption('template');
+        $visualizer = InvoiceSuiteVisualizer::createFromFile($inpArgInputFilename);
 
-        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($templateFilename)) {
-            $visualizer->setTemplate($this->ensureFileExists($templateFilename));
+        if (!InvoiceSuiteStringUtils::stringIsNullOrEmpty($inpOptionTemplate)) {
+            $visualizer->setTemplate($this->ensureFileExists($inpOptionTemplate));
         } else {
             $visualizer->setDefaultTemplate();
         }
 
-        if ('pdf' === $outputFormat) {
-            $visualizer->renderPdfFile($outputFilename);
+        if ('pdf' === $inpOptionFormat) {
+            $visualizer->renderPdfFile($inpArgOutputFilename);
         } else {
             $markup = $visualizer->renderMarkup();
 
-            if (false === file_put_contents($outputFilename, $markup)) {
-                throw new RuntimeException(sprintf('Unable to write target file "%s".', $outputFilename));
+            if (false === file_put_contents($inpArgOutputFilename, $markup)) {
+                throw new RuntimeException(sprintf('Unable to write target file "%s".', $inpArgOutputFilename));
             }
         }
 
-        $this->outputLineLF(sprintf('<info>Created:</info> %s', $outputFilename));
+        $this->outputLineLF(sprintf('<info>Created:</info> %s', $inpArgOutputFilename));
 
         return $this->returnSuccess();
     }
