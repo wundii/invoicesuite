@@ -42,7 +42,7 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
     {
         $this->setName('invoicesuite:merge');
         $this->setDescription('Embed an XML invoice document into a PDF file');
-        $this->addArgument('xml-file', InputArgument::REQUIRED, 'The XML invoice document to embed');
+        $this->addArgument('document-file', InputArgument::REQUIRED, 'The XML or JSON invoice document to embed');
         $this->addArgument('pdf-file', InputArgument::REQUIRED, 'The PDF file to use as base document');
         $this->addArgument('output-file', InputArgument::REQUIRED, 'The target PDF file');
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overwrite the target PDF file if it already exists');
@@ -61,15 +61,15 @@ class InvoiceSuiteMergePdfCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handle(): int
     {
-        $xmlFilename = $this->getSourceXmlOrJsonFileArgument('xml-file');
+        $xmlOrJsonFilename = $this->getSourceXmlOrJsonFileArgument('document-file');
         $pdfFilename = $this->getSourcePdfFileArgument('pdf-file');
         $outputFilename = $this->getTargetFileArgument('output-file', $this->getBoolOption('force'));
 
-        $this->ensureIsXmlFile($xmlFilename);
+        $this->ensureIsXmlFile($xmlOrJsonFilename);
         $this->ensureIsPdfFile($pdfFilename);
 
         InvoiceSuitePdfDocumentBuilder::createFromDocumentContentAndPdfFile(
-            InvoiceSuiteFileUtils::getContentFromFileOrString($xmlFilename),
+            InvoiceSuiteFileUtils::getContentFromFileOrString($xmlOrJsonFilename),
             $pdfFilename
         )->generatePdfDocumentAndSaveToFile($outputFilename);
 
