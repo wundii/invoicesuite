@@ -43,6 +43,21 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
     }
 
     /**
+     * Get the absolute path to a temporary file
+     *
+     * @param  string $filename
+     * @return string
+     */
+    protected function getTempFilePath(string $filename): string
+    {
+        $absoluteFilename = InvoiceSuitePathUtils::combinePathWithFile(sys_get_temp_dir(), $filename);
+
+        $this->registerFileForTestMethodTeardown($absoluteFilename);
+
+        return $absoluteFilename;
+    }
+
+    /**
      * Decode a JSON command output.
      *
      * @param  string              $jsonOutput
