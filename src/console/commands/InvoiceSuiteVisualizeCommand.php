@@ -46,7 +46,7 @@ class InvoiceSuiteVisualizeCommand extends InvoiceSuiteAbstractCommand
     {
         $this->setName('invoicesuite:visualize');
         $this->setDescription('Visualize an XML invoice document as PDF or HTML');
-        $this->addArgument('input-file', InputArgument::REQUIRED, 'The XML invoice document to visualize');
+        $this->addArgument('input-file', InputArgument::REQUIRED, 'The XML or JSON invoice document to visualize');
         $this->addArgument('output-file', InputArgument::REQUIRED, 'The target PDF or HTML file');
         $this->addOption('format', null, InputOption::VALUE_REQUIRED, 'Output format to use (pdf, html)', 'pdf');
         $this->addOption('template', null, InputOption::VALUE_REQUIRED, 'Use a custom visualizer template file');

@@ -167,6 +167,7 @@
             <file>../tests/testcases/console/InvoiceSuiteListProvidersCommandTest.php</file>
             <file>../tests/testcases/console/InvoiceSuiteMergePdfCommandTest.php</file>
             <file>../tests/testcases/console/InvoiceSuiteValidateCommandTest.php</file>
+            <file>../tests/testcases/console/InvoiceSuiteVisualizeCommandTest.php</file>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
