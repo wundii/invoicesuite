@@ -66,6 +66,7 @@ class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCas
 
         $this->assertNotFalse($outputFileContents);
         $this->assertStringContainsString('<body>', $outputFileContents);
+        $this->assertStringNotContainsString('<!-- Test Template -->', $outputFileContents);
     }
 
     /**
@@ -147,7 +148,7 @@ class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCas
     }
 
     /**
-     * Test that the visualizes raises an exception because the output file already exists
+     * Test that the visualizes raises no exception because the force option is givem
      *
      * @return void
      */
@@ -195,5 +196,36 @@ class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCas
 
         $this->assertNotFalse($outputFileContents);
         $this->assertStringContainsString('<body>', $outputFileContents);
+    }
+
+    /**
+     * Test that the visualizes a given XML or JSON file and outputs a HTML
+     *
+     * @return void
+     */
+    public function testCommandVisualizeAsHtmlWithDifferentTemplate(): void
+    {
+        $commandTester = $this->createCommandTester('invoicesuite:visualize');
+
+        $exitCode = $commandTester->execute([
+            'input-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            'output-file' => $this->getTempFilePath('output.html'),
+            '--format' => 'html',
+            '--template' => $this->getTestAssetFilePath('99_visualizer_template.tmpl'),
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+
+        $commandOutput = $commandTester->getDisplay();
+
+        $this->assertFileExists($this->getTempFilePath('output.html'));
+        $this->assertFileIsReadable($this->getTempFilePath('output.html'));
+        $this->assertStringContainsString($this->getTempFilePath('output.html'), $commandOutput);
+
+        $outputFileContents = file_get_contents($this->getTempFilePath('output.html'));
+
+        $this->assertNotFalse($outputFileContents);
+        $this->assertStringContainsString('<body>', $outputFileContents);
+        $this->assertStringContainsString('<!-- Test Template -->', $outputFileContents);
     }
 }

@@ -132,4 +132,89 @@ class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTestCase
             'output-file' => $this->getTempFilePath('output.pdf'),
         ]);
     }
+
+    /**
+     * Test that the command merges PDF and XML successfully and raises an exception because output file already exists
+     *
+     * @return void
+     */
+    public function testCommandMergeWithNoForce(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessageMatches('/.*already exists. Use --force to overwrite.*/');
+
+        $commandTester = $this->createCommandTester('invoicesuite:merge');
+
+        $exitCode = $commandTester->execute([
+            'document-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
+            'output-file' => $this->getTempFilePath('output.pdf'),
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+
+        $commandOutput = $commandTester->getDisplay();
+
+        $this->assertFileExists($this->getTempFilePath('output.pdf'));
+        $this->assertFileIsReadable($this->getTempFilePath('output.pdf'));
+        $this->assertStringContainsString($this->getTempFilePath('output.pdf'), $commandOutput);
+
+        $commandTester = $this->createCommandTester('invoicesuite:merge');
+
+        $exitCode = $commandTester->execute([
+            'document-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
+            'output-file' => $this->getTempFilePath('output.pdf'),
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+
+        $commandOutput = $commandTester->getDisplay();
+
+        $this->assertFileExists($this->getTempFilePath('output.pdf'));
+        $this->assertFileIsReadable($this->getTempFilePath('output.pdf'));
+        $this->assertStringContainsString($this->getTempFilePath('output.pdf'), $commandOutput);
+    }
+
+    /**
+     * Test that the command merges PDF and XML successfully and raises no exception because output file already exists and
+     * force option is given
+     *
+     * @return void
+     */
+    public function testCommandMergeWithForce(): void
+    {
+        $commandTester = $this->createCommandTester('invoicesuite:merge');
+
+        $exitCode = $commandTester->execute([
+            'document-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
+            'output-file' => $this->getTempFilePath('output.pdf'),
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+
+        $commandOutput = $commandTester->getDisplay();
+
+        $this->assertFileExists($this->getTempFilePath('output.pdf'));
+        $this->assertFileIsReadable($this->getTempFilePath('output.pdf'));
+        $this->assertStringContainsString($this->getTempFilePath('output.pdf'), $commandOutput);
+
+        $commandTester = $this->createCommandTester('invoicesuite:merge');
+
+        $exitCode = $commandTester->execute([
+            'document-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
+            'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
+            'output-file' => $this->getTempFilePath('output.pdf'),
+            '--force' => true,
+        ]);
+
+        $this->assertSame(Command::SUCCESS, $exitCode);
+
+        $commandOutput = $commandTester->getDisplay();
+
+        $this->assertFileExists($this->getTempFilePath('output.pdf'));
+        $this->assertFileIsReadable($this->getTempFilePath('output.pdf'));
+        $this->assertStringContainsString($this->getTempFilePath('output.pdf'), $commandOutput);
+    }
 }
