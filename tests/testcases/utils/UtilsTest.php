@@ -603,6 +603,54 @@ final class UtilsTest extends TestCase
         $this->assertMatchesRegularExpression($guid_regex, InvoiceSuiteStringUtils::createGuid(false));
     }
 
+    public function testInvoiceSuiteStringUtilsLcFirst(): void
+    {
+        $stringValue = 'abc';
+
+        $this->assertSame('abc', InvoiceSuiteStringUtils::lcFirst($stringValue));
+
+        $stringValue = 'Abc';
+
+        $this->assertSame('abc', InvoiceSuiteStringUtils::lcFirst($stringValue));
+
+        $stringValue = '';
+
+        $this->assertSame('', InvoiceSuiteStringUtils::lcFirst($stringValue));
+    }
+
+    public function testInvoiceSuiteStringUtilsUcFirst(): void
+    {
+        $stringValue = 'abc';
+
+        $this->assertSame('Abc', InvoiceSuiteStringUtils::ucFirst($stringValue));
+
+        $stringValue = 'Abc';
+
+        $this->assertSame('Abc', InvoiceSuiteStringUtils::ucFirst($stringValue));
+
+        $stringValue = '';
+
+        $this->assertSame('', InvoiceSuiteStringUtils::ucFirst($stringValue));
+    }
+
+    public function testInvoiceSuiteStringUtilsEquals(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::equals('abc', 'abc'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equals('def', 'def'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equals('XYZ', 'XYZ'));
+        $this->assertFalse(InvoiceSuiteStringUtils::equals('xyz', 'XYZ'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equals('', ''));
+    }
+
+    public function testInvoiceSuiteStringUtilsEqualsNoCase(): void
+    {
+        $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('abc', 'abc'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('def', 'def'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('XYZ', 'XYZ'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('xyz', 'XYZ'));
+        $this->assertTrue(InvoiceSuiteStringUtils::equalsNoCase('', ''));
+    }
+
     public function testInvoiceSuitePointerUtilsFirst(): void
     {
         InvoiceSuitePointerUtils::first('ptr1');
