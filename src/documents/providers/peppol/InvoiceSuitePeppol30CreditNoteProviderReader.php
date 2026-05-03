@@ -81,6 +81,7 @@ use horstoeko\invoicesuite\documents\providers\peppol\models\main\CreditNote;
 use horstoeko\invoicesuite\utils\InvoiceSuiteArrayUtils;
 use horstoeko\invoicesuite\utils\InvoiceSuiteAttachment;
 use horstoeko\invoicesuite\utils\InvoiceSuitePointerUtils;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractDocumentFormatReader
 {
@@ -11054,7 +11055,7 @@ class InvoiceSuitePeppol30CreditNoteProviderReader extends InvoiceSuiteAbstractD
             ?->getPartyIdentification();
 
         return array_values(
-            array_filter($partyIdentifications ?? [], static fn (PartyIdentification $id) => 0 === strcasecmp($id->getID()?->getSchemeID() ?? '', 'SEPA'))
+            array_filter($partyIdentifications ?? [], static fn (PartyIdentification $id) => InvoiceSuiteStringUtils::equalsNoCase($id->getID()?->getSchemeID() ?? '', 'SEPA'))
         );
     }
 }

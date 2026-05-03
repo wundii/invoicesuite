@@ -9492,7 +9492,7 @@ class InvoiceSuitePeppol30CreditNoteProviderBuilder extends InvoiceSuiteAbstract
             return '';
         }
 
-        if (0 === strcasecmp((string) $newTaxRegistrationType, 'VA')) {
+        if (InvoiceSuiteStringUtils::equalsNoCase((string) $newTaxRegistrationType, 'VA')) {
             return 'VAT';
         }
 

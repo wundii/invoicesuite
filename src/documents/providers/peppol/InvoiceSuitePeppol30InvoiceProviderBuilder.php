@@ -9523,7 +9523,7 @@ class InvoiceSuitePeppol30InvoiceProviderBuilder extends InvoiceSuiteAbstractDoc
             return '';
         }
 
-        if (0 === strcasecmp((string) $newTaxRegistrationType, 'VA')) {
+        if (InvoiceSuiteStringUtils::equalsNoCase((string) $newTaxRegistrationType, 'VA')) {
             return 'VAT';
         }
 

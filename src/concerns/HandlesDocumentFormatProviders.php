@@ -7,6 +7,7 @@ namespace horstoeko\invoicesuite\concerns;
 use horstoeko\invoicesuite\documents\abstracts\InvoiceSuiteAbstractDocumentFormatProvider;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFormatProviderNotFoundException;
 use horstoeko\invoicesuite\utils\InvoiceSuiteClassFinder;
+use horstoeko\invoicesuite\utils\InvoiceSuiteStringUtils;
 
 /**
  * Trait representing methods for handling format providers
@@ -80,7 +81,7 @@ trait HandlesDocumentFormatProviders
     public function findDocumentFormatProviderByUniqueId(
         string $formatProviderUniqueId
     ) {
-        $formatProvider = array_filter($this->registeredDocumentFormatProviders, static fn ($formatProvider) => 0 === strcasecmp($formatProvider->getUniqueId(), $formatProviderUniqueId));
+        $formatProvider = array_filter($this->registeredDocumentFormatProviders, static fn ($formatProvider) => InvoiceSuiteStringUtils::equalsNoCase($formatProvider->getUniqueId(), $formatProviderUniqueId));
 
         if ([] === $formatProvider) {
             return null;

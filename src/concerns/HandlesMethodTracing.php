@@ -63,7 +63,7 @@ trait HandlesMethodTracing
             newMessageAdditionalData: $dataCommon
         );
 
-        if (0 === strcasecmp($newEvent, 'early_exit')) {
+        if (InvoiceSuiteStringUtils::equalsNoCase($newEvent, 'early_exit')) {
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'event', 'exit');
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'method', $newMethod);
             InvoiceSuiteArrayUtils::pushStringToStringIndexedArray($dataEarlyExit, 'reason', $newReason);
