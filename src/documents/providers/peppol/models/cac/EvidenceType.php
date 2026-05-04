@@ -107,7 +107,7 @@ class EvidenceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -147,7 +147,7 @@ class EvidenceType
      */
     public function getEvidenceTypeCodeWithCreate(): EvidenceTypeCode
     {
-        $this->evidenceTypeCode = is_null($this->evidenceTypeCode) ? new EvidenceTypeCode() : $this->evidenceTypeCode;
+        $this->evidenceTypeCode ??= new EvidenceTypeCode();
 
         return $this->evidenceTypeCode;
     }
@@ -435,7 +435,7 @@ class EvidenceType
      */
     public function getEvidenceIssuingPartyWithCreate(): EvidenceIssuingParty
     {
-        $this->evidenceIssuingParty = is_null($this->evidenceIssuingParty) ? new EvidenceIssuingParty() : $this->evidenceIssuingParty;
+        $this->evidenceIssuingParty ??= new EvidenceIssuingParty();
 
         return $this->evidenceIssuingParty;
     }
@@ -475,7 +475,7 @@ class EvidenceType
      */
     public function getDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->documentReference = is_null($this->documentReference) ? new DocumentReference() : $this->documentReference;
+        $this->documentReference ??= new DocumentReference();
 
         return $this->documentReference;
     }
@@ -515,7 +515,7 @@ class EvidenceType
      */
     public function getLanguageWithCreate(): Language
     {
-        $this->language = is_null($this->language) ? new Language() : $this->language;
+        $this->language ??= new Language();
 
         return $this->language;
     }

@@ -297,7 +297,7 @@ class TransportationServiceType
      */
     public function getTransportServiceCodeWithCreate(): TransportServiceCode
     {
-        $this->transportServiceCode = is_null($this->transportServiceCode) ? new TransportServiceCode() : $this->transportServiceCode;
+        $this->transportServiceCode ??= new TransportServiceCode();
 
         return $this->transportServiceCode;
     }
@@ -337,7 +337,7 @@ class TransportationServiceType
      */
     public function getTariffClassCodeWithCreate(): TariffClassCode
     {
-        $this->tariffClassCode = is_null($this->tariffClassCode) ? new TariffClassCode() : $this->tariffClassCode;
+        $this->tariffClassCode ??= new TariffClassCode();
 
         return $this->tariffClassCode;
     }
@@ -377,7 +377,7 @@ class TransportationServiceType
      */
     public function getPriorityWithCreate(): Priority
     {
-        $this->priority = is_null($this->priority) ? new Priority() : $this->priority;
+        $this->priority ??= new Priority();
 
         return $this->priority;
     }
@@ -417,7 +417,7 @@ class TransportationServiceType
      */
     public function getFreightRateClassCodeWithCreate(): FreightRateClassCode
     {
-        $this->freightRateClassCode = is_null($this->freightRateClassCode) ? new FreightRateClassCode() : $this->freightRateClassCode;
+        $this->freightRateClassCode ??= new FreightRateClassCode();
 
         return $this->freightRateClassCode;
     }
@@ -581,7 +581,7 @@ class TransportationServiceType
      */
     public function getTransportationServiceDetailsURIWithCreate(): TransportationServiceDetailsURI
     {
-        $this->transportationServiceDetailsURI = is_null($this->transportationServiceDetailsURI) ? new TransportationServiceDetailsURI() : $this->transportationServiceDetailsURI;
+        $this->transportationServiceDetailsURI ??= new TransportationServiceDetailsURI();
 
         return $this->transportationServiceDetailsURI;
     }
@@ -681,7 +681,7 @@ class TransportationServiceType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -721,7 +721,7 @@ class TransportationServiceType
      */
     public function getSequenceNumericWithCreate(): SequenceNumeric
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new SequenceNumeric() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new SequenceNumeric();
 
         return $this->sequenceNumeric;
     }
@@ -1505,7 +1505,7 @@ class TransportationServiceType
      */
     public function getTotalCapacityDimensionWithCreate(): TotalCapacityDimension
     {
-        $this->totalCapacityDimension = is_null($this->totalCapacityDimension) ? new TotalCapacityDimension() : $this->totalCapacityDimension;
+        $this->totalCapacityDimension ??= new TotalCapacityDimension();
 
         return $this->totalCapacityDimension;
     }
@@ -1793,7 +1793,7 @@ class TransportationServiceType
      */
     public function getResponsibleTransportServiceProviderPartyWithCreate(): ResponsibleTransportServiceProviderParty
     {
-        $this->responsibleTransportServiceProviderParty = is_null($this->responsibleTransportServiceProviderParty) ? new ResponsibleTransportServiceProviderParty() : $this->responsibleTransportServiceProviderParty;
+        $this->responsibleTransportServiceProviderParty ??= new ResponsibleTransportServiceProviderParty();
 
         return $this->responsibleTransportServiceProviderParty;
     }
@@ -1957,7 +1957,7 @@ class TransportationServiceType
      */
     public function getEstimatedDurationPeriodWithCreate(): EstimatedDurationPeriod
     {
-        $this->estimatedDurationPeriod = is_null($this->estimatedDurationPeriod) ? new EstimatedDurationPeriod() : $this->estimatedDurationPeriod;
+        $this->estimatedDurationPeriod ??= new EstimatedDurationPeriod();
 
         return $this->estimatedDurationPeriod;
     }

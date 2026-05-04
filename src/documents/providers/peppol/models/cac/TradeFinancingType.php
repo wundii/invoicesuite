@@ -105,7 +105,7 @@ class TradeFinancingType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -145,7 +145,7 @@ class TradeFinancingType
      */
     public function getFinancingInstrumentCodeWithCreate(): FinancingInstrumentCode
     {
-        $this->financingInstrumentCode = is_null($this->financingInstrumentCode) ? new FinancingInstrumentCode() : $this->financingInstrumentCode;
+        $this->financingInstrumentCode ??= new FinancingInstrumentCode();
 
         return $this->financingInstrumentCode;
     }
@@ -185,7 +185,7 @@ class TradeFinancingType
      */
     public function getContractDocumentReferenceWithCreate(): ContractDocumentReference
     {
-        $this->contractDocumentReference = is_null($this->contractDocumentReference) ? new ContractDocumentReference() : $this->contractDocumentReference;
+        $this->contractDocumentReference ??= new ContractDocumentReference();
 
         return $this->contractDocumentReference;
     }
@@ -349,7 +349,7 @@ class TradeFinancingType
      */
     public function getFinancingPartyWithCreate(): FinancingParty
     {
-        $this->financingParty = is_null($this->financingParty) ? new FinancingParty() : $this->financingParty;
+        $this->financingParty ??= new FinancingParty();
 
         return $this->financingParty;
     }
@@ -389,7 +389,7 @@ class TradeFinancingType
      */
     public function getFinancingFinancialAccountWithCreate(): FinancingFinancialAccount
     {
-        $this->financingFinancialAccount = is_null($this->financingFinancialAccount) ? new FinancingFinancialAccount() : $this->financingFinancialAccount;
+        $this->financingFinancialAccount ??= new FinancingFinancialAccount();
 
         return $this->financingFinancialAccount;
     }

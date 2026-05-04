@@ -717,7 +717,7 @@ class ShipmentStageType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -757,7 +757,7 @@ class ShipmentStageType
      */
     public function getTransportModeCodeWithCreate(): TransportModeCode
     {
-        $this->transportModeCode = is_null($this->transportModeCode) ? new TransportModeCode() : $this->transportModeCode;
+        $this->transportModeCode ??= new TransportModeCode();
 
         return $this->transportModeCode;
     }
@@ -797,7 +797,7 @@ class ShipmentStageType
      */
     public function getTransportMeansTypeCodeWithCreate(): TransportMeansTypeCode
     {
-        $this->transportMeansTypeCode = is_null($this->transportMeansTypeCode) ? new TransportMeansTypeCode() : $this->transportMeansTypeCode;
+        $this->transportMeansTypeCode ??= new TransportMeansTypeCode();
 
         return $this->transportMeansTypeCode;
     }
@@ -837,7 +837,7 @@ class ShipmentStageType
      */
     public function getTransitDirectionCodeWithCreate(): TransitDirectionCode
     {
-        $this->transitDirectionCode = is_null($this->transitDirectionCode) ? new TransitDirectionCode() : $this->transitDirectionCode;
+        $this->transitDirectionCode ??= new TransitDirectionCode();
 
         return $this->transitDirectionCode;
     }
@@ -1057,7 +1057,7 @@ class ShipmentStageType
      */
     public function getLoadingSequenceIDWithCreate(): LoadingSequenceID
     {
-        $this->loadingSequenceID = is_null($this->loadingSequenceID) ? new LoadingSequenceID() : $this->loadingSequenceID;
+        $this->loadingSequenceID ??= new LoadingSequenceID();
 
         return $this->loadingSequenceID;
     }
@@ -1097,7 +1097,7 @@ class ShipmentStageType
      */
     public function getSuccessiveSequenceIDWithCreate(): SuccessiveSequenceID
     {
-        $this->successiveSequenceID = is_null($this->successiveSequenceID) ? new SuccessiveSequenceID() : $this->successiveSequenceID;
+        $this->successiveSequenceID ??= new SuccessiveSequenceID();
 
         return $this->successiveSequenceID;
     }
@@ -1385,7 +1385,7 @@ class ShipmentStageType
      */
     public function getCrewQuantityWithCreate(): CrewQuantity
     {
-        $this->crewQuantity = is_null($this->crewQuantity) ? new CrewQuantity() : $this->crewQuantity;
+        $this->crewQuantity ??= new CrewQuantity();
 
         return $this->crewQuantity;
     }
@@ -1425,7 +1425,7 @@ class ShipmentStageType
      */
     public function getPassengerQuantityWithCreate(): PassengerQuantity
     {
-        $this->passengerQuantity = is_null($this->passengerQuantity) ? new PassengerQuantity() : $this->passengerQuantity;
+        $this->passengerQuantity ??= new PassengerQuantity();
 
         return $this->passengerQuantity;
     }
@@ -1465,7 +1465,7 @@ class ShipmentStageType
      */
     public function getTransitPeriodWithCreate(): TransitPeriod
     {
-        $this->transitPeriod = is_null($this->transitPeriod) ? new TransitPeriod() : $this->transitPeriod;
+        $this->transitPeriod ??= new TransitPeriod();
 
         return $this->transitPeriod;
     }
@@ -1629,7 +1629,7 @@ class ShipmentStageType
      */
     public function getTransportMeansWithCreate(): TransportMeans
     {
-        $this->transportMeans = is_null($this->transportMeans) ? new TransportMeans() : $this->transportMeans;
+        $this->transportMeans ??= new TransportMeans();
 
         return $this->transportMeans;
     }
@@ -1669,7 +1669,7 @@ class ShipmentStageType
      */
     public function getLoadingPortLocationWithCreate(): LoadingPortLocation
     {
-        $this->loadingPortLocation = is_null($this->loadingPortLocation) ? new LoadingPortLocation() : $this->loadingPortLocation;
+        $this->loadingPortLocation ??= new LoadingPortLocation();
 
         return $this->loadingPortLocation;
     }
@@ -1709,7 +1709,7 @@ class ShipmentStageType
      */
     public function getUnloadingPortLocationWithCreate(): UnloadingPortLocation
     {
-        $this->unloadingPortLocation = is_null($this->unloadingPortLocation) ? new UnloadingPortLocation() : $this->unloadingPortLocation;
+        $this->unloadingPortLocation ??= new UnloadingPortLocation();
 
         return $this->unloadingPortLocation;
     }
@@ -1749,7 +1749,7 @@ class ShipmentStageType
      */
     public function getTransshipPortLocationWithCreate(): TransshipPortLocation
     {
-        $this->transshipPortLocation = is_null($this->transshipPortLocation) ? new TransshipPortLocation() : $this->transshipPortLocation;
+        $this->transshipPortLocation ??= new TransshipPortLocation();
 
         return $this->transshipPortLocation;
     }
@@ -1789,7 +1789,7 @@ class ShipmentStageType
      */
     public function getLoadingTransportEventWithCreate(): LoadingTransportEvent
     {
-        $this->loadingTransportEvent = is_null($this->loadingTransportEvent) ? new LoadingTransportEvent() : $this->loadingTransportEvent;
+        $this->loadingTransportEvent ??= new LoadingTransportEvent();
 
         return $this->loadingTransportEvent;
     }
@@ -1829,7 +1829,7 @@ class ShipmentStageType
      */
     public function getExaminationTransportEventWithCreate(): ExaminationTransportEvent
     {
-        $this->examinationTransportEvent = is_null($this->examinationTransportEvent) ? new ExaminationTransportEvent() : $this->examinationTransportEvent;
+        $this->examinationTransportEvent ??= new ExaminationTransportEvent();
 
         return $this->examinationTransportEvent;
     }
@@ -1869,7 +1869,7 @@ class ShipmentStageType
      */
     public function getAvailabilityTransportEventWithCreate(): AvailabilityTransportEvent
     {
-        $this->availabilityTransportEvent = is_null($this->availabilityTransportEvent) ? new AvailabilityTransportEvent() : $this->availabilityTransportEvent;
+        $this->availabilityTransportEvent ??= new AvailabilityTransportEvent();
 
         return $this->availabilityTransportEvent;
     }
@@ -1909,7 +1909,7 @@ class ShipmentStageType
      */
     public function getExportationTransportEventWithCreate(): ExportationTransportEvent
     {
-        $this->exportationTransportEvent = is_null($this->exportationTransportEvent) ? new ExportationTransportEvent() : $this->exportationTransportEvent;
+        $this->exportationTransportEvent ??= new ExportationTransportEvent();
 
         return $this->exportationTransportEvent;
     }
@@ -1949,7 +1949,7 @@ class ShipmentStageType
      */
     public function getDischargeTransportEventWithCreate(): DischargeTransportEvent
     {
-        $this->dischargeTransportEvent = is_null($this->dischargeTransportEvent) ? new DischargeTransportEvent() : $this->dischargeTransportEvent;
+        $this->dischargeTransportEvent ??= new DischargeTransportEvent();
 
         return $this->dischargeTransportEvent;
     }
@@ -1989,7 +1989,7 @@ class ShipmentStageType
      */
     public function getWarehousingTransportEventWithCreate(): WarehousingTransportEvent
     {
-        $this->warehousingTransportEvent = is_null($this->warehousingTransportEvent) ? new WarehousingTransportEvent() : $this->warehousingTransportEvent;
+        $this->warehousingTransportEvent ??= new WarehousingTransportEvent();
 
         return $this->warehousingTransportEvent;
     }
@@ -2029,7 +2029,7 @@ class ShipmentStageType
      */
     public function getTakeoverTransportEventWithCreate(): TakeoverTransportEvent
     {
-        $this->takeoverTransportEvent = is_null($this->takeoverTransportEvent) ? new TakeoverTransportEvent() : $this->takeoverTransportEvent;
+        $this->takeoverTransportEvent ??= new TakeoverTransportEvent();
 
         return $this->takeoverTransportEvent;
     }
@@ -2069,7 +2069,7 @@ class ShipmentStageType
      */
     public function getOptionalTakeoverTransportEventWithCreate(): OptionalTakeoverTransportEvent
     {
-        $this->optionalTakeoverTransportEvent = is_null($this->optionalTakeoverTransportEvent) ? new OptionalTakeoverTransportEvent() : $this->optionalTakeoverTransportEvent;
+        $this->optionalTakeoverTransportEvent ??= new OptionalTakeoverTransportEvent();
 
         return $this->optionalTakeoverTransportEvent;
     }
@@ -2109,7 +2109,7 @@ class ShipmentStageType
      */
     public function getDropoffTransportEventWithCreate(): DropoffTransportEvent
     {
-        $this->dropoffTransportEvent = is_null($this->dropoffTransportEvent) ? new DropoffTransportEvent() : $this->dropoffTransportEvent;
+        $this->dropoffTransportEvent ??= new DropoffTransportEvent();
 
         return $this->dropoffTransportEvent;
     }
@@ -2149,7 +2149,7 @@ class ShipmentStageType
      */
     public function getActualPickupTransportEventWithCreate(): ActualPickupTransportEvent
     {
-        $this->actualPickupTransportEvent = is_null($this->actualPickupTransportEvent) ? new ActualPickupTransportEvent() : $this->actualPickupTransportEvent;
+        $this->actualPickupTransportEvent ??= new ActualPickupTransportEvent();
 
         return $this->actualPickupTransportEvent;
     }
@@ -2189,7 +2189,7 @@ class ShipmentStageType
      */
     public function getDeliveryTransportEventWithCreate(): DeliveryTransportEvent
     {
-        $this->deliveryTransportEvent = is_null($this->deliveryTransportEvent) ? new DeliveryTransportEvent() : $this->deliveryTransportEvent;
+        $this->deliveryTransportEvent ??= new DeliveryTransportEvent();
 
         return $this->deliveryTransportEvent;
     }
@@ -2229,7 +2229,7 @@ class ShipmentStageType
      */
     public function getReceiptTransportEventWithCreate(): ReceiptTransportEvent
     {
-        $this->receiptTransportEvent = is_null($this->receiptTransportEvent) ? new ReceiptTransportEvent() : $this->receiptTransportEvent;
+        $this->receiptTransportEvent ??= new ReceiptTransportEvent();
 
         return $this->receiptTransportEvent;
     }
@@ -2269,7 +2269,7 @@ class ShipmentStageType
      */
     public function getStorageTransportEventWithCreate(): StorageTransportEvent
     {
-        $this->storageTransportEvent = is_null($this->storageTransportEvent) ? new StorageTransportEvent() : $this->storageTransportEvent;
+        $this->storageTransportEvent ??= new StorageTransportEvent();
 
         return $this->storageTransportEvent;
     }
@@ -2309,7 +2309,7 @@ class ShipmentStageType
      */
     public function getAcceptanceTransportEventWithCreate(): AcceptanceTransportEvent
     {
-        $this->acceptanceTransportEvent = is_null($this->acceptanceTransportEvent) ? new AcceptanceTransportEvent() : $this->acceptanceTransportEvent;
+        $this->acceptanceTransportEvent ??= new AcceptanceTransportEvent();
 
         return $this->acceptanceTransportEvent;
     }
@@ -2349,7 +2349,7 @@ class ShipmentStageType
      */
     public function getTerminalOperatorPartyWithCreate(): TerminalOperatorParty
     {
-        $this->terminalOperatorParty = is_null($this->terminalOperatorParty) ? new TerminalOperatorParty() : $this->terminalOperatorParty;
+        $this->terminalOperatorParty ??= new TerminalOperatorParty();
 
         return $this->terminalOperatorParty;
     }
@@ -2389,7 +2389,7 @@ class ShipmentStageType
      */
     public function getCustomsAgentPartyWithCreate(): CustomsAgentParty
     {
-        $this->customsAgentParty = is_null($this->customsAgentParty) ? new CustomsAgentParty() : $this->customsAgentParty;
+        $this->customsAgentParty ??= new CustomsAgentParty();
 
         return $this->customsAgentParty;
     }
@@ -2429,7 +2429,7 @@ class ShipmentStageType
      */
     public function getEstimatedTransitPeriodWithCreate(): EstimatedTransitPeriod
     {
-        $this->estimatedTransitPeriod = is_null($this->estimatedTransitPeriod) ? new EstimatedTransitPeriod() : $this->estimatedTransitPeriod;
+        $this->estimatedTransitPeriod ??= new EstimatedTransitPeriod();
 
         return $this->estimatedTransitPeriod;
     }
@@ -2593,7 +2593,7 @@ class ShipmentStageType
      */
     public function getFreightChargeLocationWithCreate(): FreightChargeLocation
     {
-        $this->freightChargeLocation = is_null($this->freightChargeLocation) ? new FreightChargeLocation() : $this->freightChargeLocation;
+        $this->freightChargeLocation ??= new FreightChargeLocation();
 
         return $this->freightChargeLocation;
     }
@@ -2757,7 +2757,7 @@ class ShipmentStageType
      */
     public function getRequestedDepartureTransportEventWithCreate(): RequestedDepartureTransportEvent
     {
-        $this->requestedDepartureTransportEvent = is_null($this->requestedDepartureTransportEvent) ? new RequestedDepartureTransportEvent() : $this->requestedDepartureTransportEvent;
+        $this->requestedDepartureTransportEvent ??= new RequestedDepartureTransportEvent();
 
         return $this->requestedDepartureTransportEvent;
     }
@@ -2797,7 +2797,7 @@ class ShipmentStageType
      */
     public function getRequestedArrivalTransportEventWithCreate(): RequestedArrivalTransportEvent
     {
-        $this->requestedArrivalTransportEvent = is_null($this->requestedArrivalTransportEvent) ? new RequestedArrivalTransportEvent() : $this->requestedArrivalTransportEvent;
+        $this->requestedArrivalTransportEvent ??= new RequestedArrivalTransportEvent();
 
         return $this->requestedArrivalTransportEvent;
     }
@@ -2961,7 +2961,7 @@ class ShipmentStageType
      */
     public function getPlannedDepartureTransportEventWithCreate(): PlannedDepartureTransportEvent
     {
-        $this->plannedDepartureTransportEvent = is_null($this->plannedDepartureTransportEvent) ? new PlannedDepartureTransportEvent() : $this->plannedDepartureTransportEvent;
+        $this->plannedDepartureTransportEvent ??= new PlannedDepartureTransportEvent();
 
         return $this->plannedDepartureTransportEvent;
     }
@@ -3001,7 +3001,7 @@ class ShipmentStageType
      */
     public function getPlannedArrivalTransportEventWithCreate(): PlannedArrivalTransportEvent
     {
-        $this->plannedArrivalTransportEvent = is_null($this->plannedArrivalTransportEvent) ? new PlannedArrivalTransportEvent() : $this->plannedArrivalTransportEvent;
+        $this->plannedArrivalTransportEvent ??= new PlannedArrivalTransportEvent();
 
         return $this->plannedArrivalTransportEvent;
     }
@@ -3165,7 +3165,7 @@ class ShipmentStageType
      */
     public function getActualDepartureTransportEventWithCreate(): ActualDepartureTransportEvent
     {
-        $this->actualDepartureTransportEvent = is_null($this->actualDepartureTransportEvent) ? new ActualDepartureTransportEvent() : $this->actualDepartureTransportEvent;
+        $this->actualDepartureTransportEvent ??= new ActualDepartureTransportEvent();
 
         return $this->actualDepartureTransportEvent;
     }
@@ -3205,7 +3205,7 @@ class ShipmentStageType
      */
     public function getActualWaypointTransportEventWithCreate(): ActualWaypointTransportEvent
     {
-        $this->actualWaypointTransportEvent = is_null($this->actualWaypointTransportEvent) ? new ActualWaypointTransportEvent() : $this->actualWaypointTransportEvent;
+        $this->actualWaypointTransportEvent ??= new ActualWaypointTransportEvent();
 
         return $this->actualWaypointTransportEvent;
     }
@@ -3245,7 +3245,7 @@ class ShipmentStageType
      */
     public function getActualArrivalTransportEventWithCreate(): ActualArrivalTransportEvent
     {
-        $this->actualArrivalTransportEvent = is_null($this->actualArrivalTransportEvent) ? new ActualArrivalTransportEvent() : $this->actualArrivalTransportEvent;
+        $this->actualArrivalTransportEvent ??= new ActualArrivalTransportEvent();
 
         return $this->actualArrivalTransportEvent;
     }
@@ -3409,7 +3409,7 @@ class ShipmentStageType
      */
     public function getEstimatedDepartureTransportEventWithCreate(): EstimatedDepartureTransportEvent
     {
-        $this->estimatedDepartureTransportEvent = is_null($this->estimatedDepartureTransportEvent) ? new EstimatedDepartureTransportEvent() : $this->estimatedDepartureTransportEvent;
+        $this->estimatedDepartureTransportEvent ??= new EstimatedDepartureTransportEvent();
 
         return $this->estimatedDepartureTransportEvent;
     }
@@ -3449,7 +3449,7 @@ class ShipmentStageType
      */
     public function getEstimatedArrivalTransportEventWithCreate(): EstimatedArrivalTransportEvent
     {
-        $this->estimatedArrivalTransportEvent = is_null($this->estimatedArrivalTransportEvent) ? new EstimatedArrivalTransportEvent() : $this->estimatedArrivalTransportEvent;
+        $this->estimatedArrivalTransportEvent ??= new EstimatedArrivalTransportEvent();
 
         return $this->estimatedArrivalTransportEvent;
     }
@@ -3737,7 +3737,7 @@ class ShipmentStageType
      */
     public function getReportingPersonWithCreate(): ReportingPerson
     {
-        $this->reportingPerson = is_null($this->reportingPerson) ? new ReportingPerson() : $this->reportingPerson;
+        $this->reportingPerson ??= new ReportingPerson();
 
         return $this->reportingPerson;
     }
@@ -3901,7 +3901,7 @@ class ShipmentStageType
      */
     public function getSecurityOfficerPersonWithCreate(): SecurityOfficerPerson
     {
-        $this->securityOfficerPerson = is_null($this->securityOfficerPerson) ? new SecurityOfficerPerson() : $this->securityOfficerPerson;
+        $this->securityOfficerPerson ??= new SecurityOfficerPerson();
 
         return $this->securityOfficerPerson;
     }
@@ -3941,7 +3941,7 @@ class ShipmentStageType
      */
     public function getMasterPersonWithCreate(): MasterPerson
     {
-        $this->masterPerson = is_null($this->masterPerson) ? new MasterPerson() : $this->masterPerson;
+        $this->masterPerson ??= new MasterPerson();
 
         return $this->masterPerson;
     }
@@ -3981,7 +3981,7 @@ class ShipmentStageType
      */
     public function getShipsSurgeonPersonWithCreate(): ShipsSurgeonPerson
     {
-        $this->shipsSurgeonPerson = is_null($this->shipsSurgeonPerson) ? new ShipsSurgeonPerson() : $this->shipsSurgeonPerson;
+        $this->shipsSurgeonPerson ??= new ShipsSurgeonPerson();
 
         return $this->shipsSurgeonPerson;
     }

@@ -59,7 +59,7 @@ class DeliveryUnitType
      */
     public function getBatchQuantityWithCreate(): BatchQuantity
     {
-        $this->batchQuantity = is_null($this->batchQuantity) ? new BatchQuantity() : $this->batchQuantity;
+        $this->batchQuantity ??= new BatchQuantity();
 
         return $this->batchQuantity;
     }
@@ -99,7 +99,7 @@ class DeliveryUnitType
      */
     public function getConsumerUnitQuantityWithCreate(): ConsumerUnitQuantity
     {
-        $this->consumerUnitQuantity = is_null($this->consumerUnitQuantity) ? new ConsumerUnitQuantity() : $this->consumerUnitQuantity;
+        $this->consumerUnitQuantity ??= new ConsumerUnitQuantity();
 
         return $this->consumerUnitQuantity;
     }

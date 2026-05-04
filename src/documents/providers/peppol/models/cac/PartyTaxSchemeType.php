@@ -107,7 +107,7 @@ class PartyTaxSchemeType
      */
     public function getRegistrationNameWithCreate(): RegistrationName
     {
-        $this->registrationName = is_null($this->registrationName) ? new RegistrationName() : $this->registrationName;
+        $this->registrationName ??= new RegistrationName();
 
         return $this->registrationName;
     }
@@ -147,7 +147,7 @@ class PartyTaxSchemeType
      */
     public function getCompanyIDWithCreate(): CompanyID
     {
-        $this->companyID = is_null($this->companyID) ? new CompanyID() : $this->companyID;
+        $this->companyID ??= new CompanyID();
 
         return $this->companyID;
     }
@@ -187,7 +187,7 @@ class PartyTaxSchemeType
      */
     public function getTaxLevelCodeWithCreate(): TaxLevelCode
     {
-        $this->taxLevelCode = is_null($this->taxLevelCode) ? new TaxLevelCode() : $this->taxLevelCode;
+        $this->taxLevelCode ??= new TaxLevelCode();
 
         return $this->taxLevelCode;
     }
@@ -227,7 +227,7 @@ class PartyTaxSchemeType
      */
     public function getExemptionReasonCodeWithCreate(): ExemptionReasonCode
     {
-        $this->exemptionReasonCode = is_null($this->exemptionReasonCode) ? new ExemptionReasonCode() : $this->exemptionReasonCode;
+        $this->exemptionReasonCode ??= new ExemptionReasonCode();
 
         return $this->exemptionReasonCode;
     }
@@ -391,7 +391,7 @@ class PartyTaxSchemeType
      */
     public function getRegistrationAddressWithCreate(): RegistrationAddress
     {
-        $this->registrationAddress = is_null($this->registrationAddress) ? new RegistrationAddress() : $this->registrationAddress;
+        $this->registrationAddress ??= new RegistrationAddress();
 
         return $this->registrationAddress;
     }
@@ -431,7 +431,7 @@ class PartyTaxSchemeType
      */
     public function getTaxSchemeWithCreate(): TaxScheme
     {
-        $this->taxScheme = is_null($this->taxScheme) ? new TaxScheme() : $this->taxScheme;
+        $this->taxScheme ??= new TaxScheme();
 
         return $this->taxScheme;
     }

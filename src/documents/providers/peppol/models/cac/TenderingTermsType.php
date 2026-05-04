@@ -527,7 +527,7 @@ class TenderingTermsType
      */
     public function getAwardingMethodTypeCodeWithCreate(): AwardingMethodTypeCode
     {
-        $this->awardingMethodTypeCode = is_null($this->awardingMethodTypeCode) ? new AwardingMethodTypeCode() : $this->awardingMethodTypeCode;
+        $this->awardingMethodTypeCode ??= new AwardingMethodTypeCode();
 
         return $this->awardingMethodTypeCode;
     }
@@ -567,7 +567,7 @@ class TenderingTermsType
      */
     public function getPriceEvaluationCodeWithCreate(): PriceEvaluationCode
     {
-        $this->priceEvaluationCode = is_null($this->priceEvaluationCode) ? new PriceEvaluationCode() : $this->priceEvaluationCode;
+        $this->priceEvaluationCode ??= new PriceEvaluationCode();
 
         return $this->priceEvaluationCode;
     }
@@ -607,7 +607,7 @@ class TenderingTermsType
      */
     public function getMaximumVariantQuantityWithCreate(): MaximumVariantQuantity
     {
-        $this->maximumVariantQuantity = is_null($this->maximumVariantQuantity) ? new MaximumVariantQuantity() : $this->maximumVariantQuantity;
+        $this->maximumVariantQuantity ??= new MaximumVariantQuantity();
 
         return $this->maximumVariantQuantity;
     }
@@ -925,7 +925,7 @@ class TenderingTermsType
      */
     public function getFundingProgramCodeWithCreate(): FundingProgramCode
     {
-        $this->fundingProgramCode = is_null($this->fundingProgramCode) ? new FundingProgramCode() : $this->fundingProgramCode;
+        $this->fundingProgramCode ??= new FundingProgramCode();
 
         return $this->fundingProgramCode;
     }
@@ -1089,7 +1089,7 @@ class TenderingTermsType
      */
     public function getMaximumAdvertisementAmountWithCreate(): MaximumAdvertisementAmount
     {
-        $this->maximumAdvertisementAmount = is_null($this->maximumAdvertisementAmount) ? new MaximumAdvertisementAmount() : $this->maximumAdvertisementAmount;
+        $this->maximumAdvertisementAmount ??= new MaximumAdvertisementAmount();
 
         return $this->maximumAdvertisementAmount;
     }
@@ -1253,7 +1253,7 @@ class TenderingTermsType
      */
     public function getPaymentFrequencyCodeWithCreate(): PaymentFrequencyCode
     {
-        $this->paymentFrequencyCode = is_null($this->paymentFrequencyCode) ? new PaymentFrequencyCode() : $this->paymentFrequencyCode;
+        $this->paymentFrequencyCode ??= new PaymentFrequencyCode();
 
         return $this->paymentFrequencyCode;
     }
@@ -1293,7 +1293,7 @@ class TenderingTermsType
      */
     public function getEconomicOperatorRegistryURIWithCreate(): EconomicOperatorRegistryURI
     {
-        $this->economicOperatorRegistryURI = is_null($this->economicOperatorRegistryURI) ? new EconomicOperatorRegistryURI() : $this->economicOperatorRegistryURI;
+        $this->economicOperatorRegistryURI ??= new EconomicOperatorRegistryURI();
 
         return $this->economicOperatorRegistryURI;
     }
@@ -1547,7 +1547,7 @@ class TenderingTermsType
      */
     public function getDocumentationFeeAmountWithCreate(): DocumentationFeeAmount
     {
-        $this->documentationFeeAmount = is_null($this->documentationFeeAmount) ? new DocumentationFeeAmount() : $this->documentationFeeAmount;
+        $this->documentationFeeAmount ??= new DocumentationFeeAmount();
 
         return $this->documentationFeeAmount;
     }
@@ -1835,7 +1835,7 @@ class TenderingTermsType
      */
     public function getProcurementLegislationDocumentReferenceWithCreate(): ProcurementLegislationDocumentReference
     {
-        $this->procurementLegislationDocumentReference = is_null($this->procurementLegislationDocumentReference) ? new ProcurementLegislationDocumentReference() : $this->procurementLegislationDocumentReference;
+        $this->procurementLegislationDocumentReference ??= new ProcurementLegislationDocumentReference();
 
         return $this->procurementLegislationDocumentReference;
     }
@@ -1875,7 +1875,7 @@ class TenderingTermsType
      */
     public function getFiscalLegislationDocumentReferenceWithCreate(): FiscalLegislationDocumentReference
     {
-        $this->fiscalLegislationDocumentReference = is_null($this->fiscalLegislationDocumentReference) ? new FiscalLegislationDocumentReference() : $this->fiscalLegislationDocumentReference;
+        $this->fiscalLegislationDocumentReference ??= new FiscalLegislationDocumentReference();
 
         return $this->fiscalLegislationDocumentReference;
     }
@@ -1915,7 +1915,7 @@ class TenderingTermsType
      */
     public function getEnvironmentalLegislationDocumentReferenceWithCreate(): EnvironmentalLegislationDocumentReference
     {
-        $this->environmentalLegislationDocumentReference = is_null($this->environmentalLegislationDocumentReference) ? new EnvironmentalLegislationDocumentReference() : $this->environmentalLegislationDocumentReference;
+        $this->environmentalLegislationDocumentReference ??= new EnvironmentalLegislationDocumentReference();
 
         return $this->environmentalLegislationDocumentReference;
     }
@@ -1955,7 +1955,7 @@ class TenderingTermsType
      */
     public function getEmploymentLegislationDocumentReferenceWithCreate(): EmploymentLegislationDocumentReference
     {
-        $this->employmentLegislationDocumentReference = is_null($this->employmentLegislationDocumentReference) ? new EmploymentLegislationDocumentReference() : $this->employmentLegislationDocumentReference;
+        $this->employmentLegislationDocumentReference ??= new EmploymentLegislationDocumentReference();
 
         return $this->employmentLegislationDocumentReference;
     }
@@ -2119,7 +2119,7 @@ class TenderingTermsType
      */
     public function getCallForTendersDocumentReferenceWithCreate(): CallForTendersDocumentReference
     {
-        $this->callForTendersDocumentReference = is_null($this->callForTendersDocumentReference) ? new CallForTendersDocumentReference() : $this->callForTendersDocumentReference;
+        $this->callForTendersDocumentReference ??= new CallForTendersDocumentReference();
 
         return $this->callForTendersDocumentReference;
     }
@@ -2159,7 +2159,7 @@ class TenderingTermsType
      */
     public function getWarrantyValidityPeriodWithCreate(): WarrantyValidityPeriod
     {
-        $this->warrantyValidityPeriod = is_null($this->warrantyValidityPeriod) ? new WarrantyValidityPeriod() : $this->warrantyValidityPeriod;
+        $this->warrantyValidityPeriod ??= new WarrantyValidityPeriod();
 
         return $this->warrantyValidityPeriod;
     }
@@ -2819,7 +2819,7 @@ class TenderingTermsType
      */
     public function getAwardingTermsWithCreate(): AwardingTerms
     {
-        $this->awardingTerms = is_null($this->awardingTerms) ? new AwardingTerms() : $this->awardingTerms;
+        $this->awardingTerms ??= new AwardingTerms();
 
         return $this->awardingTerms;
     }
@@ -2859,7 +2859,7 @@ class TenderingTermsType
      */
     public function getAdditionalInformationPartyWithCreate(): AdditionalInformationParty
     {
-        $this->additionalInformationParty = is_null($this->additionalInformationParty) ? new AdditionalInformationParty() : $this->additionalInformationParty;
+        $this->additionalInformationParty ??= new AdditionalInformationParty();
 
         return $this->additionalInformationParty;
     }
@@ -2899,7 +2899,7 @@ class TenderingTermsType
      */
     public function getDocumentProviderPartyWithCreate(): DocumentProviderParty
     {
-        $this->documentProviderParty = is_null($this->documentProviderParty) ? new DocumentProviderParty() : $this->documentProviderParty;
+        $this->documentProviderParty ??= new DocumentProviderParty();
 
         return $this->documentProviderParty;
     }
@@ -2939,7 +2939,7 @@ class TenderingTermsType
      */
     public function getTenderRecipientPartyWithCreate(): TenderRecipientParty
     {
-        $this->tenderRecipientParty = is_null($this->tenderRecipientParty) ? new TenderRecipientParty() : $this->tenderRecipientParty;
+        $this->tenderRecipientParty ??= new TenderRecipientParty();
 
         return $this->tenderRecipientParty;
     }
@@ -2979,7 +2979,7 @@ class TenderingTermsType
      */
     public function getContractResponsiblePartyWithCreate(): ContractResponsibleParty
     {
-        $this->contractResponsibleParty = is_null($this->contractResponsibleParty) ? new ContractResponsibleParty() : $this->contractResponsibleParty;
+        $this->contractResponsibleParty ??= new ContractResponsibleParty();
 
         return $this->contractResponsibleParty;
     }
@@ -3143,7 +3143,7 @@ class TenderingTermsType
      */
     public function getTenderValidityPeriodWithCreate(): TenderValidityPeriod
     {
-        $this->tenderValidityPeriod = is_null($this->tenderValidityPeriod) ? new TenderValidityPeriod() : $this->tenderValidityPeriod;
+        $this->tenderValidityPeriod ??= new TenderValidityPeriod();
 
         return $this->tenderValidityPeriod;
     }
@@ -3183,7 +3183,7 @@ class TenderingTermsType
      */
     public function getContractAcceptancePeriodWithCreate(): ContractAcceptancePeriod
     {
-        $this->contractAcceptancePeriod = is_null($this->contractAcceptancePeriod) ? new ContractAcceptancePeriod() : $this->contractAcceptancePeriod;
+        $this->contractAcceptancePeriod ??= new ContractAcceptancePeriod();
 
         return $this->contractAcceptancePeriod;
     }
@@ -3223,7 +3223,7 @@ class TenderingTermsType
      */
     public function getAppealTermsWithCreate(): AppealTerms
     {
-        $this->appealTerms = is_null($this->appealTerms) ? new AppealTerms() : $this->appealTerms;
+        $this->appealTerms ??= new AppealTerms();
 
         return $this->appealTerms;
     }
@@ -3511,7 +3511,7 @@ class TenderingTermsType
      */
     public function getReplacedNoticeDocumentReferenceWithCreate(): ReplacedNoticeDocumentReference
     {
-        $this->replacedNoticeDocumentReference = is_null($this->replacedNoticeDocumentReference) ? new ReplacedNoticeDocumentReference() : $this->replacedNoticeDocumentReference;
+        $this->replacedNoticeDocumentReference ??= new ReplacedNoticeDocumentReference();
 
         return $this->replacedNoticeDocumentReference;
     }

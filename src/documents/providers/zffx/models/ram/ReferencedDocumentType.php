@@ -118,7 +118,7 @@ class ReferencedDocumentType
      */
     public function getIssuerAssignedIDWithCreate(): IDType
     {
-        $this->issuerAssignedID = is_null($this->issuerAssignedID) ? new IDType() : $this->issuerAssignedID;
+        $this->issuerAssignedID ??= new IDType();
 
         return $this->issuerAssignedID;
     }
@@ -158,7 +158,7 @@ class ReferencedDocumentType
      */
     public function getURIIDWithCreate(): IDType
     {
-        $this->uRIID = is_null($this->uRIID) ? new IDType() : $this->uRIID;
+        $this->uRIID ??= new IDType();
 
         return $this->uRIID;
     }
@@ -198,7 +198,7 @@ class ReferencedDocumentType
      */
     public function getLineIDWithCreate(): IDType
     {
-        $this->lineID = is_null($this->lineID) ? new IDType() : $this->lineID;
+        $this->lineID ??= new IDType();
 
         return $this->lineID;
     }
@@ -238,7 +238,7 @@ class ReferencedDocumentType
      */
     public function getTypeCodeWithCreate(): DocumentCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new DocumentCodeType() : $this->typeCode;
+        $this->typeCode ??= new DocumentCodeType();
 
         return $this->typeCode;
     }
@@ -278,7 +278,7 @@ class ReferencedDocumentType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }
@@ -318,7 +318,7 @@ class ReferencedDocumentType
      */
     public function getAttachmentBinaryObjectWithCreate(): BinaryObjectType
     {
-        $this->attachmentBinaryObject = is_null($this->attachmentBinaryObject) ? new BinaryObjectType() : $this->attachmentBinaryObject;
+        $this->attachmentBinaryObject ??= new BinaryObjectType();
 
         return $this->attachmentBinaryObject;
     }
@@ -358,7 +358,7 @@ class ReferencedDocumentType
      */
     public function getReferenceTypeCodeWithCreate(): ReferenceCodeType
     {
-        $this->referenceTypeCode = is_null($this->referenceTypeCode) ? new ReferenceCodeType() : $this->referenceTypeCode;
+        $this->referenceTypeCode ??= new ReferenceCodeType();
 
         return $this->referenceTypeCode;
     }
@@ -398,7 +398,7 @@ class ReferencedDocumentType
      */
     public function getFormattedIssueDateTimeWithCreate(): FormattedDateTimeType
     {
-        $this->formattedIssueDateTime = is_null($this->formattedIssueDateTime) ? new FormattedDateTimeType() : $this->formattedIssueDateTime;
+        $this->formattedIssueDateTime ??= new FormattedDateTimeType();
 
         return $this->formattedIssueDateTime;
     }

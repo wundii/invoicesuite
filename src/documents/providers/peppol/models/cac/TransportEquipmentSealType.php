@@ -84,7 +84,7 @@ class TransportEquipmentSealType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -124,7 +124,7 @@ class TransportEquipmentSealType
      */
     public function getSealIssuerTypeCodeWithCreate(): SealIssuerTypeCode
     {
-        $this->sealIssuerTypeCode = is_null($this->sealIssuerTypeCode) ? new SealIssuerTypeCode() : $this->sealIssuerTypeCode;
+        $this->sealIssuerTypeCode ??= new SealIssuerTypeCode();
 
         return $this->sealIssuerTypeCode;
     }
@@ -164,7 +164,7 @@ class TransportEquipmentSealType
      */
     public function getConditionWithCreate(): Condition
     {
-        $this->condition = is_null($this->condition) ? new Condition() : $this->condition;
+        $this->condition ??= new Condition();
 
         return $this->condition;
     }
@@ -204,7 +204,7 @@ class TransportEquipmentSealType
      */
     public function getSealStatusCodeWithCreate(): SealStatusCode
     {
-        $this->sealStatusCode = is_null($this->sealStatusCode) ? new SealStatusCode() : $this->sealStatusCode;
+        $this->sealStatusCode ??= new SealStatusCode();
 
         return $this->sealStatusCode;
     }
@@ -244,7 +244,7 @@ class TransportEquipmentSealType
      */
     public function getSealingPartyTypeWithCreate(): SealingPartyType
     {
-        $this->sealingPartyType = is_null($this->sealingPartyType) ? new SealingPartyType() : $this->sealingPartyType;
+        $this->sealingPartyType ??= new SealingPartyType();
 
         return $this->sealingPartyType;
     }

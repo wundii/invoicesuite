@@ -298,7 +298,7 @@ class HazardousItemType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -338,7 +338,7 @@ class HazardousItemType
      */
     public function getPlacardNotationWithCreate(): PlacardNotation
     {
-        $this->placardNotation = is_null($this->placardNotation) ? new PlacardNotation() : $this->placardNotation;
+        $this->placardNotation ??= new PlacardNotation();
 
         return $this->placardNotation;
     }
@@ -378,7 +378,7 @@ class HazardousItemType
      */
     public function getPlacardEndorsementWithCreate(): PlacardEndorsement
     {
-        $this->placardEndorsement = is_null($this->placardEndorsement) ? new PlacardEndorsement() : $this->placardEndorsement;
+        $this->placardEndorsement ??= new PlacardEndorsement();
 
         return $this->placardEndorsement;
     }
@@ -542,7 +542,7 @@ class HazardousItemType
      */
     public function getUNDGCodeWithCreate(): UNDGCode
     {
-        $this->uNDGCode = is_null($this->uNDGCode) ? new UNDGCode() : $this->uNDGCode;
+        $this->uNDGCode ??= new UNDGCode();
 
         return $this->uNDGCode;
     }
@@ -582,7 +582,7 @@ class HazardousItemType
      */
     public function getEmergencyProceduresCodeWithCreate(): EmergencyProceduresCode
     {
-        $this->emergencyProceduresCode = is_null($this->emergencyProceduresCode) ? new EmergencyProceduresCode() : $this->emergencyProceduresCode;
+        $this->emergencyProceduresCode ??= new EmergencyProceduresCode();
 
         return $this->emergencyProceduresCode;
     }
@@ -622,7 +622,7 @@ class HazardousItemType
      */
     public function getMedicalFirstAidGuideCodeWithCreate(): MedicalFirstAidGuideCode
     {
-        $this->medicalFirstAidGuideCode = is_null($this->medicalFirstAidGuideCode) ? new MedicalFirstAidGuideCode() : $this->medicalFirstAidGuideCode;
+        $this->medicalFirstAidGuideCode ??= new MedicalFirstAidGuideCode();
 
         return $this->medicalFirstAidGuideCode;
     }
@@ -662,7 +662,7 @@ class HazardousItemType
      */
     public function getTechnicalNameWithCreate(): TechnicalName
     {
-        $this->technicalName = is_null($this->technicalName) ? new TechnicalName() : $this->technicalName;
+        $this->technicalName ??= new TechnicalName();
 
         return $this->technicalName;
     }
@@ -702,7 +702,7 @@ class HazardousItemType
      */
     public function getCategoryNameWithCreate(): CategoryName
     {
-        $this->categoryName = is_null($this->categoryName) ? new CategoryName() : $this->categoryName;
+        $this->categoryName ??= new CategoryName();
 
         return $this->categoryName;
     }
@@ -742,7 +742,7 @@ class HazardousItemType
      */
     public function getHazardousCategoryCodeWithCreate(): HazardousCategoryCode
     {
-        $this->hazardousCategoryCode = is_null($this->hazardousCategoryCode) ? new HazardousCategoryCode() : $this->hazardousCategoryCode;
+        $this->hazardousCategoryCode ??= new HazardousCategoryCode();
 
         return $this->hazardousCategoryCode;
     }
@@ -782,7 +782,7 @@ class HazardousItemType
      */
     public function getUpperOrangeHazardPlacardIDWithCreate(): UpperOrangeHazardPlacardID
     {
-        $this->upperOrangeHazardPlacardID = is_null($this->upperOrangeHazardPlacardID) ? new UpperOrangeHazardPlacardID() : $this->upperOrangeHazardPlacardID;
+        $this->upperOrangeHazardPlacardID ??= new UpperOrangeHazardPlacardID();
 
         return $this->upperOrangeHazardPlacardID;
     }
@@ -822,7 +822,7 @@ class HazardousItemType
      */
     public function getLowerOrangeHazardPlacardIDWithCreate(): LowerOrangeHazardPlacardID
     {
-        $this->lowerOrangeHazardPlacardID = is_null($this->lowerOrangeHazardPlacardID) ? new LowerOrangeHazardPlacardID() : $this->lowerOrangeHazardPlacardID;
+        $this->lowerOrangeHazardPlacardID ??= new LowerOrangeHazardPlacardID();
 
         return $this->lowerOrangeHazardPlacardID;
     }
@@ -862,7 +862,7 @@ class HazardousItemType
      */
     public function getMarkingIDWithCreate(): MarkingID
     {
-        $this->markingID = is_null($this->markingID) ? new MarkingID() : $this->markingID;
+        $this->markingID ??= new MarkingID();
 
         return $this->markingID;
     }
@@ -902,7 +902,7 @@ class HazardousItemType
      */
     public function getHazardClassIDWithCreate(): HazardClassID
     {
-        $this->hazardClassID = is_null($this->hazardClassID) ? new HazardClassID() : $this->hazardClassID;
+        $this->hazardClassID ??= new HazardClassID();
 
         return $this->hazardClassID;
     }
@@ -942,7 +942,7 @@ class HazardousItemType
      */
     public function getNetWeightMeasureWithCreate(): NetWeightMeasure
     {
-        $this->netWeightMeasure = is_null($this->netWeightMeasure) ? new NetWeightMeasure() : $this->netWeightMeasure;
+        $this->netWeightMeasure ??= new NetWeightMeasure();
 
         return $this->netWeightMeasure;
     }
@@ -982,7 +982,7 @@ class HazardousItemType
      */
     public function getNetVolumeMeasureWithCreate(): NetVolumeMeasure
     {
-        $this->netVolumeMeasure = is_null($this->netVolumeMeasure) ? new NetVolumeMeasure() : $this->netVolumeMeasure;
+        $this->netVolumeMeasure ??= new NetVolumeMeasure();
 
         return $this->netVolumeMeasure;
     }
@@ -1022,7 +1022,7 @@ class HazardousItemType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -1062,7 +1062,7 @@ class HazardousItemType
      */
     public function getContactPartyWithCreate(): ContactParty
     {
-        $this->contactParty = is_null($this->contactParty) ? new ContactParty() : $this->contactParty;
+        $this->contactParty ??= new ContactParty();
 
         return $this->contactParty;
     }
@@ -1350,7 +1350,7 @@ class HazardousItemType
      */
     public function getEmergencyTemperatureWithCreate(): EmergencyTemperature
     {
-        $this->emergencyTemperature = is_null($this->emergencyTemperature) ? new EmergencyTemperature() : $this->emergencyTemperature;
+        $this->emergencyTemperature ??= new EmergencyTemperature();
 
         return $this->emergencyTemperature;
     }
@@ -1390,7 +1390,7 @@ class HazardousItemType
      */
     public function getFlashpointTemperatureWithCreate(): FlashpointTemperature
     {
-        $this->flashpointTemperature = is_null($this->flashpointTemperature) ? new FlashpointTemperature() : $this->flashpointTemperature;
+        $this->flashpointTemperature ??= new FlashpointTemperature();
 
         return $this->flashpointTemperature;
     }

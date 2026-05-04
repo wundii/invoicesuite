@@ -59,7 +59,7 @@ class DocumentDistributionType
      */
     public function getPrintQualifierWithCreate(): PrintQualifier
     {
-        $this->printQualifier = is_null($this->printQualifier) ? new PrintQualifier() : $this->printQualifier;
+        $this->printQualifier ??= new PrintQualifier();
 
         return $this->printQualifier;
     }
@@ -99,7 +99,7 @@ class DocumentDistributionType
      */
     public function getMaximumCopiesNumericWithCreate(): MaximumCopiesNumeric
     {
-        $this->maximumCopiesNumeric = is_null($this->maximumCopiesNumeric) ? new MaximumCopiesNumeric() : $this->maximumCopiesNumeric;
+        $this->maximumCopiesNumeric ??= new MaximumCopiesNumeric();
 
         return $this->maximumCopiesNumeric;
     }
@@ -139,7 +139,7 @@ class DocumentDistributionType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }

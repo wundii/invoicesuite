@@ -85,7 +85,7 @@ class SecondaryHazardType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -125,7 +125,7 @@ class SecondaryHazardType
      */
     public function getPlacardNotationWithCreate(): PlacardNotation
     {
-        $this->placardNotation = is_null($this->placardNotation) ? new PlacardNotation() : $this->placardNotation;
+        $this->placardNotation ??= new PlacardNotation();
 
         return $this->placardNotation;
     }
@@ -165,7 +165,7 @@ class SecondaryHazardType
      */
     public function getPlacardEndorsementWithCreate(): PlacardEndorsement
     {
-        $this->placardEndorsement = is_null($this->placardEndorsement) ? new PlacardEndorsement() : $this->placardEndorsement;
+        $this->placardEndorsement ??= new PlacardEndorsement();
 
         return $this->placardEndorsement;
     }
@@ -205,7 +205,7 @@ class SecondaryHazardType
      */
     public function getEmergencyProceduresCodeWithCreate(): EmergencyProceduresCode
     {
-        $this->emergencyProceduresCode = is_null($this->emergencyProceduresCode) ? new EmergencyProceduresCode() : $this->emergencyProceduresCode;
+        $this->emergencyProceduresCode ??= new EmergencyProceduresCode();
 
         return $this->emergencyProceduresCode;
     }

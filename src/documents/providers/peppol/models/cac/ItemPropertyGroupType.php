@@ -60,7 +60,7 @@ class ItemPropertyGroupType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -100,7 +100,7 @@ class ItemPropertyGroupType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -140,7 +140,7 @@ class ItemPropertyGroupType
      */
     public function getImportanceCodeWithCreate(): ImportanceCode
     {
-        $this->importanceCode = is_null($this->importanceCode) ? new ImportanceCode() : $this->importanceCode;
+        $this->importanceCode ??= new ImportanceCode();
 
         return $this->importanceCode;
     }

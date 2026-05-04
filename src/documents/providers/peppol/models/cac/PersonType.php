@@ -225,7 +225,7 @@ class PersonType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -265,7 +265,7 @@ class PersonType
      */
     public function getFirstNameWithCreate(): FirstName
     {
-        $this->firstName = is_null($this->firstName) ? new FirstName() : $this->firstName;
+        $this->firstName ??= new FirstName();
 
         return $this->firstName;
     }
@@ -305,7 +305,7 @@ class PersonType
      */
     public function getFamilyNameWithCreate(): FamilyName
     {
-        $this->familyName = is_null($this->familyName) ? new FamilyName() : $this->familyName;
+        $this->familyName ??= new FamilyName();
 
         return $this->familyName;
     }
@@ -345,7 +345,7 @@ class PersonType
      */
     public function getTitleWithCreate(): Title
     {
-        $this->title = is_null($this->title) ? new Title() : $this->title;
+        $this->title ??= new Title();
 
         return $this->title;
     }
@@ -385,7 +385,7 @@ class PersonType
      */
     public function getMiddleNameWithCreate(): MiddleName
     {
-        $this->middleName = is_null($this->middleName) ? new MiddleName() : $this->middleName;
+        $this->middleName ??= new MiddleName();
 
         return $this->middleName;
     }
@@ -425,7 +425,7 @@ class PersonType
      */
     public function getOtherNameWithCreate(): OtherName
     {
-        $this->otherName = is_null($this->otherName) ? new OtherName() : $this->otherName;
+        $this->otherName ??= new OtherName();
 
         return $this->otherName;
     }
@@ -465,7 +465,7 @@ class PersonType
      */
     public function getNameSuffixWithCreate(): NameSuffix
     {
-        $this->nameSuffix = is_null($this->nameSuffix) ? new NameSuffix() : $this->nameSuffix;
+        $this->nameSuffix ??= new NameSuffix();
 
         return $this->nameSuffix;
     }
@@ -505,7 +505,7 @@ class PersonType
      */
     public function getJobTitleWithCreate(): JobTitle
     {
-        $this->jobTitle = is_null($this->jobTitle) ? new JobTitle() : $this->jobTitle;
+        $this->jobTitle ??= new JobTitle();
 
         return $this->jobTitle;
     }
@@ -545,7 +545,7 @@ class PersonType
      */
     public function getNationalityIDWithCreate(): NationalityID
     {
-        $this->nationalityID = is_null($this->nationalityID) ? new NationalityID() : $this->nationalityID;
+        $this->nationalityID ??= new NationalityID();
 
         return $this->nationalityID;
     }
@@ -585,7 +585,7 @@ class PersonType
      */
     public function getGenderCodeWithCreate(): GenderCode
     {
-        $this->genderCode = is_null($this->genderCode) ? new GenderCode() : $this->genderCode;
+        $this->genderCode ??= new GenderCode();
 
         return $this->genderCode;
     }
@@ -655,7 +655,7 @@ class PersonType
      */
     public function getBirthplaceNameWithCreate(): BirthplaceName
     {
-        $this->birthplaceName = is_null($this->birthplaceName) ? new BirthplaceName() : $this->birthplaceName;
+        $this->birthplaceName ??= new BirthplaceName();
 
         return $this->birthplaceName;
     }
@@ -695,7 +695,7 @@ class PersonType
      */
     public function getOrganizationDepartmentWithCreate(): OrganizationDepartment
     {
-        $this->organizationDepartment = is_null($this->organizationDepartment) ? new OrganizationDepartment() : $this->organizationDepartment;
+        $this->organizationDepartment ??= new OrganizationDepartment();
 
         return $this->organizationDepartment;
     }
@@ -735,7 +735,7 @@ class PersonType
      */
     public function getContactWithCreate(): Contact
     {
-        $this->contact = is_null($this->contact) ? new Contact() : $this->contact;
+        $this->contact ??= new Contact();
 
         return $this->contact;
     }
@@ -775,7 +775,7 @@ class PersonType
      */
     public function getFinancialAccountWithCreate(): FinancialAccount
     {
-        $this->financialAccount = is_null($this->financialAccount) ? new FinancialAccount() : $this->financialAccount;
+        $this->financialAccount ??= new FinancialAccount();
 
         return $this->financialAccount;
     }
@@ -939,7 +939,7 @@ class PersonType
      */
     public function getResidenceAddressWithCreate(): ResidenceAddress
     {
-        $this->residenceAddress = is_null($this->residenceAddress) ? new ResidenceAddress() : $this->residenceAddress;
+        $this->residenceAddress ??= new ResidenceAddress();
 
         return $this->residenceAddress;
     }

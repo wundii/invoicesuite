@@ -61,7 +61,7 @@ class OnAccountPaymentType
      */
     public function getEstimatedConsumedQuantityWithCreate(): EstimatedConsumedQuantity
     {
-        $this->estimatedConsumedQuantity = is_null($this->estimatedConsumedQuantity) ? new EstimatedConsumedQuantity() : $this->estimatedConsumedQuantity;
+        $this->estimatedConsumedQuantity ??= new EstimatedConsumedQuantity();
 
         return $this->estimatedConsumedQuantity;
     }

@@ -140,7 +140,7 @@ class PaymentMandateType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -180,7 +180,7 @@ class PaymentMandateType
      */
     public function getMandateTypeCodeWithCreate(): MandateTypeCode
     {
-        $this->mandateTypeCode = is_null($this->mandateTypeCode) ? new MandateTypeCode() : $this->mandateTypeCode;
+        $this->mandateTypeCode ??= new MandateTypeCode();
 
         return $this->mandateTypeCode;
     }
@@ -220,7 +220,7 @@ class PaymentMandateType
      */
     public function getMaximumPaymentInstructionsNumericWithCreate(): MaximumPaymentInstructionsNumeric
     {
-        $this->maximumPaymentInstructionsNumeric = is_null($this->maximumPaymentInstructionsNumeric) ? new MaximumPaymentInstructionsNumeric() : $this->maximumPaymentInstructionsNumeric;
+        $this->maximumPaymentInstructionsNumeric ??= new MaximumPaymentInstructionsNumeric();
 
         return $this->maximumPaymentInstructionsNumeric;
     }
@@ -260,7 +260,7 @@ class PaymentMandateType
      */
     public function getMaximumPaidAmountWithCreate(): MaximumPaidAmount
     {
-        $this->maximumPaidAmount = is_null($this->maximumPaidAmount) ? new MaximumPaidAmount() : $this->maximumPaidAmount;
+        $this->maximumPaidAmount ??= new MaximumPaidAmount();
 
         return $this->maximumPaidAmount;
     }
@@ -300,7 +300,7 @@ class PaymentMandateType
      */
     public function getSignatureIDWithCreate(): SignatureID
     {
-        $this->signatureID = is_null($this->signatureID) ? new SignatureID() : $this->signatureID;
+        $this->signatureID ??= new SignatureID();
 
         return $this->signatureID;
     }
@@ -340,7 +340,7 @@ class PaymentMandateType
      */
     public function getPayerPartyWithCreate(): PayerParty
     {
-        $this->payerParty = is_null($this->payerParty) ? new PayerParty() : $this->payerParty;
+        $this->payerParty ??= new PayerParty();
 
         return $this->payerParty;
     }
@@ -380,7 +380,7 @@ class PaymentMandateType
      */
     public function getPayerFinancialAccountWithCreate(): PayerFinancialAccount
     {
-        $this->payerFinancialAccount = is_null($this->payerFinancialAccount) ? new PayerFinancialAccount() : $this->payerFinancialAccount;
+        $this->payerFinancialAccount ??= new PayerFinancialAccount();
 
         return $this->payerFinancialAccount;
     }
@@ -420,7 +420,7 @@ class PaymentMandateType
      */
     public function getValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->validityPeriod = is_null($this->validityPeriod) ? new ValidityPeriod() : $this->validityPeriod;
+        $this->validityPeriod ??= new ValidityPeriod();
 
         return $this->validityPeriod;
     }
@@ -460,7 +460,7 @@ class PaymentMandateType
      */
     public function getPaymentReversalPeriodWithCreate(): PaymentReversalPeriod
     {
-        $this->paymentReversalPeriod = is_null($this->paymentReversalPeriod) ? new PaymentReversalPeriod() : $this->paymentReversalPeriod;
+        $this->paymentReversalPeriod ??= new PaymentReversalPeriod();
 
         return $this->paymentReversalPeriod;
     }

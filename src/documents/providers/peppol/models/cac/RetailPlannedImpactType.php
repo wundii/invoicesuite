@@ -71,7 +71,7 @@ class RetailPlannedImpactType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -111,7 +111,7 @@ class RetailPlannedImpactType
      */
     public function getForecastPurposeCodeWithCreate(): ForecastPurposeCode
     {
-        $this->forecastPurposeCode = is_null($this->forecastPurposeCode) ? new ForecastPurposeCode() : $this->forecastPurposeCode;
+        $this->forecastPurposeCode ??= new ForecastPurposeCode();
 
         return $this->forecastPurposeCode;
     }
@@ -151,7 +151,7 @@ class RetailPlannedImpactType
      */
     public function getForecastTypeCodeWithCreate(): ForecastTypeCode
     {
-        $this->forecastTypeCode = is_null($this->forecastTypeCode) ? new ForecastTypeCode() : $this->forecastTypeCode;
+        $this->forecastTypeCode ??= new ForecastTypeCode();
 
         return $this->forecastTypeCode;
     }
@@ -191,7 +191,7 @@ class RetailPlannedImpactType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }

@@ -217,7 +217,7 @@ class SupplierConsumptionType
      */
     public function getUtilitySupplierPartyWithCreate(): UtilitySupplierParty
     {
-        $this->utilitySupplierParty = is_null($this->utilitySupplierParty) ? new UtilitySupplierParty() : $this->utilitySupplierParty;
+        $this->utilitySupplierParty ??= new UtilitySupplierParty();
 
         return $this->utilitySupplierParty;
     }
@@ -257,7 +257,7 @@ class SupplierConsumptionType
      */
     public function getUtilityCustomerPartyWithCreate(): UtilityCustomerParty
     {
-        $this->utilityCustomerParty = is_null($this->utilityCustomerParty) ? new UtilityCustomerParty() : $this->utilityCustomerParty;
+        $this->utilityCustomerParty ??= new UtilityCustomerParty();
 
         return $this->utilityCustomerParty;
     }
@@ -297,7 +297,7 @@ class SupplierConsumptionType
      */
     public function getConsumptionWithCreate(): Consumption
     {
-        $this->consumption = is_null($this->consumption) ? new Consumption() : $this->consumption;
+        $this->consumption ??= new Consumption();
 
         return $this->consumption;
     }
@@ -337,7 +337,7 @@ class SupplierConsumptionType
      */
     public function getContractWithCreate(): Contract
     {
-        $this->contract = is_null($this->contract) ? new Contract() : $this->contract;
+        $this->contract ??= new Contract();
 
         return $this->contract;
     }

@@ -60,7 +60,7 @@ class WebSiteAccessType
      */
     public function getURIWithCreate(): URI
     {
-        $this->uRI = is_null($this->uRI) ? new URI() : $this->uRI;
+        $this->uRI ??= new URI();
 
         return $this->uRI;
     }
@@ -100,7 +100,7 @@ class WebSiteAccessType
      */
     public function getPasswordWithCreate(): Password
     {
-        $this->password = is_null($this->password) ? new Password() : $this->password;
+        $this->password ??= new Password();
 
         return $this->password;
     }
@@ -140,7 +140,7 @@ class WebSiteAccessType
      */
     public function getLoginWithCreate(): Login
     {
-        $this->login = is_null($this->login) ? new Login() : $this->login;
+        $this->login ??= new Login();
 
         return $this->login;
     }

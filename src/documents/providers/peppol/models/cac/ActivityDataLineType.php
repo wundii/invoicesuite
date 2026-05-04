@@ -115,7 +115,7 @@ class ActivityDataLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -155,7 +155,7 @@ class ActivityDataLineType
      */
     public function getSupplyChainActivityTypeCodeWithCreate(): SupplyChainActivityTypeCode
     {
-        $this->supplyChainActivityTypeCode = is_null($this->supplyChainActivityTypeCode) ? new SupplyChainActivityTypeCode() : $this->supplyChainActivityTypeCode;
+        $this->supplyChainActivityTypeCode ??= new SupplyChainActivityTypeCode();
 
         return $this->supplyChainActivityTypeCode;
     }
@@ -195,7 +195,7 @@ class ActivityDataLineType
      */
     public function getBuyerCustomerPartyWithCreate(): BuyerCustomerParty
     {
-        $this->buyerCustomerParty = is_null($this->buyerCustomerParty) ? new BuyerCustomerParty() : $this->buyerCustomerParty;
+        $this->buyerCustomerParty ??= new BuyerCustomerParty();
 
         return $this->buyerCustomerParty;
     }
@@ -235,7 +235,7 @@ class ActivityDataLineType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -275,7 +275,7 @@ class ActivityDataLineType
      */
     public function getActivityPeriodWithCreate(): ActivityPeriod
     {
-        $this->activityPeriod = is_null($this->activityPeriod) ? new ActivityPeriod() : $this->activityPeriod;
+        $this->activityPeriod ??= new ActivityPeriod();
 
         return $this->activityPeriod;
     }
@@ -315,7 +315,7 @@ class ActivityDataLineType
      */
     public function getActivityOriginLocationWithCreate(): ActivityOriginLocation
     {
-        $this->activityOriginLocation = is_null($this->activityOriginLocation) ? new ActivityOriginLocation() : $this->activityOriginLocation;
+        $this->activityOriginLocation ??= new ActivityOriginLocation();
 
         return $this->activityOriginLocation;
     }
@@ -355,7 +355,7 @@ class ActivityDataLineType
      */
     public function getActivityFinalLocationWithCreate(): ActivityFinalLocation
     {
-        $this->activityFinalLocation = is_null($this->activityFinalLocation) ? new ActivityFinalLocation() : $this->activityFinalLocation;
+        $this->activityFinalLocation ??= new ActivityFinalLocation();
 
         return $this->activityFinalLocation;
     }

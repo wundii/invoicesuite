@@ -47,7 +47,7 @@ class CustomsDeclarationType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -87,7 +87,7 @@ class CustomsDeclarationType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }

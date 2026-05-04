@@ -47,7 +47,7 @@ class RenewalType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -87,7 +87,7 @@ class RenewalType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }

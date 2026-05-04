@@ -405,7 +405,7 @@ class ShipmentType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -445,7 +445,7 @@ class ShipmentType
      */
     public function getShippingPriorityLevelCodeWithCreate(): ShippingPriorityLevelCode
     {
-        $this->shippingPriorityLevelCode = is_null($this->shippingPriorityLevelCode) ? new ShippingPriorityLevelCode() : $this->shippingPriorityLevelCode;
+        $this->shippingPriorityLevelCode ??= new ShippingPriorityLevelCode();
 
         return $this->shippingPriorityLevelCode;
     }
@@ -485,7 +485,7 @@ class ShipmentType
      */
     public function getHandlingCodeWithCreate(): HandlingCode
     {
-        $this->handlingCode = is_null($this->handlingCode) ? new HandlingCode() : $this->handlingCode;
+        $this->handlingCode ??= new HandlingCode();
 
         return $this->handlingCode;
     }
@@ -773,7 +773,7 @@ class ShipmentType
      */
     public function getGrossWeightMeasureWithCreate(): GrossWeightMeasure
     {
-        $this->grossWeightMeasure = is_null($this->grossWeightMeasure) ? new GrossWeightMeasure() : $this->grossWeightMeasure;
+        $this->grossWeightMeasure ??= new GrossWeightMeasure();
 
         return $this->grossWeightMeasure;
     }
@@ -813,7 +813,7 @@ class ShipmentType
      */
     public function getNetWeightMeasureWithCreate(): NetWeightMeasure
     {
-        $this->netWeightMeasure = is_null($this->netWeightMeasure) ? new NetWeightMeasure() : $this->netWeightMeasure;
+        $this->netWeightMeasure ??= new NetWeightMeasure();
 
         return $this->netWeightMeasure;
     }
@@ -853,7 +853,7 @@ class ShipmentType
      */
     public function getNetNetWeightMeasureWithCreate(): NetNetWeightMeasure
     {
-        $this->netNetWeightMeasure = is_null($this->netNetWeightMeasure) ? new NetNetWeightMeasure() : $this->netNetWeightMeasure;
+        $this->netNetWeightMeasure ??= new NetNetWeightMeasure();
 
         return $this->netNetWeightMeasure;
     }
@@ -893,7 +893,7 @@ class ShipmentType
      */
     public function getGrossVolumeMeasureWithCreate(): GrossVolumeMeasure
     {
-        $this->grossVolumeMeasure = is_null($this->grossVolumeMeasure) ? new GrossVolumeMeasure() : $this->grossVolumeMeasure;
+        $this->grossVolumeMeasure ??= new GrossVolumeMeasure();
 
         return $this->grossVolumeMeasure;
     }
@@ -933,7 +933,7 @@ class ShipmentType
      */
     public function getNetVolumeMeasureWithCreate(): NetVolumeMeasure
     {
-        $this->netVolumeMeasure = is_null($this->netVolumeMeasure) ? new NetVolumeMeasure() : $this->netVolumeMeasure;
+        $this->netVolumeMeasure ??= new NetVolumeMeasure();
 
         return $this->netVolumeMeasure;
     }
@@ -973,7 +973,7 @@ class ShipmentType
      */
     public function getTotalGoodsItemQuantityWithCreate(): TotalGoodsItemQuantity
     {
-        $this->totalGoodsItemQuantity = is_null($this->totalGoodsItemQuantity) ? new TotalGoodsItemQuantity() : $this->totalGoodsItemQuantity;
+        $this->totalGoodsItemQuantity ??= new TotalGoodsItemQuantity();
 
         return $this->totalGoodsItemQuantity;
     }
@@ -1013,7 +1013,7 @@ class ShipmentType
      */
     public function getTotalTransportHandlingUnitQuantityWithCreate(): TotalTransportHandlingUnitQuantity
     {
-        $this->totalTransportHandlingUnitQuantity = is_null($this->totalTransportHandlingUnitQuantity) ? new TotalTransportHandlingUnitQuantity() : $this->totalTransportHandlingUnitQuantity;
+        $this->totalTransportHandlingUnitQuantity ??= new TotalTransportHandlingUnitQuantity();
 
         return $this->totalTransportHandlingUnitQuantity;
     }
@@ -1053,7 +1053,7 @@ class ShipmentType
      */
     public function getInsuranceValueAmountWithCreate(): InsuranceValueAmount
     {
-        $this->insuranceValueAmount = is_null($this->insuranceValueAmount) ? new InsuranceValueAmount() : $this->insuranceValueAmount;
+        $this->insuranceValueAmount ??= new InsuranceValueAmount();
 
         return $this->insuranceValueAmount;
     }
@@ -1093,7 +1093,7 @@ class ShipmentType
      */
     public function getDeclaredCustomsValueAmountWithCreate(): DeclaredCustomsValueAmount
     {
-        $this->declaredCustomsValueAmount = is_null($this->declaredCustomsValueAmount) ? new DeclaredCustomsValueAmount() : $this->declaredCustomsValueAmount;
+        $this->declaredCustomsValueAmount ??= new DeclaredCustomsValueAmount();
 
         return $this->declaredCustomsValueAmount;
     }
@@ -1133,7 +1133,7 @@ class ShipmentType
      */
     public function getDeclaredForCarriageValueAmountWithCreate(): DeclaredForCarriageValueAmount
     {
-        $this->declaredForCarriageValueAmount = is_null($this->declaredForCarriageValueAmount) ? new DeclaredForCarriageValueAmount() : $this->declaredForCarriageValueAmount;
+        $this->declaredForCarriageValueAmount ??= new DeclaredForCarriageValueAmount();
 
         return $this->declaredForCarriageValueAmount;
     }
@@ -1173,7 +1173,7 @@ class ShipmentType
      */
     public function getDeclaredStatisticsValueAmountWithCreate(): DeclaredStatisticsValueAmount
     {
-        $this->declaredStatisticsValueAmount = is_null($this->declaredStatisticsValueAmount) ? new DeclaredStatisticsValueAmount() : $this->declaredStatisticsValueAmount;
+        $this->declaredStatisticsValueAmount ??= new DeclaredStatisticsValueAmount();
 
         return $this->declaredStatisticsValueAmount;
     }
@@ -1213,7 +1213,7 @@ class ShipmentType
      */
     public function getFreeOnBoardValueAmountWithCreate(): FreeOnBoardValueAmount
     {
-        $this->freeOnBoardValueAmount = is_null($this->freeOnBoardValueAmount) ? new FreeOnBoardValueAmount() : $this->freeOnBoardValueAmount;
+        $this->freeOnBoardValueAmount ??= new FreeOnBoardValueAmount();
 
         return $this->freeOnBoardValueAmount;
     }
@@ -1531,7 +1531,7 @@ class ShipmentType
      */
     public function getConsignmentQuantityWithCreate(): ConsignmentQuantity
     {
-        $this->consignmentQuantity = is_null($this->consignmentQuantity) ? new ConsignmentQuantity() : $this->consignmentQuantity;
+        $this->consignmentQuantity ??= new ConsignmentQuantity();
 
         return $this->consignmentQuantity;
     }
@@ -1943,7 +1943,7 @@ class ShipmentType
      */
     public function getDeliveryWithCreate(): Delivery
     {
-        $this->delivery = is_null($this->delivery) ? new Delivery() : $this->delivery;
+        $this->delivery ??= new Delivery();
 
         return $this->delivery;
     }
@@ -2107,7 +2107,7 @@ class ShipmentType
      */
     public function getReturnAddressWithCreate(): ReturnAddress
     {
-        $this->returnAddress = is_null($this->returnAddress) ? new ReturnAddress() : $this->returnAddress;
+        $this->returnAddress ??= new ReturnAddress();
 
         return $this->returnAddress;
     }
@@ -2147,7 +2147,7 @@ class ShipmentType
      */
     public function getOriginAddressWithCreate(): OriginAddress
     {
-        $this->originAddress = is_null($this->originAddress) ? new OriginAddress() : $this->originAddress;
+        $this->originAddress ??= new OriginAddress();
 
         return $this->originAddress;
     }
@@ -2187,7 +2187,7 @@ class ShipmentType
      */
     public function getFirstArrivalPortLocationWithCreate(): FirstArrivalPortLocation
     {
-        $this->firstArrivalPortLocation = is_null($this->firstArrivalPortLocation) ? new FirstArrivalPortLocation() : $this->firstArrivalPortLocation;
+        $this->firstArrivalPortLocation ??= new FirstArrivalPortLocation();
 
         return $this->firstArrivalPortLocation;
     }
@@ -2227,7 +2227,7 @@ class ShipmentType
      */
     public function getLastExitPortLocationWithCreate(): LastExitPortLocation
     {
-        $this->lastExitPortLocation = is_null($this->lastExitPortLocation) ? new LastExitPortLocation() : $this->lastExitPortLocation;
+        $this->lastExitPortLocation ??= new LastExitPortLocation();
 
         return $this->lastExitPortLocation;
     }
@@ -2267,7 +2267,7 @@ class ShipmentType
      */
     public function getExportCountryWithCreate(): ExportCountry
     {
-        $this->exportCountry = is_null($this->exportCountry) ? new ExportCountry() : $this->exportCountry;
+        $this->exportCountry ??= new ExportCountry();
 
         return $this->exportCountry;
     }

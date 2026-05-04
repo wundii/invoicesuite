@@ -400,7 +400,7 @@ class LineItemType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -440,7 +440,7 @@ class LineItemType
      */
     public function getSalesOrderIDWithCreate(): SalesOrderID
     {
-        $this->salesOrderID = is_null($this->salesOrderID) ? new SalesOrderID() : $this->salesOrderID;
+        $this->salesOrderID ??= new SalesOrderID();
 
         return $this->salesOrderID;
     }
@@ -480,7 +480,7 @@ class LineItemType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -644,7 +644,7 @@ class LineItemType
      */
     public function getLineStatusCodeWithCreate(): LineStatusCode
     {
-        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCode() : $this->lineStatusCode;
+        $this->lineStatusCode ??= new LineStatusCode();
 
         return $this->lineStatusCode;
     }
@@ -684,7 +684,7 @@ class LineItemType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -724,7 +724,7 @@ class LineItemType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -764,7 +764,7 @@ class LineItemType
      */
     public function getTotalTaxAmountWithCreate(): TotalTaxAmount
     {
-        $this->totalTaxAmount = is_null($this->totalTaxAmount) ? new TotalTaxAmount() : $this->totalTaxAmount;
+        $this->totalTaxAmount ??= new TotalTaxAmount();
 
         return $this->totalTaxAmount;
     }
@@ -804,7 +804,7 @@ class LineItemType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }
@@ -844,7 +844,7 @@ class LineItemType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -884,7 +884,7 @@ class LineItemType
      */
     public function getMinimumBackorderQuantityWithCreate(): MinimumBackorderQuantity
     {
-        $this->minimumBackorderQuantity = is_null($this->minimumBackorderQuantity) ? new MinimumBackorderQuantity() : $this->minimumBackorderQuantity;
+        $this->minimumBackorderQuantity ??= new MinimumBackorderQuantity();
 
         return $this->minimumBackorderQuantity;
     }
@@ -924,7 +924,7 @@ class LineItemType
      */
     public function getMaximumBackorderQuantityWithCreate(): MaximumBackorderQuantity
     {
-        $this->maximumBackorderQuantity = is_null($this->maximumBackorderQuantity) ? new MaximumBackorderQuantity() : $this->maximumBackorderQuantity;
+        $this->maximumBackorderQuantity ??= new MaximumBackorderQuantity();
 
         return $this->maximumBackorderQuantity;
     }
@@ -964,7 +964,7 @@ class LineItemType
      */
     public function getInspectionMethodCodeWithCreate(): InspectionMethodCode
     {
-        $this->inspectionMethodCode = is_null($this->inspectionMethodCode) ? new InspectionMethodCode() : $this->inspectionMethodCode;
+        $this->inspectionMethodCode ??= new InspectionMethodCode();
 
         return $this->inspectionMethodCode;
     }
@@ -1064,7 +1064,7 @@ class LineItemType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -1104,7 +1104,7 @@ class LineItemType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -1392,7 +1392,7 @@ class LineItemType
      */
     public function getDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->deliveryTerms = is_null($this->deliveryTerms) ? new DeliveryTerms() : $this->deliveryTerms;
+        $this->deliveryTerms ??= new DeliveryTerms();
 
         return $this->deliveryTerms;
     }
@@ -1432,7 +1432,7 @@ class LineItemType
      */
     public function getOriginatorPartyWithCreate(): OriginatorParty
     {
-        $this->originatorParty = is_null($this->originatorParty) ? new OriginatorParty() : $this->originatorParty;
+        $this->originatorParty ??= new OriginatorParty();
 
         return $this->originatorParty;
     }
@@ -1596,7 +1596,7 @@ class LineItemType
      */
     public function getPricingReferenceWithCreate(): PricingReference
     {
-        $this->pricingReference = is_null($this->pricingReference) ? new PricingReference() : $this->pricingReference;
+        $this->pricingReference ??= new PricingReference();
 
         return $this->pricingReference;
     }
@@ -1760,7 +1760,7 @@ class LineItemType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -1800,7 +1800,7 @@ class LineItemType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -1964,7 +1964,7 @@ class LineItemType
      */
     public function getWarrantyValidityPeriodWithCreate(): WarrantyValidityPeriod
     {
-        $this->warrantyValidityPeriod = is_null($this->warrantyValidityPeriod) ? new WarrantyValidityPeriod() : $this->warrantyValidityPeriod;
+        $this->warrantyValidityPeriod ??= new WarrantyValidityPeriod();
 
         return $this->warrantyValidityPeriod;
     }
@@ -2004,7 +2004,7 @@ class LineItemType
      */
     public function getWarrantyPartyWithCreate(): WarrantyParty
     {
-        $this->warrantyParty = is_null($this->warrantyParty) ? new WarrantyParty() : $this->warrantyParty;
+        $this->warrantyParty ??= new WarrantyParty();
 
         return $this->warrantyParty;
     }
@@ -2168,7 +2168,7 @@ class LineItemType
      */
     public function getItemPriceExtensionWithCreate(): ItemPriceExtension
     {
-        $this->itemPriceExtension = is_null($this->itemPriceExtension) ? new ItemPriceExtension() : $this->itemPriceExtension;
+        $this->itemPriceExtension ??= new ItemPriceExtension();
 
         return $this->itemPriceExtension;
     }

@@ -48,7 +48,7 @@ class PriceExtensionType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }

@@ -36,7 +36,7 @@ class AirTransportType
      */
     public function getAircraftIDWithCreate(): AircraftID
     {
-        $this->aircraftID = is_null($this->aircraftID) ? new AircraftID() : $this->aircraftID;
+        $this->aircraftID ??= new AircraftID();
 
         return $this->aircraftID;
     }

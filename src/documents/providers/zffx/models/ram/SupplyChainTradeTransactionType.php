@@ -163,7 +163,7 @@ class SupplyChainTradeTransactionType
      */
     public function getApplicableHeaderTradeAgreementWithCreate(): HeaderTradeAgreementType
     {
-        $this->applicableHeaderTradeAgreement = is_null($this->applicableHeaderTradeAgreement) ? new HeaderTradeAgreementType() : $this->applicableHeaderTradeAgreement;
+        $this->applicableHeaderTradeAgreement ??= new HeaderTradeAgreementType();
 
         return $this->applicableHeaderTradeAgreement;
     }
@@ -203,7 +203,7 @@ class SupplyChainTradeTransactionType
      */
     public function getApplicableHeaderTradeDeliveryWithCreate(): HeaderTradeDeliveryType
     {
-        $this->applicableHeaderTradeDelivery = is_null($this->applicableHeaderTradeDelivery) ? new HeaderTradeDeliveryType() : $this->applicableHeaderTradeDelivery;
+        $this->applicableHeaderTradeDelivery ??= new HeaderTradeDeliveryType();
 
         return $this->applicableHeaderTradeDelivery;
     }
@@ -243,7 +243,7 @@ class SupplyChainTradeTransactionType
      */
     public function getApplicableHeaderTradeSettlementWithCreate(): HeaderTradeSettlementType
     {
-        $this->applicableHeaderTradeSettlement = is_null($this->applicableHeaderTradeSettlement) ? new HeaderTradeSettlementType() : $this->applicableHeaderTradeSettlement;
+        $this->applicableHeaderTradeSettlement ??= new HeaderTradeSettlementType();
 
         return $this->applicableHeaderTradeSettlement;
     }

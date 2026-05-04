@@ -119,7 +119,7 @@ class InventoryReportLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -283,7 +283,7 @@ class InventoryReportLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -323,7 +323,7 @@ class InventoryReportLineType
      */
     public function getInventoryValueAmountWithCreate(): InventoryValueAmount
     {
-        $this->inventoryValueAmount = is_null($this->inventoryValueAmount) ? new InventoryValueAmount() : $this->inventoryValueAmount;
+        $this->inventoryValueAmount ??= new InventoryValueAmount();
 
         return $this->inventoryValueAmount;
     }
@@ -393,7 +393,7 @@ class InventoryReportLineType
      */
     public function getAvailabilityStatusCodeWithCreate(): AvailabilityStatusCode
     {
-        $this->availabilityStatusCode = is_null($this->availabilityStatusCode) ? new AvailabilityStatusCode() : $this->availabilityStatusCode;
+        $this->availabilityStatusCode ??= new AvailabilityStatusCode();
 
         return $this->availabilityStatusCode;
     }
@@ -433,7 +433,7 @@ class InventoryReportLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -473,7 +473,7 @@ class InventoryReportLineType
      */
     public function getInventoryLocationWithCreate(): InventoryLocation
     {
-        $this->inventoryLocation = is_null($this->inventoryLocation) ? new InventoryLocation() : $this->inventoryLocation;
+        $this->inventoryLocation ??= new InventoryLocation();
 
         return $this->inventoryLocation;
     }

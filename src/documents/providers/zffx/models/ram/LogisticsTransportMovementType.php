@@ -36,7 +36,7 @@ class LogisticsTransportMovementType
      */
     public function getModeCodeWithCreate(): TransportModeCodeType
     {
-        $this->modeCode = is_null($this->modeCode) ? new TransportModeCodeType() : $this->modeCode;
+        $this->modeCode ??= new TransportModeCodeType();
 
         return $this->modeCode;
     }

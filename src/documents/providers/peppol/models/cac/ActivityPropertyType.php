@@ -48,7 +48,7 @@ class ActivityPropertyType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -88,7 +88,7 @@ class ActivityPropertyType
      */
     public function getValueWithCreate(): Value
     {
-        $this->value = is_null($this->value) ? new Value() : $this->value;
+        $this->value ??= new Value();
 
         return $this->value;
     }

@@ -265,7 +265,7 @@ class ReceiptLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -305,7 +305,7 @@ class ReceiptLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -469,7 +469,7 @@ class ReceiptLineType
      */
     public function getReceivedQuantityWithCreate(): ReceivedQuantity
     {
-        $this->receivedQuantity = is_null($this->receivedQuantity) ? new ReceivedQuantity() : $this->receivedQuantity;
+        $this->receivedQuantity ??= new ReceivedQuantity();
 
         return $this->receivedQuantity;
     }
@@ -509,7 +509,7 @@ class ReceiptLineType
      */
     public function getShortQuantityWithCreate(): ShortQuantity
     {
-        $this->shortQuantity = is_null($this->shortQuantity) ? new ShortQuantity() : $this->shortQuantity;
+        $this->shortQuantity ??= new ShortQuantity();
 
         return $this->shortQuantity;
     }
@@ -549,7 +549,7 @@ class ReceiptLineType
      */
     public function getShortageActionCodeWithCreate(): ShortageActionCode
     {
-        $this->shortageActionCode = is_null($this->shortageActionCode) ? new ShortageActionCode() : $this->shortageActionCode;
+        $this->shortageActionCode ??= new ShortageActionCode();
 
         return $this->shortageActionCode;
     }
@@ -589,7 +589,7 @@ class ReceiptLineType
      */
     public function getRejectedQuantityWithCreate(): RejectedQuantity
     {
-        $this->rejectedQuantity = is_null($this->rejectedQuantity) ? new RejectedQuantity() : $this->rejectedQuantity;
+        $this->rejectedQuantity ??= new RejectedQuantity();
 
         return $this->rejectedQuantity;
     }
@@ -629,7 +629,7 @@ class ReceiptLineType
      */
     public function getRejectReasonCodeWithCreate(): RejectReasonCode
     {
-        $this->rejectReasonCode = is_null($this->rejectReasonCode) ? new RejectReasonCode() : $this->rejectReasonCode;
+        $this->rejectReasonCode ??= new RejectReasonCode();
 
         return $this->rejectReasonCode;
     }
@@ -793,7 +793,7 @@ class ReceiptLineType
      */
     public function getRejectActionCodeWithCreate(): RejectActionCode
     {
-        $this->rejectActionCode = is_null($this->rejectActionCode) ? new RejectActionCode() : $this->rejectActionCode;
+        $this->rejectActionCode ??= new RejectActionCode();
 
         return $this->rejectActionCode;
     }
@@ -833,7 +833,7 @@ class ReceiptLineType
      */
     public function getQuantityDiscrepancyCodeWithCreate(): QuantityDiscrepancyCode
     {
-        $this->quantityDiscrepancyCode = is_null($this->quantityDiscrepancyCode) ? new QuantityDiscrepancyCode() : $this->quantityDiscrepancyCode;
+        $this->quantityDiscrepancyCode ??= new QuantityDiscrepancyCode();
 
         return $this->quantityDiscrepancyCode;
     }
@@ -873,7 +873,7 @@ class ReceiptLineType
      */
     public function getOversupplyQuantityWithCreate(): OversupplyQuantity
     {
-        $this->oversupplyQuantity = is_null($this->oversupplyQuantity) ? new OversupplyQuantity() : $this->oversupplyQuantity;
+        $this->oversupplyQuantity ??= new OversupplyQuantity();
 
         return $this->oversupplyQuantity;
     }
@@ -943,7 +943,7 @@ class ReceiptLineType
      */
     public function getTimingComplaintCodeWithCreate(): TimingComplaintCode
     {
-        $this->timingComplaintCode = is_null($this->timingComplaintCode) ? new TimingComplaintCode() : $this->timingComplaintCode;
+        $this->timingComplaintCode ??= new TimingComplaintCode();
 
         return $this->timingComplaintCode;
     }
@@ -983,7 +983,7 @@ class ReceiptLineType
      */
     public function getTimingComplaintWithCreate(): TimingComplaint
     {
-        $this->timingComplaint = is_null($this->timingComplaint) ? new TimingComplaint() : $this->timingComplaint;
+        $this->timingComplaint ??= new TimingComplaint();
 
         return $this->timingComplaint;
     }
@@ -1023,7 +1023,7 @@ class ReceiptLineType
      */
     public function getOrderLineReferenceWithCreate(): OrderLineReference
     {
-        $this->orderLineReference = is_null($this->orderLineReference) ? new OrderLineReference() : $this->orderLineReference;
+        $this->orderLineReference ??= new OrderLineReference();
 
         return $this->orderLineReference;
     }

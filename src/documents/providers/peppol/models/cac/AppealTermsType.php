@@ -205,7 +205,7 @@ class AppealTermsType
      */
     public function getPresentationPeriodWithCreate(): PresentationPeriod
     {
-        $this->presentationPeriod = is_null($this->presentationPeriod) ? new PresentationPeriod() : $this->presentationPeriod;
+        $this->presentationPeriod ??= new PresentationPeriod();
 
         return $this->presentationPeriod;
     }
@@ -245,7 +245,7 @@ class AppealTermsType
      */
     public function getAppealInformationPartyWithCreate(): AppealInformationParty
     {
-        $this->appealInformationParty = is_null($this->appealInformationParty) ? new AppealInformationParty() : $this->appealInformationParty;
+        $this->appealInformationParty ??= new AppealInformationParty();
 
         return $this->appealInformationParty;
     }
@@ -285,7 +285,7 @@ class AppealTermsType
      */
     public function getAppealReceiverPartyWithCreate(): AppealReceiverParty
     {
-        $this->appealReceiverParty = is_null($this->appealReceiverParty) ? new AppealReceiverParty() : $this->appealReceiverParty;
+        $this->appealReceiverParty ??= new AppealReceiverParty();
 
         return $this->appealReceiverParty;
     }
@@ -325,7 +325,7 @@ class AppealTermsType
      */
     public function getMediationPartyWithCreate(): MediationParty
     {
-        $this->mediationParty = is_null($this->mediationParty) ? new MediationParty() : $this->mediationParty;
+        $this->mediationParty ??= new MediationParty();
 
         return $this->mediationParty;
     }

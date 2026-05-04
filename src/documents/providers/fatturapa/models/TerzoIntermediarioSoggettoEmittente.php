@@ -40,7 +40,7 @@ final class TerzoIntermediarioSoggettoEmittente
      */
     public function getDatiAnagraficiWithCreate(): DatiAnagraficiTerzoIntermediario
     {
-        $this->datiAnagrafici = is_null($this->datiAnagrafici) ? new DatiAnagraficiTerzoIntermediario() : $this->datiAnagrafici;
+        $this->datiAnagrafici ??= new DatiAnagraficiTerzoIntermediario();
 
         return $this->datiAnagrafici;
     }

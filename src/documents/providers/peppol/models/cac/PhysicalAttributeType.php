@@ -73,7 +73,7 @@ class PhysicalAttributeType
      */
     public function getAttributeIDWithCreate(): AttributeID
     {
-        $this->attributeID = is_null($this->attributeID) ? new AttributeID() : $this->attributeID;
+        $this->attributeID ??= new AttributeID();
 
         return $this->attributeID;
     }
@@ -113,7 +113,7 @@ class PhysicalAttributeType
      */
     public function getPositionCodeWithCreate(): PositionCode
     {
-        $this->positionCode = is_null($this->positionCode) ? new PositionCode() : $this->positionCode;
+        $this->positionCode ??= new PositionCode();
 
         return $this->positionCode;
     }
@@ -153,7 +153,7 @@ class PhysicalAttributeType
      */
     public function getDescriptionCodeWithCreate(): DescriptionCode
     {
-        $this->descriptionCode = is_null($this->descriptionCode) ? new DescriptionCode() : $this->descriptionCode;
+        $this->descriptionCode ??= new DescriptionCode();
 
         return $this->descriptionCode;
     }

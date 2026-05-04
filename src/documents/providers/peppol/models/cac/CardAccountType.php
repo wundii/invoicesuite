@@ -155,7 +155,7 @@ class CardAccountType
      */
     public function getPrimaryAccountNumberIDWithCreate(): PrimaryAccountNumberID
     {
-        $this->primaryAccountNumberID = is_null($this->primaryAccountNumberID) ? new PrimaryAccountNumberID() : $this->primaryAccountNumberID;
+        $this->primaryAccountNumberID ??= new PrimaryAccountNumberID();
 
         return $this->primaryAccountNumberID;
     }
@@ -195,7 +195,7 @@ class CardAccountType
      */
     public function getNetworkIDWithCreate(): NetworkID
     {
-        $this->networkID = is_null($this->networkID) ? new NetworkID() : $this->networkID;
+        $this->networkID ??= new NetworkID();
 
         return $this->networkID;
     }
@@ -235,7 +235,7 @@ class CardAccountType
      */
     public function getCardTypeCodeWithCreate(): CardTypeCode
     {
-        $this->cardTypeCode = is_null($this->cardTypeCode) ? new CardTypeCode() : $this->cardTypeCode;
+        $this->cardTypeCode ??= new CardTypeCode();
 
         return $this->cardTypeCode;
     }
@@ -335,7 +335,7 @@ class CardAccountType
      */
     public function getIssuerIDWithCreate(): IssuerID
     {
-        $this->issuerID = is_null($this->issuerID) ? new IssuerID() : $this->issuerID;
+        $this->issuerID ??= new IssuerID();
 
         return $this->issuerID;
     }
@@ -375,7 +375,7 @@ class CardAccountType
      */
     public function getIssueNumberIDWithCreate(): IssueNumberID
     {
-        $this->issueNumberID = is_null($this->issueNumberID) ? new IssueNumberID() : $this->issueNumberID;
+        $this->issueNumberID ??= new IssueNumberID();
 
         return $this->issueNumberID;
     }
@@ -415,7 +415,7 @@ class CardAccountType
      */
     public function getCV2IDWithCreate(): CV2ID
     {
-        $this->cV2ID = is_null($this->cV2ID) ? new CV2ID() : $this->cV2ID;
+        $this->cV2ID ??= new CV2ID();
 
         return $this->cV2ID;
     }
@@ -455,7 +455,7 @@ class CardAccountType
      */
     public function getCardChipCodeWithCreate(): CardChipCode
     {
-        $this->cardChipCode = is_null($this->cardChipCode) ? new CardChipCode() : $this->cardChipCode;
+        $this->cardChipCode ??= new CardChipCode();
 
         return $this->cardChipCode;
     }
@@ -495,7 +495,7 @@ class CardAccountType
      */
     public function getChipApplicationIDWithCreate(): ChipApplicationID
     {
-        $this->chipApplicationID = is_null($this->chipApplicationID) ? new ChipApplicationID() : $this->chipApplicationID;
+        $this->chipApplicationID ??= new ChipApplicationID();
 
         return $this->chipApplicationID;
     }
@@ -535,7 +535,7 @@ class CardAccountType
      */
     public function getHolderNameWithCreate(): HolderName
     {
-        $this->holderName = is_null($this->holderName) ? new HolderName() : $this->holderName;
+        $this->holderName ??= new HolderName();
 
         return $this->holderName;
     }

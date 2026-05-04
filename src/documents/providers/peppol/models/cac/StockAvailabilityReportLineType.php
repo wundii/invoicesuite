@@ -108,7 +108,7 @@ class StockAvailabilityReportLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -272,7 +272,7 @@ class StockAvailabilityReportLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -312,7 +312,7 @@ class StockAvailabilityReportLineType
      */
     public function getValueAmountWithCreate(): ValueAmount
     {
-        $this->valueAmount = is_null($this->valueAmount) ? new ValueAmount() : $this->valueAmount;
+        $this->valueAmount ??= new ValueAmount();
 
         return $this->valueAmount;
     }
@@ -382,7 +382,7 @@ class StockAvailabilityReportLineType
      */
     public function getAvailabilityStatusCodeWithCreate(): AvailabilityStatusCode
     {
-        $this->availabilityStatusCode = is_null($this->availabilityStatusCode) ? new AvailabilityStatusCode() : $this->availabilityStatusCode;
+        $this->availabilityStatusCode ??= new AvailabilityStatusCode();
 
         return $this->availabilityStatusCode;
     }
@@ -422,7 +422,7 @@ class StockAvailabilityReportLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

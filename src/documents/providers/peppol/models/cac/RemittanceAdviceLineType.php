@@ -234,7 +234,7 @@ class RemittanceAdviceLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -398,7 +398,7 @@ class RemittanceAdviceLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -438,7 +438,7 @@ class RemittanceAdviceLineType
      */
     public function getDebitLineAmountWithCreate(): DebitLineAmount
     {
-        $this->debitLineAmount = is_null($this->debitLineAmount) ? new DebitLineAmount() : $this->debitLineAmount;
+        $this->debitLineAmount ??= new DebitLineAmount();
 
         return $this->debitLineAmount;
     }
@@ -478,7 +478,7 @@ class RemittanceAdviceLineType
      */
     public function getCreditLineAmountWithCreate(): CreditLineAmount
     {
-        $this->creditLineAmount = is_null($this->creditLineAmount) ? new CreditLineAmount() : $this->creditLineAmount;
+        $this->creditLineAmount ??= new CreditLineAmount();
 
         return $this->creditLineAmount;
     }
@@ -518,7 +518,7 @@ class RemittanceAdviceLineType
      */
     public function getBalanceAmountWithCreate(): BalanceAmount
     {
-        $this->balanceAmount = is_null($this->balanceAmount) ? new BalanceAmount() : $this->balanceAmount;
+        $this->balanceAmount ??= new BalanceAmount();
 
         return $this->balanceAmount;
     }
@@ -558,7 +558,7 @@ class RemittanceAdviceLineType
      */
     public function getPaymentPurposeCodeWithCreate(): PaymentPurposeCode
     {
-        $this->paymentPurposeCode = is_null($this->paymentPurposeCode) ? new PaymentPurposeCode() : $this->paymentPurposeCode;
+        $this->paymentPurposeCode ??= new PaymentPurposeCode();
 
         return $this->paymentPurposeCode;
     }
@@ -598,7 +598,7 @@ class RemittanceAdviceLineType
      */
     public function getInvoicingPartyReferenceWithCreate(): InvoicingPartyReference
     {
-        $this->invoicingPartyReference = is_null($this->invoicingPartyReference) ? new InvoicingPartyReference() : $this->invoicingPartyReference;
+        $this->invoicingPartyReference ??= new InvoicingPartyReference();
 
         return $this->invoicingPartyReference;
     }
@@ -638,7 +638,7 @@ class RemittanceAdviceLineType
      */
     public function getAccountingSupplierPartyWithCreate(): AccountingSupplierParty
     {
-        $this->accountingSupplierParty = is_null($this->accountingSupplierParty) ? new AccountingSupplierParty() : $this->accountingSupplierParty;
+        $this->accountingSupplierParty ??= new AccountingSupplierParty();
 
         return $this->accountingSupplierParty;
     }
@@ -678,7 +678,7 @@ class RemittanceAdviceLineType
      */
     public function getAccountingCustomerPartyWithCreate(): AccountingCustomerParty
     {
-        $this->accountingCustomerParty = is_null($this->accountingCustomerParty) ? new AccountingCustomerParty() : $this->accountingCustomerParty;
+        $this->accountingCustomerParty ??= new AccountingCustomerParty();
 
         return $this->accountingCustomerParty;
     }
@@ -718,7 +718,7 @@ class RemittanceAdviceLineType
      */
     public function getBuyerCustomerPartyWithCreate(): BuyerCustomerParty
     {
-        $this->buyerCustomerParty = is_null($this->buyerCustomerParty) ? new BuyerCustomerParty() : $this->buyerCustomerParty;
+        $this->buyerCustomerParty ??= new BuyerCustomerParty();
 
         return $this->buyerCustomerParty;
     }
@@ -758,7 +758,7 @@ class RemittanceAdviceLineType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -798,7 +798,7 @@ class RemittanceAdviceLineType
      */
     public function getOriginatorCustomerPartyWithCreate(): OriginatorCustomerParty
     {
-        $this->originatorCustomerParty = is_null($this->originatorCustomerParty) ? new OriginatorCustomerParty() : $this->originatorCustomerParty;
+        $this->originatorCustomerParty ??= new OriginatorCustomerParty();
 
         return $this->originatorCustomerParty;
     }
@@ -838,7 +838,7 @@ class RemittanceAdviceLineType
      */
     public function getPayeePartyWithCreate(): PayeeParty
     {
-        $this->payeeParty = is_null($this->payeeParty) ? new PayeeParty() : $this->payeeParty;
+        $this->payeeParty ??= new PayeeParty();
 
         return $this->payeeParty;
     }
@@ -1250,7 +1250,7 @@ class RemittanceAdviceLineType
      */
     public function getExchangeRateWithCreate(): ExchangeRate
     {
-        $this->exchangeRate = is_null($this->exchangeRate) ? new ExchangeRate() : $this->exchangeRate;
+        $this->exchangeRate ??= new ExchangeRate();
 
         return $this->exchangeRate;
     }

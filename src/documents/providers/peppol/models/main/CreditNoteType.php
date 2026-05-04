@@ -781,7 +781,7 @@ class CreditNoteType
      */
     public function getUBLVersionIDWithCreate(): UBLVersionID
     {
-        $this->uBLVersionID = is_null($this->uBLVersionID) ? new UBLVersionID() : $this->uBLVersionID;
+        $this->uBLVersionID ??= new UBLVersionID();
 
         return $this->uBLVersionID;
     }
@@ -821,7 +821,7 @@ class CreditNoteType
      */
     public function getCustomizationIDWithCreate(): CustomizationID
     {
-        $this->customizationID = is_null($this->customizationID) ? new CustomizationID() : $this->customizationID;
+        $this->customizationID ??= new CustomizationID();
 
         return $this->customizationID;
     }
@@ -861,7 +861,7 @@ class CreditNoteType
      */
     public function getProfileIDWithCreate(): ProfileID
     {
-        $this->profileID = is_null($this->profileID) ? new ProfileID() : $this->profileID;
+        $this->profileID ??= new ProfileID();
 
         return $this->profileID;
     }
@@ -901,7 +901,7 @@ class CreditNoteType
      */
     public function getProfileExecutionIDWithCreate(): ProfileExecutionID
     {
-        $this->profileExecutionID = is_null($this->profileExecutionID) ? new ProfileExecutionID() : $this->profileExecutionID;
+        $this->profileExecutionID ??= new ProfileExecutionID();
 
         return $this->profileExecutionID;
     }
@@ -941,7 +941,7 @@ class CreditNoteType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -1011,7 +1011,7 @@ class CreditNoteType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -1141,7 +1141,7 @@ class CreditNoteType
      */
     public function getCreditNoteTypeCodeWithCreate(): CreditNoteTypeCode
     {
-        $this->creditNoteTypeCode = is_null($this->creditNoteTypeCode) ? new CreditNoteTypeCode() : $this->creditNoteTypeCode;
+        $this->creditNoteTypeCode ??= new CreditNoteTypeCode();
 
         return $this->creditNoteTypeCode;
     }
@@ -1305,7 +1305,7 @@ class CreditNoteType
      */
     public function getDocumentCurrencyCodeWithCreate(): DocumentCurrencyCode
     {
-        $this->documentCurrencyCode = is_null($this->documentCurrencyCode) ? new DocumentCurrencyCode() : $this->documentCurrencyCode;
+        $this->documentCurrencyCode ??= new DocumentCurrencyCode();
 
         return $this->documentCurrencyCode;
     }
@@ -1345,7 +1345,7 @@ class CreditNoteType
      */
     public function getTaxCurrencyCodeWithCreate(): TaxCurrencyCode
     {
-        $this->taxCurrencyCode = is_null($this->taxCurrencyCode) ? new TaxCurrencyCode() : $this->taxCurrencyCode;
+        $this->taxCurrencyCode ??= new TaxCurrencyCode();
 
         return $this->taxCurrencyCode;
     }
@@ -1385,7 +1385,7 @@ class CreditNoteType
      */
     public function getPricingCurrencyCodeWithCreate(): PricingCurrencyCode
     {
-        $this->pricingCurrencyCode = is_null($this->pricingCurrencyCode) ? new PricingCurrencyCode() : $this->pricingCurrencyCode;
+        $this->pricingCurrencyCode ??= new PricingCurrencyCode();
 
         return $this->pricingCurrencyCode;
     }
@@ -1425,7 +1425,7 @@ class CreditNoteType
      */
     public function getPaymentCurrencyCodeWithCreate(): PaymentCurrencyCode
     {
-        $this->paymentCurrencyCode = is_null($this->paymentCurrencyCode) ? new PaymentCurrencyCode() : $this->paymentCurrencyCode;
+        $this->paymentCurrencyCode ??= new PaymentCurrencyCode();
 
         return $this->paymentCurrencyCode;
     }
@@ -1465,7 +1465,7 @@ class CreditNoteType
      */
     public function getPaymentAlternativeCurrencyCodeWithCreate(): PaymentAlternativeCurrencyCode
     {
-        $this->paymentAlternativeCurrencyCode = is_null($this->paymentAlternativeCurrencyCode) ? new PaymentAlternativeCurrencyCode() : $this->paymentAlternativeCurrencyCode;
+        $this->paymentAlternativeCurrencyCode ??= new PaymentAlternativeCurrencyCode();
 
         return $this->paymentAlternativeCurrencyCode;
     }
@@ -1505,7 +1505,7 @@ class CreditNoteType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -1545,7 +1545,7 @@ class CreditNoteType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -1585,7 +1585,7 @@ class CreditNoteType
      */
     public function getLineCountNumericWithCreate(): LineCountNumeric
     {
-        $this->lineCountNumeric = is_null($this->lineCountNumeric) ? new LineCountNumeric() : $this->lineCountNumeric;
+        $this->lineCountNumeric ??= new LineCountNumeric();
 
         return $this->lineCountNumeric;
     }
@@ -1625,7 +1625,7 @@ class CreditNoteType
      */
     public function getBuyerReferenceWithCreate(): BuyerReference
     {
-        $this->buyerReference = is_null($this->buyerReference) ? new BuyerReference() : $this->buyerReference;
+        $this->buyerReference ??= new BuyerReference();
 
         return $this->buyerReference;
     }
@@ -1913,7 +1913,7 @@ class CreditNoteType
      */
     public function getOrderReferenceWithCreate(): OrderReference
     {
-        $this->orderReference = is_null($this->orderReference) ? new OrderReference() : $this->orderReference;
+        $this->orderReference ??= new OrderReference();
 
         return $this->orderReference;
     }
@@ -2945,7 +2945,7 @@ class CreditNoteType
      */
     public function getAccountingSupplierPartyWithCreate(): AccountingSupplierParty
     {
-        $this->accountingSupplierParty = is_null($this->accountingSupplierParty) ? new AccountingSupplierParty() : $this->accountingSupplierParty;
+        $this->accountingSupplierParty ??= new AccountingSupplierParty();
 
         return $this->accountingSupplierParty;
     }
@@ -2985,7 +2985,7 @@ class CreditNoteType
      */
     public function getAccountingCustomerPartyWithCreate(): AccountingCustomerParty
     {
-        $this->accountingCustomerParty = is_null($this->accountingCustomerParty) ? new AccountingCustomerParty() : $this->accountingCustomerParty;
+        $this->accountingCustomerParty ??= new AccountingCustomerParty();
 
         return $this->accountingCustomerParty;
     }
@@ -3025,7 +3025,7 @@ class CreditNoteType
      */
     public function getPayeePartyWithCreate(): PayeeParty
     {
-        $this->payeeParty = is_null($this->payeeParty) ? new PayeeParty() : $this->payeeParty;
+        $this->payeeParty ??= new PayeeParty();
 
         return $this->payeeParty;
     }
@@ -3065,7 +3065,7 @@ class CreditNoteType
      */
     public function getBuyerCustomerPartyWithCreate(): BuyerCustomerParty
     {
-        $this->buyerCustomerParty = is_null($this->buyerCustomerParty) ? new BuyerCustomerParty() : $this->buyerCustomerParty;
+        $this->buyerCustomerParty ??= new BuyerCustomerParty();
 
         return $this->buyerCustomerParty;
     }
@@ -3105,7 +3105,7 @@ class CreditNoteType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -3145,7 +3145,7 @@ class CreditNoteType
      */
     public function getTaxRepresentativePartyWithCreate(): TaxRepresentativeParty
     {
-        $this->taxRepresentativeParty = is_null($this->taxRepresentativeParty) ? new TaxRepresentativeParty() : $this->taxRepresentativeParty;
+        $this->taxRepresentativeParty ??= new TaxRepresentativeParty();
 
         return $this->taxRepresentativeParty;
     }
@@ -3681,7 +3681,7 @@ class CreditNoteType
      */
     public function getTaxExchangeRateWithCreate(): TaxExchangeRate
     {
-        $this->taxExchangeRate = is_null($this->taxExchangeRate) ? new TaxExchangeRate() : $this->taxExchangeRate;
+        $this->taxExchangeRate ??= new TaxExchangeRate();
 
         return $this->taxExchangeRate;
     }
@@ -3721,7 +3721,7 @@ class CreditNoteType
      */
     public function getPricingExchangeRateWithCreate(): PricingExchangeRate
     {
-        $this->pricingExchangeRate = is_null($this->pricingExchangeRate) ? new PricingExchangeRate() : $this->pricingExchangeRate;
+        $this->pricingExchangeRate ??= new PricingExchangeRate();
 
         return $this->pricingExchangeRate;
     }
@@ -3761,7 +3761,7 @@ class CreditNoteType
      */
     public function getPaymentExchangeRateWithCreate(): PaymentExchangeRate
     {
-        $this->paymentExchangeRate = is_null($this->paymentExchangeRate) ? new PaymentExchangeRate() : $this->paymentExchangeRate;
+        $this->paymentExchangeRate ??= new PaymentExchangeRate();
 
         return $this->paymentExchangeRate;
     }
@@ -3801,7 +3801,7 @@ class CreditNoteType
      */
     public function getPaymentAlternativeExchangeRateWithCreate(): PaymentAlternativeExchangeRate
     {
-        $this->paymentAlternativeExchangeRate = is_null($this->paymentAlternativeExchangeRate) ? new PaymentAlternativeExchangeRate() : $this->paymentAlternativeExchangeRate;
+        $this->paymentAlternativeExchangeRate ??= new PaymentAlternativeExchangeRate();
 
         return $this->paymentAlternativeExchangeRate;
     }
@@ -4145,7 +4145,7 @@ class CreditNoteType
      */
     public function getLegalMonetaryTotalWithCreate(): LegalMonetaryTotal
     {
-        $this->legalMonetaryTotal = is_null($this->legalMonetaryTotal) ? new LegalMonetaryTotal() : $this->legalMonetaryTotal;
+        $this->legalMonetaryTotal ??= new LegalMonetaryTotal();
 
         return $this->legalMonetaryTotal;
     }

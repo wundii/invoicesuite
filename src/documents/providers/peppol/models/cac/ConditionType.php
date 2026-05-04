@@ -85,7 +85,7 @@ class ConditionType
      */
     public function getAttributeIDWithCreate(): AttributeID
     {
-        $this->attributeID = is_null($this->attributeID) ? new AttributeID() : $this->attributeID;
+        $this->attributeID ??= new AttributeID();
 
         return $this->attributeID;
     }
@@ -125,7 +125,7 @@ class ConditionType
      */
     public function getMeasureWithCreate(): Measure
     {
-        $this->measure = is_null($this->measure) ? new Measure() : $this->measure;
+        $this->measure ??= new Measure();
 
         return $this->measure;
     }
@@ -289,7 +289,7 @@ class ConditionType
      */
     public function getMinimumMeasureWithCreate(): MinimumMeasure
     {
-        $this->minimumMeasure = is_null($this->minimumMeasure) ? new MinimumMeasure() : $this->minimumMeasure;
+        $this->minimumMeasure ??= new MinimumMeasure();
 
         return $this->minimumMeasure;
     }
@@ -329,7 +329,7 @@ class ConditionType
      */
     public function getMaximumMeasureWithCreate(): MaximumMeasure
     {
-        $this->maximumMeasure = is_null($this->maximumMeasure) ? new MaximumMeasure() : $this->maximumMeasure;
+        $this->maximumMeasure ??= new MaximumMeasure();
 
         return $this->maximumMeasure;
     }

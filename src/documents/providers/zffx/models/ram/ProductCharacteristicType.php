@@ -71,7 +71,7 @@ class ProductCharacteristicType
      */
     public function getTypeCodeWithCreate(): CodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new CodeType() : $this->typeCode;
+        $this->typeCode ??= new CodeType();
 
         return $this->typeCode;
     }
@@ -111,7 +111,7 @@ class ProductCharacteristicType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -151,7 +151,7 @@ class ProductCharacteristicType
      */
     public function getValueMeasureWithCreate(): MeasureType
     {
-        $this->valueMeasure = is_null($this->valueMeasure) ? new MeasureType() : $this->valueMeasure;
+        $this->valueMeasure ??= new MeasureType();
 
         return $this->valueMeasure;
     }
@@ -191,7 +191,7 @@ class ProductCharacteristicType
      */
     public function getValueWithCreate(): TextType
     {
-        $this->value = is_null($this->value) ? new TextType() : $this->value;
+        $this->value ??= new TextType();
 
         return $this->value;
     }

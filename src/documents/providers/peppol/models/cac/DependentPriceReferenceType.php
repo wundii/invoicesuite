@@ -58,7 +58,7 @@ class DependentPriceReferenceType
      */
     public function getPercentWithCreate(): Percent
     {
-        $this->percent = is_null($this->percent) ? new Percent() : $this->percent;
+        $this->percent ??= new Percent();
 
         return $this->percent;
     }
@@ -98,7 +98,7 @@ class DependentPriceReferenceType
      */
     public function getLocationAddressWithCreate(): LocationAddress
     {
-        $this->locationAddress = is_null($this->locationAddress) ? new LocationAddress() : $this->locationAddress;
+        $this->locationAddress ??= new LocationAddress();
 
         return $this->locationAddress;
     }
@@ -138,7 +138,7 @@ class DependentPriceReferenceType
      */
     public function getDependentLineReferenceWithCreate(): DependentLineReference
     {
-        $this->dependentLineReference = is_null($this->dependentLineReference) ? new DependentLineReference() : $this->dependentLineReference;
+        $this->dependentLineReference ??= new DependentLineReference();
 
         return $this->dependentLineReference;
     }

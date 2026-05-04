@@ -164,7 +164,7 @@ class TransportEventType
      */
     public function getIdentificationIDWithCreate(): IdentificationID
     {
-        $this->identificationID = is_null($this->identificationID) ? new IdentificationID() : $this->identificationID;
+        $this->identificationID ??= new IdentificationID();
 
         return $this->identificationID;
     }
@@ -264,7 +264,7 @@ class TransportEventType
      */
     public function getTransportEventTypeCodeWithCreate(): TransportEventTypeCode
     {
-        $this->transportEventTypeCode = is_null($this->transportEventTypeCode) ? new TransportEventTypeCode() : $this->transportEventTypeCode;
+        $this->transportEventTypeCode ??= new TransportEventTypeCode();
 
         return $this->transportEventTypeCode;
     }
@@ -458,7 +458,7 @@ class TransportEventType
      */
     public function getReportedShipmentWithCreate(): ReportedShipment
     {
-        $this->reportedShipment = is_null($this->reportedShipment) ? new ReportedShipment() : $this->reportedShipment;
+        $this->reportedShipment ??= new ReportedShipment();
 
         return $this->reportedShipment;
     }
@@ -746,7 +746,7 @@ class TransportEventType
      */
     public function getLocationWithCreate(): Location
     {
-        $this->location = is_null($this->location) ? new Location() : $this->location;
+        $this->location ??= new Location();
 
         return $this->location;
     }
@@ -786,7 +786,7 @@ class TransportEventType
      */
     public function getSignatureWithCreate(): Signature
     {
-        $this->signature = is_null($this->signature) ? new Signature() : $this->signature;
+        $this->signature ??= new Signature();
 
         return $this->signature;
     }

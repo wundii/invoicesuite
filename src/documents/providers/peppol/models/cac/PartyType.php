@@ -304,7 +304,7 @@ class PartyType
      */
     public function getWebsiteURIWithCreate(): WebsiteURI
     {
-        $this->websiteURI = is_null($this->websiteURI) ? new WebsiteURI() : $this->websiteURI;
+        $this->websiteURI ??= new WebsiteURI();
 
         return $this->websiteURI;
     }
@@ -344,7 +344,7 @@ class PartyType
      */
     public function getLogoReferenceIDWithCreate(): LogoReferenceID
     {
-        $this->logoReferenceID = is_null($this->logoReferenceID) ? new LogoReferenceID() : $this->logoReferenceID;
+        $this->logoReferenceID ??= new LogoReferenceID();
 
         return $this->logoReferenceID;
     }
@@ -384,7 +384,7 @@ class PartyType
      */
     public function getEndpointIDWithCreate(): EndpointID
     {
-        $this->endpointID = is_null($this->endpointID) ? new EndpointID() : $this->endpointID;
+        $this->endpointID ??= new EndpointID();
 
         return $this->endpointID;
     }
@@ -424,7 +424,7 @@ class PartyType
      */
     public function getIndustryClassificationCodeWithCreate(): IndustryClassificationCode
     {
-        $this->industryClassificationCode = is_null($this->industryClassificationCode) ? new IndustryClassificationCode() : $this->industryClassificationCode;
+        $this->industryClassificationCode ??= new IndustryClassificationCode();
 
         return $this->industryClassificationCode;
     }
@@ -712,7 +712,7 @@ class PartyType
      */
     public function getLanguageWithCreate(): Language
     {
-        $this->language = is_null($this->language) ? new Language() : $this->language;
+        $this->language ??= new Language();
 
         return $this->language;
     }
@@ -752,7 +752,7 @@ class PartyType
      */
     public function getPostalAddressWithCreate(): PostalAddress
     {
-        $this->postalAddress = is_null($this->postalAddress) ? new PostalAddress() : $this->postalAddress;
+        $this->postalAddress ??= new PostalAddress();
 
         return $this->postalAddress;
     }
@@ -792,7 +792,7 @@ class PartyType
      */
     public function getPhysicalLocationWithCreate(): PhysicalLocation
     {
-        $this->physicalLocation = is_null($this->physicalLocation) ? new PhysicalLocation() : $this->physicalLocation;
+        $this->physicalLocation ??= new PhysicalLocation();
 
         return $this->physicalLocation;
     }
@@ -1080,7 +1080,7 @@ class PartyType
      */
     public function getContactWithCreate(): Contact
     {
-        $this->contact = is_null($this->contact) ? new Contact() : $this->contact;
+        $this->contact ??= new Contact();
 
         return $this->contact;
     }
@@ -1244,7 +1244,7 @@ class PartyType
      */
     public function getAgentPartyWithCreate(): AgentParty
     {
-        $this->agentParty = is_null($this->agentParty) ? new AgentParty() : $this->agentParty;
+        $this->agentParty ??= new AgentParty();
 
         return $this->agentParty;
     }
@@ -1532,7 +1532,7 @@ class PartyType
      */
     public function getFinancialAccountWithCreate(): FinancialAccount
     {
-        $this->financialAccount = is_null($this->financialAccount) ? new FinancialAccount() : $this->financialAccount;
+        $this->financialAccount ??= new FinancialAccount();
 
         return $this->financialAccount;
     }

@@ -162,7 +162,7 @@ final class DatiGenerali
      */
     public function getDatiGeneraliDocumentoWithCreate(): DatiGeneraliDocumento
     {
-        $this->datiGeneraliDocumento = is_null($this->datiGeneraliDocumento) ? new DatiGeneraliDocumento() : $this->datiGeneraliDocumento;
+        $this->datiGeneraliDocumento ??= new DatiGeneraliDocumento();
 
         return $this->datiGeneraliDocumento;
     }
@@ -1008,7 +1008,7 @@ final class DatiGenerali
      */
     public function getDatiTrasportoWithCreate(): DatiTrasporto
     {
-        $this->datiTrasporto = is_null($this->datiTrasporto) ? new DatiTrasporto() : $this->datiTrasporto;
+        $this->datiTrasporto ??= new DatiTrasporto();
 
         return $this->datiTrasporto;
     }
@@ -1056,7 +1056,7 @@ final class DatiGenerali
      */
     public function getFatturaPrincipaleWithCreate(): FatturaPrincipale
     {
-        $this->fatturaPrincipale = is_null($this->fatturaPrincipale) ? new FatturaPrincipale() : $this->fatturaPrincipale;
+        $this->fatturaPrincipale ??= new FatturaPrincipale();
 
         return $this->fatturaPrincipale;
     }

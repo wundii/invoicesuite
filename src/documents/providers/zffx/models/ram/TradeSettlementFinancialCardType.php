@@ -48,7 +48,7 @@ class TradeSettlementFinancialCardType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -88,7 +88,7 @@ class TradeSettlementFinancialCardType
      */
     public function getCardholderNameWithCreate(): TextType
     {
-        $this->cardholderName = is_null($this->cardholderName) ? new TextType() : $this->cardholderName;
+        $this->cardholderName ??= new TextType();
 
         return $this->cardholderName;
     }

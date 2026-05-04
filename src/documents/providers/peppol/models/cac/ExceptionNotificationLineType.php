@@ -203,7 +203,7 @@ class ExceptionNotificationLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -491,7 +491,7 @@ class ExceptionNotificationLineType
      */
     public function getExceptionStatusCodeWithCreate(): ExceptionStatusCode
     {
-        $this->exceptionStatusCode = is_null($this->exceptionStatusCode) ? new ExceptionStatusCode() : $this->exceptionStatusCode;
+        $this->exceptionStatusCode ??= new ExceptionStatusCode();
 
         return $this->exceptionStatusCode;
     }
@@ -531,7 +531,7 @@ class ExceptionNotificationLineType
      */
     public function getCollaborationPriorityCodeWithCreate(): CollaborationPriorityCode
     {
-        $this->collaborationPriorityCode = is_null($this->collaborationPriorityCode) ? new CollaborationPriorityCode() : $this->collaborationPriorityCode;
+        $this->collaborationPriorityCode ??= new CollaborationPriorityCode();
 
         return $this->collaborationPriorityCode;
     }
@@ -571,7 +571,7 @@ class ExceptionNotificationLineType
      */
     public function getResolutionCodeWithCreate(): ResolutionCode
     {
-        $this->resolutionCode = is_null($this->resolutionCode) ? new ResolutionCode() : $this->resolutionCode;
+        $this->resolutionCode ??= new ResolutionCode();
 
         return $this->resolutionCode;
     }
@@ -611,7 +611,7 @@ class ExceptionNotificationLineType
      */
     public function getComparedValueMeasureWithCreate(): ComparedValueMeasure
     {
-        $this->comparedValueMeasure = is_null($this->comparedValueMeasure) ? new ComparedValueMeasure() : $this->comparedValueMeasure;
+        $this->comparedValueMeasure ??= new ComparedValueMeasure();
 
         return $this->comparedValueMeasure;
     }
@@ -651,7 +651,7 @@ class ExceptionNotificationLineType
      */
     public function getSourceValueMeasureWithCreate(): SourceValueMeasure
     {
-        $this->sourceValueMeasure = is_null($this->sourceValueMeasure) ? new SourceValueMeasure() : $this->sourceValueMeasure;
+        $this->sourceValueMeasure ??= new SourceValueMeasure();
 
         return $this->sourceValueMeasure;
     }
@@ -691,7 +691,7 @@ class ExceptionNotificationLineType
      */
     public function getVarianceQuantityWithCreate(): VarianceQuantity
     {
-        $this->varianceQuantity = is_null($this->varianceQuantity) ? new VarianceQuantity() : $this->varianceQuantity;
+        $this->varianceQuantity ??= new VarianceQuantity();
 
         return $this->varianceQuantity;
     }
@@ -731,7 +731,7 @@ class ExceptionNotificationLineType
      */
     public function getSupplyChainActivityTypeCodeWithCreate(): SupplyChainActivityTypeCode
     {
-        $this->supplyChainActivityTypeCode = is_null($this->supplyChainActivityTypeCode) ? new SupplyChainActivityTypeCode() : $this->supplyChainActivityTypeCode;
+        $this->supplyChainActivityTypeCode ??= new SupplyChainActivityTypeCode();
 
         return $this->supplyChainActivityTypeCode;
     }
@@ -771,7 +771,7 @@ class ExceptionNotificationLineType
      */
     public function getPerformanceMetricTypeCodeWithCreate(): PerformanceMetricTypeCode
     {
-        $this->performanceMetricTypeCode = is_null($this->performanceMetricTypeCode) ? new PerformanceMetricTypeCode() : $this->performanceMetricTypeCode;
+        $this->performanceMetricTypeCode ??= new PerformanceMetricTypeCode();
 
         return $this->performanceMetricTypeCode;
     }
@@ -811,7 +811,7 @@ class ExceptionNotificationLineType
      */
     public function getExceptionObservationPeriodWithCreate(): ExceptionObservationPeriod
     {
-        $this->exceptionObservationPeriod = is_null($this->exceptionObservationPeriod) ? new ExceptionObservationPeriod() : $this->exceptionObservationPeriod;
+        $this->exceptionObservationPeriod ??= new ExceptionObservationPeriod();
 
         return $this->exceptionObservationPeriod;
     }
@@ -975,7 +975,7 @@ class ExceptionNotificationLineType
      */
     public function getForecastExceptionWithCreate(): ForecastException
     {
-        $this->forecastException = is_null($this->forecastException) ? new ForecastException() : $this->forecastException;
+        $this->forecastException ??= new ForecastException();
 
         return $this->forecastException;
     }
@@ -1015,7 +1015,7 @@ class ExceptionNotificationLineType
      */
     public function getSupplyItemWithCreate(): SupplyItem
     {
-        $this->supplyItem = is_null($this->supplyItem) ? new SupplyItem() : $this->supplyItem;
+        $this->supplyItem ??= new SupplyItem();
 
         return $this->supplyItem;
     }

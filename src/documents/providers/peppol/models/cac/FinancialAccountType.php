@@ -131,7 +131,7 @@ class FinancialAccountType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -171,7 +171,7 @@ class FinancialAccountType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -211,7 +211,7 @@ class FinancialAccountType
      */
     public function getAliasNameWithCreate(): AliasName
     {
-        $this->aliasName = is_null($this->aliasName) ? new AliasName() : $this->aliasName;
+        $this->aliasName ??= new AliasName();
 
         return $this->aliasName;
     }
@@ -251,7 +251,7 @@ class FinancialAccountType
      */
     public function getAccountTypeCodeWithCreate(): AccountTypeCode
     {
-        $this->accountTypeCode = is_null($this->accountTypeCode) ? new AccountTypeCode() : $this->accountTypeCode;
+        $this->accountTypeCode ??= new AccountTypeCode();
 
         return $this->accountTypeCode;
     }
@@ -291,7 +291,7 @@ class FinancialAccountType
      */
     public function getAccountFormatCodeWithCreate(): AccountFormatCode
     {
-        $this->accountFormatCode = is_null($this->accountFormatCode) ? new AccountFormatCode() : $this->accountFormatCode;
+        $this->accountFormatCode ??= new AccountFormatCode();
 
         return $this->accountFormatCode;
     }
@@ -331,7 +331,7 @@ class FinancialAccountType
      */
     public function getCurrencyCodeWithCreate(): CurrencyCode
     {
-        $this->currencyCode = is_null($this->currencyCode) ? new CurrencyCode() : $this->currencyCode;
+        $this->currencyCode ??= new CurrencyCode();
 
         return $this->currencyCode;
     }
@@ -495,7 +495,7 @@ class FinancialAccountType
      */
     public function getFinancialInstitutionBranchWithCreate(): FinancialInstitutionBranch
     {
-        $this->financialInstitutionBranch = is_null($this->financialInstitutionBranch) ? new FinancialInstitutionBranch() : $this->financialInstitutionBranch;
+        $this->financialInstitutionBranch ??= new FinancialInstitutionBranch();
 
         return $this->financialInstitutionBranch;
     }
@@ -535,7 +535,7 @@ class FinancialAccountType
      */
     public function getCountryWithCreate(): Country
     {
-        $this->country = is_null($this->country) ? new Country() : $this->country;
+        $this->country ??= new Country();
 
         return $this->country;
     }

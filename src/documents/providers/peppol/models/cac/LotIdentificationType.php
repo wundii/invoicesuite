@@ -60,7 +60,7 @@ class LotIdentificationType
      */
     public function getLotNumberIDWithCreate(): LotNumberID
     {
-        $this->lotNumberID = is_null($this->lotNumberID) ? new LotNumberID() : $this->lotNumberID;
+        $this->lotNumberID ??= new LotNumberID();
 
         return $this->lotNumberID;
     }

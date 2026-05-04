@@ -293,7 +293,7 @@ class TenderingProcessType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -333,7 +333,7 @@ class TenderingProcessType
      */
     public function getOriginalContractingSystemIDWithCreate(): OriginalContractingSystemID
     {
-        $this->originalContractingSystemID = is_null($this->originalContractingSystemID) ? new OriginalContractingSystemID() : $this->originalContractingSystemID;
+        $this->originalContractingSystemID ??= new OriginalContractingSystemID();
 
         return $this->originalContractingSystemID;
     }
@@ -621,7 +621,7 @@ class TenderingProcessType
      */
     public function getProcedureCodeWithCreate(): ProcedureCode
     {
-        $this->procedureCode = is_null($this->procedureCode) ? new ProcedureCode() : $this->procedureCode;
+        $this->procedureCode ??= new ProcedureCode();
 
         return $this->procedureCode;
     }
@@ -661,7 +661,7 @@ class TenderingProcessType
      */
     public function getUrgencyCodeWithCreate(): UrgencyCode
     {
-        $this->urgencyCode = is_null($this->urgencyCode) ? new UrgencyCode() : $this->urgencyCode;
+        $this->urgencyCode ??= new UrgencyCode();
 
         return $this->urgencyCode;
     }
@@ -701,7 +701,7 @@ class TenderingProcessType
      */
     public function getExpenseCodeWithCreate(): ExpenseCode
     {
-        $this->expenseCode = is_null($this->expenseCode) ? new ExpenseCode() : $this->expenseCode;
+        $this->expenseCode ??= new ExpenseCode();
 
         return $this->expenseCode;
     }
@@ -741,7 +741,7 @@ class TenderingProcessType
      */
     public function getPartPresentationCodeWithCreate(): PartPresentationCode
     {
-        $this->partPresentationCode = is_null($this->partPresentationCode) ? new PartPresentationCode() : $this->partPresentationCode;
+        $this->partPresentationCode ??= new PartPresentationCode();
 
         return $this->partPresentationCode;
     }
@@ -781,7 +781,7 @@ class TenderingProcessType
      */
     public function getContractingSystemCodeWithCreate(): ContractingSystemCode
     {
-        $this->contractingSystemCode = is_null($this->contractingSystemCode) ? new ContractingSystemCode() : $this->contractingSystemCode;
+        $this->contractingSystemCode ??= new ContractingSystemCode();
 
         return $this->contractingSystemCode;
     }
@@ -821,7 +821,7 @@ class TenderingProcessType
      */
     public function getSubmissionMethodCodeWithCreate(): SubmissionMethodCode
     {
-        $this->submissionMethodCode = is_null($this->submissionMethodCode) ? new SubmissionMethodCode() : $this->submissionMethodCode;
+        $this->submissionMethodCode ??= new SubmissionMethodCode();
 
         return $this->submissionMethodCode;
     }
@@ -921,7 +921,7 @@ class TenderingProcessType
      */
     public function getDocumentAvailabilityPeriodWithCreate(): DocumentAvailabilityPeriod
     {
-        $this->documentAvailabilityPeriod = is_null($this->documentAvailabilityPeriod) ? new DocumentAvailabilityPeriod() : $this->documentAvailabilityPeriod;
+        $this->documentAvailabilityPeriod ??= new DocumentAvailabilityPeriod();
 
         return $this->documentAvailabilityPeriod;
     }
@@ -961,7 +961,7 @@ class TenderingProcessType
      */
     public function getTenderSubmissionDeadlinePeriodWithCreate(): TenderSubmissionDeadlinePeriod
     {
-        $this->tenderSubmissionDeadlinePeriod = is_null($this->tenderSubmissionDeadlinePeriod) ? new TenderSubmissionDeadlinePeriod() : $this->tenderSubmissionDeadlinePeriod;
+        $this->tenderSubmissionDeadlinePeriod ??= new TenderSubmissionDeadlinePeriod();
 
         return $this->tenderSubmissionDeadlinePeriod;
     }
@@ -1001,7 +1001,7 @@ class TenderingProcessType
      */
     public function getInvitationSubmissionPeriodWithCreate(): InvitationSubmissionPeriod
     {
-        $this->invitationSubmissionPeriod = is_null($this->invitationSubmissionPeriod) ? new InvitationSubmissionPeriod() : $this->invitationSubmissionPeriod;
+        $this->invitationSubmissionPeriod ??= new InvitationSubmissionPeriod();
 
         return $this->invitationSubmissionPeriod;
     }
@@ -1041,7 +1041,7 @@ class TenderingProcessType
      */
     public function getParticipationRequestReceptionPeriodWithCreate(): ParticipationRequestReceptionPeriod
     {
-        $this->participationRequestReceptionPeriod = is_null($this->participationRequestReceptionPeriod) ? new ParticipationRequestReceptionPeriod() : $this->participationRequestReceptionPeriod;
+        $this->participationRequestReceptionPeriod ??= new ParticipationRequestReceptionPeriod();
 
         return $this->participationRequestReceptionPeriod;
     }
@@ -1453,7 +1453,7 @@ class TenderingProcessType
      */
     public function getEconomicOperatorShortListWithCreate(): EconomicOperatorShortList
     {
-        $this->economicOperatorShortList = is_null($this->economicOperatorShortList) ? new EconomicOperatorShortList() : $this->economicOperatorShortList;
+        $this->economicOperatorShortList ??= new EconomicOperatorShortList();
 
         return $this->economicOperatorShortList;
     }
@@ -1617,7 +1617,7 @@ class TenderingProcessType
      */
     public function getAuctionTermsWithCreate(): AuctionTerms
     {
-        $this->auctionTerms = is_null($this->auctionTerms) ? new AuctionTerms() : $this->auctionTerms;
+        $this->auctionTerms ??= new AuctionTerms();
 
         return $this->auctionTerms;
     }
@@ -1657,7 +1657,7 @@ class TenderingProcessType
      */
     public function getFrameworkAgreementWithCreate(): FrameworkAgreement
     {
-        $this->frameworkAgreement = is_null($this->frameworkAgreement) ? new FrameworkAgreement() : $this->frameworkAgreement;
+        $this->frameworkAgreement ??= new FrameworkAgreement();
 
         return $this->frameworkAgreement;
     }

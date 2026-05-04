@@ -57,7 +57,7 @@ class KeyValueType
      */
     public function getDSAKeyValueWithCreate(): DSAKeyValueType
     {
-        $this->dSAKeyValue = is_null($this->dSAKeyValue) ? new DSAKeyValueType() : $this->dSAKeyValue;
+        $this->dSAKeyValue ??= new DSAKeyValueType();
 
         return $this->dSAKeyValue;
     }
@@ -105,7 +105,7 @@ class KeyValueType
      */
     public function getRSAKeyValueWithCreate(): RSAKeyValueType
     {
-        $this->rSAKeyValue = is_null($this->rSAKeyValue) ? new RSAKeyValueType() : $this->rSAKeyValue;
+        $this->rSAKeyValue ??= new RSAKeyValueType();
 
         return $this->rSAKeyValue;
     }

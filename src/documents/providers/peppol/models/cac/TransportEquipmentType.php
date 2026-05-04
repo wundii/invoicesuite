@@ -739,7 +739,7 @@ class TransportEquipmentType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -903,7 +903,7 @@ class TransportEquipmentType
      */
     public function getTransportEquipmentTypeCodeWithCreate(): TransportEquipmentTypeCode
     {
-        $this->transportEquipmentTypeCode = is_null($this->transportEquipmentTypeCode) ? new TransportEquipmentTypeCode() : $this->transportEquipmentTypeCode;
+        $this->transportEquipmentTypeCode ??= new TransportEquipmentTypeCode();
 
         return $this->transportEquipmentTypeCode;
     }
@@ -943,7 +943,7 @@ class TransportEquipmentType
      */
     public function getProviderTypeCodeWithCreate(): ProviderTypeCode
     {
-        $this->providerTypeCode = is_null($this->providerTypeCode) ? new ProviderTypeCode() : $this->providerTypeCode;
+        $this->providerTypeCode ??= new ProviderTypeCode();
 
         return $this->providerTypeCode;
     }
@@ -983,7 +983,7 @@ class TransportEquipmentType
      */
     public function getOwnerTypeCodeWithCreate(): OwnerTypeCode
     {
-        $this->ownerTypeCode = is_null($this->ownerTypeCode) ? new OwnerTypeCode() : $this->ownerTypeCode;
+        $this->ownerTypeCode ??= new OwnerTypeCode();
 
         return $this->ownerTypeCode;
     }
@@ -1023,7 +1023,7 @@ class TransportEquipmentType
      */
     public function getSizeTypeCodeWithCreate(): SizeTypeCode
     {
-        $this->sizeTypeCode = is_null($this->sizeTypeCode) ? new SizeTypeCode() : $this->sizeTypeCode;
+        $this->sizeTypeCode ??= new SizeTypeCode();
 
         return $this->sizeTypeCode;
     }
@@ -1063,7 +1063,7 @@ class TransportEquipmentType
      */
     public function getDispositionCodeWithCreate(): DispositionCode
     {
-        $this->dispositionCode = is_null($this->dispositionCode) ? new DispositionCode() : $this->dispositionCode;
+        $this->dispositionCode ??= new DispositionCode();
 
         return $this->dispositionCode;
     }
@@ -1103,7 +1103,7 @@ class TransportEquipmentType
      */
     public function getFullnessIndicationCodeWithCreate(): FullnessIndicationCode
     {
-        $this->fullnessIndicationCode = is_null($this->fullnessIndicationCode) ? new FullnessIndicationCode() : $this->fullnessIndicationCode;
+        $this->fullnessIndicationCode ??= new FullnessIndicationCode();
 
         return $this->fullnessIndicationCode;
     }
@@ -1357,7 +1357,7 @@ class TransportEquipmentType
      */
     public function getAirFlowPercentWithCreate(): AirFlowPercent
     {
-        $this->airFlowPercent = is_null($this->airFlowPercent) ? new AirFlowPercent() : $this->airFlowPercent;
+        $this->airFlowPercent ??= new AirFlowPercent();
 
         return $this->airFlowPercent;
     }
@@ -1397,7 +1397,7 @@ class TransportEquipmentType
      */
     public function getHumidityPercentWithCreate(): HumidityPercent
     {
-        $this->humidityPercent = is_null($this->humidityPercent) ? new HumidityPercent() : $this->humidityPercent;
+        $this->humidityPercent ??= new HumidityPercent();
 
         return $this->humidityPercent;
     }
@@ -1557,7 +1557,7 @@ class TransportEquipmentType
      */
     public function getCharacteristicsWithCreate(): Characteristics
     {
-        $this->characteristics = is_null($this->characteristics) ? new Characteristics() : $this->characteristics;
+        $this->characteristics ??= new Characteristics();
 
         return $this->characteristics;
     }
@@ -1969,7 +1969,7 @@ class TransportEquipmentType
      */
     public function getGrossWeightMeasureWithCreate(): GrossWeightMeasure
     {
-        $this->grossWeightMeasure = is_null($this->grossWeightMeasure) ? new GrossWeightMeasure() : $this->grossWeightMeasure;
+        $this->grossWeightMeasure ??= new GrossWeightMeasure();
 
         return $this->grossWeightMeasure;
     }
@@ -2009,7 +2009,7 @@ class TransportEquipmentType
      */
     public function getGrossVolumeMeasureWithCreate(): GrossVolumeMeasure
     {
-        $this->grossVolumeMeasure = is_null($this->grossVolumeMeasure) ? new GrossVolumeMeasure() : $this->grossVolumeMeasure;
+        $this->grossVolumeMeasure ??= new GrossVolumeMeasure();
 
         return $this->grossVolumeMeasure;
     }
@@ -2049,7 +2049,7 @@ class TransportEquipmentType
      */
     public function getTareWeightMeasureWithCreate(): TareWeightMeasure
     {
-        $this->tareWeightMeasure = is_null($this->tareWeightMeasure) ? new TareWeightMeasure() : $this->tareWeightMeasure;
+        $this->tareWeightMeasure ??= new TareWeightMeasure();
 
         return $this->tareWeightMeasure;
     }
@@ -2089,7 +2089,7 @@ class TransportEquipmentType
      */
     public function getTrackingDeviceCodeWithCreate(): TrackingDeviceCode
     {
-        $this->trackingDeviceCode = is_null($this->trackingDeviceCode) ? new TrackingDeviceCode() : $this->trackingDeviceCode;
+        $this->trackingDeviceCode ??= new TrackingDeviceCode();
 
         return $this->trackingDeviceCode;
     }
@@ -2159,7 +2159,7 @@ class TransportEquipmentType
      */
     public function getTraceIDWithCreate(): TraceID
     {
-        $this->traceID = is_null($this->traceID) ? new TraceID() : $this->traceID;
+        $this->traceID ??= new TraceID();
 
         return $this->traceID;
     }
@@ -2447,7 +2447,7 @@ class TransportEquipmentType
      */
     public function getMinimumTemperatureWithCreate(): MinimumTemperature
     {
-        $this->minimumTemperature = is_null($this->minimumTemperature) ? new MinimumTemperature() : $this->minimumTemperature;
+        $this->minimumTemperature ??= new MinimumTemperature();
 
         return $this->minimumTemperature;
     }
@@ -2487,7 +2487,7 @@ class TransportEquipmentType
      */
     public function getMaximumTemperatureWithCreate(): MaximumTemperature
     {
-        $this->maximumTemperature = is_null($this->maximumTemperature) ? new MaximumTemperature() : $this->maximumTemperature;
+        $this->maximumTemperature ??= new MaximumTemperature();
 
         return $this->maximumTemperature;
     }
@@ -2527,7 +2527,7 @@ class TransportEquipmentType
      */
     public function getProviderPartyWithCreate(): ProviderParty
     {
-        $this->providerParty = is_null($this->providerParty) ? new ProviderParty() : $this->providerParty;
+        $this->providerParty ??= new ProviderParty();
 
         return $this->providerParty;
     }
@@ -2567,7 +2567,7 @@ class TransportEquipmentType
      */
     public function getLoadingProofPartyWithCreate(): LoadingProofParty
     {
-        $this->loadingProofParty = is_null($this->loadingProofParty) ? new LoadingProofParty() : $this->loadingProofParty;
+        $this->loadingProofParty ??= new LoadingProofParty();
 
         return $this->loadingProofParty;
     }
@@ -2607,7 +2607,7 @@ class TransportEquipmentType
      */
     public function getSupplierPartyWithCreate(): SupplierParty
     {
-        $this->supplierParty = is_null($this->supplierParty) ? new SupplierParty() : $this->supplierParty;
+        $this->supplierParty ??= new SupplierParty();
 
         return $this->supplierParty;
     }
@@ -2647,7 +2647,7 @@ class TransportEquipmentType
      */
     public function getOwnerPartyWithCreate(): OwnerParty
     {
-        $this->ownerParty = is_null($this->ownerParty) ? new OwnerParty() : $this->ownerParty;
+        $this->ownerParty ??= new OwnerParty();
 
         return $this->ownerParty;
     }
@@ -2687,7 +2687,7 @@ class TransportEquipmentType
      */
     public function getOperatingPartyWithCreate(): OperatingParty
     {
-        $this->operatingParty = is_null($this->operatingParty) ? new OperatingParty() : $this->operatingParty;
+        $this->operatingParty ??= new OperatingParty();
 
         return $this->operatingParty;
     }
@@ -2727,7 +2727,7 @@ class TransportEquipmentType
      */
     public function getLoadingLocationWithCreate(): LoadingLocation
     {
-        $this->loadingLocation = is_null($this->loadingLocation) ? new LoadingLocation() : $this->loadingLocation;
+        $this->loadingLocation ??= new LoadingLocation();
 
         return $this->loadingLocation;
     }
@@ -2767,7 +2767,7 @@ class TransportEquipmentType
      */
     public function getUnloadingLocationWithCreate(): UnloadingLocation
     {
-        $this->unloadingLocation = is_null($this->unloadingLocation) ? new UnloadingLocation() : $this->unloadingLocation;
+        $this->unloadingLocation ??= new UnloadingLocation();
 
         return $this->unloadingLocation;
     }
@@ -2807,7 +2807,7 @@ class TransportEquipmentType
      */
     public function getStorageLocationWithCreate(): StorageLocation
     {
-        $this->storageLocation = is_null($this->storageLocation) ? new StorageLocation() : $this->storageLocation;
+        $this->storageLocation ??= new StorageLocation();
 
         return $this->storageLocation;
     }
@@ -3715,7 +3715,7 @@ class TransportEquipmentType
      */
     public function getApplicableTransportMeansWithCreate(): ApplicableTransportMeans
     {
-        $this->applicableTransportMeans = is_null($this->applicableTransportMeans) ? new ApplicableTransportMeans() : $this->applicableTransportMeans;
+        $this->applicableTransportMeans ??= new ApplicableTransportMeans();
 
         return $this->applicableTransportMeans;
     }
@@ -4499,7 +4499,7 @@ class TransportEquipmentType
      */
     public function getDeliveryWithCreate(): Delivery
     {
-        $this->delivery = is_null($this->delivery) ? new Delivery() : $this->delivery;
+        $this->delivery ??= new Delivery();
 
         return $this->delivery;
     }
@@ -4539,7 +4539,7 @@ class TransportEquipmentType
      */
     public function getPickupWithCreate(): Pickup
     {
-        $this->pickup = is_null($this->pickup) ? new Pickup() : $this->pickup;
+        $this->pickup ??= new Pickup();
 
         return $this->pickup;
     }
@@ -4579,7 +4579,7 @@ class TransportEquipmentType
      */
     public function getDespatchWithCreate(): Despatch
     {
-        $this->despatch = is_null($this->despatch) ? new Despatch() : $this->despatch;
+        $this->despatch ??= new Despatch();
 
         return $this->despatch;
     }

@@ -107,7 +107,7 @@ class CompletedTaskType
      */
     public function getAnnualAverageAmountWithCreate(): AnnualAverageAmount
     {
-        $this->annualAverageAmount = is_null($this->annualAverageAmount) ? new AnnualAverageAmount() : $this->annualAverageAmount;
+        $this->annualAverageAmount ??= new AnnualAverageAmount();
 
         return $this->annualAverageAmount;
     }
@@ -147,7 +147,7 @@ class CompletedTaskType
      */
     public function getTotalTaskAmountWithCreate(): TotalTaskAmount
     {
-        $this->totalTaskAmount = is_null($this->totalTaskAmount) ? new TotalTaskAmount() : $this->totalTaskAmount;
+        $this->totalTaskAmount ??= new TotalTaskAmount();
 
         return $this->totalTaskAmount;
     }
@@ -187,7 +187,7 @@ class CompletedTaskType
      */
     public function getPartyCapacityAmountWithCreate(): PartyCapacityAmount
     {
-        $this->partyCapacityAmount = is_null($this->partyCapacityAmount) ? new PartyCapacityAmount() : $this->partyCapacityAmount;
+        $this->partyCapacityAmount ??= new PartyCapacityAmount();
 
         return $this->partyCapacityAmount;
     }
@@ -475,7 +475,7 @@ class CompletedTaskType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }
@@ -515,7 +515,7 @@ class CompletedTaskType
      */
     public function getRecipientCustomerPartyWithCreate(): RecipientCustomerParty
     {
-        $this->recipientCustomerParty = is_null($this->recipientCustomerParty) ? new RecipientCustomerParty() : $this->recipientCustomerParty;
+        $this->recipientCustomerParty ??= new RecipientCustomerParty();
 
         return $this->recipientCustomerParty;
     }

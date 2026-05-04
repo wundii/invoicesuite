@@ -346,7 +346,7 @@ class TransportHandlingUnitType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -386,7 +386,7 @@ class TransportHandlingUnitType
      */
     public function getTransportHandlingUnitTypeCodeWithCreate(): TransportHandlingUnitTypeCode
     {
-        $this->transportHandlingUnitTypeCode = is_null($this->transportHandlingUnitTypeCode) ? new TransportHandlingUnitTypeCode() : $this->transportHandlingUnitTypeCode;
+        $this->transportHandlingUnitTypeCode ??= new TransportHandlingUnitTypeCode();
 
         return $this->transportHandlingUnitTypeCode;
     }
@@ -426,7 +426,7 @@ class TransportHandlingUnitType
      */
     public function getHandlingCodeWithCreate(): HandlingCode
     {
-        $this->handlingCode = is_null($this->handlingCode) ? new HandlingCode() : $this->handlingCode;
+        $this->handlingCode ??= new HandlingCode();
 
         return $this->handlingCode;
     }
@@ -620,7 +620,7 @@ class TransportHandlingUnitType
      */
     public function getTotalGoodsItemQuantityWithCreate(): TotalGoodsItemQuantity
     {
-        $this->totalGoodsItemQuantity = is_null($this->totalGoodsItemQuantity) ? new TotalGoodsItemQuantity() : $this->totalGoodsItemQuantity;
+        $this->totalGoodsItemQuantity ??= new TotalGoodsItemQuantity();
 
         return $this->totalGoodsItemQuantity;
     }
@@ -660,7 +660,7 @@ class TransportHandlingUnitType
      */
     public function getTotalPackageQuantityWithCreate(): TotalPackageQuantity
     {
-        $this->totalPackageQuantity = is_null($this->totalPackageQuantity) ? new TotalPackageQuantity() : $this->totalPackageQuantity;
+        $this->totalPackageQuantity ??= new TotalPackageQuantity();
 
         return $this->totalPackageQuantity;
     }
@@ -948,7 +948,7 @@ class TransportHandlingUnitType
      */
     public function getTraceIDWithCreate(): TraceID
     {
-        $this->traceID = is_null($this->traceID) ? new TraceID() : $this->traceID;
+        $this->traceID ??= new TraceID();
 
         return $this->traceID;
     }
@@ -1856,7 +1856,7 @@ class TransportHandlingUnitType
      */
     public function getMinimumTemperatureWithCreate(): MinimumTemperature
     {
-        $this->minimumTemperature = is_null($this->minimumTemperature) ? new MinimumTemperature() : $this->minimumTemperature;
+        $this->minimumTemperature ??= new MinimumTemperature();
 
         return $this->minimumTemperature;
     }
@@ -1896,7 +1896,7 @@ class TransportHandlingUnitType
      */
     public function getMaximumTemperatureWithCreate(): MaximumTemperature
     {
-        $this->maximumTemperature = is_null($this->maximumTemperature) ? new MaximumTemperature() : $this->maximumTemperature;
+        $this->maximumTemperature ??= new MaximumTemperature();
 
         return $this->maximumTemperature;
     }
@@ -2060,7 +2060,7 @@ class TransportHandlingUnitType
      */
     public function getFloorSpaceMeasurementDimensionWithCreate(): FloorSpaceMeasurementDimension
     {
-        $this->floorSpaceMeasurementDimension = is_null($this->floorSpaceMeasurementDimension) ? new FloorSpaceMeasurementDimension() : $this->floorSpaceMeasurementDimension;
+        $this->floorSpaceMeasurementDimension ??= new FloorSpaceMeasurementDimension();
 
         return $this->floorSpaceMeasurementDimension;
     }
@@ -2100,7 +2100,7 @@ class TransportHandlingUnitType
      */
     public function getPalletSpaceMeasurementDimensionWithCreate(): PalletSpaceMeasurementDimension
     {
-        $this->palletSpaceMeasurementDimension = is_null($this->palletSpaceMeasurementDimension) ? new PalletSpaceMeasurementDimension() : $this->palletSpaceMeasurementDimension;
+        $this->palletSpaceMeasurementDimension ??= new PalletSpaceMeasurementDimension();
 
         return $this->palletSpaceMeasurementDimension;
     }

@@ -73,7 +73,7 @@ class TransactionConditionsType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -113,7 +113,7 @@ class TransactionConditionsType
      */
     public function getActionCodeWithCreate(): ActionCode
     {
-        $this->actionCode = is_null($this->actionCode) ? new ActionCode() : $this->actionCode;
+        $this->actionCode ??= new ActionCode();
 
         return $this->actionCode;
     }

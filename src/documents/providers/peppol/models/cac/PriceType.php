@@ -143,7 +143,7 @@ class PriceType
      */
     public function getPriceAmountWithCreate(): PriceAmount
     {
-        $this->priceAmount = is_null($this->priceAmount) ? new PriceAmount() : $this->priceAmount;
+        $this->priceAmount ??= new PriceAmount();
 
         return $this->priceAmount;
     }
@@ -183,7 +183,7 @@ class PriceType
      */
     public function getBaseQuantityWithCreate(): BaseQuantity
     {
-        $this->baseQuantity = is_null($this->baseQuantity) ? new BaseQuantity() : $this->baseQuantity;
+        $this->baseQuantity ??= new BaseQuantity();
 
         return $this->baseQuantity;
     }
@@ -347,7 +347,7 @@ class PriceType
      */
     public function getPriceTypeCodeWithCreate(): PriceTypeCode
     {
-        $this->priceTypeCode = is_null($this->priceTypeCode) ? new PriceTypeCode() : $this->priceTypeCode;
+        $this->priceTypeCode ??= new PriceTypeCode();
 
         return $this->priceTypeCode;
     }
@@ -387,7 +387,7 @@ class PriceType
      */
     public function getPriceTypeWithCreate(): PriceType1
     {
-        $this->priceType = is_null($this->priceType) ? new PriceType1() : $this->priceType;
+        $this->priceType ??= new PriceType1();
 
         return $this->priceType;
     }
@@ -427,7 +427,7 @@ class PriceType
      */
     public function getOrderableUnitFactorRateWithCreate(): OrderableUnitFactorRate
     {
-        $this->orderableUnitFactorRate = is_null($this->orderableUnitFactorRate) ? new OrderableUnitFactorRate() : $this->orderableUnitFactorRate;
+        $this->orderableUnitFactorRate ??= new OrderableUnitFactorRate();
 
         return $this->orderableUnitFactorRate;
     }
@@ -591,7 +591,7 @@ class PriceType
      */
     public function getPriceListWithCreate(): PriceList
     {
-        $this->priceList = is_null($this->priceList) ? new PriceList() : $this->priceList;
+        $this->priceList ??= new PriceList();
 
         return $this->priceList;
     }
@@ -755,7 +755,7 @@ class PriceType
      */
     public function getPricingExchangeRateWithCreate(): PricingExchangeRate
     {
-        $this->pricingExchangeRate = is_null($this->pricingExchangeRate) ? new PricingExchangeRate() : $this->pricingExchangeRate;
+        $this->pricingExchangeRate ??= new PricingExchangeRate();
 
         return $this->pricingExchangeRate;
     }

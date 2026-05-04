@@ -117,7 +117,7 @@ class ForecastExceptionType
      */
     public function getForecastPurposeCodeWithCreate(): ForecastPurposeCode
     {
-        $this->forecastPurposeCode = is_null($this->forecastPurposeCode) ? new ForecastPurposeCode() : $this->forecastPurposeCode;
+        $this->forecastPurposeCode ??= new ForecastPurposeCode();
 
         return $this->forecastPurposeCode;
     }
@@ -157,7 +157,7 @@ class ForecastExceptionType
      */
     public function getForecastTypeCodeWithCreate(): ForecastTypeCode
     {
-        $this->forecastTypeCode = is_null($this->forecastTypeCode) ? new ForecastTypeCode() : $this->forecastTypeCode;
+        $this->forecastTypeCode ??= new ForecastTypeCode();
 
         return $this->forecastTypeCode;
     }
@@ -257,7 +257,7 @@ class ForecastExceptionType
      */
     public function getDataSourceCodeWithCreate(): DataSourceCode
     {
-        $this->dataSourceCode = is_null($this->dataSourceCode) ? new DataSourceCode() : $this->dataSourceCode;
+        $this->dataSourceCode ??= new DataSourceCode();
 
         return $this->dataSourceCode;
     }
@@ -297,7 +297,7 @@ class ForecastExceptionType
      */
     public function getComparisonDataCodeWithCreate(): ComparisonDataCode
     {
-        $this->comparisonDataCode = is_null($this->comparisonDataCode) ? new ComparisonDataCode() : $this->comparisonDataCode;
+        $this->comparisonDataCode ??= new ComparisonDataCode();
 
         return $this->comparisonDataCode;
     }

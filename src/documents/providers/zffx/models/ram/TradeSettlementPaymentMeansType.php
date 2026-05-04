@@ -92,7 +92,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getTypeCodeWithCreate(): PaymentMeansCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new PaymentMeansCodeType() : $this->typeCode;
+        $this->typeCode ??= new PaymentMeansCodeType();
 
         return $this->typeCode;
     }
@@ -132,7 +132,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getInformationWithCreate(): TextType
     {
-        $this->information = is_null($this->information) ? new TextType() : $this->information;
+        $this->information ??= new TextType();
 
         return $this->information;
     }
@@ -172,7 +172,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getApplicableTradeSettlementFinancialCardWithCreate(): TradeSettlementFinancialCardType
     {
-        $this->applicableTradeSettlementFinancialCard = is_null($this->applicableTradeSettlementFinancialCard) ? new TradeSettlementFinancialCardType() : $this->applicableTradeSettlementFinancialCard;
+        $this->applicableTradeSettlementFinancialCard ??= new TradeSettlementFinancialCardType();
 
         return $this->applicableTradeSettlementFinancialCard;
     }
@@ -212,7 +212,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getPayerPartyDebtorFinancialAccountWithCreate(): DebtorFinancialAccountType
     {
-        $this->payerPartyDebtorFinancialAccount = is_null($this->payerPartyDebtorFinancialAccount) ? new DebtorFinancialAccountType() : $this->payerPartyDebtorFinancialAccount;
+        $this->payerPartyDebtorFinancialAccount ??= new DebtorFinancialAccountType();
 
         return $this->payerPartyDebtorFinancialAccount;
     }
@@ -252,7 +252,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getPayeePartyCreditorFinancialAccountWithCreate(): CreditorFinancialAccountType
     {
-        $this->payeePartyCreditorFinancialAccount = is_null($this->payeePartyCreditorFinancialAccount) ? new CreditorFinancialAccountType() : $this->payeePartyCreditorFinancialAccount;
+        $this->payeePartyCreditorFinancialAccount ??= new CreditorFinancialAccountType();
 
         return $this->payeePartyCreditorFinancialAccount;
     }
@@ -292,7 +292,7 @@ class TradeSettlementPaymentMeansType
      */
     public function getPayeeSpecifiedCreditorFinancialInstitutionWithCreate(): CreditorFinancialInstitutionType
     {
-        $this->payeeSpecifiedCreditorFinancialInstitution = is_null($this->payeeSpecifiedCreditorFinancialInstitution) ? new CreditorFinancialInstitutionType() : $this->payeeSpecifiedCreditorFinancialInstitution;
+        $this->payeeSpecifiedCreditorFinancialInstitution ??= new CreditorFinancialInstitutionType();
 
         return $this->payeeSpecifiedCreditorFinancialInstitution;
     }

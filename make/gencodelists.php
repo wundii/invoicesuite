@@ -304,7 +304,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
                 $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
             }
 
-            if (!in_array($caseName, $allCases)) {
+            if (!in_array($caseName, $allCases, true)) {
                 $phpEnum
                     ->addCase($caseName, $line[$dataCodeIndex])
                     ->addComment("\n" . strComment($line[$dataDescIndex] ?? '') . ' (' . strComment($line[$dataCodeIndex] ?? '') . ')')
@@ -345,7 +345,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
                     $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
                 }
 
-                if (!in_array($caseName, $allCases)) {
+                if (!in_array($caseName, $allCases, true)) {
                     $phpEnumMethod->addBody(sprintf('	%s::%s => "%s",', $className, $caseName, strDescExt($line[$dataDescIndex] ?? '')));
                     $allCases[] = $caseName;
                 }
@@ -382,7 +382,7 @@ function createCodeClassFromKositJson(array $fileToDownload): void
                     $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
                 }
 
-                if (!in_array($caseName, $allCases)) {
+                if (!in_array($caseName, $allCases, true)) {
                     $phpEnumMethod->addBody(sprintf('	%s::%s => "%s",', $className, $caseName, strDescExt($line[$dataDescLongIndex] ?? ($line[$dataDescIndex] ?? ''))));
                     $allCases[] = $caseName;
                 }
@@ -549,7 +549,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
                 $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
             }
 
-            if (!in_array($caseName, $allCases)) {
+            if (!in_array($caseName, $allCases, true)) {
                 $phpEnum
                     ->addCase(sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength)), $line[$dataCodeIndex])
                     ->addComment("\n" . strComment($line[$dataDescIndex] ?? '') . ' (' . strComment($line[$dataCodeIndex] ?? '') . ')')
@@ -590,7 +590,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
                     $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
                 }
 
-                if (!in_array($caseName, $allCases)) {
+                if (!in_array($caseName, $allCases, true)) {
                     $phpEnumMethod->addBody(sprintf("	%s::%s => '%s',", $className, $caseName, strDescExt($line[$dataDescIndex] ?? '')));
                     $allCases[] = $caseName;
                 }
@@ -627,7 +627,7 @@ function createCodeClassFromCsv(array $fileToDownload): void
                     $caseName = sprintf('%s%s', $constantPrefix, strIdentifier($line[$dataDescIndex], $classShortIdentifiers, $classShortIdentifiersLength));
                 }
 
-                if (!in_array($caseName, $allCases)) {
+                if (!in_array($caseName, $allCases, true)) {
                     $phpEnumMethod->addBody(sprintf("	%s::%s => '%s',", $className, $caseName, strDescExt($line[$dataDescLongIndex] ?? ($line[$dataDescIndex] ?? ''))));
                     $allCases[] = $caseName;
                 }

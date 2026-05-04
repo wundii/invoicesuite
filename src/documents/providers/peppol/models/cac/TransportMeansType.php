@@ -175,7 +175,7 @@ class TransportMeansType
      */
     public function getJourneyIDWithCreate(): JourneyID
     {
-        $this->journeyID = is_null($this->journeyID) ? new JourneyID() : $this->journeyID;
+        $this->journeyID ??= new JourneyID();
 
         return $this->journeyID;
     }
@@ -215,7 +215,7 @@ class TransportMeansType
      */
     public function getRegistrationNationalityIDWithCreate(): RegistrationNationalityID
     {
-        $this->registrationNationalityID = is_null($this->registrationNationalityID) ? new RegistrationNationalityID() : $this->registrationNationalityID;
+        $this->registrationNationalityID ??= new RegistrationNationalityID();
 
         return $this->registrationNationalityID;
     }
@@ -379,7 +379,7 @@ class TransportMeansType
      */
     public function getDirectionCodeWithCreate(): DirectionCode
     {
-        $this->directionCode = is_null($this->directionCode) ? new DirectionCode() : $this->directionCode;
+        $this->directionCode ??= new DirectionCode();
 
         return $this->directionCode;
     }
@@ -419,7 +419,7 @@ class TransportMeansType
      */
     public function getTransportMeansTypeCodeWithCreate(): TransportMeansTypeCode
     {
-        $this->transportMeansTypeCode = is_null($this->transportMeansTypeCode) ? new TransportMeansTypeCode() : $this->transportMeansTypeCode;
+        $this->transportMeansTypeCode ??= new TransportMeansTypeCode();
 
         return $this->transportMeansTypeCode;
     }
@@ -459,7 +459,7 @@ class TransportMeansType
      */
     public function getTradeServiceCodeWithCreate(): TradeServiceCode
     {
-        $this->tradeServiceCode = is_null($this->tradeServiceCode) ? new TradeServiceCode() : $this->tradeServiceCode;
+        $this->tradeServiceCode ??= new TradeServiceCode();
 
         return $this->tradeServiceCode;
     }
@@ -499,7 +499,7 @@ class TransportMeansType
      */
     public function getStowageWithCreate(): Stowage
     {
-        $this->stowage = is_null($this->stowage) ? new Stowage() : $this->stowage;
+        $this->stowage ??= new Stowage();
 
         return $this->stowage;
     }
@@ -539,7 +539,7 @@ class TransportMeansType
      */
     public function getAirTransportWithCreate(): AirTransport
     {
-        $this->airTransport = is_null($this->airTransport) ? new AirTransport() : $this->airTransport;
+        $this->airTransport ??= new AirTransport();
 
         return $this->airTransport;
     }
@@ -579,7 +579,7 @@ class TransportMeansType
      */
     public function getRoadTransportWithCreate(): RoadTransport
     {
-        $this->roadTransport = is_null($this->roadTransport) ? new RoadTransport() : $this->roadTransport;
+        $this->roadTransport ??= new RoadTransport();
 
         return $this->roadTransport;
     }
@@ -619,7 +619,7 @@ class TransportMeansType
      */
     public function getRailTransportWithCreate(): RailTransport
     {
-        $this->railTransport = is_null($this->railTransport) ? new RailTransport() : $this->railTransport;
+        $this->railTransport ??= new RailTransport();
 
         return $this->railTransport;
     }
@@ -659,7 +659,7 @@ class TransportMeansType
      */
     public function getMaritimeTransportWithCreate(): MaritimeTransport
     {
-        $this->maritimeTransport = is_null($this->maritimeTransport) ? new MaritimeTransport() : $this->maritimeTransport;
+        $this->maritimeTransport ??= new MaritimeTransport();
 
         return $this->maritimeTransport;
     }
@@ -699,7 +699,7 @@ class TransportMeansType
      */
     public function getOwnerPartyWithCreate(): OwnerParty
     {
-        $this->ownerParty = is_null($this->ownerParty) ? new OwnerParty() : $this->ownerParty;
+        $this->ownerParty ??= new OwnerParty();
 
         return $this->ownerParty;
     }

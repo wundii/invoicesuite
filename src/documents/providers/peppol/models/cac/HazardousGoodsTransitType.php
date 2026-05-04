@@ -106,7 +106,7 @@ class HazardousGoodsTransitType
      */
     public function getTransportEmergencyCardCodeWithCreate(): TransportEmergencyCardCode
     {
-        $this->transportEmergencyCardCode = is_null($this->transportEmergencyCardCode) ? new TransportEmergencyCardCode() : $this->transportEmergencyCardCode;
+        $this->transportEmergencyCardCode ??= new TransportEmergencyCardCode();
 
         return $this->transportEmergencyCardCode;
     }
@@ -146,7 +146,7 @@ class HazardousGoodsTransitType
      */
     public function getPackingCriteriaCodeWithCreate(): PackingCriteriaCode
     {
-        $this->packingCriteriaCode = is_null($this->packingCriteriaCode) ? new PackingCriteriaCode() : $this->packingCriteriaCode;
+        $this->packingCriteriaCode ??= new PackingCriteriaCode();
 
         return $this->packingCriteriaCode;
     }
@@ -186,7 +186,7 @@ class HazardousGoodsTransitType
      */
     public function getHazardousRegulationCodeWithCreate(): HazardousRegulationCode
     {
-        $this->hazardousRegulationCode = is_null($this->hazardousRegulationCode) ? new HazardousRegulationCode() : $this->hazardousRegulationCode;
+        $this->hazardousRegulationCode ??= new HazardousRegulationCode();
 
         return $this->hazardousRegulationCode;
     }
@@ -226,7 +226,7 @@ class HazardousGoodsTransitType
      */
     public function getInhalationToxicityZoneCodeWithCreate(): InhalationToxicityZoneCode
     {
-        $this->inhalationToxicityZoneCode = is_null($this->inhalationToxicityZoneCode) ? new InhalationToxicityZoneCode() : $this->inhalationToxicityZoneCode;
+        $this->inhalationToxicityZoneCode ??= new InhalationToxicityZoneCode();
 
         return $this->inhalationToxicityZoneCode;
     }
@@ -266,7 +266,7 @@ class HazardousGoodsTransitType
      */
     public function getTransportAuthorizationCodeWithCreate(): TransportAuthorizationCode
     {
-        $this->transportAuthorizationCode = is_null($this->transportAuthorizationCode) ? new TransportAuthorizationCode() : $this->transportAuthorizationCode;
+        $this->transportAuthorizationCode ??= new TransportAuthorizationCode();
 
         return $this->transportAuthorizationCode;
     }
@@ -306,7 +306,7 @@ class HazardousGoodsTransitType
      */
     public function getMaximumTemperatureWithCreate(): MaximumTemperature
     {
-        $this->maximumTemperature = is_null($this->maximumTemperature) ? new MaximumTemperature() : $this->maximumTemperature;
+        $this->maximumTemperature ??= new MaximumTemperature();
 
         return $this->maximumTemperature;
     }
@@ -346,7 +346,7 @@ class HazardousGoodsTransitType
      */
     public function getMinimumTemperatureWithCreate(): MinimumTemperature
     {
-        $this->minimumTemperature = is_null($this->minimumTemperature) ? new MinimumTemperature() : $this->minimumTemperature;
+        $this->minimumTemperature ??= new MinimumTemperature();
 
         return $this->minimumTemperature;
     }

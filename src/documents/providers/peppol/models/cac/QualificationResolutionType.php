@@ -96,7 +96,7 @@ class QualificationResolutionType
      */
     public function getAdmissionCodeWithCreate(): AdmissionCode
     {
-        $this->admissionCode = is_null($this->admissionCode) ? new AdmissionCode() : $this->admissionCode;
+        $this->admissionCode ??= new AdmissionCode();
 
         return $this->admissionCode;
     }
@@ -444,7 +444,7 @@ class QualificationResolutionType
      */
     public function getProcurementProjectLotWithCreate(): ProcurementProjectLot
     {
-        $this->procurementProjectLot = is_null($this->procurementProjectLot) ? new ProcurementProjectLot() : $this->procurementProjectLot;
+        $this->procurementProjectLot ??= new ProcurementProjectLot();
 
         return $this->procurementProjectLot;
     }

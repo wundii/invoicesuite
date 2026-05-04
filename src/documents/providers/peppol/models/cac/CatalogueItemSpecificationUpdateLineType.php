@@ -69,7 +69,7 @@ class CatalogueItemSpecificationUpdateLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -109,7 +109,7 @@ class CatalogueItemSpecificationUpdateLineType
      */
     public function getContractorCustomerPartyWithCreate(): ContractorCustomerParty
     {
-        $this->contractorCustomerParty = is_null($this->contractorCustomerParty) ? new ContractorCustomerParty() : $this->contractorCustomerParty;
+        $this->contractorCustomerParty ??= new ContractorCustomerParty();
 
         return $this->contractorCustomerParty;
     }
@@ -149,7 +149,7 @@ class CatalogueItemSpecificationUpdateLineType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -189,7 +189,7 @@ class CatalogueItemSpecificationUpdateLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

@@ -118,7 +118,7 @@ class PowerOfAttorneyType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -342,7 +342,7 @@ class PowerOfAttorneyType
      */
     public function getNotaryPartyWithCreate(): NotaryParty
     {
-        $this->notaryParty = is_null($this->notaryParty) ? new NotaryParty() : $this->notaryParty;
+        $this->notaryParty ??= new NotaryParty();
 
         return $this->notaryParty;
     }
@@ -382,7 +382,7 @@ class PowerOfAttorneyType
      */
     public function getAgentPartyWithCreate(): AgentParty
     {
-        $this->agentParty = is_null($this->agentParty) ? new AgentParty() : $this->agentParty;
+        $this->agentParty ??= new AgentParty();
 
         return $this->agentParty;
     }

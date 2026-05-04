@@ -186,7 +186,7 @@ class PartyLegalEntityType
      */
     public function getRegistrationNameWithCreate(): RegistrationName
     {
-        $this->registrationName = is_null($this->registrationName) ? new RegistrationName() : $this->registrationName;
+        $this->registrationName ??= new RegistrationName();
 
         return $this->registrationName;
     }
@@ -226,7 +226,7 @@ class PartyLegalEntityType
      */
     public function getCompanyIDWithCreate(): CompanyID
     {
-        $this->companyID = is_null($this->companyID) ? new CompanyID() : $this->companyID;
+        $this->companyID ??= new CompanyID();
 
         return $this->companyID;
     }
@@ -326,7 +326,7 @@ class PartyLegalEntityType
      */
     public function getCompanyLegalFormCodeWithCreate(): CompanyLegalFormCode
     {
-        $this->companyLegalFormCode = is_null($this->companyLegalFormCode) ? new CompanyLegalFormCode() : $this->companyLegalFormCode;
+        $this->companyLegalFormCode ??= new CompanyLegalFormCode();
 
         return $this->companyLegalFormCode;
     }
@@ -366,7 +366,7 @@ class PartyLegalEntityType
      */
     public function getCompanyLegalFormWithCreate(): CompanyLegalForm
     {
-        $this->companyLegalForm = is_null($this->companyLegalForm) ? new CompanyLegalForm() : $this->companyLegalForm;
+        $this->companyLegalForm ??= new CompanyLegalForm();
 
         return $this->companyLegalForm;
     }
@@ -436,7 +436,7 @@ class PartyLegalEntityType
      */
     public function getCompanyLiquidationStatusCodeWithCreate(): CompanyLiquidationStatusCode
     {
-        $this->companyLiquidationStatusCode = is_null($this->companyLiquidationStatusCode) ? new CompanyLiquidationStatusCode() : $this->companyLiquidationStatusCode;
+        $this->companyLiquidationStatusCode ??= new CompanyLiquidationStatusCode();
 
         return $this->companyLiquidationStatusCode;
     }
@@ -476,7 +476,7 @@ class PartyLegalEntityType
      */
     public function getCorporateStockAmountWithCreate(): CorporateStockAmount
     {
-        $this->corporateStockAmount = is_null($this->corporateStockAmount) ? new CorporateStockAmount() : $this->corporateStockAmount;
+        $this->corporateStockAmount ??= new CorporateStockAmount();
 
         return $this->corporateStockAmount;
     }
@@ -546,7 +546,7 @@ class PartyLegalEntityType
      */
     public function getRegistrationAddressWithCreate(): RegistrationAddress
     {
-        $this->registrationAddress = is_null($this->registrationAddress) ? new RegistrationAddress() : $this->registrationAddress;
+        $this->registrationAddress ??= new RegistrationAddress();
 
         return $this->registrationAddress;
     }
@@ -586,7 +586,7 @@ class PartyLegalEntityType
      */
     public function getCorporateRegistrationSchemeWithCreate(): CorporateRegistrationScheme
     {
-        $this->corporateRegistrationScheme = is_null($this->corporateRegistrationScheme) ? new CorporateRegistrationScheme() : $this->corporateRegistrationScheme;
+        $this->corporateRegistrationScheme ??= new CorporateRegistrationScheme();
 
         return $this->corporateRegistrationScheme;
     }
@@ -626,7 +626,7 @@ class PartyLegalEntityType
      */
     public function getHeadOfficePartyWithCreate(): HeadOfficeParty
     {
-        $this->headOfficeParty = is_null($this->headOfficeParty) ? new HeadOfficeParty() : $this->headOfficeParty;
+        $this->headOfficeParty ??= new HeadOfficeParty();
 
         return $this->headOfficeParty;
     }

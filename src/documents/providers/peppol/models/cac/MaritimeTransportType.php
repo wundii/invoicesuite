@@ -119,7 +119,7 @@ class MaritimeTransportType
      */
     public function getVesselIDWithCreate(): VesselID
     {
-        $this->vesselID = is_null($this->vesselID) ? new VesselID() : $this->vesselID;
+        $this->vesselID ??= new VesselID();
 
         return $this->vesselID;
     }
@@ -159,7 +159,7 @@ class MaritimeTransportType
      */
     public function getVesselNameWithCreate(): VesselName
     {
-        $this->vesselName = is_null($this->vesselName) ? new VesselName() : $this->vesselName;
+        $this->vesselName ??= new VesselName();
 
         return $this->vesselName;
     }
@@ -199,7 +199,7 @@ class MaritimeTransportType
      */
     public function getRadioCallSignIDWithCreate(): RadioCallSignID
     {
-        $this->radioCallSignID = is_null($this->radioCallSignID) ? new RadioCallSignID() : $this->radioCallSignID;
+        $this->radioCallSignID ??= new RadioCallSignID();
 
         return $this->radioCallSignID;
     }
@@ -363,7 +363,7 @@ class MaritimeTransportType
      */
     public function getGrossTonnageMeasureWithCreate(): GrossTonnageMeasure
     {
-        $this->grossTonnageMeasure = is_null($this->grossTonnageMeasure) ? new GrossTonnageMeasure() : $this->grossTonnageMeasure;
+        $this->grossTonnageMeasure ??= new GrossTonnageMeasure();
 
         return $this->grossTonnageMeasure;
     }
@@ -403,7 +403,7 @@ class MaritimeTransportType
      */
     public function getNetTonnageMeasureWithCreate(): NetTonnageMeasure
     {
-        $this->netTonnageMeasure = is_null($this->netTonnageMeasure) ? new NetTonnageMeasure() : $this->netTonnageMeasure;
+        $this->netTonnageMeasure ??= new NetTonnageMeasure();
 
         return $this->netTonnageMeasure;
     }
@@ -443,7 +443,7 @@ class MaritimeTransportType
      */
     public function getRegistryCertificateDocumentReferenceWithCreate(): RegistryCertificateDocumentReference
     {
-        $this->registryCertificateDocumentReference = is_null($this->registryCertificateDocumentReference) ? new RegistryCertificateDocumentReference() : $this->registryCertificateDocumentReference;
+        $this->registryCertificateDocumentReference ??= new RegistryCertificateDocumentReference();
 
         return $this->registryCertificateDocumentReference;
     }
@@ -483,7 +483,7 @@ class MaritimeTransportType
      */
     public function getRegistryPortLocationWithCreate(): RegistryPortLocation
     {
-        $this->registryPortLocation = is_null($this->registryPortLocation) ? new RegistryPortLocation() : $this->registryPortLocation;
+        $this->registryPortLocation ??= new RegistryPortLocation();
 
         return $this->registryPortLocation;
     }

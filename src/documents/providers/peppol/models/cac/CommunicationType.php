@@ -60,7 +60,7 @@ class CommunicationType
      */
     public function getChannelCodeWithCreate(): ChannelCode
     {
-        $this->channelCode = is_null($this->channelCode) ? new ChannelCode() : $this->channelCode;
+        $this->channelCode ??= new ChannelCode();
 
         return $this->channelCode;
     }
@@ -100,7 +100,7 @@ class CommunicationType
      */
     public function getChannelWithCreate(): Channel
     {
-        $this->channel = is_null($this->channel) ? new Channel() : $this->channel;
+        $this->channel ??= new Channel();
 
         return $this->channel;
     }
@@ -140,7 +140,7 @@ class CommunicationType
      */
     public function getValueWithCreate(): Value
     {
-        $this->value = is_null($this->value) ? new Value() : $this->value;
+        $this->value ??= new Value();
 
         return $this->value;
     }

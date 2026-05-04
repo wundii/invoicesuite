@@ -178,7 +178,7 @@ class InvoiceSuiteValidateCommand extends InvoiceSuiteAbstractCommand
     ): bool {
         $validationWasSuccessful = !$documentValidator->hasErrorMessagesInMessageBag();
 
-        if (true === $this->getBoolOption('output-json')) {
+        if ($this->getBoolOption('output-json')) {
             $this->outputLineLF(json_encode([
                 'status' => $validationWasSuccessful ? 'valid' : 'invalid',
                 'errors' => $documentValidator->countErrorMessagesInMessageBag(),

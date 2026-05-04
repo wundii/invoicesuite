@@ -207,7 +207,7 @@ class HeaderTradeDeliveryType
      */
     public function getShipToTradePartyWithCreate(): TradePartyType
     {
-        $this->shipToTradeParty = is_null($this->shipToTradeParty) ? new TradePartyType() : $this->shipToTradeParty;
+        $this->shipToTradeParty ??= new TradePartyType();
 
         return $this->shipToTradeParty;
     }
@@ -247,7 +247,7 @@ class HeaderTradeDeliveryType
      */
     public function getUltimateShipToTradePartyWithCreate(): TradePartyType
     {
-        $this->ultimateShipToTradeParty = is_null($this->ultimateShipToTradeParty) ? new TradePartyType() : $this->ultimateShipToTradeParty;
+        $this->ultimateShipToTradeParty ??= new TradePartyType();
 
         return $this->ultimateShipToTradeParty;
     }
@@ -287,7 +287,7 @@ class HeaderTradeDeliveryType
      */
     public function getShipFromTradePartyWithCreate(): TradePartyType
     {
-        $this->shipFromTradeParty = is_null($this->shipFromTradeParty) ? new TradePartyType() : $this->shipFromTradeParty;
+        $this->shipFromTradeParty ??= new TradePartyType();
 
         return $this->shipFromTradeParty;
     }
@@ -327,7 +327,7 @@ class HeaderTradeDeliveryType
      */
     public function getActualDeliverySupplyChainEventWithCreate(): SupplyChainEventType
     {
-        $this->actualDeliverySupplyChainEvent = is_null($this->actualDeliverySupplyChainEvent) ? new SupplyChainEventType() : $this->actualDeliverySupplyChainEvent;
+        $this->actualDeliverySupplyChainEvent ??= new SupplyChainEventType();
 
         return $this->actualDeliverySupplyChainEvent;
     }
@@ -367,7 +367,7 @@ class HeaderTradeDeliveryType
      */
     public function getDespatchAdviceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->despatchAdviceReferencedDocument = is_null($this->despatchAdviceReferencedDocument) ? new ReferencedDocumentType() : $this->despatchAdviceReferencedDocument;
+        $this->despatchAdviceReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->despatchAdviceReferencedDocument;
     }
@@ -407,7 +407,7 @@ class HeaderTradeDeliveryType
      */
     public function getReceivingAdviceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->receivingAdviceReferencedDocument = is_null($this->receivingAdviceReferencedDocument) ? new ReferencedDocumentType() : $this->receivingAdviceReferencedDocument;
+        $this->receivingAdviceReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->receivingAdviceReferencedDocument;
     }
@@ -447,7 +447,7 @@ class HeaderTradeDeliveryType
      */
     public function getDeliveryNoteReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->deliveryNoteReferencedDocument = is_null($this->deliveryNoteReferencedDocument) ? new ReferencedDocumentType() : $this->deliveryNoteReferencedDocument;
+        $this->deliveryNoteReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->deliveryNoteReferencedDocument;
     }

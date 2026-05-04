@@ -94,7 +94,7 @@ class PaymentType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -134,7 +134,7 @@ class PaymentType
      */
     public function getPaidAmountWithCreate(): PaidAmount
     {
-        $this->paidAmount = is_null($this->paidAmount) ? new PaidAmount() : $this->paidAmount;
+        $this->paidAmount ??= new PaidAmount();
 
         return $this->paidAmount;
     }
@@ -264,7 +264,7 @@ class PaymentType
      */
     public function getInstructionIDWithCreate(): InstructionID
     {
-        $this->instructionID = is_null($this->instructionID) ? new InstructionID() : $this->instructionID;
+        $this->instructionID ??= new InstructionID();
 
         return $this->instructionID;
     }

@@ -116,7 +116,7 @@ class ReferencedProductType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -250,7 +250,7 @@ class ReferencedProductType
      */
     public function getSellerAssignedIDWithCreate(): IDType
     {
-        $this->sellerAssignedID = is_null($this->sellerAssignedID) ? new IDType() : $this->sellerAssignedID;
+        $this->sellerAssignedID ??= new IDType();
 
         return $this->sellerAssignedID;
     }
@@ -290,7 +290,7 @@ class ReferencedProductType
      */
     public function getBuyerAssignedIDWithCreate(): IDType
     {
-        $this->buyerAssignedID = is_null($this->buyerAssignedID) ? new IDType() : $this->buyerAssignedID;
+        $this->buyerAssignedID ??= new IDType();
 
         return $this->buyerAssignedID;
     }
@@ -330,7 +330,7 @@ class ReferencedProductType
      */
     public function getIndustryAssignedIDWithCreate(): IDType
     {
-        $this->industryAssignedID = is_null($this->industryAssignedID) ? new IDType() : $this->industryAssignedID;
+        $this->industryAssignedID ??= new IDType();
 
         return $this->industryAssignedID;
     }
@@ -370,7 +370,7 @@ class ReferencedProductType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }
@@ -410,7 +410,7 @@ class ReferencedProductType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -450,7 +450,7 @@ class ReferencedProductType
      */
     public function getUnitQuantityWithCreate(): QuantityType
     {
-        $this->unitQuantity = is_null($this->unitQuantity) ? new QuantityType() : $this->unitQuantity;
+        $this->unitQuantity ??= new QuantityType();
 
         return $this->unitQuantity;
     }

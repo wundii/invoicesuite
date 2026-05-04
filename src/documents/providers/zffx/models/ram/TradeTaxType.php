@@ -153,7 +153,7 @@ class TradeTaxType
      */
     public function getCalculatedAmountWithCreate(): AmountType
     {
-        $this->calculatedAmount = is_null($this->calculatedAmount) ? new AmountType() : $this->calculatedAmount;
+        $this->calculatedAmount ??= new AmountType();
 
         return $this->calculatedAmount;
     }
@@ -193,7 +193,7 @@ class TradeTaxType
      */
     public function getTypeCodeWithCreate(): TaxTypeCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new TaxTypeCodeType() : $this->typeCode;
+        $this->typeCode ??= new TaxTypeCodeType();
 
         return $this->typeCode;
     }
@@ -233,7 +233,7 @@ class TradeTaxType
      */
     public function getExemptionReasonWithCreate(): TextType
     {
-        $this->exemptionReason = is_null($this->exemptionReason) ? new TextType() : $this->exemptionReason;
+        $this->exemptionReason ??= new TextType();
 
         return $this->exemptionReason;
     }
@@ -273,7 +273,7 @@ class TradeTaxType
      */
     public function getBasisAmountWithCreate(): AmountType
     {
-        $this->basisAmount = is_null($this->basisAmount) ? new AmountType() : $this->basisAmount;
+        $this->basisAmount ??= new AmountType();
 
         return $this->basisAmount;
     }
@@ -313,7 +313,7 @@ class TradeTaxType
      */
     public function getLineTotalBasisAmountWithCreate(): AmountType
     {
-        $this->lineTotalBasisAmount = is_null($this->lineTotalBasisAmount) ? new AmountType() : $this->lineTotalBasisAmount;
+        $this->lineTotalBasisAmount ??= new AmountType();
 
         return $this->lineTotalBasisAmount;
     }
@@ -353,7 +353,7 @@ class TradeTaxType
      */
     public function getAllowanceChargeBasisAmountWithCreate(): AmountType
     {
-        $this->allowanceChargeBasisAmount = is_null($this->allowanceChargeBasisAmount) ? new AmountType() : $this->allowanceChargeBasisAmount;
+        $this->allowanceChargeBasisAmount ??= new AmountType();
 
         return $this->allowanceChargeBasisAmount;
     }
@@ -393,7 +393,7 @@ class TradeTaxType
      */
     public function getCategoryCodeWithCreate(): TaxCategoryCodeType
     {
-        $this->categoryCode = is_null($this->categoryCode) ? new TaxCategoryCodeType() : $this->categoryCode;
+        $this->categoryCode ??= new TaxCategoryCodeType();
 
         return $this->categoryCode;
     }
@@ -433,7 +433,7 @@ class TradeTaxType
      */
     public function getExemptionReasonCodeWithCreate(): CodeType
     {
-        $this->exemptionReasonCode = is_null($this->exemptionReasonCode) ? new CodeType() : $this->exemptionReasonCode;
+        $this->exemptionReasonCode ??= new CodeType();
 
         return $this->exemptionReasonCode;
     }
@@ -473,7 +473,7 @@ class TradeTaxType
      */
     public function getTaxPointDateWithCreate(): DateType
     {
-        $this->taxPointDate = is_null($this->taxPointDate) ? new DateType() : $this->taxPointDate;
+        $this->taxPointDate ??= new DateType();
 
         return $this->taxPointDate;
     }
@@ -513,7 +513,7 @@ class TradeTaxType
      */
     public function getDueDateTypeCodeWithCreate(): TimeReferenceCodeType
     {
-        $this->dueDateTypeCode = is_null($this->dueDateTypeCode) ? new TimeReferenceCodeType() : $this->dueDateTypeCode;
+        $this->dueDateTypeCode ??= new TimeReferenceCodeType();
 
         return $this->dueDateTypeCode;
     }
@@ -553,7 +553,7 @@ class TradeTaxType
      */
     public function getRateApplicablePercentWithCreate(): PercentType
     {
-        $this->rateApplicablePercent = is_null($this->rateApplicablePercent) ? new PercentType() : $this->rateApplicablePercent;
+        $this->rateApplicablePercent ??= new PercentType();
 
         return $this->rateApplicablePercent;
     }

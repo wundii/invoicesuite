@@ -46,7 +46,7 @@ class MyPsrPrinter extends PsrPrinter
             $attrs = $this->printAttributes($param->getAttributes(), inline: true);
 
             $res .= $this->printDocComment($param)
-                . ($attrs ? substr($attrs, 0, -1) . "\n" : '')
+                . ('' !== $attrs && '0' !== $attrs ? substr($attrs, 0, -1) . "\n" : '')
                 . (
                     $param instanceof PromotedParameter
                         ? ($param->isFinal() ? 'final ' : '')
@@ -81,7 +81,7 @@ class MyPsrPrinter extends PsrPrinter
         $set = $param->getVisibility(PropertyAccessMode::Set);
 
         return $set
-            ? ($get ? "{$get} {$set}(set)" : "{$set}(set)")
+            ? ($get ? sprintf('%s %s(set)', $get, $set) : sprintf('%s(set)', $set))
             : ($get ?? 'public');
     }
 
@@ -91,7 +91,7 @@ class MyPsrPrinter extends PsrPrinter
     ): string {
         $hooks = $property->getHooks();
 
-        if (!$hooks) {
+        if ([] === $hooks) {
             return '';
         }
 

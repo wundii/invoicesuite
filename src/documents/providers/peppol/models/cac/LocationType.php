@@ -169,7 +169,7 @@ class LocationType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -457,7 +457,7 @@ class LocationType
      */
     public function getCountrySubentityWithCreate(): CountrySubentity
     {
-        $this->countrySubentity = is_null($this->countrySubentity) ? new CountrySubentity() : $this->countrySubentity;
+        $this->countrySubentity ??= new CountrySubentity();
 
         return $this->countrySubentity;
     }
@@ -497,7 +497,7 @@ class LocationType
      */
     public function getCountrySubentityCodeWithCreate(): CountrySubentityCode
     {
-        $this->countrySubentityCode = is_null($this->countrySubentityCode) ? new CountrySubentityCode() : $this->countrySubentityCode;
+        $this->countrySubentityCode ??= new CountrySubentityCode();
 
         return $this->countrySubentityCode;
     }
@@ -537,7 +537,7 @@ class LocationType
      */
     public function getLocationTypeCodeWithCreate(): LocationTypeCode
     {
-        $this->locationTypeCode = is_null($this->locationTypeCode) ? new LocationTypeCode() : $this->locationTypeCode;
+        $this->locationTypeCode ??= new LocationTypeCode();
 
         return $this->locationTypeCode;
     }
@@ -577,7 +577,7 @@ class LocationType
      */
     public function getInformationURIWithCreate(): InformationURI
     {
-        $this->informationURI = is_null($this->informationURI) ? new InformationURI() : $this->informationURI;
+        $this->informationURI ??= new InformationURI();
 
         return $this->informationURI;
     }
@@ -617,7 +617,7 @@ class LocationType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -781,7 +781,7 @@ class LocationType
      */
     public function getAddressWithCreate(): Address
     {
-        $this->address = is_null($this->address) ? new Address() : $this->address;
+        $this->address ??= new Address();
 
         return $this->address;
     }

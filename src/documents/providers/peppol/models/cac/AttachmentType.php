@@ -47,7 +47,7 @@ class AttachmentType
      */
     public function getEmbeddedDocumentBinaryObjectWithCreate(): EmbeddedDocumentBinaryObject
     {
-        $this->embeddedDocumentBinaryObject = is_null($this->embeddedDocumentBinaryObject) ? new EmbeddedDocumentBinaryObject() : $this->embeddedDocumentBinaryObject;
+        $this->embeddedDocumentBinaryObject ??= new EmbeddedDocumentBinaryObject();
 
         return $this->embeddedDocumentBinaryObject;
     }
@@ -87,7 +87,7 @@ class AttachmentType
      */
     public function getExternalReferenceWithCreate(): ExternalReference
     {
-        $this->externalReference = is_null($this->externalReference) ? new ExternalReference() : $this->externalReference;
+        $this->externalReference ??= new ExternalReference();
 
         return $this->externalReference;
     }

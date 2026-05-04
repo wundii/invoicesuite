@@ -108,7 +108,7 @@ class DeliveryTermsType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -272,7 +272,7 @@ class DeliveryTermsType
      */
     public function getLossRiskResponsibilityCodeWithCreate(): LossRiskResponsibilityCode
     {
-        $this->lossRiskResponsibilityCode = is_null($this->lossRiskResponsibilityCode) ? new LossRiskResponsibilityCode() : $this->lossRiskResponsibilityCode;
+        $this->lossRiskResponsibilityCode ??= new LossRiskResponsibilityCode();
 
         return $this->lossRiskResponsibilityCode;
     }
@@ -436,7 +436,7 @@ class DeliveryTermsType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -476,7 +476,7 @@ class DeliveryTermsType
      */
     public function getDeliveryLocationWithCreate(): DeliveryLocation
     {
-        $this->deliveryLocation = is_null($this->deliveryLocation) ? new DeliveryLocation() : $this->deliveryLocation;
+        $this->deliveryLocation ??= new DeliveryLocation();
 
         return $this->deliveryLocation;
     }
@@ -516,7 +516,7 @@ class DeliveryTermsType
      */
     public function getAllowanceChargeWithCreate(): AllowanceCharge
     {
-        $this->allowanceCharge = is_null($this->allowanceCharge) ? new AllowanceCharge() : $this->allowanceCharge;
+        $this->allowanceCharge ??= new AllowanceCharge();
 
         return $this->allowanceCharge;
     }

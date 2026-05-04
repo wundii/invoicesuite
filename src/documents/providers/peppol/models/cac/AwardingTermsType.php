@@ -158,7 +158,7 @@ class AwardingTermsType
      */
     public function getWeightingAlgorithmCodeWithCreate(): WeightingAlgorithmCode
     {
-        $this->weightingAlgorithmCode = is_null($this->weightingAlgorithmCode) ? new WeightingAlgorithmCode() : $this->weightingAlgorithmCode;
+        $this->weightingAlgorithmCode ??= new WeightingAlgorithmCode();
 
         return $this->weightingAlgorithmCode;
     }

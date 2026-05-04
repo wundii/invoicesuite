@@ -161,7 +161,7 @@ class TransportScheduleType
      */
     public function getSequenceNumericWithCreate(): SequenceNumeric
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new SequenceNumeric() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new SequenceNumeric();
 
         return $this->sequenceNumeric;
     }
@@ -261,7 +261,7 @@ class TransportScheduleType
      */
     public function getReliabilityPercentWithCreate(): ReliabilityPercent
     {
-        $this->reliabilityPercent = is_null($this->reliabilityPercent) ? new ReliabilityPercent() : $this->reliabilityPercent;
+        $this->reliabilityPercent ??= new ReliabilityPercent();
 
         return $this->reliabilityPercent;
     }
@@ -425,7 +425,7 @@ class TransportScheduleType
      */
     public function getStatusLocationWithCreate(): StatusLocation
     {
-        $this->statusLocation = is_null($this->statusLocation) ? new StatusLocation() : $this->statusLocation;
+        $this->statusLocation ??= new StatusLocation();
 
         return $this->statusLocation;
     }
@@ -465,7 +465,7 @@ class TransportScheduleType
      */
     public function getActualArrivalTransportEventWithCreate(): ActualArrivalTransportEvent
     {
-        $this->actualArrivalTransportEvent = is_null($this->actualArrivalTransportEvent) ? new ActualArrivalTransportEvent() : $this->actualArrivalTransportEvent;
+        $this->actualArrivalTransportEvent ??= new ActualArrivalTransportEvent();
 
         return $this->actualArrivalTransportEvent;
     }
@@ -505,7 +505,7 @@ class TransportScheduleType
      */
     public function getActualDepartureTransportEventWithCreate(): ActualDepartureTransportEvent
     {
-        $this->actualDepartureTransportEvent = is_null($this->actualDepartureTransportEvent) ? new ActualDepartureTransportEvent() : $this->actualDepartureTransportEvent;
+        $this->actualDepartureTransportEvent ??= new ActualDepartureTransportEvent();
 
         return $this->actualDepartureTransportEvent;
     }
@@ -545,7 +545,7 @@ class TransportScheduleType
      */
     public function getEstimatedDepartureTransportEventWithCreate(): EstimatedDepartureTransportEvent
     {
-        $this->estimatedDepartureTransportEvent = is_null($this->estimatedDepartureTransportEvent) ? new EstimatedDepartureTransportEvent() : $this->estimatedDepartureTransportEvent;
+        $this->estimatedDepartureTransportEvent ??= new EstimatedDepartureTransportEvent();
 
         return $this->estimatedDepartureTransportEvent;
     }
@@ -585,7 +585,7 @@ class TransportScheduleType
      */
     public function getEstimatedArrivalTransportEventWithCreate(): EstimatedArrivalTransportEvent
     {
-        $this->estimatedArrivalTransportEvent = is_null($this->estimatedArrivalTransportEvent) ? new EstimatedArrivalTransportEvent() : $this->estimatedArrivalTransportEvent;
+        $this->estimatedArrivalTransportEvent ??= new EstimatedArrivalTransportEvent();
 
         return $this->estimatedArrivalTransportEvent;
     }
@@ -625,7 +625,7 @@ class TransportScheduleType
      */
     public function getPlannedDepartureTransportEventWithCreate(): PlannedDepartureTransportEvent
     {
-        $this->plannedDepartureTransportEvent = is_null($this->plannedDepartureTransportEvent) ? new PlannedDepartureTransportEvent() : $this->plannedDepartureTransportEvent;
+        $this->plannedDepartureTransportEvent ??= new PlannedDepartureTransportEvent();
 
         return $this->plannedDepartureTransportEvent;
     }
@@ -665,7 +665,7 @@ class TransportScheduleType
      */
     public function getPlannedArrivalTransportEventWithCreate(): PlannedArrivalTransportEvent
     {
-        $this->plannedArrivalTransportEvent = is_null($this->plannedArrivalTransportEvent) ? new PlannedArrivalTransportEvent() : $this->plannedArrivalTransportEvent;
+        $this->plannedArrivalTransportEvent ??= new PlannedArrivalTransportEvent();
 
         return $this->plannedArrivalTransportEvent;
     }

@@ -79,7 +79,7 @@ class SupplyChainTradeLineItemType
      */
     public function getAssociatedDocumentLineDocumentWithCreate(): DocumentLineDocumentType
     {
-        $this->associatedDocumentLineDocument = is_null($this->associatedDocumentLineDocument) ? new DocumentLineDocumentType() : $this->associatedDocumentLineDocument;
+        $this->associatedDocumentLineDocument ??= new DocumentLineDocumentType();
 
         return $this->associatedDocumentLineDocument;
     }
@@ -119,7 +119,7 @@ class SupplyChainTradeLineItemType
      */
     public function getSpecifiedTradeProductWithCreate(): TradeProductType
     {
-        $this->specifiedTradeProduct = is_null($this->specifiedTradeProduct) ? new TradeProductType() : $this->specifiedTradeProduct;
+        $this->specifiedTradeProduct ??= new TradeProductType();
 
         return $this->specifiedTradeProduct;
     }
@@ -159,7 +159,7 @@ class SupplyChainTradeLineItemType
      */
     public function getSpecifiedLineTradeAgreementWithCreate(): LineTradeAgreementType
     {
-        $this->specifiedLineTradeAgreement = is_null($this->specifiedLineTradeAgreement) ? new LineTradeAgreementType() : $this->specifiedLineTradeAgreement;
+        $this->specifiedLineTradeAgreement ??= new LineTradeAgreementType();
 
         return $this->specifiedLineTradeAgreement;
     }
@@ -199,7 +199,7 @@ class SupplyChainTradeLineItemType
      */
     public function getSpecifiedLineTradeDeliveryWithCreate(): LineTradeDeliveryType
     {
-        $this->specifiedLineTradeDelivery = is_null($this->specifiedLineTradeDelivery) ? new LineTradeDeliveryType() : $this->specifiedLineTradeDelivery;
+        $this->specifiedLineTradeDelivery ??= new LineTradeDeliveryType();
 
         return $this->specifiedLineTradeDelivery;
     }
@@ -239,7 +239,7 @@ class SupplyChainTradeLineItemType
      */
     public function getSpecifiedLineTradeSettlementWithCreate(): LineTradeSettlementType
     {
-        $this->specifiedLineTradeSettlement = is_null($this->specifiedLineTradeSettlement) ? new LineTradeSettlementType() : $this->specifiedLineTradeSettlement;
+        $this->specifiedLineTradeSettlement ??= new LineTradeSettlementType();
 
         return $this->specifiedLineTradeSettlement;
     }

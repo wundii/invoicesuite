@@ -105,7 +105,7 @@ class CustomerPartyType
      */
     public function getCustomerAssignedAccountIDWithCreate(): CustomerAssignedAccountID
     {
-        $this->customerAssignedAccountID = is_null($this->customerAssignedAccountID) ? new CustomerAssignedAccountID() : $this->customerAssignedAccountID;
+        $this->customerAssignedAccountID ??= new CustomerAssignedAccountID();
 
         return $this->customerAssignedAccountID;
     }
@@ -145,7 +145,7 @@ class CustomerPartyType
      */
     public function getSupplierAssignedAccountIDWithCreate(): SupplierAssignedAccountID
     {
-        $this->supplierAssignedAccountID = is_null($this->supplierAssignedAccountID) ? new SupplierAssignedAccountID() : $this->supplierAssignedAccountID;
+        $this->supplierAssignedAccountID ??= new SupplierAssignedAccountID();
 
         return $this->supplierAssignedAccountID;
     }
@@ -309,7 +309,7 @@ class CustomerPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }
@@ -349,7 +349,7 @@ class CustomerPartyType
      */
     public function getDeliveryContactWithCreate(): DeliveryContact
     {
-        $this->deliveryContact = is_null($this->deliveryContact) ? new DeliveryContact() : $this->deliveryContact;
+        $this->deliveryContact ??= new DeliveryContact();
 
         return $this->deliveryContact;
     }
@@ -389,7 +389,7 @@ class CustomerPartyType
      */
     public function getAccountingContactWithCreate(): AccountingContact
     {
-        $this->accountingContact = is_null($this->accountingContact) ? new AccountingContact() : $this->accountingContact;
+        $this->accountingContact ??= new AccountingContact();
 
         return $this->accountingContact;
     }
@@ -429,7 +429,7 @@ class CustomerPartyType
      */
     public function getBuyerContactWithCreate(): BuyerContact
     {
-        $this->buyerContact = is_null($this->buyerContact) ? new BuyerContact() : $this->buyerContact;
+        $this->buyerContact ??= new BuyerContact();
 
         return $this->buyerContact;
     }

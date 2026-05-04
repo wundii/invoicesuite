@@ -130,7 +130,7 @@ class TradeAllowanceChargeType
      */
     public function getChargeIndicatorWithCreate(): IndicatorType
     {
-        $this->chargeIndicator = is_null($this->chargeIndicator) ? new IndicatorType() : $this->chargeIndicator;
+        $this->chargeIndicator ??= new IndicatorType();
 
         return $this->chargeIndicator;
     }
@@ -170,7 +170,7 @@ class TradeAllowanceChargeType
      */
     public function getSequenceNumericWithCreate(): NumericType
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new NumericType() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new NumericType();
 
         return $this->sequenceNumeric;
     }
@@ -210,7 +210,7 @@ class TradeAllowanceChargeType
      */
     public function getCalculationPercentWithCreate(): PercentType
     {
-        $this->calculationPercent = is_null($this->calculationPercent) ? new PercentType() : $this->calculationPercent;
+        $this->calculationPercent ??= new PercentType();
 
         return $this->calculationPercent;
     }
@@ -250,7 +250,7 @@ class TradeAllowanceChargeType
      */
     public function getBasisAmountWithCreate(): AmountType
     {
-        $this->basisAmount = is_null($this->basisAmount) ? new AmountType() : $this->basisAmount;
+        $this->basisAmount ??= new AmountType();
 
         return $this->basisAmount;
     }
@@ -290,7 +290,7 @@ class TradeAllowanceChargeType
      */
     public function getBasisQuantityWithCreate(): QuantityType
     {
-        $this->basisQuantity = is_null($this->basisQuantity) ? new QuantityType() : $this->basisQuantity;
+        $this->basisQuantity ??= new QuantityType();
 
         return $this->basisQuantity;
     }
@@ -330,7 +330,7 @@ class TradeAllowanceChargeType
      */
     public function getActualAmountWithCreate(): AmountType
     {
-        $this->actualAmount = is_null($this->actualAmount) ? new AmountType() : $this->actualAmount;
+        $this->actualAmount ??= new AmountType();
 
         return $this->actualAmount;
     }
@@ -370,7 +370,7 @@ class TradeAllowanceChargeType
      */
     public function getReasonCodeWithCreate(): AllowanceChargeReasonCodeType
     {
-        $this->reasonCode = is_null($this->reasonCode) ? new AllowanceChargeReasonCodeType() : $this->reasonCode;
+        $this->reasonCode ??= new AllowanceChargeReasonCodeType();
 
         return $this->reasonCode;
     }
@@ -410,7 +410,7 @@ class TradeAllowanceChargeType
      */
     public function getReasonWithCreate(): TextType
     {
-        $this->reason = is_null($this->reason) ? new TextType() : $this->reason;
+        $this->reason ??= new TextType();
 
         return $this->reason;
     }
@@ -450,7 +450,7 @@ class TradeAllowanceChargeType
      */
     public function getCategoryTradeTaxWithCreate(): TradeTaxType
     {
-        $this->categoryTradeTax = is_null($this->categoryTradeTax) ? new TradeTaxType() : $this->categoryTradeTax;
+        $this->categoryTradeTax ??= new TradeTaxType();
 
         return $this->categoryTradeTax;
     }

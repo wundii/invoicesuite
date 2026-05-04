@@ -74,7 +74,7 @@ class ProcessJustificationType
      */
     public function getPreviousCancellationReasonCodeWithCreate(): PreviousCancellationReasonCode
     {
-        $this->previousCancellationReasonCode = is_null($this->previousCancellationReasonCode) ? new PreviousCancellationReasonCode() : $this->previousCancellationReasonCode;
+        $this->previousCancellationReasonCode ??= new PreviousCancellationReasonCode();
 
         return $this->previousCancellationReasonCode;
     }
@@ -114,7 +114,7 @@ class ProcessJustificationType
      */
     public function getProcessReasonCodeWithCreate(): ProcessReasonCode
     {
-        $this->processReasonCode = is_null($this->processReasonCode) ? new ProcessReasonCode() : $this->processReasonCode;
+        $this->processReasonCode ??= new ProcessReasonCode();
 
         return $this->processReasonCode;
     }

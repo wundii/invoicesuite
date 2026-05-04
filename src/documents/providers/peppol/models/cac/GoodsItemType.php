@@ -496,7 +496,7 @@ class GoodsItemType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -536,7 +536,7 @@ class GoodsItemType
      */
     public function getSequenceNumberIDWithCreate(): SequenceNumberID
     {
-        $this->sequenceNumberID = is_null($this->sequenceNumberID) ? new SequenceNumberID() : $this->sequenceNumberID;
+        $this->sequenceNumberID ??= new SequenceNumberID();
 
         return $this->sequenceNumberID;
     }
@@ -730,7 +730,7 @@ class GoodsItemType
      */
     public function getDeclaredCustomsValueAmountWithCreate(): DeclaredCustomsValueAmount
     {
-        $this->declaredCustomsValueAmount = is_null($this->declaredCustomsValueAmount) ? new DeclaredCustomsValueAmount() : $this->declaredCustomsValueAmount;
+        $this->declaredCustomsValueAmount ??= new DeclaredCustomsValueAmount();
 
         return $this->declaredCustomsValueAmount;
     }
@@ -770,7 +770,7 @@ class GoodsItemType
      */
     public function getDeclaredForCarriageValueAmountWithCreate(): DeclaredForCarriageValueAmount
     {
-        $this->declaredForCarriageValueAmount = is_null($this->declaredForCarriageValueAmount) ? new DeclaredForCarriageValueAmount() : $this->declaredForCarriageValueAmount;
+        $this->declaredForCarriageValueAmount ??= new DeclaredForCarriageValueAmount();
 
         return $this->declaredForCarriageValueAmount;
     }
@@ -810,7 +810,7 @@ class GoodsItemType
      */
     public function getDeclaredStatisticsValueAmountWithCreate(): DeclaredStatisticsValueAmount
     {
-        $this->declaredStatisticsValueAmount = is_null($this->declaredStatisticsValueAmount) ? new DeclaredStatisticsValueAmount() : $this->declaredStatisticsValueAmount;
+        $this->declaredStatisticsValueAmount ??= new DeclaredStatisticsValueAmount();
 
         return $this->declaredStatisticsValueAmount;
     }
@@ -850,7 +850,7 @@ class GoodsItemType
      */
     public function getFreeOnBoardValueAmountWithCreate(): FreeOnBoardValueAmount
     {
-        $this->freeOnBoardValueAmount = is_null($this->freeOnBoardValueAmount) ? new FreeOnBoardValueAmount() : $this->freeOnBoardValueAmount;
+        $this->freeOnBoardValueAmount ??= new FreeOnBoardValueAmount();
 
         return $this->freeOnBoardValueAmount;
     }
@@ -890,7 +890,7 @@ class GoodsItemType
      */
     public function getInsuranceValueAmountWithCreate(): InsuranceValueAmount
     {
-        $this->insuranceValueAmount = is_null($this->insuranceValueAmount) ? new InsuranceValueAmount() : $this->insuranceValueAmount;
+        $this->insuranceValueAmount ??= new InsuranceValueAmount();
 
         return $this->insuranceValueAmount;
     }
@@ -930,7 +930,7 @@ class GoodsItemType
      */
     public function getValueAmountWithCreate(): ValueAmount
     {
-        $this->valueAmount = is_null($this->valueAmount) ? new ValueAmount() : $this->valueAmount;
+        $this->valueAmount ??= new ValueAmount();
 
         return $this->valueAmount;
     }
@@ -970,7 +970,7 @@ class GoodsItemType
      */
     public function getGrossWeightMeasureWithCreate(): GrossWeightMeasure
     {
-        $this->grossWeightMeasure = is_null($this->grossWeightMeasure) ? new GrossWeightMeasure() : $this->grossWeightMeasure;
+        $this->grossWeightMeasure ??= new GrossWeightMeasure();
 
         return $this->grossWeightMeasure;
     }
@@ -1010,7 +1010,7 @@ class GoodsItemType
      */
     public function getNetWeightMeasureWithCreate(): NetWeightMeasure
     {
-        $this->netWeightMeasure = is_null($this->netWeightMeasure) ? new NetWeightMeasure() : $this->netWeightMeasure;
+        $this->netWeightMeasure ??= new NetWeightMeasure();
 
         return $this->netWeightMeasure;
     }
@@ -1050,7 +1050,7 @@ class GoodsItemType
      */
     public function getNetNetWeightMeasureWithCreate(): NetNetWeightMeasure
     {
-        $this->netNetWeightMeasure = is_null($this->netNetWeightMeasure) ? new NetNetWeightMeasure() : $this->netNetWeightMeasure;
+        $this->netNetWeightMeasure ??= new NetNetWeightMeasure();
 
         return $this->netNetWeightMeasure;
     }
@@ -1090,7 +1090,7 @@ class GoodsItemType
      */
     public function getChargeableWeightMeasureWithCreate(): ChargeableWeightMeasure
     {
-        $this->chargeableWeightMeasure = is_null($this->chargeableWeightMeasure) ? new ChargeableWeightMeasure() : $this->chargeableWeightMeasure;
+        $this->chargeableWeightMeasure ??= new ChargeableWeightMeasure();
 
         return $this->chargeableWeightMeasure;
     }
@@ -1130,7 +1130,7 @@ class GoodsItemType
      */
     public function getGrossVolumeMeasureWithCreate(): GrossVolumeMeasure
     {
-        $this->grossVolumeMeasure = is_null($this->grossVolumeMeasure) ? new GrossVolumeMeasure() : $this->grossVolumeMeasure;
+        $this->grossVolumeMeasure ??= new GrossVolumeMeasure();
 
         return $this->grossVolumeMeasure;
     }
@@ -1170,7 +1170,7 @@ class GoodsItemType
      */
     public function getNetVolumeMeasureWithCreate(): NetVolumeMeasure
     {
-        $this->netVolumeMeasure = is_null($this->netVolumeMeasure) ? new NetVolumeMeasure() : $this->netVolumeMeasure;
+        $this->netVolumeMeasure ??= new NetVolumeMeasure();
 
         return $this->netVolumeMeasure;
     }
@@ -1210,7 +1210,7 @@ class GoodsItemType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -1250,7 +1250,7 @@ class GoodsItemType
      */
     public function getPreferenceCriterionCodeWithCreate(): PreferenceCriterionCode
     {
-        $this->preferenceCriterionCode = is_null($this->preferenceCriterionCode) ? new PreferenceCriterionCode() : $this->preferenceCriterionCode;
+        $this->preferenceCriterionCode ??= new PreferenceCriterionCode();
 
         return $this->preferenceCriterionCode;
     }
@@ -1290,7 +1290,7 @@ class GoodsItemType
      */
     public function getRequiredCustomsIDWithCreate(): RequiredCustomsID
     {
-        $this->requiredCustomsID = is_null($this->requiredCustomsID) ? new RequiredCustomsID() : $this->requiredCustomsID;
+        $this->requiredCustomsID ??= new RequiredCustomsID();
 
         return $this->requiredCustomsID;
     }
@@ -1330,7 +1330,7 @@ class GoodsItemType
      */
     public function getCustomsStatusCodeWithCreate(): CustomsStatusCode
     {
-        $this->customsStatusCode = is_null($this->customsStatusCode) ? new CustomsStatusCode() : $this->customsStatusCode;
+        $this->customsStatusCode ??= new CustomsStatusCode();
 
         return $this->customsStatusCode;
     }
@@ -1370,7 +1370,7 @@ class GoodsItemType
      */
     public function getCustomsTariffQuantityWithCreate(): CustomsTariffQuantity
     {
-        $this->customsTariffQuantity = is_null($this->customsTariffQuantity) ? new CustomsTariffQuantity() : $this->customsTariffQuantity;
+        $this->customsTariffQuantity ??= new CustomsTariffQuantity();
 
         return $this->customsTariffQuantity;
     }
@@ -1440,7 +1440,7 @@ class GoodsItemType
      */
     public function getChargeableQuantityWithCreate(): ChargeableQuantity
     {
-        $this->chargeableQuantity = is_null($this->chargeableQuantity) ? new ChargeableQuantity() : $this->chargeableQuantity;
+        $this->chargeableQuantity ??= new ChargeableQuantity();
 
         return $this->chargeableQuantity;
     }
@@ -1480,7 +1480,7 @@ class GoodsItemType
      */
     public function getReturnableQuantityWithCreate(): ReturnableQuantity
     {
-        $this->returnableQuantity = is_null($this->returnableQuantity) ? new ReturnableQuantity() : $this->returnableQuantity;
+        $this->returnableQuantity ??= new ReturnableQuantity();
 
         return $this->returnableQuantity;
     }
@@ -1520,7 +1520,7 @@ class GoodsItemType
      */
     public function getTraceIDWithCreate(): TraceID
     {
-        $this->traceID = is_null($this->traceID) ? new TraceID() : $this->traceID;
+        $this->traceID ??= new TraceID();
 
         return $this->traceID;
     }
@@ -2304,7 +2304,7 @@ class GoodsItemType
      */
     public function getOriginAddressWithCreate(): OriginAddress
     {
-        $this->originAddress = is_null($this->originAddress) ? new OriginAddress() : $this->originAddress;
+        $this->originAddress ??= new OriginAddress();
 
         return $this->originAddress;
     }
@@ -2344,7 +2344,7 @@ class GoodsItemType
      */
     public function getDeliveryWithCreate(): Delivery
     {
-        $this->delivery = is_null($this->delivery) ? new Delivery() : $this->delivery;
+        $this->delivery ??= new Delivery();
 
         return $this->delivery;
     }
@@ -2384,7 +2384,7 @@ class GoodsItemType
      */
     public function getPickupWithCreate(): Pickup
     {
-        $this->pickup = is_null($this->pickup) ? new Pickup() : $this->pickup;
+        $this->pickup ??= new Pickup();
 
         return $this->pickup;
     }
@@ -2424,7 +2424,7 @@ class GoodsItemType
      */
     public function getDespatchWithCreate(): Despatch
     {
-        $this->despatch = is_null($this->despatch) ? new Despatch() : $this->despatch;
+        $this->despatch ??= new Despatch();
 
         return $this->despatch;
     }
@@ -2712,7 +2712,7 @@ class GoodsItemType
      */
     public function getShipmentDocumentReferenceWithCreate(): ShipmentDocumentReference
     {
-        $this->shipmentDocumentReference = is_null($this->shipmentDocumentReference) ? new ShipmentDocumentReference() : $this->shipmentDocumentReference;
+        $this->shipmentDocumentReference ??= new ShipmentDocumentReference();
 
         return $this->shipmentDocumentReference;
     }
@@ -2752,7 +2752,7 @@ class GoodsItemType
      */
     public function getMinimumTemperatureWithCreate(): MinimumTemperature
     {
-        $this->minimumTemperature = is_null($this->minimumTemperature) ? new MinimumTemperature() : $this->minimumTemperature;
+        $this->minimumTemperature ??= new MinimumTemperature();
 
         return $this->minimumTemperature;
     }
@@ -2792,7 +2792,7 @@ class GoodsItemType
      */
     public function getMaximumTemperatureWithCreate(): MaximumTemperature
     {
-        $this->maximumTemperature = is_null($this->maximumTemperature) ? new MaximumTemperature() : $this->maximumTemperature;
+        $this->maximumTemperature ??= new MaximumTemperature();
 
         return $this->maximumTemperature;
     }

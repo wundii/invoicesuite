@@ -70,7 +70,7 @@ class EventLineItemType
      */
     public function getLineNumberNumericWithCreate(): LineNumberNumeric
     {
-        $this->lineNumberNumeric = is_null($this->lineNumberNumeric) ? new LineNumberNumeric() : $this->lineNumberNumeric;
+        $this->lineNumberNumeric ??= new LineNumberNumeric();
 
         return $this->lineNumberNumeric;
     }
@@ -110,7 +110,7 @@ class EventLineItemType
      */
     public function getParticipatingLocationsLocationWithCreate(): ParticipatingLocationsLocation
     {
-        $this->participatingLocationsLocation = is_null($this->participatingLocationsLocation) ? new ParticipatingLocationsLocation() : $this->participatingLocationsLocation;
+        $this->participatingLocationsLocation ??= new ParticipatingLocationsLocation();
 
         return $this->participatingLocationsLocation;
     }
@@ -274,7 +274,7 @@ class EventLineItemType
      */
     public function getSupplyItemWithCreate(): SupplyItem
     {
-        $this->supplyItem = is_null($this->supplyItem) ? new SupplyItem() : $this->supplyItem;
+        $this->supplyItem ??= new SupplyItem();
 
         return $this->supplyItem;
     }

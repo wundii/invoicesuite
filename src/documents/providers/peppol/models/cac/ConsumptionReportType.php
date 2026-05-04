@@ -238,7 +238,7 @@ class ConsumptionReportType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -278,7 +278,7 @@ class ConsumptionReportType
      */
     public function getConsumptionTypeWithCreate(): ConsumptionType
     {
-        $this->consumptionType = is_null($this->consumptionType) ? new ConsumptionType() : $this->consumptionType;
+        $this->consumptionType ??= new ConsumptionType();
 
         return $this->consumptionType;
     }
@@ -318,7 +318,7 @@ class ConsumptionReportType
      */
     public function getConsumptionTypeCodeWithCreate(): ConsumptionTypeCode
     {
-        $this->consumptionTypeCode = is_null($this->consumptionTypeCode) ? new ConsumptionTypeCode() : $this->consumptionTypeCode;
+        $this->consumptionTypeCode ??= new ConsumptionTypeCode();
 
         return $this->consumptionTypeCode;
     }
@@ -482,7 +482,7 @@ class ConsumptionReportType
      */
     public function getTotalConsumedQuantityWithCreate(): TotalConsumedQuantity
     {
-        $this->totalConsumedQuantity = is_null($this->totalConsumedQuantity) ? new TotalConsumedQuantity() : $this->totalConsumedQuantity;
+        $this->totalConsumedQuantity ??= new TotalConsumedQuantity();
 
         return $this->totalConsumedQuantity;
     }
@@ -522,7 +522,7 @@ class ConsumptionReportType
      */
     public function getBasicConsumedQuantityWithCreate(): BasicConsumedQuantity
     {
-        $this->basicConsumedQuantity = is_null($this->basicConsumedQuantity) ? new BasicConsumedQuantity() : $this->basicConsumedQuantity;
+        $this->basicConsumedQuantity ??= new BasicConsumedQuantity();
 
         return $this->basicConsumedQuantity;
     }
@@ -562,7 +562,7 @@ class ConsumptionReportType
      */
     public function getResidentOccupantsNumericWithCreate(): ResidentOccupantsNumeric
     {
-        $this->residentOccupantsNumeric = is_null($this->residentOccupantsNumeric) ? new ResidentOccupantsNumeric() : $this->residentOccupantsNumeric;
+        $this->residentOccupantsNumeric ??= new ResidentOccupantsNumeric();
 
         return $this->residentOccupantsNumeric;
     }
@@ -602,7 +602,7 @@ class ConsumptionReportType
      */
     public function getConsumersEnergyLevelCodeWithCreate(): ConsumersEnergyLevelCode
     {
-        $this->consumersEnergyLevelCode = is_null($this->consumersEnergyLevelCode) ? new ConsumersEnergyLevelCode() : $this->consumersEnergyLevelCode;
+        $this->consumersEnergyLevelCode ??= new ConsumersEnergyLevelCode();
 
         return $this->consumersEnergyLevelCode;
     }
@@ -642,7 +642,7 @@ class ConsumptionReportType
      */
     public function getConsumersEnergyLevelWithCreate(): ConsumersEnergyLevel
     {
-        $this->consumersEnergyLevel = is_null($this->consumersEnergyLevel) ? new ConsumersEnergyLevel() : $this->consumersEnergyLevel;
+        $this->consumersEnergyLevel ??= new ConsumersEnergyLevel();
 
         return $this->consumersEnergyLevel;
     }
@@ -682,7 +682,7 @@ class ConsumptionReportType
      */
     public function getResidenceTypeWithCreate(): ResidenceType
     {
-        $this->residenceType = is_null($this->residenceType) ? new ResidenceType() : $this->residenceType;
+        $this->residenceType ??= new ResidenceType();
 
         return $this->residenceType;
     }
@@ -722,7 +722,7 @@ class ConsumptionReportType
      */
     public function getResidenceTypeCodeWithCreate(): ResidenceTypeCode
     {
-        $this->residenceTypeCode = is_null($this->residenceTypeCode) ? new ResidenceTypeCode() : $this->residenceTypeCode;
+        $this->residenceTypeCode ??= new ResidenceTypeCode();
 
         return $this->residenceTypeCode;
     }
@@ -762,7 +762,7 @@ class ConsumptionReportType
      */
     public function getHeatingTypeWithCreate(): HeatingType
     {
-        $this->heatingType = is_null($this->heatingType) ? new HeatingType() : $this->heatingType;
+        $this->heatingType ??= new HeatingType();
 
         return $this->heatingType;
     }
@@ -802,7 +802,7 @@ class ConsumptionReportType
      */
     public function getHeatingTypeCodeWithCreate(): HeatingTypeCode
     {
-        $this->heatingTypeCode = is_null($this->heatingTypeCode) ? new HeatingTypeCode() : $this->heatingTypeCode;
+        $this->heatingTypeCode ??= new HeatingTypeCode();
 
         return $this->heatingTypeCode;
     }
@@ -842,7 +842,7 @@ class ConsumptionReportType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }
@@ -882,7 +882,7 @@ class ConsumptionReportType
      */
     public function getGuidanceDocumentReferenceWithCreate(): GuidanceDocumentReference
     {
-        $this->guidanceDocumentReference = is_null($this->guidanceDocumentReference) ? new GuidanceDocumentReference() : $this->guidanceDocumentReference;
+        $this->guidanceDocumentReference ??= new GuidanceDocumentReference();
 
         return $this->guidanceDocumentReference;
     }
@@ -922,7 +922,7 @@ class ConsumptionReportType
      */
     public function getDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->documentReference = is_null($this->documentReference) ? new DocumentReference() : $this->documentReference;
+        $this->documentReference ??= new DocumentReference();
 
         return $this->documentReference;
     }

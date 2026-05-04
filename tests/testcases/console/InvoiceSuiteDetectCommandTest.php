@@ -7,7 +7,7 @@ namespace horstoeko\invoicesuite\tests\testcases\console;
 use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteDetectCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteDetectCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command detects an XML invoice and returns the provider metadata as JSON.

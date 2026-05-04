@@ -58,7 +58,7 @@ class ProcurementProjectLotType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -98,7 +98,7 @@ class ProcurementProjectLotType
      */
     public function getTenderingTermsWithCreate(): TenderingTerms
     {
-        $this->tenderingTerms = is_null($this->tenderingTerms) ? new TenderingTerms() : $this->tenderingTerms;
+        $this->tenderingTerms ??= new TenderingTerms();
 
         return $this->tenderingTerms;
     }
@@ -138,7 +138,7 @@ class ProcurementProjectLotType
      */
     public function getProcurementProjectWithCreate(): ProcurementProject
     {
-        $this->procurementProject = is_null($this->procurementProject) ? new ProcurementProject() : $this->procurementProject;
+        $this->procurementProject ??= new ProcurementProject();
 
         return $this->procurementProject;
     }

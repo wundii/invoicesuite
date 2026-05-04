@@ -60,7 +60,7 @@ class BudgetAccountLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -100,7 +100,7 @@ class BudgetAccountLineType
      */
     public function getTotalAmountWithCreate(): TotalAmount
     {
-        $this->totalAmount = is_null($this->totalAmount) ? new TotalAmount() : $this->totalAmount;
+        $this->totalAmount ??= new TotalAmount();
 
         return $this->totalAmount;
     }

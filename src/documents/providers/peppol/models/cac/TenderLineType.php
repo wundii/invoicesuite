@@ -273,7 +273,7 @@ class TenderLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -437,7 +437,7 @@ class TenderLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -477,7 +477,7 @@ class TenderLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -517,7 +517,7 @@ class TenderLineType
      */
     public function getTotalTaxAmountWithCreate(): TotalTaxAmount
     {
-        $this->totalTaxAmount = is_null($this->totalTaxAmount) ? new TotalTaxAmount() : $this->totalTaxAmount;
+        $this->totalTaxAmount ??= new TotalTaxAmount();
 
         return $this->totalTaxAmount;
     }
@@ -557,7 +557,7 @@ class TenderLineType
      */
     public function getOrderableUnitWithCreate(): OrderableUnit
     {
-        $this->orderableUnit = is_null($this->orderableUnit) ? new OrderableUnit() : $this->orderableUnit;
+        $this->orderableUnit ??= new OrderableUnit();
 
         return $this->orderableUnit;
     }
@@ -597,7 +597,7 @@ class TenderLineType
      */
     public function getContentUnitQuantityWithCreate(): ContentUnitQuantity
     {
-        $this->contentUnitQuantity = is_null($this->contentUnitQuantity) ? new ContentUnitQuantity() : $this->contentUnitQuantity;
+        $this->contentUnitQuantity ??= new ContentUnitQuantity();
 
         return $this->contentUnitQuantity;
     }
@@ -637,7 +637,7 @@ class TenderLineType
      */
     public function getOrderQuantityIncrementNumericWithCreate(): OrderQuantityIncrementNumeric
     {
-        $this->orderQuantityIncrementNumeric = is_null($this->orderQuantityIncrementNumeric) ? new OrderQuantityIncrementNumeric() : $this->orderQuantityIncrementNumeric;
+        $this->orderQuantityIncrementNumeric ??= new OrderQuantityIncrementNumeric();
 
         return $this->orderQuantityIncrementNumeric;
     }
@@ -677,7 +677,7 @@ class TenderLineType
      */
     public function getMinimumOrderQuantityWithCreate(): MinimumOrderQuantity
     {
-        $this->minimumOrderQuantity = is_null($this->minimumOrderQuantity) ? new MinimumOrderQuantity() : $this->minimumOrderQuantity;
+        $this->minimumOrderQuantity ??= new MinimumOrderQuantity();
 
         return $this->minimumOrderQuantity;
     }
@@ -717,7 +717,7 @@ class TenderLineType
      */
     public function getMaximumOrderQuantityWithCreate(): MaximumOrderQuantity
     {
-        $this->maximumOrderQuantity = is_null($this->maximumOrderQuantity) ? new MaximumOrderQuantity() : $this->maximumOrderQuantity;
+        $this->maximumOrderQuantity ??= new MaximumOrderQuantity();
 
         return $this->maximumOrderQuantity;
     }
@@ -881,7 +881,7 @@ class TenderLineType
      */
     public function getPackLevelCodeWithCreate(): PackLevelCode
     {
-        $this->packLevelCode = is_null($this->packLevelCode) ? new PackLevelCode() : $this->packLevelCode;
+        $this->packLevelCode ??= new PackLevelCode();
 
         return $this->packLevelCode;
     }
@@ -1045,7 +1045,7 @@ class TenderLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -1333,7 +1333,7 @@ class TenderLineType
      */
     public function getWarrantyPartyWithCreate(): WarrantyParty
     {
-        $this->warrantyParty = is_null($this->warrantyParty) ? new WarrantyParty() : $this->warrantyParty;
+        $this->warrantyParty ??= new WarrantyParty();
 
         return $this->warrantyParty;
     }
@@ -1373,7 +1373,7 @@ class TenderLineType
      */
     public function getWarrantyValidityPeriodWithCreate(): WarrantyValidityPeriod
     {
-        $this->warrantyValidityPeriod = is_null($this->warrantyValidityPeriod) ? new WarrantyValidityPeriod() : $this->warrantyValidityPeriod;
+        $this->warrantyValidityPeriod ??= new WarrantyValidityPeriod();
 
         return $this->warrantyValidityPeriod;
     }
@@ -1537,7 +1537,7 @@ class TenderLineType
      */
     public function getCallForTendersLineReferenceWithCreate(): CallForTendersLineReference
     {
-        $this->callForTendersLineReference = is_null($this->callForTendersLineReference) ? new CallForTendersLineReference() : $this->callForTendersLineReference;
+        $this->callForTendersLineReference ??= new CallForTendersLineReference();
 
         return $this->callForTendersLineReference;
     }
@@ -1577,7 +1577,7 @@ class TenderLineType
      */
     public function getCallForTendersDocumentReferenceWithCreate(): CallForTendersDocumentReference
     {
-        $this->callForTendersDocumentReference = is_null($this->callForTendersDocumentReference) ? new CallForTendersDocumentReference() : $this->callForTendersDocumentReference;
+        $this->callForTendersDocumentReference ??= new CallForTendersDocumentReference();
 
         return $this->callForTendersDocumentReference;
     }

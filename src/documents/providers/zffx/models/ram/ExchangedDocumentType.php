@@ -118,7 +118,7 @@ class ExchangedDocumentType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -158,7 +158,7 @@ class ExchangedDocumentType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }
@@ -198,7 +198,7 @@ class ExchangedDocumentType
      */
     public function getTypeCodeWithCreate(): DocumentCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new DocumentCodeType() : $this->typeCode;
+        $this->typeCode ??= new DocumentCodeType();
 
         return $this->typeCode;
     }
@@ -238,7 +238,7 @@ class ExchangedDocumentType
      */
     public function getIssueDateTimeWithCreate(): DateTimeType
     {
-        $this->issueDateTime = is_null($this->issueDateTime) ? new DateTimeType() : $this->issueDateTime;
+        $this->issueDateTime ??= new DateTimeType();
 
         return $this->issueDateTime;
     }
@@ -278,7 +278,7 @@ class ExchangedDocumentType
      */
     public function getCopyIndicatorWithCreate(): IndicatorType
     {
-        $this->copyIndicator = is_null($this->copyIndicator) ? new IndicatorType() : $this->copyIndicator;
+        $this->copyIndicator ??= new IndicatorType();
 
         return $this->copyIndicator;
     }
@@ -318,7 +318,7 @@ class ExchangedDocumentType
      */
     public function getLanguageIDWithCreate(): IDType
     {
-        $this->languageID = is_null($this->languageID) ? new IDType() : $this->languageID;
+        $this->languageID ??= new IDType();
 
         return $this->languageID;
     }
@@ -452,7 +452,7 @@ class ExchangedDocumentType
      */
     public function getEffectiveSpecifiedPeriodWithCreate(): SpecifiedPeriodType
     {
-        $this->effectiveSpecifiedPeriod = is_null($this->effectiveSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->effectiveSpecifiedPeriod;
+        $this->effectiveSpecifiedPeriod ??= new SpecifiedPeriodType();
 
         return $this->effectiveSpecifiedPeriod;
     }

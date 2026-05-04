@@ -83,7 +83,7 @@ class TradePaymentDiscountTermsType
      */
     public function getBasisDateTimeWithCreate(): DateTimeType
     {
-        $this->basisDateTime = is_null($this->basisDateTime) ? new DateTimeType() : $this->basisDateTime;
+        $this->basisDateTime ??= new DateTimeType();
 
         return $this->basisDateTime;
     }
@@ -123,7 +123,7 @@ class TradePaymentDiscountTermsType
      */
     public function getBasisPeriodMeasureWithCreate(): MeasureType
     {
-        $this->basisPeriodMeasure = is_null($this->basisPeriodMeasure) ? new MeasureType() : $this->basisPeriodMeasure;
+        $this->basisPeriodMeasure ??= new MeasureType();
 
         return $this->basisPeriodMeasure;
     }
@@ -163,7 +163,7 @@ class TradePaymentDiscountTermsType
      */
     public function getBasisAmountWithCreate(): AmountType
     {
-        $this->basisAmount = is_null($this->basisAmount) ? new AmountType() : $this->basisAmount;
+        $this->basisAmount ??= new AmountType();
 
         return $this->basisAmount;
     }
@@ -203,7 +203,7 @@ class TradePaymentDiscountTermsType
      */
     public function getCalculationPercentWithCreate(): PercentType
     {
-        $this->calculationPercent = is_null($this->calculationPercent) ? new PercentType() : $this->calculationPercent;
+        $this->calculationPercent ??= new PercentType();
 
         return $this->calculationPercent;
     }
@@ -243,7 +243,7 @@ class TradePaymentDiscountTermsType
      */
     public function getActualDiscountAmountWithCreate(): AmountType
     {
-        $this->actualDiscountAmount = is_null($this->actualDiscountAmount) ? new AmountType() : $this->actualDiscountAmount;
+        $this->actualDiscountAmount ??= new AmountType();
 
         return $this->actualDiscountAmount;
     }

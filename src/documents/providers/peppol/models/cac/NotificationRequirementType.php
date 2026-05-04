@@ -96,7 +96,7 @@ class NotificationRequirementType
      */
     public function getNotificationTypeCodeWithCreate(): NotificationTypeCode
     {
-        $this->notificationTypeCode = is_null($this->notificationTypeCode) ? new NotificationTypeCode() : $this->notificationTypeCode;
+        $this->notificationTypeCode ??= new NotificationTypeCode();
 
         return $this->notificationTypeCode;
     }
@@ -136,7 +136,7 @@ class NotificationRequirementType
      */
     public function getPostEventNotificationDurationMeasureWithCreate(): PostEventNotificationDurationMeasure
     {
-        $this->postEventNotificationDurationMeasure = is_null($this->postEventNotificationDurationMeasure) ? new PostEventNotificationDurationMeasure() : $this->postEventNotificationDurationMeasure;
+        $this->postEventNotificationDurationMeasure ??= new PostEventNotificationDurationMeasure();
 
         return $this->postEventNotificationDurationMeasure;
     }
@@ -176,7 +176,7 @@ class NotificationRequirementType
      */
     public function getPreEventNotificationDurationMeasureWithCreate(): PreEventNotificationDurationMeasure
     {
-        $this->preEventNotificationDurationMeasure = is_null($this->preEventNotificationDurationMeasure) ? new PreEventNotificationDurationMeasure() : $this->preEventNotificationDurationMeasure;
+        $this->preEventNotificationDurationMeasure ??= new PreEventNotificationDurationMeasure();
 
         return $this->preEventNotificationDurationMeasure;
     }

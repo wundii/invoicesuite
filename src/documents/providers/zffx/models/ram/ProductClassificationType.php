@@ -48,7 +48,7 @@ class ProductClassificationType
      */
     public function getClassCodeWithCreate(): CodeType
     {
-        $this->classCode = is_null($this->classCode) ? new CodeType() : $this->classCode;
+        $this->classCode ??= new CodeType();
 
         return $this->classCode;
     }
@@ -88,7 +88,7 @@ class ProductClassificationType
      */
     public function getClassNameWithCreate(): TextType
     {
-        $this->className = is_null($this->className) ? new TextType() : $this->className;
+        $this->className ??= new TextType();
 
         return $this->className;
     }

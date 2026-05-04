@@ -214,7 +214,7 @@ class RequestForTenderLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -254,7 +254,7 @@ class RequestForTenderLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -418,7 +418,7 @@ class RequestForTenderLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -458,7 +458,7 @@ class RequestForTenderLineType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }
@@ -498,7 +498,7 @@ class RequestForTenderLineType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -568,7 +568,7 @@ class RequestForTenderLineType
      */
     public function getMinimumAmountWithCreate(): MinimumAmount
     {
-        $this->minimumAmount = is_null($this->minimumAmount) ? new MinimumAmount() : $this->minimumAmount;
+        $this->minimumAmount ??= new MinimumAmount();
 
         return $this->minimumAmount;
     }
@@ -608,7 +608,7 @@ class RequestForTenderLineType
      */
     public function getMaximumAmountWithCreate(): MaximumAmount
     {
-        $this->maximumAmount = is_null($this->maximumAmount) ? new MaximumAmount() : $this->maximumAmount;
+        $this->maximumAmount ??= new MaximumAmount();
 
         return $this->maximumAmount;
     }
@@ -648,7 +648,7 @@ class RequestForTenderLineType
      */
     public function getEstimatedAmountWithCreate(): EstimatedAmount
     {
-        $this->estimatedAmount = is_null($this->estimatedAmount) ? new EstimatedAmount() : $this->estimatedAmount;
+        $this->estimatedAmount ??= new EstimatedAmount();
 
         return $this->estimatedAmount;
     }
@@ -1060,7 +1060,7 @@ class RequestForTenderLineType
      */
     public function getWarrantyValidityPeriodWithCreate(): WarrantyValidityPeriod
     {
-        $this->warrantyValidityPeriod = is_null($this->warrantyValidityPeriod) ? new WarrantyValidityPeriod() : $this->warrantyValidityPeriod;
+        $this->warrantyValidityPeriod ??= new WarrantyValidityPeriod();
 
         return $this->warrantyValidityPeriod;
     }
@@ -1100,7 +1100,7 @@ class RequestForTenderLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

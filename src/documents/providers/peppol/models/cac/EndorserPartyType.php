@@ -70,7 +70,7 @@ class EndorserPartyType
      */
     public function getRoleCodeWithCreate(): RoleCode
     {
-        $this->roleCode = is_null($this->roleCode) ? new RoleCode() : $this->roleCode;
+        $this->roleCode ??= new RoleCode();
 
         return $this->roleCode;
     }
@@ -110,7 +110,7 @@ class EndorserPartyType
      */
     public function getSequenceNumericWithCreate(): SequenceNumeric
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new SequenceNumeric() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new SequenceNumeric();
 
         return $this->sequenceNumeric;
     }
@@ -150,7 +150,7 @@ class EndorserPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }
@@ -190,7 +190,7 @@ class EndorserPartyType
      */
     public function getSignatoryContactWithCreate(): SignatoryContact
     {
-        $this->signatoryContact = is_null($this->signatoryContact) ? new SignatoryContact() : $this->signatoryContact;
+        $this->signatoryContact ??= new SignatoryContact();
 
         return $this->signatoryContact;
     }

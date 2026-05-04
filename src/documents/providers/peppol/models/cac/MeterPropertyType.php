@@ -85,7 +85,7 @@ class MeterPropertyType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -125,7 +125,7 @@ class MeterPropertyType
      */
     public function getNameCodeWithCreate(): NameCode
     {
-        $this->nameCode = is_null($this->nameCode) ? new NameCode() : $this->nameCode;
+        $this->nameCode ??= new NameCode();
 
         return $this->nameCode;
     }
@@ -165,7 +165,7 @@ class MeterPropertyType
      */
     public function getValueWithCreate(): Value
     {
-        $this->value = is_null($this->value) ? new Value() : $this->value;
+        $this->value ??= new Value();
 
         return $this->value;
     }
@@ -205,7 +205,7 @@ class MeterPropertyType
      */
     public function getValueQuantityWithCreate(): ValueQuantity
     {
-        $this->valueQuantity = is_null($this->valueQuantity) ? new ValueQuantity() : $this->valueQuantity;
+        $this->valueQuantity ??= new ValueQuantity();
 
         return $this->valueQuantity;
     }

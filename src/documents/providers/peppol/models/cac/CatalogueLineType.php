@@ -389,7 +389,7 @@ class CatalogueLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -429,7 +429,7 @@ class CatalogueLineType
      */
     public function getActionCodeWithCreate(): ActionCode
     {
-        $this->actionCode = is_null($this->actionCode) ? new ActionCode() : $this->actionCode;
+        $this->actionCode ??= new ActionCode();
 
         return $this->actionCode;
     }
@@ -469,7 +469,7 @@ class CatalogueLineType
      */
     public function getLifeCycleStatusCodeWithCreate(): LifeCycleStatusCode
     {
-        $this->lifeCycleStatusCode = is_null($this->lifeCycleStatusCode) ? new LifeCycleStatusCode() : $this->lifeCycleStatusCode;
+        $this->lifeCycleStatusCode ??= new LifeCycleStatusCode();
 
         return $this->lifeCycleStatusCode;
     }
@@ -509,7 +509,7 @@ class CatalogueLineType
      */
     public function getContractSubdivisionWithCreate(): ContractSubdivision
     {
-        $this->contractSubdivision = is_null($this->contractSubdivision) ? new ContractSubdivision() : $this->contractSubdivision;
+        $this->contractSubdivision ??= new ContractSubdivision();
 
         return $this->contractSubdivision;
     }
@@ -703,7 +703,7 @@ class CatalogueLineType
      */
     public function getOrderableUnitWithCreate(): OrderableUnit
     {
-        $this->orderableUnit = is_null($this->orderableUnit) ? new OrderableUnit() : $this->orderableUnit;
+        $this->orderableUnit ??= new OrderableUnit();
 
         return $this->orderableUnit;
     }
@@ -743,7 +743,7 @@ class CatalogueLineType
      */
     public function getContentUnitQuantityWithCreate(): ContentUnitQuantity
     {
-        $this->contentUnitQuantity = is_null($this->contentUnitQuantity) ? new ContentUnitQuantity() : $this->contentUnitQuantity;
+        $this->contentUnitQuantity ??= new ContentUnitQuantity();
 
         return $this->contentUnitQuantity;
     }
@@ -783,7 +783,7 @@ class CatalogueLineType
      */
     public function getOrderQuantityIncrementNumericWithCreate(): OrderQuantityIncrementNumeric
     {
-        $this->orderQuantityIncrementNumeric = is_null($this->orderQuantityIncrementNumeric) ? new OrderQuantityIncrementNumeric() : $this->orderQuantityIncrementNumeric;
+        $this->orderQuantityIncrementNumeric ??= new OrderQuantityIncrementNumeric();
 
         return $this->orderQuantityIncrementNumeric;
     }
@@ -823,7 +823,7 @@ class CatalogueLineType
      */
     public function getMinimumOrderQuantityWithCreate(): MinimumOrderQuantity
     {
-        $this->minimumOrderQuantity = is_null($this->minimumOrderQuantity) ? new MinimumOrderQuantity() : $this->minimumOrderQuantity;
+        $this->minimumOrderQuantity ??= new MinimumOrderQuantity();
 
         return $this->minimumOrderQuantity;
     }
@@ -863,7 +863,7 @@ class CatalogueLineType
      */
     public function getMaximumOrderQuantityWithCreate(): MaximumOrderQuantity
     {
-        $this->maximumOrderQuantity = is_null($this->maximumOrderQuantity) ? new MaximumOrderQuantity() : $this->maximumOrderQuantity;
+        $this->maximumOrderQuantity ??= new MaximumOrderQuantity();
 
         return $this->maximumOrderQuantity;
     }
@@ -1027,7 +1027,7 @@ class CatalogueLineType
      */
     public function getPackLevelCodeWithCreate(): PackLevelCode
     {
-        $this->packLevelCode = is_null($this->packLevelCode) ? new PackLevelCode() : $this->packLevelCode;
+        $this->packLevelCode ??= new PackLevelCode();
 
         return $this->packLevelCode;
     }
@@ -1067,7 +1067,7 @@ class CatalogueLineType
      */
     public function getContractorCustomerPartyWithCreate(): ContractorCustomerParty
     {
-        $this->contractorCustomerParty = is_null($this->contractorCustomerParty) ? new ContractorCustomerParty() : $this->contractorCustomerParty;
+        $this->contractorCustomerParty ??= new ContractorCustomerParty();
 
         return $this->contractorCustomerParty;
     }
@@ -1107,7 +1107,7 @@ class CatalogueLineType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -1147,7 +1147,7 @@ class CatalogueLineType
      */
     public function getWarrantyPartyWithCreate(): WarrantyParty
     {
-        $this->warrantyParty = is_null($this->warrantyParty) ? new WarrantyParty() : $this->warrantyParty;
+        $this->warrantyParty ??= new WarrantyParty();
 
         return $this->warrantyParty;
     }
@@ -1187,7 +1187,7 @@ class CatalogueLineType
      */
     public function getWarrantyValidityPeriodWithCreate(): WarrantyValidityPeriod
     {
-        $this->warrantyValidityPeriod = is_null($this->warrantyValidityPeriod) ? new WarrantyValidityPeriod() : $this->warrantyValidityPeriod;
+        $this->warrantyValidityPeriod ??= new WarrantyValidityPeriod();
 
         return $this->warrantyValidityPeriod;
     }
@@ -1227,7 +1227,7 @@ class CatalogueLineType
      */
     public function getLineValidityPeriodWithCreate(): LineValidityPeriod
     {
-        $this->lineValidityPeriod = is_null($this->lineValidityPeriod) ? new LineValidityPeriod() : $this->lineValidityPeriod;
+        $this->lineValidityPeriod ??= new LineValidityPeriod();
 
         return $this->lineValidityPeriod;
     }
@@ -2383,7 +2383,7 @@ class CatalogueLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -2547,7 +2547,7 @@ class CatalogueLineType
      */
     public function getCallForTendersLineReferenceWithCreate(): CallForTendersLineReference
     {
-        $this->callForTendersLineReference = is_null($this->callForTendersLineReference) ? new CallForTendersLineReference() : $this->callForTendersLineReference;
+        $this->callForTendersLineReference ??= new CallForTendersLineReference();
 
         return $this->callForTendersLineReference;
     }
@@ -2587,7 +2587,7 @@ class CatalogueLineType
      */
     public function getCallForTendersDocumentReferenceWithCreate(): CallForTendersDocumentReference
     {
-        $this->callForTendersDocumentReference = is_null($this->callForTendersDocumentReference) ? new CallForTendersDocumentReference() : $this->callForTendersDocumentReference;
+        $this->callForTendersDocumentReference ??= new CallForTendersDocumentReference();
 
         return $this->callForTendersDocumentReference;
     }

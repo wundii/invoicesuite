@@ -47,7 +47,7 @@ class PricingReferenceType
      */
     public function getOriginalItemLocationQuantityWithCreate(): OriginalItemLocationQuantity
     {
-        $this->originalItemLocationQuantity = is_null($this->originalItemLocationQuantity) ? new OriginalItemLocationQuantity() : $this->originalItemLocationQuantity;
+        $this->originalItemLocationQuantity ??= new OriginalItemLocationQuantity();
 
         return $this->originalItemLocationQuantity;
     }

@@ -209,7 +209,7 @@ class EconomicOperatorShortListType
      */
     public function getExpectedQuantityWithCreate(): ExpectedQuantity
     {
-        $this->expectedQuantity = is_null($this->expectedQuantity) ? new ExpectedQuantity() : $this->expectedQuantity;
+        $this->expectedQuantity ??= new ExpectedQuantity();
 
         return $this->expectedQuantity;
     }
@@ -249,7 +249,7 @@ class EconomicOperatorShortListType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -289,7 +289,7 @@ class EconomicOperatorShortListType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }

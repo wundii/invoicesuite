@@ -142,7 +142,7 @@ class OrderLineType
      */
     public function getSubstitutionStatusCodeWithCreate(): SubstitutionStatusCode
     {
-        $this->substitutionStatusCode = is_null($this->substitutionStatusCode) ? new SubstitutionStatusCode() : $this->substitutionStatusCode;
+        $this->substitutionStatusCode ??= new SubstitutionStatusCode();
 
         return $this->substitutionStatusCode;
     }
@@ -306,7 +306,7 @@ class OrderLineType
      */
     public function getLineItemWithCreate(): LineItem
     {
-        $this->lineItem = is_null($this->lineItem) ? new LineItem() : $this->lineItem;
+        $this->lineItem ??= new LineItem();
 
         return $this->lineItem;
     }
@@ -718,7 +718,7 @@ class OrderLineType
      */
     public function getCatalogueLineReferenceWithCreate(): CatalogueLineReference
     {
-        $this->catalogueLineReference = is_null($this->catalogueLineReference) ? new CatalogueLineReference() : $this->catalogueLineReference;
+        $this->catalogueLineReference ??= new CatalogueLineReference();
 
         return $this->catalogueLineReference;
     }
@@ -758,7 +758,7 @@ class OrderLineType
      */
     public function getQuotationLineReferenceWithCreate(): QuotationLineReference
     {
-        $this->quotationLineReference = is_null($this->quotationLineReference) ? new QuotationLineReference() : $this->quotationLineReference;
+        $this->quotationLineReference ??= new QuotationLineReference();
 
         return $this->quotationLineReference;
     }

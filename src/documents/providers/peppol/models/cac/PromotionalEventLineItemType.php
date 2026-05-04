@@ -47,7 +47,7 @@ class PromotionalEventLineItemType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -87,7 +87,7 @@ class PromotionalEventLineItemType
      */
     public function getEventLineItemWithCreate(): EventLineItem
     {
-        $this->eventLineItem = is_null($this->eventLineItem) ? new EventLineItem() : $this->eventLineItem;
+        $this->eventLineItem ??= new EventLineItem();
 
         return $this->eventLineItem;
     }

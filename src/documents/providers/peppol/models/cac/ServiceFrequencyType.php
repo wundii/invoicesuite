@@ -36,7 +36,7 @@ class ServiceFrequencyType
      */
     public function getWeekDayCodeWithCreate(): WeekDayCode
     {
-        $this->weekDayCode = is_null($this->weekDayCode) ? new WeekDayCode() : $this->weekDayCode;
+        $this->weekDayCode ??= new WeekDayCode();
 
         return $this->weekDayCode;
     }

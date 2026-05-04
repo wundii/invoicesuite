@@ -143,7 +143,7 @@ class TaxSubtotalType
      */
     public function getTaxableAmountWithCreate(): TaxableAmount
     {
-        $this->taxableAmount = is_null($this->taxableAmount) ? new TaxableAmount() : $this->taxableAmount;
+        $this->taxableAmount ??= new TaxableAmount();
 
         return $this->taxableAmount;
     }
@@ -183,7 +183,7 @@ class TaxSubtotalType
      */
     public function getTaxAmountWithCreate(): TaxAmount
     {
-        $this->taxAmount = is_null($this->taxAmount) ? new TaxAmount() : $this->taxAmount;
+        $this->taxAmount ??= new TaxAmount();
 
         return $this->taxAmount;
     }
@@ -223,7 +223,7 @@ class TaxSubtotalType
      */
     public function getCalculationSequenceNumericWithCreate(): CalculationSequenceNumeric
     {
-        $this->calculationSequenceNumeric = is_null($this->calculationSequenceNumeric) ? new CalculationSequenceNumeric() : $this->calculationSequenceNumeric;
+        $this->calculationSequenceNumeric ??= new CalculationSequenceNumeric();
 
         return $this->calculationSequenceNumeric;
     }
@@ -263,7 +263,7 @@ class TaxSubtotalType
      */
     public function getTransactionCurrencyTaxAmountWithCreate(): TransactionCurrencyTaxAmount
     {
-        $this->transactionCurrencyTaxAmount = is_null($this->transactionCurrencyTaxAmount) ? new TransactionCurrencyTaxAmount() : $this->transactionCurrencyTaxAmount;
+        $this->transactionCurrencyTaxAmount ??= new TransactionCurrencyTaxAmount();
 
         return $this->transactionCurrencyTaxAmount;
     }
@@ -303,7 +303,7 @@ class TaxSubtotalType
      */
     public function getPercentWithCreate(): Percent
     {
-        $this->percent = is_null($this->percent) ? new Percent() : $this->percent;
+        $this->percent ??= new Percent();
 
         return $this->percent;
     }
@@ -343,7 +343,7 @@ class TaxSubtotalType
      */
     public function getBaseUnitMeasureWithCreate(): BaseUnitMeasure
     {
-        $this->baseUnitMeasure = is_null($this->baseUnitMeasure) ? new BaseUnitMeasure() : $this->baseUnitMeasure;
+        $this->baseUnitMeasure ??= new BaseUnitMeasure();
 
         return $this->baseUnitMeasure;
     }
@@ -383,7 +383,7 @@ class TaxSubtotalType
      */
     public function getPerUnitAmountWithCreate(): PerUnitAmount
     {
-        $this->perUnitAmount = is_null($this->perUnitAmount) ? new PerUnitAmount() : $this->perUnitAmount;
+        $this->perUnitAmount ??= new PerUnitAmount();
 
         return $this->perUnitAmount;
     }
@@ -423,7 +423,7 @@ class TaxSubtotalType
      */
     public function getTierRangeWithCreate(): TierRange
     {
-        $this->tierRange = is_null($this->tierRange) ? new TierRange() : $this->tierRange;
+        $this->tierRange ??= new TierRange();
 
         return $this->tierRange;
     }
@@ -463,7 +463,7 @@ class TaxSubtotalType
      */
     public function getTierRatePercentWithCreate(): TierRatePercent
     {
-        $this->tierRatePercent = is_null($this->tierRatePercent) ? new TierRatePercent() : $this->tierRatePercent;
+        $this->tierRatePercent ??= new TierRatePercent();
 
         return $this->tierRatePercent;
     }
@@ -503,7 +503,7 @@ class TaxSubtotalType
      */
     public function getTaxCategoryWithCreate(): TaxCategory
     {
-        $this->taxCategory = is_null($this->taxCategory) ? new TaxCategory() : $this->taxCategory;
+        $this->taxCategory ??= new TaxCategory();
 
         return $this->taxCategory;
     }

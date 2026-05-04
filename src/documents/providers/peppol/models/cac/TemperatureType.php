@@ -61,7 +61,7 @@ class TemperatureType
      */
     public function getAttributeIDWithCreate(): AttributeID
     {
-        $this->attributeID = is_null($this->attributeID) ? new AttributeID() : $this->attributeID;
+        $this->attributeID ??= new AttributeID();
 
         return $this->attributeID;
     }
@@ -101,7 +101,7 @@ class TemperatureType
      */
     public function getMeasureWithCreate(): Measure
     {
-        $this->measure = is_null($this->measure) ? new Measure() : $this->measure;
+        $this->measure ??= new Measure();
 
         return $this->measure;
     }

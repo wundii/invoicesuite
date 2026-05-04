@@ -144,7 +144,7 @@ class TaxCategoryType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -184,7 +184,7 @@ class TaxCategoryType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -224,7 +224,7 @@ class TaxCategoryType
      */
     public function getPercentWithCreate(): Percent
     {
-        $this->percent = is_null($this->percent) ? new Percent() : $this->percent;
+        $this->percent ??= new Percent();
 
         return $this->percent;
     }
@@ -264,7 +264,7 @@ class TaxCategoryType
      */
     public function getBaseUnitMeasureWithCreate(): BaseUnitMeasure
     {
-        $this->baseUnitMeasure = is_null($this->baseUnitMeasure) ? new BaseUnitMeasure() : $this->baseUnitMeasure;
+        $this->baseUnitMeasure ??= new BaseUnitMeasure();
 
         return $this->baseUnitMeasure;
     }
@@ -304,7 +304,7 @@ class TaxCategoryType
      */
     public function getPerUnitAmountWithCreate(): PerUnitAmount
     {
-        $this->perUnitAmount = is_null($this->perUnitAmount) ? new PerUnitAmount() : $this->perUnitAmount;
+        $this->perUnitAmount ??= new PerUnitAmount();
 
         return $this->perUnitAmount;
     }
@@ -344,7 +344,7 @@ class TaxCategoryType
      */
     public function getTaxExemptionReasonCodeWithCreate(): TaxExemptionReasonCode
     {
-        $this->taxExemptionReasonCode = is_null($this->taxExemptionReasonCode) ? new TaxExemptionReasonCode() : $this->taxExemptionReasonCode;
+        $this->taxExemptionReasonCode ??= new TaxExemptionReasonCode();
 
         return $this->taxExemptionReasonCode;
     }
@@ -508,7 +508,7 @@ class TaxCategoryType
      */
     public function getTierRangeWithCreate(): TierRange
     {
-        $this->tierRange = is_null($this->tierRange) ? new TierRange() : $this->tierRange;
+        $this->tierRange ??= new TierRange();
 
         return $this->tierRange;
     }
@@ -548,7 +548,7 @@ class TaxCategoryType
      */
     public function getTierRatePercentWithCreate(): TierRatePercent
     {
-        $this->tierRatePercent = is_null($this->tierRatePercent) ? new TierRatePercent() : $this->tierRatePercent;
+        $this->tierRatePercent ??= new TierRatePercent();
 
         return $this->tierRatePercent;
     }
@@ -588,7 +588,7 @@ class TaxCategoryType
      */
     public function getTaxSchemeWithCreate(): TaxScheme
     {
-        $this->taxScheme = is_null($this->taxScheme) ? new TaxScheme() : $this->taxScheme;
+        $this->taxScheme ??= new TaxScheme();
 
         return $this->taxScheme;
     }

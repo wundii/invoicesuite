@@ -817,7 +817,7 @@ class InvoiceType
      */
     public function getUBLVersionIDWithCreate(): UBLVersionID
     {
-        $this->uBLVersionID = is_null($this->uBLVersionID) ? new UBLVersionID() : $this->uBLVersionID;
+        $this->uBLVersionID ??= new UBLVersionID();
 
         return $this->uBLVersionID;
     }
@@ -857,7 +857,7 @@ class InvoiceType
      */
     public function getCustomizationIDWithCreate(): CustomizationID
     {
-        $this->customizationID = is_null($this->customizationID) ? new CustomizationID() : $this->customizationID;
+        $this->customizationID ??= new CustomizationID();
 
         return $this->customizationID;
     }
@@ -897,7 +897,7 @@ class InvoiceType
      */
     public function getProfileIDWithCreate(): ProfileID
     {
-        $this->profileID = is_null($this->profileID) ? new ProfileID() : $this->profileID;
+        $this->profileID ??= new ProfileID();
 
         return $this->profileID;
     }
@@ -937,7 +937,7 @@ class InvoiceType
      */
     public function getProfileExecutionIDWithCreate(): ProfileExecutionID
     {
-        $this->profileExecutionID = is_null($this->profileExecutionID) ? new ProfileExecutionID() : $this->profileExecutionID;
+        $this->profileExecutionID ??= new ProfileExecutionID();
 
         return $this->profileExecutionID;
     }
@@ -977,7 +977,7 @@ class InvoiceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -1047,7 +1047,7 @@ class InvoiceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -1177,7 +1177,7 @@ class InvoiceType
      */
     public function getInvoiceTypeCodeWithCreate(): InvoiceTypeCode
     {
-        $this->invoiceTypeCode = is_null($this->invoiceTypeCode) ? new InvoiceTypeCode() : $this->invoiceTypeCode;
+        $this->invoiceTypeCode ??= new InvoiceTypeCode();
 
         return $this->invoiceTypeCode;
     }
@@ -1371,7 +1371,7 @@ class InvoiceType
      */
     public function getDocumentCurrencyCodeWithCreate(): DocumentCurrencyCode
     {
-        $this->documentCurrencyCode = is_null($this->documentCurrencyCode) ? new DocumentCurrencyCode() : $this->documentCurrencyCode;
+        $this->documentCurrencyCode ??= new DocumentCurrencyCode();
 
         return $this->documentCurrencyCode;
     }
@@ -1411,7 +1411,7 @@ class InvoiceType
      */
     public function getTaxCurrencyCodeWithCreate(): TaxCurrencyCode
     {
-        $this->taxCurrencyCode = is_null($this->taxCurrencyCode) ? new TaxCurrencyCode() : $this->taxCurrencyCode;
+        $this->taxCurrencyCode ??= new TaxCurrencyCode();
 
         return $this->taxCurrencyCode;
     }
@@ -1451,7 +1451,7 @@ class InvoiceType
      */
     public function getPricingCurrencyCodeWithCreate(): PricingCurrencyCode
     {
-        $this->pricingCurrencyCode = is_null($this->pricingCurrencyCode) ? new PricingCurrencyCode() : $this->pricingCurrencyCode;
+        $this->pricingCurrencyCode ??= new PricingCurrencyCode();
 
         return $this->pricingCurrencyCode;
     }
@@ -1491,7 +1491,7 @@ class InvoiceType
      */
     public function getPaymentCurrencyCodeWithCreate(): PaymentCurrencyCode
     {
-        $this->paymentCurrencyCode = is_null($this->paymentCurrencyCode) ? new PaymentCurrencyCode() : $this->paymentCurrencyCode;
+        $this->paymentCurrencyCode ??= new PaymentCurrencyCode();
 
         return $this->paymentCurrencyCode;
     }
@@ -1531,7 +1531,7 @@ class InvoiceType
      */
     public function getPaymentAlternativeCurrencyCodeWithCreate(): PaymentAlternativeCurrencyCode
     {
-        $this->paymentAlternativeCurrencyCode = is_null($this->paymentAlternativeCurrencyCode) ? new PaymentAlternativeCurrencyCode() : $this->paymentAlternativeCurrencyCode;
+        $this->paymentAlternativeCurrencyCode ??= new PaymentAlternativeCurrencyCode();
 
         return $this->paymentAlternativeCurrencyCode;
     }
@@ -1571,7 +1571,7 @@ class InvoiceType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -1611,7 +1611,7 @@ class InvoiceType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -1651,7 +1651,7 @@ class InvoiceType
      */
     public function getLineCountNumericWithCreate(): LineCountNumeric
     {
-        $this->lineCountNumeric = is_null($this->lineCountNumeric) ? new LineCountNumeric() : $this->lineCountNumeric;
+        $this->lineCountNumeric ??= new LineCountNumeric();
 
         return $this->lineCountNumeric;
     }
@@ -1691,7 +1691,7 @@ class InvoiceType
      */
     public function getBuyerReferenceWithCreate(): BuyerReference
     {
-        $this->buyerReference = is_null($this->buyerReference) ? new BuyerReference() : $this->buyerReference;
+        $this->buyerReference ??= new BuyerReference();
 
         return $this->buyerReference;
     }
@@ -1855,7 +1855,7 @@ class InvoiceType
      */
     public function getOrderReferenceWithCreate(): OrderReference
     {
-        $this->orderReference = is_null($this->orderReference) ? new OrderReference() : $this->orderReference;
+        $this->orderReference ??= new OrderReference();
 
         return $this->orderReference;
     }
@@ -3011,7 +3011,7 @@ class InvoiceType
      */
     public function getAccountingSupplierPartyWithCreate(): AccountingSupplierParty
     {
-        $this->accountingSupplierParty = is_null($this->accountingSupplierParty) ? new AccountingSupplierParty() : $this->accountingSupplierParty;
+        $this->accountingSupplierParty ??= new AccountingSupplierParty();
 
         return $this->accountingSupplierParty;
     }
@@ -3051,7 +3051,7 @@ class InvoiceType
      */
     public function getAccountingCustomerPartyWithCreate(): AccountingCustomerParty
     {
-        $this->accountingCustomerParty = is_null($this->accountingCustomerParty) ? new AccountingCustomerParty() : $this->accountingCustomerParty;
+        $this->accountingCustomerParty ??= new AccountingCustomerParty();
 
         return $this->accountingCustomerParty;
     }
@@ -3091,7 +3091,7 @@ class InvoiceType
      */
     public function getPayeePartyWithCreate(): PayeeParty
     {
-        $this->payeeParty = is_null($this->payeeParty) ? new PayeeParty() : $this->payeeParty;
+        $this->payeeParty ??= new PayeeParty();
 
         return $this->payeeParty;
     }
@@ -3131,7 +3131,7 @@ class InvoiceType
      */
     public function getBuyerCustomerPartyWithCreate(): BuyerCustomerParty
     {
-        $this->buyerCustomerParty = is_null($this->buyerCustomerParty) ? new BuyerCustomerParty() : $this->buyerCustomerParty;
+        $this->buyerCustomerParty ??= new BuyerCustomerParty();
 
         return $this->buyerCustomerParty;
     }
@@ -3171,7 +3171,7 @@ class InvoiceType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }
@@ -3211,7 +3211,7 @@ class InvoiceType
      */
     public function getTaxRepresentativePartyWithCreate(): TaxRepresentativeParty
     {
-        $this->taxRepresentativeParty = is_null($this->taxRepresentativeParty) ? new TaxRepresentativeParty() : $this->taxRepresentativeParty;
+        $this->taxRepresentativeParty ??= new TaxRepresentativeParty();
 
         return $this->taxRepresentativeParty;
     }
@@ -3375,7 +3375,7 @@ class InvoiceType
      */
     public function getDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->deliveryTerms = is_null($this->deliveryTerms) ? new DeliveryTerms() : $this->deliveryTerms;
+        $this->deliveryTerms ??= new DeliveryTerms();
 
         return $this->deliveryTerms;
     }
@@ -3911,7 +3911,7 @@ class InvoiceType
      */
     public function getTaxExchangeRateWithCreate(): TaxExchangeRate
     {
-        $this->taxExchangeRate = is_null($this->taxExchangeRate) ? new TaxExchangeRate() : $this->taxExchangeRate;
+        $this->taxExchangeRate ??= new TaxExchangeRate();
 
         return $this->taxExchangeRate;
     }
@@ -3951,7 +3951,7 @@ class InvoiceType
      */
     public function getPricingExchangeRateWithCreate(): PricingExchangeRate
     {
-        $this->pricingExchangeRate = is_null($this->pricingExchangeRate) ? new PricingExchangeRate() : $this->pricingExchangeRate;
+        $this->pricingExchangeRate ??= new PricingExchangeRate();
 
         return $this->pricingExchangeRate;
     }
@@ -3991,7 +3991,7 @@ class InvoiceType
      */
     public function getPaymentExchangeRateWithCreate(): PaymentExchangeRate
     {
-        $this->paymentExchangeRate = is_null($this->paymentExchangeRate) ? new PaymentExchangeRate() : $this->paymentExchangeRate;
+        $this->paymentExchangeRate ??= new PaymentExchangeRate();
 
         return $this->paymentExchangeRate;
     }
@@ -4031,7 +4031,7 @@ class InvoiceType
      */
     public function getPaymentAlternativeExchangeRateWithCreate(): PaymentAlternativeExchangeRate
     {
-        $this->paymentAlternativeExchangeRate = is_null($this->paymentAlternativeExchangeRate) ? new PaymentAlternativeExchangeRate() : $this->paymentAlternativeExchangeRate;
+        $this->paymentAlternativeExchangeRate ??= new PaymentAlternativeExchangeRate();
 
         return $this->paymentAlternativeExchangeRate;
     }
@@ -4375,7 +4375,7 @@ class InvoiceType
      */
     public function getLegalMonetaryTotalWithCreate(): LegalMonetaryTotal
     {
-        $this->legalMonetaryTotal = is_null($this->legalMonetaryTotal) ? new LegalMonetaryTotal() : $this->legalMonetaryTotal;
+        $this->legalMonetaryTotal ??= new LegalMonetaryTotal();
 
         return $this->legalMonetaryTotal;
     }

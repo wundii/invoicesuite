@@ -72,7 +72,7 @@ class CommodityClassificationType
      */
     public function getNatureCodeWithCreate(): NatureCode
     {
-        $this->natureCode = is_null($this->natureCode) ? new NatureCode() : $this->natureCode;
+        $this->natureCode ??= new NatureCode();
 
         return $this->natureCode;
     }
@@ -112,7 +112,7 @@ class CommodityClassificationType
      */
     public function getCargoTypeCodeWithCreate(): CargoTypeCode
     {
-        $this->cargoTypeCode = is_null($this->cargoTypeCode) ? new CargoTypeCode() : $this->cargoTypeCode;
+        $this->cargoTypeCode ??= new CargoTypeCode();
 
         return $this->cargoTypeCode;
     }
@@ -152,7 +152,7 @@ class CommodityClassificationType
      */
     public function getCommodityCodeWithCreate(): CommodityCode
     {
-        $this->commodityCode = is_null($this->commodityCode) ? new CommodityCode() : $this->commodityCode;
+        $this->commodityCode ??= new CommodityCode();
 
         return $this->commodityCode;
     }
@@ -192,7 +192,7 @@ class CommodityClassificationType
      */
     public function getItemClassificationCodeWithCreate(): ItemClassificationCode
     {
-        $this->itemClassificationCode = is_null($this->itemClassificationCode) ? new ItemClassificationCode() : $this->itemClassificationCode;
+        $this->itemClassificationCode ??= new ItemClassificationCode();
 
         return $this->itemClassificationCode;
     }

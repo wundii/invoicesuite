@@ -131,7 +131,7 @@ class FatturaElettronicaType
      */
     public function getFatturaElettronicaHeaderWithCreate(): FatturaElettronicaHeader
     {
-        $this->fatturaElettronicaHeader = is_null($this->fatturaElettronicaHeader) ? new FatturaElettronicaHeader() : $this->fatturaElettronicaHeader;
+        $this->fatturaElettronicaHeader ??= new FatturaElettronicaHeader();
 
         return $this->fatturaElettronicaHeader;
     }
@@ -342,7 +342,7 @@ class FatturaElettronicaType
      */
     public function getSignatureWithCreate(): Signature
     {
-        $this->signature = is_null($this->signature) ? new Signature() : $this->signature;
+        $this->signature ??= new Signature();
 
         return $this->signature;
     }

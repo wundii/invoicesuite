@@ -83,7 +83,7 @@ class ServiceProviderPartyType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -123,7 +123,7 @@ class ServiceProviderPartyType
      */
     public function getServiceTypeCodeWithCreate(): ServiceTypeCode
     {
-        $this->serviceTypeCode = is_null($this->serviceTypeCode) ? new ServiceTypeCode() : $this->serviceTypeCode;
+        $this->serviceTypeCode ??= new ServiceTypeCode();
 
         return $this->serviceTypeCode;
     }
@@ -287,7 +287,7 @@ class ServiceProviderPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }
@@ -327,7 +327,7 @@ class ServiceProviderPartyType
      */
     public function getSellerContactWithCreate(): SellerContact
     {
-        $this->sellerContact = is_null($this->sellerContact) ? new SellerContact() : $this->sellerContact;
+        $this->sellerContact ??= new SellerContact();
 
         return $this->sellerContact;
     }

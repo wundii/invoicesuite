@@ -47,7 +47,7 @@ class OrderedShipmentType
      */
     public function getShipmentWithCreate(): Shipment
     {
-        $this->shipment = is_null($this->shipment) ? new Shipment() : $this->shipment;
+        $this->shipment ??= new Shipment();
 
         return $this->shipment;
     }

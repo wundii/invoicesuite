@@ -84,7 +84,7 @@ class SignedInfoType
      */
     public function getCanonicalizationMethodWithCreate(): CanonicalizationMethodType
     {
-        $this->canonicalizationMethod = is_null($this->canonicalizationMethod) ? new CanonicalizationMethodType() : $this->canonicalizationMethod;
+        $this->canonicalizationMethod ??= new CanonicalizationMethodType();
 
         return $this->canonicalizationMethod;
     }
@@ -132,7 +132,7 @@ class SignedInfoType
      */
     public function getSignatureMethodWithCreate(): SignatureMethodType
     {
-        $this->signatureMethod = is_null($this->signatureMethod) ? new SignatureMethodType() : $this->signatureMethod;
+        $this->signatureMethod ??= new SignatureMethodType();
 
         return $this->signatureMethod;
     }

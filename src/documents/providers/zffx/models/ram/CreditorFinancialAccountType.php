@@ -59,7 +59,7 @@ class CreditorFinancialAccountType
      */
     public function getIBANIDWithCreate(): IDType
     {
-        $this->iBANID = is_null($this->iBANID) ? new IDType() : $this->iBANID;
+        $this->iBANID ??= new IDType();
 
         return $this->iBANID;
     }
@@ -99,7 +99,7 @@ class CreditorFinancialAccountType
      */
     public function getAccountNameWithCreate(): TextType
     {
-        $this->accountName = is_null($this->accountName) ? new TextType() : $this->accountName;
+        $this->accountName ??= new TextType();
 
         return $this->accountName;
     }
@@ -139,7 +139,7 @@ class CreditorFinancialAccountType
      */
     public function getProprietaryIDWithCreate(): IDType
     {
-        $this->proprietaryID = is_null($this->proprietaryID) ? new IDType() : $this->proprietaryID;
+        $this->proprietaryID ??= new IDType();
 
         return $this->proprietaryID;
     }

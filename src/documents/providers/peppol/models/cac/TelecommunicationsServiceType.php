@@ -273,7 +273,7 @@ class TelecommunicationsServiceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -373,7 +373,7 @@ class TelecommunicationsServiceType
      */
     public function getServiceNumberCalledWithCreate(): ServiceNumberCalled
     {
-        $this->serviceNumberCalled = is_null($this->serviceNumberCalled) ? new ServiceNumberCalled() : $this->serviceNumberCalled;
+        $this->serviceNumberCalled ??= new ServiceNumberCalled();
 
         return $this->serviceNumberCalled;
     }
@@ -413,7 +413,7 @@ class TelecommunicationsServiceType
      */
     public function getTelecommunicationsServiceCategoryWithCreate(): TelecommunicationsServiceCategory
     {
-        $this->telecommunicationsServiceCategory = is_null($this->telecommunicationsServiceCategory) ? new TelecommunicationsServiceCategory() : $this->telecommunicationsServiceCategory;
+        $this->telecommunicationsServiceCategory ??= new TelecommunicationsServiceCategory();
 
         return $this->telecommunicationsServiceCategory;
     }
@@ -453,7 +453,7 @@ class TelecommunicationsServiceType
      */
     public function getTelecommunicationsServiceCategoryCodeWithCreate(): TelecommunicationsServiceCategoryCode
     {
-        $this->telecommunicationsServiceCategoryCode = is_null($this->telecommunicationsServiceCategoryCode) ? new TelecommunicationsServiceCategoryCode() : $this->telecommunicationsServiceCategoryCode;
+        $this->telecommunicationsServiceCategoryCode ??= new TelecommunicationsServiceCategoryCode();
 
         return $this->telecommunicationsServiceCategoryCode;
     }
@@ -493,7 +493,7 @@ class TelecommunicationsServiceType
      */
     public function getMovieTitleWithCreate(): MovieTitle
     {
-        $this->movieTitle = is_null($this->movieTitle) ? new MovieTitle() : $this->movieTitle;
+        $this->movieTitle ??= new MovieTitle();
 
         return $this->movieTitle;
     }
@@ -533,7 +533,7 @@ class TelecommunicationsServiceType
      */
     public function getRoamingPartnerNameWithCreate(): RoamingPartnerName
     {
-        $this->roamingPartnerName = is_null($this->roamingPartnerName) ? new RoamingPartnerName() : $this->roamingPartnerName;
+        $this->roamingPartnerName ??= new RoamingPartnerName();
 
         return $this->roamingPartnerName;
     }
@@ -573,7 +573,7 @@ class TelecommunicationsServiceType
      */
     public function getPayPerViewWithCreate(): PayPerView
     {
-        $this->payPerView = is_null($this->payPerView) ? new PayPerView() : $this->payPerView;
+        $this->payPerView ??= new PayPerView();
 
         return $this->payPerView;
     }
@@ -613,7 +613,7 @@ class TelecommunicationsServiceType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -653,7 +653,7 @@ class TelecommunicationsServiceType
      */
     public function getTelecommunicationsServiceCallWithCreate(): TelecommunicationsServiceCall
     {
-        $this->telecommunicationsServiceCall = is_null($this->telecommunicationsServiceCall) ? new TelecommunicationsServiceCall() : $this->telecommunicationsServiceCall;
+        $this->telecommunicationsServiceCall ??= new TelecommunicationsServiceCall();
 
         return $this->telecommunicationsServiceCall;
     }
@@ -693,7 +693,7 @@ class TelecommunicationsServiceType
      */
     public function getTelecommunicationsServiceCallCodeWithCreate(): TelecommunicationsServiceCallCode
     {
-        $this->telecommunicationsServiceCallCode = is_null($this->telecommunicationsServiceCallCode) ? new TelecommunicationsServiceCallCode() : $this->telecommunicationsServiceCallCode;
+        $this->telecommunicationsServiceCallCode ??= new TelecommunicationsServiceCallCode();
 
         return $this->telecommunicationsServiceCallCode;
     }
@@ -733,7 +733,7 @@ class TelecommunicationsServiceType
      */
     public function getCallBaseAmountWithCreate(): CallBaseAmount
     {
-        $this->callBaseAmount = is_null($this->callBaseAmount) ? new CallBaseAmount() : $this->callBaseAmount;
+        $this->callBaseAmount ??= new CallBaseAmount();
 
         return $this->callBaseAmount;
     }
@@ -773,7 +773,7 @@ class TelecommunicationsServiceType
      */
     public function getCallExtensionAmountWithCreate(): CallExtensionAmount
     {
-        $this->callExtensionAmount = is_null($this->callExtensionAmount) ? new CallExtensionAmount() : $this->callExtensionAmount;
+        $this->callExtensionAmount ??= new CallExtensionAmount();
 
         return $this->callExtensionAmount;
     }
@@ -813,7 +813,7 @@ class TelecommunicationsServiceType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -853,7 +853,7 @@ class TelecommunicationsServiceType
      */
     public function getCountryWithCreate(): Country
     {
-        $this->country = is_null($this->country) ? new Country() : $this->country;
+        $this->country ??= new Country();
 
         return $this->country;
     }

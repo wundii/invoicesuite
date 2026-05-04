@@ -227,7 +227,7 @@ class PeriodType
      */
     public function getDurationMeasureWithCreate(): DurationMeasure
     {
-        $this->durationMeasure = is_null($this->durationMeasure) ? new DurationMeasure() : $this->durationMeasure;
+        $this->durationMeasure ??= new DurationMeasure();
 
         return $this->durationMeasure;
     }

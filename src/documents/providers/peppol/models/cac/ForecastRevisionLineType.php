@@ -131,7 +131,7 @@ class ForecastRevisionLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -419,7 +419,7 @@ class ForecastRevisionLineType
      */
     public function getRevisedForecastLineIDWithCreate(): RevisedForecastLineID
     {
-        $this->revisedForecastLineID = is_null($this->revisedForecastLineID) ? new RevisedForecastLineID() : $this->revisedForecastLineID;
+        $this->revisedForecastLineID ??= new RevisedForecastLineID();
 
         return $this->revisedForecastLineID;
     }
@@ -519,7 +519,7 @@ class ForecastRevisionLineType
      */
     public function getAdjustmentReasonCodeWithCreate(): AdjustmentReasonCode
     {
-        $this->adjustmentReasonCode = is_null($this->adjustmentReasonCode) ? new AdjustmentReasonCode() : $this->adjustmentReasonCode;
+        $this->adjustmentReasonCode ??= new AdjustmentReasonCode();
 
         return $this->adjustmentReasonCode;
     }
@@ -559,7 +559,7 @@ class ForecastRevisionLineType
      */
     public function getForecastPeriodWithCreate(): ForecastPeriod
     {
-        $this->forecastPeriod = is_null($this->forecastPeriod) ? new ForecastPeriod() : $this->forecastPeriod;
+        $this->forecastPeriod ??= new ForecastPeriod();
 
         return $this->forecastPeriod;
     }
@@ -599,7 +599,7 @@ class ForecastRevisionLineType
      */
     public function getSalesItemWithCreate(): SalesItem
     {
-        $this->salesItem = is_null($this->salesItem) ? new SalesItem() : $this->salesItem;
+        $this->salesItem ??= new SalesItem();
 
         return $this->salesItem;
     }

@@ -67,7 +67,6 @@ class InvoiceSuiteConsoleCommandTestCase extends TestCase
      */
     protected function decodeJsonOutput(string $jsonOutput): array
     {
-        /** @var array<string,mixed> $decodedOutput */
         return json_decode(trim($jsonOutput), true, 512, JSON_THROW_ON_ERROR);
     }
 }

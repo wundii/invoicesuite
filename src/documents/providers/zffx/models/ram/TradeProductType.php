@@ -207,7 +207,7 @@ class TradeProductType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -247,7 +247,7 @@ class TradeProductType
      */
     public function getGlobalIDWithCreate(): IDType
     {
-        $this->globalID = is_null($this->globalID) ? new IDType() : $this->globalID;
+        $this->globalID ??= new IDType();
 
         return $this->globalID;
     }
@@ -287,7 +287,7 @@ class TradeProductType
      */
     public function getSellerAssignedIDWithCreate(): IDType
     {
-        $this->sellerAssignedID = is_null($this->sellerAssignedID) ? new IDType() : $this->sellerAssignedID;
+        $this->sellerAssignedID ??= new IDType();
 
         return $this->sellerAssignedID;
     }
@@ -327,7 +327,7 @@ class TradeProductType
      */
     public function getBuyerAssignedIDWithCreate(): IDType
     {
-        $this->buyerAssignedID = is_null($this->buyerAssignedID) ? new IDType() : $this->buyerAssignedID;
+        $this->buyerAssignedID ??= new IDType();
 
         return $this->buyerAssignedID;
     }
@@ -367,7 +367,7 @@ class TradeProductType
      */
     public function getIndustryAssignedIDWithCreate(): IDType
     {
-        $this->industryAssignedID = is_null($this->industryAssignedID) ? new IDType() : $this->industryAssignedID;
+        $this->industryAssignedID ??= new IDType();
 
         return $this->industryAssignedID;
     }
@@ -407,7 +407,7 @@ class TradeProductType
      */
     public function getModelIDWithCreate(): IDType
     {
-        $this->modelID = is_null($this->modelID) ? new IDType() : $this->modelID;
+        $this->modelID ??= new IDType();
 
         return $this->modelID;
     }
@@ -447,7 +447,7 @@ class TradeProductType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }
@@ -487,7 +487,7 @@ class TradeProductType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -621,7 +621,7 @@ class TradeProductType
      */
     public function getBrandNameWithCreate(): TextType
     {
-        $this->brandName = is_null($this->brandName) ? new TextType() : $this->brandName;
+        $this->brandName ??= new TextType();
 
         return $this->brandName;
     }
@@ -661,7 +661,7 @@ class TradeProductType
      */
     public function getModelNameWithCreate(): TextType
     {
-        $this->modelName = is_null($this->modelName) ? new TextType() : $this->modelName;
+        $this->modelName ??= new TextType();
 
         return $this->modelName;
     }
@@ -983,7 +983,7 @@ class TradeProductType
      */
     public function getOriginTradeCountryWithCreate(): TradeCountryType
     {
-        $this->originTradeCountry = is_null($this->originTradeCountry) ? new TradeCountryType() : $this->originTradeCountry;
+        $this->originTradeCountry ??= new TradeCountryType();
 
         return $this->originTradeCountry;
     }

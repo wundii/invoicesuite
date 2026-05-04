@@ -191,7 +191,7 @@ class ReminderLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -355,7 +355,7 @@ class ReminderLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -425,7 +425,7 @@ class ReminderLineType
      */
     public function getDebitLineAmountWithCreate(): DebitLineAmount
     {
-        $this->debitLineAmount = is_null($this->debitLineAmount) ? new DebitLineAmount() : $this->debitLineAmount;
+        $this->debitLineAmount ??= new DebitLineAmount();
 
         return $this->debitLineAmount;
     }
@@ -465,7 +465,7 @@ class ReminderLineType
      */
     public function getCreditLineAmountWithCreate(): CreditLineAmount
     {
-        $this->creditLineAmount = is_null($this->creditLineAmount) ? new CreditLineAmount() : $this->creditLineAmount;
+        $this->creditLineAmount ??= new CreditLineAmount();
 
         return $this->creditLineAmount;
     }
@@ -505,7 +505,7 @@ class ReminderLineType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -545,7 +545,7 @@ class ReminderLineType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -585,7 +585,7 @@ class ReminderLineType
      */
     public function getPenaltySurchargePercentWithCreate(): PenaltySurchargePercent
     {
-        $this->penaltySurchargePercent = is_null($this->penaltySurchargePercent) ? new PenaltySurchargePercent() : $this->penaltySurchargePercent;
+        $this->penaltySurchargePercent ??= new PenaltySurchargePercent();
 
         return $this->penaltySurchargePercent;
     }
@@ -625,7 +625,7 @@ class ReminderLineType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -665,7 +665,7 @@ class ReminderLineType
      */
     public function getPaymentPurposeCodeWithCreate(): PaymentPurposeCode
     {
-        $this->paymentPurposeCode = is_null($this->paymentPurposeCode) ? new PaymentPurposeCode() : $this->paymentPurposeCode;
+        $this->paymentPurposeCode ??= new PaymentPurposeCode();
 
         return $this->paymentPurposeCode;
     }
@@ -953,7 +953,7 @@ class ReminderLineType
      */
     public function getExchangeRateWithCreate(): ExchangeRate
     {
-        $this->exchangeRate = is_null($this->exchangeRate) ? new ExchangeRate() : $this->exchangeRate;
+        $this->exchangeRate ??= new ExchangeRate();
 
         return $this->exchangeRate;
     }

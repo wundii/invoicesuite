@@ -92,7 +92,7 @@ class TradeContactType
      */
     public function getPersonNameWithCreate(): TextType
     {
-        $this->personName = is_null($this->personName) ? new TextType() : $this->personName;
+        $this->personName ??= new TextType();
 
         return $this->personName;
     }
@@ -132,7 +132,7 @@ class TradeContactType
      */
     public function getDepartmentNameWithCreate(): TextType
     {
-        $this->departmentName = is_null($this->departmentName) ? new TextType() : $this->departmentName;
+        $this->departmentName ??= new TextType();
 
         return $this->departmentName;
     }
@@ -172,7 +172,7 @@ class TradeContactType
      */
     public function getTypeCodeWithCreate(): CodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new CodeType() : $this->typeCode;
+        $this->typeCode ??= new CodeType();
 
         return $this->typeCode;
     }
@@ -212,7 +212,7 @@ class TradeContactType
      */
     public function getTelephoneUniversalCommunicationWithCreate(): UniversalCommunicationType
     {
-        $this->telephoneUniversalCommunication = is_null($this->telephoneUniversalCommunication) ? new UniversalCommunicationType() : $this->telephoneUniversalCommunication;
+        $this->telephoneUniversalCommunication ??= new UniversalCommunicationType();
 
         return $this->telephoneUniversalCommunication;
     }
@@ -252,7 +252,7 @@ class TradeContactType
      */
     public function getFaxUniversalCommunicationWithCreate(): UniversalCommunicationType
     {
-        $this->faxUniversalCommunication = is_null($this->faxUniversalCommunication) ? new UniversalCommunicationType() : $this->faxUniversalCommunication;
+        $this->faxUniversalCommunication ??= new UniversalCommunicationType();
 
         return $this->faxUniversalCommunication;
     }
@@ -292,7 +292,7 @@ class TradeContactType
      */
     public function getEmailURIUniversalCommunicationWithCreate(): UniversalCommunicationType
     {
-        $this->emailURIUniversalCommunication = is_null($this->emailURIUniversalCommunication) ? new UniversalCommunicationType() : $this->emailURIUniversalCommunication;
+        $this->emailURIUniversalCommunication ??= new UniversalCommunicationType();
 
         return $this->emailURIUniversalCommunication;
     }

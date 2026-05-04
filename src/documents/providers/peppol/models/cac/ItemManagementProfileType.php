@@ -142,7 +142,7 @@ class ItemManagementProfileType
      */
     public function getFrozenPeriodDaysNumericWithCreate(): FrozenPeriodDaysNumeric
     {
-        $this->frozenPeriodDaysNumeric = is_null($this->frozenPeriodDaysNumeric) ? new FrozenPeriodDaysNumeric() : $this->frozenPeriodDaysNumeric;
+        $this->frozenPeriodDaysNumeric ??= new FrozenPeriodDaysNumeric();
 
         return $this->frozenPeriodDaysNumeric;
     }
@@ -182,7 +182,7 @@ class ItemManagementProfileType
      */
     public function getMinimumInventoryQuantityWithCreate(): MinimumInventoryQuantity
     {
-        $this->minimumInventoryQuantity = is_null($this->minimumInventoryQuantity) ? new MinimumInventoryQuantity() : $this->minimumInventoryQuantity;
+        $this->minimumInventoryQuantity ??= new MinimumInventoryQuantity();
 
         return $this->minimumInventoryQuantity;
     }
@@ -222,7 +222,7 @@ class ItemManagementProfileType
      */
     public function getMultipleOrderQuantityWithCreate(): MultipleOrderQuantity
     {
-        $this->multipleOrderQuantity = is_null($this->multipleOrderQuantity) ? new MultipleOrderQuantity() : $this->multipleOrderQuantity;
+        $this->multipleOrderQuantity ??= new MultipleOrderQuantity();
 
         return $this->multipleOrderQuantity;
     }
@@ -262,7 +262,7 @@ class ItemManagementProfileType
      */
     public function getOrderIntervalDaysNumericWithCreate(): OrderIntervalDaysNumeric
     {
-        $this->orderIntervalDaysNumeric = is_null($this->orderIntervalDaysNumeric) ? new OrderIntervalDaysNumeric() : $this->orderIntervalDaysNumeric;
+        $this->orderIntervalDaysNumeric ??= new OrderIntervalDaysNumeric();
 
         return $this->orderIntervalDaysNumeric;
     }
@@ -426,7 +426,7 @@ class ItemManagementProfileType
      */
     public function getTargetServicePercentWithCreate(): TargetServicePercent
     {
-        $this->targetServicePercent = is_null($this->targetServicePercent) ? new TargetServicePercent() : $this->targetServicePercent;
+        $this->targetServicePercent ??= new TargetServicePercent();
 
         return $this->targetServicePercent;
     }
@@ -466,7 +466,7 @@ class ItemManagementProfileType
      */
     public function getTargetInventoryQuantityWithCreate(): TargetInventoryQuantity
     {
-        $this->targetInventoryQuantity = is_null($this->targetInventoryQuantity) ? new TargetInventoryQuantity() : $this->targetInventoryQuantity;
+        $this->targetInventoryQuantity ??= new TargetInventoryQuantity();
 
         return $this->targetInventoryQuantity;
     }
@@ -506,7 +506,7 @@ class ItemManagementProfileType
      */
     public function getEffectivePeriodWithCreate(): EffectivePeriod
     {
-        $this->effectivePeriod = is_null($this->effectivePeriod) ? new EffectivePeriod() : $this->effectivePeriod;
+        $this->effectivePeriod ??= new EffectivePeriod();
 
         return $this->effectivePeriod;
     }
@@ -546,7 +546,7 @@ class ItemManagementProfileType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -586,7 +586,7 @@ class ItemManagementProfileType
      */
     public function getItemLocationQuantityWithCreate(): ItemLocationQuantity
     {
-        $this->itemLocationQuantity = is_null($this->itemLocationQuantity) ? new ItemLocationQuantity() : $this->itemLocationQuantity;
+        $this->itemLocationQuantity ??= new ItemLocationQuantity();
 
         return $this->itemLocationQuantity;
     }

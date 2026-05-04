@@ -71,7 +71,7 @@ class PriceListType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -111,7 +111,7 @@ class PriceListType
      */
     public function getStatusCodeWithCreate(): StatusCode
     {
-        $this->statusCode = is_null($this->statusCode) ? new StatusCode() : $this->statusCode;
+        $this->statusCode ??= new StatusCode();
 
         return $this->statusCode;
     }
@@ -275,7 +275,7 @@ class PriceListType
      */
     public function getPreviousPriceListWithCreate(): PreviousPriceList
     {
-        $this->previousPriceList = is_null($this->previousPriceList) ? new PreviousPriceList() : $this->previousPriceList;
+        $this->previousPriceList ??= new PreviousPriceList();
 
         return $this->previousPriceList;
     }

@@ -131,7 +131,7 @@ class ConsumptionPointType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -295,7 +295,7 @@ class ConsumptionPointType
      */
     public function getSubscriberIDWithCreate(): SubscriberID
     {
-        $this->subscriberID = is_null($this->subscriberID) ? new SubscriberID() : $this->subscriberID;
+        $this->subscriberID ??= new SubscriberID();
 
         return $this->subscriberID;
     }
@@ -335,7 +335,7 @@ class ConsumptionPointType
      */
     public function getSubscriberTypeWithCreate(): SubscriberType
     {
-        $this->subscriberType = is_null($this->subscriberType) ? new SubscriberType() : $this->subscriberType;
+        $this->subscriberType ??= new SubscriberType();
 
         return $this->subscriberType;
     }
@@ -375,7 +375,7 @@ class ConsumptionPointType
      */
     public function getSubscriberTypeCodeWithCreate(): SubscriberTypeCode
     {
-        $this->subscriberTypeCode = is_null($this->subscriberTypeCode) ? new SubscriberTypeCode() : $this->subscriberTypeCode;
+        $this->subscriberTypeCode ??= new SubscriberTypeCode();
 
         return $this->subscriberTypeCode;
     }
@@ -415,7 +415,7 @@ class ConsumptionPointType
      */
     public function getTotalDeliveredQuantityWithCreate(): TotalDeliveredQuantity
     {
-        $this->totalDeliveredQuantity = is_null($this->totalDeliveredQuantity) ? new TotalDeliveredQuantity() : $this->totalDeliveredQuantity;
+        $this->totalDeliveredQuantity ??= new TotalDeliveredQuantity();
 
         return $this->totalDeliveredQuantity;
     }
@@ -455,7 +455,7 @@ class ConsumptionPointType
      */
     public function getAddressWithCreate(): Address
     {
-        $this->address = is_null($this->address) ? new Address() : $this->address;
+        $this->address ??= new Address();
 
         return $this->address;
     }
@@ -495,7 +495,7 @@ class ConsumptionPointType
      */
     public function getWebSiteAccessWithCreate(): WebSiteAccess
     {
-        $this->webSiteAccess = is_null($this->webSiteAccess) ? new WebSiteAccess() : $this->webSiteAccess;
+        $this->webSiteAccess ??= new WebSiteAccess();
 
         return $this->webSiteAccess;
     }

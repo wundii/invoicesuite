@@ -71,7 +71,7 @@ class LineReferenceType
      */
     public function getLineIDWithCreate(): LineID
     {
-        $this->lineID = is_null($this->lineID) ? new LineID() : $this->lineID;
+        $this->lineID ??= new LineID();
 
         return $this->lineID;
     }
@@ -111,7 +111,7 @@ class LineReferenceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -151,7 +151,7 @@ class LineReferenceType
      */
     public function getLineStatusCodeWithCreate(): LineStatusCode
     {
-        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCode() : $this->lineStatusCode;
+        $this->lineStatusCode ??= new LineStatusCode();
 
         return $this->lineStatusCode;
     }
@@ -191,7 +191,7 @@ class LineReferenceType
      */
     public function getDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->documentReference = is_null($this->documentReference) ? new DocumentReference() : $this->documentReference;
+        $this->documentReference ??= new DocumentReference();
 
         return $this->documentReference;
     }

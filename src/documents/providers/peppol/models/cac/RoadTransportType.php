@@ -36,7 +36,7 @@ class RoadTransportType
      */
     public function getLicensePlateIDWithCreate(): LicensePlateID
     {
-        $this->licensePlateID = is_null($this->licensePlateID) ? new LicensePlateID() : $this->licensePlateID;
+        $this->licensePlateID ??= new LicensePlateID();
 
         return $this->licensePlateID;
     }

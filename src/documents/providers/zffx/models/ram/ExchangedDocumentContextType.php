@@ -58,7 +58,7 @@ class ExchangedDocumentContextType
      */
     public function getTestIndicatorWithCreate(): IndicatorType
     {
-        $this->testIndicator = is_null($this->testIndicator) ? new IndicatorType() : $this->testIndicator;
+        $this->testIndicator ??= new IndicatorType();
 
         return $this->testIndicator;
     }
@@ -98,7 +98,7 @@ class ExchangedDocumentContextType
      */
     public function getBusinessProcessSpecifiedDocumentContextParameterWithCreate(): DocumentContextParameterType
     {
-        $this->businessProcessSpecifiedDocumentContextParameter = is_null($this->businessProcessSpecifiedDocumentContextParameter) ? new DocumentContextParameterType() : $this->businessProcessSpecifiedDocumentContextParameter;
+        $this->businessProcessSpecifiedDocumentContextParameter ??= new DocumentContextParameterType();
 
         return $this->businessProcessSpecifiedDocumentContextParameter;
     }
@@ -138,7 +138,7 @@ class ExchangedDocumentContextType
      */
     public function getGuidelineSpecifiedDocumentContextParameterWithCreate(): DocumentContextParameterType
     {
-        $this->guidelineSpecifiedDocumentContextParameter = is_null($this->guidelineSpecifiedDocumentContextParameter) ? new DocumentContextParameterType() : $this->guidelineSpecifiedDocumentContextParameter;
+        $this->guidelineSpecifiedDocumentContextParameter ??= new DocumentContextParameterType();
 
         return $this->guidelineSpecifiedDocumentContextParameter;
     }

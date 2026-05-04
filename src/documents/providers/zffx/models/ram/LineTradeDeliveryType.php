@@ -135,7 +135,7 @@ class LineTradeDeliveryType
      */
     public function getBilledQuantityWithCreate(): QuantityType
     {
-        $this->billedQuantity = is_null($this->billedQuantity) ? new QuantityType() : $this->billedQuantity;
+        $this->billedQuantity ??= new QuantityType();
 
         return $this->billedQuantity;
     }
@@ -175,7 +175,7 @@ class LineTradeDeliveryType
      */
     public function getChargeFreeQuantityWithCreate(): QuantityType
     {
-        $this->chargeFreeQuantity = is_null($this->chargeFreeQuantity) ? new QuantityType() : $this->chargeFreeQuantity;
+        $this->chargeFreeQuantity ??= new QuantityType();
 
         return $this->chargeFreeQuantity;
     }
@@ -215,7 +215,7 @@ class LineTradeDeliveryType
      */
     public function getPackageQuantityWithCreate(): QuantityType
     {
-        $this->packageQuantity = is_null($this->packageQuantity) ? new QuantityType() : $this->packageQuantity;
+        $this->packageQuantity ??= new QuantityType();
 
         return $this->packageQuantity;
     }
@@ -255,7 +255,7 @@ class LineTradeDeliveryType
      */
     public function getPerPackageUnitQuantityWithCreate(): QuantityType
     {
-        $this->perPackageUnitQuantity = is_null($this->perPackageUnitQuantity) ? new QuantityType() : $this->perPackageUnitQuantity;
+        $this->perPackageUnitQuantity ??= new QuantityType();
 
         return $this->perPackageUnitQuantity;
     }
@@ -295,7 +295,7 @@ class LineTradeDeliveryType
      */
     public function getShipToTradePartyWithCreate(): TradePartyType
     {
-        $this->shipToTradeParty = is_null($this->shipToTradeParty) ? new TradePartyType() : $this->shipToTradeParty;
+        $this->shipToTradeParty ??= new TradePartyType();
 
         return $this->shipToTradeParty;
     }
@@ -335,7 +335,7 @@ class LineTradeDeliveryType
      */
     public function getUltimateShipToTradePartyWithCreate(): TradePartyType
     {
-        $this->ultimateShipToTradeParty = is_null($this->ultimateShipToTradeParty) ? new TradePartyType() : $this->ultimateShipToTradeParty;
+        $this->ultimateShipToTradeParty ??= new TradePartyType();
 
         return $this->ultimateShipToTradeParty;
     }
@@ -375,7 +375,7 @@ class LineTradeDeliveryType
      */
     public function getActualDeliverySupplyChainEventWithCreate(): SupplyChainEventType
     {
-        $this->actualDeliverySupplyChainEvent = is_null($this->actualDeliverySupplyChainEvent) ? new SupplyChainEventType() : $this->actualDeliverySupplyChainEvent;
+        $this->actualDeliverySupplyChainEvent ??= new SupplyChainEventType();
 
         return $this->actualDeliverySupplyChainEvent;
     }
@@ -415,7 +415,7 @@ class LineTradeDeliveryType
      */
     public function getDespatchAdviceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->despatchAdviceReferencedDocument = is_null($this->despatchAdviceReferencedDocument) ? new ReferencedDocumentType() : $this->despatchAdviceReferencedDocument;
+        $this->despatchAdviceReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->despatchAdviceReferencedDocument;
     }
@@ -455,7 +455,7 @@ class LineTradeDeliveryType
      */
     public function getReceivingAdviceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->receivingAdviceReferencedDocument = is_null($this->receivingAdviceReferencedDocument) ? new ReferencedDocumentType() : $this->receivingAdviceReferencedDocument;
+        $this->receivingAdviceReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->receivingAdviceReferencedDocument;
     }
@@ -495,7 +495,7 @@ class LineTradeDeliveryType
      */
     public function getDeliveryNoteReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->deliveryNoteReferencedDocument = is_null($this->deliveryNoteReferencedDocument) ? new ReferencedDocumentType() : $this->deliveryNoteReferencedDocument;
+        $this->deliveryNoteReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->deliveryNoteReferencedDocument;
     }

@@ -5871,8 +5871,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference,
-            null
+            $newPaymentReference
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -5909,8 +5908,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference,
-            null
+            $newPaymentReference
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -5947,8 +5945,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference,
-            null
+            $newPaymentReference
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -5985,8 +5982,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             $newPayeeAccountName,
             $newPayeeProprietaryId,
             $newPayeeBic,
-            $newPaymentReference,
-            null
+            $newPaymentReference
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -6139,14 +6135,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ModalitaPagamento::MP08->value,
             null,
             $newFinancialCardId,
-            $newFinancialCardHolder,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            $newFinancialCardHolder
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -6171,14 +6160,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             ModalitaPagamento::MP08->value,
             null,
             $newFinancialCardId,
-            $newFinancialCardHolder,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            $newFinancialCardHolder
         );
 
         $this->traceMethodExit(__METHOD__);
@@ -8723,7 +8705,7 @@ class InvoiceSuiteFatturaPaProviderBuilder extends InvoiceSuiteAbstractDocumentF
             return null;
         }
 
-        $normalizedDocumentType = InvoiceSuiteStringUtils::upper(trim($documentType));
+        $normalizedDocumentType = InvoiceSuiteStringUtils::upper(trim((string) $documentType));
 
         return match ($normalizedDocumentType) {
             TipoDocumento::TD01->value, 'INVOICE', 'COMMERCIALINVOICE', '380' => TipoDocumento::TD01,

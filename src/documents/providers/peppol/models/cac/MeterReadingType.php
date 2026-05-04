@@ -180,7 +180,7 @@ class MeterReadingType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -220,7 +220,7 @@ class MeterReadingType
      */
     public function getMeterReadingTypeWithCreate(): MeterReadingType1
     {
-        $this->meterReadingType = is_null($this->meterReadingType) ? new MeterReadingType1() : $this->meterReadingType;
+        $this->meterReadingType ??= new MeterReadingType1();
 
         return $this->meterReadingType;
     }
@@ -260,7 +260,7 @@ class MeterReadingType
      */
     public function getMeterReadingTypeCodeWithCreate(): MeterReadingTypeCode
     {
-        $this->meterReadingTypeCode = is_null($this->meterReadingTypeCode) ? new MeterReadingTypeCode() : $this->meterReadingTypeCode;
+        $this->meterReadingTypeCode ??= new MeterReadingTypeCode();
 
         return $this->meterReadingTypeCode;
     }
@@ -330,7 +330,7 @@ class MeterReadingType
      */
     public function getPreviousMeterQuantityWithCreate(): PreviousMeterQuantity
     {
-        $this->previousMeterQuantity = is_null($this->previousMeterQuantity) ? new PreviousMeterQuantity() : $this->previousMeterQuantity;
+        $this->previousMeterQuantity ??= new PreviousMeterQuantity();
 
         return $this->previousMeterQuantity;
     }
@@ -400,7 +400,7 @@ class MeterReadingType
      */
     public function getLatestMeterQuantityWithCreate(): LatestMeterQuantity
     {
-        $this->latestMeterQuantity = is_null($this->latestMeterQuantity) ? new LatestMeterQuantity() : $this->latestMeterQuantity;
+        $this->latestMeterQuantity ??= new LatestMeterQuantity();
 
         return $this->latestMeterQuantity;
     }
@@ -440,7 +440,7 @@ class MeterReadingType
      */
     public function getPreviousMeterReadingMethodWithCreate(): PreviousMeterReadingMethod
     {
-        $this->previousMeterReadingMethod = is_null($this->previousMeterReadingMethod) ? new PreviousMeterReadingMethod() : $this->previousMeterReadingMethod;
+        $this->previousMeterReadingMethod ??= new PreviousMeterReadingMethod();
 
         return $this->previousMeterReadingMethod;
     }
@@ -480,7 +480,7 @@ class MeterReadingType
      */
     public function getPreviousMeterReadingMethodCodeWithCreate(): PreviousMeterReadingMethodCode
     {
-        $this->previousMeterReadingMethodCode = is_null($this->previousMeterReadingMethodCode) ? new PreviousMeterReadingMethodCode() : $this->previousMeterReadingMethodCode;
+        $this->previousMeterReadingMethodCode ??= new PreviousMeterReadingMethodCode();
 
         return $this->previousMeterReadingMethodCode;
     }
@@ -520,7 +520,7 @@ class MeterReadingType
      */
     public function getLatestMeterReadingMethodWithCreate(): LatestMeterReadingMethod
     {
-        $this->latestMeterReadingMethod = is_null($this->latestMeterReadingMethod) ? new LatestMeterReadingMethod() : $this->latestMeterReadingMethod;
+        $this->latestMeterReadingMethod ??= new LatestMeterReadingMethod();
 
         return $this->latestMeterReadingMethod;
     }
@@ -560,7 +560,7 @@ class MeterReadingType
      */
     public function getLatestMeterReadingMethodCodeWithCreate(): LatestMeterReadingMethodCode
     {
-        $this->latestMeterReadingMethodCode = is_null($this->latestMeterReadingMethodCode) ? new LatestMeterReadingMethodCode() : $this->latestMeterReadingMethodCode;
+        $this->latestMeterReadingMethodCode ??= new LatestMeterReadingMethodCode();
 
         return $this->latestMeterReadingMethodCode;
     }
@@ -724,7 +724,7 @@ class MeterReadingType
      */
     public function getDeliveredQuantityWithCreate(): DeliveredQuantity
     {
-        $this->deliveredQuantity = is_null($this->deliveredQuantity) ? new DeliveredQuantity() : $this->deliveredQuantity;
+        $this->deliveredQuantity ??= new DeliveredQuantity();
 
         return $this->deliveredQuantity;
     }

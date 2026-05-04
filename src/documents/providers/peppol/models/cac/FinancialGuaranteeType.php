@@ -84,7 +84,7 @@ class FinancialGuaranteeType
      */
     public function getGuaranteeTypeCodeWithCreate(): GuaranteeTypeCode
     {
-        $this->guaranteeTypeCode = is_null($this->guaranteeTypeCode) ? new GuaranteeTypeCode() : $this->guaranteeTypeCode;
+        $this->guaranteeTypeCode ??= new GuaranteeTypeCode();
 
         return $this->guaranteeTypeCode;
     }
@@ -248,7 +248,7 @@ class FinancialGuaranteeType
      */
     public function getLiabilityAmountWithCreate(): LiabilityAmount
     {
-        $this->liabilityAmount = is_null($this->liabilityAmount) ? new LiabilityAmount() : $this->liabilityAmount;
+        $this->liabilityAmount ??= new LiabilityAmount();
 
         return $this->liabilityAmount;
     }
@@ -288,7 +288,7 @@ class FinancialGuaranteeType
      */
     public function getAmountRateWithCreate(): AmountRate
     {
-        $this->amountRate = is_null($this->amountRate) ? new AmountRate() : $this->amountRate;
+        $this->amountRate ??= new AmountRate();
 
         return $this->amountRate;
     }
@@ -328,7 +328,7 @@ class FinancialGuaranteeType
      */
     public function getConstitutionPeriodWithCreate(): ConstitutionPeriod
     {
-        $this->constitutionPeriod = is_null($this->constitutionPeriod) ? new ConstitutionPeriod() : $this->constitutionPeriod;
+        $this->constitutionPeriod ??= new ConstitutionPeriod();
 
         return $this->constitutionPeriod;
     }

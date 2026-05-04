@@ -249,7 +249,7 @@ class PaymentTermsType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -413,7 +413,7 @@ class PaymentTermsType
      */
     public function getPrepaidPaymentReferenceIDWithCreate(): PrepaidPaymentReferenceID
     {
-        $this->prepaidPaymentReferenceID = is_null($this->prepaidPaymentReferenceID) ? new PrepaidPaymentReferenceID() : $this->prepaidPaymentReferenceID;
+        $this->prepaidPaymentReferenceID ??= new PrepaidPaymentReferenceID();
 
         return $this->prepaidPaymentReferenceID;
     }
@@ -577,7 +577,7 @@ class PaymentTermsType
      */
     public function getReferenceEventCodeWithCreate(): ReferenceEventCode
     {
-        $this->referenceEventCode = is_null($this->referenceEventCode) ? new ReferenceEventCode() : $this->referenceEventCode;
+        $this->referenceEventCode ??= new ReferenceEventCode();
 
         return $this->referenceEventCode;
     }
@@ -617,7 +617,7 @@ class PaymentTermsType
      */
     public function getSettlementDiscountPercentWithCreate(): SettlementDiscountPercent
     {
-        $this->settlementDiscountPercent = is_null($this->settlementDiscountPercent) ? new SettlementDiscountPercent() : $this->settlementDiscountPercent;
+        $this->settlementDiscountPercent ??= new SettlementDiscountPercent();
 
         return $this->settlementDiscountPercent;
     }
@@ -657,7 +657,7 @@ class PaymentTermsType
      */
     public function getPenaltySurchargePercentWithCreate(): PenaltySurchargePercent
     {
-        $this->penaltySurchargePercent = is_null($this->penaltySurchargePercent) ? new PenaltySurchargePercent() : $this->penaltySurchargePercent;
+        $this->penaltySurchargePercent ??= new PenaltySurchargePercent();
 
         return $this->penaltySurchargePercent;
     }
@@ -697,7 +697,7 @@ class PaymentTermsType
      */
     public function getPaymentPercentWithCreate(): PaymentPercent
     {
-        $this->paymentPercent = is_null($this->paymentPercent) ? new PaymentPercent() : $this->paymentPercent;
+        $this->paymentPercent ??= new PaymentPercent();
 
         return $this->paymentPercent;
     }
@@ -737,7 +737,7 @@ class PaymentTermsType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -777,7 +777,7 @@ class PaymentTermsType
      */
     public function getSettlementDiscountAmountWithCreate(): SettlementDiscountAmount
     {
-        $this->settlementDiscountAmount = is_null($this->settlementDiscountAmount) ? new SettlementDiscountAmount() : $this->settlementDiscountAmount;
+        $this->settlementDiscountAmount ??= new SettlementDiscountAmount();
 
         return $this->settlementDiscountAmount;
     }
@@ -817,7 +817,7 @@ class PaymentTermsType
      */
     public function getPenaltyAmountWithCreate(): PenaltyAmount
     {
-        $this->penaltyAmount = is_null($this->penaltyAmount) ? new PenaltyAmount() : $this->penaltyAmount;
+        $this->penaltyAmount ??= new PenaltyAmount();
 
         return $this->penaltyAmount;
     }
@@ -857,7 +857,7 @@ class PaymentTermsType
      */
     public function getPaymentTermsDetailsURIWithCreate(): PaymentTermsDetailsURI
     {
-        $this->paymentTermsDetailsURI = is_null($this->paymentTermsDetailsURI) ? new PaymentTermsDetailsURI() : $this->paymentTermsDetailsURI;
+        $this->paymentTermsDetailsURI ??= new PaymentTermsDetailsURI();
 
         return $this->paymentTermsDetailsURI;
     }
@@ -957,7 +957,7 @@ class PaymentTermsType
      */
     public function getInvoicingPartyReferenceWithCreate(): InvoicingPartyReference
     {
-        $this->invoicingPartyReference = is_null($this->invoicingPartyReference) ? new InvoicingPartyReference() : $this->invoicingPartyReference;
+        $this->invoicingPartyReference ??= new InvoicingPartyReference();
 
         return $this->invoicingPartyReference;
     }
@@ -997,7 +997,7 @@ class PaymentTermsType
      */
     public function getSettlementPeriodWithCreate(): SettlementPeriod
     {
-        $this->settlementPeriod = is_null($this->settlementPeriod) ? new SettlementPeriod() : $this->settlementPeriod;
+        $this->settlementPeriod ??= new SettlementPeriod();
 
         return $this->settlementPeriod;
     }
@@ -1037,7 +1037,7 @@ class PaymentTermsType
      */
     public function getPenaltyPeriodWithCreate(): PenaltyPeriod
     {
-        $this->penaltyPeriod = is_null($this->penaltyPeriod) ? new PenaltyPeriod() : $this->penaltyPeriod;
+        $this->penaltyPeriod ??= new PenaltyPeriod();
 
         return $this->penaltyPeriod;
     }
@@ -1077,7 +1077,7 @@ class PaymentTermsType
      */
     public function getExchangeRateWithCreate(): ExchangeRate
     {
-        $this->exchangeRate = is_null($this->exchangeRate) ? new ExchangeRate() : $this->exchangeRate;
+        $this->exchangeRate ??= new ExchangeRate();
 
         return $this->exchangeRate;
     }
@@ -1117,7 +1117,7 @@ class PaymentTermsType
      */
     public function getValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->validityPeriod = is_null($this->validityPeriod) ? new ValidityPeriod() : $this->validityPeriod;
+        $this->validityPeriod ??= new ValidityPeriod();
 
         return $this->validityPeriod;
     }

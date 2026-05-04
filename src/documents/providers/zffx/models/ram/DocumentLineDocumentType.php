@@ -83,7 +83,7 @@ class DocumentLineDocumentType
      */
     public function getLineIDWithCreate(): IDType
     {
-        $this->lineID = is_null($this->lineID) ? new IDType() : $this->lineID;
+        $this->lineID ??= new IDType();
 
         return $this->lineID;
     }
@@ -123,7 +123,7 @@ class DocumentLineDocumentType
      */
     public function getParentLineIDWithCreate(): IDType
     {
-        $this->parentLineID = is_null($this->parentLineID) ? new IDType() : $this->parentLineID;
+        $this->parentLineID ??= new IDType();
 
         return $this->parentLineID;
     }
@@ -163,7 +163,7 @@ class DocumentLineDocumentType
      */
     public function getLineStatusCodeWithCreate(): LineStatusCodeType
     {
-        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCodeType() : $this->lineStatusCode;
+        $this->lineStatusCode ??= new LineStatusCodeType();
 
         return $this->lineStatusCode;
     }
@@ -203,7 +203,7 @@ class DocumentLineDocumentType
      */
     public function getLineStatusReasonCodeWithCreate(): CodeType
     {
-        $this->lineStatusReasonCode = is_null($this->lineStatusReasonCode) ? new CodeType() : $this->lineStatusReasonCode;
+        $this->lineStatusReasonCode ??= new CodeType();
 
         return $this->lineStatusReasonCode;
     }

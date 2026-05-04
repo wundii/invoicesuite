@@ -354,7 +354,7 @@ class InvoiceLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -394,7 +394,7 @@ class InvoiceLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -558,7 +558,7 @@ class InvoiceLineType
      */
     public function getInvoicedQuantityWithCreate(): InvoicedQuantity
     {
-        $this->invoicedQuantity = is_null($this->invoicedQuantity) ? new InvoicedQuantity() : $this->invoicedQuantity;
+        $this->invoicedQuantity ??= new InvoicedQuantity();
 
         return $this->invoicedQuantity;
     }
@@ -598,7 +598,7 @@ class InvoiceLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -668,7 +668,7 @@ class InvoiceLineType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -708,7 +708,7 @@ class InvoiceLineType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -748,7 +748,7 @@ class InvoiceLineType
      */
     public function getPaymentPurposeCodeWithCreate(): PaymentPurposeCode
     {
-        $this->paymentPurposeCode = is_null($this->paymentPurposeCode) ? new PaymentPurposeCode() : $this->paymentPurposeCode;
+        $this->paymentPurposeCode ??= new PaymentPurposeCode();
 
         return $this->paymentPurposeCode;
     }
@@ -1562,7 +1562,7 @@ class InvoiceLineType
      */
     public function getPricingReferenceWithCreate(): PricingReference
     {
-        $this->pricingReference = is_null($this->pricingReference) ? new PricingReference() : $this->pricingReference;
+        $this->pricingReference ??= new PricingReference();
 
         return $this->pricingReference;
     }
@@ -1602,7 +1602,7 @@ class InvoiceLineType
      */
     public function getOriginatorPartyWithCreate(): OriginatorParty
     {
-        $this->originatorParty = is_null($this->originatorParty) ? new OriginatorParty() : $this->originatorParty;
+        $this->originatorParty ??= new OriginatorParty();
 
         return $this->originatorParty;
     }
@@ -2262,7 +2262,7 @@ class InvoiceLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -2302,7 +2302,7 @@ class InvoiceLineType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -2342,7 +2342,7 @@ class InvoiceLineType
      */
     public function getDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->deliveryTerms = is_null($this->deliveryTerms) ? new DeliveryTerms() : $this->deliveryTerms;
+        $this->deliveryTerms ??= new DeliveryTerms();
 
         return $this->deliveryTerms;
     }
@@ -2506,7 +2506,7 @@ class InvoiceLineType
      */
     public function getItemPriceExtensionWithCreate(): ItemPriceExtension
     {
-        $this->itemPriceExtension = is_null($this->itemPriceExtension) ? new ItemPriceExtension() : $this->itemPriceExtension;
+        $this->itemPriceExtension ??= new ItemPriceExtension();
 
         return $this->itemPriceExtension;
     }

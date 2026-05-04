@@ -96,7 +96,7 @@ class ItemInformationRequestLineType
      */
     public function getTimeFrequencyCodeWithCreate(): TimeFrequencyCode
     {
-        $this->timeFrequencyCode = is_null($this->timeFrequencyCode) ? new TimeFrequencyCode() : $this->timeFrequencyCode;
+        $this->timeFrequencyCode ??= new TimeFrequencyCode();
 
         return $this->timeFrequencyCode;
     }
@@ -136,7 +136,7 @@ class ItemInformationRequestLineType
      */
     public function getSupplyChainActivityTypeCodeWithCreate(): SupplyChainActivityTypeCode
     {
-        $this->supplyChainActivityTypeCode = is_null($this->supplyChainActivityTypeCode) ? new SupplyChainActivityTypeCode() : $this->supplyChainActivityTypeCode;
+        $this->supplyChainActivityTypeCode ??= new SupplyChainActivityTypeCode();
 
         return $this->supplyChainActivityTypeCode;
     }
@@ -176,7 +176,7 @@ class ItemInformationRequestLineType
      */
     public function getForecastTypeCodeWithCreate(): ForecastTypeCode
     {
-        $this->forecastTypeCode = is_null($this->forecastTypeCode) ? new ForecastTypeCode() : $this->forecastTypeCode;
+        $this->forecastTypeCode ??= new ForecastTypeCode();
 
         return $this->forecastTypeCode;
     }
@@ -216,7 +216,7 @@ class ItemInformationRequestLineType
      */
     public function getPerformanceMetricTypeCodeWithCreate(): PerformanceMetricTypeCode
     {
-        $this->performanceMetricTypeCode = is_null($this->performanceMetricTypeCode) ? new PerformanceMetricTypeCode() : $this->performanceMetricTypeCode;
+        $this->performanceMetricTypeCode ??= new PerformanceMetricTypeCode();
 
         return $this->performanceMetricTypeCode;
     }

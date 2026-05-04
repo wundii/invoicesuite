@@ -240,7 +240,7 @@ class ProcurementProjectType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -528,7 +528,7 @@ class ProcurementProjectType
      */
     public function getProcurementTypeCodeWithCreate(): ProcurementTypeCode
     {
-        $this->procurementTypeCode = is_null($this->procurementTypeCode) ? new ProcurementTypeCode() : $this->procurementTypeCode;
+        $this->procurementTypeCode ??= new ProcurementTypeCode();
 
         return $this->procurementTypeCode;
     }
@@ -568,7 +568,7 @@ class ProcurementProjectType
      */
     public function getProcurementSubTypeCodeWithCreate(): ProcurementSubTypeCode
     {
-        $this->procurementSubTypeCode = is_null($this->procurementSubTypeCode) ? new ProcurementSubTypeCode() : $this->procurementSubTypeCode;
+        $this->procurementSubTypeCode ??= new ProcurementSubTypeCode();
 
         return $this->procurementSubTypeCode;
     }
@@ -608,7 +608,7 @@ class ProcurementProjectType
      */
     public function getQualityControlCodeWithCreate(): QualityControlCode
     {
-        $this->qualityControlCode = is_null($this->qualityControlCode) ? new QualityControlCode() : $this->qualityControlCode;
+        $this->qualityControlCode ??= new QualityControlCode();
 
         return $this->qualityControlCode;
     }
@@ -648,7 +648,7 @@ class ProcurementProjectType
      */
     public function getRequiredFeeAmountWithCreate(): RequiredFeeAmount
     {
-        $this->requiredFeeAmount = is_null($this->requiredFeeAmount) ? new RequiredFeeAmount() : $this->requiredFeeAmount;
+        $this->requiredFeeAmount ??= new RequiredFeeAmount();
 
         return $this->requiredFeeAmount;
     }
@@ -842,7 +842,7 @@ class ProcurementProjectType
      */
     public function getEstimatedOverallContractQuantityWithCreate(): EstimatedOverallContractQuantity
     {
-        $this->estimatedOverallContractQuantity = is_null($this->estimatedOverallContractQuantity) ? new EstimatedOverallContractQuantity() : $this->estimatedOverallContractQuantity;
+        $this->estimatedOverallContractQuantity ??= new EstimatedOverallContractQuantity();
 
         return $this->estimatedOverallContractQuantity;
     }
@@ -1006,7 +1006,7 @@ class ProcurementProjectType
      */
     public function getRequestedTenderTotalWithCreate(): RequestedTenderTotal
     {
-        $this->requestedTenderTotal = is_null($this->requestedTenderTotal) ? new RequestedTenderTotal() : $this->requestedTenderTotal;
+        $this->requestedTenderTotal ??= new RequestedTenderTotal();
 
         return $this->requestedTenderTotal;
     }
@@ -1046,7 +1046,7 @@ class ProcurementProjectType
      */
     public function getMainCommodityClassificationWithCreate(): MainCommodityClassification
     {
-        $this->mainCommodityClassification = is_null($this->mainCommodityClassification) ? new MainCommodityClassification() : $this->mainCommodityClassification;
+        $this->mainCommodityClassification ??= new MainCommodityClassification();
 
         return $this->mainCommodityClassification;
     }
@@ -1334,7 +1334,7 @@ class ProcurementProjectType
      */
     public function getPlannedPeriodWithCreate(): PlannedPeriod
     {
-        $this->plannedPeriod = is_null($this->plannedPeriod) ? new PlannedPeriod() : $this->plannedPeriod;
+        $this->plannedPeriod ??= new PlannedPeriod();
 
         return $this->plannedPeriod;
     }
@@ -1374,7 +1374,7 @@ class ProcurementProjectType
      */
     public function getContractExtensionWithCreate(): ContractExtension
     {
-        $this->contractExtension = is_null($this->contractExtension) ? new ContractExtension() : $this->contractExtension;
+        $this->contractExtension ??= new ContractExtension();
 
         return $this->contractExtension;
     }

@@ -121,7 +121,7 @@ class EvaluationCriterionType
      */
     public function getEvaluationCriterionTypeCodeWithCreate(): EvaluationCriterionTypeCode
     {
-        $this->evaluationCriterionTypeCode = is_null($this->evaluationCriterionTypeCode) ? new EvaluationCriterionTypeCode() : $this->evaluationCriterionTypeCode;
+        $this->evaluationCriterionTypeCode ??= new EvaluationCriterionTypeCode();
 
         return $this->evaluationCriterionTypeCode;
     }
@@ -285,7 +285,7 @@ class EvaluationCriterionType
      */
     public function getThresholdAmountWithCreate(): ThresholdAmount
     {
-        $this->thresholdAmount = is_null($this->thresholdAmount) ? new ThresholdAmount() : $this->thresholdAmount;
+        $this->thresholdAmount ??= new ThresholdAmount();
 
         return $this->thresholdAmount;
     }
@@ -325,7 +325,7 @@ class EvaluationCriterionType
      */
     public function getThresholdQuantityWithCreate(): ThresholdQuantity
     {
-        $this->thresholdQuantity = is_null($this->thresholdQuantity) ? new ThresholdQuantity() : $this->thresholdQuantity;
+        $this->thresholdQuantity ??= new ThresholdQuantity();
 
         return $this->thresholdQuantity;
     }
@@ -365,7 +365,7 @@ class EvaluationCriterionType
      */
     public function getExpressionCodeWithCreate(): ExpressionCode
     {
-        $this->expressionCode = is_null($this->expressionCode) ? new ExpressionCode() : $this->expressionCode;
+        $this->expressionCode ??= new ExpressionCode();
 
         return $this->expressionCode;
     }
@@ -529,7 +529,7 @@ class EvaluationCriterionType
      */
     public function getDurationPeriodWithCreate(): DurationPeriod
     {
-        $this->durationPeriod = is_null($this->durationPeriod) ? new DurationPeriod() : $this->durationPeriod;
+        $this->durationPeriod ??= new DurationPeriod();
 
         return $this->durationPeriod;
     }

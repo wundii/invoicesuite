@@ -97,7 +97,7 @@ class TelecommunicationsSupplyType
      */
     public function getTelecommunicationsSupplyTypeWithCreate(): TelecommunicationsSupplyType1
     {
-        $this->telecommunicationsSupplyType = is_null($this->telecommunicationsSupplyType) ? new TelecommunicationsSupplyType1() : $this->telecommunicationsSupplyType;
+        $this->telecommunicationsSupplyType ??= new TelecommunicationsSupplyType1();
 
         return $this->telecommunicationsSupplyType;
     }
@@ -137,7 +137,7 @@ class TelecommunicationsSupplyType
      */
     public function getTelecommunicationsSupplyTypeCodeWithCreate(): TelecommunicationsSupplyTypeCode
     {
-        $this->telecommunicationsSupplyTypeCode = is_null($this->telecommunicationsSupplyTypeCode) ? new TelecommunicationsSupplyTypeCode() : $this->telecommunicationsSupplyTypeCode;
+        $this->telecommunicationsSupplyTypeCode ??= new TelecommunicationsSupplyTypeCode();
 
         return $this->telecommunicationsSupplyTypeCode;
     }
@@ -177,7 +177,7 @@ class TelecommunicationsSupplyType
      */
     public function getPrivacyCodeWithCreate(): PrivacyCode
     {
-        $this->privacyCode = is_null($this->privacyCode) ? new PrivacyCode() : $this->privacyCode;
+        $this->privacyCode ??= new PrivacyCode();
 
         return $this->privacyCode;
     }
@@ -341,7 +341,7 @@ class TelecommunicationsSupplyType
      */
     public function getTotalAmountWithCreate(): TotalAmount
     {
-        $this->totalAmount = is_null($this->totalAmount) ? new TotalAmount() : $this->totalAmount;
+        $this->totalAmount ??= new TotalAmount();
 
         return $this->totalAmount;
     }

@@ -101,7 +101,7 @@ final class CedentePrestatore
      */
     public function getDatiAnagraficiWithCreate(): DatiAnagraficiCedente
     {
-        $this->datiAnagrafici = is_null($this->datiAnagrafici) ? new DatiAnagraficiCedente() : $this->datiAnagrafici;
+        $this->datiAnagrafici ??= new DatiAnagraficiCedente();
 
         return $this->datiAnagrafici;
     }
@@ -149,7 +149,7 @@ final class CedentePrestatore
      */
     public function getSedeWithCreate(): Indirizzo
     {
-        $this->sede = is_null($this->sede) ? new Indirizzo() : $this->sede;
+        $this->sede ??= new Indirizzo();
 
         return $this->sede;
     }
@@ -197,7 +197,7 @@ final class CedentePrestatore
      */
     public function getStabileOrganizzazioneWithCreate(): Indirizzo
     {
-        $this->stabileOrganizzazione = is_null($this->stabileOrganizzazione) ? new Indirizzo() : $this->stabileOrganizzazione;
+        $this->stabileOrganizzazione ??= new Indirizzo();
 
         return $this->stabileOrganizzazione;
     }
@@ -245,7 +245,7 @@ final class CedentePrestatore
      */
     public function getIscrizioneREAWithCreate(): IscrizioneREA
     {
-        $this->iscrizioneREA = is_null($this->iscrizioneREA) ? new IscrizioneREA() : $this->iscrizioneREA;
+        $this->iscrizioneREA ??= new IscrizioneREA();
 
         return $this->iscrizioneREA;
     }
@@ -293,7 +293,7 @@ final class CedentePrestatore
      */
     public function getContattiWithCreate(): Contatti
     {
-        $this->contatti = is_null($this->contatti) ? new Contatti() : $this->contatti;
+        $this->contatti ??= new Contatti();
 
         return $this->contatti;
     }

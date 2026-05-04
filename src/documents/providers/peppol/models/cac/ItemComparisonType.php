@@ -48,7 +48,7 @@ class ItemComparisonType
      */
     public function getPriceAmountWithCreate(): PriceAmount
     {
-        $this->priceAmount = is_null($this->priceAmount) ? new PriceAmount() : $this->priceAmount;
+        $this->priceAmount ??= new PriceAmount();
 
         return $this->priceAmount;
     }
@@ -88,7 +88,7 @@ class ItemComparisonType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }

@@ -136,7 +136,7 @@ class LineTradeAgreementType
      */
     public function getApplicableTradeDeliveryTermsWithCreate(): TradeDeliveryTermsType
     {
-        $this->applicableTradeDeliveryTerms = is_null($this->applicableTradeDeliveryTerms) ? new TradeDeliveryTermsType() : $this->applicableTradeDeliveryTerms;
+        $this->applicableTradeDeliveryTerms ??= new TradeDeliveryTermsType();
 
         return $this->applicableTradeDeliveryTerms;
     }
@@ -176,7 +176,7 @@ class LineTradeAgreementType
      */
     public function getSellerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->sellerOrderReferencedDocument = is_null($this->sellerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->sellerOrderReferencedDocument;
+        $this->sellerOrderReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->sellerOrderReferencedDocument;
     }
@@ -216,7 +216,7 @@ class LineTradeAgreementType
      */
     public function getBuyerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->buyerOrderReferencedDocument = is_null($this->buyerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->buyerOrderReferencedDocument;
+        $this->buyerOrderReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->buyerOrderReferencedDocument;
     }
@@ -256,7 +256,7 @@ class LineTradeAgreementType
      */
     public function getQuotationReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->quotationReferencedDocument = is_null($this->quotationReferencedDocument) ? new ReferencedDocumentType() : $this->quotationReferencedDocument;
+        $this->quotationReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->quotationReferencedDocument;
     }
@@ -296,7 +296,7 @@ class LineTradeAgreementType
      */
     public function getContractReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->contractReferencedDocument = is_null($this->contractReferencedDocument) ? new ReferencedDocumentType() : $this->contractReferencedDocument;
+        $this->contractReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->contractReferencedDocument;
     }
@@ -430,7 +430,7 @@ class LineTradeAgreementType
      */
     public function getGrossPriceProductTradePriceWithCreate(): TradePriceType
     {
-        $this->grossPriceProductTradePrice = is_null($this->grossPriceProductTradePrice) ? new TradePriceType() : $this->grossPriceProductTradePrice;
+        $this->grossPriceProductTradePrice ??= new TradePriceType();
 
         return $this->grossPriceProductTradePrice;
     }
@@ -470,7 +470,7 @@ class LineTradeAgreementType
      */
     public function getNetPriceProductTradePriceWithCreate(): TradePriceType
     {
-        $this->netPriceProductTradePrice = is_null($this->netPriceProductTradePrice) ? new TradePriceType() : $this->netPriceProductTradePrice;
+        $this->netPriceProductTradePrice ??= new TradePriceType();
 
         return $this->netPriceProductTradePrice;
     }
@@ -510,7 +510,7 @@ class LineTradeAgreementType
      */
     public function getItemSellerTradePartyWithCreate(): TradePartyType
     {
-        $this->itemSellerTradeParty = is_null($this->itemSellerTradeParty) ? new TradePartyType() : $this->itemSellerTradeParty;
+        $this->itemSellerTradeParty ??= new TradePartyType();
 
         return $this->itemSellerTradeParty;
     }

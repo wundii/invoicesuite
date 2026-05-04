@@ -36,7 +36,7 @@ class CreditorFinancialInstitutionType
      */
     public function getBICIDWithCreate(): IDType
     {
-        $this->bICID = is_null($this->bICID) ? new IDType() : $this->bICID;
+        $this->bICID ??= new IDType();
 
         return $this->bICID;
     }

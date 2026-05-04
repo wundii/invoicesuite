@@ -61,7 +61,7 @@ class StowageType
      */
     public function getLocationIDWithCreate(): LocationID
     {
-        $this->locationID = is_null($this->locationID) ? new LocationID() : $this->locationID;
+        $this->locationID ??= new LocationID();
 
         return $this->locationID;
     }

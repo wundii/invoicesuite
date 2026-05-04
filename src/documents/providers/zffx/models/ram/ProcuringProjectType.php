@@ -48,7 +48,7 @@ class ProcuringProjectType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -88,7 +88,7 @@ class ProcuringProjectType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }

@@ -143,7 +143,7 @@ class CatalogueReferenceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -183,7 +183,7 @@ class CatalogueReferenceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -591,7 +591,7 @@ class CatalogueReferenceType
      */
     public function getVersionIDWithCreate(): VersionID
     {
-        $this->versionID = is_null($this->versionID) ? new VersionID() : $this->versionID;
+        $this->versionID ??= new VersionID();
 
         return $this->versionID;
     }
@@ -631,7 +631,7 @@ class CatalogueReferenceType
      */
     public function getPreviousVersionIDWithCreate(): PreviousVersionID
     {
-        $this->previousVersionID = is_null($this->previousVersionID) ? new PreviousVersionID() : $this->previousVersionID;
+        $this->previousVersionID ??= new PreviousVersionID();
 
         return $this->previousVersionID;
     }

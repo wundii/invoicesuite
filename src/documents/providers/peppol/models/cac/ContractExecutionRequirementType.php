@@ -186,7 +186,7 @@ class ContractExecutionRequirementType
      */
     public function getExecutionRequirementCodeWithCreate(): ExecutionRequirementCode
     {
-        $this->executionRequirementCode = is_null($this->executionRequirementCode) ? new ExecutionRequirementCode() : $this->executionRequirementCode;
+        $this->executionRequirementCode ??= new ExecutionRequirementCode();
 
         return $this->executionRequirementCode;
     }

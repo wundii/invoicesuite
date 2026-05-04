@@ -762,7 +762,7 @@ class AuctionTermsType
      */
     public function getAuctionURIWithCreate(): AuctionURI
     {
-        $this->auctionURI = is_null($this->auctionURI) ? new AuctionURI() : $this->auctionURI;
+        $this->auctionURI ??= new AuctionURI();
 
         return $this->auctionURI;
     }

@@ -176,7 +176,7 @@ class PaymentMeansType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -216,7 +216,7 @@ class PaymentMeansType
      */
     public function getPaymentMeansCodeWithCreate(): PaymentMeansCode
     {
-        $this->paymentMeansCode = is_null($this->paymentMeansCode) ? new PaymentMeansCode() : $this->paymentMeansCode;
+        $this->paymentMeansCode ??= new PaymentMeansCode();
 
         return $this->paymentMeansCode;
     }
@@ -286,7 +286,7 @@ class PaymentMeansType
      */
     public function getPaymentChannelCodeWithCreate(): PaymentChannelCode
     {
-        $this->paymentChannelCode = is_null($this->paymentChannelCode) ? new PaymentChannelCode() : $this->paymentChannelCode;
+        $this->paymentChannelCode ??= new PaymentChannelCode();
 
         return $this->paymentChannelCode;
     }
@@ -326,7 +326,7 @@ class PaymentMeansType
      */
     public function getInstructionIDWithCreate(): InstructionID
     {
-        $this->instructionID = is_null($this->instructionID) ? new InstructionID() : $this->instructionID;
+        $this->instructionID ??= new InstructionID();
 
         return $this->instructionID;
     }
@@ -614,7 +614,7 @@ class PaymentMeansType
      */
     public function getCardAccountWithCreate(): CardAccount
     {
-        $this->cardAccount = is_null($this->cardAccount) ? new CardAccount() : $this->cardAccount;
+        $this->cardAccount ??= new CardAccount();
 
         return $this->cardAccount;
     }
@@ -654,7 +654,7 @@ class PaymentMeansType
      */
     public function getPayerFinancialAccountWithCreate(): PayerFinancialAccount
     {
-        $this->payerFinancialAccount = is_null($this->payerFinancialAccount) ? new PayerFinancialAccount() : $this->payerFinancialAccount;
+        $this->payerFinancialAccount ??= new PayerFinancialAccount();
 
         return $this->payerFinancialAccount;
     }
@@ -694,7 +694,7 @@ class PaymentMeansType
      */
     public function getPayeeFinancialAccountWithCreate(): PayeeFinancialAccount
     {
-        $this->payeeFinancialAccount = is_null($this->payeeFinancialAccount) ? new PayeeFinancialAccount() : $this->payeeFinancialAccount;
+        $this->payeeFinancialAccount ??= new PayeeFinancialAccount();
 
         return $this->payeeFinancialAccount;
     }
@@ -734,7 +734,7 @@ class PaymentMeansType
      */
     public function getCreditAccountWithCreate(): CreditAccount
     {
-        $this->creditAccount = is_null($this->creditAccount) ? new CreditAccount() : $this->creditAccount;
+        $this->creditAccount ??= new CreditAccount();
 
         return $this->creditAccount;
     }
@@ -774,7 +774,7 @@ class PaymentMeansType
      */
     public function getPaymentMandateWithCreate(): PaymentMandate
     {
-        $this->paymentMandate = is_null($this->paymentMandate) ? new PaymentMandate() : $this->paymentMandate;
+        $this->paymentMandate ??= new PaymentMandate();
 
         return $this->paymentMandate;
     }
@@ -814,7 +814,7 @@ class PaymentMeansType
      */
     public function getTradeFinancingWithCreate(): TradeFinancing
     {
-        $this->tradeFinancing = is_null($this->tradeFinancing) ? new TradeFinancing() : $this->tradeFinancing;
+        $this->tradeFinancing ??= new TradeFinancing();
 
         return $this->tradeFinancing;
     }

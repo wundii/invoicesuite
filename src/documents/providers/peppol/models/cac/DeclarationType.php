@@ -198,7 +198,7 @@ class DeclarationType
      */
     public function getDeclarationTypeCodeWithCreate(): DeclarationTypeCode
     {
-        $this->declarationTypeCode = is_null($this->declarationTypeCode) ? new DeclarationTypeCode() : $this->declarationTypeCode;
+        $this->declarationTypeCode ??= new DeclarationTypeCode();
 
         return $this->declarationTypeCode;
     }

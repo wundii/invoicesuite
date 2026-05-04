@@ -94,7 +94,7 @@ class ForecastLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -288,7 +288,7 @@ class ForecastLineType
      */
     public function getForecastTypeCodeWithCreate(): ForecastTypeCode
     {
-        $this->forecastTypeCode = is_null($this->forecastTypeCode) ? new ForecastTypeCode() : $this->forecastTypeCode;
+        $this->forecastTypeCode ??= new ForecastTypeCode();
 
         return $this->forecastTypeCode;
     }
@@ -328,7 +328,7 @@ class ForecastLineType
      */
     public function getForecastPeriodWithCreate(): ForecastPeriod
     {
-        $this->forecastPeriod = is_null($this->forecastPeriod) ? new ForecastPeriod() : $this->forecastPeriod;
+        $this->forecastPeriod ??= new ForecastPeriod();
 
         return $this->forecastPeriod;
     }
@@ -368,7 +368,7 @@ class ForecastLineType
      */
     public function getSalesItemWithCreate(): SalesItem
     {
-        $this->salesItem = is_null($this->salesItem) ? new SalesItem() : $this->salesItem;
+        $this->salesItem ??= new SalesItem();
 
         return $this->salesItem;
     }

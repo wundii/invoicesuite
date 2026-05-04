@@ -212,7 +212,7 @@ class TenderResultType
      */
     public function getTenderResultCodeWithCreate(): TenderResultCode
     {
-        $this->tenderResultCode = is_null($this->tenderResultCode) ? new TenderResultCode() : $this->tenderResultCode;
+        $this->tenderResultCode ??= new TenderResultCode();
 
         return $this->tenderResultCode;
     }
@@ -376,7 +376,7 @@ class TenderResultType
      */
     public function getAdvertisementAmountWithCreate(): AdvertisementAmount
     {
-        $this->advertisementAmount = is_null($this->advertisementAmount) ? new AdvertisementAmount() : $this->advertisementAmount;
+        $this->advertisementAmount ??= new AdvertisementAmount();
 
         return $this->advertisementAmount;
     }
@@ -476,7 +476,7 @@ class TenderResultType
      */
     public function getReceivedTenderQuantityWithCreate(): ReceivedTenderQuantity
     {
-        $this->receivedTenderQuantity = is_null($this->receivedTenderQuantity) ? new ReceivedTenderQuantity() : $this->receivedTenderQuantity;
+        $this->receivedTenderQuantity ??= new ReceivedTenderQuantity();
 
         return $this->receivedTenderQuantity;
     }
@@ -516,7 +516,7 @@ class TenderResultType
      */
     public function getLowerTenderAmountWithCreate(): LowerTenderAmount
     {
-        $this->lowerTenderAmount = is_null($this->lowerTenderAmount) ? new LowerTenderAmount() : $this->lowerTenderAmount;
+        $this->lowerTenderAmount ??= new LowerTenderAmount();
 
         return $this->lowerTenderAmount;
     }
@@ -556,7 +556,7 @@ class TenderResultType
      */
     public function getHigherTenderAmountWithCreate(): HigherTenderAmount
     {
-        $this->higherTenderAmount = is_null($this->higherTenderAmount) ? new HigherTenderAmount() : $this->higherTenderAmount;
+        $this->higherTenderAmount ??= new HigherTenderAmount();
 
         return $this->higherTenderAmount;
     }
@@ -626,7 +626,7 @@ class TenderResultType
      */
     public function getReceivedElectronicTenderQuantityWithCreate(): ReceivedElectronicTenderQuantity
     {
-        $this->receivedElectronicTenderQuantity = is_null($this->receivedElectronicTenderQuantity) ? new ReceivedElectronicTenderQuantity() : $this->receivedElectronicTenderQuantity;
+        $this->receivedElectronicTenderQuantity ??= new ReceivedElectronicTenderQuantity();
 
         return $this->receivedElectronicTenderQuantity;
     }
@@ -666,7 +666,7 @@ class TenderResultType
      */
     public function getReceivedForeignTenderQuantityWithCreate(): ReceivedForeignTenderQuantity
     {
-        $this->receivedForeignTenderQuantity = is_null($this->receivedForeignTenderQuantity) ? new ReceivedForeignTenderQuantity() : $this->receivedForeignTenderQuantity;
+        $this->receivedForeignTenderQuantity ??= new ReceivedForeignTenderQuantity();
 
         return $this->receivedForeignTenderQuantity;
     }
@@ -706,7 +706,7 @@ class TenderResultType
      */
     public function getContractWithCreate(): Contract
     {
-        $this->contract = is_null($this->contract) ? new Contract() : $this->contract;
+        $this->contract ??= new Contract();
 
         return $this->contract;
     }
@@ -746,7 +746,7 @@ class TenderResultType
      */
     public function getAwardedTenderedProjectWithCreate(): AwardedTenderedProject
     {
-        $this->awardedTenderedProject = is_null($this->awardedTenderedProject) ? new AwardedTenderedProject() : $this->awardedTenderedProject;
+        $this->awardedTenderedProject ??= new AwardedTenderedProject();
 
         return $this->awardedTenderedProject;
     }
@@ -786,7 +786,7 @@ class TenderResultType
      */
     public function getContractFormalizationPeriodWithCreate(): ContractFormalizationPeriod
     {
-        $this->contractFormalizationPeriod = is_null($this->contractFormalizationPeriod) ? new ContractFormalizationPeriod() : $this->contractFormalizationPeriod;
+        $this->contractFormalizationPeriod ??= new ContractFormalizationPeriod();
 
         return $this->contractFormalizationPeriod;
     }

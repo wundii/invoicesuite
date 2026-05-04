@@ -224,7 +224,7 @@ class DocumentReferenceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -294,7 +294,7 @@ class DocumentReferenceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -394,7 +394,7 @@ class DocumentReferenceType
      */
     public function getDocumentTypeCodeWithCreate(): DocumentTypeCode
     {
-        $this->documentTypeCode = is_null($this->documentTypeCode) ? new DocumentTypeCode() : $this->documentTypeCode;
+        $this->documentTypeCode ??= new DocumentTypeCode();
 
         return $this->documentTypeCode;
     }
@@ -434,7 +434,7 @@ class DocumentReferenceType
      */
     public function getDocumentTypeWithCreate(): DocumentType
     {
-        $this->documentType = is_null($this->documentType) ? new DocumentType() : $this->documentType;
+        $this->documentType ??= new DocumentType();
 
         return $this->documentType;
     }
@@ -598,7 +598,7 @@ class DocumentReferenceType
      */
     public function getLanguageIDWithCreate(): LanguageID
     {
-        $this->languageID = is_null($this->languageID) ? new LanguageID() : $this->languageID;
+        $this->languageID ??= new LanguageID();
 
         return $this->languageID;
     }
@@ -638,7 +638,7 @@ class DocumentReferenceType
      */
     public function getLocaleCodeWithCreate(): LocaleCode
     {
-        $this->localeCode = is_null($this->localeCode) ? new LocaleCode() : $this->localeCode;
+        $this->localeCode ??= new LocaleCode();
 
         return $this->localeCode;
     }
@@ -678,7 +678,7 @@ class DocumentReferenceType
      */
     public function getVersionIDWithCreate(): VersionID
     {
-        $this->versionID = is_null($this->versionID) ? new VersionID() : $this->versionID;
+        $this->versionID ??= new VersionID();
 
         return $this->versionID;
     }
@@ -718,7 +718,7 @@ class DocumentReferenceType
      */
     public function getDocumentStatusCodeWithCreate(): DocumentStatusCode
     {
-        $this->documentStatusCode = is_null($this->documentStatusCode) ? new DocumentStatusCode() : $this->documentStatusCode;
+        $this->documentStatusCode ??= new DocumentStatusCode();
 
         return $this->documentStatusCode;
     }
@@ -882,7 +882,7 @@ class DocumentReferenceType
      */
     public function getAttachmentWithCreate(): Attachment
     {
-        $this->attachment = is_null($this->attachment) ? new Attachment() : $this->attachment;
+        $this->attachment ??= new Attachment();
 
         return $this->attachment;
     }
@@ -922,7 +922,7 @@ class DocumentReferenceType
      */
     public function getValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->validityPeriod = is_null($this->validityPeriod) ? new ValidityPeriod() : $this->validityPeriod;
+        $this->validityPeriod ??= new ValidityPeriod();
 
         return $this->validityPeriod;
     }
@@ -962,7 +962,7 @@ class DocumentReferenceType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }
@@ -1002,7 +1002,7 @@ class DocumentReferenceType
      */
     public function getResultOfVerificationWithCreate(): ResultOfVerification
     {
-        $this->resultOfVerification = is_null($this->resultOfVerification) ? new ResultOfVerification() : $this->resultOfVerification;
+        $this->resultOfVerification ??= new ResultOfVerification();
 
         return $this->resultOfVerification;
     }

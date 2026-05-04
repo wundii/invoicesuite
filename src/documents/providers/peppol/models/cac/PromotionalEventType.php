@@ -82,7 +82,7 @@ class PromotionalEventType
      */
     public function getPromotionalEventTypeCodeWithCreate(): PromotionalEventTypeCode
     {
-        $this->promotionalEventTypeCode = is_null($this->promotionalEventTypeCode) ? new PromotionalEventTypeCode() : $this->promotionalEventTypeCode;
+        $this->promotionalEventTypeCode ??= new PromotionalEventTypeCode();
 
         return $this->promotionalEventTypeCode;
     }

@@ -36,7 +36,7 @@ class DebtorFinancialAccountType
      */
     public function getIBANIDWithCreate(): IDType
     {
-        $this->iBANID = is_null($this->iBANID) ? new IDType() : $this->iBANID;
+        $this->iBANID ??= new IDType();
 
         return $this->iBANID;
     }

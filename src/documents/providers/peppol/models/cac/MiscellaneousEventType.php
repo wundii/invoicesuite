@@ -48,7 +48,7 @@ class MiscellaneousEventType
      */
     public function getMiscellaneousEventTypeCodeWithCreate(): MiscellaneousEventTypeCode
     {
-        $this->miscellaneousEventTypeCode = is_null($this->miscellaneousEventTypeCode) ? new MiscellaneousEventTypeCode() : $this->miscellaneousEventTypeCode;
+        $this->miscellaneousEventTypeCode ??= new MiscellaneousEventTypeCode();
 
         return $this->miscellaneousEventTypeCode;
     }

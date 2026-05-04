@@ -101,7 +101,7 @@ final class FatturaElettronicaHeader
      */
     public function getDatiTrasmissioneWithCreate(): DatiTrasmissione
     {
-        $this->datiTrasmissione = is_null($this->datiTrasmissione) ? new DatiTrasmissione() : $this->datiTrasmissione;
+        $this->datiTrasmissione ??= new DatiTrasmissione();
 
         return $this->datiTrasmissione;
     }
@@ -149,7 +149,7 @@ final class FatturaElettronicaHeader
      */
     public function getCedentePrestatoreWithCreate(): CedentePrestatore
     {
-        $this->cedentePrestatore = is_null($this->cedentePrestatore) ? new CedentePrestatore() : $this->cedentePrestatore;
+        $this->cedentePrestatore ??= new CedentePrestatore();
 
         return $this->cedentePrestatore;
     }
@@ -197,7 +197,7 @@ final class FatturaElettronicaHeader
      */
     public function getRappresentanteFiscaleWithCreate(): RappresentanteFiscale
     {
-        $this->rappresentanteFiscale = is_null($this->rappresentanteFiscale) ? new RappresentanteFiscale() : $this->rappresentanteFiscale;
+        $this->rappresentanteFiscale ??= new RappresentanteFiscale();
 
         return $this->rappresentanteFiscale;
     }
@@ -245,7 +245,7 @@ final class FatturaElettronicaHeader
      */
     public function getCessionarioCommittenteWithCreate(): CessionarioCommittente
     {
-        $this->cessionarioCommittente = is_null($this->cessionarioCommittente) ? new CessionarioCommittente() : $this->cessionarioCommittente;
+        $this->cessionarioCommittente ??= new CessionarioCommittente();
 
         return $this->cessionarioCommittente;
     }
@@ -293,7 +293,7 @@ final class FatturaElettronicaHeader
      */
     public function getTerzoIntermediarioOSoggettoEmittenteWithCreate(): TerzoIntermediarioSoggettoEmittente
     {
-        $this->terzoIntermediarioOSoggettoEmittente = is_null($this->terzoIntermediarioOSoggettoEmittente) ? new TerzoIntermediarioSoggettoEmittente() : $this->terzoIntermediarioOSoggettoEmittente;
+        $this->terzoIntermediarioOSoggettoEmittente ??= new TerzoIntermediarioSoggettoEmittente();
 
         return $this->terzoIntermediarioOSoggettoEmittente;
     }

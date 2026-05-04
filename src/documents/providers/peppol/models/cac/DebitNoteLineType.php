@@ -274,7 +274,7 @@ class DebitNoteLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -314,7 +314,7 @@ class DebitNoteLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -478,7 +478,7 @@ class DebitNoteLineType
      */
     public function getDebitedQuantityWithCreate(): DebitedQuantity
     {
-        $this->debitedQuantity = is_null($this->debitedQuantity) ? new DebitedQuantity() : $this->debitedQuantity;
+        $this->debitedQuantity ??= new DebitedQuantity();
 
         return $this->debitedQuantity;
     }
@@ -518,7 +518,7 @@ class DebitNoteLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -588,7 +588,7 @@ class DebitNoteLineType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -628,7 +628,7 @@ class DebitNoteLineType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -668,7 +668,7 @@ class DebitNoteLineType
      */
     public function getPaymentPurposeCodeWithCreate(): PaymentPurposeCode
     {
-        $this->paymentPurposeCode = is_null($this->paymentPurposeCode) ? new PaymentPurposeCode() : $this->paymentPurposeCode;
+        $this->paymentPurposeCode ??= new PaymentPurposeCode();
 
         return $this->paymentPurposeCode;
     }
@@ -1328,7 +1328,7 @@ class DebitNoteLineType
      */
     public function getPricingReferenceWithCreate(): PricingReference
     {
-        $this->pricingReference = is_null($this->pricingReference) ? new PricingReference() : $this->pricingReference;
+        $this->pricingReference ??= new PricingReference();
 
         return $this->pricingReference;
     }
@@ -1740,7 +1740,7 @@ class DebitNoteLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -1780,7 +1780,7 @@ class DebitNoteLineType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }

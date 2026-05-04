@@ -47,7 +47,7 @@ class ShareholderPartyType
      */
     public function getPartecipationPercentWithCreate(): PartecipationPercent
     {
-        $this->partecipationPercent = is_null($this->partecipationPercent) ? new PartecipationPercent() : $this->partecipationPercent;
+        $this->partecipationPercent ??= new PartecipationPercent();
 
         return $this->partecipationPercent;
     }
@@ -87,7 +87,7 @@ class ShareholderPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }

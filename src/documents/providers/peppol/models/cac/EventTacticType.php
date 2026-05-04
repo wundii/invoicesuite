@@ -70,7 +70,7 @@ class EventTacticType
      */
     public function getCommentWithCreate(): Comment
     {
-        $this->comment = is_null($this->comment) ? new Comment() : $this->comment;
+        $this->comment ??= new Comment();
 
         return $this->comment;
     }
@@ -110,7 +110,7 @@ class EventTacticType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -150,7 +150,7 @@ class EventTacticType
      */
     public function getEventTacticEnumerationWithCreate(): EventTacticEnumeration
     {
-        $this->eventTacticEnumeration = is_null($this->eventTacticEnumeration) ? new EventTacticEnumeration() : $this->eventTacticEnumeration;
+        $this->eventTacticEnumeration ??= new EventTacticEnumeration();
 
         return $this->eventTacticEnumeration;
     }
@@ -190,7 +190,7 @@ class EventTacticType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }

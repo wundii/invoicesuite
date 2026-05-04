@@ -108,7 +108,7 @@ class ConsumptionHistoryType
      */
     public function getMeterNumberWithCreate(): MeterNumber
     {
-        $this->meterNumber = is_null($this->meterNumber) ? new MeterNumber() : $this->meterNumber;
+        $this->meterNumber ??= new MeterNumber();
 
         return $this->meterNumber;
     }
@@ -148,7 +148,7 @@ class ConsumptionHistoryType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -188,7 +188,7 @@ class ConsumptionHistoryType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -228,7 +228,7 @@ class ConsumptionHistoryType
      */
     public function getConsumptionLevelCodeWithCreate(): ConsumptionLevelCode
     {
-        $this->consumptionLevelCode = is_null($this->consumptionLevelCode) ? new ConsumptionLevelCode() : $this->consumptionLevelCode;
+        $this->consumptionLevelCode ??= new ConsumptionLevelCode();
 
         return $this->consumptionLevelCode;
     }
@@ -268,7 +268,7 @@ class ConsumptionHistoryType
      */
     public function getConsumptionLevelWithCreate(): ConsumptionLevel
     {
-        $this->consumptionLevel = is_null($this->consumptionLevel) ? new ConsumptionLevel() : $this->consumptionLevel;
+        $this->consumptionLevel ??= new ConsumptionLevel();
 
         return $this->consumptionLevel;
     }
@@ -432,7 +432,7 @@ class ConsumptionHistoryType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }

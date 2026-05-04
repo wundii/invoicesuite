@@ -199,7 +199,7 @@ class LineTradeSettlementType
      */
     public function getBillingSpecifiedPeriodWithCreate(): SpecifiedPeriodType
     {
-        $this->billingSpecifiedPeriod = is_null($this->billingSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->billingSpecifiedPeriod;
+        $this->billingSpecifiedPeriod ??= new SpecifiedPeriodType();
 
         return $this->billingSpecifiedPeriod;
     }
@@ -333,7 +333,7 @@ class LineTradeSettlementType
      */
     public function getSpecifiedTradeSettlementLineMonetarySummationWithCreate(): TradeSettlementLineMonetarySummationType
     {
-        $this->specifiedTradeSettlementLineMonetarySummation = is_null($this->specifiedTradeSettlementLineMonetarySummation) ? new TradeSettlementLineMonetarySummationType() : $this->specifiedTradeSettlementLineMonetarySummation;
+        $this->specifiedTradeSettlementLineMonetarySummation ??= new TradeSettlementLineMonetarySummationType();
 
         return $this->specifiedTradeSettlementLineMonetarySummation;
     }
@@ -373,7 +373,7 @@ class LineTradeSettlementType
      */
     public function getInvoiceReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->invoiceReferencedDocument = is_null($this->invoiceReferencedDocument) ? new ReferencedDocumentType() : $this->invoiceReferencedDocument;
+        $this->invoiceReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->invoiceReferencedDocument;
     }

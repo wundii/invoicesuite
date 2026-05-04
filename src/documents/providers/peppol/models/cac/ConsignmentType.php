@@ -1192,7 +1192,7 @@ class ConsignmentType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -1232,7 +1232,7 @@ class ConsignmentType
      */
     public function getCarrierAssignedIDWithCreate(): CarrierAssignedID
     {
-        $this->carrierAssignedID = is_null($this->carrierAssignedID) ? new CarrierAssignedID() : $this->carrierAssignedID;
+        $this->carrierAssignedID ??= new CarrierAssignedID();
 
         return $this->carrierAssignedID;
     }
@@ -1272,7 +1272,7 @@ class ConsignmentType
      */
     public function getConsigneeAssignedIDWithCreate(): ConsigneeAssignedID
     {
-        $this->consigneeAssignedID = is_null($this->consigneeAssignedID) ? new ConsigneeAssignedID() : $this->consigneeAssignedID;
+        $this->consigneeAssignedID ??= new ConsigneeAssignedID();
 
         return $this->consigneeAssignedID;
     }
@@ -1312,7 +1312,7 @@ class ConsignmentType
      */
     public function getConsignorAssignedIDWithCreate(): ConsignorAssignedID
     {
-        $this->consignorAssignedID = is_null($this->consignorAssignedID) ? new ConsignorAssignedID() : $this->consignorAssignedID;
+        $this->consignorAssignedID ??= new ConsignorAssignedID();
 
         return $this->consignorAssignedID;
     }
@@ -1352,7 +1352,7 @@ class ConsignmentType
      */
     public function getFreightForwarderAssignedIDWithCreate(): FreightForwarderAssignedID
     {
-        $this->freightForwarderAssignedID = is_null($this->freightForwarderAssignedID) ? new FreightForwarderAssignedID() : $this->freightForwarderAssignedID;
+        $this->freightForwarderAssignedID ??= new FreightForwarderAssignedID();
 
         return $this->freightForwarderAssignedID;
     }
@@ -1392,7 +1392,7 @@ class ConsignmentType
      */
     public function getBrokerAssignedIDWithCreate(): BrokerAssignedID
     {
-        $this->brokerAssignedID = is_null($this->brokerAssignedID) ? new BrokerAssignedID() : $this->brokerAssignedID;
+        $this->brokerAssignedID ??= new BrokerAssignedID();
 
         return $this->brokerAssignedID;
     }
@@ -1432,7 +1432,7 @@ class ConsignmentType
      */
     public function getContractedCarrierAssignedIDWithCreate(): ContractedCarrierAssignedID
     {
-        $this->contractedCarrierAssignedID = is_null($this->contractedCarrierAssignedID) ? new ContractedCarrierAssignedID() : $this->contractedCarrierAssignedID;
+        $this->contractedCarrierAssignedID ??= new ContractedCarrierAssignedID();
 
         return $this->contractedCarrierAssignedID;
     }
@@ -1472,7 +1472,7 @@ class ConsignmentType
      */
     public function getPerformingCarrierAssignedIDWithCreate(): PerformingCarrierAssignedID
     {
-        $this->performingCarrierAssignedID = is_null($this->performingCarrierAssignedID) ? new PerformingCarrierAssignedID() : $this->performingCarrierAssignedID;
+        $this->performingCarrierAssignedID ??= new PerformingCarrierAssignedID();
 
         return $this->performingCarrierAssignedID;
     }
@@ -1636,7 +1636,7 @@ class ConsignmentType
      */
     public function getTotalInvoiceAmountWithCreate(): TotalInvoiceAmount
     {
-        $this->totalInvoiceAmount = is_null($this->totalInvoiceAmount) ? new TotalInvoiceAmount() : $this->totalInvoiceAmount;
+        $this->totalInvoiceAmount ??= new TotalInvoiceAmount();
 
         return $this->totalInvoiceAmount;
     }
@@ -1676,7 +1676,7 @@ class ConsignmentType
      */
     public function getDeclaredCustomsValueAmountWithCreate(): DeclaredCustomsValueAmount
     {
-        $this->declaredCustomsValueAmount = is_null($this->declaredCustomsValueAmount) ? new DeclaredCustomsValueAmount() : $this->declaredCustomsValueAmount;
+        $this->declaredCustomsValueAmount ??= new DeclaredCustomsValueAmount();
 
         return $this->declaredCustomsValueAmount;
     }
@@ -1840,7 +1840,7 @@ class ConsignmentType
      */
     public function getTariffCodeWithCreate(): TariffCode
     {
-        $this->tariffCode = is_null($this->tariffCode) ? new TariffCode() : $this->tariffCode;
+        $this->tariffCode ??= new TariffCode();
 
         return $this->tariffCode;
     }
@@ -1880,7 +1880,7 @@ class ConsignmentType
      */
     public function getInsurancePremiumAmountWithCreate(): InsurancePremiumAmount
     {
-        $this->insurancePremiumAmount = is_null($this->insurancePremiumAmount) ? new InsurancePremiumAmount() : $this->insurancePremiumAmount;
+        $this->insurancePremiumAmount ??= new InsurancePremiumAmount();
 
         return $this->insurancePremiumAmount;
     }
@@ -1920,7 +1920,7 @@ class ConsignmentType
      */
     public function getGrossWeightMeasureWithCreate(): GrossWeightMeasure
     {
-        $this->grossWeightMeasure = is_null($this->grossWeightMeasure) ? new GrossWeightMeasure() : $this->grossWeightMeasure;
+        $this->grossWeightMeasure ??= new GrossWeightMeasure();
 
         return $this->grossWeightMeasure;
     }
@@ -1960,7 +1960,7 @@ class ConsignmentType
      */
     public function getNetWeightMeasureWithCreate(): NetWeightMeasure
     {
-        $this->netWeightMeasure = is_null($this->netWeightMeasure) ? new NetWeightMeasure() : $this->netWeightMeasure;
+        $this->netWeightMeasure ??= new NetWeightMeasure();
 
         return $this->netWeightMeasure;
     }
@@ -2000,7 +2000,7 @@ class ConsignmentType
      */
     public function getNetNetWeightMeasureWithCreate(): NetNetWeightMeasure
     {
-        $this->netNetWeightMeasure = is_null($this->netNetWeightMeasure) ? new NetNetWeightMeasure() : $this->netNetWeightMeasure;
+        $this->netNetWeightMeasure ??= new NetNetWeightMeasure();
 
         return $this->netNetWeightMeasure;
     }
@@ -2040,7 +2040,7 @@ class ConsignmentType
      */
     public function getChargeableWeightMeasureWithCreate(): ChargeableWeightMeasure
     {
-        $this->chargeableWeightMeasure = is_null($this->chargeableWeightMeasure) ? new ChargeableWeightMeasure() : $this->chargeableWeightMeasure;
+        $this->chargeableWeightMeasure ??= new ChargeableWeightMeasure();
 
         return $this->chargeableWeightMeasure;
     }
@@ -2080,7 +2080,7 @@ class ConsignmentType
      */
     public function getGrossVolumeMeasureWithCreate(): GrossVolumeMeasure
     {
-        $this->grossVolumeMeasure = is_null($this->grossVolumeMeasure) ? new GrossVolumeMeasure() : $this->grossVolumeMeasure;
+        $this->grossVolumeMeasure ??= new GrossVolumeMeasure();
 
         return $this->grossVolumeMeasure;
     }
@@ -2120,7 +2120,7 @@ class ConsignmentType
      */
     public function getNetVolumeMeasureWithCreate(): NetVolumeMeasure
     {
-        $this->netVolumeMeasure = is_null($this->netVolumeMeasure) ? new NetVolumeMeasure() : $this->netVolumeMeasure;
+        $this->netVolumeMeasure ??= new NetVolumeMeasure();
 
         return $this->netVolumeMeasure;
     }
@@ -2160,7 +2160,7 @@ class ConsignmentType
      */
     public function getLoadingLengthMeasureWithCreate(): LoadingLengthMeasure
     {
-        $this->loadingLengthMeasure = is_null($this->loadingLengthMeasure) ? new LoadingLengthMeasure() : $this->loadingLengthMeasure;
+        $this->loadingLengthMeasure ??= new LoadingLengthMeasure();
 
         return $this->loadingLengthMeasure;
     }
@@ -3090,7 +3090,7 @@ class ConsignmentType
      */
     public function getSequenceIDWithCreate(): SequenceID
     {
-        $this->sequenceID = is_null($this->sequenceID) ? new SequenceID() : $this->sequenceID;
+        $this->sequenceID ??= new SequenceID();
 
         return $this->sequenceID;
     }
@@ -3130,7 +3130,7 @@ class ConsignmentType
      */
     public function getShippingPriorityLevelCodeWithCreate(): ShippingPriorityLevelCode
     {
-        $this->shippingPriorityLevelCode = is_null($this->shippingPriorityLevelCode) ? new ShippingPriorityLevelCode() : $this->shippingPriorityLevelCode;
+        $this->shippingPriorityLevelCode ??= new ShippingPriorityLevelCode();
 
         return $this->shippingPriorityLevelCode;
     }
@@ -3170,7 +3170,7 @@ class ConsignmentType
      */
     public function getHandlingCodeWithCreate(): HandlingCode
     {
-        $this->handlingCode = is_null($this->handlingCode) ? new HandlingCode() : $this->handlingCode;
+        $this->handlingCode ??= new HandlingCode();
 
         return $this->handlingCode;
     }
@@ -3458,7 +3458,7 @@ class ConsignmentType
      */
     public function getTotalGoodsItemQuantityWithCreate(): TotalGoodsItemQuantity
     {
-        $this->totalGoodsItemQuantity = is_null($this->totalGoodsItemQuantity) ? new TotalGoodsItemQuantity() : $this->totalGoodsItemQuantity;
+        $this->totalGoodsItemQuantity ??= new TotalGoodsItemQuantity();
 
         return $this->totalGoodsItemQuantity;
     }
@@ -3498,7 +3498,7 @@ class ConsignmentType
      */
     public function getTotalTransportHandlingUnitQuantityWithCreate(): TotalTransportHandlingUnitQuantity
     {
-        $this->totalTransportHandlingUnitQuantity = is_null($this->totalTransportHandlingUnitQuantity) ? new TotalTransportHandlingUnitQuantity() : $this->totalTransportHandlingUnitQuantity;
+        $this->totalTransportHandlingUnitQuantity ??= new TotalTransportHandlingUnitQuantity();
 
         return $this->totalTransportHandlingUnitQuantity;
     }
@@ -3538,7 +3538,7 @@ class ConsignmentType
      */
     public function getInsuranceValueAmountWithCreate(): InsuranceValueAmount
     {
-        $this->insuranceValueAmount = is_null($this->insuranceValueAmount) ? new InsuranceValueAmount() : $this->insuranceValueAmount;
+        $this->insuranceValueAmount ??= new InsuranceValueAmount();
 
         return $this->insuranceValueAmount;
     }
@@ -3578,7 +3578,7 @@ class ConsignmentType
      */
     public function getDeclaredForCarriageValueAmountWithCreate(): DeclaredForCarriageValueAmount
     {
-        $this->declaredForCarriageValueAmount = is_null($this->declaredForCarriageValueAmount) ? new DeclaredForCarriageValueAmount() : $this->declaredForCarriageValueAmount;
+        $this->declaredForCarriageValueAmount ??= new DeclaredForCarriageValueAmount();
 
         return $this->declaredForCarriageValueAmount;
     }
@@ -3618,7 +3618,7 @@ class ConsignmentType
      */
     public function getDeclaredStatisticsValueAmountWithCreate(): DeclaredStatisticsValueAmount
     {
-        $this->declaredStatisticsValueAmount = is_null($this->declaredStatisticsValueAmount) ? new DeclaredStatisticsValueAmount() : $this->declaredStatisticsValueAmount;
+        $this->declaredStatisticsValueAmount ??= new DeclaredStatisticsValueAmount();
 
         return $this->declaredStatisticsValueAmount;
     }
@@ -3658,7 +3658,7 @@ class ConsignmentType
      */
     public function getFreeOnBoardValueAmountWithCreate(): FreeOnBoardValueAmount
     {
-        $this->freeOnBoardValueAmount = is_null($this->freeOnBoardValueAmount) ? new FreeOnBoardValueAmount() : $this->freeOnBoardValueAmount;
+        $this->freeOnBoardValueAmount ??= new FreeOnBoardValueAmount();
 
         return $this->freeOnBoardValueAmount;
     }
@@ -3976,7 +3976,7 @@ class ConsignmentType
      */
     public function getConsignmentQuantityWithCreate(): ConsignmentQuantity
     {
-        $this->consignmentQuantity = is_null($this->consignmentQuantity) ? new ConsignmentQuantity() : $this->consignmentQuantity;
+        $this->consignmentQuantity ??= new ConsignmentQuantity();
 
         return $this->consignmentQuantity;
     }
@@ -4170,7 +4170,7 @@ class ConsignmentType
      */
     public function getLoadingSequenceIDWithCreate(): LoadingSequenceID
     {
-        $this->loadingSequenceID = is_null($this->loadingSequenceID) ? new LoadingSequenceID() : $this->loadingSequenceID;
+        $this->loadingSequenceID ??= new LoadingSequenceID();
 
         return $this->loadingSequenceID;
     }
@@ -4210,7 +4210,7 @@ class ConsignmentType
      */
     public function getChildConsignmentQuantityWithCreate(): ChildConsignmentQuantity
     {
-        $this->childConsignmentQuantity = is_null($this->childConsignmentQuantity) ? new ChildConsignmentQuantity() : $this->childConsignmentQuantity;
+        $this->childConsignmentQuantity ??= new ChildConsignmentQuantity();
 
         return $this->childConsignmentQuantity;
     }
@@ -4250,7 +4250,7 @@ class ConsignmentType
      */
     public function getTotalPackagesQuantityWithCreate(): TotalPackagesQuantity
     {
-        $this->totalPackagesQuantity = is_null($this->totalPackagesQuantity) ? new TotalPackagesQuantity() : $this->totalPackagesQuantity;
+        $this->totalPackagesQuantity ??= new TotalPackagesQuantity();
 
         return $this->totalPackagesQuantity;
     }
@@ -4538,7 +4538,7 @@ class ConsignmentType
      */
     public function getRequestedPickupTransportEventWithCreate(): RequestedPickupTransportEvent
     {
-        $this->requestedPickupTransportEvent = is_null($this->requestedPickupTransportEvent) ? new RequestedPickupTransportEvent() : $this->requestedPickupTransportEvent;
+        $this->requestedPickupTransportEvent ??= new RequestedPickupTransportEvent();
 
         return $this->requestedPickupTransportEvent;
     }
@@ -4578,7 +4578,7 @@ class ConsignmentType
      */
     public function getRequestedDeliveryTransportEventWithCreate(): RequestedDeliveryTransportEvent
     {
-        $this->requestedDeliveryTransportEvent = is_null($this->requestedDeliveryTransportEvent) ? new RequestedDeliveryTransportEvent() : $this->requestedDeliveryTransportEvent;
+        $this->requestedDeliveryTransportEvent ??= new RequestedDeliveryTransportEvent();
 
         return $this->requestedDeliveryTransportEvent;
     }
@@ -4618,7 +4618,7 @@ class ConsignmentType
      */
     public function getPlannedPickupTransportEventWithCreate(): PlannedPickupTransportEvent
     {
-        $this->plannedPickupTransportEvent = is_null($this->plannedPickupTransportEvent) ? new PlannedPickupTransportEvent() : $this->plannedPickupTransportEvent;
+        $this->plannedPickupTransportEvent ??= new PlannedPickupTransportEvent();
 
         return $this->plannedPickupTransportEvent;
     }
@@ -4658,7 +4658,7 @@ class ConsignmentType
      */
     public function getPlannedDeliveryTransportEventWithCreate(): PlannedDeliveryTransportEvent
     {
-        $this->plannedDeliveryTransportEvent = is_null($this->plannedDeliveryTransportEvent) ? new PlannedDeliveryTransportEvent() : $this->plannedDeliveryTransportEvent;
+        $this->plannedDeliveryTransportEvent ??= new PlannedDeliveryTransportEvent();
 
         return $this->plannedDeliveryTransportEvent;
     }
@@ -4946,7 +4946,7 @@ class ConsignmentType
      */
     public function getConsigneePartyWithCreate(): ConsigneeParty
     {
-        $this->consigneeParty = is_null($this->consigneeParty) ? new ConsigneeParty() : $this->consigneeParty;
+        $this->consigneeParty ??= new ConsigneeParty();
 
         return $this->consigneeParty;
     }
@@ -4986,7 +4986,7 @@ class ConsignmentType
      */
     public function getExporterPartyWithCreate(): ExporterParty
     {
-        $this->exporterParty = is_null($this->exporterParty) ? new ExporterParty() : $this->exporterParty;
+        $this->exporterParty ??= new ExporterParty();
 
         return $this->exporterParty;
     }
@@ -5026,7 +5026,7 @@ class ConsignmentType
      */
     public function getConsignorPartyWithCreate(): ConsignorParty
     {
-        $this->consignorParty = is_null($this->consignorParty) ? new ConsignorParty() : $this->consignorParty;
+        $this->consignorParty ??= new ConsignorParty();
 
         return $this->consignorParty;
     }
@@ -5066,7 +5066,7 @@ class ConsignmentType
      */
     public function getImporterPartyWithCreate(): ImporterParty
     {
-        $this->importerParty = is_null($this->importerParty) ? new ImporterParty() : $this->importerParty;
+        $this->importerParty ??= new ImporterParty();
 
         return $this->importerParty;
     }
@@ -5106,7 +5106,7 @@ class ConsignmentType
      */
     public function getCarrierPartyWithCreate(): CarrierParty
     {
-        $this->carrierParty = is_null($this->carrierParty) ? new CarrierParty() : $this->carrierParty;
+        $this->carrierParty ??= new CarrierParty();
 
         return $this->carrierParty;
     }
@@ -5146,7 +5146,7 @@ class ConsignmentType
      */
     public function getFreightForwarderPartyWithCreate(): FreightForwarderParty
     {
-        $this->freightForwarderParty = is_null($this->freightForwarderParty) ? new FreightForwarderParty() : $this->freightForwarderParty;
+        $this->freightForwarderParty ??= new FreightForwarderParty();
 
         return $this->freightForwarderParty;
     }
@@ -5186,7 +5186,7 @@ class ConsignmentType
      */
     public function getNotifyPartyWithCreate(): NotifyParty
     {
-        $this->notifyParty = is_null($this->notifyParty) ? new NotifyParty() : $this->notifyParty;
+        $this->notifyParty ??= new NotifyParty();
 
         return $this->notifyParty;
     }
@@ -5226,7 +5226,7 @@ class ConsignmentType
      */
     public function getOriginalDespatchPartyWithCreate(): OriginalDespatchParty
     {
-        $this->originalDespatchParty = is_null($this->originalDespatchParty) ? new OriginalDespatchParty() : $this->originalDespatchParty;
+        $this->originalDespatchParty ??= new OriginalDespatchParty();
 
         return $this->originalDespatchParty;
     }
@@ -5266,7 +5266,7 @@ class ConsignmentType
      */
     public function getFinalDeliveryPartyWithCreate(): FinalDeliveryParty
     {
-        $this->finalDeliveryParty = is_null($this->finalDeliveryParty) ? new FinalDeliveryParty() : $this->finalDeliveryParty;
+        $this->finalDeliveryParty ??= new FinalDeliveryParty();
 
         return $this->finalDeliveryParty;
     }
@@ -5306,7 +5306,7 @@ class ConsignmentType
      */
     public function getPerformingCarrierPartyWithCreate(): PerformingCarrierParty
     {
-        $this->performingCarrierParty = is_null($this->performingCarrierParty) ? new PerformingCarrierParty() : $this->performingCarrierParty;
+        $this->performingCarrierParty ??= new PerformingCarrierParty();
 
         return $this->performingCarrierParty;
     }
@@ -5346,7 +5346,7 @@ class ConsignmentType
      */
     public function getSubstituteCarrierPartyWithCreate(): SubstituteCarrierParty
     {
-        $this->substituteCarrierParty = is_null($this->substituteCarrierParty) ? new SubstituteCarrierParty() : $this->substituteCarrierParty;
+        $this->substituteCarrierParty ??= new SubstituteCarrierParty();
 
         return $this->substituteCarrierParty;
     }
@@ -5386,7 +5386,7 @@ class ConsignmentType
      */
     public function getLogisticsOperatorPartyWithCreate(): LogisticsOperatorParty
     {
-        $this->logisticsOperatorParty = is_null($this->logisticsOperatorParty) ? new LogisticsOperatorParty() : $this->logisticsOperatorParty;
+        $this->logisticsOperatorParty ??= new LogisticsOperatorParty();
 
         return $this->logisticsOperatorParty;
     }
@@ -5426,7 +5426,7 @@ class ConsignmentType
      */
     public function getTransportAdvisorPartyWithCreate(): TransportAdvisorParty
     {
-        $this->transportAdvisorParty = is_null($this->transportAdvisorParty) ? new TransportAdvisorParty() : $this->transportAdvisorParty;
+        $this->transportAdvisorParty ??= new TransportAdvisorParty();
 
         return $this->transportAdvisorParty;
     }
@@ -5466,7 +5466,7 @@ class ConsignmentType
      */
     public function getHazardousItemNotificationPartyWithCreate(): HazardousItemNotificationParty
     {
-        $this->hazardousItemNotificationParty = is_null($this->hazardousItemNotificationParty) ? new HazardousItemNotificationParty() : $this->hazardousItemNotificationParty;
+        $this->hazardousItemNotificationParty ??= new HazardousItemNotificationParty();
 
         return $this->hazardousItemNotificationParty;
     }
@@ -5506,7 +5506,7 @@ class ConsignmentType
      */
     public function getInsurancePartyWithCreate(): InsuranceParty
     {
-        $this->insuranceParty = is_null($this->insuranceParty) ? new InsuranceParty() : $this->insuranceParty;
+        $this->insuranceParty ??= new InsuranceParty();
 
         return $this->insuranceParty;
     }
@@ -5546,7 +5546,7 @@ class ConsignmentType
      */
     public function getMortgageHolderPartyWithCreate(): MortgageHolderParty
     {
-        $this->mortgageHolderParty = is_null($this->mortgageHolderParty) ? new MortgageHolderParty() : $this->mortgageHolderParty;
+        $this->mortgageHolderParty ??= new MortgageHolderParty();
 
         return $this->mortgageHolderParty;
     }
@@ -5586,7 +5586,7 @@ class ConsignmentType
      */
     public function getBillOfLadingHolderPartyWithCreate(): BillOfLadingHolderParty
     {
-        $this->billOfLadingHolderParty = is_null($this->billOfLadingHolderParty) ? new BillOfLadingHolderParty() : $this->billOfLadingHolderParty;
+        $this->billOfLadingHolderParty ??= new BillOfLadingHolderParty();
 
         return $this->billOfLadingHolderParty;
     }
@@ -5626,7 +5626,7 @@ class ConsignmentType
      */
     public function getOriginalDepartureCountryWithCreate(): OriginalDepartureCountry
     {
-        $this->originalDepartureCountry = is_null($this->originalDepartureCountry) ? new OriginalDepartureCountry() : $this->originalDepartureCountry;
+        $this->originalDepartureCountry ??= new OriginalDepartureCountry();
 
         return $this->originalDepartureCountry;
     }
@@ -5666,7 +5666,7 @@ class ConsignmentType
      */
     public function getFinalDestinationCountryWithCreate(): FinalDestinationCountry
     {
-        $this->finalDestinationCountry = is_null($this->finalDestinationCountry) ? new FinalDestinationCountry() : $this->finalDestinationCountry;
+        $this->finalDestinationCountry ??= new FinalDestinationCountry();
 
         return $this->finalDestinationCountry;
     }
@@ -5830,7 +5830,7 @@ class ConsignmentType
      */
     public function getTransportContractWithCreate(): TransportContract
     {
-        $this->transportContract = is_null($this->transportContract) ? new TransportContract() : $this->transportContract;
+        $this->transportContract ??= new TransportContract();
 
         return $this->transportContract;
     }
@@ -5994,7 +5994,7 @@ class ConsignmentType
      */
     public function getOriginalDespatchTransportationServiceWithCreate(): OriginalDespatchTransportationService
     {
-        $this->originalDespatchTransportationService = is_null($this->originalDespatchTransportationService) ? new OriginalDespatchTransportationService() : $this->originalDespatchTransportationService;
+        $this->originalDespatchTransportationService ??= new OriginalDespatchTransportationService();
 
         return $this->originalDespatchTransportationService;
     }
@@ -6034,7 +6034,7 @@ class ConsignmentType
      */
     public function getFinalDeliveryTransportationServiceWithCreate(): FinalDeliveryTransportationService
     {
-        $this->finalDeliveryTransportationService = is_null($this->finalDeliveryTransportationService) ? new FinalDeliveryTransportationService() : $this->finalDeliveryTransportationService;
+        $this->finalDeliveryTransportationService ??= new FinalDeliveryTransportationService();
 
         return $this->finalDeliveryTransportationService;
     }
@@ -6074,7 +6074,7 @@ class ConsignmentType
      */
     public function getDeliveryTermsWithCreate(): DeliveryTerms
     {
-        $this->deliveryTerms = is_null($this->deliveryTerms) ? new DeliveryTerms() : $this->deliveryTerms;
+        $this->deliveryTerms ??= new DeliveryTerms();
 
         return $this->deliveryTerms;
     }
@@ -6114,7 +6114,7 @@ class ConsignmentType
      */
     public function getPaymentTermsWithCreate(): PaymentTerms
     {
-        $this->paymentTerms = is_null($this->paymentTerms) ? new PaymentTerms() : $this->paymentTerms;
+        $this->paymentTerms ??= new PaymentTerms();
 
         return $this->paymentTerms;
     }
@@ -6154,7 +6154,7 @@ class ConsignmentType
      */
     public function getCollectPaymentTermsWithCreate(): CollectPaymentTerms
     {
-        $this->collectPaymentTerms = is_null($this->collectPaymentTerms) ? new CollectPaymentTerms() : $this->collectPaymentTerms;
+        $this->collectPaymentTerms ??= new CollectPaymentTerms();
 
         return $this->collectPaymentTerms;
     }
@@ -6194,7 +6194,7 @@ class ConsignmentType
      */
     public function getDisbursementPaymentTermsWithCreate(): DisbursementPaymentTerms
     {
-        $this->disbursementPaymentTerms = is_null($this->disbursementPaymentTerms) ? new DisbursementPaymentTerms() : $this->disbursementPaymentTerms;
+        $this->disbursementPaymentTerms ??= new DisbursementPaymentTerms();
 
         return $this->disbursementPaymentTerms;
     }
@@ -6234,7 +6234,7 @@ class ConsignmentType
      */
     public function getPrepaidPaymentTermsWithCreate(): PrepaidPaymentTerms
     {
-        $this->prepaidPaymentTerms = is_null($this->prepaidPaymentTerms) ? new PrepaidPaymentTerms() : $this->prepaidPaymentTerms;
+        $this->prepaidPaymentTerms ??= new PrepaidPaymentTerms();
 
         return $this->prepaidPaymentTerms;
     }
@@ -7018,7 +7018,7 @@ class ConsignmentType
      */
     public function getFirstArrivalPortLocationWithCreate(): FirstArrivalPortLocation
     {
-        $this->firstArrivalPortLocation = is_null($this->firstArrivalPortLocation) ? new FirstArrivalPortLocation() : $this->firstArrivalPortLocation;
+        $this->firstArrivalPortLocation ??= new FirstArrivalPortLocation();
 
         return $this->firstArrivalPortLocation;
     }
@@ -7058,7 +7058,7 @@ class ConsignmentType
      */
     public function getLastExitPortLocationWithCreate(): LastExitPortLocation
     {
-        $this->lastExitPortLocation = is_null($this->lastExitPortLocation) ? new LastExitPortLocation() : $this->lastExitPortLocation;
+        $this->lastExitPortLocation ??= new LastExitPortLocation();
 
         return $this->lastExitPortLocation;
     }

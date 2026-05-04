@@ -60,7 +60,7 @@ class TenderRequirementType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -224,7 +224,7 @@ class TenderRequirementType
      */
     public function getTemplateDocumentReferenceWithCreate(): TemplateDocumentReference
     {
-        $this->templateDocumentReference = is_null($this->templateDocumentReference) ? new TemplateDocumentReference() : $this->templateDocumentReference;
+        $this->templateDocumentReference ??= new TemplateDocumentReference();
 
         return $this->templateDocumentReference;
     }

@@ -71,7 +71,7 @@ class TradePriceType
      */
     public function getChargeAmountWithCreate(): AmountType
     {
-        $this->chargeAmount = is_null($this->chargeAmount) ? new AmountType() : $this->chargeAmount;
+        $this->chargeAmount ??= new AmountType();
 
         return $this->chargeAmount;
     }
@@ -111,7 +111,7 @@ class TradePriceType
      */
     public function getBasisQuantityWithCreate(): QuantityType
     {
-        $this->basisQuantity = is_null($this->basisQuantity) ? new QuantityType() : $this->basisQuantity;
+        $this->basisQuantity ??= new QuantityType();
 
         return $this->basisQuantity;
     }
@@ -245,7 +245,7 @@ class TradePriceType
      */
     public function getIncludedTradeTaxWithCreate(): TradeTaxType
     {
-        $this->includedTradeTax = is_null($this->includedTradeTax) ? new TradeTaxType() : $this->includedTradeTax;
+        $this->includedTradeTax ??= new TradeTaxType();
 
         return $this->includedTradeTax;
     }

@@ -165,7 +165,7 @@ class ItemLocationQuantityType
      */
     public function getLeadTimeMeasureWithCreate(): LeadTimeMeasure
     {
-        $this->leadTimeMeasure = is_null($this->leadTimeMeasure) ? new LeadTimeMeasure() : $this->leadTimeMeasure;
+        $this->leadTimeMeasure ??= new LeadTimeMeasure();
 
         return $this->leadTimeMeasure;
     }
@@ -205,7 +205,7 @@ class ItemLocationQuantityType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }
@@ -245,7 +245,7 @@ class ItemLocationQuantityType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -563,7 +563,7 @@ class ItemLocationQuantityType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -851,7 +851,7 @@ class ItemLocationQuantityType
      */
     public function getPackageWithCreate(): Package
     {
-        $this->package = is_null($this->package) ? new Package() : $this->package;
+        $this->package ??= new Package();
 
         return $this->package;
     }
@@ -1015,7 +1015,7 @@ class ItemLocationQuantityType
      */
     public function getDependentPriceReferenceWithCreate(): DependentPriceReference
     {
-        $this->dependentPriceReference = is_null($this->dependentPriceReference) ? new DependentPriceReference() : $this->dependentPriceReference;
+        $this->dependentPriceReference ??= new DependentPriceReference();
 
         return $this->dependentPriceReference;
     }

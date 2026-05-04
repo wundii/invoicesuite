@@ -96,7 +96,7 @@ class X509DataType
      */
     public function getX509IssuerSerialWithCreate(): X509IssuerSerialType
     {
-        $this->x509IssuerSerial = is_null($this->x509IssuerSerial) ? new X509IssuerSerialType() : $this->x509IssuerSerial;
+        $this->x509IssuerSerial ??= new X509IssuerSerialType();
 
         return $this->x509IssuerSerial;
     }

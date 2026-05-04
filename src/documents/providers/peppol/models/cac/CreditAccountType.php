@@ -36,7 +36,7 @@ class CreditAccountType
      */
     public function getAccountIDWithCreate(): AccountID
     {
-        $this->accountID = is_null($this->accountID) ? new AccountID() : $this->accountID;
+        $this->accountID ??= new AccountID();
 
         return $this->accountID;
     }

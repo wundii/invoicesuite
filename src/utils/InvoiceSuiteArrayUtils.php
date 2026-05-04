@@ -37,7 +37,7 @@ class InvoiceSuiteArrayUtils
         array $array,
         string $search
     ): bool {
-        return in_array(InvoiceSuiteStringUtils::lower($search), array_map(InvoiceSuiteStringUtils::lower(...), $array));
+        return in_array(InvoiceSuiteStringUtils::lower($search), array_map(InvoiceSuiteStringUtils::lower(...), $array), true);
     }
 
     /**

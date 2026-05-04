@@ -48,7 +48,7 @@ class TradeLocationType
      */
     public function getCountryIDWithCreate(): CountryIDType
     {
-        $this->countryID = is_null($this->countryID) ? new CountryIDType() : $this->countryID;
+        $this->countryID ??= new CountryIDType();
 
         return $this->countryID;
     }
@@ -88,7 +88,7 @@ class TradeLocationType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }

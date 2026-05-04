@@ -81,7 +81,7 @@ class DocumentResponseType
      */
     public function getResponseWithCreate(): Response
     {
-        $this->response = is_null($this->response) ? new Response() : $this->response;
+        $this->response ??= new Response();
 
         return $this->response;
     }
@@ -245,7 +245,7 @@ class DocumentResponseType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }
@@ -285,7 +285,7 @@ class DocumentResponseType
      */
     public function getRecipientPartyWithCreate(): RecipientParty
     {
-        $this->recipientParty = is_null($this->recipientParty) ? new RecipientParty() : $this->recipientParty;
+        $this->recipientParty ??= new RecipientParty();
 
         return $this->recipientParty;
     }

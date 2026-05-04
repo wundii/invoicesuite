@@ -184,7 +184,7 @@ class TradingTermsType
      */
     public function getReferenceWithCreate(): Reference
     {
-        $this->reference = is_null($this->reference) ? new Reference() : $this->reference;
+        $this->reference ??= new Reference();
 
         return $this->reference;
     }
@@ -224,7 +224,7 @@ class TradingTermsType
      */
     public function getApplicableAddressWithCreate(): ApplicableAddress
     {
-        $this->applicableAddress = is_null($this->applicableAddress) ? new ApplicableAddress() : $this->applicableAddress;
+        $this->applicableAddress ??= new ApplicableAddress();
 
         return $this->applicableAddress;
     }

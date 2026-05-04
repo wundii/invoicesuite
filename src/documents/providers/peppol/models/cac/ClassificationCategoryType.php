@@ -73,7 +73,7 @@ class ClassificationCategoryType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -113,7 +113,7 @@ class ClassificationCategoryType
      */
     public function getCodeValueWithCreate(): CodeValue
     {
-        $this->codeValue = is_null($this->codeValue) ? new CodeValue() : $this->codeValue;
+        $this->codeValue ??= new CodeValue();
 
         return $this->codeValue;
     }

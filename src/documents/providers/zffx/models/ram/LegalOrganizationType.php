@@ -59,7 +59,7 @@ class LegalOrganizationType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -99,7 +99,7 @@ class LegalOrganizationType
      */
     public function getTradingBusinessNameWithCreate(): TextType
     {
-        $this->tradingBusinessName = is_null($this->tradingBusinessName) ? new TextType() : $this->tradingBusinessName;
+        $this->tradingBusinessName ??= new TextType();
 
         return $this->tradingBusinessName;
     }
@@ -139,7 +139,7 @@ class LegalOrganizationType
      */
     public function getPostalTradeAddressWithCreate(): TradeAddressType
     {
-        $this->postalTradeAddress = is_null($this->postalTradeAddress) ? new TradeAddressType() : $this->postalTradeAddress;
+        $this->postalTradeAddress ??= new TradeAddressType();
 
         return $this->postalTradeAddress;
     }

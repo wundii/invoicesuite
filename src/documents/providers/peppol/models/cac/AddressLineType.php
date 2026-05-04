@@ -36,7 +36,7 @@ class AddressLineType
      */
     public function getLineWithCreate(): Line
     {
-        $this->line = is_null($this->line) ? new Line() : $this->line;
+        $this->line ??= new Line();
 
         return $this->line;
     }

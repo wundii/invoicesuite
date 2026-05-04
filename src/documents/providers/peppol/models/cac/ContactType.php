@@ -109,7 +109,7 @@ class ContactType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -149,7 +149,7 @@ class ContactType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -189,7 +189,7 @@ class ContactType
      */
     public function getTelephoneWithCreate(): Telephone
     {
-        $this->telephone = is_null($this->telephone) ? new Telephone() : $this->telephone;
+        $this->telephone ??= new Telephone();
 
         return $this->telephone;
     }
@@ -229,7 +229,7 @@ class ContactType
      */
     public function getTelefaxWithCreate(): Telefax
     {
-        $this->telefax = is_null($this->telefax) ? new Telefax() : $this->telefax;
+        $this->telefax ??= new Telefax();
 
         return $this->telefax;
     }
@@ -269,7 +269,7 @@ class ContactType
      */
     public function getElectronicMailWithCreate(): ElectronicMail
     {
-        $this->electronicMail = is_null($this->electronicMail) ? new ElectronicMail() : $this->electronicMail;
+        $this->electronicMail ??= new ElectronicMail();
 
         return $this->electronicMail;
     }

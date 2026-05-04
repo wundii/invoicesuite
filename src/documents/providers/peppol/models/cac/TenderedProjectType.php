@@ -155,7 +155,7 @@ class TenderedProjectType
      */
     public function getVariantIDWithCreate(): VariantID
     {
-        $this->variantID = is_null($this->variantID) ? new VariantID() : $this->variantID;
+        $this->variantID ??= new VariantID();
 
         return $this->variantID;
     }
@@ -195,7 +195,7 @@ class TenderedProjectType
      */
     public function getFeeAmountWithCreate(): FeeAmount
     {
-        $this->feeAmount = is_null($this->feeAmount) ? new FeeAmount() : $this->feeAmount;
+        $this->feeAmount ??= new FeeAmount();
 
         return $this->feeAmount;
     }
@@ -359,7 +359,7 @@ class TenderedProjectType
      */
     public function getTenderEnvelopeIDWithCreate(): TenderEnvelopeID
     {
-        $this->tenderEnvelopeID = is_null($this->tenderEnvelopeID) ? new TenderEnvelopeID() : $this->tenderEnvelopeID;
+        $this->tenderEnvelopeID ??= new TenderEnvelopeID();
 
         return $this->tenderEnvelopeID;
     }
@@ -399,7 +399,7 @@ class TenderedProjectType
      */
     public function getTenderEnvelopeTypeCodeWithCreate(): TenderEnvelopeTypeCode
     {
-        $this->tenderEnvelopeTypeCode = is_null($this->tenderEnvelopeTypeCode) ? new TenderEnvelopeTypeCode() : $this->tenderEnvelopeTypeCode;
+        $this->tenderEnvelopeTypeCode ??= new TenderEnvelopeTypeCode();
 
         return $this->tenderEnvelopeTypeCode;
     }
@@ -439,7 +439,7 @@ class TenderedProjectType
      */
     public function getProcurementProjectLotWithCreate(): ProcurementProjectLot
     {
-        $this->procurementProjectLot = is_null($this->procurementProjectLot) ? new ProcurementProjectLot() : $this->procurementProjectLot;
+        $this->procurementProjectLot ??= new ProcurementProjectLot();
 
         return $this->procurementProjectLot;
     }
@@ -727,7 +727,7 @@ class TenderedProjectType
      */
     public function getLegalMonetaryTotalWithCreate(): LegalMonetaryTotal
     {
-        $this->legalMonetaryTotal = is_null($this->legalMonetaryTotal) ? new LegalMonetaryTotal() : $this->legalMonetaryTotal;
+        $this->legalMonetaryTotal ??= new LegalMonetaryTotal();
 
         return $this->legalMonetaryTotal;
     }

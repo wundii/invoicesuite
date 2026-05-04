@@ -108,7 +108,7 @@ class MeterType
      */
     public function getMeterNumberWithCreate(): MeterNumber
     {
-        $this->meterNumber = is_null($this->meterNumber) ? new MeterNumber() : $this->meterNumber;
+        $this->meterNumber ??= new MeterNumber();
 
         return $this->meterNumber;
     }
@@ -148,7 +148,7 @@ class MeterType
      */
     public function getMeterNameWithCreate(): MeterName
     {
-        $this->meterName = is_null($this->meterName) ? new MeterName() : $this->meterName;
+        $this->meterName ??= new MeterName();
 
         return $this->meterName;
     }
@@ -188,7 +188,7 @@ class MeterType
      */
     public function getMeterConstantWithCreate(): MeterConstant
     {
-        $this->meterConstant = is_null($this->meterConstant) ? new MeterConstant() : $this->meterConstant;
+        $this->meterConstant ??= new MeterConstant();
 
         return $this->meterConstant;
     }
@@ -228,7 +228,7 @@ class MeterType
      */
     public function getMeterConstantCodeWithCreate(): MeterConstantCode
     {
-        $this->meterConstantCode = is_null($this->meterConstantCode) ? new MeterConstantCode() : $this->meterConstantCode;
+        $this->meterConstantCode ??= new MeterConstantCode();
 
         return $this->meterConstantCode;
     }
@@ -268,7 +268,7 @@ class MeterType
      */
     public function getTotalDeliveredQuantityWithCreate(): TotalDeliveredQuantity
     {
-        $this->totalDeliveredQuantity = is_null($this->totalDeliveredQuantity) ? new TotalDeliveredQuantity() : $this->totalDeliveredQuantity;
+        $this->totalDeliveredQuantity ??= new TotalDeliveredQuantity();
 
         return $this->totalDeliveredQuantity;
     }

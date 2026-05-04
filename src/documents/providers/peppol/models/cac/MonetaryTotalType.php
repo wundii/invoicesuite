@@ -132,7 +132,7 @@ class MonetaryTotalType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -172,7 +172,7 @@ class MonetaryTotalType
      */
     public function getTaxExclusiveAmountWithCreate(): TaxExclusiveAmount
     {
-        $this->taxExclusiveAmount = is_null($this->taxExclusiveAmount) ? new TaxExclusiveAmount() : $this->taxExclusiveAmount;
+        $this->taxExclusiveAmount ??= new TaxExclusiveAmount();
 
         return $this->taxExclusiveAmount;
     }
@@ -212,7 +212,7 @@ class MonetaryTotalType
      */
     public function getTaxInclusiveAmountWithCreate(): TaxInclusiveAmount
     {
-        $this->taxInclusiveAmount = is_null($this->taxInclusiveAmount) ? new TaxInclusiveAmount() : $this->taxInclusiveAmount;
+        $this->taxInclusiveAmount ??= new TaxInclusiveAmount();
 
         return $this->taxInclusiveAmount;
     }
@@ -252,7 +252,7 @@ class MonetaryTotalType
      */
     public function getAllowanceTotalAmountWithCreate(): AllowanceTotalAmount
     {
-        $this->allowanceTotalAmount = is_null($this->allowanceTotalAmount) ? new AllowanceTotalAmount() : $this->allowanceTotalAmount;
+        $this->allowanceTotalAmount ??= new AllowanceTotalAmount();
 
         return $this->allowanceTotalAmount;
     }
@@ -292,7 +292,7 @@ class MonetaryTotalType
      */
     public function getChargeTotalAmountWithCreate(): ChargeTotalAmount
     {
-        $this->chargeTotalAmount = is_null($this->chargeTotalAmount) ? new ChargeTotalAmount() : $this->chargeTotalAmount;
+        $this->chargeTotalAmount ??= new ChargeTotalAmount();
 
         return $this->chargeTotalAmount;
     }
@@ -332,7 +332,7 @@ class MonetaryTotalType
      */
     public function getPrepaidAmountWithCreate(): PrepaidAmount
     {
-        $this->prepaidAmount = is_null($this->prepaidAmount) ? new PrepaidAmount() : $this->prepaidAmount;
+        $this->prepaidAmount ??= new PrepaidAmount();
 
         return $this->prepaidAmount;
     }
@@ -372,7 +372,7 @@ class MonetaryTotalType
      */
     public function getPayableRoundingAmountWithCreate(): PayableRoundingAmount
     {
-        $this->payableRoundingAmount = is_null($this->payableRoundingAmount) ? new PayableRoundingAmount() : $this->payableRoundingAmount;
+        $this->payableRoundingAmount ??= new PayableRoundingAmount();
 
         return $this->payableRoundingAmount;
     }
@@ -412,7 +412,7 @@ class MonetaryTotalType
      */
     public function getPayableAmountWithCreate(): PayableAmount
     {
-        $this->payableAmount = is_null($this->payableAmount) ? new PayableAmount() : $this->payableAmount;
+        $this->payableAmount ??= new PayableAmount();
 
         return $this->payableAmount;
     }
@@ -452,7 +452,7 @@ class MonetaryTotalType
      */
     public function getPayableAlternativeAmountWithCreate(): PayableAlternativeAmount
     {
-        $this->payableAlternativeAmount = is_null($this->payableAlternativeAmount) ? new PayableAlternativeAmount() : $this->payableAlternativeAmount;
+        $this->payableAlternativeAmount ??= new PayableAlternativeAmount();
 
         return $this->payableAlternativeAmount;
     }

@@ -48,7 +48,7 @@ class RailTransportType
      */
     public function getTrainIDWithCreate(): TrainID
     {
-        $this->trainID = is_null($this->trainID) ? new TrainID() : $this->trainID;
+        $this->trainID ??= new TrainID();
 
         return $this->trainID;
     }
@@ -88,7 +88,7 @@ class RailTransportType
      */
     public function getRailCarIDWithCreate(): RailCarID
     {
-        $this->railCarID = is_null($this->railCarID) ? new RailCarID() : $this->railCarID;
+        $this->railCarID ??= new RailCarID();
 
         return $this->railCarID;
     }

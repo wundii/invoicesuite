@@ -8,7 +8,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteFileNotReadableException;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command merges PDF and XML successfully
@@ -161,7 +161,7 @@ class InvoiceSuiteMergePdfCommandTest extends InvoiceSuiteConsoleCommandTestCase
 
         $commandTester = $this->createCommandTester('invoicesuite:merge');
 
-        $exitCode = $commandTester->execute([
+        $commandTester->execute([
             'document-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
             'pdf-file' => $this->getTestAssetFilePath('pdf_plain.pdf'),
             'output-file' => $this->getTempFilePath('output.pdf'),

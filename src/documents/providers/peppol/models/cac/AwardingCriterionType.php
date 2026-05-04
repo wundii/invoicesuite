@@ -184,7 +184,7 @@ class AwardingCriterionType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -224,7 +224,7 @@ class AwardingCriterionType
      */
     public function getAwardingCriterionTypeCodeWithCreate(): AwardingCriterionTypeCode
     {
-        $this->awardingCriterionTypeCode = is_null($this->awardingCriterionTypeCode) ? new AwardingCriterionTypeCode() : $this->awardingCriterionTypeCode;
+        $this->awardingCriterionTypeCode ??= new AwardingCriterionTypeCode();
 
         return $this->awardingCriterionTypeCode;
     }
@@ -388,7 +388,7 @@ class AwardingCriterionType
      */
     public function getWeightNumericWithCreate(): WeightNumeric
     {
-        $this->weightNumeric = is_null($this->weightNumeric) ? new WeightNumeric() : $this->weightNumeric;
+        $this->weightNumeric ??= new WeightNumeric();
 
         return $this->weightNumeric;
     }
@@ -676,7 +676,7 @@ class AwardingCriterionType
      */
     public function getCalculationExpressionCodeWithCreate(): CalculationExpressionCode
     {
-        $this->calculationExpressionCode = is_null($this->calculationExpressionCode) ? new CalculationExpressionCode() : $this->calculationExpressionCode;
+        $this->calculationExpressionCode ??= new CalculationExpressionCode();
 
         return $this->calculationExpressionCode;
     }
@@ -716,7 +716,7 @@ class AwardingCriterionType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }
@@ -756,7 +756,7 @@ class AwardingCriterionType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -796,7 +796,7 @@ class AwardingCriterionType
      */
     public function getMinimumAmountWithCreate(): MinimumAmount
     {
-        $this->minimumAmount = is_null($this->minimumAmount) ? new MinimumAmount() : $this->minimumAmount;
+        $this->minimumAmount ??= new MinimumAmount();
 
         return $this->minimumAmount;
     }
@@ -836,7 +836,7 @@ class AwardingCriterionType
      */
     public function getMaximumAmountWithCreate(): MaximumAmount
     {
-        $this->maximumAmount = is_null($this->maximumAmount) ? new MaximumAmount() : $this->maximumAmount;
+        $this->maximumAmount ??= new MaximumAmount();
 
         return $this->maximumAmount;
     }

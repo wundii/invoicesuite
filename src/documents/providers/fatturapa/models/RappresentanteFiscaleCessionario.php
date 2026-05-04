@@ -77,7 +77,7 @@ final class RappresentanteFiscaleCessionario
      */
     public function getIdFiscaleIVAWithCreate(): IdFiscale
     {
-        $this->idFiscaleIVA = is_null($this->idFiscaleIVA) ? new IdFiscale() : $this->idFiscaleIVA;
+        $this->idFiscaleIVA ??= new IdFiscale();
 
         return $this->idFiscaleIVA;
     }

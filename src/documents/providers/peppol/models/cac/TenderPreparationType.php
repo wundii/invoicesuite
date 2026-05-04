@@ -97,7 +97,7 @@ class TenderPreparationType
      */
     public function getTenderEnvelopeIDWithCreate(): TenderEnvelopeID
     {
-        $this->tenderEnvelopeID = is_null($this->tenderEnvelopeID) ? new TenderEnvelopeID() : $this->tenderEnvelopeID;
+        $this->tenderEnvelopeID ??= new TenderEnvelopeID();
 
         return $this->tenderEnvelopeID;
     }
@@ -137,7 +137,7 @@ class TenderPreparationType
      */
     public function getTenderEnvelopeTypeCodeWithCreate(): TenderEnvelopeTypeCode
     {
-        $this->tenderEnvelopeTypeCode = is_null($this->tenderEnvelopeTypeCode) ? new TenderEnvelopeTypeCode() : $this->tenderEnvelopeTypeCode;
+        $this->tenderEnvelopeTypeCode ??= new TenderEnvelopeTypeCode();
 
         return $this->tenderEnvelopeTypeCode;
     }
@@ -301,7 +301,7 @@ class TenderPreparationType
      */
     public function getOpenTenderIDWithCreate(): OpenTenderID
     {
-        $this->openTenderID = is_null($this->openTenderID) ? new OpenTenderID() : $this->openTenderID;
+        $this->openTenderID ??= new OpenTenderID();
 
         return $this->openTenderID;
     }

@@ -48,7 +48,7 @@ class UniversalCommunicationType
      */
     public function getURIIDWithCreate(): IDType
     {
-        $this->uRIID = is_null($this->uRIID) ? new IDType() : $this->uRIID;
+        $this->uRIID ??= new IDType();
 
         return $this->uRIID;
     }
@@ -88,7 +88,7 @@ class UniversalCommunicationType
      */
     public function getCompleteNumberWithCreate(): TextType
     {
-        $this->completeNumber = is_null($this->completeNumber) ? new TextType() : $this->completeNumber;
+        $this->completeNumber ??= new TextType();
 
         return $this->completeNumber;
     }

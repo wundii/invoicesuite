@@ -70,7 +70,7 @@ class EmissionCalculationMethodType
      */
     public function getCalculationMethodCodeWithCreate(): CalculationMethodCode
     {
-        $this->calculationMethodCode = is_null($this->calculationMethodCode) ? new CalculationMethodCode() : $this->calculationMethodCode;
+        $this->calculationMethodCode ??= new CalculationMethodCode();
 
         return $this->calculationMethodCode;
     }
@@ -110,7 +110,7 @@ class EmissionCalculationMethodType
      */
     public function getFullnessIndicationCodeWithCreate(): FullnessIndicationCode
     {
-        $this->fullnessIndicationCode = is_null($this->fullnessIndicationCode) ? new FullnessIndicationCode() : $this->fullnessIndicationCode;
+        $this->fullnessIndicationCode ??= new FullnessIndicationCode();
 
         return $this->fullnessIndicationCode;
     }
@@ -150,7 +150,7 @@ class EmissionCalculationMethodType
      */
     public function getMeasurementFromLocationWithCreate(): MeasurementFromLocation
     {
-        $this->measurementFromLocation = is_null($this->measurementFromLocation) ? new MeasurementFromLocation() : $this->measurementFromLocation;
+        $this->measurementFromLocation ??= new MeasurementFromLocation();
 
         return $this->measurementFromLocation;
     }
@@ -190,7 +190,7 @@ class EmissionCalculationMethodType
      */
     public function getMeasurementToLocationWithCreate(): MeasurementToLocation
     {
-        $this->measurementToLocation = is_null($this->measurementToLocation) ? new MeasurementToLocation() : $this->measurementToLocation;
+        $this->measurementToLocation ??= new MeasurementToLocation();
 
         return $this->measurementToLocation;
     }

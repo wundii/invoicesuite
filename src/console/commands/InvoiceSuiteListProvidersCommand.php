@@ -55,7 +55,7 @@ class InvoiceSuiteListProvidersCommand extends InvoiceSuiteAbstractCommand
     {
         $this->resolveAvailableDocumentFormatProviders();
 
-        if (true === $this->getBoolOption('output-json')) {
+        if ($this->getBoolOption('output-json')) {
             return $this->outputLineLF(json_encode(array_map(
                 static fn ($provider) => [
                     'id' => mb_strimwidth($provider->getUniqueId(), 0, 30, '...'),

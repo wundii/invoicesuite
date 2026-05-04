@@ -71,7 +71,7 @@ class TradeCurrencyExchangeType
      */
     public function getSourceCurrencyCodeWithCreate(): CurrencyCodeType
     {
-        $this->sourceCurrencyCode = is_null($this->sourceCurrencyCode) ? new CurrencyCodeType() : $this->sourceCurrencyCode;
+        $this->sourceCurrencyCode ??= new CurrencyCodeType();
 
         return $this->sourceCurrencyCode;
     }
@@ -111,7 +111,7 @@ class TradeCurrencyExchangeType
      */
     public function getTargetCurrencyCodeWithCreate(): CurrencyCodeType
     {
-        $this->targetCurrencyCode = is_null($this->targetCurrencyCode) ? new CurrencyCodeType() : $this->targetCurrencyCode;
+        $this->targetCurrencyCode ??= new CurrencyCodeType();
 
         return $this->targetCurrencyCode;
     }
@@ -151,7 +151,7 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRateWithCreate(): RateType
     {
-        $this->conversionRate = is_null($this->conversionRate) ? new RateType() : $this->conversionRate;
+        $this->conversionRate ??= new RateType();
 
         return $this->conversionRate;
     }
@@ -191,7 +191,7 @@ class TradeCurrencyExchangeType
      */
     public function getConversionRateDateTimeWithCreate(): DateTimeType
     {
-        $this->conversionRateDateTime = is_null($this->conversionRateDateTime) ? new DateTimeType() : $this->conversionRateDateTime;
+        $this->conversionRateDateTime ??= new DateTimeType();
 
         return $this->conversionRateDateTime;
     }

@@ -90,19 +90,17 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handlePdf(InvoiceSuitePdfDocumentReader $pdfReader): static
     {
-        if (true === $this->getBoolOption('output-json')) {
+        if ($this->getBoolOption('output-json')) {
             return $this->outputLineLF(json_encode([
                 'id' => $pdfReader->getCurrentDocumentFormatProvider()->getUniqueId(),
                 'description' => $pdfReader->getCurrentDocumentFormatProvider()->getDescription(),
                 'documentAttachmentName' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentFilename(),
                 'documentAttachmentMimeType' => $pdfReader->getInvoiceDocumentAttachment()->getAttachmentMimeType(),
                 'noOfAdditionalAttachments' => count($pdfReader->getAdditionalDocumentAttachments()),
-                'additionalAttachments' => array_map(static function ($attachment) {
-                    return [
-                        'name' => $attachment->getAttachmentFilename(),
-                        'mimeType' => $attachment->getAttachmentMimeType(),
-                    ];
-                }, $pdfReader->getAdditionalDocumentAttachments()),
+                'additionalAttachments' => array_map(static fn ($attachment) => [
+                    'name' => $attachment->getAttachmentFilename(),
+                    'mimeType' => $attachment->getAttachmentMimeType(),
+                ], $pdfReader->getAdditionalDocumentAttachments()),
                 'error' => false,
             ], JSON_PRETTY_PRINT));
         }
@@ -116,12 +114,10 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
         $tableRows[] = [new TableSeparator(), new TableSeparator()];
         $tableRows[] = ['Additional attachments', count($pdfReader->getAdditionalDocumentAttachments())];
 
-        if (count($pdfReader->getAdditionalDocumentAttachments()) > 0) {
-            foreach ($pdfReader->getAdditionalDocumentAttachments() as $attachment) {
-                $tableRows[] = [new TableSeparator(), new TableSeparator()];
-                $tableRows[] = ['Attachment name', $attachment->getAttachmentFilename()];
-                $tableRows[] = ['Attachment type', $attachment->getAttachmentMimeType()];
-            }
+        foreach ($pdfReader->getAdditionalDocumentAttachments() as $attachment) {
+            $tableRows[] = [new TableSeparator(), new TableSeparator()];
+            $tableRows[] = ['Attachment name', $attachment->getAttachmentFilename()];
+            $tableRows[] = ['Attachment type', $attachment->getAttachmentMimeType()];
         }
 
         return $this->outputTable(['Info', 'Value'], $tableRows);
@@ -138,7 +134,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handleXml(InvoiceSuiteDocumentReader $xmlOrJsonReader): static
     {
-        if (true === $this->getBoolOption('output-json')) {
+        if ($this->getBoolOption('output-json')) {
             return $this->outputLineLF(json_encode([
                 'id' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getUniqueId(),
                 'description' => $xmlOrJsonReader->getCurrentDocumentFormatProvider()->getDescription(),
@@ -163,7 +159,7 @@ class InvoiceSuiteDetectCommand extends InvoiceSuiteAbstractCommand
      */
     protected function handleUnknownType(): static
     {
-        if (true === $this->getBoolOption('output-json')) {
+        if ($this->getBoolOption('output-json')) {
             return $this->outputLineLF(json_encode([
                 'id' => 'unknown',
                 'description' => 'unknown',

@@ -131,7 +131,7 @@ class ExchangeRateType
      */
     public function getSourceCurrencyCodeWithCreate(): SourceCurrencyCode
     {
-        $this->sourceCurrencyCode = is_null($this->sourceCurrencyCode) ? new SourceCurrencyCode() : $this->sourceCurrencyCode;
+        $this->sourceCurrencyCode ??= new SourceCurrencyCode();
 
         return $this->sourceCurrencyCode;
     }
@@ -171,7 +171,7 @@ class ExchangeRateType
      */
     public function getSourceCurrencyBaseRateWithCreate(): SourceCurrencyBaseRate
     {
-        $this->sourceCurrencyBaseRate = is_null($this->sourceCurrencyBaseRate) ? new SourceCurrencyBaseRate() : $this->sourceCurrencyBaseRate;
+        $this->sourceCurrencyBaseRate ??= new SourceCurrencyBaseRate();
 
         return $this->sourceCurrencyBaseRate;
     }
@@ -211,7 +211,7 @@ class ExchangeRateType
      */
     public function getTargetCurrencyCodeWithCreate(): TargetCurrencyCode
     {
-        $this->targetCurrencyCode = is_null($this->targetCurrencyCode) ? new TargetCurrencyCode() : $this->targetCurrencyCode;
+        $this->targetCurrencyCode ??= new TargetCurrencyCode();
 
         return $this->targetCurrencyCode;
     }
@@ -251,7 +251,7 @@ class ExchangeRateType
      */
     public function getTargetCurrencyBaseRateWithCreate(): TargetCurrencyBaseRate
     {
-        $this->targetCurrencyBaseRate = is_null($this->targetCurrencyBaseRate) ? new TargetCurrencyBaseRate() : $this->targetCurrencyBaseRate;
+        $this->targetCurrencyBaseRate ??= new TargetCurrencyBaseRate();
 
         return $this->targetCurrencyBaseRate;
     }
@@ -291,7 +291,7 @@ class ExchangeRateType
      */
     public function getExchangeMarketIDWithCreate(): ExchangeMarketID
     {
-        $this->exchangeMarketID = is_null($this->exchangeMarketID) ? new ExchangeMarketID() : $this->exchangeMarketID;
+        $this->exchangeMarketID ??= new ExchangeMarketID();
 
         return $this->exchangeMarketID;
     }
@@ -331,7 +331,7 @@ class ExchangeRateType
      */
     public function getCalculationRateWithCreate(): CalculationRate
     {
-        $this->calculationRate = is_null($this->calculationRate) ? new CalculationRate() : $this->calculationRate;
+        $this->calculationRate ??= new CalculationRate();
 
         return $this->calculationRate;
     }
@@ -371,7 +371,7 @@ class ExchangeRateType
      */
     public function getMathematicOperatorCodeWithCreate(): MathematicOperatorCode
     {
-        $this->mathematicOperatorCode = is_null($this->mathematicOperatorCode) ? new MathematicOperatorCode() : $this->mathematicOperatorCode;
+        $this->mathematicOperatorCode ??= new MathematicOperatorCode();
 
         return $this->mathematicOperatorCode;
     }
@@ -441,7 +441,7 @@ class ExchangeRateType
      */
     public function getForeignExchangeContractWithCreate(): ForeignExchangeContract
     {
-        $this->foreignExchangeContract = is_null($this->foreignExchangeContract) ? new ForeignExchangeContract() : $this->foreignExchangeContract;
+        $this->foreignExchangeContract ??= new ForeignExchangeContract();
 
         return $this->foreignExchangeContract;
     }

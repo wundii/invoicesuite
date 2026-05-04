@@ -76,7 +76,7 @@ final class CessionarioCommittente
      */
     public function getDatiAnagraficiWithCreate(): DatiAnagraficiCessionario
     {
-        $this->datiAnagrafici = is_null($this->datiAnagrafici) ? new DatiAnagraficiCessionario() : $this->datiAnagrafici;
+        $this->datiAnagrafici ??= new DatiAnagraficiCessionario();
 
         return $this->datiAnagrafici;
     }
@@ -124,7 +124,7 @@ final class CessionarioCommittente
      */
     public function getSedeWithCreate(): Indirizzo
     {
-        $this->sede = is_null($this->sede) ? new Indirizzo() : $this->sede;
+        $this->sede ??= new Indirizzo();
 
         return $this->sede;
     }
@@ -172,7 +172,7 @@ final class CessionarioCommittente
      */
     public function getStabileOrganizzazioneWithCreate(): Indirizzo
     {
-        $this->stabileOrganizzazione = is_null($this->stabileOrganizzazione) ? new Indirizzo() : $this->stabileOrganizzazione;
+        $this->stabileOrganizzazione ??= new Indirizzo();
 
         return $this->stabileOrganizzazione;
     }
@@ -220,7 +220,7 @@ final class CessionarioCommittente
      */
     public function getRappresentanteFiscaleWithCreate(): RappresentanteFiscaleCessionario
     {
-        $this->rappresentanteFiscale = is_null($this->rappresentanteFiscale) ? new RappresentanteFiscaleCessionario() : $this->rappresentanteFiscale;
+        $this->rappresentanteFiscale ??= new RappresentanteFiscaleCessionario();
 
         return $this->rappresentanteFiscale;
     }

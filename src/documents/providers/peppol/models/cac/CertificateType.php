@@ -108,7 +108,7 @@ class CertificateType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -148,7 +148,7 @@ class CertificateType
      */
     public function getCertificateTypeCodeWithCreate(): CertificateTypeCode
     {
-        $this->certificateTypeCode = is_null($this->certificateTypeCode) ? new CertificateTypeCode() : $this->certificateTypeCode;
+        $this->certificateTypeCode ??= new CertificateTypeCode();
 
         return $this->certificateTypeCode;
     }
@@ -188,7 +188,7 @@ class CertificateType
      */
     public function getCertificateTypeWithCreate(): CertificateType1
     {
-        $this->certificateType = is_null($this->certificateType) ? new CertificateType1() : $this->certificateType;
+        $this->certificateType ??= new CertificateType1();
 
         return $this->certificateType;
     }
@@ -352,7 +352,7 @@ class CertificateType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }

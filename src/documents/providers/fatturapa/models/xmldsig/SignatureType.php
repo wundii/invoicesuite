@@ -97,7 +97,7 @@ class SignatureType
      */
     public function getSignedInfoWithCreate(): SignedInfoType
     {
-        $this->signedInfo = is_null($this->signedInfo) ? new SignedInfoType() : $this->signedInfo;
+        $this->signedInfo ??= new SignedInfoType();
 
         return $this->signedInfo;
     }
@@ -145,7 +145,7 @@ class SignatureType
      */
     public function getSignatureValueWithCreate(): SignatureValueType
     {
-        $this->signatureValue = is_null($this->signatureValue) ? new SignatureValueType() : $this->signatureValue;
+        $this->signatureValue ??= new SignatureValueType();
 
         return $this->signatureValue;
     }
@@ -193,7 +193,7 @@ class SignatureType
      */
     public function getKeyInfoWithCreate(): KeyInfoType
     {
-        $this->keyInfo = is_null($this->keyInfo) ? new KeyInfoType() : $this->keyInfo;
+        $this->keyInfo ??= new KeyInfoType();
 
         return $this->keyInfo;
     }

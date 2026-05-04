@@ -59,7 +59,7 @@ class FinancialInstitutionType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -99,7 +99,7 @@ class FinancialInstitutionType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -139,7 +139,7 @@ class FinancialInstitutionType
      */
     public function getAddressWithCreate(): Address
     {
-        $this->address = is_null($this->address) ? new Address() : $this->address;
+        $this->address ??= new Address();
 
         return $this->address;
     }

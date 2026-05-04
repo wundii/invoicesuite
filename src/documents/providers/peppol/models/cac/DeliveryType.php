@@ -297,7 +297,7 @@ class DeliveryType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -337,7 +337,7 @@ class DeliveryType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -377,7 +377,7 @@ class DeliveryType
      */
     public function getMinimumQuantityWithCreate(): MinimumQuantity
     {
-        $this->minimumQuantity = is_null($this->minimumQuantity) ? new MinimumQuantity() : $this->minimumQuantity;
+        $this->minimumQuantity ??= new MinimumQuantity();
 
         return $this->minimumQuantity;
     }
@@ -417,7 +417,7 @@ class DeliveryType
      */
     public function getMaximumQuantityWithCreate(): MaximumQuantity
     {
-        $this->maximumQuantity = is_null($this->maximumQuantity) ? new MaximumQuantity() : $this->maximumQuantity;
+        $this->maximumQuantity ??= new MaximumQuantity();
 
         return $this->maximumQuantity;
     }
@@ -577,7 +577,7 @@ class DeliveryType
      */
     public function getReleaseIDWithCreate(): ReleaseID
     {
-        $this->releaseID = is_null($this->releaseID) ? new ReleaseID() : $this->releaseID;
+        $this->releaseID ??= new ReleaseID();
 
         return $this->releaseID;
     }
@@ -617,7 +617,7 @@ class DeliveryType
      */
     public function getTrackingIDWithCreate(): TrackingID
     {
-        $this->trackingID = is_null($this->trackingID) ? new TrackingID() : $this->trackingID;
+        $this->trackingID ??= new TrackingID();
 
         return $this->trackingID;
     }
@@ -657,7 +657,7 @@ class DeliveryType
      */
     public function getDeliveryAddressWithCreate(): DeliveryAddress
     {
-        $this->deliveryAddress = is_null($this->deliveryAddress) ? new DeliveryAddress() : $this->deliveryAddress;
+        $this->deliveryAddress ??= new DeliveryAddress();
 
         return $this->deliveryAddress;
     }
@@ -697,7 +697,7 @@ class DeliveryType
      */
     public function getDeliveryLocationWithCreate(): DeliveryLocation
     {
-        $this->deliveryLocation = is_null($this->deliveryLocation) ? new DeliveryLocation() : $this->deliveryLocation;
+        $this->deliveryLocation ??= new DeliveryLocation();
 
         return $this->deliveryLocation;
     }
@@ -737,7 +737,7 @@ class DeliveryType
      */
     public function getAlternativeDeliveryLocationWithCreate(): AlternativeDeliveryLocation
     {
-        $this->alternativeDeliveryLocation = is_null($this->alternativeDeliveryLocation) ? new AlternativeDeliveryLocation() : $this->alternativeDeliveryLocation;
+        $this->alternativeDeliveryLocation ??= new AlternativeDeliveryLocation();
 
         return $this->alternativeDeliveryLocation;
     }
@@ -777,7 +777,7 @@ class DeliveryType
      */
     public function getRequestedDeliveryPeriodWithCreate(): RequestedDeliveryPeriod
     {
-        $this->requestedDeliveryPeriod = is_null($this->requestedDeliveryPeriod) ? new RequestedDeliveryPeriod() : $this->requestedDeliveryPeriod;
+        $this->requestedDeliveryPeriod ??= new RequestedDeliveryPeriod();
 
         return $this->requestedDeliveryPeriod;
     }
@@ -817,7 +817,7 @@ class DeliveryType
      */
     public function getPromisedDeliveryPeriodWithCreate(): PromisedDeliveryPeriod
     {
-        $this->promisedDeliveryPeriod = is_null($this->promisedDeliveryPeriod) ? new PromisedDeliveryPeriod() : $this->promisedDeliveryPeriod;
+        $this->promisedDeliveryPeriod ??= new PromisedDeliveryPeriod();
 
         return $this->promisedDeliveryPeriod;
     }
@@ -857,7 +857,7 @@ class DeliveryType
      */
     public function getEstimatedDeliveryPeriodWithCreate(): EstimatedDeliveryPeriod
     {
-        $this->estimatedDeliveryPeriod = is_null($this->estimatedDeliveryPeriod) ? new EstimatedDeliveryPeriod() : $this->estimatedDeliveryPeriod;
+        $this->estimatedDeliveryPeriod ??= new EstimatedDeliveryPeriod();
 
         return $this->estimatedDeliveryPeriod;
     }
@@ -897,7 +897,7 @@ class DeliveryType
      */
     public function getCarrierPartyWithCreate(): CarrierParty
     {
-        $this->carrierParty = is_null($this->carrierParty) ? new CarrierParty() : $this->carrierParty;
+        $this->carrierParty ??= new CarrierParty();
 
         return $this->carrierParty;
     }
@@ -937,7 +937,7 @@ class DeliveryType
      */
     public function getDeliveryPartyWithCreate(): DeliveryParty
     {
-        $this->deliveryParty = is_null($this->deliveryParty) ? new DeliveryParty() : $this->deliveryParty;
+        $this->deliveryParty ??= new DeliveryParty();
 
         return $this->deliveryParty;
     }
@@ -1101,7 +1101,7 @@ class DeliveryType
      */
     public function getDespatchWithCreate(): Despatch
     {
-        $this->despatch = is_null($this->despatch) ? new Despatch() : $this->despatch;
+        $this->despatch ??= new Despatch();
 
         return $this->despatch;
     }
@@ -1265,7 +1265,7 @@ class DeliveryType
      */
     public function getMinimumDeliveryUnitWithCreate(): MinimumDeliveryUnit
     {
-        $this->minimumDeliveryUnit = is_null($this->minimumDeliveryUnit) ? new MinimumDeliveryUnit() : $this->minimumDeliveryUnit;
+        $this->minimumDeliveryUnit ??= new MinimumDeliveryUnit();
 
         return $this->minimumDeliveryUnit;
     }
@@ -1305,7 +1305,7 @@ class DeliveryType
      */
     public function getMaximumDeliveryUnitWithCreate(): MaximumDeliveryUnit
     {
-        $this->maximumDeliveryUnit = is_null($this->maximumDeliveryUnit) ? new MaximumDeliveryUnit() : $this->maximumDeliveryUnit;
+        $this->maximumDeliveryUnit ??= new MaximumDeliveryUnit();
 
         return $this->maximumDeliveryUnit;
     }
@@ -1345,7 +1345,7 @@ class DeliveryType
      */
     public function getShipmentWithCreate(): Shipment
     {
-        $this->shipment = is_null($this->shipment) ? new Shipment() : $this->shipment;
+        $this->shipment ??= new Shipment();
 
         return $this->shipment;
     }

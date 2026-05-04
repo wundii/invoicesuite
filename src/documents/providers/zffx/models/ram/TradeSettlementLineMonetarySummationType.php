@@ -91,7 +91,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getLineTotalAmountWithCreate(): AmountType
     {
-        $this->lineTotalAmount = is_null($this->lineTotalAmount) ? new AmountType() : $this->lineTotalAmount;
+        $this->lineTotalAmount ??= new AmountType();
 
         return $this->lineTotalAmount;
     }
@@ -131,7 +131,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getChargeTotalAmountWithCreate(): AmountType
     {
-        $this->chargeTotalAmount = is_null($this->chargeTotalAmount) ? new AmountType() : $this->chargeTotalAmount;
+        $this->chargeTotalAmount ??= new AmountType();
 
         return $this->chargeTotalAmount;
     }
@@ -171,7 +171,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getAllowanceTotalAmountWithCreate(): AmountType
     {
-        $this->allowanceTotalAmount = is_null($this->allowanceTotalAmount) ? new AmountType() : $this->allowanceTotalAmount;
+        $this->allowanceTotalAmount ??= new AmountType();
 
         return $this->allowanceTotalAmount;
     }
@@ -211,7 +211,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getTaxTotalAmountWithCreate(): AmountType
     {
-        $this->taxTotalAmount = is_null($this->taxTotalAmount) ? new AmountType() : $this->taxTotalAmount;
+        $this->taxTotalAmount ??= new AmountType();
 
         return $this->taxTotalAmount;
     }
@@ -251,7 +251,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getGrandTotalAmountWithCreate(): AmountType
     {
-        $this->grandTotalAmount = is_null($this->grandTotalAmount) ? new AmountType() : $this->grandTotalAmount;
+        $this->grandTotalAmount ??= new AmountType();
 
         return $this->grandTotalAmount;
     }
@@ -291,7 +291,7 @@ class TradeSettlementLineMonetarySummationType
      */
     public function getTotalAllowanceChargeAmountWithCreate(): AmountType
     {
-        $this->totalAllowanceChargeAmount = is_null($this->totalAllowanceChargeAmount) ? new AmountType() : $this->totalAllowanceChargeAmount;
+        $this->totalAllowanceChargeAmount ??= new AmountType();
 
         return $this->totalAllowanceChargeAmount;
     }

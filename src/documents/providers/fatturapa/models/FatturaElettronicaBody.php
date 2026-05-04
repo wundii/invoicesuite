@@ -92,7 +92,7 @@ final class FatturaElettronicaBody
      */
     public function getDatiGeneraliWithCreate(): DatiGenerali
     {
-        $this->datiGenerali = is_null($this->datiGenerali) ? new DatiGenerali() : $this->datiGenerali;
+        $this->datiGenerali ??= new DatiGenerali();
 
         return $this->datiGenerali;
     }
@@ -140,7 +140,7 @@ final class FatturaElettronicaBody
      */
     public function getDatiBeniServiziWithCreate(): DatiBeniServizi
     {
-        $this->datiBeniServizi = is_null($this->datiBeniServizi) ? new DatiBeniServizi() : $this->datiBeniServizi;
+        $this->datiBeniServizi ??= new DatiBeniServizi();
 
         return $this->datiBeniServizi;
     }
@@ -188,7 +188,7 @@ final class FatturaElettronicaBody
      */
     public function getDatiVeicoliWithCreate(): DatiVeicoli
     {
-        $this->datiVeicoli = is_null($this->datiVeicoli) ? new DatiVeicoli() : $this->datiVeicoli;
+        $this->datiVeicoli ??= new DatiVeicoli();
 
         return $this->datiVeicoli;
     }

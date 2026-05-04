@@ -152,7 +152,7 @@ class ConsumptionLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -192,7 +192,7 @@ class ConsumptionLineType
      */
     public function getParentDocumentLineReferenceIDWithCreate(): ParentDocumentLineReferenceID
     {
-        $this->parentDocumentLineReferenceID = is_null($this->parentDocumentLineReferenceID) ? new ParentDocumentLineReferenceID() : $this->parentDocumentLineReferenceID;
+        $this->parentDocumentLineReferenceID ??= new ParentDocumentLineReferenceID();
 
         return $this->parentDocumentLineReferenceID;
     }
@@ -232,7 +232,7 @@ class ConsumptionLineType
      */
     public function getInvoicedQuantityWithCreate(): InvoicedQuantity
     {
-        $this->invoicedQuantity = is_null($this->invoicedQuantity) ? new InvoicedQuantity() : $this->invoicedQuantity;
+        $this->invoicedQuantity ??= new InvoicedQuantity();
 
         return $this->invoicedQuantity;
     }
@@ -272,7 +272,7 @@ class ConsumptionLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -312,7 +312,7 @@ class ConsumptionLineType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }
@@ -724,7 +724,7 @@ class ConsumptionLineType
      */
     public function getUtilityItemWithCreate(): UtilityItem
     {
-        $this->utilityItem = is_null($this->utilityItem) ? new UtilityItem() : $this->utilityItem;
+        $this->utilityItem ??= new UtilityItem();
 
         return $this->utilityItem;
     }
@@ -764,7 +764,7 @@ class ConsumptionLineType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -804,7 +804,7 @@ class ConsumptionLineType
      */
     public function getUnstructuredPriceWithCreate(): UnstructuredPrice
     {
-        $this->unstructuredPrice = is_null($this->unstructuredPrice) ? new UnstructuredPrice() : $this->unstructuredPrice;
+        $this->unstructuredPrice ??= new UnstructuredPrice();
 
         return $this->unstructuredPrice;
     }

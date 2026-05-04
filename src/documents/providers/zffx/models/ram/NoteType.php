@@ -59,7 +59,7 @@ class NoteType
      */
     public function getContentCodeWithCreate(): CodeType
     {
-        $this->contentCode = is_null($this->contentCode) ? new CodeType() : $this->contentCode;
+        $this->contentCode ??= new CodeType();
 
         return $this->contentCode;
     }
@@ -99,7 +99,7 @@ class NoteType
      */
     public function getContentWithCreate(): TextType
     {
-        $this->content = is_null($this->content) ? new TextType() : $this->content;
+        $this->content ??= new TextType();
 
         return $this->content;
     }
@@ -139,7 +139,7 @@ class NoteType
      */
     public function getSubjectCodeWithCreate(): CodeType
     {
-        $this->subjectCode = is_null($this->subjectCode) ? new CodeType() : $this->subjectCode;
+        $this->subjectCode ??= new CodeType();
 
         return $this->subjectCode;
     }

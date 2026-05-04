@@ -108,7 +108,7 @@ class WorkPhaseReferenceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -148,7 +148,7 @@ class WorkPhaseReferenceType
      */
     public function getWorkPhaseCodeWithCreate(): WorkPhaseCode
     {
-        $this->workPhaseCode = is_null($this->workPhaseCode) ? new WorkPhaseCode() : $this->workPhaseCode;
+        $this->workPhaseCode ??= new WorkPhaseCode();
 
         return $this->workPhaseCode;
     }
@@ -312,7 +312,7 @@ class WorkPhaseReferenceType
      */
     public function getProgressPercentWithCreate(): ProgressPercent
     {
-        $this->progressPercent = is_null($this->progressPercent) ? new ProgressPercent() : $this->progressPercent;
+        $this->progressPercent ??= new ProgressPercent();
 
         return $this->progressPercent;
     }

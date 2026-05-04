@@ -71,7 +71,7 @@ class DutyType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -111,7 +111,7 @@ class DutyType
      */
     public function getDutyWithCreate(): Duty
     {
-        $this->duty = is_null($this->duty) ? new Duty() : $this->duty;
+        $this->duty ??= new Duty();
 
         return $this->duty;
     }
@@ -151,7 +151,7 @@ class DutyType
      */
     public function getDutyCodeWithCreate(): DutyCode
     {
-        $this->dutyCode = is_null($this->dutyCode) ? new DutyCode() : $this->dutyCode;
+        $this->dutyCode ??= new DutyCode();
 
         return $this->dutyCode;
     }
@@ -191,7 +191,7 @@ class DutyType
      */
     public function getTaxCategoryWithCreate(): TaxCategory
     {
-        $this->taxCategory = is_null($this->taxCategory) ? new TaxCategory() : $this->taxCategory;
+        $this->taxCategory ??= new TaxCategory();
 
         return $this->taxCategory;
     }

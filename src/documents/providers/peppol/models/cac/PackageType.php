@@ -200,7 +200,7 @@ class PackageType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -240,7 +240,7 @@ class PackageType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -310,7 +310,7 @@ class PackageType
      */
     public function getPackageLevelCodeWithCreate(): PackageLevelCode
     {
-        $this->packageLevelCode = is_null($this->packageLevelCode) ? new PackageLevelCode() : $this->packageLevelCode;
+        $this->packageLevelCode ??= new PackageLevelCode();
 
         return $this->packageLevelCode;
     }
@@ -350,7 +350,7 @@ class PackageType
      */
     public function getPackagingTypeCodeWithCreate(): PackagingTypeCode
     {
-        $this->packagingTypeCode = is_null($this->packagingTypeCode) ? new PackagingTypeCode() : $this->packagingTypeCode;
+        $this->packagingTypeCode ??= new PackagingTypeCode();
 
         return $this->packagingTypeCode;
     }
@@ -514,7 +514,7 @@ class PackageType
      */
     public function getTraceIDWithCreate(): TraceID
     {
-        $this->traceID = is_null($this->traceID) ? new TraceID() : $this->traceID;
+        $this->traceID ??= new TraceID();
 
         return $this->traceID;
     }
@@ -678,7 +678,7 @@ class PackageType
      */
     public function getContainingTransportEquipmentWithCreate(): ContainingTransportEquipment
     {
-        $this->containingTransportEquipment = is_null($this->containingTransportEquipment) ? new ContainingTransportEquipment() : $this->containingTransportEquipment;
+        $this->containingTransportEquipment ??= new ContainingTransportEquipment();
 
         return $this->containingTransportEquipment;
     }
@@ -1090,7 +1090,7 @@ class PackageType
      */
     public function getDeliveryWithCreate(): Delivery
     {
-        $this->delivery = is_null($this->delivery) ? new Delivery() : $this->delivery;
+        $this->delivery ??= new Delivery();
 
         return $this->delivery;
     }
@@ -1130,7 +1130,7 @@ class PackageType
      */
     public function getPickupWithCreate(): Pickup
     {
-        $this->pickup = is_null($this->pickup) ? new Pickup() : $this->pickup;
+        $this->pickup ??= new Pickup();
 
         return $this->pickup;
     }
@@ -1170,7 +1170,7 @@ class PackageType
      */
     public function getDespatchWithCreate(): Despatch
     {
-        $this->despatch = is_null($this->despatch) ? new Despatch() : $this->despatch;
+        $this->despatch ??= new Despatch();
 
         return $this->despatch;
     }

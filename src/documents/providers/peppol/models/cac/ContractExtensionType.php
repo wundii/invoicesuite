@@ -208,7 +208,7 @@ class ContractExtensionType
      */
     public function getMinimumNumberNumericWithCreate(): MinimumNumberNumeric
     {
-        $this->minimumNumberNumeric = is_null($this->minimumNumberNumeric) ? new MinimumNumberNumeric() : $this->minimumNumberNumeric;
+        $this->minimumNumberNumeric ??= new MinimumNumberNumeric();
 
         return $this->minimumNumberNumeric;
     }
@@ -248,7 +248,7 @@ class ContractExtensionType
      */
     public function getMaximumNumberNumericWithCreate(): MaximumNumberNumeric
     {
-        $this->maximumNumberNumeric = is_null($this->maximumNumberNumeric) ? new MaximumNumberNumeric() : $this->maximumNumberNumeric;
+        $this->maximumNumberNumeric ??= new MaximumNumberNumeric();
 
         return $this->maximumNumberNumeric;
     }
@@ -288,7 +288,7 @@ class ContractExtensionType
      */
     public function getOptionValidityPeriodWithCreate(): OptionValidityPeriod
     {
-        $this->optionValidityPeriod = is_null($this->optionValidityPeriod) ? new OptionValidityPeriod() : $this->optionValidityPeriod;
+        $this->optionValidityPeriod ??= new OptionValidityPeriod();
 
         return $this->optionValidityPeriod;
     }

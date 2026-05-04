@@ -118,7 +118,7 @@ class ResultOfVerificationType
      */
     public function getValidatorIDWithCreate(): ValidatorID
     {
-        $this->validatorID = is_null($this->validatorID) ? new ValidatorID() : $this->validatorID;
+        $this->validatorID ??= new ValidatorID();
 
         return $this->validatorID;
     }
@@ -158,7 +158,7 @@ class ResultOfVerificationType
      */
     public function getValidationResultCodeWithCreate(): ValidationResultCode
     {
-        $this->validationResultCode = is_null($this->validationResultCode) ? new ValidationResultCode() : $this->validationResultCode;
+        $this->validationResultCode ??= new ValidationResultCode();
 
         return $this->validationResultCode;
     }
@@ -258,7 +258,7 @@ class ResultOfVerificationType
      */
     public function getValidateProcessWithCreate(): ValidateProcess
     {
-        $this->validateProcess = is_null($this->validateProcess) ? new ValidateProcess() : $this->validateProcess;
+        $this->validateProcess ??= new ValidateProcess();
 
         return $this->validateProcess;
     }
@@ -298,7 +298,7 @@ class ResultOfVerificationType
      */
     public function getValidateToolWithCreate(): ValidateTool
     {
-        $this->validateTool = is_null($this->validateTool) ? new ValidateTool() : $this->validateTool;
+        $this->validateTool ??= new ValidateTool();
 
         return $this->validateTool;
     }
@@ -338,7 +338,7 @@ class ResultOfVerificationType
      */
     public function getValidateToolVersionWithCreate(): ValidateToolVersion
     {
-        $this->validateToolVersion = is_null($this->validateToolVersion) ? new ValidateToolVersion() : $this->validateToolVersion;
+        $this->validateToolVersion ??= new ValidateToolVersion();
 
         return $this->validateToolVersion;
     }
@@ -378,7 +378,7 @@ class ResultOfVerificationType
      */
     public function getSignatoryPartyWithCreate(): SignatoryParty
     {
-        $this->signatoryParty = is_null($this->signatoryParty) ? new SignatoryParty() : $this->signatoryParty;
+        $this->signatoryParty ??= new SignatoryParty();
 
         return $this->signatoryParty;
     }

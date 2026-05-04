@@ -49,7 +49,7 @@ class ConsumptionAverageType
      */
     public function getAverageAmountWithCreate(): AverageAmount
     {
-        $this->averageAmount = is_null($this->averageAmount) ? new AverageAmount() : $this->averageAmount;
+        $this->averageAmount ??= new AverageAmount();
 
         return $this->averageAmount;
     }

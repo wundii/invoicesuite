@@ -104,7 +104,7 @@ class ConsumptionType
      */
     public function getUtilityStatementTypeCodeWithCreate(): UtilityStatementTypeCode
     {
-        $this->utilityStatementTypeCode = is_null($this->utilityStatementTypeCode) ? new UtilityStatementTypeCode() : $this->utilityStatementTypeCode;
+        $this->utilityStatementTypeCode ??= new UtilityStatementTypeCode();
 
         return $this->utilityStatementTypeCode;
     }
@@ -144,7 +144,7 @@ class ConsumptionType
      */
     public function getMainPeriodWithCreate(): MainPeriod
     {
-        $this->mainPeriod = is_null($this->mainPeriod) ? new MainPeriod() : $this->mainPeriod;
+        $this->mainPeriod ??= new MainPeriod();
 
         return $this->mainPeriod;
     }
@@ -432,7 +432,7 @@ class ConsumptionType
      */
     public function getEnergyWaterSupplyWithCreate(): EnergyWaterSupply
     {
-        $this->energyWaterSupply = is_null($this->energyWaterSupply) ? new EnergyWaterSupply() : $this->energyWaterSupply;
+        $this->energyWaterSupply ??= new EnergyWaterSupply();
 
         return $this->energyWaterSupply;
     }
@@ -472,7 +472,7 @@ class ConsumptionType
      */
     public function getTelecommunicationsSupplyWithCreate(): TelecommunicationsSupply
     {
-        $this->telecommunicationsSupply = is_null($this->telecommunicationsSupply) ? new TelecommunicationsSupply() : $this->telecommunicationsSupply;
+        $this->telecommunicationsSupply ??= new TelecommunicationsSupply();
 
         return $this->telecommunicationsSupply;
     }
@@ -512,7 +512,7 @@ class ConsumptionType
      */
     public function getLegalMonetaryTotalWithCreate(): LegalMonetaryTotal
     {
-        $this->legalMonetaryTotal = is_null($this->legalMonetaryTotal) ? new LegalMonetaryTotal() : $this->legalMonetaryTotal;
+        $this->legalMonetaryTotal ??= new LegalMonetaryTotal();
 
         return $this->legalMonetaryTotal;
     }

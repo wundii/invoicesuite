@@ -171,7 +171,7 @@ class KeyInfoType
      */
     public function getKeyValueWithCreate(): KeyValueType
     {
-        $this->keyValue = is_null($this->keyValue) ? new KeyValueType() : $this->keyValue;
+        $this->keyValue ??= new KeyValueType();
 
         return $this->keyValue;
     }
@@ -219,7 +219,7 @@ class KeyInfoType
      */
     public function getRetrievalMethodWithCreate(): RetrievalMethodType
     {
-        $this->retrievalMethod = is_null($this->retrievalMethod) ? new RetrievalMethodType() : $this->retrievalMethod;
+        $this->retrievalMethod ??= new RetrievalMethodType();
 
         return $this->retrievalMethod;
     }
@@ -267,7 +267,7 @@ class KeyInfoType
      */
     public function getX509DataWithCreate(): X509DataType
     {
-        $this->x509Data = is_null($this->x509Data) ? new X509DataType() : $this->x509Data;
+        $this->x509Data ??= new X509DataType();
 
         return $this->x509Data;
     }
@@ -315,7 +315,7 @@ class KeyInfoType
      */
     public function getPGPDataWithCreate(): PGPDataType
     {
-        $this->pGPData = is_null($this->pGPData) ? new PGPDataType() : $this->pGPData;
+        $this->pGPData ??= new PGPDataType();
 
         return $this->pGPData;
     }
@@ -363,7 +363,7 @@ class KeyInfoType
      */
     public function getSPKIDataWithCreate(): SPKIDataType
     {
-        $this->sPKIData = is_null($this->sPKIData) ? new SPKIDataType() : $this->sPKIData;
+        $this->sPKIData ??= new SPKIDataType();
 
         return $this->sPKIData;
     }

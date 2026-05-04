@@ -105,7 +105,7 @@ class SupplierPartyType
      */
     public function getCustomerAssignedAccountIDWithCreate(): CustomerAssignedAccountID
     {
-        $this->customerAssignedAccountID = is_null($this->customerAssignedAccountID) ? new CustomerAssignedAccountID() : $this->customerAssignedAccountID;
+        $this->customerAssignedAccountID ??= new CustomerAssignedAccountID();
 
         return $this->customerAssignedAccountID;
     }
@@ -269,7 +269,7 @@ class SupplierPartyType
      */
     public function getDataSendingCapabilityWithCreate(): DataSendingCapability
     {
-        $this->dataSendingCapability = is_null($this->dataSendingCapability) ? new DataSendingCapability() : $this->dataSendingCapability;
+        $this->dataSendingCapability ??= new DataSendingCapability();
 
         return $this->dataSendingCapability;
     }
@@ -309,7 +309,7 @@ class SupplierPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }
@@ -349,7 +349,7 @@ class SupplierPartyType
      */
     public function getDespatchContactWithCreate(): DespatchContact
     {
-        $this->despatchContact = is_null($this->despatchContact) ? new DespatchContact() : $this->despatchContact;
+        $this->despatchContact ??= new DespatchContact();
 
         return $this->despatchContact;
     }
@@ -389,7 +389,7 @@ class SupplierPartyType
      */
     public function getAccountingContactWithCreate(): AccountingContact
     {
-        $this->accountingContact = is_null($this->accountingContact) ? new AccountingContact() : $this->accountingContact;
+        $this->accountingContact ??= new AccountingContact();
 
         return $this->accountingContact;
     }
@@ -429,7 +429,7 @@ class SupplierPartyType
      */
     public function getSellerContactWithCreate(): SellerContact
     {
-        $this->sellerContact = is_null($this->sellerContact) ? new SellerContact() : $this->sellerContact;
+        $this->sellerContact ??= new SellerContact();
 
         return $this->sellerContact;
     }

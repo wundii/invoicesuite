@@ -442,7 +442,7 @@ final class DatiGeneraliDocumento
      */
     public function getDatiBolloWithCreate(): DatiBollo
     {
-        $this->datiBollo = is_null($this->datiBollo) ? new DatiBollo() : $this->datiBollo;
+        $this->datiBollo ??= new DatiBollo();
 
         return $this->datiBollo;
     }

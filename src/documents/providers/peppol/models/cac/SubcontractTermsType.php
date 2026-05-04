@@ -108,7 +108,7 @@ class SubcontractTermsType
      */
     public function getRateWithCreate(): Rate
     {
-        $this->rate = is_null($this->rate) ? new Rate() : $this->rate;
+        $this->rate ??= new Rate();
 
         return $this->rate;
     }
@@ -302,7 +302,7 @@ class SubcontractTermsType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -342,7 +342,7 @@ class SubcontractTermsType
      */
     public function getSubcontractingConditionsCodeWithCreate(): SubcontractingConditionsCode
     {
-        $this->subcontractingConditionsCode = is_null($this->subcontractingConditionsCode) ? new SubcontractingConditionsCode() : $this->subcontractingConditionsCode;
+        $this->subcontractingConditionsCode ??= new SubcontractingConditionsCode();
 
         return $this->subcontractingConditionsCode;
     }
@@ -382,7 +382,7 @@ class SubcontractTermsType
      */
     public function getMaximumPercentWithCreate(): MaximumPercent
     {
-        $this->maximumPercent = is_null($this->maximumPercent) ? new MaximumPercent() : $this->maximumPercent;
+        $this->maximumPercent ??= new MaximumPercent();
 
         return $this->maximumPercent;
     }
@@ -422,7 +422,7 @@ class SubcontractTermsType
      */
     public function getMinimumPercentWithCreate(): MinimumPercent
     {
-        $this->minimumPercent = is_null($this->minimumPercent) ? new MinimumPercent() : $this->minimumPercent;
+        $this->minimumPercent ??= new MinimumPercent();
 
         return $this->minimumPercent;
     }

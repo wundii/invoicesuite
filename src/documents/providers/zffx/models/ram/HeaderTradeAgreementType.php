@@ -203,7 +203,7 @@ class HeaderTradeAgreementType
      */
     public function getBuyerReferenceWithCreate(): TextType
     {
-        $this->buyerReference = is_null($this->buyerReference) ? new TextType() : $this->buyerReference;
+        $this->buyerReference ??= new TextType();
 
         return $this->buyerReference;
     }
@@ -243,7 +243,7 @@ class HeaderTradeAgreementType
      */
     public function getSellerTradePartyWithCreate(): TradePartyType
     {
-        $this->sellerTradeParty = is_null($this->sellerTradeParty) ? new TradePartyType() : $this->sellerTradeParty;
+        $this->sellerTradeParty ??= new TradePartyType();
 
         return $this->sellerTradeParty;
     }
@@ -283,7 +283,7 @@ class HeaderTradeAgreementType
      */
     public function getBuyerTradePartyWithCreate(): TradePartyType
     {
-        $this->buyerTradeParty = is_null($this->buyerTradeParty) ? new TradePartyType() : $this->buyerTradeParty;
+        $this->buyerTradeParty ??= new TradePartyType();
 
         return $this->buyerTradeParty;
     }
@@ -323,7 +323,7 @@ class HeaderTradeAgreementType
      */
     public function getSalesAgentTradePartyWithCreate(): TradePartyType
     {
-        $this->salesAgentTradeParty = is_null($this->salesAgentTradeParty) ? new TradePartyType() : $this->salesAgentTradeParty;
+        $this->salesAgentTradeParty ??= new TradePartyType();
 
         return $this->salesAgentTradeParty;
     }
@@ -363,7 +363,7 @@ class HeaderTradeAgreementType
      */
     public function getBuyerTaxRepresentativeTradePartyWithCreate(): TradePartyType
     {
-        $this->buyerTaxRepresentativeTradeParty = is_null($this->buyerTaxRepresentativeTradeParty) ? new TradePartyType() : $this->buyerTaxRepresentativeTradeParty;
+        $this->buyerTaxRepresentativeTradeParty ??= new TradePartyType();
 
         return $this->buyerTaxRepresentativeTradeParty;
     }
@@ -403,7 +403,7 @@ class HeaderTradeAgreementType
      */
     public function getSellerTaxRepresentativeTradePartyWithCreate(): TradePartyType
     {
-        $this->sellerTaxRepresentativeTradeParty = is_null($this->sellerTaxRepresentativeTradeParty) ? new TradePartyType() : $this->sellerTaxRepresentativeTradeParty;
+        $this->sellerTaxRepresentativeTradeParty ??= new TradePartyType();
 
         return $this->sellerTaxRepresentativeTradeParty;
     }
@@ -443,7 +443,7 @@ class HeaderTradeAgreementType
      */
     public function getProductEndUserTradePartyWithCreate(): TradePartyType
     {
-        $this->productEndUserTradeParty = is_null($this->productEndUserTradeParty) ? new TradePartyType() : $this->productEndUserTradeParty;
+        $this->productEndUserTradeParty ??= new TradePartyType();
 
         return $this->productEndUserTradeParty;
     }
@@ -483,7 +483,7 @@ class HeaderTradeAgreementType
      */
     public function getApplicableTradeDeliveryTermsWithCreate(): TradeDeliveryTermsType
     {
-        $this->applicableTradeDeliveryTerms = is_null($this->applicableTradeDeliveryTerms) ? new TradeDeliveryTermsType() : $this->applicableTradeDeliveryTerms;
+        $this->applicableTradeDeliveryTerms ??= new TradeDeliveryTermsType();
 
         return $this->applicableTradeDeliveryTerms;
     }
@@ -523,7 +523,7 @@ class HeaderTradeAgreementType
      */
     public function getSellerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->sellerOrderReferencedDocument = is_null($this->sellerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->sellerOrderReferencedDocument;
+        $this->sellerOrderReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->sellerOrderReferencedDocument;
     }
@@ -563,7 +563,7 @@ class HeaderTradeAgreementType
      */
     public function getBuyerOrderReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->buyerOrderReferencedDocument = is_null($this->buyerOrderReferencedDocument) ? new ReferencedDocumentType() : $this->buyerOrderReferencedDocument;
+        $this->buyerOrderReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->buyerOrderReferencedDocument;
     }
@@ -603,7 +603,7 @@ class HeaderTradeAgreementType
      */
     public function getQuotationReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->quotationReferencedDocument = is_null($this->quotationReferencedDocument) ? new ReferencedDocumentType() : $this->quotationReferencedDocument;
+        $this->quotationReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->quotationReferencedDocument;
     }
@@ -643,7 +643,7 @@ class HeaderTradeAgreementType
      */
     public function getContractReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->contractReferencedDocument = is_null($this->contractReferencedDocument) ? new ReferencedDocumentType() : $this->contractReferencedDocument;
+        $this->contractReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->contractReferencedDocument;
     }
@@ -777,7 +777,7 @@ class HeaderTradeAgreementType
      */
     public function getBuyerAgentTradePartyWithCreate(): TradePartyType
     {
-        $this->buyerAgentTradeParty = is_null($this->buyerAgentTradeParty) ? new TradePartyType() : $this->buyerAgentTradeParty;
+        $this->buyerAgentTradeParty ??= new TradePartyType();
 
         return $this->buyerAgentTradeParty;
     }
@@ -817,7 +817,7 @@ class HeaderTradeAgreementType
      */
     public function getSpecifiedProcuringProjectWithCreate(): ProcuringProjectType
     {
-        $this->specifiedProcuringProject = is_null($this->specifiedProcuringProject) ? new ProcuringProjectType() : $this->specifiedProcuringProject;
+        $this->specifiedProcuringProject ??= new ProcuringProjectType();
 
         return $this->specifiedProcuringProject;
     }

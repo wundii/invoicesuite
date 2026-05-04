@@ -6,7 +6,7 @@ namespace horstoeko\invoicesuite\tests\testcases\console;
 
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteListProvidersCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteListProvidersCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command lists available providers and returns the providers metadata as JSON.

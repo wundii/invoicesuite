@@ -169,7 +169,7 @@ class ConsumptionCorrectionType
      */
     public function getCorrectionTypeWithCreate(): CorrectionType
     {
-        $this->correctionType = is_null($this->correctionType) ? new CorrectionType() : $this->correctionType;
+        $this->correctionType ??= new CorrectionType();
 
         return $this->correctionType;
     }
@@ -209,7 +209,7 @@ class ConsumptionCorrectionType
      */
     public function getCorrectionTypeCodeWithCreate(): CorrectionTypeCode
     {
-        $this->correctionTypeCode = is_null($this->correctionTypeCode) ? new CorrectionTypeCode() : $this->correctionTypeCode;
+        $this->correctionTypeCode ??= new CorrectionTypeCode();
 
         return $this->correctionTypeCode;
     }
@@ -249,7 +249,7 @@ class ConsumptionCorrectionType
      */
     public function getMeterNumberWithCreate(): MeterNumber
     {
-        $this->meterNumber = is_null($this->meterNumber) ? new MeterNumber() : $this->meterNumber;
+        $this->meterNumber ??= new MeterNumber();
 
         return $this->meterNumber;
     }
@@ -289,7 +289,7 @@ class ConsumptionCorrectionType
      */
     public function getGasPressureQuantityWithCreate(): GasPressureQuantity
     {
-        $this->gasPressureQuantity = is_null($this->gasPressureQuantity) ? new GasPressureQuantity() : $this->gasPressureQuantity;
+        $this->gasPressureQuantity ??= new GasPressureQuantity();
 
         return $this->gasPressureQuantity;
     }
@@ -329,7 +329,7 @@ class ConsumptionCorrectionType
      */
     public function getActualTemperatureReductionQuantityWithCreate(): ActualTemperatureReductionQuantity
     {
-        $this->actualTemperatureReductionQuantity = is_null($this->actualTemperatureReductionQuantity) ? new ActualTemperatureReductionQuantity() : $this->actualTemperatureReductionQuantity;
+        $this->actualTemperatureReductionQuantity ??= new ActualTemperatureReductionQuantity();
 
         return $this->actualTemperatureReductionQuantity;
     }
@@ -369,7 +369,7 @@ class ConsumptionCorrectionType
      */
     public function getNormalTemperatureReductionQuantityWithCreate(): NormalTemperatureReductionQuantity
     {
-        $this->normalTemperatureReductionQuantity = is_null($this->normalTemperatureReductionQuantity) ? new NormalTemperatureReductionQuantity() : $this->normalTemperatureReductionQuantity;
+        $this->normalTemperatureReductionQuantity ??= new NormalTemperatureReductionQuantity();
 
         return $this->normalTemperatureReductionQuantity;
     }
@@ -409,7 +409,7 @@ class ConsumptionCorrectionType
      */
     public function getDifferenceTemperatureReductionQuantityWithCreate(): DifferenceTemperatureReductionQuantity
     {
-        $this->differenceTemperatureReductionQuantity = is_null($this->differenceTemperatureReductionQuantity) ? new DifferenceTemperatureReductionQuantity() : $this->differenceTemperatureReductionQuantity;
+        $this->differenceTemperatureReductionQuantity ??= new DifferenceTemperatureReductionQuantity();
 
         return $this->differenceTemperatureReductionQuantity;
     }
@@ -573,7 +573,7 @@ class ConsumptionCorrectionType
      */
     public function getCorrectionUnitAmountWithCreate(): CorrectionUnitAmount
     {
-        $this->correctionUnitAmount = is_null($this->correctionUnitAmount) ? new CorrectionUnitAmount() : $this->correctionUnitAmount;
+        $this->correctionUnitAmount ??= new CorrectionUnitAmount();
 
         return $this->correctionUnitAmount;
     }
@@ -613,7 +613,7 @@ class ConsumptionCorrectionType
      */
     public function getConsumptionEnergyQuantityWithCreate(): ConsumptionEnergyQuantity
     {
-        $this->consumptionEnergyQuantity = is_null($this->consumptionEnergyQuantity) ? new ConsumptionEnergyQuantity() : $this->consumptionEnergyQuantity;
+        $this->consumptionEnergyQuantity ??= new ConsumptionEnergyQuantity();
 
         return $this->consumptionEnergyQuantity;
     }
@@ -653,7 +653,7 @@ class ConsumptionCorrectionType
      */
     public function getConsumptionWaterQuantityWithCreate(): ConsumptionWaterQuantity
     {
-        $this->consumptionWaterQuantity = is_null($this->consumptionWaterQuantity) ? new ConsumptionWaterQuantity() : $this->consumptionWaterQuantity;
+        $this->consumptionWaterQuantity ??= new ConsumptionWaterQuantity();
 
         return $this->consumptionWaterQuantity;
     }
@@ -693,7 +693,7 @@ class ConsumptionCorrectionType
      */
     public function getCorrectionAmountWithCreate(): CorrectionAmount
     {
-        $this->correctionAmount = is_null($this->correctionAmount) ? new CorrectionAmount() : $this->correctionAmount;
+        $this->correctionAmount ??= new CorrectionAmount();
 
         return $this->correctionAmount;
     }

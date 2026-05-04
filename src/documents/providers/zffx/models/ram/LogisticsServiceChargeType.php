@@ -60,7 +60,7 @@ class LogisticsServiceChargeType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -100,7 +100,7 @@ class LogisticsServiceChargeType
      */
     public function getAppliedAmountWithCreate(): AmountType
     {
-        $this->appliedAmount = is_null($this->appliedAmount) ? new AmountType() : $this->appliedAmount;
+        $this->appliedAmount ??= new AmountType();
 
         return $this->appliedAmount;
     }

@@ -190,7 +190,7 @@ class QualifyingPartyType
      */
     public function getParticipationPercentWithCreate(): ParticipationPercent
     {
-        $this->participationPercent = is_null($this->participationPercent) ? new ParticipationPercent() : $this->participationPercent;
+        $this->participationPercent ??= new ParticipationPercent();
 
         return $this->participationPercent;
     }
@@ -354,7 +354,7 @@ class QualifyingPartyType
      */
     public function getOperatingYearsQuantityWithCreate(): OperatingYearsQuantity
     {
-        $this->operatingYearsQuantity = is_null($this->operatingYearsQuantity) ? new OperatingYearsQuantity() : $this->operatingYearsQuantity;
+        $this->operatingYearsQuantity ??= new OperatingYearsQuantity();
 
         return $this->operatingYearsQuantity;
     }
@@ -394,7 +394,7 @@ class QualifyingPartyType
      */
     public function getEmployeeQuantityWithCreate(): EmployeeQuantity
     {
-        $this->employeeQuantity = is_null($this->employeeQuantity) ? new EmployeeQuantity() : $this->employeeQuantity;
+        $this->employeeQuantity ??= new EmployeeQuantity();
 
         return $this->employeeQuantity;
     }
@@ -434,7 +434,7 @@ class QualifyingPartyType
      */
     public function getBusinessClassificationEvidenceIDWithCreate(): BusinessClassificationEvidenceID
     {
-        $this->businessClassificationEvidenceID = is_null($this->businessClassificationEvidenceID) ? new BusinessClassificationEvidenceID() : $this->businessClassificationEvidenceID;
+        $this->businessClassificationEvidenceID ??= new BusinessClassificationEvidenceID();
 
         return $this->businessClassificationEvidenceID;
     }
@@ -474,7 +474,7 @@ class QualifyingPartyType
      */
     public function getBusinessIdentityEvidenceIDWithCreate(): BusinessIdentityEvidenceID
     {
-        $this->businessIdentityEvidenceID = is_null($this->businessIdentityEvidenceID) ? new BusinessIdentityEvidenceID() : $this->businessIdentityEvidenceID;
+        $this->businessIdentityEvidenceID ??= new BusinessIdentityEvidenceID();
 
         return $this->businessIdentityEvidenceID;
     }
@@ -514,7 +514,7 @@ class QualifyingPartyType
      */
     public function getTendererRoleCodeWithCreate(): TendererRoleCode
     {
-        $this->tendererRoleCode = is_null($this->tendererRoleCode) ? new TendererRoleCode() : $this->tendererRoleCode;
+        $this->tendererRoleCode ??= new TendererRoleCode();
 
         return $this->tendererRoleCode;
     }
@@ -554,7 +554,7 @@ class QualifyingPartyType
      */
     public function getBusinessClassificationSchemeWithCreate(): BusinessClassificationScheme
     {
-        $this->businessClassificationScheme = is_null($this->businessClassificationScheme) ? new BusinessClassificationScheme() : $this->businessClassificationScheme;
+        $this->businessClassificationScheme ??= new BusinessClassificationScheme();
 
         return $this->businessClassificationScheme;
     }
@@ -1090,7 +1090,7 @@ class QualifyingPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }
@@ -1130,7 +1130,7 @@ class QualifyingPartyType
      */
     public function getEconomicOperatorRoleWithCreate(): EconomicOperatorRole
     {
-        $this->economicOperatorRole = is_null($this->economicOperatorRole) ? new EconomicOperatorRole() : $this->economicOperatorRole;
+        $this->economicOperatorRole ??= new EconomicOperatorRole();
 
         return $this->economicOperatorRole;
     }

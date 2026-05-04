@@ -96,7 +96,7 @@ class CapabilityType
      */
     public function getCapabilityTypeCodeWithCreate(): CapabilityTypeCode
     {
-        $this->capabilityTypeCode = is_null($this->capabilityTypeCode) ? new CapabilityTypeCode() : $this->capabilityTypeCode;
+        $this->capabilityTypeCode ??= new CapabilityTypeCode();
 
         return $this->capabilityTypeCode;
     }
@@ -260,7 +260,7 @@ class CapabilityType
      */
     public function getValueAmountWithCreate(): ValueAmount
     {
-        $this->valueAmount = is_null($this->valueAmount) ? new ValueAmount() : $this->valueAmount;
+        $this->valueAmount ??= new ValueAmount();
 
         return $this->valueAmount;
     }
@@ -300,7 +300,7 @@ class CapabilityType
      */
     public function getValueQuantityWithCreate(): ValueQuantity
     {
-        $this->valueQuantity = is_null($this->valueQuantity) ? new ValueQuantity() : $this->valueQuantity;
+        $this->valueQuantity ??= new ValueQuantity();
 
         return $this->valueQuantity;
     }
@@ -464,7 +464,7 @@ class CapabilityType
      */
     public function getValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->validityPeriod = is_null($this->validityPeriod) ? new ValidityPeriod() : $this->validityPeriod;
+        $this->validityPeriod ??= new ValidityPeriod();
 
         return $this->validityPeriod;
     }

@@ -109,7 +109,7 @@ class ReferenceType
      */
     public function getTransformsWithCreate(): TransformsType
     {
-        $this->transforms = is_null($this->transforms) ? new TransformsType() : $this->transforms;
+        $this->transforms ??= new TransformsType();
 
         return $this->transforms;
     }
@@ -157,7 +157,7 @@ class ReferenceType
      */
     public function getDigestMethodWithCreate(): DigestMethodType
     {
-        $this->digestMethod = is_null($this->digestMethod) ? new DigestMethodType() : $this->digestMethod;
+        $this->digestMethod ??= new DigestMethodType();
 
         return $this->digestMethod;
     }

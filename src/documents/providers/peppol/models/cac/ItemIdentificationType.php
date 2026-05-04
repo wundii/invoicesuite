@@ -95,7 +95,7 @@ class ItemIdentificationType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -135,7 +135,7 @@ class ItemIdentificationType
      */
     public function getExtendedIDWithCreate(): ExtendedID
     {
-        $this->extendedID = is_null($this->extendedID) ? new ExtendedID() : $this->extendedID;
+        $this->extendedID ??= new ExtendedID();
 
         return $this->extendedID;
     }
@@ -175,7 +175,7 @@ class ItemIdentificationType
      */
     public function getBarcodeSymbologyIDWithCreate(): BarcodeSymbologyID
     {
-        $this->barcodeSymbologyID = is_null($this->barcodeSymbologyID) ? new BarcodeSymbologyID() : $this->barcodeSymbologyID;
+        $this->barcodeSymbologyID ??= new BarcodeSymbologyID();
 
         return $this->barcodeSymbologyID;
     }
@@ -463,7 +463,7 @@ class ItemIdentificationType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }

@@ -48,7 +48,7 @@ class ContractingActivityType
      */
     public function getActivityTypeCodeWithCreate(): ActivityTypeCode
     {
-        $this->activityTypeCode = is_null($this->activityTypeCode) ? new ActivityTypeCode() : $this->activityTypeCode;
+        $this->activityTypeCode ??= new ActivityTypeCode();
 
         return $this->activityTypeCode;
     }
@@ -88,7 +88,7 @@ class ContractingActivityType
      */
     public function getActivityTypeWithCreate(): ActivityType
     {
-        $this->activityType = is_null($this->activityType) ? new ActivityType() : $this->activityType;
+        $this->activityType ??= new ActivityType();
 
         return $this->activityType;
     }

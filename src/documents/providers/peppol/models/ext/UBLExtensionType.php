@@ -136,7 +136,7 @@ class UBLExtensionType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -176,7 +176,7 @@ class UBLExtensionType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -216,7 +216,7 @@ class UBLExtensionType
      */
     public function getExtensionAgencyIDWithCreate(): ExtensionAgencyID
     {
-        $this->extensionAgencyID = is_null($this->extensionAgencyID) ? new ExtensionAgencyID() : $this->extensionAgencyID;
+        $this->extensionAgencyID ??= new ExtensionAgencyID();
 
         return $this->extensionAgencyID;
     }
@@ -256,7 +256,7 @@ class UBLExtensionType
      */
     public function getExtensionAgencyNameWithCreate(): ExtensionAgencyName
     {
-        $this->extensionAgencyName = is_null($this->extensionAgencyName) ? new ExtensionAgencyName() : $this->extensionAgencyName;
+        $this->extensionAgencyName ??= new ExtensionAgencyName();
 
         return $this->extensionAgencyName;
     }
@@ -296,7 +296,7 @@ class UBLExtensionType
      */
     public function getExtensionVersionIDWithCreate(): ExtensionVersionID
     {
-        $this->extensionVersionID = is_null($this->extensionVersionID) ? new ExtensionVersionID() : $this->extensionVersionID;
+        $this->extensionVersionID ??= new ExtensionVersionID();
 
         return $this->extensionVersionID;
     }
@@ -336,7 +336,7 @@ class UBLExtensionType
      */
     public function getExtensionAgencyURIWithCreate(): ExtensionAgencyURI
     {
-        $this->extensionAgencyURI = is_null($this->extensionAgencyURI) ? new ExtensionAgencyURI() : $this->extensionAgencyURI;
+        $this->extensionAgencyURI ??= new ExtensionAgencyURI();
 
         return $this->extensionAgencyURI;
     }
@@ -376,7 +376,7 @@ class UBLExtensionType
      */
     public function getExtensionURIWithCreate(): ExtensionURI
     {
-        $this->extensionURI = is_null($this->extensionURI) ? new ExtensionURI() : $this->extensionURI;
+        $this->extensionURI ??= new ExtensionURI();
 
         return $this->extensionURI;
     }
@@ -416,7 +416,7 @@ class UBLExtensionType
      */
     public function getExtensionReasonCodeWithCreate(): ExtensionReasonCode
     {
-        $this->extensionReasonCode = is_null($this->extensionReasonCode) ? new ExtensionReasonCode() : $this->extensionReasonCode;
+        $this->extensionReasonCode ??= new ExtensionReasonCode();
 
         return $this->extensionReasonCode;
     }
@@ -456,7 +456,7 @@ class UBLExtensionType
      */
     public function getExtensionReasonWithCreate(): ExtensionReason
     {
-        $this->extensionReason = is_null($this->extensionReason) ? new ExtensionReason() : $this->extensionReason;
+        $this->extensionReason ??= new ExtensionReason();
 
         return $this->extensionReason;
     }
@@ -496,7 +496,7 @@ class UBLExtensionType
      */
     public function getExtensionContentWithCreate(): ExtensionContent
     {
-        $this->extensionContent = is_null($this->extensionContent) ? new ExtensionContent() : $this->extensionContent;
+        $this->extensionContent ??= new ExtensionContent();
 
         return $this->extensionContent;
     }

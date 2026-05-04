@@ -36,7 +36,7 @@ class SupplyChainEventType
      */
     public function getOccurrenceDateTimeWithCreate(): DateTimeType
     {
-        $this->occurrenceDateTime = is_null($this->occurrenceDateTime) ? new DateTimeType() : $this->occurrenceDateTime;
+        $this->occurrenceDateTime ??= new DateTimeType();
 
         return $this->occurrenceDateTime;
     }

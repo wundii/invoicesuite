@@ -193,7 +193,7 @@ class ClassificationSchemeType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -233,7 +233,7 @@ class ClassificationSchemeType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -457,7 +457,7 @@ class ClassificationSchemeType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -621,7 +621,7 @@ class ClassificationSchemeType
      */
     public function getAgencyIDWithCreate(): AgencyID
     {
-        $this->agencyID = is_null($this->agencyID) ? new AgencyID() : $this->agencyID;
+        $this->agencyID ??= new AgencyID();
 
         return $this->agencyID;
     }
@@ -661,7 +661,7 @@ class ClassificationSchemeType
      */
     public function getAgencyNameWithCreate(): AgencyName
     {
-        $this->agencyName = is_null($this->agencyName) ? new AgencyName() : $this->agencyName;
+        $this->agencyName ??= new AgencyName();
 
         return $this->agencyName;
     }
@@ -701,7 +701,7 @@ class ClassificationSchemeType
      */
     public function getVersionIDWithCreate(): VersionID
     {
-        $this->versionID = is_null($this->versionID) ? new VersionID() : $this->versionID;
+        $this->versionID ??= new VersionID();
 
         return $this->versionID;
     }
@@ -741,7 +741,7 @@ class ClassificationSchemeType
      */
     public function getURIWithCreate(): URI
     {
-        $this->uRI = is_null($this->uRI) ? new URI() : $this->uRI;
+        $this->uRI ??= new URI();
 
         return $this->uRI;
     }
@@ -781,7 +781,7 @@ class ClassificationSchemeType
      */
     public function getSchemeURIWithCreate(): SchemeURI
     {
-        $this->schemeURI = is_null($this->schemeURI) ? new SchemeURI() : $this->schemeURI;
+        $this->schemeURI ??= new SchemeURI();
 
         return $this->schemeURI;
     }
@@ -821,7 +821,7 @@ class ClassificationSchemeType
      */
     public function getLanguageIDWithCreate(): LanguageID
     {
-        $this->languageID = is_null($this->languageID) ? new LanguageID() : $this->languageID;
+        $this->languageID ??= new LanguageID();
 
         return $this->languageID;
     }

@@ -347,7 +347,7 @@ class AddressType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -387,7 +387,7 @@ class AddressType
      */
     public function getAddressTypeCodeWithCreate(): AddressTypeCode
     {
-        $this->addressTypeCode = is_null($this->addressTypeCode) ? new AddressTypeCode() : $this->addressTypeCode;
+        $this->addressTypeCode ??= new AddressTypeCode();
 
         return $this->addressTypeCode;
     }
@@ -427,7 +427,7 @@ class AddressType
      */
     public function getAddressFormatCodeWithCreate(): AddressFormatCode
     {
-        $this->addressFormatCode = is_null($this->addressFormatCode) ? new AddressFormatCode() : $this->addressFormatCode;
+        $this->addressFormatCode ??= new AddressFormatCode();
 
         return $this->addressFormatCode;
     }
@@ -467,7 +467,7 @@ class AddressType
      */
     public function getPostboxWithCreate(): Postbox
     {
-        $this->postbox = is_null($this->postbox) ? new Postbox() : $this->postbox;
+        $this->postbox ??= new Postbox();
 
         return $this->postbox;
     }
@@ -507,7 +507,7 @@ class AddressType
      */
     public function getFloorWithCreate(): Floor
     {
-        $this->floor = is_null($this->floor) ? new Floor() : $this->floor;
+        $this->floor ??= new Floor();
 
         return $this->floor;
     }
@@ -547,7 +547,7 @@ class AddressType
      */
     public function getRoomWithCreate(): Room
     {
-        $this->room = is_null($this->room) ? new Room() : $this->room;
+        $this->room ??= new Room();
 
         return $this->room;
     }
@@ -587,7 +587,7 @@ class AddressType
      */
     public function getStreetNameWithCreate(): StreetName
     {
-        $this->streetName = is_null($this->streetName) ? new StreetName() : $this->streetName;
+        $this->streetName ??= new StreetName();
 
         return $this->streetName;
     }
@@ -627,7 +627,7 @@ class AddressType
      */
     public function getAdditionalStreetNameWithCreate(): AdditionalStreetName
     {
-        $this->additionalStreetName = is_null($this->additionalStreetName) ? new AdditionalStreetName() : $this->additionalStreetName;
+        $this->additionalStreetName ??= new AdditionalStreetName();
 
         return $this->additionalStreetName;
     }
@@ -667,7 +667,7 @@ class AddressType
      */
     public function getBlockNameWithCreate(): BlockName
     {
-        $this->blockName = is_null($this->blockName) ? new BlockName() : $this->blockName;
+        $this->blockName ??= new BlockName();
 
         return $this->blockName;
     }
@@ -707,7 +707,7 @@ class AddressType
      */
     public function getBuildingNameWithCreate(): BuildingName
     {
-        $this->buildingName = is_null($this->buildingName) ? new BuildingName() : $this->buildingName;
+        $this->buildingName ??= new BuildingName();
 
         return $this->buildingName;
     }
@@ -747,7 +747,7 @@ class AddressType
      */
     public function getBuildingNumberWithCreate(): BuildingNumber
     {
-        $this->buildingNumber = is_null($this->buildingNumber) ? new BuildingNumber() : $this->buildingNumber;
+        $this->buildingNumber ??= new BuildingNumber();
 
         return $this->buildingNumber;
     }
@@ -787,7 +787,7 @@ class AddressType
      */
     public function getInhouseMailWithCreate(): InhouseMail
     {
-        $this->inhouseMail = is_null($this->inhouseMail) ? new InhouseMail() : $this->inhouseMail;
+        $this->inhouseMail ??= new InhouseMail();
 
         return $this->inhouseMail;
     }
@@ -827,7 +827,7 @@ class AddressType
      */
     public function getDepartmentWithCreate(): Department
     {
-        $this->department = is_null($this->department) ? new Department() : $this->department;
+        $this->department ??= new Department();
 
         return $this->department;
     }
@@ -867,7 +867,7 @@ class AddressType
      */
     public function getMarkAttentionWithCreate(): MarkAttention
     {
-        $this->markAttention = is_null($this->markAttention) ? new MarkAttention() : $this->markAttention;
+        $this->markAttention ??= new MarkAttention();
 
         return $this->markAttention;
     }
@@ -907,7 +907,7 @@ class AddressType
      */
     public function getMarkCareWithCreate(): MarkCare
     {
-        $this->markCare = is_null($this->markCare) ? new MarkCare() : $this->markCare;
+        $this->markCare ??= new MarkCare();
 
         return $this->markCare;
     }
@@ -947,7 +947,7 @@ class AddressType
      */
     public function getPlotIdentificationWithCreate(): PlotIdentification
     {
-        $this->plotIdentification = is_null($this->plotIdentification) ? new PlotIdentification() : $this->plotIdentification;
+        $this->plotIdentification ??= new PlotIdentification();
 
         return $this->plotIdentification;
     }
@@ -987,7 +987,7 @@ class AddressType
      */
     public function getCitySubdivisionNameWithCreate(): CitySubdivisionName
     {
-        $this->citySubdivisionName = is_null($this->citySubdivisionName) ? new CitySubdivisionName() : $this->citySubdivisionName;
+        $this->citySubdivisionName ??= new CitySubdivisionName();
 
         return $this->citySubdivisionName;
     }
@@ -1027,7 +1027,7 @@ class AddressType
      */
     public function getCityNameWithCreate(): CityName
     {
-        $this->cityName = is_null($this->cityName) ? new CityName() : $this->cityName;
+        $this->cityName ??= new CityName();
 
         return $this->cityName;
     }
@@ -1067,7 +1067,7 @@ class AddressType
      */
     public function getPostalZoneWithCreate(): PostalZone
     {
-        $this->postalZone = is_null($this->postalZone) ? new PostalZone() : $this->postalZone;
+        $this->postalZone ??= new PostalZone();
 
         return $this->postalZone;
     }
@@ -1107,7 +1107,7 @@ class AddressType
      */
     public function getCountrySubentityWithCreate(): CountrySubentity
     {
-        $this->countrySubentity = is_null($this->countrySubentity) ? new CountrySubentity() : $this->countrySubentity;
+        $this->countrySubentity ??= new CountrySubentity();
 
         return $this->countrySubentity;
     }
@@ -1147,7 +1147,7 @@ class AddressType
      */
     public function getCountrySubentityCodeWithCreate(): CountrySubentityCode
     {
-        $this->countrySubentityCode = is_null($this->countrySubentityCode) ? new CountrySubentityCode() : $this->countrySubentityCode;
+        $this->countrySubentityCode ??= new CountrySubentityCode();
 
         return $this->countrySubentityCode;
     }
@@ -1187,7 +1187,7 @@ class AddressType
      */
     public function getRegionWithCreate(): Region
     {
-        $this->region = is_null($this->region) ? new Region() : $this->region;
+        $this->region ??= new Region();
 
         return $this->region;
     }
@@ -1227,7 +1227,7 @@ class AddressType
      */
     public function getDistrictWithCreate(): District
     {
-        $this->district = is_null($this->district) ? new District() : $this->district;
+        $this->district ??= new District();
 
         return $this->district;
     }
@@ -1267,7 +1267,7 @@ class AddressType
      */
     public function getTimezoneOffsetWithCreate(): TimezoneOffset
     {
-        $this->timezoneOffset = is_null($this->timezoneOffset) ? new TimezoneOffset() : $this->timezoneOffset;
+        $this->timezoneOffset ??= new TimezoneOffset();
 
         return $this->timezoneOffset;
     }
@@ -1431,7 +1431,7 @@ class AddressType
      */
     public function getCountryWithCreate(): Country
     {
-        $this->country = is_null($this->country) ? new Country() : $this->country;
+        $this->country ??= new Country();
 
         return $this->country;
     }

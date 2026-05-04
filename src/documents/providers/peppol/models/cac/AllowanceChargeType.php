@@ -202,7 +202,7 @@ class AllowanceChargeType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -272,7 +272,7 @@ class AllowanceChargeType
      */
     public function getAllowanceChargeReasonCodeWithCreate(): AllowanceChargeReasonCode
     {
-        $this->allowanceChargeReasonCode = is_null($this->allowanceChargeReasonCode) ? new AllowanceChargeReasonCode() : $this->allowanceChargeReasonCode;
+        $this->allowanceChargeReasonCode ??= new AllowanceChargeReasonCode();
 
         return $this->allowanceChargeReasonCode;
     }
@@ -436,7 +436,7 @@ class AllowanceChargeType
      */
     public function getMultiplierFactorNumericWithCreate(): MultiplierFactorNumeric
     {
-        $this->multiplierFactorNumeric = is_null($this->multiplierFactorNumeric) ? new MultiplierFactorNumeric() : $this->multiplierFactorNumeric;
+        $this->multiplierFactorNumeric ??= new MultiplierFactorNumeric();
 
         return $this->multiplierFactorNumeric;
     }
@@ -506,7 +506,7 @@ class AllowanceChargeType
      */
     public function getSequenceNumericWithCreate(): SequenceNumeric
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new SequenceNumeric() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new SequenceNumeric();
 
         return $this->sequenceNumeric;
     }
@@ -546,7 +546,7 @@ class AllowanceChargeType
      */
     public function getAmountWithCreate(): Amount
     {
-        $this->amount = is_null($this->amount) ? new Amount() : $this->amount;
+        $this->amount ??= new Amount();
 
         return $this->amount;
     }
@@ -586,7 +586,7 @@ class AllowanceChargeType
      */
     public function getBaseAmountWithCreate(): BaseAmount
     {
-        $this->baseAmount = is_null($this->baseAmount) ? new BaseAmount() : $this->baseAmount;
+        $this->baseAmount ??= new BaseAmount();
 
         return $this->baseAmount;
     }
@@ -626,7 +626,7 @@ class AllowanceChargeType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -666,7 +666,7 @@ class AllowanceChargeType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -706,7 +706,7 @@ class AllowanceChargeType
      */
     public function getPerUnitAmountWithCreate(): PerUnitAmount
     {
-        $this->perUnitAmount = is_null($this->perUnitAmount) ? new PerUnitAmount() : $this->perUnitAmount;
+        $this->perUnitAmount ??= new PerUnitAmount();
 
         return $this->perUnitAmount;
     }
@@ -870,7 +870,7 @@ class AllowanceChargeType
      */
     public function getTaxTotalWithCreate(): TaxTotal
     {
-        $this->taxTotal = is_null($this->taxTotal) ? new TaxTotal() : $this->taxTotal;
+        $this->taxTotal ??= new TaxTotal();
 
         return $this->taxTotal;
     }

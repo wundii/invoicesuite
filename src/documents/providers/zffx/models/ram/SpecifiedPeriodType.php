@@ -70,7 +70,7 @@ class SpecifiedPeriodType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -110,7 +110,7 @@ class SpecifiedPeriodType
      */
     public function getStartDateTimeWithCreate(): DateTimeType
     {
-        $this->startDateTime = is_null($this->startDateTime) ? new DateTimeType() : $this->startDateTime;
+        $this->startDateTime ??= new DateTimeType();
 
         return $this->startDateTime;
     }
@@ -150,7 +150,7 @@ class SpecifiedPeriodType
      */
     public function getEndDateTimeWithCreate(): DateTimeType
     {
-        $this->endDateTime = is_null($this->endDateTime) ? new DateTimeType() : $this->endDateTime;
+        $this->endDateTime ??= new DateTimeType();
 
         return $this->endDateTime;
     }
@@ -190,7 +190,7 @@ class SpecifiedPeriodType
      */
     public function getCompleteDateTimeWithCreate(): DateTimeType
     {
-        $this->completeDateTime = is_null($this->completeDateTime) ? new DateTimeType() : $this->completeDateTime;
+        $this->completeDateTime ??= new DateTimeType();
 
         return $this->completeDateTime;
     }

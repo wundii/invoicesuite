@@ -194,7 +194,7 @@ class DespatchLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -234,7 +234,7 @@ class DespatchLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -398,7 +398,7 @@ class DespatchLineType
      */
     public function getLineStatusCodeWithCreate(): LineStatusCode
     {
-        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCode() : $this->lineStatusCode;
+        $this->lineStatusCode ??= new LineStatusCode();
 
         return $this->lineStatusCode;
     }
@@ -438,7 +438,7 @@ class DespatchLineType
      */
     public function getDeliveredQuantityWithCreate(): DeliveredQuantity
     {
-        $this->deliveredQuantity = is_null($this->deliveredQuantity) ? new DeliveredQuantity() : $this->deliveredQuantity;
+        $this->deliveredQuantity ??= new DeliveredQuantity();
 
         return $this->deliveredQuantity;
     }
@@ -478,7 +478,7 @@ class DespatchLineType
      */
     public function getBackorderQuantityWithCreate(): BackorderQuantity
     {
-        $this->backorderQuantity = is_null($this->backorderQuantity) ? new BackorderQuantity() : $this->backorderQuantity;
+        $this->backorderQuantity ??= new BackorderQuantity();
 
         return $this->backorderQuantity;
     }
@@ -642,7 +642,7 @@ class DespatchLineType
      */
     public function getOutstandingQuantityWithCreate(): OutstandingQuantity
     {
-        $this->outstandingQuantity = is_null($this->outstandingQuantity) ? new OutstandingQuantity() : $this->outstandingQuantity;
+        $this->outstandingQuantity ??= new OutstandingQuantity();
 
         return $this->outstandingQuantity;
     }
@@ -806,7 +806,7 @@ class DespatchLineType
      */
     public function getOversupplyQuantityWithCreate(): OversupplyQuantity
     {
-        $this->oversupplyQuantity = is_null($this->oversupplyQuantity) ? new OversupplyQuantity() : $this->oversupplyQuantity;
+        $this->oversupplyQuantity ??= new OversupplyQuantity();
 
         return $this->oversupplyQuantity;
     }
@@ -1094,7 +1094,7 @@ class DespatchLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

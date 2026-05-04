@@ -84,7 +84,7 @@ class EndorsementType
      */
     public function getDocumentIDWithCreate(): DocumentID
     {
-        $this->documentID = is_null($this->documentID) ? new DocumentID() : $this->documentID;
+        $this->documentID ??= new DocumentID();
 
         return $this->documentID;
     }
@@ -124,7 +124,7 @@ class EndorsementType
      */
     public function getApprovalStatusWithCreate(): ApprovalStatus
     {
-        $this->approvalStatus = is_null($this->approvalStatus) ? new ApprovalStatus() : $this->approvalStatus;
+        $this->approvalStatus ??= new ApprovalStatus();
 
         return $this->approvalStatus;
     }
@@ -288,7 +288,7 @@ class EndorsementType
      */
     public function getEndorserPartyWithCreate(): EndorserParty
     {
-        $this->endorserParty = is_null($this->endorserParty) ? new EndorserParty() : $this->endorserParty;
+        $this->endorserParty ??= new EndorserParty();
 
         return $this->endorserParty;
     }

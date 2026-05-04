@@ -110,13 +110,9 @@ $formatPercent = static function (int $covered, int $total): string {
     return number_format(($covered / $total) * 100, 2, '.', '') . '%';
 };
 
-$formatPercentValue = static function (float $value): string {
-    return number_format($value, 2, '.', '') . '%';
-};
+$formatPercentValue = (static fn (float $value): string => number_format($value, 2, '.', '') . '%');
 
-$normalizePath = static function (string $path): string {
-    return str_replace('\\', '/', $path);
-};
+$normalizePath = (static fn (string $path): string => str_replace('\\', '/', $path));
 
 $toRelativePath = static function (string $path) use ($normalizePath): string {
     $path = $normalizePath($path);
@@ -384,10 +380,8 @@ $output .= '| ' . $files . ' | ' . $classes . ' | ' . $ncloc . ' | ' . $zeroCove
 if ([] !== $fileRows) {
     usort(
         $fileRows,
-        static function (array $left, array $right): int {
-            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['file']]
-                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['file']];
-        }
+        static fn (array $left, array $right): int => [$left['coverageRatio'], -$left['uncoveredStatements'], $left['file']]
+            <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['file']]
     );
 
     $weakestFilesContent = '';
@@ -410,10 +404,8 @@ if ([] !== $fileRows) {
 
         usort(
             $bestFiles,
-            static function (array $left, array $right): int {
-                return [$right['coverageRatio'], $left['uncoveredStatements'], $left['file']]
-                    <=> [$left['coverageRatio'], $right['uncoveredStatements'], $right['file']];
-            }
+            static fn (array $left, array $right): int => [$right['coverageRatio'], $left['uncoveredStatements'], $left['file']]
+                <=> [$left['coverageRatio'], $right['uncoveredStatements'], $right['file']]
         );
 
         $bestFilesContent = '';
@@ -435,10 +427,8 @@ if ([] !== $fileRows) {
     $largestGaps = $fileRows;
     usort(
         $largestGaps,
-        static function (array $left, array $right): int {
-            return [$right['uncoveredStatements'], $left['coverageRatio'], $left['file']]
-                <=> [$left['uncoveredStatements'], $right['coverageRatio'], $right['file']];
-        }
+        static fn (array $left, array $right): int => [$right['uncoveredStatements'], $left['coverageRatio'], $left['file']]
+            <=> [$left['uncoveredStatements'], $right['coverageRatio'], $right['file']]
     );
 
     $largestGapsContent = '';
@@ -460,14 +450,13 @@ if ([] !== $packageRows) {
             ? ($packageRow['coveredStatements'] / $packageRow['statements']) * 100
             : 0.0;
     }
+
     unset($packageRow);
 
     usort(
         $packageRows,
-        static function (array $left, array $right): int {
-            return [$left['coverageRatio'], -$left['uncoveredStatements'], $left['package']]
-                <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['package']];
-        }
+        static fn (array $left, array $right): int => [$left['coverageRatio'], -$left['uncoveredStatements'], $left['package']]
+            <=> [$right['coverageRatio'], -$right['uncoveredStatements'], $right['package']]
     );
 
     $packageOverviewContent = '';
@@ -490,10 +479,8 @@ if (!$crapDom instanceof DOMDocument) {
 } else {
     usort(
         $crapRows,
-        static function (array $left, array $right): int {
-            return [$right['crap'], $right['complexity'], $left['className'], $left['methodName']]
-                <=> [$left['crap'], $left['complexity'], $right['className'], $right['methodName']];
-        }
+        static fn (array $left, array $right): int => [$right['crap'], $right['complexity'], $left['className'], $left['methodName']]
+            <=> [$left['crap'], $left['complexity'], $right['className'], $right['methodName']]
     );
 
     $crapContent .= "| Class::Method | File | CRAP | Complexity | Coverage |\n";

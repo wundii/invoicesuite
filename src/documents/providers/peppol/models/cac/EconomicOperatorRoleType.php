@@ -49,7 +49,7 @@ class EconomicOperatorRoleType
      */
     public function getRoleCodeWithCreate(): RoleCode
     {
-        $this->roleCode = is_null($this->roleCode) ? new RoleCode() : $this->roleCode;
+        $this->roleCode ??= new RoleCode();
 
         return $this->roleCode;
     }

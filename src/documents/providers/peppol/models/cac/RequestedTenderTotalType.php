@@ -120,7 +120,7 @@ class RequestedTenderTotalType
      */
     public function getEstimatedOverallContractAmountWithCreate(): EstimatedOverallContractAmount
     {
-        $this->estimatedOverallContractAmount = is_null($this->estimatedOverallContractAmount) ? new EstimatedOverallContractAmount() : $this->estimatedOverallContractAmount;
+        $this->estimatedOverallContractAmount ??= new EstimatedOverallContractAmount();
 
         return $this->estimatedOverallContractAmount;
     }
@@ -160,7 +160,7 @@ class RequestedTenderTotalType
      */
     public function getTotalAmountWithCreate(): TotalAmount
     {
-        $this->totalAmount = is_null($this->totalAmount) ? new TotalAmount() : $this->totalAmount;
+        $this->totalAmount ??= new TotalAmount();
 
         return $this->totalAmount;
     }
@@ -230,7 +230,7 @@ class RequestedTenderTotalType
      */
     public function getMinimumAmountWithCreate(): MinimumAmount
     {
-        $this->minimumAmount = is_null($this->minimumAmount) ? new MinimumAmount() : $this->minimumAmount;
+        $this->minimumAmount ??= new MinimumAmount();
 
         return $this->minimumAmount;
     }
@@ -270,7 +270,7 @@ class RequestedTenderTotalType
      */
     public function getMaximumAmountWithCreate(): MaximumAmount
     {
-        $this->maximumAmount = is_null($this->maximumAmount) ? new MaximumAmount() : $this->maximumAmount;
+        $this->maximumAmount ??= new MaximumAmount();
 
         return $this->maximumAmount;
     }
@@ -434,7 +434,7 @@ class RequestedTenderTotalType
      */
     public function getAverageSubsequentContractAmountWithCreate(): AverageSubsequentContractAmount
     {
-        $this->averageSubsequentContractAmount = is_null($this->averageSubsequentContractAmount) ? new AverageSubsequentContractAmount() : $this->averageSubsequentContractAmount;
+        $this->averageSubsequentContractAmount ??= new AverageSubsequentContractAmount();
 
         return $this->averageSubsequentContractAmount;
     }

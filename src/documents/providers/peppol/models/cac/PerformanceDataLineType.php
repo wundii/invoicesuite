@@ -95,7 +95,7 @@ class PerformanceDataLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -259,7 +259,7 @@ class PerformanceDataLineType
      */
     public function getPerformanceValueQuantityWithCreate(): PerformanceValueQuantity
     {
-        $this->performanceValueQuantity = is_null($this->performanceValueQuantity) ? new PerformanceValueQuantity() : $this->performanceValueQuantity;
+        $this->performanceValueQuantity ??= new PerformanceValueQuantity();
 
         return $this->performanceValueQuantity;
     }
@@ -299,7 +299,7 @@ class PerformanceDataLineType
      */
     public function getPerformanceMetricTypeCodeWithCreate(): PerformanceMetricTypeCode
     {
-        $this->performanceMetricTypeCode = is_null($this->performanceMetricTypeCode) ? new PerformanceMetricTypeCode() : $this->performanceMetricTypeCode;
+        $this->performanceMetricTypeCode ??= new PerformanceMetricTypeCode();
 
         return $this->performanceMetricTypeCode;
     }
@@ -339,7 +339,7 @@ class PerformanceDataLineType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }
@@ -379,7 +379,7 @@ class PerformanceDataLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

@@ -155,7 +155,7 @@ class QuotationLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -319,7 +319,7 @@ class QuotationLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -359,7 +359,7 @@ class QuotationLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -399,7 +399,7 @@ class QuotationLineType
      */
     public function getTotalTaxAmountWithCreate(): TotalTaxAmount
     {
-        $this->totalTaxAmount = is_null($this->totalTaxAmount) ? new TotalTaxAmount() : $this->totalTaxAmount;
+        $this->totalTaxAmount ??= new TotalTaxAmount();
 
         return $this->totalTaxAmount;
     }
@@ -439,7 +439,7 @@ class QuotationLineType
      */
     public function getRequestForQuotationLineIDWithCreate(): RequestForQuotationLineID
     {
-        $this->requestForQuotationLineID = is_null($this->requestForQuotationLineID) ? new RequestForQuotationLineID() : $this->requestForQuotationLineID;
+        $this->requestForQuotationLineID ??= new RequestForQuotationLineID();
 
         return $this->requestForQuotationLineID;
     }
@@ -603,7 +603,7 @@ class QuotationLineType
      */
     public function getLineItemWithCreate(): LineItem
     {
-        $this->lineItem = is_null($this->lineItem) ? new LineItem() : $this->lineItem;
+        $this->lineItem ??= new LineItem();
 
         return $this->lineItem;
     }
@@ -891,7 +891,7 @@ class QuotationLineType
      */
     public function getRequestLineReferenceWithCreate(): RequestLineReference
     {
-        $this->requestLineReference = is_null($this->requestLineReference) ? new RequestLineReference() : $this->requestLineReference;
+        $this->requestLineReference ??= new RequestLineReference();
 
         return $this->requestLineReference;
     }

@@ -83,7 +83,7 @@ class InstructionForReturnsLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -247,7 +247,7 @@ class InstructionForReturnsLineType
      */
     public function getQuantityWithCreate(): Quantity
     {
-        $this->quantity = is_null($this->quantity) ? new Quantity() : $this->quantity;
+        $this->quantity ??= new Quantity();
 
         return $this->quantity;
     }
@@ -287,7 +287,7 @@ class InstructionForReturnsLineType
      */
     public function getManufacturerPartyWithCreate(): ManufacturerParty
     {
-        $this->manufacturerParty = is_null($this->manufacturerParty) ? new ManufacturerParty() : $this->manufacturerParty;
+        $this->manufacturerParty ??= new ManufacturerParty();
 
         return $this->manufacturerParty;
     }
@@ -327,7 +327,7 @@ class InstructionForReturnsLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

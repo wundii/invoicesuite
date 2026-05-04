@@ -48,7 +48,7 @@ class ContractingPartyTypeType
      */
     public function getPartyTypeCodeWithCreate(): PartyTypeCode
     {
-        $this->partyTypeCode = is_null($this->partyTypeCode) ? new PartyTypeCode() : $this->partyTypeCode;
+        $this->partyTypeCode ??= new PartyTypeCode();
 
         return $this->partyTypeCode;
     }
@@ -88,7 +88,7 @@ class ContractingPartyTypeType
      */
     public function getPartyTypeWithCreate(): PartyType
     {
-        $this->partyType = is_null($this->partyType) ? new PartyType() : $this->partyType;
+        $this->partyType ??= new PartyType();
 
         return $this->partyType;
     }

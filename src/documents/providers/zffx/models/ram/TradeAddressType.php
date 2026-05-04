@@ -104,7 +104,7 @@ class TradeAddressType
      */
     public function getPostcodeCodeWithCreate(): CodeType
     {
-        $this->postcodeCode = is_null($this->postcodeCode) ? new CodeType() : $this->postcodeCode;
+        $this->postcodeCode ??= new CodeType();
 
         return $this->postcodeCode;
     }
@@ -144,7 +144,7 @@ class TradeAddressType
      */
     public function getLineOneWithCreate(): TextType
     {
-        $this->lineOne = is_null($this->lineOne) ? new TextType() : $this->lineOne;
+        $this->lineOne ??= new TextType();
 
         return $this->lineOne;
     }
@@ -184,7 +184,7 @@ class TradeAddressType
      */
     public function getLineTwoWithCreate(): TextType
     {
-        $this->lineTwo = is_null($this->lineTwo) ? new TextType() : $this->lineTwo;
+        $this->lineTwo ??= new TextType();
 
         return $this->lineTwo;
     }
@@ -224,7 +224,7 @@ class TradeAddressType
      */
     public function getLineThreeWithCreate(): TextType
     {
-        $this->lineThree = is_null($this->lineThree) ? new TextType() : $this->lineThree;
+        $this->lineThree ??= new TextType();
 
         return $this->lineThree;
     }
@@ -264,7 +264,7 @@ class TradeAddressType
      */
     public function getCityNameWithCreate(): TextType
     {
-        $this->cityName = is_null($this->cityName) ? new TextType() : $this->cityName;
+        $this->cityName ??= new TextType();
 
         return $this->cityName;
     }
@@ -304,7 +304,7 @@ class TradeAddressType
      */
     public function getCountryIDWithCreate(): CountryIDType
     {
-        $this->countryID = is_null($this->countryID) ? new CountryIDType() : $this->countryID;
+        $this->countryID ??= new CountryIDType();
 
         return $this->countryID;
     }
@@ -344,7 +344,7 @@ class TradeAddressType
      */
     public function getCountrySubDivisionNameWithCreate(): TextType
     {
-        $this->countrySubDivisionName = is_null($this->countrySubDivisionName) ? new TextType() : $this->countrySubDivisionName;
+        $this->countrySubDivisionName ??= new TextType();
 
         return $this->countrySubDivisionName;
     }

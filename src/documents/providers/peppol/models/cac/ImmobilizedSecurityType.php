@@ -107,7 +107,7 @@ class ImmobilizedSecurityType
      */
     public function getImmobilizationCertificateIDWithCreate(): ImmobilizationCertificateID
     {
-        $this->immobilizationCertificateID = is_null($this->immobilizationCertificateID) ? new ImmobilizationCertificateID() : $this->immobilizationCertificateID;
+        $this->immobilizationCertificateID ??= new ImmobilizationCertificateID();
 
         return $this->immobilizationCertificateID;
     }
@@ -147,7 +147,7 @@ class ImmobilizedSecurityType
      */
     public function getSecurityIDWithCreate(): SecurityID
     {
-        $this->securityID = is_null($this->securityID) ? new SecurityID() : $this->securityID;
+        $this->securityID ??= new SecurityID();
 
         return $this->securityID;
     }
@@ -217,7 +217,7 @@ class ImmobilizedSecurityType
      */
     public function getFaceValueAmountWithCreate(): FaceValueAmount
     {
-        $this->faceValueAmount = is_null($this->faceValueAmount) ? new FaceValueAmount() : $this->faceValueAmount;
+        $this->faceValueAmount ??= new FaceValueAmount();
 
         return $this->faceValueAmount;
     }
@@ -257,7 +257,7 @@ class ImmobilizedSecurityType
      */
     public function getMarketValueAmountWithCreate(): MarketValueAmount
     {
-        $this->marketValueAmount = is_null($this->marketValueAmount) ? new MarketValueAmount() : $this->marketValueAmount;
+        $this->marketValueAmount ??= new MarketValueAmount();
 
         return $this->marketValueAmount;
     }
@@ -297,7 +297,7 @@ class ImmobilizedSecurityType
      */
     public function getSharesNumberQuantityWithCreate(): SharesNumberQuantity
     {
-        $this->sharesNumberQuantity = is_null($this->sharesNumberQuantity) ? new SharesNumberQuantity() : $this->sharesNumberQuantity;
+        $this->sharesNumberQuantity ??= new SharesNumberQuantity();
 
         return $this->sharesNumberQuantity;
     }
@@ -337,7 +337,7 @@ class ImmobilizedSecurityType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }

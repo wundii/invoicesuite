@@ -48,7 +48,7 @@ class TradeAccountingAccountType
      */
     public function getIDWithCreate(): IDType
     {
-        $this->iD = is_null($this->iD) ? new IDType() : $this->iD;
+        $this->iD ??= new IDType();
 
         return $this->iD;
     }
@@ -88,7 +88,7 @@ class TradeAccountingAccountType
      */
     public function getTypeCodeWithCreate(): AccountingAccountTypeCodeType
     {
-        $this->typeCode = is_null($this->typeCode) ? new AccountingAccountTypeCodeType() : $this->typeCode;
+        $this->typeCode ??= new AccountingAccountTypeCodeType();
 
         return $this->typeCode;
     }

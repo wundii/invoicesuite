@@ -130,7 +130,7 @@ class EventType
      */
     public function getIdentificationIDWithCreate(): IdentificationID
     {
-        $this->identificationID = is_null($this->identificationID) ? new IdentificationID() : $this->identificationID;
+        $this->identificationID ??= new IdentificationID();
 
         return $this->identificationID;
     }
@@ -230,7 +230,7 @@ class EventType
      */
     public function getTypeCodeWithCreate(): TypeCode
     {
-        $this->typeCode = is_null($this->typeCode) ? new TypeCode() : $this->typeCode;
+        $this->typeCode ??= new TypeCode();
 
         return $this->typeCode;
     }
@@ -672,7 +672,7 @@ class EventType
      */
     public function getOccurenceLocationWithCreate(): OccurenceLocation
     {
-        $this->occurenceLocation = is_null($this->occurenceLocation) ? new OccurenceLocation() : $this->occurenceLocation;
+        $this->occurenceLocation ??= new OccurenceLocation();
 
         return $this->occurenceLocation;
     }

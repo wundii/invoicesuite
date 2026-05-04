@@ -8,7 +8,7 @@ use horstoeko\invoicesuite\utils\InvoiceSuitePathUtils;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteMakeProviderCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteMakeProviderCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the generator for a provider runs completelly

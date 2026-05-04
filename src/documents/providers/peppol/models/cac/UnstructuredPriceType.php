@@ -48,7 +48,7 @@ class UnstructuredPriceType
      */
     public function getPriceAmountWithCreate(): PriceAmount
     {
-        $this->priceAmount = is_null($this->priceAmount) ? new PriceAmount() : $this->priceAmount;
+        $this->priceAmount ??= new PriceAmount();
 
         return $this->priceAmount;
     }
@@ -88,7 +88,7 @@ class UnstructuredPriceType
      */
     public function getTimeAmountWithCreate(): TimeAmount
     {
-        $this->timeAmount = is_null($this->timeAmount) ? new TimeAmount() : $this->timeAmount;
+        $this->timeAmount ??= new TimeAmount();
 
         return $this->timeAmount;
     }

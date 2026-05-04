@@ -71,7 +71,7 @@ class EnergyTaxReportType
      */
     public function getTaxEnergyAmountWithCreate(): TaxEnergyAmount
     {
-        $this->taxEnergyAmount = is_null($this->taxEnergyAmount) ? new TaxEnergyAmount() : $this->taxEnergyAmount;
+        $this->taxEnergyAmount ??= new TaxEnergyAmount();
 
         return $this->taxEnergyAmount;
     }
@@ -111,7 +111,7 @@ class EnergyTaxReportType
      */
     public function getTaxEnergyOnAccountAmountWithCreate(): TaxEnergyOnAccountAmount
     {
-        $this->taxEnergyOnAccountAmount = is_null($this->taxEnergyOnAccountAmount) ? new TaxEnergyOnAccountAmount() : $this->taxEnergyOnAccountAmount;
+        $this->taxEnergyOnAccountAmount ??= new TaxEnergyOnAccountAmount();
 
         return $this->taxEnergyOnAccountAmount;
     }
@@ -151,7 +151,7 @@ class EnergyTaxReportType
      */
     public function getTaxEnergyBalanceAmountWithCreate(): TaxEnergyBalanceAmount
     {
-        $this->taxEnergyBalanceAmount = is_null($this->taxEnergyBalanceAmount) ? new TaxEnergyBalanceAmount() : $this->taxEnergyBalanceAmount;
+        $this->taxEnergyBalanceAmount ??= new TaxEnergyBalanceAmount();
 
         return $this->taxEnergyBalanceAmount;
     }
@@ -191,7 +191,7 @@ class EnergyTaxReportType
      */
     public function getTaxSchemeWithCreate(): TaxScheme
     {
-        $this->taxScheme = is_null($this->taxScheme) ? new TaxScheme() : $this->taxScheme;
+        $this->taxScheme ??= new TaxScheme();
 
         return $this->taxScheme;
     }

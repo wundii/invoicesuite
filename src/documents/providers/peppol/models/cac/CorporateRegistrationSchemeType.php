@@ -72,7 +72,7 @@ class CorporateRegistrationSchemeType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -112,7 +112,7 @@ class CorporateRegistrationSchemeType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -152,7 +152,7 @@ class CorporateRegistrationSchemeType
      */
     public function getCorporateRegistrationTypeCodeWithCreate(): CorporateRegistrationTypeCode
     {
-        $this->corporateRegistrationTypeCode = is_null($this->corporateRegistrationTypeCode) ? new CorporateRegistrationTypeCode() : $this->corporateRegistrationTypeCode;
+        $this->corporateRegistrationTypeCode ??= new CorporateRegistrationTypeCode();
 
         return $this->corporateRegistrationTypeCode;
     }

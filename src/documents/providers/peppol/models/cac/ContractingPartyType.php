@@ -72,7 +72,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function getBuyerProfileURIWithCreate(): BuyerProfileURI
     {
-        $this->buyerProfileURI = is_null($this->buyerProfileURI) ? new BuyerProfileURI() : $this->buyerProfileURI;
+        $this->buyerProfileURI ??= new BuyerProfileURI();
 
         return $this->buyerProfileURI;
     }
@@ -360,7 +360,7 @@ class ContractingPartyType extends ContractingPartyTypeType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }

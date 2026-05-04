@@ -83,7 +83,7 @@ class ConsumptionReportReferenceType
      */
     public function getConsumptionReportIDWithCreate(): ConsumptionReportID
     {
-        $this->consumptionReportID = is_null($this->consumptionReportID) ? new ConsumptionReportID() : $this->consumptionReportID;
+        $this->consumptionReportID ??= new ConsumptionReportID();
 
         return $this->consumptionReportID;
     }
@@ -123,7 +123,7 @@ class ConsumptionReportReferenceType
      */
     public function getConsumptionTypeWithCreate(): ConsumptionType
     {
-        $this->consumptionType = is_null($this->consumptionType) ? new ConsumptionType() : $this->consumptionType;
+        $this->consumptionType ??= new ConsumptionType();
 
         return $this->consumptionType;
     }
@@ -163,7 +163,7 @@ class ConsumptionReportReferenceType
      */
     public function getConsumptionTypeCodeWithCreate(): ConsumptionTypeCode
     {
-        $this->consumptionTypeCode = is_null($this->consumptionTypeCode) ? new ConsumptionTypeCode() : $this->consumptionTypeCode;
+        $this->consumptionTypeCode ??= new ConsumptionTypeCode();
 
         return $this->consumptionTypeCode;
     }
@@ -203,7 +203,7 @@ class ConsumptionReportReferenceType
      */
     public function getTotalConsumedQuantityWithCreate(): TotalConsumedQuantity
     {
-        $this->totalConsumedQuantity = is_null($this->totalConsumedQuantity) ? new TotalConsumedQuantity() : $this->totalConsumedQuantity;
+        $this->totalConsumedQuantity ??= new TotalConsumedQuantity();
 
         return $this->totalConsumedQuantity;
     }
@@ -243,7 +243,7 @@ class ConsumptionReportReferenceType
      */
     public function getPeriodWithCreate(): Period
     {
-        $this->period = is_null($this->period) ? new Period() : $this->period;
+        $this->period ??= new Period();
 
         return $this->period;
     }

@@ -179,7 +179,7 @@ class ItemPropertyType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -219,7 +219,7 @@ class ItemPropertyType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -259,7 +259,7 @@ class ItemPropertyType
      */
     public function getNameCodeWithCreate(): NameCode
     {
-        $this->nameCode = is_null($this->nameCode) ? new NameCode() : $this->nameCode;
+        $this->nameCode ??= new NameCode();
 
         return $this->nameCode;
     }
@@ -299,7 +299,7 @@ class ItemPropertyType
      */
     public function getTestMethodWithCreate(): TestMethod
     {
-        $this->testMethod = is_null($this->testMethod) ? new TestMethod() : $this->testMethod;
+        $this->testMethod ??= new TestMethod();
 
         return $this->testMethod;
     }
@@ -339,7 +339,7 @@ class ItemPropertyType
      */
     public function getValueWithCreate(): Value
     {
-        $this->value = is_null($this->value) ? new Value() : $this->value;
+        $this->value ??= new Value();
 
         return $this->value;
     }
@@ -379,7 +379,7 @@ class ItemPropertyType
      */
     public function getValueQuantityWithCreate(): ValueQuantity
     {
-        $this->valueQuantity = is_null($this->valueQuantity) ? new ValueQuantity() : $this->valueQuantity;
+        $this->valueQuantity ??= new ValueQuantity();
 
         return $this->valueQuantity;
     }
@@ -543,7 +543,7 @@ class ItemPropertyType
      */
     public function getImportanceCodeWithCreate(): ImportanceCode
     {
-        $this->importanceCode = is_null($this->importanceCode) ? new ImportanceCode() : $this->importanceCode;
+        $this->importanceCode ??= new ImportanceCode();
 
         return $this->importanceCode;
     }
@@ -707,7 +707,7 @@ class ItemPropertyType
      */
     public function getUsabilityPeriodWithCreate(): UsabilityPeriod
     {
-        $this->usabilityPeriod = is_null($this->usabilityPeriod) ? new UsabilityPeriod() : $this->usabilityPeriod;
+        $this->usabilityPeriod ??= new UsabilityPeriod();
 
         return $this->usabilityPeriod;
     }
@@ -871,7 +871,7 @@ class ItemPropertyType
      */
     public function getRangeDimensionWithCreate(): RangeDimension
     {
-        $this->rangeDimension = is_null($this->rangeDimension) ? new RangeDimension() : $this->rangeDimension;
+        $this->rangeDimension ??= new RangeDimension();
 
         return $this->rangeDimension;
     }
@@ -911,7 +911,7 @@ class ItemPropertyType
      */
     public function getItemPropertyRangeWithCreate(): ItemPropertyRange
     {
-        $this->itemPropertyRange = is_null($this->itemPropertyRange) ? new ItemPropertyRange() : $this->itemPropertyRange;
+        $this->itemPropertyRange ??= new ItemPropertyRange();
 
         return $this->itemPropertyRange;
     }

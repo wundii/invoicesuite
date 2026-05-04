@@ -121,7 +121,7 @@ class TelecommunicationsSupplyLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -161,7 +161,7 @@ class TelecommunicationsSupplyLineType
      */
     public function getPhoneNumberWithCreate(): PhoneNumber
     {
-        $this->phoneNumber = is_null($this->phoneNumber) ? new PhoneNumber() : $this->phoneNumber;
+        $this->phoneNumber ??= new PhoneNumber();
 
         return $this->phoneNumber;
     }
@@ -325,7 +325,7 @@ class TelecommunicationsSupplyLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }

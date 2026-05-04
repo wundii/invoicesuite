@@ -60,7 +60,7 @@ class RegulationType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -100,7 +100,7 @@ class RegulationType
      */
     public function getLegalReferenceWithCreate(): LegalReference
     {
-        $this->legalReference = is_null($this->legalReference) ? new LegalReference() : $this->legalReference;
+        $this->legalReference ??= new LegalReference();
 
         return $this->legalReference;
     }
@@ -140,7 +140,7 @@ class RegulationType
      */
     public function getOntologyURIWithCreate(): OntologyURI
     {
-        $this->ontologyURI = is_null($this->ontologyURI) ? new OntologyURI() : $this->ontologyURI;
+        $this->ontologyURI ??= new OntologyURI();
 
         return $this->ontologyURI;
     }

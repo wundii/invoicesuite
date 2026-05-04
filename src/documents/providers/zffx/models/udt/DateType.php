@@ -36,7 +36,7 @@ class DateType
      */
     public function getDateStringWithCreate(): DateStringAType
     {
-        $this->dateString = is_null($this->dateString) ? new DateStringAType() : $this->dateString;
+        $this->dateString ??= new DateStringAType();
 
         return $this->dateString;
     }

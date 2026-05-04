@@ -120,7 +120,7 @@ class LocationCoordinateType
      */
     public function getCoordinateSystemCodeWithCreate(): CoordinateSystemCode
     {
-        $this->coordinateSystemCode = is_null($this->coordinateSystemCode) ? new CoordinateSystemCode() : $this->coordinateSystemCode;
+        $this->coordinateSystemCode ??= new CoordinateSystemCode();
 
         return $this->coordinateSystemCode;
     }
@@ -160,7 +160,7 @@ class LocationCoordinateType
      */
     public function getLatitudeDegreesMeasureWithCreate(): LatitudeDegreesMeasure
     {
-        $this->latitudeDegreesMeasure = is_null($this->latitudeDegreesMeasure) ? new LatitudeDegreesMeasure() : $this->latitudeDegreesMeasure;
+        $this->latitudeDegreesMeasure ??= new LatitudeDegreesMeasure();
 
         return $this->latitudeDegreesMeasure;
     }
@@ -200,7 +200,7 @@ class LocationCoordinateType
      */
     public function getLatitudeMinutesMeasureWithCreate(): LatitudeMinutesMeasure
     {
-        $this->latitudeMinutesMeasure = is_null($this->latitudeMinutesMeasure) ? new LatitudeMinutesMeasure() : $this->latitudeMinutesMeasure;
+        $this->latitudeMinutesMeasure ??= new LatitudeMinutesMeasure();
 
         return $this->latitudeMinutesMeasure;
     }
@@ -240,7 +240,7 @@ class LocationCoordinateType
      */
     public function getLatitudeDirectionCodeWithCreate(): LatitudeDirectionCode
     {
-        $this->latitudeDirectionCode = is_null($this->latitudeDirectionCode) ? new LatitudeDirectionCode() : $this->latitudeDirectionCode;
+        $this->latitudeDirectionCode ??= new LatitudeDirectionCode();
 
         return $this->latitudeDirectionCode;
     }
@@ -280,7 +280,7 @@ class LocationCoordinateType
      */
     public function getLongitudeDegreesMeasureWithCreate(): LongitudeDegreesMeasure
     {
-        $this->longitudeDegreesMeasure = is_null($this->longitudeDegreesMeasure) ? new LongitudeDegreesMeasure() : $this->longitudeDegreesMeasure;
+        $this->longitudeDegreesMeasure ??= new LongitudeDegreesMeasure();
 
         return $this->longitudeDegreesMeasure;
     }
@@ -320,7 +320,7 @@ class LocationCoordinateType
      */
     public function getLongitudeMinutesMeasureWithCreate(): LongitudeMinutesMeasure
     {
-        $this->longitudeMinutesMeasure = is_null($this->longitudeMinutesMeasure) ? new LongitudeMinutesMeasure() : $this->longitudeMinutesMeasure;
+        $this->longitudeMinutesMeasure ??= new LongitudeMinutesMeasure();
 
         return $this->longitudeMinutesMeasure;
     }
@@ -360,7 +360,7 @@ class LocationCoordinateType
      */
     public function getLongitudeDirectionCodeWithCreate(): LongitudeDirectionCode
     {
-        $this->longitudeDirectionCode = is_null($this->longitudeDirectionCode) ? new LongitudeDirectionCode() : $this->longitudeDirectionCode;
+        $this->longitudeDirectionCode ??= new LongitudeDirectionCode();
 
         return $this->longitudeDirectionCode;
     }
@@ -400,7 +400,7 @@ class LocationCoordinateType
      */
     public function getAltitudeMeasureWithCreate(): AltitudeMeasure
     {
-        $this->altitudeMeasure = is_null($this->altitudeMeasure) ? new AltitudeMeasure() : $this->altitudeMeasure;
+        $this->altitudeMeasure ??= new AltitudeMeasure();
 
         return $this->altitudeMeasure;
     }

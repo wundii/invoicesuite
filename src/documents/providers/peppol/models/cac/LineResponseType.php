@@ -47,7 +47,7 @@ class LineResponseType
      */
     public function getLineReferenceWithCreate(): LineReference
     {
-        $this->lineReference = is_null($this->lineReference) ? new LineReference() : $this->lineReference;
+        $this->lineReference ??= new LineReference();
 
         return $this->lineReference;
     }

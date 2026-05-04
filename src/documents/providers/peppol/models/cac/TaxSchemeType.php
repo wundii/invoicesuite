@@ -84,7 +84,7 @@ class TaxSchemeType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -124,7 +124,7 @@ class TaxSchemeType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -164,7 +164,7 @@ class TaxSchemeType
      */
     public function getTaxTypeCodeWithCreate(): TaxTypeCode
     {
-        $this->taxTypeCode = is_null($this->taxTypeCode) ? new TaxTypeCode() : $this->taxTypeCode;
+        $this->taxTypeCode ??= new TaxTypeCode();
 
         return $this->taxTypeCode;
     }
@@ -204,7 +204,7 @@ class TaxSchemeType
      */
     public function getCurrencyCodeWithCreate(): CurrencyCode
     {
-        $this->currencyCode = is_null($this->currencyCode) ? new CurrencyCode() : $this->currencyCode;
+        $this->currencyCode ??= new CurrencyCode();
 
         return $this->currencyCode;
     }

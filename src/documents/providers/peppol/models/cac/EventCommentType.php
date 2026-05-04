@@ -59,7 +59,7 @@ class EventCommentType
      */
     public function getCommentWithCreate(): Comment
     {
-        $this->comment = is_null($this->comment) ? new Comment() : $this->comment;
+        $this->comment ??= new Comment();
 
         return $this->comment;
     }

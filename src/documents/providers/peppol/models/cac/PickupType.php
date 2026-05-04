@@ -125,7 +125,7 @@ class PickupType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -345,7 +345,7 @@ class PickupType
      */
     public function getPickupLocationWithCreate(): PickupLocation
     {
-        $this->pickupLocation = is_null($this->pickupLocation) ? new PickupLocation() : $this->pickupLocation;
+        $this->pickupLocation ??= new PickupLocation();
 
         return $this->pickupLocation;
     }
@@ -385,7 +385,7 @@ class PickupType
      */
     public function getPickupPartyWithCreate(): PickupParty
     {
-        $this->pickupParty = is_null($this->pickupParty) ? new PickupParty() : $this->pickupParty;
+        $this->pickupParty ??= new PickupParty();
 
         return $this->pickupParty;
     }

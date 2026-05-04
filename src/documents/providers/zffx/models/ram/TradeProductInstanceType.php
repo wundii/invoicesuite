@@ -47,7 +47,7 @@ class TradeProductInstanceType
      */
     public function getBatchIDWithCreate(): IDType
     {
-        $this->batchID = is_null($this->batchID) ? new IDType() : $this->batchID;
+        $this->batchID ??= new IDType();
 
         return $this->batchID;
     }
@@ -87,7 +87,7 @@ class TradeProductInstanceType
      */
     public function getSupplierAssignedSerialIDWithCreate(): IDType
     {
-        $this->supplierAssignedSerialID = is_null($this->supplierAssignedSerialID) ? new IDType() : $this->supplierAssignedSerialID;
+        $this->supplierAssignedSerialID ??= new IDType();
 
         return $this->supplierAssignedSerialID;
     }

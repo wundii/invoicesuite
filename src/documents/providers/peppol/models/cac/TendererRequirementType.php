@@ -210,7 +210,7 @@ class TendererRequirementType
      */
     public function getTendererRequirementTypeCodeWithCreate(): TendererRequirementTypeCode
     {
-        $this->tendererRequirementTypeCode = is_null($this->tendererRequirementTypeCode) ? new TendererRequirementTypeCode() : $this->tendererRequirementTypeCode;
+        $this->tendererRequirementTypeCode ??= new TendererRequirementTypeCode();
 
         return $this->tendererRequirementTypeCode;
     }
@@ -374,7 +374,7 @@ class TendererRequirementType
      */
     public function getLegalReferenceWithCreate(): LegalReference
     {
-        $this->legalReference = is_null($this->legalReference) ? new LegalReference() : $this->legalReference;
+        $this->legalReference ??= new LegalReference();
 
         return $this->legalReference;
     }

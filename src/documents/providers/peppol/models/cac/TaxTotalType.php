@@ -82,7 +82,7 @@ class TaxTotalType
      */
     public function getTaxAmountWithCreate(): TaxAmount
     {
-        $this->taxAmount = is_null($this->taxAmount) ? new TaxAmount() : $this->taxAmount;
+        $this->taxAmount ??= new TaxAmount();
 
         return $this->taxAmount;
     }
@@ -122,7 +122,7 @@ class TaxTotalType
      */
     public function getRoundingAmountWithCreate(): RoundingAmount
     {
-        $this->roundingAmount = is_null($this->roundingAmount) ? new RoundingAmount() : $this->roundingAmount;
+        $this->roundingAmount ??= new RoundingAmount();
 
         return $this->roundingAmount;
     }

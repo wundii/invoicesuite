@@ -96,7 +96,7 @@ class ResponseType
      */
     public function getReferenceIDWithCreate(): ReferenceID
     {
-        $this->referenceID = is_null($this->referenceID) ? new ReferenceID() : $this->referenceID;
+        $this->referenceID ??= new ReferenceID();
 
         return $this->referenceID;
     }
@@ -136,7 +136,7 @@ class ResponseType
      */
     public function getResponseCodeWithCreate(): ResponseCode
     {
-        $this->responseCode = is_null($this->responseCode) ? new ResponseCode() : $this->responseCode;
+        $this->responseCode ??= new ResponseCode();
 
         return $this->responseCode;
     }

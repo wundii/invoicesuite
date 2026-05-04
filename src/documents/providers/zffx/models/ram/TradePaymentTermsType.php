@@ -105,7 +105,7 @@ class TradePaymentTermsType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -145,7 +145,7 @@ class TradePaymentTermsType
      */
     public function getDueDateDateTimeWithCreate(): DateTimeType
     {
-        $this->dueDateDateTime = is_null($this->dueDateDateTime) ? new DateTimeType() : $this->dueDateDateTime;
+        $this->dueDateDateTime ??= new DateTimeType();
 
         return $this->dueDateDateTime;
     }
@@ -185,7 +185,7 @@ class TradePaymentTermsType
      */
     public function getDirectDebitMandateIDWithCreate(): IDType
     {
-        $this->directDebitMandateID = is_null($this->directDebitMandateID) ? new IDType() : $this->directDebitMandateID;
+        $this->directDebitMandateID ??= new IDType();
 
         return $this->directDebitMandateID;
     }
@@ -225,7 +225,7 @@ class TradePaymentTermsType
      */
     public function getPartialPaymentAmountWithCreate(): AmountType
     {
-        $this->partialPaymentAmount = is_null($this->partialPaymentAmount) ? new AmountType() : $this->partialPaymentAmount;
+        $this->partialPaymentAmount ??= new AmountType();
 
         return $this->partialPaymentAmount;
     }
@@ -265,7 +265,7 @@ class TradePaymentTermsType
      */
     public function getApplicableTradePaymentPenaltyTermsWithCreate(): TradePaymentPenaltyTermsType
     {
-        $this->applicableTradePaymentPenaltyTerms = is_null($this->applicableTradePaymentPenaltyTerms) ? new TradePaymentPenaltyTermsType() : $this->applicableTradePaymentPenaltyTerms;
+        $this->applicableTradePaymentPenaltyTerms ??= new TradePaymentPenaltyTermsType();
 
         return $this->applicableTradePaymentPenaltyTerms;
     }
@@ -305,7 +305,7 @@ class TradePaymentTermsType
      */
     public function getApplicableTradePaymentDiscountTermsWithCreate(): TradePaymentDiscountTermsType
     {
-        $this->applicableTradePaymentDiscountTerms = is_null($this->applicableTradePaymentDiscountTerms) ? new TradePaymentDiscountTermsType() : $this->applicableTradePaymentDiscountTerms;
+        $this->applicableTradePaymentDiscountTerms ??= new TradePaymentDiscountTermsType();
 
         return $this->applicableTradePaymentDiscountTerms;
     }
@@ -345,7 +345,7 @@ class TradePaymentTermsType
      */
     public function getPayeeTradePartyWithCreate(): TradePartyType
     {
-        $this->payeeTradeParty = is_null($this->payeeTradeParty) ? new TradePartyType() : $this->payeeTradeParty;
+        $this->payeeTradeParty ??= new TradePartyType();
 
         return $this->payeeTradeParty;
     }

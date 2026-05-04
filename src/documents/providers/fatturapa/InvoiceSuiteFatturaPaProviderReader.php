@@ -2612,7 +2612,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             TipoDocumento::TD01 => '380',
             TipoDocumento::TD04 => '381',
             TipoDocumento::TD05 => '383',
-            default => !is_null($documentType) ? $documentType->value : '',
+            default => is_null($documentType) ? '' : $documentType->value,
         };
 
         $this->traceMethodExit(__METHOD__);
@@ -3789,7 +3789,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
 
         return InvoiceSuitePointerUtils::hasFirst($addresses, 'documentselleraddress');
     }
@@ -3809,7 +3809,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
 
         return InvoiceSuitePointerUtils::hasNext($addresses, 'documentselleraddress');
     }
@@ -3846,7 +3846,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
         $address = $addresses[InvoiceSuitePointerUtils::getValue('documentselleraddress')] ?? null;
 
         $newAddressLine1 = '';
@@ -3927,7 +3927,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Contatti> $contacts
          */
-        $contacts = !is_null($contact) ? [$contact] : [];
+        $contacts = is_null($contact) ? [] : [$contact];
 
         return InvoiceSuitePointerUtils::hasFirst($contacts, 'documentsellercontact');
     }
@@ -3947,7 +3947,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Contatti> $contacts
          */
-        $contacts = !is_null($contact) ? [$contact] : [];
+        $contacts = is_null($contact) ? [] : [$contact];
 
         return InvoiceSuitePointerUtils::hasNext($contacts, 'documentsellercontact');
     }
@@ -3980,7 +3980,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Contatti> $contacts
          */
-        $contacts = !is_null($contact) ? [$contact] : [];
+        $contacts = is_null($contact) ? [] : [$contact];
         $contact = $contacts[InvoiceSuitePointerUtils::getValue('documentsellercontact')] ?? null;
 
         $newPersonName = '';
@@ -4277,7 +4277,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
 
         return InvoiceSuitePointerUtils::hasFirst($addresses, 'documentbuyeraddress');
     }
@@ -4297,7 +4297,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
 
         return InvoiceSuitePointerUtils::hasNext($addresses, 'documentbuyeraddress');
     }
@@ -4334,7 +4334,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         /**
          * @var array<Indirizzo> $addresses
          */
-        $addresses = !is_null($address) ? [$address] : [];
+        $addresses = is_null($address) ? [] : [$address];
         $address = $addresses[InvoiceSuitePointerUtils::getValue('documentbuyeraddress')] ?? null;
 
         $newAddressLine1 = '';
@@ -7383,7 +7383,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $paymentIban = $paymentDetailData->getIBAN() ?? '';
         $isDirectDebit = in_array($paymentMode, [ModalitaPagamento::MP19, ModalitaPagamento::MP20], true);
 
-        $newTypeCode = !is_null($paymentMode) ? $paymentMode->value : '';
+        $newTypeCode = is_null($paymentMode) ? '' : $paymentMode->value;
         $newName = $paymentDetailData->getIstitutoFinanziario() ?? '';
         $newFinancialCardId = '';
         $newFinancialCardHolder = $paymentDetailData->getBeneficiario() ?? '';
@@ -7620,7 +7620,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $paymentDetailData = $paymentDetail['detail'];
         $paymentCondition = $paymentBlock->getCondizioniPagamento();
 
-        $newDescription = !is_null($paymentCondition) ? $paymentCondition->value : '';
+        $newDescription = is_null($paymentCondition) ? '' : $paymentCondition->value;
         $newDueDate = $paymentDetailData->getDataScadenzaPagamento();
         $newMandate = '';
 
@@ -7807,13 +7807,13 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
         $taxNature = $tax?->getNatura();
         $taxType = $tax?->getEsigibilitaIVA();
 
-        $newTaxCategory = !is_null($taxNature) ? $taxNature->value : 'VAT';
-        $newTaxType = !is_null($taxType) ? $taxType->value : '';
+        $newTaxCategory = is_null($taxNature) ? 'VAT' : $taxNature->value;
+        $newTaxType = is_null($taxType) ? '' : $taxType->value;
         $newBasisAmount = $tax?->getImponibileImporto() ?? 0.0;
         $newTaxAmount = $tax?->getImposta() ?? 0.0;
         $newTaxPercent = $tax?->getAliquotaIVA() ?? 0.0;
         $newExemptionReason = $tax?->getRiferimentoNormativo() ?? '';
-        $newExemptionReasonCode = !is_null($taxNature) ? $taxNature->value : '';
+        $newExemptionReasonCode = is_null($taxNature) ? '' : $taxNature->value;
         $newTaxDueDate = null;
         $newTaxDueCode = '';
 
@@ -8090,7 +8090,7 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
 
         $position = $this->resolveCurrentDocumentPosition();
 
-        $newPositionId = !is_null($position?->getNumeroLinea()) ? (string) $position->getNumeroLinea() : '';
+        $newPositionId = is_null($position?->getNumeroLinea()) ? '' : (string) $position->getNumeroLinea();
         $newParentPositionId = '';
         $newLineStatusCode = '';
         $newLineStatusReasonCode = '';
@@ -9036,12 +9036,12 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             $taxAmount = round($position->getPrezzoTotale() * $position->getAliquotaIVA() / 100, 2);
         }
 
-        $newTaxCategory = !is_null($lineNature) ? $lineNature->value : 'VAT';
+        $newTaxCategory = is_null($lineNature) ? 'VAT' : $lineNature->value;
         $newTaxType = '';
         $newTaxAmount = $taxAmount;
         $newTaxPercent = $position?->getAliquotaIVA() ?? 0.0;
         $newExemptionReason = '';
-        $newExemptionReasonCode = !is_null($lineNature) ? $lineNature->value : '';
+        $newExemptionReasonCode = is_null($lineNature) ? '' : $lineNature->value;
 
         $this->traceMethodExit(__METHOD__);
 
@@ -9935,12 +9935,12 @@ class InvoiceSuiteFatturaPaProviderReader extends InvoiceSuiteAbstractDocumentFo
             $taxAmount = round($position->getPrezzoTotale() * $position->getAliquotaIVA() / 100, 2);
         }
 
-        $newTaxCategory = !is_null($lineNature) ? $lineNature->value : 'VAT';
+        $newTaxCategory = is_null($lineNature) ? 'VAT' : $lineNature->value;
         $newTaxType = '';
         $newTaxAmount = $taxAmount;
         $newTaxPercent = $position?->getAliquotaIVA() ?? 0.0;
         $newExemptionReason = '';
-        $newExemptionReasonCode = !is_null($lineNature) ? $lineNature->value : '';
+        $newExemptionReasonCode = is_null($lineNature) ? '' : $lineNature->value;
 
         $this->traceMethodExit(__METHOD__);
 

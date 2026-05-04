@@ -71,7 +71,7 @@ class AdvancePaymentType
      */
     public function getPaidAmountWithCreate(): AmountType
     {
-        $this->paidAmount = is_null($this->paidAmount) ? new AmountType() : $this->paidAmount;
+        $this->paidAmount ??= new AmountType();
 
         return $this->paidAmount;
     }
@@ -111,7 +111,7 @@ class AdvancePaymentType
      */
     public function getFormattedReceivedDateTimeWithCreate(): FormattedDateTimeType
     {
-        $this->formattedReceivedDateTime = is_null($this->formattedReceivedDateTime) ? new FormattedDateTimeType() : $this->formattedReceivedDateTime;
+        $this->formattedReceivedDateTime ??= new FormattedDateTimeType();
 
         return $this->formattedReceivedDateTime;
     }
@@ -245,7 +245,7 @@ class AdvancePaymentType
      */
     public function getInvoiceSpecifiedReferencedDocumentWithCreate(): ReferencedDocumentType
     {
-        $this->invoiceSpecifiedReferencedDocument = is_null($this->invoiceSpecifiedReferencedDocument) ? new ReferencedDocumentType() : $this->invoiceSpecifiedReferencedDocument;
+        $this->invoiceSpecifiedReferencedDocument ??= new ReferencedDocumentType();
 
         return $this->invoiceSpecifiedReferencedDocument;
     }

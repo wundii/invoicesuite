@@ -36,7 +36,7 @@ class FormattedDateTimeType
      */
     public function getDateTimeStringWithCreate(): DateTimeStringAType
     {
-        $this->dateTimeString = is_null($this->dateTimeString) ? new DateTimeStringAType() : $this->dateTimeString;
+        $this->dateTimeString ??= new DateTimeStringAType();
 
         return $this->dateTimeString;
     }

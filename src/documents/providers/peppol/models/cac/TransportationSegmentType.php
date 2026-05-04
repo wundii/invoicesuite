@@ -93,7 +93,7 @@ class TransportationSegmentType
      */
     public function getSequenceNumericWithCreate(): SequenceNumeric
     {
-        $this->sequenceNumeric = is_null($this->sequenceNumeric) ? new SequenceNumeric() : $this->sequenceNumeric;
+        $this->sequenceNumeric ??= new SequenceNumeric();
 
         return $this->sequenceNumeric;
     }
@@ -133,7 +133,7 @@ class TransportationSegmentType
      */
     public function getTransportExecutionPlanReferenceIDWithCreate(): TransportExecutionPlanReferenceID
     {
-        $this->transportExecutionPlanReferenceID = is_null($this->transportExecutionPlanReferenceID) ? new TransportExecutionPlanReferenceID() : $this->transportExecutionPlanReferenceID;
+        $this->transportExecutionPlanReferenceID ??= new TransportExecutionPlanReferenceID();
 
         return $this->transportExecutionPlanReferenceID;
     }
@@ -173,7 +173,7 @@ class TransportationSegmentType
      */
     public function getTransportationServiceWithCreate(): TransportationService
     {
-        $this->transportationService = is_null($this->transportationService) ? new TransportationService() : $this->transportationService;
+        $this->transportationService ??= new TransportationService();
 
         return $this->transportationService;
     }
@@ -213,7 +213,7 @@ class TransportationSegmentType
      */
     public function getTransportServiceProviderPartyWithCreate(): TransportServiceProviderParty
     {
-        $this->transportServiceProviderParty = is_null($this->transportServiceProviderParty) ? new TransportServiceProviderParty() : $this->transportServiceProviderParty;
+        $this->transportServiceProviderParty ??= new TransportServiceProviderParty();
 
         return $this->transportServiceProviderParty;
     }
@@ -253,7 +253,7 @@ class TransportationSegmentType
      */
     public function getReferencedConsignmentWithCreate(): ReferencedConsignment
     {
-        $this->referencedConsignment = is_null($this->referencedConsignment) ? new ReferencedConsignment() : $this->referencedConsignment;
+        $this->referencedConsignment ??= new ReferencedConsignment();
 
         return $this->referencedConsignment;
     }

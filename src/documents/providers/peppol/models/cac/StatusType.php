@@ -169,7 +169,7 @@ class StatusType
      */
     public function getConditionCodeWithCreate(): ConditionCode
     {
-        $this->conditionCode = is_null($this->conditionCode) ? new ConditionCode() : $this->conditionCode;
+        $this->conditionCode ??= new ConditionCode();
 
         return $this->conditionCode;
     }
@@ -393,7 +393,7 @@ class StatusType
      */
     public function getStatusReasonCodeWithCreate(): StatusReasonCode
     {
-        $this->statusReasonCode = is_null($this->statusReasonCode) ? new StatusReasonCode() : $this->statusReasonCode;
+        $this->statusReasonCode ??= new StatusReasonCode();
 
         return $this->statusReasonCode;
     }
@@ -557,7 +557,7 @@ class StatusType
      */
     public function getSequenceIDWithCreate(): SequenceID
     {
-        $this->sequenceID = is_null($this->sequenceID) ? new SequenceID() : $this->sequenceID;
+        $this->sequenceID ??= new SequenceID();
 
         return $this->sequenceID;
     }
@@ -751,7 +751,7 @@ class StatusType
      */
     public function getPercentWithCreate(): Percent
     {
-        $this->percent = is_null($this->percent) ? new Percent() : $this->percent;
+        $this->percent ??= new Percent();
 
         return $this->percent;
     }
@@ -791,7 +791,7 @@ class StatusType
      */
     public function getReliabilityPercentWithCreate(): ReliabilityPercent
     {
-        $this->reliabilityPercent = is_null($this->reliabilityPercent) ? new ReliabilityPercent() : $this->reliabilityPercent;
+        $this->reliabilityPercent ??= new ReliabilityPercent();
 
         return $this->reliabilityPercent;
     }

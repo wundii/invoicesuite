@@ -72,7 +72,7 @@ class EventTacticEnumerationType
      */
     public function getConsumerIncentiveTacticTypeCodeWithCreate(): ConsumerIncentiveTacticTypeCode
     {
-        $this->consumerIncentiveTacticTypeCode = is_null($this->consumerIncentiveTacticTypeCode) ? new ConsumerIncentiveTacticTypeCode() : $this->consumerIncentiveTacticTypeCode;
+        $this->consumerIncentiveTacticTypeCode ??= new ConsumerIncentiveTacticTypeCode();
 
         return $this->consumerIncentiveTacticTypeCode;
     }
@@ -112,7 +112,7 @@ class EventTacticEnumerationType
      */
     public function getDisplayTacticTypeCodeWithCreate(): DisplayTacticTypeCode
     {
-        $this->displayTacticTypeCode = is_null($this->displayTacticTypeCode) ? new DisplayTacticTypeCode() : $this->displayTacticTypeCode;
+        $this->displayTacticTypeCode ??= new DisplayTacticTypeCode();
 
         return $this->displayTacticTypeCode;
     }
@@ -152,7 +152,7 @@ class EventTacticEnumerationType
      */
     public function getFeatureTacticTypeCodeWithCreate(): FeatureTacticTypeCode
     {
-        $this->featureTacticTypeCode = is_null($this->featureTacticTypeCode) ? new FeatureTacticTypeCode() : $this->featureTacticTypeCode;
+        $this->featureTacticTypeCode ??= new FeatureTacticTypeCode();
 
         return $this->featureTacticTypeCode;
     }
@@ -192,7 +192,7 @@ class EventTacticEnumerationType
      */
     public function getTradeItemPackingLabelingTypeCodeWithCreate(): TradeItemPackingLabelingTypeCode
     {
-        $this->tradeItemPackingLabelingTypeCode = is_null($this->tradeItemPackingLabelingTypeCode) ? new TradeItemPackingLabelingTypeCode() : $this->tradeItemPackingLabelingTypeCode;
+        $this->tradeItemPackingLabelingTypeCode ??= new TradeItemPackingLabelingTypeCode();
 
         return $this->tradeItemPackingLabelingTypeCode;
     }

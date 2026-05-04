@@ -73,7 +73,7 @@ class EnvironmentalEmissionType
      */
     public function getEnvironmentalEmissionTypeCodeWithCreate(): EnvironmentalEmissionTypeCode
     {
-        $this->environmentalEmissionTypeCode = is_null($this->environmentalEmissionTypeCode) ? new EnvironmentalEmissionTypeCode() : $this->environmentalEmissionTypeCode;
+        $this->environmentalEmissionTypeCode ??= new EnvironmentalEmissionTypeCode();
 
         return $this->environmentalEmissionTypeCode;
     }
@@ -113,7 +113,7 @@ class EnvironmentalEmissionType
      */
     public function getValueMeasureWithCreate(): ValueMeasure
     {
-        $this->valueMeasure = is_null($this->valueMeasure) ? new ValueMeasure() : $this->valueMeasure;
+        $this->valueMeasure ??= new ValueMeasure();
 
         return $this->valueMeasure;
     }

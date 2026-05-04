@@ -68,7 +68,7 @@ class CrossIndustryInvoiceType
      */
     public function getExchangedDocumentContextWithCreate(): ExchangedDocumentContextType
     {
-        $this->exchangedDocumentContext = is_null($this->exchangedDocumentContext) ? new ExchangedDocumentContextType() : $this->exchangedDocumentContext;
+        $this->exchangedDocumentContext ??= new ExchangedDocumentContextType();
 
         return $this->exchangedDocumentContext;
     }
@@ -108,7 +108,7 @@ class CrossIndustryInvoiceType
      */
     public function getExchangedDocumentWithCreate(): ExchangedDocumentType
     {
-        $this->exchangedDocument = is_null($this->exchangedDocument) ? new ExchangedDocumentType() : $this->exchangedDocument;
+        $this->exchangedDocument ??= new ExchangedDocumentType();
 
         return $this->exchangedDocument;
     }
@@ -148,7 +148,7 @@ class CrossIndustryInvoiceType
      */
     public function getSupplyChainTradeTransactionWithCreate(): SupplyChainTradeTransactionType
     {
-        $this->supplyChainTradeTransaction = is_null($this->supplyChainTradeTransaction) ? new SupplyChainTradeTransactionType() : $this->supplyChainTradeTransaction;
+        $this->supplyChainTradeTransaction ??= new SupplyChainTradeTransactionType();
 
         return $this->supplyChainTradeTransaction;
     }

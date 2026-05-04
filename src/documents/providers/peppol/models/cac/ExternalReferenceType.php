@@ -156,7 +156,7 @@ class ExternalReferenceType
      */
     public function getURIWithCreate(): URI
     {
-        $this->uRI = is_null($this->uRI) ? new URI() : $this->uRI;
+        $this->uRI ??= new URI();
 
         return $this->uRI;
     }
@@ -196,7 +196,7 @@ class ExternalReferenceType
      */
     public function getDocumentHashWithCreate(): DocumentHash
     {
-        $this->documentHash = is_null($this->documentHash) ? new DocumentHash() : $this->documentHash;
+        $this->documentHash ??= new DocumentHash();
 
         return $this->documentHash;
     }
@@ -236,7 +236,7 @@ class ExternalReferenceType
      */
     public function getHashAlgorithmMethodWithCreate(): HashAlgorithmMethod
     {
-        $this->hashAlgorithmMethod = is_null($this->hashAlgorithmMethod) ? new HashAlgorithmMethod() : $this->hashAlgorithmMethod;
+        $this->hashAlgorithmMethod ??= new HashAlgorithmMethod();
 
         return $this->hashAlgorithmMethod;
     }
@@ -336,7 +336,7 @@ class ExternalReferenceType
      */
     public function getMimeCodeWithCreate(): MimeCode
     {
-        $this->mimeCode = is_null($this->mimeCode) ? new MimeCode() : $this->mimeCode;
+        $this->mimeCode ??= new MimeCode();
 
         return $this->mimeCode;
     }
@@ -376,7 +376,7 @@ class ExternalReferenceType
      */
     public function getFormatCodeWithCreate(): FormatCode
     {
-        $this->formatCode = is_null($this->formatCode) ? new FormatCode() : $this->formatCode;
+        $this->formatCode ??= new FormatCode();
 
         return $this->formatCode;
     }
@@ -416,7 +416,7 @@ class ExternalReferenceType
      */
     public function getEncodingCodeWithCreate(): EncodingCode
     {
-        $this->encodingCode = is_null($this->encodingCode) ? new EncodingCode() : $this->encodingCode;
+        $this->encodingCode ??= new EncodingCode();
 
         return $this->encodingCode;
     }
@@ -456,7 +456,7 @@ class ExternalReferenceType
      */
     public function getCharacterSetCodeWithCreate(): CharacterSetCode
     {
-        $this->characterSetCode = is_null($this->characterSetCode) ? new CharacterSetCode() : $this->characterSetCode;
+        $this->characterSetCode ??= new CharacterSetCode();
 
         return $this->characterSetCode;
     }
@@ -496,7 +496,7 @@ class ExternalReferenceType
      */
     public function getFileNameWithCreate(): FileName
     {
-        $this->fileName = is_null($this->fileName) ? new FileName() : $this->fileName;
+        $this->fileName ??= new FileName();
 
         return $this->fileName;
     }

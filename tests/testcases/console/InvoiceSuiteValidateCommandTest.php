@@ -9,7 +9,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the command validates the given XML successfully and outputs a JSON
@@ -123,8 +123,8 @@ class InvoiceSuiteValidateCommandTest extends InvoiceSuiteConsoleCommandTestCase
         $this->assertArrayHasKey('messageSeverity', $decodedOutput['errormessages'][0]);
         $this->assertArrayHasKey('messageTimestap', $decodedOutput['errormessages'][0]);
         $this->assertArrayHasKey('messageAdditionalData', $decodedOutput['errormessages'][0]);
-        $this->assertStringContainsString("Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}TypeCode': This element is not expected. Expected is ( {urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}Description )", $decodedOutput['errormessages'][0]['messageContent']);
-        $this->assertStringContainsString('error', $decodedOutput['errormessages'][0]['messageSeverity']);
+        $this->assertStringContainsString("Element '{urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}TypeCode': This element is not expected. Expected is ( {urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100}Description )", (string) $decodedOutput['errormessages'][0]['messageContent']);
+        $this->assertStringContainsString('error', (string) $decodedOutput['errormessages'][0]['messageSeverity']);
     }
 
     /**

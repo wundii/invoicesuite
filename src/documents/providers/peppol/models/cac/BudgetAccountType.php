@@ -59,7 +59,7 @@ class BudgetAccountType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -99,7 +99,7 @@ class BudgetAccountType
      */
     public function getBudgetYearNumericWithCreate(): BudgetYearNumeric
     {
-        $this->budgetYearNumeric = is_null($this->budgetYearNumeric) ? new BudgetYearNumeric() : $this->budgetYearNumeric;
+        $this->budgetYearNumeric ??= new BudgetYearNumeric();
 
         return $this->budgetYearNumeric;
     }
@@ -139,7 +139,7 @@ class BudgetAccountType
      */
     public function getRequiredClassificationSchemeWithCreate(): RequiredClassificationScheme
     {
-        $this->requiredClassificationScheme = is_null($this->requiredClassificationScheme) ? new RequiredClassificationScheme() : $this->requiredClassificationScheme;
+        $this->requiredClassificationScheme ??= new RequiredClassificationScheme();
 
         return $this->requiredClassificationScheme;
     }

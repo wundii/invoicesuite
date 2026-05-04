@@ -48,7 +48,7 @@ class CountryType
      */
     public function getIdentificationCodeWithCreate(): IdentificationCode
     {
-        $this->identificationCode = is_null($this->identificationCode) ? new IdentificationCode() : $this->identificationCode;
+        $this->identificationCode ??= new IdentificationCode();
 
         return $this->identificationCode;
     }
@@ -88,7 +88,7 @@ class CountryType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }

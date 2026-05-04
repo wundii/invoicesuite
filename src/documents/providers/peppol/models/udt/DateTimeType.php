@@ -36,7 +36,7 @@ class DateTimeType
      */
     public function getValueWithCreate(): ?DateTime
     {
-        $this->value = is_null($this->value) ? new DateTime() : $this->value;
+        $this->value ??= new DateTime();
 
         return $this->value;
     }

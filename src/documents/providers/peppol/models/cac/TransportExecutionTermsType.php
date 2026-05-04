@@ -775,7 +775,7 @@ class TransportExecutionTermsType
      */
     public function getBonusPaymentTermsWithCreate(): BonusPaymentTerms
     {
-        $this->bonusPaymentTerms = is_null($this->bonusPaymentTerms) ? new BonusPaymentTerms() : $this->bonusPaymentTerms;
+        $this->bonusPaymentTerms ??= new BonusPaymentTerms();
 
         return $this->bonusPaymentTerms;
     }
@@ -815,7 +815,7 @@ class TransportExecutionTermsType
      */
     public function getCommissionPaymentTermsWithCreate(): CommissionPaymentTerms
     {
-        $this->commissionPaymentTerms = is_null($this->commissionPaymentTerms) ? new CommissionPaymentTerms() : $this->commissionPaymentTerms;
+        $this->commissionPaymentTerms ??= new CommissionPaymentTerms();
 
         return $this->commissionPaymentTerms;
     }
@@ -855,7 +855,7 @@ class TransportExecutionTermsType
      */
     public function getPenaltyPaymentTermsWithCreate(): PenaltyPaymentTerms
     {
-        $this->penaltyPaymentTerms = is_null($this->penaltyPaymentTerms) ? new PenaltyPaymentTerms() : $this->penaltyPaymentTerms;
+        $this->penaltyPaymentTerms ??= new PenaltyPaymentTerms();
 
         return $this->penaltyPaymentTerms;
     }
@@ -1143,7 +1143,7 @@ class TransportExecutionTermsType
      */
     public function getServiceChargePaymentTermsWithCreate(): ServiceChargePaymentTerms
     {
-        $this->serviceChargePaymentTerms = is_null($this->serviceChargePaymentTerms) ? new ServiceChargePaymentTerms() : $this->serviceChargePaymentTerms;
+        $this->serviceChargePaymentTerms ??= new ServiceChargePaymentTerms();
 
         return $this->serviceChargePaymentTerms;
     }

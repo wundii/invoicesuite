@@ -186,7 +186,7 @@ final class DatiTrasporto
      */
     public function getDatiAnagraficiVettoreWithCreate(): DatiAnagraficiVettore
     {
-        $this->datiAnagraficiVettore = is_null($this->datiAnagraficiVettore) ? new DatiAnagraficiVettore() : $this->datiAnagraficiVettore;
+        $this->datiAnagraficiVettore ??= new DatiAnagraficiVettore();
 
         return $this->datiAnagraficiVettore;
     }
@@ -594,7 +594,7 @@ final class DatiTrasporto
      */
     public function getIndirizzoResaWithCreate(): Indirizzo
     {
-        $this->indirizzoResa = is_null($this->indirizzoResa) ? new Indirizzo() : $this->indirizzoResa;
+        $this->indirizzoResa ??= new Indirizzo();
 
         return $this->indirizzoResa;
     }

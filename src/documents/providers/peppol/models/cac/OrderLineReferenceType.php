@@ -83,7 +83,7 @@ class OrderLineReferenceType
      */
     public function getLineIDWithCreate(): LineID
     {
-        $this->lineID = is_null($this->lineID) ? new LineID() : $this->lineID;
+        $this->lineID ??= new LineID();
 
         return $this->lineID;
     }
@@ -123,7 +123,7 @@ class OrderLineReferenceType
      */
     public function getSalesOrderLineIDWithCreate(): SalesOrderLineID
     {
-        $this->salesOrderLineID = is_null($this->salesOrderLineID) ? new SalesOrderLineID() : $this->salesOrderLineID;
+        $this->salesOrderLineID ??= new SalesOrderLineID();
 
         return $this->salesOrderLineID;
     }
@@ -163,7 +163,7 @@ class OrderLineReferenceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -203,7 +203,7 @@ class OrderLineReferenceType
      */
     public function getLineStatusCodeWithCreate(): LineStatusCode
     {
-        $this->lineStatusCode = is_null($this->lineStatusCode) ? new LineStatusCode() : $this->lineStatusCode;
+        $this->lineStatusCode ??= new LineStatusCode();
 
         return $this->lineStatusCode;
     }
@@ -243,7 +243,7 @@ class OrderLineReferenceType
      */
     public function getOrderReferenceWithCreate(): OrderReference
     {
-        $this->orderReference = is_null($this->orderReference) ? new OrderReference() : $this->orderReference;
+        $this->orderReference ??= new OrderReference();
 
         return $this->orderReference;
     }

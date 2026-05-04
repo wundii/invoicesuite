@@ -95,7 +95,7 @@ class CatalogueRequestLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -135,7 +135,7 @@ class CatalogueRequestLineType
      */
     public function getContractSubdivisionWithCreate(): ContractSubdivision
     {
-        $this->contractSubdivision = is_null($this->contractSubdivision) ? new ContractSubdivision() : $this->contractSubdivision;
+        $this->contractSubdivision ??= new ContractSubdivision();
 
         return $this->contractSubdivision;
     }
@@ -299,7 +299,7 @@ class CatalogueRequestLineType
      */
     public function getLineValidityPeriodWithCreate(): LineValidityPeriod
     {
-        $this->lineValidityPeriod = is_null($this->lineValidityPeriod) ? new LineValidityPeriod() : $this->lineValidityPeriod;
+        $this->lineValidityPeriod ??= new LineValidityPeriod();
 
         return $this->lineValidityPeriod;
     }
@@ -463,7 +463,7 @@ class CatalogueRequestLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }

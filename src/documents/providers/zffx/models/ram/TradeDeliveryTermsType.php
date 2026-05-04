@@ -47,7 +47,7 @@ class TradeDeliveryTermsType
      */
     public function getDeliveryTypeCodeWithCreate(): DeliveryTermsCodeType
     {
-        $this->deliveryTypeCode = is_null($this->deliveryTypeCode) ? new DeliveryTermsCodeType() : $this->deliveryTypeCode;
+        $this->deliveryTypeCode ??= new DeliveryTermsCodeType();
 
         return $this->deliveryTypeCode;
     }
@@ -87,7 +87,7 @@ class TradeDeliveryTermsType
      */
     public function getRelevantTradeLocationWithCreate(): TradeLocationType
     {
-        $this->relevantTradeLocation = is_null($this->relevantTradeLocation) ? new TradeLocationType() : $this->relevantTradeLocation;
+        $this->relevantTradeLocation ??= new TradeLocationType();
 
         return $this->relevantTradeLocation;
     }

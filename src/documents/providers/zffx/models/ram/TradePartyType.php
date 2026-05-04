@@ -329,7 +329,7 @@ class TradePartyType
      */
     public function getNameWithCreate(): TextType
     {
-        $this->name = is_null($this->name) ? new TextType() : $this->name;
+        $this->name ??= new TextType();
 
         return $this->name;
     }
@@ -399,7 +399,7 @@ class TradePartyType
      */
     public function getDescriptionWithCreate(): TextType
     {
-        $this->description = is_null($this->description) ? new TextType() : $this->description;
+        $this->description ??= new TextType();
 
         return $this->description;
     }
@@ -439,7 +439,7 @@ class TradePartyType
      */
     public function getSpecifiedLegalOrganizationWithCreate(): LegalOrganizationType
     {
-        $this->specifiedLegalOrganization = is_null($this->specifiedLegalOrganization) ? new LegalOrganizationType() : $this->specifiedLegalOrganization;
+        $this->specifiedLegalOrganization ??= new LegalOrganizationType();
 
         return $this->specifiedLegalOrganization;
     }
@@ -573,7 +573,7 @@ class TradePartyType
      */
     public function getPostalTradeAddressWithCreate(): TradeAddressType
     {
-        $this->postalTradeAddress = is_null($this->postalTradeAddress) ? new TradeAddressType() : $this->postalTradeAddress;
+        $this->postalTradeAddress ??= new TradeAddressType();
 
         return $this->postalTradeAddress;
     }
@@ -613,7 +613,7 @@ class TradePartyType
      */
     public function getURIUniversalCommunicationWithCreate(): UniversalCommunicationType
     {
-        $this->uRIUniversalCommunication = is_null($this->uRIUniversalCommunication) ? new UniversalCommunicationType() : $this->uRIUniversalCommunication;
+        $this->uRIUniversalCommunication ??= new UniversalCommunicationType();
 
         return $this->uRIUniversalCommunication;
     }

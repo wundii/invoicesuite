@@ -40,7 +40,7 @@ final class RappresentanteFiscale
      */
     public function getDatiAnagraficiWithCreate(): DatiAnagraficiRappresentante
     {
-        $this->datiAnagrafici = is_null($this->datiAnagrafici) ? new DatiAnagraficiRappresentante() : $this->datiAnagrafici;
+        $this->datiAnagrafici ??= new DatiAnagraficiRappresentante();
 
         return $this->datiAnagrafici;
     }

@@ -125,7 +125,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getLineTotalAmountWithCreate(): AmountType
     {
-        $this->lineTotalAmount = is_null($this->lineTotalAmount) ? new AmountType() : $this->lineTotalAmount;
+        $this->lineTotalAmount ??= new AmountType();
 
         return $this->lineTotalAmount;
     }
@@ -165,7 +165,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getChargeTotalAmountWithCreate(): AmountType
     {
-        $this->chargeTotalAmount = is_null($this->chargeTotalAmount) ? new AmountType() : $this->chargeTotalAmount;
+        $this->chargeTotalAmount ??= new AmountType();
 
         return $this->chargeTotalAmount;
     }
@@ -205,7 +205,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getAllowanceTotalAmountWithCreate(): AmountType
     {
-        $this->allowanceTotalAmount = is_null($this->allowanceTotalAmount) ? new AmountType() : $this->allowanceTotalAmount;
+        $this->allowanceTotalAmount ??= new AmountType();
 
         return $this->allowanceTotalAmount;
     }
@@ -245,7 +245,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getTaxBasisTotalAmountWithCreate(): AmountType
     {
-        $this->taxBasisTotalAmount = is_null($this->taxBasisTotalAmount) ? new AmountType() : $this->taxBasisTotalAmount;
+        $this->taxBasisTotalAmount ??= new AmountType();
 
         return $this->taxBasisTotalAmount;
     }
@@ -379,7 +379,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getRoundingAmountWithCreate(): AmountType
     {
-        $this->roundingAmount = is_null($this->roundingAmount) ? new AmountType() : $this->roundingAmount;
+        $this->roundingAmount ??= new AmountType();
 
         return $this->roundingAmount;
     }
@@ -419,7 +419,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getGrandTotalAmountWithCreate(): AmountType
     {
-        $this->grandTotalAmount = is_null($this->grandTotalAmount) ? new AmountType() : $this->grandTotalAmount;
+        $this->grandTotalAmount ??= new AmountType();
 
         return $this->grandTotalAmount;
     }
@@ -459,7 +459,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getTotalPrepaidAmountWithCreate(): AmountType
     {
-        $this->totalPrepaidAmount = is_null($this->totalPrepaidAmount) ? new AmountType() : $this->totalPrepaidAmount;
+        $this->totalPrepaidAmount ??= new AmountType();
 
         return $this->totalPrepaidAmount;
     }
@@ -499,7 +499,7 @@ class TradeSettlementHeaderMonetarySummationType
      */
     public function getDuePayableAmountWithCreate(): AmountType
     {
-        $this->duePayableAmount = is_null($this->duePayableAmount) ? new AmountType() : $this->duePayableAmount;
+        $this->duePayableAmount ??= new AmountType();
 
         return $this->duePayableAmount;
     }

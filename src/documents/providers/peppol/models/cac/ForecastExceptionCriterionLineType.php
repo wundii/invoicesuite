@@ -84,7 +84,7 @@ class ForecastExceptionCriterionLineType
      */
     public function getForecastPurposeCodeWithCreate(): ForecastPurposeCode
     {
-        $this->forecastPurposeCode = is_null($this->forecastPurposeCode) ? new ForecastPurposeCode() : $this->forecastPurposeCode;
+        $this->forecastPurposeCode ??= new ForecastPurposeCode();
 
         return $this->forecastPurposeCode;
     }
@@ -124,7 +124,7 @@ class ForecastExceptionCriterionLineType
      */
     public function getForecastTypeCodeWithCreate(): ForecastTypeCode
     {
-        $this->forecastTypeCode = is_null($this->forecastTypeCode) ? new ForecastTypeCode() : $this->forecastTypeCode;
+        $this->forecastTypeCode ??= new ForecastTypeCode();
 
         return $this->forecastTypeCode;
     }
@@ -164,7 +164,7 @@ class ForecastExceptionCriterionLineType
      */
     public function getComparisonDataSourceCodeWithCreate(): ComparisonDataSourceCode
     {
-        $this->comparisonDataSourceCode = is_null($this->comparisonDataSourceCode) ? new ComparisonDataSourceCode() : $this->comparisonDataSourceCode;
+        $this->comparisonDataSourceCode ??= new ComparisonDataSourceCode();
 
         return $this->comparisonDataSourceCode;
     }
@@ -204,7 +204,7 @@ class ForecastExceptionCriterionLineType
      */
     public function getDataSourceCodeWithCreate(): DataSourceCode
     {
-        $this->dataSourceCode = is_null($this->dataSourceCode) ? new DataSourceCode() : $this->dataSourceCode;
+        $this->dataSourceCode ??= new DataSourceCode();
 
         return $this->dataSourceCode;
     }
@@ -244,7 +244,7 @@ class ForecastExceptionCriterionLineType
      */
     public function getTimeDeltaDaysQuantityWithCreate(): TimeDeltaDaysQuantity
     {
-        $this->timeDeltaDaysQuantity = is_null($this->timeDeltaDaysQuantity) ? new TimeDeltaDaysQuantity() : $this->timeDeltaDaysQuantity;
+        $this->timeDeltaDaysQuantity ??= new TimeDeltaDaysQuantity();
 
         return $this->timeDeltaDaysQuantity;
     }

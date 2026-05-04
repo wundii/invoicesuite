@@ -188,7 +188,7 @@ class ContractType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -348,7 +348,7 @@ class ContractType
      */
     public function getContractTypeCodeWithCreate(): ContractTypeCode
     {
-        $this->contractTypeCode = is_null($this->contractTypeCode) ? new ContractTypeCode() : $this->contractTypeCode;
+        $this->contractTypeCode ??= new ContractTypeCode();
 
         return $this->contractTypeCode;
     }
@@ -388,7 +388,7 @@ class ContractType
      */
     public function getContractTypeWithCreate(): ContractType1
     {
-        $this->contractType = is_null($this->contractType) ? new ContractType1() : $this->contractType;
+        $this->contractType ??= new ContractType1();
 
         return $this->contractType;
     }
@@ -552,7 +552,7 @@ class ContractType
      */
     public function getVersionIDWithCreate(): VersionID
     {
-        $this->versionID = is_null($this->versionID) ? new VersionID() : $this->versionID;
+        $this->versionID ??= new VersionID();
 
         return $this->versionID;
     }
@@ -716,7 +716,7 @@ class ContractType
      */
     public function getValidityPeriodWithCreate(): ValidityPeriod
     {
-        $this->validityPeriod = is_null($this->validityPeriod) ? new ValidityPeriod() : $this->validityPeriod;
+        $this->validityPeriod ??= new ValidityPeriod();
 
         return $this->validityPeriod;
     }
@@ -880,7 +880,7 @@ class ContractType
      */
     public function getNominationPeriodWithCreate(): NominationPeriod
     {
-        $this->nominationPeriod = is_null($this->nominationPeriod) ? new NominationPeriod() : $this->nominationPeriod;
+        $this->nominationPeriod ??= new NominationPeriod();
 
         return $this->nominationPeriod;
     }
@@ -920,7 +920,7 @@ class ContractType
      */
     public function getContractualDeliveryWithCreate(): ContractualDelivery
     {
-        $this->contractualDelivery = is_null($this->contractualDelivery) ? new ContractualDelivery() : $this->contractualDelivery;
+        $this->contractualDelivery ??= new ContractualDelivery();
 
         return $this->contractualDelivery;
     }

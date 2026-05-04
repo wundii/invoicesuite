@@ -355,7 +355,7 @@ class CreditNoteLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -395,7 +395,7 @@ class CreditNoteLineType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -559,7 +559,7 @@ class CreditNoteLineType
      */
     public function getCreditedQuantityWithCreate(): CreditedQuantity
     {
-        $this->creditedQuantity = is_null($this->creditedQuantity) ? new CreditedQuantity() : $this->creditedQuantity;
+        $this->creditedQuantity ??= new CreditedQuantity();
 
         return $this->creditedQuantity;
     }
@@ -599,7 +599,7 @@ class CreditNoteLineType
      */
     public function getLineExtensionAmountWithCreate(): LineExtensionAmount
     {
-        $this->lineExtensionAmount = is_null($this->lineExtensionAmount) ? new LineExtensionAmount() : $this->lineExtensionAmount;
+        $this->lineExtensionAmount ??= new LineExtensionAmount();
 
         return $this->lineExtensionAmount;
     }
@@ -669,7 +669,7 @@ class CreditNoteLineType
      */
     public function getAccountingCostCodeWithCreate(): AccountingCostCode
     {
-        $this->accountingCostCode = is_null($this->accountingCostCode) ? new AccountingCostCode() : $this->accountingCostCode;
+        $this->accountingCostCode ??= new AccountingCostCode();
 
         return $this->accountingCostCode;
     }
@@ -709,7 +709,7 @@ class CreditNoteLineType
      */
     public function getAccountingCostWithCreate(): AccountingCost
     {
-        $this->accountingCost = is_null($this->accountingCost) ? new AccountingCost() : $this->accountingCost;
+        $this->accountingCost ??= new AccountingCost();
 
         return $this->accountingCost;
     }
@@ -749,7 +749,7 @@ class CreditNoteLineType
      */
     public function getPaymentPurposeCodeWithCreate(): PaymentPurposeCode
     {
-        $this->paymentPurposeCode = is_null($this->paymentPurposeCode) ? new PaymentPurposeCode() : $this->paymentPurposeCode;
+        $this->paymentPurposeCode ??= new PaymentPurposeCode();
 
         return $this->paymentPurposeCode;
     }
@@ -1687,7 +1687,7 @@ class CreditNoteLineType
      */
     public function getPricingReferenceWithCreate(): PricingReference
     {
-        $this->pricingReference = is_null($this->pricingReference) ? new PricingReference() : $this->pricingReference;
+        $this->pricingReference ??= new PricingReference();
 
         return $this->pricingReference;
     }
@@ -1727,7 +1727,7 @@ class CreditNoteLineType
      */
     public function getOriginatorPartyWithCreate(): OriginatorParty
     {
-        $this->originatorParty = is_null($this->originatorParty) ? new OriginatorParty() : $this->originatorParty;
+        $this->originatorParty ??= new OriginatorParty();
 
         return $this->originatorParty;
     }
@@ -2263,7 +2263,7 @@ class CreditNoteLineType
      */
     public function getItemWithCreate(): Item
     {
-        $this->item = is_null($this->item) ? new Item() : $this->item;
+        $this->item ??= new Item();
 
         return $this->item;
     }
@@ -2303,7 +2303,7 @@ class CreditNoteLineType
      */
     public function getPriceWithCreate(): Price
     {
-        $this->price = is_null($this->price) ? new Price() : $this->price;
+        $this->price ??= new Price();
 
         return $this->price;
     }
@@ -2591,7 +2591,7 @@ class CreditNoteLineType
      */
     public function getItemPriceExtensionWithCreate(): ItemPriceExtension
     {
-        $this->itemPriceExtension = is_null($this->itemPriceExtension) ? new ItemPriceExtension() : $this->itemPriceExtension;
+        $this->itemPriceExtension ??= new ItemPriceExtension();
 
         return $this->itemPriceExtension;
     }

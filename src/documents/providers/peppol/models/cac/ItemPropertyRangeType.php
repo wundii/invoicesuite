@@ -48,7 +48,7 @@ class ItemPropertyRangeType
      */
     public function getMinimumValueWithCreate(): MinimumValue
     {
-        $this->minimumValue = is_null($this->minimumValue) ? new MinimumValue() : $this->minimumValue;
+        $this->minimumValue ??= new MinimumValue();
 
         return $this->minimumValue;
     }
@@ -88,7 +88,7 @@ class ItemPropertyRangeType
      */
     public function getMaximumValueWithCreate(): MaximumValue
     {
-        $this->maximumValue = is_null($this->maximumValue) ? new MaximumValue() : $this->maximumValue;
+        $this->maximumValue ??= new MaximumValue();
 
         return $this->maximumValue;
     }

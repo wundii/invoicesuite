@@ -239,7 +239,7 @@ class DespatchType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -519,7 +519,7 @@ class DespatchType
      */
     public function getReleaseIDWithCreate(): ReleaseID
     {
-        $this->releaseID = is_null($this->releaseID) ? new ReleaseID() : $this->releaseID;
+        $this->releaseID ??= new ReleaseID();
 
         return $this->releaseID;
     }
@@ -683,7 +683,7 @@ class DespatchType
      */
     public function getDespatchAddressWithCreate(): DespatchAddress
     {
-        $this->despatchAddress = is_null($this->despatchAddress) ? new DespatchAddress() : $this->despatchAddress;
+        $this->despatchAddress ??= new DespatchAddress();
 
         return $this->despatchAddress;
     }
@@ -723,7 +723,7 @@ class DespatchType
      */
     public function getDespatchLocationWithCreate(): DespatchLocation
     {
-        $this->despatchLocation = is_null($this->despatchLocation) ? new DespatchLocation() : $this->despatchLocation;
+        $this->despatchLocation ??= new DespatchLocation();
 
         return $this->despatchLocation;
     }
@@ -763,7 +763,7 @@ class DespatchType
      */
     public function getDespatchPartyWithCreate(): DespatchParty
     {
-        $this->despatchParty = is_null($this->despatchParty) ? new DespatchParty() : $this->despatchParty;
+        $this->despatchParty ??= new DespatchParty();
 
         return $this->despatchParty;
     }
@@ -803,7 +803,7 @@ class DespatchType
      */
     public function getCarrierPartyWithCreate(): CarrierParty
     {
-        $this->carrierParty = is_null($this->carrierParty) ? new CarrierParty() : $this->carrierParty;
+        $this->carrierParty ??= new CarrierParty();
 
         return $this->carrierParty;
     }
@@ -967,7 +967,7 @@ class DespatchType
      */
     public function getContactWithCreate(): Contact
     {
-        $this->contact = is_null($this->contact) ? new Contact() : $this->contact;
+        $this->contact ??= new Contact();
 
         return $this->contact;
     }
@@ -1007,7 +1007,7 @@ class DespatchType
      */
     public function getEstimatedDespatchPeriodWithCreate(): EstimatedDespatchPeriod
     {
-        $this->estimatedDespatchPeriod = is_null($this->estimatedDespatchPeriod) ? new EstimatedDespatchPeriod() : $this->estimatedDespatchPeriod;
+        $this->estimatedDespatchPeriod ??= new EstimatedDespatchPeriod();
 
         return $this->estimatedDespatchPeriod;
     }
@@ -1047,7 +1047,7 @@ class DespatchType
      */
     public function getRequestedDespatchPeriodWithCreate(): RequestedDespatchPeriod
     {
-        $this->requestedDespatchPeriod = is_null($this->requestedDespatchPeriod) ? new RequestedDespatchPeriod() : $this->requestedDespatchPeriod;
+        $this->requestedDespatchPeriod ??= new RequestedDespatchPeriod();
 
         return $this->requestedDespatchPeriod;
     }

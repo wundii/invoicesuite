@@ -47,7 +47,7 @@ class WinningPartyType
      */
     public function getRankWithCreate(): Rank
     {
-        $this->rank = is_null($this->rank) ? new Rank() : $this->rank;
+        $this->rank ??= new Rank();
 
         return $this->rank;
     }
@@ -87,7 +87,7 @@ class WinningPartyType
      */
     public function getPartyWithCreate(): Party
     {
-        $this->party = is_null($this->party) ? new Party() : $this->party;
+        $this->party ??= new Party();
 
         return $this->party;
     }

@@ -129,7 +129,7 @@ class OrderReferenceType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -169,7 +169,7 @@ class OrderReferenceType
      */
     public function getSalesOrderIDWithCreate(): SalesOrderID
     {
-        $this->salesOrderID = is_null($this->salesOrderID) ? new SalesOrderID() : $this->salesOrderID;
+        $this->salesOrderID ??= new SalesOrderID();
 
         return $this->salesOrderID;
     }
@@ -239,7 +239,7 @@ class OrderReferenceType
      */
     public function getUUIDWithCreate(): UUID
     {
-        $this->uUID = is_null($this->uUID) ? new UUID() : $this->uUID;
+        $this->uUID ??= new UUID();
 
         return $this->uUID;
     }
@@ -339,7 +339,7 @@ class OrderReferenceType
      */
     public function getCustomerReferenceWithCreate(): CustomerReference
     {
-        $this->customerReference = is_null($this->customerReference) ? new CustomerReference() : $this->customerReference;
+        $this->customerReference ??= new CustomerReference();
 
         return $this->customerReference;
     }
@@ -379,7 +379,7 @@ class OrderReferenceType
      */
     public function getOrderTypeCodeWithCreate(): OrderTypeCode
     {
-        $this->orderTypeCode = is_null($this->orderTypeCode) ? new OrderTypeCode() : $this->orderTypeCode;
+        $this->orderTypeCode ??= new OrderTypeCode();
 
         return $this->orderTypeCode;
     }
@@ -419,7 +419,7 @@ class OrderReferenceType
      */
     public function getDocumentReferenceWithCreate(): DocumentReference
     {
-        $this->documentReference = is_null($this->documentReference) ? new DocumentReference() : $this->documentReference;
+        $this->documentReference ??= new DocumentReference();
 
         return $this->documentReference;
     }

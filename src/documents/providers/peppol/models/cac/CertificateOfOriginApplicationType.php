@@ -211,7 +211,7 @@ class CertificateOfOriginApplicationType
      */
     public function getReferenceIDWithCreate(): ReferenceID
     {
-        $this->referenceID = is_null($this->referenceID) ? new ReferenceID() : $this->referenceID;
+        $this->referenceID ??= new ReferenceID();
 
         return $this->referenceID;
     }
@@ -251,7 +251,7 @@ class CertificateOfOriginApplicationType
      */
     public function getCertificateTypeWithCreate(): CertificateType
     {
-        $this->certificateType = is_null($this->certificateType) ? new CertificateType() : $this->certificateType;
+        $this->certificateType ??= new CertificateType();
 
         return $this->certificateType;
     }
@@ -291,7 +291,7 @@ class CertificateOfOriginApplicationType
      */
     public function getApplicationStatusCodeWithCreate(): ApplicationStatusCode
     {
-        $this->applicationStatusCode = is_null($this->applicationStatusCode) ? new ApplicationStatusCode() : $this->applicationStatusCode;
+        $this->applicationStatusCode ??= new ApplicationStatusCode();
 
         return $this->applicationStatusCode;
     }
@@ -331,7 +331,7 @@ class CertificateOfOriginApplicationType
      */
     public function getOriginalJobIDWithCreate(): OriginalJobID
     {
-        $this->originalJobID = is_null($this->originalJobID) ? new OriginalJobID() : $this->originalJobID;
+        $this->originalJobID ??= new OriginalJobID();
 
         return $this->originalJobID;
     }
@@ -371,7 +371,7 @@ class CertificateOfOriginApplicationType
      */
     public function getPreviousJobIDWithCreate(): PreviousJobID
     {
-        $this->previousJobID = is_null($this->previousJobID) ? new PreviousJobID() : $this->previousJobID;
+        $this->previousJobID ??= new PreviousJobID();
 
         return $this->previousJobID;
     }
@@ -535,7 +535,7 @@ class CertificateOfOriginApplicationType
      */
     public function getShipmentWithCreate(): Shipment
     {
-        $this->shipment = is_null($this->shipment) ? new Shipment() : $this->shipment;
+        $this->shipment ??= new Shipment();
 
         return $this->shipment;
     }
@@ -699,7 +699,7 @@ class CertificateOfOriginApplicationType
      */
     public function getPreparationPartyWithCreate(): PreparationParty
     {
-        $this->preparationParty = is_null($this->preparationParty) ? new PreparationParty() : $this->preparationParty;
+        $this->preparationParty ??= new PreparationParty();
 
         return $this->preparationParty;
     }
@@ -739,7 +739,7 @@ class CertificateOfOriginApplicationType
      */
     public function getIssuerPartyWithCreate(): IssuerParty
     {
-        $this->issuerParty = is_null($this->issuerParty) ? new IssuerParty() : $this->issuerParty;
+        $this->issuerParty ??= new IssuerParty();
 
         return $this->issuerParty;
     }
@@ -779,7 +779,7 @@ class CertificateOfOriginApplicationType
      */
     public function getExporterPartyWithCreate(): ExporterParty
     {
-        $this->exporterParty = is_null($this->exporterParty) ? new ExporterParty() : $this->exporterParty;
+        $this->exporterParty ??= new ExporterParty();
 
         return $this->exporterParty;
     }
@@ -819,7 +819,7 @@ class CertificateOfOriginApplicationType
      */
     public function getImporterPartyWithCreate(): ImporterParty
     {
-        $this->importerParty = is_null($this->importerParty) ? new ImporterParty() : $this->importerParty;
+        $this->importerParty ??= new ImporterParty();
 
         return $this->importerParty;
     }
@@ -859,7 +859,7 @@ class CertificateOfOriginApplicationType
      */
     public function getIssuingCountryWithCreate(): IssuingCountry
     {
-        $this->issuingCountry = is_null($this->issuingCountry) ? new IssuingCountry() : $this->issuingCountry;
+        $this->issuingCountry ??= new IssuingCountry();
 
         return $this->issuingCountry;
     }

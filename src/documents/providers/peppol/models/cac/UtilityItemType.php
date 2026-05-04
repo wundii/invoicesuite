@@ -203,7 +203,7 @@ class UtilityItemType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -243,7 +243,7 @@ class UtilityItemType
      */
     public function getSubscriberIDWithCreate(): SubscriberID
     {
-        $this->subscriberID = is_null($this->subscriberID) ? new SubscriberID() : $this->subscriberID;
+        $this->subscriberID ??= new SubscriberID();
 
         return $this->subscriberID;
     }
@@ -283,7 +283,7 @@ class UtilityItemType
      */
     public function getSubscriberTypeWithCreate(): SubscriberType
     {
-        $this->subscriberType = is_null($this->subscriberType) ? new SubscriberType() : $this->subscriberType;
+        $this->subscriberType ??= new SubscriberType();
 
         return $this->subscriberType;
     }
@@ -323,7 +323,7 @@ class UtilityItemType
      */
     public function getSubscriberTypeCodeWithCreate(): SubscriberTypeCode
     {
-        $this->subscriberTypeCode = is_null($this->subscriberTypeCode) ? new SubscriberTypeCode() : $this->subscriberTypeCode;
+        $this->subscriberTypeCode ??= new SubscriberTypeCode();
 
         return $this->subscriberTypeCode;
     }
@@ -487,7 +487,7 @@ class UtilityItemType
      */
     public function getPackQuantityWithCreate(): PackQuantity
     {
-        $this->packQuantity = is_null($this->packQuantity) ? new PackQuantity() : $this->packQuantity;
+        $this->packQuantity ??= new PackQuantity();
 
         return $this->packQuantity;
     }
@@ -527,7 +527,7 @@ class UtilityItemType
      */
     public function getPackSizeNumericWithCreate(): PackSizeNumeric
     {
-        $this->packSizeNumeric = is_null($this->packSizeNumeric) ? new PackSizeNumeric() : $this->packSizeNumeric;
+        $this->packSizeNumeric ??= new PackSizeNumeric();
 
         return $this->packSizeNumeric;
     }
@@ -567,7 +567,7 @@ class UtilityItemType
      */
     public function getConsumptionTypeWithCreate(): ConsumptionType
     {
-        $this->consumptionType = is_null($this->consumptionType) ? new ConsumptionType() : $this->consumptionType;
+        $this->consumptionType ??= new ConsumptionType();
 
         return $this->consumptionType;
     }
@@ -607,7 +607,7 @@ class UtilityItemType
      */
     public function getConsumptionTypeCodeWithCreate(): ConsumptionTypeCode
     {
-        $this->consumptionTypeCode = is_null($this->consumptionTypeCode) ? new ConsumptionTypeCode() : $this->consumptionTypeCode;
+        $this->consumptionTypeCode ??= new ConsumptionTypeCode();
 
         return $this->consumptionTypeCode;
     }
@@ -647,7 +647,7 @@ class UtilityItemType
      */
     public function getCurrentChargeTypeWithCreate(): CurrentChargeType
     {
-        $this->currentChargeType = is_null($this->currentChargeType) ? new CurrentChargeType() : $this->currentChargeType;
+        $this->currentChargeType ??= new CurrentChargeType();
 
         return $this->currentChargeType;
     }
@@ -687,7 +687,7 @@ class UtilityItemType
      */
     public function getCurrentChargeTypeCodeWithCreate(): CurrentChargeTypeCode
     {
-        $this->currentChargeTypeCode = is_null($this->currentChargeTypeCode) ? new CurrentChargeTypeCode() : $this->currentChargeTypeCode;
+        $this->currentChargeTypeCode ??= new CurrentChargeTypeCode();
 
         return $this->currentChargeTypeCode;
     }
@@ -727,7 +727,7 @@ class UtilityItemType
      */
     public function getOneTimeChargeTypeWithCreate(): OneTimeChargeType
     {
-        $this->oneTimeChargeType = is_null($this->oneTimeChargeType) ? new OneTimeChargeType() : $this->oneTimeChargeType;
+        $this->oneTimeChargeType ??= new OneTimeChargeType();
 
         return $this->oneTimeChargeType;
     }
@@ -767,7 +767,7 @@ class UtilityItemType
      */
     public function getOneTimeChargeTypeCodeWithCreate(): OneTimeChargeTypeCode
     {
-        $this->oneTimeChargeTypeCode = is_null($this->oneTimeChargeTypeCode) ? new OneTimeChargeTypeCode() : $this->oneTimeChargeTypeCode;
+        $this->oneTimeChargeTypeCode ??= new OneTimeChargeTypeCode();
 
         return $this->oneTimeChargeTypeCode;
     }
@@ -807,7 +807,7 @@ class UtilityItemType
      */
     public function getTaxCategoryWithCreate(): TaxCategory
     {
-        $this->taxCategory = is_null($this->taxCategory) ? new TaxCategory() : $this->taxCategory;
+        $this->taxCategory ??= new TaxCategory();
 
         return $this->taxCategory;
     }
@@ -847,7 +847,7 @@ class UtilityItemType
      */
     public function getContractWithCreate(): Contract
     {
-        $this->contract = is_null($this->contract) ? new Contract() : $this->contract;
+        $this->contract ??= new Contract();
 
         return $this->contract;
     }

@@ -183,7 +183,7 @@ class TendererPartyQualificationType
      */
     public function getMainQualifyingPartyWithCreate(): MainQualifyingParty
     {
-        $this->mainQualifyingParty = is_null($this->mainQualifyingParty) ? new MainQualifyingParty() : $this->mainQualifyingParty;
+        $this->mainQualifyingParty ??= new MainQualifyingParty();
 
         return $this->mainQualifyingParty;
     }

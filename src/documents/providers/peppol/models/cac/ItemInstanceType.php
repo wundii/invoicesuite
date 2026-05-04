@@ -117,7 +117,7 @@ class ItemInstanceType
      */
     public function getProductTraceIDWithCreate(): ProductTraceID
     {
-        $this->productTraceID = is_null($this->productTraceID) ? new ProductTraceID() : $this->productTraceID;
+        $this->productTraceID ??= new ProductTraceID();
 
         return $this->productTraceID;
     }
@@ -247,7 +247,7 @@ class ItemInstanceType
      */
     public function getRegistrationIDWithCreate(): RegistrationID
     {
-        $this->registrationID = is_null($this->registrationID) ? new RegistrationID() : $this->registrationID;
+        $this->registrationID ??= new RegistrationID();
 
         return $this->registrationID;
     }
@@ -287,7 +287,7 @@ class ItemInstanceType
      */
     public function getSerialIDWithCreate(): SerialID
     {
-        $this->serialID = is_null($this->serialID) ? new SerialID() : $this->serialID;
+        $this->serialID ??= new SerialID();
 
         return $this->serialID;
     }
@@ -451,7 +451,7 @@ class ItemInstanceType
      */
     public function getLotIdentificationWithCreate(): LotIdentification
     {
-        $this->lotIdentification = is_null($this->lotIdentification) ? new LotIdentification() : $this->lotIdentification;
+        $this->lotIdentification ??= new LotIdentification();
 
         return $this->lotIdentification;
     }

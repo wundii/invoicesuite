@@ -255,7 +255,7 @@ class HeaderTradeSettlementType
      */
     public function getCreditorReferenceIDWithCreate(): IDType
     {
-        $this->creditorReferenceID = is_null($this->creditorReferenceID) ? new IDType() : $this->creditorReferenceID;
+        $this->creditorReferenceID ??= new IDType();
 
         return $this->creditorReferenceID;
     }
@@ -295,7 +295,7 @@ class HeaderTradeSettlementType
      */
     public function getPaymentReferenceWithCreate(): TextType
     {
-        $this->paymentReference = is_null($this->paymentReference) ? new TextType() : $this->paymentReference;
+        $this->paymentReference ??= new TextType();
 
         return $this->paymentReference;
     }
@@ -335,7 +335,7 @@ class HeaderTradeSettlementType
      */
     public function getTaxCurrencyCodeWithCreate(): CurrencyCodeType
     {
-        $this->taxCurrencyCode = is_null($this->taxCurrencyCode) ? new CurrencyCodeType() : $this->taxCurrencyCode;
+        $this->taxCurrencyCode ??= new CurrencyCodeType();
 
         return $this->taxCurrencyCode;
     }
@@ -375,7 +375,7 @@ class HeaderTradeSettlementType
      */
     public function getInvoiceCurrencyCodeWithCreate(): CurrencyCodeType
     {
-        $this->invoiceCurrencyCode = is_null($this->invoiceCurrencyCode) ? new CurrencyCodeType() : $this->invoiceCurrencyCode;
+        $this->invoiceCurrencyCode ??= new CurrencyCodeType();
 
         return $this->invoiceCurrencyCode;
     }
@@ -415,7 +415,7 @@ class HeaderTradeSettlementType
      */
     public function getInvoiceIssuerReferenceWithCreate(): TextType
     {
-        $this->invoiceIssuerReference = is_null($this->invoiceIssuerReference) ? new TextType() : $this->invoiceIssuerReference;
+        $this->invoiceIssuerReference ??= new TextType();
 
         return $this->invoiceIssuerReference;
     }
@@ -455,7 +455,7 @@ class HeaderTradeSettlementType
      */
     public function getInvoicerTradePartyWithCreate(): TradePartyType
     {
-        $this->invoicerTradeParty = is_null($this->invoicerTradeParty) ? new TradePartyType() : $this->invoicerTradeParty;
+        $this->invoicerTradeParty ??= new TradePartyType();
 
         return $this->invoicerTradeParty;
     }
@@ -495,7 +495,7 @@ class HeaderTradeSettlementType
      */
     public function getInvoiceeTradePartyWithCreate(): TradePartyType
     {
-        $this->invoiceeTradeParty = is_null($this->invoiceeTradeParty) ? new TradePartyType() : $this->invoiceeTradeParty;
+        $this->invoiceeTradeParty ??= new TradePartyType();
 
         return $this->invoiceeTradeParty;
     }
@@ -535,7 +535,7 @@ class HeaderTradeSettlementType
      */
     public function getPayeeTradePartyWithCreate(): TradePartyType
     {
-        $this->payeeTradeParty = is_null($this->payeeTradeParty) ? new TradePartyType() : $this->payeeTradeParty;
+        $this->payeeTradeParty ??= new TradePartyType();
 
         return $this->payeeTradeParty;
     }
@@ -575,7 +575,7 @@ class HeaderTradeSettlementType
      */
     public function getPayerTradePartyWithCreate(): TradePartyType
     {
-        $this->payerTradeParty = is_null($this->payerTradeParty) ? new TradePartyType() : $this->payerTradeParty;
+        $this->payerTradeParty ??= new TradePartyType();
 
         return $this->payerTradeParty;
     }
@@ -615,7 +615,7 @@ class HeaderTradeSettlementType
      */
     public function getTaxApplicableTradeCurrencyExchangeWithCreate(): TradeCurrencyExchangeType
     {
-        $this->taxApplicableTradeCurrencyExchange = is_null($this->taxApplicableTradeCurrencyExchange) ? new TradeCurrencyExchangeType() : $this->taxApplicableTradeCurrencyExchange;
+        $this->taxApplicableTradeCurrencyExchange ??= new TradeCurrencyExchangeType();
 
         return $this->taxApplicableTradeCurrencyExchange;
     }
@@ -843,7 +843,7 @@ class HeaderTradeSettlementType
      */
     public function getBillingSpecifiedPeriodWithCreate(): SpecifiedPeriodType
     {
-        $this->billingSpecifiedPeriod = is_null($this->billingSpecifiedPeriod) ? new SpecifiedPeriodType() : $this->billingSpecifiedPeriod;
+        $this->billingSpecifiedPeriod ??= new SpecifiedPeriodType();
 
         return $this->billingSpecifiedPeriod;
     }
@@ -1165,7 +1165,7 @@ class HeaderTradeSettlementType
      */
     public function getSpecifiedTradeSettlementHeaderMonetarySummationWithCreate(): TradeSettlementHeaderMonetarySummationType
     {
-        $this->specifiedTradeSettlementHeaderMonetarySummation = is_null($this->specifiedTradeSettlementHeaderMonetarySummation) ? new TradeSettlementHeaderMonetarySummationType() : $this->specifiedTradeSettlementHeaderMonetarySummation;
+        $this->specifiedTradeSettlementHeaderMonetarySummation ??= new TradeSettlementHeaderMonetarySummationType();
 
         return $this->specifiedTradeSettlementHeaderMonetarySummation;
     }

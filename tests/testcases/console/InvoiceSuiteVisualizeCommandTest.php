@@ -9,7 +9,7 @@ use horstoeko\invoicesuite\exceptions\InvoiceSuiteInvalidArgumentException;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 
-class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCase
+final class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCase
 {
     /**
      * Test that the visualizes a given XML or JSON file and outputs a PDF
@@ -140,7 +140,7 @@ class InvoiceSuiteVisualizeCommandTest extends InvoiceSuiteConsoleCommandTestCas
 
         $commandTester = $this->createCommandTester('invoicesuite:visualize');
 
-        $exitCode = $commandTester->execute([
+        $commandTester->execute([
             'input-file' => $this->getTestAssetFilePath('00_case_comfort_simple.xml'),
             'output-file' => $this->getTempFilePath('output.html'),
             '--format' => 'html',

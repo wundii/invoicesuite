@@ -70,7 +70,7 @@ class CataloguePricingUpdateLineType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -110,7 +110,7 @@ class CataloguePricingUpdateLineType
      */
     public function getContractorCustomerPartyWithCreate(): ContractorCustomerParty
     {
-        $this->contractorCustomerParty = is_null($this->contractorCustomerParty) ? new ContractorCustomerParty() : $this->contractorCustomerParty;
+        $this->contractorCustomerParty ??= new ContractorCustomerParty();
 
         return $this->contractorCustomerParty;
     }
@@ -150,7 +150,7 @@ class CataloguePricingUpdateLineType
      */
     public function getSellerSupplierPartyWithCreate(): SellerSupplierParty
     {
-        $this->sellerSupplierParty = is_null($this->sellerSupplierParty) ? new SellerSupplierParty() : $this->sellerSupplierParty;
+        $this->sellerSupplierParty ??= new SellerSupplierParty();
 
         return $this->sellerSupplierParty;
     }

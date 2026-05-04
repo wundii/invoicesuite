@@ -60,7 +60,7 @@ class PromotionalSpecificationType
      */
     public function getSpecificationIDWithCreate(): SpecificationID
     {
-        $this->specificationID = is_null($this->specificationID) ? new SpecificationID() : $this->specificationID;
+        $this->specificationID ??= new SpecificationID();
 
         return $this->specificationID;
     }

@@ -102,7 +102,7 @@ final class DatiTrasmissione
      */
     public function getIdTrasmittenteWithCreate(): IdFiscale
     {
-        $this->idTrasmittente = is_null($this->idTrasmittente) ? new IdFiscale() : $this->idTrasmittente;
+        $this->idTrasmittente ??= new IdFiscale();
 
         return $this->idTrasmittente;
     }
@@ -258,7 +258,7 @@ final class DatiTrasmissione
      */
     public function getContattiTrasmittenteWithCreate(): ContattiTrasmittente
     {
-        $this->contattiTrasmittente = is_null($this->contattiTrasmittente) ? new ContattiTrasmittente() : $this->contattiTrasmittente;
+        $this->contattiTrasmittente ??= new ContattiTrasmittente();
 
         return $this->contattiTrasmittente;
     }

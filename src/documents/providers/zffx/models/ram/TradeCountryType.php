@@ -36,7 +36,7 @@ class TradeCountryType
      */
     public function getIDWithCreate(): CountryIDType
     {
-        $this->iD = is_null($this->iD) ? new CountryIDType() : $this->iD;
+        $this->iD ??= new CountryIDType();
 
         return $this->iD;
     }

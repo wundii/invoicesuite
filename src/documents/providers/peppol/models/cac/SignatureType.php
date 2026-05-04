@@ -141,7 +141,7 @@ class SignatureType
      */
     public function getIDWithCreate(): ID
     {
-        $this->iD = is_null($this->iD) ? new ID() : $this->iD;
+        $this->iD ??= new ID();
 
         return $this->iD;
     }
@@ -365,7 +365,7 @@ class SignatureType
      */
     public function getValidatorIDWithCreate(): ValidatorID
     {
-        $this->validatorID = is_null($this->validatorID) ? new ValidatorID() : $this->validatorID;
+        $this->validatorID ??= new ValidatorID();
 
         return $this->validatorID;
     }
@@ -405,7 +405,7 @@ class SignatureType
      */
     public function getCanonicalizationMethodWithCreate(): CanonicalizationMethod
     {
-        $this->canonicalizationMethod = is_null($this->canonicalizationMethod) ? new CanonicalizationMethod() : $this->canonicalizationMethod;
+        $this->canonicalizationMethod ??= new CanonicalizationMethod();
 
         return $this->canonicalizationMethod;
     }
@@ -445,7 +445,7 @@ class SignatureType
      */
     public function getSignatureMethodWithCreate(): SignatureMethod
     {
-        $this->signatureMethod = is_null($this->signatureMethod) ? new SignatureMethod() : $this->signatureMethod;
+        $this->signatureMethod ??= new SignatureMethod();
 
         return $this->signatureMethod;
     }
@@ -485,7 +485,7 @@ class SignatureType
      */
     public function getSignatoryPartyWithCreate(): SignatoryParty
     {
-        $this->signatoryParty = is_null($this->signatoryParty) ? new SignatoryParty() : $this->signatoryParty;
+        $this->signatoryParty ??= new SignatoryParty();
 
         return $this->signatoryParty;
     }
@@ -525,7 +525,7 @@ class SignatureType
      */
     public function getDigitalSignatureAttachmentWithCreate(): DigitalSignatureAttachment
     {
-        $this->digitalSignatureAttachment = is_null($this->digitalSignatureAttachment) ? new DigitalSignatureAttachment() : $this->digitalSignatureAttachment;
+        $this->digitalSignatureAttachment ??= new DigitalSignatureAttachment();
 
         return $this->digitalSignatureAttachment;
     }
@@ -565,7 +565,7 @@ class SignatureType
      */
     public function getOriginalDocumentReferenceWithCreate(): OriginalDocumentReference
     {
-        $this->originalDocumentReference = is_null($this->originalDocumentReference) ? new OriginalDocumentReference() : $this->originalDocumentReference;
+        $this->originalDocumentReference ??= new OriginalDocumentReference();
 
         return $this->originalDocumentReference;
     }

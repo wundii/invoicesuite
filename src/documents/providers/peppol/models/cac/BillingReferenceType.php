@@ -113,7 +113,7 @@ class BillingReferenceType
      */
     public function getInvoiceDocumentReferenceWithCreate(): InvoiceDocumentReference
     {
-        $this->invoiceDocumentReference = is_null($this->invoiceDocumentReference) ? new InvoiceDocumentReference() : $this->invoiceDocumentReference;
+        $this->invoiceDocumentReference ??= new InvoiceDocumentReference();
 
         return $this->invoiceDocumentReference;
     }
@@ -153,7 +153,7 @@ class BillingReferenceType
      */
     public function getSelfBilledInvoiceDocumentReferenceWithCreate(): SelfBilledInvoiceDocumentReference
     {
-        $this->selfBilledInvoiceDocumentReference = is_null($this->selfBilledInvoiceDocumentReference) ? new SelfBilledInvoiceDocumentReference() : $this->selfBilledInvoiceDocumentReference;
+        $this->selfBilledInvoiceDocumentReference ??= new SelfBilledInvoiceDocumentReference();
 
         return $this->selfBilledInvoiceDocumentReference;
     }
@@ -193,7 +193,7 @@ class BillingReferenceType
      */
     public function getCreditNoteDocumentReferenceWithCreate(): CreditNoteDocumentReference
     {
-        $this->creditNoteDocumentReference = is_null($this->creditNoteDocumentReference) ? new CreditNoteDocumentReference() : $this->creditNoteDocumentReference;
+        $this->creditNoteDocumentReference ??= new CreditNoteDocumentReference();
 
         return $this->creditNoteDocumentReference;
     }
@@ -233,7 +233,7 @@ class BillingReferenceType
      */
     public function getSelfBilledCreditNoteDocumentReferenceWithCreate(): SelfBilledCreditNoteDocumentReference
     {
-        $this->selfBilledCreditNoteDocumentReference = is_null($this->selfBilledCreditNoteDocumentReference) ? new SelfBilledCreditNoteDocumentReference() : $this->selfBilledCreditNoteDocumentReference;
+        $this->selfBilledCreditNoteDocumentReference ??= new SelfBilledCreditNoteDocumentReference();
 
         return $this->selfBilledCreditNoteDocumentReference;
     }
@@ -273,7 +273,7 @@ class BillingReferenceType
      */
     public function getDebitNoteDocumentReferenceWithCreate(): DebitNoteDocumentReference
     {
-        $this->debitNoteDocumentReference = is_null($this->debitNoteDocumentReference) ? new DebitNoteDocumentReference() : $this->debitNoteDocumentReference;
+        $this->debitNoteDocumentReference ??= new DebitNoteDocumentReference();
 
         return $this->debitNoteDocumentReference;
     }
@@ -313,7 +313,7 @@ class BillingReferenceType
      */
     public function getReminderDocumentReferenceWithCreate(): ReminderDocumentReference
     {
-        $this->reminderDocumentReference = is_null($this->reminderDocumentReference) ? new ReminderDocumentReference() : $this->reminderDocumentReference;
+        $this->reminderDocumentReference ??= new ReminderDocumentReference();
 
         return $this->reminderDocumentReference;
     }
@@ -353,7 +353,7 @@ class BillingReferenceType
      */
     public function getAdditionalDocumentReferenceWithCreate(): AdditionalDocumentReference
     {
-        $this->additionalDocumentReference = is_null($this->additionalDocumentReference) ? new AdditionalDocumentReference() : $this->additionalDocumentReference;
+        $this->additionalDocumentReference ??= new AdditionalDocumentReference();
 
         return $this->additionalDocumentReference;
     }

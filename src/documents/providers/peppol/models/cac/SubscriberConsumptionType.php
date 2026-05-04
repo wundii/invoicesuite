@@ -130,7 +130,7 @@ class SubscriberConsumptionType
      */
     public function getConsumptionIDWithCreate(): ConsumptionID
     {
-        $this->consumptionID = is_null($this->consumptionID) ? new ConsumptionID() : $this->consumptionID;
+        $this->consumptionID ??= new ConsumptionID();
 
         return $this->consumptionID;
     }
@@ -170,7 +170,7 @@ class SubscriberConsumptionType
      */
     public function getSpecificationTypeCodeWithCreate(): SpecificationTypeCode
     {
-        $this->specificationTypeCode = is_null($this->specificationTypeCode) ? new SpecificationTypeCode() : $this->specificationTypeCode;
+        $this->specificationTypeCode ??= new SpecificationTypeCode();
 
         return $this->specificationTypeCode;
     }
@@ -334,7 +334,7 @@ class SubscriberConsumptionType
      */
     public function getTotalMeteredQuantityWithCreate(): TotalMeteredQuantity
     {
-        $this->totalMeteredQuantity = is_null($this->totalMeteredQuantity) ? new TotalMeteredQuantity() : $this->totalMeteredQuantity;
+        $this->totalMeteredQuantity ??= new TotalMeteredQuantity();
 
         return $this->totalMeteredQuantity;
     }
@@ -374,7 +374,7 @@ class SubscriberConsumptionType
      */
     public function getSubscriberPartyWithCreate(): SubscriberParty
     {
-        $this->subscriberParty = is_null($this->subscriberParty) ? new SubscriberParty() : $this->subscriberParty;
+        $this->subscriberParty ??= new SubscriberParty();
 
         return $this->subscriberParty;
     }
@@ -414,7 +414,7 @@ class SubscriberConsumptionType
      */
     public function getUtilityConsumptionPointWithCreate(): UtilityConsumptionPoint
     {
-        $this->utilityConsumptionPoint = is_null($this->utilityConsumptionPoint) ? new UtilityConsumptionPoint() : $this->utilityConsumptionPoint;
+        $this->utilityConsumptionPoint ??= new UtilityConsumptionPoint();
 
         return $this->utilityConsumptionPoint;
     }
@@ -578,7 +578,7 @@ class SubscriberConsumptionType
      */
     public function getConsumptionWithCreate(): Consumption
     {
-        $this->consumption = is_null($this->consumption) ? new Consumption() : $this->consumption;
+        $this->consumption ??= new Consumption();
 
         return $this->consumption;
     }

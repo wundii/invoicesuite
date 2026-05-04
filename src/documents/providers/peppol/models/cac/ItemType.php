@@ -504,7 +504,7 @@ class ItemType
      */
     public function getPackQuantityWithCreate(): PackQuantity
     {
-        $this->packQuantity = is_null($this->packQuantity) ? new PackQuantity() : $this->packQuantity;
+        $this->packQuantity ??= new PackQuantity();
 
         return $this->packQuantity;
     }
@@ -544,7 +544,7 @@ class ItemType
      */
     public function getPackSizeNumericWithCreate(): PackSizeNumeric
     {
-        $this->packSizeNumeric = is_null($this->packSizeNumeric) ? new PackSizeNumeric() : $this->packSizeNumeric;
+        $this->packSizeNumeric ??= new PackSizeNumeric();
 
         return $this->packSizeNumeric;
     }
@@ -614,7 +614,7 @@ class ItemType
      */
     public function getNameWithCreate(): Name
     {
-        $this->name = is_null($this->name) ? new Name() : $this->name;
+        $this->name ??= new Name();
 
         return $this->name;
     }
@@ -1180,7 +1180,7 @@ class ItemType
      */
     public function getBuyersItemIdentificationWithCreate(): BuyersItemIdentification
     {
-        $this->buyersItemIdentification = is_null($this->buyersItemIdentification) ? new BuyersItemIdentification() : $this->buyersItemIdentification;
+        $this->buyersItemIdentification ??= new BuyersItemIdentification();
 
         return $this->buyersItemIdentification;
     }
@@ -1220,7 +1220,7 @@ class ItemType
      */
     public function getSellersItemIdentificationWithCreate(): SellersItemIdentification
     {
-        $this->sellersItemIdentification = is_null($this->sellersItemIdentification) ? new SellersItemIdentification() : $this->sellersItemIdentification;
+        $this->sellersItemIdentification ??= new SellersItemIdentification();
 
         return $this->sellersItemIdentification;
     }
@@ -1384,7 +1384,7 @@ class ItemType
      */
     public function getStandardItemIdentificationWithCreate(): StandardItemIdentification
     {
-        $this->standardItemIdentification = is_null($this->standardItemIdentification) ? new StandardItemIdentification() : $this->standardItemIdentification;
+        $this->standardItemIdentification ??= new StandardItemIdentification();
 
         return $this->standardItemIdentification;
     }
@@ -1424,7 +1424,7 @@ class ItemType
      */
     public function getCatalogueItemIdentificationWithCreate(): CatalogueItemIdentification
     {
-        $this->catalogueItemIdentification = is_null($this->catalogueItemIdentification) ? new CatalogueItemIdentification() : $this->catalogueItemIdentification;
+        $this->catalogueItemIdentification ??= new CatalogueItemIdentification();
 
         return $this->catalogueItemIdentification;
     }
@@ -1588,7 +1588,7 @@ class ItemType
      */
     public function getCatalogueDocumentReferenceWithCreate(): CatalogueDocumentReference
     {
-        $this->catalogueDocumentReference = is_null($this->catalogueDocumentReference) ? new CatalogueDocumentReference() : $this->catalogueDocumentReference;
+        $this->catalogueDocumentReference ??= new CatalogueDocumentReference();
 
         return $this->catalogueDocumentReference;
     }
@@ -1752,7 +1752,7 @@ class ItemType
      */
     public function getOriginCountryWithCreate(): OriginCountry
     {
-        $this->originCountry = is_null($this->originCountry) ? new OriginCountry() : $this->originCountry;
+        $this->originCountry ??= new OriginCountry();
 
         return $this->originCountry;
     }
@@ -2536,7 +2536,7 @@ class ItemType
      */
     public function getInformationContentProviderPartyWithCreate(): InformationContentProviderParty
     {
-        $this->informationContentProviderParty = is_null($this->informationContentProviderParty) ? new InformationContentProviderParty() : $this->informationContentProviderParty;
+        $this->informationContentProviderParty ??= new InformationContentProviderParty();
 
         return $this->informationContentProviderParty;
     }

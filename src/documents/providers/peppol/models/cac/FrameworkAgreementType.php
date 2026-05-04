@@ -97,7 +97,7 @@ class FrameworkAgreementType
      */
     public function getExpectedOperatorQuantityWithCreate(): ExpectedOperatorQuantity
     {
-        $this->expectedOperatorQuantity = is_null($this->expectedOperatorQuantity) ? new ExpectedOperatorQuantity() : $this->expectedOperatorQuantity;
+        $this->expectedOperatorQuantity ??= new ExpectedOperatorQuantity();
 
         return $this->expectedOperatorQuantity;
     }
@@ -137,7 +137,7 @@ class FrameworkAgreementType
      */
     public function getMaximumOperatorQuantityWithCreate(): MaximumOperatorQuantity
     {
-        $this->maximumOperatorQuantity = is_null($this->maximumOperatorQuantity) ? new MaximumOperatorQuantity() : $this->maximumOperatorQuantity;
+        $this->maximumOperatorQuantity ??= new MaximumOperatorQuantity();
 
         return $this->maximumOperatorQuantity;
     }
@@ -425,7 +425,7 @@ class FrameworkAgreementType
      */
     public function getDurationPeriodWithCreate(): DurationPeriod
     {
-        $this->durationPeriod = is_null($this->durationPeriod) ? new DurationPeriod() : $this->durationPeriod;
+        $this->durationPeriod ??= new DurationPeriod();
 
         return $this->durationPeriod;
     }

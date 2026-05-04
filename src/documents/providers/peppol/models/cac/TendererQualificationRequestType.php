@@ -158,7 +158,7 @@ class TendererQualificationRequestType
      */
     public function getCompanyLegalFormCodeWithCreate(): CompanyLegalFormCode
     {
-        $this->companyLegalFormCode = is_null($this->companyLegalFormCode) ? new CompanyLegalFormCode() : $this->companyLegalFormCode;
+        $this->companyLegalFormCode ??= new CompanyLegalFormCode();
 
         return $this->companyLegalFormCode;
     }
@@ -198,7 +198,7 @@ class TendererQualificationRequestType
      */
     public function getCompanyLegalFormWithCreate(): CompanyLegalForm
     {
-        $this->companyLegalForm = is_null($this->companyLegalForm) ? new CompanyLegalForm() : $this->companyLegalForm;
+        $this->companyLegalForm ??= new CompanyLegalForm();
 
         return $this->companyLegalForm;
     }
@@ -362,7 +362,7 @@ class TendererQualificationRequestType
      */
     public function getOperatingYearsQuantityWithCreate(): OperatingYearsQuantity
     {
-        $this->operatingYearsQuantity = is_null($this->operatingYearsQuantity) ? new OperatingYearsQuantity() : $this->operatingYearsQuantity;
+        $this->operatingYearsQuantity ??= new OperatingYearsQuantity();
 
         return $this->operatingYearsQuantity;
     }
@@ -402,7 +402,7 @@ class TendererQualificationRequestType
      */
     public function getEmployeeQuantityWithCreate(): EmployeeQuantity
     {
-        $this->employeeQuantity = is_null($this->employeeQuantity) ? new EmployeeQuantity() : $this->employeeQuantity;
+        $this->employeeQuantity ??= new EmployeeQuantity();
 
         return $this->employeeQuantity;
     }
